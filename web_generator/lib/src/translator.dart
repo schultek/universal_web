@@ -829,7 +829,7 @@ class Translator {
 
   code.Method _topLevelGetter(_RawType type, String getterName) =>
       code.Method((b) => b
-        ..annotations.addAll(_jsOverride('', alwaysEmit: true))
+        //..annotations.addAll(_jsOverride('', alwaysEmit: true))
         ..external = true
         ..returns = _typeReference(type, returnType: true)
         ..name = getterName
@@ -918,7 +918,7 @@ class Translator {
     // JS types and core types don't have urls.
     if (url == null) {
       if (dartType.startsWith('JS')) {
-        url = 'dart:js_interop';
+        url = '../js_interop.dart';
       }
       // Else is a core type, so no import required.
     } else if (url == _currentlyTranslatingUrl) {
@@ -953,7 +953,7 @@ class Translator {
       _overridableMember<code.Constructor>(
           constructor,
           (requiredParameters, optionalParameters) => code.Constructor((b) => b
-            ..external = true
+            //..external = true
             // TODO(srujzs): Should we generate generative or factory
             // constructors? With `@staticInterop`, factories were needed, but
             // extension types have no such limitation.
@@ -994,14 +994,14 @@ class Translator {
     }
     if (namedParameters.isEmpty) {
       return code.Constructor((b) => b
-        ..initializers.add(code
+        /*..initializers.add(code
             .refer(representationFieldName)
             .assign(code.refer('JSObject', _urlForType('JSObject')).call([]))
-            .code));
+            .code)*/);
     } else {
       return code.Constructor((b) => b
         ..optionalParameters.addAll(namedParameters)
-        ..external = true
+        //..external = true
         // TODO(srujzs): Should we generate generative or factory constructors?
         // With `@staticInterop`, factories were needed, but extension types
         // have no such limitation.
@@ -1033,14 +1033,15 @@ class Translator {
     return _overridableMember<code.Method>(
       operation,
       (requiredParameters, optionalParameters) => code.Method((b) => b
-        ..annotations.addAll(_jsOverride(memberName.jsOverride))
-        ..external = true
+        //..annotations.addAll(_jsOverride(memberName.jsOverride))
+        //..external = true
         ..static = operation.isStatic
         ..returns = returnType
         ..name = memberName.name
         ..docs.addAll(operation.mdnProperty?.formattedDocs ?? [])
         ..requiredParameters.addAll(requiredParameters)
-        ..optionalParameters.addAll(optionalParameters)),
+        ..optionalParameters.addAll(optionalParameters)
+        ..body = operation.isStatic ? const code.Code('throw UnimplementedError();') : null),
     );
   }
 
@@ -1056,23 +1057,25 @@ class Translator {
     final docs =
         mdnInterface?.propertyFor(name, isStatic: isStatic)?.formattedDocs ??
             [];
+    final body = mdnInterface == null || isStatic ? const code.Code('throw UnimplementedError();') : null;
 
     return [
       code.Method(
         (b) => b
-          ..annotations.addAll(_jsOverride(memberName.jsOverride))
-          ..external = true
+          //..annotations.addAll(_jsOverride(memberName.jsOverride))
+          //..external = true
           ..static = isStatic
           ..returns = getGetterType()
           ..type = code.MethodType.getter
           ..name = name
-          ..docs.addAll(docs),
+          ..docs.addAll(docs)
+          ..body = body,
       ),
       if (!readOnly)
         code.Method(
           (b) => b
-            ..annotations.addAll(_jsOverride(memberName.jsOverride))
-            ..external = true
+            //..annotations.addAll(_jsOverride(memberName.jsOverride))
+            //..external = true
             ..static = isStatic
             ..type = code.MethodType.setter
             ..name = name
@@ -1082,7 +1085,8 @@ class Translator {
                   ..type = getSetterType()
                   ..name = 'value',
               ),
-            ),
+            )
+            ..body = body,
         ),
     ];
   }
@@ -1133,7 +1137,7 @@ class Translator {
       [
         code.Method(
           (b) => b
-            ..annotations.addAll(_jsOverride(constant.name.jsOverride))
+            //..annotations.addAll(_jsOverride(constant.name.jsOverride))
             ..external = true
             ..static = true
             ..returns = _typeReference(constant.type, returnType: true)
@@ -1214,7 +1218,7 @@ class Translator {
           ])
           // If there are multiple tags, use a named constructor.
           ..name = tags.length == 1 ? null : dartRename(tag)
-          ..initializers.addAll([
+          /*..initializers.addAll([
             code
                 .refer(representationFieldName)
                 .assign(code
@@ -1228,7 +1232,7 @@ class Translator {
                   code.literalString(tag)
                 ]))
                 .code
-          ])));
+          ])*/));
       }
     }
     return elementConstructors;
@@ -1248,7 +1252,7 @@ class Translator {
     );
   }
 
-  code.ExtensionType _extensionType({
+  code.Class _extensionType({
     required String jsName,
     required String dartClassName,
     required List<idl.ExtendedAttribute> extendedAttributes,
@@ -1278,30 +1282,31 @@ class Translator {
       (property.static ? staticPropertyMethods : instancePropertyMethods)
           .add(property);
     }
-    return code.ExtensionType((b) => b
+    return code.Class((b) => b
       ..docs.addAll(docs)
-      ..annotations.addAll(
+      /*..annotations.addAll(
         _jsOverride(
           legacyNameSpace != null
               ? '$legacyNameSpace.$jsName'
               : (isObjectLiteral || jsName == dartClassName ? '' : jsName),
         ),
-      )
+      )*/
       ..name = dartClassName
-      ..primaryConstructorName = '_'
+      ..abstract = true
+      /*..primaryConstructorName = '_'
       ..representationDeclaration = code.RepresentationDeclaration((b) => b
         ..name = representationFieldName
-        ..declaredRepresentationType = jsObject)
+        ..declaredRepresentationType = jsObject)*/
       ..implements.addAll(implements
           .map((interface) => _typeReference(_RawType(interface, false)))
           .followedBy([jsObject]))
-      ..constructors.addAll((isObjectLiteral
+      /*..constructors.addAll((isObjectLiteral
               ? [_objectLiteral(jsName, representationFieldName)]
               : constructor != null
                   ? [_constructor(constructor)]
                   : <code.Constructor>[])
           .followedBy(_elementConstructors(
-              jsName, dartClassName, representationFieldName)))
+              jsName, dartClassName, representationFieldName)))*/
       ..fields.addAll(propertySpecs.$1)
       ..methods.addAll(_operations(staticOperations)
           .followedBy(staticPropertyMethods)
@@ -1378,7 +1383,7 @@ class Translator {
     // literal constructors in https://github.com/dart-lang/sdk/issues/54801.
     // Once this package moves to an SDK version that contains a fix for that,
     // this can be removed.
-    ..annotations.addAll(_jsOverride('', alwaysEmit: true))
+    //..annotations.addAll(_jsOverride('', alwaysEmit: true))
     ..body.addAll([
       for (final typedef in library.typedefs.where(_usedTypes.contains))
         _typedef(typedef.name, _desugarTypedef(_RawType(typedef.name, false))!),

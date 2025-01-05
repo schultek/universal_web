@@ -2,6 +2,8 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+// ignore_for_file: unused_element, unused_local_variable
+
 import 'dart:js_interop';
 
 import 'package:code_builder/code_builder.dart' as code;
@@ -673,7 +675,10 @@ class Translator {
     browserCompatData = BrowserCompatData.read(generateAll: generateAll);
   }
 
-  late final unsupportedBody = code.Code.scope((s) => s(code.Reference('unsupportedPlatformError', '../error.dart')) + '();');
+  late final unsupportedBody = code.Code.scope((s) {
+    const ref = code.Reference('unsupportedPlatformError', '../error.dart');
+    return '${s(ref)}();';
+  });
 
   void _addOrUpdateInterfaceLike(idl.Interfacelike interfacelike) {
     final name = interfacelike.name;
@@ -997,10 +1002,11 @@ class Translator {
     }
     if (namedParameters.isEmpty) {
       return code.Constructor((b) => b
-        /*..initializers.add(code
+          /*..initializers.add(code
             .refer(representationFieldName)
             .assign(code.refer('JSObject', _urlForType('JSObject')).call([]))
-            .code)*/);
+            .code)*/
+          );
     } else {
       return code.Constructor((b) => b
         ..optionalParameters.addAll(namedParameters)
@@ -1034,8 +1040,11 @@ class Translator {
         ? code.TypeReference((b) => b..symbol = 'void')
         : _typeReference(operation.returnType, returnType: true);
 
-    if (memberName.name == 'namedItem' && returnType.symbol == 'JSObject' 
-      && (operation.mdnProperty?.docs.contains('HTMLFormControlsCollection.namedItem') ?? false)) {
+    if (memberName.name == 'namedItem' &&
+        returnType.symbol == 'JSObject' &&
+        (operation.mdnProperty?.docs
+                .contains('HTMLFormControlsCollection.namedItem') ??
+            false)) {
       // Fix for HTMLFormControlsCollection.namedItem.
       returnType = code.TypeReference((b) => b..symbol = 'Element');
     }
@@ -1050,10 +1059,15 @@ class Translator {
         ..name = memberName.name
         ..docs.addAll(operation.mdnProperty?.formattedDocs ?? [])
         ..requiredParameters.addAll(requiredParameters)
-        ..optionalParameters.addAll(operation.isStatic ? optionalParameters.map((p) => p.rebuild((b) {
-          final s = p.type?.symbol ?? '';
-          b.type = code.Reference(s.endsWith('?') ? s : '$s?', p.type?.url);
-        })).toList() : optionalParameters)
+        ..optionalParameters.addAll(operation.isStatic
+            ? optionalParameters
+                .map((p) => p.rebuild((b) {
+                      final s = p.type?.symbol ?? '';
+                      b.type = code.Reference(
+                          s.endsWith('?') ? s : '$s?', p.type?.url);
+                    }))
+                .toList()
+            : optionalParameters)
         ..body = operation.isStatic ? unsupportedBody : null),
     );
   }
@@ -1227,18 +1241,19 @@ class Translator {
       for (final tag in tags) {
         final article = singularArticleForElement(dartClassName);
         elementConstructors.add(code.Constructor((b) => b
-          ..docs.addAll([
-            formatDocs(
-                    "Creates $article [$dartClassName] using the tag '$tag'.",
-                    80,
-                    // Extension type members start with an indentation of 2
-                    // chars.
-                    2)
-                .join('\n')
-          ])
-          // If there are multiple tags, use a named constructor.
-          ..name = tags.length == 1 ? null : dartRename(tag)
-          /*..initializers.addAll([
+              ..docs.addAll([
+                formatDocs(
+                        'Creates $article [$dartClassName] '
+                        "using the tag '$tag'.",
+                        80,
+                        // Extension type members start with an indentation of 2
+                        // chars.
+                        2)
+                    .join('\n')
+              ])
+              // If there are multiple tags, use a named constructor.
+              ..name = tags.length == 1 ? null : dartRename(tag)
+            /*..initializers.addAll([
             code
                 .refer(representationFieldName)
                 .assign(code
@@ -1252,7 +1267,8 @@ class Translator {
                   code.literalString(tag)
                 ]))
                 .code
-          ])*/));
+          ])*/
+            ));
       }
     }
     return elementConstructors;

@@ -681,7 +681,7 @@ class Translator {
     return '${s(ref)}();';
   });
 
-  /// Members that require a manual change in the generated code 
+  /// Members that require a manual change in the generated code
   /// due to invalid_override errors.
   late final overrideMemberTypes = {
     ('PerformanceElementTiming', 'id', 'String', 'int'),

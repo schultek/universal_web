@@ -2,9 +2,14 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-import 'package:web/web.dart';
+import 'package:universal_web/web.dart';
+
+/// A constant that is true if the application was compiled to run on the web.
+const bool kIsWeb = bool.fromEnvironment('dart.library.js_interop');
 
 void main() {
-  final div = document.querySelector('div')!;
-  div.text = 'Text set at ${DateTime.now()}';
+  if (kIsWeb) {
+    final div = document.querySelector('div')!;
+    div.text = 'Text set at ${DateTime.now()}';
+  }
 }

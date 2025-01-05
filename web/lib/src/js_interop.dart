@@ -60,7 +60,7 @@ abstract class JSSymbol implements JSAny {}
 
 abstract class JSBigInt implements JSAny {}
 
-abstract class ExternalDartReference<T extends Object?>{}
+abstract class ExternalDartReference<T extends Object?> {}
 
 typedef JSVoid = void;
 
@@ -89,7 +89,12 @@ extension NullableObjectUtilExtension on Object? {
 }
 
 extension JSFunctionUtilExtension on JSFunction {
-  JSAny? callAsFunction([JSAny? thisArg, JSAny? arg1, JSAny? arg2, JSAny? arg3, JSAny? arg4]) =>
+  JSAny? callAsFunction(
+          [JSAny? thisArg,
+          JSAny? arg1,
+          JSAny? arg2,
+          JSAny? arg3,
+          JSAny? arg4]) =>
       unsupportedPlatformError();
 }
 
@@ -114,14 +119,14 @@ extension ObjectToJSBoxedDartObject on Object {
   JSBoxedDartObject get toJSBox => unsupportedPlatformError();
 }
 
-
 extension ExternalDartReferenceToObject<T extends Object?>
     on ExternalDartReference<T> {
   T get toDartObject => unsupportedPlatformError();
 }
 
 extension ObjectToExternalDartReference<T extends Object?> on T {
-  ExternalDartReference<T> get toExternalReference => unsupportedPlatformError();
+  ExternalDartReference<T> get toExternalReference =>
+      unsupportedPlatformError();
 }
 
 extension JSPromiseToFuture<T extends JSAny?> on JSPromise<T> {
@@ -314,9 +319,11 @@ extension JSAnyOperatorExtension on JSAny? {
 
 JSObject get globalContext => unsupportedPlatformError();
 
-JSObject createJSInteropWrapper<T extends Object>(T dartObject) => unsupportedPlatformError();
+JSObject createJSInteropWrapper<T extends Object>(T dartObject) =>
+    unsupportedPlatformError();
 
-JSPromise<JSObject> importModule(JSAny moduleName) => unsupportedPlatformError();
+JSPromise<JSObject> importModule(JSAny moduleName) =>
+    unsupportedPlatformError();
 
 // js_interop_unsafe
 
@@ -335,16 +342,21 @@ extension JSObjectUnsafeUtilExtension on JSObject {
   void setProperty(JSAny property, JSAny? value) => unsupportedPlatformError();
 
   R callMethod<R extends JSAny?>(JSAny method,
-          [JSAny? arg1, JSAny? arg2, JSAny? arg3, JSAny? arg4]) => unsupportedPlatformError();
+          [JSAny? arg1, JSAny? arg2, JSAny? arg3, JSAny? arg4]) =>
+      unsupportedPlatformError();
 
   R callMethodVarArgs<R extends JSAny?>(JSAny method,
-          [List<JSAny?>? arguments]) => unsupportedPlatformError();
+          [List<JSAny?>? arguments]) =>
+      unsupportedPlatformError();
 
   JSBoolean delete(JSAny property) => unsupportedPlatformError();
 }
 
 extension JSFunctionUnsafeUtilExtension on JSFunction {
-  R callAsConstructor<R>([JSAny? arg1, JSAny? arg2, JSAny? arg3, JSAny? arg4]) => unsupportedPlatformError();
-  
-  R callAsConstructorVarArgs<R extends JSObject>([List<JSAny?>? arguments]) => unsupportedPlatformError();
+  R callAsConstructor<R>(
+          [JSAny? arg1, JSAny? arg2, JSAny? arg3, JSAny? arg4]) =>
+      unsupportedPlatformError();
+
+  R callAsConstructorVarArgs<R extends JSObject>([List<JSAny?>? arguments]) =>
+      unsupportedPlatformError();
 }

@@ -29,7 +29,8 @@ class _CrossOriginWindow {
     JSAny? message, [
     JSAny? optionsOrTargetOrigin,
     JSArray<JSObject>? transfer,
-  ]) => unsupportedPlatformError();
+  ]) =>
+      unsupportedPlatformError();
 }
 
 // The Dart runtime does not allow this to be typed as any better than `JSAny?`.

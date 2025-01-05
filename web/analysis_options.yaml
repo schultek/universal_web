@@ -20,6 +20,10 @@ analyzer:
     non_constant_identifier_names: ignore
     # 1,260 instances in generated code.
     constant_identifier_names: ignore
+    # Ignored for stubs.
+    avoid_unused_constructor_parameters: ignore
+    # Ignored for stubs.
+    annotate_overrides: ignore
 
 linter:
   rules:

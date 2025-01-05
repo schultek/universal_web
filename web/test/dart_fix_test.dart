@@ -30,7 +30,7 @@ name: test_project
 environment:
   sdk: '^$sdkVersion'
 dependencies:
-  web:
+  universal_web:
     path: ${Directory.current.path}
 ''');
       final sourceFile = File(p.join('test_fixes', 'renames.dart'));

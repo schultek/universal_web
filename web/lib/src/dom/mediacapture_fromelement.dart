@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,11 +10,7 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../js_interop.dart';
 import 'html.dart';
 import 'mediacapture_streams.dart';
 
@@ -27,7 +23,7 @@ import 'mediacapture_streams.dart';
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CanvasCaptureMediaStreamTrack).
-extension type CanvasCaptureMediaStreamTrack._(JSObject _)
+abstract class CanvasCaptureMediaStreamTrack
     implements MediaStreamTrack, JSObject {
   /// The **`requestFrame()`** method of the [CanvasCaptureMediaStreamTrack]
   /// interface requests that a frame be captured from the canvas and sent to
@@ -42,10 +38,10 @@ extension type CanvasCaptureMediaStreamTrack._(JSObject _)
   /// `requestFrame()` is called, specify a value of 0 for the
   /// [HTMLCanvasElement.captureStream] method when creating
   /// the stream.
-  external void requestFrame();
+  void requestFrame();
 
   /// The **`canvas`** read-only property of the [CanvasCaptureMediaStreamTrack]
   /// interface returns the [HTMLCanvasElement] from which frames are being
   /// captured.
-  external HTMLCanvasElement get canvas;
+  HTMLCanvasElement get canvas;
 }

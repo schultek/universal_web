@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,11 +10,7 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../js_interop.dart';
 import 'dom.dart';
 import 'html.dart';
 
@@ -35,15 +31,14 @@ typedef EffectiveConnectionType = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/NetworkInformation).
-extension type NetworkInformation._(JSObject _)
-    implements EventTarget, JSObject {
+abstract class NetworkInformation implements EventTarget, JSObject {
   /// The **`effectiveType`** read-only property of the
   /// [NetworkInformation] interface returns the effective type of the
   /// connection
   /// meaning one of `slow-2g`, `2g`, `3g`, or `4g`. This value is determined
   /// using a
   /// combination of recently observed, round-trip time and downlink values.
-  external EffectiveConnectionType get effectiveType;
+  EffectiveConnectionType get effectiveType;
 
   /// The **`downlink`** read-only property of the
   /// [NetworkInformation] interface returns the effective bandwidth estimate in
@@ -56,7 +51,7 @@ extension type NetworkInformation._(JSObject _)
   /// recent bandwidth measurement data, the attribute value is determined by
   /// the properties
   /// of the underlying connection technology.
-  external double get downlink;
+  double get downlink;
 
   /// The **`rtt`** read-only property of the [NetworkInformation] interface
   /// returns the estimated effective round-trip time of the current connection,
@@ -66,12 +61,12 @@ extension type NetworkInformation._(JSObject _)
   /// It excludes connections made to a private address space.
   /// If no recent measurement data is available, the value is based on the
   /// properties of the underlying connection technology.
-  external Millisecond get rtt;
-  external EventHandler get onchange;
-  external set onchange(EventHandler value);
+  Millisecond get rtt;
+  EventHandler get onchange;
+  set onchange(EventHandler value);
 
   /// The **`saveData`** read-only
   /// property of the [NetworkInformation] interface returns `true` if the user
   /// has set a reduced data usage option on the user agent.
-  external bool get saveData;
+  bool get saveData;
 }

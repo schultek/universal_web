@@ -2,38 +2,40 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-import 'dart:js_interop';
+//import 'dart:js_interop';
 
 import '../dom.dart' show HTMLIFrameElement, Location, Window;
+import '../error.dart';
+import '../js_interop.dart';
 
 // The Dart runtime does not allow this to be typed as any better than `JSAny?`.
-extension type _CrossOriginWindow(JSAny? any) {
-  external bool get closed;
-  external int get length;
+class _CrossOriginWindow {
+  bool get closed => unsupportedPlatformError();
+  int get length => unsupportedPlatformError();
   // While you can set the location to a string value, this is the same as
   // `location.href`, so we only allow the getter to avoid a
   // `getter_not_subtype_setter_types` error.
-  external JSAny? get location;
-  external JSAny? get opener;
-  external JSAny? get parent;
-  external JSAny? get top;
+  JSAny? get location => unsupportedPlatformError();
+  JSAny? get opener => unsupportedPlatformError();
+  JSAny? get parent => unsupportedPlatformError();
+  JSAny? get top => unsupportedPlatformError();
   // `frames`, `self`, and `window` are all supported for cross-origin windows,
   // but simply return the calling window, so there's no use in supporting them
   // for interop.
-  external void blur();
-  external void close();
-  external void focus();
-  external void postMessage(
+  void blur() => unsupportedPlatformError();
+  void close() => unsupportedPlatformError();
+  void focus() => unsupportedPlatformError();
+  void postMessage(
     JSAny? message, [
-    JSAny optionsOrTargetOrigin,
-    JSArray<JSObject> transfer,
-  ]);
+    JSAny? optionsOrTargetOrigin,
+    JSArray<JSObject>? transfer,
+  ]) => unsupportedPlatformError();
 }
 
 // The Dart runtime does not allow this to be typed as any better than `JSAny?`.
-extension type _CrossOriginLocation(JSAny? any) {
-  external void replace(String url);
-  external set href(String value);
+class _CrossOriginLocation {
+  void replace(String url) => unsupportedPlatformError();
+  set href(String value) => unsupportedPlatformError();
 }
 
 /// A safe wrapper for a cross-origin window.
@@ -48,7 +50,7 @@ extension type _CrossOriginLocation(JSAny? any) {
 /// https://html.spec.whatwg.org/multipage/nav-history-apis.html#crossoriginproperties-(-o-)
 /// Some browsers may provide more access.
 class CrossOriginWindow {
-  CrossOriginWindow._(JSAny? o) : _window = _CrossOriginWindow(o);
+  CrossOriginWindow._(JSAny? o) : _window = _CrossOriginWindow();
 
   static CrossOriginWindow? _create(JSAny? o) {
     if (o == null) return null;
@@ -113,7 +115,7 @@ class CrossOriginWindow {
   /// > This is only intended to be passed to an interop member that expects a
   /// > <code>[JSAny]?</code>. Safety for any other operations is not
   /// > guaranteed.
-  JSAny? get unsafeWindow => _window.any;
+  JSAny? get unsafeWindow => unsupportedPlatformError();
 }
 
 /// A safe wrapper for a cross-origin location obtained through a cross-origin
@@ -129,7 +131,7 @@ class CrossOriginWindow {
 /// https://html.spec.whatwg.org/multipage/nav-history-apis.html#crossoriginproperties-(-o-)
 /// Some browsers may provide more access.
 class CrossOriginLocation {
-  CrossOriginLocation._(JSAny? o) : _location = _CrossOriginLocation(o);
+  CrossOriginLocation._(JSAny? o) : _location = _CrossOriginLocation();
 
   static CrossOriginLocation? _create(JSAny? o) {
     if (o == null) return null;
@@ -152,12 +154,11 @@ class CrossOriginLocation {
   /// > This is only intended to be passed to an interop member that expects a
   /// > <code>[JSAny]?</code>. Safety for any other operations is not
   /// > guaranteed.
-  JSAny? get unsafeLocation => _location.any;
+  JSAny? get unsafeLocation => unsupportedPlatformError();
 }
 
 extension CrossOriginContentWindowExtension on HTMLIFrameElement {
-  @JS('contentWindow')
-  external JSAny? get _contentWindow;
+  JSAny? get _contentWindow => unsupportedPlatformError();
 
   /// A [CrossOriginWindow] wrapper of the [HTMLIFrameElement.contentWindow]
   /// value of this `iframe`.
@@ -174,28 +175,28 @@ extension CrossOriginContentWindowExtension on HTMLIFrameElement {
 /// objects.
 extension CrossOriginWindowExtension on Window {
   @JS('open')
-  external JSAny? _open(String url);
+  JSAny? _open(String url) => unsupportedPlatformError();
 
   /// A [CrossOriginWindow] wrapper of the value returned from calling
   /// [Window.open] with [url].
   CrossOriginWindow? openCrossOrigin(String url) =>
       CrossOriginWindow._create(_open(url));
   @JS('opener')
-  external JSAny? get _opener;
+  JSAny? get _opener => unsupportedPlatformError();
 
   /// A [CrossOriginWindow] wrapper of the [Window.opener] value of this
   /// cross-origin window.
   CrossOriginWindow? get openerCrossOrigin =>
       CrossOriginWindow._create(_opener);
   @JS('parent')
-  external JSAny? get _parent;
+  JSAny? get _parent => unsupportedPlatformError();
 
   /// A [CrossOriginWindow] wrapper of the [Window.parent] value of this
   /// cross-origin window.
   CrossOriginWindow? get parentCrossOrigin =>
       CrossOriginWindow._create(_parent);
   @JS('top')
-  external JSAny? get _top;
+  JSAny? get _top => unsupportedPlatformError();
 
   /// A [CrossOriginWindow] wrapper of the [Window.top] value of this
   /// cross-origin window.

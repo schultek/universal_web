@@ -21,10 +21,11 @@
 /// whether to consume some of the APIs provided here.
 library;
 
-import 'dart:js_interop';
-import 'dart:js_interop_unsafe';
+//import 'dart:js_interop';
+//import 'dart:js_interop_unsafe';
 
 import 'dom.dart';
+import 'error.dart';
 import 'helpers/lists.dart';
 
 export 'helpers/cross_origin.dart' show CrossOriginLocation, CrossOriginWindow;
@@ -77,13 +78,11 @@ HTMLCanvasElement createCanvasElement({int? width, int? height}) {
 HTMLIFrameElement createIFrameElement() =>
     document.createElement('iframe') as HTMLIFrameElement;
 
-@JS('Audio')
-external JSFunction get _audioConstructor;
 // While `new Audio()` is a different syntax from
 // `document.createElement('audio')`, it looks like they're the same:
 // https://developer.mozilla.org/en-US/docs/Web/API/HTMLAudioElement/Audio#usage_notes
 @Deprecated('Use the HTMLAudioElement constructor instead.')
-HTMLAudioElement createAudioElement() => _audioConstructor.callAsConstructor();
+HTMLAudioElement createAudioElement() => unsupportedPlatformError();
 
 /// Finds and returns the first element within the [document]
 /// that matches the specified CSS [selector] string.

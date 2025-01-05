@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,14 +10,10 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../js_interop.dart';
 import 'webgl1.dart';
 
-extension type EXT_blend_minmax._(JSObject _) implements JSObject {
+abstract class EXT_blend_minmax implements JSObject {
   static const GLenum MIN_EXT = 32775;
 
   static const GLenum MAX_EXT = 32776;

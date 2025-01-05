@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,27 +10,23 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../error.dart';
+import '../js_interop.dart';
 import 'dom.dart';
 import 'fileapi.dart';
 import 'html.dart';
 
 typedef ClipboardItems = JSArray<ClipboardItem>;
 typedef PresentationStyle = String;
-extension type ClipboardEventInit._(JSObject _) implements EventInit, JSObject {
-  external factory ClipboardEventInit({
-    bool bubbles,
-    bool cancelable,
-    bool composed,
-    DataTransfer? clipboardData,
-  });
 
-  external DataTransfer? get clipboardData;
-  external set clipboardData(DataTransfer? value);
+abstract class ClipboardEventInit implements EventInit, JSObject {
+  DataTransfer? get clipboardData {
+    unsupportedPlatformError();
+  }
+
+  set clipboardData(DataTransfer? value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`ClipboardEvent`** interface of the
@@ -43,12 +39,7 @@ extension type ClipboardEventInit._(JSObject _) implements EventInit, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ClipboardEvent).
-extension type ClipboardEvent._(JSObject _) implements Event, JSObject {
-  external factory ClipboardEvent(
-    String type, [
-    ClipboardEventInit eventInitDict,
-  ]);
-
+abstract class ClipboardEvent implements Event, JSObject {
   /// The **`clipboardData`** property of the [ClipboardEvent] interface holds a
   /// [DataTransfer] object, which can be used to:
   ///
@@ -60,7 +51,7 @@ extension type ClipboardEvent._(JSObject _) implements Event, JSObject {
   ///
   /// See the [Element.cut_event], [Element.copy_event], and
   /// [Element.paste_event] events documentation for more information.
-  external DataTransfer? get clipboardData;
+  DataTransfer? get clipboardData;
 }
 
 /// The **`ClipboardItem`** interface of the
@@ -79,12 +70,7 @@ extension type ClipboardEvent._(JSObject _) implements Event, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ClipboardItem).
-extension type ClipboardItem._(JSObject _) implements JSObject {
-  external factory ClipboardItem(
-    JSObject items, [
-    ClipboardItemOptions options,
-  ]);
-
+abstract class ClipboardItem implements JSObject {
   /// The **`supports()`** static method of the [ClipboardItem] interface
   /// returns `true` if the given  is supported by the clipboard, and `false`
   /// otherwise.
@@ -94,29 +80,35 @@ extension type ClipboardItem._(JSObject _) implements JSObject {
   /// mandates support for plain text, HTML and PNG files.
   /// The `supports()` method will always return `true` for these MIME types, so
   /// testing them is unnecessary .
-  external static bool supports(String type);
+  static bool supports(String type) {
+    unsupportedPlatformError();
+  }
 
   /// The **`getType()`** method of the [ClipboardItem] interface returns a
   /// `Promise` that resolves with a [Blob] of the requested  or an error if the
   /// MIME type is not found.
-  external JSPromise<Blob> getType(String type);
+  JSPromise<Blob> getType(String type);
 
   /// The read-only **`presentationStyle`** property of the [ClipboardItem]
   /// interface returns a string indicating how an item should be presented.
   ///
   /// For example, in some contexts an image might be displayed inline, while in
   /// others it might be represented as an attachment.
-  external PresentationStyle get presentationStyle;
+  PresentationStyle get presentationStyle;
 
   /// The read-only **`types`** property of the [ClipboardItem] interface
   /// returns an `Array` of  available within the [ClipboardItem]
-  external JSArray<JSString> get types;
+  JSArray<JSString> get types;
 }
-extension type ClipboardItemOptions._(JSObject _) implements JSObject {
-  external factory ClipboardItemOptions({PresentationStyle presentationStyle});
 
-  external PresentationStyle get presentationStyle;
-  external set presentationStyle(PresentationStyle value);
+abstract class ClipboardItemOptions implements JSObject {
+  PresentationStyle get presentationStyle {
+    unsupportedPlatformError();
+  }
+
+  set presentationStyle(PresentationStyle value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`Clipboard`** interface of the
@@ -141,7 +133,7 @@ extension type ClipboardItemOptions._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard).
-extension type Clipboard._(JSObject _) implements EventTarget, JSObject {
+abstract class Clipboard implements EventTarget, JSObject {
   /// The **`read()`** method of the [Clipboard] interface requests a copy of
   /// the clipboard's contents, fulfilling the returned `Promise` with the data.
   ///
@@ -149,8 +141,7 @@ extension type Clipboard._(JSObject _) implements EventTarget, JSObject {
   /// [Clipboard.readText], which can only return text).
   /// Browsers commonly support reading text, HTML, and PNG image data — see
   /// [browser compatibility](#browser_compatibility) for more information.
-  external JSPromise<ClipboardItems> read(
-      [ClipboardUnsanitizedFormats formats]);
+  JSPromise<ClipboardItems> read([ClipboardUnsanitizedFormats formats]);
 
   /// The **`readText()`** method of the [Clipboard] interface returns a
   /// `Promise` which fulfils with a copy of the textual contents of the system
@@ -159,7 +150,7 @@ extension type Clipboard._(JSObject _) implements EventTarget, JSObject {
   /// > **Note:** To read non-text contents from the clipboard, use the
   /// > [Clipboard.read] method instead.
   /// > You can write text to the clipboard using [Clipboard.writeText].
-  external JSPromise<JSString> readText();
+  JSPromise<JSString> readText();
 
   /// The **`write()`** method of the [Clipboard] interface writes arbitrary
   /// data to the clipboard, such as images, fulfilling the returned `Promise`
@@ -170,16 +161,20 @@ extension type Clipboard._(JSObject _) implements EventTarget, JSObject {
   /// [Clipboard.writeText], which can only write text).
   /// Browsers commonly support writing text, HTML, and PNG image data — see
   /// [browser compatibility](#browser_compatibility) for more information.
-  external JSPromise<JSAny?> write(ClipboardItems data);
+  JSPromise<JSAny?> write(ClipboardItems data);
 
   /// The **`writeText()`** method of the [Clipboard] interface writes the
   /// specified text to the system clipboard, returning a `Promise` that is
   /// resolved once the system clipboard has been updated.
-  external JSPromise<JSAny?> writeText(String data);
+  JSPromise<JSAny?> writeText(String data);
 }
-extension type ClipboardUnsanitizedFormats._(JSObject _) implements JSObject {
-  external factory ClipboardUnsanitizedFormats({JSArray<JSString> unsanitized});
 
-  external JSArray<JSString> get unsanitized;
-  external set unsanitized(JSArray<JSString> value);
+abstract class ClipboardUnsanitizedFormats implements JSObject {
+  JSArray<JSString> get unsanitized {
+    unsupportedPlatformError();
+  }
+
+  set unsanitized(JSArray<JSString> value) {
+    unsupportedPlatformError();
+  }
 }

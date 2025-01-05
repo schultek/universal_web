@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,10 +10,8 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
+import '../error.dart';
+import '../js_interop.dart';
 
 typedef MediaSessionActionHandler = JSFunction;
 typedef MediaSessionPlaybackState = String;
@@ -33,13 +31,13 @@ typedef MediaSessionAction = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MediaSession).
-extension type MediaSession._(JSObject _) implements JSObject {
+abstract class MediaSession implements JSObject {
   /// The **`setActionHandler()`** method of the [MediaSession] interface sets a
   /// handler for a media session action.
   /// These actions let a web app receive notifications when the user engages a
   /// device's built-in physical or onscreen media controls, such as play, stop,
   /// or seek buttons.
-  external void setActionHandler(
+  void setActionHandler(
     MediaSessionAction action,
     MediaSessionActionHandler? handler,
   );
@@ -55,7 +53,7 @@ extension type MediaSession._(JSObject _) implements JSObject {
   ///
   /// Call this method on the `navigator` object's
   /// [navigator.mediaSession] object.
-  external void setPositionState([MediaPositionState state]);
+  void setPositionState([MediaPositionState state]);
 
   /// The **`metadata`** property of the [MediaSession]
   /// interface contains a [MediaMetadata] object providing descriptive
@@ -64,14 +62,14 @@ extension type MediaSession._(JSObject _) implements JSObject {
   /// not been set. This metadata is provided by the browser to the device for
   /// presentation in
   /// any standard media control user interface the device might offer.
-  external MediaMetadata? get metadata;
-  external set metadata(MediaMetadata? value);
+  MediaMetadata? get metadata;
+  set metadata(MediaMetadata? value);
 
   /// The **`playbackState`** property of the
   /// [MediaSession] interface indicates whether the current media session is
   /// playing or paused.
-  external MediaSessionPlaybackState get playbackState;
-  external set playbackState(MediaSessionPlaybackState value);
+  MediaSessionPlaybackState get playbackState;
+  set playbackState(MediaSessionPlaybackState value);
 }
 
 /// The **`MediaMetadata`** interface of the [Media Session API] allows a web
@@ -81,93 +79,149 @@ extension type MediaSession._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MediaMetadata).
-extension type MediaMetadata._(JSObject _) implements JSObject {
-  external factory MediaMetadata([MediaMetadataInit init]);
-
+abstract class MediaMetadata implements JSObject {
   /// The **`title`** property of the
   /// [MediaMetaData] interface returns or sets the title of the media to be
   /// played.
-  external String get title;
-  external set title(String value);
+  String get title;
+  set title(String value);
 
   /// The **`artist`** property of the
   /// [MediaMetaData] interface returns or sets the name of the artist, group,
   /// creator, etc., of the media to be played.
-  external String get artist;
-  external set artist(String value);
+  String get artist;
+  set artist(String value);
 
   /// The **`album`** property of the
   /// [MediaMetaData] interface returns or sets the name of the album or
   /// collection containing the media to be played.
-  external String get album;
-  external set album(String value);
+  String get album;
+  set album(String value);
 
   /// The **`artwork`** property of the
   /// [MediaMetaData] interface returns or sets an array of
   /// objects representing images associated with playing
   /// media.
-  external JSArray<MediaImage> get artwork;
-  external set artwork(JSArray<MediaImage> value);
+  JSArray<MediaImage> get artwork;
+  set artwork(JSArray<MediaImage> value);
 }
-extension type MediaMetadataInit._(JSObject _) implements JSObject {
-  external factory MediaMetadataInit({
-    String title,
-    String artist,
-    String album,
-    JSArray<MediaImage> artwork,
-    JSArray<ChapterInformationInit> chapterInfo,
-  });
 
-  external String get title;
-  external set title(String value);
-  external String get artist;
-  external set artist(String value);
-  external String get album;
-  external set album(String value);
-  external JSArray<MediaImage> get artwork;
-  external set artwork(JSArray<MediaImage> value);
-  external JSArray<ChapterInformationInit> get chapterInfo;
-  external set chapterInfo(JSArray<ChapterInformationInit> value);
+abstract class MediaMetadataInit implements JSObject {
+  String get title {
+    unsupportedPlatformError();
+  }
+
+  set title(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get artist {
+    unsupportedPlatformError();
+  }
+
+  set artist(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get album {
+    unsupportedPlatformError();
+  }
+
+  set album(String value) {
+    unsupportedPlatformError();
+  }
+
+  JSArray<MediaImage> get artwork {
+    unsupportedPlatformError();
+  }
+
+  set artwork(JSArray<MediaImage> value) {
+    unsupportedPlatformError();
+  }
+
+  JSArray<ChapterInformationInit> get chapterInfo {
+    unsupportedPlatformError();
+  }
+
+  set chapterInfo(JSArray<ChapterInformationInit> value) {
+    unsupportedPlatformError();
+  }
 }
-extension type ChapterInformationInit._(JSObject _) implements JSObject {
-  external factory ChapterInformationInit({
-    String title,
-    num startTime,
-    JSArray<MediaImage> artwork,
-  });
 
-  external String get title;
-  external set title(String value);
-  external double get startTime;
-  external set startTime(num value);
-  external JSArray<MediaImage> get artwork;
-  external set artwork(JSArray<MediaImage> value);
+abstract class ChapterInformationInit implements JSObject {
+  String get title {
+    unsupportedPlatformError();
+  }
+
+  set title(String value) {
+    unsupportedPlatformError();
+  }
+
+  double get startTime {
+    unsupportedPlatformError();
+  }
+
+  set startTime(num value) {
+    unsupportedPlatformError();
+  }
+
+  JSArray<MediaImage> get artwork {
+    unsupportedPlatformError();
+  }
+
+  set artwork(JSArray<MediaImage> value) {
+    unsupportedPlatformError();
+  }
 }
-extension type MediaImage._(JSObject _) implements JSObject {
-  external factory MediaImage({
-    required String src,
-    String sizes,
-    String type,
-  });
 
-  external String get src;
-  external set src(String value);
-  external String get sizes;
-  external set sizes(String value);
-  external String get type;
-  external set type(String value);
+abstract class MediaImage implements JSObject {
+  String get src {
+    unsupportedPlatformError();
+  }
+
+  set src(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get sizes {
+    unsupportedPlatformError();
+  }
+
+  set sizes(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get type {
+    unsupportedPlatformError();
+  }
+
+  set type(String value) {
+    unsupportedPlatformError();
+  }
 }
-extension type MediaPositionState._(JSObject _) implements JSObject {
-  external factory MediaPositionState({
-    num duration,
-    num playbackRate,
-    num position,
-  });
 
-  external double get duration;
-  external set duration(num value);
-  external double get playbackRate;
-  external set playbackRate(num value);
-  external double get position;
-  external set position(num value);
+abstract class MediaPositionState implements JSObject {
+  double get duration {
+    unsupportedPlatformError();
+  }
+
+  set duration(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get playbackRate {
+    unsupportedPlatformError();
+  }
+
+  set playbackRate(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get position {
+    unsupportedPlatformError();
+  }
+
+  set position(num value) {
+    unsupportedPlatformError();
+  }
 }

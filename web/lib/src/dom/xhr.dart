@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,11 +10,8 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../error.dart';
+import '../js_interop.dart';
 import 'dom.dart';
 import 'html.dart';
 
@@ -33,22 +30,21 @@ typedef XMLHttpRequestResponseType = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequestEventTarget).
-extension type XMLHttpRequestEventTarget._(JSObject _)
-    implements EventTarget, JSObject {
-  external EventHandler get onloadstart;
-  external set onloadstart(EventHandler value);
-  external EventHandler get onprogress;
-  external set onprogress(EventHandler value);
-  external EventHandler get onabort;
-  external set onabort(EventHandler value);
-  external EventHandler get onerror;
-  external set onerror(EventHandler value);
-  external EventHandler get onload;
-  external set onload(EventHandler value);
-  external EventHandler get ontimeout;
-  external set ontimeout(EventHandler value);
-  external EventHandler get onloadend;
-  external set onloadend(EventHandler value);
+abstract class XMLHttpRequestEventTarget implements EventTarget, JSObject {
+  EventHandler get onloadstart;
+  set onloadstart(EventHandler value);
+  EventHandler get onprogress;
+  set onprogress(EventHandler value);
+  EventHandler get onabort;
+  set onabort(EventHandler value);
+  EventHandler get onerror;
+  set onerror(EventHandler value);
+  EventHandler get onload;
+  set onload(EventHandler value);
+  EventHandler get ontimeout;
+  set ontimeout(EventHandler value);
+  EventHandler get onloadend;
+  set onloadend(EventHandler value);
 }
 
 /// @AvailableInWorkers("window_and_worker_except_service")
@@ -63,7 +59,7 @@ extension type XMLHttpRequestEventTarget._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequestUpload).
-extension type XMLHttpRequestUpload._(JSObject _)
+abstract class XMLHttpRequestUpload
     implements XMLHttpRequestEventTarget, JSObject {}
 
 /// @AvailableInWorkers("window_and_worker_except_service")
@@ -87,10 +83,7 @@ extension type XMLHttpRequestUpload._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest).
-extension type XMLHttpRequest._(JSObject _)
-    implements XMLHttpRequestEventTarget, JSObject {
-  external factory XMLHttpRequest();
-
+abstract class XMLHttpRequest implements XMLHttpRequestEventTarget, JSObject {
   static const int UNSENT = 0;
 
   static const int OPENED = 1;
@@ -110,7 +103,7 @@ extension type XMLHttpRequest._(JSObject _)
   /// > (one for which `open()` has already been called) is the equivalent of
   /// > calling
   /// > [XMLHttpRequest.abort].
-  external void open(
+  void open(
     String method,
     String url, [
     bool async,
@@ -149,7 +142,7 @@ extension type XMLHttpRequest._(JSObject _)
   /// > send requests across domains.
   /// > In this situation, you need to set up the  in your response header at
   /// > server side.
-  external void setRequestHeader(
+  void setRequestHeader(
     String name,
     String value,
   );
@@ -175,7 +168,7 @@ extension type XMLHttpRequest._(JSObject _)
   /// If no `Accept` header has been set using the
   /// [XMLHttpRequest.setRequestHeader], an
   /// `Accept` header with the type `"*/*"` (any type) is sent.
-  external void send([JSAny? body]);
+  void send([JSAny? body]);
 
   /// @AvailableInWorkers("window_and_worker_except_service")
   ///
@@ -184,7 +177,7 @@ extension type XMLHttpRequest._(JSObject _)
   /// [XMLHttpRequest.readyState] is changed to
   /// `XMLHttpRequest.UNSENT` (0) and the request's
   /// [XMLHttpRequest.status] code is set to 0.
-  external void abort();
+  void abort();
 
   /// @AvailableInWorkers("window_and_worker_except_service")
   ///
@@ -204,7 +197,7 @@ extension type XMLHttpRequest._(JSObject _)
   /// If you need to get the raw string of all of the headers, use the
   /// [XMLHttpRequest.getAllResponseHeaders] method,
   /// which returns the entire raw header string.
-  external String? getResponseHeader(String name);
+  String? getResponseHeader(String name);
 
   /// @AvailableInWorkers("window_and_worker_except_service")
   ///
@@ -218,7 +211,7 @@ extension type XMLHttpRequest._(JSObject _)
   ///
   /// > **Note:** For multipart requests, this returns the headers from the
   /// > _current_ part of the request, not from the original channel.
-  external String getAllResponseHeaders();
+  String getAllResponseHeaders();
 
   /// @AvailableInWorkers("window_and_worker_except_service")
   ///
@@ -232,9 +225,9 @@ extension type XMLHttpRequest._(JSObject _)
   /// be treated and parsed as `"text/xml"`, even if the server does not report
   /// it
   /// as such. This method must be called before calling [XMLHttpRequest.send].
-  external void overrideMimeType(String mime);
-  external EventHandler get onreadystatechange;
-  external set onreadystatechange(EventHandler value);
+  void overrideMimeType(String mime);
+  EventHandler get onreadystatechange;
+  set onreadystatechange(EventHandler value);
 
   /// @AvailableInWorkers("window_and_worker_except_service")
   ///
@@ -260,7 +253,7 @@ extension type XMLHttpRequest._(JSObject _)
   ///   - : Response's body is being received. If [`responseType`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/responseType) is "text" or empty string, [`responseText`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/responseText) will have the partial text response as it loads.
   /// - DONE
   ///   - : The fetch operation is complete. This could mean that either the data transfer has been completed successfully or failed.
-  external int get readyState;
+  int get readyState;
 
   /// @AvailableInWorkers("window_and_worker_except_service")
   ///
@@ -277,8 +270,8 @@ extension type XMLHttpRequest._(JSObject _)
   /// > owning window.
   ///
   /// [Using a timeout with an asynchronous request](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest_API/Synchronous_and_Asynchronous_Requests#example_using_a_timeout).
-  external int get timeout;
-  external set timeout(int value);
+  int get timeout;
+  set timeout(int value);
 
   /// @AvailableInWorkers("window_and_worker_except_service")
   ///
@@ -306,8 +299,8 @@ extension type XMLHttpRequest._(JSObject _)
   /// > set cookie values for their own domain unless `withCredentials` is set
   /// > to `true` before making the request, regardless of `Access-Control-`
   /// > header values.
-  external bool get withCredentials;
-  external set withCredentials(bool value);
+  bool get withCredentials;
+  set withCredentials(bool value);
 
   /// @AvailableInWorkers("window_and_worker_except_service")
   ///
@@ -383,7 +376,7 @@ extension type XMLHttpRequest._(JSObject _)
   ///     </tr>
   ///   </tbody>
   /// </table>
-  external XMLHttpRequestUpload get upload;
+  XMLHttpRequestUpload get upload;
 
   /// @AvailableInWorkers("window_and_worker_except_service")
   ///
@@ -392,7 +385,7 @@ extension type XMLHttpRequest._(JSObject _)
   /// If the URL is returned, any URL fragment present in the URL will be
   /// stripped away. The value of `responseURL` will be the final URL obtained
   /// after any redirects.
-  external String get responseURL;
+  String get responseURL;
 
   /// @AvailableInWorkers("window_and_worker_except_service")
   ///
@@ -403,7 +396,7 @@ extension type XMLHttpRequest._(JSObject _)
   ///
   /// Before the request completes, the value of `status` is 0. Browsers also
   /// report a status of 0 in case of `XMLHttpRequest` errors.
-  external int get status;
+  int get status;
 
   /// @AvailableInWorkers("window_and_worker_except_service")
   ///
@@ -422,7 +415,7 @@ extension type XMLHttpRequest._(JSObject _)
   ///
   /// > **Note:** Responses over an HTTP/2 connection will always have an empty
   /// > string as status message as HTTP/2 does not support them.
-  external String get statusText;
+  String get statusText;
 
   /// @AvailableInWorkers("window_and_worker_except_service")
   ///
@@ -434,8 +427,8 @@ extension type XMLHttpRequest._(JSObject _)
   /// response type. If an empty string is set as the value of `responseType`,
   /// the
   /// default value of `text` is used.
-  external XMLHttpRequestResponseType get responseType;
-  external set responseType(XMLHttpRequestResponseType value);
+  XMLHttpRequestResponseType get responseType;
+  set responseType(XMLHttpRequestResponseType value);
 
   /// @AvailableInWorkers("window_and_worker_except_service")
   ///
@@ -445,14 +438,14 @@ extension type XMLHttpRequest._(JSObject _)
   /// a JavaScript `Object`, or a string, depending on the value
   /// of the request's [XMLHttpRequest.responseType]
   /// property.
-  external JSAny? get response;
+  JSAny? get response;
 
   /// @AvailableInWorkers("window_and_worker_except_service")
   ///
   /// The read-only [XMLHttpRequest] property
   /// **`responseText`** returns the text received from a server
   /// following a request being sent.
-  external String get responseText;
+  String get responseText;
 
   /// @AvailableInWorkers("window_and_worker_except_service")
   ///
@@ -478,7 +471,7 @@ extension type XMLHttpRequest._(JSObject _)
   /// [XMLHttpRequest.overrideMimeType] to parse it as XML anyway.
   ///
   /// This property isn't available to workers.
-  external Document? get responseXML;
+  Document? get responseXML;
 }
 
 /// The **`FormData`** interface provides a way to construct a set of key/value
@@ -499,12 +492,7 @@ extension type XMLHttpRequest._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/FormData).
-extension type FormData._(JSObject _) implements JSObject {
-  external factory FormData([
-    HTMLFormElement form,
-    HTMLElement? submitter,
-  ]);
-
+abstract class FormData implements JSObject {
   /// The **`append()`** method of the [FormData] interface appends a new value
   /// onto an existing key inside a `FormData` object, or adds the key if it
   /// does not already exist.
@@ -513,7 +501,7 @@ extension type FormData._(JSObject _) implements JSObject {
   /// specified key already exists, `set()` will overwrite all existing values
   /// with the new one, whereas `append()` will append the new value onto the
   /// end of the existing set of values.
-  external void append(
+  void append(
     String name,
     JSAny blobValueOrValue, [
     String filename,
@@ -521,22 +509,22 @@ extension type FormData._(JSObject _) implements JSObject {
 
   /// The **`delete()`** method of the [FormData] interface deletes a key and
   /// its value(s) from a `FormData` object.
-  external void delete(String name);
+  void delete(String name);
 
   /// The **`get()`** method of the [FormData] interface
   /// returns the first value associated with a given key from within a
   /// `FormData`
   /// object. If you expect multiple values and want all of them, use the
   /// [FormData.getAll] method instead.
-  external FormDataEntryValue? get(String name);
+  FormDataEntryValue? get(String name);
 
   /// The **`getAll()`** method of the [FormData] interface returns all the
   /// values associated with a given key from within a `FormData` object.
-  external JSArray<FormDataEntryValue> getAll(String name);
+  JSArray<FormDataEntryValue> getAll(String name);
 
   /// The **`has()`** method of the [FormData] interface returns whether a
   /// `FormData` object contains a certain key.
-  external bool has(String name);
+  bool has(String name);
 
   /// The **`set()`** method of the [FormData] interface sets a new value for an
   /// existing key inside a `FormData` object, or adds the key/value if it does
@@ -546,7 +534,7 @@ extension type FormData._(JSObject _) implements JSObject {
   /// specified key does already exist, `set()` will overwrite all existing
   /// values with the new one, whereas `append()` will append the new value onto
   /// the end of the existing set of values.
-  external void set(
+  void set(
     String name,
     JSAny blobValueOrValue, [
     String filename,
@@ -562,18 +550,13 @@ extension type FormData._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ProgressEvent).
-extension type ProgressEvent._(JSObject _) implements Event, JSObject {
-  external factory ProgressEvent(
-    String type, [
-    ProgressEventInit eventInitDict,
-  ]);
-
+abstract class ProgressEvent implements Event, JSObject {
   /// The
   /// **`ProgressEvent.lengthComputable`** read-only property is a
   /// boolean flag indicating if the resource concerned by the
   /// [ProgressEvent] has a length that can be calculated. If not, the
   /// [ProgressEvent.total] property has no significant value.
-  external bool get lengthComputable;
+  bool get lengthComputable;
 
   /// The **`ProgressEvent.loaded`** read-only property is a 64-bit unsigned
   /// integer
@@ -587,7 +570,7 @@ extension type ProgressEvent._(JSObject _) implements Event, JSObject {
   /// contain the size of the compressed, or decompressed, data, depending on
   /// the browser. As of 2024, it contains the size of the compressed data in
   /// Firefox, and the size of the uncompressed data in Chrome.
-  external int get loaded;
+  int get loaded;
 
   /// The **`ProgressEvent.total`** read-only property is a 64-bit unsigned
   /// integer
@@ -600,22 +583,31 @@ extension type ProgressEvent._(JSObject _) implements Event, JSObject {
   ///
   /// If the event's [ProgressEvent.lengthComputable]
   /// property is `false`, this value is meaningless and should be ignored.
-  external int get total;
+  int get total;
 }
-extension type ProgressEventInit._(JSObject _) implements EventInit, JSObject {
-  external factory ProgressEventInit({
-    bool bubbles,
-    bool cancelable,
-    bool composed,
-    bool lengthComputable,
-    int loaded,
-    int total,
-  });
 
-  external bool get lengthComputable;
-  external set lengthComputable(bool value);
-  external int get loaded;
-  external set loaded(int value);
-  external int get total;
-  external set total(int value);
+abstract class ProgressEventInit implements EventInit, JSObject {
+  bool get lengthComputable {
+    unsupportedPlatformError();
+  }
+
+  set lengthComputable(bool value) {
+    unsupportedPlatformError();
+  }
+
+  int get loaded {
+    unsupportedPlatformError();
+  }
+
+  set loaded(int value) {
+    unsupportedPlatformError();
+  }
+
+  int get total {
+    unsupportedPlatformError();
+  }
+
+  set total(int value) {
+    unsupportedPlatformError();
+  }
 }

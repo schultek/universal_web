@@ -22,10 +22,10 @@
 library;
 
 import 'dart:convert';
-import 'dart:js_interop';
 import 'dart:math' show Point;
 
 import '../dom.dart';
+import '../js_interop.dart';
 import 'lists.dart';
 
 export 'cross_origin.dart'

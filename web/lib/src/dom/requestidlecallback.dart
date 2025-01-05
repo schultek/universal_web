@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,17 +10,19 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
+import '../error.dart';
+import '../js_interop.dart';
 
 typedef IdleRequestCallback = JSFunction;
-extension type IdleRequestOptions._(JSObject _) implements JSObject {
-  external factory IdleRequestOptions({int timeout});
 
-  external int get timeout;
-  external set timeout(int value);
+abstract class IdleRequestOptions implements JSObject {
+  int get timeout {
+    unsupportedPlatformError();
+  }
+
+  set timeout(int value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The `IdleDeadline` interface is used as the data type of the input parameter
@@ -37,7 +39,7 @@ extension type IdleRequestOptions._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/IdleDeadline).
-extension type IdleDeadline._(JSObject _) implements JSObject {
+abstract class IdleDeadline implements JSObject {
   /// The **`timeRemaining()`** method
   /// on the [IdleDeadline] interface returns the estimated number of
   /// milliseconds remaining in the current idle period. The callback can call
@@ -54,7 +56,7 @@ extension type IdleDeadline._(JSObject _) implements JSObject {
   ///
   /// By the time `timeRemaining()` reaches 0, it is suggested that the callback
   /// should return control to the user agent's event loop.
-  external double timeRemaining();
+  double timeRemaining();
 
   /// The read-only **`didTimeout`** property on the
   /// **[IdleDeadline]** interface is a Boolean value which
@@ -79,5 +81,5 @@ extension type IdleDeadline._(JSObject _) implements JSObject {
   /// that can be done to keep things moving along, then schedule a new callback
   /// to try again
   /// to get the rest of the work done.
-  external bool get didTimeout;
+  bool get didTimeout;
 }

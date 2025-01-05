@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,11 +10,8 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../error.dart';
+import '../js_interop.dart';
 import 'streams.dart';
 import 'webidl.dart';
 
@@ -40,8 +37,7 @@ typedef WebTransportErrorSource = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WebTransportDatagramDuplexStream).
-extension type WebTransportDatagramDuplexStream._(JSObject _)
-    implements JSObject {
+abstract class WebTransportDatagramDuplexStream implements JSObject {
   /// The **`readable`** read-only property of the
   /// [WebTransportDatagramDuplexStream] interface returns a [ReadableStream]
   /// instance that can be used to unreliably read incoming datagrams from the
@@ -52,7 +48,7 @@ extension type WebTransportDatagramDuplexStream._(JSObject _)
   /// very fast delivery. For example, you might want to transmit regular game
   /// state updates where each message supersedes the last one that arrives, and
   /// order is not important.
-  external ReadableStream get readable;
+  ReadableStream get readable;
 
   /// The **`writable`** read-only property of the
   /// [WebTransportDatagramDuplexStream] interface returns a [WritableStream]
@@ -64,25 +60,25 @@ extension type WebTransportDatagramDuplexStream._(JSObject _)
   /// very fast delivery. For example, you might want to transmit regular game
   /// state updates where each message supersedes the last one that arrives, and
   /// order is not important.
-  external WritableStream get writable;
+  WritableStream get writable;
 
   /// The **`maxDatagramSize`** read-only property of the
   /// [WebTransportDatagramDuplexStream] interface returns the maximum allowable
   /// size of outgoing datagrams, in bytes, that can be written to
   /// [WebTransportDatagramDuplexStream.writable].
-  external int get maxDatagramSize;
+  int get maxDatagramSize;
 
   /// The **`incomingMaxAge`** property of the
   /// [WebTransportDatagramDuplexStream] interface gets or sets the maximum age
   /// for incoming datagrams, in milliseconds.
-  external double? get incomingMaxAge;
-  external set incomingMaxAge(num? value);
+  double? get incomingMaxAge;
+  set incomingMaxAge(num? value);
 
   /// The **`outgoingMaxAge`** property of the
   /// [WebTransportDatagramDuplexStream] interface gets or sets the maximum age
   /// for outgoing datagrams, in milliseconds.
-  external double? get outgoingMaxAge;
-  external set outgoingMaxAge(num? value);
+  double? get outgoingMaxAge;
+  set outgoingMaxAge(num? value);
 
   /// The **`incomingHighWaterMark`** property of the
   /// [WebTransportDatagramDuplexStream] interface gets or sets the high water
@@ -91,8 +87,8 @@ extension type WebTransportDatagramDuplexStream._(JSObject _)
   /// considered full. See
   /// [Internal queues and queuing strategies](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API/Concepts#internal_queues_and_queuing_strategies)
   /// for more information.
-  external double get incomingHighWaterMark;
-  external set incomingHighWaterMark(num value);
+  double get incomingHighWaterMark;
+  set incomingHighWaterMark(num value);
 
   /// The **`outgoingHighWaterMark`** property of the
   /// [WebTransportDatagramDuplexStream] interface gets or sets the high water
@@ -101,8 +97,8 @@ extension type WebTransportDatagramDuplexStream._(JSObject _)
   /// considered full. See
   /// [Internal queues and queuing strategies](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API/Concepts#internal_queues_and_queuing_strategies)
   /// for more information.
-  external double get outgoingHighWaterMark;
-  external set outgoingHighWaterMark(num value);
+  double get outgoingHighWaterMark;
+  set outgoingHighWaterMark(num value);
 }
 
 /// The **`WebTransport`** interface of the [WebTransport API] provides
@@ -114,15 +110,10 @@ extension type WebTransportDatagramDuplexStream._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport).
-extension type WebTransport._(JSObject _) implements JSObject {
-  external factory WebTransport(
-    String url, [
-    WebTransportOptions options,
-  ]);
-
+abstract class WebTransport implements JSObject {
   /// The **`close()`** method of the [WebTransport] interface closes an ongoing
   /// WebTransport session.
-  external void close([WebTransportCloseInfo closeInfo]);
+  void close([WebTransportCloseInfo closeInfo]);
 
   /// The **`createBidirectionalStream()`** method of the [WebTransport]
   /// interface asynchronously opens and returns a bidirectional stream.
@@ -144,7 +135,7 @@ extension type WebTransport._(JSObject _) implements JSObject {
   /// implementation dependent.
   /// Note however that even though bytes from higher send-order streams are
   /// sent first, they may not arrive first.
-  external JSPromise<WebTransportBidirectionalStream> createBidirectionalStream(
+  JSPromise<WebTransportBidirectionalStream> createBidirectionalStream(
       [WebTransportSendStreamOptions options]);
 
   /// The **`createUnidirectionalStream()`** method of the [WebTransport]
@@ -168,16 +159,16 @@ extension type WebTransport._(JSObject _) implements JSObject {
   /// implementation dependent.
   /// Note however that even though bytes from higher send-order streams are
   /// sent first, they may not arrive first.
-  external JSPromise<JSObject> createUnidirectionalStream(
+  JSPromise<JSObject> createUnidirectionalStream(
       [WebTransportSendStreamOptions options]);
 
   /// The **`ready`** read-only property of the [WebTransport] interface returns
   /// a promise that resolves when the transport is ready to use.
-  external JSPromise<JSAny?> get ready;
+  JSPromise<JSAny?> get ready;
 
   /// The **`closed`** read-only property of the [WebTransport] interface
   /// returns a promise that resolves when the transport is closed.
-  external JSPromise<WebTransportCloseInfo> get closed;
+  JSPromise<WebTransportCloseInfo> get closed;
 
   /// The **`datagrams`** read-only property of the [WebTransport] interface
   /// returns a [WebTransportDatagramDuplexStream] instance that can be used to
@@ -188,7 +179,7 @@ extension type WebTransport._(JSObject _) implements JSObject {
   /// very fast delivery. For example, you might want to transmit regular game
   /// state updates where each message supersedes the last one that arrives, and
   /// order is not important.
-  external WebTransportDatagramDuplexStream get datagrams;
+  WebTransportDatagramDuplexStream get datagrams;
 
   /// The **`incomingBidirectionalStreams`** read-only property of the
   /// [WebTransport] interface represents one or more bidirectional streams
@@ -200,7 +191,7 @@ extension type WebTransport._(JSObject _) implements JSObject {
   /// provides slower delivery (albeit faster than with WebSockets) than
   /// [WebTransport.datagrams], but is needed in situations where reliability
   /// and ordering are important, like chat applications.
-  external ReadableStream get incomingBidirectionalStreams;
+  ReadableStream get incomingBidirectionalStreams;
 
   /// The **`incomingUnidirectionalStreams`** read-only property of the
   /// [WebTransport] interface represents one or more unidirectional streams
@@ -212,66 +203,119 @@ extension type WebTransport._(JSObject _) implements JSObject {
   /// provides slower delivery (albeit faster than with WebSockets) than
   /// [WebTransport.datagrams], but is needed in situations where reliability
   /// and ordering are important, like chat applications.
-  external ReadableStream get incomingUnidirectionalStreams;
+  ReadableStream get incomingUnidirectionalStreams;
 }
-extension type WebTransportHash._(JSObject _) implements JSObject {
-  external factory WebTransportHash({
-    String algorithm,
-    BufferSource value,
-  });
 
-  external String get algorithm;
-  external set algorithm(String value);
-  external BufferSource get value;
-  external set value(BufferSource value);
+abstract class WebTransportHash implements JSObject {
+  String get algorithm {
+    unsupportedPlatformError();
+  }
+
+  set algorithm(String value) {
+    unsupportedPlatformError();
+  }
+
+  BufferSource get value {
+    unsupportedPlatformError();
+  }
+
+  set value(BufferSource value) {
+    unsupportedPlatformError();
+  }
 }
-extension type WebTransportOptions._(JSObject _) implements JSObject {
-  external factory WebTransportOptions({
-    bool allowPooling,
-    bool requireUnreliable,
-    JSArray<WebTransportHash> serverCertificateHashes,
-    WebTransportCongestionControl congestionControl,
-    int? anticipatedConcurrentIncomingUnidirectionalStreams,
-    int? anticipatedConcurrentIncomingBidirectionalStreams,
-  });
 
-  external bool get allowPooling;
-  external set allowPooling(bool value);
-  external bool get requireUnreliable;
-  external set requireUnreliable(bool value);
-  external JSArray<WebTransportHash> get serverCertificateHashes;
-  external set serverCertificateHashes(JSArray<WebTransportHash> value);
-  external WebTransportCongestionControl get congestionControl;
-  external set congestionControl(WebTransportCongestionControl value);
-  external int? get anticipatedConcurrentIncomingUnidirectionalStreams;
-  external set anticipatedConcurrentIncomingUnidirectionalStreams(int? value);
-  external int? get anticipatedConcurrentIncomingBidirectionalStreams;
-  external set anticipatedConcurrentIncomingBidirectionalStreams(int? value);
+abstract class WebTransportOptions implements JSObject {
+  bool get allowPooling {
+    unsupportedPlatformError();
+  }
+
+  set allowPooling(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get requireUnreliable {
+    unsupportedPlatformError();
+  }
+
+  set requireUnreliable(bool value) {
+    unsupportedPlatformError();
+  }
+
+  JSArray<WebTransportHash> get serverCertificateHashes {
+    unsupportedPlatformError();
+  }
+
+  set serverCertificateHashes(JSArray<WebTransportHash> value) {
+    unsupportedPlatformError();
+  }
+
+  WebTransportCongestionControl get congestionControl {
+    unsupportedPlatformError();
+  }
+
+  set congestionControl(WebTransportCongestionControl value) {
+    unsupportedPlatformError();
+  }
+
+  int? get anticipatedConcurrentIncomingUnidirectionalStreams {
+    unsupportedPlatformError();
+  }
+
+  set anticipatedConcurrentIncomingUnidirectionalStreams(int? value) {
+    unsupportedPlatformError();
+  }
+
+  int? get anticipatedConcurrentIncomingBidirectionalStreams {
+    unsupportedPlatformError();
+  }
+
+  set anticipatedConcurrentIncomingBidirectionalStreams(int? value) {
+    unsupportedPlatformError();
+  }
 }
-extension type WebTransportCloseInfo._(JSObject _) implements JSObject {
-  external factory WebTransportCloseInfo({
-    int closeCode,
-    String reason,
-  });
 
-  external int get closeCode;
-  external set closeCode(int value);
-  external String get reason;
-  external set reason(String value);
+abstract class WebTransportCloseInfo implements JSObject {
+  int get closeCode {
+    unsupportedPlatformError();
+  }
+
+  set closeCode(int value) {
+    unsupportedPlatformError();
+  }
+
+  String get reason {
+    unsupportedPlatformError();
+  }
+
+  set reason(String value) {
+    unsupportedPlatformError();
+  }
 }
-extension type WebTransportSendStreamOptions._(JSObject _) implements JSObject {
-  external factory WebTransportSendStreamOptions({
-    JSObject? sendGroup,
-    int sendOrder,
-    bool waitUntilAvailable,
-  });
 
-  external JSObject? get sendGroup;
-  external set sendGroup(JSObject? value);
-  external int get sendOrder;
-  external set sendOrder(int value);
-  external bool get waitUntilAvailable;
-  external set waitUntilAvailable(bool value);
+abstract class WebTransportSendStreamOptions implements JSObject {
+  JSObject? get sendGroup {
+    unsupportedPlatformError();
+  }
+
+  set sendGroup(JSObject? value) {
+    unsupportedPlatformError();
+  }
+
+  int get sendOrder {
+    unsupportedPlatformError();
+  }
+
+  set sendOrder(int value) {
+    unsupportedPlatformError();
+  }
+
+  bool get waitUntilAvailable {
+    unsupportedPlatformError();
+  }
+
+  set waitUntilAvailable(bool value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`WebTransportBidirectionalStream`** interface of the
@@ -284,18 +328,17 @@ extension type WebTransportSendStreamOptions._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WebTransportBidirectionalStream).
-extension type WebTransportBidirectionalStream._(JSObject _)
-    implements JSObject {
+abstract class WebTransportBidirectionalStream implements JSObject {
   /// The **`readable`** read-only property of the
   /// [WebTransportBidirectionalStream] interface returns a
   /// [WebTransportReceiveStream] instance that can be used to reliably read
   /// incoming data.
-  external JSObject get readable;
+  JSObject get readable;
 
   /// The **`writable`** read-only property of the
   /// [WebTransportBidirectionalStream] interface returns a
   /// [WebTransportSendStream] instance that can be used to write outgoing data.
-  external JSObject get writable;
+  JSObject get writable;
 }
 
 /// The **`WebTransportError`** interface of the [WebTransport API] represents
@@ -307,30 +350,31 @@ extension type WebTransportBidirectionalStream._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WebTransportError).
-extension type WebTransportError._(JSObject _)
-    implements DOMException, JSObject {
-  external factory WebTransportError([
-    String message,
-    WebTransportErrorOptions options,
-  ]);
-
+abstract class WebTransportError implements DOMException, JSObject {
   /// The **`source`** read-only property of the [WebTransportError] interface
   /// returns an enumerated value indicating the source of the error.
-  external WebTransportErrorSource get source;
+  WebTransportErrorSource get source;
 
   /// The **`streamErrorCode`** read-only property of the [WebTransportError]
   /// interface returns a number in the range 0-255 indicating the application
   /// protocol error code for this error, or `null` if one is not available.
-  external int? get streamErrorCode;
+  int? get streamErrorCode;
 }
-extension type WebTransportErrorOptions._(JSObject _) implements JSObject {
-  external factory WebTransportErrorOptions({
-    WebTransportErrorSource source,
-    int? streamErrorCode,
-  });
 
-  external WebTransportErrorSource get source;
-  external set source(WebTransportErrorSource value);
-  external int? get streamErrorCode;
-  external set streamErrorCode(int? value);
+abstract class WebTransportErrorOptions implements JSObject {
+  WebTransportErrorSource get source {
+    unsupportedPlatformError();
+  }
+
+  set source(WebTransportErrorSource value) {
+    unsupportedPlatformError();
+  }
+
+  int? get streamErrorCode {
+    unsupportedPlatformError();
+  }
+
+  set streamErrorCode(int? value) {
+    unsupportedPlatformError();
+  }
 }

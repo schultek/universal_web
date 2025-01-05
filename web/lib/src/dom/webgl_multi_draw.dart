@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,15 +10,11 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../js_interop.dart';
 import 'webgl1.dart';
 
-extension type WEBGL_multi_draw._(JSObject _) implements JSObject {
-  external void multiDrawArraysWEBGL(
+abstract class WEBGL_multi_draw implements JSObject {
+  void multiDrawArraysWEBGL(
     GLenum mode,
     JSObject firstsList,
     int firstsOffset,
@@ -26,7 +22,7 @@ extension type WEBGL_multi_draw._(JSObject _) implements JSObject {
     int countsOffset,
     GLsizei drawcount,
   );
-  external void multiDrawElementsWEBGL(
+  void multiDrawElementsWEBGL(
     GLenum mode,
     JSObject countsList,
     int countsOffset,
@@ -35,7 +31,7 @@ extension type WEBGL_multi_draw._(JSObject _) implements JSObject {
     int offsetsOffset,
     GLsizei drawcount,
   );
-  external void multiDrawArraysInstancedWEBGL(
+  void multiDrawArraysInstancedWEBGL(
     GLenum mode,
     JSObject firstsList,
     int firstsOffset,
@@ -45,7 +41,7 @@ extension type WEBGL_multi_draw._(JSObject _) implements JSObject {
     int instanceCountsOffset,
     GLsizei drawcount,
   );
-  external void multiDrawElementsInstancedWEBGL(
+  void multiDrawElementsInstancedWEBGL(
     GLenum mode,
     JSObject countsList,
     int countsOffset,

@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,11 +10,8 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../error.dart';
+import '../js_interop.dart';
 import 'css_font_loading.dart';
 import 'css_typed_om.dart';
 import 'css_view_transitions.dart';
@@ -80,12 +77,7 @@ typedef SlotAssignmentMode = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Event).
-extension type Event._(JSObject _) implements JSObject {
-  external factory Event(
-    String type, [
-    EventInit eventInitDict,
-  ]);
-
+abstract class Event implements JSObject {
   static const int NONE = 0;
 
   static const int CAPTURING_PHASE = 1;
@@ -100,7 +92,7 @@ extension type Event._(JSObject _) implements JSObject {
   /// will be invoked. This does not include nodes in shadow trees if the shadow
   /// root was
   /// created with its [ShadowRoot.mode] closed.
-  external JSArray<EventTarget> composedPath();
+  JSArray<EventTarget> composedPath();
 
   /// The **`stopPropagation()`** method of the [Event]
   /// interface prevents further propagation of the current event in the
@@ -113,7 +105,7 @@ extension type Event._(JSObject _) implements JSObject {
   /// prevent propagation to other event-handlers of the current element. If you
   /// want to stop those,
   /// see [Event.stopImmediatePropagation].
-  external void stopPropagation();
+  void stopPropagation();
 
   /// The **`stopImmediatePropagation()`** method of the
   /// [Event] interface prevents other listeners of the same event from being
@@ -123,7 +115,7 @@ extension type Event._(JSObject _) implements JSObject {
   /// type, they are called in the order in which they were added. If
   /// `stopImmediatePropagation()` is invoked during one such call, no remaining
   /// listeners will be called, either on that element or any other element.
-  external void stopImmediatePropagation();
+  void stopImmediatePropagation();
 
   /// The **`preventDefault()`** method of the [Event] interface tells the  that
   /// if the event does not get explicitly handled, its default action should
@@ -139,7 +131,7 @@ extension type Event._(JSObject _) implements JSObject {
   /// non-cancelable event, such as one dispatched via
   /// [EventTarget.dispatchEvent], without specifying
   /// `cancelable: true` has no effect.
-  external void preventDefault();
+  void preventDefault();
 
   /// The **`Event.initEvent()`** method is used to initialize the
   /// value of an [event] created using [Document.createEvent].
@@ -155,7 +147,7 @@ extension type Event._(JSObject _) implements JSObject {
   /// > The page on
   /// > [Creating and triggering events](https://developer.mozilla.org/en-US/docs/Web/Events/Creating_and_triggering_events)
   /// > gives more information about the way to use these.
-  external void initEvent(
+  void initEvent(
     String type, [
     bool bubbles,
     bool cancelable,
@@ -167,17 +159,17 @@ extension type Event._(JSObject _) implements JSObject {
   /// constructed and is the name commonly used to refer to the specific event,
   /// such as
   /// `click`, `load`, or `error`.
-  external String get type;
+  String get type;
 
   /// The read-only **`target`** property of the
   /// [Event] interface is a reference to the object onto which the event was
   /// dispatched. It is different from [Event.currentTarget] when the event
   /// handler is called during the bubbling or capturing phase of the event.
-  external EventTarget? get target;
+  EventTarget? get target;
 
   /// The deprecated **`Event.srcElement`** is an alias for the [Event.target]
   /// property. Use [Event.target] instead.
-  external EventTarget? get srcElement;
+  EventTarget? get srcElement;
 
   /// The **`currentTarget`** read-only property of the [Event] interface
   /// identifies the element to which the event handler has been attached.
@@ -194,12 +186,12 @@ extension type Event._(JSObject _) implements JSObject {
   /// for example, if you take a reference to the `Event` object inside an event
   /// handler and then access its `currentTarget` property outside the event
   /// handler, its value will be `null`.
-  external EventTarget? get currentTarget;
+  EventTarget? get currentTarget;
 
   /// The **`eventPhase`** read-only property of the
   /// [Event] interface indicates which phase of the event flow is currently
   /// being evaluated.
-  external int get eventPhase;
+  int get eventPhase;
 
   /// The **`cancelBubble`** property of the [Event]
   /// interface is deprecated. Use [Event.stopPropagation] instead.
@@ -208,8 +200,8 @@ extension type Event._(JSObject _) implements JSObject {
   /// of the event. In later implementations, setting this to `false` does
   /// nothing.
   /// See [Browser compatibility](#browser_compatibility) for details.
-  external bool get cancelBubble;
-  external set cancelBubble(bool value);
+  bool get cancelBubble;
+  set cancelBubble(bool value);
 
   /// The **`bubbles`** read-only property of the [Event] interface indicates
   /// whether the event bubbles up through the DOM tree or not.
@@ -217,7 +209,7 @@ extension type Event._(JSObject _) implements JSObject {
   /// > **Note:** See
   /// > [Event bubbling and capture](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events#event_bubbling)
   /// > for more information on bubbling.
-  external bool get bubbles;
+  bool get bubbles;
 
   /// The **`cancelable`** read-only property of the [Event] interface indicates
   /// whether the event
@@ -245,7 +237,7 @@ extension type Event._(JSObject _) implements JSObject {
   ///
   /// Event listeners that handle multiple kinds of events may want to check
   /// `cancelable` before invoking their [event.preventDefault] methods.
-  external bool get cancelable;
+  bool get cancelable;
 
   /// The [Event] property
   /// **`returnValue`** indicates whether the default action for
@@ -260,13 +252,13 @@ extension type Event._(JSObject _) implements JSObject {
   /// > [Event.preventDefault], and
   /// > [Event.defaultPrevented] instead of this historical
   /// > property.
-  external bool get returnValue;
-  external set returnValue(bool value);
+  bool get returnValue;
+  set returnValue(bool value);
 
   /// The **`defaultPrevented`** read-only property of the [Event] interface
   /// returns a boolean value indicating whether or not the call to
   /// [Event.preventDefault] canceled the event.
-  external bool get defaultPrevented;
+  bool get defaultPrevented;
 
   /// The read-only **`composed`** property of the
   /// [Event] interface returns a boolean value which indicates whether
@@ -286,7 +278,7 @@ extension type Event._(JSObject _) implements JSObject {
   /// will
   /// follow through the shadow root to the DOM root by calling
   /// [Event.composedPath].
-  external bool get composed;
+  bool get composed;
 
   /// The **`isTrusted`** read-only property of the
   /// [Event] interface is a boolean value that is `true`
@@ -296,25 +288,37 @@ extension type Event._(JSObject _) implements JSObject {
   /// [EventTarget.dispatchEvent].
   /// The only exception is the `click` event, which initializes the `isTrusted`
   /// property to `false` in user agents.
-  external bool get isTrusted;
+  bool get isTrusted;
 
   /// The **`timeStamp`** read-only property of the [Event] interface returns
   /// the time (in milliseconds) at which the event was created.
-  external double get timeStamp;
+  double get timeStamp;
 }
-extension type EventInit._(JSObject _) implements JSObject {
-  external factory EventInit({
-    bool bubbles,
-    bool cancelable,
-    bool composed,
-  });
 
-  external bool get bubbles;
-  external set bubbles(bool value);
-  external bool get cancelable;
-  external set cancelable(bool value);
-  external bool get composed;
-  external set composed(bool value);
+abstract class EventInit implements JSObject {
+  bool get bubbles {
+    unsupportedPlatformError();
+  }
+
+  set bubbles(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get cancelable {
+    unsupportedPlatformError();
+  }
+
+  set cancelable(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get composed {
+    unsupportedPlatformError();
+  }
+
+  set composed(bool value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`CustomEvent`** interface represents events initialized by an
@@ -331,12 +335,7 @@ extension type EventInit._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent).
-extension type CustomEvent._(JSObject _) implements Event, JSObject {
-  external factory CustomEvent(
-    String type, [
-    CustomEventInit eventInitDict,
-  ]);
-
+abstract class CustomEvent implements Event, JSObject {
   /// The **`CustomEvent.initCustomEvent()`** method initializes a [CustomEvent]
   /// object.
   /// If the event has already been dispatched, this method does nothing.
@@ -354,7 +353,7 @@ extension type CustomEvent._(JSObject _) implements Event, JSObject {
   /// > The page on
   /// > [Creating and triggering events](https://developer.mozilla.org/en-US/docs/Web/Events/Creating_and_triggering_events)
   /// > gives more information about the way to use those.
-  external void initCustomEvent(
+  void initCustomEvent(
     String type, [
     bool bubbles,
     bool cancelable,
@@ -363,18 +362,17 @@ extension type CustomEvent._(JSObject _) implements Event, JSObject {
 
   /// The read-only **`detail`** property of the [CustomEvent] interface returns
   /// any data passed when initializing the event.
-  external JSAny? get detail;
+  JSAny? get detail;
 }
-extension type CustomEventInit._(JSObject _) implements EventInit, JSObject {
-  external factory CustomEventInit({
-    bool bubbles,
-    bool cancelable,
-    bool composed,
-    JSAny? detail,
-  });
 
-  external JSAny? get detail;
-  external set detail(JSAny? value);
+abstract class CustomEventInit implements EventInit, JSObject {
+  JSAny? get detail {
+    unsupportedPlatformError();
+  }
+
+  set detail(JSAny? value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`EventTarget`** interface is implemented by objects that can receive
@@ -397,9 +395,7 @@ extension type CustomEventInit._(JSObject _) implements EventInit, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget).
-extension type EventTarget._(JSObject _) implements JSObject {
-  external factory EventTarget();
-
+abstract class EventTarget implements JSObject {
   /// The **`addEventListener()`** method of the [EventTarget] interface
   /// sets up a function that will be called whenever the specified event is
   /// delivered to the target.
@@ -447,7 +443,7 @@ extension type EventTarget._(JSObject _) implements JSObject {
   /// However, the new listener may be triggered during a later stage of event
   /// flow,
   /// such as during the bubbling phase.
-  external void addEventListener(
+  void addEventListener(
     String type,
     EventListener? callback, [
     JSAny options,
@@ -483,7 +479,7 @@ extension type EventTarget._(JSObject _) implements JSObject {
   /// Event listeners can also be removed by passing an [AbortSignal] to an
   /// [EventTarget.addEventListener] and then later calling
   /// [AbortController.abort] on the controller owning the signal.
-  external void removeEventListener(
+  void removeEventListener(
     String type,
     EventListener? callback, [
     JSAny options,
@@ -510,29 +506,44 @@ extension type EventTarget._(JSObject _) implements JSObject {
   /// `dispatchEvent()` invokes event handlers _synchronously_. All applicable
   /// event
   /// handlers are called and return before `dispatchEvent()` returns.
-  external bool dispatchEvent(Event event);
+  bool dispatchEvent(Event event);
 }
-extension type EventListenerOptions._(JSObject _) implements JSObject {
-  external factory EventListenerOptions({bool capture});
 
-  external bool get capture;
-  external set capture(bool value);
+abstract class EventListenerOptions implements JSObject {
+  bool get capture {
+    unsupportedPlatformError();
+  }
+
+  set capture(bool value) {
+    unsupportedPlatformError();
+  }
 }
-extension type AddEventListenerOptions._(JSObject _)
+
+abstract class AddEventListenerOptions
     implements EventListenerOptions, JSObject {
-  external factory AddEventListenerOptions({
-    bool capture,
-    bool passive,
-    bool once,
-    AbortSignal signal,
-  });
+  bool get passive {
+    unsupportedPlatformError();
+  }
 
-  external bool get passive;
-  external set passive(bool value);
-  external bool get once;
-  external set once(bool value);
-  external AbortSignal get signal;
-  external set signal(AbortSignal value);
+  set passive(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get once {
+    unsupportedPlatformError();
+  }
+
+  set once(bool value) {
+    unsupportedPlatformError();
+  }
+
+  AbortSignal get signal {
+    unsupportedPlatformError();
+  }
+
+  set signal(AbortSignal value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`AbortController`** interface represents a controller object that
@@ -546,20 +557,18 @@ extension type AddEventListenerOptions._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/AbortController).
-extension type AbortController._(JSObject _) implements JSObject {
-  external factory AbortController();
-
+abstract class AbortController implements JSObject {
   /// The **`abort()`** method of the [AbortController] interface aborts an
   /// asynchronous operation before it has completed.
   /// This is able to abort
   /// [fetch requests](https://developer.mozilla.org/en-US/docs/Web/API/fetch),
   /// the consumption of any response bodies, or streams.
-  external void abort([JSAny? reason]);
+  void abort([JSAny? reason]);
 
   /// The **`signal`** read-only property of the [AbortController] interface
   /// returns an [AbortSignal] object instance, which can be used to communicate
   /// with/abort an asynchronous operation as desired.
-  external AbortSignal get signal;
+  AbortSignal get signal;
 }
 
 /// The **`AbortSignal`** interface represents a signal object that allows you
@@ -570,7 +579,7 @@ extension type AbortController._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal).
-extension type AbortSignal._(JSObject _) implements EventTarget, JSObject {
+abstract class AbortSignal implements EventTarget, JSObject {
   /// The **`AbortSignal.abort()`** static method returns an [AbortSignal] that
   /// is already set as aborted (and which does not trigger an
   /// [AbortSignal.abort_event] event).
@@ -589,7 +598,9 @@ extension type AbortSignal._(JSObject _) implements EventTarget, JSObject {
   /// started).
   ///
   /// > **Note:** The method is similar in purpose to `Promise.reject`.
-  external static AbortSignal abort([JSAny? reason]);
+  static AbortSignal abort([JSAny? reason]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`AbortSignal.timeout()`** static method returns an [AbortSignal]
   /// that will automatically abort after a specified time.
@@ -608,7 +619,9 @@ extension type AbortSignal._(JSObject _) implements EventTarget, JSObject {
   /// To combine multiple signals, you can use [AbortSignal.any_static], for
   /// example, to directly abort a download using either a timeout signal or by
   /// calling [AbortController.abort].
-  external static AbortSignal timeout(int milliseconds);
+  static AbortSignal timeout(int milliseconds) {
+    unsupportedPlatformError();
+  }
 
   /// The **`AbortSignal.any()`** static method takes an iterable of abort
   /// signals and returns an [AbortSignal]. The returned abort signal is aborted
@@ -616,7 +629,9 @@ extension type AbortSignal._(JSObject _) implements EventTarget, JSObject {
   /// [AbortSignal.reason] will be set to the reason of the first signal that is
   /// aborted. If any of the given abort signals are already aborted then so
   /// will be the returned [AbortSignal].
-  external static AbortSignal any(JSArray<AbortSignal> signals);
+  static AbortSignal any(JSArray<AbortSignal> signals) {
+    unsupportedPlatformError();
+  }
 
   /// The **`throwIfAborted()`** method throws the signal's abort
   /// [AbortSignal.reason] if the signal has been aborted; otherwise it does
@@ -629,12 +644,12 @@ extension type AbortSignal._(JSObject _) implements EventTarget, JSObject {
   ///
   /// This method can also be used to abort operations at particular points in
   /// code, rather than passing to functions that take a signal.
-  external void throwIfAborted();
+  void throwIfAborted();
 
   /// The **`aborted`** read-only property returns a value that indicates
   /// whether the asynchronous operations the signal is communicating with are
   /// aborted (`true`) or not (`false`).
-  external bool get aborted;
+  bool get aborted;
 
   /// The **`reason`** read-only property returns a JavaScript value that
   /// indicates the abort reason.
@@ -644,9 +659,9 @@ extension type AbortSignal._(JSObject _) implements EventTarget, JSObject {
   /// [AbortController.abort] or [AbortSignal.abort_static].
   /// If not explicitly set in those methods, it defaults to "AbortError"
   /// [DOMException].
-  external JSAny? get reason;
-  external EventHandler get onabort;
-  external set onabort(EventHandler value);
+  JSAny? get reason;
+  EventHandler get onabort;
+  set onabort(EventHandler value);
 }
 
 /// **`NodeList`** objects are collections of
@@ -676,7 +691,7 @@ extension type AbortSignal._(JSObject _) implements EventTarget, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/NodeList).
-extension type NodeList._(JSObject _) implements JSObject {
+abstract class NodeList implements JSObject {
   /// Returns a node from a
   /// [`NodeList`](https://developer.mozilla.org/en-US/docs/Web/API/NodeList) by
   /// index. This method
@@ -685,11 +700,11 @@ extension type NodeList._(JSObject _) implements JSObject {
   /// is returned if the index is out of range, and a `TypeError` is thrown if
   /// no
   /// argument is provided.
-  external Node? item(int index);
+  Node? item(int index);
 
   /// The **`NodeList.length`** property returns the number of items
   /// in a [NodeList].
-  external int get length;
+  int get length;
 }
 
 /// The **`HTMLCollection`** interface represents a generic collection
@@ -723,7 +738,7 @@ extension type NodeList._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCollection).
-extension type HTMLCollection._(JSObject _) implements JSObject {
+abstract class HTMLCollection implements JSObject {
   /// The [HTMLCollection] method `item()`
   /// returns the element located at the specified offset into the collection.
   ///
@@ -733,7 +748,7 @@ extension type HTMLCollection._(JSObject _) implements JSObject {
   /// > elements in the collection to change, so the index value will not
   /// > necessarily remain
   /// > constant for a given element.
-  external Element? item(int index);
+  Element? item(int index);
 
   /// The **`namedItem()`** method of the [HTMLCollection] interface returns
   /// the first [Element] in the collection whose `id` or `name` attribute match
@@ -741,11 +756,11 @@ extension type HTMLCollection._(JSObject _) implements JSObject {
   ///
   /// In JavaScript, using the array bracket syntax with a `String`, like
   /// `collection["value"]` is equivalent to `collection.namedItem("value")`.
-  external Element? namedItem(String name);
+  Element? namedItem(String name);
 
   /// The **`HTMLCollection.length`** property returns the number of
   /// items in a [HTMLCollection].
-  external int get length;
+  int get length;
 }
 
 /// The [MutationObserver] interface provides the ability to watch for changes
@@ -759,9 +774,7 @@ extension type HTMLCollection._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver).
-extension type MutationObserver._(JSObject _) implements JSObject {
-  external factory MutationObserver(MutationCallback callback);
-
+abstract class MutationObserver implements JSObject {
   /// The [MutationObserver] method **`observe()`** configures the
   /// `MutationObserver`
   /// callback to begin receiving notifications of changes to the DOM that match
@@ -772,7 +785,7 @@ extension type MutationObserver._(JSObject _) implements JSObject {
   ///
   /// To stop the `MutationObserver` (so that none of its callbacks will be
   /// triggered any longer), call [MutationObserver.disconnect].
-  external void observe(
+  void observe(
     Node target, [
     MutationObserverInit options,
   ]);
@@ -783,7 +796,7 @@ extension type MutationObserver._(JSObject _) implements JSObject {
   ///
   /// The observer can be reused by calling its
   /// [MutationObserver.observe] method again.
-  external void disconnect();
+  void disconnect();
 
   /// The [MutationObserver] method
   /// **`takeRecords()`** returns a list of all matching DOM changes
@@ -797,33 +810,65 @@ extension type MutationObserver._(JSObject _) implements JSObject {
   /// observer, so that any pending mutations can be processed when shutting
   /// down the
   /// observer.
-  external JSArray<MutationRecord> takeRecords();
+  JSArray<MutationRecord> takeRecords();
 }
-extension type MutationObserverInit._(JSObject _) implements JSObject {
-  external factory MutationObserverInit({
-    bool childList,
-    bool attributes,
-    bool characterData,
-    bool subtree,
-    bool attributeOldValue,
-    bool characterDataOldValue,
-    JSArray<JSString> attributeFilter,
-  });
 
-  external bool get childList;
-  external set childList(bool value);
-  external bool get attributes;
-  external set attributes(bool value);
-  external bool get characterData;
-  external set characterData(bool value);
-  external bool get subtree;
-  external set subtree(bool value);
-  external bool get attributeOldValue;
-  external set attributeOldValue(bool value);
-  external bool get characterDataOldValue;
-  external set characterDataOldValue(bool value);
-  external JSArray<JSString> get attributeFilter;
-  external set attributeFilter(JSArray<JSString> value);
+abstract class MutationObserverInit implements JSObject {
+  bool get childList {
+    unsupportedPlatformError();
+  }
+
+  set childList(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get attributes {
+    unsupportedPlatformError();
+  }
+
+  set attributes(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get characterData {
+    unsupportedPlatformError();
+  }
+
+  set characterData(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get subtree {
+    unsupportedPlatformError();
+  }
+
+  set subtree(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get attributeOldValue {
+    unsupportedPlatformError();
+  }
+
+  set attributeOldValue(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get characterDataOldValue {
+    unsupportedPlatformError();
+  }
+
+  set characterDataOldValue(bool value) {
+    unsupportedPlatformError();
+  }
+
+  JSArray<JSString> get attributeFilter {
+    unsupportedPlatformError();
+  }
+
+  set attributeFilter(JSArray<JSString> value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The [MutationRecord] is a read-only interface that represents an individual
@@ -834,52 +879,52 @@ extension type MutationObserverInit._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MutationRecord).
-extension type MutationRecord._(JSObject _) implements JSObject {
+abstract class MutationRecord implements JSObject {
   /// The [MutationRecord] read-only property **`type`** is the type of the
   /// [MutationRecord] observed by a [MutationObserver].
-  external String get type;
+  String get type;
 
   /// The [MutationRecord] read-only property **`target`** is the target (i.e.
   /// the mutated/changed node) of a mutation observed with a
   /// [MutationObserver].
-  external Node get target;
+  Node get target;
 
   /// The [MutationRecord] read-only property **`addedNodes`** is a [NodeList]
   /// of nodes added to a target node by a mutation observed with a
   /// [MutationObserver].
-  external NodeList get addedNodes;
+  NodeList get addedNodes;
 
   /// The [MutationRecord] read-only property **`removedNodes`** is a [NodeList]
   /// of nodes removed from a target node by a mutation observed with a
   /// [MutationObserver].
-  external NodeList get removedNodes;
+  NodeList get removedNodes;
 
   /// The [MutationRecord] read-only property **`previousSibling`** is the
   /// previous sibling of an added or removed child node of the
   /// [`target`](https://developer.mozilla.org/en-US/docs/Web/API/MutationRecord/target)
   /// of a [MutationObserver].
-  external Node? get previousSibling;
+  Node? get previousSibling;
 
   /// The [MutationRecord] read-only property **`nextSibling`** is the next
   /// sibling of an added or removed child node of the
   /// [`target`](https://developer.mozilla.org/en-US/docs/Web/API/MutationRecord/target)
   /// of a [MutationObserver].
-  external Node? get nextSibling;
+  Node? get nextSibling;
 
   /// The [MutationRecord] read-only property **`attributeName`** contains the
   /// name of a changed attribute belonging to a node that is observed by a
   /// [MutationObserver].
-  external String? get attributeName;
+  String? get attributeName;
 
   /// The [MutationRecord] read-only property **`attributeNamespace`** is the
   /// namespace of the mutated attribute in the [MutationRecord] observed by a
   /// [MutationObserver].
-  external String? get attributeNamespace;
+  String? get attributeNamespace;
 
   /// The [MutationRecord] read-only property **`oldValue`** contains the
   /// character data or attribute value of an observed node before it was
   /// changed.
-  external String? get oldValue;
+  String? get oldValue;
 }
 
 /// The  **`Node`** interface is an abstract base
@@ -908,7 +953,7 @@ extension type MutationRecord._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Node).
-extension type Node._(JSObject _) implements EventTarget, JSObject {
+abstract class Node implements EventTarget, JSObject {
   static const int ELEMENT_NODE = 1;
 
   static const int ATTRIBUTE_NODE = 2;
@@ -948,21 +993,21 @@ extension type Node._(JSObject _) implements EventTarget, JSObject {
   /// The **`getRootNode()`** method of the [Node] interface
   /// returns the context object's root,
   /// which optionally includes the shadow root if it is available.
-  external Node getRootNode([GetRootNodeOptions options]);
+  Node getRootNode([GetRootNodeOptions options]);
 
   /// The **`hasChildNodes()`** method of the [Node] interface
   /// returns a boolean value indicating
   /// whether the given [Node] has
   /// [child nodes](https://developer.mozilla.org/en-US/docs/Web/API/Node/childNodes)
   /// or not.
-  external bool hasChildNodes();
+  bool hasChildNodes();
 
   /// The **`normalize()`** method of the [Node] interface puts the specified
   /// node
   /// and all of its sub-tree into a _normalized_ form.
   /// In a normalized sub-tree, no text nodes in the sub-tree are empty and
   /// there are no adjacent text nodes.
-  external void normalize();
+  void normalize();
 
   /// The **`cloneNode()`** method of the [Node] interface
   /// returns a duplicate of the node on which this method was called.
@@ -992,7 +1037,7 @@ extension type Node._(JSObject _) implements EventTarget, JSObject {
   ///
   /// To clone a node to insert into a _different_ document, use
   /// [Document.importNode] instead.
-  external Node cloneNode([bool deep]);
+  Node cloneNode([bool deep]);
 
   /// The **`isEqualNode()`** method of the [Node] interface tests whether two
   /// nodes are equal.
@@ -1003,7 +1048,7 @@ extension type Node._(JSObject _) implements EventTarget, JSObject {
   /// match, and so on. The specific set of data points that must match varies
   /// depending on
   /// the types of the nodes.
-  external bool isEqualNode(Node? otherNode);
+  bool isEqualNode(Node? otherNode);
 
   /// The **`isSameNode()`** method of the [Node] interface
   /// is a legacy alias the [for the `===` strict equality
@@ -1013,12 +1058,12 @@ extension type Node._(JSObject _) implements EventTarget, JSObject {
   ///
   /// > **Note:** There is no need to use `isSameNode()`; instead use the `===`
   /// > strict equality operator.
-  external bool isSameNode(Node? otherNode);
+  bool isSameNode(Node? otherNode);
 
   /// The **`compareDocumentPosition()`** method of the [Node] interface
   /// reports the position of its argument node relative to the node on which it
   /// is called.
-  external int compareDocumentPosition(Node other);
+  int compareDocumentPosition(Node other);
 
   /// The **`contains()`** method of the [Node] interface
   /// returns a boolean value indicating
@@ -1027,20 +1072,20 @@ extension type Node._(JSObject _) implements EventTarget, JSObject {
   /// one of the children's direct children, and so on.
   ///
   /// > **Note:** A node is _contained_ inside itself.
-  external bool contains(Node? other);
+  bool contains(Node? other);
 
   /// The **`lookupPrefix()`** method of the [Node] interface
   /// returns a string containing the prefix for a given namespace URI, if
   /// present,
   /// and `null` if not.
   /// When multiple prefixes are possible, the first prefix is returned.
-  external String? lookupPrefix(String? namespace);
+  String? lookupPrefix(String? namespace);
 
   /// The **`lookupNamespaceURI()`** method of the [Node] interface
   /// takes a prefix as parameter and returns the namespace URI associated with
   /// it on the given node if found (and
   /// `null` if not).
-  external String? lookupNamespaceURI(String? prefix);
+  String? lookupNamespaceURI(String? prefix);
 
   /// The **`isDefaultNamespace()`** method of the [Node] interface accepts a
   /// namespace URI as an argument.
@@ -1049,7 +1094,7 @@ extension type Node._(JSObject _) implements EventTarget, JSObject {
   ///
   /// > **Note:** The default namespace of an HTML element is always `""`. For a
   /// > SVG element, it is set by the `xmlns` attribute.
-  external bool isDefaultNamespace(String? namespace);
+  bool isDefaultNamespace(String? namespace);
 
   /// The **`insertBefore()`** method of the [Node] interface
   /// inserts a node before a _reference node_ as a child of a specified _parent
@@ -1071,7 +1116,7 @@ extension type Node._(JSObject _) implements EventTarget, JSObject {
   /// If the given child is a [DocumentFragment], the entire contents of the
   /// `DocumentFragment` are moved into the child list of the specified parent
   /// node.
-  external Node insertBefore(
+  Node insertBefore(
     Node node,
     Node? child,
   );
@@ -1093,11 +1138,11 @@ extension type Node._(JSObject _) implements EventTarget, JSObject {
   /// > **Note:** Unlike this method, the [Element.append] method supports
   /// > multiple arguments and appending strings. You can prefer using it if
   /// > your node is an element.
-  external Node appendChild(Node node);
+  Node appendChild(Node node);
 
   /// The **`replaceChild()`** method of the [Node] interface replaces a child
   /// node within the given (parent) node.
-  external Node replaceChild(
+  Node replaceChild(
     Node node,
     Node child,
   );
@@ -1117,17 +1162,17 @@ extension type Node._(JSObject _) implements EventTarget, JSObject {
   ///
   /// Unlike [Node.cloneNode] the return value preserves the `EventListener`
   /// objects associated with it.
-  external Node removeChild(Node child);
+  Node removeChild(Node child);
 
   /// The read-only **`nodeType`** property of a [Node] interface is an integer
   /// that identifies what the node is. It distinguishes different kind of nodes
   /// from each other,
   /// such as [Element], [Text] and [Comment].
-  external int get nodeType;
+  int get nodeType;
 
   /// The read-only **`nodeName`** property of [Node] returns the name of the
   /// current node as a string.
-  external String get nodeName;
+  String get nodeName;
 
   /// The read-only **`baseURI`** property of the [Node] interface
   /// returns the absolute base URL of the document containing the node.
@@ -1149,16 +1194,16 @@ extension type Node._(JSObject _) implements EventTarget, JSObject {
   /// document,
   /// the `href` value of the _first_ `Base` element with such an attribute is
   /// used instead.
-  external String get baseURI;
+  String get baseURI;
 
   /// The read-only **`isConnected`** property of the [Node] interface
   /// returns a boolean indicating whether the node is connected
   /// (directly or indirectly) to a [Document] object.
-  external bool get isConnected;
+  bool get isConnected;
 
   /// The read-only **`ownerDocument`** property of the [Node] interface
   /// returns the top-level document object of the node.
-  external Document? get ownerDocument;
+  Document? get ownerDocument;
 
   /// The read-only **`parentNode`** property of the [Node] interface
   /// returns the parent of the specified node in the DOM tree.
@@ -1169,13 +1214,13 @@ extension type Node._(JSObject _) implements EventTarget, JSObject {
   /// `parentNode` will always return `null`.
   /// It also returns `null` if the node has just been created
   /// and is not yet attached to the tree.
-  external Node? get parentNode;
+  Node? get parentNode;
 
   /// The read-only **`parentElement`** property of [Node] interface
   /// returns the DOM node's parent [Element], or `null` if the node either has
   /// no
   /// parent, or its parent isn't a DOM [Element].
-  external Element? get parentElement;
+  Element? get parentElement;
 
   /// The read-only **`childNodes`** property of the [Node] interface returns a
   /// live
@@ -1213,7 +1258,7 @@ extension type Node._(JSObject _) implements EventTarget, JSObject {
   /// including non-element nodes like text and comment.
   /// To get a collection containing only elements, use [Element.children]
   /// instead.
-  external NodeList get childNodes;
+  NodeList get childNodes;
 
   /// The read-only **`firstChild`** property of the [Node] interface
   /// returns the node's first child in the tree,
@@ -1228,7 +1273,7 @@ extension type Node._(JSObject _) implements EventTarget, JSObject {
   /// > If you want to get the first [Element] that is a child of another
   /// > element,
   /// > consider using [Element.firstElementChild].
-  external Node? get firstChild;
+  Node? get firstChild;
 
   /// The read-only **`lastChild`** property of the [Node] interface
   /// returns the last child of the node, or `null` if there are no child nodes.
@@ -1239,7 +1284,7 @@ extension type Node._(JSObject _) implements EventTarget, JSObject {
   /// > If you want to get the last [Element] that is a child of another
   /// > element,
   /// > consider using [Element.lastElementChild].
-  external Node? get lastChild;
+  Node? get lastChild;
 
   /// The read-only **`previousSibling`** property of the [Node] interface
   /// returns the node immediately preceding the specified one in its parent's
@@ -1265,7 +1310,7 @@ extension type Node._(JSObject _) implements EventTarget, JSObject {
   /// >
   /// > To navigate the opposite way through the child nodes list use
   /// > [Node.nextSibling](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling).
-  external Node? get previousSibling;
+  Node? get previousSibling;
 
   /// The read-only **`nextSibling`** property of the [Node] interface
   /// returns the node immediately following the specified one in their
@@ -1291,12 +1336,12 @@ extension type Node._(JSObject _) implements EventTarget, JSObject {
   /// >
   /// > To navigate the opposite way through the child nodes list use
   /// > [Node.previousSibling](https://developer.mozilla.org/en-US/docs/Web/API/Node/previousSibling).
-  external Node? get nextSibling;
+  Node? get nextSibling;
 
   /// The **`nodeValue`** property of the [Node] interface returns or sets the
   /// value of the current node.
-  external String? get nodeValue;
-  external set nodeValue(String? value);
+  String? get nodeValue;
+  set nodeValue(String? value);
 
   /// The **`textContent`** property of the [Node]
   /// interface represents the text content of the node and its descendants.
@@ -1304,17 +1349,23 @@ extension type Node._(JSObject _) implements EventTarget, JSObject {
   /// > **Note:** `textContent` and [HTMLElement.innerText] are easily confused,
   /// > but the two properties are
   /// > [different in important ways](#differences_from_innertext).
-  external String? get textContent;
-  external set textContent(String? value);
+  String? get textContent;
+  set textContent(String? value);
 }
-extension type GetRootNodeOptions._(JSObject _) implements JSObject {
-  external factory GetRootNodeOptions({bool composed});
 
-  external bool get composed;
-  external set composed(bool value);
+abstract class GetRootNodeOptions implements JSObject {
+  bool get composed {
+    unsupportedPlatformError();
+  }
+
+  set composed(bool value) {
+    unsupportedPlatformError();
+  }
 }
-@JS()
-external Document get document;
+
+Document get document {
+  unsupportedPlatformError();
+}
 
 /// The **`Document`** interface represents any web page loaded in the browser
 /// and serves as an entry point into the web page's content, which is the
@@ -1337,9 +1388,7 @@ external Document get document;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Document).
-extension type Document._(JSObject _) implements Node, JSObject {
-  external factory Document();
-
+abstract class Document implements Node, JSObject {
   /// The **`parseHTMLUnsafe()`** static method of the [Document] object is used
   /// to parse a string of HTML, which may contain
   /// [declarative shadow roots](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template#declarative_shadow_dom),
@@ -1354,7 +1403,9 @@ extension type Document._(JSObject _) implements Node, JSObject {
   /// of "text/html", a
   /// [character set](https://developer.mozilla.org/en-US/docs/Web/API/Document/characterSet)
   /// of UTF-8, and a URL of "about:blank"
-  external static Document parseHTMLUnsafe(JSAny html);
+  static Document parseHTMLUnsafe(JSAny html) {
+    unsupportedPlatformError();
+  }
 
   /// The **`getElementsByTagName`** method of
   /// [Document] interface returns an
@@ -1366,12 +1417,12 @@ extension type Document._(JSObject _) implements Node, JSObject {
   /// is live, meaning that it updates itself automatically to stay in sync with
   /// the DOM tree
   /// without having to call `document.getElementsByTagName()` again.
-  external HTMLCollection getElementsByTagName(String qualifiedName);
+  HTMLCollection getElementsByTagName(String qualifiedName);
 
   /// Returns a list of elements with the given tag name belonging to the given
   /// namespace.
   /// The complete document is searched, including the root node.
-  external HTMLCollection getElementsByTagNameNS(
+  HTMLCollection getElementsByTagNameNS(
     String? namespace,
     String localName,
   );
@@ -1392,13 +1443,13 @@ extension type Document._(JSObject _) implements Node, JSObject {
   /// > longer qualifies for the selector, it will automatically be removed. Be
   /// > aware of this
   /// > for iteration purposes.
-  external HTMLCollection getElementsByClassName(String classNames);
+  HTMLCollection getElementsByClassName(String classNames);
 
   /// In an [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML) document,
   /// the **`document.createElement()`** method creates the HTML element
   /// specified by _tagName_, or an [HTMLUnknownElement] if _tagName_ isn't
   /// recognized.
-  external Element createElement(
+  Element createElement(
     String localName, [
     JSAny options,
   ]);
@@ -1407,7 +1458,7 @@ extension type Document._(JSObject _) implements Node, JSObject {
   ///
   /// To create an element without specifying a namespace URI, use the
   /// [Document.createElement] method.
-  external Element createElementNS(
+  Element createElementNS(
     String? namespace,
     String qualifiedName, [
     JSAny options,
@@ -1415,19 +1466,19 @@ extension type Document._(JSObject _) implements Node, JSObject {
 
   /// Creates a new empty [DocumentFragment] into which
   /// DOM nodes can be added to build an offscreen DOM tree.
-  external DocumentFragment createDocumentFragment();
+  DocumentFragment createDocumentFragment();
 
   /// Creates a new [Text] node. This method can be used to escape HTML
   /// characters.
-  external Text createTextNode(String data);
+  Text createTextNode(String data);
 
   /// **`createCDATASection()`** creates a new CDATA section node,
   /// and returns it.
-  external CDATASection createCDATASection(String data);
+  CDATASection createCDATASection(String data);
 
   /// **`createComment()`** creates a new comment node, and returns
   /// it.
-  external Comment createComment(String data);
+  Comment createComment(String data);
 
   /// `createProcessingInstruction()` generates a new
   /// [processing instruction](https://developer.mozilla.org/en-US/docs/Web/API/ProcessingInstruction)
@@ -1435,7 +1486,7 @@ extension type Document._(JSObject _) implements Node, JSObject {
   ///
   /// The new node usually will be inserted into an XML document in order to
   /// accomplish anything with it, such as with [node.insertBefore].
-  external ProcessingInstruction createProcessingInstruction(
+  ProcessingInstruction createProcessingInstruction(
     String target,
     String data,
   );
@@ -1452,7 +1503,7 @@ extension type Document._(JSObject _) implements Node, JSObject {
   ///
   /// Unlike [document.adoptNode], the original node is not removed from its
   /// original document. The imported node is a clone of the original.
-  external Node importNode(
+  Node importNode(
     Node node, [
     bool deep,
   ]);
@@ -1463,7 +1514,7 @@ extension type Document._(JSObject _) implements Node, JSObject {
   /// (if any), and their [Node.ownerDocument] is changed to the current
   /// document.
   /// The node can then be inserted into the current document.
-  external Node adoptNode(Node node);
+  Node adoptNode(Node node);
 
   /// The **`Document.createAttribute()`** method creates a new
   /// attribute node, and returns it. The object created is a node implementing
@@ -1472,14 +1523,14 @@ extension type Document._(JSObject _) implements Node, JSObject {
   /// added to a particular element in this manner.
   ///
   /// > **Note:** The string given in parameter is converted to lowercase.
-  external Attr createAttribute(String localName);
+  Attr createAttribute(String localName);
 
   /// The **`Document.createAttributeNS()`** method creates a new attribute node
   /// with the specified namespace URI and qualified name, and returns it.
   /// The object created is a node implementing the
   /// [Attr] interface. The DOM does not enforce what sort of attributes can be
   /// added to a particular element in this manner.
-  external Attr createAttributeNS(
+  Attr createAttributeNS(
     String? namespace,
     String qualifiedName,
   );
@@ -1494,16 +1545,16 @@ extension type Document._(JSObject _) implements Node, JSObject {
   /// of the type specified. The
   /// returned object should be first initialized and can then be passed to
   /// [EventTarget.dispatchEvent].
-  external Event createEvent(String interface);
+  Event createEvent(String interface);
 
   /// The **`Document.createRange()`** method returns a new
   /// [Range] object.
-  external Range createRange();
+  Range createRange();
 
   /// The **`Document.createNodeIterator()`** method returns a new
   /// [`NodeIterator`](https://developer.mozilla.org/en-US/docs/Web/API/NodeIterator)
   /// object.
-  external NodeIterator createNodeIterator(
+  NodeIterator createNodeIterator(
     Node root, [
     int whatToShow,
     NodeFilter? filter,
@@ -1511,7 +1562,7 @@ extension type Document._(JSObject _) implements Node, JSObject {
 
   /// The **`Document.createTreeWalker()`** creator method returns a newly
   /// created [TreeWalker] object.
-  external TreeWalker createTreeWalker(
+  TreeWalker createTreeWalker(
     Node root, [
     int whatToShow,
     NodeFilter? filter,
@@ -1525,7 +1576,7 @@ extension type Document._(JSObject _) implements Node, JSObject {
   /// When `startViewTransition()` is invoked, a sequence of steps is followed
   /// as explained in
   /// [The view transition process](https://developer.mozilla.org/en-US/docs/Web/API/View_Transitions_API/Using#the_view_transition_process).
-  external ViewTransition startViewTransition([JSObject callbackOptions]);
+  ViewTransition startViewTransition([JSObject callbackOptions]);
 
   /// The **`elementFromPoint()`**
   /// method, available on the [Document] object, returns the topmost [Element]
@@ -1554,7 +1605,7 @@ extension type Document._(JSObject _) implements Node, JSObject {
   ///
   /// If you need to find the specific position inside the element, use
   /// [Document.caretPositionFromPoint].
-  external Element? elementFromPoint(
+  Element? elementFromPoint(
     num x,
     num y,
   );
@@ -1566,7 +1617,7 @@ extension type Document._(JSObject _) implements Node, JSObject {
   /// viewport.
   ///
   /// It operates in a similar way to the [Document.elementFromPoint] method.
-  external JSArray<Element> elementsFromPoint(
+  JSArray<Element> elementsFromPoint(
     num x,
     num y,
   );
@@ -1575,7 +1626,7 @@ extension type Document._(JSObject _) implements Node, JSObject {
   /// method of the [Document] interface returns a
   /// [CaretPosition] object, containing the DOM node, along with the caret and
   /// caret's character offset within that node.
-  external JSObject? caretPositionFromPoint(
+  JSObject? caretPositionFromPoint(
     num x,
     num y, [
     CaretPositionFromPointOptions options,
@@ -1587,13 +1638,13 @@ extension type Document._(JSObject _) implements Node, JSObject {
   /// out of
   /// fullscreen mode, restoring the previous state of the screen. This usually
   /// reverses the effects of a previous call to [Element.requestFullscreen].
-  external JSPromise<JSAny?> exitFullscreen();
-  external JSObject operator [](String name);
+  JSPromise<JSAny?> exitFullscreen();
+  JSObject operator [](String name);
 
   /// The **`getElementsByName()`** method
   /// of the [Document] object returns a [NodeList] Collection of
   /// elements with a given `name` attribute in the document.
-  external NodeList getElementsByName(String elementName);
+  NodeList getElementsByName(String elementName);
 
   /// The **`Document.open()`** method opens a document for
   /// [Document.write].
@@ -1604,7 +1655,7 @@ extension type Document._(JSObject _) implements Node, JSObject {
   ///   the document,
   /// or the document's window are removed.
   /// - All existing nodes are removed from the document.
-  external JSObject? open([
+  JSObject? open([
     String unused1OrUrl,
     String nameOrUnused2,
     String features,
@@ -1612,7 +1663,7 @@ extension type Document._(JSObject _) implements Node, JSObject {
 
   /// The **`Document.close()`** method finishes writing to a
   /// document, opened with [Document.open].
-  external void close();
+  void close();
 
   /// > **Warning:** Use of the `document.write()` method is strongly
   /// > discouraged.
@@ -1645,7 +1696,7 @@ extension type Document._(JSObject _) implements Node, JSObject {
   /// > calling `document.write()` on a closed (loaded) document automatically
   /// > calls `document.open()`,
   /// > [which will clear the document](https://developer.mozilla.org/en-US/docs/Web/API/Document/open#notes).
-  external void write(JSAny text);
+  void write(JSAny text);
 
   /// > **Warning:** Use of the `document.writeln()` method is strongly
   /// > discouraged.
@@ -1672,7 +1723,7 @@ extension type Document._(JSObject _) implements Node, JSObject {
   /// > any existing code that is still using it.
   ///
   /// Writes a string of text followed by a newline character to a document.
-  external void writeln(JSAny text);
+  void writeln(JSAny text);
 
   /// The **`hasFocus()`** method of the [Document] interface returns a boolean
   /// value indicating whether the document or any element inside the document
@@ -1685,7 +1736,7 @@ extension type Document._(JSObject _) implements Node, JSObject {
   /// > in the document, but an active element does not necessarily have focus.
   /// > For example, an active element within a popup window that is not the
   /// > foreground doesn't have focus.
-  external bool hasFocus();
+  bool hasFocus();
 
   /// The **`execCommand`** method implements multiple different commands. Some
   /// of them provide access to the clipboard, while others are for editing
@@ -1716,19 +1767,19 @@ extension type Document._(JSObject _) implements Node, JSObject {
   /// > `execCommand()` in response to these events. From Firefox 82, nested
   /// > `execCommand()` calls will always fail, see
   /// > [bug 1634262](https://bugzil.la/1634262).
-  external bool execCommand(
+  bool execCommand(
     String commandId, [
     bool showUI,
     String value,
   ]);
-  external bool queryCommandIndeterm(String commandId);
-  external String queryCommandValue(String commandId);
+  bool queryCommandIndeterm(String commandId);
+  String queryCommandValue(String commandId);
 
   /// The **`Document.clear()`** method does nothing, but doesn't raise any
   /// error.
-  external void clear();
-  external void captureEvents();
-  external void releaseEvents();
+  void clear();
+  void captureEvents();
+  void releaseEvents();
 
   /// The **`exitPictureInPicture()`** method of the [Document] interface
   /// requests that a video contained
@@ -1737,7 +1788,7 @@ extension type Document._(JSObject _) implements Node, JSObject {
   /// mode, restoring the previous state of the screen. This usually reverses
   /// the
   /// effects of a previous call to [HTMLVideoElement.requestPictureInPicture].
-  external JSPromise<JSAny?> exitPictureInPicture();
+  JSPromise<JSAny?> exitPictureInPicture();
 
   /// The **`exitPointerLock()`** method of the [Document] interface
   /// asynchronously releases a pointer lock previously requested through
@@ -1749,7 +1800,7 @@ extension type Document._(JSObject _) implements Node, JSObject {
   /// To track the success or failure of the request, it is necessary to listen
   /// for the [Document.pointerlockchange_event] and
   /// [Document.pointerlockerror_event] events.
-  external void exitPointerLock();
+  void exitPointerLock();
 
   /// The **`hasUnpartitionedCookieAccess()`** method of the [Document]
   /// interface returns a `Promise` that resolves with a boolean value
@@ -1762,14 +1813,14 @@ extension type Document._(JSObject _) implements Node, JSObject {
   /// [Storage Access API](https://developer.mozilla.org/en-US/docs/Web/API/Storage_Access_API).
   ///
   /// This method is a new name for [Document.hasStorageAccess].
-  external JSPromise<JSBoolean> hasUnpartitionedCookieAccess();
+  JSPromise<JSBoolean> hasUnpartitionedCookieAccess();
 
   /// The **`getSelection()`** method of
   /// the [Document] interface returns a [Selection]
   /// object representing the range of text selected by the user, or the current
   /// position of
   /// the caret.
-  external Selection? getSelection();
+  Selection? getSelection();
 
   /// The **`hasStorageAccess()`** method of the [Document] interface returns a
   /// `Promise` that resolves with a boolean value indicating whether the
@@ -1784,7 +1835,7 @@ extension type Document._(JSObject _) implements Node, JSObject {
   /// > **Note:** This method is another name for
   /// > [Document.hasUnpartitionedCookieAccess]. There are no current plans to
   /// > remove this method in favor of [Document.hasUnpartitionedCookieAccess].
-  external JSPromise<JSBoolean> hasStorageAccess();
+  JSPromise<JSBoolean> hasStorageAccess();
 
   /// The **`requestStorageAccess()`** method of the [Document] interface allows
   /// content loaded in a third-party context (i.e., embedded in an `iframe`) to
@@ -1809,7 +1860,7 @@ extension type Document._(JSObject _) implements Node, JSObject {
   /// > classification, user settings,
   /// > anti-[clickjacking](https://developer.mozilla.org/en-US/docs/Glossary/Clickjacking)
   /// > heuristics, or prompting the user for explicit permission.
-  external JSPromise<JSAny?> requestStorageAccess();
+  JSPromise<JSAny?> requestStorageAccess();
 
   /// The **`getElementById()`** method of the [Document] interface returns an
   /// [Element] object representing the element whose [Element.id] property
@@ -1823,7 +1874,7 @@ extension type Document._(JSObject _) implements Node, JSObject {
   /// > **Note:** IDs should be unique inside a document. If two or more
   /// > elements in a document have the same ID, this method returns the first
   /// > element found.
-  external Element? getElementById(String elementId);
+  Element? getElementById(String elementId);
 
   /// The `getAnimations()` method of the [Document] interface
   /// returns an array of all [Animation] objects currently in effect whose
@@ -1832,7 +1883,7 @@ extension type Document._(JSObject _) implements Node, JSObject {
   /// [CSS Transitions](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_transitions),
   /// and
   /// [Web Animations](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API).
-  external JSArray<Animation> getAnimations();
+  JSArray<Animation> getAnimations();
 
   /// The **`Document.prepend()`** method
   /// inserts a set of [Node] objects or string objects before
@@ -1841,7 +1892,7 @@ extension type Document._(JSObject _) implements Node, JSObject {
   ///
   /// This method prepends a child to a `Document`. To prepend to an arbitrary
   /// element in the tree, see [Element.prepend].
-  external void prepend(JSAny nodes);
+  void prepend(JSAny nodes);
 
   /// The **`Document.append()`** method
   /// inserts a set of [Node] objects or string objects after
@@ -1850,11 +1901,11 @@ extension type Document._(JSObject _) implements Node, JSObject {
   ///
   /// This method appends a child to a `Document`. To append to an arbitrary
   /// element in the tree, see [Element.append].
-  external void append(JSAny nodes);
+  void append(JSAny nodes);
 
   /// The **`Document.replaceChildren()`** method replaces the
   /// existing children of a `Document` with a specified new set of children.
-  external void replaceChildren(JSAny nodes);
+  void replaceChildren(JSAny nodes);
 
   /// The [Document] method **`querySelector()`**
   /// returns the first [Element] within the document that matches the specified
@@ -1866,33 +1917,33 @@ extension type Document._(JSObject _) implements Node, JSObject {
   /// > markup and
   /// > iterating through sequential nodes by order of the number of child
   /// > nodes.
-  external Element? querySelector(String selectors);
+  Element? querySelector(String selectors);
 
   /// The [Document] method **`querySelectorAll()`**
   /// returns a static (not live) [NodeList] representing a list of the
   /// document's elements that match the specified group of selectors.
-  external NodeList querySelectorAll(String selectors);
+  NodeList querySelectorAll(String selectors);
 
   /// This method compiles an [XPathExpression] which can then be used for
   /// (repeated) evaluations.
   ///
   /// You must call this method on the same document that you run the expression
   /// against.
-  external XPathExpression createExpression(
+  XPathExpression createExpression(
     String expression, [
     XPathNSResolver? resolver,
   ]);
 
   /// Creates an `XPathNSResolver` which resolves namespaces with respect to the
   /// definitions in scope for a specified node.
-  external Node createNSResolver(Node nodeResolver);
+  Node createNSResolver(Node nodeResolver);
 
   /// The **`evaluate()`** method of the [Document] interface selects elements
   /// based on the [XPath](https://developer.mozilla.org/en-US/docs/Web/XPath)
   /// expression given in parameters.
   ///
   /// XPath expressions can be evaluated on both HTML and XML documents.
-  external XPathResult evaluate(
+  XPathResult evaluate(
     String expression,
     Node contextNode, [
     XPathNSResolver? resolver,
@@ -1902,22 +1953,22 @@ extension type Document._(JSObject _) implements Node, JSObject {
 
   /// The **`Document.implementation`** property returns a
   /// [DOMImplementation] object associated with the current document.
-  external DOMImplementation get implementation;
+  DOMImplementation get implementation;
 
   /// The **`URL`** read-only property of the [Document]
   /// interface returns the document location as a string.
-  external String get URL;
+  String get URL;
 
   /// The **`documentURI`** read-only property of the
   /// [Document] interface returns the document location as a string.
-  external String get documentURI;
+  String get documentURI;
 
   /// The **`Document.compatMode`** read-only property indicates
   /// whether the document is rendered in
   /// [Quirks mode](https://developer.mozilla.org/en-US/docs/Web/HTML/Quirks_Mode_and_Standards_Mode)
   /// or
   /// Standards mode.
-  external String get compatMode;
+  String get compatMode;
 
   /// The **`Document.characterSet`**
   /// read-only property returns the
@@ -1928,7 +1979,7 @@ extension type Document._(JSObject _) implements Node, JSObject {
   /// > **Note:** A "character set" and a "character encoding" are related, but
   /// > different. Despite the
   /// > name of this property, it returns the _encoding_.
-  external String get characterSet;
+  String get characterSet;
 
   /// The **`Document.contentType`** read-only property returns the
   /// MIME type that the document is being rendered as. This may come from HTTP
@@ -1939,25 +1990,25 @@ extension type Document._(JSObject _) implements Node, JSObject {
   ///
   /// > **Note:** This property is unaffected by `meta`
   /// > elements.
-  external String get contentType;
+  String get contentType;
 
   /// The **`doctype`** read-only property of the [Document] interface is a
   /// [DocumentType] object representing the the  associated with the current
   /// document.
-  external DocumentType? get doctype;
+  DocumentType? get doctype;
 
   /// The **`documentElement`** read-only property of the [Document] interface
   /// returns the
   /// [Element] that is the root element of the [document] (for
   /// example, the `html` element for HTML documents).
-  external Element? get documentElement;
+  Element? get documentElement;
 
   /// **`Document.rootElement`** returns the [Element]
   /// that is the root element of the [document] if it is an
   /// element, otherwise `null`. It is deprecated in favor of
   /// [Document.documentElement], which returns the root element for all
   /// documents.
-  external SVGSVGElement? get rootElement;
+  SVGSVGElement? get rootElement;
 
   /// The **`scrollingElement`** read-only property of the
   /// [Document] interface returns a reference to the [Element] that
@@ -1968,7 +2019,7 @@ extension type Document._(JSObject _) implements Node, JSObject {
   /// `body` element if it exists and is
   /// [potentially scrollable](https://drafts.csswg.org/cssom-view/#potentially-scrollable),
   /// otherwise it returns null.
-  external Element? get scrollingElement;
+  Element? get scrollingElement;
 
   /// The read-only **`fullscreenEnabled`**
   /// property on the [Document] interface indicates whether or not fullscreen
@@ -1983,7 +2034,7 @@ extension type Document._(JSObject _) implements Node, JSObject {
   /// Although this property is read-only, it will not throw if it is modified
   /// (even in
   /// strict mode); the setter is a no-operation and it will be ignored.
-  external bool get fullscreenEnabled;
+  bool get fullscreenEnabled;
 
   /// The obsolete [Document] interface's **`fullscreen`** read-only property
   /// reports whether or not the document is currently displaying content in
@@ -1996,11 +2047,11 @@ extension type Document._(JSObject _) implements Node, JSObject {
   /// > **Note:** Since this property is deprecated, you can determine if
   /// > fullscreen mode is active on the document by checking to see if
   /// > [Document.fullscreenElement] is not `null`.
-  external bool get fullscreen;
-  external EventHandler get onfullscreenchange;
-  external set onfullscreenchange(EventHandler value);
-  external EventHandler get onfullscreenerror;
-  external set onfullscreenerror(EventHandler value);
+  bool get fullscreen;
+  EventHandler get onfullscreenchange;
+  set onfullscreenchange(EventHandler value);
+  EventHandler get onfullscreenerror;
+  set onfullscreenerror(EventHandler value);
 
   /// The **`Document.location`** read-only property returns a
   /// [Location] object, which contains information about the URL of the
@@ -2020,46 +2071,46 @@ extension type Document._(JSObject _) implements Node, JSObject {
   /// If the current document is not in a browsing context, the returned value
   /// is
   /// `null`.
-  external Location? get location;
+  Location? get location;
 
   /// The **`domain`** property of the [Document]
   /// interface gets/sets the domain portion of the  of the current
   /// document, as used by the
   /// [same-origin policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy).
-  external String get domain;
-  external set domain(String value);
+  String get domain;
+  set domain(String value);
 
   /// The **`Document.referrer`** property returns the
   /// [URI](https://www.w3.org/Addressing/#background) of the page that linked
   /// to
   /// this page.
-  external String get referrer;
+  String get referrer;
 
   /// The [Document] property `cookie` lets you read and write
   /// [cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies)
   /// associated with the document.
   /// It serves as a getter and setter for the actual values of the cookies.
-  external String get cookie;
-  external set cookie(String value);
+  String get cookie;
+  set cookie(String value);
 
   /// The **`lastModified`** property of the [Document]
   /// interface returns a string containing the date and local time on which the
   /// current document
   /// was last modified.
-  external String get lastModified;
+  String get lastModified;
 
   /// The **`Document.readyState`** property describes the loading state of the
   /// [document].
   /// When the value of this property changes, a
   /// [Document.readystatechange_event] event fires on the [document] object.
-  external DocumentReadyState get readyState;
+  DocumentReadyState get readyState;
 
   /// The **`document.title`** property gets or sets the current title of the
   /// document.
   /// When present, it defaults to the value of the
   /// [`<title>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title).
-  external String get title;
-  external set title(String value);
+  String get title;
+  set title(String value);
 
   /// The **`Document.dir`** property is a string
   /// representing the directionality of the text of the document, whether left
@@ -2067,31 +2118,31 @@ extension type Document._(JSObject _) implements Node, JSObject {
   /// (default) or right to left. Possible values are `'rtl'`, right to left,
   /// and
   /// `'ltr'`, left to right.
-  external String get dir;
-  external set dir(String value);
+  String get dir;
+  set dir(String value);
 
   /// The **`Document.body`** property represents the
   /// `body` or `frameset` node of the current document, or
   /// `null` if no such element exists.
-  external HTMLElement? get body;
-  external set body(HTMLElement? value);
+  HTMLElement? get body;
+  set body(HTMLElement? value);
 
   /// The **`head`** read-only property of
   /// the [Document] interface returns the `head` element of
   /// the current document.
-  external HTMLHeadElement? get head;
+  HTMLHeadElement? get head;
 
   /// The **`images`** read-only property of the [Document] interface returns a
   /// [collection](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCollection)
   /// of the
   /// [images](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement)
   /// in the current HTML document.
-  external HTMLCollection get images;
+  HTMLCollection get images;
 
   /// The **`embeds`** read-only property of the
   /// [Document] interface returns a list of the embedded
   /// `embed` elements within the current document.
-  external HTMLCollection get embeds;
+  HTMLCollection get embeds;
 
   /// The **`plugins`** read-only property of the
   /// [Document] interface returns an [HTMLCollection] object
@@ -2101,14 +2152,14 @@ extension type Document._(JSObject _) implements Node, JSObject {
   /// > **Note:** For a list of installed plugins, use
   /// > [Navigator.plugins](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/plugins)
   /// > instead.
-  external HTMLCollection get plugins;
+  HTMLCollection get plugins;
 
   /// The **`links`** read-only property of the [Document] interface returns a
   /// collection of all `area` elements and `a` elements in a document with a
   /// value for the
   /// [href](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#href)
   /// attribute.
-  external HTMLCollection get links;
+  HTMLCollection get links;
 
   /// The **`forms`** read-only property of
   /// the [Document] interface returns an [HTMLCollection] listing
@@ -2116,13 +2167,13 @@ extension type Document._(JSObject _) implements Node, JSObject {
   ///
   /// > **Note:** Similarly, you can access a list of a form's component user
   /// > input elements using the [HTMLFormElement.elements] property.
-  external HTMLCollection get forms;
+  HTMLCollection get forms;
 
   /// The **`scripts`** property of the [Document]
   /// interface returns a list of the `script`
   /// elements in the document. The returned object is an
   /// [HTMLCollection].
-  external HTMLCollection get scripts;
+  HTMLCollection get scripts;
 
   /// The **`Document.currentScript`** property returns the `script` element
   /// whose script is currently being processed and [isn't a JavaScript
@@ -2134,13 +2185,13 @@ extension type Document._(JSObject _) implements Node, JSObject {
   /// element if the code in the script is being called as a callback or event
   /// handler; it
   /// will only reference the element while it's initially being processed.
-  external HTMLOrSVGScriptElement? get currentScript;
+  HTMLOrSVGScriptElement? get currentScript;
 
   /// In browsers, **`document.defaultView`** returns the
   /// [Window] object associated with , or `null` if none is available.
   ///
   /// This property is read-only.
-  external Window? get defaultView;
+  Window? get defaultView;
 
   /// **`document.designMode`** controls whether the entire document
   /// is editable. Valid values are `"on"` and `"off"`. According to the
@@ -2150,15 +2201,15 @@ extension type Document._(JSObject _) implements Node, JSObject {
   /// `"inherit"`.
   /// Starting in Chrome 43, the default is `"off"` and `"inherit"` is
   /// no longer supported. In IE6-10, the value is capitalized.
-  external String get designMode;
-  external set designMode(String value);
+  String get designMode;
+  set designMode(String value);
 
   /// The **`Document.hidden`** read-only property returns a Boolean
   /// value indicating if the page is considered hidden or not.
   ///
   /// The [Document.visibilityState] property provides an alternative way to
   /// determine whether the page is hidden.
-  external bool get hidden;
+  bool get hidden;
 
   /// The **`Document.visibilityState`**
   /// read-only property returns the visibility of the document. It can be used
@@ -2170,16 +2221,16 @@ extension type Document._(JSObject _) implements Node, JSObject {
   ///
   /// The [Document.hidden] property provides an alternative way to determine
   /// whether the page is hidden.
-  external DocumentVisibilityState get visibilityState;
-  external EventHandler get onreadystatechange;
-  external set onreadystatechange(EventHandler value);
-  external EventHandler get onvisibilitychange;
-  external set onvisibilitychange(EventHandler value);
+  DocumentVisibilityState get visibilityState;
+  EventHandler get onreadystatechange;
+  set onreadystatechange(EventHandler value);
+  EventHandler get onvisibilitychange;
+  set onvisibilitychange(EventHandler value);
 
   /// **`fgColor`** gets/sets the foreground color, or text color, of
   /// the current document.
-  external String get fgColor;
-  external set fgColor(String value);
+  String get fgColor;
+  set fgColor(String value);
 
   /// The **`Document.linkColor`** property gets/sets the color of
   /// links within the document.
@@ -2189,28 +2240,28 @@ extension type Document._(JSObject _) implements Node, JSObject {
   /// pseudo-classes. Another alternative is
   /// `document.body.link`, although this is [deprecated in HTML
   /// 4.01](https://www.w3.org/TR/html401/struct/global.html#adef-link).
-  external String get linkColor;
-  external set linkColor(String value);
+  String get linkColor;
+  set linkColor(String value);
 
   /// The **`Document.vlinkColor`** property gets/sets the color of
   /// links that the user has visited in the document.
-  external String get vlinkColor;
-  external set vlinkColor(String value);
+  String get vlinkColor;
+  set vlinkColor(String value);
 
   /// Returns or sets the color of an active link in the document body. A link
   /// is active
   /// during the time between `mousedown` and `mouseup` events.
-  external String get alinkColor;
-  external set alinkColor(String value);
+  String get alinkColor;
+  set alinkColor(String value);
 
   /// The deprecated `bgColor` property gets or sets the background color of the
   /// current document.
-  external String get bgColor;
-  external set bgColor(String value);
+  String get bgColor;
+  set bgColor(String value);
 
   /// The **`anchors`** read-only property of the
   /// [Document] interface returns a list of all of the anchors in the document.
-  external HTMLCollection get anchors;
+  HTMLCollection get anchors;
 
   /// The **`applets`** property of the [Document] returns an empty
   /// [HTMLCollection]. This property is kept only for compatibility reasons; in
@@ -2220,7 +2271,7 @@ extension type Document._(JSObject _) implements Node, JSObject {
   /// > **Note:** Support for the `<applet>` element has been removed by all
   /// > browsers. Therefore, calling `document.applets` always
   /// > returns an empty collection.
-  external HTMLCollection get applets;
+  HTMLCollection get applets;
 
   /// The [Document] interface's read-only **`all`** property returns an
   /// [HTMLAllCollection] rooted at the document node.
@@ -2233,7 +2284,7 @@ extension type Document._(JSObject _) implements Node, JSObject {
   /// ```js
   /// const allElements = document.querySelectorAll("*");
   /// ```
-  external HTMLAllCollection get all;
+  HTMLAllCollection get all;
 
   /// The read-only
   /// **`pictureInPictureEnabled`** property of the
@@ -2247,11 +2298,11 @@ extension type Document._(JSObject _) implements Node, JSObject {
   /// Although this property is read-only, it will not throw if it is modified
   /// (even in
   /// strict mode); the setter is a no-operation and will be ignored.
-  external bool get pictureInPictureEnabled;
-  external EventHandler get onpointerlockchange;
-  external set onpointerlockchange(EventHandler value);
-  external EventHandler get onpointerlockerror;
-  external set onpointerlockerror(EventHandler value);
+  bool get pictureInPictureEnabled;
+  EventHandler get onpointerlockchange;
+  set onpointerlockchange(EventHandler value);
+  EventHandler get onpointerlockerror;
+  set onpointerlockerror(EventHandler value);
 
   /// The `timeline` readonly property of the [Document] interface represents
   /// the default timeline of the current document. This timeline is a special
@@ -2268,19 +2319,19 @@ extension type Document._(JSObject _) implements Node, JSObject {
   /// > **Note:** A document timeline that is associated with a non-active
   /// > document (a [Document] not associated with a [Window], `iframe`, or
   /// > `frame`) is also considered to be inactive.
-  external DocumentTimeline get timeline;
+  DocumentTimeline get timeline;
 
   /// The **`fonts`** property of the [Document] interface returns the
   /// [FontFaceSet] interface of the document.
   ///
   /// This feature is part of the
   /// [CSS Font Loading API](https://developer.mozilla.org/en-US/docs/Web/API/CSS_Font_Loading_API).
-  external FontFaceSet get fonts;
+  FontFaceSet get fonts;
 
   /// The **`styleSheets`** read-only property of the [Document] interface
   /// returns a [StyleSheetList] of [CSSStyleSheet] objects, for stylesheets
   /// explicitly linked into or embedded in a document.
-  external StyleSheetList get styleSheets;
+  StyleSheetList get styleSheets;
 
   /// The **`adoptedStyleSheets`** property of the [Document] interface is used
   /// for setting an array of constructed stylesheets to be used by the
@@ -2308,8 +2359,8 @@ extension type Document._(JSObject _) implements Node, JSObject {
   /// Only stylesheets created using the [`CSSStyleSheet()`
   /// constructor](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet/CSSStyleSheet)
   /// within the context of the current [Document] may be adopted.
-  external JSArray<CSSStyleSheet> get adoptedStyleSheets;
-  external set adoptedStyleSheets(JSArray<CSSStyleSheet> value);
+  JSArray<CSSStyleSheet> get adoptedStyleSheets;
+  set adoptedStyleSheets(JSArray<CSSStyleSheet> value);
 
   /// The
   /// **`Document.fullscreenElement`** read-only
@@ -2320,7 +2371,7 @@ extension type Document._(JSObject _) implements Node, JSObject {
   /// Although this property is read-only, it will not throw if it is modified
   /// (even in
   /// strict mode); the setter is a no-operation and it will be ignored.
-  external Element? get fullscreenElement;
+  Element? get fullscreenElement;
 
   /// The **`activeElement`** read-only property
   /// of the [Document] interface returns the [Element] within the DOM that
@@ -2347,7 +2398,7 @@ extension type Document._(JSObject _) implements Node, JSObject {
   /// > the same thing as selection (the currently highlighted part of the
   /// > document). You can
   /// > get the current selection using [window.getSelection].
-  external Element? get activeElement;
+  Element? get activeElement;
 
   /// The read-only **`pictureInPictureElement`** property of the [Document]
   /// interface returns the [Element] that is currently being
@@ -2357,14 +2408,14 @@ extension type Document._(JSObject _) implements Node, JSObject {
   /// Although this property is read-only, it will not throw if it is modified
   /// (even in
   /// strict mode); the setter is a no-operation and will be ignored.
-  external Element? get pictureInPictureElement;
+  Element? get pictureInPictureElement;
 
   /// The **`pointerLockElement`** read-only property of the [Document]
   /// interface provides the element set as the target for mouse events while
   /// the pointer is locked.
   /// It is `null` if lock is pending, pointer is unlocked, or the target is in
   /// another document.
-  external Element? get pointerLockElement;
+  Element? get pointerLockElement;
 
   /// The read-only **`children`** property returns a live [HTMLCollection]
   /// which contains all of the child [Element] of the document upon which it
@@ -2374,7 +2425,7 @@ extension type Document._(JSObject _) implements Node, JSObject {
   ///
   /// See [Element.children] for child elements of specific HTML elements within
   /// the document.
-  external HTMLCollection get children;
+  HTMLCollection get children;
 
   /// The **`Document.firstElementChild`** read-only property
   /// returns the document's first child [Element], or `null` if there
@@ -2385,7 +2436,7 @@ extension type Document._(JSObject _) implements Node, JSObject {
   ///
   /// See [Element.firstElementChild] for the first child element of specific
   /// elements within a document.
-  external Element? get firstElementChild;
+  Element? get firstElementChild;
 
   /// The **`Document.lastElementChild`** read-only property
   /// returns the document's last child [Element], or `null` if there
@@ -2396,202 +2447,202 @@ extension type Document._(JSObject _) implements Node, JSObject {
   ///
   /// See [Element.lastElementChild] for the last child element of specific
   /// elements within a document.
-  external Element? get lastElementChild;
+  Element? get lastElementChild;
 
   /// The **`Document.childElementCount`** read-only property
   /// returns the number of child elements of the document.
   ///
   /// To get the number of children of a specific element, see
   /// [Element.childElementCount].
-  external int get childElementCount;
-  external EventHandler get onabort;
-  external set onabort(EventHandler value);
-  external EventHandler get onauxclick;
-  external set onauxclick(EventHandler value);
-  external EventHandler get onbeforeinput;
-  external set onbeforeinput(EventHandler value);
-  external EventHandler get onbeforetoggle;
-  external set onbeforetoggle(EventHandler value);
-  external EventHandler get onblur;
-  external set onblur(EventHandler value);
-  external EventHandler get oncancel;
-  external set oncancel(EventHandler value);
-  external EventHandler get oncanplay;
-  external set oncanplay(EventHandler value);
-  external EventHandler get oncanplaythrough;
-  external set oncanplaythrough(EventHandler value);
-  external EventHandler get onchange;
-  external set onchange(EventHandler value);
-  external EventHandler get onclick;
-  external set onclick(EventHandler value);
-  external EventHandler get onclose;
-  external set onclose(EventHandler value);
-  external EventHandler get oncontextlost;
-  external set oncontextlost(EventHandler value);
-  external EventHandler get oncontextmenu;
-  external set oncontextmenu(EventHandler value);
-  external EventHandler get oncontextrestored;
-  external set oncontextrestored(EventHandler value);
-  external EventHandler get oncopy;
-  external set oncopy(EventHandler value);
-  external EventHandler get oncuechange;
-  external set oncuechange(EventHandler value);
-  external EventHandler get oncut;
-  external set oncut(EventHandler value);
-  external EventHandler get ondblclick;
-  external set ondblclick(EventHandler value);
-  external EventHandler get ondrag;
-  external set ondrag(EventHandler value);
-  external EventHandler get ondragend;
-  external set ondragend(EventHandler value);
-  external EventHandler get ondragenter;
-  external set ondragenter(EventHandler value);
-  external EventHandler get ondragleave;
-  external set ondragleave(EventHandler value);
-  external EventHandler get ondragover;
-  external set ondragover(EventHandler value);
-  external EventHandler get ondragstart;
-  external set ondragstart(EventHandler value);
-  external EventHandler get ondrop;
-  external set ondrop(EventHandler value);
-  external EventHandler get ondurationchange;
-  external set ondurationchange(EventHandler value);
-  external EventHandler get onemptied;
-  external set onemptied(EventHandler value);
-  external EventHandler get onended;
-  external set onended(EventHandler value);
-  external OnErrorEventHandler get onerror;
-  external set onerror(OnErrorEventHandler value);
-  external EventHandler get onfocus;
-  external set onfocus(EventHandler value);
-  external EventHandler get onformdata;
-  external set onformdata(EventHandler value);
-  external EventHandler get oninput;
-  external set oninput(EventHandler value);
-  external EventHandler get oninvalid;
-  external set oninvalid(EventHandler value);
-  external EventHandler get onkeydown;
-  external set onkeydown(EventHandler value);
-  external EventHandler get onkeypress;
-  external set onkeypress(EventHandler value);
-  external EventHandler get onkeyup;
-  external set onkeyup(EventHandler value);
-  external EventHandler get onload;
-  external set onload(EventHandler value);
-  external EventHandler get onloadeddata;
-  external set onloadeddata(EventHandler value);
-  external EventHandler get onloadedmetadata;
-  external set onloadedmetadata(EventHandler value);
-  external EventHandler get onloadstart;
-  external set onloadstart(EventHandler value);
-  external EventHandler get onmousedown;
-  external set onmousedown(EventHandler value);
-  external EventHandler get onmouseenter;
-  external set onmouseenter(EventHandler value);
-  external EventHandler get onmouseleave;
-  external set onmouseleave(EventHandler value);
-  external EventHandler get onmousemove;
-  external set onmousemove(EventHandler value);
-  external EventHandler get onmouseout;
-  external set onmouseout(EventHandler value);
-  external EventHandler get onmouseover;
-  external set onmouseover(EventHandler value);
-  external EventHandler get onmouseup;
-  external set onmouseup(EventHandler value);
-  external EventHandler get onpaste;
-  external set onpaste(EventHandler value);
-  external EventHandler get onpause;
-  external set onpause(EventHandler value);
-  external EventHandler get onplay;
-  external set onplay(EventHandler value);
-  external EventHandler get onplaying;
-  external set onplaying(EventHandler value);
-  external EventHandler get onprogress;
-  external set onprogress(EventHandler value);
-  external EventHandler get onratechange;
-  external set onratechange(EventHandler value);
-  external EventHandler get onreset;
-  external set onreset(EventHandler value);
-  external EventHandler get onresize;
-  external set onresize(EventHandler value);
-  external EventHandler get onscroll;
-  external set onscroll(EventHandler value);
-  external EventHandler get onscrollend;
-  external set onscrollend(EventHandler value);
-  external EventHandler get onsecuritypolicyviolation;
-  external set onsecuritypolicyviolation(EventHandler value);
-  external EventHandler get onseeked;
-  external set onseeked(EventHandler value);
-  external EventHandler get onseeking;
-  external set onseeking(EventHandler value);
-  external EventHandler get onselect;
-  external set onselect(EventHandler value);
-  external EventHandler get onslotchange;
-  external set onslotchange(EventHandler value);
-  external EventHandler get onstalled;
-  external set onstalled(EventHandler value);
-  external EventHandler get onsubmit;
-  external set onsubmit(EventHandler value);
-  external EventHandler get onsuspend;
-  external set onsuspend(EventHandler value);
-  external EventHandler get ontimeupdate;
-  external set ontimeupdate(EventHandler value);
-  external EventHandler get ontoggle;
-  external set ontoggle(EventHandler value);
-  external EventHandler get onvolumechange;
-  external set onvolumechange(EventHandler value);
-  external EventHandler get onwaiting;
-  external set onwaiting(EventHandler value);
-  external EventHandler get onwheel;
-  external set onwheel(EventHandler value);
-  external EventHandler get onanimationstart;
-  external set onanimationstart(EventHandler value);
-  external EventHandler get onanimationiteration;
-  external set onanimationiteration(EventHandler value);
-  external EventHandler get onanimationend;
-  external set onanimationend(EventHandler value);
-  external EventHandler get onanimationcancel;
-  external set onanimationcancel(EventHandler value);
-  external EventHandler get ontransitionrun;
-  external set ontransitionrun(EventHandler value);
-  external EventHandler get ontransitionstart;
-  external set ontransitionstart(EventHandler value);
-  external EventHandler get ontransitionend;
-  external set ontransitionend(EventHandler value);
-  external EventHandler get ontransitioncancel;
-  external set ontransitioncancel(EventHandler value);
-  external EventHandler get onpointerover;
-  external set onpointerover(EventHandler value);
-  external EventHandler get onpointerenter;
-  external set onpointerenter(EventHandler value);
-  external EventHandler get onpointerdown;
-  external set onpointerdown(EventHandler value);
-  external EventHandler get onpointermove;
-  external set onpointermove(EventHandler value);
-  external EventHandler get onpointerup;
-  external set onpointerup(EventHandler value);
-  external EventHandler get onpointercancel;
-  external set onpointercancel(EventHandler value);
-  external EventHandler get onpointerout;
-  external set onpointerout(EventHandler value);
-  external EventHandler get onpointerleave;
-  external set onpointerleave(EventHandler value);
-  external EventHandler get ongotpointercapture;
-  external set ongotpointercapture(EventHandler value);
-  external EventHandler get onlostpointercapture;
-  external set onlostpointercapture(EventHandler value);
-  external EventHandler get onselectstart;
-  external set onselectstart(EventHandler value);
-  external EventHandler get onselectionchange;
-  external set onselectionchange(EventHandler value);
-  external EventHandler get ontouchstart;
-  external set ontouchstart(EventHandler value);
-  external EventHandler get ontouchend;
-  external set ontouchend(EventHandler value);
-  external EventHandler get ontouchmove;
-  external set ontouchmove(EventHandler value);
-  external EventHandler get ontouchcancel;
-  external set ontouchcancel(EventHandler value);
+  int get childElementCount;
+  EventHandler get onabort;
+  set onabort(EventHandler value);
+  EventHandler get onauxclick;
+  set onauxclick(EventHandler value);
+  EventHandler get onbeforeinput;
+  set onbeforeinput(EventHandler value);
+  EventHandler get onbeforetoggle;
+  set onbeforetoggle(EventHandler value);
+  EventHandler get onblur;
+  set onblur(EventHandler value);
+  EventHandler get oncancel;
+  set oncancel(EventHandler value);
+  EventHandler get oncanplay;
+  set oncanplay(EventHandler value);
+  EventHandler get oncanplaythrough;
+  set oncanplaythrough(EventHandler value);
+  EventHandler get onchange;
+  set onchange(EventHandler value);
+  EventHandler get onclick;
+  set onclick(EventHandler value);
+  EventHandler get onclose;
+  set onclose(EventHandler value);
+  EventHandler get oncontextlost;
+  set oncontextlost(EventHandler value);
+  EventHandler get oncontextmenu;
+  set oncontextmenu(EventHandler value);
+  EventHandler get oncontextrestored;
+  set oncontextrestored(EventHandler value);
+  EventHandler get oncopy;
+  set oncopy(EventHandler value);
+  EventHandler get oncuechange;
+  set oncuechange(EventHandler value);
+  EventHandler get oncut;
+  set oncut(EventHandler value);
+  EventHandler get ondblclick;
+  set ondblclick(EventHandler value);
+  EventHandler get ondrag;
+  set ondrag(EventHandler value);
+  EventHandler get ondragend;
+  set ondragend(EventHandler value);
+  EventHandler get ondragenter;
+  set ondragenter(EventHandler value);
+  EventHandler get ondragleave;
+  set ondragleave(EventHandler value);
+  EventHandler get ondragover;
+  set ondragover(EventHandler value);
+  EventHandler get ondragstart;
+  set ondragstart(EventHandler value);
+  EventHandler get ondrop;
+  set ondrop(EventHandler value);
+  EventHandler get ondurationchange;
+  set ondurationchange(EventHandler value);
+  EventHandler get onemptied;
+  set onemptied(EventHandler value);
+  EventHandler get onended;
+  set onended(EventHandler value);
+  OnErrorEventHandler get onerror;
+  set onerror(OnErrorEventHandler value);
+  EventHandler get onfocus;
+  set onfocus(EventHandler value);
+  EventHandler get onformdata;
+  set onformdata(EventHandler value);
+  EventHandler get oninput;
+  set oninput(EventHandler value);
+  EventHandler get oninvalid;
+  set oninvalid(EventHandler value);
+  EventHandler get onkeydown;
+  set onkeydown(EventHandler value);
+  EventHandler get onkeypress;
+  set onkeypress(EventHandler value);
+  EventHandler get onkeyup;
+  set onkeyup(EventHandler value);
+  EventHandler get onload;
+  set onload(EventHandler value);
+  EventHandler get onloadeddata;
+  set onloadeddata(EventHandler value);
+  EventHandler get onloadedmetadata;
+  set onloadedmetadata(EventHandler value);
+  EventHandler get onloadstart;
+  set onloadstart(EventHandler value);
+  EventHandler get onmousedown;
+  set onmousedown(EventHandler value);
+  EventHandler get onmouseenter;
+  set onmouseenter(EventHandler value);
+  EventHandler get onmouseleave;
+  set onmouseleave(EventHandler value);
+  EventHandler get onmousemove;
+  set onmousemove(EventHandler value);
+  EventHandler get onmouseout;
+  set onmouseout(EventHandler value);
+  EventHandler get onmouseover;
+  set onmouseover(EventHandler value);
+  EventHandler get onmouseup;
+  set onmouseup(EventHandler value);
+  EventHandler get onpaste;
+  set onpaste(EventHandler value);
+  EventHandler get onpause;
+  set onpause(EventHandler value);
+  EventHandler get onplay;
+  set onplay(EventHandler value);
+  EventHandler get onplaying;
+  set onplaying(EventHandler value);
+  EventHandler get onprogress;
+  set onprogress(EventHandler value);
+  EventHandler get onratechange;
+  set onratechange(EventHandler value);
+  EventHandler get onreset;
+  set onreset(EventHandler value);
+  EventHandler get onresize;
+  set onresize(EventHandler value);
+  EventHandler get onscroll;
+  set onscroll(EventHandler value);
+  EventHandler get onscrollend;
+  set onscrollend(EventHandler value);
+  EventHandler get onsecuritypolicyviolation;
+  set onsecuritypolicyviolation(EventHandler value);
+  EventHandler get onseeked;
+  set onseeked(EventHandler value);
+  EventHandler get onseeking;
+  set onseeking(EventHandler value);
+  EventHandler get onselect;
+  set onselect(EventHandler value);
+  EventHandler get onslotchange;
+  set onslotchange(EventHandler value);
+  EventHandler get onstalled;
+  set onstalled(EventHandler value);
+  EventHandler get onsubmit;
+  set onsubmit(EventHandler value);
+  EventHandler get onsuspend;
+  set onsuspend(EventHandler value);
+  EventHandler get ontimeupdate;
+  set ontimeupdate(EventHandler value);
+  EventHandler get ontoggle;
+  set ontoggle(EventHandler value);
+  EventHandler get onvolumechange;
+  set onvolumechange(EventHandler value);
+  EventHandler get onwaiting;
+  set onwaiting(EventHandler value);
+  EventHandler get onwheel;
+  set onwheel(EventHandler value);
+  EventHandler get onanimationstart;
+  set onanimationstart(EventHandler value);
+  EventHandler get onanimationiteration;
+  set onanimationiteration(EventHandler value);
+  EventHandler get onanimationend;
+  set onanimationend(EventHandler value);
+  EventHandler get onanimationcancel;
+  set onanimationcancel(EventHandler value);
+  EventHandler get ontransitionrun;
+  set ontransitionrun(EventHandler value);
+  EventHandler get ontransitionstart;
+  set ontransitionstart(EventHandler value);
+  EventHandler get ontransitionend;
+  set ontransitionend(EventHandler value);
+  EventHandler get ontransitioncancel;
+  set ontransitioncancel(EventHandler value);
+  EventHandler get onpointerover;
+  set onpointerover(EventHandler value);
+  EventHandler get onpointerenter;
+  set onpointerenter(EventHandler value);
+  EventHandler get onpointerdown;
+  set onpointerdown(EventHandler value);
+  EventHandler get onpointermove;
+  set onpointermove(EventHandler value);
+  EventHandler get onpointerup;
+  set onpointerup(EventHandler value);
+  EventHandler get onpointercancel;
+  set onpointercancel(EventHandler value);
+  EventHandler get onpointerout;
+  set onpointerout(EventHandler value);
+  EventHandler get onpointerleave;
+  set onpointerleave(EventHandler value);
+  EventHandler get ongotpointercapture;
+  set ongotpointercapture(EventHandler value);
+  EventHandler get onlostpointercapture;
+  set onlostpointercapture(EventHandler value);
+  EventHandler get onselectstart;
+  set onselectstart(EventHandler value);
+  EventHandler get onselectionchange;
+  set onselectionchange(EventHandler value);
+  EventHandler get ontouchstart;
+  set ontouchstart(EventHandler value);
+  EventHandler get ontouchend;
+  set ontouchend(EventHandler value);
+  EventHandler get ontouchmove;
+  set ontouchmove(EventHandler value);
+  EventHandler get ontouchcancel;
+  set ontouchcancel(EventHandler value);
 }
 
 /// The **XMLDocument** interface represents an XML document. It inherits from
@@ -2603,14 +2654,16 @@ extension type Document._(JSObject _) implements Node, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/XMLDocument).
-extension type XMLDocument._(JSObject _) implements Document, JSObject {}
-extension type ElementCreationOptions._(JSObject _) implements JSObject {
-  external factory ElementCreationOptions({String is_});
+abstract class XMLDocument implements Document, JSObject {}
 
-  @JS('is')
-  external String get is_;
-  @JS('is')
-  external set is_(String value);
+abstract class ElementCreationOptions implements JSObject {
+  String get is_ {
+    unsupportedPlatformError();
+  }
+
+  set is_(String value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`DOMImplementation`** interface represents an object providing methods
@@ -2621,13 +2674,13 @@ extension type ElementCreationOptions._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/DOMImplementation).
-extension type DOMImplementation._(JSObject _) implements JSObject {
+abstract class DOMImplementation implements JSObject {
   /// The **`DOMImplementation.createDocumentType()`** method returns
   /// a [DocumentType] object which can either be used with
   /// [DOMImplementation.createDocument] upon document creation or can be put
   /// into the document via methods like [Node.insertBefore] or
   /// [Node.replaceChild].
-  external DocumentType createDocumentType(
+  DocumentType createDocumentType(
     String qualifiedName,
     String publicId,
     String systemId,
@@ -2635,7 +2688,7 @@ extension type DOMImplementation._(JSObject _) implements JSObject {
 
   /// The **`DOMImplementation.createDocument()`** method creates and
   /// returns an [XMLDocument].
-  external XMLDocument createDocument(
+  XMLDocument createDocument(
     String? namespace,
     String qualifiedName, [
     DocumentType? doctype,
@@ -2644,7 +2697,7 @@ extension type DOMImplementation._(JSObject _) implements JSObject {
   /// The
   /// **`DOMImplementation.createHTMLDocument()`** method creates a
   /// new HTML [Document].
-  external Document createHTMLDocument([String title]);
+  Document createHTMLDocument([String title]);
 
   /// The
   /// **`DOMImplementation.hasFeature()`** method returns a
@@ -2656,7 +2709,7 @@ extension type DOMImplementation._(JSObject _) implements JSObject {
   /// The latest version of the spec settled to force this method to always
   /// return
   /// `true`, where the functionality was accurate and in use.
-  external bool hasFeature();
+  bool hasFeature();
 }
 
 /// The **`DocumentType`** interface represents a [Node] containing a doctype.
@@ -2665,25 +2718,25 @@ extension type DOMImplementation._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/DocumentType).
-extension type DocumentType._(JSObject _) implements Node, JSObject {
+abstract class DocumentType implements Node, JSObject {
   /// The **`DocumentType.before()`** method inserts a set of
   /// [Node] objects or strings in the children list of the
   /// `DocumentType`'s parent, just before the `DocumentType`.
   /// Strings are inserted as equivalent [Text] nodes.
-  external void before(JSAny nodes);
+  void before(JSAny nodes);
 
   /// The **`DocumentType.after()`** method inserts a set of
   /// [Node] objects or strings in the children list of the
   /// `DocumentType`'s parent, just after the `DocumentType`.
   /// Strings are inserted as equivalent [Text] nodes.
-  external void after(JSAny nodes);
+  void after(JSAny nodes);
 
   /// The **`DocumentType.replaceWith()`** method replaces the document type
   /// with a set of given nodes.
-  external void replaceWith(JSAny nodes);
+  void replaceWith(JSAny nodes);
 
   /// The **`DocumentType.remove()`** method removes a document's `doctype`.
-  external void remove();
+  void remove();
 
   /// The read-only **`name`** property of the [DocumentType] returns the type
   /// of the document.
@@ -2693,7 +2746,7 @@ extension type DocumentType._(JSObject _) implements Node, JSObject {
   ///
   /// For HTML documents, browsers always set it up to `html`, whatever the
   /// actual `DOCTYPE` in the source code is.
-  external String get name;
+  String get name;
 
   /// The read-only **`publicId`** property of the [DocumentType] returns a
   /// formal identifier of the document.
@@ -2704,7 +2757,7 @@ extension type DocumentType._(JSObject _) implements Node, JSObject {
   /// For HTML documents, browsers always set it up to `html`, whatever the
   /// actual `DOCTYPE` in the source code is. For SVG documents, for example, it
   /// can be `"-//W3C//DTD SVG 1.1//EN"`.
-  external String get publicId;
+  String get publicId;
 
   /// The read-only **`systemId`** property of the [DocumentType] returns the
   /// URL of the associated DTD.
@@ -2715,7 +2768,7 @@ extension type DocumentType._(JSObject _) implements Node, JSObject {
   /// For HTML documents, browsers always set it up to `html`, whatever the
   /// actual `DOCTYPE` in the source code is. For SVG documents, for example, it
   /// can be `"http://www.w3.org/2000/svg"`.
-  external String get systemId;
+  String get systemId;
 }
 
 /// The **`DocumentFragment`** interface represents a minimal document object
@@ -2731,9 +2784,7 @@ extension type DocumentType._(JSObject _) implements Node, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment).
-extension type DocumentFragment._(JSObject _) implements Node, JSObject {
-  external factory DocumentFragment();
-
+abstract class DocumentFragment implements Node, JSObject {
   /// The **`getElementById()`** method of the [DocumentFragment] returns an
   /// [Element] object representing the element whose [Element.id] property
   /// matches the specified string. Since element IDs are required to be unique
@@ -2746,7 +2797,7 @@ extension type DocumentFragment._(JSObject _) implements Node, JSObject {
   /// > **Note:** IDs should be unique inside a document fragment. If two or
   /// > more elements in a document fragment have the same ID, this method
   /// > returns the first element found.
-  external Element? getElementById(String elementId);
+  Element? getElementById(String elementId);
 
   /// The **`DocumentFragment.prepend()`** method
   /// inserts a set of [Node] objects or string objects before
@@ -2755,7 +2806,7 @@ extension type DocumentFragment._(JSObject _) implements Node, JSObject {
   ///
   /// This method prepends a child to a `DocumentFragment`. To prepend to an
   /// arbitrary element in the tree, see [Element.prepend].
-  external void prepend(JSAny nodes);
+  void prepend(JSAny nodes);
 
   /// The **`DocumentFragment.append()`** method
   /// inserts a set of [Node] objects or string objects after
@@ -2764,13 +2815,13 @@ extension type DocumentFragment._(JSObject _) implements Node, JSObject {
   ///
   /// This method appends a child to a `DocumentFragment`. To append to an
   /// arbitrary element in the tree, see [Element.append].
-  external void append(JSAny nodes);
+  void append(JSAny nodes);
 
   /// The **`DocumentFragment.replaceChildren()`** method replaces the
   /// existing children of a `DocumentFragment` with a specified new set of
   /// children. These
   /// can be string or [Node] objects.
-  external void replaceChildren(JSAny nodes);
+  void replaceChildren(JSAny nodes);
 
   /// The **`DocumentFragment.querySelector()`** method returns the
   /// first element, or `null` if no matches are found, within the
@@ -2783,7 +2834,7 @@ extension type DocumentFragment._(JSObject _) implements Node, JSObject {
   ///
   /// If the selectors specified in parameter are invalid a [DOMException] with
   /// a `SYNTAX_ERR` value is raised.
-  external Element? querySelector(String selectors);
+  Element? querySelector(String selectors);
 
   /// The **`DocumentFragment.querySelectorAll()`** method returns a
   /// [NodeList] of elements within the [DocumentFragment] (using
@@ -2793,29 +2844,29 @@ extension type DocumentFragment._(JSObject _) implements Node, JSObject {
   ///
   /// If the selectors specified in parameter are invalid a [DOMException] with
   /// a `SYNTAX_ERR` value is raised.
-  external NodeList querySelectorAll(String selectors);
+  NodeList querySelectorAll(String selectors);
 
   /// The read-only **`children`** property returns a live [HTMLCollection]
   /// which contains all of the child [Element] of the document fragment upon
   /// which it was called.
-  external HTMLCollection get children;
+  HTMLCollection get children;
 
   /// The **`DocumentFragment.firstElementChild`** read-only property
   /// returns the document fragment's first child [Element], or `null` if there
   /// are no child elements.
-  external Element? get firstElementChild;
+  Element? get firstElementChild;
 
   /// The **`DocumentFragment.lastElementChild`** read-only property
   /// returns the document fragment's last child [Element], or `null` if there
   /// are no child elements.
-  external Element? get lastElementChild;
+  Element? get lastElementChild;
 
   /// The **`DocumentFragment.childElementCount`** read-only property
   /// returns the number of child elements of a `DocumentFragment`.
   ///
   /// To get the number of children of a specific element, see
   /// [Element.childElementCount].
-  external int get childElementCount;
+  int get childElementCount;
 }
 
 /// The **`ShadowRoot`** interface of the Shadow DOM API is the root node of a
@@ -2829,7 +2880,7 @@ extension type DocumentFragment._(JSObject _) implements Node, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot).
-extension type ShadowRoot._(JSObject _) implements DocumentFragment, JSObject {
+abstract class ShadowRoot implements DocumentFragment, JSObject {
   /// The **`setHTMLUnsafe()`** method of the [ShadowRoot] interface is used to
   /// parse a string of HTML into a [DocumentFragment], which then replaces the
   /// element's subtree in the DOM.
@@ -2848,7 +2899,7 @@ extension type ShadowRoot._(JSObject _) implements DocumentFragment, JSObject {
   ///
   /// > **Note:** This method should be used instead of [ShadowRoot.innerHTML]
   /// > when a string of HTML may contain declarative shadow roots.
-  external void setHTMLUnsafe(JSAny html);
+  void setHTMLUnsafe(JSAny html);
 
   /// The **`getHTML()`** method of the [ShadowRoot] interface is used to
   /// serialize a shadow root's DOM to an HTML string.
@@ -2862,7 +2913,7 @@ extension type ShadowRoot._(JSObject _) implements DocumentFragment, JSObject {
   /// Without arguments, child nodes that are shadow roots are not serialized,
   /// and this method behaves in the same way as reading the value of
   /// [Element.innerHTML].
-  external String getHTML([GetHTMLOptions options]);
+  String getHTML([GetHTMLOptions options]);
 
   /// The **`getAnimations()`** method of the [ShadowRoot] interface
   /// returns an array of all [Animation] objects currently in effect whose
@@ -2871,7 +2922,7 @@ extension type ShadowRoot._(JSObject _) implements DocumentFragment, JSObject {
   /// [CSS Transitions](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_transitions),
   /// and
   /// [Web Animations](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API).
-  external JSArray<Animation> getAnimations();
+  JSArray<Animation> getAnimations();
 
   /// The **`mode`** read-only property of the [ShadowRoot] specifies its mode —
   /// either `open` or `closed`.
@@ -2889,7 +2940,7 @@ extension type ShadowRoot._(JSObject _) implements DocumentFragment, JSObject {
   /// attribute of the
   /// [`<template>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template)
   /// element when a shadow root is created declaratively.
-  external ShadowRootMode get mode;
+  ShadowRootMode get mode;
 
   /// The **`delegatesFocus`** read-only property of the [ShadowRoot] interface
   /// returns `true` if the shadow root delegates focus, and `false` otherwise.
@@ -2916,14 +2967,14 @@ extension type ShadowRoot._(JSObject _) implements DocumentFragment, JSObject {
   /// attribute of the
   /// [`<template>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template)
   /// element when a shadow root is created declaratively.
-  external bool get delegatesFocus;
+  bool get delegatesFocus;
 
   /// The read-only **`slotAssignment`** property of the [ShadowRoot] interface
   /// returns the _slot assignment mode_ for the shadow DOM tree. Nodes are
   /// either automatically assigned (`named`) or manually assigned (`manual`).
   /// The value of this property defined using the `slotAssignment` option when
   /// calling [Element.attachShadow].
-  external SlotAssignmentMode get slotAssignment;
+  SlotAssignmentMode get slotAssignment;
 
   /// The **`clonable`** read-only property of the [ShadowRoot] interface
   /// returns `true` if the shadow root is clonable, and `false` otherwise.
@@ -2937,7 +2988,7 @@ extension type ShadowRoot._(JSObject _) implements DocumentFragment, JSObject {
   /// [`shadowrootclonable`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template#shadowrootclonable)
   /// attribute of the `<template>` element that is being used to declaratively
   /// attach a shadow root.
-  external bool get clonable;
+  bool get clonable;
 
   /// The **`serializable`** read-only property of the [ShadowRoot] interface
   /// returns `true` if the shadow root is serializable.
@@ -2955,25 +3006,25 @@ extension type ShadowRoot._(JSObject _) implements DocumentFragment, JSObject {
   /// [`options.serializable`](/en-US/docs/Web/API/Element/attachShadow#serializable)
   /// parameter to `true` when using
   /// [`Element.attachShadow()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/attachShadow).
-  external bool get serializable;
+  bool get serializable;
 
   /// The **`host`** read-only property of
   /// the [ShadowRoot] returns a reference to the DOM element the
   /// `ShadowRoot` is attached to.
-  external Element get host;
-  external EventHandler get onslotchange;
-  external set onslotchange(EventHandler value);
+  Element get host;
+  EventHandler get onslotchange;
+  set onslotchange(EventHandler value);
 
   /// The **`innerHTML`** property of the [ShadowRoot]
   /// interface sets or returns a reference to the DOM tree inside the
   /// `ShadowRoot`.
-  external JSAny get innerHTML;
-  external set innerHTML(JSAny value);
+  JSAny get innerHTML;
+  set innerHTML(JSAny value);
 
   /// The **`styleSheets`** read-only property of the [ShadowRoot] interface
   /// returns a [StyleSheetList] of [CSSStyleSheet] objects, for stylesheets
   /// explicitly linked into or embedded in a shadow tree.
-  external StyleSheetList get styleSheets;
+  StyleSheetList get styleSheets;
 
   /// The **`adoptedStyleSheets`** property of the [ShadowRoot] interface sets
   /// an array of constructed stylesheets to be used by the shadow DOM subtree.
@@ -3000,31 +3051,31 @@ extension type ShadowRoot._(JSObject _) implements DocumentFragment, JSObject {
   /// constructor](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet/CSSStyleSheet),
   /// and from within the same parent [Document] as the shadow root, may be
   /// adopted.
-  external JSArray<CSSStyleSheet> get adoptedStyleSheets;
-  external set adoptedStyleSheets(JSArray<CSSStyleSheet> value);
+  JSArray<CSSStyleSheet> get adoptedStyleSheets;
+  set adoptedStyleSheets(JSArray<CSSStyleSheet> value);
 
   /// The **`fullscreenElement`** read-only property of the
   /// [ShadowRoot] interface returns the element within the shadow tree that is
   /// currently displayed in full screen.
-  external Element? get fullscreenElement;
+  Element? get fullscreenElement;
 
   /// The **`activeElement`** read-only property of the
   /// [ShadowRoot] interface returns the element within the shadow tree that has
   /// focus.
-  external Element? get activeElement;
+  Element? get activeElement;
 
   /// The **`pictureInPictureElement`** read-only property of the
   /// [ShadowRoot] interface returns the [Element] that is currently being
   /// presented in picture-in-picture mode in this shadow tree, or `null` if
   /// picture-in-picture mode is not currently in use.
-  external Element? get pictureInPictureElement;
+  Element? get pictureInPictureElement;
 
   /// The **`pointerLockElement`** read-only property of the [ShadowRoot]
   /// interface provides the element set as the target for mouse events while
   /// the pointer is locked.
   /// It is `null` if lock is pending, pointer is unlocked, or the target is in
   /// another tree.
-  external Element? get pointerLockElement;
+  Element? get pointerLockElement;
 }
 
 /// **`Element`** is the most general base class from which all element objects
@@ -3044,12 +3095,12 @@ extension type ShadowRoot._(JSObject _) implements DocumentFragment, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Element).
-extension type Element._(JSObject _) implements Node, JSObject {
+abstract class Element implements Node, JSObject {
   /// The **`hasAttributes()`** method of the [Element]
   /// interface returns a boolean value indicating whether the current element
   /// has any
   /// attributes or not.
-  external bool hasAttributes();
+  bool hasAttributes();
 
   /// The **`getAttributeNames()`** method of the
   /// [Element] interface returns the attribute names of the element as an
@@ -3066,7 +3117,7 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// by a colon, followed by the attribute name (for example,
   /// **`xlink:href`**), while any attributes which have no namespace prefix
   /// have their names returned as-is (for example, **`href`**).
-  external JSArray<JSString> getAttributeNames();
+  JSArray<JSString> getAttributeNames();
 
   /// The **`getAttribute()`** method of the
   /// [Element] interface returns the value of a specified attribute on the
@@ -3076,7 +3127,7 @@ extension type Element._(JSObject _) implements Node, JSObject {
   ///
   /// If you need to inspect the [Attr] node's properties, you can use the
   /// [Element.getAttributeNode] method instead.
-  external String? getAttribute(String qualifiedName);
+  String? getAttribute(String qualifiedName);
 
   /// The **`getAttributeNS()`** method of the [Element]
   /// interface returns the string value of the attribute with the specified
@@ -3089,7 +3140,7 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// If you are working with HTML documents and you don't need to specify the
   /// requested attribute as being part of a specific namespace, use the
   /// [Element.getAttribute] method instead.
-  external String? getAttributeNS(
+  String? getAttributeNS(
     String? namespace,
     String localName,
   );
@@ -3105,7 +3156,7 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// If you need to work with the [Attr] node (such as cloning from another
   /// element) before adding it, you can use the [Element.setAttributeNode]
   /// method instead.
-  external void setAttribute(
+  void setAttribute(
     String qualifiedName,
     String value,
   );
@@ -3116,7 +3167,7 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// If you are working with HTML documents and you don't need to specify the
   /// requested attribute as being part of a specific namespace, use the
   /// [Element.setAttribute] method instead.
-  external void setAttributeNS(
+  void setAttributeNS(
     String? namespace,
     String qualifiedName,
     String value,
@@ -3125,7 +3176,7 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// The [Element] method
   /// **`removeAttribute()`** removes the attribute with the
   /// specified name from the element.
-  external void removeAttribute(String qualifiedName);
+  void removeAttribute(String qualifiedName);
 
   /// The **`removeAttributeNS()`** method of the
   /// [Element] interface removes the specified attribute with the specified
@@ -3134,7 +3185,7 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// If you are working with HTML and you don't need to specify the requested
   /// attribute as being part of a specific namespace, use the
   /// [Element.removeAttribute] method instead.
-  external void removeAttributeNS(
+  void removeAttributeNS(
     String? namespace,
     String localName,
   );
@@ -3142,7 +3193,7 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// The **`toggleAttribute()`** method of the
   /// [Element] interface toggles a Boolean attribute (removing it if it is
   /// present and adding it if it is not present) on the given element.
-  external bool toggleAttribute(
+  bool toggleAttribute(
     String qualifiedName, [
     bool force,
   ]);
@@ -3150,7 +3201,7 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// The **`Element.hasAttribute()`** method returns a
   /// **Boolean** value indicating whether the specified element has the
   /// specified attribute or not.
-  external bool hasAttribute(String qualifiedName);
+  bool hasAttribute(String qualifiedName);
 
   /// The **`hasAttributeNS()`** method of the [Element] interface returns a
   /// boolean value indicating whether the current element has the specified
@@ -3159,7 +3210,7 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// If you are working with HTML documents and you don't need to specify the
   /// requested attribute as being part of a specific namespace, use the
   /// [Element.hasAttribute] method instead.
-  external bool hasAttributeNS(
+  bool hasAttributeNS(
     String? namespace,
     String localName,
   );
@@ -3171,7 +3222,7 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// [instance properties](https://developer.mozilla.org/en-US/docs/Web/API/Attr#instance_properties).
   /// If you only need the attribute's value, you can use the
   /// [Element.getAttribute] method instead.
-  external Attr? getAttributeNode(String qualifiedName);
+  Attr? getAttributeNode(String qualifiedName);
 
   /// The **`getAttributeNodeNS()`** method of the [Element] interface returns
   /// the namespaced [Attr] node of an element.
@@ -3184,7 +3235,7 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// If you need the [Attr] node of an element in HTML documents and the
   /// attribute is not namespaced, use the [Element.getAttributeNode] method
   /// instead.
-  external Attr? getAttributeNodeNS(
+  Attr? getAttributeNodeNS(
     String? namespace,
     String localName,
   );
@@ -3195,7 +3246,7 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// If you don't need to work with the attribute node (such as cloning from
   /// another element) before adding it, you can use the [Element.setAttribute]
   /// method instead.
-  external Attr? setAttributeNode(Attr attr);
+  Attr? setAttributeNode(Attr attr);
 
   /// The **`setAttributeNodeNS()`** method of the [Element] interface adds a
   /// new namespaced [Attr] node to an element.
@@ -3207,29 +3258,29 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// If you are working with HTML documents and you don't need to specify the
   /// requested attribute as being part of a specific namespace, use the
   /// [Element.setAttribute] method instead.
-  external Attr? setAttributeNodeNS(Attr attr);
+  Attr? setAttributeNodeNS(Attr attr);
 
   /// The **`removeAttributeNode()`** method of the [Element] interface removes
   /// the specified [Attr] node from the element.
   ///
   /// If you don't need to inspect the attribute node before removing it, you
   /// can use the [Element.removeAttribute] method instead.
-  external Attr removeAttributeNode(Attr attr);
+  Attr removeAttributeNode(Attr attr);
 
   /// The **`Element.attachShadow()`** method attaches a shadow DOM tree to the
   /// specified element and returns a reference to its [ShadowRoot].
-  external ShadowRoot attachShadow(ShadowRootInit init);
+  ShadowRoot attachShadow(ShadowRootInit init);
 
   /// The **`closest()`** method of the [Element] interface traverses the
   /// element and its parents (heading toward the document root) until it finds
   /// a node that matches the specified
   /// [CSS selector](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors).
-  external Element? closest(String selectors);
+  Element? closest(String selectors);
 
   /// The **`matches()`** method of the [Element] interface tests whether the
   /// element would be selected by the specified
   /// [CSS selector](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors).
-  external bool matches(String selectors);
+  bool matches(String selectors);
 
   /// The
   /// **`Element.getElementsByTagName()`** method returns a live
@@ -3255,14 +3306,14 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// `Element.getElementsByTagName` is similar to
   /// [Document.getElementsByTagName], except that it only searches for
   /// elements that are descendants of the specified element.
-  external HTMLCollection getElementsByTagName(String qualifiedName);
+  HTMLCollection getElementsByTagName(String qualifiedName);
 
   /// The **`Element.getElementsByTagNameNS()`** method returns a
   /// live [HTMLCollection] of elements with the given tag name belonging to the
   /// given namespace. It is similar to [Document.getElementsByTagNameNS],
   /// except
   /// that its search is restricted to descendants of the specified element.
-  external HTMLCollection getElementsByTagNameNS(
+  HTMLCollection getElementsByTagNameNS(
     String? namespace,
     String localName,
   );
@@ -3275,12 +3326,12 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// The method [Document.getElementsByClassName]
   /// on the [Document] interface works essentially the same way, except it acts
   /// on the entire document, starting at the document root.
-  external HTMLCollection getElementsByClassName(String classNames);
+  HTMLCollection getElementsByClassName(String classNames);
 
   /// The **`insertAdjacentElement()`** method of the
   /// [Element] interface inserts a given element node at a given position
   /// relative to the element it is invoked upon.
-  external Element? insertAdjacentElement(
+  Element? insertAdjacentElement(
     String where,
     Element element,
   );
@@ -3288,7 +3339,7 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// The **`insertAdjacentText()`** method of the [Element] interface, given a
   /// relative position and a string, inserts a new text node at the given
   /// position relative to the element it is called from.
-  external void insertAdjacentText(
+  void insertAdjacentText(
     String where,
     String data,
   );
@@ -3298,7 +3349,7 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// interface which provides a read-only representation of a CSS declaration
   /// block that is
   /// an alternative to [CSSStyleDeclaration].
-  external StylePropertyMapReadOnly computedStyleMap();
+  StylePropertyMapReadOnly computedStyleMap();
 
   /// The **`getClientRects()`** method of the [Element]
   /// interface returns a collection of [DOMRect] objects that indicate the
@@ -3310,14 +3361,14 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// [inline-level element](https://developer.mozilla.org/en-US/docs/Glossary/Inline-level_content)
   /// (such as a multiline
   /// `span` element, by default) has a border box around each line.
-  external DOMRectList getClientRects();
+  DOMRectList getClientRects();
 
   /// The **`Element.getBoundingClientRect()`** method returns a
   /// [DOMRect] object providing information about the size of an element and
   /// its
   /// position relative to the
   /// [viewport](https://developer.mozilla.org/en-US/docs/Glossary/Viewport).
-  external DOMRect getBoundingClientRect();
+  DOMRect getBoundingClientRect();
 
   /// The **`checkVisibility()`** method of the [Element] interface checks
   /// whether the element is visible.
@@ -3341,19 +3392,19 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// property makes it invisible, or if the element  property has a value of
   /// [`auto`](https://developer.mozilla.org/en-US/docs/Web/CSS/content-visibility#auto)
   /// and its rendering is currently being skipped.
-  external bool checkVisibility([CheckVisibilityOptions options]);
+  bool checkVisibility([CheckVisibilityOptions options]);
 
   /// The [Element] interface's
   /// **`scrollIntoView()`** method scrolls the element's ancestor
   /// containers such that the element on which `scrollIntoView()` is called is
   /// visible to the user.
-  external void scrollIntoView([JSAny arg]);
+  void scrollIntoView([JSAny arg]);
 
   /// The **`scroll()`** method of the [Element]
   /// interface scrolls the element to a particular set of coordinates inside a
   /// given
   /// element.
-  external void scroll([
+  void scroll([
     JSAny optionsOrX,
     num y,
   ]);
@@ -3361,14 +3412,14 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// The **`scrollTo()`** method of the [Element]
   /// interface scrolls to a particular set of coordinates inside a given
   /// element.
-  external void scrollTo([
+  void scrollTo([
     JSAny optionsOrX,
     num y,
   ]);
 
   /// The **`scrollBy()`** method of the [Element]
   /// interface scrolls an element by the given amount.
-  external void scrollBy([
+  void scrollBy([
     JSAny optionsOrX,
     num y,
   ]);
@@ -3389,7 +3440,7 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// element has been
   /// detached from the original document, then the document receives these
   /// events instead.
-  external JSPromise<JSAny?> requestFullscreen([FullscreenOptions options]);
+  JSPromise<JSAny?> requestFullscreen([FullscreenOptions options]);
 
   /// The **`setHTMLUnsafe()`** method of the [Element] interface is used to
   /// parse a string of HTML into a [DocumentFragment], which then replaces the
@@ -3409,7 +3460,7 @@ extension type Element._(JSObject _) implements Node, JSObject {
   ///
   /// > **Note:** This method should be used instead of [Element.innerHTML] when
   /// > a string of HTML may contain declarative shadow roots.
-  external void setHTMLUnsafe(JSAny html);
+  void setHTMLUnsafe(JSAny html);
 
   /// The **`getHTML()`** method of the [Element] interface is used to serialize
   /// an element's DOM to an HTML string.
@@ -3423,12 +3474,12 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// Without arguments, child nodes that are shadow roots are not serialized,
   /// and this method behaves in the same way as reading the value of
   /// [Element.innerHTML].
-  external String getHTML([GetHTMLOptions options]);
+  String getHTML([GetHTMLOptions options]);
 
   /// The **`insertAdjacentHTML()`** method of the
   /// [Element] interface parses the specified text as HTML or XML and inserts
   /// the resulting nodes into the DOM tree at a specified position.
-  external void insertAdjacentHTML(
+  void insertAdjacentHTML(
     String position,
     JSAny string,
   );
@@ -3470,7 +3521,7 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// that an element continues to receive pointer events even if the pointer
   /// device's contact
   /// moves off the element (such as by scrolling or panning).
-  external void setPointerCapture(int pointerId);
+  void setPointerCapture(int pointerId);
 
   /// The **`releasePointerCapture()`** method of the
   /// [Element] interface releases (stops) _pointer capture_ that was
@@ -3479,12 +3530,12 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// See the [Element.setPointerCapture] method
   /// for a description of _pointer capture_ and how to set it for a particular
   /// element.
-  external void releasePointerCapture(int pointerId);
+  void releasePointerCapture(int pointerId);
 
   /// The **`hasPointerCapture()`** method of the
   /// [Element] interface checks whether the element on which it is invoked has
   /// pointer capture for the pointer identified by the given pointer ID.
-  external bool hasPointerCapture(int pointerId);
+  bool hasPointerCapture(int pointerId);
 
   /// The **`requestPointerLock()`** method of the [Element] interface lets you
   /// asynchronously ask for the pointer to be locked on the given element.
@@ -3503,13 +3554,13 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// > `Promise`. However, note that this version is not yet a standard and is
   /// > not implemented by all browsers. See
   /// > [Browser compatibility](#browser_compatibility) for more information.
-  external JSPromise<JSAny?> requestPointerLock([PointerLockOptions options]);
+  JSPromise<JSAny?> requestPointerLock([PointerLockOptions options]);
 
   /// The **`Element.prepend()`** method inserts a set of
   /// [Node] objects or string objects before the first child
   /// of the [Element]. String objects are inserted as
   /// equivalent [Text] nodes.
-  external void prepend(JSAny nodes);
+  void prepend(JSAny nodes);
 
   /// The **`Element.append()`** method
   /// inserts a set of [Node] objects or string objects after
@@ -3525,46 +3576,46 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// `Node.appendChild()` returns the appended [Node] object.
   /// - `Element.append()` can append several nodes and strings, whereas
   /// `Node.appendChild()` can only append one node.
-  external void append(JSAny nodes);
+  void append(JSAny nodes);
 
   /// The **`Element.replaceChildren()`** method replaces the
   /// existing children of a [Node] with a specified new set of children. These
   /// can be string or [Node] objects.
-  external void replaceChildren(JSAny nodes);
+  void replaceChildren(JSAny nodes);
 
   /// The **`querySelector()`** method of the [Element]
   /// interface returns the first element that is a descendant of the element on
   /// which it is
   /// invoked that matches the specified group of selectors.
-  external Element? querySelector(String selectors);
+  Element? querySelector(String selectors);
 
   /// The [Element] method **`querySelectorAll()`**
   /// returns a static (not live) [NodeList] representing a list of elements
   /// matching the specified group of selectors which are descendants of the
   /// element on which
   /// the method was called.
-  external NodeList querySelectorAll(String selectors);
+  NodeList querySelectorAll(String selectors);
 
   /// The **`Element.before()`** method inserts a set of
   /// [Node] or string objects in the children list of this
   /// `Element`'s parent, just before this `Element`.
   /// String objects are inserted as equivalent [Text] nodes.
-  external void before(JSAny nodes);
+  void before(JSAny nodes);
 
   /// The **`Element.after()`** method inserts a set of
   /// [Node] or string objects in the children list of the
   /// `Element`'s parent, just after the `Element`.
   /// String objects are inserted as equivalent [Text] nodes.
-  external void after(JSAny nodes);
+  void after(JSAny nodes);
 
   /// The **`Element.replaceWith()`** method replaces this
   /// `Element` in the children list of its parent with a set of
   /// [Node] or string objects. String
   /// objects are inserted as equivalent [Text] nodes.
-  external void replaceWith(JSAny nodes);
+  void replaceWith(JSAny nodes);
 
   /// The **`Element.remove()`** method removes the element from the DOM.
-  external void remove();
+  void remove();
 
   /// The [Element] interface's **`animate()`** method
   /// is a shortcut method which creates a new [Animation], applies it to the
@@ -3574,7 +3625,7 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// > **Note:** Elements can have multiple animations applied to them. You can
   /// > get a list of the
   /// > animations that affect an element by calling [Element.getAnimations].
-  external Animation animate(
+  Animation animate(
     JSObject? keyframes, [
     JSAny options,
   ]);
@@ -3590,20 +3641,20 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// > [CSS Transitions](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_transitions),
   /// > and
   /// > [Web Animations](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API).
-  external JSArray<Animation> getAnimations([GetAnimationsOptions options]);
+  JSArray<Animation> getAnimations([GetAnimationsOptions options]);
 
   /// The **`Element.namespaceURI`** read-only property returns the namespace
   /// URI of the element, or `null` if the element is not in a namespace.
-  external String? get namespaceURI;
+  String? get namespaceURI;
 
   /// The **`Element.prefix`** read-only property returns the
   /// namespace prefix of the specified element, or `null` if no prefix is
   /// specified.
-  external String? get prefix;
+  String? get prefix;
 
   /// The **`Element.localName`** read-only property returns the
   /// local part of the qualified name of an element.
-  external String get localName;
+  String get localName;
 
   /// The **`tagName`** read-only property
   /// of the [Element] interface returns the tag name of the element on which
@@ -3615,7 +3666,7 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// [Element.localName] property
   /// to access the Element's local name — which for the case in the example is
   /// `img` (lowercase) .
-  external String get tagName;
+  String get tagName;
 
   /// The **`id`** property of the [Element] interface
   /// represents the element's identifier, reflecting the
@@ -3634,15 +3685,15 @@ extension type Element._(JSObject _) implements Node, JSObject {
   ///
   /// > **Note:** Identifiers are case-sensitive, but you should avoid creating
   /// > IDs that differ only in the capitalization.
-  external String get id;
-  external set id(String value);
+  String get id;
+  set id(String value);
 
   /// The **`className`** property of the
   /// [Element] interface gets and sets the value of the
   /// [`class` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/class)
   /// of the specified element.
-  external String get className;
-  external set className(String value);
+  String get className;
+  set className(String value);
 
   /// The **`Element.classList`** is a read-only property that
   /// returns a live [DOMTokenList] collection of the `class`
@@ -3652,7 +3703,7 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// Using `classList` is a convenient alternative to accessing an element's
   /// list
   /// of classes as a space-delimited string via [element.className].
-  external DOMTokenList get classList;
+  DOMTokenList get classList;
 
   /// The **`slot`** property of the [Element] interface
   /// returns the name of the shadow DOM slot the element is inserted in.
@@ -3662,8 +3713,8 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// that users can fill with their own markup (see
   /// [Using templates and slots](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_templates_and_slots)
   /// for more information).
-  external String get slot;
-  external set slot(String value);
+  String get slot;
+  set slot(String value);
 
   /// The **`Element.attributes`** property returns a live collection
   /// of all attribute nodes registered to the specified node. It is a
@@ -3672,34 +3723,34 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// more
   /// specific, `attributes` is a key/value pair of strings that represents any
   /// information regarding that attribute.
-  external NamedNodeMap get attributes;
+  NamedNodeMap get attributes;
 
   /// The `Element.shadowRoot` read-only property
   /// represents the shadow root hosted by the element.
   ///
   /// Use [Element.attachShadow] to add a shadow root to an existing element.
-  external ShadowRoot? get shadowRoot;
+  ShadowRoot? get shadowRoot;
 
   /// The **`part`** property of the [Element] interface
   /// represents the part identifier(s) of the element (i.e. set using the
   /// `part`
   /// attribute), returned as a [DOMTokenList]. These can be used to style parts
   /// of a shadow DOM, via the  pseudo-element.
-  external DOMTokenList get part;
+  DOMTokenList get part;
 
   /// The **`Element.scrollTop`** property gets or sets the number of pixels by
   /// which an element's content is scrolled from its top edge. This value is
   /// subpixel precise in modern browsers, meaning that it isn't necessarily a
   /// whole number.
-  external double get scrollTop;
-  external set scrollTop(num value);
+  double get scrollTop;
+  set scrollTop(num value);
 
   /// The **`Element.scrollLeft`** property gets or sets the number of pixels by
   /// which an element's content is scrolled from its left edge. This value is
   /// subpixel precise in modern browsers, meaning that it isn't necessarily a
   /// whole number.
-  external double get scrollLeft;
-  external set scrollLeft(num value);
+  double get scrollLeft;
+  set scrollLeft(num value);
 
   /// The **`Element.scrollWidth`** read-only property is a
   /// measurement of the width of an element's content, including content not
@@ -3720,7 +3771,7 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// > **Note:** This property will round the value to an integer. If you need
   /// > a fractional value,
   /// > use [element.getBoundingClientRect].
-  external int get scrollWidth;
+  int get scrollWidth;
 
   /// The **`Element.scrollHeight`** read-only property is a
   /// measurement of the height of an element's content, including content not
@@ -3747,7 +3798,7 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// > **Note:** This property will round the value to an integer. If you need
   /// > a fractional value, use
   /// > [Element.getBoundingClientRect].
-  external int get scrollHeight;
+  int get scrollHeight;
 
   /// The width of the top border of an element in pixels. It is a read-only,
   /// integer
@@ -3767,7 +3818,7 @@ extension type Element._(JSObject _) implements Node, JSObject {
   ///
   /// > **Note:** This property will round the value to an integer. If you
   /// > need a fractional value, use [element.getBoundingClientRect].
-  external int get clientTop;
+  int get clientTop;
 
   /// The width of the left border of an element in pixels. It includes the
   /// width of the
@@ -3783,7 +3834,7 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// > **Note:** When an element has
   /// > `display: inline`, `clientLeft` returns `0`
   /// > regardless of the element's border.
-  external int get clientLeft;
+  int get clientLeft;
 
   /// The **`Element.clientWidth`** property is zero for inline
   /// elements and elements with no CSS; otherwise, it's the inner width of an
@@ -3800,7 +3851,7 @@ extension type Element._(JSObject _) implements Node, JSObject {
   ///
   /// > **Note:** This property will round the value to an integer. If you need
   /// > a fractional value, use [element.getBoundingClientRect].
-  external int get clientWidth;
+  int get clientWidth;
 
   /// The **`Element.clientHeight`** read-only property is zero for
   /// elements with no CSS or inline layout boxes; otherwise, it's the inner
@@ -3820,11 +3871,11 @@ extension type Element._(JSObject _) implements Node, JSObject {
   ///
   /// > **Note:** This property will round the value to an integer. If you need
   /// > a fractional value, use [element.getBoundingClientRect].
-  external int get clientHeight;
-  external EventHandler get onfullscreenchange;
-  external set onfullscreenchange(EventHandler value);
-  external EventHandler get onfullscreenerror;
-  external set onfullscreenerror(EventHandler value);
+  int get clientHeight;
+  EventHandler get onfullscreenchange;
+  set onfullscreenchange(EventHandler value);
+  EventHandler get onfullscreenerror;
+  set onfullscreenerror(EventHandler value);
 
   /// The [Element] property **`innerHTML`** gets or sets the HTML or XML markup
   /// contained within the element.
@@ -3850,8 +3901,8 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// In order to set an element's contents from an HTML string that includes
   /// declarative shadow roots, you must use either [Element.setHTMLUnsafe] or
   /// [ShadowRoot.setHTMLUnsafe].
-  external JSAny get innerHTML;
-  external set innerHTML(JSAny value);
+  JSAny get innerHTML;
+  set innerHTML(JSAny value);
 
   /// The **`outerHTML`** attribute of the [Element]
   /// DOM interface gets the serialized HTML fragment describing the element
@@ -3864,8 +3915,8 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// to replace the
   /// contents of an element, use the [Element.innerHTML] property
   /// instead.
-  external JSAny get outerHTML;
-  external set outerHTML(JSAny value);
+  JSAny get outerHTML;
+  set outerHTML(JSAny value);
 
   /// The read-only **`children`** property returns a live [HTMLCollection]
   /// which contains all of the child [Element] of the element upon which it was
@@ -3874,7 +3925,7 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// `Element.children` includes only element nodes. To get all child nodes,
   /// including non-element nodes like text and comment nodes, use
   /// [Node.childNodes].
-  external HTMLCollection get children;
+  HTMLCollection get children;
 
   /// The **`Element.firstElementChild`** read-only property
   /// returns an element's first child [Element], or `null` if there
@@ -3883,7 +3934,7 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// `Element.firstElementChild` includes only element nodes.
   /// To get all child nodes, including non-element nodes like text and comment
   /// nodes, use [Node.firstChild].
-  external Element? get firstElementChild;
+  Element? get firstElementChild;
 
   /// The **`Element.lastElementChild`** read-only property
   /// returns an element's last child [Element], or `null` if there
@@ -3892,33 +3943,33 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// `Element.lastElementChild` includes only element nodes.
   /// To get all child nodes, including non-element nodes like text and comment
   /// nodes, use [Node.lastChild].
-  external Element? get lastElementChild;
+  Element? get lastElementChild;
 
   /// The **`Element.childElementCount`** read-only property
   /// returns the number of child elements of this element.
-  external int get childElementCount;
+  int get childElementCount;
 
   /// The **`Element.previousElementSibling`**
   /// read-only property returns the [Element] immediately prior to the
   /// specified
   /// one in its parent's children list, or `null` if the specified element is
   /// the first one in the list.
-  external Element? get previousElementSibling;
+  Element? get previousElementSibling;
 
   /// The **`Element.nextElementSibling`** read-only
   /// property returns the element immediately following the specified one in
   /// its parent's
   /// children list, or `null` if the specified element is the last one in the
   /// list.
-  external Element? get nextElementSibling;
+  Element? get nextElementSibling;
 
   /// The **`assignedSlot`** read-only
   /// property of the [Element] interface returns an
   /// [HTMLSlotElement] representing the `slot` element the
   /// node is inserted in.
-  external HTMLSlotElement? get assignedSlot;
-  external String? get role;
-  external set role(String? value);
+  HTMLSlotElement? get assignedSlot;
+  String? get role;
+  set role(String? value);
 
   /// The **`ariaAtomic`** property of the [Element] interface reflects the
   /// value of the
@@ -3928,8 +3979,8 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// notifications defined by the
   /// [`aria-relevant`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-relevant)
   /// attribute.
-  external String? get ariaAtomic;
-  external set ariaAtomic(String? value);
+  String? get ariaAtomic;
+  set ariaAtomic(String? value);
 
   /// The **`ariaAutoComplete`** property of the [Element] interface reflects
   /// the value of the
@@ -3938,8 +3989,8 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// one or more predictions of the user's intended value for a combobox,
   /// searchbox, or textbox and specifies how predictions would be presented if
   /// they were made.
-  external String? get ariaAutoComplete;
-  external set ariaAutoComplete(String? value);
+  String? get ariaAutoComplete;
+  set ariaAutoComplete(String? value);
 
   /// The **`ariaBrailleLabel`** property of the [Element] interface reflects
   /// the value of the
@@ -3952,8 +4003,8 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// The
   /// [`aria-braillelabel`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-braillelabel)
   /// contains additional information about when the property should be set.
-  external String? get ariaBrailleLabel;
-  external set ariaBrailleLabel(String? value);
+  String? get ariaBrailleLabel;
+  set ariaBrailleLabel(String? value);
 
   /// The **`ariaBrailleRoleDescription`** property of the [Element] interface
   /// reflects the value of the
@@ -3968,8 +4019,8 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// The
   /// [`aria-brailleroledescription`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-brailleroledescription)
   /// contains additional information about when the property should be set.
-  external String? get ariaBrailleRoleDescription;
-  external set ariaBrailleRoleDescription(String? value);
+  String? get ariaBrailleRoleDescription;
+  set ariaBrailleRoleDescription(String? value);
 
   /// The **`ariaBusy`** property of the [Element] interface reflects the value
   /// of the
@@ -3977,8 +4028,8 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// attribute, which indicates whether an element is being modified, as
   /// assistive technologies may want to wait until the modifications are
   /// complete before exposing them to the user.
-  external String? get ariaBusy;
-  external set ariaBusy(String? value);
+  String? get ariaBusy;
+  set ariaBusy(String? value);
 
   /// The **`ariaChecked`** property of the [Element] interface reflects the
   /// value of the
@@ -3989,48 +4040,48 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// > **Note:** Where possible use an HTML `input` element with
   /// > `type="checkbox"` as this element has built in semantics and does not
   /// > require ARIA attributes.
-  external String? get ariaChecked;
-  external set ariaChecked(String? value);
+  String? get ariaChecked;
+  set ariaChecked(String? value);
 
   /// The **`ariaColCount`** property of the [Element] interface reflects the
   /// value of the
   /// [`aria-colcount`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-colcount)
   /// attribute, which defines the number of columns in a table, grid, or
   /// treegrid.
-  external String? get ariaColCount;
-  external set ariaColCount(String? value);
+  String? get ariaColCount;
+  set ariaColCount(String? value);
 
   /// The **`ariaColIndex`** property of the [Element] interface reflects the
   /// value of the
   /// [`aria-colindex`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-colindex)
   /// attribute, which defines an element's column index or position with
   /// respect to the total number of columns within a table, grid, or treegrid.
-  external String? get ariaColIndex;
-  external set ariaColIndex(String? value);
+  String? get ariaColIndex;
+  set ariaColIndex(String? value);
 
   /// The **`ariaColSpan`** property of the [Element] interface reflects the
   /// value of the
   /// [`aria-colspan`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-colspan)
   /// attribute, which defines the number of columns spanned by a cell or
   /// gridcell within a table, grid, or treegrid.
-  external String? get ariaColSpan;
-  external set ariaColSpan(String? value);
+  String? get ariaColSpan;
+  set ariaColSpan(String? value);
 
   /// The **`ariaCurrent`** property of the [Element] interface reflects the
   /// value of the
   /// [`aria-current`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
   /// attribute, which indicates the element that represents the current item
   /// within a container or set of related elements.
-  external String? get ariaCurrent;
-  external set ariaCurrent(String? value);
+  String? get ariaCurrent;
+  set ariaCurrent(String? value);
 
   /// The **`ariaDescription`** property of the [Element] interface reflects the
   /// value of the
   /// [`aria-description`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-description)
   /// attribute, which defines a string value that describes or annotates the
   /// current element.
-  external String? get ariaDescription;
-  external set ariaDescription(String? value);
+  String? get ariaDescription;
+  set ariaDescription(String? value);
 
   /// The **`ariaDisabled`** property of the [Element] interface reflects the
   /// value of the
@@ -4041,48 +4092,48 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// > **Note:** Where possible, use the `input` element with `type="button"`
   /// > or the `button` element — because those elements have built in semantics
   /// > and do not require ARIA attributes.
-  external String? get ariaDisabled;
-  external set ariaDisabled(String? value);
+  String? get ariaDisabled;
+  set ariaDisabled(String? value);
 
   /// The **`ariaExpanded`** property of the [Element] interface reflects the
   /// value of the
   /// [`aria-expanded`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
   /// attribute, which indicates whether a grouping element owned or controlled
   /// by this element is expanded or collapsed.
-  external String? get ariaExpanded;
-  external set ariaExpanded(String? value);
+  String? get ariaExpanded;
+  set ariaExpanded(String? value);
 
   /// The **`ariaHasPopup`** property of the [Element] interface reflects the
   /// value of the
   /// [`aria-haspopup`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-haspopup)
   /// attribute, which indicates the availability and type of interactive popup
   /// element, such as menu or dialog, that can be triggered by an element.
-  external String? get ariaHasPopup;
-  external set ariaHasPopup(String? value);
+  String? get ariaHasPopup;
+  set ariaHasPopup(String? value);
 
   /// The **`ariaHidden`** property of the [Element] interface reflects the
   /// value of the
   /// [`aria-hidden`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-hidden))
   /// attribute, which indicates whether the element is exposed to an
   /// accessibility API.
-  external String? get ariaHidden;
-  external set ariaHidden(String? value);
-  external String? get ariaInvalid;
-  external set ariaInvalid(String? value);
+  String? get ariaHidden;
+  set ariaHidden(String? value);
+  String? get ariaInvalid;
+  set ariaInvalid(String? value);
 
   /// The **`ariaKeyShortcuts`** property of the [Element] interface reflects
   /// the value of the `aria-keyshortcuts` attribute, which indicates keyboard
   /// shortcuts that an author has implemented to activate or give focus to an
   /// element.
-  external String? get ariaKeyShortcuts;
-  external set ariaKeyShortcuts(String? value);
+  String? get ariaKeyShortcuts;
+  set ariaKeyShortcuts(String? value);
 
   /// The **`ariaLabel`** property of the [Element] interface reflects the value
   /// of the
   /// [`aria-label`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label)
   /// attribute, which defines a string value that labels the current element.
-  external String? get ariaLabel;
-  external set ariaLabel(String? value);
+  String? get ariaLabel;
+  set ariaLabel(String? value);
 
   /// The **`ariaLevel`** property of the [Element] interface reflects the value
   /// of the `aria-level` attribute, which defines the hierarchical level of an
@@ -4090,8 +4141,8 @@ extension type Element._(JSObject _) implements Node, JSObject {
   ///
   /// > **Note:** Where possible use an HTML `h1` or other correct heading level
   /// > as these have built in semantics and do not require ARIA attributes.
-  external String? get ariaLevel;
-  external set ariaLevel(String? value);
+  String? get ariaLevel;
+  set ariaLevel(String? value);
 
   /// The **`ariaLive`** property of the [Element] interface reflects the value
   /// of the
@@ -4100,8 +4151,8 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// the types of updates the user agents, assistive technologies, and user can
   /// expect from the
   /// [live region](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions).
-  external String? get ariaLive;
-  external set ariaLive(String? value);
+  String? get ariaLive;
+  set ariaLive(String? value);
 
   /// The **`ariaModal`** property of the [Element] interface reflects the value
   /// of the `aria-modal` attribute, which indicates whether an element is modal
@@ -4109,8 +4160,8 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// `role="dialog"` replaces the technique of using aria-hidden on the
   /// background for informing assistive technologies that content outside a
   /// dialog is inert.
-  external String? get ariaModal;
-  external set ariaModal(String? value);
+  String? get ariaModal;
+  set ariaModal(String? value);
 
   /// The **`ariaMultiLine`** property of the [Element] interface reflects the
   /// value of the
@@ -4121,8 +4172,8 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// > **Note:** Where possible use an HTML `input` element with `type="text"`
   /// > or a `textarea` as these have built in semantics and do not require ARIA
   /// > attributes.
-  external String? get ariaMultiLine;
-  external set ariaMultiLine(String? value);
+  String? get ariaMultiLine;
+  set ariaMultiLine(String? value);
 
   /// The **`ariaMultiSelectable`** property of the [Element] interface reflects
   /// the value of the
@@ -4132,16 +4183,16 @@ extension type Element._(JSObject _) implements Node, JSObject {
   ///
   /// > **Note:** Where possible use an HTML `select` element as this has built
   /// > in semantics and does not require ARIA attributes.
-  external String? get ariaMultiSelectable;
-  external set ariaMultiSelectable(String? value);
+  String? get ariaMultiSelectable;
+  set ariaMultiSelectable(String? value);
 
   /// The **`ariaOrientation`** property of the [Element] interface reflects the
   /// value of the
   /// [`aria-orientation`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-orientation)
   /// attribute, which indicates whether the element's orientation is
   /// horizontal, vertical, or unknown/ambiguous.
-  external String? get ariaOrientation;
-  external set ariaOrientation(String? value);
+  String? get ariaOrientation;
+  set ariaOrientation(String? value);
 
   /// The **`ariaPlaceholder`** property of the [Element] interface reflects the
   /// value of the `aria-placeholder` attribute, which defines a short hint
@@ -4150,16 +4201,16 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// > **Note:** Where possible use an HTML `input` element with `type="text"`
   /// > or a `textarea` as these have built in semantics and do not require ARIA
   /// > attributes.
-  external String? get ariaPlaceholder;
-  external set ariaPlaceholder(String? value);
+  String? get ariaPlaceholder;
+  set ariaPlaceholder(String? value);
 
   /// The **`ariaPosInSet`** property of the [Element] interface reflects the
   /// value of the
   /// [`aria-posinset`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-posinset)
   /// attribute, which defines an element's number or position in the current
   /// set of listitems or treeitems.
-  external String? get ariaPosInSet;
-  external set ariaPosInSet(String? value);
+  String? get ariaPosInSet;
+  set ariaPosInSet(String? value);
 
   /// The **`ariaPressed`** property of the [Element] interface reflects the
   /// value of the
@@ -4169,8 +4220,8 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// > **Note:** Where possible use an HTML `input` element with
   /// > `type="button"` or the `button` element as these have built in semantics
   /// > and do not require ARIA attributes.
-  external String? get ariaPressed;
-  external set ariaPressed(String? value);
+  String? get ariaPressed;
+  set ariaPressed(String? value);
 
   /// The **`ariaReadOnly`** property of the [Element] interface reflects the
   /// value of the
@@ -4181,8 +4232,8 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// > **Note:** Where possible use an HTML `input` element with `type="text"`
   /// > or a `textarea` as these have built in semantics and do not require ARIA
   /// > attributes.
-  external String? get ariaReadOnly;
-  external set ariaReadOnly(String? value);
+  String? get ariaReadOnly;
+  set ariaReadOnly(String? value);
 
   /// The **`ariaRequired`** property of the [Element] interface reflects the
   /// value of the `aria-required` attribute, which indicates that user input is
@@ -4191,113 +4242,135 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// > **Note:** Where possible use an HTML `input` element with `type="text"`
   /// > or a `textarea` as these have built in semantics and do not require ARIA
   /// > attributes.
-  external String? get ariaRequired;
-  external set ariaRequired(String? value);
+  String? get ariaRequired;
+  set ariaRequired(String? value);
 
   /// The **`ariaRoleDescription`** property of the [Element] interface reflects
   /// the value of the
   /// [`aria-roledescription`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-roledescription)
   /// attribute, which defines a human-readable, author-localized description
   /// for the role of an element.
-  external String? get ariaRoleDescription;
-  external set ariaRoleDescription(String? value);
+  String? get ariaRoleDescription;
+  set ariaRoleDescription(String? value);
 
   /// The **`ariaRowCount`** property of the [Element] interface reflects the
   /// value of the
   /// [`aria-rowcount`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-rowcount)
   /// attribute, which defines the total number of rows in a table, grid, or
   /// treegrid.
-  external String? get ariaRowCount;
-  external set ariaRowCount(String? value);
+  String? get ariaRowCount;
+  set ariaRowCount(String? value);
 
   /// The **`ariaRowIndex`** property of the [Element] interface reflects the
   /// value of the
   /// [`aria-rowindex`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-rowindex)
   /// attribute, which defines an element's row index or position with respect
   /// to the total number of rows within a table, grid, or treegrid.
-  external String? get ariaRowIndex;
-  external set ariaRowIndex(String? value);
+  String? get ariaRowIndex;
+  set ariaRowIndex(String? value);
 
   /// The **`ariaRowSpan`** property of the [Element] interface reflects the
   /// value of the
   /// [`aria-rowspan`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-rowspan)
   /// attribute, which defines the number of rows spanned by a cell or gridcell
   /// within a table, grid, or treegrid.
-  external String? get ariaRowSpan;
-  external set ariaRowSpan(String? value);
+  String? get ariaRowSpan;
+  set ariaRowSpan(String? value);
 
   /// The **`ariaSelected`** property of the [Element] interface reflects the
   /// value of the
   /// [`aria-selected`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
   /// attribute, which indicates the current "selected" state of elements that
   /// have a selected state.
-  external String? get ariaSelected;
-  external set ariaSelected(String? value);
+  String? get ariaSelected;
+  set ariaSelected(String? value);
 
   /// The **`ariaSetSize`** property of the [Element] interface reflects the
   /// value of the
   /// [`aria-setsize`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-setsize)
   /// attribute, which defines the number of items in the current set of
   /// listitems or treeitems.
-  external String? get ariaSetSize;
-  external set ariaSetSize(String? value);
+  String? get ariaSetSize;
+  set ariaSetSize(String? value);
 
   /// The **`ariaSort`** property of the [Element] interface reflects the value
   /// of the
   /// [`aria-sort`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-sort)
   /// attribute, which indicates if items in a table or grid are sorted in
   /// ascending or descending order.
-  external String? get ariaSort;
-  external set ariaSort(String? value);
+  String? get ariaSort;
+  set ariaSort(String? value);
 
   /// The **`ariaValueMax`** property of the [Element] interface reflects the
   /// value of the
   /// [`aria-valuemax`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-valuemax)
   /// attribute, which defines the maximum allowed value for a range widget.
-  external String? get ariaValueMax;
-  external set ariaValueMax(String? value);
+  String? get ariaValueMax;
+  set ariaValueMax(String? value);
 
   /// The **`ariaValueMin`** property of the [Element] interface reflects the
   /// value of the
   /// [`aria-valuemin`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-valuemin)
   /// attribute, which defines the minimum allowed value for a range widget.
-  external String? get ariaValueMin;
-  external set ariaValueMin(String? value);
+  String? get ariaValueMin;
+  set ariaValueMin(String? value);
 
   /// The **`ariaValueNow`** property of the [Element] interface reflects the
   /// value of the
   /// [`aria-valuenow`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-valuenow)
   /// attribute, which defines the current value for a range widget.
-  external String? get ariaValueNow;
-  external set ariaValueNow(String? value);
+  String? get ariaValueNow;
+  set ariaValueNow(String? value);
 
   /// The **`ariaValueText`** property of the [Element] interface reflects the
   /// value of the
   /// [`aria-valuetext`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-valuetext)
   /// attribute, which defines the human-readable text alternative of
   /// aria-valuenow for a range widget.
-  external String? get ariaValueText;
-  external set ariaValueText(String? value);
+  String? get ariaValueText;
+  set ariaValueText(String? value);
 }
-extension type ShadowRootInit._(JSObject _) implements JSObject {
-  external factory ShadowRootInit({
-    required ShadowRootMode mode,
-    bool delegatesFocus,
-    SlotAssignmentMode slotAssignment,
-    bool clonable,
-    bool serializable,
-  });
 
-  external ShadowRootMode get mode;
-  external set mode(ShadowRootMode value);
-  external bool get delegatesFocus;
-  external set delegatesFocus(bool value);
-  external SlotAssignmentMode get slotAssignment;
-  external set slotAssignment(SlotAssignmentMode value);
-  external bool get clonable;
-  external set clonable(bool value);
-  external bool get serializable;
-  external set serializable(bool value);
+abstract class ShadowRootInit implements JSObject {
+  ShadowRootMode get mode {
+    unsupportedPlatformError();
+  }
+
+  set mode(ShadowRootMode value) {
+    unsupportedPlatformError();
+  }
+
+  bool get delegatesFocus {
+    unsupportedPlatformError();
+  }
+
+  set delegatesFocus(bool value) {
+    unsupportedPlatformError();
+  }
+
+  SlotAssignmentMode get slotAssignment {
+    unsupportedPlatformError();
+  }
+
+  set slotAssignment(SlotAssignmentMode value) {
+    unsupportedPlatformError();
+  }
+
+  bool get clonable {
+    unsupportedPlatformError();
+  }
+
+  set clonable(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get serializable {
+    unsupportedPlatformError();
+  }
+
+  set serializable(bool value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`NamedNodeMap`** interface represents a collection of [Attr] objects.
@@ -4315,14 +4388,14 @@ extension type ShadowRootInit._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/NamedNodeMap).
-extension type NamedNodeMap._(JSObject _) implements JSObject {
+abstract class NamedNodeMap implements JSObject {
   /// The **`item()`** method of the [NamedNodeMap] interface
   /// returns the item in the map matching the index.
   ///
   /// > **Note:** This method is also called when you use the operator `[]`
   /// > syntax.
   /// > So, `myMap[i]`is equivalent to `myMap.item(i)` where `i` is a number.
-  external Attr? item(int index);
+  Attr? item(int index);
 
   /// The **`getNamedItem()`** method of the [NamedNodeMap] interface returns
   /// the [Attr] corresponding to the given name, or `null` if there is no
@@ -4332,12 +4405,12 @@ extension type NamedNodeMap._(JSObject _) implements JSObject {
   /// > syntax.
   /// > So, `myMap[str]`is equivalent to `myMap.getNamedItem(str)` where `str`
   /// > is a string.
-  external Attr? getNamedItem(String qualifiedName);
+  Attr? getNamedItem(String qualifiedName);
 
   /// The **`getNamedItemNS()`** method of the [NamedNodeMap] interface returns
   /// the [Attr] corresponding to the given local name in the given namespace,
   /// or `null` if there is no corresponding attribute.
-  external Attr? getNamedItemNS(
+  Attr? getNamedItemNS(
     String? namespace,
     String localName,
   );
@@ -4346,7 +4419,7 @@ extension type NamedNodeMap._(JSObject _) implements JSObject {
   /// puts the [Attr] identified by its name in the map.
   /// If there is already an [Attr] with the same name in the map,
   /// it is _replaced_.
-  external Attr? setNamedItem(Attr attr);
+  Attr? setNamedItem(Attr attr);
 
   /// The **`setNamedItemNS()`** method of the [NamedNodeMap] interface
   /// puts the [Attr] identified by its name in the map.
@@ -4355,23 +4428,23 @@ extension type NamedNodeMap._(JSObject _) implements JSObject {
   ///
   /// > **Note:** This method is an alias of `setNamedItem()` you can use them
   /// > interchangeably.
-  external Attr? setNamedItemNS(Attr attr);
+  Attr? setNamedItemNS(Attr attr);
 
   /// The **`removeNamedItem()`** method of the [NamedNodeMap] interface
   /// removes the [Attr] corresponding to the given name from the map.
-  external Attr removeNamedItem(String qualifiedName);
+  Attr removeNamedItem(String qualifiedName);
 
   /// The **`removeNamedItemNS()`** method of the [NamedNodeMap] interface
   /// removes the [Attr] corresponding to the given namespace and local name
   /// from the map.
-  external Attr removeNamedItemNS(
+  Attr removeNamedItemNS(
     String? namespace,
     String localName,
   );
 
   /// The read-only **`length`** property of the [NamedNodeMap] interface
   /// is the number of objects stored in the map.
-  external int get length;
+  int get length;
 }
 
 /// The **`Attr`** interface represents one of an element's attributes as an
@@ -4407,7 +4480,7 @@ extension type NamedNodeMap._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Attr).
-extension type Attr._(JSObject _) implements Node, JSObject {
+abstract class Attr implements Node, JSObject {
   /// The read-only **`namespaceURI`** property of the [Attr] interface returns
   /// the namespace URI of the attribute,
   /// or `null` if the element is not in a namespace.
@@ -4426,7 +4499,7 @@ extension type Attr._(JSObject _) implements Node, JSObject {
   /// application to do any necessary validation. Note, too, that the namespace
   /// prefix, once it
   /// is associated with a particular attribute node, cannot be changed.
-  external String? get namespaceURI;
+  String? get namespaceURI;
 
   /// The read-only **`prefix`** property of the [Attr] returns the namespace
   /// prefix of the attribute, or `null` if no prefix is specified.
@@ -4440,7 +4513,7 @@ extension type Attr._(JSObject _) implements Node, JSObject {
   /// Also, only the `xml` (for the `xml:lang` attribute), `xlink` (for the
   /// `xlink:href`, `xlink:show`, `xlink:target` and `xlink:title` attributes)
   /// and `xpath` namespaces are supported, and only on SVG and MathML elements.
-  external String? get prefix;
+  String? get prefix;
 
   /// The read-only **`localName`** property of the [Attr] interface returns the
   /// _local part_ of the _qualified name_ of an attribute, that is the name of
@@ -4461,7 +4534,7 @@ extension type Attr._(JSObject _) implements Node, JSObject {
   /// > characters. In XML, like in SVG or MathML, the colon denotes the end of
   /// > the prefix and what is before is the namespace; the local name may be
   /// > different from the qualified name.
-  external String get localName;
+  String get localName;
 
   /// The read-only **`name`** property of the [Attr] interface returns the
   /// _qualified name_ of an attribute, that is the name of the attribute, with
@@ -4471,20 +4544,20 @@ extension type Attr._(JSObject _) implements Node, JSObject {
   ///
   /// The qualified name is always in lower case, whatever case at the attribute
   /// creation.
-  external String get name;
+  String get name;
 
   /// The **`value`** property of the [Attr] interface contains the value of the
   /// attribute.
-  external String get value;
-  external set value(String value);
+  String get value;
+  set value(String value);
 
   /// The read-only **`ownerElement`** property of the [Attr] interface returns
   /// the [Element] the attribute belongs to.
-  external Element? get ownerElement;
+  Element? get ownerElement;
 
   /// The read-only **`specified`** property of the [Attr] interface always
   /// returns `true`.
-  external bool get specified;
+  bool get specified;
 }
 
 /// The **`CharacterData`** abstract interface represents a [Node] object that
@@ -4497,32 +4570,32 @@ extension type Attr._(JSObject _) implements Node, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CharacterData).
-extension type CharacterData._(JSObject _) implements Node, JSObject {
+abstract class CharacterData implements Node, JSObject {
   /// The **`substringData()`** method of the [CharacterData] interface
   /// returns a portion of the existing data,
   /// starting at the specified index
   /// and extending for a given number of characters afterwards.
-  external String substringData(
+  String substringData(
     int offset,
     int count,
   );
 
   /// The **`appendData()`** method of the [CharacterData] interface
   /// adds the provided data to the end of the node's current data.
-  external void appendData(String data);
+  void appendData(String data);
 
   /// The **`insertData()`** method of the [CharacterData] interface
   /// inserts the provided data into this `CharacterData` node's current data,
   /// at the provided offset from the start of the existing data.
   /// The provided data is spliced into the existing data.
-  external void insertData(
+  void insertData(
     int offset,
     String data,
   );
 
   /// The **`deleteData()`** method of the [CharacterData] interface
   /// removes all or part of the data from this `CharacterData` node.
-  external void deleteData(
+  void deleteData(
     int offset,
     int count,
   );
@@ -4530,7 +4603,7 @@ extension type CharacterData._(JSObject _) implements Node, JSObject {
   /// The **`replaceData()`** method of the [CharacterData] interface removes a
   /// certain number of characters of the existing text in a given
   /// `CharacterData` node and replaces those characters with the text provided.
-  external void replaceData(
+  void replaceData(
     int offset,
     int count,
     String data,
@@ -4543,7 +4616,7 @@ extension type CharacterData._(JSObject _) implements Node, JSObject {
   ///
   /// Strings are inserted as [Text] nodes; the string is being passed as
   /// argument to the [Text.Text] constructor.
-  external void before(JSAny nodes);
+  void before(JSAny nodes);
 
   /// The **`after()`** method of the [CharacterData] interface
   /// inserts a set of [Node] objects or strings in the children list of the
@@ -4551,7 +4624,7 @@ extension type CharacterData._(JSObject _) implements Node, JSObject {
   ///
   /// Strings are inserted as [Text] nodes; the string is being passed as
   /// argument to the [Text.Text] constructor.
-  external void after(JSAny nodes);
+  void after(JSAny nodes);
 
   /// The **`replaceWith()`** method of the [CharacterData] interface
   /// replaces this node in the children list of its parent
@@ -4559,28 +4632,28 @@ extension type CharacterData._(JSObject _) implements Node, JSObject {
   ///
   /// Strings are inserted as [Text] nodes; the string is being passed as
   /// argument to the [Text.Text] constructor.
-  external void replaceWith(JSAny nodes);
+  void replaceWith(JSAny nodes);
 
   /// The **`remove()`** method of the [CharacterData] removes the text
   /// contained in the node.
-  external void remove();
+  void remove();
 
   /// The **`data`** property of the [CharacterData] interface represent the
   /// value of the current object's data.
-  external String get data;
-  external set data(String value);
+  String get data;
+  set data(String value);
 
   /// The read-only **`CharacterData.length`** property
   /// returns the number of characters in the contained data, as a positive
   /// integer.
-  external int get length;
+  int get length;
 
   /// The read-only **`previousElementSibling`** property of the [CharacterData]
   /// interface
   /// returns the first [Element] before the current node in its parent's
   /// children list,
   /// or `null` if there is none.
-  external Element? get previousElementSibling;
+  Element? get previousElementSibling;
 
   /// The read-only **`nextElementSibling`** property of the [CharacterData]
   /// interface
@@ -4588,7 +4661,7 @@ extension type CharacterData._(JSObject _) implements Node, JSObject {
   /// parent's
   /// children list, or `null` if the specified element is the last one in the
   /// list.
-  external Element? get nextElementSibling;
+  Element? get nextElementSibling;
 }
 
 /// The **`Text`** interface represents a text [Node] in a DOM tree.
@@ -4622,9 +4695,7 @@ extension type CharacterData._(JSObject _) implements Node, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Text).
-extension type Text._(JSObject _) implements CharacterData, JSObject {
-  external factory Text([String data]);
-
+abstract class Text implements CharacterData, JSObject {
   /// The **`splitText()`** method of the [Text] interface
   /// breaks the [Text] node into two nodes at the specified offset,
   /// keeping both nodes in the tree as siblings.
@@ -4640,7 +4711,7 @@ extension type Text._(JSObject _) implements CharacterData, JSObject {
   ///
   /// Separated text nodes can be concatenated using the [Node.normalize]
   /// method.
-  external Text splitText(int offset);
+  Text splitText(int offset);
 
   /// The read-only **`wholeText`** property of the [Text] interface
   /// returns the full text of all [Text] nodes logically adjacent to the node.
@@ -4651,11 +4722,11 @@ extension type Text._(JSObject _) implements CharacterData, JSObject {
   /// > **Note:** This is similar to call [Node.normalize] followed by reading
   /// > the text value,
   /// > but without modifying the tree.
-  external String get wholeText;
+  String get wholeText;
 
   /// The read-only **`assignedSlot`** property of the [Text] interface
   /// returns the [HTMLSlotElement] object associated with the element.
-  external HTMLSlotElement? get assignedSlot;
+  HTMLSlotElement? get assignedSlot;
 }
 
 /// The **`CDATASection`** interface represents a CDATA section
@@ -4688,7 +4759,7 @@ extension type Text._(JSObject _) implements CharacterData, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CDATASection).
-extension type CDATASection._(JSObject _) implements Text, JSObject {}
+abstract class CDATASection implements Text, JSObject {}
 
 /// The **`ProcessingInstruction`** interface represents a
 /// [processing instruction](https://www.w3.org/TR/xml/#sec-pi); that is, a
@@ -4721,8 +4792,7 @@ extension type CDATASection._(JSObject _) implements Text, JSObject {}
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ProcessingInstruction).
-extension type ProcessingInstruction._(JSObject _)
-    implements CharacterData, JSObject {
+abstract class ProcessingInstruction implements CharacterData, JSObject {
   /// The read-only **`target`** property of the [ProcessingInstruction]
   /// interface
   /// represent the application to which the `ProcessingInstruction` is
@@ -4735,7 +4805,7 @@ extension type ProcessingInstruction._(JSObject _)
   /// ```
   ///
   /// is a processing instruction whose `target` is `xml`.
-  external String get target;
+  String get target;
 
   /// The read-only **`sheet`** property of the [ProcessingInstruction]
   /// interface
@@ -4743,7 +4813,7 @@ extension type ProcessingInstruction._(JSObject _)
   ///
   /// The `xml-stylesheet` processing instruction is used to associate a
   /// stylesheet in an XML file.
-  external CSSStyleSheet? get sheet;
+  CSSStyleSheet? get sheet;
 }
 
 /// The **`Comment`** interface represents textual notations within markup;
@@ -4758,9 +4828,7 @@ extension type ProcessingInstruction._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Comment).
-extension type Comment._(JSObject _) implements CharacterData, JSObject {
-  external factory Comment([String data]);
-}
+abstract class Comment implements CharacterData, JSObject {}
 
 /// The **`AbstractRange`** abstract interface is the base class upon which all
 /// range types are defined. A **range** is an object that indicates the start
@@ -4776,44 +4844,61 @@ extension type Comment._(JSObject _) implements CharacterData, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/AbstractRange).
-extension type AbstractRange._(JSObject _) implements JSObject {
+abstract class AbstractRange implements JSObject {
   /// The read-only **`startContainer`** property of the [AbstractRange]
   /// interface returns the start [Node] for the range.
-  external Node get startContainer;
+  Node get startContainer;
 
   /// The read-only **`startOffset`** property of the [AbstractRange] interface
   /// returns the offset into the start node of the range's start position.
-  external int get startOffset;
+  int get startOffset;
 
   /// The read-only **`endContainer`** property of the [AbstractRange] interface
   /// returns the [Node] in which the end of the range is located.
-  external Node get endContainer;
+  Node get endContainer;
 
   /// The **`endOffset`** property of the [AbstractRange] interface returns the
   /// offset into the end node of the range's end position.
-  external int get endOffset;
+  int get endOffset;
 
   /// The read-only **`collapsed`** property of the [AbstractRange] interface
   /// returns `true` if the range's start position and end position are the
   /// same.
-  external bool get collapsed;
+  bool get collapsed;
 }
-extension type StaticRangeInit._(JSObject _) implements JSObject {
-  external factory StaticRangeInit({
-    required Node startContainer,
-    required int startOffset,
-    required Node endContainer,
-    required int endOffset,
-  });
 
-  external Node get startContainer;
-  external set startContainer(Node value);
-  external int get startOffset;
-  external set startOffset(int value);
-  external Node get endContainer;
-  external set endContainer(Node value);
-  external int get endOffset;
-  external set endOffset(int value);
+abstract class StaticRangeInit implements JSObject {
+  Node get startContainer {
+    unsupportedPlatformError();
+  }
+
+  set startContainer(Node value) {
+    unsupportedPlatformError();
+  }
+
+  int get startOffset {
+    unsupportedPlatformError();
+  }
+
+  set startOffset(int value) {
+    unsupportedPlatformError();
+  }
+
+  Node get endContainer {
+    unsupportedPlatformError();
+  }
+
+  set endContainer(Node value) {
+    unsupportedPlatformError();
+  }
+
+  int get endOffset {
+    unsupportedPlatformError();
+  }
+
+  set endOffset(int value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The
@@ -4832,9 +4917,7 @@ extension type StaticRangeInit._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/StaticRange).
-extension type StaticRange._(JSObject _) implements AbstractRange, JSObject {
-  external factory StaticRange(StaticRangeInit init);
-}
+abstract class StaticRange implements AbstractRange, JSObject {}
 
 /// The **`Range`** interface represents a fragment of a document that can
 /// contain nodes and parts of text nodes.
@@ -4850,9 +4933,7 @@ extension type StaticRange._(JSObject _) implements AbstractRange, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Range).
-extension type Range._(JSObject _) implements AbstractRange, JSObject {
-  external factory Range();
-
+abstract class Range implements AbstractRange, JSObject {
   static const int START_TO_START = 0;
 
   static const int START_TO_END = 1;
@@ -4874,7 +4955,7 @@ extension type Range._(JSObject _) implements AbstractRange, JSObject {
   /// result in a
   /// collapsed range with the start and end points both set to the specified
   /// start position.
-  external void setStart(
+  void setStart(
     Node node,
     int offset,
   );
@@ -4885,7 +4966,7 @@ extension type Range._(JSObject _) implements AbstractRange, JSObject {
   /// result in a
   /// collapsed range with the start and end points both set to the specified
   /// end position.
-  external void setEnd(
+  void setEnd(
     Node node,
     int offset,
   );
@@ -4894,25 +4975,25 @@ extension type Range._(JSObject _) implements AbstractRange, JSObject {
   /// of a [Range] relative to another [Node]. The parent
   /// [Node] of the start of the [Range] will be the same as that
   /// for the `referenceNode`.
-  external void setStartBefore(Node node);
+  void setStartBefore(Node node);
 
   /// The **`Range.setStartAfter()`** method sets the start position
   /// of a [Range] relative to a [Node]. The parent
   /// [Node] of the start of the [Range] will be the same as that
   /// for the `referenceNode`.
-  external void setStartAfter(Node node);
+  void setStartAfter(Node node);
 
   /// The **`Range.setEndBefore()`** method sets the end position of
   /// a `Range` relative to another [Node]. The parent
   /// `Node` of end of the `Range` will be the same as that for the
   /// `referenceNode`.
-  external void setEndBefore(Node node);
+  void setEndBefore(Node node);
 
   /// The **`Range.setEndAfter()`** method sets the end position of a
   /// [Range] relative to another [Node]. The parent
   /// `Node` of end of the `Range` will be the same as that for the
   /// `referenceNode`.
-  external void setEndAfter(Node node);
+  void setEndAfter(Node node);
 
   /// The **`Range.collapse()`** method collapses the
   /// [Range] to one of its boundary points.
@@ -4921,13 +5002,13 @@ extension type Range._(JSObject _) implements AbstractRange, JSObject {
   /// single-point in a DOM tree. To determine if a [Range] is already
   /// collapsed,
   /// see the [Range.collapsed] property.
-  external void collapse([bool toStart]);
+  void collapse([bool toStart]);
 
   /// The **`Range.selectNode()`** method sets the
   /// [Range] to contain the [Node] and its contents. The parent
   /// [Node] of the start and end of the [Range] will be the same as
   /// the parent of the _referenceNode_.
-  external void selectNode(Node node);
+  void selectNode(Node node);
 
   /// The **`Range.selectNodeContents()`** method sets the [Range] to contain
   /// the contents of a [Node].
@@ -4936,12 +5017,12 @@ extension type Range._(JSObject _) implements AbstractRange, JSObject {
   /// reference node. The `startOffset` is 0, and the `endOffset` is the
   /// number of child `Node`s or number of characters contained in the reference
   /// node.
-  external void selectNodeContents(Node node);
+  void selectNodeContents(Node node);
 
   /// The
   /// **`Range.compareBoundaryPoints()`** method compares the
   /// boundary points of the [Range] with those of another range.
-  external int compareBoundaryPoints(
+  int compareBoundaryPoints(
     int how,
     Range sourceRange,
   );
@@ -4951,7 +5032,7 @@ extension type Range._(JSObject _) implements AbstractRange, JSObject {
   ///
   /// Unlike [Range.extractContents], this method does not return a
   /// [DocumentFragment] containing the deleted content.
-  external void deleteContents();
+  void deleteContents();
 
   /// The **`Range.extractContents()`** method moves contents of the
   /// [Range] from the document tree into a [DocumentFragment].
@@ -4967,7 +5048,7 @@ extension type Range._(JSObject _) implements AbstractRange, JSObject {
   /// Partially selected nodes are cloned to include the parent tags necessary
   /// to make the
   /// document fragment valid.
-  external DocumentFragment extractContents();
+  DocumentFragment extractContents();
 
   /// The **`Range.cloneContents()`** returns a [DocumentFragment] copying the
   /// objects of type [Node]
@@ -4982,7 +5063,7 @@ extension type Range._(JSObject _) implements AbstractRange, JSObject {
   /// Partially selected nodes include the parent tags necessary to make the
   /// document
   /// fragment valid.
-  external DocumentFragment cloneContents();
+  DocumentFragment cloneContents();
 
   /// The **`Range.insertNode()`** method inserts a node at the start
   /// of the [Range].
@@ -4996,7 +5077,7 @@ extension type Range._(JSObject _) implements AbstractRange, JSObject {
   /// If the new node is a document fragment, the children of the document
   /// fragment are
   /// inserted instead.
-  external void insertNode(Node node);
+  void insertNode(Node node);
 
   /// The **`Range.surroundContents()`** method moves content of the
   /// [Range] into a new node, placing the new node at the start of the
@@ -5012,7 +5093,7 @@ extension type Range._(JSObject _) implements AbstractRange, JSObject {
   /// alternative above, if there are partially selected nodes, they will not be
   /// cloned and
   /// instead the operation will fail.
-  external void surroundContents(Node newParent);
+  void surroundContents(Node newParent);
 
   /// The **`Range.cloneRange()`** method returns a
   /// [Range] object with boundary points identical to the cloned
@@ -5021,18 +5102,18 @@ extension type Range._(JSObject _) implements AbstractRange, JSObject {
   /// The returned clone is copied by value, not reference, so a change in
   /// either
   /// [Range] does not affect the other.
-  external Range cloneRange();
+  Range cloneRange();
 
   /// The **`Range.detach()`** method does nothing. It used to
   /// disable the [Range] object and enable the browser to release associated
   /// resources. The method has been kept for compatibility.
-  external void detach();
+  void detach();
 
   /// The **`Range.isPointInRange()`** method returns a boolean
   /// indicating whether the given point is in the [Range]. It returns
   /// `true` if the point (cursor position) at `offset` within
   /// `ReferenceNode` is within this range.
-  external bool isPointInRange(
+  bool isPointInRange(
     Node node,
     int offset,
   );
@@ -5047,21 +5128,21 @@ extension type Range._(JSObject _) implements AbstractRange, JSObject {
   /// types, offset is the number of child nodes between the start of the
   /// _reference
   /// node_.
-  external int comparePoint(
+  int comparePoint(
     Node node,
     int offset,
   );
 
   /// The **`Range.intersectsNode()`** method returns a boolean
   /// indicating whether the given [Node] intersects the [Range].
-  external bool intersectsNode(Node node);
+  bool intersectsNode(Node node);
 
   /// The **`Range.getClientRects()`** method returns a list of [DOMRect]
   /// objects representing the area of the screen occupied by the
   /// [range](https://developer.mozilla.org/en-US/docs/Web/API/Range). This is
   /// created by aggregating the results of calls to
   /// [Element.getClientRects] for all the elements in the range.
-  external DOMRectList getClientRects();
+  DOMRectList getClientRects();
 
   /// The **`Range.getBoundingClientRect()`** method returns a [DOMRect] object
   /// that bounds the contents of the range; this is a rectangle
@@ -5072,7 +5153,7 @@ extension type Range._(JSObject _) implements AbstractRange, JSObject {
   /// cursor or
   /// selection inside a text box. See [Element.getBoundingClientRect] for
   /// details on the returned value.
-  external DOMRect getBoundingClientRect();
+  DOMRect getBoundingClientRect();
 
   /// The **`Range.createContextualFragment()`** method returns a
   /// [DocumentFragment] by invoking the HTML fragment parsing algorithm or the
@@ -5085,7 +5166,7 @@ extension type Range._(JSObject _) implements AbstractRange, JSObject {
   /// the context node would be `html`, for historical reasons the fragment
   /// parsing
   /// algorithm is invoked with `body` as the context instead.
-  external DocumentFragment createContextualFragment(JSAny string);
+  DocumentFragment createContextualFragment(JSAny string);
 
   /// The **`Range.commonAncestorContainer`** read-only property
   /// returns the deepest — or furthest down the document tree — [Node] that
@@ -5105,7 +5186,7 @@ extension type Range._(JSObject _) implements AbstractRange, JSObject {
   /// positions of the
   /// `Range`, such as [Range.setStart] and
   /// [Range.setEnd].
-  external Node get commonAncestorContainer;
+  Node get commonAncestorContainer;
 }
 
 /// The **`NodeIterator`** interface represents an iterator to traverse nodes of
@@ -5115,7 +5196,7 @@ extension type Range._(JSObject _) implements AbstractRange, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/NodeIterator).
-extension type NodeIterator._(JSObject _) implements JSObject {
+abstract class NodeIterator implements JSObject {
   /// The **`NodeIterator.nextNode()`** method returns the next node
   /// in the set represented by the [NodeIterator] and advances the position of
   /// the iterator within the set. The first call to `nextNode()` returns the
@@ -5128,7 +5209,7 @@ extension type NodeIterator._(JSObject _) implements JSObject {
   /// throws the `INVALID_STATE_ERR` [DOMException] if this method
   /// is called after the [NodeIterator.detach]method. Recent browsers never
   /// throw.
-  external Node? nextNode();
+  Node? nextNode();
 
   /// The **`NodeIterator.previousNode()`** method returns the
   /// previous node in the set represented by the [NodeIterator] and moves the
@@ -5142,7 +5223,7 @@ extension type NodeIterator._(JSObject _) implements JSObject {
   /// throws the `INVALID_STATE_ERR` [DOMException] if this method
   /// is called after the [NodeIterator.detach]method. Recent browsers never
   /// throw.
-  external Node? previousNode();
+  Node? previousNode();
 
   /// The **`NodeIterator.detach()`** method is a no-op, kept for
   /// backward compatibility only.
@@ -5152,31 +5233,31 @@ extension type NodeIterator._(JSObject _) implements JSObject {
   /// iterator's state to
   /// `INVALID`. Once this method had been called, calls to other methods on
   /// `NodeIterator` would raise the `INVALID_STATE_ERR` exception.
-  external void detach();
+  void detach();
 
   /// The **`NodeIterator.root`** read-only property represents the
   /// [Node] that is the root of what the [NodeIterator]
   /// traverses.
-  external Node get root;
+  Node get root;
 
   /// The **`NodeIterator.referenceNode`** read-only property returns the
   /// [Node] to which the iterator is anchored; as new nodes are inserted, the
   /// iterator remains anchored to the reference node as specified by this
   /// property.
-  external Node get referenceNode;
+  Node get referenceNode;
 
   /// The **`NodeIterator.pointerBeforeReferenceNode`** read-only
   /// property returns a boolean flag that indicates whether the
   /// `NodeFilter` is anchored before (if this value is `true`) or
   /// after (if this value is `false`) the anchor node indicated by the
   /// [NodeIterator.referenceNode] property.
-  external bool get pointerBeforeReferenceNode;
+  bool get pointerBeforeReferenceNode;
 
   /// The **`NodeIterator.whatToShow`** read-only property represents
   /// an `unsigned integer` representing a bitmask signifying what types of
   /// nodes
   /// should be returned by the [NodeIterator].
-  external int get whatToShow;
+  int get whatToShow;
 
   /// The **`NodeIterator.filter`** read-only property returns a
   /// `NodeFilter` object, that is an object which implements an
@@ -5189,7 +5270,7 @@ extension type NodeIterator._(JSObject _) implements JSObject {
   /// should return the constant `NodeFilter.FILTER_ACCEPT` for cases when the
   /// node should be accepted and `NodeFilter.FILTER_REJECT` for cases when the
   /// node should be rejected.
-  external NodeFilter? get filter;
+  NodeFilter? get filter;
 }
 
 /// The **`TreeWalker`** object represents the nodes of a document subtree and a
@@ -5201,54 +5282,54 @@ extension type NodeIterator._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/TreeWalker).
-extension type TreeWalker._(JSObject _) implements JSObject {
+abstract class TreeWalker implements JSObject {
   /// The **`TreeWalker.parentNode()`** method moves the current
   /// [Node] to the first _visible_ ancestor node in the document order,
   /// and returns the found node. If no such node exists, or if it is above the
   /// `TreeWalker`'s _root node_, it returns `null` and the current
   /// node is not changed.
-  external Node? parentNode();
+  Node? parentNode();
 
   /// The **`TreeWalker.firstChild()`** method moves the current
   /// [Node] to the first _visible_ child of the current node, and returns
   /// the found child. If no such child exists, it returns `null` and the
   /// current node is not changed.
-  external Node? firstChild();
+  Node? firstChild();
 
   /// The **`TreeWalker.lastChild()`** method moves the current
   /// [Node] to the last _visible_ child of the current node, and returns
   /// the found child. If no such child exists, it returns `null` and the
   /// current node is not changed.
-  external Node? lastChild();
+  Node? lastChild();
 
   /// The **`TreeWalker.previousSibling()`** method moves the current
   /// [Node] to its previous sibling, if any, and returns the found sibling. If
   /// there is no such node, it returns `null` and the current node is not
   /// changed.
-  external Node? previousSibling();
+  Node? previousSibling();
 
   /// The **`TreeWalker.nextSibling()`** method moves the current
   /// [Node] to its next sibling, if any, and returns the found sibling. If
   /// there
   /// is no such node, it returns `null` and the current node is not changed.
-  external Node? nextSibling();
+  Node? nextSibling();
 
   /// The **`TreeWalker.previousNode()`** method moves the current
   /// [Node] to the previous _visible_ node in the document order, and
   /// returns the found node. If no such node
   /// exists, or if it is before that the _root node_ defined at the object
   /// construction, it returns `null` and the current node is not changed.
-  external Node? previousNode();
+  Node? previousNode();
 
   /// The **`TreeWalker.nextNode()`** method moves the current
   /// [Node] to the next _visible_ node in the document order, and returns
   /// the found node. If no such node exists, it returns `null` and the current
   /// node is not changed.
-  external Node? nextNode();
+  Node? nextNode();
 
   /// The **`TreeWalker.root`** read-only property returns the node
   /// that is the root of what the TreeWalker traverses.
-  external Node get root;
+  Node get root;
 
   /// The **`TreeWalker.whatToShow`** read-only property returns a
   /// bitmask that indicates the types of
@@ -5349,7 +5430,7 @@ extension type TreeWalker._(JSObject _) implements JSObject {
   ///     </tr>
   ///   </tbody>
   /// </table>
-  external int get whatToShow;
+  int get whatToShow;
 
   /// The **`TreeWalker.filter`** read-only property returns a
   /// `NodeFilter` that is the filtering object associated with the
@@ -5359,12 +5440,12 @@ extension type TreeWalker._(JSObject _) implements JSObject {
   /// third
   /// parameter, and its method `acceptNode()` is called on every
   /// single node to determine whether or not to accept it.
-  external NodeFilter? get filter;
+  NodeFilter? get filter;
 
   /// The **`TreeWalker.currentNode`** property represents the
   /// [Node] which the [TreeWalker] is currently pointing at.
-  external Node get currentNode;
-  external set currentNode(Node value);
+  Node get currentNode;
+  set currentNode(Node value);
 }
 
 /// The **`DOMTokenList`** interface represents a set of space-separated tokens.
@@ -5378,7 +5459,7 @@ extension type TreeWalker._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/DOMTokenList).
-extension type DOMTokenList._(JSObject _) implements JSObject {
+abstract class DOMTokenList implements JSObject {
   /// The **`item()`** method of the [DOMTokenList] interface returns an item in
   /// the list,
   /// determined by its position in the list, its index.
@@ -5386,26 +5467,26 @@ extension type DOMTokenList._(JSObject _) implements JSObject {
   /// > **Note:** This method is equivalent as the
   /// > [bracket notation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Property_accessors#bracket_notation).
   /// > So `aList.item(i)` is the same as `aList[i]`.
-  external String? item(int index);
+  String? item(int index);
 
   /// The **`contains()`** method of the [DOMTokenList] interface
   /// returns a boolean value — `true` if the underlying list contains the given
   /// token,
   /// otherwise `false`.
-  external bool contains(String token);
+  bool contains(String token);
 
   /// The **`add()`** method of the [DOMTokenList] interface adds the given
   /// tokens to the list, omitting any that are already present.
-  external void add(String tokens);
+  void add(String tokens);
 
   /// The **`remove()`** method of the [DOMTokenList] interface
   /// removes the specified _tokens_ from the list.
-  external void remove(String tokens);
+  void remove(String tokens);
 
   /// The **`toggle()`** method of the [DOMTokenList] interface
   /// removes an existing token from the list and returns `false`.
   /// If the token doesn't exist it's added and the function returns `true`.
-  external bool toggle(
+  bool toggle(
     String token, [
     bool force,
   ]);
@@ -5414,7 +5495,7 @@ extension type DOMTokenList._(JSObject _) implements JSObject {
   /// replaces an existing token with a new token.
   /// If the first token doesn't exist, `replace()` returns `false` immediately,
   /// without adding the new token to the token list.
-  external bool replace(
+  bool replace(
     String token,
     String newToken,
   );
@@ -5423,18 +5504,18 @@ extension type DOMTokenList._(JSObject _) implements JSObject {
   /// returns `true` if a given `token` is in the associated attribute's
   /// supported tokens.
   /// This method is intended to support feature detection.
-  external bool supports(String token);
+  bool supports(String token);
 
   /// The read-only **`length`** property of the [DOMTokenList] interface is an
   /// `integer` representing the number
   /// of objects stored in the object.
-  external int get length;
+  int get length;
 
   /// The **`value`** property of the [DOMTokenList]
   /// interface is a  that returns the value of the list serialized as a
   /// string, or clears and sets the list to the given value.
-  external String get value;
-  external set value(String value);
+  String get value;
+  set value(String value);
 }
 
 /// The **`XPathResult`** interface represents the results generated by
@@ -5448,7 +5529,7 @@ extension type DOMTokenList._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/XPathResult).
-extension type XPathResult._(JSObject _) implements JSObject {
+abstract class XPathResult implements JSObject {
   static const int ANY_TYPE = 0;
 
   static const int NUMBER_TYPE = 1;
@@ -5472,7 +5553,7 @@ extension type XPathResult._(JSObject _) implements JSObject {
   /// The **`iterateNext()`** method of the
   /// [XPathResult] interface iterates over a node set result and returns the
   /// next node from it or `null` if there are no more nodes.
-  external Node? iterateNext();
+  Node? iterateNext();
 
   /// The **`snapshotItem()`** method of the
   /// [XPathResult] interface returns an item of the snapshot collection or
@@ -5480,46 +5561,46 @@ extension type XPathResult._(JSObject _) implements JSObject {
   /// iterator result, the snapshot does not become invalid, but may not
   /// correspond to the
   /// current document if it is mutated.
-  external Node? snapshotItem(int index);
+  Node? snapshotItem(int index);
 
   /// The read-only **`resultType`** property of the
   /// [XPathResult] interface represents the type of the result, as defined by
   /// the type constants.
-  external int get resultType;
+  int get resultType;
 
   /// The read-only **`numberValue`** property of the
   /// [XPathResult] interface returns the numeric value of a result with
   /// [XPathResult.resultType] being `NUMBER_TYPE`.
-  external double get numberValue;
+  double get numberValue;
 
   /// The read-only **`stringValue`** property of the
   /// [XPathResult] interface returns the string value of a result with
   /// [XPathResult.resultType] being `STRING_TYPE`.
-  external String get stringValue;
+  String get stringValue;
 
   /// The read-only **`booleanValue`** property of the
   /// [XPathResult] interface returns the boolean value of a result with
   /// [XPathResult.resultType] being `BOOLEAN_TYPE`.
-  external bool get booleanValue;
+  bool get booleanValue;
 
   /// The read-only **`singleNodeValue`** property of the
   /// [XPathResult] interface returns a [Node] value or
   /// `null` in case no node was matched of a result with
   /// [XPathResult.resultType] being `ANY_UNORDERED_NODE_TYPE` or
   /// `FIRST_ORDERED_NODE_TYPE`.
-  external Node? get singleNodeValue;
+  Node? get singleNodeValue;
 
   /// The read-only **`invalidIteratorState`** property of the
   /// [XPathResult] interface signifies that the iterator has become invalid. It
   /// is `true` if [XPathResult.resultType] is
   /// `UNORDERED_NODE_ITERATOR_TYPE` or `ORDERED_NODE_ITERATOR_TYPE` and
   /// the document has been modified since this result was returned.
-  external bool get invalidIteratorState;
+  bool get invalidIteratorState;
 
   /// The read-only **`snapshotLength`** property of the
   /// [XPathResult] interface represents the number of nodes in the result
   /// snapshot.
-  external int get snapshotLength;
+  int get snapshotLength;
 }
 
 /// This interface is a compiled XPath expression that can be evaluated on a
@@ -5536,13 +5617,13 @@ extension type XPathResult._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/XPathExpression).
-extension type XPathExpression._(JSObject _) implements JSObject {
+abstract class XPathExpression implements JSObject {
   /// The **`evaluate()`** method of the
   /// [XPathExpression] interface executes an
   /// [XPath](https://developer.mozilla.org/en-US/docs/Web/XPath) expression on
   /// the given node or document and
   /// returns an [XPathResult].
-  external XPathResult evaluate(
+  XPathResult evaluate(
     Node contextNode, [
     int type,
     XPathResult? result,
@@ -5555,12 +5636,10 @@ extension type XPathExpression._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/XPathEvaluator).
-extension type XPathEvaluator._(JSObject _) implements JSObject {
-  external factory XPathEvaluator();
-
+abstract class XPathEvaluator implements JSObject {
   /// This method compiles an [XPathExpression] which can then be used for
   /// (repeated) evaluations of the  expression.
-  external XPathExpression createExpression(
+  XPathExpression createExpression(
     String expression, [
     XPathNSResolver? resolver,
   ]);
@@ -5576,12 +5655,12 @@ extension type XPathEvaluator._(JSObject _) implements JSObject {
   /// the current information available in the node's hierarchy at the time the
   /// method is
   /// called, also correctly resolving the implicit `xml` prefix.
-  external Node createNSResolver(Node nodeResolver);
+  Node createNSResolver(Node nodeResolver);
 
   /// The `evaluate()` method of the [XPathEvaluator] interface
   /// executes an XPath expression on the given node or document and returns an
   /// [XPathResult].
-  external XPathResult evaluate(
+  XPathResult evaluate(
     String expression,
     Node contextNode, [
     XPathNSResolver? resolver,
@@ -5602,17 +5681,15 @@ extension type XPathEvaluator._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/XSLTProcessor).
-extension type XSLTProcessor._(JSObject _) implements JSObject {
-  external factory XSLTProcessor();
-
+abstract class XSLTProcessor implements JSObject {
   /// The `importStylesheet()` method of the [XSLTProcessor] interface imports
   /// an XSLT stylesheet for the processor.
-  external void importStylesheet(Node style);
+  void importStylesheet(Node style);
 
   /// The `transformToFragment()` method of the [XSLTProcessor] interface
   /// transforms a provided [Node] source to a [DocumentFragment] using the XSLT
   /// stylesheet associated with the `XSLTProcessor`.
-  external DocumentFragment transformToFragment(
+  DocumentFragment transformToFragment(
     Node source,
     Document output,
   );
@@ -5620,12 +5697,12 @@ extension type XSLTProcessor._(JSObject _) implements JSObject {
   /// The `transformToDocument()` method of the [XSLTProcessor] interface
   /// transforms the provided [Node] source to a [Document] using the XSLT
   /// stylesheet associated with `XSLTProcessor`.
-  external Document transformToDocument(Node source);
+  Document transformToDocument(Node source);
 
   /// The `setParameter()` method of the [XSLTProcessor] interface sets the
   /// value of a parameter (`<xsl:param>`) in the stylesheet imported in the
   /// processor.
-  external void setParameter(
+  void setParameter(
     String namespaceURI,
     String localName,
     JSAny? value,
@@ -5634,7 +5711,7 @@ extension type XSLTProcessor._(JSObject _) implements JSObject {
   /// The `getParameter()` method of the [XSLTProcessor] interface returns the
   /// value of a parameter (`<xsl:param>`) from the stylesheet imported in the
   /// processor.
-  external JSAny? getParameter(
+  JSAny? getParameter(
     String namespaceURI,
     String localName,
   );
@@ -5642,7 +5719,7 @@ extension type XSLTProcessor._(JSObject _) implements JSObject {
   /// The `removeParameter()` method of the [XSLTProcessor] interface removes
   /// the parameter (`<xsl:param>`) and its value from the stylesheet imported
   /// in the processor.
-  external void removeParameter(
+  void removeParameter(
     String namespaceURI,
     String localName,
   );
@@ -5651,10 +5728,10 @@ extension type XSLTProcessor._(JSObject _) implements JSObject {
   /// all parameters (`<xsl:param>`) and their values from the stylesheet
   /// imported in the processor. The `XSLTProcessor` will then use the default
   /// values specified in the XSLT stylesheet.
-  external void clearParameters();
+  void clearParameters();
 
   /// The `reset()` method of the [XSLTProcessor] interface removes all
   /// parameters (`<xsl:param>`) and the XSLT stylesheet from the processor. The
   /// `XSLTProcessor` will then be in its original state when it was created.
-  external void reset();
+  void reset();
 }

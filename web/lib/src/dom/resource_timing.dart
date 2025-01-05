@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,11 +10,7 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../js_interop.dart';
 import 'performance_timeline.dart';
 import 'server_timing.dart';
 
@@ -30,12 +26,11 @@ typedef RenderBlockingStatusType = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceResourceTiming).
-extension type PerformanceResourceTiming._(JSObject _)
-    implements PerformanceEntry, JSObject {
+abstract class PerformanceResourceTiming implements PerformanceEntry, JSObject {
   /// The **`toJSON()`** method of the [PerformanceResourceTiming] interface is
   /// a ; it returns a JSON representation of the [PerformanceResourceTiming]
   /// object.
-  external JSObject toJSON();
+  JSObject toJSON();
 
   /// The **`initiatorType`** read-only property is a string representing web
   /// platform feature that initiated the resource load.
@@ -44,7 +39,7 @@ extension type PerformanceResourceTiming._(JSObject _)
   /// > A `.css` file can be fetched using a `link` element leading to an
   /// > `initiatorType` of `link`. When loading images using `background: url()`
   /// > in a CSS file, the `initiatorType` will be `css` and not `img`.
-  external String get initiatorType;
+  String get initiatorType;
 
   /// The **`nextHopProtocol`** read-only property is a string representing the
   /// network protocol used to fetch the resource, as identified by the [ALPN
@@ -54,7 +49,7 @@ extension type PerformanceResourceTiming._(JSObject _)
   /// When a proxy is used, if a tunnel connection is established, this property
   /// returns the ALPN Protocol ID of the tunneled protocol. Otherwise, this
   /// property returns the ALPN Protocol ID of the first hop to the proxy.
-  external String get nextHopProtocol;
+  String get nextHopProtocol;
 
   /// The **`workerStart`** read-only property of the
   /// [PerformanceResourceTiming] interface returns a
@@ -62,7 +57,7 @@ extension type PerformanceResourceTiming._(JSObject _)
   /// Service Worker thread is already running, or immediately before starting
   /// the Service Worker thread if it is not already running. If the resource is
   /// not intercepted by a Service Worker the property will always return 0.
-  external double get workerStart;
+  double get workerStart;
 
   /// The **`redirectStart`** read-only property returns a [DOMHighResTimeStamp]
   /// representing the start time of the fetch which that initiates the
@@ -76,7 +71,7 @@ extension type PerformanceResourceTiming._(JSObject _)
   ///
   /// To get the amount of redirects, see also
   /// [PerformanceNavigationTiming.redirectCount].
-  external double get redirectStart;
+  double get redirectStart;
 
   /// The **`redirectEnd`** read-only property returns a [DOMHighResTimeStamp]
   /// immediately after receiving the last byte of the response of the last
@@ -90,7 +85,7 @@ extension type PerformanceResourceTiming._(JSObject _)
   ///
   /// To get the amount of redirects, see also
   /// [PerformanceNavigationTiming.redirectCount].
-  external double get redirectEnd;
+  double get redirectEnd;
 
   /// The **`fetchStart`** read-only property represents a [DOMHighResTimeStamp]
   /// immediately before the browser starts to fetch the resource.
@@ -102,12 +97,12 @@ extension type PerformanceResourceTiming._(JSObject _)
   /// Unlike many other `PerformanceResourceTiming` properties, the `fetchStart`
   /// property is available for cross-origin requests without the need of the
   /// HTTP response header.
-  external double get fetchStart;
+  double get fetchStart;
 
   /// The **`domainLookupStart`** read-only property returns the
   /// [DOMHighResTimeStamp] immediately before the browser starts the domain
   /// name lookup for the resource.
-  external double get domainLookupStart;
+  double get domainLookupStart;
 
   /// The **`domainLookupEnd`** read-only property returns the
   /// [DOMHighResTimeStamp] immediately after the browser finishes the
@@ -117,12 +112,12 @@ extension type PerformanceResourceTiming._(JSObject _)
   /// [PerformanceResourceTiming.domainLookupStart] and
   /// [PerformanceResourceTiming.domainLookupEnd] represent the times when the
   /// user agent starts and ends the domain data retrieval from the cache.
-  external double get domainLookupEnd;
+  double get domainLookupEnd;
 
   /// The **`connectStart`** read-only property returns the
   /// [DOMHighResTimeStamp] immediately before the user agent starts
   /// establishing the connection to the server to retrieve the resource.
-  external double get connectStart;
+  double get connectStart;
 
   /// The **`connectEnd`** read-only property returns the [DOMHighResTimeStamp]
   /// immediately after the browser finishes establishing the connection to the
@@ -130,13 +125,13 @@ extension type PerformanceResourceTiming._(JSObject _)
   /// interval to establish the transport connection, as well as other time
   /// intervals such as TLS handshake and
   /// [SOCKS](https://en.wikipedia.org/wiki/SOCKS) authentication.
-  external double get connectEnd;
+  double get connectEnd;
 
   /// The **`secureConnectionStart`** read-only property returns a
   /// [DOMHighResTimeStamp] immediately before the browser starts the handshake
   /// process to secure the current connection. If a secure connection is not
   /// used, the property returns zero.
-  external double get secureConnectionStart;
+  double get secureConnectionStart;
 
   /// The **`requestStart`** read-only property returns a [DOMHighResTimeStamp]
   /// of the time immediately before the browser starts requesting the resource
@@ -147,12 +142,12 @@ extension type PerformanceResourceTiming._(JSObject _)
   /// There is no _end_ property for `requestStart`. To measure the request
   /// time, calculate [PerformanceResourceTiming.responseStart] - `requestStart`
   /// (see the example below).
-  external double get requestStart;
+  double get requestStart;
 
   /// The **`responseStart`** read-only property returns a [DOMHighResTimeStamp]
   /// immediately after the browser receives the first byte of the response from
   /// the server, cache, or local resource.
-  external double get responseStart;
+  double get responseStart;
 
   /// The **`responseEnd`** read-only property returns a [DOMHighResTimeStamp]
   /// immediately after the browser receives the last byte of the resource or
@@ -162,7 +157,7 @@ extension type PerformanceResourceTiming._(JSObject _)
   /// Unlike many other `PerformanceResourceTiming` properties, the
   /// `responseEnd` property is available for cross-origin requests without the
   /// need of the  HTTP response header.
-  external double get responseEnd;
+  double get responseEnd;
 
   /// The **`transferSize`** read-only property represents the size (in octets)
   /// of the fetched resource. The size includes the response header fields plus
@@ -171,7 +166,7 @@ extension type PerformanceResourceTiming._(JSObject _)
   ///
   /// If the resource is fetched from a local cache, or if it is a cross-origin
   /// resource, this property returns zero.
-  external int get transferSize;
+  int get transferSize;
 
   /// The **`encodedBodySize`** read-only property represents the size (in
   /// octets) received from the fetch (HTTP or cache) of the payload body before
@@ -180,14 +175,14 @@ extension type PerformanceResourceTiming._(JSObject _)
   /// must
   /// return the size of the payload body before removing any applied content
   /// encoding.
-  external int get encodedBodySize;
+  int get encodedBodySize;
 
   /// The **`decodedBodySize`** read-only property returns the size (in octets)
   /// received from the fetch (HTTP or cache) of the message body after removing
   /// any applied content encoding (like gzip or Brotli). If the resource is
   /// retrieved from an application cache or local resources, it returns the
   /// size of the payload after removing any applied content encoding.
-  external int get decodedBodySize;
+  int get decodedBodySize;
 
   /// The **`renderBlockingStatus`** read-only property returns the
   /// render-blocking status of the resource.
@@ -196,7 +191,7 @@ extension type PerformanceResourceTiming._(JSObject _)
   ///
   /// - weren't render-blocking and therefore could be delayed, or
   /// - were render-blocking and therefore could be preloaded.
-  external RenderBlockingStatusType get renderBlockingStatus;
+  RenderBlockingStatusType get renderBlockingStatus;
 
   /// The **`serverTiming`** read-only property returns an array of
   /// [PerformanceServerTiming] entries containing server timing metrics.
@@ -209,5 +204,5 @@ extension type PerformanceResourceTiming._(JSObject _)
   ///
   /// The `serverTiming` entries can live on `navigation` and `resource`
   /// entries.
-  external JSArray<PerformanceServerTiming> get serverTiming;
+  JSArray<PerformanceServerTiming> get serverTiming;
 }

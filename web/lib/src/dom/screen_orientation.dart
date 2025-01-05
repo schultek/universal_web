@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,11 +10,7 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../js_interop.dart';
 import 'dom.dart';
 import 'html.dart';
 
@@ -32,8 +28,7 @@ typedef OrientationType = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ScreenOrientation).
-extension type ScreenOrientation._(JSObject _)
-    implements EventTarget, JSObject {
+abstract class ScreenOrientation implements EventTarget, JSObject {
   /// The **`lock()`** property of the [ScreenOrientation] interface locks the
   /// orientation of the containing document to the specified orientation.
   ///
@@ -41,24 +36,24 @@ extension type ScreenOrientation._(JSObject _)
   /// the browser context is full screen.
   /// If locking is supported, then it must work for all the parameter values
   /// listed below.
-  external JSPromise<JSAny?> lock(OrientationLockType orientation);
+  JSPromise<JSAny?> lock(OrientationLockType orientation);
 
   /// The **`unlock()`** property of the
   /// [ScreenOrientation] interface unlocks the orientation of the containing
   /// document from its default orientation.
-  external void unlock();
+  void unlock();
 
   /// The **`type`** read-only property of the
   /// [ScreenOrientation] interface returns the document's current orientation
   /// type, one of `portrait-primary`, `portrait-secondary`,
   /// `landscape-primary`, or
   /// `landscape-secondary`.
-  external OrientationType get type;
+  OrientationType get type;
 
   /// The **`angle`** read-only property of the
   /// [ScreenOrientation] interface returns the document's current orientation
   /// angle.
-  external int get angle;
-  external EventHandler get onchange;
-  external set onchange(EventHandler value);
+  int get angle;
+  EventHandler get onchange;
+  set onchange(EventHandler value);
 }

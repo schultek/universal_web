@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,11 +10,8 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../error.dart';
+import '../js_interop.dart';
 import 'dom.dart';
 import 'hr_time.dart';
 import 'html.dart';
@@ -50,7 +47,7 @@ typedef OverSampleType = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext).
-extension type BaseAudioContext._(JSObject _) implements EventTarget, JSObject {
+abstract class BaseAudioContext implements EventTarget, JSObject {
   /// The `createAnalyser()` method of the
   /// [BaseAudioContext] interface creates an [AnalyserNode], which
   /// can be used to expose audio time and frequency data and create data
@@ -62,7 +59,7 @@ extension type BaseAudioContext._(JSObject _) implements EventTarget, JSObject {
   ///
   /// > **Note:** For more on using this node, see the
   /// > [AnalyserNode] page.
-  external AnalyserNode createAnalyser();
+  AnalyserNode createAnalyser();
 
   /// The `createBiquadFilter()` method of the [BaseAudioContext]
   /// interface creates a [BiquadFilterNode], which represents a second order
@@ -71,7 +68,7 @@ extension type BaseAudioContext._(JSObject _) implements EventTarget, JSObject {
   /// > **Note:** The [BiquadFilterNode.BiquadFilterNode] constructor is the
   /// > recommended way to create a [BiquadFilterNode]; see
   /// > [Creating an AudioNode](https://developer.mozilla.org/en-US/docs/Web/API/AudioNode#creating_an_audionode).
-  external BiquadFilterNode createBiquadFilter();
+  BiquadFilterNode createBiquadFilter();
 
   /// The `createBuffer()` method of the [BaseAudioContext]
   /// Interface is used to create a new, empty [AudioBuffer] object, which
@@ -91,7 +88,7 @@ extension type BaseAudioContext._(JSObject _) implements EventTarget, JSObject {
   /// > MP3 file, and directly gives you back an [AudioBuffer] that you can
   /// > then play via an [AudioBufferSourceNode]. For simple use cases
   /// > like playing an MP3, `decodeAudioData()` is what you should be using.
-  external AudioBuffer createBuffer(
+  AudioBuffer createBuffer(
     int numberOfChannels,
     int length,
     num sampleRate,
@@ -108,7 +105,7 @@ extension type BaseAudioContext._(JSObject _) implements EventTarget, JSObject {
   /// > constructor is the recommended way to create a [AudioBufferSourceNode];
   /// > see
   /// > [Creating an AudioNode](https://developer.mozilla.org/en-US/docs/Web/API/AudioNode#creating_an_audionode).
-  external AudioBufferSourceNode createBufferSource();
+  AudioBufferSourceNode createBufferSource();
 
   /// The `createChannelMerger()` method of the [BaseAudioContext] interface
   /// creates a [ChannelMergerNode],
@@ -118,7 +115,7 @@ extension type BaseAudioContext._(JSObject _) implements EventTarget, JSObject {
   /// > **Note:** The [ChannelMergerNode.ChannelMergerNode] constructor is the
   /// > recommended way to create a [ChannelMergerNode]; see
   /// > [Creating an AudioNode](https://developer.mozilla.org/en-US/docs/Web/API/AudioNode#creating_an_audionode).
-  external ChannelMergerNode createChannelMerger([int numberOfInputs]);
+  ChannelMergerNode createChannelMerger([int numberOfInputs]);
 
   /// The `createChannelSplitter()` method of the [BaseAudioContext] Interface
   /// is used to create a [ChannelSplitterNode],
@@ -129,7 +126,7 @@ extension type BaseAudioContext._(JSObject _) implements EventTarget, JSObject {
   /// > constructor is the recommended way to create a [ChannelSplitterNode];
   /// > see
   /// > [Creating an AudioNode](https://developer.mozilla.org/en-US/docs/Web/API/AudioNode#creating_an_audionode).
-  external ChannelSplitterNode createChannelSplitter([int numberOfOutputs]);
+  ChannelSplitterNode createChannelSplitter([int numberOfOutputs]);
 
   /// The **`createConstantSource()`**
   /// property of the [BaseAudioContext] interface creates a
@@ -141,7 +138,7 @@ extension type BaseAudioContext._(JSObject _) implements EventTarget, JSObject {
   /// > **Note:** The [ConstantSourceNode.ConstantSourceNode]
   /// > constructor is the recommended way to create a [ConstantSourceNode]; see
   /// > [Creating an AudioNode](https://developer.mozilla.org/en-US/docs/Web/API/AudioNode#creating_an_audionode).
-  external ConstantSourceNode createConstantSource();
+  ConstantSourceNode createConstantSource();
 
   /// The `createConvolver()` method of the [BaseAudioContext]
   /// interface creates a [ConvolverNode], which is commonly used to apply
@@ -152,7 +149,7 @@ extension type BaseAudioContext._(JSObject _) implements EventTarget, JSObject {
   /// > **Note:** The [ConvolverNode.ConvolverNode]
   /// > constructor is the recommended way to create a [ConvolverNode]; see
   /// > [Creating an AudioNode](https://developer.mozilla.org/en-US/docs/Web/API/AudioNode#creating_an_audionode).
-  external ConvolverNode createConvolver();
+  ConvolverNode createConvolver();
 
   /// The `createDelay()` method of the
   /// [BaseAudioContext] Interface is used to create a [DelayNode],
@@ -162,7 +159,7 @@ extension type BaseAudioContext._(JSObject _) implements EventTarget, JSObject {
   /// > **Note:** The [DelayNode.DelayNode]
   /// > constructor is the recommended way to create a [DelayNode]; see
   /// > [Creating an AudioNode](https://developer.mozilla.org/en-US/docs/Web/API/AudioNode#creating_an_audionode).
-  external DelayNode createDelay([num maxDelayTime]);
+  DelayNode createDelay([num maxDelayTime]);
 
   /// The `createDynamicsCompressor()` method of the [BaseAudioContext]
   /// Interface is used to create a [DynamicsCompressorNode], which can be used
@@ -182,7 +179,7 @@ extension type BaseAudioContext._(JSObject _) implements EventTarget, JSObject {
   /// > constructor is the recommended way to create a [DynamicsCompressorNode];
   /// > see
   /// > [Creating an AudioNode](https://developer.mozilla.org/en-US/docs/Web/API/AudioNode#creating_an_audionode).
-  external DynamicsCompressorNode createDynamicsCompressor();
+  DynamicsCompressorNode createDynamicsCompressor();
 
   /// The `createGain()` method of the [BaseAudioContext]
   /// interface creates a [GainNode], which can be used to control the
@@ -191,7 +188,7 @@ extension type BaseAudioContext._(JSObject _) implements EventTarget, JSObject {
   /// > **Note:** The [GainNode.GainNode]
   /// > constructor is the recommended way to create a [GainNode]; see
   /// > [Creating an AudioNode](https://developer.mozilla.org/en-US/docs/Web/API/AudioNode#creating_an_audionode).
-  external GainNode createGain();
+  GainNode createGain();
 
   /// The **`createIIRFilter()`** method of the [BaseAudioContext] interface
   /// creates an [IIRFilterNode], which represents a general
@@ -201,7 +198,7 @@ extension type BaseAudioContext._(JSObject _) implements EventTarget, JSObject {
   /// > **Note:** The [IIRFilterNode.IIRFilterNode]
   /// > constructor is the recommended way to create a [IIRFilterNode]; see
   /// > [Creating an AudioNode](https://developer.mozilla.org/en-US/docs/Web/API/AudioNode#creating_an_audionode).
-  external IIRFilterNode createIIRFilter(
+  IIRFilterNode createIIRFilter(
     JSArray<JSNumber> feedforward,
     JSArray<JSNumber> feedback,
   );
@@ -213,7 +210,7 @@ extension type BaseAudioContext._(JSObject _) implements EventTarget, JSObject {
   /// > **Note:** The [OscillatorNode.OscillatorNode]
   /// > constructor is the recommended way to create a [OscillatorNode]; see
   /// > [Creating an AudioNode](https://developer.mozilla.org/en-US/docs/Web/API/AudioNode#creating_an_audionode).
-  external OscillatorNode createOscillator();
+  OscillatorNode createOscillator();
 
   /// The `createPanner()` method of the [BaseAudioContext]
   /// Interface is used to create a new [PannerNode], which is used to
@@ -228,13 +225,13 @@ extension type BaseAudioContext._(JSObject _) implements EventTarget, JSObject {
   /// > **Note:** The [PannerNode.PannerNode]
   /// > constructor is the recommended way to create a [PannerNode]; see
   /// > [Creating an AudioNode](https://developer.mozilla.org/en-US/docs/Web/API/AudioNode#creating_an_audionode).
-  external PannerNode createPanner();
+  PannerNode createPanner();
 
   /// The `createPeriodicWave()` method of the [BaseAudioContext] Interface
   /// is used to create a [PeriodicWave], which is used to define a periodic
   /// waveform
   /// that can be used to shape the output of an [OscillatorNode].
-  external PeriodicWave createPeriodicWave(
+  PeriodicWave createPeriodicWave(
     JSArray<JSNumber> real,
     JSArray<JSNumber> imag, [
     PeriodicWaveConstraints constraints,
@@ -246,7 +243,7 @@ extension type BaseAudioContext._(JSObject _) implements EventTarget, JSObject {
   /// > **Note:** This feature was replaced by
   /// > [AudioWorklets](https://developer.mozilla.org/en-US/docs/Web/API/AudioWorklet)
   /// > and the [AudioWorkletNode] interface.
-  external ScriptProcessorNode createScriptProcessor([
+  ScriptProcessorNode createScriptProcessor([
     int bufferSize,
     int numberOfInputChannels,
     int numberOfOutputChannels,
@@ -261,7 +258,7 @@ extension type BaseAudioContext._(JSObject _) implements EventTarget, JSObject {
   /// > **Note:** The [StereoPannerNode.StereoPannerNode]
   /// > constructor is the recommended way to create a [StereoPannerNode]; see
   /// > [Creating an AudioNode](https://developer.mozilla.org/en-US/docs/Web/API/AudioNode#creating_an_audionode).
-  external StereoPannerNode createStereoPanner();
+  StereoPannerNode createStereoPanner();
 
   /// The `createWaveShaper()` method of the [BaseAudioContext]
   /// interface creates a [WaveShaperNode], which represents a non-linear
@@ -270,7 +267,7 @@ extension type BaseAudioContext._(JSObject _) implements EventTarget, JSObject {
   /// > **Note:** The [WaveShaperNode.WaveShaperNode]
   /// > constructor is the recommended way to create a [WaveShaperNode]; see
   /// > [Creating an AudioNode](https://developer.mozilla.org/en-US/docs/Web/API/AudioNode#creating_an_audionode).
-  external WaveShaperNode createWaveShaper();
+  WaveShaperNode createWaveShaper();
 
   /// The `decodeAudioData()` method of the [BaseAudioContext]
   /// Interface is used to asynchronously decode audio file data contained in an
@@ -291,7 +288,7 @@ extension type BaseAudioContext._(JSObject _) implements EventTarget, JSObject {
   /// failure. The primary method of interfacing with this function is via its
   /// Promise return value, and the callback parameters are provided for legacy
   /// reasons.
-  external JSPromise<AudioBuffer> decodeAudioData(
+  JSPromise<AudioBuffer> decodeAudioData(
     JSArrayBuffer audioData, [
     DecodeSuccessCallback? successCallback,
     DecodeErrorCallback? errorCallback,
@@ -302,38 +299,38 @@ extension type BaseAudioContext._(JSObject _) implements EventTarget, JSObject {
   /// destination of all audio in the context. It often represents an actual
   /// audio-rendering
   /// device such as your device's speakers.
-  external AudioDestinationNode get destination;
+  AudioDestinationNode get destination;
 
   /// The `sampleRate` property of the [BaseAudioContext] interface returns a
   /// floating point number representing the sample rate, in samples per second,
   /// used by all nodes in this audio context.
   /// This limitation means that sample-rate converters are not supported.
-  external double get sampleRate;
+  double get sampleRate;
 
   /// The `currentTime` read-only property of the [BaseAudioContext]
   /// interface returns a double representing an ever-increasing hardware
   /// timestamp in seconds that
   /// can be used for scheduling audio playback, visualizing timelines, etc. It
   /// starts at 0.
-  external double get currentTime;
+  double get currentTime;
 
   /// The `listener` property of the [BaseAudioContext] interface
   /// returns an [AudioListener] object that can then be used for
   /// implementing 3D audio spatialization.
-  external AudioListener get listener;
+  AudioListener get listener;
 
   /// The `state` read-only property of the [BaseAudioContext]
   /// interface returns the current state of the `AudioContext`.
-  external AudioContextState get state;
+  AudioContextState get state;
 
   /// The `audioWorklet` read-only property of the
   /// [BaseAudioContext] interface returns an instance of
   /// [AudioWorklet] that can be used for adding
   /// [AudioWorkletProcessor]-derived classes which implement custom audio
   /// processing.
-  external AudioWorklet get audioWorklet;
-  external EventHandler get onstatechange;
-  external set onstatechange(EventHandler value);
+  AudioWorklet get audioWorklet;
+  EventHandler get onstatechange;
+  set onstatechange(EventHandler value);
 }
 
 /// The `AudioContext` interface represents an audio-processing graph built from
@@ -350,10 +347,7 @@ extension type BaseAudioContext._(JSObject _) implements EventTarget, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/AudioContext).
-extension type AudioContext._(JSObject _)
-    implements BaseAudioContext, JSObject {
-  external factory AudioContext([AudioContextOptions contextOptions]);
-
+abstract class AudioContext implements BaseAudioContext, JSObject {
   /// The
   /// **`getOutputTimestamp()`** method of the
   /// [AudioContext] interface returns a new `AudioTimestamp` object
@@ -372,7 +366,7 @@ extension type AudioContext._(JSObject _)
   /// by the audio output device, in the same units and origin as
   /// [performance.now]. This is the time after the document containing the
   /// audio context was first rendered.
-  external AudioTimestamp getOutputTimestamp();
+  AudioTimestamp getOutputTimestamp();
 
   /// The **`resume()`** method of the [AudioContext]
   /// interface resumes the progression of time in an audio context that has
@@ -381,7 +375,7 @@ extension type AudioContext._(JSObject _)
   ///
   /// This method will cause an `INVALID_STATE_ERR` exception to be thrown if
   /// called on an [OfflineAudioContext].
-  external JSPromise<JSAny?> resume();
+  JSPromise<JSAny?> resume();
 
   /// The `suspend()` method of the [AudioContext] Interface suspends the
   /// progression of time in the audio context, temporarily halting audio
@@ -391,7 +385,7 @@ extension type AudioContext._(JSObject _)
   ///
   /// This method will cause an `INVALID_STATE_ERR` exception to be thrown if
   /// called on an [OfflineAudioContext].
-  external JSPromise<JSAny?> suspend();
+  JSPromise<JSAny?> suspend();
 
   /// The `close()` method of the [AudioContext] Interface closes the audio
   /// context, releasing any system audio resources that it uses.
@@ -405,7 +399,7 @@ extension type AudioContext._(JSObject _)
   /// `AudioContext`-creation-blocking resources have been released. This method
   /// throws an `INVALID_STATE_ERR` exception if called on an
   /// [OfflineAudioContext].
-  external JSPromise<JSAny?> close();
+  JSPromise<JSAny?> close();
 
   /// The `createMediaElementSource()` method of the [AudioContext] Interface is
   /// used to create a new [MediaElementAudioSourceNode] object, given an
@@ -414,7 +408,7 @@ extension type AudioContext._(JSObject _)
   ///
   /// For more details about media element audio source nodes, check out the
   /// [MediaElementAudioSourceNode] reference page.
-  external MediaElementAudioSourceNode createMediaElementSource(
+  MediaElementAudioSourceNode createMediaElementSource(
       HTMLMediaElement mediaElement);
 
   /// The `createMediaStreamSource()` method of the [AudioContext]
@@ -424,8 +418,7 @@ extension type AudioContext._(JSObject _)
   ///
   /// For more details about media stream audio source nodes, check out the
   /// [MediaStreamAudioSourceNode] reference page.
-  external MediaStreamAudioSourceNode createMediaStreamSource(
-      MediaStream mediaStream);
+  MediaStreamAudioSourceNode createMediaStreamSource(MediaStream mediaStream);
 
   /// The **`createMediaStreamTrackSource()`** method of the [AudioContext]
   /// interface creates and returns a [MediaStreamTrackAudioSourceNode] which
@@ -436,7 +429,7 @@ extension type AudioContext._(JSObject _)
   /// [MediaStreamAudioSourceNode] whose audio comes from the audio track in a
   /// specified [MediaStream] whose [MediaStreamTrack.id] is first,
   /// lexicographically (alphabetically).
-  external MediaStreamTrackAudioSourceNode createMediaStreamTrackSource(
+  MediaStreamTrackAudioSourceNode createMediaStreamTrackSource(
       MediaStreamTrack mediaStreamTrack);
 
   /// The `createMediaStreamDestination()` method of the [AudioContext]
@@ -454,7 +447,7 @@ extension type AudioContext._(JSObject _)
   ///
   /// For more details about media stream destination nodes, check out the
   /// [MediaStreamAudioDestinationNode] reference page.
-  external MediaStreamAudioDestinationNode createMediaStreamDestination();
+  MediaStreamAudioDestinationNode createMediaStreamDestination();
 
   /// The **`baseLatency`** read-only property of the
   /// [AudioContext] interface returns a double that represents the number of
@@ -466,7 +459,7 @@ extension type AudioContext._(JSObject _)
   /// > **Note:** You can request a certain latency during
   /// > [AudioContext.AudioContext] with the
   /// > `latencyHint` option, but the browser may ignore the option.
-  external double get baseLatency;
+  double get baseLatency;
 
   /// The **`outputLatency`** read-only property of
   /// the [AudioContext] Interface provides an estimation of the output latency
@@ -480,41 +473,69 @@ extension type AudioContext._(JSObject _)
   /// device.
   ///
   /// It varies depending on the platform and the available hardware.
-  external double get outputLatency;
+  double get outputLatency;
 }
-extension type AudioContextOptions._(JSObject _) implements JSObject {
-  external factory AudioContextOptions({
-    JSAny latencyHint,
-    num sampleRate,
-    JSAny sinkId,
-    JSAny renderSizeHint,
-  });
 
-  external JSAny get latencyHint;
-  external set latencyHint(JSAny value);
-  external double get sampleRate;
-  external set sampleRate(num value);
-  external JSAny get sinkId;
-  external set sinkId(JSAny value);
-  external JSAny get renderSizeHint;
-  external set renderSizeHint(JSAny value);
+abstract class AudioContextOptions implements JSObject {
+  JSAny get latencyHint {
+    unsupportedPlatformError();
+  }
+
+  set latencyHint(JSAny value) {
+    unsupportedPlatformError();
+  }
+
+  double get sampleRate {
+    unsupportedPlatformError();
+  }
+
+  set sampleRate(num value) {
+    unsupportedPlatformError();
+  }
+
+  JSAny get sinkId {
+    unsupportedPlatformError();
+  }
+
+  set sinkId(JSAny value) {
+    unsupportedPlatformError();
+  }
+
+  JSAny get renderSizeHint {
+    unsupportedPlatformError();
+  }
+
+  set renderSizeHint(JSAny value) {
+    unsupportedPlatformError();
+  }
 }
-extension type AudioSinkOptions._(JSObject _) implements JSObject {
-  external factory AudioSinkOptions({required AudioSinkType type});
 
-  external AudioSinkType get type;
-  external set type(AudioSinkType value);
+abstract class AudioSinkOptions implements JSObject {
+  AudioSinkType get type {
+    unsupportedPlatformError();
+  }
+
+  set type(AudioSinkType value) {
+    unsupportedPlatformError();
+  }
 }
-extension type AudioTimestamp._(JSObject _) implements JSObject {
-  external factory AudioTimestamp({
-    num contextTime,
-    DOMHighResTimeStamp performanceTime,
-  });
 
-  external double get contextTime;
-  external set contextTime(num value);
-  external double get performanceTime;
-  external set performanceTime(DOMHighResTimeStamp value);
+abstract class AudioTimestamp implements JSObject {
+  double get contextTime {
+    unsupportedPlatformError();
+  }
+
+  set contextTime(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get performanceTime {
+    unsupportedPlatformError();
+  }
+
+  set performanceTime(DOMHighResTimeStamp value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The `OfflineAudioContext` interface is an [AudioContext] interface
@@ -528,14 +549,7 @@ extension type AudioTimestamp._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/OfflineAudioContext).
-extension type OfflineAudioContext._(JSObject _)
-    implements BaseAudioContext, JSObject {
-  external factory OfflineAudioContext(
-    JSAny contextOptionsOrNumberOfChannels, [
-    int length,
-    num sampleRate,
-  ]);
-
+abstract class OfflineAudioContext implements BaseAudioContext, JSObject {
   /// The `startRendering()` method of the [OfflineAudioContext] Interface
   /// starts rendering the audio graph, taking into account the current
   /// connections and the current scheduled changes.
@@ -548,7 +562,7 @@ extension type OfflineAudioContext._(JSObject _)
   /// an older event-based version and a newer promise-based version.
   /// The former will eventually be removed, but currently both mechanisms are
   /// provided for legacy reasons.
-  external JSPromise<AudioBuffer> startRendering();
+  JSPromise<AudioBuffer> startRendering();
 
   /// The **`resume()`** method of the
   /// [OfflineAudioContext] interface resumes the progression of time in an
@@ -556,7 +570,7 @@ extension type OfflineAudioContext._(JSObject _)
   /// context that has been suspended. The promise resolves immediately because
   /// the
   /// `OfflineAudioContext` does not require the audio hardware.
-  external JSPromise<JSAny?> resume();
+  JSPromise<JSAny?> resume();
 
   /// The **`suspend()`** method of the [OfflineAudioContext] interface
   /// schedules a suspension of the time
@@ -575,32 +589,49 @@ extension type OfflineAudioContext._(JSObject _)
   /// frame. Also scheduling should be done while the context is not running to
   /// ensure the
   /// precise suspension.
-  external JSPromise<JSAny?> suspend(num suspendTime);
+  JSPromise<JSAny?> suspend(num suspendTime);
 
   /// The **`length`** property of the
   /// [OfflineAudioContext] interface returns an integer representing the size
   /// of
   /// the buffer in sample-frames.
-  external int get length;
-  external EventHandler get oncomplete;
-  external set oncomplete(EventHandler value);
+  int get length;
+  EventHandler get oncomplete;
+  set oncomplete(EventHandler value);
 }
-extension type OfflineAudioContextOptions._(JSObject _) implements JSObject {
-  external factory OfflineAudioContextOptions({
-    int numberOfChannels,
-    required int length,
-    required num sampleRate,
-    JSAny renderSizeHint,
-  });
 
-  external int get numberOfChannels;
-  external set numberOfChannels(int value);
-  external int get length;
-  external set length(int value);
-  external double get sampleRate;
-  external set sampleRate(num value);
-  external JSAny get renderSizeHint;
-  external set renderSizeHint(JSAny value);
+abstract class OfflineAudioContextOptions implements JSObject {
+  int get numberOfChannels {
+    unsupportedPlatformError();
+  }
+
+  set numberOfChannels(int value) {
+    unsupportedPlatformError();
+  }
+
+  int get length {
+    unsupportedPlatformError();
+  }
+
+  set length(int value) {
+    unsupportedPlatformError();
+  }
+
+  double get sampleRate {
+    unsupportedPlatformError();
+  }
+
+  set sampleRate(num value) {
+    unsupportedPlatformError();
+  }
+
+  JSAny get renderSizeHint {
+    unsupportedPlatformError();
+  }
+
+  set renderSizeHint(JSAny value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The
@@ -618,29 +649,21 @@ extension type OfflineAudioContextOptions._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/OfflineAudioCompletionEvent).
-extension type OfflineAudioCompletionEvent._(JSObject _)
-    implements Event, JSObject {
-  external factory OfflineAudioCompletionEvent(
-    String type,
-    OfflineAudioCompletionEventInit eventInitDict,
-  );
-
+abstract class OfflineAudioCompletionEvent implements Event, JSObject {
   /// The **`renderedBuffer`** read-only property of the
   /// [OfflineAudioCompletionEvent] interface is an [AudioBuffer]
   /// containing the result of processing an [OfflineAudioContext].
-  external AudioBuffer get renderedBuffer;
+  AudioBuffer get renderedBuffer;
 }
-extension type OfflineAudioCompletionEventInit._(JSObject _)
-    implements EventInit, JSObject {
-  external factory OfflineAudioCompletionEventInit({
-    bool bubbles,
-    bool cancelable,
-    bool composed,
-    required AudioBuffer renderedBuffer,
-  });
 
-  external AudioBuffer get renderedBuffer;
-  external set renderedBuffer(AudioBuffer value);
+abstract class OfflineAudioCompletionEventInit implements EventInit, JSObject {
+  AudioBuffer get renderedBuffer {
+    unsupportedPlatformError();
+  }
+
+  set renderedBuffer(AudioBuffer value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`AudioBuffer`** interface represents a short audio asset residing in
@@ -662,20 +685,18 @@ extension type OfflineAudioCompletionEventInit._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/AudioBuffer).
-extension type AudioBuffer._(JSObject _) implements JSObject {
-  external factory AudioBuffer(AudioBufferOptions options);
-
+abstract class AudioBuffer implements JSObject {
   /// The **`getChannelData()`** method of the [AudioBuffer] Interface returns a
   /// `Float32Array` containing the PCM data associated with the channel,
   /// defined by the channel parameter (with 0 representing the first channel).
-  external JSFloat32Array getChannelData(int channel);
+  JSFloat32Array getChannelData(int channel);
 
   /// The
   /// **`copyFromChannel()`** method of the
   /// [AudioBuffer] interface copies the audio sample data from the specified
   /// channel of the `AudioBuffer` to a specified
   /// `Float32Array`.
-  external void copyFromChannel(
+  void copyFromChannel(
     JSFloat32Array destination,
     int channelNumber, [
     int bufferOffset,
@@ -684,7 +705,7 @@ extension type AudioBuffer._(JSObject _) implements JSObject {
   /// The `copyToChannel()` method of the [AudioBuffer] interface copies
   /// the samples to the specified channel of the `AudioBuffer`, from the source
   /// array.
-  external void copyToChannel(
+  void copyToChannel(
     JSFloat32Array source,
     int channelNumber, [
     int bufferOffset,
@@ -693,38 +714,50 @@ extension type AudioBuffer._(JSObject _) implements JSObject {
   /// The **`sampleRate`** property of the [AudioBuffer] interface returns a
   /// float representing the sample rate, in samples per second, of the PCM data
   /// stored in the buffer.
-  external double get sampleRate;
+  double get sampleRate;
 
   /// The **`length`** property of the [AudioBuffer]
   /// interface returns an integer representing the length, in sample-frames, of
   /// the PCM data
   /// stored in the buffer.
-  external int get length;
+  int get length;
 
   /// The **`duration`** property of the [AudioBuffer] interface returns a
   /// double representing the duration, in seconds, of the PCM data stored in
   /// the buffer.
-  external double get duration;
+  double get duration;
 
   /// The `numberOfChannels` property of the [AudioBuffer]
   /// interface returns an integer representing the number of discrete audio
   /// channels
   /// described by the PCM data stored in the buffer.
-  external int get numberOfChannels;
+  int get numberOfChannels;
 }
-extension type AudioBufferOptions._(JSObject _) implements JSObject {
-  external factory AudioBufferOptions({
-    int numberOfChannels,
-    required int length,
-    required num sampleRate,
-  });
 
-  external int get numberOfChannels;
-  external set numberOfChannels(int value);
-  external int get length;
-  external set length(int value);
-  external double get sampleRate;
-  external set sampleRate(num value);
+abstract class AudioBufferOptions implements JSObject {
+  int get numberOfChannels {
+    unsupportedPlatformError();
+  }
+
+  set numberOfChannels(int value) {
+    unsupportedPlatformError();
+  }
+
+  int get length {
+    unsupportedPlatformError();
+  }
+
+  set length(int value) {
+    unsupportedPlatformError();
+  }
+
+  double get sampleRate {
+    unsupportedPlatformError();
+  }
+
+  set sampleRate(num value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`AudioNode`** interface is a generic interface for representing an
@@ -746,14 +779,14 @@ extension type AudioBufferOptions._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/AudioNode).
-extension type AudioNode._(JSObject _) implements EventTarget, JSObject {
+abstract class AudioNode implements EventTarget, JSObject {
   /// The `connect()` method of the [AudioNode] interface lets
   /// you connect one of the node's outputs to a target, which may be either
   /// another
   /// `AudioNode` (thereby directing the sound data to the specified node) or an
   /// [AudioParam], so that the node's output data is automatically used to
   /// change the value of that parameter over time.
-  external AudioNode? connect(
+  AudioNode? connect(
     JSObject destinationNodeOrDestinationParam, [
     int output,
     int input,
@@ -761,7 +794,7 @@ extension type AudioNode._(JSObject _) implements EventTarget, JSObject {
 
   /// The **`disconnect()`** method of the [AudioNode] interface lets you
   /// disconnect one or more nodes from the node on which the method is called.
-  external void disconnect([
+  void disconnect([
     JSAny destinationNodeOrDestinationParamOrOutput,
     int output,
     int input,
@@ -771,19 +804,19 @@ extension type AudioNode._(JSObject _) implements EventTarget, JSObject {
   /// [AudioNode] interface returns the associated
   /// [BaseAudioContext], that is the object representing the processing graph
   /// the node is participating in.
-  external BaseAudioContext get context;
+  BaseAudioContext get context;
 
   /// The `numberOfInputs` property of
   /// the [AudioNode] interface returns the number of inputs feeding the
   /// node. Source nodes are defined as nodes having a `numberOfInputs`
   /// property with a value of 0.
-  external int get numberOfInputs;
+  int get numberOfInputs;
 
   /// The `numberOfOutputs` property of
   /// the [AudioNode] interface returns the number of outputs coming out of
   /// the node. Destination nodes — like [AudioDestinationNode] — have
   /// a value of 0 for this attribute.
-  external int get numberOfOutputs;
+  int get numberOfOutputs;
 
   /// The **`channelCount`** property of the [AudioNode] interface represents an
   /// integer used to determine how many channels are used when
@@ -798,14 +831,14 @@ extension type AudioNode._(JSObject _) implements EventTarget, JSObject {
   ///   `clamped-max`.
   /// - It is used as the exact value if the `channelCountMode` value is
   ///   `explicit`.
-  external int get channelCount;
-  external set channelCount(int value);
+  int get channelCount;
+  set channelCount(int value);
 
   /// The `channelCountMode` property of the [AudioNode] interface represents an
   /// enumerated value describing the way channels must be matched between the
   /// node's inputs and outputs.
-  external ChannelCountMode get channelCountMode;
-  external set channelCountMode(ChannelCountMode value);
+  ChannelCountMode get channelCountMode;
+  set channelCountMode(ChannelCountMode value);
 
   /// The **`channelInterpretation`** property of the [AudioNode] interface
   /// represents an enumerated value describing how input channels are mapped to
@@ -817,22 +850,34 @@ extension type AudioNode._(JSObject _) implements EventTarget, JSObject {
   /// The property has two options: `speakers` and `discrete`. These are
   /// documented in [Basic concepts behind Web Audio API > up-mixing and
   /// down-mixing](/en-US/docs/Web/API/Web_Audio_API/Basic_concepts_behind_Web_Audio_API#up-mixing_and_down-mixing).
-  external ChannelInterpretation get channelInterpretation;
-  external set channelInterpretation(ChannelInterpretation value);
+  ChannelInterpretation get channelInterpretation;
+  set channelInterpretation(ChannelInterpretation value);
 }
-extension type AudioNodeOptions._(JSObject _) implements JSObject {
-  external factory AudioNodeOptions({
-    int channelCount,
-    ChannelCountMode channelCountMode,
-    ChannelInterpretation channelInterpretation,
-  });
 
-  external int get channelCount;
-  external set channelCount(int value);
-  external ChannelCountMode get channelCountMode;
-  external set channelCountMode(ChannelCountMode value);
-  external ChannelInterpretation get channelInterpretation;
-  external set channelInterpretation(ChannelInterpretation value);
+abstract class AudioNodeOptions implements JSObject {
+  int get channelCount {
+    unsupportedPlatformError();
+  }
+
+  set channelCount(int value) {
+    unsupportedPlatformError();
+  }
+
+  ChannelCountMode get channelCountMode {
+    unsupportedPlatformError();
+  }
+
+  set channelCountMode(ChannelCountMode value) {
+    unsupportedPlatformError();
+  }
+
+  ChannelInterpretation get channelInterpretation {
+    unsupportedPlatformError();
+  }
+
+  set channelInterpretation(ChannelInterpretation value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The Web Audio API's `AudioParam` interface represents an audio-related
@@ -852,13 +897,13 @@ extension type AudioNodeOptions._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/AudioParam).
-extension type AudioParam._(JSObject _) implements JSObject {
+abstract class AudioParam implements JSObject {
   /// The `setValueAtTime()` method of the
   /// [AudioParam] interface schedules an instant change to the
   /// `AudioParam` value at a precise time, as measured against
   /// [BaseAudioContext.currentTime]. The new value is given in the value
   /// parameter.
-  external AudioParam setValueAtTime(
+  AudioParam setValueAtTime(
     num value,
     num startTime,
   );
@@ -869,7 +914,7 @@ extension type AudioParam._(JSObject _) implements JSObject {
   /// _previous_ event, follows a linear ramp to the new value given in the
   /// `value` parameter, and reaches the new value at the time given in the
   /// `endTime` parameter.
-  external AudioParam linearRampToValueAtTime(
+  AudioParam linearRampToValueAtTime(
     num value,
     num endTime,
   );
@@ -886,7 +931,7 @@ extension type AudioParam._(JSObject _) implements JSObject {
   /// > frequencies or playback rates than linear ramps because of the way the
   /// > human ear
   /// > works.
-  external AudioParam exponentialRampToValueAtTime(
+  AudioParam exponentialRampToValueAtTime(
     num value,
     num endTime,
   );
@@ -895,7 +940,7 @@ extension type AudioParam._(JSObject _) implements JSObject {
   /// [AudioParam] interface schedules the start of a gradual change to the
   /// `AudioParam` value. This is useful for decay or release portions of ADSR
   /// envelopes.
-  external AudioParam setTargetAtTime(
+  AudioParam setTargetAtTime(
     num target,
     num startTime,
     num timeConstant,
@@ -911,7 +956,7 @@ extension type AudioParam._(JSObject _) implements JSObject {
   /// floating-point
   /// values, which are scaled to fit into the given interval starting at
   /// `startTime` and a specific duration.
-  external AudioParam setValueCurveAtTime(
+  AudioParam setValueCurveAtTime(
     JSArray<JSNumber> values,
     num startTime,
     num duration,
@@ -919,13 +964,13 @@ extension type AudioParam._(JSObject _) implements JSObject {
 
   /// The `cancelScheduledValues()` method of the [AudioParam]
   /// Interface cancels all scheduled future changes to the `AudioParam`.
-  external AudioParam cancelScheduledValues(num cancelTime);
+  AudioParam cancelScheduledValues(num cancelTime);
 
   /// The **`cancelAndHoldAtTime()`** method of the
   /// [AudioParam] interface cancels all scheduled future changes to the
   /// `AudioParam` but holds its value at a given time until further changes are
   /// made using other methods.
-  external AudioParam cancelAndHoldAtTime(num cancelTime);
+  AudioParam cancelAndHoldAtTime(num cancelTime);
 
   /// The [Web Audio
   /// API's](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API)
@@ -937,26 +982,26 @@ extension type AudioParam._(JSObject _) implements JSObject {
   /// calling [AudioParam.setValueAtTime] with the time returned by the
   /// `AudioContext`'s [BaseAudioContext.currentTime]
   /// property.
-  external double get value;
-  external set value(num value);
-  external AutomationRate get automationRate;
-  external set automationRate(AutomationRate value);
+  double get value;
+  set value(num value);
+  AutomationRate get automationRate;
+  set automationRate(AutomationRate value);
 
   /// The **`defaultValue`**
   /// read-only property of the [AudioParam] interface represents the initial
   /// value of the attributes as defined by the specific [AudioNode] creating
   /// the `AudioParam`.
-  external double get defaultValue;
+  double get defaultValue;
 
   /// The **`minValue`**
   /// read-only property of the [AudioParam] interface represents the minimum
   /// possible value for the parameter's nominal (effective) range.
-  external double get minValue;
+  double get minValue;
 
   /// The **`maxValue`**
   /// read-only property of the [AudioParam] interface represents the maximum
   /// possible value for the parameter's nominal (effective) range.
-  external double get maxValue;
+  double get maxValue;
 }
 
 /// The `AudioScheduledSourceNode` interface—part of the Web Audio API—is a
@@ -979,12 +1024,11 @@ extension type AudioParam._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/AudioScheduledSourceNode).
-extension type AudioScheduledSourceNode._(JSObject _)
-    implements AudioNode, JSObject {
+abstract class AudioScheduledSourceNode implements AudioNode, JSObject {
   /// The `start()` method on [AudioScheduledSourceNode] schedules a sound to
   /// begin playback at the specified time.
   /// If no time is specified, then the sound begins playing immediately.
-  external void start([num when]);
+  void start([num when]);
 
   /// The `stop()` method on [AudioScheduledSourceNode] schedules a
   /// sound to cease playback at the specified time. If no time is specified,
@@ -998,9 +1042,9 @@ extension type AudioScheduledSourceNode._(JSObject _)
   ///
   /// > **Note:** If a scheduled stop time occurs before the node's scheduled
   /// > start time, the node never starts to play.
-  external void stop([num when]);
-  external EventHandler get onended;
-  external set onended(EventHandler value);
+  void stop([num when]);
+  EventHandler get onended;
+  set onended(EventHandler value);
 }
 
 /// The **`AnalyserNode`** interface represents a node able to provide real-time
@@ -1043,12 +1087,7 @@ extension type AudioScheduledSourceNode._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/AnalyserNode).
-extension type AnalyserNode._(JSObject _) implements AudioNode, JSObject {
-  external factory AnalyserNode(
-    BaseAudioContext context, [
-    AnalyserOptions options,
-  ]);
-
+abstract class AnalyserNode implements AudioNode, JSObject {
   /// The **`getFloatFrequencyData()`** method of the [AnalyserNode] Interface
   /// copies the current frequency data into a `Float32Array` array passed into
   /// it. Each array value is a _sample_, the magnitude of the signal at a
@@ -1062,7 +1101,7 @@ extension type AnalyserNode._(JSObject _) implements AudioNode, JSObject {
   /// If you need higher performance and don't care about precision, you can use
   /// [AnalyserNode.getByteFrequencyData] instead, which works on a
   /// `Uint8Array`.
-  external void getFloatFrequencyData(JSFloat32Array array);
+  void getFloatFrequencyData(JSFloat32Array array);
 
   /// The **`getByteFrequencyData()`** method of the [AnalyserNode] interface
   /// copies the current frequency data into a `Uint8Array` (unsigned byte
@@ -1078,13 +1117,13 @@ extension type AnalyserNode._(JSObject _) implements AudioNode, JSObject {
   /// If the array has fewer elements than the [AnalyserNode.frequencyBinCount],
   /// excess elements are dropped. If it has more elements than needed, excess
   /// elements are ignored.
-  external void getByteFrequencyData(JSUint8Array array);
+  void getByteFrequencyData(JSUint8Array array);
 
   /// The **`getFloatTimeDomainData()`** method of the [AnalyserNode] Interface
   /// copies the current waveform, or time-domain, data into a `Float32Array`
   /// array passed into it. Each array value is a _sample_, the magnitude of the
   /// signal at a particular time.
-  external void getFloatTimeDomainData(JSFloat32Array array);
+  void getFloatTimeDomainData(JSFloat32Array array);
 
   /// The **`getByteTimeDomainData()`** method of the [AnalyserNode] Interface
   /// copies the current waveform, or time-domain, data into a `Uint8Array`
@@ -1093,15 +1132,15 @@ extension type AnalyserNode._(JSObject _) implements AudioNode, JSObject {
   /// If the array has fewer elements than the [AnalyserNode.fftSize], excess
   /// elements are dropped. If it has more elements than needed, excess elements
   /// are ignored.
-  external void getByteTimeDomainData(JSUint8Array array);
+  void getByteTimeDomainData(JSUint8Array array);
 
   /// The **`fftSize`** property of the [AnalyserNode] interface is an unsigned
   /// long value and represents the window size in samples that is used when
   /// performing a
   /// [Fast Fourier Transform](https://en.wikipedia.org/wiki/Fast_Fourier_transform)
   /// (FFT) to get frequency domain data.
-  external int get fftSize;
-  external set fftSize(int value);
+  int get fftSize;
+  set fftSize(int value);
 
   /// The **`frequencyBinCount`** read-only property of the [AnalyserNode]
   /// interface contains the total number of data points available to
@@ -1109,52 +1148,65 @@ extension type AnalyserNode._(JSObject _) implements AudioNode, JSObject {
   /// of the [AnalyserNode.fftSize]. The two methods' indices have a linear
   /// relationship with the frequencies they represent, between 0 and the
   /// [Nyquist frequency](https://en.wikipedia.org/wiki/Nyquist_frequency).
-  external int get frequencyBinCount;
+  int get frequencyBinCount;
 
   /// The **`minDecibels`** property of the [AnalyserNode] interface is a double
   /// value representing the minimum power value in the scaling range for the
   /// FFT analysis data, for conversion to unsigned byte values — basically,
   /// this specifies the minimum value for the range of results when using
   /// `getByteFrequencyData()`.
-  external double get minDecibels;
-  external set minDecibels(num value);
+  double get minDecibels;
+  set minDecibels(num value);
 
   /// The **`maxDecibels`** property of the [AnalyserNode] interface is a double
   /// value representing the maximum power value in the scaling range for the
   /// FFT analysis data, for conversion to unsigned byte values — basically,
   /// this specifies the maximum value for the range of results when using
   /// `getByteFrequencyData()`.
-  external double get maxDecibels;
-  external set maxDecibels(num value);
+  double get maxDecibels;
+  set maxDecibels(num value);
 
   /// The **`smoothingTimeConstant`** property of the [AnalyserNode] interface
   /// is a double value representing the averaging constant with the last
   /// analysis frame. It's basically an average between the current buffer and
   /// the last buffer the `AnalyserNode` processed, and results in a much
   /// smoother set of value changes over time.
-  external double get smoothingTimeConstant;
-  external set smoothingTimeConstant(num value);
+  double get smoothingTimeConstant;
+  set smoothingTimeConstant(num value);
 }
-extension type AnalyserOptions._(JSObject _)
-    implements AudioNodeOptions, JSObject {
-  external factory AnalyserOptions({
-    int channelCount,
-    ChannelCountMode channelCountMode,
-    ChannelInterpretation channelInterpretation,
-    int fftSize,
-    num maxDecibels,
-    num minDecibels,
-    num smoothingTimeConstant,
-  });
 
-  external int get fftSize;
-  external set fftSize(int value);
-  external double get maxDecibels;
-  external set maxDecibels(num value);
-  external double get minDecibels;
-  external set minDecibels(num value);
-  external double get smoothingTimeConstant;
-  external set smoothingTimeConstant(num value);
+abstract class AnalyserOptions implements AudioNodeOptions, JSObject {
+  int get fftSize {
+    unsupportedPlatformError();
+  }
+
+  set fftSize(int value) {
+    unsupportedPlatformError();
+  }
+
+  double get maxDecibels {
+    unsupportedPlatformError();
+  }
+
+  set maxDecibels(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get minDecibels {
+    unsupportedPlatformError();
+  }
+
+  set minDecibels(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get smoothingTimeConstant {
+    unsupportedPlatformError();
+  }
+
+  set smoothingTimeConstant(num value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`AudioBufferSourceNode`** interface is an [AudioScheduledSourceNode]
@@ -1211,18 +1263,13 @@ extension type AnalyserOptions._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/AudioBufferSourceNode).
-extension type AudioBufferSourceNode._(JSObject _)
+abstract class AudioBufferSourceNode
     implements AudioScheduledSourceNode, JSObject {
-  external factory AudioBufferSourceNode(
-    BaseAudioContext context, [
-    AudioBufferSourceOptions options,
-  ]);
-
   /// The `start()` method of the [AudioBufferSourceNode]
   /// Interface is used to schedule playback of the audio data contained in the
   /// buffer, or
   /// to begin playback immediately.
-  external void start([
+  void start([
     num when,
     num offset,
     num duration,
@@ -1235,8 +1282,8 @@ extension type AudioBufferSourceNode._(JSObject _)
   /// If the `buffer` property is set to the value `null`, the node
   /// generates a single channel containing silence (that is, every sample is
   /// 0).
-  external AudioBuffer? get buffer;
-  external set buffer(AudioBuffer? value);
+  AudioBuffer? get buffer;
+  set buffer(AudioBuffer? value);
 
   /// The **`playbackRate`** property of
   /// the [AudioBufferSourceNode] interface Is a
@@ -1252,7 +1299,7 @@ extension type AudioBufferSourceNode._(JSObject _)
   /// `1.0`.
   /// When set to another value, the `AudioBufferSourceNode` resamples the audio
   /// before sending it to the output.
-  external AudioParam get playbackRate;
+  AudioParam get playbackRate;
 
   /// The **`detune`** property of the
   /// [AudioBufferSourceNode] interface is a
@@ -1264,7 +1311,7 @@ extension type AudioBufferSourceNode._(JSObject _)
   /// For example, values of +100 and -100 detune the source up or down by one
   /// semitone,
   /// while +1200 and -1200 detune it up or down by one octave.
-  external AudioParam get detune;
+  AudioParam get detune;
 
   /// The `loop` property of the [AudioBufferSourceNode]
   /// interface is a Boolean indicating if the audio asset must be replayed when
@@ -1272,16 +1319,16 @@ extension type AudioBufferSourceNode._(JSObject _)
   /// the [AudioBuffer] is reached.
   ///
   /// The `loop` property's default value is `false`.
-  external bool get loop;
-  external set loop(bool value);
+  bool get loop;
+  set loop(bool value);
 
   /// The **`loopStart`** property of the [AudioBufferSourceNode] interface is a
   /// floating-point value indicating, in seconds, where in the [AudioBuffer]
   /// the restart of the play must happen.
   ///
   /// The `loopStart` property's default value is `0`.
-  external double get loopStart;
-  external set loopStart(num value);
+  double get loopStart;
+  set loopStart(num value);
 
   /// The `loopEnd` property of the [AudioBufferSourceNode]
   /// interface specifies is a floating point number specifying, in seconds, at
@@ -1290,31 +1337,58 @@ extension type AudioBufferSourceNode._(JSObject _)
   /// indicated by the [AudioBufferSourceNode.loopStart] property.
   /// This is only used if the [AudioBufferSourceNode.loop] property is
   /// `true`.
-  external double get loopEnd;
-  external set loopEnd(num value);
+  double get loopEnd;
+  set loopEnd(num value);
 }
-extension type AudioBufferSourceOptions._(JSObject _) implements JSObject {
-  external factory AudioBufferSourceOptions({
-    AudioBuffer? buffer,
-    num detune,
-    bool loop,
-    num loopEnd,
-    num loopStart,
-    num playbackRate,
-  });
 
-  external AudioBuffer? get buffer;
-  external set buffer(AudioBuffer? value);
-  external double get detune;
-  external set detune(num value);
-  external bool get loop;
-  external set loop(bool value);
-  external double get loopEnd;
-  external set loopEnd(num value);
-  external double get loopStart;
-  external set loopStart(num value);
-  external double get playbackRate;
-  external set playbackRate(num value);
+abstract class AudioBufferSourceOptions implements JSObject {
+  AudioBuffer? get buffer {
+    unsupportedPlatformError();
+  }
+
+  set buffer(AudioBuffer? value) {
+    unsupportedPlatformError();
+  }
+
+  double get detune {
+    unsupportedPlatformError();
+  }
+
+  set detune(num value) {
+    unsupportedPlatformError();
+  }
+
+  bool get loop {
+    unsupportedPlatformError();
+  }
+
+  set loop(bool value) {
+    unsupportedPlatformError();
+  }
+
+  double get loopEnd {
+    unsupportedPlatformError();
+  }
+
+  set loopEnd(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get loopStart {
+    unsupportedPlatformError();
+  }
+
+  set loopStart(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get playbackRate {
+    unsupportedPlatformError();
+  }
+
+  set playbackRate(num value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The `AudioDestinationNode` interface represents the end destination of an
@@ -1359,8 +1433,7 @@ extension type AudioBufferSourceOptions._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/AudioDestinationNode).
-extension type AudioDestinationNode._(JSObject _)
-    implements AudioNode, JSObject {
+abstract class AudioDestinationNode implements AudioNode, JSObject {
   /// The `maxchannelCount` property of the [AudioDestinationNode] interface is
   /// an `unsigned long` defining the maximum amount of channels that the
   /// physical device can handle.
@@ -1368,7 +1441,7 @@ extension type AudioDestinationNode._(JSObject _)
   /// The [AudioNode.channelCount] property can be set between 0 and this value
   /// (both included). If `maxChannelCount` is `0`, like in
   /// [OfflineAudioContext], the channel count cannot be changed.
-  external int get maxChannelCount;
+  int get maxChannelCount;
 }
 
 /// The `AudioListener` interface represents the position and orientation of the
@@ -1387,7 +1460,7 @@ extension type AudioDestinationNode._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/AudioListener).
-extension type AudioListener._(JSObject _) implements JSObject {
+abstract class AudioListener implements JSObject {
   /// The `setPosition()` method of the [AudioListener] Interface defines the
   /// position of the listener.
   ///
@@ -1401,7 +1474,7 @@ extension type AudioListener._(JSObject _) implements JSObject {
   /// > **Note:** As this method is deprecated, use the three
   /// > [AudioListener.positionX], [AudioListener.positionY], and
   /// > [AudioListener.positionZ] properties instead.
-  external void setPosition(
+  void setPosition(
     num x,
     num y,
     num z,
@@ -1422,7 +1495,7 @@ extension type AudioListener._(JSObject _) implements JSObject {
   ///
   /// The two vectors must be separated by an angle of 90° — in linear analysis
   /// terms, they must be perpendicular to each other.
-  external void setOrientation(
+  void setOrientation(
     num x,
     num y,
     num z,
@@ -1441,7 +1514,7 @@ extension type AudioListener._(JSObject _) implements JSObject {
   /// > equalpower, or
   /// > [_k-rate_](https://developer.mozilla.org/en-US/docs/Web/API/AudioParam#k-rate)
   /// > otherwise.
-  external AudioParam get positionX;
+  AudioParam get positionX;
 
   /// The `positionY` read-only property of the [AudioListener] interface is an
   /// [AudioParam] representing the y position of the listener in 3D cartesian
@@ -1453,7 +1526,7 @@ extension type AudioListener._(JSObject _) implements JSObject {
   /// > equalpower, or
   /// > [_k-rate_](https://developer.mozilla.org/en-US/docs/Web/API/AudioParam#k-rate)
   /// > otherwise.
-  external AudioParam get positionY;
+  AudioParam get positionY;
 
   /// The `positionZ` read-only property of the [AudioListener] interface is an
   /// [AudioParam] representing the z position of the listener in 3D cartesian
@@ -1465,7 +1538,7 @@ extension type AudioListener._(JSObject _) implements JSObject {
   /// > equalpower, or
   /// > [_k-rate_](https://developer.mozilla.org/en-US/docs/Web/API/AudioParam#k-rate)
   /// > otherwise.
-  external AudioParam get positionZ;
+  AudioParam get positionZ;
 
   /// The `forwardX` read-only property of the [AudioListener] interface is an
   /// [AudioParam] representing the x value of the direction vector defining the
@@ -1473,7 +1546,7 @@ extension type AudioListener._(JSObject _) implements JSObject {
   ///
   /// > **Note:** The parameter is _a-rate_ when used with a [PannerNode] whose
   /// > [PannerNode.panningModel] is set to equalpower, or _k-rate_ otherwise.
-  external AudioParam get forwardX;
+  AudioParam get forwardX;
 
   /// The `forwardY` read-only property of the [AudioListener] interface is an
   /// [AudioParam] representing the y value of the direction vector defining the
@@ -1481,7 +1554,7 @@ extension type AudioListener._(JSObject _) implements JSObject {
   ///
   /// > **Note:** The parameter is _a-rate_ when used with a [PannerNode] whose
   /// > [PannerNode.panningModel] is set to equalpower, or _k-rate_ otherwise.
-  external AudioParam get forwardY;
+  AudioParam get forwardY;
 
   /// The `forwardZ` read-only property of the [AudioListener] interface is an
   /// [AudioParam] representing the z value of the direction vector defining the
@@ -1489,7 +1562,7 @@ extension type AudioListener._(JSObject _) implements JSObject {
   ///
   /// > **Note:** The parameter is _a-rate_ when used with a [PannerNode] whose
   /// > [PannerNode.panningModel] is set to equalpower, or _k-rate_ otherwise.
-  external AudioParam get forwardZ;
+  AudioParam get forwardZ;
 
   /// The `upX` read-only property of the [AudioListener] interface is an
   /// [AudioParam] representing the x value of the direction vector defining the
@@ -1497,7 +1570,7 @@ extension type AudioListener._(JSObject _) implements JSObject {
   ///
   /// > **Note:** The parameter is _a-rate_ when used with a [PannerNode] whose
   /// > [PannerNode.panningModel] is set to equalpower, or _k-rate_ otherwise.
-  external AudioParam get upX;
+  AudioParam get upX;
 
   /// The `upY` read-only property of the [AudioListener] interface is an
   /// [AudioParam] representing the y value of the direction vector defining the
@@ -1505,7 +1578,7 @@ extension type AudioListener._(JSObject _) implements JSObject {
   ///
   /// > **Note:** The parameter is _a-rate_ when used with a [PannerNode] whose
   /// > [PannerNode.panningModel] is set to equalpower, or _k-rate_ otherwise.
-  external AudioParam get upY;
+  AudioParam get upY;
 
   /// The `upZ` read-only property of the [AudioListener] interface is an
   /// [AudioParam] representing the z value of the direction vector defining the
@@ -1513,7 +1586,7 @@ extension type AudioListener._(JSObject _) implements JSObject {
   ///
   /// > **Note:** The parameter is _a-rate_ when used with a [PannerNode] whose
   /// > [PannerNode.panningModel] is set to equalpower, or _k-rate_ otherwise.
-  external AudioParam get upZ;
+  AudioParam get upZ;
 }
 
 /// The `AudioProcessingEvent` interface of the
@@ -1533,16 +1606,11 @@ extension type AudioListener._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/AudioProcessingEvent).
-extension type AudioProcessingEvent._(JSObject _) implements Event, JSObject {
-  external factory AudioProcessingEvent(
-    String type,
-    AudioProcessingEventInit eventInitDict,
-  );
-
+abstract class AudioProcessingEvent implements Event, JSObject {
   /// The **`playbackTime`** read-only property of the [AudioProcessingEvent]
   /// interface represents the time when the audio will be played. It is in the
   /// same coordinate system as the time used by the [AudioContext].
-  external double get playbackTime;
+  double get playbackTime;
 
   /// The **`inputBuffer`** read-only property of the [AudioProcessingEvent]
   /// interface represents the input buffer of an audio processing event.
@@ -1553,7 +1621,7 @@ extension type AudioProcessingEvent._(JSObject _) implements Event, JSObject {
   /// series of amplitudes. The number of channels and the length of each
   /// channel are determined by the channel count and buffer size properties of
   /// the `AudioBuffer`.
-  external AudioBuffer get inputBuffer;
+  AudioBuffer get inputBuffer;
 
   /// The **`outputBuffer`** read-only property of the [AudioProcessingEvent]
   /// interface represents the output buffer of an audio processing event.
@@ -1564,25 +1632,33 @@ extension type AudioProcessingEvent._(JSObject _) implements Event, JSObject {
   /// series of amplitudes. The number of channels and the length of each
   /// channel are determined by the channel count and buffer size properties of
   /// the `AudioBuffer`.
-  external AudioBuffer get outputBuffer;
+  AudioBuffer get outputBuffer;
 }
-extension type AudioProcessingEventInit._(JSObject _)
-    implements EventInit, JSObject {
-  external factory AudioProcessingEventInit({
-    bool bubbles,
-    bool cancelable,
-    bool composed,
-    required num playbackTime,
-    required AudioBuffer inputBuffer,
-    required AudioBuffer outputBuffer,
-  });
 
-  external double get playbackTime;
-  external set playbackTime(num value);
-  external AudioBuffer get inputBuffer;
-  external set inputBuffer(AudioBuffer value);
-  external AudioBuffer get outputBuffer;
-  external set outputBuffer(AudioBuffer value);
+abstract class AudioProcessingEventInit implements EventInit, JSObject {
+  double get playbackTime {
+    unsupportedPlatformError();
+  }
+
+  set playbackTime(num value) {
+    unsupportedPlatformError();
+  }
+
+  AudioBuffer get inputBuffer {
+    unsupportedPlatformError();
+  }
+
+  set inputBuffer(AudioBuffer value) {
+    unsupportedPlatformError();
+  }
+
+  AudioBuffer get outputBuffer {
+    unsupportedPlatformError();
+  }
+
+  set outputBuffer(AudioBuffer value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The `BiquadFilterNode` interface represents a simple low-order filter, and
@@ -1620,12 +1696,7 @@ extension type AudioProcessingEventInit._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/BiquadFilterNode).
-extension type BiquadFilterNode._(JSObject _) implements AudioNode, JSObject {
-  external factory BiquadFilterNode(
-    BaseAudioContext context, [
-    BiquadFilterOptions options,
-  ]);
-
+abstract class BiquadFilterNode implements AudioNode, JSObject {
   /// The `getFrequencyResponse()` method of the [BiquadFilterNode] interface
   /// takes the current filtering algorithm's settings and calculates the
   /// frequency response for frequencies specified in a specified array of
@@ -1635,7 +1706,7 @@ extension type BiquadFilterNode._(JSObject _) implements AudioNode, JSObject {
   /// `phaseResponseOutput`, must be created before calling this method; they
   /// must be the same size as the array of input frequency values
   /// (`frequencyArray`).
-  external void getFrequencyResponse(
+  void getFrequencyResponse(
     JSFloat32Array frequencyHz,
     JSFloat32Array magResponse,
     JSFloat32Array phaseResponse,
@@ -1643,8 +1714,8 @@ extension type BiquadFilterNode._(JSObject _) implements AudioNode, JSObject {
 
   /// The `type` property of the [BiquadFilterNode] interface is a string (enum)
   /// value defining the kind of filtering algorithm the node is implementing.
-  external BiquadFilterType get type;
-  external set type(BiquadFilterType value);
+  BiquadFilterType get type;
+  set type(BiquadFilterType value);
 
   /// The `frequency` property of the [BiquadFilterNode] interface is an
   /// [a-rate](https://developer.mozilla.org/en-US/docs/Web/API/AudioParam#a-rate)
@@ -1654,13 +1725,13 @@ extension type BiquadFilterNode._(JSObject _) implements AudioNode, JSObject {
   /// Its default value is `350`, with a nominal range of `10` to the
   /// [Nyquist frequency](https://en.wikipedia.org/wiki/Nyquist_frequency) —
   /// that is, half of the sample rate.
-  external AudioParam get frequency;
+  AudioParam get frequency;
 
   /// The `detune` property of the [BiquadFilterNode] interface is an
   /// [a-rate](https://developer.mozilla.org/en-US/docs/Web/API/AudioParam#a-rate)
   /// [AudioParam] representing detuning of the frequency in
   /// [cents](https://en.wikipedia.org/wiki/Cent_%28music%29).
-  external AudioParam get detune;
+  AudioParam get detune;
 
   /// The `Q` property of the [BiquadFilterNode] interface is an
   /// [a-rate](https://developer.mozilla.org/en-US/docs/Web/API/AudioParam#a-rate)
@@ -1669,7 +1740,7 @@ extension type BiquadFilterNode._(JSObject _) implements AudioNode, JSObject {
   ///
   /// It is a dimensionless value with a default value of `1` and a nominal
   /// range of `0.0001` to `1000`.
-  external AudioParam get Q;
+  AudioParam get Q;
 
   /// The `gain` property of the [BiquadFilterNode] interface is an
   /// [a-rate](https://developer.mozilla.org/en-US/docs/Web/API/AudioParam#a-rate)
@@ -1682,31 +1753,49 @@ extension type BiquadFilterNode._(JSObject _) implements AudioNode, JSObject {
   ///
   /// It is expressed in dB, has a default value of `0`, and can take a value in
   /// a nominal range of `-40` to `40`.
-  external AudioParam get gain;
+  AudioParam get gain;
 }
-extension type BiquadFilterOptions._(JSObject _)
-    implements AudioNodeOptions, JSObject {
-  external factory BiquadFilterOptions({
-    int channelCount,
-    ChannelCountMode channelCountMode,
-    ChannelInterpretation channelInterpretation,
-    BiquadFilterType type,
-    num Q,
-    num detune,
-    num frequency,
-    num gain,
-  });
 
-  external BiquadFilterType get type;
-  external set type(BiquadFilterType value);
-  external double get Q;
-  external set Q(num value);
-  external double get detune;
-  external set detune(num value);
-  external double get frequency;
-  external set frequency(num value);
-  external double get gain;
-  external set gain(num value);
+abstract class BiquadFilterOptions implements AudioNodeOptions, JSObject {
+  BiquadFilterType get type {
+    unsupportedPlatformError();
+  }
+
+  set type(BiquadFilterType value) {
+    unsupportedPlatformError();
+  }
+
+  double get Q {
+    unsupportedPlatformError();
+  }
+
+  set Q(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get detune {
+    unsupportedPlatformError();
+  }
+
+  set detune(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get frequency {
+    unsupportedPlatformError();
+  }
+
+  set frequency(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get gain {
+    unsupportedPlatformError();
+  }
+
+  set gain(num value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The `ChannelMergerNode` interface, often used in conjunction with its
@@ -1757,23 +1846,16 @@ extension type BiquadFilterOptions._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ChannelMergerNode).
-extension type ChannelMergerNode._(JSObject _) implements AudioNode, JSObject {
-  external factory ChannelMergerNode(
-    BaseAudioContext context, [
-    ChannelMergerOptions options,
-  ]);
-}
-extension type ChannelMergerOptions._(JSObject _)
-    implements AudioNodeOptions, JSObject {
-  external factory ChannelMergerOptions({
-    int channelCount,
-    ChannelCountMode channelCountMode,
-    ChannelInterpretation channelInterpretation,
-    int numberOfInputs,
-  });
+abstract class ChannelMergerNode implements AudioNode, JSObject {}
 
-  external int get numberOfInputs;
-  external set numberOfInputs(int value);
+abstract class ChannelMergerOptions implements AudioNodeOptions, JSObject {
+  int get numberOfInputs {
+    unsupportedPlatformError();
+  }
+
+  set numberOfInputs(int value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The `ChannelSplitterNode` interface, often used in conjunction with its
@@ -1827,24 +1909,16 @@ extension type ChannelMergerOptions._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ChannelSplitterNode).
-extension type ChannelSplitterNode._(JSObject _)
-    implements AudioNode, JSObject {
-  external factory ChannelSplitterNode(
-    BaseAudioContext context, [
-    ChannelSplitterOptions options,
-  ]);
-}
-extension type ChannelSplitterOptions._(JSObject _)
-    implements AudioNodeOptions, JSObject {
-  external factory ChannelSplitterOptions({
-    int channelCount,
-    ChannelCountMode channelCountMode,
-    ChannelInterpretation channelInterpretation,
-    int numberOfOutputs,
-  });
+abstract class ChannelSplitterNode implements AudioNode, JSObject {}
 
-  external int get numberOfOutputs;
-  external set numberOfOutputs(int value);
+abstract class ChannelSplitterOptions implements AudioNodeOptions, JSObject {
+  int get numberOfOutputs {
+    unsupportedPlatformError();
+  }
+
+  set numberOfOutputs(int value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The `ConstantSourceNode` interface—part of the Web Audio API—represents an
@@ -1876,13 +1950,8 @@ extension type ChannelSplitterOptions._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ConstantSourceNode).
-extension type ConstantSourceNode._(JSObject _)
+abstract class ConstantSourceNode
     implements AudioScheduledSourceNode, JSObject {
-  external factory ConstantSourceNode(
-    BaseAudioContext context, [
-    ConstantSourceOptions options,
-  ]);
-
   /// The read-only `offset` property of the [ConstantSourceNode]
   /// interface returns a [AudioParam] object indicating the numeric
   /// [a-rate](https://developer.mozilla.org/en-US/docs/Web/API/AudioParam#a-rate)
@@ -1897,13 +1966,17 @@ extension type ConstantSourceNode._(JSObject _)
   /// > ```js
   /// > myConstantSourceNode.offset.value = newValue;
   /// > ```
-  external AudioParam get offset;
+  AudioParam get offset;
 }
-extension type ConstantSourceOptions._(JSObject _) implements JSObject {
-  external factory ConstantSourceOptions({num offset});
 
-  external double get offset;
-  external set offset(num value);
+abstract class ConstantSourceOptions implements JSObject {
+  double get offset {
+    unsupportedPlatformError();
+  }
+
+  set offset(num value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The `ConvolverNode` interface is an [AudioNode] that performs a Linear
@@ -1943,12 +2016,7 @@ extension type ConstantSourceOptions._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ConvolverNode).
-extension type ConvolverNode._(JSObject _) implements AudioNode, JSObject {
-  external factory ConvolverNode(
-    BaseAudioContext context, [
-    ConvolverOptions options,
-  ]);
-
+abstract class ConvolverNode implements AudioNode, JSObject {
   /// The **`buffer`** property of the [ConvolverNode] interface represents a
   /// mono, stereo, or 4-channel [AudioBuffer] containing the (possibly
   /// multichannel) impulse response used by the `ConvolverNode` to create the
@@ -1965,8 +2033,8 @@ extension type ConvolverNode._(JSObject _) implements AudioNode, JSObject {
   /// buffer and the state of the attribute will be used to configure the
   /// `ConvolverNode` with this impulse response having the given normalization.
   /// The initial value of this attribute is `null`.
-  external AudioBuffer? get buffer;
-  external set buffer(AudioBuffer? value);
+  AudioBuffer? get buffer;
+  set buffer(AudioBuffer? value);
 
   /// The `normalize` property of the [ConvolverNode] interface
   /// is a boolean that controls whether the impulse response from the buffer
@@ -1981,23 +2049,26 @@ extension type ConvolverNode._(JSObject _) implements AudioNode, JSObject {
   /// pre-processing/scaling of the impulse response. Changes to this value do
   /// not take
   /// effect until the next time the `buffer` attribute is set.
-  external bool get normalize;
-  external set normalize(bool value);
+  bool get normalize;
+  set normalize(bool value);
 }
-extension type ConvolverOptions._(JSObject _)
-    implements AudioNodeOptions, JSObject {
-  external factory ConvolverOptions({
-    int channelCount,
-    ChannelCountMode channelCountMode,
-    ChannelInterpretation channelInterpretation,
-    AudioBuffer? buffer,
-    bool disableNormalization,
-  });
 
-  external AudioBuffer? get buffer;
-  external set buffer(AudioBuffer? value);
-  external bool get disableNormalization;
-  external set disableNormalization(bool value);
+abstract class ConvolverOptions implements AudioNodeOptions, JSObject {
+  AudioBuffer? get buffer {
+    unsupportedPlatformError();
+  }
+
+  set buffer(AudioBuffer? value) {
+    unsupportedPlatformError();
+  }
+
+  bool get disableNormalization {
+    unsupportedPlatformError();
+  }
+
+  set disableNormalization(bool value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`DelayNode`** interface represents a
@@ -2044,12 +2115,7 @@ extension type ConvolverOptions._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/DelayNode).
-extension type DelayNode._(JSObject _) implements AudioNode, JSObject {
-  external factory DelayNode(
-    BaseAudioContext context, [
-    DelayOptions options,
-  ]);
-
+abstract class DelayNode implements AudioNode, JSObject {
   /// The `delayTime` property of the [DelayNode] interface is an
   /// [a-rate](https://developer.mozilla.org/en-US/docs/Web/API/AudioParam#a-rate)
   /// [AudioParam] representing the amount of delay to apply.
@@ -2060,22 +2126,25 @@ extension type DelayNode._(JSObject _) implements AudioNode, JSObject {
   ///
   /// > **Note:** Though the [AudioParam] returned is read-only, the value it
   /// > represents is not.
-  external AudioParam get delayTime;
+  AudioParam get delayTime;
 }
-extension type DelayOptions._(JSObject _)
-    implements AudioNodeOptions, JSObject {
-  external factory DelayOptions({
-    int channelCount,
-    ChannelCountMode channelCountMode,
-    ChannelInterpretation channelInterpretation,
-    num maxDelayTime,
-    num delayTime,
-  });
 
-  external double get maxDelayTime;
-  external set maxDelayTime(num value);
-  external double get delayTime;
-  external set delayTime(num value);
+abstract class DelayOptions implements AudioNodeOptions, JSObject {
+  double get maxDelayTime {
+    unsupportedPlatformError();
+  }
+
+  set maxDelayTime(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get delayTime {
+    unsupportedPlatformError();
+  }
+
+  set delayTime(num value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The `DynamicsCompressorNode` interface provides a compression effect, which
@@ -2114,13 +2183,7 @@ extension type DelayOptions._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/DynamicsCompressorNode).
-extension type DynamicsCompressorNode._(JSObject _)
-    implements AudioNode, JSObject {
-  external factory DynamicsCompressorNode(
-    BaseAudioContext context, [
-    DynamicsCompressorOptions options,
-  ]);
-
+abstract class DynamicsCompressorNode implements AudioNode, JSObject {
   /// The `threshold` property of the [DynamicsCompressorNode] interface is a
   /// [k-rate](https://developer.mozilla.org/en-US/docs/Web/API/AudioParam#k-rate)
   /// [AudioParam] representing the decibel value above which the compression
@@ -2132,7 +2195,7 @@ extension type DynamicsCompressorNode._(JSObject _)
   /// ![The threshold attribute has no effect on signals lowers than its value,
   /// but induce volume reduction on signal stronger than its
   /// value.](webaudiothreshold.png)
-  external AudioParam get threshold;
+  AudioParam get threshold;
 
   /// The `knee` property of the [DynamicsCompressorNode] interface is a
   /// [k-rate](https://developer.mozilla.org/en-US/docs/Web/API/AudioParam#k-rate)
@@ -2144,7 +2207,7 @@ extension type DynamicsCompressorNode._(JSObject _)
   ///
   /// ![Describes the effect of a knee, showing two curves one for a hard knee,
   /// the other for a soft knee.](webaudioknee.png)
-  external AudioParam get knee;
+  AudioParam get knee;
 
   /// The `ratio` property of the [DynamicsCompressorNode] interface Is a
   /// [k-rate](https://developer.mozilla.org/en-US/docs/Web/API/AudioParam#k-rate)
@@ -2155,7 +2218,7 @@ extension type DynamicsCompressorNode._(JSObject _)
   /// and `20`.
   ///
   /// ![Describes the effect of different ratio on the output signal](webaudioratio.png)
-  external AudioParam get ratio;
+  AudioParam get ratio;
 
   /// The **`reduction`** read-only property of the [DynamicsCompressorNode]
   /// interface is a float representing the amount of gain reduction currently
@@ -2164,7 +2227,7 @@ extension type DynamicsCompressorNode._(JSObject _)
   /// Intended for metering purposes, it returns a value in dB, or `0` (no gain
   /// reduction) if no signal is fed into the `DynamicsCompressorNode`. The
   /// range of this value is between `-20` and `0` (in dB).
-  external double get reduction;
+  double get reduction;
 
   /// The `attack` property of the [DynamicsCompressorNode] interface is a
   /// [k-rate](https://developer.mozilla.org/en-US/docs/Web/API/AudioParam#k-rate)
@@ -2174,7 +2237,7 @@ extension type DynamicsCompressorNode._(JSObject _)
   ///
   /// The `attack` property's default value is `0.003` and it can be set between
   /// `0` and `1`.
-  external AudioParam get attack;
+  AudioParam get attack;
 
   /// The `release` property of the [DynamicsCompressorNode] interface Is a
   /// [k-rate](https://developer.mozilla.org/en-US/docs/Web/API/AudioParam#k-rate)
@@ -2184,31 +2247,49 @@ extension type DynamicsCompressorNode._(JSObject _)
   ///
   /// The `release` property's default value is `0.25` and it can be set between
   /// `0` and `1`.
-  external AudioParam get release;
+  AudioParam get release;
 }
-extension type DynamicsCompressorOptions._(JSObject _)
-    implements AudioNodeOptions, JSObject {
-  external factory DynamicsCompressorOptions({
-    int channelCount,
-    ChannelCountMode channelCountMode,
-    ChannelInterpretation channelInterpretation,
-    num attack,
-    num knee,
-    num ratio,
-    num release,
-    num threshold,
-  });
 
-  external double get attack;
-  external set attack(num value);
-  external double get knee;
-  external set knee(num value);
-  external double get ratio;
-  external set ratio(num value);
-  external double get release;
-  external set release(num value);
-  external double get threshold;
-  external set threshold(num value);
+abstract class DynamicsCompressorOptions implements AudioNodeOptions, JSObject {
+  double get attack {
+    unsupportedPlatformError();
+  }
+
+  set attack(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get knee {
+    unsupportedPlatformError();
+  }
+
+  set knee(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get ratio {
+    unsupportedPlatformError();
+  }
+
+  set ratio(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get release {
+    unsupportedPlatformError();
+  }
+
+  set release(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get threshold {
+    unsupportedPlatformError();
+  }
+
+  set threshold(num value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The `GainNode` interface represents a change in volume. It is an [AudioNode]
@@ -2253,27 +2334,21 @@ extension type DynamicsCompressorOptions._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/GainNode).
-extension type GainNode._(JSObject _) implements AudioNode, JSObject {
-  external factory GainNode(
-    BaseAudioContext context, [
-    GainOptions options,
-  ]);
-
+abstract class GainNode implements AudioNode, JSObject {
   /// The `gain` property of the [GainNode] interface is an
   /// [a-rate](https://developer.mozilla.org/en-US/docs/Web/API/AudioParam#a-rate)
   /// [AudioParam] representing the amount of gain to apply.
-  external AudioParam get gain;
+  AudioParam get gain;
 }
-extension type GainOptions._(JSObject _) implements AudioNodeOptions, JSObject {
-  external factory GainOptions({
-    int channelCount,
-    ChannelCountMode channelCountMode,
-    ChannelInterpretation channelInterpretation,
-    num gain,
-  });
 
-  external double get gain;
-  external set gain(num value);
+abstract class GainOptions implements AudioNodeOptions, JSObject {
+  double get gain {
+    unsupportedPlatformError();
+  }
+
+  set gain(num value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`IIRFilterNode`** interface of the
@@ -2333,12 +2408,7 @@ extension type GainOptions._(JSObject _) implements AudioNodeOptions, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/IIRFilterNode).
-extension type IIRFilterNode._(JSObject _) implements AudioNode, JSObject {
-  external factory IIRFilterNode(
-    BaseAudioContext context,
-    IIRFilterOptions options,
-  );
-
+abstract class IIRFilterNode implements AudioNode, JSObject {
   /// The `getFrequencyResponse()` method of the [IIRFilterNode]
   /// interface takes the current filtering algorithm's settings and calculates
   /// the
@@ -2349,26 +2419,29 @@ extension type IIRFilterNode._(JSObject _) implements AudioNode, JSObject {
   /// `phaseResponseOutput`, must be created before calling this method; they
   /// must be the same size as the array of input frequency values
   /// (`frequencyArray`).
-  external void getFrequencyResponse(
+  void getFrequencyResponse(
     JSFloat32Array frequencyHz,
     JSFloat32Array magResponse,
     JSFloat32Array phaseResponse,
   );
 }
-extension type IIRFilterOptions._(JSObject _)
-    implements AudioNodeOptions, JSObject {
-  external factory IIRFilterOptions({
-    int channelCount,
-    ChannelCountMode channelCountMode,
-    ChannelInterpretation channelInterpretation,
-    required JSArray<JSNumber> feedforward,
-    required JSArray<JSNumber> feedback,
-  });
 
-  external JSArray<JSNumber> get feedforward;
-  external set feedforward(JSArray<JSNumber> value);
-  external JSArray<JSNumber> get feedback;
-  external set feedback(JSArray<JSNumber> value);
+abstract class IIRFilterOptions implements AudioNodeOptions, JSObject {
+  JSArray<JSNumber> get feedforward {
+    unsupportedPlatformError();
+  }
+
+  set feedforward(JSArray<JSNumber> value) {
+    unsupportedPlatformError();
+  }
+
+  JSArray<JSNumber> get feedback {
+    unsupportedPlatformError();
+  }
+
+  set feedback(JSArray<JSNumber> value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The `MediaElementAudioSourceNode` interface represents an audio source
@@ -2406,13 +2479,7 @@ extension type IIRFilterOptions._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MediaElementAudioSourceNode).
-extension type MediaElementAudioSourceNode._(JSObject _)
-    implements AudioNode, JSObject {
-  external factory MediaElementAudioSourceNode(
-    AudioContext context,
-    MediaElementAudioSourceOptions options,
-  );
-
+abstract class MediaElementAudioSourceNode implements AudioNode, JSObject {
   /// The [MediaElementAudioSourceNode] interface's
   /// read-only **`mediaElement`** property indicates the
   /// [HTMLMediaElement] that contains the audio track from which the node is
@@ -2421,15 +2488,17 @@ extension type MediaElementAudioSourceNode._(JSObject _)
   /// This stream was specified when the node was first created,
   /// either using the [MediaElementAudioSourceNode.MediaElementAudioSourceNode]
   /// constructor or the [AudioContext.createMediaElementSource] method.
-  external HTMLMediaElement get mediaElement;
+  HTMLMediaElement get mediaElement;
 }
-extension type MediaElementAudioSourceOptions._(JSObject _)
-    implements JSObject {
-  external factory MediaElementAudioSourceOptions(
-      {required HTMLMediaElement mediaElement});
 
-  external HTMLMediaElement get mediaElement;
-  external set mediaElement(HTMLMediaElement value);
+abstract class MediaElementAudioSourceOptions implements JSObject {
+  HTMLMediaElement get mediaElement {
+    unsupportedPlatformError();
+  }
+
+  set mediaElement(HTMLMediaElement value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The `MediaStreamAudioDestinationNode` interface represents an audio
@@ -2470,13 +2539,7 @@ extension type MediaElementAudioSourceOptions._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamAudioDestinationNode).
-extension type MediaStreamAudioDestinationNode._(JSObject _)
-    implements AudioNode, JSObject {
-  external factory MediaStreamAudioDestinationNode(
-    AudioContext context, [
-    AudioNodeOptions options,
-  ]);
-
+abstract class MediaStreamAudioDestinationNode implements AudioNode, JSObject {
   /// The `stream` property of the [AudioContext] interface represents a
   /// [MediaStream] containing a single audio [MediaStreamTrack] with the same
   /// number of channels as the node itself.
@@ -2484,7 +2547,7 @@ extension type MediaStreamAudioDestinationNode._(JSObject _)
   /// You can use this property to get a stream out of the audio graph and feed
   /// it into another construct, such as a
   /// [Media Recorder](https://developer.mozilla.org/en-US/docs/Web/API/MediaStream_Recording_API).
-  external MediaStream get stream;
+  MediaStream get stream;
 }
 
 /// The **`MediaStreamAudioSourceNode`** interface is a type of [AudioNode]
@@ -2531,13 +2594,7 @@ extension type MediaStreamAudioDestinationNode._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamAudioSourceNode).
-extension type MediaStreamAudioSourceNode._(JSObject _)
-    implements AudioNode, JSObject {
-  external factory MediaStreamAudioSourceNode(
-    AudioContext context,
-    MediaStreamAudioSourceOptions options,
-  );
-
+abstract class MediaStreamAudioSourceNode implements AudioNode, JSObject {
   /// The [MediaStreamAudioSourceNode] interface's
   /// read-only **`mediaStream`** property indicates the
   /// [MediaStream] that contains the audio track from which the node is
@@ -2546,14 +2603,17 @@ extension type MediaStreamAudioSourceNode._(JSObject _)
   /// This stream was specified when the node was first created,
   /// either using the [MediaStreamAudioSourceNode.MediaStreamAudioSourceNode]
   /// constructor or the [AudioContext.createMediaStreamSource] method.
-  external MediaStream get mediaStream;
+  MediaStream get mediaStream;
 }
-extension type MediaStreamAudioSourceOptions._(JSObject _) implements JSObject {
-  external factory MediaStreamAudioSourceOptions(
-      {required MediaStream mediaStream});
 
-  external MediaStream get mediaStream;
-  external set mediaStream(MediaStream value);
+abstract class MediaStreamAudioSourceOptions implements JSObject {
+  MediaStream get mediaStream {
+    unsupportedPlatformError();
+  }
+
+  set mediaStream(MediaStream value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`MediaStreamTrackAudioSourceNode`** interface is a type of [AudioNode]
@@ -2599,20 +2659,16 @@ extension type MediaStreamAudioSourceOptions._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrackAudioSourceNode).
-extension type MediaStreamTrackAudioSourceNode._(JSObject _)
-    implements AudioNode, JSObject {
-  external factory MediaStreamTrackAudioSourceNode(
-    AudioContext context,
-    MediaStreamTrackAudioSourceOptions options,
-  );
-}
-extension type MediaStreamTrackAudioSourceOptions._(JSObject _)
-    implements JSObject {
-  external factory MediaStreamTrackAudioSourceOptions(
-      {required MediaStreamTrack mediaStreamTrack});
+abstract class MediaStreamTrackAudioSourceNode implements AudioNode, JSObject {}
 
-  external MediaStreamTrack get mediaStreamTrack;
-  external set mediaStreamTrack(MediaStreamTrack value);
+abstract class MediaStreamTrackAudioSourceOptions implements JSObject {
+  MediaStreamTrack get mediaStreamTrack {
+    unsupportedPlatformError();
+  }
+
+  set mediaStreamTrack(MediaStreamTrack value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`OscillatorNode`** interface represents a periodic waveform, such as a
@@ -2649,19 +2705,13 @@ extension type MediaStreamTrackAudioSourceOptions._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/OscillatorNode).
-extension type OscillatorNode._(JSObject _)
-    implements AudioScheduledSourceNode, JSObject {
-  external factory OscillatorNode(
-    BaseAudioContext context, [
-    OscillatorOptions options,
-  ]);
-
+abstract class OscillatorNode implements AudioScheduledSourceNode, JSObject {
   /// The **`setPeriodicWave()`** method of the [OscillatorNode] interface is
   /// used to point to a [PeriodicWave]
   /// defining a periodic waveform that can be used to shape the oscillator's
   /// output, when
   /// [OscillatorNode.type] is `custom`.
-  external void setPeriodicWave(PeriodicWave periodicWave);
+  void setPeriodicWave(PeriodicWave periodicWave);
 
   /// The **`type`** property of the [OscillatorNode] interface specifies what
   /// shape of [waveform](https://en.wikipedia.org/wiki/Waveform) the
@@ -2670,8 +2720,8 @@ extension type OscillatorNode._(JSObject _)
   /// option to specify a custom waveform shape. The shape of the waveform will
   /// affect the
   /// tone that is produced.
-  external OscillatorType get type;
-  external set type(OscillatorType value);
+  OscillatorType get type;
+  set type(OscillatorType value);
 
   /// The **`frequency`** property of the [OscillatorNode] interface is an
   /// [a-rate](https://developer.mozilla.org/en-US/docs/Web/API/AudioParam#a-rate)
@@ -2679,7 +2729,7 @@ extension type OscillatorNode._(JSObject _)
   ///
   /// > **Note:** though the `AudioParam` returned is read-only, the value it
   /// > represents is not.
-  external AudioParam get frequency;
+  AudioParam get frequency;
 
   /// The `detune` property of the [OscillatorNode] interface is an
   /// [a-rate](https://developer.mozilla.org/en-US/docs/Web/API/AudioParam#a-rate)
@@ -2688,28 +2738,41 @@ extension type OscillatorNode._(JSObject _)
   ///
   /// > **Note:** though the `AudioParam` returned is read-only, the value it
   /// > represents is not.
-  external AudioParam get detune;
+  AudioParam get detune;
 }
-extension type OscillatorOptions._(JSObject _)
-    implements AudioNodeOptions, JSObject {
-  external factory OscillatorOptions({
-    int channelCount,
-    ChannelCountMode channelCountMode,
-    ChannelInterpretation channelInterpretation,
-    OscillatorType type,
-    num frequency,
-    num detune,
-    PeriodicWave periodicWave,
-  });
 
-  external OscillatorType get type;
-  external set type(OscillatorType value);
-  external double get frequency;
-  external set frequency(num value);
-  external double get detune;
-  external set detune(num value);
-  external PeriodicWave get periodicWave;
-  external set periodicWave(PeriodicWave value);
+abstract class OscillatorOptions implements AudioNodeOptions, JSObject {
+  OscillatorType get type {
+    unsupportedPlatformError();
+  }
+
+  set type(OscillatorType value) {
+    unsupportedPlatformError();
+  }
+
+  double get frequency {
+    unsupportedPlatformError();
+  }
+
+  set frequency(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get detune {
+    unsupportedPlatformError();
+  }
+
+  set detune(num value) {
+    unsupportedPlatformError();
+  }
+
+  PeriodicWave get periodicWave {
+    unsupportedPlatformError();
+  }
+
+  set periodicWave(PeriodicWave value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The `PannerNode` interface defines an audio-processing object that
@@ -2754,12 +2817,7 @@ extension type OscillatorOptions._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/PannerNode).
-extension type PannerNode._(JSObject _) implements AudioNode, JSObject {
-  external factory PannerNode(
-    BaseAudioContext context, [
-    PannerOptions options,
-  ]);
-
+abstract class PannerNode implements AudioNode, JSObject {
   /// > **Note:** The suggested replacement for this deprecated method is to
   /// > instead set the
   /// > [`positionX`](https://developer.mozilla.org/en-US/docs/Web/API/PannerNode/positionX),
@@ -2776,7 +2834,7 @@ extension type PannerNode._(JSObject _) implements AudioNode, JSObject {
   /// coordinate system.
   ///
   /// The `setPosition()` method's default value of the position is `(0, 0, 0)`.
-  external void setPosition(
+  void setPosition(
     num x,
     num y,
     num z,
@@ -2802,7 +2860,7 @@ extension type PannerNode._(JSObject _) implements AudioNode, JSObject {
   /// The three parameters `x`, `y` and `z` are unitless and describe a
   /// direction vector in 3D space using the right-hand Cartesian coordinate
   /// system. The default value of the direction vector is `(1, 0, 0)`.
-  external void setOrientation(
+  void setOrientation(
     num x,
     num y,
     num z,
@@ -2818,8 +2876,8 @@ extension type PannerNode._(JSObject _) implements AudioNode, JSObject {
   ///   regarded as simple and efficient. `equalpower` is the default value.
   /// - `HRTF`: Renders a stereo output of higher quality than `equalpower` — it
   ///   uses a convolution with measured impulse responses from human subjects.
-  external PanningModelType get panningModel;
-  external set panningModel(PanningModelType value);
+  PanningModelType get panningModel;
+  set panningModel(PanningModelType value);
 
   /// The **`positionX`** property of the [PannerNode] interface specifies the X
   /// coordinate of the audio source's position in 3D Cartesian
@@ -2850,7 +2908,7 @@ extension type PannerNode._(JSObject _) implements AudioNode, JSObject {
   /// can still change the value of the parameter by assigning a new value to
   /// its
   /// [AudioParam.value] property.
-  external AudioParam get positionX;
+  AudioParam get positionX;
 
   /// The **`positionY`** property of the [PannerNode] interface specifies the Y
   /// coordinate of the audio source's position in 3D Cartesian
@@ -2880,7 +2938,7 @@ extension type PannerNode._(JSObject _) implements AudioNode, JSObject {
   /// can still change the value of the parameter by assigning a new value to
   /// its
   /// [AudioParam.value] property.
-  external AudioParam get positionY;
+  AudioParam get positionY;
 
   /// The **`positionZ`** property of the [PannerNode] interface specifies the Z
   /// coordinate of the audio source's position in 3D Cartesian
@@ -2910,7 +2968,7 @@ extension type PannerNode._(JSObject _) implements AudioNode, JSObject {
   /// can still change the value of the parameter by assigning a new value to
   /// its
   /// [AudioParam.value] property.
-  external AudioParam get positionZ;
+  AudioParam get positionZ;
 
   /// The **`orientationX`** property of the [PannerNode] interface indicates
   /// the X (horizontal) component of the
@@ -2942,7 +3000,7 @@ extension type PannerNode._(JSObject _) implements AudioNode, JSObject {
   /// can still change the value of the parameter by assigning a new value to
   /// its
   /// [AudioParam.value] property.
-  external AudioParam get orientationX;
+  AudioParam get orientationX;
 
   /// The **`orientationY`** property of the [PannerNode] interface
   /// indicates the Y (vertical) component of the direction the audio source is
@@ -2973,7 +3031,7 @@ extension type PannerNode._(JSObject _) implements AudioNode, JSObject {
   /// can still change the value of the parameter by assigning a new value to
   /// its
   /// [AudioParam.value] property.
-  external AudioParam get orientationY;
+  AudioParam get orientationY;
 
   /// The **`orientationZ`** property of the [PannerNode] interface
   /// indicates the Z (depth) component of the direction the audio source is
@@ -3004,7 +3062,7 @@ extension type PannerNode._(JSObject _) implements AudioNode, JSObject {
   /// can still change the value of the parameter by assigning a new value to
   /// its
   /// [AudioParam.value] property.
-  external AudioParam get orientationZ;
+  AudioParam get orientationZ;
 
   /// The `distanceModel` property of the [PannerNode] interface is an
   /// enumerated value determining which algorithm to use to reduce the volume
@@ -3025,8 +3083,8 @@ extension type PannerNode._(JSObject _) implements AudioNode, JSObject {
   /// `pow((Math.max(distance, refDistance) / refDistance, -rolloffFactor)`.
   ///
   /// `inverse` is the default value of `distanceModel`.
-  external DistanceModelType get distanceModel;
-  external set distanceModel(DistanceModelType value);
+  DistanceModelType get distanceModel;
+  set distanceModel(DistanceModelType value);
 
   /// The `refDistance` property of the [PannerNode] interface is a double value
   /// representing the reference distance for reducing volume as the audio
@@ -3035,8 +3093,8 @@ extension type PannerNode._(JSObject _) implements AudioNode, JSObject {
   /// models.
   ///
   /// The `refDistance` property's default value is `1`.
-  external double get refDistance;
-  external set refDistance(num value);
+  double get refDistance;
+  set refDistance(num value);
 
   /// The `maxDistance` property of the [PannerNode] interface is a double value
   /// representing the maximum distance between the audio source and the
@@ -3044,15 +3102,15 @@ extension type PannerNode._(JSObject _) implements AudioNode, JSObject {
   /// used only by the `linear` distance model.
   ///
   /// The `maxDistance` property's default value is `10000`.
-  external double get maxDistance;
-  external set maxDistance(num value);
+  double get maxDistance;
+  set maxDistance(num value);
 
   /// The `rolloffFactor` property of the [PannerNode] interface is a double
   /// value describing how quickly the volume is reduced as the source moves
   /// away from the listener. This value is used by all distance models. The
   /// `rolloffFactor` property's default value is `1`.
-  external double get rolloffFactor;
-  external set rolloffFactor(num value);
+  double get rolloffFactor;
+  set rolloffFactor(num value);
 
   /// The `coneInnerAngle` property of the [PannerNode] interface is a double
   /// value describing the angle, in degrees, of a cone inside of which there
@@ -3060,8 +3118,8 @@ extension type PannerNode._(JSObject _) implements AudioNode, JSObject {
   ///
   /// The `coneInnerAngle` property's default value is `360`, suitable for a
   /// non-directional source.
-  external double get coneInnerAngle;
-  external set coneInnerAngle(num value);
+  double get coneInnerAngle;
+  set coneInnerAngle(num value);
 
   /// The `coneOuterAngle` property of the [PannerNode] interface is a double
   /// value describing the angle, in degrees, of a cone outside of which the
@@ -3069,8 +3127,8 @@ extension type PannerNode._(JSObject _) implements AudioNode, JSObject {
   /// [PannerNode.coneOuterGain] property.
   ///
   /// The `coneOuterAngle` property's default value is `0`.
-  external double get coneOuterAngle;
-  external set coneOuterAngle(num value);
+  double get coneOuterAngle;
+  set coneOuterAngle(num value);
 
   /// The `coneOuterGain` property of the [PannerNode] interface is a double
   /// value, describing the amount of volume reduction outside the cone, defined
@@ -3078,59 +3136,122 @@ extension type PannerNode._(JSObject _) implements AudioNode, JSObject {
   ///
   /// The `coneOuterGain` property's default value is `0`, meaning that no sound
   /// can be heard outside the cone.
-  external double get coneOuterGain;
-  external set coneOuterGain(num value);
+  double get coneOuterGain;
+  set coneOuterGain(num value);
 }
-extension type PannerOptions._(JSObject _)
-    implements AudioNodeOptions, JSObject {
-  external factory PannerOptions({
-    int channelCount,
-    ChannelCountMode channelCountMode,
-    ChannelInterpretation channelInterpretation,
-    PanningModelType panningModel,
-    DistanceModelType distanceModel,
-    num positionX,
-    num positionY,
-    num positionZ,
-    num orientationX,
-    num orientationY,
-    num orientationZ,
-    num refDistance,
-    num maxDistance,
-    num rolloffFactor,
-    num coneInnerAngle,
-    num coneOuterAngle,
-    num coneOuterGain,
-  });
 
-  external PanningModelType get panningModel;
-  external set panningModel(PanningModelType value);
-  external DistanceModelType get distanceModel;
-  external set distanceModel(DistanceModelType value);
-  external double get positionX;
-  external set positionX(num value);
-  external double get positionY;
-  external set positionY(num value);
-  external double get positionZ;
-  external set positionZ(num value);
-  external double get orientationX;
-  external set orientationX(num value);
-  external double get orientationY;
-  external set orientationY(num value);
-  external double get orientationZ;
-  external set orientationZ(num value);
-  external double get refDistance;
-  external set refDistance(num value);
-  external double get maxDistance;
-  external set maxDistance(num value);
-  external double get rolloffFactor;
-  external set rolloffFactor(num value);
-  external double get coneInnerAngle;
-  external set coneInnerAngle(num value);
-  external double get coneOuterAngle;
-  external set coneOuterAngle(num value);
-  external double get coneOuterGain;
-  external set coneOuterGain(num value);
+abstract class PannerOptions implements AudioNodeOptions, JSObject {
+  PanningModelType get panningModel {
+    unsupportedPlatformError();
+  }
+
+  set panningModel(PanningModelType value) {
+    unsupportedPlatformError();
+  }
+
+  DistanceModelType get distanceModel {
+    unsupportedPlatformError();
+  }
+
+  set distanceModel(DistanceModelType value) {
+    unsupportedPlatformError();
+  }
+
+  double get positionX {
+    unsupportedPlatformError();
+  }
+
+  set positionX(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get positionY {
+    unsupportedPlatformError();
+  }
+
+  set positionY(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get positionZ {
+    unsupportedPlatformError();
+  }
+
+  set positionZ(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get orientationX {
+    unsupportedPlatformError();
+  }
+
+  set orientationX(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get orientationY {
+    unsupportedPlatformError();
+  }
+
+  set orientationY(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get orientationZ {
+    unsupportedPlatformError();
+  }
+
+  set orientationZ(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get refDistance {
+    unsupportedPlatformError();
+  }
+
+  set refDistance(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get maxDistance {
+    unsupportedPlatformError();
+  }
+
+  set maxDistance(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get rolloffFactor {
+    unsupportedPlatformError();
+  }
+
+  set rolloffFactor(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get coneInnerAngle {
+    unsupportedPlatformError();
+  }
+
+  set coneInnerAngle(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get coneOuterAngle {
+    unsupportedPlatformError();
+  }
+
+  set coneOuterAngle(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get coneOuterGain {
+    unsupportedPlatformError();
+  }
+
+  set coneOuterGain(num value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`PeriodicWave`** interface defines a periodic waveform that can be
@@ -3145,30 +3266,35 @@ extension type PannerOptions._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/PeriodicWave).
-extension type PeriodicWave._(JSObject _) implements JSObject {
-  external factory PeriodicWave(
-    BaseAudioContext context, [
-    PeriodicWaveOptions options,
-  ]);
-}
-extension type PeriodicWaveConstraints._(JSObject _) implements JSObject {
-  external factory PeriodicWaveConstraints({bool disableNormalization});
+abstract class PeriodicWave implements JSObject {}
 
-  external bool get disableNormalization;
-  external set disableNormalization(bool value);
+abstract class PeriodicWaveConstraints implements JSObject {
+  bool get disableNormalization {
+    unsupportedPlatformError();
+  }
+
+  set disableNormalization(bool value) {
+    unsupportedPlatformError();
+  }
 }
-extension type PeriodicWaveOptions._(JSObject _)
+
+abstract class PeriodicWaveOptions
     implements PeriodicWaveConstraints, JSObject {
-  external factory PeriodicWaveOptions({
-    bool disableNormalization,
-    JSArray<JSNumber> real,
-    JSArray<JSNumber> imag,
-  });
+  JSArray<JSNumber> get real {
+    unsupportedPlatformError();
+  }
 
-  external JSArray<JSNumber> get real;
-  external set real(JSArray<JSNumber> value);
-  external JSArray<JSNumber> get imag;
-  external set imag(JSArray<JSNumber> value);
+  set real(JSArray<JSNumber> value) {
+    unsupportedPlatformError();
+  }
+
+  JSArray<JSNumber> get imag {
+    unsupportedPlatformError();
+  }
+
+  set imag(JSArray<JSNumber> value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The `ScriptProcessorNode` interface allows the generation, processing, or
@@ -3230,10 +3356,9 @@ extension type PeriodicWaveOptions._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ScriptProcessorNode).
-extension type ScriptProcessorNode._(JSObject _)
-    implements AudioNode, JSObject {
-  external EventHandler get onaudioprocess;
-  external set onaudioprocess(EventHandler value);
+abstract class ScriptProcessorNode implements AudioNode, JSObject {
+  EventHandler get onaudioprocess;
+  set onaudioprocess(EventHandler value);
 
   /// The `bufferSize` property of the [ScriptProcessorNode] interface returns
   /// an integer representing both the input and output buffer size, in
@@ -3243,7 +3368,7 @@ extension type ScriptProcessorNode._(JSObject _)
   /// > **Note:** This feature was replaced by
   /// > [AudioWorklets](https://developer.mozilla.org/en-US/docs/Web/API/AudioWorklet)
   /// > and the [AudioWorkletNode] interface.
-  external int get bufferSize;
+  int get bufferSize;
 }
 
 /// The `StereoPannerNode` interface of the
@@ -3291,29 +3416,22 @@ extension type ScriptProcessorNode._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/StereoPannerNode).
-extension type StereoPannerNode._(JSObject _) implements AudioNode, JSObject {
-  external factory StereoPannerNode(
-    BaseAudioContext context, [
-    StereoPannerOptions options,
-  ]);
-
+abstract class StereoPannerNode implements AudioNode, JSObject {
   /// The `pan` property of the [StereoPannerNode] interface is an
   /// [a-rate](https://developer.mozilla.org/en-US/docs/Web/API/AudioParam#a-rate)
   /// [AudioParam] representing the amount of panning to apply. The value can
   /// range between `-1` (full left pan) and `1` (full right pan).
-  external AudioParam get pan;
+  AudioParam get pan;
 }
-extension type StereoPannerOptions._(JSObject _)
-    implements AudioNodeOptions, JSObject {
-  external factory StereoPannerOptions({
-    int channelCount,
-    ChannelCountMode channelCountMode,
-    ChannelInterpretation channelInterpretation,
-    num pan,
-  });
 
-  external double get pan;
-  external set pan(num value);
+abstract class StereoPannerOptions implements AudioNodeOptions, JSObject {
+  double get pan {
+    unsupportedPlatformError();
+  }
+
+  set pan(num value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`WaveShaperNode`** interface represents a non-linear distorter.
@@ -3353,12 +3471,7 @@ extension type StereoPannerOptions._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WaveShaperNode).
-extension type WaveShaperNode._(JSObject _) implements AudioNode, JSObject {
-  external factory WaveShaperNode(
-    BaseAudioContext context, [
-    WaveShaperOptions options,
-  ]);
-
+abstract class WaveShaperNode implements AudioNode, JSObject {
   /// The `curve` property of the [WaveShaperNode] interface is a `Float32Array`
   /// of numbers describing the distortion to apply.
   ///
@@ -3372,8 +3485,8 @@ extension type WaveShaperNode._(JSObject _) implements AudioNode, JSObject {
   ///
   /// > **Note:** The array can be a `null` value: in that case, no distortion
   /// > is applied to the input signal.
-  external JSFloat32Array? get curve;
-  external set curve(JSFloat32Array? value);
+  JSFloat32Array? get curve;
+  set curve(JSFloat32Array? value);
 
   /// The `oversample` property of the [WaveShaperNode] interface is an
   /// enumerated value indicating if oversampling must be used. Oversampling is
@@ -3391,23 +3504,26 @@ extension type WaveShaperNode._(JSObject _) implements AudioNode, JSObject {
   /// | `'none'` | Do not perform any oversampling.                                       |
   /// | `'2x'`   | Double the amount of samples before applying the shaping curve.        |
   /// | `'4x'`   | Multiply by 4 the amount of samples before applying the shaping curve. |
-  external OverSampleType get oversample;
-  external set oversample(OverSampleType value);
+  OverSampleType get oversample;
+  set oversample(OverSampleType value);
 }
-extension type WaveShaperOptions._(JSObject _)
-    implements AudioNodeOptions, JSObject {
-  external factory WaveShaperOptions({
-    int channelCount,
-    ChannelCountMode channelCountMode,
-    ChannelInterpretation channelInterpretation,
-    JSArray<JSNumber> curve,
-    OverSampleType oversample,
-  });
 
-  external JSArray<JSNumber> get curve;
-  external set curve(JSArray<JSNumber> value);
-  external OverSampleType get oversample;
-  external set oversample(OverSampleType value);
+abstract class WaveShaperOptions implements AudioNodeOptions, JSObject {
+  JSArray<JSNumber> get curve {
+    unsupportedPlatformError();
+  }
+
+  set curve(JSArray<JSNumber> value) {
+    unsupportedPlatformError();
+  }
+
+  OverSampleType get oversample {
+    unsupportedPlatformError();
+  }
+
+  set oversample(OverSampleType value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`AudioWorklet`** interface of the
@@ -3426,7 +3542,7 @@ extension type WaveShaperOptions._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/AudioWorklet).
-extension type AudioWorklet._(JSObject _) implements Worklet, JSObject {}
+abstract class AudioWorklet implements Worklet, JSObject {}
 
 /// The **`AudioWorkletGlobalScope`** interface of the
 /// [Web Audio API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API)
@@ -3446,12 +3562,11 @@ extension type AudioWorklet._(JSObject _) implements Worklet, JSObject {}
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/AudioWorkletGlobalScope).
-extension type AudioWorkletGlobalScope._(JSObject _)
-    implements WorkletGlobalScope, JSObject {
+abstract class AudioWorkletGlobalScope implements WorkletGlobalScope, JSObject {
   /// The **`registerProcessor`** method of the
   /// [AudioWorkletGlobalScope] interface registers a class constructor derived
   /// from [AudioWorkletProcessor] interface under a specified _name_.
-  external void registerProcessor(
+  void registerProcessor(
     String name,
     AudioWorkletProcessorConstructor processorCtor,
   );
@@ -3460,19 +3575,19 @@ extension type AudioWorkletGlobalScope._(JSObject _)
   /// interface returns an integer that represents the ever-increasing current
   /// sample-frame of the audio block being processed. It is incremented by 128
   /// (the size of a render quantum) after the processing of each audio block.
-  external int get currentFrame;
+  int get currentFrame;
 
   /// The read-only **`currentTime`** property of the [AudioWorkletGlobalScope]
   /// interface returns a double that represents the ever-increasing context
   /// time of the audio block being processed. It is equal to the
   /// [BaseAudioContext.currentTime] property of the [BaseAudioContext] the
   /// worklet belongs to.
-  external double get currentTime;
+  double get currentTime;
 
   /// The read-only **`sampleRate`** property of the [AudioWorkletGlobalScope]
   /// interface returns a float that represents the sample rate of the
   /// associated [BaseAudioContext] the worklet belongs to.
-  external double get sampleRate;
+  double get sampleRate;
 }
 
 /// The **`AudioParamMap`** interface of the
@@ -3488,7 +3603,7 @@ extension type AudioWorkletGlobalScope._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/AudioParamMap).
-extension type AudioParamMap._(JSObject _) implements JSObject {}
+abstract class AudioParamMap implements JSObject {}
 
 /// > **Note:** Although the interface is available outside
 /// > [secure contexts](https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts),
@@ -3506,13 +3621,7 @@ extension type AudioParamMap._(JSObject _) implements JSObject {}
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/AudioWorkletNode).
-extension type AudioWorkletNode._(JSObject _) implements AudioNode, JSObject {
-  external factory AudioWorkletNode(
-    BaseAudioContext context,
-    String name, [
-    AudioWorkletNodeOptions options,
-  ]);
-
+abstract class AudioWorkletNode implements AudioNode, JSObject {
   /// The read-only **`parameters`** property of the
   /// [AudioWorkletNode] interface returns the associated
   /// [AudioParamMap] — that is, a `Map`-like collection of
@@ -3520,7 +3629,7 @@ extension type AudioWorkletNode._(JSObject _) implements AudioNode, JSObject {
   /// underlying [AudioWorkletProcessor] according to its
   /// [AudioWorkletProcessor.parameterDescriptors] static
   /// getter.
-  external AudioParamMap get parameters;
+  AudioParamMap get parameters;
 
   /// The read-only **`port`** property of the
   /// [AudioWorkletNode] interface returns the associated
@@ -3530,33 +3639,51 @@ extension type AudioWorkletNode._(JSObject _) implements AudioNode, JSObject {
   /// > **Note:** The port at the other end of the channel is
   /// > available under the [AudioWorkletProcessor.port] property of the
   /// > processor.
-  external MessagePort get port;
-  external EventHandler get onprocessorerror;
-  external set onprocessorerror(EventHandler value);
+  MessagePort get port;
+  EventHandler get onprocessorerror;
+  set onprocessorerror(EventHandler value);
 }
-extension type AudioWorkletNodeOptions._(JSObject _)
-    implements AudioNodeOptions, JSObject {
-  external factory AudioWorkletNodeOptions({
-    int channelCount,
-    ChannelCountMode channelCountMode,
-    ChannelInterpretation channelInterpretation,
-    int numberOfInputs,
-    int numberOfOutputs,
-    JSArray<JSNumber> outputChannelCount,
-    JSObject parameterData,
-    JSObject processorOptions,
-  });
 
-  external int get numberOfInputs;
-  external set numberOfInputs(int value);
-  external int get numberOfOutputs;
-  external set numberOfOutputs(int value);
-  external JSArray<JSNumber> get outputChannelCount;
-  external set outputChannelCount(JSArray<JSNumber> value);
-  external JSObject get parameterData;
-  external set parameterData(JSObject value);
-  external JSObject get processorOptions;
-  external set processorOptions(JSObject value);
+abstract class AudioWorkletNodeOptions implements AudioNodeOptions, JSObject {
+  int get numberOfInputs {
+    unsupportedPlatformError();
+  }
+
+  set numberOfInputs(int value) {
+    unsupportedPlatformError();
+  }
+
+  int get numberOfOutputs {
+    unsupportedPlatformError();
+  }
+
+  set numberOfOutputs(int value) {
+    unsupportedPlatformError();
+  }
+
+  JSArray<JSNumber> get outputChannelCount {
+    unsupportedPlatformError();
+  }
+
+  set outputChannelCount(JSArray<JSNumber> value) {
+    unsupportedPlatformError();
+  }
+
+  JSObject get parameterData {
+    unsupportedPlatformError();
+  }
+
+  set parameterData(JSObject value) {
+    unsupportedPlatformError();
+  }
+
+  JSObject get processorOptions {
+    unsupportedPlatformError();
+  }
+
+  set processorOptions(JSObject value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`AudioWorkletProcessor`** interface of the
@@ -3569,9 +3696,7 @@ extension type AudioWorkletNodeOptions._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/AudioWorkletProcessor).
-extension type AudioWorkletProcessor._(JSObject _) implements JSObject {
-  external factory AudioWorkletProcessor();
-
+abstract class AudioWorkletProcessor implements JSObject {
   /// The read-only **`port`** property of the
   /// [AudioWorkletProcessor] interface returns the associated
   /// [MessagePort]. It can be used to communicate between the processor and the
@@ -3579,5 +3704,5 @@ extension type AudioWorkletProcessor._(JSObject _) implements JSObject {
   ///
   /// > **Note:** The port at the other end of the channel is
   /// > available under the [AudioWorkletNode.port] property of the node.
-  external MessagePort get port;
+  MessagePort get port;
 }

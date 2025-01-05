@@ -3,28 +3,28 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'dart:collection';
-import 'dart:js_interop';
+import '../js_interop.dart';
 
 /// `_JSList` acts as a wrapper around a JS list object providing an interface to
 /// access the list items and list length while also allowing us to specify the
 /// list item type from outside.
-extension type _JSList<T extends JSObject>(JSObject _) implements JSObject {
+abstract class _JSList<T extends JSObject> implements JSObject {
   /// The **`item()`** method returns the [JSObject]
   /// at the specified index in the list.
-  external T item(int index);
+  T item(int index);
 
   /// The **`length`** read-only property indicates the number of
   /// items in a given list.
-  external int get length;
+  int get length;
 }
 
 /// A wrapper to present a JS immutable list of type `T` and list item type `U` as
 /// a `List<U>`.
 class JSImmutableListWrapper<T extends JSObject, U extends JSObject>
     extends Object with ListMixin<U> implements List<U> {
-  final _JSList<U> _jsList;
+  late final _JSList<U> _jsList;
 
-  JSImmutableListWrapper(T original) : _jsList = _JSList<U>(original);
+  JSImmutableListWrapper(T original);
 
   @override
   int get length => _jsList.length;

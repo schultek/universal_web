@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,14 +10,10 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../js_interop.dart';
 import 'webgl1.dart';
 
-extension type WEBGL_compressed_texture_s3tc._(JSObject _) implements JSObject {
+abstract class WEBGL_compressed_texture_s3tc implements JSObject {
   static const GLenum COMPRESSED_RGB_S3TC_DXT1_EXT = 33776;
 
   static const GLenum COMPRESSED_RGBA_S3TC_DXT1_EXT = 33777;

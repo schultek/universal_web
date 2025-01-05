@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,11 +10,7 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../js_interop.dart';
 import 'cssom.dart';
 
 /// The **`CSSCounterStyleRule`** interface represents an
@@ -24,69 +20,69 @@ import 'cssom.dart';
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSCounterStyleRule).
-extension type CSSCounterStyleRule._(JSObject _) implements CSSRule, JSObject {
+abstract class CSSCounterStyleRule implements CSSRule, JSObject {
   /// The **`name`** property of the [CSSCounterStyleRule] interface gets and
   /// sets the  defined as the `name` for the associated rule.
-  external String get name;
-  external set name(String value);
+  String get name;
+  set name(String value);
 
   /// The **`system`** property of the [CSSCounterStyleRule] interface gets and
   /// sets the value of the  descriptor. If the descriptor does not have a value
   /// set, this attribute returns an empty string.
-  external String get system;
-  external set system(String value);
+  String get system;
+  set system(String value);
 
   /// The **`symbols`** property of the [CSSCounterStyleRule] interface gets and
   /// sets the value of the  descriptor. If the descriptor does not have a value
   /// set, this attribute returns an empty string.
-  external String get symbols;
-  external set symbols(String value);
+  String get symbols;
+  set symbols(String value);
 
   /// The **`additiveSymbols`** property of the [CSSCounterStyleRule] interface
   /// gets and sets the value of the  descriptor. If the descriptor does not
   /// have a value set, this attribute returns an empty string.
-  external String get additiveSymbols;
-  external set additiveSymbols(String value);
+  String get additiveSymbols;
+  set additiveSymbols(String value);
 
   /// The **`negative`** property of the [CSSCounterStyleRule] interface gets
   /// and sets the value of the  descriptor. If the descriptor does not have a
   /// value set, this attribute returns an empty string.
-  external String get negative;
-  external set negative(String value);
+  String get negative;
+  set negative(String value);
 
   /// The **`prefix`** property of the [CSSCounterStyleRule] interface gets and
   /// sets the value of the  descriptor. If the descriptor does not have a value
   /// set, this attribute returns an empty string.
-  external String get prefix;
-  external set prefix(String value);
+  String get prefix;
+  set prefix(String value);
 
   /// The **`suffix`** property of the [CSSCounterStyleRule] interface gets and
   /// sets the value of the  descriptor. If the descriptor does not have a value
   /// set, this attribute returns an empty string.
-  external String get suffix;
-  external set suffix(String value);
+  String get suffix;
+  set suffix(String value);
 
   /// The **`range`** property of the [CSSCounterStyleRule] interface gets and
   /// sets the value of the  descriptor. If the descriptor does not have a value
   /// set, this attribute returns an empty string.
-  external String get range;
-  external set range(String value);
+  String get range;
+  set range(String value);
 
   /// The **`pad`** property of the [CSSCounterStyleRule] interface gets and
   /// sets the value of the  descriptor. If the descriptor does not have a value
   /// set, this attribute returns an empty string.
-  external String get pad;
-  external set pad(String value);
+  String get pad;
+  set pad(String value);
 
   /// The **`speakAs`** property of the [CSSCounterStyleRule] interface gets and
   /// sets the value of the  descriptor. If the descriptor does not have a value
   /// set, this attribute returns an empty string.
-  external String get speakAs;
-  external set speakAs(String value);
+  String get speakAs;
+  set speakAs(String value);
 
   /// The **`fallback`** property of the [CSSCounterStyleRule] interface gets
   /// and sets the value of the  descriptor. If the descriptor does not have a
   /// value set, this attribute returns an empty string.
-  external String get fallback;
-  external set fallback(String value);
+  String get fallback;
+  set fallback(String value);
 }

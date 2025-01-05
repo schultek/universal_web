@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,21 +10,22 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../error.dart';
+import '../js_interop.dart';
 import 'dom.dart';
 import 'geometry.dart';
 
 typedef ResizeObserverCallback = JSFunction;
 typedef ResizeObserverBoxOptions = String;
-extension type ResizeObserverOptions._(JSObject _) implements JSObject {
-  external factory ResizeObserverOptions({ResizeObserverBoxOptions box});
 
-  external ResizeObserverBoxOptions get box;
-  external set box(ResizeObserverBoxOptions value);
+abstract class ResizeObserverOptions implements JSObject {
+  ResizeObserverBoxOptions get box {
+    unsupportedPlatformError();
+  }
+
+  set box(ResizeObserverBoxOptions value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`ResizeObserver`** interface reports changes to the dimensions of an
@@ -40,13 +41,11 @@ extension type ResizeObserverOptions._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver).
-extension type ResizeObserver._(JSObject _) implements JSObject {
-  external factory ResizeObserver(ResizeObserverCallback callback);
-
+abstract class ResizeObserver implements JSObject {
   /// The **`observe()`** method of the
   /// [ResizeObserver] interface starts observing the specified
   /// [Element] or [SVGElement].
-  external void observe(
+  void observe(
     Element target, [
     ResizeObserverOptions options,
   ]);
@@ -54,12 +53,12 @@ extension type ResizeObserver._(JSObject _) implements JSObject {
   /// The **`unobserve()`** method of the
   /// [ResizeObserver] interface ends the observing of a specified
   /// [Element] or [SVGElement].
-  external void unobserve(Element target);
+  void unobserve(Element target);
 
   /// The **`disconnect()`** method of the
   /// [ResizeObserver] interface unobserves all observed [Element]
   /// or [SVGElement] targets.
-  external void disconnect();
+  void disconnect();
 }
 
 /// The **`ResizeObserverEntry`** interface represents the object passed to the
@@ -71,11 +70,11 @@ extension type ResizeObserver._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserverEntry).
-extension type ResizeObserverEntry._(JSObject _) implements JSObject {
+abstract class ResizeObserverEntry implements JSObject {
   /// The **`target`** read-only property of the
   /// [ResizeObserverEntry] interface returns a reference to the
   /// [Element] or [SVGElement] that is being observed.
-  external Element get target;
+  Element get target;
 
   /// The `contentRect` read-only property of the
   /// [ResizeObserverEntry] interface returns a [DOMRectReadOnly]
@@ -86,22 +85,22 @@ extension type ResizeObserverEntry._(JSObject _) implements JSObject {
   /// implementation of the Resize Observer API, is still included in the spec
   /// for web compat
   /// reasons, and may be deprecated in future versions.
-  external DOMRectReadOnly get contentRect;
+  DOMRectReadOnly get contentRect;
 
   /// The **`borderBoxSize`** read-only property of
   /// the [ResizeObserverEntry] interface returns an array containing the new
   /// border box size of the observed element when the callback is run.
-  external JSArray<ResizeObserverSize> get borderBoxSize;
+  JSArray<ResizeObserverSize> get borderBoxSize;
 
   /// The **`contentBoxSize`** read-only property of
   /// the [ResizeObserverEntry] interface returns an array containing the new
   /// content box size of the observed element when the callback is run.
-  external JSArray<ResizeObserverSize> get contentBoxSize;
+  JSArray<ResizeObserverSize> get contentBoxSize;
 
   /// The **`devicePixelContentBoxSize`** read-only property of
   /// the [ResizeObserverEntry] interface returns an array containing the size
   /// in device pixels of the observed element when the callback is run.
-  external JSArray<ResizeObserverSize> get devicePixelContentBoxSize;
+  JSArray<ResizeObserverSize> get devicePixelContentBoxSize;
 }
 
 /// The **`ResizeObserverSize`** interface of the [Resize Observer API] is used
@@ -117,7 +116,7 @@ extension type ResizeObserverEntry._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserverSize).
-extension type ResizeObserverSize._(JSObject _) implements JSObject {
+abstract class ResizeObserverSize implements JSObject {
   /// The **`inlineSize`** read-only property of the [ResizeObserverSize]
   /// interface returns the length of the observed element's border box in the
   /// inline dimension. For boxes with a horizontal , this is the horizontal
@@ -127,7 +126,7 @@ extension type ResizeObserverSize._(JSObject _) implements JSObject {
   /// > **Note:** For more explanation of writing modes and block and inline
   /// > dimensions, read
   /// > [Handling different text directions](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Handling_different_text_directions).
-  external double get inlineSize;
+  double get inlineSize;
 
   /// The **`blockSize`** read-only property of the [ResizeObserverSize]
   /// interface returns the length of the observed element's border box in the
@@ -138,5 +137,5 @@ extension type ResizeObserverSize._(JSObject _) implements JSObject {
   /// > **Note:** For more explanation of writing modes and block and inline
   /// > dimensions, read
   /// > [Handling different text directions](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Handling_different_text_directions).
-  external double get blockSize;
+  double get blockSize;
 }

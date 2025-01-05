@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,11 +10,8 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../error.dart';
+import '../js_interop.dart';
 import 'encrypted_media.dart';
 
 typedef MediaDecodingType = String;
@@ -22,179 +19,317 @@ typedef MediaEncodingType = String;
 typedef HdrMetadataType = String;
 typedef ColorGamut = String;
 typedef TransferFunction = String;
-extension type MediaConfiguration._(JSObject _) implements JSObject {
-  external factory MediaConfiguration({
-    VideoConfiguration video,
-    AudioConfiguration audio,
-  });
 
-  external VideoConfiguration get video;
-  external set video(VideoConfiguration value);
-  external AudioConfiguration get audio;
-  external set audio(AudioConfiguration value);
+abstract class MediaConfiguration implements JSObject {
+  VideoConfiguration get video {
+    unsupportedPlatformError();
+  }
+
+  set video(VideoConfiguration value) {
+    unsupportedPlatformError();
+  }
+
+  AudioConfiguration get audio {
+    unsupportedPlatformError();
+  }
+
+  set audio(AudioConfiguration value) {
+    unsupportedPlatformError();
+  }
 }
-extension type MediaDecodingConfiguration._(JSObject _)
+
+abstract class MediaDecodingConfiguration
     implements MediaConfiguration, JSObject {
-  external factory MediaDecodingConfiguration({
-    VideoConfiguration video,
-    AudioConfiguration audio,
-    required MediaDecodingType type,
-    MediaCapabilitiesKeySystemConfiguration keySystemConfiguration,
-  });
+  MediaDecodingType get type {
+    unsupportedPlatformError();
+  }
 
-  external MediaDecodingType get type;
-  external set type(MediaDecodingType value);
-  external MediaCapabilitiesKeySystemConfiguration get keySystemConfiguration;
-  external set keySystemConfiguration(
-      MediaCapabilitiesKeySystemConfiguration value);
+  set type(MediaDecodingType value) {
+    unsupportedPlatformError();
+  }
+
+  MediaCapabilitiesKeySystemConfiguration get keySystemConfiguration {
+    unsupportedPlatformError();
+  }
+
+  set keySystemConfiguration(MediaCapabilitiesKeySystemConfiguration value) {
+    unsupportedPlatformError();
+  }
 }
-extension type MediaEncodingConfiguration._(JSObject _)
+
+abstract class MediaEncodingConfiguration
     implements MediaConfiguration, JSObject {
-  external factory MediaEncodingConfiguration({
-    VideoConfiguration video,
-    AudioConfiguration audio,
-    required MediaEncodingType type,
-  });
+  MediaEncodingType get type {
+    unsupportedPlatformError();
+  }
 
-  external MediaEncodingType get type;
-  external set type(MediaEncodingType value);
+  set type(MediaEncodingType value) {
+    unsupportedPlatformError();
+  }
 }
-extension type VideoConfiguration._(JSObject _) implements JSObject {
-  external factory VideoConfiguration({
-    required String contentType,
-    required int width,
-    required int height,
-    required int bitrate,
-    required num framerate,
-    bool hasAlphaChannel,
-    HdrMetadataType hdrMetadataType,
-    ColorGamut colorGamut,
-    TransferFunction transferFunction,
-    String scalabilityMode,
-    bool spatialScalability,
-  });
 
-  external String get contentType;
-  external set contentType(String value);
-  external int get width;
-  external set width(int value);
-  external int get height;
-  external set height(int value);
-  external int get bitrate;
-  external set bitrate(int value);
-  external double get framerate;
-  external set framerate(num value);
-  external bool get hasAlphaChannel;
-  external set hasAlphaChannel(bool value);
-  external HdrMetadataType get hdrMetadataType;
-  external set hdrMetadataType(HdrMetadataType value);
-  external ColorGamut get colorGamut;
-  external set colorGamut(ColorGamut value);
-  external TransferFunction get transferFunction;
-  external set transferFunction(TransferFunction value);
-  external String get scalabilityMode;
-  external set scalabilityMode(String value);
-  external bool get spatialScalability;
-  external set spatialScalability(bool value);
-}
-extension type AudioConfiguration._(JSObject _) implements JSObject {
-  external factory AudioConfiguration({
-    required String contentType,
-    String channels,
-    int bitrate,
-    int samplerate,
-    bool spatialRendering,
-  });
+abstract class VideoConfiguration implements JSObject {
+  String get contentType {
+    unsupportedPlatformError();
+  }
 
-  external String get contentType;
-  external set contentType(String value);
-  external String get channels;
-  external set channels(String value);
-  external int get bitrate;
-  external set bitrate(int value);
-  external int get samplerate;
-  external set samplerate(int value);
-  external bool get spatialRendering;
-  external set spatialRendering(bool value);
-}
-extension type MediaCapabilitiesKeySystemConfiguration._(JSObject _)
-    implements JSObject {
-  external factory MediaCapabilitiesKeySystemConfiguration({
-    required String keySystem,
-    String initDataType,
-    MediaKeysRequirement distinctiveIdentifier,
-    MediaKeysRequirement persistentState,
-    JSArray<JSString> sessionTypes,
-    KeySystemTrackConfiguration audio,
-    KeySystemTrackConfiguration video,
-  });
+  set contentType(String value) {
+    unsupportedPlatformError();
+  }
 
-  external String get keySystem;
-  external set keySystem(String value);
-  external String get initDataType;
-  external set initDataType(String value);
-  external MediaKeysRequirement get distinctiveIdentifier;
-  external set distinctiveIdentifier(MediaKeysRequirement value);
-  external MediaKeysRequirement get persistentState;
-  external set persistentState(MediaKeysRequirement value);
-  external JSArray<JSString> get sessionTypes;
-  external set sessionTypes(JSArray<JSString> value);
-  external KeySystemTrackConfiguration get audio;
-  external set audio(KeySystemTrackConfiguration value);
-  external KeySystemTrackConfiguration get video;
-  external set video(KeySystemTrackConfiguration value);
-}
-extension type KeySystemTrackConfiguration._(JSObject _) implements JSObject {
-  external factory KeySystemTrackConfiguration({
-    String robustness,
-    String? encryptionScheme,
-  });
+  int get width {
+    unsupportedPlatformError();
+  }
 
-  external String get robustness;
-  external set robustness(String value);
-  external String? get encryptionScheme;
-  external set encryptionScheme(String? value);
-}
-extension type MediaCapabilitiesInfo._(JSObject _) implements JSObject {
-  external factory MediaCapabilitiesInfo({
-    required bool supported,
-    required bool smooth,
-    required bool powerEfficient,
-  });
+  set width(int value) {
+    unsupportedPlatformError();
+  }
 
-  external bool get supported;
-  external set supported(bool value);
-  external bool get smooth;
-  external set smooth(bool value);
-  external bool get powerEfficient;
-  external set powerEfficient(bool value);
+  int get height {
+    unsupportedPlatformError();
+  }
+
+  set height(int value) {
+    unsupportedPlatformError();
+  }
+
+  int get bitrate {
+    unsupportedPlatformError();
+  }
+
+  set bitrate(int value) {
+    unsupportedPlatformError();
+  }
+
+  double get framerate {
+    unsupportedPlatformError();
+  }
+
+  set framerate(num value) {
+    unsupportedPlatformError();
+  }
+
+  bool get hasAlphaChannel {
+    unsupportedPlatformError();
+  }
+
+  set hasAlphaChannel(bool value) {
+    unsupportedPlatformError();
+  }
+
+  HdrMetadataType get hdrMetadataType {
+    unsupportedPlatformError();
+  }
+
+  set hdrMetadataType(HdrMetadataType value) {
+    unsupportedPlatformError();
+  }
+
+  ColorGamut get colorGamut {
+    unsupportedPlatformError();
+  }
+
+  set colorGamut(ColorGamut value) {
+    unsupportedPlatformError();
+  }
+
+  TransferFunction get transferFunction {
+    unsupportedPlatformError();
+  }
+
+  set transferFunction(TransferFunction value) {
+    unsupportedPlatformError();
+  }
+
+  String get scalabilityMode {
+    unsupportedPlatformError();
+  }
+
+  set scalabilityMode(String value) {
+    unsupportedPlatformError();
+  }
+
+  bool get spatialScalability {
+    unsupportedPlatformError();
+  }
+
+  set spatialScalability(bool value) {
+    unsupportedPlatformError();
+  }
 }
-extension type MediaCapabilitiesDecodingInfo._(JSObject _)
+
+abstract class AudioConfiguration implements JSObject {
+  String get contentType {
+    unsupportedPlatformError();
+  }
+
+  set contentType(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get channels {
+    unsupportedPlatformError();
+  }
+
+  set channels(String value) {
+    unsupportedPlatformError();
+  }
+
+  int get bitrate {
+    unsupportedPlatformError();
+  }
+
+  set bitrate(int value) {
+    unsupportedPlatformError();
+  }
+
+  int get samplerate {
+    unsupportedPlatformError();
+  }
+
+  set samplerate(int value) {
+    unsupportedPlatformError();
+  }
+
+  bool get spatialRendering {
+    unsupportedPlatformError();
+  }
+
+  set spatialRendering(bool value) {
+    unsupportedPlatformError();
+  }
+}
+
+abstract class MediaCapabilitiesKeySystemConfiguration implements JSObject {
+  String get keySystem {
+    unsupportedPlatformError();
+  }
+
+  set keySystem(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get initDataType {
+    unsupportedPlatformError();
+  }
+
+  set initDataType(String value) {
+    unsupportedPlatformError();
+  }
+
+  MediaKeysRequirement get distinctiveIdentifier {
+    unsupportedPlatformError();
+  }
+
+  set distinctiveIdentifier(MediaKeysRequirement value) {
+    unsupportedPlatformError();
+  }
+
+  MediaKeysRequirement get persistentState {
+    unsupportedPlatformError();
+  }
+
+  set persistentState(MediaKeysRequirement value) {
+    unsupportedPlatformError();
+  }
+
+  JSArray<JSString> get sessionTypes {
+    unsupportedPlatformError();
+  }
+
+  set sessionTypes(JSArray<JSString> value) {
+    unsupportedPlatformError();
+  }
+
+  KeySystemTrackConfiguration get audio {
+    unsupportedPlatformError();
+  }
+
+  set audio(KeySystemTrackConfiguration value) {
+    unsupportedPlatformError();
+  }
+
+  KeySystemTrackConfiguration get video {
+    unsupportedPlatformError();
+  }
+
+  set video(KeySystemTrackConfiguration value) {
+    unsupportedPlatformError();
+  }
+}
+
+abstract class KeySystemTrackConfiguration implements JSObject {
+  String get robustness {
+    unsupportedPlatformError();
+  }
+
+  set robustness(String value) {
+    unsupportedPlatformError();
+  }
+
+  String? get encryptionScheme {
+    unsupportedPlatformError();
+  }
+
+  set encryptionScheme(String? value) {
+    unsupportedPlatformError();
+  }
+}
+
+abstract class MediaCapabilitiesInfo implements JSObject {
+  bool get supported {
+    unsupportedPlatformError();
+  }
+
+  set supported(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get smooth {
+    unsupportedPlatformError();
+  }
+
+  set smooth(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get powerEfficient {
+    unsupportedPlatformError();
+  }
+
+  set powerEfficient(bool value) {
+    unsupportedPlatformError();
+  }
+}
+
+abstract class MediaCapabilitiesDecodingInfo
     implements MediaCapabilitiesInfo, JSObject {
-  external factory MediaCapabilitiesDecodingInfo({
-    required bool supported,
-    required bool smooth,
-    required bool powerEfficient,
-    required MediaKeySystemAccess keySystemAccess,
-    MediaDecodingConfiguration configuration,
-  });
+  MediaKeySystemAccess get keySystemAccess {
+    unsupportedPlatformError();
+  }
 
-  external MediaKeySystemAccess get keySystemAccess;
-  external set keySystemAccess(MediaKeySystemAccess value);
-  external MediaDecodingConfiguration get configuration;
-  external set configuration(MediaDecodingConfiguration value);
+  set keySystemAccess(MediaKeySystemAccess value) {
+    unsupportedPlatformError();
+  }
+
+  MediaDecodingConfiguration get configuration {
+    unsupportedPlatformError();
+  }
+
+  set configuration(MediaDecodingConfiguration value) {
+    unsupportedPlatformError();
+  }
 }
-extension type MediaCapabilitiesEncodingInfo._(JSObject _)
-    implements MediaCapabilitiesInfo, JSObject {
-  external factory MediaCapabilitiesEncodingInfo({
-    required bool supported,
-    required bool smooth,
-    required bool powerEfficient,
-    MediaEncodingConfiguration configuration,
-  });
 
-  external MediaEncodingConfiguration get configuration;
-  external set configuration(MediaEncodingConfiguration value);
+abstract class MediaCapabilitiesEncodingInfo
+    implements MediaCapabilitiesInfo, JSObject {
+  MediaEncodingConfiguration get configuration {
+    unsupportedPlatformError();
+  }
+
+  set configuration(MediaEncodingConfiguration value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`MediaCapabilities`** interface of the
@@ -212,14 +347,14 @@ extension type MediaCapabilitiesEncodingInfo._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MediaCapabilities).
-extension type MediaCapabilities._(JSObject _) implements JSObject {
+abstract class MediaCapabilities implements JSObject {
   /// The **`MediaCapabilities.decodingInfo()`** method, part of the
   /// [Media Capabilities API](https://developer.mozilla.org/en-US/docs/Web/API/MediaCapabilities),
   /// returns a promise with the tested media configuration's capabilities info.
   /// This contains the three boolean properties `supported`, `smooth`, and
   /// `powerefficient`, which describe whether decoding the media described
   /// would be supported, smooth, and powerefficient.
-  external JSPromise<MediaCapabilitiesDecodingInfo> decodingInfo(
+  JSPromise<MediaCapabilitiesDecodingInfo> decodingInfo(
       MediaDecodingConfiguration configuration);
 
   /// The **`MediaCapabilities.encodingInfo()`** method, part of the
@@ -230,6 +365,6 @@ extension type MediaCapabilities._(JSObject _) implements JSObject {
   /// This contains the three boolean properties `supported`, `smooth`, and
   /// `powerefficient`, which describe how compatible the device is with the
   /// type of media.
-  external JSPromise<MediaCapabilitiesEncodingInfo> encodingInfo(
+  JSPromise<MediaCapabilitiesEncodingInfo> encodingInfo(
       MediaEncodingConfiguration configuration);
 }

@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,28 +10,43 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
+import '../error.dart';
+import '../js_interop.dart';
 
 typedef RefreshPolicy = String;
 typedef TokenVersion = String;
 typedef OperationType = String;
-extension type PrivateToken._(JSObject _) implements JSObject {
-  external factory PrivateToken({
-    required TokenVersion version,
-    required OperationType operation,
-    RefreshPolicy refreshPolicy,
-    JSArray<JSString> issuers,
-  });
 
-  external TokenVersion get version;
-  external set version(TokenVersion value);
-  external OperationType get operation;
-  external set operation(OperationType value);
-  external RefreshPolicy get refreshPolicy;
-  external set refreshPolicy(RefreshPolicy value);
-  external JSArray<JSString> get issuers;
-  external set issuers(JSArray<JSString> value);
+abstract class PrivateToken implements JSObject {
+  TokenVersion get version {
+    unsupportedPlatformError();
+  }
+
+  set version(TokenVersion value) {
+    unsupportedPlatformError();
+  }
+
+  OperationType get operation {
+    unsupportedPlatformError();
+  }
+
+  set operation(OperationType value) {
+    unsupportedPlatformError();
+  }
+
+  RefreshPolicy get refreshPolicy {
+    unsupportedPlatformError();
+  }
+
+  set refreshPolicy(RefreshPolicy value) {
+    unsupportedPlatformError();
+  }
+
+  JSArray<JSString> get issuers {
+    unsupportedPlatformError();
+  }
+
+  set issuers(JSArray<JSString> value) {
+    unsupportedPlatformError();
+  }
 }

@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,11 +10,8 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../error.dart';
+import '../js_interop.dart';
 import 'dom.dart';
 import 'html.dart';
 import 'streams.dart';
@@ -35,17 +32,12 @@ typedef EndingType = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Blob).
-extension type Blob._(JSObject _) implements JSObject {
-  external factory Blob([
-    JSArray<BlobPart> blobParts,
-    BlobPropertyBag options,
-  ]);
-
+abstract class Blob implements JSObject {
   /// The **`slice()`** method of the [Blob] interface
   /// creates and returns a new `Blob` object which contains data from a subset
   /// of
   /// the blob on which it's called.
-  external Blob slice([
+  Blob slice([
     int start,
     int end,
     String contentType,
@@ -54,22 +46,22 @@ extension type Blob._(JSObject _) implements JSObject {
   /// The **`stream()`** method of the [Blob] interface returns a
   /// [ReadableStream] which upon reading returns the data contained within the
   /// `Blob`.
-  external ReadableStream stream();
+  ReadableStream stream();
 
   /// The **`text()`** method of the
   /// [Blob] interface returns a `Promise` that resolves with a
   /// string containing the contents of the blob, interpreted as UTF-8.
-  external JSPromise<JSString> text();
+  JSPromise<JSString> text();
 
   /// The **`arrayBuffer()`** method of the [Blob]
   /// interface returns a `Promise` that resolves with the contents of the blob
   /// as
   /// binary data contained in an `ArrayBuffer`.
-  external JSPromise<JSArrayBuffer> arrayBuffer();
+  JSPromise<JSArrayBuffer> arrayBuffer();
 
   /// The **`size`** read-only property of the [Blob] interface returns
   /// the size of the [Blob] or [File] in bytes.
-  external int get size;
+  int get size;
 
   /// The **`type`** read-only property of the [Blob] interface returns the  of
   /// the file.
@@ -84,18 +76,25 @@ extension type Blob._(JSObject _) implements JSObject {
   /// > Client configuration (for instance, the Windows Registry) may result in
   /// > unexpected values even for common types. **Developers are advised not to
   /// > rely on this property as a sole validation scheme.**
-  external String get type;
+  String get type;
 }
-extension type BlobPropertyBag._(JSObject _) implements JSObject {
-  external factory BlobPropertyBag({
-    String type,
-    EndingType endings,
-  });
 
-  external String get type;
-  external set type(String value);
-  external EndingType get endings;
-  external set endings(EndingType value);
+abstract class BlobPropertyBag implements JSObject {
+  String get type {
+    unsupportedPlatformError();
+  }
+
+  set type(String value) {
+    unsupportedPlatformError();
+  }
+
+  EndingType get endings {
+    unsupportedPlatformError();
+  }
+
+  set endings(EndingType value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`File`** interface provides information about files and allows
@@ -119,17 +118,11 @@ extension type BlobPropertyBag._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/File).
-extension type File._(JSObject _) implements Blob, JSObject {
-  external factory File(
-    JSArray<BlobPart> fileBits,
-    String fileName, [
-    FilePropertyBag options,
-  ]);
-
+abstract class File implements Blob, JSObject {
   /// The **`name`** read-only property of the [File] interface returns the name
   /// of the file represented by a [File] object. For security
   /// reasons, the path is excluded from this property.
-  external String get name;
+  String get name;
 
   /// The **`lastModified`** read-only property of the [File] interface provides
   /// the
@@ -138,25 +131,24 @@ extension type File._(JSObject _) implements Blob, JSObject {
   /// epoch (January 1, 1970 at midnight). Files without a known last modified
   /// date return the
   /// current date.
-  external int get lastModified;
+  int get lastModified;
 
   /// The **`webkitRelativePath`** read-only property of the [File] interface
   /// contains a string which specifies the file's path relative to the
   /// directory selected by the user in an `input` element with its
   /// [`webkitdirectory`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#webkitdirectory)
   /// attribute set.
-  external String get webkitRelativePath;
+  String get webkitRelativePath;
 }
-extension type FilePropertyBag._(JSObject _)
-    implements BlobPropertyBag, JSObject {
-  external factory FilePropertyBag({
-    String type,
-    EndingType endings,
-    int lastModified,
-  });
 
-  external int get lastModified;
-  external set lastModified(int value);
+abstract class FilePropertyBag implements BlobPropertyBag, JSObject {
+  int get lastModified {
+    unsupportedPlatformError();
+  }
+
+  set lastModified(int value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`FileList`** interface represents an object of this type returned by
@@ -198,14 +190,14 @@ extension type FilePropertyBag._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/FileList).
-extension type FileList._(JSObject _) implements JSObject {
+abstract class FileList implements JSObject {
   /// The **`item()`** method of the [FileList] interface returns a [File]
   /// object representing the file at the specified index in the file list.
-  external File? item(int index);
+  File? item(int index);
 
   /// The **`length`** read-only property of the [FileList] interface returns
   /// the number of files in the `FileList`.
-  external int get length;
+  int get length;
 }
 
 /// The **`FileReader`** interface lets web applications asynchronously read the
@@ -230,9 +222,7 @@ extension type FileList._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/FileReader).
-extension type FileReader._(JSObject _) implements EventTarget, JSObject {
-  external factory FileReader();
-
+abstract class FileReader implements EventTarget, JSObject {
   static const int EMPTY = 0;
 
   static const int LOADING = 1;
@@ -250,7 +240,7 @@ extension type FileReader._(JSObject _) implements EventTarget, JSObject {
   /// > **Note:** The [Blob.arrayBuffer] method is a newer promise-based API to
   /// > read a
   /// > file as an array buffer.
-  external void readAsArrayBuffer(Blob blob);
+  void readAsArrayBuffer(Blob blob);
 
   /// > **Note:** This method is deprecated in favor of
   /// > [FileReader.readAsArrayBuffer].
@@ -268,7 +258,7 @@ extension type FileReader._(JSObject _) implements EventTarget, JSObject {
   /// but
   /// re-introduced for backward compatibility.
   /// Using [FileReader.readAsArrayBuffer] is recommended.
-  external void readAsBinaryString(Blob blob);
+  void readAsBinaryString(Blob blob);
 
   /// The **`readAsText()`** method of the [FileReader] interface is used to
   /// read the contents of the specified [Blob] or [File].
@@ -284,7 +274,7 @@ extension type FileReader._(JSObject _) implements EventTarget, JSObject {
   /// > **Note:** This method loads the entire file's content into memory and is
   /// > not suitable for large files. Prefer [FileReader.readAsArrayBuffer] for
   /// > large files.
-  external void readAsText(
+  void readAsText(
     Blob blob, [
     String encoding,
   ]);
@@ -305,17 +295,17 @@ extension type FileReader._(JSObject _) implements EventTarget, JSObject {
   /// > the Base64-encoded data. To retrieve only the Base64 encoded string,
   /// > first
   /// > remove `data:*/*;base64,` from the result.
-  external void readAsDataURL(Blob blob);
+  void readAsDataURL(Blob blob);
 
   /// The **`abort()`** method of the [FileReader] interface aborts the read
   /// operation. Upon return,
   /// the [FileReader.readyState] will be `DONE`.
-  external void abort();
+  void abort();
 
   /// The **`readyState`** read-only property of the [FileReader] interface
   /// provides the current state of the reading operation.
   /// This will be one of the states: `EMPTY`, `LOADING`, or `DONE`.
-  external int get readyState;
+  int get readyState;
 
   /// The **`result`** read-only property of the [FileReader] interface returns
   /// the
@@ -324,24 +314,24 @@ extension type FileReader._(JSObject _) implements EventTarget, JSObject {
   /// the format of the data depends on which of the methods was used to
   /// initiate the read
   /// operation.
-  external JSAny? get result;
+  JSAny? get result;
 
   /// The **`error`** read-only property of the [FileReader] interface returns
   /// the
   /// error that occurred while reading the file.
-  external DOMException? get error;
-  external EventHandler get onloadstart;
-  external set onloadstart(EventHandler value);
-  external EventHandler get onprogress;
-  external set onprogress(EventHandler value);
-  external EventHandler get onload;
-  external set onload(EventHandler value);
-  external EventHandler get onabort;
-  external set onabort(EventHandler value);
-  external EventHandler get onerror;
-  external set onerror(EventHandler value);
-  external EventHandler get onloadend;
-  external set onloadend(EventHandler value);
+  DOMException? get error;
+  EventHandler get onloadstart;
+  set onloadstart(EventHandler value);
+  EventHandler get onprogress;
+  set onprogress(EventHandler value);
+  EventHandler get onload;
+  set onload(EventHandler value);
+  EventHandler get onabort;
+  set onabort(EventHandler value);
+  EventHandler get onerror;
+  set onerror(EventHandler value);
+  EventHandler get onloadend;
+  set onloadend(EventHandler value);
 }
 
 /// @AvailableInWorkers("worker_except_service")
@@ -356,9 +346,7 @@ extension type FileReader._(JSObject _) implements EventTarget, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/FileReaderSync).
-extension type FileReaderSync._(JSObject _) implements JSObject {
-  external factory FileReaderSync();
-
+abstract class FileReaderSync implements JSObject {
   /// @AvailableInWorkers("worker_except_service")
   ///
   /// The **`readAsArrayBuffer()`** method of the [FileReaderSync] interface
@@ -367,7 +355,7 @@ extension type FileReaderSync._(JSObject _) implements JSObject {
   /// [only available](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Functions_and_classes_available_to_workers)
   /// in [workers](https://developer.mozilla.org/en-US/docs/Web/API/Worker) as
   /// it enables synchronous I/O that could potentially block.
-  external JSArrayBuffer readAsArrayBuffer(Blob blob);
+  JSArrayBuffer readAsArrayBuffer(Blob blob);
 
   /// @AvailableInWorkers("worker_except_service")
   ///
@@ -380,7 +368,7 @@ extension type FileReaderSync._(JSObject _) implements JSObject {
   /// [only available](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Functions_and_classes_available_to_workers)
   /// in [workers](https://developer.mozilla.org/en-US/docs/Web/API/Worker) as
   /// it enables synchronous I/O that could potentially block.
-  external String readAsBinaryString(Blob blob);
+  String readAsBinaryString(Blob blob);
 
   /// @AvailableInWorkers("worker_except_service")
   ///
@@ -390,7 +378,7 @@ extension type FileReaderSync._(JSObject _) implements JSObject {
   /// [only available](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Functions_and_classes_available_to_workers)
   /// in [workers](https://developer.mozilla.org/en-US/docs/Web/API/Worker) as
   /// it enables synchronous I/O that could potentially block.
-  external String readAsText(
+  String readAsText(
     Blob blob, [
     String encoding,
   ]);
@@ -403,5 +391,5 @@ extension type FileReaderSync._(JSObject _) implements JSObject {
   /// [only available](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Functions_and_classes_available_to_workers)
   /// in [workers](https://developer.mozilla.org/en-US/docs/Web/API/Worker) as
   /// it enables synchronous I/O that could potentially block.
-  external String readAsDataURL(Blob blob);
+  String readAsDataURL(Blob blob);
 }

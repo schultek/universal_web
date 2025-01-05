@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,11 +10,8 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../error.dart';
+import '../js_interop.dart';
 import 'dom.dart';
 import 'html.dart';
 import 'webidl.dart';
@@ -32,9 +29,7 @@ typedef AppendMode = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MediaSource).
-extension type MediaSource._(JSObject _) implements EventTarget, JSObject {
-  external factory MediaSource();
-
+abstract class MediaSource implements EventTarget, JSObject {
   /// The **`MediaSource.isTypeSupported()`** static method returns a boolean
   /// value which is `true` if the given MIME type and (optional) codec are
   /// _likely_ to be supported by the current .
@@ -43,7 +38,9 @@ extension type MediaSource._(JSObject _) implements EventTarget, JSObject {
   /// media type.
   /// If the returned value is `false`, then the user agent is certain that it
   /// _cannot_ access media of the specified format.
-  external static bool isTypeSupported(String type);
+  static bool isTypeSupported(String type) {
+    unsupportedPlatformError();
+  }
 
   /// The **`canConstructInDedicatedWorker`** static property of the
   /// [MediaSource] interface returns `true` if `MediaSource` worker support is
@@ -52,28 +49,30 @@ extension type MediaSource._(JSObject _) implements EventTarget, JSObject {
   /// If this were not available, the alternative would be a much higher latency
   /// approach such as attempting the creation of a `MediaSource` object from a
   /// dedicated worker and transferring the result back to the main thread.
-  external static bool get canConstructInDedicatedWorker;
+  static bool get canConstructInDedicatedWorker {
+    unsupportedPlatformError();
+  }
 
   /// The **`addSourceBuffer()`** method of the
   /// [MediaSource] interface creates a new [SourceBuffer] of the
   /// given  and adds it to the `MediaSource`'s
   /// [MediaSource.sourceBuffers] list. The new
   /// `SourceBuffer` is also returned.
-  external SourceBuffer addSourceBuffer(String type);
+  SourceBuffer addSourceBuffer(String type);
 
   /// The **`removeSourceBuffer()`** method of the [MediaSource] interface
   /// removes the given [SourceBuffer] from the [SourceBufferList] associated
   /// with this `MediaSource` object.
-  external void removeSourceBuffer(SourceBuffer sourceBuffer);
+  void removeSourceBuffer(SourceBuffer sourceBuffer);
 
   /// The **`endOfStream()`** method of the
   /// [MediaSource] interface signals the end of the stream.
-  external void endOfStream([EndOfStreamError error]);
+  void endOfStream([EndOfStreamError error]);
 
   /// The **`setLiveSeekableRange()`** method of the
   /// [MediaSource] interface sets the range that the user can seek to in the
   /// media element.
-  external void setLiveSeekableRange(
+  void setLiveSeekableRange(
     num start,
     num end,
   );
@@ -81,7 +80,7 @@ extension type MediaSource._(JSObject _) implements EventTarget, JSObject {
   /// The **`clearLiveSeekableRange()`** method of the
   /// [MediaSource] interface clears a seekable range previously set with a call
   /// to [MediaSource.setLiveSeekableRange].
-  external void clearLiveSeekableRange();
+  void clearLiveSeekableRange();
 
   /// The **`handle`** read-only property of the [MediaSource] interface returns
   /// a [MediaSourceHandle] object, a proxy for the `MediaSource` that can be
@@ -98,13 +97,13 @@ extension type MediaSource._(JSObject _) implements EventTarget, JSObject {
   /// main thread using [DedicatedWorkerGlobalScope.postMessage], the handle
   /// instance in the worker is technically detached and can't be transferred
   /// again.
-  external MediaSourceHandle get handle;
+  MediaSourceHandle get handle;
 
   /// The **`sourceBuffers`** read-only property of the
   /// [MediaSource] interface returns a [SourceBufferList] object
   /// containing the list of [SourceBuffer] objects associated with this
   /// `MediaSource`.
-  external SourceBufferList get sourceBuffers;
+  SourceBufferList get sourceBuffers;
 
   /// The **`activeSourceBuffers`** read-only property of the
   /// [MediaSource] interface returns a [SourceBufferList] object
@@ -112,7 +111,7 @@ extension type MediaSource._(JSObject _) implements EventTarget, JSObject {
   /// [MediaSource.sourceBuffers] — the list of objects
   /// providing the selected video track, enabled audio tracks, and shown/hidden
   /// text tracks.
-  external SourceBufferList get activeSourceBuffers;
+  SourceBufferList get activeSourceBuffers;
 
   /// The **`readyState`** read-only property of the
   /// [MediaSource] interface returns an enum representing the state of the
@@ -123,18 +122,18 @@ extension type MediaSource._(JSObject _) implements EventTarget, JSObject {
   /// [SourceBuffer] objects.
   /// - `ended`: The source is attached to a media element but the stream has
   /// been ended via a call to [MediaSource.endOfStream].
-  external ReadyState get readyState;
+  ReadyState get readyState;
 
   /// The **`duration`** property of the [MediaSource]
   /// interface gets and sets the duration of the current media being presented.
-  external double get duration;
-  external set duration(num value);
-  external EventHandler get onsourceopen;
-  external set onsourceopen(EventHandler value);
-  external EventHandler get onsourceended;
-  external set onsourceended(EventHandler value);
-  external EventHandler get onsourceclose;
-  external set onsourceclose(EventHandler value);
+  double get duration;
+  set duration(num value);
+  EventHandler get onsourceopen;
+  set onsourceopen(EventHandler value);
+  EventHandler get onsourceended;
+  set onsourceended(EventHandler value);
+  EventHandler get onsourceclose;
+  set onsourceclose(EventHandler value);
 }
 
 /// The **`MediaSourceHandle`** interface of the [Media Source Extensions API]
@@ -158,7 +157,7 @@ extension type MediaSource._(JSObject _) implements EventTarget, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MediaSourceHandle).
-extension type MediaSourceHandle._(JSObject _) implements JSObject {}
+abstract class MediaSourceHandle implements JSObject {}
 
 /// The **`SourceBuffer`** interface represents a chunk of media to be passed
 /// into an [HTMLMediaElement] and played, via a [MediaSource] object. This can
@@ -168,16 +167,16 @@ extension type MediaSourceHandle._(JSObject _) implements JSObject {}
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SourceBuffer).
-extension type SourceBuffer._(JSObject _) implements EventTarget, JSObject {
+abstract class SourceBuffer implements EventTarget, JSObject {
   /// The **`appendBuffer()`** method of the
   /// [SourceBuffer] interface appends media segment data from an
   /// `ArrayBuffer`, a `TypedArray` or a `DataView` object
   /// to the `SourceBuffer`.
-  external void appendBuffer(BufferSource data);
+  void appendBuffer(BufferSource data);
 
   /// The **`abort()`** method of the [SourceBuffer]
   /// interface aborts the current segment and resets the segment parser.
-  external void abort();
+  void abort();
 
   /// The **`changeType()`** method of the
   /// [SourceBuffer] interface sets the MIME type that future calls to
@@ -191,7 +190,7 @@ extension type SourceBuffer._(JSObject _) implements EventTarget, JSObject {
   /// changing bandwidth availability, by transitioning from one codec to
   /// another as resource
   /// constraints change.
-  external void changeType(String type);
+  void changeType(String type);
 
   /// The **`remove()`** method of the [SourceBuffer]
   /// interface removes media segments within a specific time range from the
@@ -199,7 +198,7 @@ extension type SourceBuffer._(JSObject _) implements EventTarget, JSObject {
   /// [SourceBuffer.updating] equals `false`. If
   /// `SourceBuffer.updating` is not equal to `false`, call
   /// [SourceBuffer.abort].
-  external void remove(
+  void remove(
     num start,
     num end,
   );
@@ -235,39 +234,39 @@ extension type SourceBuffer._(JSObject _) implements EventTarget, JSObject {
   /// This property cannot be changed during while the `SourceBuffer` is
   /// processing either an [SourceBuffer.appendBuffer] or
   /// [SourceBuffer.remove] call.
-  external AppendMode get mode;
-  external set mode(AppendMode value);
+  AppendMode get mode;
+  set mode(AppendMode value);
 
   /// The **`updating`** read-only property of the
   /// [SourceBuffer] interface indicates whether the `SourceBuffer` is
   /// currently being updated — i.e. whether an [SourceBuffer.appendBuffer] or
   /// [SourceBuffer.remove]
   /// operation is currently in progress.
-  external bool get updating;
+  bool get updating;
 
   /// The **`buffered`** read-only property of the
   /// [SourceBuffer] interface returns the time ranges that are currently
   /// buffered in the `SourceBuffer` as a normalized [TimeRanges]
   /// object.
-  external TimeRanges get buffered;
+  TimeRanges get buffered;
 
   /// The **`timestampOffset`** property of the
   /// [SourceBuffer] interface controls the offset applied to timestamps inside
   /// media segments that are appended to the `SourceBuffer`.
   ///
   /// The initial value of `timestampOffset` is 0.
-  external double get timestampOffset;
-  external set timestampOffset(num value);
+  double get timestampOffset;
+  set timestampOffset(num value);
 
   /// The **`audioTracks`** read-only property of the
   /// [SourceBuffer] interface returns a list of the audio tracks currently
   /// contained inside the `SourceBuffer`.
-  external AudioTrackList get audioTracks;
+  AudioTrackList get audioTracks;
 
   /// The **`videoTracks`** read-only property of the
   /// [SourceBuffer] interface returns a list of the video tracks currently
   /// contained inside the `SourceBuffer`.
-  external VideoTrackList get videoTracks;
+  VideoTrackList get videoTracks;
 
   /// The **`appendWindowStart`** property of the
   /// [SourceBuffer] interface controls the timestamp for the start of the
@@ -280,8 +279,8 @@ extension type SourceBuffer._(JSObject _) implements EventTarget, JSObject {
   ///
   /// The default value of `appendWindowStart` is the presentation start time,
   /// which is the beginning time of the playable media.
-  external double get appendWindowStart;
-  external set appendWindowStart(num value);
+  double get appendWindowStart;
+  set appendWindowStart(num value);
 
   /// The **`appendWindowEnd`** property of the
   /// [SourceBuffer] interface controls the timestamp for the end of the
@@ -293,18 +292,18 @@ extension type SourceBuffer._(JSObject _) implements EventTarget, JSObject {
   /// appended, whereas those outside the range will be filtered out.
   ///
   /// The default value of `appendWindowEnd` is positive infinity.
-  external double get appendWindowEnd;
-  external set appendWindowEnd(num value);
-  external EventHandler get onupdatestart;
-  external set onupdatestart(EventHandler value);
-  external EventHandler get onupdate;
-  external set onupdate(EventHandler value);
-  external EventHandler get onupdateend;
-  external set onupdateend(EventHandler value);
-  external EventHandler get onerror;
-  external set onerror(EventHandler value);
-  external EventHandler get onabort;
-  external set onabort(EventHandler value);
+  double get appendWindowEnd;
+  set appendWindowEnd(num value);
+  EventHandler get onupdatestart;
+  set onupdatestart(EventHandler value);
+  EventHandler get onupdate;
+  set onupdate(EventHandler value);
+  EventHandler get onupdateend;
+  set onupdateend(EventHandler value);
+  EventHandler get onerror;
+  set onerror(EventHandler value);
+  EventHandler get onabort;
+  set onabort(EventHandler value);
 }
 
 /// The **`SourceBufferList`** interface represents a simple container list for
@@ -322,15 +321,15 @@ extension type SourceBuffer._(JSObject _) implements EventTarget, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SourceBufferList).
-extension type SourceBufferList._(JSObject _) implements EventTarget, JSObject {
-  external SourceBuffer operator [](int index);
+abstract class SourceBufferList implements EventTarget, JSObject {
+  SourceBuffer operator [](int index);
 
   /// The **`length`** read-only property of the
   /// [SourceBufferList] interface returns the number of
   /// [SourceBuffer] objects in the list.
-  external int get length;
-  external EventHandler get onaddsourcebuffer;
-  external set onaddsourcebuffer(EventHandler value);
-  external EventHandler get onremovesourcebuffer;
-  external set onremovesourcebuffer(EventHandler value);
+  int get length;
+  EventHandler get onaddsourcebuffer;
+  set onaddsourcebuffer(EventHandler value);
+  EventHandler get onremovesourcebuffer;
+  set onremovesourcebuffer(EventHandler value);
 }

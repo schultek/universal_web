@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,11 +10,8 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../error.dart';
+import '../js_interop.dart';
 import 'dom.dart';
 import 'geometry.dart';
 import 'html.dart';
@@ -47,73 +44,80 @@ typedef VideoMatrixCoefficients = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/VideoDecoder).
-extension type VideoDecoder._(JSObject _) implements EventTarget, JSObject {
-  external factory VideoDecoder(VideoDecoderInit init);
-
+abstract class VideoDecoder implements EventTarget, JSObject {
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`isConfigSupported()`** static method of the [VideoDecoder]
   /// interface checks if the given config is supported (that is, if
   /// [VideoDecoder] objects can be successfully configured with the given
   /// config).
-  external static JSPromise<VideoDecoderSupport> isConfigSupported(
-      VideoDecoderConfig config);
+  static JSPromise<VideoDecoderSupport> isConfigSupported(
+      VideoDecoderConfig config) {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`configure()`** method of the [VideoDecoder] interface enqueues a
   /// control message to configure the video decoder for decoding chunks.
-  external void configure(VideoDecoderConfig config);
+  void configure(VideoDecoderConfig config);
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`decode()`** method of the [VideoDecoder] interface enqueues a
   /// control message to decode a given chunk of video.
-  external void decode(EncodedVideoChunk chunk);
+  void decode(EncodedVideoChunk chunk);
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`flush()`** method of the [VideoDecoder] interface returns a Promise
   /// that resolves once all pending messages in the queue have been completed.
-  external JSPromise<JSAny?> flush();
+  JSPromise<JSAny?> flush();
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`reset()`** method of the [VideoDecoder] interface resets all states
   /// including configuration, control messages in the control message queue,
   /// and all pending callbacks.
-  external void reset();
+  void reset();
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`close()`** method of the [VideoDecoder] interface ends all pending
   /// work and releases system resources.
-  external void close();
+  void close();
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`state`** property of the [VideoDecoder] interface returns the
   /// current state of the underlying codec.
-  external CodecState get state;
+  CodecState get state;
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`decodeQueueSize`** read-only property of the [VideoDecoder]
   /// interface returns the number of pending decode requests in the queue.
-  external int get decodeQueueSize;
-  external EventHandler get ondequeue;
-  external set ondequeue(EventHandler value);
+  int get decodeQueueSize;
+  EventHandler get ondequeue;
+  set ondequeue(EventHandler value);
 }
-extension type VideoDecoderInit._(JSObject _) implements JSObject {
-  external factory VideoDecoderInit({
-    required VideoFrameOutputCallback output,
-    required WebCodecsErrorCallback error,
-  });
 
-  external VideoFrameOutputCallback get output;
-  external set output(VideoFrameOutputCallback value);
-  external WebCodecsErrorCallback get error;
-  external set error(WebCodecsErrorCallback value);
+abstract class VideoDecoderInit implements JSObject {
+  VideoFrameOutputCallback get output {
+    unsupportedPlatformError();
+  }
+
+  set output(VideoFrameOutputCallback value) {
+    unsupportedPlatformError();
+  }
+
+  WebCodecsErrorCallback get error {
+    unsupportedPlatformError();
+  }
+
+  set error(WebCodecsErrorCallback value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// @AvailableInWorkers("window_and_dedicated")
@@ -125,16 +129,16 @@ extension type VideoDecoderInit._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/VideoEncoder).
-extension type VideoEncoder._(JSObject _) implements EventTarget, JSObject {
-  external factory VideoEncoder(VideoEncoderInit init);
-
+abstract class VideoEncoder implements EventTarget, JSObject {
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`isConfigSupported()`** static method of the [VideoEncoder]
   /// interface checks if [VideoEncoder] can be successfully configured with the
   /// given config.
-  external static JSPromise<VideoEncoderSupport> isConfigSupported(
-      VideoEncoderConfig config);
+  static JSPromise<VideoEncoderSupport> isConfigSupported(
+      VideoEncoderConfig config) {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
@@ -148,7 +152,7 @@ extension type VideoEncoder._(JSObject _) implements EventTarget, JSObject {
   ///
   /// If the [VideoEncoder] has been previously configured, the new
   /// configuration will not be applied until all previous tasks have completed.
-  external void configure(VideoEncoderConfig config);
+  void configure(VideoEncoderConfig config);
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
@@ -156,7 +160,7 @@ extension type VideoEncoder._(JSObject _) implements EventTarget, JSObject {
   /// encodes a [VideoFrame].
   /// Encoded data ([EncodedVideoChunk]) or an error will eventually be returned
   /// via the callbacks provided to the [VideoEncoder] constructor.
-  external void encode(
+  void encode(
     VideoFrame frame, [
     VideoEncoderEncodeOptions options,
   ]);
@@ -165,7 +169,7 @@ extension type VideoEncoder._(JSObject _) implements EventTarget, JSObject {
   ///
   /// The **`flush()`** method of the [VideoEncoder] interface forces all
   /// pending encodes to complete.
-  external JSPromise<JSAny?> flush();
+  JSPromise<JSAny?> flush();
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
@@ -178,162 +182,319 @@ extension type VideoEncoder._(JSObject _) implements EventTarget, JSObject {
   /// > **Note:** To avoid discarding frames queued via [VideoEncoder.encode],
   /// > [VideoEncoder.flush] should be called and completed before calling
   /// > [VideoEncoder.reset].
-  external void reset();
+  void reset();
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`close()`** method of the [VideoEncoder] interface ends all pending
   /// work and releases system resources.
-  external void close();
+  void close();
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`state`** read-only property of the [VideoEncoder] interface returns
   /// the current state of the underlying codec.
-  external CodecState get state;
+  CodecState get state;
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`encodeQueueSize`** read-only property of the [VideoEncoder]
   /// interface returns the number of pending encode requests in the queue.
-  external int get encodeQueueSize;
-  external EventHandler get ondequeue;
-  external set ondequeue(EventHandler value);
+  int get encodeQueueSize;
+  EventHandler get ondequeue;
+  set ondequeue(EventHandler value);
 }
-extension type VideoEncoderInit._(JSObject _) implements JSObject {
-  external factory VideoEncoderInit({
-    required EncodedVideoChunkOutputCallback output,
-    required WebCodecsErrorCallback error,
-  });
 
-  external EncodedVideoChunkOutputCallback get output;
-  external set output(EncodedVideoChunkOutputCallback value);
-  external WebCodecsErrorCallback get error;
-  external set error(WebCodecsErrorCallback value);
+abstract class VideoEncoderInit implements JSObject {
+  EncodedVideoChunkOutputCallback get output {
+    unsupportedPlatformError();
+  }
+
+  set output(EncodedVideoChunkOutputCallback value) {
+    unsupportedPlatformError();
+  }
+
+  WebCodecsErrorCallback get error {
+    unsupportedPlatformError();
+  }
+
+  set error(WebCodecsErrorCallback value) {
+    unsupportedPlatformError();
+  }
 }
-extension type VideoDecoderSupport._(JSObject _) implements JSObject {
-  external factory VideoDecoderSupport({
-    bool supported,
-    VideoDecoderConfig config,
-  });
 
-  external bool get supported;
-  external set supported(bool value);
-  external VideoDecoderConfig get config;
-  external set config(VideoDecoderConfig value);
+abstract class VideoDecoderSupport implements JSObject {
+  bool get supported {
+    unsupportedPlatformError();
+  }
+
+  set supported(bool value) {
+    unsupportedPlatformError();
+  }
+
+  VideoDecoderConfig get config {
+    unsupportedPlatformError();
+  }
+
+  set config(VideoDecoderConfig value) {
+    unsupportedPlatformError();
+  }
 }
-extension type VideoEncoderSupport._(JSObject _) implements JSObject {
-  external factory VideoEncoderSupport({
-    bool supported,
-    VideoEncoderConfig config,
-  });
 
-  external bool get supported;
-  external set supported(bool value);
-  external VideoEncoderConfig get config;
-  external set config(VideoEncoderConfig value);
+abstract class VideoEncoderSupport implements JSObject {
+  bool get supported {
+    unsupportedPlatformError();
+  }
+
+  set supported(bool value) {
+    unsupportedPlatformError();
+  }
+
+  VideoEncoderConfig get config {
+    unsupportedPlatformError();
+  }
+
+  set config(VideoEncoderConfig value) {
+    unsupportedPlatformError();
+  }
 }
-extension type VideoDecoderConfig._(JSObject _) implements JSObject {
-  external factory VideoDecoderConfig({
-    required String codec,
-    AllowSharedBufferSource description,
-    int codedWidth,
-    int codedHeight,
-    int displayAspectWidth,
-    int displayAspectHeight,
-    VideoColorSpaceInit colorSpace,
-    HardwareAcceleration hardwareAcceleration,
-    bool optimizeForLatency,
-  });
 
-  external String get codec;
-  external set codec(String value);
-  external AllowSharedBufferSource get description;
-  external set description(AllowSharedBufferSource value);
-  external int get codedWidth;
-  external set codedWidth(int value);
-  external int get codedHeight;
-  external set codedHeight(int value);
-  external int get displayAspectWidth;
-  external set displayAspectWidth(int value);
-  external int get displayAspectHeight;
-  external set displayAspectHeight(int value);
-  external VideoColorSpaceInit get colorSpace;
-  external set colorSpace(VideoColorSpaceInit value);
-  external HardwareAcceleration get hardwareAcceleration;
-  external set hardwareAcceleration(HardwareAcceleration value);
-  external bool get optimizeForLatency;
-  external set optimizeForLatency(bool value);
+abstract class VideoDecoderConfig implements JSObject {
+  String get codec {
+    unsupportedPlatformError();
+  }
+
+  set codec(String value) {
+    unsupportedPlatformError();
+  }
+
+  AllowSharedBufferSource get description {
+    unsupportedPlatformError();
+  }
+
+  set description(AllowSharedBufferSource value) {
+    unsupportedPlatformError();
+  }
+
+  int get codedWidth {
+    unsupportedPlatformError();
+  }
+
+  set codedWidth(int value) {
+    unsupportedPlatformError();
+  }
+
+  int get codedHeight {
+    unsupportedPlatformError();
+  }
+
+  set codedHeight(int value) {
+    unsupportedPlatformError();
+  }
+
+  int get displayAspectWidth {
+    unsupportedPlatformError();
+  }
+
+  set displayAspectWidth(int value) {
+    unsupportedPlatformError();
+  }
+
+  int get displayAspectHeight {
+    unsupportedPlatformError();
+  }
+
+  set displayAspectHeight(int value) {
+    unsupportedPlatformError();
+  }
+
+  VideoColorSpaceInit get colorSpace {
+    unsupportedPlatformError();
+  }
+
+  set colorSpace(VideoColorSpaceInit value) {
+    unsupportedPlatformError();
+  }
+
+  HardwareAcceleration get hardwareAcceleration {
+    unsupportedPlatformError();
+  }
+
+  set hardwareAcceleration(HardwareAcceleration value) {
+    unsupportedPlatformError();
+  }
+
+  bool get optimizeForLatency {
+    unsupportedPlatformError();
+  }
+
+  set optimizeForLatency(bool value) {
+    unsupportedPlatformError();
+  }
 }
-extension type VideoEncoderConfig._(JSObject _) implements JSObject {
-  external factory VideoEncoderConfig({
-    required String codec,
-    required int width,
-    required int height,
-    int displayWidth,
-    int displayHeight,
-    int bitrate,
-    num framerate,
-    HardwareAcceleration hardwareAcceleration,
-    AlphaOption alpha,
-    String scalabilityMode,
-    VideoEncoderBitrateMode bitrateMode,
-    LatencyMode latencyMode,
-    String contentHint,
-    AvcEncoderConfig avc,
-    HevcEncoderConfig hevc,
-  });
 
-  external String get codec;
-  external set codec(String value);
-  external int get width;
-  external set width(int value);
-  external int get height;
-  external set height(int value);
-  external int get displayWidth;
-  external set displayWidth(int value);
-  external int get displayHeight;
-  external set displayHeight(int value);
-  external int get bitrate;
-  external set bitrate(int value);
-  external double get framerate;
-  external set framerate(num value);
-  external HardwareAcceleration get hardwareAcceleration;
-  external set hardwareAcceleration(HardwareAcceleration value);
-  external AlphaOption get alpha;
-  external set alpha(AlphaOption value);
-  external String get scalabilityMode;
-  external set scalabilityMode(String value);
-  external VideoEncoderBitrateMode get bitrateMode;
-  external set bitrateMode(VideoEncoderBitrateMode value);
-  external LatencyMode get latencyMode;
-  external set latencyMode(LatencyMode value);
-  external String get contentHint;
-  external set contentHint(String value);
-  external AvcEncoderConfig get avc;
-  external set avc(AvcEncoderConfig value);
-  external HevcEncoderConfig get hevc;
-  external set hevc(HevcEncoderConfig value);
+abstract class VideoEncoderConfig implements JSObject {
+  String get codec {
+    unsupportedPlatformError();
+  }
+
+  set codec(String value) {
+    unsupportedPlatformError();
+  }
+
+  int get width {
+    unsupportedPlatformError();
+  }
+
+  set width(int value) {
+    unsupportedPlatformError();
+  }
+
+  int get height {
+    unsupportedPlatformError();
+  }
+
+  set height(int value) {
+    unsupportedPlatformError();
+  }
+
+  int get displayWidth {
+    unsupportedPlatformError();
+  }
+
+  set displayWidth(int value) {
+    unsupportedPlatformError();
+  }
+
+  int get displayHeight {
+    unsupportedPlatformError();
+  }
+
+  set displayHeight(int value) {
+    unsupportedPlatformError();
+  }
+
+  int get bitrate {
+    unsupportedPlatformError();
+  }
+
+  set bitrate(int value) {
+    unsupportedPlatformError();
+  }
+
+  double get framerate {
+    unsupportedPlatformError();
+  }
+
+  set framerate(num value) {
+    unsupportedPlatformError();
+  }
+
+  HardwareAcceleration get hardwareAcceleration {
+    unsupportedPlatformError();
+  }
+
+  set hardwareAcceleration(HardwareAcceleration value) {
+    unsupportedPlatformError();
+  }
+
+  AlphaOption get alpha {
+    unsupportedPlatformError();
+  }
+
+  set alpha(AlphaOption value) {
+    unsupportedPlatformError();
+  }
+
+  String get scalabilityMode {
+    unsupportedPlatformError();
+  }
+
+  set scalabilityMode(String value) {
+    unsupportedPlatformError();
+  }
+
+  VideoEncoderBitrateMode get bitrateMode {
+    unsupportedPlatformError();
+  }
+
+  set bitrateMode(VideoEncoderBitrateMode value) {
+    unsupportedPlatformError();
+  }
+
+  LatencyMode get latencyMode {
+    unsupportedPlatformError();
+  }
+
+  set latencyMode(LatencyMode value) {
+    unsupportedPlatformError();
+  }
+
+  String get contentHint {
+    unsupportedPlatformError();
+  }
+
+  set contentHint(String value) {
+    unsupportedPlatformError();
+  }
+
+  AvcEncoderConfig get avc {
+    unsupportedPlatformError();
+  }
+
+  set avc(AvcEncoderConfig value) {
+    unsupportedPlatformError();
+  }
+
+  HevcEncoderConfig get hevc {
+    unsupportedPlatformError();
+  }
+
+  set hevc(HevcEncoderConfig value) {
+    unsupportedPlatformError();
+  }
 }
-extension type VideoEncoderEncodeOptions._(JSObject _) implements JSObject {
-  external factory VideoEncoderEncodeOptions({
-    bool keyFrame,
-    VideoEncoderEncodeOptionsForAv1 av1,
-    VideoEncoderEncodeOptionsForAvc avc,
-    VideoEncoderEncodeOptionsForHevc hevc,
-    VideoEncoderEncodeOptionsForVp9 vp9,
-  });
 
-  external bool get keyFrame;
-  external set keyFrame(bool value);
-  external VideoEncoderEncodeOptionsForAv1 get av1;
-  external set av1(VideoEncoderEncodeOptionsForAv1 value);
-  external VideoEncoderEncodeOptionsForAvc get avc;
-  external set avc(VideoEncoderEncodeOptionsForAvc value);
-  external VideoEncoderEncodeOptionsForHevc get hevc;
-  external set hevc(VideoEncoderEncodeOptionsForHevc value);
-  external VideoEncoderEncodeOptionsForVp9 get vp9;
-  external set vp9(VideoEncoderEncodeOptionsForVp9 value);
+abstract class VideoEncoderEncodeOptions implements JSObject {
+  bool get keyFrame {
+    unsupportedPlatformError();
+  }
+
+  set keyFrame(bool value) {
+    unsupportedPlatformError();
+  }
+
+  VideoEncoderEncodeOptionsForAv1 get av1 {
+    unsupportedPlatformError();
+  }
+
+  set av1(VideoEncoderEncodeOptionsForAv1 value) {
+    unsupportedPlatformError();
+  }
+
+  VideoEncoderEncodeOptionsForAvc get avc {
+    unsupportedPlatformError();
+  }
+
+  set avc(VideoEncoderEncodeOptionsForAvc value) {
+    unsupportedPlatformError();
+  }
+
+  VideoEncoderEncodeOptionsForHevc get hevc {
+    unsupportedPlatformError();
+  }
+
+  set hevc(VideoEncoderEncodeOptionsForHevc value) {
+    unsupportedPlatformError();
+  }
+
+  VideoEncoderEncodeOptionsForVp9 get vp9 {
+    unsupportedPlatformError();
+  }
+
+  set vp9(VideoEncoderEncodeOptionsForVp9 value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// @AvailableInWorkers("window_and_dedicated")
@@ -345,60 +506,80 @@ extension type VideoEncoderEncodeOptions._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/EncodedVideoChunk).
-extension type EncodedVideoChunk._(JSObject _) implements JSObject {
-  external factory EncodedVideoChunk(EncodedVideoChunkInit init);
-
+abstract class EncodedVideoChunk implements JSObject {
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`copyTo()`** method of the [EncodedVideoChunk] interface copies the
   /// encoded chunk of video data.
-  external void copyTo(AllowSharedBufferSource destination);
+  void copyTo(AllowSharedBufferSource destination);
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`type`** read-only property of the [EncodedVideoChunk] interface
   /// returns a value indicating whether the video chunk is a key chunk, which
   /// does not rely on other frames for decoding.
-  external EncodedVideoChunkType get type;
+  EncodedVideoChunkType get type;
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`timestamp`** read-only property of the [EncodedVideoChunk]
   /// interface returns an integer indicating the timestamp of the video in
   /// microseconds.
-  external int get timestamp;
+  int get timestamp;
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`duration`** read-only property of the [EncodedVideoChunk] interface
   /// returns an integer indicating the duration of the video in microseconds.
-  external int? get duration;
+  int? get duration;
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`byteLength`** read-only property of the [EncodedVideoChunk]
   /// interface returns the length in bytes of the encoded video data.
-  external int get byteLength;
+  int get byteLength;
 }
-extension type EncodedVideoChunkInit._(JSObject _) implements JSObject {
-  external factory EncodedVideoChunkInit({
-    required EncodedVideoChunkType type,
-    required int timestamp,
-    int duration,
-    required AllowSharedBufferSource data,
-    JSArray<JSArrayBuffer> transfer,
-  });
 
-  external EncodedVideoChunkType get type;
-  external set type(EncodedVideoChunkType value);
-  external int get timestamp;
-  external set timestamp(int value);
-  external int get duration;
-  external set duration(int value);
-  external AllowSharedBufferSource get data;
-  external set data(AllowSharedBufferSource value);
-  external JSArray<JSArrayBuffer> get transfer;
-  external set transfer(JSArray<JSArrayBuffer> value);
+abstract class EncodedVideoChunkInit implements JSObject {
+  EncodedVideoChunkType get type {
+    unsupportedPlatformError();
+  }
+
+  set type(EncodedVideoChunkType value) {
+    unsupportedPlatformError();
+  }
+
+  int get timestamp {
+    unsupportedPlatformError();
+  }
+
+  set timestamp(int value) {
+    unsupportedPlatformError();
+  }
+
+  int get duration {
+    unsupportedPlatformError();
+  }
+
+  set duration(int value) {
+    unsupportedPlatformError();
+  }
+
+  AllowSharedBufferSource get data {
+    unsupportedPlatformError();
+  }
+
+  set data(AllowSharedBufferSource value) {
+    unsupportedPlatformError();
+  }
+
+  JSArray<JSArrayBuffer> get transfer {
+    unsupportedPlatformError();
+  }
+
+  set transfer(JSArray<JSArrayBuffer> value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// @AvailableInWorkers("window_and_dedicated")
@@ -414,24 +595,19 @@ extension type EncodedVideoChunkInit._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/VideoFrame).
-extension type VideoFrame._(JSObject _) implements JSObject {
-  external factory VideoFrame(
-    JSObject dataOrImage, [
-    JSObject init,
-  ]);
-
+abstract class VideoFrame implements JSObject {
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`allocationSize()`** method of the [VideoFrame] interface returns
   /// the number of bytes required to hold the video as filtered by options
   /// passed into the method.
-  external int allocationSize([VideoFrameCopyToOptions options]);
+  int allocationSize([VideoFrameCopyToOptions options]);
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`copyTo()`** method of the [VideoFrame] interface copies the
   /// contents of the `VideoFrame` to an `ArrayBuffer`.
-  external JSPromise<JSArray<PlaneLayout>> copyTo(
+  JSPromise<JSArray<PlaneLayout>> copyTo(
     AllowSharedBufferSource destination, [
     VideoFrameCopyToOptions options,
   ]);
@@ -440,175 +616,287 @@ extension type VideoFrame._(JSObject _) implements JSObject {
   ///
   /// The **`clone()`** method of the [VideoFrame] interface creates a new
   /// `VideoFrame` object referencing the same media resource as the original.
-  external VideoFrame clone();
+  VideoFrame clone();
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`close()`** method of the [VideoFrame] interface clears all states
   /// and releases the reference to the media resource.
-  external void close();
+  void close();
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`format`** property of the [VideoFrame] interface returns the pixel
   /// format of the `VideoFrame`.
-  external VideoPixelFormat? get format;
+  VideoPixelFormat? get format;
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`codedWidth`** property of the [VideoFrame] interface returns the
   /// width of the `VideoFrame` in pixels, potentially including non-visible
   /// padding, and prior to considering potential ratio adjustments.
-  external int get codedWidth;
+  int get codedWidth;
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`codedHeight`** property of the [VideoFrame] interface returns the
   /// height of the VideoFrame in pixels, potentially including non-visible
   /// padding, and prior to considering potential ratio adjustments.
-  external int get codedHeight;
+  int get codedHeight;
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`codedRect`** property of the [VideoFrame] interface returns a
   /// [DOMRectReadOnly] with the width and height matching
   /// [VideoFrame.codedWidth] and [VideoFrame.codedHeight].
-  external DOMRectReadOnly? get codedRect;
+  DOMRectReadOnly? get codedRect;
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`visibleRect`** property of the [VideoFrame] interface returns a
   /// [DOMRectReadOnly] describing the visible rectangle of pixels for this
   /// `VideoFrame`.
-  external DOMRectReadOnly? get visibleRect;
+  DOMRectReadOnly? get visibleRect;
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`displayWidth`** property of the [VideoFrame] interface returns the
   /// width of the `VideoFrame` after applying aspect ratio adjustments.
-  external int get displayWidth;
+  int get displayWidth;
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`displayHeight`** property of the [VideoFrame] interface returns the
   /// height of the `VideoFrame` after applying aspect ratio adjustments.
-  external int get displayHeight;
+  int get displayHeight;
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`duration`** property of the [VideoFrame] interface returns an
   /// integer indicating the duration of the video in microseconds.
-  external int? get duration;
+  int? get duration;
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`timestamp`** property of the [VideoFrame] interface returns an
   /// integer indicating the timestamp of the video in microseconds.
-  external int get timestamp;
+  int get timestamp;
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`colorSpace`** property of the [VideoFrame] interface returns a
   /// [VideoColorSpace] object representing the color space of the video.
-  external VideoColorSpace get colorSpace;
+  VideoColorSpace get colorSpace;
 }
-extension type VideoFrameInit._(JSObject _) implements JSObject {
-  external factory VideoFrameInit({
-    int duration,
-    int timestamp,
-    AlphaOption alpha,
-    DOMRectInit visibleRect,
-    int displayWidth,
-    int displayHeight,
-    VideoFrameMetadata metadata,
-  });
 
-  external int get duration;
-  external set duration(int value);
-  external int get timestamp;
-  external set timestamp(int value);
-  external AlphaOption get alpha;
-  external set alpha(AlphaOption value);
-  external DOMRectInit get visibleRect;
-  external set visibleRect(DOMRectInit value);
-  external int get displayWidth;
-  external set displayWidth(int value);
-  external int get displayHeight;
-  external set displayHeight(int value);
-  external VideoFrameMetadata get metadata;
-  external set metadata(VideoFrameMetadata value);
-}
-extension type VideoFrameBufferInit._(JSObject _) implements JSObject {
-  external factory VideoFrameBufferInit({
-    required VideoPixelFormat format,
-    required int codedWidth,
-    required int codedHeight,
-    required int timestamp,
-    int duration,
-    JSArray<PlaneLayout> layout,
-    DOMRectInit visibleRect,
-    int displayWidth,
-    int displayHeight,
-    VideoColorSpaceInit colorSpace,
-    JSArray<JSArrayBuffer> transfer,
-    VideoFrameMetadata metadata,
-  });
+abstract class VideoFrameInit implements JSObject {
+  int get duration {
+    unsupportedPlatformError();
+  }
 
-  external VideoPixelFormat get format;
-  external set format(VideoPixelFormat value);
-  external int get codedWidth;
-  external set codedWidth(int value);
-  external int get codedHeight;
-  external set codedHeight(int value);
-  external int get timestamp;
-  external set timestamp(int value);
-  external int get duration;
-  external set duration(int value);
-  external JSArray<PlaneLayout> get layout;
-  external set layout(JSArray<PlaneLayout> value);
-  external DOMRectInit get visibleRect;
-  external set visibleRect(DOMRectInit value);
-  external int get displayWidth;
-  external set displayWidth(int value);
-  external int get displayHeight;
-  external set displayHeight(int value);
-  external VideoColorSpaceInit get colorSpace;
-  external set colorSpace(VideoColorSpaceInit value);
-  external JSArray<JSArrayBuffer> get transfer;
-  external set transfer(JSArray<JSArrayBuffer> value);
-  external VideoFrameMetadata get metadata;
-  external set metadata(VideoFrameMetadata value);
-}
-extension type VideoFrameMetadata._(JSObject _) implements JSObject {
-  VideoFrameMetadata() : _ = JSObject();
-}
-extension type VideoFrameCopyToOptions._(JSObject _) implements JSObject {
-  external factory VideoFrameCopyToOptions({
-    DOMRectInit rect,
-    JSArray<PlaneLayout> layout,
-    VideoPixelFormat format,
-    PredefinedColorSpace colorSpace,
-  });
+  set duration(int value) {
+    unsupportedPlatformError();
+  }
 
-  external DOMRectInit get rect;
-  external set rect(DOMRectInit value);
-  external JSArray<PlaneLayout> get layout;
-  external set layout(JSArray<PlaneLayout> value);
-  external VideoPixelFormat get format;
-  external set format(VideoPixelFormat value);
-  external PredefinedColorSpace get colorSpace;
-  external set colorSpace(PredefinedColorSpace value);
-}
-extension type PlaneLayout._(JSObject _) implements JSObject {
-  external factory PlaneLayout({
-    required int offset,
-    required int stride,
-  });
+  int get timestamp {
+    unsupportedPlatformError();
+  }
 
-  external int get offset;
-  external set offset(int value);
-  external int get stride;
-  external set stride(int value);
+  set timestamp(int value) {
+    unsupportedPlatformError();
+  }
+
+  AlphaOption get alpha {
+    unsupportedPlatformError();
+  }
+
+  set alpha(AlphaOption value) {
+    unsupportedPlatformError();
+  }
+
+  DOMRectInit get visibleRect {
+    unsupportedPlatformError();
+  }
+
+  set visibleRect(DOMRectInit value) {
+    unsupportedPlatformError();
+  }
+
+  int get displayWidth {
+    unsupportedPlatformError();
+  }
+
+  set displayWidth(int value) {
+    unsupportedPlatformError();
+  }
+
+  int get displayHeight {
+    unsupportedPlatformError();
+  }
+
+  set displayHeight(int value) {
+    unsupportedPlatformError();
+  }
+
+  VideoFrameMetadata get metadata {
+    unsupportedPlatformError();
+  }
+
+  set metadata(VideoFrameMetadata value) {
+    unsupportedPlatformError();
+  }
+}
+
+abstract class VideoFrameBufferInit implements JSObject {
+  VideoPixelFormat get format {
+    unsupportedPlatformError();
+  }
+
+  set format(VideoPixelFormat value) {
+    unsupportedPlatformError();
+  }
+
+  int get codedWidth {
+    unsupportedPlatformError();
+  }
+
+  set codedWidth(int value) {
+    unsupportedPlatformError();
+  }
+
+  int get codedHeight {
+    unsupportedPlatformError();
+  }
+
+  set codedHeight(int value) {
+    unsupportedPlatformError();
+  }
+
+  int get timestamp {
+    unsupportedPlatformError();
+  }
+
+  set timestamp(int value) {
+    unsupportedPlatformError();
+  }
+
+  int get duration {
+    unsupportedPlatformError();
+  }
+
+  set duration(int value) {
+    unsupportedPlatformError();
+  }
+
+  JSArray<PlaneLayout> get layout {
+    unsupportedPlatformError();
+  }
+
+  set layout(JSArray<PlaneLayout> value) {
+    unsupportedPlatformError();
+  }
+
+  DOMRectInit get visibleRect {
+    unsupportedPlatformError();
+  }
+
+  set visibleRect(DOMRectInit value) {
+    unsupportedPlatformError();
+  }
+
+  int get displayWidth {
+    unsupportedPlatformError();
+  }
+
+  set displayWidth(int value) {
+    unsupportedPlatformError();
+  }
+
+  int get displayHeight {
+    unsupportedPlatformError();
+  }
+
+  set displayHeight(int value) {
+    unsupportedPlatformError();
+  }
+
+  VideoColorSpaceInit get colorSpace {
+    unsupportedPlatformError();
+  }
+
+  set colorSpace(VideoColorSpaceInit value) {
+    unsupportedPlatformError();
+  }
+
+  JSArray<JSArrayBuffer> get transfer {
+    unsupportedPlatformError();
+  }
+
+  set transfer(JSArray<JSArrayBuffer> value) {
+    unsupportedPlatformError();
+  }
+
+  VideoFrameMetadata get metadata {
+    unsupportedPlatformError();
+  }
+
+  set metadata(VideoFrameMetadata value) {
+    unsupportedPlatformError();
+  }
+}
+
+abstract class VideoFrameMetadata implements JSObject {}
+
+abstract class VideoFrameCopyToOptions implements JSObject {
+  DOMRectInit get rect {
+    unsupportedPlatformError();
+  }
+
+  set rect(DOMRectInit value) {
+    unsupportedPlatformError();
+  }
+
+  JSArray<PlaneLayout> get layout {
+    unsupportedPlatformError();
+  }
+
+  set layout(JSArray<PlaneLayout> value) {
+    unsupportedPlatformError();
+  }
+
+  VideoPixelFormat get format {
+    unsupportedPlatformError();
+  }
+
+  set format(VideoPixelFormat value) {
+    unsupportedPlatformError();
+  }
+
+  PredefinedColorSpace get colorSpace {
+    unsupportedPlatformError();
+  }
+
+  set colorSpace(PredefinedColorSpace value) {
+    unsupportedPlatformError();
+  }
+}
+
+abstract class PlaneLayout implements JSObject {
+  int get offset {
+    unsupportedPlatformError();
+  }
+
+  set offset(int value) {
+    unsupportedPlatformError();
+  }
+
+  int get stride {
+    unsupportedPlatformError();
+  }
+
+  set stride(int value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// @AvailableInWorkers("window_and_dedicated")
@@ -620,55 +908,70 @@ extension type PlaneLayout._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/VideoColorSpace).
-extension type VideoColorSpace._(JSObject _) implements JSObject {
-  external factory VideoColorSpace([VideoColorSpaceInit init]);
-
+abstract class VideoColorSpace implements JSObject {
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`toJSON()`** method of the [VideoColorSpace] interface is a
   /// _serializer_ that returns a JSON representation of the `VideoColorSpace`
   /// object.
-  external VideoColorSpaceInit toJSON();
+  VideoColorSpaceInit toJSON();
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`primaries`** read-only property of the [VideoColorSpace] interface
   /// returns the color  of the video.
-  external VideoColorPrimaries? get primaries;
+  VideoColorPrimaries? get primaries;
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`transfer`** read-only property of the [VideoColorSpace] interface
   /// returns the opto-electronic transfer characteristics of the video.
-  external VideoTransferCharacteristics? get transfer;
+  VideoTransferCharacteristics? get transfer;
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`matrix`** read-only property of the [VideoColorSpace] interface
   /// returns the matrix coefficient of the video. Matrix coefficients describe
   /// the relationship between sample component values and color coordinates.
-  external VideoMatrixCoefficients? get matrix;
+  VideoMatrixCoefficients? get matrix;
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`fullRange`** read-only property of the [VideoColorSpace] interface
   /// returns `true` if full-range color values are used.
-  external bool? get fullRange;
+  bool? get fullRange;
 }
-extension type VideoColorSpaceInit._(JSObject _) implements JSObject {
-  external factory VideoColorSpaceInit({
-    VideoColorPrimaries? primaries,
-    VideoTransferCharacteristics? transfer,
-    VideoMatrixCoefficients? matrix,
-    bool? fullRange,
-  });
 
-  external VideoColorPrimaries? get primaries;
-  external set primaries(VideoColorPrimaries? value);
-  external VideoTransferCharacteristics? get transfer;
-  external set transfer(VideoTransferCharacteristics? value);
-  external VideoMatrixCoefficients? get matrix;
-  external set matrix(VideoMatrixCoefficients? value);
-  external bool? get fullRange;
-  external set fullRange(bool? value);
+abstract class VideoColorSpaceInit implements JSObject {
+  VideoColorPrimaries? get primaries {
+    unsupportedPlatformError();
+  }
+
+  set primaries(VideoColorPrimaries? value) {
+    unsupportedPlatformError();
+  }
+
+  VideoTransferCharacteristics? get transfer {
+    unsupportedPlatformError();
+  }
+
+  set transfer(VideoTransferCharacteristics? value) {
+    unsupportedPlatformError();
+  }
+
+  VideoMatrixCoefficients? get matrix {
+    unsupportedPlatformError();
+  }
+
+  set matrix(VideoMatrixCoefficients? value) {
+    unsupportedPlatformError();
+  }
+
+  bool? get fullRange {
+    unsupportedPlatformError();
+  }
+
+  set fullRange(bool? value) {
+    unsupportedPlatformError();
+  }
 }

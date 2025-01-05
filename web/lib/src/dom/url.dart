@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,10 +10,8 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
+import '../error.dart';
+import '../js_interop.dart';
 
 /// The **`URL`** interface is used to parse, construct, normalize, and encode .
 /// It works by providing properties which allow you to easily read and modify
@@ -32,12 +30,7 @@ import 'dart:js_interop';
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/URL).
-extension type URL._(JSObject _) implements JSObject {
-  external factory URL(
-    String url, [
-    String base,
-  ]);
-
+abstract class URL implements JSObject {
   /// The **`URL.parse()`** static method of the [URL] interface returns a newly
   /// created [URL] object representing the URL defined by the parameters.
   ///
@@ -48,10 +41,12 @@ extension type URL._(JSObject _) implements JSObject {
   /// [try...catch](/en-US/docs/Web/JavaScript/Reference/Statements/try...catch)
   /// block, or using [URL.canParse_static] to check the parameters and
   /// returning `null` if the method returns `false`.
-  external static URL? parse(
+  static URL? parse(
     String url, [
-    String base,
-  ]);
+    String? base,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`URL.canParse()`** static method of the [URL] interface returns a
   /// boolean indicating whether or not an absolute URL, or a relative URL
@@ -64,10 +59,12 @@ extension type URL._(JSObject _) implements JSObject {
   /// constructor](https://developer.mozilla.org/en-US/docs/Web/API/URL/URL)
   /// would succeed, and `false` for the values that would cause the constructor
   /// to throw.
-  external static bool canParse(
+  static bool canParse(
     String url, [
-    String base,
-  ]);
+    String? base,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("window_and_worker_except_service")
   ///
@@ -86,7 +83,9 @@ extension type URL._(JSObject _) implements JSObject {
   /// > [Service Workers](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API)
   /// > due to its
   /// > potential to create memory leaks.
-  external static String createObjectURL(JSObject obj);
+  static String createObjectURL(JSObject obj) {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("window_and_worker_except_service")
   ///
@@ -104,18 +103,20 @@ extension type URL._(JSObject _) implements JSObject {
   /// > due to
   /// > issues with the [Blob] interface's life cycle and the potential for
   /// > leaks.
-  external static void revokeObjectURL(String url);
+  static void revokeObjectURL(String url) {
+    unsupportedPlatformError();
+  }
 
   /// The **`toJSON()`** method of the [URL] interface
   /// returns a string containing a serialized version of the URL,
   /// although in practice it seems to have the same effect as
   /// [URL.toString].
-  external String toJSON();
+  String toJSON();
 
   /// The **`href`** property of the [URL] interface is
   /// a string containing the whole URL.
-  external String get href;
-  external set href(String value);
+  String get href;
+  set href(String value);
 
   /// The **`origin`** read-only property of the [URL] interface returns a
   /// string containing the Unicode serialization of the origin of the
@@ -130,38 +131,38 @@ extension type URL._(JSObject _) implements JSObject {
   /// - For URL using the `blob:` scheme, the origin of the URL following
   ///   `blob:`. For example, `blob:https://mozilla.org` will have
   ///   `https://mozilla.org`.
-  external String get origin;
+  String get origin;
 
   /// The **`protocol`** property of the [URL] interface
   /// is a string representing the protocol scheme of the URL, including the
   /// final `':'`.
-  external String get protocol;
-  external set protocol(String value);
+  String get protocol;
+  set protocol(String value);
 
   /// The **`username`** property of the [URL] interface
   /// is a string containing the username specified before the domain name.
-  external String get username;
-  external set username(String value);
+  String get username;
+  set username(String value);
 
   /// The **`password`** property of the [URL] interface
   /// is a string containing the password specified before the domain name.
   ///
   /// If it is set without first setting the [URL.username]
   /// property, it silently fails.
-  external String get password;
-  external set password(String value);
+  String get password;
+  set password(String value);
 
   /// The **`host`** property of the [URL] interface is
   /// a string containing the host, that is the [URL.hostname], and then, if the
   /// of the URL is nonempty, a
   /// `':'`, followed by the [URL.port] of the URL.
-  external String get host;
-  external set host(String value);
+  String get host;
+  set host(String value);
 
   /// The **`hostname`** property of the [URL] interface
   /// is a string containing the  of the URL.
-  external String get hostname;
-  external set hostname(String value);
+  String get hostname;
+  set hostname(String value);
 
   /// The **`port`** property of the [URL] interface is
   /// a string containing the port number of the URL.
@@ -175,8 +176,8 @@ extension type URL._(JSObject _) implements JSObject {
   /// > [`URL`](https://developer.mozilla.org/en-US/docs/Web/API/URL) object the
   /// > constructor returns, the value of the port property will be the empty
   /// > string: `''`.
-  external String get port;
-  external set port(String value);
+  String get port;
+  set port(String value);
 
   /// The **`pathname`** property of the [URL] interface represents a location
   /// in a hierarchical structure. It is a string constructed from a list of
@@ -207,8 +208,8 @@ extension type URL._(JSObject _) implements JSObject {
   /// `https://example.org/users;id=42/tasks;state=open?sort=modified`, a system
   /// might extract and use the path segment parameters `id=42` and `state=open`
   /// from the path segments `users;id=42` and `tasks;state=open`.
-  external String get pathname;
-  external set pathname(String value);
+  String get pathname;
+  set pathname(String value);
 
   /// The **`search`** property of the [URL] interface
   /// is a search string, also called a _query string_, that is a
@@ -217,13 +218,13 @@ extension type URL._(JSObject _) implements JSObject {
   ///
   /// Modern browsers provide the [URL.searchParams] property to make it easy to
   /// parse out the parameters from the query string.
-  external String get search;
-  external set search(String value);
+  String get search;
+  set search(String value);
 
   /// The **`searchParams`** read-only property of the
   /// [URL] interface returns a [URLSearchParams] object allowing
   /// access to the `GET` decoded query arguments contained in the URL.
-  external URLSearchParams get searchParams;
+  URLSearchParams get searchParams;
 
   /// The **`hash`** property of the
   /// [URL] interface is a string containing a
@@ -233,8 +234,8 @@ extension type URL._(JSObject _) implements JSObject {
   /// [URL decoded](https://en.wikipedia.org/wiki/URL_encoding). If the URL does
   /// not
   /// have a fragment identifier, this property contains an empty string — `""`.
-  external String get hash;
-  external set hash(String value);
+  String get hash;
+  set hash(String value);
 }
 
 /// The **`URLSearchParams`** interface defines utility methods to work with the
@@ -256,16 +257,14 @@ extension type URL._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams).
-extension type URLSearchParams._(JSObject _) implements JSObject {
-  external factory URLSearchParams([JSAny init]);
-
+abstract class URLSearchParams implements JSObject {
   /// The **`append()`** method of the [URLSearchParams]
   /// interface appends a specified key/value pair as a new search parameter.
   ///
   /// As shown in the example below, if the same key is appended multiple times
   /// it will
   /// appear in the parameter string multiple times for each value.
-  external void append(
+  void append(
     String name,
     String value,
   );
@@ -279,7 +278,7 @@ extension type URLSearchParams._(JSObject _) implements JSObject {
   /// match the name are deleted, along with their associated values.
   /// If both a parameter name and value are specified, then all search
   /// parameters that match both the parameter name and value are deleted.
-  external void delete(
+  void delete(
     String name, [
     String value,
   ]);
@@ -287,12 +286,12 @@ extension type URLSearchParams._(JSObject _) implements JSObject {
   /// The **`get()`** method of the [URLSearchParams]
   /// interface returns the first value associated to the given search
   /// parameter.
-  external String? get(String name);
+  String? get(String name);
 
   /// The **`getAll()`** method of the [URLSearchParams]
   /// interface returns all the values associated with a given search parameter
   /// as an array.
-  external JSArray<JSString> getAll(String name);
+  JSArray<JSString> getAll(String name);
 
   /// The **`has()`** method of the [URLSearchParams] interface returns a
   /// boolean value that indicates whether the specified parameter is in the
@@ -304,7 +303,7 @@ extension type URLSearchParams._(JSObject _) implements JSObject {
   /// otherwise.
   /// If both a parameter name and value are specified, then the method will
   /// return `true` if a parameter matches both the name and value.
-  external bool has(
+  bool has(
     String name, [
     String value,
   ]);
@@ -315,7 +314,7 @@ extension type URLSearchParams._(JSObject _) implements JSObject {
   /// If there were several matching values, this method deletes the others. If
   /// the search
   /// parameter doesn't exist, this method creates it.
-  external void set(
+  void set(
     String name,
     String value,
   );
@@ -327,9 +326,9 @@ extension type URLSearchParams._(JSObject _) implements JSObject {
   /// algorithm (i.e. the relative order between key/value pairs with equal keys
   /// will be
   /// preserved).
-  external void sort();
+  void sort();
 
   /// The **`size`** read-only property of the [URLSearchParams] interface
   /// indicates the total number of search parameter entries.
-  external int get size;
+  int get size;
 }

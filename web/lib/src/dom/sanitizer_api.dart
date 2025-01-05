@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,10 +10,8 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
+import '../error.dart';
+import '../js_interop.dart';
 
 typedef SanitizerElement = JSAny;
 typedef SanitizerElementWithAttributes = JSAny;
@@ -37,68 +35,117 @@ typedef SanitizerAttribute = JSAny;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Sanitizer).
-extension type Sanitizer._(JSObject _) implements JSObject {
-  external factory Sanitizer([SanitizerConfig config]);
-}
-extension type SanitizerElementNamespace._(JSObject _) implements JSObject {
-  external factory SanitizerElementNamespace({
-    required String name,
-    String? namespace,
-  });
+abstract class Sanitizer implements JSObject {}
 
-  external String get name;
-  external set name(String value);
-  external String? get namespace;
-  external set namespace(String? value);
+abstract class SanitizerElementNamespace implements JSObject {
+  String get name {
+    unsupportedPlatformError();
+  }
+
+  set name(String value) {
+    unsupportedPlatformError();
+  }
+
+  String? get namespace {
+    unsupportedPlatformError();
+  }
+
+  set namespace(String? value) {
+    unsupportedPlatformError();
+  }
 }
-extension type SanitizerElementNamespaceWithAttributes._(JSObject _)
+
+abstract class SanitizerElementNamespaceWithAttributes
     implements SanitizerElementNamespace, JSObject {
-  external factory SanitizerElementNamespaceWithAttributes({
-    required String name,
-    String? namespace,
-    JSArray<SanitizerAttribute> attributes,
-    JSArray<SanitizerAttribute> removeAttributes,
-  });
+  JSArray<SanitizerAttribute> get attributes {
+    unsupportedPlatformError();
+  }
 
-  external JSArray<SanitizerAttribute> get attributes;
-  external set attributes(JSArray<SanitizerAttribute> value);
-  external JSArray<SanitizerAttribute> get removeAttributes;
-  external set removeAttributes(JSArray<SanitizerAttribute> value);
+  set attributes(JSArray<SanitizerAttribute> value) {
+    unsupportedPlatformError();
+  }
+
+  JSArray<SanitizerAttribute> get removeAttributes {
+    unsupportedPlatformError();
+  }
+
+  set removeAttributes(JSArray<SanitizerAttribute> value) {
+    unsupportedPlatformError();
+  }
 }
-extension type SanitizerAttributeNamespace._(JSObject _) implements JSObject {
-  external factory SanitizerAttributeNamespace({
-    required String name,
-    String? namespace,
-  });
 
-  external String get name;
-  external set name(String value);
-  external String? get namespace;
-  external set namespace(String? value);
+abstract class SanitizerAttributeNamespace implements JSObject {
+  String get name {
+    unsupportedPlatformError();
+  }
+
+  set name(String value) {
+    unsupportedPlatformError();
+  }
+
+  String? get namespace {
+    unsupportedPlatformError();
+  }
+
+  set namespace(String? value) {
+    unsupportedPlatformError();
+  }
 }
-extension type SanitizerConfig._(JSObject _) implements JSObject {
-  external factory SanitizerConfig({
-    JSArray<SanitizerElementWithAttributes> elements,
-    JSArray<SanitizerElement> removeElements,
-    JSArray<SanitizerElement> replaceWithChildrenElements,
-    JSArray<SanitizerAttribute> attributes,
-    JSArray<SanitizerAttribute> removeAttributes,
-    bool comments,
-    bool dataAttributes,
-  });
 
-  external JSArray<SanitizerElementWithAttributes> get elements;
-  external set elements(JSArray<SanitizerElementWithAttributes> value);
-  external JSArray<SanitizerElement> get removeElements;
-  external set removeElements(JSArray<SanitizerElement> value);
-  external JSArray<SanitizerElement> get replaceWithChildrenElements;
-  external set replaceWithChildrenElements(JSArray<SanitizerElement> value);
-  external JSArray<SanitizerAttribute> get attributes;
-  external set attributes(JSArray<SanitizerAttribute> value);
-  external JSArray<SanitizerAttribute> get removeAttributes;
-  external set removeAttributes(JSArray<SanitizerAttribute> value);
-  external bool get comments;
-  external set comments(bool value);
-  external bool get dataAttributes;
-  external set dataAttributes(bool value);
+abstract class SanitizerConfig implements JSObject {
+  JSArray<SanitizerElementWithAttributes> get elements {
+    unsupportedPlatformError();
+  }
+
+  set elements(JSArray<SanitizerElementWithAttributes> value) {
+    unsupportedPlatformError();
+  }
+
+  JSArray<SanitizerElement> get removeElements {
+    unsupportedPlatformError();
+  }
+
+  set removeElements(JSArray<SanitizerElement> value) {
+    unsupportedPlatformError();
+  }
+
+  JSArray<SanitizerElement> get replaceWithChildrenElements {
+    unsupportedPlatformError();
+  }
+
+  set replaceWithChildrenElements(JSArray<SanitizerElement> value) {
+    unsupportedPlatformError();
+  }
+
+  JSArray<SanitizerAttribute> get attributes {
+    unsupportedPlatformError();
+  }
+
+  set attributes(JSArray<SanitizerAttribute> value) {
+    unsupportedPlatformError();
+  }
+
+  JSArray<SanitizerAttribute> get removeAttributes {
+    unsupportedPlatformError();
+  }
+
+  set removeAttributes(JSArray<SanitizerAttribute> value) {
+    unsupportedPlatformError();
+  }
+
+  bool get comments {
+    unsupportedPlatformError();
+  }
+
+  set comments(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get dataAttributes {
+    unsupportedPlatformError();
+  }
+
+  set dataAttributes(bool value) {
+    unsupportedPlatformError();
+  }
 }

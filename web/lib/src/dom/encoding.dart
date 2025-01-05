@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,30 +10,37 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../error.dart';
+import '../js_interop.dart';
 import 'streams.dart';
 import 'webidl.dart';
 
-extension type TextDecoderOptions._(JSObject _) implements JSObject {
-  external factory TextDecoderOptions({
-    bool fatal,
-    bool ignoreBOM,
-  });
+abstract class TextDecoderOptions implements JSObject {
+  bool get fatal {
+    unsupportedPlatformError();
+  }
 
-  external bool get fatal;
-  external set fatal(bool value);
-  external bool get ignoreBOM;
-  external set ignoreBOM(bool value);
+  set fatal(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get ignoreBOM {
+    unsupportedPlatformError();
+  }
+
+  set ignoreBOM(bool value) {
+    unsupportedPlatformError();
+  }
 }
-extension type TextDecodeOptions._(JSObject _) implements JSObject {
-  external factory TextDecodeOptions({bool stream});
 
-  external bool get stream;
-  external set stream(bool value);
+abstract class TextDecodeOptions implements JSObject {
+  bool get stream {
+    unsupportedPlatformError();
+  }
+
+  set stream(bool value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`TextDecoder`** interface represents a decoder for a specific text
@@ -44,19 +51,14 @@ extension type TextDecodeOptions._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder).
-extension type TextDecoder._(JSObject _) implements JSObject {
-  external factory TextDecoder([
-    String label,
-    TextDecoderOptions options,
-  ]);
-
+abstract class TextDecoder implements JSObject {
   /// The **`TextDecoder.decode()`** method returns a string containing text
   /// decoded from the buffer passed as a parameter.
   ///
   /// The decoding method is defined in the current [TextDecoder] object.
   /// This includes the expected encoding of the data, and how decoding errors
   /// are handled.
-  external String decode([
+  String decode([
     AllowSharedBufferSource input,
     TextDecodeOptions options,
   ]);
@@ -68,7 +70,7 @@ extension type TextDecoder._(JSObject _) implements JSObject {
   /// The encoding is set by the
   /// [constructor](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder/TextDecoder)
   /// `label` parameter, and defaults to `utf-8`.
-  external String get encoding;
+  String get encoding;
 
   /// The **`fatal`** read-only property of the [TextDecoder] interface is a
   /// `Boolean` indicating whether the error mode is fatal.
@@ -79,24 +81,31 @@ extension type TextDecoder._(JSObject _) implements JSObject {
   /// replacement character `U+FFFD` (�).
   /// The value of the property is set in the [`TextDecoder()`
   /// constructor](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder/TextDecoder).
-  external bool get fatal;
+  bool get fatal;
 
   /// The **`ignoreBOM`** read-only property of the [TextDecoder] interface is a
   /// `Boolean` indicating whether the
   /// [byte order mark](https://www.w3.org/International/questions/qa-byte-order-mark)
   /// will be included in the output or skipped over.
-  external bool get ignoreBOM;
+  bool get ignoreBOM;
 }
-extension type TextEncoderEncodeIntoResult._(JSObject _) implements JSObject {
-  external factory TextEncoderEncodeIntoResult({
-    int read,
-    int written,
-  });
 
-  external int get read;
-  external set read(int value);
-  external int get written;
-  external set written(int value);
+abstract class TextEncoderEncodeIntoResult implements JSObject {
+  int get read {
+    unsupportedPlatformError();
+  }
+
+  set read(int value) {
+    unsupportedPlatformError();
+  }
+
+  int get written {
+    unsupportedPlatformError();
+  }
+
+  set written(int value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`TextEncoder`** interface takes a stream of code points as input and
@@ -106,13 +115,11 @@ extension type TextEncoderEncodeIntoResult._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/TextEncoder).
-extension type TextEncoder._(JSObject _) implements JSObject {
-  external factory TextEncoder();
-
+abstract class TextEncoder implements JSObject {
   /// The **`TextEncoder.encode()`** method takes a string as input, and returns
   /// a `Uint8Array` containing the text given in parameters encoded with the
   /// specific method for that [TextEncoder] object.
-  external JSUint8Array encode([String input]);
+  JSUint8Array encode([String input]);
 
   /// The **`TextEncoder.encodeInto()`** method takes a
   /// string to encode and a destination `Uint8Array` to put resulting UTF-8
@@ -120,7 +127,7 @@ extension type TextEncoder._(JSObject _) implements JSObject {
   /// progress of the encoding.
   /// This is potentially more performant than the older `encode()` method —
   /// especially when the target buffer is a view into a Wasm heap.
-  external TextEncoderEncodeIntoResult encodeInto(
+  TextEncoderEncodeIntoResult encodeInto(
     String source,
     JSUint8Array destination,
   );
@@ -130,7 +137,7 @@ extension type TextEncoder._(JSObject _) implements JSObject {
   /// encoder.
   ///
   /// It can only have the following value `utf-8`.
-  external String get encoding;
+  String get encoding;
 }
 
 /// The **`TextDecoderStream`** interface of the [Encoding API] converts a
@@ -142,12 +149,7 @@ extension type TextEncoder._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoderStream).
-extension type TextDecoderStream._(JSObject _) implements JSObject {
-  external factory TextDecoderStream([
-    String label,
-    TextDecoderOptions options,
-  ]);
-
+abstract class TextDecoderStream implements JSObject {
   /// The **`encoding`** read-only property of the [TextDecoderStream] interface
   /// returns a string containing the name of the encoding algorithm used by the
   /// specific decoder.
@@ -155,7 +157,7 @@ extension type TextDecoderStream._(JSObject _) implements JSObject {
   /// The encoding is set by the
   /// [constructor](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoderStream/TextDecoderStream)
   /// `label` parameter, and defaults to `utf-8`.
-  external String get encoding;
+  String get encoding;
 
   /// The **`fatal`** read-only property of the [TextDecoderStream] interface is
   /// a `boolean` indicating if the error mode of the `TextDecoderStream` object
@@ -167,21 +169,21 @@ extension type TextDecoderStream._(JSObject _) implements JSObject {
   /// replacement character `U+FFFD` (�).
   /// The value of the property is set in the [`TextDecoderStream()`
   /// constructor](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoderStream/TextDecoderStream).
-  external bool get fatal;
+  bool get fatal;
 
   /// The **`ignoreBOM`** read-only property of the [TextDecoderStream]
   /// interface is a `Boolean` indicating whether the
   /// [byte order mark](https://www.w3.org/International/questions/qa-byte-order-mark)
   /// will be included in the output or skipped over.
-  external bool get ignoreBOM;
+  bool get ignoreBOM;
 
   /// The **`readable`** read-only property of the [TextDecoderStream] interface
   /// returns a [ReadableStream].
-  external ReadableStream get readable;
+  ReadableStream get readable;
 
   /// The **`writable`** read-only property of the [TextDecoderStream] interface
   /// returns a [WritableStream].
-  external WritableStream get writable;
+  WritableStream get writable;
 }
 
 /// The **`TextEncoderStream`** interface of the [Encoding API] converts a
@@ -192,20 +194,18 @@ extension type TextDecoderStream._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/TextEncoderStream).
-extension type TextEncoderStream._(JSObject _) implements JSObject {
-  external factory TextEncoderStream();
-
+abstract class TextEncoderStream implements JSObject {
   /// The **`encoding`** read-only property of the [TextEncoderStream] interface
   /// returns a
   /// string containing the name of the encoding algorithm used by the current
   /// `TextEncoderStream` object.
-  external String get encoding;
+  String get encoding;
 
   /// The **`readable`** read-only property of the [TextEncoderStream] interface
   /// returns a [ReadableStream].
-  external ReadableStream get readable;
+  ReadableStream get readable;
 
   /// The **`writable`** read-only property of the [TextEncoderStream] interface
   /// returns a [WritableStream].
-  external WritableStream get writable;
+  WritableStream get writable;
 }

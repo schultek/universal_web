@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,23 +10,20 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../error.dart';
+import '../js_interop.dart';
 import 'generic_sensor.dart';
 
 typedef AccelerometerLocalCoordinateSystem = String;
-extension type AccelerometerSensorOptions._(JSObject _)
-    implements SensorOptions, JSObject {
-  external factory AccelerometerSensorOptions({
-    num frequency,
-    AccelerometerLocalCoordinateSystem referenceFrame,
-  });
 
-  external AccelerometerLocalCoordinateSystem get referenceFrame;
-  external set referenceFrame(AccelerometerLocalCoordinateSystem value);
+abstract class AccelerometerSensorOptions implements SensorOptions, JSObject {
+  AccelerometerLocalCoordinateSystem get referenceFrame {
+    unsupportedPlatformError();
+  }
+
+  set referenceFrame(AccelerometerLocalCoordinateSystem value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`LinearAccelerationSensor`** interface of the
@@ -45,11 +42,7 @@ extension type AccelerometerSensorOptions._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/LinearAccelerationSensor).
-extension type LinearAccelerationSensor._(JSObject _)
-    implements Sensor, JSObject {
-  external factory LinearAccelerationSensor(
-      [AccelerometerSensorOptions options]);
-}
+abstract class LinearAccelerationSensor implements Sensor, JSObject {}
 
 /// The **`GravitySensor`** interface of the
 /// [Sensor APIs](https://developer.mozilla.org/en-US/docs/Web/API/Sensor_APIs)
@@ -67,6 +60,4 @@ extension type LinearAccelerationSensor._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/GravitySensor).
-extension type GravitySensor._(JSObject _) implements Sensor, JSObject {
-  external factory GravitySensor([AccelerometerSensorOptions options]);
-}
+abstract class GravitySensor implements Sensor, JSObject {}

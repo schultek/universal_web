@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,10 +10,7 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
+import '../js_interop.dart';
 
 /// The **`BluetoothUUID`** interface of the [Web Bluetooth API] provides a way
 /// to look up Universally Unique Identifier (UUID) values by name in the
@@ -24,4 +21,4 @@ import 'dart:js_interop';
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothUUID).
-extension type BluetoothUUID._(JSObject _) implements JSObject {}
+abstract class BluetoothUUID implements JSObject {}

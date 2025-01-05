@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,10 +10,7 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
+import '../js_interop.dart';
 
 typedef UpdateCallback = JSFunction;
 
@@ -40,11 +37,11 @@ typedef UpdateCallback = JSFunction;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ViewTransition).
-extension type ViewTransition._(JSObject _) implements JSObject {
+abstract class ViewTransition implements JSObject {
   /// The **`skipTransition()`** method of the
   /// [ViewTransition] interface skips the animation part of the view
   /// transition, but doesn't skip running the associated view update.
-  external void skipTransition();
+  void skipTransition();
 
   /// The **`updateCallbackDone`** read-only property of the
   /// [ViewTransition] interface is a `Promise` that fulfills when the promise
@@ -58,7 +55,7 @@ extension type ViewTransition._(JSObject _) implements JSObject {
   /// > **Note:** In the case of a cross-document (MPA) view transition, the
   /// > `updateCallbackDone` promise of the associated `ViewTransition` is
   /// > automatically fulfilled.
-  external JSPromise<JSAny?> get updateCallbackDone;
+  JSPromise<JSAny?> get updateCallbackDone;
 
   /// The **`ready`** read-only property of the
   /// [ViewTransition] interface is a `Promise` that fulfills once the
@@ -68,7 +65,7 @@ extension type ViewTransition._(JSObject _) implements JSObject {
   /// `ready` will reject if the transition cannot begin. This can be due to
   /// misconfiguration, for example, duplicate s, or if the callback passed to
   /// [Document.startViewTransition] throws or returns a promise that rejects.
-  external JSPromise<JSAny?> get ready;
+  JSPromise<JSAny?> get ready;
 
   /// The **`finished`** read-only property of the
   /// [ViewTransition] interface is a `Promise` that fulfills once the
@@ -83,5 +80,5 @@ extension type ViewTransition._(JSObject _) implements JSObject {
   /// If a transition animation fails to start or is skipped during the
   /// transition using [ViewTransition.skipTransition], the end state is still
   /// reached therefore `finished` will still fulfill.
-  external JSPromise<JSAny?> get finished;
+  JSPromise<JSAny?> get finished;
 }

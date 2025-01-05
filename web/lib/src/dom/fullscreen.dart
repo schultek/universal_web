@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,20 +10,25 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
+import '../error.dart';
+import '../js_interop.dart';
 
 typedef FullscreenNavigationUI = String;
-extension type FullscreenOptions._(JSObject _) implements JSObject {
-  external factory FullscreenOptions({
-    FullscreenNavigationUI navigationUI,
-    JSObject screen,
-  });
 
-  external FullscreenNavigationUI get navigationUI;
-  external set navigationUI(FullscreenNavigationUI value);
-  external JSObject get screen;
-  external set screen(JSObject value);
+abstract class FullscreenOptions implements JSObject {
+  FullscreenNavigationUI get navigationUI {
+    unsupportedPlatformError();
+  }
+
+  set navigationUI(FullscreenNavigationUI value) {
+    unsupportedPlatformError();
+  }
+
+  JSObject get screen {
+    unsupportedPlatformError();
+  }
+
+  set screen(JSObject value) {
+    unsupportedPlatformError();
+  }
 }

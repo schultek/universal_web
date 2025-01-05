@@ -2,10 +2,11 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-import 'dart:js_interop';
-import 'dart:js_interop_unsafe';
+//import 'dart:js_interop';
+//import 'dart:js_interop_unsafe';
 
 import '../../dom.dart';
+import '../../js_interop.dart';
 import '../enums.dart' show Device;
 import 'streams.dart';
 

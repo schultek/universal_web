@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,11 +10,7 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../js_interop.dart';
 import 'css_conditional.dart';
 
 /// The **`CSSContainerRule`** interface represents a single CSS  rule.
@@ -28,8 +24,7 @@ import 'css_conditional.dart';
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSContainerRule).
-extension type CSSContainerRule._(JSObject _)
-    implements CSSConditionRule, JSObject {
+abstract class CSSContainerRule implements CSSConditionRule, JSObject {
   /// The read-only **`containerName`** property of the [CSSContainerRule]
   /// interface represents the container name of the associated CSS  at-rule.
   ///
@@ -42,7 +37,7 @@ extension type CSSContainerRule._(JSObject _)
   ///   }
   /// }
   /// ```
-  external String get containerName;
+  String get containerName;
 
   /// The read-only **`containerQuery`** property of the [CSSContainerRule]
   /// interface returns a string representing the container conditions that are
@@ -59,5 +54,5 @@ extension type CSSContainerRule._(JSObject _)
   ///   }
   /// }
   /// ```
-  external String get containerQuery;
+  String get containerQuery;
 }

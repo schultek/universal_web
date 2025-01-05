@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,10 +10,8 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
+import '../error.dart';
+import '../js_interop.dart';
 
 typedef CreateHTMLCallback = JSFunction;
 typedef CreateScriptCallback = JSFunction;
@@ -32,10 +30,10 @@ typedef CreateScriptURLCallback = JSFunction;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/TrustedHTML).
-extension type TrustedHTML._(JSObject _) implements JSObject {
+abstract class TrustedHTML implements JSObject {
   /// The **`toJSON()`** method of the [TrustedHTML] interface returns a JSON
   /// representation of the stored data.
-  external String toJSON();
+  String toJSON();
 }
 
 /// The **`TrustedScript`** interface of the [Trusted Types API] represents a
@@ -51,10 +49,10 @@ extension type TrustedHTML._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/TrustedScript).
-extension type TrustedScript._(JSObject _) implements JSObject {
+abstract class TrustedScript implements JSObject {
   /// The **`toJSON()`** method of the [TrustedScript] interface returns a JSON
   /// representation of the stored data.
-  external String toJSON();
+  String toJSON();
 }
 
 /// The **`TrustedScriptURL`** interface of the [Trusted Types API] represents a
@@ -70,10 +68,10 @@ extension type TrustedScript._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/TrustedScriptURL).
-extension type TrustedScriptURL._(JSObject _) implements JSObject {
+abstract class TrustedScriptURL implements JSObject {
   /// The **`toJSON()`** method of the [TrustedScriptURL] interface returns a
   /// JSON representation of the stored data.
-  external String toJSON();
+  String toJSON();
 }
 
 /// The **`TrustedTypePolicyFactory`** interface of the [Trusted Types API]
@@ -84,7 +82,7 @@ extension type TrustedScriptURL._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/TrustedTypePolicyFactory).
-extension type TrustedTypePolicyFactory._(JSObject _) implements JSObject {
+abstract class TrustedTypePolicyFactory implements JSObject {
   /// The **`createPolicy()`** method of the [TrustedTypePolicyFactory]
   /// interface creates a [TrustedTypePolicy] object that implements the rules
   /// passed as `policyOptions`.
@@ -102,7 +100,7 @@ extension type TrustedTypePolicyFactory._(JSObject _) implements JSObject {
   /// > **Warning:** A lax default policy could defeat the purpose of using
   /// > Trusted Types, and therefore should be defined with strict rules to
   /// > ensure it cannot be used to run dangerous code.
-  external TrustedTypePolicy createPolicy(
+  TrustedTypePolicy createPolicy(
     String policyName, [
     TrustedTypePolicyOptions policyOptions,
   ]);
@@ -114,7 +112,7 @@ extension type TrustedTypePolicyFactory._(JSObject _) implements JSObject {
   /// > [TrustedTypePolicyFactory.isScript], and
   /// > [TrustedTypePolicyFactory.isScriptURL] is to check if the object is a
   /// > valid TrustedType object, created by a configured policy.
-  external bool isHTML(JSAny? value);
+  bool isHTML(JSAny? value);
 
   /// The **`isScript()`** method of the [TrustedTypePolicyFactory] interface
   /// returns true if it is passed a valid [TrustedScript] object.
@@ -123,7 +121,7 @@ extension type TrustedTypePolicyFactory._(JSObject _) implements JSObject {
   /// > [TrustedTypePolicyFactory.isHTML], and
   /// > [TrustedTypePolicyFactory.isScriptURL] is to check if the object is a
   /// > valid TrustedType object, created by a configured policy.
-  external bool isScript(JSAny? value);
+  bool isScript(JSAny? value);
 
   /// The **`isScriptURL()`** method of the [TrustedTypePolicyFactory] interface
   /// returns true if it is passed a valid [TrustedScriptURL] object.
@@ -132,12 +130,12 @@ extension type TrustedTypePolicyFactory._(JSObject _) implements JSObject {
   /// > [TrustedTypePolicyFactory.isHTML], and
   /// > [TrustedTypePolicyFactory.isScript] is to check if the object is a valid
   /// > TrustedType object, created by a configured policy.
-  external bool isScriptURL(JSAny? value);
+  bool isScriptURL(JSAny? value);
 
   /// The **`getAttributeType()`** method of the [TrustedTypePolicyFactory]
   /// interface allows web developers to check if a Trusted Type is required for
   /// an element, and if so which Trusted Type is used.
-  external String? getAttributeType(
+  String? getAttributeType(
     String tagName,
     String attribute, [
     String? elementNs,
@@ -147,7 +145,7 @@ extension type TrustedTypePolicyFactory._(JSObject _) implements JSObject {
   /// The **`getPropertyType()`** method of the [TrustedTypePolicyFactory]
   /// interface allows web developers to check if a Trusted Type is required for
   /// an element's property.
-  external String? getPropertyType(
+  String? getPropertyType(
     String tagName,
     String property, [
     String? elementNs,
@@ -158,7 +156,7 @@ extension type TrustedTypePolicyFactory._(JSObject _) implements JSObject {
   ///
   /// This object can be used when the application requires an empty string to
   /// be inserted into an injection sink.
-  external TrustedHTML get emptyHTML;
+  TrustedHTML get emptyHTML;
 
   /// The **`emptyScript`** read-only property of the [TrustedTypePolicyFactory]
   /// interface returns a [TrustedScript] object containing an empty string.
@@ -166,7 +164,7 @@ extension type TrustedTypePolicyFactory._(JSObject _) implements JSObject {
   /// This object can be used when the application requires an empty string to
   /// be inserted into an injection sink which is expecting a `TrustedScript`
   /// object.
-  external TrustedScript get emptyScript;
+  TrustedScript get emptyScript;
 
   /// The **`defaultPolicy`** read-only property of the
   /// [TrustedTypePolicyFactory] interface returns the default
@@ -176,7 +174,7 @@ extension type TrustedTypePolicyFactory._(JSObject _) implements JSObject {
   /// > be found in the
   /// > [`createPolicy()`](/en-US/docs/Web/API/TrustedTypePolicyFactory/createPolicy#default_policy)
   /// > documentation.
-  external TrustedTypePolicy? get defaultPolicy;
+  TrustedTypePolicy? get defaultPolicy;
 }
 
 /// The **`TrustedTypePolicy`** interface of the [Trusted Types API] defines a
@@ -190,11 +188,11 @@ extension type TrustedTypePolicyFactory._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/TrustedTypePolicy).
-extension type TrustedTypePolicy._(JSObject _) implements JSObject {
+abstract class TrustedTypePolicy implements JSObject {
   /// The **`createHTML()`** method of the [TrustedTypePolicy] interface creates
   /// a [TrustedHTML] object using a policy created by
   /// [TrustedTypePolicyFactory.createPolicy].
-  external TrustedHTML createHTML(
+  TrustedHTML createHTML(
     String input,
     JSAny? arguments,
   );
@@ -202,7 +200,7 @@ extension type TrustedTypePolicy._(JSObject _) implements JSObject {
   /// The **`createScript()`** method of the [TrustedTypePolicy] interface
   /// creates a [TrustedScript] object using a policy created by
   /// [TrustedTypePolicyFactory.createPolicy].
-  external TrustedScript createScript(
+  TrustedScript createScript(
     String input,
     JSAny? arguments,
   );
@@ -210,26 +208,38 @@ extension type TrustedTypePolicy._(JSObject _) implements JSObject {
   /// The **`createScriptURL()`** method of the [TrustedTypePolicy] interface
   /// creates a [TrustedScriptURL] object using a policy created by
   /// [TrustedTypePolicyFactory.createPolicy].
-  external TrustedScriptURL createScriptURL(
+  TrustedScriptURL createScriptURL(
     String input,
     JSAny? arguments,
   );
 
   /// The **`name`** read-only property of the [TrustedTypePolicy] interface
   /// returns the name of the policy.
-  external String get name;
+  String get name;
 }
-extension type TrustedTypePolicyOptions._(JSObject _) implements JSObject {
-  external factory TrustedTypePolicyOptions({
-    CreateHTMLCallback createHTML,
-    CreateScriptCallback createScript,
-    CreateScriptURLCallback createScriptURL,
-  });
 
-  external CreateHTMLCallback get createHTML;
-  external set createHTML(CreateHTMLCallback value);
-  external CreateScriptCallback get createScript;
-  external set createScript(CreateScriptCallback value);
-  external CreateScriptURLCallback get createScriptURL;
-  external set createScriptURL(CreateScriptURLCallback value);
+abstract class TrustedTypePolicyOptions implements JSObject {
+  CreateHTMLCallback get createHTML {
+    unsupportedPlatformError();
+  }
+
+  set createHTML(CreateHTMLCallback value) {
+    unsupportedPlatformError();
+  }
+
+  CreateScriptCallback get createScript {
+    unsupportedPlatformError();
+  }
+
+  set createScript(CreateScriptCallback value) {
+    unsupportedPlatformError();
+  }
+
+  CreateScriptURLCallback get createScriptURL {
+    unsupportedPlatformError();
+  }
+
+  set createScriptURL(CreateScriptURLCallback value) {
+    unsupportedPlatformError();
+  }
 }

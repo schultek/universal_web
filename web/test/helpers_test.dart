@@ -8,7 +8,7 @@ library;
 import 'dart:js_interop';
 
 import 'package:test/test.dart';
-import 'package:web/web.dart';
+import 'package:universal_web/web.dart';
 
 @JS('Object.is')
 external bool _is(JSAny? a, JSAny? b);

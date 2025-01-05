@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,27 +10,33 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
+import '../error.dart';
+import '../js_interop.dart';
 
-import 'dart:js_interop';
+abstract class DigitalCredentialRequestOptions implements JSObject {
+  JSArray<IdentityRequestProvider> get providers {
+    unsupportedPlatformError();
+  }
 
-extension type DigitalCredentialRequestOptions._(JSObject _)
-    implements JSObject {
-  external factory DigitalCredentialRequestOptions(
-      {JSArray<IdentityRequestProvider> providers});
-
-  external JSArray<IdentityRequestProvider> get providers;
-  external set providers(JSArray<IdentityRequestProvider> value);
+  set providers(JSArray<IdentityRequestProvider> value) {
+    unsupportedPlatformError();
+  }
 }
-extension type IdentityRequestProvider._(JSObject _) implements JSObject {
-  external factory IdentityRequestProvider({
-    required String protocol,
-    required JSObject request,
-  });
 
-  external String get protocol;
-  external set protocol(String value);
-  external JSObject get request;
-  external set request(JSObject value);
+abstract class IdentityRequestProvider implements JSObject {
+  String get protocol {
+    unsupportedPlatformError();
+  }
+
+  set protocol(String value) {
+    unsupportedPlatformError();
+  }
+
+  JSObject get request {
+    unsupportedPlatformError();
+  }
+
+  set request(JSObject value) {
+    unsupportedPlatformError();
+  }
 }

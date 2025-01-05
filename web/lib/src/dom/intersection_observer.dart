@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,11 +10,8 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../error.dart';
+import '../js_interop.dart';
 import 'dom.dart';
 import 'geometry.dart';
 
@@ -37,12 +34,7 @@ typedef IntersectionObserverCallback = JSFunction;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver).
-extension type IntersectionObserver._(JSObject _) implements JSObject {
-  external factory IntersectionObserver(
-    IntersectionObserverCallback callback, [
-    IntersectionObserverInit options,
-  ]);
-
+abstract class IntersectionObserver implements JSObject {
   /// The [IntersectionObserver] method
   /// **`observe()`** adds an element to the set of target elements
   /// being watched by the `IntersectionObserver`. One observer has one set of
@@ -78,18 +70,18 @@ extension type IntersectionObserver._(JSObject _) implements JSObject {
   /// > An element inside the viewport will result in the callback being
   /// > immediately called with at least one entry with `intersecting` set to
   /// > `true`.
-  external void observe(Element target);
+  void observe(Element target);
 
   /// The [IntersectionObserver] method
   /// **`unobserve()`** instructs the
   /// `IntersectionObserver` to stop observing the specified target
   /// element.
-  external void unobserve(Element target);
+  void unobserve(Element target);
 
   /// The [IntersectionObserver] method
   /// **`disconnect()`** stops watching all of its target elements
   /// for visibility changes.
-  external void disconnect();
+  void disconnect();
 
   /// The [IntersectionObserver] method
   /// **`takeRecords()`** returns an array of
@@ -104,7 +96,7 @@ extension type IntersectionObserver._(JSObject _) implements JSObject {
   /// > need to call this method. Calling this method clears the pending
   /// > intersection list, so
   /// > the callback will not be run.
-  external JSArray<IntersectionObserverEntry> takeRecords();
+  JSArray<IntersectionObserverEntry> takeRecords();
 
   /// The [IntersectionObserver] interface's read-only
   /// **`root`** property identifies the [Element] or
@@ -113,7 +105,7 @@ extension type IntersectionObserver._(JSObject _) implements JSObject {
   ///
   /// If the `root` is `null`, then the bounds of the actual document
   /// viewport are used.
-  external JSObject? get root;
+  JSObject? get root;
 
   /// The [IntersectionObserver] interface's read-only
   /// **`rootMargin`** property is a string with syntax similar to
@@ -132,7 +124,7 @@ extension type IntersectionObserver._(JSObject _) implements JSObject {
   /// [how intersections are calculated](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API#how_intersection_is_calculated)
   /// for a more in-depth look at the root margin and how it works with
   /// the root's bounding box.
-  external String get rootMargin;
+  String get rootMargin;
 
   /// The [IntersectionObserver] interface's read-only
   /// **`thresholds`** property returns the list of intersection
@@ -146,7 +138,7 @@ extension type IntersectionObserver._(JSObject _) implements JSObject {
   /// [Intersection Observer](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API#thresholds)
   /// page to
   /// learn how thresholds work.
-  external JSArray<JSNumber> get thresholds;
+  JSArray<JSNumber> get thresholds;
 }
 
 /// The **`IntersectionObserverEntry`** interface of the
@@ -162,12 +154,12 @@ extension type IntersectionObserver._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserverEntry).
-extension type IntersectionObserverEntry._(JSObject _) implements JSObject {
+abstract class IntersectionObserverEntry implements JSObject {
   /// The [IntersectionObserverEntry] interface's
   /// read-only **`time`** property is a
   /// [DOMHighResTimeStamp] that indicates the time at which the intersection
   /// change occurred relative to the time at which the document was created.
-  external double get time;
+  double get time;
 
   /// The [IntersectionObserverEntry] interface's
   /// read-only **`rootBounds`** property is a
@@ -175,13 +167,13 @@ extension type IntersectionObserverEntry._(JSObject _) implements JSObject {
   /// [IntersectionObserverEntry.target]'s root intersection
   /// rectangle, offset by the [IntersectionObserver.rootMargin] if one is
   /// specified.
-  external DOMRectReadOnly? get rootBounds;
+  DOMRectReadOnly? get rootBounds;
 
   /// The [IntersectionObserverEntry] interface's read-only
   /// **`boundingClientRect`** property returns a
   /// [DOMRectReadOnly] which in essence describes a rectangle describing the
   /// smallest rectangle that contains the entire target element.
-  external DOMRectReadOnly get boundingClientRect;
+  DOMRectReadOnly get boundingClientRect;
 
   /// The [IntersectionObserverEntry] interface's
   /// read-only **`intersectionRect`** property is a
@@ -189,7 +181,7 @@ extension type IntersectionObserverEntry._(JSObject _) implements JSObject {
   /// contains the entire portion of the target element which is currently
   /// visible within
   /// the intersection root.
-  external DOMRectReadOnly get intersectionRect;
+  DOMRectReadOnly get intersectionRect;
 
   /// The [IntersectionObserverEntry] interface's
   /// read-only **`isIntersecting`** property is a Boolean value
@@ -198,35 +190,52 @@ extension type IntersectionObserverEntry._(JSObject _) implements JSObject {
   /// `IntersectionObserverEntry` describes a transition into a state of
   /// intersection; if it's `false`, then you know the transition is from
   /// intersecting to not-intersecting.
-  external bool get isIntersecting;
+  bool get isIntersecting;
 
   /// The [IntersectionObserverEntry] interface's
   /// read-only **`intersectionRatio`** property tells you how much
   /// of the target element is currently visible within the root's intersection
   /// ratio, as a
   /// value between 0.0 and 1.0.
-  external double get intersectionRatio;
+  double get intersectionRatio;
 
   /// The [IntersectionObserverEntry] interface's
   /// read-only **`target`** property indicates which targeted
   /// [Element] has changed its amount of intersection with the intersection
   /// root.
-  external Element get target;
+  Element get target;
 }
-extension type IntersectionObserverInit._(JSObject _) implements JSObject {
-  external factory IntersectionObserverInit({
-    JSObject? root,
-    String rootMargin,
-    String scrollMargin,
-    JSAny threshold,
-  });
 
-  external JSObject? get root;
-  external set root(JSObject? value);
-  external String get rootMargin;
-  external set rootMargin(String value);
-  external String get scrollMargin;
-  external set scrollMargin(String value);
-  external JSAny get threshold;
-  external set threshold(JSAny value);
+abstract class IntersectionObserverInit implements JSObject {
+  JSObject? get root {
+    unsupportedPlatformError();
+  }
+
+  set root(JSObject? value) {
+    unsupportedPlatformError();
+  }
+
+  String get rootMargin {
+    unsupportedPlatformError();
+  }
+
+  set rootMargin(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get scrollMargin {
+    unsupportedPlatformError();
+  }
+
+  set scrollMargin(String value) {
+    unsupportedPlatformError();
+  }
+
+  JSAny get threshold {
+    unsupportedPlatformError();
+  }
+
+  set threshold(JSAny value) {
+    unsupportedPlatformError();
+  }
 }

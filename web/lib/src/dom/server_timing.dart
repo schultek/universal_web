@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,10 +10,7 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
+import '../js_interop.dart';
 
 /// The **`PerformanceServerTiming`** interface surfaces server metrics that are
 /// sent with the response in the  HTTP header.
@@ -27,22 +24,22 @@ import 'dart:js_interop';
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceServerTiming).
-extension type PerformanceServerTiming._(JSObject _) implements JSObject {
+abstract class PerformanceServerTiming implements JSObject {
   /// The **`toJSON()`** method of the [PerformanceServerTiming] interface is a
   /// ; it returns a JSON representation of the [PerformanceServerTiming]
   /// object.
-  external JSObject toJSON();
+  JSObject toJSON();
 
   /// The **`name`** read-only property returns a
   /// string value of the server-specified metric name.
-  external String get name;
+  String get name;
 
   /// The **`duration`** read-only property returns a double that contains the
   /// server-specified metric duration, or the value `0.0`.
-  external double get duration;
+  double get duration;
 
   /// The **`description`** read-only property returns a
   /// string value of the server-specified metric description, or an empty
   /// string.
-  external String get description;
+  String get description;
 }

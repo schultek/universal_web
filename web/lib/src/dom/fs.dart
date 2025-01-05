@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,11 +10,8 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../error.dart';
+import '../js_interop.dart';
 import 'fileapi.dart';
 import 'streams.dart';
 import 'webidl.dart';
@@ -33,11 +30,11 @@ typedef WriteCommandType = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemHandle).
-extension type FileSystemHandle._(JSObject _) implements JSObject {
+abstract class FileSystemHandle implements JSObject {
   /// The **`isSameEntry()`** method of the
   /// [FileSystemHandle] interface compares two [FileSystemHandle] to see if the
   /// associated entries (either a file or directory) match.
-  external JSPromise<JSBoolean> isSameEntry(FileSystemHandle other);
+  JSPromise<JSBoolean> isSameEntry(FileSystemHandle other);
 
   /// The **`kind`** read-only property of the
   /// [FileSystemHandle] interface returns the type of entry. This is
@@ -45,19 +42,22 @@ extension type FileSystemHandle._(JSObject _) implements JSObject {
   /// used to distinguish files from directories when iterating over the
   /// contents of a
   /// directory.
-  external FileSystemHandleKind get kind;
+  FileSystemHandleKind get kind;
 
   /// The **`name`** read-only property of the
   /// [FileSystemHandle] interface returns the name of the entry represented by
   /// handle.
-  external String get name;
+  String get name;
 }
-extension type FileSystemCreateWritableOptions._(JSObject _)
-    implements JSObject {
-  external factory FileSystemCreateWritableOptions({bool keepExistingData});
 
-  external bool get keepExistingData;
-  external set keepExistingData(bool value);
+abstract class FileSystemCreateWritableOptions implements JSObject {
+  bool get keepExistingData {
+    unsupportedPlatformError();
+  }
+
+  set keepExistingData(bool value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`FileSystemFileHandle`** interface of the [File System API] represents
@@ -74,8 +74,7 @@ extension type FileSystemCreateWritableOptions._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemFileHandle).
-extension type FileSystemFileHandle._(JSObject _)
-    implements FileSystemHandle, JSObject {
+abstract class FileSystemFileHandle implements FileSystemHandle, JSObject {
   /// The **`getFile()`** method of the
   /// [FileSystemFileHandle] interface returns a `Promise` which resolves to a
   /// [File] object representing the state on disk of the entry represented by
@@ -84,7 +83,7 @@ extension type FileSystemFileHandle._(JSObject _)
   /// If the file on disk changes or is removed after this method is called, the
   /// returned
   /// [File] object will likely be no longer readable.
-  external JSPromise<File> getFile();
+  JSPromise<File> getFile();
 
   /// The **`createWritable()`** method of the [FileSystemFileHandle] interface
   /// creates a [FileSystemWritableFileStream] that can be used to write to a
@@ -96,7 +95,7 @@ extension type FileSystemFileHandle._(JSObject _)
   /// This is typically implemented by writing data to a temporary file, and
   /// only replacing the file represented by file handle with the temporary file
   /// when the writable filestream is closed.
-  external JSPromise<FileSystemWritableFileStream> createWritable(
+  JSPromise<FileSystemWritableFileStream> createWritable(
       [FileSystemCreateWritableOptions options]);
 
   /// @AvailableInWorkers("dedicated")
@@ -115,25 +114,37 @@ extension type FileSystemFileHandle._(JSObject _)
   /// file associated with the file handle. This prevents the creation of
   /// further [FileSystemSyncAccessHandle]s or [FileSystemWritableFileStream]s
   /// for the file until the existing access handle is closed.
-  external JSPromise<FileSystemSyncAccessHandle> createSyncAccessHandle();
+  JSPromise<FileSystemSyncAccessHandle> createSyncAccessHandle();
 }
-extension type FileSystemGetFileOptions._(JSObject _) implements JSObject {
-  external factory FileSystemGetFileOptions({bool create});
 
-  external bool get create;
-  external set create(bool value);
+abstract class FileSystemGetFileOptions implements JSObject {
+  bool get create {
+    unsupportedPlatformError();
+  }
+
+  set create(bool value) {
+    unsupportedPlatformError();
+  }
 }
-extension type FileSystemGetDirectoryOptions._(JSObject _) implements JSObject {
-  external factory FileSystemGetDirectoryOptions({bool create});
 
-  external bool get create;
-  external set create(bool value);
+abstract class FileSystemGetDirectoryOptions implements JSObject {
+  bool get create {
+    unsupportedPlatformError();
+  }
+
+  set create(bool value) {
+    unsupportedPlatformError();
+  }
 }
-extension type FileSystemRemoveOptions._(JSObject _) implements JSObject {
-  external factory FileSystemRemoveOptions({bool recursive});
 
-  external bool get recursive;
-  external set recursive(bool value);
+abstract class FileSystemRemoveOptions implements JSObject {
+  bool get recursive {
+    unsupportedPlatformError();
+  }
+
+  set recursive(bool value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`FileSystemDirectoryHandle`** interface of the [File System API]
@@ -147,13 +158,12 @@ extension type FileSystemRemoveOptions._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemDirectoryHandle).
-extension type FileSystemDirectoryHandle._(JSObject _)
-    implements FileSystemHandle, JSObject {
+abstract class FileSystemDirectoryHandle implements FileSystemHandle, JSObject {
   /// The **`getFileHandle()`** method of the
   /// [FileSystemDirectoryHandle] interface returns a
   /// [FileSystemFileHandle] for a file with the specified name, within the
   /// directory the method is called.
-  external JSPromise<FileSystemFileHandle> getFileHandle(
+  JSPromise<FileSystemFileHandle> getFileHandle(
     String name, [
     FileSystemGetFileOptions options,
   ]);
@@ -162,7 +172,7 @@ extension type FileSystemDirectoryHandle._(JSObject _)
   /// [FileSystemDirectoryHandle] interface returns a
   /// [FileSystemDirectoryHandle] for a subdirectory with the specified name
   /// within the directory handle on which the method is called.
-  external JSPromise<FileSystemDirectoryHandle> getDirectoryHandle(
+  JSPromise<FileSystemDirectoryHandle> getDirectoryHandle(
     String name, [
     FileSystemGetDirectoryOptions options,
   ]);
@@ -170,7 +180,7 @@ extension type FileSystemDirectoryHandle._(JSObject _)
   /// The **`removeEntry()`** method of the
   /// [FileSystemDirectoryHandle] interface attempts to remove an entry if the
   /// directory handle contains a file or directory called the name specified.
-  external JSPromise<JSAny?> removeEntry(
+  JSPromise<JSAny?> removeEntry(
     String name, [
     FileSystemRemoveOptions options,
   ]);
@@ -180,25 +190,41 @@ extension type FileSystemDirectoryHandle._(JSObject _)
   /// directory names from the parent handle to the specified child entry, with
   /// the name of
   /// the child entry as the last array item.
-  external JSPromise<JSArray<JSString>?> resolve(
-      FileSystemHandle possibleDescendant);
+  JSPromise<JSArray<JSString>?> resolve(FileSystemHandle possibleDescendant);
 }
-extension type WriteParams._(JSObject _) implements JSObject {
-  external factory WriteParams({
-    required WriteCommandType type,
-    int? size,
-    int? position,
-    JSAny? data,
-  });
 
-  external WriteCommandType get type;
-  external set type(WriteCommandType value);
-  external int? get size;
-  external set size(int? value);
-  external int? get position;
-  external set position(int? value);
-  external JSAny? get data;
-  external set data(JSAny? value);
+abstract class WriteParams implements JSObject {
+  WriteCommandType get type {
+    unsupportedPlatformError();
+  }
+
+  set type(WriteCommandType value) {
+    unsupportedPlatformError();
+  }
+
+  int? get size {
+    unsupportedPlatformError();
+  }
+
+  set size(int? value) {
+    unsupportedPlatformError();
+  }
+
+  int? get position {
+    unsupportedPlatformError();
+  }
+
+  set position(int? value) {
+    unsupportedPlatformError();
+  }
+
+  JSAny? get data {
+    unsupportedPlatformError();
+  }
+
+  set data(JSAny? value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`FileSystemWritableFileStream`** interface of the [File System API] is
@@ -210,7 +236,7 @@ extension type WriteParams._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemWritableFileStream).
-extension type FileSystemWritableFileStream._(JSObject _)
+abstract class FileSystemWritableFileStream
     implements WritableStream, JSObject {
   /// The **`write()`** method of the [FileSystemWritableFileStream] interface
   /// writes content into the file the method is called on, at the current file
@@ -221,12 +247,12 @@ extension type FileSystemWritableFileStream._(JSObject _)
   /// Changes are typically written to a temporary file instead. This method can
   /// also be used to seek to a byte point within the stream and truncate to
   /// modify the total bytes the file contains.
-  external JSPromise<JSAny?> write(FileSystemWriteChunkType data);
+  JSPromise<JSAny?> write(FileSystemWriteChunkType data);
 
   /// The **`seek()`** method of the [FileSystemWritableFileStream] interface
   /// updates the current file cursor offset to the position (in bytes)
   /// specified when calling the method.
-  external JSPromise<JSAny?> seek(int position);
+  JSPromise<JSAny?> seek(int position);
 
   /// The **`truncate()`** method of the [FileSystemWritableFileStream]
   /// interface resizes the file associated with the stream to the specified
@@ -243,13 +269,17 @@ extension type FileSystemWritableFileStream._(JSObject _)
   /// No changes are written to the actual file on disk until the stream has
   /// been closed.
   /// Changes are typically written to a temporary file instead.
-  external JSPromise<JSAny?> truncate(int size);
+  JSPromise<JSAny?> truncate(int size);
 }
-extension type FileSystemReadWriteOptions._(JSObject _) implements JSObject {
-  external factory FileSystemReadWriteOptions({int at});
 
-  external int get at;
-  external set at(int value);
+abstract class FileSystemReadWriteOptions implements JSObject {
+  int get at {
+    unsupportedPlatformError();
+  }
+
+  set at(int value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// @AvailableInWorkers("dedicated")
@@ -285,14 +315,14 @@ extension type FileSystemReadWriteOptions._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemSyncAccessHandle).
-extension type FileSystemSyncAccessHandle._(JSObject _) implements JSObject {
+abstract class FileSystemSyncAccessHandle implements JSObject {
   /// @AvailableInWorkers("dedicated")
   ///
   /// The **`read()`** method of the
   /// [FileSystemSyncAccessHandle] interface reads the content of the file
   /// associated with the handle into a specified buffer, optionally at a given
   /// offset.
-  external int read(
+  int read(
     AllowSharedBufferSource buffer, [
     FileSystemReadWriteOptions options,
   ]);
@@ -312,7 +342,7 @@ extension type FileSystemSyncAccessHandle._(JSObject _) implements JSObject {
   /// `FileSystemSyncAccessHandle.write()` are much more performant. This makes
   /// them suitable for significant, large-scale file updates such as
   /// [SQLite](https://www.sqlite.org/wasm) database modifications.
-  external int write(
+  int write(
     AllowSharedBufferSource buffer, [
     FileSystemReadWriteOptions options,
   ]);
@@ -329,7 +359,7 @@ extension type FileSystemSyncAccessHandle._(JSObject _) implements JSObject {
   /// > specified as asynchronous methods, and older versions of some browsers
   /// > implement them in this way. However, all current browsers that support
   /// > these methods implement them as synchronous methods.
-  external void truncate(int newSize);
+  void truncate(int newSize);
 
   /// @AvailableInWorkers("dedicated")
   ///
@@ -343,7 +373,7 @@ extension type FileSystemSyncAccessHandle._(JSObject _) implements JSObject {
   /// > specified as asynchronous methods, and older versions of some browsers
   /// > implement them in this way. However, all current browsers that support
   /// > these methods implement them as synchronous methods.
-  external int getSize();
+  int getSize();
 
   /// @AvailableInWorkers("dedicated")
   ///
@@ -364,7 +394,7 @@ extension type FileSystemSyncAccessHandle._(JSObject _) implements JSObject {
   /// > asynchronous methods, and older versions of some browsers implement them
   /// > in this way. However, all current browsers that support these methods
   /// > implement them as synchronous methods.
-  external void flush();
+  void flush();
 
   /// @AvailableInWorkers("dedicated")
   ///
@@ -380,5 +410,5 @@ extension type FileSystemSyncAccessHandle._(JSObject _) implements JSObject {
   /// > asynchronous methods, and older versions of some browsers implement them
   /// > in this way. However, all current browsers that support these methods
   /// > implement them as synchronous methods.
-  external void close();
+  void close();
 }

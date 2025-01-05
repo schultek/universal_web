@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,11 +10,8 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../error.dart';
+import '../js_interop.dart';
 import 'generic_sensor.dart';
 
 typedef GyroscopeLocalCoordinateSystem = String;
@@ -35,30 +32,28 @@ typedef GyroscopeLocalCoordinateSystem = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Gyroscope).
-extension type Gyroscope._(JSObject _) implements Sensor, JSObject {
-  external factory Gyroscope([GyroscopeSensorOptions sensorOptions]);
-
+abstract class Gyroscope implements Sensor, JSObject {
   /// The **`x`** read-only property of the
   /// [Gyroscope] interface returns a number specifying the
   /// angular velocity of the device along its x-axis.
-  external double? get x;
+  double? get x;
 
   /// The **`y`** read-only property of the [Gyroscope] interface returns a
   /// number specifying the angular velocity of the device along its y-axis.
-  external double? get y;
+  double? get y;
 
   /// The **`z`** read-only property of the
   /// [Gyroscope] interface returns a number specifying the
   /// angular velocity of the device along its z-axis.
-  external double? get z;
+  double? get z;
 }
-extension type GyroscopeSensorOptions._(JSObject _)
-    implements SensorOptions, JSObject {
-  external factory GyroscopeSensorOptions({
-    num frequency,
-    GyroscopeLocalCoordinateSystem referenceFrame,
-  });
 
-  external GyroscopeLocalCoordinateSystem get referenceFrame;
-  external set referenceFrame(GyroscopeLocalCoordinateSystem value);
+abstract class GyroscopeSensorOptions implements SensorOptions, JSObject {
+  GyroscopeLocalCoordinateSystem get referenceFrame {
+    unsupportedPlatformError();
+  }
+
+  set referenceFrame(GyroscopeLocalCoordinateSystem value) {
+    unsupportedPlatformError();
+  }
 }

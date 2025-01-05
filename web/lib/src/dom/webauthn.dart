@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,11 +10,8 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../error.dart';
+import '../js_interop.dart';
 import 'credential_management.dart';
 import 'fido.dart';
 import 'secure_payment_confirmation.dart';
@@ -39,9 +36,10 @@ typedef UvmEntries = JSArray<UvmEntry>;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/PublicKeyCredential).
-extension type PublicKeyCredential._(JSObject _)
-    implements Credential, JSObject {
-  external static JSPromise<JSBoolean> isConditionalMediationAvailable();
+abstract class PublicKeyCredential implements Credential, JSObject {
+  static JSPromise<JSBoolean> isConditionalMediationAvailable() {
+    unsupportedPlatformError();
+  }
 
   /// The **`isUserVerifyingPlatformAuthenticatorAvailable()`** static method of
   /// the [PublicKeyCredential] interface returns a `Promise` which resolves to
@@ -58,8 +56,9 @@ extension type PublicKeyCredential._(JSObject _)
   ///
   /// > **Note:** This method may only be used in top-level contexts and will
   /// > not be available in an `iframe` for example.
-  external static JSPromise<JSBoolean>
-      isUserVerifyingPlatformAuthenticatorAvailable();
+  static JSPromise<JSBoolean> isUserVerifyingPlatformAuthenticatorAvailable() {
+    unsupportedPlatformError();
+  }
 
   /// The **`getClientExtensionResults()`** method of the
   /// [PublicKeyCredential] interface returns a map between the identifiers of
@@ -79,7 +78,7 @@ extension type PublicKeyCredential._(JSObject _)
   /// > extensions processed by the authenticator can be found in the
   /// > [authenticator data](https://developer.mozilla.org/en-US/docs/Web/API/Web_Authentication_API/Authenticator_data)
   /// > available in [AuthenticatorAssertionResponse.authenticatorData].
-  external AuthenticationExtensionsClientOutputs getClientExtensionResults();
+  AuthenticationExtensionsClientOutputs getClientExtensionResults();
 
   /// The **`rawId`** read-only property of the
   /// [PublicKeyCredential] interface is an `ArrayBuffer` object
@@ -91,7 +90,7 @@ extension type PublicKeyCredential._(JSObject _)
   ///
   /// > **Note:** This property may only be used in top-level contexts and will
   /// > not be available in an `iframe` for example.
-  external JSArrayBuffer get rawId;
+  JSArrayBuffer get rawId;
 
   /// The **`response`** read-only property of the
   /// [PublicKeyCredential] interface is an [AuthenticatorResponse]
@@ -126,13 +125,13 @@ extension type PublicKeyCredential._(JSObject _)
   ///
   /// > **Note:** This property may only be used in top-level contexts and will
   /// > not be available in an `iframe` for example.
-  external AuthenticatorResponse get response;
+  AuthenticatorResponse get response;
 
   /// The **`authenticatorAttachment`** read-only property of the
   /// [PublicKeyCredential] interface is a string that indicates the general
   /// category of authenticator used during the associated
   /// [CredentialsContainer.create] or [CredentialsContainer.get] call.
-  external String? get authenticatorAttachment;
+  String? get authenticatorAttachment;
 }
 
 /// The **`AuthenticatorResponse`** interface of the
@@ -146,7 +145,7 @@ extension type PublicKeyCredential._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/AuthenticatorResponse).
-extension type AuthenticatorResponse._(JSObject _) implements JSObject {
+abstract class AuthenticatorResponse implements JSObject {
   /// The **`clientDataJSON`** property of the [AuthenticatorResponse] interface
   /// stores a
   /// [JSON](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON)
@@ -156,7 +155,7 @@ extension type AuthenticatorResponse._(JSObject _) implements JSObject {
   /// is only accessed on one of the child objects of `AuthenticatorResponse`,
   /// specifically [AuthenticatorAttestationResponse] or
   /// [AuthenticatorAssertionResponse].
-  external JSArrayBuffer get clientDataJSON;
+  JSArrayBuffer get clientDataJSON;
 }
 
 /// The **`AuthenticatorAttestationResponse`** interface of the
@@ -178,7 +177,7 @@ extension type AuthenticatorResponse._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/AuthenticatorAttestationResponse).
-extension type AuthenticatorAttestationResponse._(JSObject _)
+abstract class AuthenticatorAttestationResponse
     implements AuthenticatorResponse, JSObject {
   /// The **`getTransports()`** method of the [AuthenticatorAttestationResponse]
   /// interface returns an array of strings describing the different transports
@@ -192,7 +191,7 @@ extension type AuthenticatorAttestationResponse._(JSObject _)
   /// inside `publicKey.allowCredentials` should be set to the stored array
   /// value. This provides a hint to the browser as to which types of
   /// authenticators to try when making an assertion for this credential.
-  external JSArray<JSString> getTransports();
+  JSArray<JSString> getTransports();
 
   /// The **`getAuthenticatorData()`** method of the
   /// [AuthenticatorAttestationResponse] interface returns an `ArrayBuffer`
@@ -202,7 +201,7 @@ extension type AuthenticatorAttestationResponse._(JSObject _)
   /// This is a convenience function, created to allow easy access to the
   /// authenticator data without having to write extra parsing code to extract
   /// it from the `attestationObject`.
-  external JSArrayBuffer getAuthenticatorData();
+  JSArrayBuffer getAuthenticatorData();
 
   /// The **`getPublicKey()`** method of the [AuthenticatorAttestationResponse]
   /// interface returns an `ArrayBuffer` containing the DER
@@ -213,7 +212,7 @@ extension type AuthenticatorAttestationResponse._(JSObject _)
   /// This is a convenience function, created to allow easy access to the public
   /// key. This key will need to be stored in order to verify future
   /// authentication operations (i.e., using [CredentialsContainer.get]).
-  external JSArrayBuffer? getPublicKey();
+  JSArrayBuffer? getPublicKey();
 
   /// The **`getPublicKeyAlgorithm()`** method of the
   /// [AuthenticatorAttestationResponse] interface returns a number that is
@@ -224,7 +223,7 @@ extension type AuthenticatorAttestationResponse._(JSObject _)
   /// This is a convenience function created to allow easy access to the
   /// algorithm type. This information will need to be stored in order to verify
   /// future authentication operations (i.e., using [CredentialsContainer.get]).
-  external COSEAlgorithmIdentifier getPublicKeyAlgorithm();
+  COSEAlgorithmIdentifier getPublicKeyAlgorithm();
 
   /// The **`attestationObject`** property of the
   /// [AuthenticatorAttestationResponse] interface returns an
@@ -240,7 +239,7 @@ extension type AuthenticatorAttestationResponse._(JSObject _)
   /// known; however, there are various well known attestation public key chains
   /// for different
   /// ecosystems (for example, Android or TPM attestations).
-  external JSArrayBuffer get attestationObject;
+  JSArrayBuffer get attestationObject;
 }
 
 /// The **`AuthenticatorAssertionResponse`** interface of the
@@ -264,14 +263,14 @@ extension type AuthenticatorAttestationResponse._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/AuthenticatorAssertionResponse).
-extension type AuthenticatorAssertionResponse._(JSObject _)
+abstract class AuthenticatorAssertionResponse
     implements AuthenticatorResponse, JSObject {
   /// The **`authenticatorData`** property of the
   /// [AuthenticatorAssertionResponse] interface returns an `ArrayBuffer`
   /// containing information from the authenticator such as the Relying Party ID
   /// Hash (rpIdHash), a signature counter, test of user presence, user
   /// verification flags, and any extensions processed by the authenticator.
-  external JSArrayBuffer get authenticatorData;
+  JSArrayBuffer get authenticatorData;
 
   /// The **`signature`** read-only property of the
   /// [AuthenticatorAssertionResponse] interface is an `ArrayBuffer`
@@ -285,7 +284,7 @@ extension type AuthenticatorAssertionResponse._(JSObject _)
   /// provides the proof that an authenticator does possess the private key
   /// which was used for
   /// the credential's generation.
-  external JSArrayBuffer get signature;
+  JSArrayBuffer get signature;
 
   /// The **`userHandle`** read-only property of the
   /// [AuthenticatorAssertionResponse] interface is an `ArrayBuffer` object
@@ -295,18 +294,25 @@ extension type AuthenticatorAssertionResponse._(JSObject _)
   ///
   /// This value is specified as `user.id` in the options passed to the
   /// originating [CredentialsContainer.create] call.
-  external JSArrayBuffer? get userHandle;
+  JSArrayBuffer? get userHandle;
 }
-extension type PublicKeyCredentialParameters._(JSObject _) implements JSObject {
-  external factory PublicKeyCredentialParameters({
-    required String type,
-    required COSEAlgorithmIdentifier alg,
-  });
 
-  external String get type;
-  external set type(String value);
-  external COSEAlgorithmIdentifier get alg;
-  external set alg(COSEAlgorithmIdentifier value);
+abstract class PublicKeyCredentialParameters implements JSObject {
+  String get type {
+    unsupportedPlatformError();
+  }
+
+  set type(String value) {
+    unsupportedPlatformError();
+  }
+
+  COSEAlgorithmIdentifier get alg {
+    unsupportedPlatformError();
+  }
+
+  set alg(COSEAlgorithmIdentifier value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`PublicKeyCredentialCreationOptions`** dictionary represents the
@@ -319,318 +325,545 @@ extension type PublicKeyCredentialParameters._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/PublicKeyCredentialCreationOptions).
-extension type PublicKeyCredentialCreationOptions._(JSObject _)
-    implements JSObject {
-  external factory PublicKeyCredentialCreationOptions({
-    required PublicKeyCredentialRpEntity rp,
-    required PublicKeyCredentialUserEntity user,
-    required BufferSource challenge,
-    required JSArray<PublicKeyCredentialParameters> pubKeyCredParams,
-    int timeout,
-    JSArray<PublicKeyCredentialDescriptor> excludeCredentials,
-    AuthenticatorSelectionCriteria authenticatorSelection,
-    JSArray<JSString> hints,
-    String attestation,
-    JSArray<JSString> attestationFormats,
-    AuthenticationExtensionsClientInputs extensions,
-  });
-
-  external PublicKeyCredentialRpEntity get rp;
-  external set rp(PublicKeyCredentialRpEntity value);
-  external PublicKeyCredentialUserEntity get user;
-  external set user(PublicKeyCredentialUserEntity value);
-  external BufferSource get challenge;
-  external set challenge(BufferSource value);
-  external JSArray<PublicKeyCredentialParameters> get pubKeyCredParams;
-  external set pubKeyCredParams(JSArray<PublicKeyCredentialParameters> value);
-  external int get timeout;
-  external set timeout(int value);
-  external JSArray<PublicKeyCredentialDescriptor> get excludeCredentials;
-  external set excludeCredentials(JSArray<PublicKeyCredentialDescriptor> value);
-  external AuthenticatorSelectionCriteria get authenticatorSelection;
-  external set authenticatorSelection(AuthenticatorSelectionCriteria value);
-  external JSArray<JSString> get hints;
-  external set hints(JSArray<JSString> value);
-  external String get attestation;
-  external set attestation(String value);
-  external JSArray<JSString> get attestationFormats;
-  external set attestationFormats(JSArray<JSString> value);
-  external AuthenticationExtensionsClientInputs get extensions;
-  external set extensions(AuthenticationExtensionsClientInputs value);
+abstract class PublicKeyCredentialCreationOptions implements JSObject {
+  PublicKeyCredentialRpEntity get rp;
+  set rp(PublicKeyCredentialRpEntity value);
+  PublicKeyCredentialUserEntity get user;
+  set user(PublicKeyCredentialUserEntity value);
+  BufferSource get challenge;
+  set challenge(BufferSource value);
+  JSArray<PublicKeyCredentialParameters> get pubKeyCredParams;
+  set pubKeyCredParams(JSArray<PublicKeyCredentialParameters> value);
+  int get timeout;
+  set timeout(int value);
+  JSArray<PublicKeyCredentialDescriptor> get excludeCredentials;
+  set excludeCredentials(JSArray<PublicKeyCredentialDescriptor> value);
+  AuthenticatorSelectionCriteria get authenticatorSelection;
+  set authenticatorSelection(AuthenticatorSelectionCriteria value);
+  JSArray<JSString> get hints;
+  set hints(JSArray<JSString> value);
+  String get attestation;
+  set attestation(String value);
+  JSArray<JSString> get attestationFormats;
+  set attestationFormats(JSArray<JSString> value);
+  AuthenticationExtensionsClientInputs get extensions;
+  set extensions(AuthenticationExtensionsClientInputs value);
 }
-extension type PublicKeyCredentialEntity._(JSObject _) implements JSObject {
-  external factory PublicKeyCredentialEntity({required String name});
 
-  external String get name;
-  external set name(String value);
+abstract class PublicKeyCredentialEntity implements JSObject {
+  String get name {
+    unsupportedPlatformError();
+  }
+
+  set name(String value) {
+    unsupportedPlatformError();
+  }
 }
-extension type PublicKeyCredentialRpEntity._(JSObject _)
+
+abstract class PublicKeyCredentialRpEntity
     implements PublicKeyCredentialEntity, JSObject {
-  external factory PublicKeyCredentialRpEntity({
-    required String name,
-    String id,
-  });
+  String get id {
+    unsupportedPlatformError();
+  }
 
-  external String get id;
-  external set id(String value);
+  set id(String value) {
+    unsupportedPlatformError();
+  }
 }
-extension type PublicKeyCredentialUserEntity._(JSObject _)
+
+abstract class PublicKeyCredentialUserEntity
     implements PublicKeyCredentialEntity, JSObject {
-  external factory PublicKeyCredentialUserEntity({
-    required String name,
-    required BufferSource id,
-    required String displayName,
-  });
+  BufferSource get id {
+    unsupportedPlatformError();
+  }
 
-  external BufferSource get id;
-  external set id(BufferSource value);
-  external String get displayName;
-  external set displayName(String value);
+  set id(BufferSource value) {
+    unsupportedPlatformError();
+  }
+
+  String get displayName {
+    unsupportedPlatformError();
+  }
+
+  set displayName(String value) {
+    unsupportedPlatformError();
+  }
 }
-extension type AuthenticatorSelectionCriteria._(JSObject _)
+
+abstract class AuthenticatorSelectionCriteria implements JSObject {
+  String get authenticatorAttachment {
+    unsupportedPlatformError();
+  }
+
+  set authenticatorAttachment(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get residentKey {
+    unsupportedPlatformError();
+  }
+
+  set residentKey(String value) {
+    unsupportedPlatformError();
+  }
+
+  bool get requireResidentKey {
+    unsupportedPlatformError();
+  }
+
+  set requireResidentKey(bool value) {
+    unsupportedPlatformError();
+  }
+
+  String get userVerification {
+    unsupportedPlatformError();
+  }
+
+  set userVerification(String value) {
+    unsupportedPlatformError();
+  }
+}
+
+abstract class PublicKeyCredentialRequestOptions implements JSObject {
+  BufferSource get challenge {
+    unsupportedPlatformError();
+  }
+
+  set challenge(BufferSource value) {
+    unsupportedPlatformError();
+  }
+
+  int get timeout {
+    unsupportedPlatformError();
+  }
+
+  set timeout(int value) {
+    unsupportedPlatformError();
+  }
+
+  String get rpId {
+    unsupportedPlatformError();
+  }
+
+  set rpId(String value) {
+    unsupportedPlatformError();
+  }
+
+  JSArray<PublicKeyCredentialDescriptor> get allowCredentials {
+    unsupportedPlatformError();
+  }
+
+  set allowCredentials(JSArray<PublicKeyCredentialDescriptor> value) {
+    unsupportedPlatformError();
+  }
+
+  String get userVerification {
+    unsupportedPlatformError();
+  }
+
+  set userVerification(String value) {
+    unsupportedPlatformError();
+  }
+
+  JSArray<JSString> get hints {
+    unsupportedPlatformError();
+  }
+
+  set hints(JSArray<JSString> value) {
+    unsupportedPlatformError();
+  }
+
+  AuthenticationExtensionsClientInputs get extensions {
+    unsupportedPlatformError();
+  }
+
+  set extensions(AuthenticationExtensionsClientInputs value) {
+    unsupportedPlatformError();
+  }
+}
+
+abstract class AuthenticationExtensionsClientInputs implements JSObject {
+  String get credentialProtectionPolicy {
+    unsupportedPlatformError();
+  }
+
+  set credentialProtectionPolicy(String value) {
+    unsupportedPlatformError();
+  }
+
+  bool get enforceCredentialProtectionPolicy {
+    unsupportedPlatformError();
+  }
+
+  set enforceCredentialProtectionPolicy(bool value) {
+    unsupportedPlatformError();
+  }
+
+  JSArrayBuffer get credBlob {
+    unsupportedPlatformError();
+  }
+
+  set credBlob(JSArrayBuffer value) {
+    unsupportedPlatformError();
+  }
+
+  bool get getCredBlob {
+    unsupportedPlatformError();
+  }
+
+  set getCredBlob(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get minPinLength {
+    unsupportedPlatformError();
+  }
+
+  set minPinLength(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get hmacCreateSecret {
+    unsupportedPlatformError();
+  }
+
+  set hmacCreateSecret(bool value) {
+    unsupportedPlatformError();
+  }
+
+  HMACGetSecretInput get hmacGetSecret {
+    unsupportedPlatformError();
+  }
+
+  set hmacGetSecret(HMACGetSecretInput value) {
+    unsupportedPlatformError();
+  }
+
+  AuthenticationExtensionsPaymentInputs get payment {
+    unsupportedPlatformError();
+  }
+
+  set payment(AuthenticationExtensionsPaymentInputs value) {
+    unsupportedPlatformError();
+  }
+
+  String get appid {
+    unsupportedPlatformError();
+  }
+
+  set appid(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get appidExclude {
+    unsupportedPlatformError();
+  }
+
+  set appidExclude(String value) {
+    unsupportedPlatformError();
+  }
+
+  bool get credProps {
+    unsupportedPlatformError();
+  }
+
+  set credProps(bool value) {
+    unsupportedPlatformError();
+  }
+
+  AuthenticationExtensionsPRFInputs get prf {
+    unsupportedPlatformError();
+  }
+
+  set prf(AuthenticationExtensionsPRFInputs value) {
+    unsupportedPlatformError();
+  }
+
+  AuthenticationExtensionsLargeBlobInputs get largeBlob {
+    unsupportedPlatformError();
+  }
+
+  set largeBlob(AuthenticationExtensionsLargeBlobInputs value) {
+    unsupportedPlatformError();
+  }
+
+  bool get uvm {
+    unsupportedPlatformError();
+  }
+
+  set uvm(bool value) {
+    unsupportedPlatformError();
+  }
+
+  AuthenticationExtensionsSupplementalPubKeysInputs get supplementalPubKeys {
+    unsupportedPlatformError();
+  }
+
+  set supplementalPubKeys(
+      AuthenticationExtensionsSupplementalPubKeysInputs value) {
+    unsupportedPlatformError();
+  }
+}
+
+abstract class AuthenticationExtensionsClientOutputs implements JSObject {
+  bool get hmacCreateSecret {
+    unsupportedPlatformError();
+  }
+
+  set hmacCreateSecret(bool value) {
+    unsupportedPlatformError();
+  }
+
+  HMACGetSecretOutput get hmacGetSecret {
+    unsupportedPlatformError();
+  }
+
+  set hmacGetSecret(HMACGetSecretOutput value) {
+    unsupportedPlatformError();
+  }
+
+  bool get appid {
+    unsupportedPlatformError();
+  }
+
+  set appid(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get appidExclude {
+    unsupportedPlatformError();
+  }
+
+  set appidExclude(bool value) {
+    unsupportedPlatformError();
+  }
+
+  CredentialPropertiesOutput get credProps {
+    unsupportedPlatformError();
+  }
+
+  set credProps(CredentialPropertiesOutput value) {
+    unsupportedPlatformError();
+  }
+
+  AuthenticationExtensionsPRFOutputs get prf {
+    unsupportedPlatformError();
+  }
+
+  set prf(AuthenticationExtensionsPRFOutputs value) {
+    unsupportedPlatformError();
+  }
+
+  AuthenticationExtensionsLargeBlobOutputs get largeBlob {
+    unsupportedPlatformError();
+  }
+
+  set largeBlob(AuthenticationExtensionsLargeBlobOutputs value) {
+    unsupportedPlatformError();
+  }
+
+  UvmEntries get uvm {
+    unsupportedPlatformError();
+  }
+
+  set uvm(UvmEntries value) {
+    unsupportedPlatformError();
+  }
+
+  AuthenticationExtensionsSupplementalPubKeysOutputs get supplementalPubKeys {
+    unsupportedPlatformError();
+  }
+
+  set supplementalPubKeys(
+      AuthenticationExtensionsSupplementalPubKeysOutputs value) {
+    unsupportedPlatformError();
+  }
+}
+
+abstract class PublicKeyCredentialDescriptor implements JSObject {
+  String get type {
+    unsupportedPlatformError();
+  }
+
+  set type(String value) {
+    unsupportedPlatformError();
+  }
+
+  BufferSource get id {
+    unsupportedPlatformError();
+  }
+
+  set id(BufferSource value) {
+    unsupportedPlatformError();
+  }
+
+  JSArray<JSString> get transports {
+    unsupportedPlatformError();
+  }
+
+  set transports(JSArray<JSString> value) {
+    unsupportedPlatformError();
+  }
+}
+
+abstract class CredentialPropertiesOutput implements JSObject {
+  bool get rk {
+    unsupportedPlatformError();
+  }
+
+  set rk(bool value) {
+    unsupportedPlatformError();
+  }
+
+  String get authenticatorDisplayName {
+    unsupportedPlatformError();
+  }
+
+  set authenticatorDisplayName(String value) {
+    unsupportedPlatformError();
+  }
+}
+
+abstract class AuthenticationExtensionsPRFValues implements JSObject {
+  BufferSource get first {
+    unsupportedPlatformError();
+  }
+
+  set first(BufferSource value) {
+    unsupportedPlatformError();
+  }
+
+  BufferSource get second {
+    unsupportedPlatformError();
+  }
+
+  set second(BufferSource value) {
+    unsupportedPlatformError();
+  }
+}
+
+abstract class AuthenticationExtensionsPRFInputs implements JSObject {
+  AuthenticationExtensionsPRFValues get eval {
+    unsupportedPlatformError();
+  }
+
+  set eval(AuthenticationExtensionsPRFValues value) {
+    unsupportedPlatformError();
+  }
+
+  JSObject get evalByCredential {
+    unsupportedPlatformError();
+  }
+
+  set evalByCredential(JSObject value) {
+    unsupportedPlatformError();
+  }
+}
+
+abstract class AuthenticationExtensionsPRFOutputs implements JSObject {
+  bool get enabled {
+    unsupportedPlatformError();
+  }
+
+  set enabled(bool value) {
+    unsupportedPlatformError();
+  }
+
+  AuthenticationExtensionsPRFValues get results {
+    unsupportedPlatformError();
+  }
+
+  set results(AuthenticationExtensionsPRFValues value) {
+    unsupportedPlatformError();
+  }
+}
+
+abstract class AuthenticationExtensionsLargeBlobInputs implements JSObject {
+  String get support {
+    unsupportedPlatformError();
+  }
+
+  set support(String value) {
+    unsupportedPlatformError();
+  }
+
+  bool get read {
+    unsupportedPlatformError();
+  }
+
+  set read(bool value) {
+    unsupportedPlatformError();
+  }
+
+  BufferSource get write {
+    unsupportedPlatformError();
+  }
+
+  set write(BufferSource value) {
+    unsupportedPlatformError();
+  }
+}
+
+abstract class AuthenticationExtensionsLargeBlobOutputs implements JSObject {
+  bool get supported {
+    unsupportedPlatformError();
+  }
+
+  set supported(bool value) {
+    unsupportedPlatformError();
+  }
+
+  JSArrayBuffer get blob {
+    unsupportedPlatformError();
+  }
+
+  set blob(JSArrayBuffer value) {
+    unsupportedPlatformError();
+  }
+
+  bool get written {
+    unsupportedPlatformError();
+  }
+
+  set written(bool value) {
+    unsupportedPlatformError();
+  }
+}
+
+abstract class AuthenticationExtensionsSupplementalPubKeysInputs
     implements JSObject {
-  external factory AuthenticatorSelectionCriteria({
-    String authenticatorAttachment,
-    String residentKey,
-    bool requireResidentKey,
-    String userVerification,
-  });
+  JSArray<JSString> get scopes {
+    unsupportedPlatformError();
+  }
 
-  external String get authenticatorAttachment;
-  external set authenticatorAttachment(String value);
-  external String get residentKey;
-  external set residentKey(String value);
-  external bool get requireResidentKey;
-  external set requireResidentKey(bool value);
-  external String get userVerification;
-  external set userVerification(String value);
+  set scopes(JSArray<JSString> value) {
+    unsupportedPlatformError();
+  }
+
+  String get attestation {
+    unsupportedPlatformError();
+  }
+
+  set attestation(String value) {
+    unsupportedPlatformError();
+  }
+
+  JSArray<JSString> get attestationFormats {
+    unsupportedPlatformError();
+  }
+
+  set attestationFormats(JSArray<JSString> value) {
+    unsupportedPlatformError();
+  }
 }
-extension type PublicKeyCredentialRequestOptions._(JSObject _)
+
+abstract class AuthenticationExtensionsSupplementalPubKeysOutputs
     implements JSObject {
-  external factory PublicKeyCredentialRequestOptions({
-    required BufferSource challenge,
-    int timeout,
-    String rpId,
-    JSArray<PublicKeyCredentialDescriptor> allowCredentials,
-    String userVerification,
-    JSArray<JSString> hints,
-    AuthenticationExtensionsClientInputs extensions,
-  });
+  JSArray<JSArrayBuffer> get signatures {
+    unsupportedPlatformError();
+  }
 
-  external BufferSource get challenge;
-  external set challenge(BufferSource value);
-  external int get timeout;
-  external set timeout(int value);
-  external String get rpId;
-  external set rpId(String value);
-  external JSArray<PublicKeyCredentialDescriptor> get allowCredentials;
-  external set allowCredentials(JSArray<PublicKeyCredentialDescriptor> value);
-  external String get userVerification;
-  external set userVerification(String value);
-  external JSArray<JSString> get hints;
-  external set hints(JSArray<JSString> value);
-  external AuthenticationExtensionsClientInputs get extensions;
-  external set extensions(AuthenticationExtensionsClientInputs value);
-}
-extension type AuthenticationExtensionsClientInputs._(JSObject _)
-    implements JSObject {
-  external factory AuthenticationExtensionsClientInputs({
-    String credentialProtectionPolicy,
-    bool enforceCredentialProtectionPolicy,
-    JSArrayBuffer credBlob,
-    bool getCredBlob,
-    bool minPinLength,
-    bool hmacCreateSecret,
-    HMACGetSecretInput hmacGetSecret,
-    AuthenticationExtensionsPaymentInputs payment,
-    String appid,
-    String appidExclude,
-    bool credProps,
-    AuthenticationExtensionsPRFInputs prf,
-    AuthenticationExtensionsLargeBlobInputs largeBlob,
-    bool uvm,
-    AuthenticationExtensionsSupplementalPubKeysInputs supplementalPubKeys,
-  });
-
-  external String get credentialProtectionPolicy;
-  external set credentialProtectionPolicy(String value);
-  external bool get enforceCredentialProtectionPolicy;
-  external set enforceCredentialProtectionPolicy(bool value);
-  external JSArrayBuffer get credBlob;
-  external set credBlob(JSArrayBuffer value);
-  external bool get getCredBlob;
-  external set getCredBlob(bool value);
-  external bool get minPinLength;
-  external set minPinLength(bool value);
-  external bool get hmacCreateSecret;
-  external set hmacCreateSecret(bool value);
-  external HMACGetSecretInput get hmacGetSecret;
-  external set hmacGetSecret(HMACGetSecretInput value);
-  external AuthenticationExtensionsPaymentInputs get payment;
-  external set payment(AuthenticationExtensionsPaymentInputs value);
-  external String get appid;
-  external set appid(String value);
-  external String get appidExclude;
-  external set appidExclude(String value);
-  external bool get credProps;
-  external set credProps(bool value);
-  external AuthenticationExtensionsPRFInputs get prf;
-  external set prf(AuthenticationExtensionsPRFInputs value);
-  external AuthenticationExtensionsLargeBlobInputs get largeBlob;
-  external set largeBlob(AuthenticationExtensionsLargeBlobInputs value);
-  external bool get uvm;
-  external set uvm(bool value);
-  external AuthenticationExtensionsSupplementalPubKeysInputs
-      get supplementalPubKeys;
-  external set supplementalPubKeys(
-      AuthenticationExtensionsSupplementalPubKeysInputs value);
-}
-extension type AuthenticationExtensionsClientOutputs._(JSObject _)
-    implements JSObject {
-  external factory AuthenticationExtensionsClientOutputs({
-    bool hmacCreateSecret,
-    HMACGetSecretOutput hmacGetSecret,
-    bool appid,
-    bool appidExclude,
-    CredentialPropertiesOutput credProps,
-    AuthenticationExtensionsPRFOutputs prf,
-    AuthenticationExtensionsLargeBlobOutputs largeBlob,
-    UvmEntries uvm,
-    AuthenticationExtensionsSupplementalPubKeysOutputs supplementalPubKeys,
-  });
-
-  external bool get hmacCreateSecret;
-  external set hmacCreateSecret(bool value);
-  external HMACGetSecretOutput get hmacGetSecret;
-  external set hmacGetSecret(HMACGetSecretOutput value);
-  external bool get appid;
-  external set appid(bool value);
-  external bool get appidExclude;
-  external set appidExclude(bool value);
-  external CredentialPropertiesOutput get credProps;
-  external set credProps(CredentialPropertiesOutput value);
-  external AuthenticationExtensionsPRFOutputs get prf;
-  external set prf(AuthenticationExtensionsPRFOutputs value);
-  external AuthenticationExtensionsLargeBlobOutputs get largeBlob;
-  external set largeBlob(AuthenticationExtensionsLargeBlobOutputs value);
-  external UvmEntries get uvm;
-  external set uvm(UvmEntries value);
-  external AuthenticationExtensionsSupplementalPubKeysOutputs
-      get supplementalPubKeys;
-  external set supplementalPubKeys(
-      AuthenticationExtensionsSupplementalPubKeysOutputs value);
-}
-extension type PublicKeyCredentialDescriptor._(JSObject _) implements JSObject {
-  external factory PublicKeyCredentialDescriptor({
-    required String type,
-    required BufferSource id,
-    JSArray<JSString> transports,
-  });
-
-  external String get type;
-  external set type(String value);
-  external BufferSource get id;
-  external set id(BufferSource value);
-  external JSArray<JSString> get transports;
-  external set transports(JSArray<JSString> value);
-}
-extension type CredentialPropertiesOutput._(JSObject _) implements JSObject {
-  external factory CredentialPropertiesOutput({
-    bool rk,
-    String authenticatorDisplayName,
-  });
-
-  external bool get rk;
-  external set rk(bool value);
-  external String get authenticatorDisplayName;
-  external set authenticatorDisplayName(String value);
-}
-extension type AuthenticationExtensionsPRFValues._(JSObject _)
-    implements JSObject {
-  external factory AuthenticationExtensionsPRFValues({
-    required BufferSource first,
-    BufferSource second,
-  });
-
-  external BufferSource get first;
-  external set first(BufferSource value);
-  external BufferSource get second;
-  external set second(BufferSource value);
-}
-extension type AuthenticationExtensionsPRFInputs._(JSObject _)
-    implements JSObject {
-  external factory AuthenticationExtensionsPRFInputs({
-    AuthenticationExtensionsPRFValues eval,
-    JSObject evalByCredential,
-  });
-
-  external AuthenticationExtensionsPRFValues get eval;
-  external set eval(AuthenticationExtensionsPRFValues value);
-  external JSObject get evalByCredential;
-  external set evalByCredential(JSObject value);
-}
-extension type AuthenticationExtensionsPRFOutputs._(JSObject _)
-    implements JSObject {
-  external factory AuthenticationExtensionsPRFOutputs({
-    bool enabled,
-    AuthenticationExtensionsPRFValues results,
-  });
-
-  external bool get enabled;
-  external set enabled(bool value);
-  external AuthenticationExtensionsPRFValues get results;
-  external set results(AuthenticationExtensionsPRFValues value);
-}
-extension type AuthenticationExtensionsLargeBlobInputs._(JSObject _)
-    implements JSObject {
-  external factory AuthenticationExtensionsLargeBlobInputs({
-    String support,
-    bool read,
-    BufferSource write,
-  });
-
-  external String get support;
-  external set support(String value);
-  external bool get read;
-  external set read(bool value);
-  external BufferSource get write;
-  external set write(BufferSource value);
-}
-extension type AuthenticationExtensionsLargeBlobOutputs._(JSObject _)
-    implements JSObject {
-  external factory AuthenticationExtensionsLargeBlobOutputs({
-    bool supported,
-    JSArrayBuffer blob,
-    bool written,
-  });
-
-  external bool get supported;
-  external set supported(bool value);
-  external JSArrayBuffer get blob;
-  external set blob(JSArrayBuffer value);
-  external bool get written;
-  external set written(bool value);
-}
-extension type AuthenticationExtensionsSupplementalPubKeysInputs._(JSObject _)
-    implements JSObject {
-  external factory AuthenticationExtensionsSupplementalPubKeysInputs({
-    required JSArray<JSString> scopes,
-    String attestation,
-    JSArray<JSString> attestationFormats,
-  });
-
-  external JSArray<JSString> get scopes;
-  external set scopes(JSArray<JSString> value);
-  external String get attestation;
-  external set attestation(String value);
-  external JSArray<JSString> get attestationFormats;
-  external set attestationFormats(JSArray<JSString> value);
-}
-extension type AuthenticationExtensionsSupplementalPubKeysOutputs._(JSObject _)
-    implements JSObject {
-  external factory AuthenticationExtensionsSupplementalPubKeysOutputs(
-      {required JSArray<JSArrayBuffer> signatures});
-
-  external JSArray<JSArrayBuffer> get signatures;
-  external set signatures(JSArray<JSArrayBuffer> value);
+  set signatures(JSArray<JSArrayBuffer> value) {
+    unsupportedPlatformError();
+  }
 }

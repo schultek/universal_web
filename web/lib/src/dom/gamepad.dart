@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,11 +10,8 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../error.dart';
+import '../js_interop.dart';
 import 'dom.dart';
 
 typedef GamepadMappingType = String;
@@ -35,7 +32,7 @@ typedef GamepadHapticEffectType = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Gamepad).
-extension type Gamepad._(JSObject _) implements JSObject {
+abstract class Gamepad implements JSObject {
   /// The **`Gamepad.id`** property of the [Gamepad]
   /// interface returns a string containing some information about the
   /// controller.
@@ -54,7 +51,7 @@ extension type Gamepad._(JSObject _) implements JSObject {
   /// This information is intended to allow you to find a mapping for the
   /// controls on the
   /// device as well as display useful feedback to the user.
-  external String get id;
+  String get id;
 
   /// The **`Gamepad.index`** property of the [Gamepad]
   /// interface returns an integer that is auto-incremented to be unique for
@@ -64,7 +61,7 @@ extension type Gamepad._(JSObject _) implements JSObject {
   /// This can be used to distinguish multiple controllers; a gamepad that is
   /// disconnected
   /// and reconnected will retain the same index.
-  external int get index;
+  int get index;
 
   /// The **`Gamepad.connected`** property of the
   /// [Gamepad] interface returns a boolean indicating whether the gamepad is
@@ -72,7 +69,7 @@ extension type Gamepad._(JSObject _) implements JSObject {
   ///
   /// If the gamepad is connected, the value is `true`; if not, it is
   /// `false`.
-  external bool get connected;
+  bool get connected;
 
   /// The **`Gamepad.timestamp`** property of the
   /// [Gamepad] interface returns a [DOMHighResTimeStamp]
@@ -87,7 +84,7 @@ extension type Gamepad._(JSObject _) implements JSObject {
   /// newer values will always be greater than or equal to older values.
   ///
   /// > **Note:** This property is not currently supported anywhere.
-  external double get timestamp;
+  double get timestamp;
 
   /// The **`Gamepad.mapping`** property of the
   /// [Gamepad] interface returns a string indicating whether the browser has
@@ -100,7 +97,7 @@ extension type Gamepad._(JSObject _) implements JSObject {
   /// - "xr-standard for the
   ///   [standard XR gamepad](https://immersive-web.github.io/webxr-gamepads-module/#xr-standard-heading).
   ///   See also [XRInputSource.gamepad].
-  external GamepadMappingType get mapping;
+  GamepadMappingType get mapping;
 
   /// The **`Gamepad.axes`** property of the [Gamepad]
   /// interface returns an array representing the controls with axes present on
@@ -110,7 +107,7 @@ extension type Gamepad._(JSObject _) implements JSObject {
   /// Each entry in the array is a floating point value in the range -1.0 – 1.0,
   /// representing
   /// the axis position from the lowest value (-1.0) to the highest value (1.0).
-  external JSArray<JSNumber> get axes;
+  JSArray<JSNumber> get axes;
 
   /// The **`Gamepad.buttons`** property of the [Gamepad] interface returns an
   /// array of [gamepadButton] objects representing the
@@ -129,7 +126,7 @@ extension type Gamepad._(JSObject _) implements JSObject {
   /// are normalized to the range 0.0 – 1.0, with 0.0 representing a button that
   /// is not
   /// pressed, and 1.0 representing a button that is fully pressed.
-  external JSArray<GamepadButton> get buttons;
+  JSArray<GamepadButton> get buttons;
 }
 
 /// The **`GamepadButton`** interface defines an individual button of a gamepad
@@ -143,11 +140,11 @@ extension type Gamepad._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/GamepadButton).
-extension type GamepadButton._(JSObject _) implements JSObject {
+abstract class GamepadButton implements JSObject {
   /// The **`GamepadButton.pressed`** property of the
   /// [GamepadButton] interface returns a `boolean` indicating whether
   /// the button is currently pressed (`true`) or unpressed (`false`).
-  external bool get pressed;
+  bool get pressed;
 
   /// The **`touched`** property of the
   /// [GamepadButton] interface returns a `boolean` indicating whether
@@ -159,7 +156,7 @@ extension type GamepadButton._(JSObject _) implements JSObject {
   /// `false` otherwise. If the button is not capable of detecting touch and can
   /// only report a digital value, then it should mirror the
   /// [GamepadButton.pressed] property.
-  external bool get touched;
+  bool get touched;
 
   /// The **`GamepadButton.value`** property of the
   /// [GamepadButton] interface returns a double value used to represent the
@@ -169,7 +166,7 @@ extension type GamepadButton._(JSObject _) implements JSObject {
   /// The values are normalized to the range `0.0` — `1.0`, with
   /// `0.0` representing a button that is not pressed, and 1.0 representing a
   /// button that is fully pressed.
-  external double get value;
+  double get value;
 }
 
 /// The **`GamepadHapticActuator`** interface of the
@@ -183,44 +180,71 @@ extension type GamepadButton._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/GamepadHapticActuator).
-extension type GamepadHapticActuator._(JSObject _) implements JSObject {
+abstract class GamepadHapticActuator implements JSObject {
   /// The **`playEffect()`** method of the [GamepadHapticActuator] interface
   /// makes the hardware play a specific vibration pattern.
-  external JSPromise<JSString> playEffect(
+  JSPromise<JSString> playEffect(
     GamepadHapticEffectType type, [
     GamepadEffectParameters params,
   ]);
-  external JSPromise<JSString> reset();
+  JSPromise<JSString> reset();
 
   /// The **`pulse()`** method of the [GamepadHapticActuator] interface makes
   /// the hardware pulse at a certain intensity for a specified duration.
-  external JSPromise<JSBoolean> pulse(
+  JSPromise<JSBoolean> pulse(
     num value,
     num duration,
   );
 }
-extension type GamepadEffectParameters._(JSObject _) implements JSObject {
-  external factory GamepadEffectParameters({
-    int duration,
-    int startDelay,
-    num strongMagnitude,
-    num weakMagnitude,
-    num leftTrigger,
-    num rightTrigger,
-  });
 
-  external int get duration;
-  external set duration(int value);
-  external int get startDelay;
-  external set startDelay(int value);
-  external double get strongMagnitude;
-  external set strongMagnitude(num value);
-  external double get weakMagnitude;
-  external set weakMagnitude(num value);
-  external double get leftTrigger;
-  external set leftTrigger(num value);
-  external double get rightTrigger;
-  external set rightTrigger(num value);
+abstract class GamepadEffectParameters implements JSObject {
+  int get duration {
+    unsupportedPlatformError();
+  }
+
+  set duration(int value) {
+    unsupportedPlatformError();
+  }
+
+  int get startDelay {
+    unsupportedPlatformError();
+  }
+
+  set startDelay(int value) {
+    unsupportedPlatformError();
+  }
+
+  double get strongMagnitude {
+    unsupportedPlatformError();
+  }
+
+  set strongMagnitude(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get weakMagnitude {
+    unsupportedPlatformError();
+  }
+
+  set weakMagnitude(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get leftTrigger {
+    unsupportedPlatformError();
+  }
+
+  set leftTrigger(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get rightTrigger {
+    unsupportedPlatformError();
+  }
+
+  set rightTrigger(num value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The GamepadEvent interface of the Gamepad API contains references to
@@ -232,27 +256,21 @@ extension type GamepadEffectParameters._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/GamepadEvent).
-extension type GamepadEvent._(JSObject _) implements Event, JSObject {
-  external factory GamepadEvent(
-    String type,
-    GamepadEventInit eventInitDict,
-  );
-
+abstract class GamepadEvent implements Event, JSObject {
   /// The **`GamepadEvent.gamepad`** property of the
   /// **[GamepadEvent] interface** returns a [Gamepad]
   /// object, providing access to the associated gamepad data for fired
   /// [Window.gamepadconnected_event] and [Window.gamepaddisconnected_event]
   /// events.
-  external Gamepad get gamepad;
+  Gamepad get gamepad;
 }
-extension type GamepadEventInit._(JSObject _) implements EventInit, JSObject {
-  external factory GamepadEventInit({
-    bool bubbles,
-    bool cancelable,
-    bool composed,
-    required Gamepad gamepad,
-  });
 
-  external Gamepad get gamepad;
-  external set gamepad(Gamepad value);
+abstract class GamepadEventInit implements EventInit, JSObject {
+  Gamepad get gamepad {
+    unsupportedPlatformError();
+  }
+
+  set gamepad(Gamepad value) {
+    unsupportedPlatformError();
+  }
 }

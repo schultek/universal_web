@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,11 +10,8 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../error.dart';
+import '../js_interop.dart';
 import 'fs.dart';
 
 /// The **`StorageManager`** interface of the
@@ -27,11 +24,11 @@ import 'fs.dart';
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/StorageManager).
-extension type StorageManager._(JSObject _) implements JSObject {
+abstract class StorageManager implements JSObject {
   /// The **`persisted()`** method of the [StorageManager] interface returns a
   /// `Promise` that resolves to `true` if your site's storage bucket is
   /// persistent.
-  external JSPromise<JSBoolean> persisted();
+  JSPromise<JSBoolean> persisted();
 
   /// The **`persist()`** method of the [StorageManager] interface requests
   /// permission to use persistent storage, and returns a `Promise` that
@@ -43,7 +40,7 @@ extension type StorageManager._(JSObject _) implements JSObject {
   /// > **Note:** This method is not available in
   /// > [Web Workers](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API),
   /// > though the [StorageManager] interface is.
-  external JSPromise<JSBoolean> persist();
+  JSPromise<JSBoolean> persist();
 
   /// The **`estimate()`** method of the [StorageManager] interface asks the
   /// Storage Manager for how much storage the current
@@ -53,23 +50,30 @@ extension type StorageManager._(JSObject _) implements JSObject {
   /// This method operates asynchronously, so it returns a `Promise` which
   /// resolves once the information is available. The promise's fulfillment
   /// handler is called with an object containing the usage and quota data.
-  external JSPromise<StorageEstimate> estimate();
+  JSPromise<StorageEstimate> estimate();
 
   /// The **`getDirectory()`** method of the [StorageManager] interface is used
   /// to obtain a reference to a [FileSystemDirectoryHandle] object allowing
   /// access to a directory and its contents, stored in the
   /// [origin private file system](https://developer.mozilla.org/en-US/docs/Web/API/File_System_API/Origin_private_file_system)
   /// (OPFS).
-  external JSPromise<FileSystemDirectoryHandle> getDirectory();
+  JSPromise<FileSystemDirectoryHandle> getDirectory();
 }
-extension type StorageEstimate._(JSObject _) implements JSObject {
-  external factory StorageEstimate({
-    int usage,
-    int quota,
-  });
 
-  external int get usage;
-  external set usage(int value);
-  external int get quota;
-  external set quota(int value);
+abstract class StorageEstimate implements JSObject {
+  int get usage {
+    unsupportedPlatformError();
+  }
+
+  set usage(int value) {
+    unsupportedPlatformError();
+  }
+
+  int get quota {
+    unsupportedPlatformError();
+  }
+
+  set quota(int value) {
+    unsupportedPlatformError();
+  }
 }

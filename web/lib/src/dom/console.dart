@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,13 +10,12 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
+import '../error.dart';
+import '../js_interop.dart';
 
-import 'dart:js_interop';
-
-@JS()
-external $Console get console;
+$Console get console {
+  unsupportedPlatformError();
+}
 
 /// The **`console`** object provides access to the debugging console (e.g., the
 /// [Web console](https://firefox-source-docs.mozilla.org/devtools-user/web_console/index.html)
@@ -44,38 +43,36 @@ external $Console get console;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/console).
-@JS('console')
-extension type $Console._(JSObject _) implements JSObject {
-  @JS('assert')
-  external void assert_(
+abstract class $Console implements JSObject {
+  void assert_(
     JSAny? data, [
     bool condition,
   ]);
-  external void clear();
-  external void debug(JSAny? data);
-  external void error(JSAny? data);
-  external void info(JSAny? data);
-  external void log(JSAny? data);
-  external void table([
+  void clear();
+  void debug(JSAny? data);
+  void error(JSAny? data);
+  void info(JSAny? data);
+  void log(JSAny? data);
+  void table([
     JSAny? tabularData,
     JSArray<JSString> properties,
   ]);
-  external void trace(JSAny? data);
-  external void warn(JSAny? data);
-  external void dir([
+  void trace(JSAny? data);
+  void warn(JSAny? data);
+  void dir([
     JSAny? item,
     JSObject? options,
   ]);
-  external void dirxml(JSAny? data);
-  external void count([String label]);
-  external void countReset([String label]);
-  external void group(JSAny? data);
-  external void groupCollapsed(JSAny? data);
-  external void groupEnd();
-  external void time([String label]);
-  external void timeLog(
+  void dirxml(JSAny? data);
+  void count([String label]);
+  void countReset([String label]);
+  void group(JSAny? data);
+  void groupCollapsed(JSAny? data);
+  void groupEnd();
+  void time([String label]);
+  void timeLog(
     JSAny? data, [
     String label,
   ]);
-  external void timeEnd([String label]);
+  void timeEnd([String label]);
 }

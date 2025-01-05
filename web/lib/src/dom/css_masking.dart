@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,12 +10,7 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
-import 'dom.dart';
+import '../js_interop.dart';
 import 'svg.dart';
 
 /// The **`SVGClipPathElement`** interface provides access to the properties of
@@ -25,15 +20,7 @@ import 'svg.dart';
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGClipPathElement).
-extension type SVGClipPathElement._(JSObject _)
-    implements SVGElement, JSObject {
-  /// Creates an [SVGClipPathElement] using the tag 'clipPath'.
-  SVGClipPathElement()
-      : _ = document.createElementNS(
-          'http://www.w3.org/2000/svg',
-          'clipPath',
-        );
-
+abstract class SVGClipPathElement implements SVGElement, JSObject {
   /// The read-only **`clipPathUnits`** property of the [SVGClipPathElement]
   /// interface reflects the `clipPathUnits` attribute of a  element which
   /// defines the coordinate system to use for the content of the element.
@@ -41,12 +28,12 @@ extension type SVGClipPathElement._(JSObject _)
   /// > **Note:** Although this property is read-only, it is merely a container
   /// > for two values you can modify, [SVGAnimatedEnumeration.baseVal] and
   /// > [SVGAnimatedEnumeration.animVal].
-  external SVGAnimatedEnumeration get clipPathUnits;
+  SVGAnimatedEnumeration get clipPathUnits;
 
   /// The read-only **`transform`** property of the [SVGClipPathElement]
   /// interface reflects the `transform` attribute of a  element, that is a list
   /// of transformations applied to the element.
-  external SVGAnimatedTransformList get transform;
+  SVGAnimatedTransformList get transform;
 }
 
 /// The **`SVGMaskElement`** interface provides access to the properties of
@@ -56,14 +43,7 @@ extension type SVGClipPathElement._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGMaskElement).
-extension type SVGMaskElement._(JSObject _) implements SVGElement, JSObject {
-  /// Creates an [SVGMaskElement] using the tag 'mask'.
-  SVGMaskElement()
-      : _ = document.createElementNS(
-          'http://www.w3.org/2000/svg',
-          'mask',
-        );
-
+abstract class SVGMaskElement implements SVGElement, JSObject {
   /// The read-only **`maskUnits`** property of the [SVGMaskElement] interface
   /// reflects the `maskUnits` attribute of a  element which defines the
   /// coordinate system to use for the mask of the element.
@@ -71,7 +51,7 @@ extension type SVGMaskElement._(JSObject _) implements SVGElement, JSObject {
   /// > **Note:** Although this property is read-only, it is merely a container
   /// > for two values you can modify, [SVGAnimatedEnumeration.baseVal] and
   /// > [SVGAnimatedEnumeration.animVal].
-  external SVGAnimatedEnumeration get maskUnits;
+  SVGAnimatedEnumeration get maskUnits;
 
   /// The read-only **`maskContentUnits`** property of the [SVGMaskElement]
   /// interface reflects the `maskContentUnits` attribute. It indicates which
@@ -80,7 +60,7 @@ extension type SVGMaskElement._(JSObject _) implements SVGElement, JSObject {
   /// > **Note:** Although this property is read-only, it is merely a container
   /// > for two values you can modify, [SVGAnimatedEnumeration.baseVal] and
   /// > [SVGAnimatedEnumeration.animVal].
-  external SVGAnimatedEnumeration get maskContentUnits;
+  SVGAnimatedEnumeration get maskContentUnits;
 
   /// The read-only **`x`** property of the [SVGMaskElement] interface returns
   /// an [SVGAnimatedLength] object containing the value of the `x` attribute of
@@ -90,7 +70,7 @@ extension type SVGMaskElement._(JSObject _) implements SVGElement, JSObject {
   /// > **Note:** Although this property is read-only, it is merely a container
   /// > for two values you can modify, [SVGAnimatedLength.baseVal] and
   /// > [SVGAnimatedLength.animVal].
-  external SVGAnimatedLength get x;
+  SVGAnimatedLength get x;
 
   /// The read-only **`y`** property of the [SVGMaskElement] interface returns
   /// an [SVGAnimatedLength] object containing the value of the `y` attribute of
@@ -100,7 +80,7 @@ extension type SVGMaskElement._(JSObject _) implements SVGElement, JSObject {
   /// > **Note:** Although this property is read-only, it is merely a container
   /// > for two values you can modify, [SVGAnimatedLength.baseVal] and
   /// > [SVGAnimatedLength.animVal].
-  external SVGAnimatedLength get y;
+  SVGAnimatedLength get y;
 
   /// The read-only **`width`** property of the [SVGMaskElement] interface
   /// returns an [SVGAnimatedLength] object containing the value of the `width`
@@ -109,7 +89,7 @@ extension type SVGMaskElement._(JSObject _) implements SVGElement, JSObject {
   /// > **Note:** Although this property is read-only, it is merely a container
   /// > for two values you can modify, [SVGAnimatedLength.baseVal] and
   /// > [SVGAnimatedLength.animVal].
-  external SVGAnimatedLength get width;
+  SVGAnimatedLength get width;
 
   /// The read-only **`height`** property of the [SVGMaskElement] interface
   /// returns an [SVGAnimatedLength] object containing the value of the `height`
@@ -118,5 +98,5 @@ extension type SVGMaskElement._(JSObject _) implements SVGElement, JSObject {
   /// > **Note:** Although this property is read-only, it is merely a container
   /// > for two values you can modify, [SVGAnimatedLength.baseVal] and
   /// > [SVGAnimatedLength.animVal].
-  external SVGAnimatedLength get height;
+  SVGAnimatedLength get height;
 }

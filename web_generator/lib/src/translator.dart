@@ -673,6 +673,8 @@ class Translator {
     browserCompatData = BrowserCompatData.read(generateAll: generateAll);
   }
 
+  late final unsupportedBody = code.Code.scope((s) => s(code.Reference('unsupportedPlatformError', '../error.dart')) + '();');
+
   void _addOrUpdateInterfaceLike(idl.Interfacelike interfacelike) {
     final name = interfacelike.name;
     if (_interfacelikes.containsKey(name)) {
@@ -830,10 +832,11 @@ class Translator {
   code.Method _topLevelGetter(_RawType type, String getterName) =>
       code.Method((b) => b
         //..annotations.addAll(_jsOverride('', alwaysEmit: true))
-        ..external = true
+        //..external = true
         ..returns = _typeReference(type, returnType: true)
         ..name = getterName
-        ..type = code.MethodType.getter);
+        ..type = code.MethodType.getter
+        ..body = unsupportedBody);
 
   /// Given a raw type, convert it to the Dart type that will be emitted by the
   /// translator.
@@ -1027,9 +1030,16 @@ class Translator {
     final memberName = operation.name;
     // The IDL may return the value that is set. Dart doesn't let us use any
     // type besides `void` for `[]=`, so we ignore the return value.
-    final returnType = memberName.name == 'operator []='
+    var returnType = memberName.name == 'operator []='
         ? code.TypeReference((b) => b..symbol = 'void')
         : _typeReference(operation.returnType, returnType: true);
+
+    if (memberName.name == 'namedItem' && returnType.symbol == 'JSObject' 
+      && (operation.mdnProperty?.docs.contains('HTMLFormControlsCollection.namedItem') ?? false)) {
+      // Fix for HTMLFormControlsCollection.namedItem.
+      returnType = code.TypeReference((b) => b..symbol = 'Element');
+    }
+
     return _overridableMember<code.Method>(
       operation,
       (requiredParameters, optionalParameters) => code.Method((b) => b
@@ -1040,8 +1050,11 @@ class Translator {
         ..name = memberName.name
         ..docs.addAll(operation.mdnProperty?.formattedDocs ?? [])
         ..requiredParameters.addAll(requiredParameters)
-        ..optionalParameters.addAll(optionalParameters)
-        ..body = operation.isStatic ? const code.Code('throw UnimplementedError();') : null),
+        ..optionalParameters.addAll(operation.isStatic ? optionalParameters.map((p) => p.rebuild((b) {
+          final s = p.type?.symbol ?? '';
+          b.type = code.Reference(s.endsWith('?') ? s : '$s?', p.type?.url);
+        })).toList() : optionalParameters)
+        ..body = operation.isStatic ? unsupportedBody : null),
     );
   }
 
@@ -1057,7 +1070,13 @@ class Translator {
     final docs =
         mdnInterface?.propertyFor(name, isStatic: isStatic)?.formattedDocs ??
             [];
-    final body = mdnInterface == null || isStatic ? const code.Code('throw UnimplementedError();') : null;
+    final body = mdnInterface == null || isStatic ? unsupportedBody : null;
+
+    if (mdnInterface?.name == 'BeforeUnloadEvent' && name == 'returnValue') {
+      // Fix for BeforeUnloadEvent.returnValue.
+      getGetterType = () => code.TypeReference((b) => b..symbol = 'bool');
+      getSetterType = () => code.TypeReference((b) => b..symbol = 'bool');
+    }
 
     return [
       code.Method(
@@ -1138,11 +1157,12 @@ class Translator {
         code.Method(
           (b) => b
             //..annotations.addAll(_jsOverride(constant.name.jsOverride))
-            ..external = true
+            //..external = true
             ..static = true
             ..returns = _typeReference(constant.type, returnType: true)
             ..type = code.MethodType.getter
-            ..name = constant.name.name,
+            ..name = constant.name.name
+            ..body = unsupportedBody,
         )
       ]
     );

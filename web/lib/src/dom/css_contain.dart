@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,11 +10,8 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../error.dart';
+import '../js_interop.dart';
 import 'dom.dart';
 
 /// The **`ContentVisibilityAutoStateChangeEvent`** interface is the event
@@ -39,29 +36,23 @@ import 'dom.dart';
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ContentVisibilityAutoStateChangeEvent).
-extension type ContentVisibilityAutoStateChangeEvent._(JSObject _)
+abstract class ContentVisibilityAutoStateChangeEvent
     implements Event, JSObject {
-  external factory ContentVisibilityAutoStateChangeEvent(
-    String type, [
-    ContentVisibilityAutoStateChangeEventInit eventInitDict,
-  ]);
-
   /// The `skipped` read-only property of the
   /// [ContentVisibilityAutoStateChangeEvent] interface returns `true` if the
   /// user agent [skips the element's
   /// contents](/en-US/docs/Web/CSS/CSS_containment#skips_its_contents), or
   /// `false` otherwise.
-  external bool get skipped;
+  bool get skipped;
 }
-extension type ContentVisibilityAutoStateChangeEventInit._(JSObject _)
-    implements EventInit, JSObject {
-  external factory ContentVisibilityAutoStateChangeEventInit({
-    bool bubbles,
-    bool cancelable,
-    bool composed,
-    bool skipped,
-  });
 
-  external bool get skipped;
-  external set skipped(bool value);
+abstract class ContentVisibilityAutoStateChangeEventInit
+    implements EventInit, JSObject {
+  bool get skipped {
+    unsupportedPlatformError();
+  }
+
+  set skipped(bool value) {
+    unsupportedPlatformError();
+  }
 }

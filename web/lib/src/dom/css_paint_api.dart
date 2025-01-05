@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,27 +10,24 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../error.dart';
+import '../js_interop.dart';
 import 'geometry.dart';
 import 'html.dart';
 
-extension type PaintRenderingContext2D._(JSObject _) implements JSObject {
-  external void save();
-  external void restore();
-  external void scale(
+abstract class PaintRenderingContext2D implements JSObject {
+  void save();
+  void restore();
+  void scale(
     num x,
     num y,
   );
-  external void rotate(num angle);
-  external void translate(
+  void rotate(num angle);
+  void translate(
     num x,
     num y,
   );
-  external void transform(
+  void transform(
     num a,
     num b,
     num c,
@@ -38,8 +35,8 @@ extension type PaintRenderingContext2D._(JSObject _) implements JSObject {
     num e,
     num f,
   );
-  external DOMMatrix getTransform();
-  external void setTransform([
+  DOMMatrix getTransform();
+  void setTransform([
     JSAny aOrTransform,
     num b,
     num c,
@@ -47,14 +44,14 @@ extension type PaintRenderingContext2D._(JSObject _) implements JSObject {
     num e,
     num f,
   ]);
-  external void resetTransform();
-  external CanvasGradient createLinearGradient(
+  void resetTransform();
+  CanvasGradient createLinearGradient(
     num x0,
     num y0,
     num x1,
     num y1,
   );
-  external CanvasGradient createRadialGradient(
+  CanvasGradient createRadialGradient(
     num x0,
     num y0,
     num r0,
@@ -62,50 +59,50 @@ extension type PaintRenderingContext2D._(JSObject _) implements JSObject {
     num y1,
     num r1,
   );
-  external CanvasPattern? createPattern(
+  CanvasPattern? createPattern(
     CanvasImageSource image,
     String repetition,
   );
-  external void clearRect(
+  void clearRect(
     num x,
     num y,
     num w,
     num h,
   );
-  external void fillRect(
+  void fillRect(
     num x,
     num y,
     num w,
     num h,
   );
-  external void strokeRect(
+  void strokeRect(
     num x,
     num y,
     num w,
     num h,
   );
-  external void beginPath();
-  external void fill([
+  void beginPath();
+  void fill([
     JSAny fillRuleOrPath,
     CanvasFillRule fillRule,
   ]);
-  external void stroke([Path2D path]);
-  external void clip([
+  void stroke([Path2D path]);
+  void clip([
     JSAny fillRuleOrPath,
     CanvasFillRule fillRule,
   ]);
-  external bool isPointInPath(
+  bool isPointInPath(
     JSAny pathOrX,
     num xOrY, [
     JSAny fillRuleOrY,
     CanvasFillRule fillRule,
   ]);
-  external bool isPointInStroke(
+  bool isPointInStroke(
     JSAny pathOrX,
     num xOrY, [
     num y,
   ]);
-  external void drawImage(
+  void drawImage(
     CanvasImageSource image,
     num dxOrSx,
     num dyOrSy, [
@@ -116,40 +113,135 @@ extension type PaintRenderingContext2D._(JSObject _) implements JSObject {
     num dw,
     num dh,
   ]);
-  external void setLineDash(JSArray<JSNumber> segments);
-  external JSArray<JSNumber> getLineDash();
-  external double get globalAlpha;
-  external set globalAlpha(num value);
-  external String get globalCompositeOperation;
-  external set globalCompositeOperation(String value);
-  external bool get imageSmoothingEnabled;
-  external set imageSmoothingEnabled(bool value);
-  external ImageSmoothingQuality get imageSmoothingQuality;
-  external set imageSmoothingQuality(ImageSmoothingQuality value);
-  external JSAny get strokeStyle;
-  external set strokeStyle(JSAny value);
-  external JSAny get fillStyle;
-  external set fillStyle(JSAny value);
-  external double get shadowOffsetX;
-  external set shadowOffsetX(num value);
-  external double get shadowOffsetY;
-  external set shadowOffsetY(num value);
-  external double get shadowBlur;
-  external set shadowBlur(num value);
-  external String get shadowColor;
-  external set shadowColor(String value);
-  external double get lineWidth;
-  external set lineWidth(num value);
-  external CanvasLineCap get lineCap;
-  external set lineCap(CanvasLineCap value);
-  external CanvasLineJoin get lineJoin;
-  external set lineJoin(CanvasLineJoin value);
-  external double get miterLimit;
-  external set miterLimit(num value);
-  external double get lineDashOffset;
-  external set lineDashOffset(num value);
+  void setLineDash(JSArray<JSNumber> segments);
+  JSArray<JSNumber> getLineDash();
+  double get globalAlpha {
+    unsupportedPlatformError();
+  }
+
+  set globalAlpha(num value) {
+    unsupportedPlatformError();
+  }
+
+  String get globalCompositeOperation {
+    unsupportedPlatformError();
+  }
+
+  set globalCompositeOperation(String value) {
+    unsupportedPlatformError();
+  }
+
+  bool get imageSmoothingEnabled {
+    unsupportedPlatformError();
+  }
+
+  set imageSmoothingEnabled(bool value) {
+    unsupportedPlatformError();
+  }
+
+  ImageSmoothingQuality get imageSmoothingQuality {
+    unsupportedPlatformError();
+  }
+
+  set imageSmoothingQuality(ImageSmoothingQuality value) {
+    unsupportedPlatformError();
+  }
+
+  JSAny get strokeStyle {
+    unsupportedPlatformError();
+  }
+
+  set strokeStyle(JSAny value) {
+    unsupportedPlatformError();
+  }
+
+  JSAny get fillStyle {
+    unsupportedPlatformError();
+  }
+
+  set fillStyle(JSAny value) {
+    unsupportedPlatformError();
+  }
+
+  double get shadowOffsetX {
+    unsupportedPlatformError();
+  }
+
+  set shadowOffsetX(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get shadowOffsetY {
+    unsupportedPlatformError();
+  }
+
+  set shadowOffsetY(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get shadowBlur {
+    unsupportedPlatformError();
+  }
+
+  set shadowBlur(num value) {
+    unsupportedPlatformError();
+  }
+
+  String get shadowColor {
+    unsupportedPlatformError();
+  }
+
+  set shadowColor(String value) {
+    unsupportedPlatformError();
+  }
+
+  double get lineWidth {
+    unsupportedPlatformError();
+  }
+
+  set lineWidth(num value) {
+    unsupportedPlatformError();
+  }
+
+  CanvasLineCap get lineCap {
+    unsupportedPlatformError();
+  }
+
+  set lineCap(CanvasLineCap value) {
+    unsupportedPlatformError();
+  }
+
+  CanvasLineJoin get lineJoin {
+    unsupportedPlatformError();
+  }
+
+  set lineJoin(CanvasLineJoin value) {
+    unsupportedPlatformError();
+  }
+
+  double get miterLimit {
+    unsupportedPlatformError();
+  }
+
+  set miterLimit(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get lineDashOffset {
+    unsupportedPlatformError();
+  }
+
+  set lineDashOffset(num value) {
+    unsupportedPlatformError();
+  }
 }
-extension type PaintSize._(JSObject _) implements JSObject {
-  external double get width;
-  external double get height;
+
+abstract class PaintSize implements JSObject {
+  double get width {
+    unsupportedPlatformError();
+  }
+
+  double get height {
+    unsupportedPlatformError();
+  }
 }

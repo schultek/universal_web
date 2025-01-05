@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,20 +10,23 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
+import '../error.dart';
+import '../js_interop.dart';
 
-import 'dart:js_interop';
+abstract class AttributionReportingRequestOptions implements JSObject {
+  bool get eventSourceEligible {
+    unsupportedPlatformError();
+  }
 
-extension type AttributionReportingRequestOptions._(JSObject _)
-    implements JSObject {
-  external factory AttributionReportingRequestOptions({
-    required bool eventSourceEligible,
-    required bool triggerEligible,
-  });
+  set eventSourceEligible(bool value) {
+    unsupportedPlatformError();
+  }
 
-  external bool get eventSourceEligible;
-  external set eventSourceEligible(bool value);
-  external bool get triggerEligible;
-  external set triggerEligible(bool value);
+  bool get triggerEligible {
+    unsupportedPlatformError();
+  }
+
+  set triggerEligible(bool value) {
+    unsupportedPlatformError();
+  }
 }

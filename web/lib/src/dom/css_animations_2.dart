@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,11 +10,7 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../js_interop.dart';
 import 'web_animations.dart';
 
 /// The **`CSSAnimation`** interface of the [Web Animations API] represents an
@@ -24,11 +20,11 @@ import 'web_animations.dart';
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSAnimation).
-extension type CSSAnimation._(JSObject _) implements Animation, JSObject {
+abstract class CSSAnimation implements Animation, JSObject {
   /// The **`animationName`** property of the
   /// [CSSAnimation] interface returns the . This
   /// specifies one or more keyframe at-rules which describe the animation
   /// applied to the
   /// element.
-  external String get animationName;
+  String get animationName;
 }

@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,29 +10,38 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../error.dart';
+import '../js_interop.dart';
 import 'dom.dart';
 import 'html.dart';
 
 typedef SchedulerPostTaskCallback = JSFunction;
 typedef TaskPriority = String;
-extension type SchedulerPostTaskOptions._(JSObject _) implements JSObject {
-  external factory SchedulerPostTaskOptions({
-    AbortSignal signal,
-    TaskPriority priority,
-    int delay,
-  });
 
-  external AbortSignal get signal;
-  external set signal(AbortSignal value);
-  external TaskPriority get priority;
-  external set priority(TaskPriority value);
-  external int get delay;
-  external set delay(int value);
+abstract class SchedulerPostTaskOptions implements JSObject {
+  AbortSignal get signal {
+    unsupportedPlatformError();
+  }
+
+  set signal(AbortSignal value) {
+    unsupportedPlatformError();
+  }
+
+  TaskPriority get priority {
+    unsupportedPlatformError();
+  }
+
+  set priority(TaskPriority value) {
+    unsupportedPlatformError();
+  }
+
+  int get delay {
+    unsupportedPlatformError();
+  }
+
+  set delay(int value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`Scheduler`** interface of the
@@ -47,7 +56,7 @@ extension type SchedulerPostTaskOptions._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Scheduler).
-extension type Scheduler._(JSObject _) implements JSObject {
+abstract class Scheduler implements JSObject {
   /// The **`postTask()`** method of the [Scheduler] interface is used for
   /// adding tasks to be
   /// [scheduled](https://developer.mozilla.org/en-US/docs/Web/API/Prioritized_Task_Scheduling_API)
@@ -82,7 +91,7 @@ extension type Scheduler._(JSObject _) implements JSObject {
   /// If a delay is specified and greater than 0, then the execution of the task
   /// will be delayed for at least that many milliseconds.
   /// Otherwise the task is immediately scheduled for prioritization.
-  external JSPromise<JSAny?> postTask(
+  JSPromise<JSAny?> postTask(
     SchedulerPostTaskCallback callback, [
     SchedulerPostTaskOptions options,
   ]);
@@ -96,13 +105,7 @@ extension type Scheduler._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/TaskPriorityChangeEvent).
-extension type TaskPriorityChangeEvent._(JSObject _)
-    implements Event, JSObject {
-  external factory TaskPriorityChangeEvent(
-    String type,
-    TaskPriorityChangeEventInit priorityChangeEventInitDict,
-  );
-
+abstract class TaskPriorityChangeEvent implements Event, JSObject {
   /// The readonly **`previousPriority`** property of the
   /// [TaskPriorityChangeEvent] interface returns the priority of the
   /// corresponding [TaskSignal] before it was changed and this
@@ -114,25 +117,27 @@ extension type TaskPriorityChangeEvent._(JSObject _)
   /// argument `options.previous`. <!-- link? -->
   ///
   /// The new priority of the task can be read from `event.target.priority`.
-  external TaskPriority get previousPriority;
+  TaskPriority get previousPriority;
 }
-extension type TaskPriorityChangeEventInit._(JSObject _)
-    implements EventInit, JSObject {
-  external factory TaskPriorityChangeEventInit({
-    bool bubbles,
-    bool cancelable,
-    bool composed,
-    required TaskPriority previousPriority,
-  });
 
-  external TaskPriority get previousPriority;
-  external set previousPriority(TaskPriority value);
+abstract class TaskPriorityChangeEventInit implements EventInit, JSObject {
+  TaskPriority get previousPriority {
+    unsupportedPlatformError();
+  }
+
+  set previousPriority(TaskPriority value) {
+    unsupportedPlatformError();
+  }
 }
-extension type TaskControllerInit._(JSObject _) implements JSObject {
-  external factory TaskControllerInit({TaskPriority priority});
 
-  external TaskPriority get priority;
-  external set priority(TaskPriority value);
+abstract class TaskControllerInit implements JSObject {
+  TaskPriority get priority {
+    unsupportedPlatformError();
+  }
+
+  set priority(TaskPriority value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`TaskController`** interface of the
@@ -166,10 +171,7 @@ extension type TaskControllerInit._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/TaskController).
-extension type TaskController._(JSObject _)
-    implements AbortController, JSObject {
-  external factory TaskController([TaskControllerInit init]);
-
+abstract class TaskController implements AbortController, JSObject {
   /// The **`setPriority()`** method of the [TaskController] interface can be
   /// called to set a new
   /// [priority](https://developer.mozilla.org/en-US/docs/Web/API/Prioritized_Task_Scheduling_API#task_priorities)
@@ -188,7 +190,7 @@ extension type TaskController._(JSObject _)
   /// Note that task priority can only be changed for
   /// [tasks with mutable priorities](https://developer.mozilla.org/en-US/docs/Web/API/Prioritized_Task_Scheduling_API#mutable_and_immutable_task_priority).
   /// If the task is immutable, the function call is ignored.
-  external void setPriority(TaskPriority priority);
+  void setPriority(TaskPriority priority);
 }
 
 /// The **`TaskSignal`** interface of the
@@ -218,7 +220,7 @@ extension type TaskController._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/TaskSignal).
-extension type TaskSignal._(JSObject _) implements AbortSignal, JSObject {
+abstract class TaskSignal implements AbortSignal, JSObject {
   /// The read-only **`priority`** property of the [TaskSignal] interface
   /// indicates the signal
   /// [priority](https://developer.mozilla.org/en-US/docs/Web/API/Prioritized_Task_Scheduling_API#task_priorities).
@@ -235,7 +237,7 @@ extension type TaskSignal._(JSObject _) implements AbortSignal, JSObject {
   /// this value is used to set the initial task priority and later to change
   /// it.
   /// Tasks with an immutable priority will ignore the value.
-  external TaskPriority get priority;
-  external EventHandler get onprioritychange;
-  external set onprioritychange(EventHandler value);
+  TaskPriority get priority;
+  EventHandler get onprioritychange;
+  set onprioritychange(EventHandler value);
 }

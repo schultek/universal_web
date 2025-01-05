@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,15 +10,12 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../js_interop.dart';
 import 'webgl1.dart';
 
-extension type WebGLTimerQueryEXT._(JSObject _) implements JSObject {}
-extension type EXT_disjoint_timer_query._(JSObject _) implements JSObject {
+abstract class WebGLTimerQueryEXT implements JSObject {}
+
+abstract class EXT_disjoint_timer_query implements JSObject {
   static const GLenum QUERY_COUNTER_BITS_EXT = 34916;
 
   static const GLenum CURRENT_QUERY_EXT = 34917;
@@ -33,23 +30,23 @@ extension type EXT_disjoint_timer_query._(JSObject _) implements JSObject {
 
   static const GLenum GPU_DISJOINT_EXT = 36795;
 
-  external WebGLTimerQueryEXT? createQueryEXT();
-  external void deleteQueryEXT(WebGLTimerQueryEXT? query);
-  external bool isQueryEXT(WebGLTimerQueryEXT? query);
-  external void beginQueryEXT(
+  WebGLTimerQueryEXT? createQueryEXT();
+  void deleteQueryEXT(WebGLTimerQueryEXT? query);
+  bool isQueryEXT(WebGLTimerQueryEXT? query);
+  void beginQueryEXT(
     GLenum target,
     WebGLTimerQueryEXT query,
   );
-  external void endQueryEXT(GLenum target);
-  external void queryCounterEXT(
+  void endQueryEXT(GLenum target);
+  void queryCounterEXT(
     WebGLTimerQueryEXT query,
     GLenum target,
   );
-  external JSAny? getQueryEXT(
+  JSAny? getQueryEXT(
     GLenum target,
     GLenum pname,
   );
-  external JSAny? getQueryObjectEXT(
+  JSAny? getQueryObjectEXT(
     WebGLTimerQueryEXT query,
     GLenum pname,
   );

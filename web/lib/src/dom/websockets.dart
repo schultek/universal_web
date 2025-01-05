@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,11 +10,8 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../error.dart';
+import '../js_interop.dart';
 import 'dom.dart';
 import 'html.dart';
 
@@ -33,12 +30,7 @@ typedef BinaryType = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket).
-extension type WebSocket._(JSObject _) implements EventTarget, JSObject {
-  external factory WebSocket(
-    String url, [
-    JSAny protocols,
-  ]);
-
+abstract class WebSocket implements EventTarget, JSObject {
   static const int CONNECTING = 0;
 
   static const int OPEN = 1;
@@ -57,7 +49,7 @@ extension type WebSocket._(JSObject _) implements EventTarget, JSObject {
   /// > before starting that closing handshake; even if the user agent is still
   /// > busy sending those messages, the handshake will only start after the
   /// > messages are sent.
-  external void close([
+  void close([
     int code,
     String reason,
   ]);
@@ -73,15 +65,15 @@ extension type WebSocket._(JSObject _) implements EventTarget, JSObject {
   /// connection is in the `CONNECTING` state. If you call `send()` when the
   /// connection is in the `CLOSING` or `CLOSED` states, the browser will
   /// silently discard the data.
-  external void send(JSAny data);
+  void send(JSAny data);
 
   /// The **`WebSocket.url`** read-only property returns the absolute
   /// URL of the [WebSocket] as resolved by the constructor.
-  external String get url;
+  String get url;
 
   /// The **`WebSocket.readyState`** read-only property returns the
   /// current state of the [WebSocket] connection.
-  external int get readyState;
+  int get readyState;
 
   /// The **`WebSocket.bufferedAmount`** read-only property returns
   /// the number of bytes of data that have been queued using calls to
@@ -94,33 +86,33 @@ extension type WebSocket._(JSObject _) implements EventTarget, JSObject {
   /// calling
   /// [`send()`](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/send),
   /// this will continue to climb.
-  external int get bufferedAmount;
-  external EventHandler get onopen;
-  external set onopen(EventHandler value);
-  external EventHandler get onerror;
-  external set onerror(EventHandler value);
-  external EventHandler get onclose;
-  external set onclose(EventHandler value);
+  int get bufferedAmount;
+  EventHandler get onopen;
+  set onopen(EventHandler value);
+  EventHandler get onerror;
+  set onerror(EventHandler value);
+  EventHandler get onclose;
+  set onclose(EventHandler value);
 
   /// The **`WebSocket.extensions`** read-only property returns the
   /// extensions selected by the server. This is currently only the empty string
   /// or a list of
   /// extensions as negotiated by the connection.
-  external String get extensions;
+  String get extensions;
 
   /// The **`WebSocket.protocol`** read-only property returns the
   /// name of the sub-protocol the server selected; this will be one of the
   /// strings specified
   /// in the `protocols` parameter when creating the [WebSocket]
   /// object, or the empty string if no connection is established.
-  external String get protocol;
-  external EventHandler get onmessage;
-  external set onmessage(EventHandler value);
+  String get protocol;
+  EventHandler get onmessage;
+  set onmessage(EventHandler value);
 
   /// The **`WebSocket.binaryType`** property controls the type of
   /// binary data being received over the WebSocket connection.
-  external BinaryType get binaryType;
-  external set binaryType(BinaryType value);
+  BinaryType get binaryType;
+  set binaryType(BinaryType value);
 }
 
 /// A `CloseEvent` is sent to clients using  when the connection is closed. This
@@ -131,42 +123,46 @@ extension type WebSocket._(JSObject _) implements EventTarget, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CloseEvent).
-extension type CloseEvent._(JSObject _) implements Event, JSObject {
-  external factory CloseEvent(
-    String type, [
-    CloseEventInit eventInitDict,
-  ]);
-
+abstract class CloseEvent implements Event, JSObject {
   /// The **`wasClean`** read-only property of the [CloseEvent] interface
   /// returns `true` if the connection closed cleanly.
-  external bool get wasClean;
+  bool get wasClean;
 
   /// The **`code`** read-only property of the [CloseEvent] interface returns a
   /// [WebSocket connection close code](https://www.rfc-editor.org/rfc/rfc6455.html#section-7.1.5)
   /// indicating the reason the server gave for closing the connection.
-  external int get code;
+  int get code;
 
   /// The **`reason`** read-only property of the [CloseEvent] interface returns
   /// the
   /// [WebSocket connection close reason](https://www.rfc-editor.org/rfc/rfc6455.html#section-7.1.6)
   /// the server gave for closing the connection; that is, a concise
   /// human-readable prose explanation for the closure.
-  external String get reason;
+  String get reason;
 }
-extension type CloseEventInit._(JSObject _) implements EventInit, JSObject {
-  external factory CloseEventInit({
-    bool bubbles,
-    bool cancelable,
-    bool composed,
-    bool wasClean,
-    int code,
-    String reason,
-  });
 
-  external bool get wasClean;
-  external set wasClean(bool value);
-  external int get code;
-  external set code(int value);
-  external String get reason;
-  external set reason(String value);
+abstract class CloseEventInit implements EventInit, JSObject {
+  bool get wasClean {
+    unsupportedPlatformError();
+  }
+
+  set wasClean(bool value) {
+    unsupportedPlatformError();
+  }
+
+  int get code {
+    unsupportedPlatformError();
+  }
+
+  set code(int value) {
+    unsupportedPlatformError();
+  }
+
+  String get reason {
+    unsupportedPlatformError();
+  }
+
+  set reason(String value) {
+    unsupportedPlatformError();
+  }
 }

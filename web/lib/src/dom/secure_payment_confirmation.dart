@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,51 +10,90 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../error.dart';
+import '../js_interop.dart';
 import 'payment_request.dart';
 
-extension type AuthenticationExtensionsPaymentInputs._(JSObject _)
-    implements JSObject {
-  external factory AuthenticationExtensionsPaymentInputs({
-    bool isPayment,
-    String rpId,
-    String topOrigin,
-    String payeeName,
-    String payeeOrigin,
-    PaymentCurrencyAmount total,
-    PaymentCredentialInstrument instrument,
-  });
+abstract class AuthenticationExtensionsPaymentInputs implements JSObject {
+  bool get isPayment {
+    unsupportedPlatformError();
+  }
 
-  external bool get isPayment;
-  external set isPayment(bool value);
-  external String get rpId;
-  external set rpId(String value);
-  external String get topOrigin;
-  external set topOrigin(String value);
-  external String get payeeName;
-  external set payeeName(String value);
-  external String get payeeOrigin;
-  external set payeeOrigin(String value);
-  external PaymentCurrencyAmount get total;
-  external set total(PaymentCurrencyAmount value);
-  external PaymentCredentialInstrument get instrument;
-  external set instrument(PaymentCredentialInstrument value);
+  set isPayment(bool value) {
+    unsupportedPlatformError();
+  }
+
+  String get rpId {
+    unsupportedPlatformError();
+  }
+
+  set rpId(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get topOrigin {
+    unsupportedPlatformError();
+  }
+
+  set topOrigin(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get payeeName {
+    unsupportedPlatformError();
+  }
+
+  set payeeName(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get payeeOrigin {
+    unsupportedPlatformError();
+  }
+
+  set payeeOrigin(String value) {
+    unsupportedPlatformError();
+  }
+
+  PaymentCurrencyAmount get total {
+    unsupportedPlatformError();
+  }
+
+  set total(PaymentCurrencyAmount value) {
+    unsupportedPlatformError();
+  }
+
+  PaymentCredentialInstrument get instrument {
+    unsupportedPlatformError();
+  }
+
+  set instrument(PaymentCredentialInstrument value) {
+    unsupportedPlatformError();
+  }
 }
-extension type PaymentCredentialInstrument._(JSObject _) implements JSObject {
-  external factory PaymentCredentialInstrument({
-    required String displayName,
-    required String icon,
-    bool iconMustBeShown,
-  });
 
-  external String get displayName;
-  external set displayName(String value);
-  external String get icon;
-  external set icon(String value);
-  external bool get iconMustBeShown;
-  external set iconMustBeShown(bool value);
+abstract class PaymentCredentialInstrument implements JSObject {
+  String get displayName {
+    unsupportedPlatformError();
+  }
+
+  set displayName(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get icon {
+    unsupportedPlatformError();
+  }
+
+  set icon(String value) {
+    unsupportedPlatformError();
+  }
+
+  bool get iconMustBeShown {
+    unsupportedPlatformError();
+  }
+
+  set iconMustBeShown(bool value) {
+    unsupportedPlatformError();
+  }
 }

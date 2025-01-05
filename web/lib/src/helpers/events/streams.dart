@@ -3,10 +3,10 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'dart:async';
-import 'dart:js_interop';
 
 import '../../dom.dart' as html;
 import '../../helpers.dart' show Device;
+import '../../js_interop.dart';
 
 /// Helper class used to create streams abstracting DOM events. This is a
 /// piece of the helper layer directly derived from a similar feature in

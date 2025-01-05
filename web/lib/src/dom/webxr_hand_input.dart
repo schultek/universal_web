@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,11 +10,7 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../js_interop.dart';
 import 'webxr.dart';
 
 typedef XRHandJoint = String;
@@ -28,7 +24,7 @@ typedef XRHandJoint = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/XRHand).
-extension type XRHand._(JSObject _) implements JSObject {}
+abstract class XRHand implements JSObject {}
 
 /// The **`XRJointSpace`** interface is an [XRSpace] and represents the position
 /// and orientation of an [XRHand] joint.
@@ -37,10 +33,10 @@ extension type XRHand._(JSObject _) implements JSObject {}
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/XRJointSpace).
-extension type XRJointSpace._(JSObject _) implements XRSpace, JSObject {
+abstract class XRJointSpace implements XRSpace, JSObject {
   /// The read-only **`jointName`** property of the [XRJointSpace] interface
   /// contains the name of the joint it tracks.
-  external XRHandJoint get jointName;
+  XRHandJoint get jointName;
 }
 
 /// The **`XRJointPose`** interface is an [XRPose] with additional information
@@ -50,8 +46,8 @@ extension type XRJointSpace._(JSObject _) implements XRSpace, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/XRJointPose).
-extension type XRJointPose._(JSObject _) implements XRPose, JSObject {
+abstract class XRJointPose implements XRPose, JSObject {
   /// The read-only **`radius`** property of the [XRJointPose] interface
   /// indicates the radius (distance from skin) for a joint.
-  external double get radius;
+  double get radius;
 }

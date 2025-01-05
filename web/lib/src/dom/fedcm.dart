@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,49 +10,70 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
+import '../error.dart';
+import '../js_interop.dart';
 
 typedef IdentityCredentialRequestOptionsContext = String;
-extension type IdentityCredentialRequestOptions._(JSObject _)
-    implements JSObject {
-  external factory IdentityCredentialRequestOptions({
-    required JSArray<IdentityProviderRequestOptions> providers,
-    IdentityCredentialRequestOptionsContext context,
-  });
 
-  external JSArray<IdentityProviderRequestOptions> get providers;
-  external set providers(JSArray<IdentityProviderRequestOptions> value);
-  external IdentityCredentialRequestOptionsContext get context;
-  external set context(IdentityCredentialRequestOptionsContext value);
-}
-extension type IdentityProviderConfig._(JSObject _) implements JSObject {
-  external factory IdentityProviderConfig({
-    required String configURL,
-    required String clientId,
-  });
+abstract class IdentityCredentialRequestOptions implements JSObject {
+  JSArray<IdentityProviderRequestOptions> get providers {
+    unsupportedPlatformError();
+  }
 
-  external String get configURL;
-  external set configURL(String value);
-  external String get clientId;
-  external set clientId(String value);
+  set providers(JSArray<IdentityProviderRequestOptions> value) {
+    unsupportedPlatformError();
+  }
+
+  IdentityCredentialRequestOptionsContext get context {
+    unsupportedPlatformError();
+  }
+
+  set context(IdentityCredentialRequestOptionsContext value) {
+    unsupportedPlatformError();
+  }
 }
-extension type IdentityProviderRequestOptions._(JSObject _)
+
+abstract class IdentityProviderConfig implements JSObject {
+  String get configURL {
+    unsupportedPlatformError();
+  }
+
+  set configURL(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get clientId {
+    unsupportedPlatformError();
+  }
+
+  set clientId(String value) {
+    unsupportedPlatformError();
+  }
+}
+
+abstract class IdentityProviderRequestOptions
     implements IdentityProviderConfig, JSObject {
-  external factory IdentityProviderRequestOptions({
-    required String configURL,
-    required String clientId,
-    String nonce,
-    String loginHint,
-    String domainHint,
-  });
+  String get nonce {
+    unsupportedPlatformError();
+  }
 
-  external String get nonce;
-  external set nonce(String value);
-  external String get loginHint;
-  external set loginHint(String value);
-  external String get domainHint;
-  external set domainHint(String value);
+  set nonce(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get loginHint {
+    unsupportedPlatformError();
+  }
+
+  set loginHint(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get domainHint {
+    unsupportedPlatformError();
+  }
+
+  set domainHint(String value) {
+    unsupportedPlatformError();
+  }
 }

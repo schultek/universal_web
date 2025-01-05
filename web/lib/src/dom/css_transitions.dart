@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,11 +10,8 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../error.dart';
+import '../js_interop.dart';
 import 'dom.dart';
 
 /// The **`TransitionEvent`** interface represents events providing information
@@ -25,23 +22,18 @@ import 'dom.dart';
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/TransitionEvent).
-extension type TransitionEvent._(JSObject _) implements Event, JSObject {
-  external factory TransitionEvent(
-    String type, [
-    TransitionEventInit transitionEventInitDict,
-  ]);
-
+abstract class TransitionEvent implements Event, JSObject {
   /// The **`propertyName`** read-only property of [TransitionEvent] objects is
   /// a string containing the name of the CSS property associated with the
   /// transition.
-  external String get propertyName;
+  String get propertyName;
 
   /// The **`TransitionEvent.elapsedTime`** read-only property is a
   /// `float` giving the amount of time the animation has been running, in
   /// seconds,
   /// when this event fired. This value is not affected by the
   /// property.
-  external double get elapsedTime;
+  double get elapsedTime;
 
   /// The **`TransitionEvent.pseudoElement`** read-only property is a
   /// string, starting with `'::'`, containing the name of the
@@ -50,23 +42,31 @@ extension type TransitionEvent._(JSObject _) implements Event, JSObject {
   /// If the transition doesn't run on a pseudo-element but on the element, an
   /// empty string:
   /// `''``.`
-  external String get pseudoElement;
+  String get pseudoElement;
 }
-extension type TransitionEventInit._(JSObject _)
-    implements EventInit, JSObject {
-  external factory TransitionEventInit({
-    bool bubbles,
-    bool cancelable,
-    bool composed,
-    String propertyName,
-    num elapsedTime,
-    String pseudoElement,
-  });
 
-  external String get propertyName;
-  external set propertyName(String value);
-  external double get elapsedTime;
-  external set elapsedTime(num value);
-  external String get pseudoElement;
-  external set pseudoElement(String value);
+abstract class TransitionEventInit implements EventInit, JSObject {
+  String get propertyName {
+    unsupportedPlatformError();
+  }
+
+  set propertyName(String value) {
+    unsupportedPlatformError();
+  }
+
+  double get elapsedTime {
+    unsupportedPlatformError();
+  }
+
+  set elapsedTime(num value) {
+    unsupportedPlatformError();
+  }
+
+  String get pseudoElement {
+    unsupportedPlatformError();
+  }
+
+  set pseudoElement(String value) {
+    unsupportedPlatformError();
+  }
 }

@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,11 +10,7 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../js_interop.dart';
 import 'streams.dart';
 
 typedef CompressionFormat = String;
@@ -26,16 +22,14 @@ typedef CompressionFormat = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CompressionStream).
-extension type CompressionStream._(JSObject _) implements JSObject {
-  external factory CompressionStream(CompressionFormat format);
-
+abstract class CompressionStream implements JSObject {
   /// The **`readable`** read-only property of the [CompressionStream] interface
   /// returns a [ReadableStream].
-  external ReadableStream get readable;
+  ReadableStream get readable;
 
   /// The **`writable`** read-only property of the [CompressionStream] interface
   /// returns a [WritableStream].
-  external WritableStream get writable;
+  WritableStream get writable;
 }
 
 /// The **`DecompressionStream`** interface of the [Compression Streams API] is
@@ -45,14 +39,12 @@ extension type CompressionStream._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/DecompressionStream).
-extension type DecompressionStream._(JSObject _) implements JSObject {
-  external factory DecompressionStream(CompressionFormat format);
-
+abstract class DecompressionStream implements JSObject {
   /// The **`readable`** read-only property of the [DecompressionStream]
   /// interface returns a [ReadableStream].
-  external ReadableStream get readable;
+  ReadableStream get readable;
 
   /// The **`writable`** read-only property of the [DecompressionStream]
   /// interface returns a [WritableStream].
-  external WritableStream get writable;
+  WritableStream get writable;
 }

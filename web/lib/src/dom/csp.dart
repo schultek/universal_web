@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,11 +10,8 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../error.dart';
+import '../js_interop.dart';
 import 'dom.dart';
 import 'reporting.dart';
 
@@ -37,20 +34,19 @@ typedef SecurityPolicyViolationEventDisposition = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSPViolationReportBody).
-extension type CSPViolationReportBody._(JSObject _)
-    implements ReportBody, JSObject {
-  external JSObject toJSON();
-  external String get documentURL;
-  external String? get referrer;
-  external String? get blockedURL;
-  external String get effectiveDirective;
-  external String get originalPolicy;
-  external String? get sourceFile;
-  external String? get sample;
-  external SecurityPolicyViolationEventDisposition get disposition;
-  external int get statusCode;
-  external int? get lineNumber;
-  external int? get columnNumber;
+abstract class CSPViolationReportBody implements ReportBody, JSObject {
+  JSObject toJSON();
+  String get documentURL;
+  String? get referrer;
+  String? get blockedURL;
+  String get effectiveDirective;
+  String get originalPolicy;
+  String? get sourceFile;
+  String? get sample;
+  SecurityPolicyViolationEventDisposition get disposition;
+  int get statusCode;
+  int? get lineNumber;
+  int? get columnNumber;
 }
 
 /// The **`SecurityPolicyViolationEvent`** interface inherits from [Event], and
@@ -61,121 +57,168 @@ extension type CSPViolationReportBody._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SecurityPolicyViolationEvent).
-extension type SecurityPolicyViolationEvent._(JSObject _)
-    implements Event, JSObject {
-  external factory SecurityPolicyViolationEvent(
-    String type, [
-    SecurityPolicyViolationEventInit eventInitDict,
-  ]);
-
+abstract class SecurityPolicyViolationEvent implements Event, JSObject {
   /// The **`documentURI`** read-only property of the
   /// [SecurityPolicyViolationEvent] interface is a string
   /// representing the URI of the document or worker in which the violation was
   /// found.
-  external String get documentURI;
+  String get documentURI;
 
   /// The **`referrer`** read-only property of the
   /// [SecurityPolicyViolationEvent] interface is a string
   /// representing the referrer of the resources whose policy was violated. This
   /// will be a URL
   /// or `null`.
-  external String get referrer;
+  String get referrer;
 
   /// The **`blockedURI`** read-only property of the
   /// [SecurityPolicyViolationEvent] interface is a string
   /// representing the URI of the resource that was blocked because it violates
   /// a policy.
-  external String get blockedURI;
+  String get blockedURI;
 
   /// The **`effectiveDirective`** read-only property of the
   /// [SecurityPolicyViolationEvent] interface is a string
   /// representing the directive whose enforcement uncovered the violation.
-  external String get effectiveDirective;
+  String get effectiveDirective;
 
   /// The **`violatedDirective`** read-only property of the
   /// [SecurityPolicyViolationEvent] interface is a string
   /// representing the directive whose enforcement uncovered the violation.
-  external String get violatedDirective;
+  String get violatedDirective;
 
   /// The **`originalPolicy`** read-only property of the
   /// [SecurityPolicyViolationEvent] interface is a string
   /// containing the policy whose enforcement uncovered the violation.
-  external String get originalPolicy;
+  String get originalPolicy;
 
   /// The **`sourceFile`** read-only property of the
   /// [SecurityPolicyViolationEvent] interface is a string
   /// representing the URI of the document or worker in which the violation was
   /// found.
-  external String get sourceFile;
+  String get sourceFile;
 
   /// The **`sample`** read-only property of the
   /// [SecurityPolicyViolationEvent] interface is a string
   /// representing a sample of the resource that caused the violation.
-  external String get sample;
+  String get sample;
 
   /// The **`disposition`** read-only property of the
   /// [SecurityPolicyViolationEvent] interface indicates how the violated policy
   /// is configured to be treated by the user agent.
-  external SecurityPolicyViolationEventDisposition get disposition;
+  SecurityPolicyViolationEventDisposition get disposition;
 
   /// The **`statusCode`** read-only property of the
   /// [SecurityPolicyViolationEvent] interface is a number representing the HTTP
   /// status code of the document or worker in which the violation occurred.
-  external int get statusCode;
+  int get statusCode;
 
   /// The **`lineNumber`** read-only property of the
   /// [SecurityPolicyViolationEvent] interface is the line number in the
   /// document
   /// or worker at which the violation occurred.
-  external int get lineNumber;
+  int get lineNumber;
 
   /// The **`columnNumber`** read-only property of the
   /// [SecurityPolicyViolationEvent] interface is the column number in the
   /// document or worker at which the violation occurred.
-  external int get columnNumber;
+  int get columnNumber;
 }
-extension type SecurityPolicyViolationEventInit._(JSObject _)
-    implements EventInit, JSObject {
-  external factory SecurityPolicyViolationEventInit({
-    bool bubbles,
-    bool cancelable,
-    bool composed,
-    String documentURI,
-    String referrer,
-    String blockedURI,
-    String violatedDirective,
-    String effectiveDirective,
-    String originalPolicy,
-    String sourceFile,
-    String sample,
-    SecurityPolicyViolationEventDisposition disposition,
-    int statusCode,
-    int lineNumber,
-    int columnNumber,
-  });
 
-  external String get documentURI;
-  external set documentURI(String value);
-  external String get referrer;
-  external set referrer(String value);
-  external String get blockedURI;
-  external set blockedURI(String value);
-  external String get violatedDirective;
-  external set violatedDirective(String value);
-  external String get effectiveDirective;
-  external set effectiveDirective(String value);
-  external String get originalPolicy;
-  external set originalPolicy(String value);
-  external String get sourceFile;
-  external set sourceFile(String value);
-  external String get sample;
-  external set sample(String value);
-  external SecurityPolicyViolationEventDisposition get disposition;
-  external set disposition(SecurityPolicyViolationEventDisposition value);
-  external int get statusCode;
-  external set statusCode(int value);
-  external int get lineNumber;
-  external set lineNumber(int value);
-  external int get columnNumber;
-  external set columnNumber(int value);
+abstract class SecurityPolicyViolationEventInit implements EventInit, JSObject {
+  String get documentURI {
+    unsupportedPlatformError();
+  }
+
+  set documentURI(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get referrer {
+    unsupportedPlatformError();
+  }
+
+  set referrer(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get blockedURI {
+    unsupportedPlatformError();
+  }
+
+  set blockedURI(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get violatedDirective {
+    unsupportedPlatformError();
+  }
+
+  set violatedDirective(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get effectiveDirective {
+    unsupportedPlatformError();
+  }
+
+  set effectiveDirective(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get originalPolicy {
+    unsupportedPlatformError();
+  }
+
+  set originalPolicy(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get sourceFile {
+    unsupportedPlatformError();
+  }
+
+  set sourceFile(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get sample {
+    unsupportedPlatformError();
+  }
+
+  set sample(String value) {
+    unsupportedPlatformError();
+  }
+
+  SecurityPolicyViolationEventDisposition get disposition {
+    unsupportedPlatformError();
+  }
+
+  set disposition(SecurityPolicyViolationEventDisposition value) {
+    unsupportedPlatformError();
+  }
+
+  int get statusCode {
+    unsupportedPlatformError();
+  }
+
+  set statusCode(int value) {
+    unsupportedPlatformError();
+  }
+
+  int get lineNumber {
+    unsupportedPlatformError();
+  }
+
+  set lineNumber(int value) {
+    unsupportedPlatformError();
+  }
+
+  int get columnNumber {
+    unsupportedPlatformError();
+  }
+
+  set columnNumber(int value) {
+    unsupportedPlatformError();
+  }
 }

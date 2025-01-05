@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,15 +10,15 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
+import '../error.dart';
+import '../js_interop.dart';
 
-import 'dart:js_interop';
+abstract class VideoEncoderEncodeOptionsForAv1 implements JSObject {
+  int? get quantizer {
+    unsupportedPlatformError();
+  }
 
-extension type VideoEncoderEncodeOptionsForAv1._(JSObject _)
-    implements JSObject {
-  external factory VideoEncoderEncodeOptionsForAv1({int? quantizer});
-
-  external int? get quantizer;
-  external set quantizer(int? value);
+  set quantizer(int? value) {
+    unsupportedPlatformError();
+  }
 }

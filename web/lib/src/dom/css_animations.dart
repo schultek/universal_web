@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,11 +10,8 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../error.dart';
+import '../js_interop.dart';
 import 'cssom.dart';
 import 'dom.dart';
 
@@ -26,16 +23,11 @@ import 'dom.dart';
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/AnimationEvent).
-extension type AnimationEvent._(JSObject _) implements Event, JSObject {
-  external factory AnimationEvent(
-    String type, [
-    AnimationEventInit animationEventInitDict,
-  ]);
-
+abstract class AnimationEvent implements Event, JSObject {
   /// The **`AnimationEvent.animationName`** read-only property is a
   /// string containing the value of the  CSS
   /// property associated with the transition.
-  external String get animationName;
+  String get animationName;
 
   /// The **`AnimationEvent.elapsedTime`** read-only property is a
   /// `float` giving the amount of time the animation has been running, in
@@ -45,7 +37,7 @@ extension type AnimationEvent._(JSObject _) implements Event, JSObject {
   /// `elapsedTime` is `0.0` unless there was a negative value for
   /// , in which case the event will be fired with
   /// `elapsedTime` containing `(-1 * delay)`.
-  external double get elapsedTime;
+  double get elapsedTime;
 
   /// The **`AnimationEvent.pseudoElement`** read-only property is a
   /// string, starting with `'::'`, containing the name of the
@@ -53,24 +45,33 @@ extension type AnimationEvent._(JSObject _) implements Event, JSObject {
   /// the animation runs on.
   /// If the animation doesn't run on a pseudo-element but on the element, an
   /// empty string: `''`.
-  external String get pseudoElement;
+  String get pseudoElement;
 }
-extension type AnimationEventInit._(JSObject _) implements EventInit, JSObject {
-  external factory AnimationEventInit({
-    bool bubbles,
-    bool cancelable,
-    bool composed,
-    String animationName,
-    num elapsedTime,
-    String pseudoElement,
-  });
 
-  external String get animationName;
-  external set animationName(String value);
-  external double get elapsedTime;
-  external set elapsedTime(num value);
-  external String get pseudoElement;
-  external set pseudoElement(String value);
+abstract class AnimationEventInit implements EventInit, JSObject {
+  String get animationName {
+    unsupportedPlatformError();
+  }
+
+  set animationName(String value) {
+    unsupportedPlatformError();
+  }
+
+  double get elapsedTime {
+    unsupportedPlatformError();
+  }
+
+  set elapsedTime(num value) {
+    unsupportedPlatformError();
+  }
+
+  String get pseudoElement {
+    unsupportedPlatformError();
+  }
+
+  set pseudoElement(String value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`CSSKeyframeRule`** interface describes an object representing a set
@@ -82,18 +83,18 @@ extension type AnimationEventInit._(JSObject _) implements EventInit, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSKeyframeRule).
-extension type CSSKeyframeRule._(JSObject _) implements CSSRule, JSObject {
+abstract class CSSKeyframeRule implements CSSRule, JSObject {
   /// The **`keyText`** property of the [CSSKeyframeRule] interface represents
   /// the keyframe selector as a comma-separated list of percentage values. The
   /// from and to keywords map to 0% and 100%, respectively.
-  external String get keyText;
-  external set keyText(String value);
+  String get keyText;
+  set keyText(String value);
 
   /// The read-only **`CSSKeyframeRule.style`** property is the
   /// [CSSStyleDeclaration] interface for the
   /// [declaration block](https://www.w3.org/TR/1998/REC-CSS2-19980512/syndata.html#block)
   /// of the [CSSKeyframeRule].
-  external JSObject get style;
+  JSObject get style;
 }
 
 /// The **`CSSKeyframesRule`** interface describes an object representing a
@@ -105,29 +106,29 @@ extension type CSSKeyframeRule._(JSObject _) implements CSSRule, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSKeyframesRule).
-extension type CSSKeyframesRule._(JSObject _) implements CSSRule, JSObject {
-  external CSSKeyframeRule operator [](int index);
+abstract class CSSKeyframesRule implements CSSRule, JSObject {
+  CSSKeyframeRule operator [](int index);
 
   /// The **`appendRule()`** method of the [CSSKeyframeRule] interface appends a
   /// [CSSKeyFrameRule] to the end of the rules.
-  external void appendRule(String rule);
+  void appendRule(String rule);
 
   /// The **`deleteRule()`** method of the [CSSKeyframeRule] interface deletes
   /// the [CSSKeyFrameRule] that matches the specified keyframe selector.
-  external void deleteRule(String select);
+  void deleteRule(String select);
 
   /// The **`findRule()`** method of the [CSSKeyframeRule] interface finds the
   /// [CSSKeyFrameRule] that matches the specified keyframe selector.
-  external CSSKeyframeRule? findRule(String select);
+  CSSKeyframeRule? findRule(String select);
 
   /// The **`name`** property of the [CSSKeyframeRule] interface gets and sets
   /// the name of the animation as used by the  property.
-  external String get name;
-  external set name(String value);
+  String get name;
+  set name(String value);
 
   /// The read-only **`cssRules`** property of the [CSSKeyframeRule] interface
   /// returns a [CSSRuleList] containing the rules in the keyframes
   /// [at-rule](https://developer.mozilla.org/en-US/docs/Web/CSS/At-rule).
-  external CSSRuleList get cssRules;
-  external int get length;
+  CSSRuleList get cssRules;
+  int get length;
 }

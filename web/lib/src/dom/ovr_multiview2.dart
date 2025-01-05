@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,14 +10,10 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../js_interop.dart';
 import 'webgl1.dart';
 
-extension type OVR_multiview2._(JSObject _) implements JSObject {
+abstract class OVR_multiview2 implements JSObject {
   static const GLenum FRAMEBUFFER_ATTACHMENT_TEXTURE_NUM_VIEWS_OVR = 38448;
 
   static const GLenum FRAMEBUFFER_ATTACHMENT_TEXTURE_BASE_VIEW_INDEX_OVR =
@@ -27,7 +23,7 @@ extension type OVR_multiview2._(JSObject _) implements JSObject {
 
   static const GLenum FRAMEBUFFER_INCOMPLETE_VIEW_TARGETS_OVR = 38451;
 
-  external void framebufferTextureMultiviewOVR(
+  void framebufferTextureMultiviewOVR(
     GLenum target,
     GLenum attachment,
     WebGLTexture? texture,

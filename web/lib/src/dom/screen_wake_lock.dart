@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,11 +10,7 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../js_interop.dart';
 import 'dom.dart';
 import 'html.dart';
 
@@ -32,14 +28,14 @@ typedef WakeLockType = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WakeLock).
-extension type WakeLock._(JSObject _) implements JSObject {
+abstract class WakeLock implements JSObject {
   /// The **`request()`** method of the [WakeLock] interface returns a `Promise`
   /// that fullfills with a [WakeLockSentinel] object if the system screen wake
   /// lock is granted.
   ///
   /// The screen wake lock prevents device screens from dimming or locking when
   /// an application needs to keep running.
-  external JSPromise<WakeLockSentinel> request([WakeLockType type]);
+  JSPromise<WakeLockSentinel> request([WakeLockType type]);
 }
 
 /// The **`WakeLockSentinel`** interface of the
@@ -72,11 +68,11 @@ extension type WakeLock._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WakeLockSentinel).
-extension type WakeLockSentinel._(JSObject _) implements EventTarget, JSObject {
+abstract class WakeLockSentinel implements EventTarget, JSObject {
   /// The **`release()`** method of the [WakeLockSentinel] interface releases
   /// the [WakeLockSentinel], returning a `Promise` that is resolved once the
   /// sentinel has been successfully released.
-  external JSPromise<JSAny?> release();
+  JSPromise<JSAny?> release();
 
   /// The **`released`** read-only property of the [WakeLockSentinel] interface
   /// returns a boolean that indicates whether a [WakeLockSentinel] has been
@@ -87,12 +83,12 @@ extension type WakeLockSentinel._(JSObject _) implements EventTarget, JSObject {
   /// If a subsequent screen wake lock is required, the application will need to
   /// request a new screen wake lock (the current `WakeLockSentinel` cannot be
   /// reused).
-  external bool get released;
+  bool get released;
 
   /// The **`type`** read-only property of the [WakeLockSentinel] interface
   /// returns a string representation of the currently acquired
   /// [WakeLockSentinel] type.
-  external WakeLockType get type;
-  external EventHandler get onrelease;
-  external set onrelease(EventHandler value);
+  WakeLockType get type;
+  EventHandler get onrelease;
+  set onrelease(EventHandler value);
 }

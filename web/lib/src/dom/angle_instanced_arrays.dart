@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,11 +10,7 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../js_interop.dart';
 import 'webgl1.dart';
 
 /// The **`ANGLE_instanced_arrays`** extension is part of the
@@ -42,7 +38,7 @@ import 'webgl1.dart';
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ANGLE_instanced_arrays).
-extension type ANGLE_instanced_arrays._(JSObject _) implements JSObject {
+abstract class ANGLE_instanced_arrays implements JSObject {
   static const GLenum VERTEX_ATTRIB_ARRAY_DIVISOR_ANGLE = 35070;
 
   /// The **`ANGLE_instanced_arrays.drawArraysInstancedANGLE()`** method of the
@@ -53,7 +49,7 @@ extension type ANGLE_instanced_arrays._(JSObject _) implements JSObject {
   ///
   /// > **Note:** When using [WebGL2RenderingContext], this method is available
   /// > as [WebGL2RenderingContext.drawArraysInstanced] by default.
-  external void drawArraysInstancedANGLE(
+  void drawArraysInstancedANGLE(
     GLenum mode,
     GLint first,
     GLsizei count,
@@ -69,7 +65,7 @@ extension type ANGLE_instanced_arrays._(JSObject _) implements JSObject {
   ///
   /// > **Note:** When using [WebGL2RenderingContext], this method is available
   /// > as [WebGL2RenderingContext.drawElementsInstanced] by default.
-  external void drawElementsInstancedANGLE(
+  void drawElementsInstancedANGLE(
     GLenum mode,
     GLsizei count,
     GLenum type,
@@ -86,7 +82,7 @@ extension type ANGLE_instanced_arrays._(JSObject _) implements JSObject {
   ///
   /// > **Note:** When using [WebGL2RenderingContext], this method is available
   /// > as [WebGL2RenderingContext.vertexAttribDivisor] by default.
-  external void vertexAttribDivisorANGLE(
+  void vertexAttribDivisorANGLE(
     GLuint index,
     GLuint divisor,
   );

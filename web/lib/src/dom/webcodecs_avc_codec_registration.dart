@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,22 +10,27 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
+import '../error.dart';
+import '../js_interop.dart';
 
 typedef AvcBitstreamFormat = String;
-extension type AvcEncoderConfig._(JSObject _) implements JSObject {
-  external factory AvcEncoderConfig({AvcBitstreamFormat format});
 
-  external AvcBitstreamFormat get format;
-  external set format(AvcBitstreamFormat value);
+abstract class AvcEncoderConfig implements JSObject {
+  AvcBitstreamFormat get format {
+    unsupportedPlatformError();
+  }
+
+  set format(AvcBitstreamFormat value) {
+    unsupportedPlatformError();
+  }
 }
-extension type VideoEncoderEncodeOptionsForAvc._(JSObject _)
-    implements JSObject {
-  external factory VideoEncoderEncodeOptionsForAvc({int? quantizer});
 
-  external int? get quantizer;
-  external set quantizer(int? value);
+abstract class VideoEncoderEncodeOptionsForAvc implements JSObject {
+  int? get quantizer {
+    unsupportedPlatformError();
+  }
+
+  set quantizer(int? value) {
+    unsupportedPlatformError();
+  }
 }

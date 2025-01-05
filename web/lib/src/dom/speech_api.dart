@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,11 +10,8 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../error.dart';
+import '../js_interop.dart';
 import 'dom.dart';
 import 'html.dart';
 
@@ -34,17 +31,14 @@ typedef SpeechSynthesisErrorCode = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition).
-extension type SpeechRecognition._(JSObject _)
-    implements EventTarget, JSObject {
-  external factory SpeechRecognition();
-
+abstract class SpeechRecognition implements EventTarget, JSObject {
   /// The **`start()`** method of the
   /// [Web Speech API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API)
   /// starts the speech
   /// recognition service listening to incoming audio with intent to recognize
   /// grammars
   /// associated with the current [SpeechRecognition].
-  external void start();
+  void start();
 
   /// The **`stop()`** method of the
   /// [Web Speech API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API)
@@ -52,7 +46,7 @@ extension type SpeechRecognition._(JSObject _)
   /// recognition service from listening to incoming audio, and attempts to
   /// return a
   /// [SpeechRecognitionResult] using the audio captured so far.
-  external void stop();
+  void stop();
 
   /// The **`abort()`** method of the
   /// [Web Speech API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API)
@@ -60,15 +54,15 @@ extension type SpeechRecognition._(JSObject _)
   /// recognition service from listening to incoming audio, and doesn't attempt
   /// to return a
   /// [SpeechRecognitionResult].
-  external void abort();
+  void abort();
 
   /// The **`grammars`** property of the
   /// [SpeechRecognition] interface returns and sets a collection of
   /// [SpeechGrammar] objects that represent the grammars that will be
   /// understood
   /// by the current `SpeechRecognition`.
-  external JSObject get grammars;
-  external set grammars(JSObject value);
+  JSObject get grammars;
+  set grammars(JSObject value);
 
   /// The **`lang`** property of the [SpeechRecognition]
   /// interface returns and sets the language of the current
@@ -77,16 +71,16 @@ extension type SpeechRecognition._(JSObject _)
   /// [`lang`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/html#lang)
   /// attribute
   /// value, or the user agent's language setting if that isn't set either.
-  external String get lang;
-  external set lang(String value);
+  String get lang;
+  set lang(String value);
 
   /// The **`continuous`** property of the
   /// [SpeechRecognition] interface controls whether continuous results are
   /// returned for each recognition, or only a single result.
   ///
   /// It defaults to single results (`false`.)
-  external bool get continuous;
-  external set continuous(bool value);
+  bool get continuous;
+  set continuous(bool value);
 
   /// The **`interimResults`** property of the
   /// [SpeechRecognition] interface controls whether interim results should be
@@ -96,8 +90,8 @@ extension type SpeechRecognition._(JSObject _)
   /// is `false`).
   ///
   /// The default value for **`interimResults`** is `false`.
-  external bool get interimResults;
-  external set interimResults(bool value);
+  bool get interimResults;
+  set interimResults(bool value);
 
   /// The **`maxAlternatives`** property of the
   /// [SpeechRecognition] interface sets the maximum number of
@@ -105,30 +99,30 @@ extension type SpeechRecognition._(JSObject _)
   /// [SpeechRecognitionResult].
   ///
   /// The default value is 1.
-  external int get maxAlternatives;
-  external set maxAlternatives(int value);
-  external EventHandler get onaudiostart;
-  external set onaudiostart(EventHandler value);
-  external EventHandler get onsoundstart;
-  external set onsoundstart(EventHandler value);
-  external EventHandler get onspeechstart;
-  external set onspeechstart(EventHandler value);
-  external EventHandler get onspeechend;
-  external set onspeechend(EventHandler value);
-  external EventHandler get onsoundend;
-  external set onsoundend(EventHandler value);
-  external EventHandler get onaudioend;
-  external set onaudioend(EventHandler value);
-  external EventHandler get onresult;
-  external set onresult(EventHandler value);
-  external EventHandler get onnomatch;
-  external set onnomatch(EventHandler value);
-  external EventHandler get onerror;
-  external set onerror(EventHandler value);
-  external EventHandler get onstart;
-  external set onstart(EventHandler value);
-  external EventHandler get onend;
-  external set onend(EventHandler value);
+  int get maxAlternatives;
+  set maxAlternatives(int value);
+  EventHandler get onaudiostart;
+  set onaudiostart(EventHandler value);
+  EventHandler get onsoundstart;
+  set onsoundstart(EventHandler value);
+  EventHandler get onspeechstart;
+  set onspeechstart(EventHandler value);
+  EventHandler get onspeechend;
+  set onspeechend(EventHandler value);
+  EventHandler get onsoundend;
+  set onsoundend(EventHandler value);
+  EventHandler get onaudioend;
+  set onaudioend(EventHandler value);
+  EventHandler get onresult;
+  set onresult(EventHandler value);
+  EventHandler get onnomatch;
+  set onnomatch(EventHandler value);
+  EventHandler get onerror;
+  set onerror(EventHandler value);
+  EventHandler get onstart;
+  set onstart(EventHandler value);
+  EventHandler get onend;
+  set onend(EventHandler value);
 }
 
 /// The **`SpeechRecognitionErrorEvent`** interface of the
@@ -139,16 +133,15 @@ extension type SpeechRecognition._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognitionErrorEvent).
-extension type SpeechRecognitionErrorEvent._(JSObject _)
-    implements Event, JSObject {
+abstract class SpeechRecognitionErrorEvent implements Event, JSObject {
   /// The **`error`** read-only property of the
   /// [SpeechRecognitionErrorEvent] interface returns the type of error raised.
-  external SpeechRecognitionErrorCode get error;
+  SpeechRecognitionErrorCode get error;
 
   /// The **`message`** read-only property of the
   /// [SpeechRecognitionErrorEvent] interface returns a message describing the
   /// error in more detail.
-  external String get message;
+  String get message;
 }
 
 /// The **`SpeechRecognitionAlternative`** interface of the
@@ -160,7 +153,7 @@ extension type SpeechRecognitionErrorEvent._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognitionAlternative).
-extension type SpeechRecognitionAlternative._(JSObject _) implements JSObject {
+abstract class SpeechRecognitionAlternative implements JSObject {
   /// The **`transcript`** read-only property of the
   /// [SpeechRecognitionResult] interface returns a string containing the
   /// transcript of the recognized word(s).
@@ -169,7 +162,7 @@ extension type SpeechRecognitionAlternative._(JSObject _) implements JSObject {
   /// included where
   /// necessary so that concatenation of consecutive [SpeechRecognitionResult]s
   /// produces a proper transcript of the session.
-  external String get transcript;
+  String get transcript;
 
   /// The **`confidence`** read-only property of the
   /// [SpeechRecognitionResult] interface returns a numeric estimate of how
@@ -178,7 +171,7 @@ extension type SpeechRecognitionAlternative._(JSObject _) implements JSObject {
   ///
   /// > **Note:** Mozilla's implementation of `confidence` is still
   /// > being worked on — at the moment, it always seems to return 1.
-  external double get confidence;
+  double get confidence;
 }
 
 /// The **`SpeechRecognitionResult`** interface of the
@@ -190,13 +183,13 @@ extension type SpeechRecognitionAlternative._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognitionResult).
-extension type SpeechRecognitionResult._(JSObject _) implements JSObject {
+abstract class SpeechRecognitionResult implements JSObject {
   /// The **`item`** getter of the
   /// [SpeechRecognitionResult] interface is a standard getter that allows
   /// [SpeechRecognitionAlternative] objects within the result to be accessed
   /// via
   /// array syntax.
-  external SpeechRecognitionAlternative item(int index);
+  SpeechRecognitionAlternative item(int index);
 
   /// The **`length`** read-only property of the
   /// [SpeechRecognitionResult] interface returns the length of the "array"
@@ -206,7 +199,7 @@ extension type SpeechRecognitionResult._(JSObject _) implements JSObject {
   /// The number of alternatives contained in the result depends on what the
   /// [SpeechRecognition.maxAlternatives] property was set to when the speech
   /// recognition was first initiated.
-  external int get length;
+  int get length;
 
   /// The **`isFinal`** read-only property of the
   /// [SpeechRecognitionResult] interface is a boolean value that states
@@ -214,7 +207,7 @@ extension type SpeechRecognitionResult._(JSObject _) implements JSObject {
   /// then this is the final time this result will be returned; if not, then
   /// this result is an
   /// interim result, and may be updated later on.
-  external bool get isFinal;
+  bool get isFinal;
 }
 
 /// The **`SpeechRecognitionResultList`** interface of the
@@ -226,18 +219,18 @@ extension type SpeechRecognitionResult._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognitionResultList).
-extension type SpeechRecognitionResultList._(JSObject _) implements JSObject {
+abstract class SpeechRecognitionResultList implements JSObject {
   /// The **`item`** getter of the
   /// [SpeechRecognitionResultList] interface is a standard getter — it allows
   /// [SpeechRecognitionResult] objects in the list to be accessed via array
   /// syntax.
-  external SpeechRecognitionResult item(int index);
+  SpeechRecognitionResult item(int index);
 
   /// The **`length`** read-only property of the
   /// [SpeechRecognitionResultList] interface returns the length of the
   /// "array" — the number of [SpeechRecognitionResult] objects in the
   /// list.
-  external int get length;
+  int get length;
 }
 
 /// The **`SpeechRecognitionEvent`** interface of the
@@ -250,7 +243,7 @@ extension type SpeechRecognitionResultList._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognitionEvent).
-extension type SpeechRecognitionEvent._(JSObject _) implements Event, JSObject {
+abstract class SpeechRecognitionEvent implements Event, JSObject {
   /// The **`resultIndex`** read-only property of the
   /// [SpeechRecognitionEvent] interface returns the lowest index value result
   /// in
@@ -258,7 +251,7 @@ extension type SpeechRecognitionEvent._(JSObject _) implements Event, JSObject {
   ///
   /// The [SpeechRecognitionResultList] object is not an array, but it has a
   /// getter that allows it to be accessed by array syntax.
-  external int get resultIndex;
+  int get resultIndex;
 
   /// The **`results`** read-only property of the
   /// [SpeechRecognitionEvent] interface returns a
@@ -276,7 +269,7 @@ extension type SpeechRecognitionEvent._(JSObject _) implements Event, JSObject {
   /// of the "results" array and the array length decreases. Final results on
   /// the other hand
   /// will not be overwritten or removed.
-  external SpeechRecognitionResultList get results;
+  SpeechRecognitionResultList get results;
 }
 
 /// The **`SpeechSynthesis`** interface of the
@@ -289,46 +282,46 @@ extension type SpeechRecognitionEvent._(JSObject _) implements Event, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis).
-extension type SpeechSynthesis._(JSObject _) implements EventTarget, JSObject {
+abstract class SpeechSynthesis implements EventTarget, JSObject {
   /// The **`speak()`** method of the [SpeechSynthesis]
   /// interface adds an [SpeechSynthesisUtterance] to the utterance
   /// queue; it will be spoken when any other utterances queued before it have
   /// been spoken.
-  external void speak(SpeechSynthesisUtterance utterance);
+  void speak(SpeechSynthesisUtterance utterance);
 
   /// The **`cancel()`** method of the [SpeechSynthesis]
   /// interface removes all utterances from the utterance queue.
   ///
   /// If an utterance is currently being spoken, speaking will stop immediately.
-  external void cancel();
+  void cancel();
 
   /// The **`pause()`** method of the [SpeechSynthesis]
   /// interface puts the `SpeechSynthesis` object into a paused state.
-  external void pause();
+  void pause();
 
   /// The **`resume()`** method of the [SpeechSynthesis]
   /// interface puts the `SpeechSynthesis` object into a non-paused state:
   /// resumes it if it was already paused.
-  external void resume();
+  void resume();
 
   /// The **`getVoices()`** method of the
   /// [SpeechSynthesis] interface returns a list of
   /// [SpeechSynthesisVoice] objects representing all the available voices on
   /// the
   /// current device.
-  external JSArray<SpeechSynthesisVoice> getVoices();
+  JSArray<SpeechSynthesisVoice> getVoices();
 
   /// The **`pending`** read-only property of the
   /// [SpeechSynthesis] interface is a boolean value that returns
   /// `true` if the utterance queue contains as-yet-unspoken utterances.
-  external bool get pending;
+  bool get pending;
 
   /// The **`speaking`** read-only property of the
   /// [SpeechSynthesis] interface is a boolean value that returns
   /// `true` if an utterance is currently in the process of being spoken — even
   /// if `SpeechSynthesis` is in a
   /// [SpeechSynthesis.pause] state.
-  external bool get speaking;
+  bool get speaking;
 
   /// The **`paused`** read-only property of the
   /// [SpeechSynthesis] interface is a boolean value that returns
@@ -340,9 +333,9 @@ extension type SpeechSynthesis._(JSObject _) implements EventTarget, JSObject {
   /// [SpeechSynthesisUtterance] are then added to the utterance
   /// queue, they will not be spoken until the `SpeechSynthesis` object is
   /// unpaused, using [SpeechSynthesis.resume].
-  external bool get paused;
-  external EventHandler get onvoiceschanged;
-  external set onvoiceschanged(EventHandler value);
+  bool get paused;
+  EventHandler get onvoiceschanged;
+  set onvoiceschanged(EventHandler value);
 }
 
 /// The **`SpeechSynthesisUtterance`** interface of the
@@ -355,10 +348,7 @@ extension type SpeechSynthesis._(JSObject _) implements EventTarget, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance).
-extension type SpeechSynthesisUtterance._(JSObject _)
-    implements EventTarget, JSObject {
-  external factory SpeechSynthesisUtterance([String text]);
-
+abstract class SpeechSynthesisUtterance implements EventTarget, JSObject {
   /// The **`text`** property of the
   /// [SpeechSynthesisUtterance] interface gets and sets the text that will be
   /// synthesized when the utterance is spoken.
@@ -366,8 +356,8 @@ extension type SpeechSynthesisUtterance._(JSObject _)
   /// The text may be provided as plain text, or a well-formed
   /// [SSML](https://www.w3.org/TR/speech-synthesis/) document.
   /// The SSML tags will be stripped away by devices that don't support SSML.
-  external String get text;
-  external set text(String value);
+  String get text;
+  set text(String value);
 
   /// The **`lang`** property of the [SpeechSynthesisUtterance] interface gets
   /// and sets the language of the utterance.
@@ -375,8 +365,8 @@ extension type SpeechSynthesisUtterance._(JSObject _)
   /// If unset, the app's (i.e. the `html`
   /// [`lang`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/html#lang)
   /// value) lang will be used, or the user-agent default if that is unset too.
-  external String get lang;
-  external set lang(String value);
+  String get lang;
+  set lang(String value);
 
   /// The **`voice`** property of the [SpeechSynthesisUtterance] interface gets
   /// and sets the voice that will be used to speak the utterance.
@@ -386,43 +376,43 @@ extension type SpeechSynthesisUtterance._(JSObject _)
   /// If not set by the time the utterance is spoken, the voice used will be the
   /// most suitable default voice available for the utterance's
   /// [SpeechSynthesisUtterance.lang] setting.
-  external SpeechSynthesisVoice? get voice;
-  external set voice(SpeechSynthesisVoice? value);
+  SpeechSynthesisVoice? get voice;
+  set voice(SpeechSynthesisVoice? value);
 
   /// The **`volume`** property of the [SpeechSynthesisUtterance] interface gets
   /// and sets the volume that the utterance will be spoken at.
   ///
   /// If not set, the default value 1 will be used.
-  external double get volume;
-  external set volume(num value);
+  double get volume;
+  set volume(num value);
 
   /// The **`rate`** property of the [SpeechSynthesisUtterance] interface gets
   /// and sets the speed at which the utterance will be spoken at.
   ///
   /// If unset, a default value of 1 will be used.
-  external double get rate;
-  external set rate(num value);
+  double get rate;
+  set rate(num value);
 
   /// The **`pitch`** property of the [SpeechSynthesisUtterance] interface gets
   /// and sets the pitch at which the utterance will be spoken at.
   ///
   /// If unset, a default value of 1 will be used.
-  external double get pitch;
-  external set pitch(num value);
-  external EventHandler get onstart;
-  external set onstart(EventHandler value);
-  external EventHandler get onend;
-  external set onend(EventHandler value);
-  external EventHandler get onerror;
-  external set onerror(EventHandler value);
-  external EventHandler get onpause;
-  external set onpause(EventHandler value);
-  external EventHandler get onresume;
-  external set onresume(EventHandler value);
-  external EventHandler get onmark;
-  external set onmark(EventHandler value);
-  external EventHandler get onboundary;
-  external set onboundary(EventHandler value);
+  double get pitch;
+  set pitch(num value);
+  EventHandler get onstart;
+  set onstart(EventHandler value);
+  EventHandler get onend;
+  set onend(EventHandler value);
+  EventHandler get onerror;
+  set onerror(EventHandler value);
+  EventHandler get onpause;
+  set onpause(EventHandler value);
+  EventHandler get onresume;
+  set onresume(EventHandler value);
+  EventHandler get onmark;
+  set onmark(EventHandler value);
+  EventHandler get onboundary;
+  set onboundary(EventHandler value);
 }
 
 /// The **`SpeechSynthesisEvent`** interface of the
@@ -434,36 +424,31 @@ extension type SpeechSynthesisUtterance._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisEvent).
-extension type SpeechSynthesisEvent._(JSObject _) implements Event, JSObject {
-  external factory SpeechSynthesisEvent(
-    String type,
-    SpeechSynthesisEventInit eventInitDict,
-  );
-
+abstract class SpeechSynthesisEvent implements Event, JSObject {
   /// The **`utterance`** read-only property of the [SpeechSynthesisUtterance]
   /// interface returns the [SpeechSynthesisUtterance] instance that the event
   /// was triggered on.
-  external SpeechSynthesisUtterance get utterance;
+  SpeechSynthesisUtterance get utterance;
 
   /// The **`charIndex`** read-only property of the [SpeechSynthesisUtterance]
   /// interface returns the index position of the character in
   /// [SpeechSynthesisUtterance.text] that was being spoken when the event was
   /// triggered.
-  external int get charIndex;
+  int get charIndex;
 
   /// The read-only **`charLength`** property of the [SpeechSynthesisEvent]
   /// interface returns the number of characters left to be spoken after the
   /// character at the [SpeechSynthesisEvent.charIndex] position.
   ///
   /// If the speech engine can't determine it, it returns 0.
-  external int get charLength;
+  int get charLength;
 
   /// The **`elapsedTime`** read-only property of the [SpeechSynthesisEvent]
   /// returns the elapsed time in seconds, after the
   /// [SpeechSynthesisUtterance.text] started being spoken, at which the
   /// [event](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance#events)
   /// was triggered.
-  external double get elapsedTime;
+  double get elapsedTime;
 
   /// The **`name`** read-only property of the [SpeechSynthesisUtterance]
   /// interface returns the name associated with certain types of events
@@ -472,31 +457,49 @@ extension type SpeechSynthesisEvent._(JSObject _) implements Event, JSObject {
   /// marker reached in the case of a [SpeechSynthesisUtterance.mark_event]
   /// event, or the type of boundary reached in the case of a
   /// [SpeechSynthesisUtterance.boundary_event] event.
-  external String get name;
+  String get name;
 }
-extension type SpeechSynthesisEventInit._(JSObject _)
-    implements EventInit, JSObject {
-  external factory SpeechSynthesisEventInit({
-    bool bubbles,
-    bool cancelable,
-    bool composed,
-    required SpeechSynthesisUtterance utterance,
-    int charIndex,
-    int charLength,
-    num elapsedTime,
-    String name,
-  });
 
-  external SpeechSynthesisUtterance get utterance;
-  external set utterance(SpeechSynthesisUtterance value);
-  external int get charIndex;
-  external set charIndex(int value);
-  external int get charLength;
-  external set charLength(int value);
-  external double get elapsedTime;
-  external set elapsedTime(num value);
-  external String get name;
-  external set name(String value);
+abstract class SpeechSynthesisEventInit implements EventInit, JSObject {
+  SpeechSynthesisUtterance get utterance {
+    unsupportedPlatformError();
+  }
+
+  set utterance(SpeechSynthesisUtterance value) {
+    unsupportedPlatformError();
+  }
+
+  int get charIndex {
+    unsupportedPlatformError();
+  }
+
+  set charIndex(int value) {
+    unsupportedPlatformError();
+  }
+
+  int get charLength {
+    unsupportedPlatformError();
+  }
+
+  set charLength(int value) {
+    unsupportedPlatformError();
+  }
+
+  double get elapsedTime {
+    unsupportedPlatformError();
+  }
+
+  set elapsedTime(num value) {
+    unsupportedPlatformError();
+  }
+
+  String get name {
+    unsupportedPlatformError();
+  }
+
+  set name(String value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SpeechSynthesisErrorEvent`** interface of the
@@ -508,34 +511,23 @@ extension type SpeechSynthesisEventInit._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisErrorEvent).
-extension type SpeechSynthesisErrorEvent._(JSObject _)
+abstract class SpeechSynthesisErrorEvent
     implements SpeechSynthesisEvent, JSObject {
-  external factory SpeechSynthesisErrorEvent(
-    String type,
-    SpeechSynthesisErrorEventInit eventInitDict,
-  );
-
   /// The **`error`** property of the
   /// [SpeechSynthesisErrorEvent] interface returns an error code indicating
   /// what has gone wrong with a speech synthesis attempt.
-  external SpeechSynthesisErrorCode get error;
+  SpeechSynthesisErrorCode get error;
 }
-extension type SpeechSynthesisErrorEventInit._(JSObject _)
-    implements SpeechSynthesisEventInit, JSObject {
-  external factory SpeechSynthesisErrorEventInit({
-    bool bubbles,
-    bool cancelable,
-    bool composed,
-    required SpeechSynthesisUtterance utterance,
-    int charIndex,
-    int charLength,
-    num elapsedTime,
-    String name,
-    required SpeechSynthesisErrorCode error,
-  });
 
-  external SpeechSynthesisErrorCode get error;
-  external set error(SpeechSynthesisErrorCode value);
+abstract class SpeechSynthesisErrorEventInit
+    implements SpeechSynthesisEventInit, JSObject {
+  SpeechSynthesisErrorCode get error {
+    unsupportedPlatformError();
+  }
+
+  set error(SpeechSynthesisErrorCode value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SpeechSynthesisVoice`** interface of the
@@ -548,20 +540,20 @@ extension type SpeechSynthesisErrorEventInit._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisVoice).
-extension type SpeechSynthesisVoice._(JSObject _) implements JSObject {
+abstract class SpeechSynthesisVoice implements JSObject {
   /// The **`voiceURI`** read-only property of the
   /// [SpeechSynthesisVoice] interface returns the type of URI and location of
   /// the speech synthesis service for this voice.
-  external String get voiceURI;
+  String get voiceURI;
 
   /// The **`name`** read-only property of the
   /// [SpeechSynthesisVoice] interface returns a human-readable name that
   /// represents the voice.
-  external String get name;
+  String get name;
 
   /// The **`lang`** read-only property of the [SpeechSynthesisVoice] interface
   /// returns a BCP 47 language tag indicating the language of the voice.
-  external String get lang;
+  String get lang;
 
   /// The **`localService`** read-only property of the
   /// [SpeechSynthesisVoice] interface returns a boolean value
@@ -575,7 +567,6 @@ extension type SpeechSynthesisVoice._(JSObject _) implements JSObject {
   /// have extra
   /// latency, bandwidth or cost associated with them, so such distinction may
   /// be useful.
-  external bool get localService;
-  @JS('default')
-  external bool get default_;
+  bool get localService;
+  bool get default_;
 }

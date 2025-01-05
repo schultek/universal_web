@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,11 +10,7 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../js_interop.dart';
 import 'webgl1.dart';
 
 /// The **`OES_draw_buffers_indexed`** extension is part of the
@@ -35,17 +31,17 @@ import 'webgl1.dart';
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/OES_draw_buffers_indexed).
-extension type OES_draw_buffers_indexed._(JSObject _) implements JSObject {
+abstract class OES_draw_buffers_indexed implements JSObject {
   /// The `enableiOES()` method of the [OES_draw_buffers_indexed] WebGL
   /// extension enables blending for a particular draw buffer.
-  external void enableiOES(
+  void enableiOES(
     GLenum target,
     GLuint index,
   );
 
   /// The `disableiOES()` method of the [OES_draw_buffers_indexed] WebGL
   /// extension enables blending for a particular draw buffer.
-  external void disableiOES(
+  void disableiOES(
     GLenum target,
     GLuint index,
   );
@@ -57,7 +53,7 @@ extension type OES_draw_buffers_indexed._(JSObject _) implements JSObject {
   /// See [OES_draw_buffers_indexed.blendEquationSeparateiOES] for setting RGB
   /// and alpha separately and [WebGLRenderingContext.blendEquation] for the
   /// WebGL 1 version of this method.
-  external void blendEquationiOES(
+  void blendEquationiOES(
     GLuint buf,
     GLenum mode,
   );
@@ -69,7 +65,7 @@ extension type OES_draw_buffers_indexed._(JSObject _) implements JSObject {
   /// See [OES_draw_buffers_indexed.blendEquationiOES] for setting RGB and alpha
   /// together and [WebGLRenderingContext.blendEquationSeparate] for the WebGL 1
   /// version of this method.
-  external void blendEquationSeparateiOES(
+  void blendEquationSeparateiOES(
     GLuint buf,
     GLenum modeRGB,
     GLenum modeAlpha,
@@ -82,7 +78,7 @@ extension type OES_draw_buffers_indexed._(JSObject _) implements JSObject {
   /// See [OES_draw_buffers_indexed.blendFuncSeparateiOES] for setting RGB and
   /// alpha components separately and [WebGLRenderingContext.blendFunc] for the
   /// WebGL 1 version of this method.
-  external void blendFunciOES(
+  void blendFunciOES(
     GLuint buf,
     GLenum src,
     GLenum dst,
@@ -95,7 +91,7 @@ extension type OES_draw_buffers_indexed._(JSObject _) implements JSObject {
   /// See [OES_draw_buffers_indexed.blendFunciOES] for setting RGB and alpha
   /// together and [WebGLRenderingContext.blendFuncSeparate] for the WebGL 1
   /// version of this method.
-  external void blendFuncSeparateiOES(
+  void blendFuncSeparateiOES(
     GLuint buf,
     GLenum srcRGB,
     GLenum dstRGB,
@@ -107,7 +103,7 @@ extension type OES_draw_buffers_indexed._(JSObject _) implements JSObject {
   /// extension sets which color components to enable or to disable when drawing
   /// or rendering for a particular draw buffer. It's the indexed version of
   /// WebGL 1's [WebGLRenderingContext.colorMask] method.
-  external void colorMaskiOES(
+  void colorMaskiOES(
     GLuint buf,
     GLboolean r,
     GLboolean g,

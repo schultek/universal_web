@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,11 +10,7 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../js_interop.dart';
 import 'dom.dart';
 import 'event_timing.dart';
 import 'html.dart';
@@ -37,17 +33,17 @@ typedef EpochTimeStamp = int;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Performance).
-extension type Performance._(JSObject _) implements EventTarget, JSObject {
+abstract class Performance implements EventTarget, JSObject {
   /// The **`performance.now()`** method returns a high resolution timestamp in
   /// milliseconds. It represents the time elapsed since
   /// [Performance.timeOrigin] (the time when navigation has started in window
   /// contexts, or the time when the worker is run in [Worker] and
   /// [ServiceWorker] contexts).
-  external double now();
+  double now();
 
   /// The **`toJSON()`** method of the [Performance] interface is a ; it returns
   /// a JSON representation of the [Performance] object.
-  external JSObject toJSON();
+  JSObject toJSON();
 
   /// The **`getEntries()`** method returns an array of all [PerformanceEntry]
   /// objects currently present in the performance timeline.
@@ -73,7 +69,7 @@ extension type Performance._(JSObject _) implements EventTarget, JSObject {
   ///
   /// To access entries of these types, you must use a [PerformanceObserver]
   /// instead.
-  external PerformanceEntryList getEntries();
+  PerformanceEntryList getEntries();
 
   /// The **`getEntriesByType()`** method returns an array of [PerformanceEntry]
   /// objects currently present in the performance timeline for a given _type_.
@@ -99,7 +95,7 @@ extension type Performance._(JSObject _) implements EventTarget, JSObject {
   ///
   /// To access entries of these types, you must use a [PerformanceObserver]
   /// instead.
-  external PerformanceEntryList getEntriesByType(String type);
+  PerformanceEntryList getEntriesByType(String type);
 
   /// The **`getEntriesByName()`** method returns an array of [PerformanceEntry]
   /// objects currently present in the performance timeline with the given
@@ -126,7 +122,7 @@ extension type Performance._(JSObject _) implements EventTarget, JSObject {
   ///
   /// To access entries of these types, you must use a [PerformanceObserver]
   /// instead.
-  external PerformanceEntryList getEntriesByName(
+  PerformanceEntryList getEntriesByName(
     String name, [
     String type,
   ]);
@@ -141,7 +137,7 @@ extension type Performance._(JSObject _) implements EventTarget, JSObject {
   ///
   /// To get notified when the browser's resource timing buffer is full, listen
   /// for the [Performance.resourcetimingbufferfull_event] event.
-  external void clearResourceTimings();
+  void clearResourceTimings();
 
   /// The **`setResourceTimingBufferSize()`** method sets the desired size of
   /// the browser's resource timing buffer which stores the "`resource`"
@@ -155,19 +151,19 @@ extension type Performance._(JSObject _) implements EventTarget, JSObject {
   ///
   /// To get notified when the browser's resource timing buffer is full, listen
   /// for the [Performance.resourcetimingbufferfull_event] event.
-  external void setResourceTimingBufferSize(int maxSize);
+  void setResourceTimingBufferSize(int maxSize);
 
   /// The **`mark()`** method creates a named [PerformanceMark] object
   /// representing a high resolution timestamp marker in the browser's
   /// performance timeline.
-  external PerformanceMark mark(
+  PerformanceMark mark(
     String markName, [
     PerformanceMarkOptions markOptions,
   ]);
 
   /// The **`clearMarks()`** method removes all or specific [PerformanceMark]
   /// objects from the browser's performance timeline.
-  external void clearMarks([String markName]);
+  void clearMarks([String markName]);
 
   /// The **`measure()`** method creates a named [PerformanceMeasure] object
   /// representing a time measurement between two marks in the browser's
@@ -176,7 +172,7 @@ extension type Performance._(JSObject _) implements EventTarget, JSObject {
   /// When measuring between two marks, there is a _start mark_ and _end mark_,
   /// respectively.
   /// The named timestamp is referred to as a _measure_.
-  external PerformanceMeasure measure(
+  PerformanceMeasure measure(
     String measureName, [
     JSAny startOrMeasureOptions,
     String endMark,
@@ -184,7 +180,7 @@ extension type Performance._(JSObject _) implements EventTarget, JSObject {
 
   /// The **`clearMeasures()`** method removes all or specific
   /// [PerformanceMeasure] objects from the browser's performance timeline.
-  external void clearMeasures([String measureName]);
+  void clearMeasures([String measureName]);
 
   /// The **`timeOrigin`** read-only property of the [Performance] interface
   /// returns the high resolution timestamp that is used as the baseline for
@@ -202,14 +198,14 @@ extension type Performance._(JSObject _) implements EventTarget, JSObject {
   /// > [monotonic clock](https://w3c.github.io/hr-time/#dfn-monotonic-clock)
   /// > which current time never decreases and which isn't subject to these
   /// > adjustments.
-  external double get timeOrigin;
+  double get timeOrigin;
 
   /// The read-only `performance.eventCounts` property is an [EventCounts] map
   /// containing the number of events which have been dispatched per event type.
   ///
   /// Not all event types are exposed. You can only get counts for event types
   /// supported by the [PerformanceEventTiming] interface.
-  external EventCounts get eventCounts;
+  EventCounts get eventCounts;
 
   /// The legacy
   /// **`Performance.timing`** read-only
@@ -222,7 +218,7 @@ extension type Performance._(JSObject _) implements EventTarget, JSObject {
   /// > [Navigation Timing Level 2 specification](https://w3c.github.io/navigation-timing/#obsolete).
   /// > Please use the [PerformanceNavigationTiming]
   /// > interface instead.
-  external PerformanceTiming get timing;
+  PerformanceTiming get timing;
 
   /// The legacy
   /// **`Performance.navigation`**
@@ -237,7 +233,7 @@ extension type Performance._(JSObject _) implements EventTarget, JSObject {
   /// > [Navigation Timing Level 2 specification](https://w3c.github.io/navigation-timing/#obsolete).
   /// > Please use the
   /// > [PerformanceNavigationTiming] interface instead.
-  external PerformanceNavigation get navigation;
-  external EventHandler get onresourcetimingbufferfull;
-  external set onresourcetimingbufferfull(EventHandler value);
+  PerformanceNavigation get navigation;
+  EventHandler get onresourcetimingbufferfull;
+  set onresourcetimingbufferfull(EventHandler value);
 }

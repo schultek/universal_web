@@ -3,11 +3,10 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'dart:async';
-import 'dart:js_interop';
 import 'dart:typed_data';
 
 import '../dom.dart';
-import 'events/events.dart' show XHRGetters;
+import '../error.dart';
 
 /// > [!WARNING]
 /// > This class is deprecated and will be
@@ -203,57 +202,6 @@ class HttpRequest {
       Map<String, String>? requestHeaders,
       Object? sendData,
       void Function(ProgressEvent)? onProgress}) {
-    final completer = Completer<XMLHttpRequest>();
-    final xhr = XMLHttpRequest();
-    method ??= 'GET';
-    xhr.open(method, url, true);
-
-    if (withCredentials != null) {
-      xhr.withCredentials = withCredentials;
-    }
-
-    if (responseType != null) {
-      xhr.responseType = responseType;
-    }
-
-    if (mimeType != null) {
-      xhr.overrideMimeType(mimeType);
-    }
-
-    // ignore: unnecessary_lambdas
-    requestHeaders?.forEach((a, b) => xhr.setRequestHeader(a, b));
-
-    if (onProgress != null) {
-      xhr.onProgress.listen(onProgress);
-    }
-
-    xhr.onLoad.listen((ProgressEvent e) {
-      final status = xhr.status;
-      final accepted = status >= 200 && status < 300;
-      final fileUri = status == 0; // file:// URIs have status of 0.
-      final notModified = status == 304;
-      // Redirect status is specified up to 307, but others have been used in
-      // practice. Notably Google Drive uses 308 Resume Incomplete for
-      // resumable uploads, and it's also been used as a redirect. The
-      // redirect case will be handled by the browser before it gets to us,
-      // so if we see it we should pass it through to the user.
-      final unknownRedirect = status > 307 && status < 400;
-
-      if (accepted || fileUri || notModified || unknownRedirect) {
-        completer.complete(xhr);
-      } else {
-        completer.completeError(e);
-      }
-    });
-
-    xhr.onError.listen(completer.completeError);
-
-    if (sendData != null) {
-      xhr.send(sendData is String ? sendData.toJS : sendData.jsify());
-    } else {
-      xhr.send();
-    }
-
-    return completer.future;
+    unsupportedPlatformError();
   }
 }

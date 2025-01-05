@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,11 +10,8 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../error.dart';
+import '../js_interop.dart';
 import 'hr_time.dart';
 
 typedef PositionCallback = JSFunction;
@@ -37,10 +34,10 @@ typedef PositionErrorCallback = JSFunction;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation).
-extension type Geolocation._(JSObject _) implements JSObject {
+abstract class Geolocation implements JSObject {
   /// The **`getCurrentPosition()`** method of the [Geolocation] interface is
   /// used to get the current position of the device.
-  external void getCurrentPosition(
+  void getCurrentPosition(
     PositionCallback successCallback, [
     PositionErrorCallback? errorCallback,
     PositionOptions options,
@@ -50,7 +47,7 @@ extension type Geolocation._(JSObject _) implements JSObject {
   /// register a handler function that will be called automatically each time
   /// the position of the device changes.
   /// You can also, optionally, specify an error handling callback function.
-  external int watchPosition(
+  int watchPosition(
     PositionCallback successCallback, [
     PositionErrorCallback? errorCallback,
     PositionOptions options,
@@ -59,21 +56,33 @@ extension type Geolocation._(JSObject _) implements JSObject {
   /// The **`clearWatch()`** method of the [Geolocation] interface is used to
   /// unregister location/error monitoring handlers previously installed using
   /// [Geolocation.watchPosition].
-  external void clearWatch(int watchId);
+  void clearWatch(int watchId);
 }
-extension type PositionOptions._(JSObject _) implements JSObject {
-  external factory PositionOptions({
-    bool enableHighAccuracy,
-    int timeout,
-    int maximumAge,
-  });
 
-  external bool get enableHighAccuracy;
-  external set enableHighAccuracy(bool value);
-  external int get timeout;
-  external set timeout(int value);
-  external int get maximumAge;
-  external set maximumAge(int value);
+abstract class PositionOptions implements JSObject {
+  bool get enableHighAccuracy {
+    unsupportedPlatformError();
+  }
+
+  set enableHighAccuracy(bool value) {
+    unsupportedPlatformError();
+  }
+
+  int get timeout {
+    unsupportedPlatformError();
+  }
+
+  set timeout(int value) {
+    unsupportedPlatformError();
+  }
+
+  int get maximumAge {
+    unsupportedPlatformError();
+  }
+
+  set maximumAge(int value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`GeolocationPosition`** interface represents the position of the
@@ -85,10 +94,10 @@ extension type PositionOptions._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/GeolocationPosition).
-extension type GeolocationPosition._(JSObject _) implements JSObject {
+abstract class GeolocationPosition implements JSObject {
   /// The **`toJSON()`** method of the [GeolocationPosition] interface is a ; it
   /// returns a JSON representation of the [GeolocationPosition] object.
-  external JSObject toJSON();
+  JSObject toJSON();
 
   /// The **`coords`** read-only property of the [GeolocationPosition] interface
   /// returns a [GeolocationCoordinates] object representing a geographic
@@ -96,12 +105,12 @@ extension type GeolocationPosition._(JSObject _) implements JSObject {
   /// Earth, the altitude, and the speed of the object concerned, regrouped
   /// inside the returned value. It also contains accuracy information about
   /// these values.
-  external GeolocationCoordinates get coords;
+  GeolocationCoordinates get coords;
 
   /// The **`timestamp`** read-only property of the [GeolocationPosition]
   /// interface represents the date and time that the position was acquired by
   /// the device.
-  external EpochTimeStamp get timestamp;
+  EpochTimeStamp get timestamp;
 }
 
 /// The **`GeolocationCoordinates`** interface represents the position and
@@ -114,21 +123,21 @@ extension type GeolocationPosition._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/GeolocationCoordinates).
-extension type GeolocationCoordinates._(JSObject _) implements JSObject {
+abstract class GeolocationCoordinates implements JSObject {
   /// The **`toJSON()`** method of the [GeolocationCoordinates] interface is a ;
   /// it returns a JSON representation of the [GeolocationCoordinates] object.
-  external JSObject toJSON();
+  JSObject toJSON();
 
   /// The **`accuracy`** read-only property of the [GeolocationCoordinates]
   /// interface is a strictly positive `double` representing the accuracy, with
   /// a 95% confidence level, of the [GeolocationCoordinates.latitude] and
   /// [GeolocationCoordinates.longitude] properties expressed in meters.
-  external double get accuracy;
+  double get accuracy;
 
   /// The **`latitude`** read-only property of the [GeolocationCoordinates]
   /// interface is a `double` representing the latitude of the position in
   /// decimal degrees.
-  external double get latitude;
+  double get latitude;
 
   /// The **`longitude`** read-only property of the [GeolocationCoordinates]
   /// interface is a number which represents the longitude of a geographical
@@ -137,7 +146,7 @@ extension type GeolocationCoordinates._(JSObject _) implements JSObject {
   /// measurement, the `GeolocationCoordinates` object is part of the
   /// [GeolocationPosition] interface, which is the object type returned by
   /// Geolocation API functions that obtain and return a geographical position.
-  external double get longitude;
+  double get longitude;
 
   /// The **`altitude`** read-only property of the [GeolocationCoordinates]
   /// interface is a `double` representing the altitude of the position in
@@ -145,14 +154,14 @@ extension type GeolocationCoordinates._(JSObject _) implements JSObject {
   /// [WGS84](https://gis-lab.info/docs/nima-tr8350.2-wgs84fin.pdf) ellipsoid
   /// (which defines the nominal sea level surface). This value is `null` if the
   /// implementation cannot provide this data.
-  external double? get altitude;
+  double? get altitude;
 
   /// The **`altitudeAccuracy`** read-only property of the
   /// [GeolocationCoordinates] interface is a strictly positive `double`
   /// representing the accuracy, with a 95% confidence level, of the `altitude`
   /// expressed in meters. This value is `null` if the implementation doesn't
   /// support measuring altitude.
-  external double? get altitudeAccuracy;
+  double? get altitudeAccuracy;
 
   /// The **`heading`** read-only property of the [GeolocationCoordinates]
   /// interface is a `double` representing the direction in which the device is
@@ -162,13 +171,13 @@ extension type GeolocationCoordinates._(JSObject _) implements JSObject {
   /// degrees and west is `270` degrees). If [GeolocationCoordinates.speed] is
   /// `0`, `heading` is `NaN`. If the device is not able to provide heading
   /// information, this value is `null`.
-  external double? get heading;
+  double? get heading;
 
   /// The **`speed`** read-only property of the [GeolocationCoordinates]
   /// interface is a `double` representing the velocity of the device in meters
   /// per second. This value is `null` if the implementation is not able to
   /// measure it.
-  external double? get speed;
+  double? get speed;
 }
 
 /// The **`GeolocationPositionError`** interface represents the reason of an
@@ -178,7 +187,7 @@ extension type GeolocationCoordinates._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/GeolocationPositionError).
-extension type GeolocationPositionError._(JSObject _) implements JSObject {
+abstract class GeolocationPositionError implements JSObject {
   static const int PERMISSION_DENIED = 1;
 
   static const int POSITION_UNAVAILABLE = 2;
@@ -222,10 +231,10 @@ extension type GeolocationPositionError._(JSObject _) implements JSObject {
   ///     </tr>
   ///   </tbody>
   /// </table>
-  external int get code;
+  int get code;
 
   /// The **`message`** read-only property of the [GeolocationPositionError]
   /// interface returns a human-readable string describing the details of the
   /// error.
-  external String get message;
+  String get message;
 }

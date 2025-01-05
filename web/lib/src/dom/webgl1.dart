@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,11 +10,8 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../error.dart';
+import '../js_interop.dart';
 import 'dom.dart';
 import 'html.dart';
 import 'webidl.dart';
@@ -33,40 +30,87 @@ typedef TexImageSource = JSObject;
 typedef Float32List = JSObject;
 typedef Int32List = JSObject;
 typedef WebGLPowerPreference = String;
-extension type WebGLContextAttributes._(JSObject _) implements JSObject {
-  external factory WebGLContextAttributes({
-    bool alpha,
-    bool depth,
-    bool stencil,
-    bool antialias,
-    bool premultipliedAlpha,
-    bool preserveDrawingBuffer,
-    WebGLPowerPreference powerPreference,
-    bool failIfMajorPerformanceCaveat,
-    bool desynchronized,
-    bool xrCompatible,
-  });
 
-  external bool get alpha;
-  external set alpha(bool value);
-  external bool get depth;
-  external set depth(bool value);
-  external bool get stencil;
-  external set stencil(bool value);
-  external bool get antialias;
-  external set antialias(bool value);
-  external bool get premultipliedAlpha;
-  external set premultipliedAlpha(bool value);
-  external bool get preserveDrawingBuffer;
-  external set preserveDrawingBuffer(bool value);
-  external WebGLPowerPreference get powerPreference;
-  external set powerPreference(WebGLPowerPreference value);
-  external bool get failIfMajorPerformanceCaveat;
-  external set failIfMajorPerformanceCaveat(bool value);
-  external bool get desynchronized;
-  external set desynchronized(bool value);
-  external bool get xrCompatible;
-  external set xrCompatible(bool value);
+abstract class WebGLContextAttributes implements JSObject {
+  bool get alpha {
+    unsupportedPlatformError();
+  }
+
+  set alpha(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get depth {
+    unsupportedPlatformError();
+  }
+
+  set depth(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get stencil {
+    unsupportedPlatformError();
+  }
+
+  set stencil(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get antialias {
+    unsupportedPlatformError();
+  }
+
+  set antialias(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get premultipliedAlpha {
+    unsupportedPlatformError();
+  }
+
+  set premultipliedAlpha(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get preserveDrawingBuffer {
+    unsupportedPlatformError();
+  }
+
+  set preserveDrawingBuffer(bool value) {
+    unsupportedPlatformError();
+  }
+
+  WebGLPowerPreference get powerPreference {
+    unsupportedPlatformError();
+  }
+
+  set powerPreference(WebGLPowerPreference value) {
+    unsupportedPlatformError();
+  }
+
+  bool get failIfMajorPerformanceCaveat {
+    unsupportedPlatformError();
+  }
+
+  set failIfMajorPerformanceCaveat(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get desynchronized {
+    unsupportedPlatformError();
+  }
+
+  set desynchronized(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get xrCompatible {
+    unsupportedPlatformError();
+  }
+
+  set xrCompatible(bool value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **WebGLBuffer** interface is part of the
@@ -77,7 +121,7 @@ extension type WebGLContextAttributes._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WebGLBuffer).
-extension type WebGLBuffer._(JSObject _) implements JSObject {}
+abstract class WebGLBuffer implements JSObject {}
 
 /// The **WebGLFramebuffer** interface is part of the
 /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API) and
@@ -87,7 +131,7 @@ extension type WebGLBuffer._(JSObject _) implements JSObject {}
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WebGLFramebuffer).
-extension type WebGLFramebuffer._(JSObject _) implements JSObject {}
+abstract class WebGLFramebuffer implements JSObject {}
 
 /// The **`WebGLProgram`** is part of the
 /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API) and
@@ -121,7 +165,7 @@ extension type WebGLFramebuffer._(JSObject _) implements JSObject {}
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WebGLProgram).
-extension type WebGLProgram._(JSObject _) implements JSObject {}
+abstract class WebGLProgram implements JSObject {}
 
 /// The **WebGLRenderbuffer** interface is part of the
 /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API) and
@@ -132,7 +176,7 @@ extension type WebGLProgram._(JSObject _) implements JSObject {}
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderbuffer).
-extension type WebGLRenderbuffer._(JSObject _) implements JSObject {}
+abstract class WebGLRenderbuffer implements JSObject {}
 
 /// The **WebGLShader** is part of the
 /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API) and
@@ -143,7 +187,7 @@ extension type WebGLRenderbuffer._(JSObject _) implements JSObject {}
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WebGLShader).
-extension type WebGLShader._(JSObject _) implements JSObject {}
+abstract class WebGLShader implements JSObject {}
 
 /// The **WebGLTexture** interface is part of the
 /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API) and
@@ -154,7 +198,7 @@ extension type WebGLShader._(JSObject _) implements JSObject {}
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WebGLTexture).
-extension type WebGLTexture._(JSObject _) implements JSObject {}
+abstract class WebGLTexture implements JSObject {}
 
 /// The **WebGLUniformLocation** interface is part of the
 /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API) and
@@ -164,7 +208,7 @@ extension type WebGLTexture._(JSObject _) implements JSObject {}
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WebGLUniformLocation).
-extension type WebGLUniformLocation._(JSObject _) implements JSObject {}
+abstract class WebGLUniformLocation implements JSObject {}
 
 /// The **WebGLActiveInfo** interface is part of the
 /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API) and
@@ -176,24 +220,24 @@ extension type WebGLUniformLocation._(JSObject _) implements JSObject {}
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WebGLActiveInfo).
-extension type WebGLActiveInfo._(JSObject _) implements JSObject {
+abstract class WebGLActiveInfo implements JSObject {
   /// The read-only **`WebGLActiveInfo.size`** property is a `Number`
   /// representing the size of the requested data returned by calling the
   /// [WebGLRenderingContext.getActiveAttrib] or
   /// [WebGLRenderingContext.getActiveUniform] methods.
-  external GLint get size;
+  GLint get size;
 
   /// The read-only **`WebGLActiveInfo.type`** property represents the type of
   /// the requested data returned by calling the
   /// [WebGLRenderingContext.getActiveAttrib] or
   /// [WebGLRenderingContext.getActiveUniform] methods.
-  external GLenum get type;
+  GLenum get type;
 
   /// The read-only **`WebGLActiveInfo.name`** property represents the name of
   /// the requested data returned by calling the
   /// [WebGLRenderingContext.getActiveAttrib] or
   /// [WebGLRenderingContext.getActiveUniform] methods.
-  external String get name;
+  String get name;
 }
 
 /// The **WebGLShaderPrecisionFormat** interface is part of the
@@ -205,22 +249,22 @@ extension type WebGLActiveInfo._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WebGLShaderPrecisionFormat).
-extension type WebGLShaderPrecisionFormat._(JSObject _) implements JSObject {
+abstract class WebGLShaderPrecisionFormat implements JSObject {
   /// The read-only **`WebGLShaderPrecisionFormat.rangeMin`** property returns
   /// the base 2 log of the absolute value of the minimum value that can be
   /// represented.
-  external GLint get rangeMin;
+  GLint get rangeMin;
 
   /// The read-only **`WebGLShaderPrecisionFormat.rangeMax`** property returns
   /// the base 2 log of the absolute value of the maximum value that can be
   /// represented.
-  external GLint get rangeMax;
+  GLint get rangeMax;
 
   /// The read-only **`WebGLShaderPrecisionFormat.precision`** property returns
   /// the number of bits of precision that can be represented.
   ///
   /// For integer formats this value is always 0.
-  external GLint get precision;
+  GLint get precision;
 }
 
 /// The **`WebGLRenderingContext`** interface provides an interface to the
@@ -249,7 +293,7 @@ extension type WebGLShaderPrecisionFormat._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext).
-extension type WebGLRenderingContext._(JSObject _) implements JSObject {
+abstract class WebGLRenderingContext implements JSObject {
   static const GLenum DEPTH_BUFFER_BIT = 256;
 
   static const GLenum STENCIL_BUFFER_BIT = 1024;
@@ -849,37 +893,37 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// parameters. Might return
   /// [`null`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/null),
   /// if the context is lost.
-  external WebGLContextAttributes? getContextAttributes();
+  WebGLContextAttributes? getContextAttributes();
 
   /// The
   /// **`WebGLRenderingContext.isContextLost()`** method returns a
   /// boolean value indicating whether or not the WebGL context has been lost
   /// and
   /// must be re-established before rendering can resume.
-  external bool isContextLost();
+  bool isContextLost();
 
   /// The **`WebGLRenderingContext.getSupportedExtensions()`** method
   /// returns a list of all the supported
   /// [WebGL](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// extensions.
-  external JSArray<JSString>? getSupportedExtensions();
+  JSArray<JSString>? getSupportedExtensions();
 
   /// The **`WebGLRenderingContext.getExtension()`** method enables a
   /// [WebGL](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// extension.
-  external JSObject? getExtension(String name);
+  JSObject? getExtension(String name);
 
   /// The **`WebGLRenderingContext.activeTexture()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// specifies which texture unit to
   /// make active.
-  external void activeTexture(GLenum texture);
+  void activeTexture(GLenum texture);
 
   /// The **WebGLRenderingContext.attachShader()** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// attaches either a fragment or
   /// vertex [WebGLShader] to a [WebGLProgram].
-  external void attachShader(
+  void attachShader(
     WebGLProgram program,
     WebGLShader shader,
   );
@@ -889,7 +933,7 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// binds a generic vertex index
   /// to an attribute variable.
-  external void bindAttribLocation(
+  void bindAttribLocation(
     WebGLProgram program,
     GLuint index,
     String name,
@@ -899,7 +943,7 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// binds a given
   /// [WebGLBuffer] to a target.
-  external void bindBuffer(
+  void bindBuffer(
     GLenum target,
     WebGLBuffer? buffer,
   );
@@ -909,7 +953,7 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// binds to the specified target the provided [WebGLFramebuffer], or, if the
   /// `framebuffer` argument is null, the default [WebGLFramebuffer], which is
   /// associated with the canvas rendering context.
-  external void bindFramebuffer(
+  void bindFramebuffer(
     GLenum target,
     WebGLFramebuffer? framebuffer,
   );
@@ -920,7 +964,7 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// binds a given
   /// [WebGLRenderbuffer] to a target, which must be
   /// `gl.RENDERBUFFER`.
-  external void bindRenderbuffer(
+  void bindRenderbuffer(
     GLenum target,
     WebGLRenderbuffer? renderbuffer,
   );
@@ -929,7 +973,7 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// binds a given
   /// [WebGLTexture] to a target (binding point).
-  external void bindTexture(
+  void bindTexture(
     GLenum target,
     WebGLTexture? texture,
   );
@@ -938,7 +982,7 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API) is
   /// used to set the source and
   /// destination blending factors.
-  external void blendColor(
+  void blendColor(
     GLclampf red,
     GLclampf green,
     GLclampf blue,
@@ -953,7 +997,7 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// The blend equation determines how a new pixel is combined with a pixel
   /// already in the
   /// [WebGLFramebuffer].
-  external void blendEquation(GLenum mode);
+  void blendEquation(GLenum mode);
 
   /// The **`WebGLRenderingContext.blendEquationSeparate()`** method
   /// of the
@@ -964,7 +1008,7 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// The blend equation determines how a new pixel is combined with a pixel
   /// already in the
   /// [WebGLFramebuffer].
-  external void blendEquationSeparate(
+  void blendEquationSeparate(
     GLenum modeRGB,
     GLenum modeAlpha,
   );
@@ -973,7 +1017,7 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// defines which function is used for
   /// blending pixel arithmetic.
-  external void blendFunc(
+  void blendFunc(
     GLenum sfactor,
     GLenum dfactor,
   );
@@ -983,7 +1027,7 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// defines which function is used
   /// for blending pixel arithmetic for RGB and alpha components separately.
-  external void blendFuncSeparate(
+  void blendFuncSeparate(
     GLenum srcRGB,
     GLenum dstRGB,
     GLenum srcAlpha,
@@ -995,7 +1039,7 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// returns the completeness
   /// status of the [WebGLFramebuffer] object.
-  external GLenum checkFramebufferStatus(GLenum target);
+  GLenum checkFramebufferStatus(GLenum target);
 
   /// The **`WebGLRenderingContext.clear()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -1007,7 +1051,7 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   ///
   /// The scissor box, dithering, and buffer writemasks can affect the `clear()`
   /// method.
-  external void clear(GLbitfield mask);
+  void clear(GLbitfield mask);
 
   /// The **`WebGLRenderingContext.clearColor()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -1017,7 +1061,7 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// This specifies what color values to use when calling the
   /// [WebGLRenderingContext.clear] method. The values are clamped
   /// between 0 and 1.
-  external void clearColor(
+  void clearColor(
     GLclampf red,
     GLclampf green,
     GLclampf blue,
@@ -1032,7 +1076,7 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// This specifies what depth value to use when calling the
   /// [WebGLRenderingContext.clear] method. The value is clamped
   /// between 0 and 1.
-  external void clearDepth(GLclampf depth);
+  void clearDepth(GLclampf depth);
 
   /// The **`WebGLRenderingContext.clearStencil()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -1041,13 +1085,13 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   ///
   /// This specifies what stencil value to use when calling the
   /// [WebGLRenderingContext.clear] method.
-  external void clearStencil(GLint s);
+  void clearStencil(GLint s);
 
   /// The **`WebGLRenderingContext.colorMask()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// sets which color components to
   /// enable or to disable when drawing or rendering to a [WebGLFramebuffer].
-  external void colorMask(
+  void colorMask(
     GLboolean red,
     GLboolean green,
     GLboolean blue,
@@ -1058,13 +1102,13 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// compiles a GLSL shader into binary
   /// data so that it can be used by a [WebGLProgram].
-  external void compileShader(WebGLShader shader);
+  void compileShader(WebGLShader shader);
 
   /// The **`WebGLRenderingContext.copyTexImage2D()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// copies pixels from the current
   /// [WebGLFramebuffer] into a 2D texture image.
-  external void copyTexImage2D(
+  void copyTexImage2D(
     GLenum target,
     GLint level,
     GLenum internalformat,
@@ -1080,7 +1124,7 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// copies pixels from the current
   /// [WebGLFramebuffer] into an existing 2D texture sub-image.
-  external void copyTexSubImage2D(
+  void copyTexSubImage2D(
     GLenum target,
     GLint level,
     GLint xoffset,
@@ -1095,27 +1139,27 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// creates and initializes a
   /// [WebGLBuffer] storing data such as vertices or colors.
-  external WebGLBuffer? createBuffer();
+  WebGLBuffer? createBuffer();
 
   /// The **`WebGLRenderingContext.createFramebuffer()`** method of
   /// the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// creates and initializes a
   /// [WebGLFramebuffer] object.
-  external WebGLFramebuffer? createFramebuffer();
+  WebGLFramebuffer? createFramebuffer();
 
   /// The **`WebGLRenderingContext.createProgram()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// creates and initializes a
   /// [WebGLProgram] object.
-  external WebGLProgram? createProgram();
+  WebGLProgram? createProgram();
 
   /// The **`WebGLRenderingContext.createRenderbuffer()`** method of
   /// the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// creates and initializes a
   /// [WebGLRenderbuffer] object.
-  external WebGLRenderbuffer? createRenderbuffer();
+  WebGLRenderbuffer? createRenderbuffer();
 
   /// The [WebGLRenderingContext]
   /// method **`createShader()`** of the
@@ -1124,19 +1168,19 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// [WebGLShader] that can then be configured further using
   /// [WebGLRenderingContext.shaderSource] and
   /// [WebGLRenderingContext.compileShader].
-  external WebGLShader? createShader(GLenum type);
+  WebGLShader? createShader(GLenum type);
 
   /// The **`WebGLRenderingContext.createTexture()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// creates and initializes a
   /// [WebGLTexture] object.
-  external WebGLTexture? createTexture();
+  WebGLTexture? createTexture();
 
   /// The **`WebGLRenderingContext.cullFace()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// specifies whether or not front-
   /// and/or back-facing polygons can be culled.
-  external void cullFace(GLenum mode);
+  void cullFace(GLenum mode);
 
   /// The **`WebGLRenderingContext.deleteBuffer()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -1144,7 +1188,7 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// [WebGLBuffer]. This method has no effect if the buffer has already been
   /// deleted. Normally you don't need to call this method yourself, when the
   /// buffer object is dereferenced it will be marked as free.
-  external void deleteBuffer(WebGLBuffer? buffer);
+  void deleteBuffer(WebGLBuffer? buffer);
 
   /// The **`WebGLRenderingContext.deleteFramebuffer()`** method of
   /// the
@@ -1152,7 +1196,7 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// deletes a given
   /// [WebGLFramebuffer] object. This method has no effect if the frame buffer
   /// has already been deleted.
-  external void deleteFramebuffer(WebGLFramebuffer? framebuffer);
+  void deleteFramebuffer(WebGLFramebuffer? framebuffer);
 
   /// The **`WebGLRenderingContext.deleteProgram()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -1160,7 +1204,7 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// [WebGLProgram] object. This method has no effect if the program has
   /// already
   /// been deleted.
-  external void deleteProgram(WebGLProgram? program);
+  void deleteProgram(WebGLProgram? program);
 
   /// The **`WebGLRenderingContext.deleteRenderbuffer()`** method of
   /// the
@@ -1168,7 +1212,7 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// deletes a given
   /// [WebGLRenderbuffer] object. This method has no effect if the render buffer
   /// has already been deleted.
-  external void deleteRenderbuffer(WebGLRenderbuffer? renderbuffer);
+  void deleteRenderbuffer(WebGLRenderbuffer? renderbuffer);
 
   /// The **`WebGLRenderingContext.deleteShader()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -1179,7 +1223,7 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// deleted, and the [WebGLShader] is automatically marked for deletion when
   /// it
   /// is destroyed by the garbage collector.
-  external void deleteShader(WebGLShader? shader);
+  void deleteShader(WebGLShader? shader);
 
   /// The **`WebGLRenderingContext.deleteTexture()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -1187,25 +1231,25 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// [WebGLTexture] object. This method has no effect if the texture has
   /// already
   /// been deleted.
-  external void deleteTexture(WebGLTexture? texture);
+  void deleteTexture(WebGLTexture? texture);
 
   /// The **`WebGLRenderingContext.depthFunc()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// specifies a function that compares
   /// incoming pixel depth to the current depth buffer value.
-  external void depthFunc(GLenum func);
+  void depthFunc(GLenum func);
 
   /// The **`WebGLRenderingContext.depthMask()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// sets whether writing into the depth
   /// buffer is enabled or disabled.
-  external void depthMask(GLboolean flag);
+  void depthMask(GLboolean flag);
 
   /// The **`WebGLRenderingContext.depthRange()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// specifies the depth range mapping
   /// from normalized device coordinates to window or viewport coordinates.
-  external void depthRange(
+  void depthRange(
     GLclampf zNear,
     GLclampf zFar,
   );
@@ -1214,7 +1258,7 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// detaches a previously
   /// attached [WebGLShader] from a [WebGLProgram].
-  external void detachShader(
+  void detachShader(
     WebGLProgram program,
     WebGLShader shader,
   );
@@ -1223,19 +1267,19 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// disables specific WebGL
   /// capabilities for this context.
-  external void disable(GLenum cap);
+  void disable(GLenum cap);
 
   /// The **`WebGLRenderingContext.disableVertexAttribArray()`**
   /// method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// turns the generic
   /// vertex attribute array off at a given index position.
-  external void disableVertexAttribArray(GLuint index);
+  void disableVertexAttribArray(GLuint index);
 
   /// The **`WebGLRenderingContext.drawArrays()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// renders primitives from array data.
-  external void drawArrays(
+  void drawArrays(
     GLenum mode,
     GLint first,
     GLsizei count,
@@ -1244,7 +1288,7 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// The **`WebGLRenderingContext.drawElements()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// renders primitives from array data.
-  external void drawElements(
+  void drawElements(
     GLenum mode,
     GLsizei count,
     GLenum type,
@@ -1255,7 +1299,7 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// enables specific WebGL capabilities
   /// for this context.
-  external void enable(GLenum cap);
+  void enable(GLenum cap);
 
   /// The [WebGLRenderingContext] method
   /// **`enableVertexAttribArray()`**, part of the
@@ -1286,26 +1330,26 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// [WebGLRenderingContext.vertexAttribPointer],
   /// [WebGLRenderingContext.vertexAttrib], and
   /// [WebGLRenderingContext.getVertexAttrib].
-  external void enableVertexAttribArray(GLuint index);
+  void enableVertexAttribArray(GLuint index);
 
   /// The **`WebGLRenderingContext.finish()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// blocks execution until all
   /// previously called commands are finished.
-  external void finish();
+  void finish();
 
   /// The **`WebGLRenderingContext.flush()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// empties different buffer commands,
   /// causing all commands to be executed as quickly as possible.
-  external void flush();
+  void flush();
 
   /// The **`WebGLRenderingContext.framebufferRenderbuffer()`**
   /// method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// attaches a
   /// [WebGLRenderbuffer] object to a [WebGLFramebuffer] object.
-  external void framebufferRenderbuffer(
+  void framebufferRenderbuffer(
     GLenum target,
     GLenum attachment,
     GLenum renderbuffertarget,
@@ -1317,7 +1361,7 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// attaches a texture to a
   /// [WebGLFramebuffer].
-  external void framebufferTexture2D(
+  void framebufferTexture2D(
     GLenum target,
     GLenum attachment,
     GLenum textarget,
@@ -1329,7 +1373,7 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// specifies whether polygons are
   /// front- or back-facing by setting a winding orientation.
-  external void frontFace(GLenum mode);
+  void frontFace(GLenum mode);
 
   /// The **`WebGLRenderingContext.generateMipmap()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -1343,7 +1387,7 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// farther away. It starts with the resolution of the texture image and
   /// halves the
   /// resolution until a 1x1 dimension texture image is created.
-  external void generateMipmap(GLenum target);
+  void generateMipmap(GLenum target);
 
   /// The **`WebGLRenderingContext.getActiveAttrib()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -1352,7 +1396,7 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// attribute. It is generally used when querying unknown attributes either
   /// for debugging or
   /// generic library creation.
-  external WebGLActiveInfo? getActiveAttrib(
+  WebGLActiveInfo? getActiveAttrib(
     WebGLProgram program,
     GLuint index,
   );
@@ -1365,7 +1409,7 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// attribute. It is generally used when querying unknown uniforms either for
   /// debugging or
   /// generic library creation.
-  external WebGLActiveInfo? getActiveUniform(
+  WebGLActiveInfo? getActiveUniform(
     WebGLProgram program,
     GLuint index,
   );
@@ -1375,14 +1419,14 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// returns a list of
   /// [WebGLShader] objects attached to a [WebGLProgram].
-  external JSArray<WebGLShader>? getAttachedShaders(WebGLProgram program);
+  JSArray<WebGLShader>? getAttachedShaders(WebGLProgram program);
 
   /// The **`WebGLRenderingContext.getAttribLocation()`** method of
   /// the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// returns the location of an
   /// attribute variable in a given [WebGLProgram].
-  external GLint getAttribLocation(
+  GLint getAttribLocation(
     WebGLProgram program,
     String name,
   );
@@ -1392,7 +1436,7 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// returns information about the
   /// buffer.
-  external JSAny? getBufferParameter(
+  JSAny? getBufferParameter(
     GLenum target,
     GLenum pname,
   );
@@ -1401,12 +1445,12 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// returns a value for the passed
   /// parameter name.
-  external JSAny? getParameter(GLenum pname);
+  JSAny? getParameter(GLenum pname);
 
   /// The **`WebGLRenderingContext.getError()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// returns error information.
-  external GLenum getError();
+  GLenum getError();
 
   /// The
   /// **`WebGLRenderingContext.getFramebufferAttachmentParameter()`**
@@ -1414,7 +1458,7 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// returns information
   /// about a framebuffer's attachment.
-  external JSAny? getFramebufferAttachmentParameter(
+  JSAny? getFramebufferAttachmentParameter(
     GLenum target,
     GLenum attachment,
     GLenum pname,
@@ -1425,7 +1469,7 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// returns information about the
   /// given program.
-  external JSAny? getProgramParameter(
+  JSAny? getProgramParameter(
     WebGLProgram program,
     GLenum pname,
   );
@@ -1433,14 +1477,14 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// The **WebGLRenderingContext.getProgramInfoLog** returns the information
   /// log for the specified [WebGLProgram] object. It contains errors that
   /// occurred during failed linking or validation of `WebGLProgram` objects.
-  external String? getProgramInfoLog(WebGLProgram program);
+  String? getProgramInfoLog(WebGLProgram program);
 
   /// The **`WebGLRenderingContext.getRenderbufferParameter()`**
   /// method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// returns information
   /// about the renderbuffer.
-  external JSAny? getRenderbufferParameter(
+  JSAny? getRenderbufferParameter(
     GLenum target,
     GLenum pname,
   );
@@ -1450,7 +1494,7 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// returns information about the
   /// given shader.
-  external JSAny? getShaderParameter(
+  JSAny? getShaderParameter(
     WebGLShader shader,
     GLenum pname,
   );
@@ -1462,7 +1506,7 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// returns a new
   /// [WebGLShaderPrecisionFormat] object describing the range and precision for
   /// the specified shader numeric format.
-  external WebGLShaderPrecisionFormat? getShaderPrecisionFormat(
+  WebGLShaderPrecisionFormat? getShaderPrecisionFormat(
     GLenum shadertype,
     GLenum precisiontype,
   );
@@ -1471,19 +1515,19 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// for the specified [WebGLShader] object. It contains warnings, debugging
   /// and
   /// compile information.
-  external String? getShaderInfoLog(WebGLShader shader);
+  String? getShaderInfoLog(WebGLShader shader);
 
   /// The **`WebGLRenderingContext.getShaderSource()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// returns the source code of a
   /// [WebGLShader] as a string.
-  external String? getShaderSource(WebGLShader shader);
+  String? getShaderSource(WebGLShader shader);
 
   /// The **`WebGLRenderingContext.getTexParameter()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// returns information about the
   /// given texture.
-  external JSAny? getTexParameter(
+  JSAny? getTexParameter(
     GLenum target,
     GLenum pname,
   );
@@ -1492,7 +1536,7 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// returns the value of a uniform
   /// variable at a given location.
-  external JSAny? getUniform(
+  JSAny? getUniform(
     WebGLProgram program,
     WebGLUniformLocation location,
   );
@@ -1529,7 +1573,7 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// `Float32Array`.
   ///
   /// The uniform itself is declared in the shader program using GLSL.
-  external WebGLUniformLocation? getUniformLocation(
+  WebGLUniformLocation? getUniformLocation(
     WebGLProgram program,
     String name,
   );
@@ -1538,7 +1582,7 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// returns information about a vertex
   /// attribute at a given position.
-  external JSAny? getVertexAttrib(
+  JSAny? getVertexAttrib(
     GLuint index,
     GLenum pname,
   );
@@ -1548,7 +1592,7 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// returns the address of a
   /// specified vertex attribute.
-  external GLintptr getVertexAttribOffset(
+  GLintptr getVertexAttribOffset(
     GLuint index,
     GLenum pname,
   );
@@ -1557,7 +1601,7 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// specifies hints for certain
   /// behaviors. The interpretation of these hints depend on the implementation.
-  external void hint(
+  void hint(
     GLenum target,
     GLenum mode,
   );
@@ -1566,7 +1610,7 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// returns `true` if the
   /// passed [WebGLBuffer] is valid and `false` otherwise.
-  external GLboolean isBuffer(WebGLBuffer? buffer);
+  GLboolean isBuffer(WebGLBuffer? buffer);
 
   /// The **`WebGLRenderingContext.isEnabled()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -1575,37 +1619,37 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   ///
   /// By default, all capabilities except `gl.DITHER` are
   /// **disabled**.
-  external GLboolean isEnabled(GLenum cap);
+  GLboolean isEnabled(GLenum cap);
 
   /// The **`WebGLRenderingContext.isFramebuffer()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// returns `true` if the
   /// passed [WebGLFramebuffer] is valid and `false` otherwise.
-  external GLboolean isFramebuffer(WebGLFramebuffer? framebuffer);
+  GLboolean isFramebuffer(WebGLFramebuffer? framebuffer);
 
   /// The **`WebGLRenderingContext.isProgram()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// returns `true` if the
   /// passed [WebGLProgram] is valid, `false` otherwise.
-  external GLboolean isProgram(WebGLProgram? program);
+  GLboolean isProgram(WebGLProgram? program);
 
   /// The **`WebGLRenderingContext.isRenderbuffer()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// returns `true` if the
   /// passed [WebGLRenderbuffer] is valid and `false` otherwise.
-  external GLboolean isRenderbuffer(WebGLRenderbuffer? renderbuffer);
+  GLboolean isRenderbuffer(WebGLRenderbuffer? renderbuffer);
 
   /// The **`WebGLRenderingContext.isShader()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// returns `true` if the
   /// passed [WebGLShader] is valid, `false` otherwise.
-  external GLboolean isShader(WebGLShader? shader);
+  GLboolean isShader(WebGLShader? shader);
 
   /// The **`WebGLRenderingContext.isTexture()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// returns `true` if the
   /// passed [WebGLTexture] is valid and `false` otherwise.
-  external GLboolean isTexture(WebGLTexture? texture);
+  GLboolean isTexture(WebGLTexture? texture);
 
   /// The **`WebGLRenderingContext.lineWidth()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -1626,18 +1670,18 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// > As of January 2017 most implementations of WebGL only support a minimum
   /// > of 1 and a
   /// > maximum of 1 as the technology they are based on has these same limits.
-  external void lineWidth(GLfloat width);
+  void lineWidth(GLfloat width);
 
   /// The [WebGLRenderingContext] interface's
   /// **`linkProgram()`** method links a given
   /// [WebGLProgram], completing the process of preparing the GPU code for the
   /// program's fragment and vertex shaders.
-  external void linkProgram(WebGLProgram program);
+  void linkProgram(WebGLProgram program);
 
   /// The **`WebGLRenderingContext.pixelStorei()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// specifies the pixel storage modes.
-  external void pixelStorei(
+  void pixelStorei(
     GLenum pname,
     GLint param,
   );
@@ -1650,7 +1694,7 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// The offset is added before the depth test is performed and before the
   /// value is written
   /// into the depth buffer.
-  external void polygonOffset(
+  void polygonOffset(
     GLfloat factor,
     GLfloat units,
   );
@@ -1660,7 +1704,7 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// creates and initializes a
   /// renderbuffer object's data store.
-  external void renderbufferStorage(
+  void renderbufferStorage(
     GLenum target,
     GLenum internalformat,
     GLsizei width,
@@ -1671,7 +1715,7 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// specifies multi-sample coverage
   /// parameters for anti-aliasing effects.
-  external void sampleCoverage(
+  void sampleCoverage(
     GLclampf value,
     GLboolean invert,
   );
@@ -1680,7 +1724,7 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// sets a scissor box, which limits
   /// the drawing to a specified rectangle.
-  external void scissor(
+  void scissor(
     GLint x,
     GLint y,
     GLsizei width,
@@ -1691,7 +1735,7 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// sets the source code of a
   /// [WebGLShader].
-  external void shaderSource(
+  void shaderSource(
     WebGLShader shader,
     String source,
   );
@@ -1704,7 +1748,7 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// Stenciling enables and disables drawing on a per-pixel basis. It is
   /// typically used in
   /// multipass rendering to achieve special effects.
-  external void stencilFunc(
+  void stencilFunc(
     GLenum func,
     GLint ref,
     GLuint mask,
@@ -1719,7 +1763,7 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// Stencilling enables and disables drawing on a per-pixel basis. It is
   /// typically used in
   /// multipass rendering to achieve special effects.
-  external void stencilFuncSeparate(
+  void stencilFuncSeparate(
     GLenum face,
     GLenum func,
     GLint ref,
@@ -1733,7 +1777,7 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   ///
   /// The [WebGLRenderingContext.stencilMaskSeparate] method can set front and
   /// back stencil writemasks to different values.
-  external void stencilMask(GLuint mask);
+  void stencilMask(GLuint mask);
 
   /// The **`WebGLRenderingContext.stencilMaskSeparate()`** method of
   /// the
@@ -1744,7 +1788,7 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   ///
   /// The [WebGLRenderingContext.stencilMask] method can set both, the front
   /// and back stencil writemasks to one value at the same time.
-  external void stencilMaskSeparate(
+  void stencilMaskSeparate(
     GLenum face,
     GLuint mask,
   );
@@ -1753,7 +1797,7 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// sets both the front and back-facing
   /// stencil test actions.
-  external void stencilOp(
+  void stencilOp(
     GLenum fail,
     GLenum zfail,
     GLenum zpass,
@@ -1764,60 +1808,60 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// sets the front and/or
   /// back-facing stencil test actions.
-  external void stencilOpSeparate(
+  void stencilOpSeparate(
     GLenum face,
     GLenum fail,
     GLenum zfail,
     GLenum zpass,
   );
-  external void texParameterf(
+  void texParameterf(
     GLenum target,
     GLenum pname,
     GLfloat param,
   );
-  external void texParameteri(
+  void texParameteri(
     GLenum target,
     GLenum pname,
     GLint param,
   );
-  external void uniform1f(
+  void uniform1f(
     WebGLUniformLocation? location,
     GLfloat x,
   );
-  external void uniform2f(
+  void uniform2f(
     WebGLUniformLocation? location,
     GLfloat x,
     GLfloat y,
   );
-  external void uniform3f(
+  void uniform3f(
     WebGLUniformLocation? location,
     GLfloat x,
     GLfloat y,
     GLfloat z,
   );
-  external void uniform4f(
+  void uniform4f(
     WebGLUniformLocation? location,
     GLfloat x,
     GLfloat y,
     GLfloat z,
     GLfloat w,
   );
-  external void uniform1i(
+  void uniform1i(
     WebGLUniformLocation? location,
     GLint x,
   );
-  external void uniform2i(
+  void uniform2i(
     WebGLUniformLocation? location,
     GLint x,
     GLint y,
   );
-  external void uniform3i(
+  void uniform3i(
     WebGLUniformLocation? location,
     GLint x,
     GLint y,
     GLint z,
   );
-  external void uniform4i(
+  void uniform4i(
     WebGLUniformLocation? location,
     GLint x,
     GLint y,
@@ -1829,49 +1873,49 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// sets the specified
   /// [WebGLProgram] as part of the current rendering state.
-  external void useProgram(WebGLProgram? program);
+  void useProgram(WebGLProgram? program);
 
   /// The **`WebGLRenderingContext.validateProgram()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// validates a
   /// [WebGLProgram]. It checks if it is successfully linked and if it can be
   /// used in the current WebGL state.
-  external void validateProgram(WebGLProgram program);
-  external void vertexAttrib1f(
+  void validateProgram(WebGLProgram program);
+  void vertexAttrib1f(
     GLuint index,
     GLfloat x,
   );
-  external void vertexAttrib2f(
+  void vertexAttrib2f(
     GLuint index,
     GLfloat x,
     GLfloat y,
   );
-  external void vertexAttrib3f(
+  void vertexAttrib3f(
     GLuint index,
     GLfloat x,
     GLfloat y,
     GLfloat z,
   );
-  external void vertexAttrib4f(
+  void vertexAttrib4f(
     GLuint index,
     GLfloat x,
     GLfloat y,
     GLfloat z,
     GLfloat w,
   );
-  external void vertexAttrib1fv(
+  void vertexAttrib1fv(
     GLuint index,
     Float32List values,
   );
-  external void vertexAttrib2fv(
+  void vertexAttrib2fv(
     GLuint index,
     Float32List values,
   );
-  external void vertexAttrib3fv(
+  void vertexAttrib3fv(
     GLuint index,
     Float32List values,
   );
-  external void vertexAttrib4fv(
+  void vertexAttrib4fv(
     GLuint index,
     Float32List values,
   );
@@ -1882,7 +1926,7 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// binds the buffer currently bound
   /// to `gl.ARRAY_BUFFER` to a generic vertex attribute of the current vertex
   /// buffer object and specifies its layout.
-  external void vertexAttribPointer(
+  void vertexAttribPointer(
     GLuint index,
     GLint size,
     GLenum type,
@@ -1897,7 +1941,7 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// the affine transformation of x and y from normalized device coordinates to
   /// window
   /// coordinates.
-  external void viewport(
+  void viewport(
     GLint x,
     GLint y,
     GLsizei width,
@@ -1920,13 +1964,13 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// This is useful if you have an application which can start out being
   /// presented on a
   /// standard 2D display but can then be transitioned to a 3D immersion system.
-  external JSPromise<JSAny?> makeXRCompatible();
+  JSPromise<JSAny?> makeXRCompatible();
 
   /// The **`WebGLRenderingContext.bufferData()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// initializes and creates the
   /// buffer object's data store.
-  external void bufferData(
+  void bufferData(
     GLenum target,
     JSAny? dataOrSize,
     GLenum usage,
@@ -1936,7 +1980,7 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// updates a subset of a buffer
   /// object's data store.
-  external void bufferSubData(
+  void bufferSubData(
     GLenum target,
     GLintptr offset,
     AllowSharedBufferSource data,
@@ -1953,7 +1997,7 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// [WebGL extensions](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Using_Extensions)
   /// before
   /// using these methods.
-  external void compressedTexImage2D(
+  void compressedTexImage2D(
     GLenum target,
     GLint level,
     GLenum internalformat,
@@ -1973,7 +2017,7 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// [WebGL extensions](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Using_Extensions)
   /// before
   /// using this method or a [WebGL2RenderingContext] must be used.
-  external void compressedTexSubImage2D(
+  void compressedTexSubImage2D(
     GLenum target,
     GLint level,
     GLint xoffset,
@@ -1989,7 +2033,7 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// reads a block of pixels from a
   /// specified rectangle of the current color framebuffer into a `TypedArray`
   /// or a `DataView` object.
-  external void readPixels(
+  void readPixels(
     GLint x,
     GLint y,
     GLsizei width,
@@ -2003,7 +2047,7 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// specifies a two-dimensional texture
   /// image.
-  external void texImage2D(
+  void texImage2D(
     GLenum target,
     GLint level,
     GLint internalformat,
@@ -2019,7 +2063,7 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// specifies a sub-rectangle of the
   /// current texture.
-  external void texSubImage2D(
+  void texSubImage2D(
     GLenum target,
     GLint level,
     GLint xoffset,
@@ -2030,49 +2074,49 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
     GLenum type,
     ArrayBufferView? pixels,
   ]);
-  external void uniform1fv(
+  void uniform1fv(
     WebGLUniformLocation? location,
     Float32List v,
   );
-  external void uniform2fv(
+  void uniform2fv(
     WebGLUniformLocation? location,
     Float32List v,
   );
-  external void uniform3fv(
+  void uniform3fv(
     WebGLUniformLocation? location,
     Float32List v,
   );
-  external void uniform4fv(
+  void uniform4fv(
     WebGLUniformLocation? location,
     Float32List v,
   );
-  external void uniform1iv(
+  void uniform1iv(
     WebGLUniformLocation? location,
     Int32List v,
   );
-  external void uniform2iv(
+  void uniform2iv(
     WebGLUniformLocation? location,
     Int32List v,
   );
-  external void uniform3iv(
+  void uniform3iv(
     WebGLUniformLocation? location,
     Int32List v,
   );
-  external void uniform4iv(
+  void uniform4iv(
     WebGLUniformLocation? location,
     Int32List v,
   );
-  external void uniformMatrix2fv(
+  void uniformMatrix2fv(
     WebGLUniformLocation? location,
     GLboolean transpose,
     Float32List value,
   );
-  external void uniformMatrix3fv(
+  void uniformMatrix3fv(
     WebGLUniformLocation? location,
     GLboolean transpose,
     Float32List value,
   );
-  external void uniformMatrix4fv(
+  void uniformMatrix4fv(
     WebGLUniformLocation? location,
     GLboolean transpose,
     Float32List value,
@@ -2085,7 +2129,7 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// if it is not
   /// associated with a `canvas` element or an [OffscreenCanvas]
   /// object.
-  external JSObject get canvas;
+  JSObject get canvas;
 
   /// The read-only **`WebGLRenderingContext.drawingBufferWidth`**
   /// property represents the actual width of the current drawing buffer. It
@@ -2094,7 +2138,7 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// this context, but might differ if the implementation is not able to
   /// provide the
   /// requested width.
-  external GLsizei get drawingBufferWidth;
+  GLsizei get drawingBufferWidth;
 
   /// The read-only **`WebGLRenderingContext.drawingBufferHeight`**
   /// property represents the actual height of the current drawing buffer. It
@@ -2103,7 +2147,7 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// this context, but might differ if the implementation is not able to
   /// provide the
   /// requested height.
-  external GLsizei get drawingBufferHeight;
+  GLsizei get drawingBufferHeight;
 
   /// The **`WebGLRenderingContext.drawingBufferColorSpace`** property specifies
   /// the color space of the WebGL drawing buffer. Along with the default
@@ -2112,8 +2156,8 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// See
   /// [`WebGLRenderingContext.unpackColorSpace`](https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/unpackColorSpace)
   /// for specifying the color space for textures.
-  external PredefinedColorSpace get drawingBufferColorSpace;
-  external set drawingBufferColorSpace(PredefinedColorSpace value);
+  PredefinedColorSpace get drawingBufferColorSpace;
+  set drawingBufferColorSpace(PredefinedColorSpace value);
 }
 
 /// The **WebContextEvent** interface is part of the
@@ -2125,26 +2169,19 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WebGLContextEvent).
-extension type WebGLContextEvent._(JSObject _) implements Event, JSObject {
-  external factory WebGLContextEvent(
-    String type, [
-    WebGLContextEventInit eventInit,
-  ]);
-
+abstract class WebGLContextEvent implements Event, JSObject {
   /// The read-only **`WebGLContextEvent.statusMessage`** property contains
   /// additional event status information, or is an empty string if no
   /// additional information is available.
-  external String get statusMessage;
+  String get statusMessage;
 }
-extension type WebGLContextEventInit._(JSObject _)
-    implements EventInit, JSObject {
-  external factory WebGLContextEventInit({
-    bool bubbles,
-    bool cancelable,
-    bool composed,
-    String statusMessage,
-  });
 
-  external String get statusMessage;
-  external set statusMessage(String value);
+abstract class WebGLContextEventInit implements EventInit, JSObject {
+  String get statusMessage {
+    unsupportedPlatformError();
+  }
+
+  set statusMessage(String value) {
+    unsupportedPlatformError();
+  }
 }

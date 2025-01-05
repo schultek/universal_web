@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,11 +10,7 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../js_interop.dart';
 import 'dom.dart';
 import 'html.dart';
 
@@ -29,17 +25,17 @@ typedef PermissionState = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Permissions).
-extension type Permissions._(JSObject _) implements JSObject {
+abstract class Permissions implements JSObject {
   /// The **`query()`** method of the [Permissions] interface returns the state
   /// of a user permission on the global scope.
-  external JSPromise<PermissionStatus> query(JSObject permissionDesc);
+  JSPromise<PermissionStatus> query(JSObject permissionDesc);
 
   /// The **`revoke()`** method of the
   /// [Permissions] interface reverts a currently set permission back to its
   /// default state, which is usually `prompt`.
   /// This method is called on the global [Permissions] object
   /// [navigator.permissions].
-  external JSPromise<PermissionStatus> revoke(JSObject permissionDesc);
+  JSPromise<PermissionStatus> revoke(JSObject permissionDesc);
 }
 
 /// The **`PermissionStatus`** interface of the
@@ -51,16 +47,16 @@ extension type Permissions._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/PermissionStatus).
-extension type PermissionStatus._(JSObject _) implements EventTarget, JSObject {
+abstract class PermissionStatus implements EventTarget, JSObject {
   /// The **`state`** read-only property of the
   /// [PermissionStatus] interface returns the state of a requested permission.
   /// This property returns one of `'granted'`, `'denied'`, or
   /// `'prompt'`.
-  external PermissionState get state;
+  PermissionState get state;
 
   /// The **`name`** read-only property of the [PermissionStatus] interface
   /// returns the name of a requested permission.
-  external String get name;
-  external EventHandler get onchange;
-  external set onchange(EventHandler value);
+  String get name;
+  EventHandler get onchange;
+  set onchange(EventHandler value);
 }

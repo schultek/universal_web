@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,35 +10,41 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../error.dart';
+import '../js_interop.dart';
 import 'dom.dart';
 import 'html.dart';
 import 'screen_orientation.dart';
 
 typedef ScrollBehavior = String;
 typedef ScrollLogicalPosition = String;
-extension type ScrollOptions._(JSObject _) implements JSObject {
-  external factory ScrollOptions({ScrollBehavior behavior});
 
-  external ScrollBehavior get behavior;
-  external set behavior(ScrollBehavior value);
+abstract class ScrollOptions implements JSObject {
+  ScrollBehavior get behavior {
+    unsupportedPlatformError();
+  }
+
+  set behavior(ScrollBehavior value) {
+    unsupportedPlatformError();
+  }
 }
-extension type ScrollToOptions._(JSObject _)
-    implements ScrollOptions, JSObject {
-  external factory ScrollToOptions({
-    ScrollBehavior behavior,
-    num left,
-    num top,
-  });
 
-  external double get left;
-  external set left(num value);
-  external double get top;
-  external set top(num value);
+abstract class ScrollToOptions implements ScrollOptions, JSObject {
+  double get left {
+    unsupportedPlatformError();
+  }
+
+  set left(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get top {
+    unsupportedPlatformError();
+  }
+
+  set top(num value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// A **`MediaQueryList`** object stores information on a
@@ -60,7 +66,7 @@ extension type ScrollToOptions._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList).
-extension type MediaQueryList._(JSObject _) implements EventTarget, JSObject {
+abstract class MediaQueryList implements EventTarget, JSObject {
   /// The deprecated **`addListener()`** method of the
   /// [MediaQueryList] interface adds a listener to the
   /// `MediaQueryListener` that will run a custom callback function in response
@@ -71,7 +77,7 @@ extension type MediaQueryList._(JSObject _) implements EventTarget, JSObject {
   /// so this method was provided as an alias of [EventTarget.addEventListener].
   /// Use `addEventListener()` instead of `addListener()` if it is
   /// available in the browsers you need to support.
-  external void addListener(EventListener? callback);
+  void addListener(EventListener? callback);
 
   /// The **`removeListener()`** method of the
   /// [MediaQueryList] interface removes a listener from the
@@ -82,12 +88,12 @@ extension type MediaQueryList._(JSObject _) implements EventTarget, JSObject {
   /// [EventTarget.removeEventListener].
   /// Use `removeEventListener()` instead of `removeListener()` if it is
   /// available in the browsers you need to support.
-  external void removeListener(EventListener? callback);
+  void removeListener(EventListener? callback);
 
   /// The **`media`** read-only property of the
   /// [MediaQueryList] interface is a string representing a
   /// serialized media query.
-  external String get media;
+  String get media;
 
   /// The **`matches`** read-only property of the
   /// [MediaQueryList] interface is a boolean value that returns
@@ -98,9 +104,9 @@ extension type MediaQueryList._(JSObject _) implements EventTarget, JSObject {
   /// the
   /// [MediaQueryList.change_event] event to be fired at the
   /// `MediaQueryList`.
-  external bool get matches;
-  external EventHandler get onchange;
-  external set onchange(EventHandler value);
+  bool get matches;
+  EventHandler get onchange;
+  set onchange(EventHandler value);
 }
 
 /// The `MediaQueryListEvent` object stores information on the changes that have
@@ -111,37 +117,35 @@ extension type MediaQueryList._(JSObject _) implements EventTarget, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryListEvent).
-extension type MediaQueryListEvent._(JSObject _) implements Event, JSObject {
-  external factory MediaQueryListEvent(
-    String type, [
-    MediaQueryListEventInit eventInitDict,
-  ]);
-
+abstract class MediaQueryListEvent implements Event, JSObject {
   /// The **`media`** read-only property of the
   /// [MediaQueryListEvent] interface is a string representing
   /// a serialized media query.
-  external String get media;
+  String get media;
 
   /// The **`matches`** read-only property of the
   /// [MediaQueryListEvent] interface is a boolean value that is
   /// `true` if the [document] currently matches the media query list,
   /// or `false` if not.
-  external bool get matches;
+  bool get matches;
 }
-extension type MediaQueryListEventInit._(JSObject _)
-    implements EventInit, JSObject {
-  external factory MediaQueryListEventInit({
-    bool bubbles,
-    bool cancelable,
-    bool composed,
-    String media,
-    bool matches,
-  });
 
-  external String get media;
-  external set media(String value);
-  external bool get matches;
-  external set matches(bool value);
+abstract class MediaQueryListEventInit implements EventInit, JSObject {
+  String get media {
+    unsupportedPlatformError();
+  }
+
+  set media(String value) {
+    unsupportedPlatformError();
+  }
+
+  bool get matches {
+    unsupportedPlatformError();
+  }
+
+  set matches(bool value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The `Screen` interface represents a screen, usually the one on which the
@@ -154,10 +158,10 @@ extension type MediaQueryListEventInit._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Screen).
-extension type Screen._(JSObject _) implements JSObject {
+abstract class Screen implements JSObject {
   /// The **`Screen.availWidth`** property returns the amount of
   /// horizontal space (in pixels) available to the window.
-  external int get availWidth;
+  int get availWidth;
 
   /// The read-only [Screen] interface's
   /// **`availHeight`** property returns the height, in CSS pixels, of
@@ -167,71 +171,101 @@ extension type Screen._(JSObject _) implements JSObject {
   ///
   /// You can similarly use [Screen.availWidth] to get the number of pixels
   /// which are horizontally available to the browser for its use.
-  external int get availHeight;
+  int get availHeight;
 
   /// The **`Screen.width`** read-only property returns the width of
   /// the screen in CSS pixels.
-  external int get width;
+  int get width;
 
   /// The **`Screen.height`** read-only property returns the height
   /// of the screen in pixels.
-  external int get height;
+  int get height;
 
   /// The **`Screen.colorDepth`** read-only property returns the
   /// color depth of the screen. Per the CSSOM, some implementations return `24`
   /// for compatibility reasons. See the browser compatibility section for those
   /// that don't.
-  external int get colorDepth;
+  int get colorDepth;
 
   /// Returns the bit depth of the screen. Per the CSSOM, some implementations
   /// return `24` for compatibility reasons. See the
   /// [browser compatibility](#browser_compatibility) section for those that
   /// don't.
-  external int get pixelDepth;
+  int get pixelDepth;
 
   /// The **`orientation`** read-only property of the
   /// [Screen] interface returns the current orientation of the screen.
-  external ScreenOrientation get orientation;
+  ScreenOrientation get orientation;
 }
-extension type CaretPositionFromPointOptions._(JSObject _) implements JSObject {
-  external factory CaretPositionFromPointOptions(
-      {JSArray<ShadowRoot> shadowRoots});
 
-  external JSArray<ShadowRoot> get shadowRoots;
-  external set shadowRoots(JSArray<ShadowRoot> value);
+abstract class CaretPositionFromPointOptions implements JSObject {
+  JSArray<ShadowRoot> get shadowRoots {
+    unsupportedPlatformError();
+  }
+
+  set shadowRoots(JSArray<ShadowRoot> value) {
+    unsupportedPlatformError();
+  }
 }
-extension type ScrollIntoViewOptions._(JSObject _)
-    implements ScrollOptions, JSObject {
-  external factory ScrollIntoViewOptions({
-    ScrollBehavior behavior,
-    ScrollLogicalPosition block,
-    ScrollLogicalPosition inline,
-  });
 
-  external ScrollLogicalPosition get block;
-  external set block(ScrollLogicalPosition value);
-  external ScrollLogicalPosition get inline;
-  external set inline(ScrollLogicalPosition value);
+abstract class ScrollIntoViewOptions implements ScrollOptions, JSObject {
+  ScrollLogicalPosition get block {
+    unsupportedPlatformError();
+  }
+
+  set block(ScrollLogicalPosition value) {
+    unsupportedPlatformError();
+  }
+
+  ScrollLogicalPosition get inline {
+    unsupportedPlatformError();
+  }
+
+  set inline(ScrollLogicalPosition value) {
+    unsupportedPlatformError();
+  }
 }
-extension type CheckVisibilityOptions._(JSObject _) implements JSObject {
-  external factory CheckVisibilityOptions({
-    bool checkOpacity,
-    bool checkVisibilityCSS,
-    bool contentVisibilityAuto,
-    bool opacityProperty,
-    bool visibilityProperty,
-  });
 
-  external bool get checkOpacity;
-  external set checkOpacity(bool value);
-  external bool get checkVisibilityCSS;
-  external set checkVisibilityCSS(bool value);
-  external bool get contentVisibilityAuto;
-  external set contentVisibilityAuto(bool value);
-  external bool get opacityProperty;
-  external set opacityProperty(bool value);
-  external bool get visibilityProperty;
-  external set visibilityProperty(bool value);
+abstract class CheckVisibilityOptions implements JSObject {
+  bool get checkOpacity {
+    unsupportedPlatformError();
+  }
+
+  set checkOpacity(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get checkVisibilityCSS {
+    unsupportedPlatformError();
+  }
+
+  set checkVisibilityCSS(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get contentVisibilityAuto {
+    unsupportedPlatformError();
+  }
+
+  set contentVisibilityAuto(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get opacityProperty {
+    unsupportedPlatformError();
+  }
+
+  set opacityProperty(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get visibilityProperty {
+    unsupportedPlatformError();
+  }
+
+  set visibilityProperty(bool value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`VisualViewport`** interface of the [Visual Viewport API] represents
@@ -252,50 +286,50 @@ extension type CheckVisibilityOptions._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/VisualViewport).
-extension type VisualViewport._(JSObject _) implements EventTarget, JSObject {
+abstract class VisualViewport implements EventTarget, JSObject {
   /// The **`offsetLeft`** read-only property of the [VisualViewport] interface
   /// returns the offset of the left edge of the visual viewport from the left
   /// edge of the layout viewport in CSS pixels, or `0` if current document is
   /// not fully active.
-  external double get offsetLeft;
+  double get offsetLeft;
 
   /// The **`offsetTop`** read-only property of the [VisualViewport] interface
   /// returns the offset of the top edge of the visual viewport from the top
   /// edge of the layout viewport in CSS pixels, or `0` if current document is
   /// not fully active.
-  external double get offsetTop;
+  double get offsetTop;
 
   /// The **`pageLeft`** read-only property of the [VisualViewport] interface
   /// returns the x coordinate of the left edge of the visual viewport relative
   /// to the initial containing block origin, in CSS pixels, or `0` if current
   /// document is not fully active.
-  external double get pageLeft;
+  double get pageLeft;
 
   /// The **`pageTop`** read-only property of the [VisualViewport] interface
   /// returns the y coordinate of the top edge of the visual viewport relative
   /// to the initial containing block origin, in CSS pixels, or `0` if current
   /// document is not fully active.
-  external double get pageTop;
+  double get pageTop;
 
   /// The **`width`** read-only property of the [VisualViewport] interface
   /// returns the width of the visual viewport, in CSS pixels, or `0` if current
   /// document is not fully active.
-  external double get width;
+  double get width;
 
   /// The **`height`** read-only property of the [VisualViewport] interface
   /// returns the height of the visual viewport, in CSS pixels, or `0` if
   /// current document is not fully active.
-  external double get height;
+  double get height;
 
   /// The **`scale`** read-only property of the [VisualViewport] interface
   /// returns the pinch-zoom scaling factor applied to the visual viewport, or
   /// `0` if current document is not fully active, or `1` if there is no output
   /// device.
-  external double get scale;
-  external EventHandler get onresize;
-  external set onresize(EventHandler value);
-  external EventHandler get onscroll;
-  external set onscroll(EventHandler value);
-  external EventHandler get onscrollend;
-  external set onscrollend(EventHandler value);
+  double get scale;
+  EventHandler get onresize;
+  set onresize(EventHandler value);
+  EventHandler get onscroll;
+  set onscroll(EventHandler value);
+  EventHandler get onscrollend;
+  set onscrollend(EventHandler value);
 }

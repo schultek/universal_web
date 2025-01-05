@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,11 +10,8 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../error.dart';
+import '../js_interop.dart';
 import 'service_workers.dart';
 
 /// The **`SyncManager`** interface of the [Background Synchronization API]
@@ -24,18 +21,18 @@ import 'service_workers.dart';
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SyncManager).
-extension type SyncManager._(JSObject _) implements JSObject {
+abstract class SyncManager implements JSObject {
   /// The **`register()`** method of the [SyncManager] interface registers a
   /// synchronization event, triggering a [ServiceWorkerGlobalScope.sync_event]
   /// event inside the associated service worker as soon as network connectivity
   /// is available.
-  external JSPromise<JSAny?> register(String tag);
+  JSPromise<JSAny?> register(String tag);
 
   /// The **`getTags()`** method of the
   /// [SyncManager] interface returns a list of developer-defined identifiers
   /// for
   /// `SyncManager` registrations.
-  external JSPromise<JSArray<JSString>> getTags();
+  JSPromise<JSArray<JSString>> getTags();
 }
 
 /// @AvailableInWorkers("service")
@@ -50,19 +47,14 @@ extension type SyncManager._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SyncEvent).
-extension type SyncEvent._(JSObject _) implements ExtendableEvent, JSObject {
-  external factory SyncEvent(
-    String type,
-    SyncEventInit init,
-  );
-
+abstract class SyncEvent implements ExtendableEvent, JSObject {
   /// @AvailableInWorkers("service")
   ///
   /// The **`tag`** read-only property of the
   /// [SyncEvent] interface returns the developer-defined identifier for
   /// this `SyncEvent`. This is the value passed in the `tag` parameter
   /// of the [SyncEvent.SyncEvent] constructor.
-  external String get tag;
+  String get tag;
 
   /// @AvailableInWorkers("service")
   ///
@@ -72,20 +64,23 @@ extension type SyncEvent._(JSObject _) implements ExtendableEvent, JSObject {
   /// the value
   /// passed in the `lastChance` parameter of the
   /// [SyncEvent.SyncEvent] constructor.
-  external bool get lastChance;
+  bool get lastChance;
 }
-extension type SyncEventInit._(JSObject _)
-    implements ExtendableEventInit, JSObject {
-  external factory SyncEventInit({
-    bool bubbles,
-    bool cancelable,
-    bool composed,
-    required String tag,
-    bool lastChance,
-  });
 
-  external String get tag;
-  external set tag(String value);
-  external bool get lastChance;
-  external set lastChance(bool value);
+abstract class SyncEventInit implements ExtendableEventInit, JSObject {
+  String get tag {
+    unsupportedPlatformError();
+  }
+
+  set tag(String value) {
+    unsupportedPlatformError();
+  }
+
+  bool get lastChance {
+    unsupportedPlatformError();
+  }
+
+  set lastChance(bool value) {
+    unsupportedPlatformError();
+  }
 }

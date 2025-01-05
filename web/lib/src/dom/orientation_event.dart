@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,11 +10,8 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../error.dart';
+import '../js_interop.dart';
 import 'dom.dart';
 
 /// The **`DeviceOrientationEvent`** interface of the
@@ -25,12 +22,7 @@ import 'dom.dart';
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/DeviceOrientationEvent).
-extension type DeviceOrientationEvent._(JSObject _) implements Event, JSObject {
-  external factory DeviceOrientationEvent(
-    String type, [
-    DeviceOrientationEventInit eventInitDict,
-  ]);
-
+abstract class DeviceOrientationEvent implements Event, JSObject {
   /// The **`alpha`** read-only property of the [DeviceOrientationEvent]
   /// interface returns the rotation of the device around the Z axis; that is,
   /// the number of degrees by
@@ -38,7 +30,7 @@ extension type DeviceOrientationEvent._(JSObject _) implements Event, JSObject {
   /// See
   /// [Orientation and motion data explained](https://developer.mozilla.org/en-US/docs/Web/API/Device_orientation_events/Orientation_and_motion_data_explained)
   /// for details.
-  external double? get alpha;
+  double? get alpha;
 
   /// The **`beta`** read-only property of the [DeviceOrientationEvent]
   /// interface returns the rotation of the device around the X axis; that is,
@@ -48,7 +40,7 @@ extension type DeviceOrientationEvent._(JSObject _) implements Event, JSObject {
   /// See
   /// [Orientation and motion data explained](https://developer.mozilla.org/en-US/docs/Web/API/Device_orientation_events/Orientation_and_motion_data_explained)
   /// for details.
-  external double? get beta;
+  double? get beta;
 
   /// The **`gamma`** read-only property of the [DeviceOrientationEvent]
   /// interface returns the rotation of the device around the Y axis; that is,
@@ -58,7 +50,7 @@ extension type DeviceOrientationEvent._(JSObject _) implements Event, JSObject {
   /// See
   /// [Orientation and motion data explained](https://developer.mozilla.org/en-US/docs/Web/API/Device_orientation_events/Orientation_and_motion_data_explained)
   /// for details.
-  external double? get gamma;
+  double? get gamma;
 
   /// The **`absolute`** read-only property of the [DeviceOrientationEvent]
   /// interface indicates whether or not the device is providing orientation
@@ -69,28 +61,41 @@ extension type DeviceOrientationEvent._(JSObject _) implements Event, JSObject {
   /// See
   /// [Orientation and motion data explained](https://developer.mozilla.org/en-US/docs/Web/API/Device_orientation_events/Orientation_and_motion_data_explained)
   /// for details.
-  external bool get absolute;
+  bool get absolute;
 }
-extension type DeviceOrientationEventInit._(JSObject _)
-    implements EventInit, JSObject {
-  external factory DeviceOrientationEventInit({
-    bool bubbles,
-    bool cancelable,
-    bool composed,
-    num? alpha,
-    num? beta,
-    num? gamma,
-    bool absolute,
-  });
 
-  external double? get alpha;
-  external set alpha(num? value);
-  external double? get beta;
-  external set beta(num? value);
-  external double? get gamma;
-  external set gamma(num? value);
-  external bool get absolute;
-  external set absolute(bool value);
+abstract class DeviceOrientationEventInit implements EventInit, JSObject {
+  double? get alpha {
+    unsupportedPlatformError();
+  }
+
+  set alpha(num? value) {
+    unsupportedPlatformError();
+  }
+
+  double? get beta {
+    unsupportedPlatformError();
+  }
+
+  set beta(num? value) {
+    unsupportedPlatformError();
+  }
+
+  double? get gamma {
+    unsupportedPlatformError();
+  }
+
+  set gamma(num? value) {
+    unsupportedPlatformError();
+  }
+
+  bool get absolute {
+    unsupportedPlatformError();
+  }
+
+  set absolute(bool value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`DeviceMotionEventAcceleration`** interface of the
@@ -101,27 +106,27 @@ extension type DeviceOrientationEventInit._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/DeviceMotionEventAcceleration).
-extension type DeviceMotionEventAcceleration._(JSObject _) implements JSObject {
+abstract class DeviceMotionEventAcceleration implements JSObject {
   /// The **`x`** read-only property of the [DeviceMotionEventAcceleration]
   /// interface indicates the amount of acceleration that occurred along the X
   /// axis in a
   /// [`DeviceMotionEventAcceleration`](https://developer.mozilla.org/en-US/docs/Web/API/DeviceMotionEventAcceleration)
   /// object.
-  external double? get x;
+  double? get x;
 
   /// The **`y`** read-only property of the [DeviceMotionEventAcceleration]
   /// interface indicates the amount of acceleration that occurred along the Y
   /// axis in a
   /// [`DeviceMotionEventAcceleration`](https://developer.mozilla.org/en-US/docs/Web/API/DeviceMotionEventAcceleration)
   /// object.
-  external double? get y;
+  double? get y;
 
   /// The **`z`** read-only property of the [DeviceMotionEventAcceleration]
   /// interface indicates the amount of acceleration that occurred along the Z
   /// axis in a
   /// [`DeviceMotionEventAcceleration`](https://developer.mozilla.org/en-US/docs/Web/API/DeviceMotionEventAcceleration)
   /// object.
-  external double? get z;
+  double? get z;
 }
 
 /// A **`DeviceMotionEventRotationRate`** interface of the
@@ -132,21 +137,21 @@ extension type DeviceMotionEventAcceleration._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/DeviceMotionEventRotationRate).
-extension type DeviceMotionEventRotationRate._(JSObject _) implements JSObject {
+abstract class DeviceMotionEventRotationRate implements JSObject {
   /// The **`alpha`** read-only property of the [DeviceMotionEventRotationRate]
   /// interface indicates the rate of rotation around the Z axis, in degrees per
   /// second.
-  external double? get alpha;
+  double? get alpha;
 
   /// The **`beta`** read-only property of the [DeviceMotionEventRotationRate]
   /// interface indicates the rate of rotation around the X axis, in degrees per
   /// second.
-  external double? get beta;
+  double? get beta;
 
   /// The **`gamma`** read-only property of the [DeviceMotionEventRotationRate]
   /// interface indicates the rate of rotation around the Y axis, in degrees per
   /// second.
-  external double? get gamma;
+  double? get gamma;
 }
 
 /// The **`DeviceMotionEvent`** interface of the [Device Orientation Events]
@@ -160,12 +165,7 @@ extension type DeviceMotionEventRotationRate._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/DeviceMotionEvent).
-extension type DeviceMotionEvent._(JSObject _) implements Event, JSObject {
-  external factory DeviceMotionEvent(
-    String type, [
-    DeviceMotionEventInit eventInitDict,
-  ]);
-
+abstract class DeviceMotionEvent implements Event, JSObject {
   /// The **`acceleration`** read-only property of the [DeviceMotionEvent]
   /// interface returns the amount of acceleration recorded by
   /// the device, in [meters per second squared
@@ -178,7 +178,7 @@ extension type DeviceMotionEvent._(JSObject _) implements Event, JSObject {
   /// > acceleration data, this value may not be present in the
   /// > [DeviceMotionEvent]. In this situation, you'll need to use
   /// > [DeviceMotionEvent.accelerationIncludingGravity] instead.
-  external DeviceMotionEventAcceleration? get acceleration;
+  DeviceMotionEventAcceleration? get acceleration;
 
   /// The **`accelerationIncludingGravity`** read-only property of the
   /// [DeviceMotionEvent] interface returns the
@@ -209,7 +209,7 @@ extension type DeviceMotionEvent._(JSObject _) implements Event, JSObject {
   /// > horizontal and pointing up, gravity would be -9.8 along the Z axis,
   /// > while `acceleration.z` would be -9.8 and
   /// > `accelerationIncludingGravity.z` would be 0.
-  external DeviceMotionEventAcceleration? get accelerationIncludingGravity;
+  DeviceMotionEventAcceleration? get accelerationIncludingGravity;
 
   /// The **`rotationRate`** read-only property of the [DeviceMotionEvent]
   /// interface returns the rate at which the device is rotating around each of
@@ -218,63 +218,97 @@ extension type DeviceMotionEvent._(JSObject _) implements Event, JSObject {
   ///
   /// > **Note:** If the hardware isn't capable of providing this
   /// > information, this property returns `null`.
-  external DeviceMotionEventRotationRate? get rotationRate;
+  DeviceMotionEventRotationRate? get rotationRate;
 
   /// The **`interval`** read-only property of the [DeviceMotionEvent] interface
   /// returns the interval, in milliseconds, at which data is obtained from the
   /// underlying
   /// hardware. You can use this to determine the granularity of motion events.
-  external double get interval;
+  double get interval;
 }
-extension type DeviceMotionEventAccelerationInit._(JSObject _)
-    implements JSObject {
-  external factory DeviceMotionEventAccelerationInit({
-    num? x,
-    num? y,
-    num? z,
-  });
 
-  external double? get x;
-  external set x(num? value);
-  external double? get y;
-  external set y(num? value);
-  external double? get z;
-  external set z(num? value);
+abstract class DeviceMotionEventAccelerationInit implements JSObject {
+  double? get x {
+    unsupportedPlatformError();
+  }
+
+  set x(num? value) {
+    unsupportedPlatformError();
+  }
+
+  double? get y {
+    unsupportedPlatformError();
+  }
+
+  set y(num? value) {
+    unsupportedPlatformError();
+  }
+
+  double? get z {
+    unsupportedPlatformError();
+  }
+
+  set z(num? value) {
+    unsupportedPlatformError();
+  }
 }
-extension type DeviceMotionEventRotationRateInit._(JSObject _)
-    implements JSObject {
-  external factory DeviceMotionEventRotationRateInit({
-    num? alpha,
-    num? beta,
-    num? gamma,
-  });
 
-  external double? get alpha;
-  external set alpha(num? value);
-  external double? get beta;
-  external set beta(num? value);
-  external double? get gamma;
-  external set gamma(num? value);
+abstract class DeviceMotionEventRotationRateInit implements JSObject {
+  double? get alpha {
+    unsupportedPlatformError();
+  }
+
+  set alpha(num? value) {
+    unsupportedPlatformError();
+  }
+
+  double? get beta {
+    unsupportedPlatformError();
+  }
+
+  set beta(num? value) {
+    unsupportedPlatformError();
+  }
+
+  double? get gamma {
+    unsupportedPlatformError();
+  }
+
+  set gamma(num? value) {
+    unsupportedPlatformError();
+  }
 }
-extension type DeviceMotionEventInit._(JSObject _)
-    implements EventInit, JSObject {
-  external factory DeviceMotionEventInit({
-    bool bubbles,
-    bool cancelable,
-    bool composed,
-    DeviceMotionEventAccelerationInit acceleration,
-    DeviceMotionEventAccelerationInit accelerationIncludingGravity,
-    DeviceMotionEventRotationRateInit rotationRate,
-    num interval,
-  });
 
-  external DeviceMotionEventAccelerationInit get acceleration;
-  external set acceleration(DeviceMotionEventAccelerationInit value);
-  external DeviceMotionEventAccelerationInit get accelerationIncludingGravity;
-  external set accelerationIncludingGravity(
-      DeviceMotionEventAccelerationInit value);
-  external DeviceMotionEventRotationRateInit get rotationRate;
-  external set rotationRate(DeviceMotionEventRotationRateInit value);
-  external double get interval;
-  external set interval(num value);
+abstract class DeviceMotionEventInit implements EventInit, JSObject {
+  DeviceMotionEventAccelerationInit get acceleration {
+    unsupportedPlatformError();
+  }
+
+  set acceleration(DeviceMotionEventAccelerationInit value) {
+    unsupportedPlatformError();
+  }
+
+  DeviceMotionEventAccelerationInit get accelerationIncludingGravity {
+    unsupportedPlatformError();
+  }
+
+  set accelerationIncludingGravity(DeviceMotionEventAccelerationInit value) {
+    unsupportedPlatformError();
+  }
+
+  DeviceMotionEventRotationRateInit get rotationRate {
+    unsupportedPlatformError();
+  }
+
+  set rotationRate(DeviceMotionEventRotationRateInit value) {
+    unsupportedPlatformError();
+  }
+
+  double get interval {
+    unsupportedPlatformError();
+  }
+
+  set interval(num value) {
+    unsupportedPlatformError();
+  }
 }

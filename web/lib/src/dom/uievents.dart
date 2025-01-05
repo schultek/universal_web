@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,11 +10,8 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../error.dart';
+import '../js_interop.dart';
 import 'dom.dart';
 import 'html.dart';
 
@@ -32,12 +29,7 @@ import 'html.dart';
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/UIEvent).
-extension type UIEvent._(JSObject _) implements Event, JSObject {
-  external factory UIEvent(
-    String type, [
-    UIEventInit eventInitDict,
-  ]);
-
+abstract class UIEvent implements Event, JSObject {
   /// The **`UIEvent.initUIEvent()`** method initializes a UI event
   /// once it's been created.
   ///
@@ -52,7 +44,7 @@ extension type UIEvent._(JSObject _) implements Event, JSObject {
   /// > page on
   /// > [Creating and triggering events](https://developer.mozilla.org/en-US/docs/Web/Events/Creating_and_triggering_events)
   /// > gives more information about the way to use these.
-  external void initUIEvent(
+  void initUIEvent(
     String typeArg, [
     bool bubblesArg,
     bool cancelableArg,
@@ -63,7 +55,7 @@ extension type UIEvent._(JSObject _) implements Event, JSObject {
   /// The **`UIEvent.view`** read-only property returns the
   /// object from which the event was generated. In browsers, this
   /// is the [Window] object the event happened in.
-  external Window? get view;
+  Window? get view;
 
   /// The **`UIEvent.detail`** read-only property, when non-zero, provides the
   /// current (or next, depending on the event) click count.
@@ -75,33 +67,47 @@ extension type UIEvent._(JSObject _) implements Event, JSObject {
   /// `UIEvent.detail` is _1 plus_ the current click count.
   ///
   /// For all other [UIEvent] objects, `UIEvent.detail` is always zero.
-  external int get detail;
+  int get detail;
 
   /// The **`UIEvent.which`** read-only property of the [UIEvent] interface
   /// returns a number that indicates which button was pressed on the mouse, or
   /// the numeric `keyCode` or the character code (`charCode`) of the key
   /// pressed on the keyboard.
-  external int get which;
+  int get which;
 }
-extension type UIEventInit._(JSObject _) implements EventInit, JSObject {
-  external factory UIEventInit({
-    bool bubbles,
-    bool cancelable,
-    bool composed,
-    Window? view,
-    int detail,
-    JSObject? sourceCapabilities,
-    int which,
-  });
 
-  external Window? get view;
-  external set view(Window? value);
-  external int get detail;
-  external set detail(int value);
-  external JSObject? get sourceCapabilities;
-  external set sourceCapabilities(JSObject? value);
-  external int get which;
-  external set which(int value);
+abstract class UIEventInit implements EventInit, JSObject {
+  Window? get view {
+    unsupportedPlatformError();
+  }
+
+  set view(Window? value) {
+    unsupportedPlatformError();
+  }
+
+  int get detail {
+    unsupportedPlatformError();
+  }
+
+  set detail(int value) {
+    unsupportedPlatformError();
+  }
+
+  JSObject? get sourceCapabilities {
+    unsupportedPlatformError();
+  }
+
+  set sourceCapabilities(JSObject? value) {
+    unsupportedPlatformError();
+  }
+
+  int get which {
+    unsupportedPlatformError();
+  }
+
+  set which(int value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`FocusEvent`** interface represents focus-related events, including
@@ -112,12 +118,7 @@ extension type UIEventInit._(JSObject _) implements EventInit, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/FocusEvent).
-extension type FocusEvent._(JSObject _) implements UIEvent, JSObject {
-  external factory FocusEvent(
-    String type, [
-    FocusEventInit eventInitDict,
-  ]);
-
+abstract class FocusEvent implements UIEvent, JSObject {
   /// The **`relatedTarget`** read-only property of the [FocusEvent] interface
   /// is the secondary target, depending on the type of event:
   ///
@@ -160,22 +161,17 @@ extension type FocusEvent._(JSObject _) implements UIEvent, JSObject {
   /// out of a page.
   ///
   /// [MouseEvent.relatedTarget] is a similar property for mouse events.
-  external EventTarget? get relatedTarget;
+  EventTarget? get relatedTarget;
 }
-extension type FocusEventInit._(JSObject _) implements UIEventInit, JSObject {
-  external factory FocusEventInit({
-    bool bubbles,
-    bool cancelable,
-    bool composed,
-    Window? view,
-    int detail,
-    JSObject? sourceCapabilities,
-    int which,
-    EventTarget? relatedTarget,
-  });
 
-  external EventTarget? get relatedTarget;
-  external set relatedTarget(EventTarget? value);
+abstract class FocusEventInit implements UIEventInit, JSObject {
+  EventTarget? get relatedTarget {
+    unsupportedPlatformError();
+  }
+
+  set relatedTarget(EventTarget? value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`MouseEvent`** interface represents events that occur due to the user
@@ -196,18 +192,13 @@ extension type FocusEventInit._(JSObject _) implements UIEventInit, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent).
-extension type MouseEvent._(JSObject _) implements UIEvent, JSObject {
-  external factory MouseEvent(
-    String type, [
-    MouseEventInit eventInitDict,
-  ]);
-
+abstract class MouseEvent implements UIEvent, JSObject {
   /// The **`MouseEvent.getModifierState()`** method returns the current state
   /// of the specified modifier key: `true` if the modifier is active (i.e., the
   /// modifier key is pressed or locked), otherwise, `false`.
   ///
   /// See [KeyboardEvent.getModifierState] for details.
-  external bool getModifierState(String keyArg);
+  bool getModifierState(String keyArg);
 
   /// The **`MouseEvent.initMouseEvent()`** method initializes the
   /// value of a mouse event once it's been created (normally using the
@@ -224,7 +215,7 @@ extension type MouseEvent._(JSObject _) implements UIEvent, JSObject {
   /// [Document.createEvent] method.
   /// This method must be called to set the event
   /// before it is dispatched, using [EventTarget.dispatchEvent].
-  external void initMouseEvent(
+  void initMouseEvent(
     String typeArg, [
     bool bubblesArg,
     bool cancelableArg,
@@ -249,12 +240,12 @@ extension type MouseEvent._(JSObject _) implements UIEvent, JSObject {
   /// > **Note:** In a multiscreen environment, screens aligned horizontally
   /// > will be treated as a single device, and so the range of the `screenX`
   /// > value will increase to the combined width of the screens.
-  external int get screenX;
+  int get screenX;
 
   /// The **`screenY`** read-only property of the [MouseEvent] interface
   /// provides the vertical coordinate (offset) of the mouse pointer in
   /// [screen coordinates](https://developer.mozilla.org/en-US/docs/Web/CSS/CSSOM_view/Coordinate_systems#screen).
-  external int get screenY;
+  int get screenY;
 
   /// The **`clientX`** read-only property of the [MouseEvent] interface
   /// provides the horizontal coordinate within the application's  at which the
@@ -263,7 +254,7 @@ extension type MouseEvent._(JSObject _) implements UIEvent, JSObject {
   /// For example, clicking on the left edge of the viewport will always result
   /// in a mouse event with a `clientX` value of `0`, regardless of whether the
   /// page is scrolled horizontally.
-  external int get clientX;
+  int get clientX;
 
   /// The **`clientY`** read-only property of the [MouseEvent] interface
   /// provides the vertical coordinate within the application's  at which the
@@ -272,7 +263,7 @@ extension type MouseEvent._(JSObject _) implements UIEvent, JSObject {
   /// For example, clicking on the top edge of the viewport will always result
   /// in a mouse event with a `clientY` value of `0`, regardless of whether the
   /// page is scrolled vertically.
-  external int get clientY;
+  int get clientY;
 
   /// The **`MouseEvent.ctrlKey`** read-only property is a boolean value that
   /// indicates whether the <kbd>ctrl</kbd> key was pressed or not when a given
@@ -282,12 +273,12 @@ extension type MouseEvent._(JSObject _) implements UIEvent, JSObject {
   /// Also, note that on a Mac, a click combined with the <kbd>control</kbd> key
   /// is intercepted by the operating system and used to open a context menu, so
   /// `ctrlKey` is not detectable on click events.
-  external bool get ctrlKey;
+  bool get ctrlKey;
 
   /// The **`MouseEvent.shiftKey`** read-only property is a boolean value that
   /// indicates whether the <kbd>shift</kbd> key was pressed or not when a given
   /// mouse event occurs.
-  external bool get shiftKey;
+  bool get shiftKey;
 
   /// The **`MouseEvent.altKey`** read-only property is a boolean value that
   /// indicates whether the <kbd>alt</kbd> key was pressed or not when a given
@@ -300,7 +291,7 @@ extension type MouseEvent._(JSObject _) implements UIEvent, JSObject {
   ///
   /// > **Note:** On Macintosh keyboards, this key is also known as the
   /// > <kbd>option</kbd> key.
-  external bool get altKey;
+  bool get altKey;
 
   /// The **`MouseEvent.metaKey`** read-only property is a boolean value that
   /// indicates whether the <kbd>meta</kbd> key was pressed or not when a given
@@ -314,7 +305,7 @@ extension type MouseEvent._(JSObject _) implements UIEvent, JSObject {
   /// > **Note:** On Macintosh keyboards, this key is the <kbd>command</kbd> key
   /// > (<kbd>⌘</kbd>).
   /// > On Windows keyboards, this key is the Windows key (<kbd>⊞</kbd>).
-  external bool get metaKey;
+  bool get metaKey;
 
   /// The **`MouseEvent.button`** read-only property indicates which button was
   /// pressed on the mouse to trigger the event.
@@ -334,7 +325,7 @@ extension type MouseEvent._(JSObject _) implements UIEvent, JSObject {
   /// > **Note:** Do not confuse this property with the [MouseEvent.buttons]
   /// > property, which indicates which buttons are pressed for all mouse events
   /// > types.
-  external int get button;
+  int get button;
 
   /// The **`MouseEvent.buttons`** read-only property indicates which buttons
   /// are pressed on the mouse (or other input device) when a mouse event is
@@ -354,7 +345,7 @@ extension type MouseEvent._(JSObject _) implements UIEvent, JSObject {
   /// > while the [MouseEvent.button] property only guarantees the correct value
   /// > for mouse events caused by pressing or releasing one or multiple
   /// > buttons.
-  external int get buttons;
+  int get buttons;
 
   /// The **`MouseEvent.relatedTarget`** read-only property is the secondary
   /// target for the mouse event, if there is one.
@@ -431,7 +422,7 @@ extension type MouseEvent._(JSObject _) implements UIEvent, JSObject {
   /// `null`.
   ///
   /// [FocusEvent.relatedTarget] is a similar property for focus events.
-  external EventTarget? get relatedTarget;
+  EventTarget? get relatedTarget;
 
   /// The **`pageX`** read-only property of the [MouseEvent] interface returns
   /// the X (horizontal) coordinate (in pixels) at which the mouse was clicked,
@@ -455,7 +446,7 @@ extension type MouseEvent._(JSObject _) implements UIEvent, JSObject {
   /// See
   /// [Coordinate systems](https://developer.mozilla.org/en-US/docs/Web/CSS/CSSOM_view/Coordinate_systems#page)
   /// for additional information about coordinates specified in this fashion.
-  external double get pageX;
+  double get pageX;
 
   /// The **`pageY`** read-only property of the [MouseEvent] interface returns
   /// the Y (vertical) coordinate (in pixels) at which the mouse was clicked,
@@ -463,25 +454,25 @@ extension type MouseEvent._(JSObject _) implements UIEvent, JSObject {
   /// This includes any portion of the document not currently visible.
   ///
   /// See [MouseEvent.pageX] for more information.
-  external double get pageY;
+  double get pageY;
 
   /// The **`MouseEvent.x`** property is an alias for the [MouseEvent.clientX]
   /// property.
-  external double get x;
+  double get x;
 
   /// The **`MouseEvent.y`** property is an alias for the [MouseEvent.clientY]
   /// property.
-  external double get y;
+  double get y;
 
   /// The **`offsetX`** read-only property of the [MouseEvent] interface
   /// provides the offset in the X coordinate of the mouse pointer between that
   /// event and the padding edge of the target node.
-  external double get offsetX;
+  double get offsetX;
 
   /// The **`offsetY`** read-only property of the [MouseEvent] interface
   /// provides the offset in the Y coordinate of the mouse pointer between that
   /// event and the padding edge of the target node.
-  external double get offsetY;
+  double get offsetY;
 
   /// The **`movementX`** read-only property of the [MouseEvent] interface
   /// provides the difference in the X coordinate of the mouse pointer between
@@ -497,7 +488,7 @@ extension type MouseEvent._(JSObject _) implements UIEvent, JSObject {
   /// > instead calculate the delta between the current client values
   /// > ([MouseEvent.screenX], [MouseEvent.screenY]) and the previous client
   /// > values.
-  external double get movementX;
+  double get movementX;
 
   /// The **`movementY`** read-only property of the [MouseEvent] interface
   /// provides the difference in the Y coordinate of the mouse pointer between
@@ -513,116 +504,195 @@ extension type MouseEvent._(JSObject _) implements UIEvent, JSObject {
   /// > instead calculate the delta between the current client values
   /// > ([MouseEvent.screenX], [MouseEvent.screenY]) and the previous client
   /// > values.
-  external double get movementY;
+  double get movementY;
 }
-extension type MouseEventInit._(JSObject _)
-    implements EventModifierInit, JSObject {
-  external factory MouseEventInit({
-    bool bubbles,
-    bool cancelable,
-    bool composed,
-    Window? view,
-    int detail,
-    JSObject? sourceCapabilities,
-    int which,
-    bool ctrlKey,
-    bool shiftKey,
-    bool altKey,
-    bool metaKey,
-    bool modifierAltGraph,
-    bool modifierCapsLock,
-    bool modifierFn,
-    bool modifierFnLock,
-    bool modifierHyper,
-    bool modifierNumLock,
-    bool modifierScrollLock,
-    bool modifierSuper,
-    bool modifierSymbol,
-    bool modifierSymbolLock,
-    int screenX,
-    int screenY,
-    int clientX,
-    int clientY,
-    int button,
-    int buttons,
-    EventTarget? relatedTarget,
-    num movementX,
-    num movementY,
-  });
 
-  external int get screenX;
-  external set screenX(int value);
-  external int get screenY;
-  external set screenY(int value);
-  external int get clientX;
-  external set clientX(int value);
-  external int get clientY;
-  external set clientY(int value);
-  external int get button;
-  external set button(int value);
-  external int get buttons;
-  external set buttons(int value);
-  external EventTarget? get relatedTarget;
-  external set relatedTarget(EventTarget? value);
-  external double get movementX;
-  external set movementX(num value);
-  external double get movementY;
-  external set movementY(num value);
+abstract class MouseEventInit implements EventModifierInit, JSObject {
+  int get screenX {
+    unsupportedPlatformError();
+  }
+
+  set screenX(int value) {
+    unsupportedPlatformError();
+  }
+
+  int get screenY {
+    unsupportedPlatformError();
+  }
+
+  set screenY(int value) {
+    unsupportedPlatformError();
+  }
+
+  int get clientX {
+    unsupportedPlatformError();
+  }
+
+  set clientX(int value) {
+    unsupportedPlatformError();
+  }
+
+  int get clientY {
+    unsupportedPlatformError();
+  }
+
+  set clientY(int value) {
+    unsupportedPlatformError();
+  }
+
+  int get button {
+    unsupportedPlatformError();
+  }
+
+  set button(int value) {
+    unsupportedPlatformError();
+  }
+
+  int get buttons {
+    unsupportedPlatformError();
+  }
+
+  set buttons(int value) {
+    unsupportedPlatformError();
+  }
+
+  EventTarget? get relatedTarget {
+    unsupportedPlatformError();
+  }
+
+  set relatedTarget(EventTarget? value) {
+    unsupportedPlatformError();
+  }
+
+  double get movementX {
+    unsupportedPlatformError();
+  }
+
+  set movementX(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get movementY {
+    unsupportedPlatformError();
+  }
+
+  set movementY(num value) {
+    unsupportedPlatformError();
+  }
 }
-extension type EventModifierInit._(JSObject _)
-    implements UIEventInit, JSObject {
-  external factory EventModifierInit({
-    bool bubbles,
-    bool cancelable,
-    bool composed,
-    Window? view,
-    int detail,
-    JSObject? sourceCapabilities,
-    int which,
-    bool ctrlKey,
-    bool shiftKey,
-    bool altKey,
-    bool metaKey,
-    bool modifierAltGraph,
-    bool modifierCapsLock,
-    bool modifierFn,
-    bool modifierFnLock,
-    bool modifierHyper,
-    bool modifierNumLock,
-    bool modifierScrollLock,
-    bool modifierSuper,
-    bool modifierSymbol,
-    bool modifierSymbolLock,
-  });
 
-  external bool get ctrlKey;
-  external set ctrlKey(bool value);
-  external bool get shiftKey;
-  external set shiftKey(bool value);
-  external bool get altKey;
-  external set altKey(bool value);
-  external bool get metaKey;
-  external set metaKey(bool value);
-  external bool get modifierAltGraph;
-  external set modifierAltGraph(bool value);
-  external bool get modifierCapsLock;
-  external set modifierCapsLock(bool value);
-  external bool get modifierFn;
-  external set modifierFn(bool value);
-  external bool get modifierFnLock;
-  external set modifierFnLock(bool value);
-  external bool get modifierHyper;
-  external set modifierHyper(bool value);
-  external bool get modifierNumLock;
-  external set modifierNumLock(bool value);
-  external bool get modifierScrollLock;
-  external set modifierScrollLock(bool value);
-  external bool get modifierSuper;
-  external set modifierSuper(bool value);
-  external bool get modifierSymbol;
-  external set modifierSymbol(bool value);
-  external bool get modifierSymbolLock;
-  external set modifierSymbolLock(bool value);
+abstract class EventModifierInit implements UIEventInit, JSObject {
+  bool get ctrlKey {
+    unsupportedPlatformError();
+  }
+
+  set ctrlKey(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get shiftKey {
+    unsupportedPlatformError();
+  }
+
+  set shiftKey(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get altKey {
+    unsupportedPlatformError();
+  }
+
+  set altKey(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get metaKey {
+    unsupportedPlatformError();
+  }
+
+  set metaKey(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get modifierAltGraph {
+    unsupportedPlatformError();
+  }
+
+  set modifierAltGraph(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get modifierCapsLock {
+    unsupportedPlatformError();
+  }
+
+  set modifierCapsLock(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get modifierFn {
+    unsupportedPlatformError();
+  }
+
+  set modifierFn(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get modifierFnLock {
+    unsupportedPlatformError();
+  }
+
+  set modifierFnLock(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get modifierHyper {
+    unsupportedPlatformError();
+  }
+
+  set modifierHyper(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get modifierNumLock {
+    unsupportedPlatformError();
+  }
+
+  set modifierNumLock(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get modifierScrollLock {
+    unsupportedPlatformError();
+  }
+
+  set modifierScrollLock(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get modifierSuper {
+    unsupportedPlatformError();
+  }
+
+  set modifierSuper(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get modifierSymbol {
+    unsupportedPlatformError();
+  }
+
+  set modifierSymbol(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get modifierSymbolLock {
+    unsupportedPlatformError();
+  }
+
+  set modifierSymbolLock(bool value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`WheelEvent`** interface represents events that occur due to the user
@@ -649,12 +719,7 @@ extension type EventModifierInit._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WheelEvent).
-extension type WheelEvent._(JSObject _) implements MouseEvent, JSObject {
-  external factory WheelEvent(
-    String type, [
-    WheelEventInit eventInitDict,
-  ]);
-
+abstract class WheelEvent implements MouseEvent, JSObject {
   static const int DOM_DELTA_PIXEL = 0;
 
   static const int DOM_DELTA_LINE = 1;
@@ -664,17 +729,17 @@ extension type WheelEvent._(JSObject _) implements MouseEvent, JSObject {
   /// The **`WheelEvent.deltaX`** read-only property is a
   /// `double` representing the horizontal scroll amount in the
   /// [WheelEvent.deltaMode] unit.
-  external double get deltaX;
+  double get deltaX;
 
   /// The **`WheelEvent.deltaY`** read-only property is a
   /// `double` representing the vertical scroll amount in the
   /// [WheelEvent.deltaMode] unit.
-  external double get deltaY;
+  double get deltaY;
 
   /// The **`WheelEvent.deltaZ`** read-only property is a
   /// `double` representing the scroll amount along the z-axis, in the
   /// [WheelEvent.deltaMode] unit.
-  external double get deltaZ;
+  double get deltaZ;
 
   /// The **`WheelEvent.deltaMode`** read-only property returns an
   /// `unsigned long` representing the unit of the delta values scroll amount.
@@ -685,55 +750,41 @@ extension type WheelEvent._(JSObject _) implements MouseEvent, JSObject {
   /// | `DOM_DELTA_PIXEL` | `0x00` | The delta values are specified in pixels. |
   /// | `DOM_DELTA_LINE`  | `0x01` | The delta values are specified in lines.  |
   /// | `DOM_DELTA_PAGE`  | `0x02` | The delta values are specified in pages.  |
-  external int get deltaMode;
+  int get deltaMode;
 }
-extension type WheelEventInit._(JSObject _)
-    implements MouseEventInit, JSObject {
-  external factory WheelEventInit({
-    bool bubbles,
-    bool cancelable,
-    bool composed,
-    Window? view,
-    int detail,
-    JSObject? sourceCapabilities,
-    int which,
-    bool ctrlKey,
-    bool shiftKey,
-    bool altKey,
-    bool metaKey,
-    bool modifierAltGraph,
-    bool modifierCapsLock,
-    bool modifierFn,
-    bool modifierFnLock,
-    bool modifierHyper,
-    bool modifierNumLock,
-    bool modifierScrollLock,
-    bool modifierSuper,
-    bool modifierSymbol,
-    bool modifierSymbolLock,
-    int screenX,
-    int screenY,
-    int clientX,
-    int clientY,
-    int button,
-    int buttons,
-    EventTarget? relatedTarget,
-    num movementX,
-    num movementY,
-    num deltaX,
-    num deltaY,
-    num deltaZ,
-    int deltaMode,
-  });
 
-  external double get deltaX;
-  external set deltaX(num value);
-  external double get deltaY;
-  external set deltaY(num value);
-  external double get deltaZ;
-  external set deltaZ(num value);
-  external int get deltaMode;
-  external set deltaMode(int value);
+abstract class WheelEventInit implements MouseEventInit, JSObject {
+  double get deltaX {
+    unsupportedPlatformError();
+  }
+
+  set deltaX(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get deltaY {
+    unsupportedPlatformError();
+  }
+
+  set deltaY(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get deltaZ {
+    unsupportedPlatformError();
+  }
+
+  set deltaZ(num value) {
+    unsupportedPlatformError();
+  }
+
+  int get deltaMode {
+    unsupportedPlatformError();
+  }
+
+  set deltaMode(int value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`InputEvent`** interface represents an event notifying the user of
@@ -743,12 +794,7 @@ extension type WheelEventInit._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/InputEvent).
-extension type InputEvent._(JSObject _) implements UIEvent, JSObject {
-  external factory InputEvent(
-    String type, [
-    InputEventInit eventInitDict,
-  ]);
-
+abstract class InputEvent implements UIEvent, JSObject {
   /// The **`getTargetRanges()`** method of the [InputEvent] interface returns
   /// an array of [StaticRange] objects that will be affected by a change to the
   /// DOM if the input event is not canceled.
@@ -796,61 +842,76 @@ extension type InputEvent._(JSObject _) implements UIEvent, JSObject {
   ///     </tr>
   ///   </tbody>
   /// </table>
-  external JSArray<StaticRange> getTargetRanges();
+  JSArray<StaticRange> getTargetRanges();
 
   /// The **`data`** read-only property of the
   /// [InputEvent] interface returns a string with inserted
   /// characters. This may be an empty string if the change doesn't insert text,
   /// such as when
   /// characters are deleted.
-  external String? get data;
+  String? get data;
 
   /// The **`InputEvent.isComposing`** read-only property returns a
   /// boolean value indicating if the event is fired after
   /// [Element.compositionstart_event] and before
   /// [Element.compositionend_event].
-  external bool get isComposing;
+  bool get isComposing;
 
   /// The **`inputType`** read-only property of the
   /// [InputEvent] interface returns the type of change made to editable
   /// content.
   /// Possible changes include for example inserting, deleting, and formatting
   /// text.
-  external String get inputType;
+  String get inputType;
 
   /// The **`dataTransfer`** read-only property of the
   /// [InputEvent] interface returns a [DataTransfer] object
   /// containing information about richtext or plaintext data being added to or
   /// removed from
   /// editable content.
-  external DataTransfer? get dataTransfer;
+  DataTransfer? get dataTransfer;
 }
-extension type InputEventInit._(JSObject _) implements UIEventInit, JSObject {
-  external factory InputEventInit({
-    bool bubbles,
-    bool cancelable,
-    bool composed,
-    Window? view,
-    int detail,
-    JSObject? sourceCapabilities,
-    int which,
-    String? data,
-    bool isComposing,
-    String inputType,
-    DataTransfer? dataTransfer,
-    JSArray<StaticRange> targetRanges,
-  });
 
-  external String? get data;
-  external set data(String? value);
-  external bool get isComposing;
-  external set isComposing(bool value);
-  external String get inputType;
-  external set inputType(String value);
-  external DataTransfer? get dataTransfer;
-  external set dataTransfer(DataTransfer? value);
-  external JSArray<StaticRange> get targetRanges;
-  external set targetRanges(JSArray<StaticRange> value);
+abstract class InputEventInit implements UIEventInit, JSObject {
+  String? get data {
+    unsupportedPlatformError();
+  }
+
+  set data(String? value) {
+    unsupportedPlatformError();
+  }
+
+  bool get isComposing {
+    unsupportedPlatformError();
+  }
+
+  set isComposing(bool value) {
+    unsupportedPlatformError();
+  }
+
+  String get inputType {
+    unsupportedPlatformError();
+  }
+
+  set inputType(String value) {
+    unsupportedPlatformError();
+  }
+
+  DataTransfer? get dataTransfer {
+    unsupportedPlatformError();
+  }
+
+  set dataTransfer(DataTransfer? value) {
+    unsupportedPlatformError();
+  }
+
+  JSArray<StaticRange> get targetRanges {
+    unsupportedPlatformError();
+  }
+
+  set targetRanges(JSArray<StaticRange> value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// **`KeyboardEvent`** objects describe a user interaction with the keyboard;
@@ -870,12 +931,7 @@ extension type InputEventInit._(JSObject _) implements UIEventInit, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent).
-extension type KeyboardEvent._(JSObject _) implements UIEvent, JSObject {
-  external factory KeyboardEvent(
-    String type, [
-    KeyboardEventInit eventInitDict,
-  ]);
-
+abstract class KeyboardEvent implements UIEvent, JSObject {
   static const int DOM_KEY_LOCATION_STANDARD = 0;
 
   static const int DOM_KEY_LOCATION_LEFT = 1;
@@ -888,7 +944,7 @@ extension type KeyboardEvent._(JSObject _) implements UIEvent, JSObject {
   /// current state of the specified modifier key: `true` if the modifier is
   /// active
   /// (that is the modifier key is pressed or locked), otherwise, `false`.
-  external bool getModifierState(String keyArg);
+  bool getModifierState(String keyArg);
 
   /// The **`KeyboardEvent.initKeyboardEvent()`** method initializes
   /// the attributes of a keyboard event object. This method was introduced in
@@ -898,7 +954,7 @@ extension type KeyboardEvent._(JSObject _) implements UIEvent, JSObject {
   /// implementing this method as experimental broke existing web apps (see
   /// [Firefox bug 999645](https://bugzil.la/999645)).
   /// Web applications should use constructor instead of this if it's available.
-  external void initKeyboardEvent(
+  void initKeyboardEvent(
     String typeArg, [
     bool bubblesArg,
     bool cancelableArg,
@@ -915,7 +971,7 @@ extension type KeyboardEvent._(JSObject _) implements UIEvent, JSObject {
   /// value of the key pressed by the user, taking into consideration the state
   /// of modifier keys such as <kbd>Shift</kbd> as well as the keyboard locale
   /// and layout.
-  external String get key;
+  String get key;
 
   /// The `KeyboardEvent.code` property represents a physical key on the
   /// keyboard (as opposed to the character generated by pressing the key). In
@@ -947,7 +1003,7 @@ extension type KeyboardEvent._(JSObject _) implements UIEvent, JSObject {
   ///
   /// To determine what character corresponds with the key event, use the
   /// [KeyboardEvent.key] property instead.
-  external String get code;
+  String get code;
 
   /// The **`KeyboardEvent.location`** read-only property returns an
   /// `unsigned long` representing the location of the key on the keyboard or
@@ -1050,12 +1106,12 @@ extension type KeyboardEvent._(JSObject _) implements UIEvent, JSObject {
   ///     </tr>
   ///   </tbody>
   /// </table>
-  external int get location;
+  int get location;
 
   /// The **`KeyboardEvent.ctrlKey`** read-only property returns a
   /// boolean value that indicates if the <kbd>control</kbd> key was pressed
   /// (`true`) or not (`false`) when the event occurred.
-  external bool get ctrlKey;
+  bool get ctrlKey;
 
   /// The **`KeyboardEvent.shiftKey`** read-only property is a
   /// boolean value that indicates if the <kbd>shift</kbd> key was pressed
@@ -1064,13 +1120,13 @@ extension type KeyboardEvent._(JSObject _) implements UIEvent, JSObject {
   /// The pressing of the shift key may change the [KeyboardEvent.key] of the
   /// event too. For example, pressing <kbd>B</kbd> generates `key: "b"`, while
   /// simultaneously pressing <kbd>Shift</kbd> generates `key: "B"`.
-  external bool get shiftKey;
+  bool get shiftKey;
 
   /// The **`KeyboardEvent.altKey`** read-only property is a
   /// boolean value that indicates if the <kbd>alt</kbd> key (<kbd>Option</kbd>
   /// or <kbd>⌥</kbd> on macOS) was pressed (`true`) or not (`false`) when
   /// the event occurred.
-  external bool get altKey;
+  bool get altKey;
 
   /// The **`KeyboardEvent.metaKey`** read-only property returning a
   /// boolean value that indicates if the <kbd>Meta</kbd> key was pressed
@@ -1082,19 +1138,19 @@ extension type KeyboardEvent._(JSObject _) implements UIEvent, JSObject {
   /// > **Note:** Before Firefox 118, the <kbd>⊞ Windows</kbd> key was handled
   /// > as an "OS" key rather than the "Meta" key. `KeyboardEvent.metaKey` was
   /// > `false` when the <kbd>⊞ Windows</kbd> key was pressed.
-  external bool get metaKey;
+  bool get metaKey;
 
   /// The **`repeat`** read-only property of the
   /// [KeyboardEvent] interface returns a boolean value that is
   /// `true` if the given key is being held down such that it is automatically
   /// repeating.
-  external bool get repeat;
+  bool get repeat;
 
   /// The **`KeyboardEvent.isComposing`** read-only property returns
   /// a boolean value indicating if the event is fired within a composition
   /// session, i.e. after [Element.compositionstart_event]
   /// and before [Element.compositionend_event].
-  external bool get isComposing;
+  bool get isComposing;
 
   /// The **`charCode`** read-only property of the
   /// [KeyboardEvent] interface returns the Unicode value of a character key
@@ -1104,7 +1160,7 @@ extension type KeyboardEvent._(JSObject _) implements UIEvent, JSObject {
   /// > the
   /// > Unicode value of the character using the [KeyboardEvent.key]
   /// > property.
-  external int get charCode;
+  int get charCode;
 
   /// The deprecated **`KeyboardEvent.keyCode`** read-only property represents a
   /// system and implementation dependent numerical code identifying the
@@ -1124,55 +1180,65 @@ extension type KeyboardEvent._(JSObject _) implements UIEvent, JSObject {
   /// > described above, the `keyCode` attribute is not useful for printable
   /// > characters, especially those input with the <kbd>Shift</kbd> or
   /// > <kbd>Alt</kbd> key pressed.
-  external int get keyCode;
+  int get keyCode;
 }
-extension type KeyboardEventInit._(JSObject _)
-    implements EventModifierInit, JSObject {
-  external factory KeyboardEventInit({
-    bool bubbles,
-    bool cancelable,
-    bool composed,
-    Window? view,
-    int detail,
-    JSObject? sourceCapabilities,
-    int which,
-    bool ctrlKey,
-    bool shiftKey,
-    bool altKey,
-    bool metaKey,
-    bool modifierAltGraph,
-    bool modifierCapsLock,
-    bool modifierFn,
-    bool modifierFnLock,
-    bool modifierHyper,
-    bool modifierNumLock,
-    bool modifierScrollLock,
-    bool modifierSuper,
-    bool modifierSymbol,
-    bool modifierSymbolLock,
-    String key,
-    String code,
-    int location,
-    bool repeat,
-    bool isComposing,
-    int charCode,
-    int keyCode,
-  });
 
-  external String get key;
-  external set key(String value);
-  external String get code;
-  external set code(String value);
-  external int get location;
-  external set location(int value);
-  external bool get repeat;
-  external set repeat(bool value);
-  external bool get isComposing;
-  external set isComposing(bool value);
-  external int get charCode;
-  external set charCode(int value);
-  external int get keyCode;
-  external set keyCode(int value);
+abstract class KeyboardEventInit implements EventModifierInit, JSObject {
+  String get key {
+    unsupportedPlatformError();
+  }
+
+  set key(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get code {
+    unsupportedPlatformError();
+  }
+
+  set code(String value) {
+    unsupportedPlatformError();
+  }
+
+  int get location {
+    unsupportedPlatformError();
+  }
+
+  set location(int value) {
+    unsupportedPlatformError();
+  }
+
+  bool get repeat {
+    unsupportedPlatformError();
+  }
+
+  set repeat(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get isComposing {
+    unsupportedPlatformError();
+  }
+
+  set isComposing(bool value) {
+    unsupportedPlatformError();
+  }
+
+  int get charCode {
+    unsupportedPlatformError();
+  }
+
+  set charCode(int value) {
+    unsupportedPlatformError();
+  }
+
+  int get keyCode {
+    unsupportedPlatformError();
+  }
+
+  set keyCode(int value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The DOM **`CompositionEvent`** represents events that occur due to the user
@@ -1182,19 +1248,14 @@ extension type KeyboardEventInit._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CompositionEvent).
-extension type CompositionEvent._(JSObject _) implements UIEvent, JSObject {
-  external factory CompositionEvent(
-    String type, [
-    CompositionEventInit eventInitDict,
-  ]);
-
+abstract class CompositionEvent implements UIEvent, JSObject {
   /// The **`initCompositionEvent()`**
   /// method of the [CompositionEvent] interface initializes the attributes of a
   /// `CompositionEvent` object instance.
   ///
   /// > **Note:** The correct way of creating a [CompositionEvent] is to use
   /// > the constructor [CompositionEvent.CompositionEvent].
-  external void initCompositionEvent(
+  void initCompositionEvent(
     String typeArg, [
     bool bubblesArg,
     bool cancelableArg,
@@ -1207,33 +1268,30 @@ extension type CompositionEvent._(JSObject _) implements UIEvent, JSObject {
   /// method that raised the event; its exact nature varies depending on the
   /// type of event
   /// that generated the `CompositionEvent` object.
-  external String get data;
+  String get data;
 }
-extension type CompositionEventInit._(JSObject _)
-    implements UIEventInit, JSObject {
-  external factory CompositionEventInit({
-    bool bubbles,
-    bool cancelable,
-    bool composed,
-    Window? view,
-    int detail,
-    JSObject? sourceCapabilities,
-    int which,
-    String data,
-  });
 
-  external String get data;
-  external set data(String value);
+abstract class CompositionEventInit implements UIEventInit, JSObject {
+  String get data {
+    unsupportedPlatformError();
+  }
+
+  set data(String value) {
+    unsupportedPlatformError();
+  }
 }
-extension type TextEvent._(JSObject _) implements UIEvent, JSObject {
-  external void initTextEvent(
+
+abstract class TextEvent implements UIEvent, JSObject {
+  void initTextEvent(
     String type, [
     bool bubbles,
     bool cancelable,
     Window? view,
     String data,
   ]);
-  external String get data;
+  String get data {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`MutationEvent`** interface provides event properties that are
@@ -1261,7 +1319,7 @@ extension type TextEvent._(JSObject _) implements UIEvent, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MutationEvent).
-extension type MutationEvent._(JSObject _) implements Event, JSObject {
+abstract class MutationEvent implements Event, JSObject {
   static const int MODIFICATION = 1;
 
   static const int ADDITION = 2;
@@ -1278,7 +1336,7 @@ extension type MutationEvent._(JSObject _) implements Event, JSObject {
   ///
   /// > **Note:** In general, you won't create these events yourself; they are
   /// > created by the browser.
-  external void initMutationEvent(
+  void initMutationEvent(
     String typeArg, [
     bool bubblesArg,
     bool cancelableArg,
@@ -1292,32 +1350,32 @@ extension type MutationEvent._(JSObject _) implements Event, JSObject {
   /// The **`relatedNode`** read-only property of the [MutationEvent] interface
   /// returns a string indicating the node related to the event, like the
   /// changed node inside the subtree for `DOMSubtreeModified`.
-  external Node? get relatedNode;
+  Node? get relatedNode;
 
   /// The **`prevValue`** read-only property of the [MutationEvent] interface
   /// returns a string. In `DOMAttrModified` events, it represents the previous
   /// value of the [Attr] node. In `DOMCharacterDataModified` events, it
   /// contains the previous value of the [CharacterData] node. In all other
   /// cases, returns the empty string (`""`).
-  external String get prevValue;
+  String get prevValue;
 
   /// The **`newValue`** read-only property of the [MutationEvent] interface
   /// returns a string. In `DOMAttrModified` events, it represents the new value
   /// of the [Attr] node. In `DOMCharacterDataModified` events, it contains the
   /// new value of the [CharacterData] node. In all other cases, returns the
   /// empty string (`""`).
-  external String get newValue;
+  String get newValue;
 
   /// The **`attrName`** read-only property of the [MutationEvent] interface
   /// returns a string with the name of the node affected by the
   /// `DOMAttrModified` event. It has no meaning for other events and is then
   /// set to the empty string (`""`).
-  external String get attrName;
+  String get attrName;
 
   /// The **`attrChange`** read-only property of the [MutationEvent] interface
   /// returns a number indicating what kind of change triggered the
   /// `DOMAttrModified` event. The three possible values are `MODIFICATION`
   /// (`1`), `ADDITION` (`2`) or `REMOVAL` (`3`). It has no meaning for other
   /// events and is then set to `0`.
-  external int get attrChange;
+  int get attrChange;
 }

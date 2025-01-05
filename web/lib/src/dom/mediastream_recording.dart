@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,11 +10,8 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../error.dart';
+import '../js_interop.dart';
 import 'dom.dart';
 import 'fileapi.dart';
 import 'hr_time.dart';
@@ -33,16 +30,13 @@ typedef RecordingState = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MediaRecorder).
-extension type MediaRecorder._(JSObject _) implements EventTarget, JSObject {
-  external factory MediaRecorder(
-    MediaStream stream, [
-    MediaRecorderOptions options,
-  ]);
-
+abstract class MediaRecorder implements EventTarget, JSObject {
   /// The **`isTypeSupported()`** static method of the [MediaRecorder] interface
   /// returns a `Boolean` which is `true` if the MIME media type specified is
   /// one the user agent should be able to successfully record.
-  external static bool isTypeSupported(String type);
+  static bool isTypeSupported(String type) {
+    unsupportedPlatformError();
+  }
 
   /// The **`start()`** method of the [MediaRecorder] interface begins recording
   /// media into one or more [Blob] objects.
@@ -79,7 +73,7 @@ extension type MediaRecorder._(JSObject _) implements EventTarget, JSObject {
   /// > by a
   /// > [MediaRecorder.dataavailable_event] event containing the `Blob` it
   /// > has gathered, followed by the [MediaRecorder.stop_event] event.
-  external void start([int timeslice]);
+  void start([int timeslice]);
 
   /// The **`stop()`** method of the [MediaRecorder] interface is
   /// used to stop media capture.
@@ -94,7 +88,7 @@ extension type MediaRecorder._(JSObject _) implements EventTarget, JSObject {
   /// 3. Raise a `dataavailable` event containing the Blob of data that has been
   /// gathered.
   /// 4. Raise a `stop` event.
-  external void stop();
+  void stop();
 
   /// The **`pause()`** method of the [MediaRecorder] interface is used
   /// to pause recording of media streams.
@@ -109,7 +103,7 @@ extension type MediaRecorder._(JSObject _) implements EventTarget, JSObject {
   /// 3. Stop gathering data into the current [Blob], but keep it available so
   /// that recording can be resumed later on.
   /// 4. Raise a [MediaRecorder.pause_event] event.
-  external void pause();
+  void pause();
 
   /// The **`resume()`** method of the [MediaRecorder] interface is used to
   /// resume media recording when it has been previously paused.
@@ -126,7 +120,7 @@ extension type MediaRecorder._(JSObject _) implements EventTarget, JSObject {
   /// 2. Set [MediaRecorder.state] to "recording".
   /// 3. Continue gathering data into the current [Blob].
   /// 4. Raise a `resume` event.
-  external void resume();
+  void resume();
 
   /// The **`requestData()`**
   /// method of the [MediaRecorder] interface is used to raise a
@@ -145,12 +139,12 @@ extension type MediaRecorder._(JSObject _) implements EventTarget, JSObject {
   /// currently captured data (the Blob is available under the event's `data`
   /// attribute.)
   /// 3. Create a new Blob and place subsequently captured data into it.
-  external void requestData();
+  void requestData();
 
   /// The **`stream`** read-only property of the [MediaRecorder] interface
   /// returns the stream that was passed into the [MediaRecorder.MediaRecorder]
   /// constructor when the `MediaRecorder` was created.
-  external MediaStream get stream;
+  MediaStream get stream;
 
   /// The **`mimeType`** read-only property of the [MediaRecorder] interface
   /// returns the  media type that was specified when creating the
@@ -170,23 +164,23 @@ extension type MediaRecorder._(JSObject _) implements EventTarget, JSObject {
   /// > **Note:** The term "MIME type" is officially considered to be
   /// > historical; these strings are now officially known as **media types**.
   /// > MDN Web Docs content uses the terms interchangeably.
-  external String get mimeType;
+  String get mimeType;
 
   /// The **`state`** read-only property of the [MediaRecorder] interface
   /// returns the current state of the current `MediaRecorder` object.
-  external RecordingState get state;
-  external EventHandler get onstart;
-  external set onstart(EventHandler value);
-  external EventHandler get onstop;
-  external set onstop(EventHandler value);
-  external EventHandler get ondataavailable;
-  external set ondataavailable(EventHandler value);
-  external EventHandler get onpause;
-  external set onpause(EventHandler value);
-  external EventHandler get onresume;
-  external set onresume(EventHandler value);
-  external EventHandler get onerror;
-  external set onerror(EventHandler value);
+  RecordingState get state;
+  EventHandler get onstart;
+  set onstart(EventHandler value);
+  EventHandler get onstop;
+  set onstop(EventHandler value);
+  EventHandler get ondataavailable;
+  set ondataavailable(EventHandler value);
+  EventHandler get onpause;
+  set onpause(EventHandler value);
+  EventHandler get onresume;
+  set onresume(EventHandler value);
+  EventHandler get onerror;
+  set onerror(EventHandler value);
 
   /// The **`videoBitsPerSecond`** read-only
   /// property of the [MediaRecorder] interface returns the video encoding
@@ -194,7 +188,7 @@ extension type MediaRecorder._(JSObject _) implements EventTarget, JSObject {
   ///
   /// This may differ from the bit rate specified in the
   /// constructor, if it was provided.
-  external int get videoBitsPerSecond;
+  int get videoBitsPerSecond;
 
   /// The **`audioBitsPerSecond`** read-only
   /// property of the [MediaRecorder] interface returns the audio encoding bit
@@ -202,33 +196,65 @@ extension type MediaRecorder._(JSObject _) implements EventTarget, JSObject {
   ///
   /// This may differ from the bit rate specified in the constructor (if
   /// it was provided).
-  external int get audioBitsPerSecond;
+  int get audioBitsPerSecond;
 }
-extension type MediaRecorderOptions._(JSObject _) implements JSObject {
-  external factory MediaRecorderOptions({
-    String mimeType,
-    int audioBitsPerSecond,
-    int videoBitsPerSecond,
-    int bitsPerSecond,
-    BitrateMode audioBitrateMode,
-    DOMHighResTimeStamp videoKeyFrameIntervalDuration,
-    int videoKeyFrameIntervalCount,
-  });
 
-  external String get mimeType;
-  external set mimeType(String value);
-  external int get audioBitsPerSecond;
-  external set audioBitsPerSecond(int value);
-  external int get videoBitsPerSecond;
-  external set videoBitsPerSecond(int value);
-  external int get bitsPerSecond;
-  external set bitsPerSecond(int value);
-  external BitrateMode get audioBitrateMode;
-  external set audioBitrateMode(BitrateMode value);
-  external double get videoKeyFrameIntervalDuration;
-  external set videoKeyFrameIntervalDuration(DOMHighResTimeStamp value);
-  external int get videoKeyFrameIntervalCount;
-  external set videoKeyFrameIntervalCount(int value);
+abstract class MediaRecorderOptions implements JSObject {
+  String get mimeType {
+    unsupportedPlatformError();
+  }
+
+  set mimeType(String value) {
+    unsupportedPlatformError();
+  }
+
+  int get audioBitsPerSecond {
+    unsupportedPlatformError();
+  }
+
+  set audioBitsPerSecond(int value) {
+    unsupportedPlatformError();
+  }
+
+  int get videoBitsPerSecond {
+    unsupportedPlatformError();
+  }
+
+  set videoBitsPerSecond(int value) {
+    unsupportedPlatformError();
+  }
+
+  int get bitsPerSecond {
+    unsupportedPlatformError();
+  }
+
+  set bitsPerSecond(int value) {
+    unsupportedPlatformError();
+  }
+
+  BitrateMode get audioBitrateMode {
+    unsupportedPlatformError();
+  }
+
+  set audioBitrateMode(BitrateMode value) {
+    unsupportedPlatformError();
+  }
+
+  double get videoKeyFrameIntervalDuration {
+    unsupportedPlatformError();
+  }
+
+  set videoKeyFrameIntervalDuration(DOMHighResTimeStamp value) {
+    unsupportedPlatformError();
+  }
+
+  int get videoKeyFrameIntervalCount {
+    unsupportedPlatformError();
+  }
+
+  set videoKeyFrameIntervalCount(int value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`BlobEvent`** interface of the
@@ -240,15 +266,10 @@ extension type MediaRecorderOptions._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/BlobEvent).
-extension type BlobEvent._(JSObject _) implements Event, JSObject {
-  external factory BlobEvent(
-    String type,
-    BlobEventInit eventInitDict,
-  );
-
+abstract class BlobEvent implements Event, JSObject {
   /// The **`data`** read-only property of the [BlobEvent] interface represents
   /// a [Blob] associated with the event.
-  external Blob get data;
+  Blob get data;
 
   /// The **`timecode`** read-only property of the [BlobEvent] interface
   /// indicates the difference between the timestamp of the first chunk of data,
@@ -257,16 +278,23 @@ extension type BlobEvent._(JSObject _) implements Event, JSObject {
   ///
   /// Note that the `timecode` in the first produced `BlobEvent` does not need
   /// to be zero.
-  external double get timecode;
+  double get timecode;
 }
-extension type BlobEventInit._(JSObject _) implements JSObject {
-  external factory BlobEventInit({
-    required Blob data,
-    DOMHighResTimeStamp timecode,
-  });
 
-  external Blob get data;
-  external set data(Blob value);
-  external double get timecode;
-  external set timecode(DOMHighResTimeStamp value);
+abstract class BlobEventInit implements JSObject {
+  Blob get data {
+    unsupportedPlatformError();
+  }
+
+  set data(Blob value) {
+    unsupportedPlatformError();
+  }
+
+  double get timecode {
+    unsupportedPlatformError();
+  }
+
+  set timecode(DOMHighResTimeStamp value) {
+    unsupportedPlatformError();
+  }
 }

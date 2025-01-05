@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,16 +10,15 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
+import '../error.dart';
+import '../js_interop.dart';
 
 typedef GPUFlagsConstant = int;
-@JS()
-external $GPUBufferUsage get GPUBufferUsage;
-@JS('GPUBufferUsage')
-extension type $GPUBufferUsage._(JSObject _) implements JSObject {
+$GPUBufferUsage get GPUBufferUsage {
+  unsupportedPlatformError();
+}
+
+abstract class $GPUBufferUsage implements JSObject {
   static const GPUFlagsConstant MAP_READ = 1;
 
   static const GPUFlagsConstant MAP_WRITE = 2;
@@ -40,18 +39,22 @@ extension type $GPUBufferUsage._(JSObject _) implements JSObject {
 
   static const GPUFlagsConstant QUERY_RESOLVE = 512;
 }
-@JS()
-external $GPUMapMode get GPUMapMode;
-@JS('GPUMapMode')
-extension type $GPUMapMode._(JSObject _) implements JSObject {
+
+$GPUMapMode get GPUMapMode {
+  unsupportedPlatformError();
+}
+
+abstract class $GPUMapMode implements JSObject {
   static const GPUFlagsConstant READ = 1;
 
   static const GPUFlagsConstant WRITE = 2;
 }
-@JS()
-external $GPUTextureUsage get GPUTextureUsage;
-@JS('GPUTextureUsage')
-extension type $GPUTextureUsage._(JSObject _) implements JSObject {
+
+$GPUTextureUsage get GPUTextureUsage {
+  unsupportedPlatformError();
+}
+
+abstract class $GPUTextureUsage implements JSObject {
   static const GPUFlagsConstant COPY_SRC = 1;
 
   static const GPUFlagsConstant COPY_DST = 2;
@@ -62,20 +65,24 @@ extension type $GPUTextureUsage._(JSObject _) implements JSObject {
 
   static const GPUFlagsConstant RENDER_ATTACHMENT = 16;
 }
-@JS()
-external $GPUShaderStage get GPUShaderStage;
-@JS('GPUShaderStage')
-extension type $GPUShaderStage._(JSObject _) implements JSObject {
+
+$GPUShaderStage get GPUShaderStage {
+  unsupportedPlatformError();
+}
+
+abstract class $GPUShaderStage implements JSObject {
   static const GPUFlagsConstant VERTEX = 1;
 
   static const GPUFlagsConstant FRAGMENT = 2;
 
   static const GPUFlagsConstant COMPUTE = 4;
 }
-@JS()
-external $GPUColorWrite get GPUColorWrite;
-@JS('GPUColorWrite')
-extension type $GPUColorWrite._(JSObject _) implements JSObject {
+
+$GPUColorWrite get GPUColorWrite {
+  unsupportedPlatformError();
+}
+
+abstract class $GPUColorWrite implements JSObject {
   static const GPUFlagsConstant RED = 1;
 
   static const GPUFlagsConstant GREEN = 2;

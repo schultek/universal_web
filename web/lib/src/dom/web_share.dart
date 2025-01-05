@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,27 +10,40 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../error.dart';
+import '../js_interop.dart';
 import 'fileapi.dart';
 
-extension type ShareData._(JSObject _) implements JSObject {
-  external factory ShareData({
-    JSArray<File> files,
-    String title,
-    String text,
-    String url,
-  });
+abstract class ShareData implements JSObject {
+  JSArray<File> get files {
+    unsupportedPlatformError();
+  }
 
-  external JSArray<File> get files;
-  external set files(JSArray<File> value);
-  external String get title;
-  external set title(String value);
-  external String get text;
-  external set text(String value);
-  external String get url;
-  external set url(String value);
+  set files(JSArray<File> value) {
+    unsupportedPlatformError();
+  }
+
+  String get title {
+    unsupportedPlatformError();
+  }
+
+  set title(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get text {
+    unsupportedPlatformError();
+  }
+
+  set text(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get url {
+    unsupportedPlatformError();
+  }
+
+  set url(String value) {
+    unsupportedPlatformError();
+  }
 }

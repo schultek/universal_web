@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,10 +10,7 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
+import '../js_interop.dart';
 
 typedef ArrayBufferView = JSObject;
 typedef BufferSource = JSObject;
@@ -36,12 +33,7 @@ typedef VoidFunction = JSFunction;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/DOMException).
-extension type DOMException._(JSObject _) implements JSObject {
-  external factory DOMException([
-    String message,
-    String name,
-  ]);
-
+abstract class DOMException implements JSObject {
   static const int INDEX_SIZE_ERR = 1;
 
   static const int DOMSTRING_SIZE_ERR = 2;
@@ -96,13 +88,13 @@ extension type DOMException._(JSObject _) implements JSObject {
   /// [DOMException] interface returns a string that contains
   /// one of the strings associated with an
   /// [error name](https://developer.mozilla.org/en-US/docs/Web/API/DOMException#error_names).
-  external String get name;
+  String get name;
 
   /// The **`message`** read-only property of the
   /// [DOMException] interface returns a string representing
   /// a message or description associated with the given
   /// [error name](https://developer.mozilla.org/en-US/docs/Web/API/DOMException#error_names).
-  external String get message;
+  String get message;
 
   /// The **`code`** read-only property of the [DOMException] interface returns
   /// one of the legacy
@@ -111,5 +103,5 @@ extension type DOMException._(JSObject _) implements JSObject {
   ///
   /// This field is used for historical reasons. New DOM exceptions don't use
   /// this anymore: they put this info in the [DOMException.name] attribute.
-  external int get code;
+  int get code;
 }

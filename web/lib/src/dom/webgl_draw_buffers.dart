@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,14 +10,10 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../js_interop.dart';
 import 'webgl1.dart';
 
-extension type WEBGL_draw_buffers._(JSObject _) implements JSObject {
+abstract class WEBGL_draw_buffers implements JSObject {
   static const GLenum COLOR_ATTACHMENT0_WEBGL = 36064;
 
   static const GLenum COLOR_ATTACHMENT1_WEBGL = 36065;
@@ -86,5 +82,5 @@ extension type WEBGL_draw_buffers._(JSObject _) implements JSObject {
 
   static const GLenum MAX_DRAW_BUFFERS_WEBGL = 34852;
 
-  external void drawBuffersWEBGL(JSArray<JSNumber> buffers);
+  void drawBuffersWEBGL(JSArray<JSNumber> buffers);
 }

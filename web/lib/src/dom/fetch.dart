@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,11 +10,8 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../error.dart';
+import '../js_interop.dart';
 import 'attribution_reporting_api.dart';
 import 'dom.dart';
 import 'fileapi.dart';
@@ -73,9 +70,7 @@ typedef ResponseType = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Headers).
-extension type Headers._(JSObject _) implements JSObject {
-  external factory Headers([HeadersInit init]);
-
+abstract class Headers implements JSObject {
   /// The **`append()`** method of the [Headers]
   /// interface appends a new value onto an existing header inside a `Headers`
   /// object, or adds the header if it does not already exist.
@@ -89,7 +84,7 @@ extension type Headers._(JSObject _) implements JSObject {
   /// agent. These
   /// headers include the
   /// and .
-  external void append(
+  void append(
     String name,
     String value,
   );
@@ -106,7 +101,7 @@ extension type Headers._(JSObject _) implements JSObject {
   /// agent. These
   /// headers include the
   /// and .
-  external void delete(String name);
+  void delete(String name);
 
   /// The **`get()`** method of the [Headers] interface
   /// returns a byte string of all the values of a header within a `Headers`
@@ -118,7 +113,7 @@ extension type Headers._(JSObject _) implements JSObject {
   /// agent. These
   /// headers include the
   /// and .
-  external String? get(String name);
+  String? get(String name);
 
   /// The **`getSetCookie()`** method of the [Headers] interface returns an
   /// array containing the values of all  headers associated with a response.
@@ -132,7 +127,7 @@ extension type Headers._(JSObject _) implements JSObject {
   /// that
   /// [must be filtered out](https://fetch.spec.whatwg.org/#ref-for-forbidden-response-header-name%E2%91%A0)
   /// from any response exposed to frontend code.
-  external JSArray<JSString> getSetCookie();
+  JSArray<JSString> getSetCookie();
 
   /// The **`has()`** method of the [Headers] interface
   /// returns a boolean stating whether a `Headers` object contains a certain
@@ -142,7 +137,7 @@ extension type Headers._(JSObject _) implements JSObject {
   /// agent. These
   /// headers include the
   /// and .
-  external bool has(String name);
+  bool has(String name);
 
   /// The **`set()`** method of the [Headers] interface
   /// sets a new value for an existing header inside a `Headers` object, or adds
@@ -157,7 +152,7 @@ extension type Headers._(JSObject _) implements JSObject {
   /// agent. These
   /// headers include the
   /// and .
-  external void set(
+  void set(
     String name,
     String value,
   );
@@ -176,12 +171,7 @@ extension type Headers._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Request).
-extension type Request._(JSObject _) implements JSObject {
-  external factory Request(
-    RequestInfo input, [
-    RequestInit init,
-  ]);
-
+abstract class Request implements JSObject {
   /// The **`clone()`** method of the [Request] interface creates a copy of the
   /// current `Request` object.
   ///
@@ -199,26 +189,26 @@ extension type Request._(JSObject _) implements JSObject {
   ///
   /// If you intend to modify the request, you may prefer the [Request]
   /// constructor.
-  external Request clone();
+  Request clone();
 
   /// The **`arrayBuffer()`** method of the [Request] interface
   /// reads the request body and returns it as a promise that resolves with an
   /// `ArrayBuffer`.
-  external JSPromise<JSArrayBuffer> arrayBuffer();
+  JSPromise<JSArrayBuffer> arrayBuffer();
 
   /// The **`blob()`** method of the [Request] interface
   /// reads the request body and returns it as a promise that resolves with a
   /// [Blob].
-  external JSPromise<Blob> blob();
+  JSPromise<Blob> blob();
 
   /// The **`bytes()`** method of the [Request] interface reads the request body
   /// and returns it as a promise that resolves with an `Uint8Array`.
-  external JSPromise<JSUint8Array> bytes();
+  JSPromise<JSUint8Array> bytes();
 
   /// The **`formData()`** method of the [Request] interface
   /// reads the request body and returns it as a promise that resolves with a
   /// [FormData] object.
-  external JSPromise<FormData> formData();
+  JSPromise<FormData> formData();
 
   /// The **`json()`** method of the [Request] interface
   /// reads the request body and returns it as a promise that resolves with the
@@ -227,27 +217,27 @@ extension type Request._(JSObject _) implements JSObject {
   /// Note that despite the method being named `json()`, the result is not JSON
   /// but is instead the result of taking JSON as input and parsing it to
   /// produce a JavaScript object.
-  external JSPromise<JSAny?> json();
+  JSPromise<JSAny?> json();
 
   /// The **`text()`** method of the [Request] interface
   /// reads the request body and returns it as a promise that resolves with a
   /// `String`.
   /// The response is _always_ decoded using UTF-8.
-  external JSPromise<JSString> text();
+  JSPromise<JSString> text();
 
   /// The **`method`** read-only property of the
   /// [Request] interface contains the request's method (`GET`,
   /// `POST`, etc.)
-  external String get method;
+  String get method;
 
   /// The **`url`** read-only property of the [Request]
   /// interface contains the URL of the request.
-  external String get url;
+  String get url;
 
   /// The **`headers`** read-only property of the
   /// [Request] interface contains the [Headers] object associated
   /// with the request.
-  external Headers get headers;
+  Headers get headers;
 
   /// The **`destination`** read-only
   /// property of the **[Request]** interface returns a string
@@ -277,7 +267,7 @@ extension type Request._(JSObject _) implements JSObject {
   /// (including subclasses like [AudioWorklet]), and the
   /// [Worker]-based destinations, including [ServiceWorker]
   /// and [SharedWorker].
-  external RequestDestination get destination;
+  RequestDestination get destination;
 
   /// The **`referrer`** read-only property of the
   /// [Request] interface is set by the user agent to be the referrer of the
@@ -285,124 +275,221 @@ extension type Request._(JSObject _) implements JSObject {
   ///
   /// > **Note:** If `referrer`'s value is `no-referrer`,
   /// > it returns an empty string.
-  external String get referrer;
+  String get referrer;
 
   /// The **`referrerPolicy`** read-only property of the
   /// [Request] interface returns the referrer policy, which governs what
   /// referrer information, sent in the `Referer` header, should be included
   /// with the request.
-  external ReferrerPolicy get referrerPolicy;
+  ReferrerPolicy get referrerPolicy;
 
   /// The **`mode`** read-only property of the [Request]
   /// interface contains the mode of the request (e.g., `cors`,
   /// `no-cors`, `same-origin`, `navigate` or `websocket`.) This is used
   /// to determine if cross-origin requests lead to valid responses, and which
   /// properties of the response are readable.
-  external RequestMode get mode;
+  RequestMode get mode;
 
   /// The **`credentials`** read-only property of the [Request] interface
   /// indicates whether the user agent should send or receive cookies from the
   /// other domain in the case of cross-origin requests.
-  external RequestCredentials get credentials;
+  RequestCredentials get credentials;
 
   /// The **`cache`** read-only property of the [Request] interface contains the
   /// cache mode of the request. It controls how the request will interact with
   /// the browser's
   /// [HTTP cache](https://developer.mozilla.org/en-US/docs/Web/HTTP/Caching).
-  external RequestCache get cache;
+  RequestCache get cache;
 
   /// The **`redirect`** read-only property of the [Request] interface contains
   /// the mode for how redirects are handled.
-  external RequestRedirect get redirect;
+  RequestRedirect get redirect;
 
   /// The **`integrity`** read-only property of the [Request] interface contains
   /// the
   /// [subresource integrity](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity)
   /// value of the request.
-  external String get integrity;
-  external bool get keepalive;
-  external bool get isHistoryNavigation;
+  String get integrity;
+  bool get keepalive;
+  bool get isHistoryNavigation;
 
   /// The read-only **`signal`** property of the [Request] interface returns the
   /// [AbortSignal] associated with the request.
-  external AbortSignal get signal;
+  AbortSignal get signal;
 
   /// The read-only **`body`** property of the [Request]
   /// interface contains a [ReadableStream] with the body contents
   /// that have been added to the request. Note that a request using the
   /// `GET` or `HEAD` method cannot have a body
   /// and `null` is returned in these cases.
-  external ReadableStream? get body;
+  ReadableStream? get body;
 
   /// The read-only **`bodyUsed`** property of the
   /// [Request] interface is a boolean value that indicates
   /// whether the request body has been read yet.
-  external bool get bodyUsed;
+  bool get bodyUsed;
 }
-extension type RequestInit._(JSObject _) implements JSObject {
-  external factory RequestInit({
-    String method,
-    HeadersInit headers,
-    BodyInit? body,
-    String referrer,
-    ReferrerPolicy referrerPolicy,
-    RequestMode mode,
-    RequestCredentials credentials,
-    RequestCache cache,
-    RequestRedirect redirect,
-    String integrity,
-    bool keepalive,
-    AbortSignal? signal,
-    RequestDuplex duplex,
-    RequestPriority priority,
-    JSAny? window,
-    AttributionReportingRequestOptions attributionReporting,
-    IPAddressSpace targetAddressSpace,
-    bool sharedStorageWritable,
-    PrivateToken privateToken,
-    bool adAuctionHeaders,
-  });
 
-  external String get method;
-  external set method(String value);
-  external HeadersInit get headers;
-  external set headers(HeadersInit value);
-  external BodyInit? get body;
-  external set body(BodyInit? value);
-  external String get referrer;
-  external set referrer(String value);
-  external ReferrerPolicy get referrerPolicy;
-  external set referrerPolicy(ReferrerPolicy value);
-  external RequestMode get mode;
-  external set mode(RequestMode value);
-  external RequestCredentials get credentials;
-  external set credentials(RequestCredentials value);
-  external RequestCache get cache;
-  external set cache(RequestCache value);
-  external RequestRedirect get redirect;
-  external set redirect(RequestRedirect value);
-  external String get integrity;
-  external set integrity(String value);
-  external bool get keepalive;
-  external set keepalive(bool value);
-  external AbortSignal? get signal;
-  external set signal(AbortSignal? value);
-  external RequestDuplex get duplex;
-  external set duplex(RequestDuplex value);
-  external RequestPriority get priority;
-  external set priority(RequestPriority value);
-  external JSAny? get window;
-  external set window(JSAny? value);
-  external AttributionReportingRequestOptions get attributionReporting;
-  external set attributionReporting(AttributionReportingRequestOptions value);
-  external IPAddressSpace get targetAddressSpace;
-  external set targetAddressSpace(IPAddressSpace value);
-  external bool get sharedStorageWritable;
-  external set sharedStorageWritable(bool value);
-  external PrivateToken get privateToken;
-  external set privateToken(PrivateToken value);
-  external bool get adAuctionHeaders;
-  external set adAuctionHeaders(bool value);
+abstract class RequestInit implements JSObject {
+  String get method {
+    unsupportedPlatformError();
+  }
+
+  set method(String value) {
+    unsupportedPlatformError();
+  }
+
+  HeadersInit get headers {
+    unsupportedPlatformError();
+  }
+
+  set headers(HeadersInit value) {
+    unsupportedPlatformError();
+  }
+
+  BodyInit? get body {
+    unsupportedPlatformError();
+  }
+
+  set body(BodyInit? value) {
+    unsupportedPlatformError();
+  }
+
+  String get referrer {
+    unsupportedPlatformError();
+  }
+
+  set referrer(String value) {
+    unsupportedPlatformError();
+  }
+
+  ReferrerPolicy get referrerPolicy {
+    unsupportedPlatformError();
+  }
+
+  set referrerPolicy(ReferrerPolicy value) {
+    unsupportedPlatformError();
+  }
+
+  RequestMode get mode {
+    unsupportedPlatformError();
+  }
+
+  set mode(RequestMode value) {
+    unsupportedPlatformError();
+  }
+
+  RequestCredentials get credentials {
+    unsupportedPlatformError();
+  }
+
+  set credentials(RequestCredentials value) {
+    unsupportedPlatformError();
+  }
+
+  RequestCache get cache {
+    unsupportedPlatformError();
+  }
+
+  set cache(RequestCache value) {
+    unsupportedPlatformError();
+  }
+
+  RequestRedirect get redirect {
+    unsupportedPlatformError();
+  }
+
+  set redirect(RequestRedirect value) {
+    unsupportedPlatformError();
+  }
+
+  String get integrity {
+    unsupportedPlatformError();
+  }
+
+  set integrity(String value) {
+    unsupportedPlatformError();
+  }
+
+  bool get keepalive {
+    unsupportedPlatformError();
+  }
+
+  set keepalive(bool value) {
+    unsupportedPlatformError();
+  }
+
+  AbortSignal? get signal {
+    unsupportedPlatformError();
+  }
+
+  set signal(AbortSignal? value) {
+    unsupportedPlatformError();
+  }
+
+  RequestDuplex get duplex {
+    unsupportedPlatformError();
+  }
+
+  set duplex(RequestDuplex value) {
+    unsupportedPlatformError();
+  }
+
+  RequestPriority get priority {
+    unsupportedPlatformError();
+  }
+
+  set priority(RequestPriority value) {
+    unsupportedPlatformError();
+  }
+
+  JSAny? get window {
+    unsupportedPlatformError();
+  }
+
+  set window(JSAny? value) {
+    unsupportedPlatformError();
+  }
+
+  AttributionReportingRequestOptions get attributionReporting {
+    unsupportedPlatformError();
+  }
+
+  set attributionReporting(AttributionReportingRequestOptions value) {
+    unsupportedPlatformError();
+  }
+
+  IPAddressSpace get targetAddressSpace {
+    unsupportedPlatformError();
+  }
+
+  set targetAddressSpace(IPAddressSpace value) {
+    unsupportedPlatformError();
+  }
+
+  bool get sharedStorageWritable {
+    unsupportedPlatformError();
+  }
+
+  set sharedStorageWritable(bool value) {
+    unsupportedPlatformError();
+  }
+
+  PrivateToken get privateToken {
+    unsupportedPlatformError();
+  }
+
+  set privateToken(PrivateToken value) {
+    unsupportedPlatformError();
+  }
+
+  bool get adAuctionHeaders {
+    unsupportedPlatformError();
+  }
+
+  set adAuctionHeaders(bool value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`Response`** interface of the
@@ -418,12 +505,7 @@ extension type RequestInit._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Response).
-extension type Response._(JSObject _) implements JSObject {
-  external factory Response([
-    BodyInit? body,
-    ResponseInit init,
-  ]);
-
+abstract class Response implements JSObject {
   /// The **`error()`** static method of the [Response] interface returns a new
   /// `Response` object associated with a network error.
   ///
@@ -433,7 +515,9 @@ extension type Response._(JSObject _) implements JSObject {
   /// reject the promise.
   ///
   /// An error response has its [Response.type] set to `error`.
-  external static Response error();
+  static Response error() {
+    unsupportedPlatformError();
+  }
 
   /// The **`redirect()`** static method of the [Response] interface returns a
   /// `Response` resulting in a redirect to the specified URL.
@@ -444,10 +528,12 @@ extension type Response._(JSObject _) implements JSObject {
   /// > redirect it as desired.
   /// > This will actually lead to a real redirect if a service worker sends it
   /// > upstream.
-  external static Response redirect(
+  static Response redirect(
     String url, [
-    int status,
-  ]);
+    int? status,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`json()`** static method of the [Response] interface returns a
   /// `Response` that contains the provided JSON data as body, and a  header
@@ -465,11 +551,12 @@ extension type Response._(JSObject _) implements JSObject {
   /// for
   /// [single page applications](https://developer.mozilla.org/en-US/docs/Glossary/SPA),
   /// and any other applications where a JSON response is expected.
-  @JS('json')
-  external static Response json_(
+  static Response json_(
     JSAny? data, [
-    ResponseInit init,
-  ]);
+    ResponseInit? init,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`clone()`** method of the [Response] interface creates a clone of a
   /// response object, identical in every way, but stored in a different
@@ -496,22 +583,22 @@ extension type Response._(JSObject _) implements JSObject {
   /// `clone()` throws a `TypeError` if the response body has already been used.
   /// In fact, the main reason `clone()` exists is to allow multiple uses of
   /// body objects (when they are one-use only.)
-  external Response clone();
+  Response clone();
 
   /// The **`arrayBuffer()`** method of the [Response] interface
   /// takes a [Response] stream and reads it to completion. It returns a promise
   /// that resolves with an `ArrayBuffer`.
-  external JSPromise<JSArrayBuffer> arrayBuffer();
+  JSPromise<JSArrayBuffer> arrayBuffer();
 
   /// The **`blob()`** method of the [Response] interface takes
   /// a [Response] stream and reads it to completion. It returns a promise that
   /// resolves with a [Blob].
-  external JSPromise<Blob> blob();
+  JSPromise<Blob> blob();
 
   /// The **`bytes()`** method of the [Response] interface takes a [Response]
   /// stream and reads it to completion.
   /// It returns a promise that resolves with a `Uint8Array`.
-  external JSPromise<JSUint8Array> bytes();
+  JSPromise<JSUint8Array> bytes();
 
   /// The **`formData()`** method of the [Response] interface
   /// takes a [Response] stream and reads it to completion. It returns a promise
@@ -525,7 +612,7 @@ extension type Response._(JSObject _) implements JSObject {
   /// > `formData()` on it to obtain a key-value map, modify some fields, then
   /// > send
   /// > the form onwards to the server (or use it locally).
-  external JSPromise<FormData> formData();
+  JSPromise<FormData> formData();
 
   /// The **`json()`** method of the [Response] interface takes
   /// a [Response] stream and reads it to completion. It returns a promise which
@@ -534,13 +621,13 @@ extension type Response._(JSObject _) implements JSObject {
   /// Note that despite the method being named `json()`, the result is not JSON
   /// but is instead the result of taking JSON as input and parsing it to
   /// produce a JavaScript object.
-  external JSPromise<JSAny?> json();
+  JSPromise<JSAny?> json();
 
   /// The **`text()`** method of the [Response] interface takes a [Response]
   /// stream and reads it to completion.
   /// It returns a promise that resolves with a `String`.
   /// The response is _always_ decoded using UTF-8.
-  external JSPromise<JSString> text();
+  JSPromise<JSString> text();
 
   /// The **`type`** read-only property of the [Response] interface contains the
   /// type of the response.
@@ -563,13 +650,13 @@ extension type Response._(JSObject _) implements JSObject {
   ///
   /// > **Note:** An "error" Response never really gets exposed to script: such
   /// > a response to a [fetch] would reject the promise.
-  external ResponseType get type;
+  ResponseType get type;
 
   /// The **`url`** read-only property of the [Response] interface contains the
   /// URL of the response.
   /// The value of the `url` property will be the final URL obtained after any
   /// redirects.
-  external String get url;
+  String get url;
 
   /// The read-only **`redirected`** property of the [Response] interface
   /// indicates whether or not the response is the result of a request you made
@@ -580,7 +667,7 @@ extension type Response._(JSObject _) implements JSObject {
   /// > Instead, you should do the filtering when you call [fetch].
   /// > See the example [Disallowing redirects](#disallowing_redirects), which
   /// > shows this being done.
-  external bool get redirected;
+  bool get redirected;
 
   /// The **`status`** read-only property of the [Response] interface contains
   /// the
@@ -588,12 +675,12 @@ extension type Response._(JSObject _) implements JSObject {
   /// of the response.
   ///
   /// For example, `200` for success, `404` if the resource could not be found.
-  external int get status;
+  int get status;
 
   /// The **`ok`** read-only property of the [Response] interface contains a
   /// Boolean stating whether the response was successful (status in the range
   /// 200-299) or not.
-  external bool get ok;
+  bool get ok;
 
   /// The **`statusText`** read-only property of the [Response] interface
   /// contains the status message corresponding to the HTTP status code in
@@ -601,32 +688,44 @@ extension type Response._(JSObject _) implements JSObject {
   ///
   /// For example, this would be `OK` for a status code `200`, `Continue` for
   /// `100`, `Not Found` for `404`.
-  external String get statusText;
+  String get statusText;
 
   /// The **`headers`** read-only property of the
   /// [Response] interface contains the [Headers] object associated
   /// with the response.
-  external Headers get headers;
+  Headers get headers;
 
   /// The **`body`** read-only property of the [Response] interface is a
   /// [ReadableStream] of the body contents.
-  external ReadableStream? get body;
+  ReadableStream? get body;
 
   /// The **`bodyUsed`** read-only property of the [Response] interface is a
   /// boolean value that indicates whether the body has been read yet.
-  external bool get bodyUsed;
+  bool get bodyUsed;
 }
-extension type ResponseInit._(JSObject _) implements JSObject {
-  external factory ResponseInit({
-    int status,
-    String statusText,
-    HeadersInit headers,
-  });
 
-  external int get status;
-  external set status(int value);
-  external String get statusText;
-  external set statusText(String value);
-  external HeadersInit get headers;
-  external set headers(HeadersInit value);
+abstract class ResponseInit implements JSObject {
+  int get status {
+    unsupportedPlatformError();
+  }
+
+  set status(int value) {
+    unsupportedPlatformError();
+  }
+
+  String get statusText {
+    unsupportedPlatformError();
+  }
+
+  set statusText(String value) {
+    unsupportedPlatformError();
+  }
+
+  HeadersInit get headers {
+    unsupportedPlatformError();
+  }
+
+  set headers(HeadersInit value) {
+    unsupportedPlatformError();
+  }
 }

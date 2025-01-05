@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,11 +10,8 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../error.dart';
+import '../js_interop.dart';
 import 'dom.dart';
 import 'html.dart';
 import 'webidl.dart';
@@ -43,14 +40,14 @@ import 'webidl.dart';
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Sensor).
-extension type Sensor._(JSObject _) implements EventTarget, JSObject {
+abstract class Sensor implements EventTarget, JSObject {
   /// The **`start()`** method of the [Sensor] interface activates one of the
   /// sensors based on `Sensor`.
-  external void start();
+  void start();
 
   /// The **`stop()`** method of the [Sensor] interface deactivates the current
   /// sensor.
-  external void stop();
+  void stop();
 
   /// The **`activated`** read-only property
   /// of the [Sensor] interface returns a boolean value indicating
@@ -58,7 +55,7 @@ extension type Sensor._(JSObject _) implements EventTarget, JSObject {
   ///
   /// Because [Sensor] is a base class, `activated` may only be read
   /// from one of its derived classes.
-  external bool get activated;
+  bool get activated;
 
   /// The **`hasReading`** read-only
   /// property of the [Sensor] interface returns a boolean value
@@ -66,7 +63,7 @@ extension type Sensor._(JSObject _) implements EventTarget, JSObject {
   ///
   /// Because [Sensor] is a base class, `hasReading` may only be read
   /// from one of its derived classes.
-  external bool get hasReading;
+  bool get hasReading;
 
   /// The **`timestamp`** read-only property
   /// of the [Sensor] interface returns the timestamp of the latest sensor
@@ -74,19 +71,23 @@ extension type Sensor._(JSObject _) implements EventTarget, JSObject {
   ///
   /// Because [Sensor] is a base class, `timestamp` may only be read
   /// from one of its derived classes.
-  external double? get timestamp;
-  external EventHandler get onreading;
-  external set onreading(EventHandler value);
-  external EventHandler get onactivate;
-  external set onactivate(EventHandler value);
-  external EventHandler get onerror;
-  external set onerror(EventHandler value);
+  double? get timestamp;
+  EventHandler get onreading;
+  set onreading(EventHandler value);
+  EventHandler get onactivate;
+  set onactivate(EventHandler value);
+  EventHandler get onerror;
+  set onerror(EventHandler value);
 }
-extension type SensorOptions._(JSObject _) implements JSObject {
-  external factory SensorOptions({num frequency});
 
-  external double get frequency;
-  external set frequency(num value);
+abstract class SensorOptions implements JSObject {
+  double get frequency {
+    unsupportedPlatformError();
+  }
+
+  set frequency(num value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SensorErrorEvent`** interface of the
@@ -97,26 +98,19 @@ extension type SensorOptions._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SensorErrorEvent).
-extension type SensorErrorEvent._(JSObject _) implements Event, JSObject {
-  external factory SensorErrorEvent(
-    String type,
-    SensorErrorEventInit errorEventInitDict,
-  );
-
+abstract class SensorErrorEvent implements Event, JSObject {
   /// The **`error`** read-only property of
   /// the [SensorErrorEvent] interface returns the [DOMException]
   /// object passed in the event's constructor.
-  external DOMException get error;
+  DOMException get error;
 }
-extension type SensorErrorEventInit._(JSObject _)
-    implements EventInit, JSObject {
-  external factory SensorErrorEventInit({
-    bool bubbles,
-    bool cancelable,
-    bool composed,
-    required DOMException error,
-  });
 
-  external DOMException get error;
-  external set error(DOMException value);
+abstract class SensorErrorEventInit implements EventInit, JSObject {
+  DOMException get error {
+    unsupportedPlatformError();
+  }
+
+  set error(DOMException value) {
+    unsupportedPlatformError();
+  }
 }

@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,30 +10,41 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
+import '../error.dart';
+import '../js_interop.dart';
 
-import 'dart:js_interop';
+abstract class HMACGetSecretInput implements JSObject {
+  JSArrayBuffer get salt1 {
+    unsupportedPlatformError();
+  }
 
-extension type HMACGetSecretInput._(JSObject _) implements JSObject {
-  external factory HMACGetSecretInput({
-    required JSArrayBuffer salt1,
-    JSArrayBuffer salt2,
-  });
+  set salt1(JSArrayBuffer value) {
+    unsupportedPlatformError();
+  }
 
-  external JSArrayBuffer get salt1;
-  external set salt1(JSArrayBuffer value);
-  external JSArrayBuffer get salt2;
-  external set salt2(JSArrayBuffer value);
+  JSArrayBuffer get salt2 {
+    unsupportedPlatformError();
+  }
+
+  set salt2(JSArrayBuffer value) {
+    unsupportedPlatformError();
+  }
 }
-extension type HMACGetSecretOutput._(JSObject _) implements JSObject {
-  external factory HMACGetSecretOutput({
-    required JSArrayBuffer output1,
-    JSArrayBuffer output2,
-  });
 
-  external JSArrayBuffer get output1;
-  external set output1(JSArrayBuffer value);
-  external JSArrayBuffer get output2;
-  external set output2(JSArrayBuffer value);
+abstract class HMACGetSecretOutput implements JSObject {
+  JSArrayBuffer get output1 {
+    unsupportedPlatformError();
+  }
+
+  set output1(JSArrayBuffer value) {
+    unsupportedPlatformError();
+  }
+
+  JSArrayBuffer get output2 {
+    unsupportedPlatformError();
+  }
+
+  set output2(JSArrayBuffer value) {
+    unsupportedPlatformError();
+  }
 }

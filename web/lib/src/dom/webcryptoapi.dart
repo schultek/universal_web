@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,11 +10,8 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../error.dart';
+import '../js_interop.dart';
 import 'webidl.dart';
 
 typedef AlgorithmIdentifier = JSAny;
@@ -34,7 +31,7 @@ typedef KeyFormat = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Crypto).
-extension type Crypto._(JSObject _) implements JSObject {
+abstract class Crypto implements JSObject {
   /// The **`Crypto.getRandomValues()`** method lets you get cryptographically
   /// strong random values.
   /// The array given as the parameter is filled with random numbers (random in
@@ -48,16 +45,16 @@ extension type Crypto._(JSObject _) implements JSObject {
   ///
   /// `getRandomValues()` is the only member of the `Crypto` interface which can
   /// be used from an insecure context.
-  external ArrayBufferView getRandomValues(ArrayBufferView array);
+  ArrayBufferView getRandomValues(ArrayBufferView array);
 
   /// The **`randomUUID()`** method of the [Crypto] interface is used to
   /// generate a v4  using a cryptographically secure random number generator.
-  external String randomUUID();
+  String randomUUID();
 
   /// The **`Crypto.subtle`** read-only property returns a
   /// [SubtleCrypto] which can then be used to perform low-level
   /// cryptographic operations.
-  external SubtleCrypto get subtle;
+  SubtleCrypto get subtle;
 }
 
 /// The **`CryptoKey`** interface of the
@@ -73,7 +70,7 @@ extension type Crypto._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CryptoKey).
-extension type CryptoKey._(JSObject _) implements JSObject {
+abstract class CryptoKey implements JSObject {
   /// The read-only **`type`** property of the [CryptoKey] interface indicates
   /// which kind of key is represented by the object. It can have the following
   /// values:
@@ -83,7 +80,7 @@ extension type CryptoKey._(JSObject _) implements JSObject {
   ///   [`CryptoKeyPair`](https://developer.mozilla.org/en-US/docs/Web/API/CryptoKeyPair).
   /// - `"public"`: This key is the public half of an
   ///   [`CryptoKeyPair`](https://developer.mozilla.org/en-US/docs/Web/API/CryptoKeyPair).
-  external KeyType get type;
+  KeyType get type;
 
   /// The read-only **`extractable`** property of the [CryptoKey] interface
   /// indicates whether or not the key may be extracted using
@@ -96,18 +93,18 @@ extension type CryptoKey._(JSObject _) implements JSObject {
   /// or
   /// [`wrapKey()`](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/wrapKey)
   /// will throw an exception if used to extract it.
-  external bool get extractable;
+  bool get extractable;
 
   /// The read-only **`algorithm`** property of the [CryptoKey] interface
   /// returns an object describing the algorithm for which this key can be used,
   /// and any associated extra parameters.
   ///
   /// The object returned depends of the algorithm used to generate the key.
-  external JSObject get algorithm;
+  JSObject get algorithm;
 
   /// The read-only **`usages`** property of the [CryptoKey] interface indicates
   /// what can be done with the key.
-  external JSObject get usages;
+  JSObject get usages;
 }
 
 /// The **`SubtleCrypto`** interface of the
@@ -140,14 +137,14 @@ extension type CryptoKey._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto).
-extension type SubtleCrypto._(JSObject _) implements JSObject {
+abstract class SubtleCrypto implements JSObject {
   /// The **`encrypt()`** method of the [SubtleCrypto] interface encrypts data.
   ///
   /// It takes as its arguments a  to encrypt with, some algorithm-specific
   /// parameters, and the data to encrypt (also known as "plaintext").
   /// It returns a `Promise` which will be fulfilled with the encrypted data
   /// (also known as "ciphertext").
-  external JSPromise<JSAny?> encrypt(
+  JSPromise<JSAny?> encrypt(
     AlgorithmIdentifier algorithm,
     CryptoKey key,
     BufferSource data,
@@ -159,7 +156,7 @@ extension type SubtleCrypto._(JSObject _) implements JSObject {
   /// and the data to decrypt (also known as "ciphertext").
   /// It returns a `Promise` which will be fulfilled with the decrypted data
   /// (also known as "plaintext").
-  external JSPromise<JSAny?> decrypt(
+  JSPromise<JSAny?> decrypt(
     AlgorithmIdentifier algorithm,
     CryptoKey key,
     BufferSource data,
@@ -174,7 +171,7 @@ extension type SubtleCrypto._(JSObject _) implements JSObject {
   ///
   /// You can use the corresponding [SubtleCrypto.verify] method to verify the
   /// signature.
-  external JSPromise<JSAny?> sign(
+  JSPromise<JSAny?> sign(
     AlgorithmIdentifier algorithm,
     CryptoKey key,
     BufferSource data,
@@ -188,7 +185,7 @@ extension type SubtleCrypto._(JSObject _) implements JSObject {
   /// data. It returns a
   /// `Promise` which will be fulfilled with a boolean value
   /// indicating whether the signature is valid.
-  external JSPromise<JSAny?> verify(
+  JSPromise<JSAny?> verify(
     AlgorithmIdentifier algorithm,
     CryptoKey key,
     BufferSource signature,
@@ -209,7 +206,7 @@ extension type SubtleCrypto._(JSObject _) implements JSObject {
   ///
   /// Note that this API does not support streaming input: you must read the
   /// entire input into memory before passing it into the digest function.
-  external JSPromise<JSAny?> digest(
+  JSPromise<JSAny?> digest(
     AlgorithmIdentifier algorithm,
     BufferSource data,
   );
@@ -217,7 +214,7 @@ extension type SubtleCrypto._(JSObject _) implements JSObject {
   /// Use the **`generateKey()`** method of the
   /// [SubtleCrypto] interface to generate a new key (for symmetric algorithms)
   /// or key pair (for public-key algorithms).
-  external JSPromise<JSAny?> generateKey(
+  JSPromise<JSAny?> generateKey(
     AlgorithmIdentifier algorithm,
     bool extractable,
     JSArray<JSString> keyUsages,
@@ -238,7 +235,7 @@ extension type SubtleCrypto._(JSObject _) implements JSObject {
   /// different characteristics and are appropriate in quite different
   /// situations. See [Supported algorithms](#supported_algorithms) for some
   /// more detail on this.
-  external JSPromise<JSAny?> deriveKey(
+  JSPromise<JSAny?> deriveKey(
     AlgorithmIdentifier algorithm,
     CryptoKey baseKey,
     AlgorithmIdentifier derivedKeyType,
@@ -272,7 +269,7 @@ extension type SubtleCrypto._(JSObject _) implements JSObject {
   /// ECDH, HKDF, and PBKDF2. See
   /// [Supported algorithms](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/deriveKey#supported_algorithms)
   /// for some more detail on these algorithms.
-  external JSPromise<JSArrayBuffer> deriveBits(
+  JSPromise<JSArrayBuffer> deriveBits(
     AlgorithmIdentifier algorithm,
     CryptoKey baseKey,
     int length,
@@ -286,7 +283,7 @@ extension type SubtleCrypto._(JSObject _) implements JSObject {
   ///
   /// The function accepts several import formats: see
   /// [Supported formats](#supported_formats) for details.
-  external JSPromise<CryptoKey> importKey(
+  JSPromise<CryptoKey> importKey(
     KeyFormat format,
     JSObject keyData,
     AlgorithmIdentifier algorithm,
@@ -312,7 +309,7 @@ extension type SubtleCrypto._(JSObject _) implements JSObject {
   /// the
   /// [`SubtleCrypto.wrapKey()`](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/wrapKey)
   /// API instead.
-  external JSPromise<JSAny?> exportKey(
+  JSPromise<JSAny?> exportKey(
     KeyFormat format,
     CryptoKey key,
   );
@@ -335,7 +332,7 @@ extension type SubtleCrypto._(JSObject _) implements JSObject {
   ///
   /// The inverse of `wrapKey()` is [SubtleCrypto.unwrapKey]: while `wrapKey` is
   /// composed of export + encrypt, `unwrapKey` is composed of import + decrypt.
-  external JSPromise<JSAny?> wrapKey(
+  JSPromise<JSAny?> wrapKey(
     KeyFormat format,
     CryptoKey key,
     CryptoKey wrappingKey,
@@ -364,7 +361,7 @@ extension type SubtleCrypto._(JSObject _) implements JSObject {
   /// The inverse of `unwrapKey()` is [SubtleCrypto.wrapKey]: while `unwrapKey`
   /// is composed of decrypt + import, `wrapKey` is composed of encrypt +
   /// export.
-  external JSPromise<CryptoKey> unwrapKey(
+  JSPromise<CryptoKey> unwrapKey(
     KeyFormat format,
     BufferSource wrappedKey,
     CryptoKey unwrappingKey,
@@ -374,76 +371,175 @@ extension type SubtleCrypto._(JSObject _) implements JSObject {
     JSArray<JSString> keyUsages,
   );
 }
-extension type RsaOtherPrimesInfo._(JSObject _) implements JSObject {
-  external factory RsaOtherPrimesInfo({
-    String r,
-    String d,
-    String t,
-  });
 
-  external String get r;
-  external set r(String value);
-  external String get d;
-  external set d(String value);
-  external String get t;
-  external set t(String value);
+abstract class RsaOtherPrimesInfo implements JSObject {
+  String get r {
+    unsupportedPlatformError();
+  }
+
+  set r(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get d {
+    unsupportedPlatformError();
+  }
+
+  set d(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get t {
+    unsupportedPlatformError();
+  }
+
+  set t(String value) {
+    unsupportedPlatformError();
+  }
 }
-extension type JsonWebKey._(JSObject _) implements JSObject {
-  external factory JsonWebKey({
-    String kty,
-    String use,
-    JSArray<JSString> key_ops,
-    String alg,
-    bool ext,
-    String crv,
-    String x,
-    String y,
-    String d,
-    String n,
-    String e,
-    String p,
-    String q,
-    String dp,
-    String dq,
-    String qi,
-    JSArray<RsaOtherPrimesInfo> oth,
-    String k,
-  });
 
-  external String get kty;
-  external set kty(String value);
-  external String get use;
-  external set use(String value);
-  external JSArray<JSString> get key_ops;
-  external set key_ops(JSArray<JSString> value);
-  external String get alg;
-  external set alg(String value);
-  external bool get ext;
-  external set ext(bool value);
-  external String get crv;
-  external set crv(String value);
-  external String get x;
-  external set x(String value);
-  external String get y;
-  external set y(String value);
-  external String get d;
-  external set d(String value);
-  external String get n;
-  external set n(String value);
-  external String get e;
-  external set e(String value);
-  external String get p;
-  external set p(String value);
-  external String get q;
-  external set q(String value);
-  external String get dp;
-  external set dp(String value);
-  external String get dq;
-  external set dq(String value);
-  external String get qi;
-  external set qi(String value);
-  external JSArray<RsaOtherPrimesInfo> get oth;
-  external set oth(JSArray<RsaOtherPrimesInfo> value);
-  external String get k;
-  external set k(String value);
+abstract class JsonWebKey implements JSObject {
+  String get kty {
+    unsupportedPlatformError();
+  }
+
+  set kty(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get use {
+    unsupportedPlatformError();
+  }
+
+  set use(String value) {
+    unsupportedPlatformError();
+  }
+
+  JSArray<JSString> get key_ops {
+    unsupportedPlatformError();
+  }
+
+  set key_ops(JSArray<JSString> value) {
+    unsupportedPlatformError();
+  }
+
+  String get alg {
+    unsupportedPlatformError();
+  }
+
+  set alg(String value) {
+    unsupportedPlatformError();
+  }
+
+  bool get ext {
+    unsupportedPlatformError();
+  }
+
+  set ext(bool value) {
+    unsupportedPlatformError();
+  }
+
+  String get crv {
+    unsupportedPlatformError();
+  }
+
+  set crv(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get x {
+    unsupportedPlatformError();
+  }
+
+  set x(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get y {
+    unsupportedPlatformError();
+  }
+
+  set y(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get d {
+    unsupportedPlatformError();
+  }
+
+  set d(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get n {
+    unsupportedPlatformError();
+  }
+
+  set n(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get e {
+    unsupportedPlatformError();
+  }
+
+  set e(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get p {
+    unsupportedPlatformError();
+  }
+
+  set p(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get q {
+    unsupportedPlatformError();
+  }
+
+  set q(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get dp {
+    unsupportedPlatformError();
+  }
+
+  set dp(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get dq {
+    unsupportedPlatformError();
+  }
+
+  set dq(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get qi {
+    unsupportedPlatformError();
+  }
+
+  set qi(String value) {
+    unsupportedPlatformError();
+  }
+
+  JSArray<RsaOtherPrimesInfo> get oth {
+    unsupportedPlatformError();
+  }
+
+  set oth(JSArray<RsaOtherPrimesInfo> value) {
+    unsupportedPlatformError();
+  }
+
+  String get k {
+    unsupportedPlatformError();
+  }
+
+  set k(String value) {
+    unsupportedPlatformError();
+  }
 }

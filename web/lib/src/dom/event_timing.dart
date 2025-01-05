@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,11 +10,7 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../js_interop.dart';
 import 'dom.dart';
 import 'performance_timeline.dart';
 
@@ -26,33 +22,32 @@ import 'performance_timeline.dart';
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceEventTiming).
-extension type PerformanceEventTiming._(JSObject _)
-    implements PerformanceEntry, JSObject {
+abstract class PerformanceEventTiming implements PerformanceEntry, JSObject {
   /// The **`toJSON()`** method of the [PerformanceEventTiming] interface is a ;
   /// it returns a JSON representation of the [PerformanceEventTiming] object.
-  external JSObject toJSON();
+  JSObject toJSON();
 
   /// The read-only **`processingStart`** property returns the time at which
   /// event dispatch started. This is when event handlers are about to be
   /// executed.
-  external double get processingStart;
+  double get processingStart;
 
   /// The read-only **`processingEnd`** property returns the time the last event
   /// handler finished executing.
   ///
   /// It's equal to [PerformanceEventTiming.processingStart] when there are no
   /// such event handlers.
-  external double get processingEnd;
+  double get processingEnd;
 
   /// The read-only **`cancelable`** property returns the associated event's
   /// [`cancelable`](https://developer.mozilla.org/en-US/docs/Web/API/Event/cancelable)
   /// property, indicating whether the event can be canceled.
-  external bool get cancelable;
+  bool get cancelable;
 
   /// The read-only **`target`** property returns the associated event's last
   /// [`target`](https://developer.mozilla.org/en-US/docs/Web/API/Event/target)
   /// which is the node onto which the event was last dispatched.
-  external Node? get target;
+  Node? get target;
 }
 
 /// The **`EventCounts`** interface of the
@@ -69,4 +64,4 @@ extension type PerformanceEventTiming._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/EventCounts).
-extension type EventCounts._(JSObject _) implements JSObject {}
+abstract class EventCounts implements JSObject {}

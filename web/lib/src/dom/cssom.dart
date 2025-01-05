@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,11 +10,8 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../error.dart';
+import '../js_interop.dart';
 import 'css_highlight_api.dart';
 import 'css_properties_values_api.dart';
 import 'css_typed_om.dart';
@@ -30,30 +27,30 @@ import 'css_typed_om.dart';
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MediaList).
-extension type MediaList._(JSObject _) implements JSObject {
+abstract class MediaList implements JSObject {
   /// The **`item()`** method of the [MediaList] interface returns the media
   /// query at the specified `index`, or `null` if the specified `index` doesn't
   /// exist.
-  external String? item(int index);
+  String? item(int index);
 
   /// The `appendMedium()` method of the [MediaList] interface adds a media
   /// query to the list. If the media query is already in the collection, this
   /// method does nothing.
-  external void appendMedium(String medium);
+  void appendMedium(String medium);
 
   /// The `deleteMedium()` method of the [MediaList] interface removes from this
   /// `MediaList` the given media query.
-  external void deleteMedium(String medium);
+  void deleteMedium(String medium);
 
   /// The **`mediaText`** property of the [MediaList]
   /// interface is a  that returns a string representing the
   /// `MediaList` as text, and also allows you to set a new `MediaList`.
-  external String get mediaText;
-  external set mediaText(String value);
+  String get mediaText;
+  set mediaText(String value);
 
   /// The read-only **`length`** property of the [MediaList] interface returns
   /// the number of media queries in the list.
-  external int get length;
+  int get length;
 }
 
 /// An object implementing the `StyleSheet` interface represents a single style
@@ -64,16 +61,16 @@ extension type MediaList._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/StyleSheet).
-extension type StyleSheet._(JSObject _) implements JSObject {
+abstract class StyleSheet implements JSObject {
   /// The **`type`** property of the [StyleSheet]
   /// interface specifies the style sheet language for the given style sheet.
-  external String get type;
+  String get type;
 
   /// The **`href`** property of the [StyleSheet]
   /// interface returns the location of the style sheet.
   ///
   /// This property is read-only.
-  external String? get href;
+  String? get href;
 
   /// The **`ownerNode`** property of the
   /// [StyleSheet] interface returns the node that associates this style sheet
@@ -87,24 +84,24 @@ extension type StyleSheet._(JSObject _) implements JSObject {
   /// can also return a
   /// [processing instruction node](https://developer.mozilla.org/en-US/docs/Web/API/ProcessingInstruction)
   /// in the case of `<?xml-stylesheet ?>`.
-  external JSObject? get ownerNode;
+  JSObject? get ownerNode;
 
   /// The **`parentStyleSheet`** property of the
   /// [StyleSheet] interface returns the style sheet, if any, that is including
   /// the given style sheet.
-  external CSSStyleSheet? get parentStyleSheet;
+  CSSStyleSheet? get parentStyleSheet;
 
   /// The **`title`** property of the [StyleSheet] interface returns the
   /// advisory title of the current style sheet.
   ///
   /// The title is often specified in the [StyleSheet.OwnerNode].
-  external String? get title;
+  String? get title;
 
   /// The **`media`** property of the [StyleSheet] interface specifies the
   /// intended destination media for style information. It is a read-only,
   /// array-like `MediaList` object and can be removed with `deleteMedium()` and
   /// added with `appendMedium()`.
-  external MediaList get media;
+  MediaList get media;
 
   /// The **`disabled`** property of the
   /// [StyleSheet] interface determines whether the style sheet is prevented
@@ -117,8 +114,8 @@ extension type StyleSheet._(JSObject _) implements JSObject {
   /// [alternative style sheet](https://developer.mozilla.org/en-US/docs/Web/CSS/Alternative_style_sheets).
   /// Note that `disabled === false` does not guarantee the style
   /// sheet is applied (it could be removed from the document, for instance).
-  external bool get disabled;
-  external set disabled(bool value);
+  bool get disabled;
+  set disabled(bool value);
 }
 
 /// The **`CSSStyleSheet`** interface represents a single
@@ -153,9 +150,7 @@ extension type StyleSheet._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet).
-extension type CSSStyleSheet._(JSObject _) implements StyleSheet, JSObject {
-  external factory CSSStyleSheet([CSSStyleSheetInit options]);
-
+abstract class CSSStyleSheet implements StyleSheet, JSObject {
   /// The **`CSSStyleSheet.insertRule()`**
   /// method inserts a new
   /// [CSS rule](https://developer.mozilla.org/en-US/docs/Web/API/CSSRule) into
@@ -166,7 +161,7 @@ extension type CSSStyleSheet._(JSObject _) implements StyleSheet, JSObject {
   /// > [CSSStyleSheet], it actually inserts the rule into
   /// > `[CSSStyleSheet].cssRules` — its internal
   /// > [CSSRuleList].
-  external int insertRule(
+  int insertRule(
     String rule, [
     int index,
   ]);
@@ -174,7 +169,7 @@ extension type CSSStyleSheet._(JSObject _) implements StyleSheet, JSObject {
   /// The [CSSStyleSheet] method
   /// **`deleteRule()`** removes a rule from the stylesheet
   /// object.
-  external void deleteRule(int index);
+  void deleteRule(int index);
 
   /// The **`replace()`** method of the [CSSStyleSheet] interface asynchronously
   /// replaces the content of the stylesheet with the content passed into it.
@@ -184,7 +179,7 @@ extension type CSSStyleSheet._(JSObject _) implements StyleSheet, JSObject {
   /// The `replace()` and [CSSStyleSheet.replaceSync] methods can only be used
   /// on a stylesheet created with the [CSSStyleSheet.CSSStyleSheet]
   /// constructor.
-  external JSPromise<CSSStyleSheet> replace(String text);
+  JSPromise<CSSStyleSheet> replace(String text);
 
   /// The **`replaceSync()`** method of the [CSSStyleSheet] interface
   /// synchronously replaces the content of the stylesheet with the content
@@ -193,14 +188,14 @@ extension type CSSStyleSheet._(JSObject _) implements StyleSheet, JSObject {
   /// The `replaceSync()` and [CSSStyleSheet.replace] methods can only be used
   /// on a stylesheet created with the [CSSStyleSheet.CSSStyleSheet]
   /// constructor.
-  external void replaceSync(String text);
+  void replaceSync(String text);
 
   /// The obsolete [CSSStyleSheet] interface's
   /// **`addRule()`** _legacy method_ adds a new rule to the
   /// stylesheet. You should avoid using this method, and should instead use the
   /// more standard
   /// [CSSStyleSheet.insertRule] method.
-  external int addRule([
+  int addRule([
     String selector,
     String style,
     int index,
@@ -214,14 +209,14 @@ extension type CSSStyleSheet._(JSObject _) implements StyleSheet, JSObject {
   /// > **Note:** This is a _legacy method_ which has been replaced by
   /// > the standard method [CSSStyleSheet.deleteRule]. You
   /// > should use that instead.
-  external void removeRule([int index]);
+  void removeRule([int index]);
 
   /// The read-only [CSSStyleSheet] property
   /// **`ownerRule`** returns the [CSSImportRule]
   /// corresponding to the  at-rule which imported the stylesheet into
   /// the document. If the stylesheet wasn't imported into the document using
   /// `@import`, the returned value is `null`.
-  external CSSRule? get ownerRule;
+  CSSRule? get ownerRule;
 
   /// The read-only [CSSStyleSheet] property
   /// **`cssRules`** returns a live [CSSRuleList] which
@@ -229,7 +224,7 @@ extension type CSSStyleSheet._(JSObject _) implements StyleSheet, JSObject {
   /// the
   /// stylesheet. Each item in the list is a [CSSRule] defining a single
   /// rule.
-  external CSSRuleList get cssRules;
+  CSSRuleList get cssRules;
 
   /// **`rules`** is a _deprecated_
   /// _legacy property_ of the [CSSStyleSheet] interface. Functionally
@@ -242,21 +237,33 @@ extension type CSSStyleSheet._(JSObject _) implements StyleSheet, JSObject {
   /// > While `rules` is unlikely to be removed soon, its availability is not as
   /// > widespread and using it will result in compatibility problems for your
   /// > site or app.
-  external CSSRuleList get rules;
+  CSSRuleList get rules;
 }
-extension type CSSStyleSheetInit._(JSObject _) implements JSObject {
-  external factory CSSStyleSheetInit({
-    String baseURL,
-    JSAny media,
-    bool disabled,
-  });
 
-  external String get baseURL;
-  external set baseURL(String value);
-  external JSAny get media;
-  external set media(JSAny value);
-  external bool get disabled;
-  external set disabled(bool value);
+abstract class CSSStyleSheetInit implements JSObject {
+  String get baseURL {
+    unsupportedPlatformError();
+  }
+
+  set baseURL(String value) {
+    unsupportedPlatformError();
+  }
+
+  JSAny get media {
+    unsupportedPlatformError();
+  }
+
+  set media(JSAny value) {
+    unsupportedPlatformError();
+  }
+
+  bool get disabled {
+    unsupportedPlatformError();
+  }
+
+  set disabled(bool value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The `StyleSheetList` interface represents a list of [CSSStyleSheet] objects.
@@ -277,14 +284,14 @@ extension type CSSStyleSheetInit._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/StyleSheetList).
-extension type StyleSheetList._(JSObject _) implements JSObject {
+abstract class StyleSheetList implements JSObject {
   /// The **`item()`** method of the [StyleSheetList] interface returns a single
   /// [CSSStyleSheet] object.
-  external CSSStyleSheet? item(int index);
+  CSSStyleSheet? item(int index);
 
   /// The **`length`** read-only property of the [StyleSheetList] interface
   /// returns the number of [CSSStyleSheet] objects in the collection.
-  external int get length;
+  int get length;
 }
 
 /// A `CSSRuleList` represents an ordered collection of read-only [CSSRule]
@@ -316,15 +323,15 @@ extension type StyleSheetList._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSRuleList).
-extension type CSSRuleList._(JSObject _) implements JSObject {
+abstract class CSSRuleList implements JSObject {
   /// The **`item()`** method of the [CSSRuleList] interface returns the
   /// [CSSRule] object at the specified `index` or `null` if the specified
   /// `index` doesn't exist.
-  external CSSRule? item(int index);
+  CSSRule? item(int index);
 
   /// The **`length`** property of the [CSSRuleList] interface returns the
   /// number of [CSSRule] objects in the list.
-  external int get length;
+  int get length;
 }
 
 /// The **`CSSRule`** interface represents a single CSS rule. There are several
@@ -351,7 +358,7 @@ extension type CSSRuleList._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSRule).
-extension type CSSRule._(JSObject _) implements JSObject {
+abstract class CSSRule implements JSObject {
   static const int STYLE_RULE = 1;
 
   static const int CHARSET_RULE = 2;
@@ -399,19 +406,19 @@ extension type CSSRule._(JSObject _) implements JSObject {
   /// [CSSStyleRule.style] (or its sub-properties). See
   /// [Using dynamic styling information](https://developer.mozilla.org/en-US/docs/Web/API/CSS_Object_Model/Using_dynamic_styling_information)
   /// for details.
-  external String get cssText;
-  external set cssText(String value);
+  String get cssText;
+  set cssText(String value);
 
   /// The **`parentRule`** property of the [CSSRule]
   /// interface returns the containing rule of the current rule if this exists,
   /// or otherwise
   /// returns null.
-  external CSSRule? get parentRule;
+  CSSRule? get parentRule;
 
   /// The **`parentStyleSheet`** property of the
   /// [CSSRule] interface returns the [StyleSheet] object in which
   /// the current rule is defined.
-  external CSSStyleSheet? get parentStyleSheet;
+  CSSStyleSheet? get parentStyleSheet;
 
   /// The read-only **`type`** property of the
   /// [CSSRule] interface is a deprecated property that returns an integer
@@ -429,7 +436,7 @@ extension type CSSRule._(JSObject _) implements JSObject {
   ///   console.log(rule.constructor.name);
   /// }
   /// ```
-  external int get type;
+  int get type;
 }
 
 /// The **`CSSStyleRule`** interface represents a single CSS style rule.
@@ -438,22 +445,22 @@ extension type CSSRule._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleRule).
-extension type CSSStyleRule._(JSObject _) implements CSSGroupingRule, JSObject {
+abstract class CSSStyleRule implements CSSGroupingRule, JSObject {
   /// The **`selectorText`** property of the [CSSStyleRule] interface gets and
   /// sets the selectors associated with the `CSSStyleRule`.
-  external String get selectorText;
-  external set selectorText(String value);
+  String get selectorText;
+  set selectorText(String value);
 
   /// The read-only **`style`** property is the [CSSStyleDeclaration] interface
   /// for the
   /// [declaration block](https://www.w3.org/TR/1998/REC-CSS2-19980512/syndata.html#block)
   /// of the [CSSStyleRule].
-  external JSObject get style;
+  JSObject get style;
 
   /// The **`styleMap`** read-only property of the
   /// [CSSStyleRule] interface returns a [StylePropertyMap] object
   /// which provides access to the rule's property-value pairs.
-  external StylePropertyMap get styleMap;
+  StylePropertyMap get styleMap;
 }
 
 /// The **`CSSImportRule`** interface represents an
@@ -463,7 +470,7 @@ extension type CSSStyleRule._(JSObject _) implements CSSGroupingRule, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSImportRule).
-extension type CSSImportRule._(JSObject _) implements CSSRule, JSObject {
+abstract class CSSImportRule implements CSSRule, JSObject {
   /// The read-only **`href`** property of the
   /// [CSSImportRule] interface returns the URL specified by the
   /// [at-rule](https://developer.mozilla.org/en-US/docs/Web/CSS/At-rule).
@@ -472,13 +479,13 @@ extension type CSSImportRule._(JSObject _) implements CSSRule, JSObject {
   /// [`href`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link#href)
   /// attribute of the
   /// associated stylesheet.
-  external String get href;
+  String get href;
 
   /// The read-only **`media`** property of the
   /// [CSSImportRule] interface returns a [MediaList] object,
   /// containing the value of the `media` attribute of the associated
   /// stylesheet.
-  external MediaList get media;
+  MediaList get media;
 
   /// The read-only **`styleSheet`** property of the
   /// [CSSImportRule] interface returns the CSS Stylesheet specified by the
@@ -489,7 +496,7 @@ extension type CSSImportRule._(JSObject _) implements CSSRule, JSObject {
   /// An  [at-rule](https://developer.mozilla.org/en-US/docs/Web/CSS/At-rule)
   /// always has
   /// an associated stylesheet.
-  external CSSStyleSheet? get styleSheet;
+  CSSStyleSheet? get styleSheet;
 
   /// The read-only **`layerName`** property of the [CSSImportRule] interface
   /// returns the name of the cascade layer created by the
@@ -498,12 +505,12 @@ extension type CSSImportRule._(JSObject _) implements CSSRule, JSObject {
   /// If the created layer is anonymous, the string is empty (`""`), if no layer
   /// has been
   /// created, it is the `null` object.
-  external String? get layerName;
+  String? get layerName;
 
   /// The read-only **`supportsText`** property of the [CSSImportRule] interface
   /// returns the supports condition specified by the
   /// [at-rule](https://developer.mozilla.org/en-US/docs/Web/CSS/At-rule).
-  external String? get supportsText;
+  String? get supportsText;
 }
 
 /// The **`CSSGroupingRule`** interface of the
@@ -516,10 +523,10 @@ extension type CSSImportRule._(JSObject _) implements CSSRule, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSGroupingRule).
-extension type CSSGroupingRule._(JSObject _) implements CSSRule, JSObject {
+abstract class CSSGroupingRule implements CSSRule, JSObject {
   /// The **`insertRule()`** method of the
   /// [CSSGroupingRule] interface adds a new CSS rule to a list of CSS rules.
-  external int insertRule(
+  int insertRule(
     String rule, [
     int index,
   ]);
@@ -527,12 +534,12 @@ extension type CSSGroupingRule._(JSObject _) implements CSSRule, JSObject {
   /// The **`deleteRule()`** method of the
   /// [CSSGroupingRule] interface removes a CSS rule from a list of child CSS
   /// rules.
-  external void deleteRule(int index);
+  void deleteRule(int index);
 
   /// The **`cssRules`** property of the
   /// [CSSGroupingRule] interface returns a [CSSRuleList] containing
   /// a collection of [CSSRule] objects.
-  external CSSRuleList get cssRules;
+  CSSRuleList get cssRules;
 }
 
 /// **`CSSPageRule`** represents a single CSS  rule.
@@ -541,18 +548,18 @@ extension type CSSGroupingRule._(JSObject _) implements CSSRule, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSPageRule).
-extension type CSSPageRule._(JSObject _) implements CSSGroupingRule, JSObject {
+abstract class CSSPageRule implements CSSGroupingRule, JSObject {
   /// The **`selectorText`** property of the [CSSPageRule] interface gets and
   /// sets the selectors associated with the `CSSPageRule`.
-  external String get selectorText;
-  external set selectorText(String value);
+  String get selectorText;
+  set selectorText(String value);
 
   /// The **`style`** read-only property of the [CSSPageRule] interface returns
   /// a [CSSStyleDeclaration] object. This represents an object that is a
   /// [CSS declaration block](https://developer.mozilla.org/en-US/docs/Web/API/CSS_Object_Model/CSS_Declaration_Block),
   /// and exposes style information and various style-related methods and
   /// properties.
-  external JSObject get style;
+  JSObject get style;
 }
 
 /// The **`CSSNamespaceRule`** interface describes an object representing a
@@ -563,15 +570,15 @@ extension type CSSPageRule._(JSObject _) implements CSSGroupingRule, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSNamespaceRule).
-extension type CSSNamespaceRule._(JSObject _) implements CSSRule, JSObject {
+abstract class CSSNamespaceRule implements CSSRule, JSObject {
   /// The read-only **`namespaceURI`** property of the [CSSNamespaceRule]
   /// returns a string containing the text of the URI of the given namespace.
-  external String get namespaceURI;
+  String get namespaceURI;
 
   /// The read-only **`prefix`** property of the [CSSNamespaceRule] returns a
   /// string with the name of the prefix associated to this namespace. If there
   /// is no such prefix, it returns an empty string.
-  external String get prefix;
+  String get prefix;
 }
 
 /// The **`CSSStyleDeclaration`** interface represents an object that is a CSS
@@ -593,7 +600,7 @@ extension type CSSNamespaceRule._(JSObject _) implements CSSRule, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration).
-extension type CSSStyleDeclaration._(JSObject _) implements JSObject {
+abstract class CSSStyleDeclaration implements JSObject {
   /// The `CSSStyleDeclaration.item()`
   /// method interface returns a CSS property name from a [CSSStyleDeclaration]
   /// by index.
@@ -601,21 +608,21 @@ extension type CSSStyleDeclaration._(JSObject _) implements JSObject {
   /// This method doesn't throw exceptions as long as you provide
   /// arguments; the empty string is returned if the index is out of range and a
   /// `TypeError` is thrown if no argument is provided.
-  external String item(int index);
+  String item(int index);
 
   /// The **CSSStyleDeclaration.getPropertyValue()** method interface returns a
   /// string containing the value of a specified CSS property.
-  external String getPropertyValue(String property);
+  String getPropertyValue(String property);
 
   /// The **CSSStyleDeclaration.getPropertyPriority()** method interface returns
   /// a string that provides all explicitly set priorities on the CSS
   /// property.
-  external String getPropertyPriority(String property);
+  String getPropertyPriority(String property);
 
   /// The
   /// **`CSSStyleDeclaration.setProperty()`** method interface sets
   /// a new value for a property on a CSS style declaration object.
-  external void setProperty(
+  void setProperty(
     String property,
     String value, [
     String priority,
@@ -623,7 +630,7 @@ extension type CSSStyleDeclaration._(JSObject _) implements JSObject {
 
   /// The **`CSSStyleDeclaration.removeProperty()`** method interface
   /// removes a property from a CSS style declaration object.
-  external String removeProperty(String property);
+  String removeProperty(String property);
 
   /// The **`cssText`** property of the [CSSStyleDeclaration] interface returns
   /// or sets the text of the element's **inline** style declaration only.
@@ -632,1293 +639,5102 @@ extension type CSSStyleDeclaration._(JSObject _) implements JSObject {
   /// [Using dynamic styling information](https://developer.mozilla.org/en-US/docs/Web/API/CSS_Object_Model/Using_dynamic_styling_information).
   ///
   /// Not to be confused with stylesheet style-rule [CSSRule.cssText].
-  external String get cssText;
-  external set cssText(String value);
+  String get cssText;
+  set cssText(String value);
 
   /// The read-only property returns an integer that represents the
   /// number of style declarations in this CSS declaration block.
-  external int get length;
+  int get length;
 
   /// The **CSSStyleDeclaration.parentRule** read-only
   /// property returns a [CSSRule] that is the parent of this style
   /// block, e.g. a [CSSStyleRule] representing the style for a CSS
   /// selector.
-  external CSSRule? get parentRule;
-  external String get accentColor;
-  external set accentColor(String value);
-  external String get alignContent;
-  external set alignContent(String value);
-  external String get alignItems;
-  external set alignItems(String value);
-  external String get alignSelf;
-  external set alignSelf(String value);
-  external String get alignmentBaseline;
-  external set alignmentBaseline(String value);
-  external String get all;
-  external set all(String value);
-  external String get anchorName;
-  external set anchorName(String value);
-  external String get anchorScope;
-  external set anchorScope(String value);
-  external String get animation;
-  external set animation(String value);
-  external String get animationComposition;
-  external set animationComposition(String value);
-  external String get animationDelay;
-  external set animationDelay(String value);
-  external String get animationDirection;
-  external set animationDirection(String value);
-  external String get animationDuration;
-  external set animationDuration(String value);
-  external String get animationFillMode;
-  external set animationFillMode(String value);
-  external String get animationIterationCount;
-  external set animationIterationCount(String value);
-  external String get animationName;
-  external set animationName(String value);
-  external String get animationPlayState;
-  external set animationPlayState(String value);
-  external String get animationRange;
-  external set animationRange(String value);
-  external String get animationRangeEnd;
-  external set animationRangeEnd(String value);
-  external String get animationRangeStart;
-  external set animationRangeStart(String value);
-  external String get animationTimeline;
-  external set animationTimeline(String value);
-  external String get animationTimingFunction;
-  external set animationTimingFunction(String value);
-  external String get appearance;
-  external set appearance(String value);
-  external String get aspectRatio;
-  external set aspectRatio(String value);
-  external String get backdropFilter;
-  external set backdropFilter(String value);
-  external String get backfaceVisibility;
-  external set backfaceVisibility(String value);
-  external String get background;
-  external set background(String value);
-  external String get backgroundAttachment;
-  external set backgroundAttachment(String value);
-  external String get backgroundBlendMode;
-  external set backgroundBlendMode(String value);
-  external String get backgroundClip;
-  external set backgroundClip(String value);
-  external String get backgroundColor;
-  external set backgroundColor(String value);
-  external String get backgroundImage;
-  external set backgroundImage(String value);
-  external String get backgroundOrigin;
-  external set backgroundOrigin(String value);
-  external String get backgroundPosition;
-  external set backgroundPosition(String value);
-  external String get backgroundPositionBlock;
-  external set backgroundPositionBlock(String value);
-  external String get backgroundPositionInline;
-  external set backgroundPositionInline(String value);
-  external String get backgroundPositionX;
-  external set backgroundPositionX(String value);
-  external String get backgroundPositionY;
-  external set backgroundPositionY(String value);
-  external String get backgroundRepeat;
-  external set backgroundRepeat(String value);
-  external String get backgroundSize;
-  external set backgroundSize(String value);
-  external String get backgroundTbd;
-  external set backgroundTbd(String value);
-  external String get baselineShift;
-  external set baselineShift(String value);
-  external String get baselineSource;
-  external set baselineSource(String value);
-  external String get blockEllipsis;
-  external set blockEllipsis(String value);
-  external String get blockSize;
-  external set blockSize(String value);
-  external String get blockStep;
-  external set blockStep(String value);
-  external String get blockStepAlign;
-  external set blockStepAlign(String value);
-  external String get blockStepInsert;
-  external set blockStepInsert(String value);
-  external String get blockStepRound;
-  external set blockStepRound(String value);
-  external String get blockStepSize;
-  external set blockStepSize(String value);
-  external String get bookmarkLabel;
-  external set bookmarkLabel(String value);
-  external String get bookmarkLevel;
-  external set bookmarkLevel(String value);
-  external String get bookmarkState;
-  external set bookmarkState(String value);
-  external String get border;
-  external set border(String value);
-  external String get borderBlock;
-  external set borderBlock(String value);
-  external String get borderBlockColor;
-  external set borderBlockColor(String value);
-  external String get borderBlockEnd;
-  external set borderBlockEnd(String value);
-  external String get borderBlockEndColor;
-  external set borderBlockEndColor(String value);
-  external String get borderBlockEndRadius;
-  external set borderBlockEndRadius(String value);
-  external String get borderBlockEndStyle;
-  external set borderBlockEndStyle(String value);
-  external String get borderBlockEndWidth;
-  external set borderBlockEndWidth(String value);
-  external String get borderBlockStart;
-  external set borderBlockStart(String value);
-  external String get borderBlockStartColor;
-  external set borderBlockStartColor(String value);
-  external String get borderBlockStartRadius;
-  external set borderBlockStartRadius(String value);
-  external String get borderBlockStartStyle;
-  external set borderBlockStartStyle(String value);
-  external String get borderBlockStartWidth;
-  external set borderBlockStartWidth(String value);
-  external String get borderBlockStyle;
-  external set borderBlockStyle(String value);
-  external String get borderBlockWidth;
-  external set borderBlockWidth(String value);
-  external String get borderBottom;
-  external set borderBottom(String value);
-  external String get borderBottomColor;
-  external set borderBottomColor(String value);
-  external String get borderBottomLeftRadius;
-  external set borderBottomLeftRadius(String value);
-  external String get borderBottomRadius;
-  external set borderBottomRadius(String value);
-  external String get borderBottomRightRadius;
-  external set borderBottomRightRadius(String value);
-  external String get borderBottomStyle;
-  external set borderBottomStyle(String value);
-  external String get borderBottomWidth;
-  external set borderBottomWidth(String value);
-  external String get borderBoundary;
-  external set borderBoundary(String value);
-  external String get borderClip;
-  external set borderClip(String value);
-  external String get borderClipBottom;
-  external set borderClipBottom(String value);
-  external String get borderClipLeft;
-  external set borderClipLeft(String value);
-  external String get borderClipRight;
-  external set borderClipRight(String value);
-  external String get borderClipTop;
-  external set borderClipTop(String value);
-  external String get borderCollapse;
-  external set borderCollapse(String value);
-  external String get borderColor;
-  external set borderColor(String value);
-  external String get borderEndEndRadius;
-  external set borderEndEndRadius(String value);
-  external String get borderEndStartRadius;
-  external set borderEndStartRadius(String value);
-  external String get borderImage;
-  external set borderImage(String value);
-  external String get borderImageOutset;
-  external set borderImageOutset(String value);
-  external String get borderImageRepeat;
-  external set borderImageRepeat(String value);
-  external String get borderImageSlice;
-  external set borderImageSlice(String value);
-  external String get borderImageSource;
-  external set borderImageSource(String value);
-  external String get borderImageWidth;
-  external set borderImageWidth(String value);
-  external String get borderInline;
-  external set borderInline(String value);
-  external String get borderInlineColor;
-  external set borderInlineColor(String value);
-  external String get borderInlineEnd;
-  external set borderInlineEnd(String value);
-  external String get borderInlineEndColor;
-  external set borderInlineEndColor(String value);
-  external String get borderInlineEndRadius;
-  external set borderInlineEndRadius(String value);
-  external String get borderInlineEndStyle;
-  external set borderInlineEndStyle(String value);
-  external String get borderInlineEndWidth;
-  external set borderInlineEndWidth(String value);
-  external String get borderInlineStart;
-  external set borderInlineStart(String value);
-  external String get borderInlineStartColor;
-  external set borderInlineStartColor(String value);
-  external String get borderInlineStartRadius;
-  external set borderInlineStartRadius(String value);
-  external String get borderInlineStartStyle;
-  external set borderInlineStartStyle(String value);
-  external String get borderInlineStartWidth;
-  external set borderInlineStartWidth(String value);
-  external String get borderInlineStyle;
-  external set borderInlineStyle(String value);
-  external String get borderInlineWidth;
-  external set borderInlineWidth(String value);
-  external String get borderLeft;
-  external set borderLeft(String value);
-  external String get borderLeftColor;
-  external set borderLeftColor(String value);
-  external String get borderLeftRadius;
-  external set borderLeftRadius(String value);
-  external String get borderLeftStyle;
-  external set borderLeftStyle(String value);
-  external String get borderLeftWidth;
-  external set borderLeftWidth(String value);
-  external String get borderLimit;
-  external set borderLimit(String value);
-  external String get borderRadius;
-  external set borderRadius(String value);
-  external String get borderRight;
-  external set borderRight(String value);
-  external String get borderRightColor;
-  external set borderRightColor(String value);
-  external String get borderRightRadius;
-  external set borderRightRadius(String value);
-  external String get borderRightStyle;
-  external set borderRightStyle(String value);
-  external String get borderRightWidth;
-  external set borderRightWidth(String value);
-  external String get borderSpacing;
-  external set borderSpacing(String value);
-  external String get borderStartEndRadius;
-  external set borderStartEndRadius(String value);
-  external String get borderStartStartRadius;
-  external set borderStartStartRadius(String value);
-  external String get borderStyle;
-  external set borderStyle(String value);
-  external String get borderTop;
-  external set borderTop(String value);
-  external String get borderTopColor;
-  external set borderTopColor(String value);
-  external String get borderTopLeftRadius;
-  external set borderTopLeftRadius(String value);
-  external String get borderTopRadius;
-  external set borderTopRadius(String value);
-  external String get borderTopRightRadius;
-  external set borderTopRightRadius(String value);
-  external String get borderTopStyle;
-  external set borderTopStyle(String value);
-  external String get borderTopWidth;
-  external set borderTopWidth(String value);
-  external String get borderWidth;
-  external set borderWidth(String value);
-  external String get bottom;
-  external set bottom(String value);
-  external String get boxDecorationBreak;
-  external set boxDecorationBreak(String value);
-  external String get boxShadow;
-  external set boxShadow(String value);
-  external String get boxShadowBlur;
-  external set boxShadowBlur(String value);
-  external String get boxShadowColor;
-  external set boxShadowColor(String value);
-  external String get boxShadowOffset;
-  external set boxShadowOffset(String value);
-  external String get boxShadowPosition;
-  external set boxShadowPosition(String value);
-  external String get boxShadowSpread;
-  external set boxShadowSpread(String value);
-  external String get boxSizing;
-  external set boxSizing(String value);
-  external String get boxSnap;
-  external set boxSnap(String value);
-  external String get breakAfter;
-  external set breakAfter(String value);
-  external String get breakBefore;
-  external set breakBefore(String value);
-  external String get breakInside;
-  external set breakInside(String value);
-  external String get captionSide;
-  external set captionSide(String value);
-  external String get caret;
-  external set caret(String value);
-  external String get caretAnimation;
-  external set caretAnimation(String value);
-  external String get caretColor;
-  external set caretColor(String value);
-  external String get caretShape;
-  external set caretShape(String value);
-  external String get clear;
-  external set clear(String value);
-  external String get clip;
-  external set clip(String value);
-  external String get clipPath;
-  external set clipPath(String value);
-  external String get clipRule;
-  external set clipRule(String value);
-  external String get color;
-  external set color(String value);
-  external String get colorAdjust;
-  external set colorAdjust(String value);
-  external String get colorInterpolation;
-  external set colorInterpolation(String value);
-  external String get colorInterpolationFilters;
-  external set colorInterpolationFilters(String value);
-  external String get colorScheme;
-  external set colorScheme(String value);
-  external String get columnCount;
-  external set columnCount(String value);
-  external String get columnFill;
-  external set columnFill(String value);
-  external String get columnGap;
-  external set columnGap(String value);
-  external String get columnRule;
-  external set columnRule(String value);
-  external String get columnRuleColor;
-  external set columnRuleColor(String value);
-  external String get columnRuleStyle;
-  external set columnRuleStyle(String value);
-  external String get columnRuleWidth;
-  external set columnRuleWidth(String value);
-  external String get columnSpan;
-  external set columnSpan(String value);
-  external String get columnWidth;
-  external set columnWidth(String value);
-  external String get columns;
-  external set columns(String value);
-  external String get contain;
-  external set contain(String value);
-  external String get containIntrinsicBlockSize;
-  external set containIntrinsicBlockSize(String value);
-  external String get containIntrinsicHeight;
-  external set containIntrinsicHeight(String value);
-  external String get containIntrinsicInlineSize;
-  external set containIntrinsicInlineSize(String value);
-  external String get containIntrinsicSize;
-  external set containIntrinsicSize(String value);
-  external String get containIntrinsicWidth;
-  external set containIntrinsicWidth(String value);
-  external String get container;
-  external set container(String value);
-  external String get containerName;
-  external set containerName(String value);
-  external String get containerType;
-  external set containerType(String value);
-  external String get content;
-  external set content(String value);
-  external String get contentVisibility;
-  external set contentVisibility(String value);
-  @JS('continue')
-  external String get continue_;
-  @JS('continue')
-  external set continue_(String value);
-  external String get copyInto;
-  external set copyInto(String value);
-  external String get cornerShape;
-  external set cornerShape(String value);
-  external String get corners;
-  external set corners(String value);
-  external String get counterIncrement;
-  external set counterIncrement(String value);
-  external String get counterReset;
-  external set counterReset(String value);
-  external String get counterSet;
-  external set counterSet(String value);
-  external String get cue;
-  external set cue(String value);
-  external String get cueAfter;
-  external set cueAfter(String value);
-  external String get cueBefore;
-  external set cueBefore(String value);
-  external String get cursor;
-  external set cursor(String value);
-  external String get cx;
-  external set cx(String value);
-  external String get cy;
-  external set cy(String value);
-  external String get d;
-  external set d(String value);
-  external String get direction;
-  external set direction(String value);
-  external String get display;
-  external set display(String value);
-  external String get dominantBaseline;
-  external set dominantBaseline(String value);
-  external String get dynamicRangeLimit;
-  external set dynamicRangeLimit(String value);
-  external String get emptyCells;
-  external set emptyCells(String value);
-  external String get fieldSizing;
-  external set fieldSizing(String value);
-  external String get fill;
-  external set fill(String value);
-  external String get fillBreak;
-  external set fillBreak(String value);
-  external String get fillColor;
-  external set fillColor(String value);
-  external String get fillImage;
-  external set fillImage(String value);
-  external String get fillOpacity;
-  external set fillOpacity(String value);
-  external String get fillOrigin;
-  external set fillOrigin(String value);
-  external String get fillPosition;
-  external set fillPosition(String value);
-  external String get fillRepeat;
-  external set fillRepeat(String value);
-  external String get fillRule;
-  external set fillRule(String value);
-  external String get fillSize;
-  external set fillSize(String value);
-  external String get filter;
-  external set filter(String value);
-  external String get flex;
-  external set flex(String value);
-  external String get flexBasis;
-  external set flexBasis(String value);
-  external String get flexDirection;
-  external set flexDirection(String value);
-  external String get flexFlow;
-  external set flexFlow(String value);
-  external String get flexGrow;
-  external set flexGrow(String value);
-  external String get flexShrink;
-  external set flexShrink(String value);
-  external String get flexWrap;
-  external set flexWrap(String value);
-  external String get float;
-  external set float(String value);
-  external String get floatDefer;
-  external set floatDefer(String value);
-  external String get floatOffset;
-  external set floatOffset(String value);
-  external String get floatReference;
-  external set floatReference(String value);
-  external String get floodColor;
-  external set floodColor(String value);
-  external String get floodOpacity;
-  external set floodOpacity(String value);
-  external String get flowFrom;
-  external set flowFrom(String value);
-  external String get flowInto;
-  external set flowInto(String value);
-  external String get font;
-  external set font(String value);
-  external String get fontFamily;
-  external set fontFamily(String value);
-  external String get fontFeatureSettings;
-  external set fontFeatureSettings(String value);
-  external String get fontKerning;
-  external set fontKerning(String value);
-  external String get fontLanguageOverride;
-  external set fontLanguageOverride(String value);
-  external String get fontOpticalSizing;
-  external set fontOpticalSizing(String value);
-  external String get fontPalette;
-  external set fontPalette(String value);
-  external String get fontSize;
-  external set fontSize(String value);
-  external String get fontSizeAdjust;
-  external set fontSizeAdjust(String value);
-  external String get fontStretch;
-  external set fontStretch(String value);
-  external String get fontStyle;
-  external set fontStyle(String value);
-  external String get fontSynthesis;
-  external set fontSynthesis(String value);
-  external String get fontSynthesisPosition;
-  external set fontSynthesisPosition(String value);
-  external String get fontSynthesisSmallCaps;
-  external set fontSynthesisSmallCaps(String value);
-  external String get fontSynthesisStyle;
-  external set fontSynthesisStyle(String value);
-  external String get fontSynthesisWeight;
-  external set fontSynthesisWeight(String value);
-  external String get fontVariant;
-  external set fontVariant(String value);
-  external String get fontVariantAlternates;
-  external set fontVariantAlternates(String value);
-  external String get fontVariantCaps;
-  external set fontVariantCaps(String value);
-  external String get fontVariantEastAsian;
-  external set fontVariantEastAsian(String value);
-  external String get fontVariantEmoji;
-  external set fontVariantEmoji(String value);
-  external String get fontVariantLigatures;
-  external set fontVariantLigatures(String value);
-  external String get fontVariantNumeric;
-  external set fontVariantNumeric(String value);
-  external String get fontVariantPosition;
-  external set fontVariantPosition(String value);
-  external String get fontVariationSettings;
-  external set fontVariationSettings(String value);
-  external String get fontWeight;
-  external set fontWeight(String value);
-  external String get fontWidth;
-  external set fontWidth(String value);
-  external String get footnoteDisplay;
-  external set footnoteDisplay(String value);
-  external String get footnotePolicy;
-  external set footnotePolicy(String value);
-  external String get forcedColorAdjust;
-  external set forcedColorAdjust(String value);
-  external String get gap;
-  external set gap(String value);
-  external String get glyphOrientationVertical;
-  external set glyphOrientationVertical(String value);
-  external String get grid;
-  external set grid(String value);
-  external String get gridArea;
-  external set gridArea(String value);
-  external String get gridAutoColumns;
-  external set gridAutoColumns(String value);
-  external String get gridAutoFlow;
-  external set gridAutoFlow(String value);
-  external String get gridAutoRows;
-  external set gridAutoRows(String value);
-  external String get gridColumn;
-  external set gridColumn(String value);
-  external String get gridColumnEnd;
-  external set gridColumnEnd(String value);
-  external String get gridColumnGap;
-  external set gridColumnGap(String value);
-  external String get gridColumnStart;
-  external set gridColumnStart(String value);
-  external String get gridGap;
-  external set gridGap(String value);
-  external String get gridRow;
-  external set gridRow(String value);
-  external String get gridRowEnd;
-  external set gridRowEnd(String value);
-  external String get gridRowGap;
-  external set gridRowGap(String value);
-  external String get gridRowStart;
-  external set gridRowStart(String value);
-  external String get gridTemplate;
-  external set gridTemplate(String value);
-  external String get gridTemplateAreas;
-  external set gridTemplateAreas(String value);
-  external String get gridTemplateColumns;
-  external set gridTemplateColumns(String value);
-  external String get gridTemplateRows;
-  external set gridTemplateRows(String value);
-  external String get hangingPunctuation;
-  external set hangingPunctuation(String value);
-  external String get height;
-  external set height(String value);
-  external String get hyphenateCharacter;
-  external set hyphenateCharacter(String value);
-  external String get hyphenateLimitChars;
-  external set hyphenateLimitChars(String value);
-  external String get hyphenateLimitLast;
-  external set hyphenateLimitLast(String value);
-  external String get hyphenateLimitLines;
-  external set hyphenateLimitLines(String value);
-  external String get hyphenateLimitZone;
-  external set hyphenateLimitZone(String value);
-  external String get hyphens;
-  external set hyphens(String value);
-  external String get imageOrientation;
-  external set imageOrientation(String value);
-  external String get imageRendering;
-  external set imageRendering(String value);
-  external String get imageResolution;
-  external set imageResolution(String value);
-  external String get initialLetter;
-  external set initialLetter(String value);
-  external String get initialLetterAlign;
-  external set initialLetterAlign(String value);
-  external String get initialLetterWrap;
-  external set initialLetterWrap(String value);
-  external String get inlineSize;
-  external set inlineSize(String value);
-  external String get inlineSizing;
-  external set inlineSizing(String value);
-  external String get inputSecurity;
-  external set inputSecurity(String value);
-  external String get inset;
-  external set inset(String value);
-  external String get insetArea;
-  external set insetArea(String value);
-  external String get insetBlock;
-  external set insetBlock(String value);
-  external String get insetBlockEnd;
-  external set insetBlockEnd(String value);
-  external String get insetBlockStart;
-  external set insetBlockStart(String value);
-  external String get insetInline;
-  external set insetInline(String value);
-  external String get insetInlineEnd;
-  external set insetInlineEnd(String value);
-  external String get insetInlineStart;
-  external set insetInlineStart(String value);
-  external String get isolation;
-  external set isolation(String value);
-  external String get justifyContent;
-  external set justifyContent(String value);
-  external String get justifyItems;
-  external set justifyItems(String value);
-  external String get justifySelf;
-  external set justifySelf(String value);
-  external String get left;
-  external set left(String value);
-  external String get letterSpacing;
-  external set letterSpacing(String value);
-  external String get lightingColor;
-  external set lightingColor(String value);
-  external String get lineBreak;
-  external set lineBreak(String value);
-  external String get lineClamp;
-  external set lineClamp(String value);
-  external String get lineGrid;
-  external set lineGrid(String value);
-  external String get lineHeight;
-  external set lineHeight(String value);
-  external String get lineHeightStep;
-  external set lineHeightStep(String value);
-  external String get linePadding;
-  external set linePadding(String value);
-  external String get lineSnap;
-  external set lineSnap(String value);
-  external String get linkParameters;
-  external set linkParameters(String value);
-  external String get listStyle;
-  external set listStyle(String value);
-  external String get listStyleImage;
-  external set listStyleImage(String value);
-  external String get listStylePosition;
-  external set listStylePosition(String value);
-  external String get listStyleType;
-  external set listStyleType(String value);
-  external String get margin;
-  external set margin(String value);
-  external String get marginBlock;
-  external set marginBlock(String value);
-  external String get marginBlockEnd;
-  external set marginBlockEnd(String value);
-  external String get marginBlockStart;
-  external set marginBlockStart(String value);
-  external String get marginBottom;
-  external set marginBottom(String value);
-  external String get marginBreak;
-  external set marginBreak(String value);
-  external String get marginInline;
-  external set marginInline(String value);
-  external String get marginInlineEnd;
-  external set marginInlineEnd(String value);
-  external String get marginInlineStart;
-  external set marginInlineStart(String value);
-  external String get marginLeft;
-  external set marginLeft(String value);
-  external String get marginRight;
-  external set marginRight(String value);
-  external String get marginTop;
-  external set marginTop(String value);
-  external String get marginTrim;
-  external set marginTrim(String value);
-  external String get marker;
-  external set marker(String value);
-  external String get markerEnd;
-  external set markerEnd(String value);
-  external String get markerMid;
-  external set markerMid(String value);
-  external String get markerSide;
-  external set markerSide(String value);
-  external String get markerStart;
-  external set markerStart(String value);
-  external String get mask;
-  external set mask(String value);
-  external String get maskBorder;
-  external set maskBorder(String value);
-  external String get maskBorderMode;
-  external set maskBorderMode(String value);
-  external String get maskBorderOutset;
-  external set maskBorderOutset(String value);
-  external String get maskBorderRepeat;
-  external set maskBorderRepeat(String value);
-  external String get maskBorderSlice;
-  external set maskBorderSlice(String value);
-  external String get maskBorderSource;
-  external set maskBorderSource(String value);
-  external String get maskBorderWidth;
-  external set maskBorderWidth(String value);
-  external String get maskClip;
-  external set maskClip(String value);
-  external String get maskComposite;
-  external set maskComposite(String value);
-  external String get maskImage;
-  external set maskImage(String value);
-  external String get maskMode;
-  external set maskMode(String value);
-  external String get maskOrigin;
-  external set maskOrigin(String value);
-  external String get maskPosition;
-  external set maskPosition(String value);
-  external String get maskRepeat;
-  external set maskRepeat(String value);
-  external String get maskSize;
-  external set maskSize(String value);
-  external String get maskType;
-  external set maskType(String value);
-  external String get masonryAutoFlow;
-  external set masonryAutoFlow(String value);
-  external String get mathDepth;
-  external set mathDepth(String value);
-  external String get mathShift;
-  external set mathShift(String value);
-  external String get mathStyle;
-  external set mathStyle(String value);
-  external String get maxBlockSize;
-  external set maxBlockSize(String value);
-  external String get maxHeight;
-  external set maxHeight(String value);
-  external String get maxInlineSize;
-  external set maxInlineSize(String value);
-  external String get maxLines;
-  external set maxLines(String value);
-  external String get maxWidth;
-  external set maxWidth(String value);
-  external String get minBlockSize;
-  external set minBlockSize(String value);
-  external String get minHeight;
-  external set minHeight(String value);
-  external String get minInlineSize;
-  external set minInlineSize(String value);
-  external String get minIntrinsicSizing;
-  external set minIntrinsicSizing(String value);
-  external String get minWidth;
-  external set minWidth(String value);
-  external String get mixBlendMode;
-  external set mixBlendMode(String value);
-  external String get navDown;
-  external set navDown(String value);
-  external String get navLeft;
-  external set navLeft(String value);
-  external String get navRight;
-  external set navRight(String value);
-  external String get navUp;
-  external set navUp(String value);
-  external String get objectFit;
-  external set objectFit(String value);
-  external String get objectPosition;
-  external set objectPosition(String value);
-  external String get objectViewBox;
-  external set objectViewBox(String value);
-  external String get offset;
-  external set offset(String value);
-  external String get offsetAnchor;
-  external set offsetAnchor(String value);
-  external String get offsetDistance;
-  external set offsetDistance(String value);
-  external String get offsetPath;
-  external set offsetPath(String value);
-  external String get offsetPosition;
-  external set offsetPosition(String value);
-  external String get offsetRotate;
-  external set offsetRotate(String value);
-  external String get opacity;
-  external set opacity(String value);
-  external String get order;
-  external set order(String value);
-  external String get orphans;
-  external set orphans(String value);
-  external String get outline;
-  external set outline(String value);
-  external String get outlineColor;
-  external set outlineColor(String value);
-  external String get outlineOffset;
-  external set outlineOffset(String value);
-  external String get outlineStyle;
-  external set outlineStyle(String value);
-  external String get outlineWidth;
-  external set outlineWidth(String value);
-  external String get overflow;
-  external set overflow(String value);
-  external String get overflowAnchor;
-  external set overflowAnchor(String value);
-  external String get overflowBlock;
-  external set overflowBlock(String value);
-  external String get overflowClipMargin;
-  external set overflowClipMargin(String value);
-  external String get overflowClipMarginBlock;
-  external set overflowClipMarginBlock(String value);
-  external String get overflowClipMarginBlockEnd;
-  external set overflowClipMarginBlockEnd(String value);
-  external String get overflowClipMarginBlockStart;
-  external set overflowClipMarginBlockStart(String value);
-  external String get overflowClipMarginBottom;
-  external set overflowClipMarginBottom(String value);
-  external String get overflowClipMarginInline;
-  external set overflowClipMarginInline(String value);
-  external String get overflowClipMarginInlineEnd;
-  external set overflowClipMarginInlineEnd(String value);
-  external String get overflowClipMarginInlineStart;
-  external set overflowClipMarginInlineStart(String value);
-  external String get overflowClipMarginLeft;
-  external set overflowClipMarginLeft(String value);
-  external String get overflowClipMarginRight;
-  external set overflowClipMarginRight(String value);
-  external String get overflowClipMarginTop;
-  external set overflowClipMarginTop(String value);
-  external String get overflowInline;
-  external set overflowInline(String value);
-  external String get overflowWrap;
-  external set overflowWrap(String value);
-  external String get overflowX;
-  external set overflowX(String value);
-  external String get overflowY;
-  external set overflowY(String value);
-  external String get overlay;
-  external set overlay(String value);
-  external String get overscrollBehavior;
-  external set overscrollBehavior(String value);
-  external String get overscrollBehaviorBlock;
-  external set overscrollBehaviorBlock(String value);
-  external String get overscrollBehaviorInline;
-  external set overscrollBehaviorInline(String value);
-  external String get overscrollBehaviorX;
-  external set overscrollBehaviorX(String value);
-  external String get overscrollBehaviorY;
-  external set overscrollBehaviorY(String value);
-  external String get padding;
-  external set padding(String value);
-  external String get paddingBlock;
-  external set paddingBlock(String value);
-  external String get paddingBlockEnd;
-  external set paddingBlockEnd(String value);
-  external String get paddingBlockStart;
-  external set paddingBlockStart(String value);
-  external String get paddingBottom;
-  external set paddingBottom(String value);
-  external String get paddingInline;
-  external set paddingInline(String value);
-  external String get paddingInlineEnd;
-  external set paddingInlineEnd(String value);
-  external String get paddingInlineStart;
-  external set paddingInlineStart(String value);
-  external String get paddingLeft;
-  external set paddingLeft(String value);
-  external String get paddingRight;
-  external set paddingRight(String value);
-  external String get paddingTop;
-  external set paddingTop(String value);
-  external String get page;
-  external set page(String value);
-  external String get pageBreakAfter;
-  external set pageBreakAfter(String value);
-  external String get pageBreakBefore;
-  external set pageBreakBefore(String value);
-  external String get pageBreakInside;
-  external set pageBreakInside(String value);
-  external String get paintOrder;
-  external set paintOrder(String value);
-  external String get pause;
-  external set pause(String value);
-  external String get pauseAfter;
-  external set pauseAfter(String value);
-  external String get pauseBefore;
-  external set pauseBefore(String value);
-  external String get perspective;
-  external set perspective(String value);
-  external String get perspectiveOrigin;
-  external set perspectiveOrigin(String value);
-  external String get placeContent;
-  external set placeContent(String value);
-  external String get placeItems;
-  external set placeItems(String value);
-  external String get placeSelf;
-  external set placeSelf(String value);
-  external String get pointerEvents;
-  external set pointerEvents(String value);
-  external String get position;
-  external set position(String value);
-  external String get positionAnchor;
-  external set positionAnchor(String value);
-  external String get positionTry;
-  external set positionTry(String value);
-  external String get positionTryOptions;
-  external set positionTryOptions(String value);
-  external String get positionTryOrder;
-  external set positionTryOrder(String value);
-  external String get positionVisibility;
-  external set positionVisibility(String value);
-  external String get printColorAdjust;
-  external set printColorAdjust(String value);
-  external String get quotes;
-  external set quotes(String value);
-  external String get r;
-  external set r(String value);
-  external String get readingFlow;
-  external set readingFlow(String value);
-  external String get regionFragment;
-  external set regionFragment(String value);
-  external String get resize;
-  external set resize(String value);
-  external String get rest;
-  external set rest(String value);
-  external String get restAfter;
-  external set restAfter(String value);
-  external String get restBefore;
-  external set restBefore(String value);
-  external String get right;
-  external set right(String value);
-  external String get rotate;
-  external set rotate(String value);
-  external String get rowGap;
-  external set rowGap(String value);
-  external String get rubyAlign;
-  external set rubyAlign(String value);
-  external String get rubyMerge;
-  external set rubyMerge(String value);
-  external String get rubyOverhang;
-  external set rubyOverhang(String value);
-  external String get rubyPosition;
-  external set rubyPosition(String value);
-  external String get rx;
-  external set rx(String value);
-  external String get ry;
-  external set ry(String value);
-  external String get scale;
-  external set scale(String value);
-  external String get scrollBehavior;
-  external set scrollBehavior(String value);
-  external String get scrollMargin;
-  external set scrollMargin(String value);
-  external String get scrollMarginBlock;
-  external set scrollMarginBlock(String value);
-  external String get scrollMarginBlockEnd;
-  external set scrollMarginBlockEnd(String value);
-  external String get scrollMarginBlockStart;
-  external set scrollMarginBlockStart(String value);
-  external String get scrollMarginBottom;
-  external set scrollMarginBottom(String value);
-  external String get scrollMarginInline;
-  external set scrollMarginInline(String value);
-  external String get scrollMarginInlineEnd;
-  external set scrollMarginInlineEnd(String value);
-  external String get scrollMarginInlineStart;
-  external set scrollMarginInlineStart(String value);
-  external String get scrollMarginLeft;
-  external set scrollMarginLeft(String value);
-  external String get scrollMarginRight;
-  external set scrollMarginRight(String value);
-  external String get scrollMarginTop;
-  external set scrollMarginTop(String value);
-  external String get scrollPadding;
-  external set scrollPadding(String value);
-  external String get scrollPaddingBlock;
-  external set scrollPaddingBlock(String value);
-  external String get scrollPaddingBlockEnd;
-  external set scrollPaddingBlockEnd(String value);
-  external String get scrollPaddingBlockStart;
-  external set scrollPaddingBlockStart(String value);
-  external String get scrollPaddingBottom;
-  external set scrollPaddingBottom(String value);
-  external String get scrollPaddingInline;
-  external set scrollPaddingInline(String value);
-  external String get scrollPaddingInlineEnd;
-  external set scrollPaddingInlineEnd(String value);
-  external String get scrollPaddingInlineStart;
-  external set scrollPaddingInlineStart(String value);
-  external String get scrollPaddingLeft;
-  external set scrollPaddingLeft(String value);
-  external String get scrollPaddingRight;
-  external set scrollPaddingRight(String value);
-  external String get scrollPaddingTop;
-  external set scrollPaddingTop(String value);
-  external String get scrollSnapAlign;
-  external set scrollSnapAlign(String value);
-  external String get scrollSnapStop;
-  external set scrollSnapStop(String value);
-  external String get scrollSnapType;
-  external set scrollSnapType(String value);
-  external String get scrollStart;
-  external set scrollStart(String value);
-  external String get scrollStartBlock;
-  external set scrollStartBlock(String value);
-  external String get scrollStartInline;
-  external set scrollStartInline(String value);
-  external String get scrollStartTarget;
-  external set scrollStartTarget(String value);
-  external String get scrollStartTargetBlock;
-  external set scrollStartTargetBlock(String value);
-  external String get scrollStartTargetInline;
-  external set scrollStartTargetInline(String value);
-  external String get scrollStartTargetX;
-  external set scrollStartTargetX(String value);
-  external String get scrollStartTargetY;
-  external set scrollStartTargetY(String value);
-  external String get scrollStartX;
-  external set scrollStartX(String value);
-  external String get scrollStartY;
-  external set scrollStartY(String value);
-  external String get scrollTimeline;
-  external set scrollTimeline(String value);
-  external String get scrollTimelineAxis;
-  external set scrollTimelineAxis(String value);
-  external String get scrollTimelineName;
-  external set scrollTimelineName(String value);
-  external String get scrollbarColor;
-  external set scrollbarColor(String value);
-  external String get scrollbarGutter;
-  external set scrollbarGutter(String value);
-  external String get scrollbarWidth;
-  external set scrollbarWidth(String value);
-  external String get shapeImageThreshold;
-  external set shapeImageThreshold(String value);
-  external String get shapeInside;
-  external set shapeInside(String value);
-  external String get shapeMargin;
-  external set shapeMargin(String value);
-  external String get shapeOutside;
-  external set shapeOutside(String value);
-  external String get shapePadding;
-  external set shapePadding(String value);
-  external String get shapeRendering;
-  external set shapeRendering(String value);
-  external String get shapeSubtract;
-  external set shapeSubtract(String value);
-  external String get spatialNavigationAction;
-  external set spatialNavigationAction(String value);
-  external String get spatialNavigationContain;
-  external set spatialNavigationContain(String value);
-  external String get spatialNavigationFunction;
-  external set spatialNavigationFunction(String value);
-  external String get speak;
-  external set speak(String value);
-  external String get speakAs;
-  external set speakAs(String value);
-  external String get stopColor;
-  external set stopColor(String value);
-  external String get stopOpacity;
-  external set stopOpacity(String value);
-  external String get stringSet;
-  external set stringSet(String value);
-  external String get stroke;
-  external set stroke(String value);
-  external String get strokeAlign;
-  external set strokeAlign(String value);
-  external String get strokeAlignment;
-  external set strokeAlignment(String value);
-  external String get strokeBreak;
-  external set strokeBreak(String value);
-  external String get strokeColor;
-  external set strokeColor(String value);
-  external String get strokeDashCorner;
-  external set strokeDashCorner(String value);
-  external String get strokeDashJustify;
-  external set strokeDashJustify(String value);
-  external String get strokeDashadjust;
-  external set strokeDashadjust(String value);
-  external String get strokeDasharray;
-  external set strokeDasharray(String value);
-  external String get strokeDashcorner;
-  external set strokeDashcorner(String value);
-  external String get strokeDashoffset;
-  external set strokeDashoffset(String value);
-  external String get strokeImage;
-  external set strokeImage(String value);
-  external String get strokeLinecap;
-  external set strokeLinecap(String value);
-  external String get strokeLinejoin;
-  external set strokeLinejoin(String value);
-  external String get strokeMiterlimit;
-  external set strokeMiterlimit(String value);
-  external String get strokeOpacity;
-  external set strokeOpacity(String value);
-  external String get strokeOrigin;
-  external set strokeOrigin(String value);
-  external String get strokePosition;
-  external set strokePosition(String value);
-  external String get strokeRepeat;
-  external set strokeRepeat(String value);
-  external String get strokeSize;
-  external set strokeSize(String value);
-  external String get strokeWidth;
-  external set strokeWidth(String value);
-  external String get tabSize;
-  external set tabSize(String value);
-  external String get tableLayout;
-  external set tableLayout(String value);
-  external String get textAlign;
-  external set textAlign(String value);
-  external String get textAlignAll;
-  external set textAlignAll(String value);
-  external String get textAlignLast;
-  external set textAlignLast(String value);
-  external String get textAnchor;
-  external set textAnchor(String value);
-  external String get textAutospace;
-  external set textAutospace(String value);
-  external String get textBoxEdge;
-  external set textBoxEdge(String value);
-  external String get textBoxTrim;
-  external set textBoxTrim(String value);
-  external String get textCombineUpright;
-  external set textCombineUpright(String value);
-  external String get textDecoration;
-  external set textDecoration(String value);
-  external String get textDecorationColor;
-  external set textDecorationColor(String value);
-  external String get textDecorationLine;
-  external set textDecorationLine(String value);
-  external String get textDecorationSkip;
-  external set textDecorationSkip(String value);
-  external String get textDecorationSkipBox;
-  external set textDecorationSkipBox(String value);
-  external String get textDecorationSkipInk;
-  external set textDecorationSkipInk(String value);
-  external String get textDecorationSkipSelf;
-  external set textDecorationSkipSelf(String value);
-  external String get textDecorationSkipSpaces;
-  external set textDecorationSkipSpaces(String value);
-  external String get textDecorationStyle;
-  external set textDecorationStyle(String value);
-  external String get textDecorationThickness;
-  external set textDecorationThickness(String value);
-  external String get textDecorationTrim;
-  external set textDecorationTrim(String value);
-  external String get textEmphasis;
-  external set textEmphasis(String value);
-  external String get textEmphasisColor;
-  external set textEmphasisColor(String value);
-  external String get textEmphasisPosition;
-  external set textEmphasisPosition(String value);
-  external String get textEmphasisSkip;
-  external set textEmphasisSkip(String value);
-  external String get textEmphasisStyle;
-  external set textEmphasisStyle(String value);
-  external String get textGroupAlign;
-  external set textGroupAlign(String value);
-  external String get textIndent;
-  external set textIndent(String value);
-  external String get textJustify;
-  external set textJustify(String value);
-  external String get textOrientation;
-  external set textOrientation(String value);
-  external String get textOverflow;
-  external set textOverflow(String value);
-  external String get textRendering;
-  external set textRendering(String value);
-  external String get textShadow;
-  external set textShadow(String value);
-  external String get textSizeAdjust;
-  external set textSizeAdjust(String value);
-  external String get textSpacing;
-  external set textSpacing(String value);
-  external String get textSpacingTrim;
-  external set textSpacingTrim(String value);
-  external String get textTransform;
-  external set textTransform(String value);
-  external String get textUnderlineOffset;
-  external set textUnderlineOffset(String value);
-  external String get textUnderlinePosition;
-  external set textUnderlinePosition(String value);
-  external String get textWrap;
-  external set textWrap(String value);
-  external String get textWrapMode;
-  external set textWrapMode(String value);
-  external String get textWrapStyle;
-  external set textWrapStyle(String value);
-  external String get timelineScope;
-  external set timelineScope(String value);
-  external String get top;
-  external set top(String value);
-  external String get touchAction;
-  external set touchAction(String value);
-  external String get transform;
-  external set transform(String value);
-  external String get transformBox;
-  external set transformBox(String value);
-  external String get transformOrigin;
-  external set transformOrigin(String value);
-  external String get transformStyle;
-  external set transformStyle(String value);
-  external String get transition;
-  external set transition(String value);
-  external String get transitionBehavior;
-  external set transitionBehavior(String value);
-  external String get transitionDelay;
-  external set transitionDelay(String value);
-  external String get transitionDuration;
-  external set transitionDuration(String value);
-  external String get transitionProperty;
-  external set transitionProperty(String value);
-  external String get transitionTimingFunction;
-  external set transitionTimingFunction(String value);
-  external String get translate;
-  external set translate(String value);
-  external String get unicodeBidi;
-  external set unicodeBidi(String value);
-  external String get userSelect;
-  external set userSelect(String value);
-  external String get vectorEffect;
-  external set vectorEffect(String value);
-  external String get verticalAlign;
-  external set verticalAlign(String value);
-  external String get viewTimeline;
-  external set viewTimeline(String value);
-  external String get viewTimelineAxis;
-  external set viewTimelineAxis(String value);
-  external String get viewTimelineInset;
-  external set viewTimelineInset(String value);
-  external String get viewTimelineName;
-  external set viewTimelineName(String value);
-  external String get viewTransitionClass;
-  external set viewTransitionClass(String value);
-  external String get viewTransitionName;
-  external set viewTransitionName(String value);
-  external String get visibility;
-  external set visibility(String value);
-  external String get voiceBalance;
-  external set voiceBalance(String value);
-  external String get voiceDuration;
-  external set voiceDuration(String value);
-  external String get voiceFamily;
-  external set voiceFamily(String value);
-  external String get voicePitch;
-  external set voicePitch(String value);
-  external String get voiceRange;
-  external set voiceRange(String value);
-  external String get voiceRate;
-  external set voiceRate(String value);
-  external String get voiceStress;
-  external set voiceStress(String value);
-  external String get voiceVolume;
-  external set voiceVolume(String value);
-  external String get whiteSpace;
-  external set whiteSpace(String value);
-  external String get whiteSpaceCollapse;
-  external set whiteSpaceCollapse(String value);
-  external String get whiteSpaceTrim;
-  external set whiteSpaceTrim(String value);
-  external String get widows;
-  external set widows(String value);
-  external String get width;
-  external set width(String value);
-  external String get willChange;
-  external set willChange(String value);
-  external String get wordBreak;
-  external set wordBreak(String value);
-  external String get wordSpaceTransform;
-  external set wordSpaceTransform(String value);
-  external String get wordSpacing;
-  external set wordSpacing(String value);
-  external String get wordWrap;
-  external set wordWrap(String value);
-  external String get wrapAfter;
-  external set wrapAfter(String value);
-  external String get wrapBefore;
-  external set wrapBefore(String value);
-  external String get wrapFlow;
-  external set wrapFlow(String value);
-  external String get wrapInside;
-  external set wrapInside(String value);
-  external String get wrapThrough;
-  external set wrapThrough(String value);
-  external String get writingMode;
-  external set writingMode(String value);
-  external String get x;
-  external set x(String value);
-  external String get y;
-  external set y(String value);
-  external String get zIndex;
-  external set zIndex(String value);
-  external String get zoom;
-  external set zoom(String value);
+  CSSRule? get parentRule;
+  String get accentColor {
+    unsupportedPlatformError();
+  }
+
+  set accentColor(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get alignContent {
+    unsupportedPlatformError();
+  }
+
+  set alignContent(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get alignItems {
+    unsupportedPlatformError();
+  }
+
+  set alignItems(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get alignSelf {
+    unsupportedPlatformError();
+  }
+
+  set alignSelf(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get alignmentBaseline {
+    unsupportedPlatformError();
+  }
+
+  set alignmentBaseline(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get all {
+    unsupportedPlatformError();
+  }
+
+  set all(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get anchorName {
+    unsupportedPlatformError();
+  }
+
+  set anchorName(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get anchorScope {
+    unsupportedPlatformError();
+  }
+
+  set anchorScope(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get animation {
+    unsupportedPlatformError();
+  }
+
+  set animation(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get animationComposition {
+    unsupportedPlatformError();
+  }
+
+  set animationComposition(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get animationDelay {
+    unsupportedPlatformError();
+  }
+
+  set animationDelay(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get animationDirection {
+    unsupportedPlatformError();
+  }
+
+  set animationDirection(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get animationDuration {
+    unsupportedPlatformError();
+  }
+
+  set animationDuration(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get animationFillMode {
+    unsupportedPlatformError();
+  }
+
+  set animationFillMode(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get animationIterationCount {
+    unsupportedPlatformError();
+  }
+
+  set animationIterationCount(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get animationName {
+    unsupportedPlatformError();
+  }
+
+  set animationName(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get animationPlayState {
+    unsupportedPlatformError();
+  }
+
+  set animationPlayState(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get animationRange {
+    unsupportedPlatformError();
+  }
+
+  set animationRange(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get animationRangeEnd {
+    unsupportedPlatformError();
+  }
+
+  set animationRangeEnd(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get animationRangeStart {
+    unsupportedPlatformError();
+  }
+
+  set animationRangeStart(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get animationTimeline {
+    unsupportedPlatformError();
+  }
+
+  set animationTimeline(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get animationTimingFunction {
+    unsupportedPlatformError();
+  }
+
+  set animationTimingFunction(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get appearance {
+    unsupportedPlatformError();
+  }
+
+  set appearance(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get aspectRatio {
+    unsupportedPlatformError();
+  }
+
+  set aspectRatio(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get backdropFilter {
+    unsupportedPlatformError();
+  }
+
+  set backdropFilter(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get backfaceVisibility {
+    unsupportedPlatformError();
+  }
+
+  set backfaceVisibility(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get background {
+    unsupportedPlatformError();
+  }
+
+  set background(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get backgroundAttachment {
+    unsupportedPlatformError();
+  }
+
+  set backgroundAttachment(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get backgroundBlendMode {
+    unsupportedPlatformError();
+  }
+
+  set backgroundBlendMode(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get backgroundClip {
+    unsupportedPlatformError();
+  }
+
+  set backgroundClip(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get backgroundColor {
+    unsupportedPlatformError();
+  }
+
+  set backgroundColor(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get backgroundImage {
+    unsupportedPlatformError();
+  }
+
+  set backgroundImage(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get backgroundOrigin {
+    unsupportedPlatformError();
+  }
+
+  set backgroundOrigin(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get backgroundPosition {
+    unsupportedPlatformError();
+  }
+
+  set backgroundPosition(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get backgroundPositionBlock {
+    unsupportedPlatformError();
+  }
+
+  set backgroundPositionBlock(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get backgroundPositionInline {
+    unsupportedPlatformError();
+  }
+
+  set backgroundPositionInline(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get backgroundPositionX {
+    unsupportedPlatformError();
+  }
+
+  set backgroundPositionX(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get backgroundPositionY {
+    unsupportedPlatformError();
+  }
+
+  set backgroundPositionY(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get backgroundRepeat {
+    unsupportedPlatformError();
+  }
+
+  set backgroundRepeat(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get backgroundSize {
+    unsupportedPlatformError();
+  }
+
+  set backgroundSize(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get backgroundTbd {
+    unsupportedPlatformError();
+  }
+
+  set backgroundTbd(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get baselineShift {
+    unsupportedPlatformError();
+  }
+
+  set baselineShift(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get baselineSource {
+    unsupportedPlatformError();
+  }
+
+  set baselineSource(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get blockEllipsis {
+    unsupportedPlatformError();
+  }
+
+  set blockEllipsis(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get blockSize {
+    unsupportedPlatformError();
+  }
+
+  set blockSize(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get blockStep {
+    unsupportedPlatformError();
+  }
+
+  set blockStep(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get blockStepAlign {
+    unsupportedPlatformError();
+  }
+
+  set blockStepAlign(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get blockStepInsert {
+    unsupportedPlatformError();
+  }
+
+  set blockStepInsert(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get blockStepRound {
+    unsupportedPlatformError();
+  }
+
+  set blockStepRound(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get blockStepSize {
+    unsupportedPlatformError();
+  }
+
+  set blockStepSize(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get bookmarkLabel {
+    unsupportedPlatformError();
+  }
+
+  set bookmarkLabel(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get bookmarkLevel {
+    unsupportedPlatformError();
+  }
+
+  set bookmarkLevel(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get bookmarkState {
+    unsupportedPlatformError();
+  }
+
+  set bookmarkState(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get border {
+    unsupportedPlatformError();
+  }
+
+  set border(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderBlock {
+    unsupportedPlatformError();
+  }
+
+  set borderBlock(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderBlockColor {
+    unsupportedPlatformError();
+  }
+
+  set borderBlockColor(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderBlockEnd {
+    unsupportedPlatformError();
+  }
+
+  set borderBlockEnd(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderBlockEndColor {
+    unsupportedPlatformError();
+  }
+
+  set borderBlockEndColor(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderBlockEndRadius {
+    unsupportedPlatformError();
+  }
+
+  set borderBlockEndRadius(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderBlockEndStyle {
+    unsupportedPlatformError();
+  }
+
+  set borderBlockEndStyle(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderBlockEndWidth {
+    unsupportedPlatformError();
+  }
+
+  set borderBlockEndWidth(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderBlockStart {
+    unsupportedPlatformError();
+  }
+
+  set borderBlockStart(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderBlockStartColor {
+    unsupportedPlatformError();
+  }
+
+  set borderBlockStartColor(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderBlockStartRadius {
+    unsupportedPlatformError();
+  }
+
+  set borderBlockStartRadius(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderBlockStartStyle {
+    unsupportedPlatformError();
+  }
+
+  set borderBlockStartStyle(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderBlockStartWidth {
+    unsupportedPlatformError();
+  }
+
+  set borderBlockStartWidth(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderBlockStyle {
+    unsupportedPlatformError();
+  }
+
+  set borderBlockStyle(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderBlockWidth {
+    unsupportedPlatformError();
+  }
+
+  set borderBlockWidth(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderBottom {
+    unsupportedPlatformError();
+  }
+
+  set borderBottom(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderBottomColor {
+    unsupportedPlatformError();
+  }
+
+  set borderBottomColor(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderBottomLeftRadius {
+    unsupportedPlatformError();
+  }
+
+  set borderBottomLeftRadius(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderBottomRadius {
+    unsupportedPlatformError();
+  }
+
+  set borderBottomRadius(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderBottomRightRadius {
+    unsupportedPlatformError();
+  }
+
+  set borderBottomRightRadius(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderBottomStyle {
+    unsupportedPlatformError();
+  }
+
+  set borderBottomStyle(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderBottomWidth {
+    unsupportedPlatformError();
+  }
+
+  set borderBottomWidth(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderBoundary {
+    unsupportedPlatformError();
+  }
+
+  set borderBoundary(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderClip {
+    unsupportedPlatformError();
+  }
+
+  set borderClip(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderClipBottom {
+    unsupportedPlatformError();
+  }
+
+  set borderClipBottom(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderClipLeft {
+    unsupportedPlatformError();
+  }
+
+  set borderClipLeft(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderClipRight {
+    unsupportedPlatformError();
+  }
+
+  set borderClipRight(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderClipTop {
+    unsupportedPlatformError();
+  }
+
+  set borderClipTop(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderCollapse {
+    unsupportedPlatformError();
+  }
+
+  set borderCollapse(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderColor {
+    unsupportedPlatformError();
+  }
+
+  set borderColor(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderEndEndRadius {
+    unsupportedPlatformError();
+  }
+
+  set borderEndEndRadius(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderEndStartRadius {
+    unsupportedPlatformError();
+  }
+
+  set borderEndStartRadius(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderImage {
+    unsupportedPlatformError();
+  }
+
+  set borderImage(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderImageOutset {
+    unsupportedPlatformError();
+  }
+
+  set borderImageOutset(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderImageRepeat {
+    unsupportedPlatformError();
+  }
+
+  set borderImageRepeat(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderImageSlice {
+    unsupportedPlatformError();
+  }
+
+  set borderImageSlice(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderImageSource {
+    unsupportedPlatformError();
+  }
+
+  set borderImageSource(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderImageWidth {
+    unsupportedPlatformError();
+  }
+
+  set borderImageWidth(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderInline {
+    unsupportedPlatformError();
+  }
+
+  set borderInline(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderInlineColor {
+    unsupportedPlatformError();
+  }
+
+  set borderInlineColor(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderInlineEnd {
+    unsupportedPlatformError();
+  }
+
+  set borderInlineEnd(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderInlineEndColor {
+    unsupportedPlatformError();
+  }
+
+  set borderInlineEndColor(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderInlineEndRadius {
+    unsupportedPlatformError();
+  }
+
+  set borderInlineEndRadius(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderInlineEndStyle {
+    unsupportedPlatformError();
+  }
+
+  set borderInlineEndStyle(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderInlineEndWidth {
+    unsupportedPlatformError();
+  }
+
+  set borderInlineEndWidth(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderInlineStart {
+    unsupportedPlatformError();
+  }
+
+  set borderInlineStart(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderInlineStartColor {
+    unsupportedPlatformError();
+  }
+
+  set borderInlineStartColor(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderInlineStartRadius {
+    unsupportedPlatformError();
+  }
+
+  set borderInlineStartRadius(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderInlineStartStyle {
+    unsupportedPlatformError();
+  }
+
+  set borderInlineStartStyle(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderInlineStartWidth {
+    unsupportedPlatformError();
+  }
+
+  set borderInlineStartWidth(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderInlineStyle {
+    unsupportedPlatformError();
+  }
+
+  set borderInlineStyle(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderInlineWidth {
+    unsupportedPlatformError();
+  }
+
+  set borderInlineWidth(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderLeft {
+    unsupportedPlatformError();
+  }
+
+  set borderLeft(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderLeftColor {
+    unsupportedPlatformError();
+  }
+
+  set borderLeftColor(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderLeftRadius {
+    unsupportedPlatformError();
+  }
+
+  set borderLeftRadius(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderLeftStyle {
+    unsupportedPlatformError();
+  }
+
+  set borderLeftStyle(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderLeftWidth {
+    unsupportedPlatformError();
+  }
+
+  set borderLeftWidth(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderLimit {
+    unsupportedPlatformError();
+  }
+
+  set borderLimit(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderRadius {
+    unsupportedPlatformError();
+  }
+
+  set borderRadius(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderRight {
+    unsupportedPlatformError();
+  }
+
+  set borderRight(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderRightColor {
+    unsupportedPlatformError();
+  }
+
+  set borderRightColor(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderRightRadius {
+    unsupportedPlatformError();
+  }
+
+  set borderRightRadius(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderRightStyle {
+    unsupportedPlatformError();
+  }
+
+  set borderRightStyle(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderRightWidth {
+    unsupportedPlatformError();
+  }
+
+  set borderRightWidth(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderSpacing {
+    unsupportedPlatformError();
+  }
+
+  set borderSpacing(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderStartEndRadius {
+    unsupportedPlatformError();
+  }
+
+  set borderStartEndRadius(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderStartStartRadius {
+    unsupportedPlatformError();
+  }
+
+  set borderStartStartRadius(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderStyle {
+    unsupportedPlatformError();
+  }
+
+  set borderStyle(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderTop {
+    unsupportedPlatformError();
+  }
+
+  set borderTop(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderTopColor {
+    unsupportedPlatformError();
+  }
+
+  set borderTopColor(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderTopLeftRadius {
+    unsupportedPlatformError();
+  }
+
+  set borderTopLeftRadius(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderTopRadius {
+    unsupportedPlatformError();
+  }
+
+  set borderTopRadius(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderTopRightRadius {
+    unsupportedPlatformError();
+  }
+
+  set borderTopRightRadius(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderTopStyle {
+    unsupportedPlatformError();
+  }
+
+  set borderTopStyle(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderTopWidth {
+    unsupportedPlatformError();
+  }
+
+  set borderTopWidth(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get borderWidth {
+    unsupportedPlatformError();
+  }
+
+  set borderWidth(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get bottom {
+    unsupportedPlatformError();
+  }
+
+  set bottom(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get boxDecorationBreak {
+    unsupportedPlatformError();
+  }
+
+  set boxDecorationBreak(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get boxShadow {
+    unsupportedPlatformError();
+  }
+
+  set boxShadow(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get boxShadowBlur {
+    unsupportedPlatformError();
+  }
+
+  set boxShadowBlur(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get boxShadowColor {
+    unsupportedPlatformError();
+  }
+
+  set boxShadowColor(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get boxShadowOffset {
+    unsupportedPlatformError();
+  }
+
+  set boxShadowOffset(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get boxShadowPosition {
+    unsupportedPlatformError();
+  }
+
+  set boxShadowPosition(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get boxShadowSpread {
+    unsupportedPlatformError();
+  }
+
+  set boxShadowSpread(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get boxSizing {
+    unsupportedPlatformError();
+  }
+
+  set boxSizing(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get boxSnap {
+    unsupportedPlatformError();
+  }
+
+  set boxSnap(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get breakAfter {
+    unsupportedPlatformError();
+  }
+
+  set breakAfter(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get breakBefore {
+    unsupportedPlatformError();
+  }
+
+  set breakBefore(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get breakInside {
+    unsupportedPlatformError();
+  }
+
+  set breakInside(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get captionSide {
+    unsupportedPlatformError();
+  }
+
+  set captionSide(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get caret {
+    unsupportedPlatformError();
+  }
+
+  set caret(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get caretAnimation {
+    unsupportedPlatformError();
+  }
+
+  set caretAnimation(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get caretColor {
+    unsupportedPlatformError();
+  }
+
+  set caretColor(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get caretShape {
+    unsupportedPlatformError();
+  }
+
+  set caretShape(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get clear {
+    unsupportedPlatformError();
+  }
+
+  set clear(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get clip {
+    unsupportedPlatformError();
+  }
+
+  set clip(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get clipPath {
+    unsupportedPlatformError();
+  }
+
+  set clipPath(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get clipRule {
+    unsupportedPlatformError();
+  }
+
+  set clipRule(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get color {
+    unsupportedPlatformError();
+  }
+
+  set color(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get colorAdjust {
+    unsupportedPlatformError();
+  }
+
+  set colorAdjust(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get colorInterpolation {
+    unsupportedPlatformError();
+  }
+
+  set colorInterpolation(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get colorInterpolationFilters {
+    unsupportedPlatformError();
+  }
+
+  set colorInterpolationFilters(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get colorScheme {
+    unsupportedPlatformError();
+  }
+
+  set colorScheme(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get columnCount {
+    unsupportedPlatformError();
+  }
+
+  set columnCount(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get columnFill {
+    unsupportedPlatformError();
+  }
+
+  set columnFill(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get columnGap {
+    unsupportedPlatformError();
+  }
+
+  set columnGap(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get columnRule {
+    unsupportedPlatformError();
+  }
+
+  set columnRule(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get columnRuleColor {
+    unsupportedPlatformError();
+  }
+
+  set columnRuleColor(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get columnRuleStyle {
+    unsupportedPlatformError();
+  }
+
+  set columnRuleStyle(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get columnRuleWidth {
+    unsupportedPlatformError();
+  }
+
+  set columnRuleWidth(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get columnSpan {
+    unsupportedPlatformError();
+  }
+
+  set columnSpan(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get columnWidth {
+    unsupportedPlatformError();
+  }
+
+  set columnWidth(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get columns {
+    unsupportedPlatformError();
+  }
+
+  set columns(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get contain {
+    unsupportedPlatformError();
+  }
+
+  set contain(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get containIntrinsicBlockSize {
+    unsupportedPlatformError();
+  }
+
+  set containIntrinsicBlockSize(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get containIntrinsicHeight {
+    unsupportedPlatformError();
+  }
+
+  set containIntrinsicHeight(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get containIntrinsicInlineSize {
+    unsupportedPlatformError();
+  }
+
+  set containIntrinsicInlineSize(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get containIntrinsicSize {
+    unsupportedPlatformError();
+  }
+
+  set containIntrinsicSize(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get containIntrinsicWidth {
+    unsupportedPlatformError();
+  }
+
+  set containIntrinsicWidth(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get container {
+    unsupportedPlatformError();
+  }
+
+  set container(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get containerName {
+    unsupportedPlatformError();
+  }
+
+  set containerName(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get containerType {
+    unsupportedPlatformError();
+  }
+
+  set containerType(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get content {
+    unsupportedPlatformError();
+  }
+
+  set content(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get contentVisibility {
+    unsupportedPlatformError();
+  }
+
+  set contentVisibility(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get continue_ {
+    unsupportedPlatformError();
+  }
+
+  set continue_(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get copyInto {
+    unsupportedPlatformError();
+  }
+
+  set copyInto(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get cornerShape {
+    unsupportedPlatformError();
+  }
+
+  set cornerShape(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get corners {
+    unsupportedPlatformError();
+  }
+
+  set corners(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get counterIncrement {
+    unsupportedPlatformError();
+  }
+
+  set counterIncrement(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get counterReset {
+    unsupportedPlatformError();
+  }
+
+  set counterReset(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get counterSet {
+    unsupportedPlatformError();
+  }
+
+  set counterSet(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get cue {
+    unsupportedPlatformError();
+  }
+
+  set cue(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get cueAfter {
+    unsupportedPlatformError();
+  }
+
+  set cueAfter(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get cueBefore {
+    unsupportedPlatformError();
+  }
+
+  set cueBefore(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get cursor {
+    unsupportedPlatformError();
+  }
+
+  set cursor(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get cx {
+    unsupportedPlatformError();
+  }
+
+  set cx(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get cy {
+    unsupportedPlatformError();
+  }
+
+  set cy(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get d {
+    unsupportedPlatformError();
+  }
+
+  set d(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get direction {
+    unsupportedPlatformError();
+  }
+
+  set direction(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get display {
+    unsupportedPlatformError();
+  }
+
+  set display(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get dominantBaseline {
+    unsupportedPlatformError();
+  }
+
+  set dominantBaseline(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get dynamicRangeLimit {
+    unsupportedPlatformError();
+  }
+
+  set dynamicRangeLimit(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get emptyCells {
+    unsupportedPlatformError();
+  }
+
+  set emptyCells(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get fieldSizing {
+    unsupportedPlatformError();
+  }
+
+  set fieldSizing(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get fill {
+    unsupportedPlatformError();
+  }
+
+  set fill(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get fillBreak {
+    unsupportedPlatformError();
+  }
+
+  set fillBreak(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get fillColor {
+    unsupportedPlatformError();
+  }
+
+  set fillColor(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get fillImage {
+    unsupportedPlatformError();
+  }
+
+  set fillImage(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get fillOpacity {
+    unsupportedPlatformError();
+  }
+
+  set fillOpacity(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get fillOrigin {
+    unsupportedPlatformError();
+  }
+
+  set fillOrigin(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get fillPosition {
+    unsupportedPlatformError();
+  }
+
+  set fillPosition(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get fillRepeat {
+    unsupportedPlatformError();
+  }
+
+  set fillRepeat(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get fillRule {
+    unsupportedPlatformError();
+  }
+
+  set fillRule(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get fillSize {
+    unsupportedPlatformError();
+  }
+
+  set fillSize(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get filter {
+    unsupportedPlatformError();
+  }
+
+  set filter(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get flex {
+    unsupportedPlatformError();
+  }
+
+  set flex(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get flexBasis {
+    unsupportedPlatformError();
+  }
+
+  set flexBasis(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get flexDirection {
+    unsupportedPlatformError();
+  }
+
+  set flexDirection(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get flexFlow {
+    unsupportedPlatformError();
+  }
+
+  set flexFlow(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get flexGrow {
+    unsupportedPlatformError();
+  }
+
+  set flexGrow(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get flexShrink {
+    unsupportedPlatformError();
+  }
+
+  set flexShrink(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get flexWrap {
+    unsupportedPlatformError();
+  }
+
+  set flexWrap(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get float {
+    unsupportedPlatformError();
+  }
+
+  set float(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get floatDefer {
+    unsupportedPlatformError();
+  }
+
+  set floatDefer(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get floatOffset {
+    unsupportedPlatformError();
+  }
+
+  set floatOffset(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get floatReference {
+    unsupportedPlatformError();
+  }
+
+  set floatReference(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get floodColor {
+    unsupportedPlatformError();
+  }
+
+  set floodColor(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get floodOpacity {
+    unsupportedPlatformError();
+  }
+
+  set floodOpacity(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get flowFrom {
+    unsupportedPlatformError();
+  }
+
+  set flowFrom(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get flowInto {
+    unsupportedPlatformError();
+  }
+
+  set flowInto(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get font {
+    unsupportedPlatformError();
+  }
+
+  set font(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get fontFamily {
+    unsupportedPlatformError();
+  }
+
+  set fontFamily(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get fontFeatureSettings {
+    unsupportedPlatformError();
+  }
+
+  set fontFeatureSettings(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get fontKerning {
+    unsupportedPlatformError();
+  }
+
+  set fontKerning(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get fontLanguageOverride {
+    unsupportedPlatformError();
+  }
+
+  set fontLanguageOverride(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get fontOpticalSizing {
+    unsupportedPlatformError();
+  }
+
+  set fontOpticalSizing(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get fontPalette {
+    unsupportedPlatformError();
+  }
+
+  set fontPalette(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get fontSize {
+    unsupportedPlatformError();
+  }
+
+  set fontSize(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get fontSizeAdjust {
+    unsupportedPlatformError();
+  }
+
+  set fontSizeAdjust(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get fontStretch {
+    unsupportedPlatformError();
+  }
+
+  set fontStretch(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get fontStyle {
+    unsupportedPlatformError();
+  }
+
+  set fontStyle(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get fontSynthesis {
+    unsupportedPlatformError();
+  }
+
+  set fontSynthesis(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get fontSynthesisPosition {
+    unsupportedPlatformError();
+  }
+
+  set fontSynthesisPosition(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get fontSynthesisSmallCaps {
+    unsupportedPlatformError();
+  }
+
+  set fontSynthesisSmallCaps(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get fontSynthesisStyle {
+    unsupportedPlatformError();
+  }
+
+  set fontSynthesisStyle(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get fontSynthesisWeight {
+    unsupportedPlatformError();
+  }
+
+  set fontSynthesisWeight(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get fontVariant {
+    unsupportedPlatformError();
+  }
+
+  set fontVariant(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get fontVariantAlternates {
+    unsupportedPlatformError();
+  }
+
+  set fontVariantAlternates(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get fontVariantCaps {
+    unsupportedPlatformError();
+  }
+
+  set fontVariantCaps(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get fontVariantEastAsian {
+    unsupportedPlatformError();
+  }
+
+  set fontVariantEastAsian(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get fontVariantEmoji {
+    unsupportedPlatformError();
+  }
+
+  set fontVariantEmoji(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get fontVariantLigatures {
+    unsupportedPlatformError();
+  }
+
+  set fontVariantLigatures(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get fontVariantNumeric {
+    unsupportedPlatformError();
+  }
+
+  set fontVariantNumeric(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get fontVariantPosition {
+    unsupportedPlatformError();
+  }
+
+  set fontVariantPosition(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get fontVariationSettings {
+    unsupportedPlatformError();
+  }
+
+  set fontVariationSettings(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get fontWeight {
+    unsupportedPlatformError();
+  }
+
+  set fontWeight(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get fontWidth {
+    unsupportedPlatformError();
+  }
+
+  set fontWidth(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get footnoteDisplay {
+    unsupportedPlatformError();
+  }
+
+  set footnoteDisplay(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get footnotePolicy {
+    unsupportedPlatformError();
+  }
+
+  set footnotePolicy(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get forcedColorAdjust {
+    unsupportedPlatformError();
+  }
+
+  set forcedColorAdjust(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get gap {
+    unsupportedPlatformError();
+  }
+
+  set gap(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get glyphOrientationVertical {
+    unsupportedPlatformError();
+  }
+
+  set glyphOrientationVertical(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get grid {
+    unsupportedPlatformError();
+  }
+
+  set grid(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get gridArea {
+    unsupportedPlatformError();
+  }
+
+  set gridArea(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get gridAutoColumns {
+    unsupportedPlatformError();
+  }
+
+  set gridAutoColumns(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get gridAutoFlow {
+    unsupportedPlatformError();
+  }
+
+  set gridAutoFlow(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get gridAutoRows {
+    unsupportedPlatformError();
+  }
+
+  set gridAutoRows(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get gridColumn {
+    unsupportedPlatformError();
+  }
+
+  set gridColumn(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get gridColumnEnd {
+    unsupportedPlatformError();
+  }
+
+  set gridColumnEnd(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get gridColumnGap {
+    unsupportedPlatformError();
+  }
+
+  set gridColumnGap(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get gridColumnStart {
+    unsupportedPlatformError();
+  }
+
+  set gridColumnStart(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get gridGap {
+    unsupportedPlatformError();
+  }
+
+  set gridGap(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get gridRow {
+    unsupportedPlatformError();
+  }
+
+  set gridRow(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get gridRowEnd {
+    unsupportedPlatformError();
+  }
+
+  set gridRowEnd(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get gridRowGap {
+    unsupportedPlatformError();
+  }
+
+  set gridRowGap(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get gridRowStart {
+    unsupportedPlatformError();
+  }
+
+  set gridRowStart(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get gridTemplate {
+    unsupportedPlatformError();
+  }
+
+  set gridTemplate(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get gridTemplateAreas {
+    unsupportedPlatformError();
+  }
+
+  set gridTemplateAreas(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get gridTemplateColumns {
+    unsupportedPlatformError();
+  }
+
+  set gridTemplateColumns(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get gridTemplateRows {
+    unsupportedPlatformError();
+  }
+
+  set gridTemplateRows(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get hangingPunctuation {
+    unsupportedPlatformError();
+  }
+
+  set hangingPunctuation(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get height {
+    unsupportedPlatformError();
+  }
+
+  set height(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get hyphenateCharacter {
+    unsupportedPlatformError();
+  }
+
+  set hyphenateCharacter(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get hyphenateLimitChars {
+    unsupportedPlatformError();
+  }
+
+  set hyphenateLimitChars(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get hyphenateLimitLast {
+    unsupportedPlatformError();
+  }
+
+  set hyphenateLimitLast(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get hyphenateLimitLines {
+    unsupportedPlatformError();
+  }
+
+  set hyphenateLimitLines(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get hyphenateLimitZone {
+    unsupportedPlatformError();
+  }
+
+  set hyphenateLimitZone(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get hyphens {
+    unsupportedPlatformError();
+  }
+
+  set hyphens(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get imageOrientation {
+    unsupportedPlatformError();
+  }
+
+  set imageOrientation(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get imageRendering {
+    unsupportedPlatformError();
+  }
+
+  set imageRendering(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get imageResolution {
+    unsupportedPlatformError();
+  }
+
+  set imageResolution(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get initialLetter {
+    unsupportedPlatformError();
+  }
+
+  set initialLetter(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get initialLetterAlign {
+    unsupportedPlatformError();
+  }
+
+  set initialLetterAlign(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get initialLetterWrap {
+    unsupportedPlatformError();
+  }
+
+  set initialLetterWrap(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get inlineSize {
+    unsupportedPlatformError();
+  }
+
+  set inlineSize(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get inlineSizing {
+    unsupportedPlatformError();
+  }
+
+  set inlineSizing(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get inputSecurity {
+    unsupportedPlatformError();
+  }
+
+  set inputSecurity(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get inset {
+    unsupportedPlatformError();
+  }
+
+  set inset(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get insetArea {
+    unsupportedPlatformError();
+  }
+
+  set insetArea(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get insetBlock {
+    unsupportedPlatformError();
+  }
+
+  set insetBlock(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get insetBlockEnd {
+    unsupportedPlatformError();
+  }
+
+  set insetBlockEnd(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get insetBlockStart {
+    unsupportedPlatformError();
+  }
+
+  set insetBlockStart(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get insetInline {
+    unsupportedPlatformError();
+  }
+
+  set insetInline(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get insetInlineEnd {
+    unsupportedPlatformError();
+  }
+
+  set insetInlineEnd(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get insetInlineStart {
+    unsupportedPlatformError();
+  }
+
+  set insetInlineStart(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get isolation {
+    unsupportedPlatformError();
+  }
+
+  set isolation(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get justifyContent {
+    unsupportedPlatformError();
+  }
+
+  set justifyContent(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get justifyItems {
+    unsupportedPlatformError();
+  }
+
+  set justifyItems(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get justifySelf {
+    unsupportedPlatformError();
+  }
+
+  set justifySelf(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get left {
+    unsupportedPlatformError();
+  }
+
+  set left(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get letterSpacing {
+    unsupportedPlatformError();
+  }
+
+  set letterSpacing(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get lightingColor {
+    unsupportedPlatformError();
+  }
+
+  set lightingColor(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get lineBreak {
+    unsupportedPlatformError();
+  }
+
+  set lineBreak(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get lineClamp {
+    unsupportedPlatformError();
+  }
+
+  set lineClamp(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get lineGrid {
+    unsupportedPlatformError();
+  }
+
+  set lineGrid(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get lineHeight {
+    unsupportedPlatformError();
+  }
+
+  set lineHeight(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get lineHeightStep {
+    unsupportedPlatformError();
+  }
+
+  set lineHeightStep(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get linePadding {
+    unsupportedPlatformError();
+  }
+
+  set linePadding(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get lineSnap {
+    unsupportedPlatformError();
+  }
+
+  set lineSnap(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get linkParameters {
+    unsupportedPlatformError();
+  }
+
+  set linkParameters(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get listStyle {
+    unsupportedPlatformError();
+  }
+
+  set listStyle(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get listStyleImage {
+    unsupportedPlatformError();
+  }
+
+  set listStyleImage(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get listStylePosition {
+    unsupportedPlatformError();
+  }
+
+  set listStylePosition(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get listStyleType {
+    unsupportedPlatformError();
+  }
+
+  set listStyleType(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get margin {
+    unsupportedPlatformError();
+  }
+
+  set margin(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get marginBlock {
+    unsupportedPlatformError();
+  }
+
+  set marginBlock(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get marginBlockEnd {
+    unsupportedPlatformError();
+  }
+
+  set marginBlockEnd(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get marginBlockStart {
+    unsupportedPlatformError();
+  }
+
+  set marginBlockStart(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get marginBottom {
+    unsupportedPlatformError();
+  }
+
+  set marginBottom(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get marginBreak {
+    unsupportedPlatformError();
+  }
+
+  set marginBreak(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get marginInline {
+    unsupportedPlatformError();
+  }
+
+  set marginInline(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get marginInlineEnd {
+    unsupportedPlatformError();
+  }
+
+  set marginInlineEnd(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get marginInlineStart {
+    unsupportedPlatformError();
+  }
+
+  set marginInlineStart(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get marginLeft {
+    unsupportedPlatformError();
+  }
+
+  set marginLeft(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get marginRight {
+    unsupportedPlatformError();
+  }
+
+  set marginRight(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get marginTop {
+    unsupportedPlatformError();
+  }
+
+  set marginTop(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get marginTrim {
+    unsupportedPlatformError();
+  }
+
+  set marginTrim(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get marker {
+    unsupportedPlatformError();
+  }
+
+  set marker(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get markerEnd {
+    unsupportedPlatformError();
+  }
+
+  set markerEnd(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get markerMid {
+    unsupportedPlatformError();
+  }
+
+  set markerMid(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get markerSide {
+    unsupportedPlatformError();
+  }
+
+  set markerSide(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get markerStart {
+    unsupportedPlatformError();
+  }
+
+  set markerStart(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get mask {
+    unsupportedPlatformError();
+  }
+
+  set mask(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get maskBorder {
+    unsupportedPlatformError();
+  }
+
+  set maskBorder(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get maskBorderMode {
+    unsupportedPlatformError();
+  }
+
+  set maskBorderMode(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get maskBorderOutset {
+    unsupportedPlatformError();
+  }
+
+  set maskBorderOutset(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get maskBorderRepeat {
+    unsupportedPlatformError();
+  }
+
+  set maskBorderRepeat(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get maskBorderSlice {
+    unsupportedPlatformError();
+  }
+
+  set maskBorderSlice(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get maskBorderSource {
+    unsupportedPlatformError();
+  }
+
+  set maskBorderSource(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get maskBorderWidth {
+    unsupportedPlatformError();
+  }
+
+  set maskBorderWidth(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get maskClip {
+    unsupportedPlatformError();
+  }
+
+  set maskClip(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get maskComposite {
+    unsupportedPlatformError();
+  }
+
+  set maskComposite(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get maskImage {
+    unsupportedPlatformError();
+  }
+
+  set maskImage(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get maskMode {
+    unsupportedPlatformError();
+  }
+
+  set maskMode(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get maskOrigin {
+    unsupportedPlatformError();
+  }
+
+  set maskOrigin(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get maskPosition {
+    unsupportedPlatformError();
+  }
+
+  set maskPosition(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get maskRepeat {
+    unsupportedPlatformError();
+  }
+
+  set maskRepeat(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get maskSize {
+    unsupportedPlatformError();
+  }
+
+  set maskSize(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get maskType {
+    unsupportedPlatformError();
+  }
+
+  set maskType(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get masonryAutoFlow {
+    unsupportedPlatformError();
+  }
+
+  set masonryAutoFlow(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get mathDepth {
+    unsupportedPlatformError();
+  }
+
+  set mathDepth(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get mathShift {
+    unsupportedPlatformError();
+  }
+
+  set mathShift(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get mathStyle {
+    unsupportedPlatformError();
+  }
+
+  set mathStyle(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get maxBlockSize {
+    unsupportedPlatformError();
+  }
+
+  set maxBlockSize(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get maxHeight {
+    unsupportedPlatformError();
+  }
+
+  set maxHeight(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get maxInlineSize {
+    unsupportedPlatformError();
+  }
+
+  set maxInlineSize(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get maxLines {
+    unsupportedPlatformError();
+  }
+
+  set maxLines(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get maxWidth {
+    unsupportedPlatformError();
+  }
+
+  set maxWidth(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get minBlockSize {
+    unsupportedPlatformError();
+  }
+
+  set minBlockSize(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get minHeight {
+    unsupportedPlatformError();
+  }
+
+  set minHeight(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get minInlineSize {
+    unsupportedPlatformError();
+  }
+
+  set minInlineSize(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get minIntrinsicSizing {
+    unsupportedPlatformError();
+  }
+
+  set minIntrinsicSizing(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get minWidth {
+    unsupportedPlatformError();
+  }
+
+  set minWidth(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get mixBlendMode {
+    unsupportedPlatformError();
+  }
+
+  set mixBlendMode(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get navDown {
+    unsupportedPlatformError();
+  }
+
+  set navDown(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get navLeft {
+    unsupportedPlatformError();
+  }
+
+  set navLeft(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get navRight {
+    unsupportedPlatformError();
+  }
+
+  set navRight(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get navUp {
+    unsupportedPlatformError();
+  }
+
+  set navUp(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get objectFit {
+    unsupportedPlatformError();
+  }
+
+  set objectFit(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get objectPosition {
+    unsupportedPlatformError();
+  }
+
+  set objectPosition(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get objectViewBox {
+    unsupportedPlatformError();
+  }
+
+  set objectViewBox(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get offset {
+    unsupportedPlatformError();
+  }
+
+  set offset(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get offsetAnchor {
+    unsupportedPlatformError();
+  }
+
+  set offsetAnchor(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get offsetDistance {
+    unsupportedPlatformError();
+  }
+
+  set offsetDistance(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get offsetPath {
+    unsupportedPlatformError();
+  }
+
+  set offsetPath(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get offsetPosition {
+    unsupportedPlatformError();
+  }
+
+  set offsetPosition(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get offsetRotate {
+    unsupportedPlatformError();
+  }
+
+  set offsetRotate(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get opacity {
+    unsupportedPlatformError();
+  }
+
+  set opacity(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get order {
+    unsupportedPlatformError();
+  }
+
+  set order(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get orphans {
+    unsupportedPlatformError();
+  }
+
+  set orphans(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get outline {
+    unsupportedPlatformError();
+  }
+
+  set outline(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get outlineColor {
+    unsupportedPlatformError();
+  }
+
+  set outlineColor(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get outlineOffset {
+    unsupportedPlatformError();
+  }
+
+  set outlineOffset(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get outlineStyle {
+    unsupportedPlatformError();
+  }
+
+  set outlineStyle(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get outlineWidth {
+    unsupportedPlatformError();
+  }
+
+  set outlineWidth(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get overflow {
+    unsupportedPlatformError();
+  }
+
+  set overflow(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get overflowAnchor {
+    unsupportedPlatformError();
+  }
+
+  set overflowAnchor(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get overflowBlock {
+    unsupportedPlatformError();
+  }
+
+  set overflowBlock(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get overflowClipMargin {
+    unsupportedPlatformError();
+  }
+
+  set overflowClipMargin(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get overflowClipMarginBlock {
+    unsupportedPlatformError();
+  }
+
+  set overflowClipMarginBlock(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get overflowClipMarginBlockEnd {
+    unsupportedPlatformError();
+  }
+
+  set overflowClipMarginBlockEnd(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get overflowClipMarginBlockStart {
+    unsupportedPlatformError();
+  }
+
+  set overflowClipMarginBlockStart(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get overflowClipMarginBottom {
+    unsupportedPlatformError();
+  }
+
+  set overflowClipMarginBottom(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get overflowClipMarginInline {
+    unsupportedPlatformError();
+  }
+
+  set overflowClipMarginInline(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get overflowClipMarginInlineEnd {
+    unsupportedPlatformError();
+  }
+
+  set overflowClipMarginInlineEnd(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get overflowClipMarginInlineStart {
+    unsupportedPlatformError();
+  }
+
+  set overflowClipMarginInlineStart(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get overflowClipMarginLeft {
+    unsupportedPlatformError();
+  }
+
+  set overflowClipMarginLeft(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get overflowClipMarginRight {
+    unsupportedPlatformError();
+  }
+
+  set overflowClipMarginRight(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get overflowClipMarginTop {
+    unsupportedPlatformError();
+  }
+
+  set overflowClipMarginTop(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get overflowInline {
+    unsupportedPlatformError();
+  }
+
+  set overflowInline(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get overflowWrap {
+    unsupportedPlatformError();
+  }
+
+  set overflowWrap(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get overflowX {
+    unsupportedPlatformError();
+  }
+
+  set overflowX(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get overflowY {
+    unsupportedPlatformError();
+  }
+
+  set overflowY(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get overlay {
+    unsupportedPlatformError();
+  }
+
+  set overlay(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get overscrollBehavior {
+    unsupportedPlatformError();
+  }
+
+  set overscrollBehavior(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get overscrollBehaviorBlock {
+    unsupportedPlatformError();
+  }
+
+  set overscrollBehaviorBlock(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get overscrollBehaviorInline {
+    unsupportedPlatformError();
+  }
+
+  set overscrollBehaviorInline(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get overscrollBehaviorX {
+    unsupportedPlatformError();
+  }
+
+  set overscrollBehaviorX(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get overscrollBehaviorY {
+    unsupportedPlatformError();
+  }
+
+  set overscrollBehaviorY(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get padding {
+    unsupportedPlatformError();
+  }
+
+  set padding(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get paddingBlock {
+    unsupportedPlatformError();
+  }
+
+  set paddingBlock(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get paddingBlockEnd {
+    unsupportedPlatformError();
+  }
+
+  set paddingBlockEnd(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get paddingBlockStart {
+    unsupportedPlatformError();
+  }
+
+  set paddingBlockStart(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get paddingBottom {
+    unsupportedPlatformError();
+  }
+
+  set paddingBottom(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get paddingInline {
+    unsupportedPlatformError();
+  }
+
+  set paddingInline(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get paddingInlineEnd {
+    unsupportedPlatformError();
+  }
+
+  set paddingInlineEnd(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get paddingInlineStart {
+    unsupportedPlatformError();
+  }
+
+  set paddingInlineStart(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get paddingLeft {
+    unsupportedPlatformError();
+  }
+
+  set paddingLeft(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get paddingRight {
+    unsupportedPlatformError();
+  }
+
+  set paddingRight(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get paddingTop {
+    unsupportedPlatformError();
+  }
+
+  set paddingTop(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get page {
+    unsupportedPlatformError();
+  }
+
+  set page(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get pageBreakAfter {
+    unsupportedPlatformError();
+  }
+
+  set pageBreakAfter(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get pageBreakBefore {
+    unsupportedPlatformError();
+  }
+
+  set pageBreakBefore(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get pageBreakInside {
+    unsupportedPlatformError();
+  }
+
+  set pageBreakInside(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get paintOrder {
+    unsupportedPlatformError();
+  }
+
+  set paintOrder(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get pause {
+    unsupportedPlatformError();
+  }
+
+  set pause(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get pauseAfter {
+    unsupportedPlatformError();
+  }
+
+  set pauseAfter(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get pauseBefore {
+    unsupportedPlatformError();
+  }
+
+  set pauseBefore(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get perspective {
+    unsupportedPlatformError();
+  }
+
+  set perspective(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get perspectiveOrigin {
+    unsupportedPlatformError();
+  }
+
+  set perspectiveOrigin(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get placeContent {
+    unsupportedPlatformError();
+  }
+
+  set placeContent(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get placeItems {
+    unsupportedPlatformError();
+  }
+
+  set placeItems(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get placeSelf {
+    unsupportedPlatformError();
+  }
+
+  set placeSelf(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get pointerEvents {
+    unsupportedPlatformError();
+  }
+
+  set pointerEvents(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get position {
+    unsupportedPlatformError();
+  }
+
+  set position(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get positionAnchor {
+    unsupportedPlatformError();
+  }
+
+  set positionAnchor(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get positionTry {
+    unsupportedPlatformError();
+  }
+
+  set positionTry(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get positionTryOptions {
+    unsupportedPlatformError();
+  }
+
+  set positionTryOptions(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get positionTryOrder {
+    unsupportedPlatformError();
+  }
+
+  set positionTryOrder(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get positionVisibility {
+    unsupportedPlatformError();
+  }
+
+  set positionVisibility(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get printColorAdjust {
+    unsupportedPlatformError();
+  }
+
+  set printColorAdjust(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get quotes {
+    unsupportedPlatformError();
+  }
+
+  set quotes(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get r {
+    unsupportedPlatformError();
+  }
+
+  set r(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get readingFlow {
+    unsupportedPlatformError();
+  }
+
+  set readingFlow(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get regionFragment {
+    unsupportedPlatformError();
+  }
+
+  set regionFragment(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get resize {
+    unsupportedPlatformError();
+  }
+
+  set resize(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get rest {
+    unsupportedPlatformError();
+  }
+
+  set rest(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get restAfter {
+    unsupportedPlatformError();
+  }
+
+  set restAfter(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get restBefore {
+    unsupportedPlatformError();
+  }
+
+  set restBefore(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get right {
+    unsupportedPlatformError();
+  }
+
+  set right(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get rotate {
+    unsupportedPlatformError();
+  }
+
+  set rotate(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get rowGap {
+    unsupportedPlatformError();
+  }
+
+  set rowGap(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get rubyAlign {
+    unsupportedPlatformError();
+  }
+
+  set rubyAlign(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get rubyMerge {
+    unsupportedPlatformError();
+  }
+
+  set rubyMerge(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get rubyOverhang {
+    unsupportedPlatformError();
+  }
+
+  set rubyOverhang(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get rubyPosition {
+    unsupportedPlatformError();
+  }
+
+  set rubyPosition(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get rx {
+    unsupportedPlatformError();
+  }
+
+  set rx(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get ry {
+    unsupportedPlatformError();
+  }
+
+  set ry(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get scale {
+    unsupportedPlatformError();
+  }
+
+  set scale(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get scrollBehavior {
+    unsupportedPlatformError();
+  }
+
+  set scrollBehavior(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get scrollMargin {
+    unsupportedPlatformError();
+  }
+
+  set scrollMargin(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get scrollMarginBlock {
+    unsupportedPlatformError();
+  }
+
+  set scrollMarginBlock(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get scrollMarginBlockEnd {
+    unsupportedPlatformError();
+  }
+
+  set scrollMarginBlockEnd(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get scrollMarginBlockStart {
+    unsupportedPlatformError();
+  }
+
+  set scrollMarginBlockStart(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get scrollMarginBottom {
+    unsupportedPlatformError();
+  }
+
+  set scrollMarginBottom(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get scrollMarginInline {
+    unsupportedPlatformError();
+  }
+
+  set scrollMarginInline(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get scrollMarginInlineEnd {
+    unsupportedPlatformError();
+  }
+
+  set scrollMarginInlineEnd(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get scrollMarginInlineStart {
+    unsupportedPlatformError();
+  }
+
+  set scrollMarginInlineStart(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get scrollMarginLeft {
+    unsupportedPlatformError();
+  }
+
+  set scrollMarginLeft(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get scrollMarginRight {
+    unsupportedPlatformError();
+  }
+
+  set scrollMarginRight(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get scrollMarginTop {
+    unsupportedPlatformError();
+  }
+
+  set scrollMarginTop(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get scrollPadding {
+    unsupportedPlatformError();
+  }
+
+  set scrollPadding(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get scrollPaddingBlock {
+    unsupportedPlatformError();
+  }
+
+  set scrollPaddingBlock(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get scrollPaddingBlockEnd {
+    unsupportedPlatformError();
+  }
+
+  set scrollPaddingBlockEnd(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get scrollPaddingBlockStart {
+    unsupportedPlatformError();
+  }
+
+  set scrollPaddingBlockStart(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get scrollPaddingBottom {
+    unsupportedPlatformError();
+  }
+
+  set scrollPaddingBottom(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get scrollPaddingInline {
+    unsupportedPlatformError();
+  }
+
+  set scrollPaddingInline(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get scrollPaddingInlineEnd {
+    unsupportedPlatformError();
+  }
+
+  set scrollPaddingInlineEnd(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get scrollPaddingInlineStart {
+    unsupportedPlatformError();
+  }
+
+  set scrollPaddingInlineStart(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get scrollPaddingLeft {
+    unsupportedPlatformError();
+  }
+
+  set scrollPaddingLeft(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get scrollPaddingRight {
+    unsupportedPlatformError();
+  }
+
+  set scrollPaddingRight(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get scrollPaddingTop {
+    unsupportedPlatformError();
+  }
+
+  set scrollPaddingTop(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get scrollSnapAlign {
+    unsupportedPlatformError();
+  }
+
+  set scrollSnapAlign(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get scrollSnapStop {
+    unsupportedPlatformError();
+  }
+
+  set scrollSnapStop(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get scrollSnapType {
+    unsupportedPlatformError();
+  }
+
+  set scrollSnapType(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get scrollStart {
+    unsupportedPlatformError();
+  }
+
+  set scrollStart(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get scrollStartBlock {
+    unsupportedPlatformError();
+  }
+
+  set scrollStartBlock(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get scrollStartInline {
+    unsupportedPlatformError();
+  }
+
+  set scrollStartInline(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get scrollStartTarget {
+    unsupportedPlatformError();
+  }
+
+  set scrollStartTarget(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get scrollStartTargetBlock {
+    unsupportedPlatformError();
+  }
+
+  set scrollStartTargetBlock(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get scrollStartTargetInline {
+    unsupportedPlatformError();
+  }
+
+  set scrollStartTargetInline(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get scrollStartTargetX {
+    unsupportedPlatformError();
+  }
+
+  set scrollStartTargetX(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get scrollStartTargetY {
+    unsupportedPlatformError();
+  }
+
+  set scrollStartTargetY(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get scrollStartX {
+    unsupportedPlatformError();
+  }
+
+  set scrollStartX(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get scrollStartY {
+    unsupportedPlatformError();
+  }
+
+  set scrollStartY(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get scrollTimeline {
+    unsupportedPlatformError();
+  }
+
+  set scrollTimeline(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get scrollTimelineAxis {
+    unsupportedPlatformError();
+  }
+
+  set scrollTimelineAxis(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get scrollTimelineName {
+    unsupportedPlatformError();
+  }
+
+  set scrollTimelineName(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get scrollbarColor {
+    unsupportedPlatformError();
+  }
+
+  set scrollbarColor(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get scrollbarGutter {
+    unsupportedPlatformError();
+  }
+
+  set scrollbarGutter(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get scrollbarWidth {
+    unsupportedPlatformError();
+  }
+
+  set scrollbarWidth(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get shapeImageThreshold {
+    unsupportedPlatformError();
+  }
+
+  set shapeImageThreshold(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get shapeInside {
+    unsupportedPlatformError();
+  }
+
+  set shapeInside(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get shapeMargin {
+    unsupportedPlatformError();
+  }
+
+  set shapeMargin(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get shapeOutside {
+    unsupportedPlatformError();
+  }
+
+  set shapeOutside(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get shapePadding {
+    unsupportedPlatformError();
+  }
+
+  set shapePadding(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get shapeRendering {
+    unsupportedPlatformError();
+  }
+
+  set shapeRendering(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get shapeSubtract {
+    unsupportedPlatformError();
+  }
+
+  set shapeSubtract(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get spatialNavigationAction {
+    unsupportedPlatformError();
+  }
+
+  set spatialNavigationAction(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get spatialNavigationContain {
+    unsupportedPlatformError();
+  }
+
+  set spatialNavigationContain(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get spatialNavigationFunction {
+    unsupportedPlatformError();
+  }
+
+  set spatialNavigationFunction(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get speak {
+    unsupportedPlatformError();
+  }
+
+  set speak(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get speakAs {
+    unsupportedPlatformError();
+  }
+
+  set speakAs(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get stopColor {
+    unsupportedPlatformError();
+  }
+
+  set stopColor(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get stopOpacity {
+    unsupportedPlatformError();
+  }
+
+  set stopOpacity(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get stringSet {
+    unsupportedPlatformError();
+  }
+
+  set stringSet(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get stroke {
+    unsupportedPlatformError();
+  }
+
+  set stroke(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get strokeAlign {
+    unsupportedPlatformError();
+  }
+
+  set strokeAlign(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get strokeAlignment {
+    unsupportedPlatformError();
+  }
+
+  set strokeAlignment(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get strokeBreak {
+    unsupportedPlatformError();
+  }
+
+  set strokeBreak(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get strokeColor {
+    unsupportedPlatformError();
+  }
+
+  set strokeColor(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get strokeDashCorner {
+    unsupportedPlatformError();
+  }
+
+  set strokeDashCorner(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get strokeDashJustify {
+    unsupportedPlatformError();
+  }
+
+  set strokeDashJustify(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get strokeDashadjust {
+    unsupportedPlatformError();
+  }
+
+  set strokeDashadjust(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get strokeDasharray {
+    unsupportedPlatformError();
+  }
+
+  set strokeDasharray(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get strokeDashcorner {
+    unsupportedPlatformError();
+  }
+
+  set strokeDashcorner(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get strokeDashoffset {
+    unsupportedPlatformError();
+  }
+
+  set strokeDashoffset(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get strokeImage {
+    unsupportedPlatformError();
+  }
+
+  set strokeImage(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get strokeLinecap {
+    unsupportedPlatformError();
+  }
+
+  set strokeLinecap(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get strokeLinejoin {
+    unsupportedPlatformError();
+  }
+
+  set strokeLinejoin(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get strokeMiterlimit {
+    unsupportedPlatformError();
+  }
+
+  set strokeMiterlimit(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get strokeOpacity {
+    unsupportedPlatformError();
+  }
+
+  set strokeOpacity(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get strokeOrigin {
+    unsupportedPlatformError();
+  }
+
+  set strokeOrigin(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get strokePosition {
+    unsupportedPlatformError();
+  }
+
+  set strokePosition(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get strokeRepeat {
+    unsupportedPlatformError();
+  }
+
+  set strokeRepeat(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get strokeSize {
+    unsupportedPlatformError();
+  }
+
+  set strokeSize(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get strokeWidth {
+    unsupportedPlatformError();
+  }
+
+  set strokeWidth(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get tabSize {
+    unsupportedPlatformError();
+  }
+
+  set tabSize(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get tableLayout {
+    unsupportedPlatformError();
+  }
+
+  set tableLayout(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get textAlign {
+    unsupportedPlatformError();
+  }
+
+  set textAlign(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get textAlignAll {
+    unsupportedPlatformError();
+  }
+
+  set textAlignAll(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get textAlignLast {
+    unsupportedPlatformError();
+  }
+
+  set textAlignLast(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get textAnchor {
+    unsupportedPlatformError();
+  }
+
+  set textAnchor(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get textAutospace {
+    unsupportedPlatformError();
+  }
+
+  set textAutospace(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get textBoxEdge {
+    unsupportedPlatformError();
+  }
+
+  set textBoxEdge(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get textBoxTrim {
+    unsupportedPlatformError();
+  }
+
+  set textBoxTrim(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get textCombineUpright {
+    unsupportedPlatformError();
+  }
+
+  set textCombineUpright(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get textDecoration {
+    unsupportedPlatformError();
+  }
+
+  set textDecoration(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get textDecorationColor {
+    unsupportedPlatformError();
+  }
+
+  set textDecorationColor(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get textDecorationLine {
+    unsupportedPlatformError();
+  }
+
+  set textDecorationLine(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get textDecorationSkip {
+    unsupportedPlatformError();
+  }
+
+  set textDecorationSkip(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get textDecorationSkipBox {
+    unsupportedPlatformError();
+  }
+
+  set textDecorationSkipBox(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get textDecorationSkipInk {
+    unsupportedPlatformError();
+  }
+
+  set textDecorationSkipInk(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get textDecorationSkipSelf {
+    unsupportedPlatformError();
+  }
+
+  set textDecorationSkipSelf(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get textDecorationSkipSpaces {
+    unsupportedPlatformError();
+  }
+
+  set textDecorationSkipSpaces(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get textDecorationStyle {
+    unsupportedPlatformError();
+  }
+
+  set textDecorationStyle(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get textDecorationThickness {
+    unsupportedPlatformError();
+  }
+
+  set textDecorationThickness(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get textDecorationTrim {
+    unsupportedPlatformError();
+  }
+
+  set textDecorationTrim(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get textEmphasis {
+    unsupportedPlatformError();
+  }
+
+  set textEmphasis(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get textEmphasisColor {
+    unsupportedPlatformError();
+  }
+
+  set textEmphasisColor(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get textEmphasisPosition {
+    unsupportedPlatformError();
+  }
+
+  set textEmphasisPosition(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get textEmphasisSkip {
+    unsupportedPlatformError();
+  }
+
+  set textEmphasisSkip(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get textEmphasisStyle {
+    unsupportedPlatformError();
+  }
+
+  set textEmphasisStyle(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get textGroupAlign {
+    unsupportedPlatformError();
+  }
+
+  set textGroupAlign(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get textIndent {
+    unsupportedPlatformError();
+  }
+
+  set textIndent(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get textJustify {
+    unsupportedPlatformError();
+  }
+
+  set textJustify(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get textOrientation {
+    unsupportedPlatformError();
+  }
+
+  set textOrientation(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get textOverflow {
+    unsupportedPlatformError();
+  }
+
+  set textOverflow(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get textRendering {
+    unsupportedPlatformError();
+  }
+
+  set textRendering(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get textShadow {
+    unsupportedPlatformError();
+  }
+
+  set textShadow(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get textSizeAdjust {
+    unsupportedPlatformError();
+  }
+
+  set textSizeAdjust(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get textSpacing {
+    unsupportedPlatformError();
+  }
+
+  set textSpacing(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get textSpacingTrim {
+    unsupportedPlatformError();
+  }
+
+  set textSpacingTrim(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get textTransform {
+    unsupportedPlatformError();
+  }
+
+  set textTransform(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get textUnderlineOffset {
+    unsupportedPlatformError();
+  }
+
+  set textUnderlineOffset(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get textUnderlinePosition {
+    unsupportedPlatformError();
+  }
+
+  set textUnderlinePosition(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get textWrap {
+    unsupportedPlatformError();
+  }
+
+  set textWrap(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get textWrapMode {
+    unsupportedPlatformError();
+  }
+
+  set textWrapMode(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get textWrapStyle {
+    unsupportedPlatformError();
+  }
+
+  set textWrapStyle(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get timelineScope {
+    unsupportedPlatformError();
+  }
+
+  set timelineScope(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get top {
+    unsupportedPlatformError();
+  }
+
+  set top(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get touchAction {
+    unsupportedPlatformError();
+  }
+
+  set touchAction(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get transform {
+    unsupportedPlatformError();
+  }
+
+  set transform(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get transformBox {
+    unsupportedPlatformError();
+  }
+
+  set transformBox(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get transformOrigin {
+    unsupportedPlatformError();
+  }
+
+  set transformOrigin(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get transformStyle {
+    unsupportedPlatformError();
+  }
+
+  set transformStyle(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get transition {
+    unsupportedPlatformError();
+  }
+
+  set transition(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get transitionBehavior {
+    unsupportedPlatformError();
+  }
+
+  set transitionBehavior(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get transitionDelay {
+    unsupportedPlatformError();
+  }
+
+  set transitionDelay(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get transitionDuration {
+    unsupportedPlatformError();
+  }
+
+  set transitionDuration(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get transitionProperty {
+    unsupportedPlatformError();
+  }
+
+  set transitionProperty(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get transitionTimingFunction {
+    unsupportedPlatformError();
+  }
+
+  set transitionTimingFunction(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get translate {
+    unsupportedPlatformError();
+  }
+
+  set translate(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get unicodeBidi {
+    unsupportedPlatformError();
+  }
+
+  set unicodeBidi(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get userSelect {
+    unsupportedPlatformError();
+  }
+
+  set userSelect(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get vectorEffect {
+    unsupportedPlatformError();
+  }
+
+  set vectorEffect(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get verticalAlign {
+    unsupportedPlatformError();
+  }
+
+  set verticalAlign(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get viewTimeline {
+    unsupportedPlatformError();
+  }
+
+  set viewTimeline(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get viewTimelineAxis {
+    unsupportedPlatformError();
+  }
+
+  set viewTimelineAxis(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get viewTimelineInset {
+    unsupportedPlatformError();
+  }
+
+  set viewTimelineInset(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get viewTimelineName {
+    unsupportedPlatformError();
+  }
+
+  set viewTimelineName(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get viewTransitionClass {
+    unsupportedPlatformError();
+  }
+
+  set viewTransitionClass(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get viewTransitionName {
+    unsupportedPlatformError();
+  }
+
+  set viewTransitionName(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get visibility {
+    unsupportedPlatformError();
+  }
+
+  set visibility(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get voiceBalance {
+    unsupportedPlatformError();
+  }
+
+  set voiceBalance(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get voiceDuration {
+    unsupportedPlatformError();
+  }
+
+  set voiceDuration(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get voiceFamily {
+    unsupportedPlatformError();
+  }
+
+  set voiceFamily(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get voicePitch {
+    unsupportedPlatformError();
+  }
+
+  set voicePitch(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get voiceRange {
+    unsupportedPlatformError();
+  }
+
+  set voiceRange(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get voiceRate {
+    unsupportedPlatformError();
+  }
+
+  set voiceRate(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get voiceStress {
+    unsupportedPlatformError();
+  }
+
+  set voiceStress(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get voiceVolume {
+    unsupportedPlatformError();
+  }
+
+  set voiceVolume(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get whiteSpace {
+    unsupportedPlatformError();
+  }
+
+  set whiteSpace(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get whiteSpaceCollapse {
+    unsupportedPlatformError();
+  }
+
+  set whiteSpaceCollapse(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get whiteSpaceTrim {
+    unsupportedPlatformError();
+  }
+
+  set whiteSpaceTrim(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get widows {
+    unsupportedPlatformError();
+  }
+
+  set widows(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get width {
+    unsupportedPlatformError();
+  }
+
+  set width(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get willChange {
+    unsupportedPlatformError();
+  }
+
+  set willChange(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get wordBreak {
+    unsupportedPlatformError();
+  }
+
+  set wordBreak(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get wordSpaceTransform {
+    unsupportedPlatformError();
+  }
+
+  set wordSpaceTransform(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get wordSpacing {
+    unsupportedPlatformError();
+  }
+
+  set wordSpacing(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get wordWrap {
+    unsupportedPlatformError();
+  }
+
+  set wordWrap(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get wrapAfter {
+    unsupportedPlatformError();
+  }
+
+  set wrapAfter(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get wrapBefore {
+    unsupportedPlatformError();
+  }
+
+  set wrapBefore(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get wrapFlow {
+    unsupportedPlatformError();
+  }
+
+  set wrapFlow(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get wrapInside {
+    unsupportedPlatformError();
+  }
+
+  set wrapInside(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get wrapThrough {
+    unsupportedPlatformError();
+  }
+
+  set wrapThrough(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get writingMode {
+    unsupportedPlatformError();
+  }
+
+  set writingMode(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get x {
+    unsupportedPlatformError();
+  }
+
+  set x(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get y {
+    unsupportedPlatformError();
+  }
+
+  set y(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get zIndex {
+    unsupportedPlatformError();
+  }
+
+  set zIndex(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get zoom {
+    unsupportedPlatformError();
+  }
+
+  set zoom(String value) {
+    unsupportedPlatformError();
+  }
 }
-@JS()
-external $CSS get CSS;
+
+$CSS get CSS {
+  unsupportedPlatformError();
+}
 
 /// The **`CSS`** interface holds useful CSS-related methods. No objects with
 /// this interface are implemented: it contains only static methods and is
@@ -1928,77 +5744,75 @@ external $CSS get CSS;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSS).
-@JS('CSS')
-extension type $CSS._(JSObject _) implements JSObject {
-  external String escape(String ident);
-  external bool supports(
+abstract class $CSS implements JSObject {
+  String escape(String ident);
+  bool supports(
     String conditionTextOrProperty, [
     String value,
   ]);
-  external void registerProperty(PropertyDefinition definition);
-  external CSSUnitValue number(num value);
-  external CSSUnitValue percent(num value);
-  external CSSUnitValue cap(num value);
-  external CSSUnitValue ch(num value);
-  external CSSUnitValue em(num value);
-  external CSSUnitValue ex(num value);
-  external CSSUnitValue ic(num value);
-  external CSSUnitValue lh(num value);
-  external CSSUnitValue rcap(num value);
-  external CSSUnitValue rch(num value);
-  external CSSUnitValue rem(num value);
-  external CSSUnitValue rex(num value);
-  external CSSUnitValue ric(num value);
-  external CSSUnitValue rlh(num value);
-  external CSSUnitValue vw(num value);
-  external CSSUnitValue vh(num value);
-  external CSSUnitValue vi(num value);
-  external CSSUnitValue vb(num value);
-  external CSSUnitValue vmin(num value);
-  external CSSUnitValue vmax(num value);
-  external CSSUnitValue svw(num value);
-  external CSSUnitValue svh(num value);
-  external CSSUnitValue svi(num value);
-  external CSSUnitValue svb(num value);
-  external CSSUnitValue svmin(num value);
-  external CSSUnitValue svmax(num value);
-  external CSSUnitValue lvw(num value);
-  external CSSUnitValue lvh(num value);
-  external CSSUnitValue lvi(num value);
-  external CSSUnitValue lvb(num value);
-  external CSSUnitValue lvmin(num value);
-  external CSSUnitValue lvmax(num value);
-  external CSSUnitValue dvw(num value);
-  external CSSUnitValue dvh(num value);
-  external CSSUnitValue dvi(num value);
-  external CSSUnitValue dvb(num value);
-  external CSSUnitValue dvmin(num value);
-  external CSSUnitValue dvmax(num value);
-  external CSSUnitValue cqw(num value);
-  external CSSUnitValue cqh(num value);
-  external CSSUnitValue cqi(num value);
-  external CSSUnitValue cqb(num value);
-  external CSSUnitValue cqmin(num value);
-  external CSSUnitValue cqmax(num value);
-  external CSSUnitValue cm(num value);
-  external CSSUnitValue mm(num value);
-  external CSSUnitValue Q(num value);
-  @JS('in')
-  external CSSUnitValue in_(num value);
-  external CSSUnitValue pt(num value);
-  external CSSUnitValue pc(num value);
-  external CSSUnitValue px(num value);
-  external CSSUnitValue deg(num value);
-  external CSSUnitValue grad(num value);
-  external CSSUnitValue rad(num value);
-  external CSSUnitValue turn(num value);
-  external CSSUnitValue s(num value);
-  external CSSUnitValue ms(num value);
-  external CSSUnitValue Hz(num value);
-  external CSSUnitValue kHz(num value);
-  external CSSUnitValue dpi(num value);
-  external CSSUnitValue dpcm(num value);
-  external CSSUnitValue dppx(num value);
-  external CSSUnitValue fr(num value);
-  external HighlightRegistry get highlights;
+  void registerProperty(PropertyDefinition definition);
+  CSSUnitValue number(num value);
+  CSSUnitValue percent(num value);
+  CSSUnitValue cap(num value);
+  CSSUnitValue ch(num value);
+  CSSUnitValue em(num value);
+  CSSUnitValue ex(num value);
+  CSSUnitValue ic(num value);
+  CSSUnitValue lh(num value);
+  CSSUnitValue rcap(num value);
+  CSSUnitValue rch(num value);
+  CSSUnitValue rem(num value);
+  CSSUnitValue rex(num value);
+  CSSUnitValue ric(num value);
+  CSSUnitValue rlh(num value);
+  CSSUnitValue vw(num value);
+  CSSUnitValue vh(num value);
+  CSSUnitValue vi(num value);
+  CSSUnitValue vb(num value);
+  CSSUnitValue vmin(num value);
+  CSSUnitValue vmax(num value);
+  CSSUnitValue svw(num value);
+  CSSUnitValue svh(num value);
+  CSSUnitValue svi(num value);
+  CSSUnitValue svb(num value);
+  CSSUnitValue svmin(num value);
+  CSSUnitValue svmax(num value);
+  CSSUnitValue lvw(num value);
+  CSSUnitValue lvh(num value);
+  CSSUnitValue lvi(num value);
+  CSSUnitValue lvb(num value);
+  CSSUnitValue lvmin(num value);
+  CSSUnitValue lvmax(num value);
+  CSSUnitValue dvw(num value);
+  CSSUnitValue dvh(num value);
+  CSSUnitValue dvi(num value);
+  CSSUnitValue dvb(num value);
+  CSSUnitValue dvmin(num value);
+  CSSUnitValue dvmax(num value);
+  CSSUnitValue cqw(num value);
+  CSSUnitValue cqh(num value);
+  CSSUnitValue cqi(num value);
+  CSSUnitValue cqb(num value);
+  CSSUnitValue cqmin(num value);
+  CSSUnitValue cqmax(num value);
+  CSSUnitValue cm(num value);
+  CSSUnitValue mm(num value);
+  CSSUnitValue Q(num value);
+  CSSUnitValue in_(num value);
+  CSSUnitValue pt(num value);
+  CSSUnitValue pc(num value);
+  CSSUnitValue px(num value);
+  CSSUnitValue deg(num value);
+  CSSUnitValue grad(num value);
+  CSSUnitValue rad(num value);
+  CSSUnitValue turn(num value);
+  CSSUnitValue s(num value);
+  CSSUnitValue ms(num value);
+  CSSUnitValue Hz(num value);
+  CSSUnitValue kHz(num value);
+  CSSUnitValue dpi(num value);
+  CSSUnitValue dpcm(num value);
+  CSSUnitValue dppx(num value);
+  CSSUnitValue fr(num value);
+  HighlightRegistry get highlights;
 }

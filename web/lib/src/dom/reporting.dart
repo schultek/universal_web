@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,10 +10,8 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
+import '../error.dart';
+import '../js_interop.dart';
 
 typedef ReportList = JSArray<Report>;
 typedef ReportingObserverCallback = JSFunction;
@@ -35,10 +33,10 @@ typedef ReportingObserverCallback = JSFunction;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ReportBody).
-extension type ReportBody._(JSObject _) implements JSObject {
+abstract class ReportBody implements JSObject {
   /// The **`toJSON()`** method of the [ReportBody] interface is a _serializer_,
   /// and returns a JSON representation of the `ReportBody` object.
-  external JSObject toJSON();
+  JSObject toJSON();
 }
 
 /// The `Report` interface of the
@@ -59,22 +57,22 @@ extension type ReportBody._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Report).
-extension type Report._(JSObject _) implements JSObject {
-  external JSObject toJSON();
+abstract class Report implements JSObject {
+  JSObject toJSON();
 
   /// The **`type`** read-only property of the [Report]
   /// interface returns the type of report generated, e.g. `deprecation` or
   /// `intervention`.
-  external String get type;
+  String get type;
 
   /// The **`url`** read-only property of the [Report]
   /// interface returns the URL of the document that generated the report.
-  external String get url;
+  String get url;
 
   /// The **`body`** read-only property of the [Report]
   /// interface returns the body of the report, which is a `ReportBody` object
   /// containing the detailed report information.
-  external ReportBody? get body;
+  ReportBody? get body;
 }
 
 /// The `ReportingObserver` interface of the
@@ -85,16 +83,11 @@ extension type Report._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ReportingObserver).
-extension type ReportingObserver._(JSObject _) implements JSObject {
-  external factory ReportingObserver(
-    ReportingObserverCallback callback, [
-    ReportingObserverOptions options,
-  ]);
-
+abstract class ReportingObserver implements JSObject {
   /// The **`observe()`** method of the
   /// [ReportingObserver] interface instructs a reporting observer to start
   /// collecting reports in its report queue.
-  external void observe();
+  void observe();
 
   /// The **`disconnect()`** method of the
   /// [ReportingObserver] interface stops a reporting observer that had
@@ -106,22 +99,29 @@ extension type ReportingObserver._(JSObject _) implements JSObject {
   /// [`ReportingObserver()`](https://developer.mozilla.org/en-US/docs/Web/API/ReportingObserver/ReportingObserver)
   /// callback will return any reports. The associated observer will no longer
   /// be active.
-  external void disconnect();
+  void disconnect();
 
   /// The **`takeRecords()`** method of the
   /// [ReportingObserver] interface returns the current list of reports
   /// contained
   /// in the observer's report queue, and empties the queue.
-  external ReportList takeRecords();
+  ReportList takeRecords();
 }
-extension type ReportingObserverOptions._(JSObject _) implements JSObject {
-  external factory ReportingObserverOptions({
-    JSArray<JSString> types,
-    bool buffered,
-  });
 
-  external JSArray<JSString> get types;
-  external set types(JSArray<JSString> value);
-  external bool get buffered;
-  external set buffered(bool value);
+abstract class ReportingObserverOptions implements JSObject {
+  JSArray<JSString> get types {
+    unsupportedPlatformError();
+  }
+
+  set types(JSArray<JSString> value) {
+    unsupportedPlatformError();
+  }
+
+  bool get buffered {
+    unsupportedPlatformError();
+  }
+
+  set buffered(bool value) {
+    unsupportedPlatformError();
+  }
 }

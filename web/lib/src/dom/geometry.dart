@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,10 +10,8 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
+import '../error.dart';
+import '../js_interop.dart';
 
 /// The **`DOMPointReadOnly`** interface specifies the coordinate and
 /// perspective fields used by [DOMPoint] to define a 2D or 3D point in a
@@ -45,27 +43,23 @@ import 'dart:js_interop';
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/DOMPointReadOnly).
-extension type DOMPointReadOnly._(JSObject _) implements JSObject {
-  external factory DOMPointReadOnly([
-    num x,
-    num y,
-    num z,
-    num w,
-  ]);
-
+abstract class DOMPointReadOnly implements JSObject {
   /// The static **[DOMPointReadOnly]**
   /// method `fromPoint()` creates and returns a new
   /// `DOMPointReadOnly` object given a source point.
   ///
   /// You can also create a new `DOMPointReadOnly` object using the
   /// [DOMPointReadOnly.DOMPointReadOnly] constructor.
-  external static DOMPointReadOnly fromPoint([DOMPointInit other]);
-  external DOMPoint matrixTransform([DOMMatrixInit matrix]);
+  static DOMPointReadOnly fromPoint([DOMPointInit? other]) {
+    unsupportedPlatformError();
+  }
+
+  DOMPoint matrixTransform([DOMMatrixInit matrix]);
 
   /// The [DOMPointReadOnly] method
   /// `toJSON()` returns an object giving the
   /// form of the point object.
-  external JSObject toJSON();
+  JSObject toJSON();
 
   /// The **`DOMPointReadOnly`** interface's
   /// **`x`** property holds the horizontal coordinate, x, for a
@@ -75,7 +69,7 @@ extension type DOMPointReadOnly._(JSObject _) implements JSObject {
   ///
   /// In general, positive values `x` mean to the right, and negative values of
   /// `x` means to the left, assuming no transforms have resulted in a reversal.
-  external double get x;
+  double get x;
 
   /// The **`DOMPointReadOnly`** interface's
   /// **`y`** property holds the vertical coordinate, y, for a
@@ -86,7 +80,7 @@ extension type DOMPointReadOnly._(JSObject _) implements JSObject {
   ///
   /// In general, positive values of `y` mean downward, and negative values of
   /// `y` mean upward, assuming no transforms have resulted in a reversal.
-  external double get y;
+  double get y;
 
   /// The **`DOMPointReadOnly`** interface's
   /// **`z`** property holds the depth coordinate, z, for a
@@ -98,7 +92,7 @@ extension type DOMPointReadOnly._(JSObject _) implements JSObject {
   /// In general, positive values of `z` mean toward the user (out from the
   /// screen), and negative values of `z` mean away from the user (into the
   /// screen), assuming no transforms have resulted in a reversal.
-  external double get z;
+  double get z;
 
   /// The **`DOMPointReadOnly`** interface's
   /// **`w`** property holds the point's perspective value,
@@ -108,7 +102,7 @@ extension type DOMPointReadOnly._(JSObject _) implements JSObject {
   /// to change the value of this property, you should instead use the
   /// [DOMPoint]
   /// object.
-  external double get w;
+  double get w;
 }
 
 /// A **`DOMPoint`** object represents a 2D or 3D point in a coordinate system;
@@ -125,14 +119,7 @@ extension type DOMPointReadOnly._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/DOMPoint).
-extension type DOMPoint._(JSObject _) implements DOMPointReadOnly, JSObject {
-  external factory DOMPoint([
-    num x,
-    num y,
-    num z,
-    num w,
-  ]);
-
+abstract class DOMPoint implements DOMPointReadOnly, JSObject {
   /// The **[DOMPoint]** static method
   /// `fromPoint()` creates and returns a new mutable `DOMPoint`
   /// object given a source point.
@@ -143,7 +130,9 @@ extension type DOMPoint._(JSObject _) implements DOMPointReadOnly, JSObject {
   /// Although this interface is based on `DOMPointReadOnly`, it is not
   /// read-only;
   /// the properties within may be changed at will.
-  external static DOMPoint fromPoint([DOMPointInit other]);
+  static DOMPoint fromPoint([DOMPointInit? other]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`DOMPoint`** interface's
   /// **`x`** property holds the horizontal coordinate, x, for a
@@ -153,8 +142,8 @@ extension type DOMPoint._(JSObject _) implements DOMPointReadOnly, JSObject {
   /// and negative values of `x` means to the left, barring any transforms that
   /// may
   /// have altered the orientation of the axes.
-  external double get x;
-  external set x(num value);
+  double get x;
+  set x(num value);
 
   /// The **`DOMPoint`** interface's
   /// **`y`** property holds the vertical coordinate, _y_,
@@ -162,8 +151,8 @@ extension type DOMPoint._(JSObject _) implements DOMPointReadOnly, JSObject {
   ///
   /// Unless transforms have been applied to alter the
   /// orientation, the value of `y` increases downward and decreases upward.
-  external double get y;
-  external set y(num value);
+  double get y;
+  set y(num value);
 
   /// The **`DOMPoint`** interface's
   /// **`z`** property specifies the depth coordinate of a point in
@@ -173,31 +162,48 @@ extension type DOMPoint._(JSObject _) implements DOMPointReadOnly, JSObject {
   /// the plane of the screen, with positive values extending outward toward the
   /// user from the
   /// screen, and negative values receding into the distance behind the screen.
-  external double get z;
-  external set z(num value);
+  double get z;
+  set z(num value);
 
   /// The **`DOMPoint`** interface's
   /// **`w`** property holds the point's perspective value, w, for a
   /// point in space.
-  external double get w;
-  external set w(num value);
+  double get w;
+  set w(num value);
 }
-extension type DOMPointInit._(JSObject _) implements JSObject {
-  external factory DOMPointInit({
-    num x,
-    num y,
-    num z,
-    num w,
-  });
 
-  external double get x;
-  external set x(num value);
-  external double get y;
-  external set y(num value);
-  external double get z;
-  external set z(num value);
-  external double get w;
-  external set w(num value);
+abstract class DOMPointInit implements JSObject {
+  double get x {
+    unsupportedPlatformError();
+  }
+
+  set x(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get y {
+    unsupportedPlatformError();
+  }
+
+  set y(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get z {
+    unsupportedPlatformError();
+  }
+
+  set z(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get w {
+    unsupportedPlatformError();
+  }
+
+  set w(num value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`DOMRectReadOnly`** interface specifies the standard properties (also
@@ -207,55 +213,51 @@ extension type DOMPointInit._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/DOMRectReadOnly).
-extension type DOMRectReadOnly._(JSObject _) implements JSObject {
-  external factory DOMRectReadOnly([
-    num x,
-    num y,
-    num width,
-    num height,
-  ]);
-
+abstract class DOMRectReadOnly implements JSObject {
   /// The **`fromRect()`** static method of the
   /// [DOMRectReadOnly] object creates a new `DOMRectReadOnly`
   /// object with a given location and dimensions.
-  external static DOMRectReadOnly fromRect([DOMRectInit other]);
-  external JSObject toJSON();
+  static DOMRectReadOnly fromRect([DOMRectInit? other]) {
+    unsupportedPlatformError();
+  }
+
+  JSObject toJSON();
 
   /// The **`x`** read-only property of the **`DOMRectReadOnly`** interface
   /// represents the x coordinate of the `DOMRect`'s origin.
-  external double get x;
+  double get x;
 
   /// The **`y`** read-only property of the **`DOMRectReadOnly`** interface
   /// represents the y coordinate of the `DOMRect`'s origin.
-  external double get y;
+  double get y;
 
   /// The **`width`** read-only property of the **`DOMRectReadOnly`** interface
   /// represents the width of the `DOMRect`.
-  external double get width;
+  double get width;
 
   /// The **`height`** read-only property of the **`DOMRectReadOnly`** interface
   /// represents the height of the `DOMRect`.
-  external double get height;
+  double get height;
 
   /// The **`top`** read-only property of the **`DOMRectReadOnly`** interface
   /// returns the top coordinate value of the `DOMRect`. (Has the same value as
   /// `y`, or `y + height` if `height` is negative.)
-  external double get top;
+  double get top;
 
   /// The **`right`** read-only property of the **`DOMRectReadOnly`** interface
   /// returns the right coordinate value of the `DOMRect`. (Has the same value
   /// as `x + width`, or `x` if `width` is negative.)
-  external double get right;
+  double get right;
 
   /// The **`bottom`** read-only property of the **`DOMRectReadOnly`** interface
   /// returns the bottom coordinate value of the `DOMRect`. (Has the same value
   /// as `y + height`, or `y` if `height` is negative.)
-  external double get bottom;
+  double get bottom;
 
   /// The **`left`** read-only property of the **`DOMRectReadOnly`** interface
   /// returns the left coordinate value of the `DOMRect`. (Has the same value as
   /// `x`, or `x + width` if `width` is negative.)
-  external double get left;
+  double get left;
 }
 
 /// A **`DOMRect`** describes the size and position of a rectangle.
@@ -271,47 +273,63 @@ extension type DOMRectReadOnly._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/DOMRect).
-extension type DOMRect._(JSObject _) implements DOMRectReadOnly, JSObject {
-  external factory DOMRect([
-    num x,
-    num y,
-    num width,
-    num height,
-  ]);
-
+abstract class DOMRect implements DOMRectReadOnly, JSObject {
   /// The **`fromRect()`** static method of the
   /// [DOMRect] object creates a new `DOMRect`
   /// object with a given location and dimensions.
-  external static DOMRect fromRect([DOMRectInit other]);
-  external double get x;
-  external set x(num value);
-  external double get y;
-  external set y(num value);
-  external double get width;
-  external set width(num value);
-  external double get height;
-  external set height(num value);
-}
-extension type DOMRectInit._(JSObject _) implements JSObject {
-  external factory DOMRectInit({
-    num x,
-    num y,
-    num width,
-    num height,
-  });
+  static DOMRect fromRect([DOMRectInit? other]) {
+    unsupportedPlatformError();
+  }
 
-  external double get x;
-  external set x(num value);
-  external double get y;
-  external set y(num value);
-  external double get width;
-  external set width(num value);
-  external double get height;
-  external set height(num value);
+  double get x;
+  set x(num value);
+  double get y;
+  set y(num value);
+  double get width;
+  set width(num value);
+  double get height;
+  set height(num value);
 }
-extension type DOMRectList._(JSObject _) implements JSObject {
-  external DOMRect? item(int index);
-  external int get length;
+
+abstract class DOMRectInit implements JSObject {
+  double get x {
+    unsupportedPlatformError();
+  }
+
+  set x(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get y {
+    unsupportedPlatformError();
+  }
+
+  set y(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get width {
+    unsupportedPlatformError();
+  }
+
+  set width(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get height {
+    unsupportedPlatformError();
+  }
+
+  set height(num value) {
+    unsupportedPlatformError();
+  }
+}
+
+abstract class DOMRectList implements JSObject {
+  DOMRect? item(int index);
+  int get length {
+    unsupportedPlatformError();
+  }
 }
 
 /// A `DOMQuad` is a collection of four `DOMPoint`s defining the corners of an
@@ -324,39 +342,55 @@ extension type DOMRectList._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/DOMQuad).
-extension type DOMQuad._(JSObject _) implements JSObject {
-  external factory DOMQuad([
-    DOMPointInit p1,
-    DOMPointInit p2,
-    DOMPointInit p3,
-    DOMPointInit p4,
-  ]);
+abstract class DOMQuad implements JSObject {
+  static DOMQuad fromRect([DOMRectInit? other]) {
+    unsupportedPlatformError();
+  }
 
-  external static DOMQuad fromRect([DOMRectInit other]);
-  external static DOMQuad fromQuad([DOMQuadInit other]);
-  external DOMRect getBounds();
-  external JSObject toJSON();
-  external DOMPoint get p1;
-  external DOMPoint get p2;
-  external DOMPoint get p3;
-  external DOMPoint get p4;
+  static DOMQuad fromQuad([DOMQuadInit? other]) {
+    unsupportedPlatformError();
+  }
+
+  DOMRect getBounds();
+  JSObject toJSON();
+  DOMPoint get p1;
+  DOMPoint get p2;
+  DOMPoint get p3;
+  DOMPoint get p4;
 }
-extension type DOMQuadInit._(JSObject _) implements JSObject {
-  external factory DOMQuadInit({
-    DOMPointInit p1,
-    DOMPointInit p2,
-    DOMPointInit p3,
-    DOMPointInit p4,
-  });
 
-  external DOMPointInit get p1;
-  external set p1(DOMPointInit value);
-  external DOMPointInit get p2;
-  external set p2(DOMPointInit value);
-  external DOMPointInit get p3;
-  external set p3(DOMPointInit value);
-  external DOMPointInit get p4;
-  external set p4(DOMPointInit value);
+abstract class DOMQuadInit implements JSObject {
+  DOMPointInit get p1 {
+    unsupportedPlatformError();
+  }
+
+  set p1(DOMPointInit value) {
+    unsupportedPlatformError();
+  }
+
+  DOMPointInit get p2 {
+    unsupportedPlatformError();
+  }
+
+  set p2(DOMPointInit value) {
+    unsupportedPlatformError();
+  }
+
+  DOMPointInit get p3 {
+    unsupportedPlatformError();
+  }
+
+  set p3(DOMPointInit value) {
+    unsupportedPlatformError();
+  }
+
+  DOMPointInit get p4 {
+    unsupportedPlatformError();
+  }
+
+  set p4(DOMPointInit value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`DOMMatrixReadOnly`** interface represents a read-only 4×4 matrix,
@@ -373,17 +407,23 @@ extension type DOMQuadInit._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrixReadOnly).
-extension type DOMMatrixReadOnly._(JSObject _) implements JSObject {
-  external factory DOMMatrixReadOnly([JSAny init]);
+abstract class DOMMatrixReadOnly implements JSObject {
+  static DOMMatrixReadOnly fromMatrix([DOMMatrixInit? other]) {
+    unsupportedPlatformError();
+  }
 
-  external static DOMMatrixReadOnly fromMatrix([DOMMatrixInit other]);
-  external static DOMMatrixReadOnly fromFloat32Array(JSFloat32Array array32);
-  external static DOMMatrixReadOnly fromFloat64Array(JSFloat64Array array64);
+  static DOMMatrixReadOnly fromFloat32Array(JSFloat32Array array32) {
+    unsupportedPlatformError();
+  }
+
+  static DOMMatrixReadOnly fromFloat64Array(JSFloat64Array array64) {
+    unsupportedPlatformError();
+  }
 
   /// The `translate()` method of the [DOMMatrixReadOnly] interface
   /// creates a new matrix being the result of the original matrix with a
   /// translation applied.
-  external DOMMatrix translate([
+  DOMMatrix translate([
     num tx,
     num ty,
     num tz,
@@ -392,7 +432,7 @@ extension type DOMMatrixReadOnly._(JSObject _) implements JSObject {
   /// The **`scale()`** method of the
   /// [DOMMatrixReadOnly] interface creates a new matrix being the result of the
   /// original matrix with a scale transform applied.
-  external DOMMatrix scale([
+  DOMMatrix scale([
     num scaleX,
     num scaleY,
     num scaleZ,
@@ -400,68 +440,68 @@ extension type DOMMatrixReadOnly._(JSObject _) implements JSObject {
     num originY,
     num originZ,
   ]);
-  external DOMMatrix scaleNonUniform([
+  DOMMatrix scaleNonUniform([
     num scaleX,
     num scaleY,
   ]);
-  external DOMMatrix scale3d([
+  DOMMatrix scale3d([
     num scale,
     num originX,
     num originY,
     num originZ,
   ]);
-  external DOMMatrix rotate([
+  DOMMatrix rotate([
     num rotX,
     num rotY,
     num rotZ,
   ]);
-  external DOMMatrix rotateFromVector([
+  DOMMatrix rotateFromVector([
     num x,
     num y,
   ]);
-  external DOMMatrix rotateAxisAngle([
+  DOMMatrix rotateAxisAngle([
     num x,
     num y,
     num z,
     num angle,
   ]);
-  external DOMMatrix skewX([num sx]);
-  external DOMMatrix skewY([num sy]);
-  external DOMMatrix multiply([DOMMatrixInit other]);
+  DOMMatrix skewX([num sx]);
+  DOMMatrix skewY([num sy]);
+  DOMMatrix multiply([DOMMatrixInit other]);
 
   /// The `flipX()` method of the [DOMMatrixReadOnly] interface creates a new
   /// matrix being the result of the original matrix flipped about the x-axis.
-  external DOMMatrix flipX();
-  external DOMMatrix flipY();
-  external DOMMatrix inverse();
-  external DOMPoint transformPoint([DOMPointInit point]);
-  external JSFloat32Array toFloat32Array();
-  external JSFloat64Array toFloat64Array();
-  external JSObject toJSON();
-  external double get a;
-  external double get b;
-  external double get c;
-  external double get d;
-  external double get e;
-  external double get f;
-  external double get m11;
-  external double get m12;
-  external double get m13;
-  external double get m14;
-  external double get m21;
-  external double get m22;
-  external double get m23;
-  external double get m24;
-  external double get m31;
-  external double get m32;
-  external double get m33;
-  external double get m34;
-  external double get m41;
-  external double get m42;
-  external double get m43;
-  external double get m44;
-  external bool get is2D;
-  external bool get isIdentity;
+  DOMMatrix flipX();
+  DOMMatrix flipY();
+  DOMMatrix inverse();
+  DOMPoint transformPoint([DOMPointInit point]);
+  JSFloat32Array toFloat32Array();
+  JSFloat64Array toFloat64Array();
+  JSObject toJSON();
+  double get a;
+  double get b;
+  double get c;
+  double get d;
+  double get e;
+  double get f;
+  double get m11;
+  double get m12;
+  double get m13;
+  double get m14;
+  double get m21;
+  double get m22;
+  double get m23;
+  double get m24;
+  double get m31;
+  double get m32;
+  double get m33;
+  double get m34;
+  double get m41;
+  double get m42;
+  double get m43;
+  double get m44;
+  bool get is2D;
+  bool get isIdentity;
 }
 
 /// The **`DOMMatrix`** interface represents 4×4 matrices, suitable for 2D and
@@ -478,20 +518,27 @@ extension type DOMMatrixReadOnly._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrix).
-extension type DOMMatrix._(JSObject _) implements DOMMatrixReadOnly, JSObject {
-  external factory DOMMatrix([JSAny init]);
+abstract class DOMMatrix implements DOMMatrixReadOnly, JSObject {
+  static DOMMatrix fromMatrix([DOMMatrixInit? other]) {
+    unsupportedPlatformError();
+  }
 
-  external static DOMMatrix fromMatrix([DOMMatrixInit other]);
-  external static DOMMatrix fromFloat32Array(JSFloat32Array array32);
-  external static DOMMatrix fromFloat64Array(JSFloat64Array array64);
-  external DOMMatrix multiplySelf([DOMMatrixInit other]);
-  external DOMMatrix preMultiplySelf([DOMMatrixInit other]);
-  external DOMMatrix translateSelf([
+  static DOMMatrix fromFloat32Array(JSFloat32Array array32) {
+    unsupportedPlatformError();
+  }
+
+  static DOMMatrix fromFloat64Array(JSFloat64Array array64) {
+    unsupportedPlatformError();
+  }
+
+  DOMMatrix multiplySelf([DOMMatrixInit other]);
+  DOMMatrix preMultiplySelf([DOMMatrixInit other]);
+  DOMMatrix translateSelf([
     num tx,
     num ty,
     num tz,
   ]);
-  external DOMMatrix scaleSelf([
+  DOMMatrix scaleSelf([
     num scaleX,
     num scaleY,
     num scaleZ,
@@ -499,165 +546,261 @@ extension type DOMMatrix._(JSObject _) implements DOMMatrixReadOnly, JSObject {
     num originY,
     num originZ,
   ]);
-  external DOMMatrix scale3dSelf([
+  DOMMatrix scale3dSelf([
     num scale,
     num originX,
     num originY,
     num originZ,
   ]);
-  external DOMMatrix rotateSelf([
+  DOMMatrix rotateSelf([
     num rotX,
     num rotY,
     num rotZ,
   ]);
-  external DOMMatrix rotateFromVectorSelf([
+  DOMMatrix rotateFromVectorSelf([
     num x,
     num y,
   ]);
-  external DOMMatrix rotateAxisAngleSelf([
+  DOMMatrix rotateAxisAngleSelf([
     num x,
     num y,
     num z,
     num angle,
   ]);
-  external DOMMatrix skewXSelf([num sx]);
-  external DOMMatrix skewYSelf([num sy]);
-  external DOMMatrix invertSelf();
-  external DOMMatrix setMatrixValue(String transformList);
-  external double get a;
-  external set a(num value);
-  external double get b;
-  external set b(num value);
-  external double get c;
-  external set c(num value);
-  external double get d;
-  external set d(num value);
-  external double get e;
-  external set e(num value);
-  external double get f;
-  external set f(num value);
-  external double get m11;
-  external set m11(num value);
-  external double get m12;
-  external set m12(num value);
-  external double get m13;
-  external set m13(num value);
-  external double get m14;
-  external set m14(num value);
-  external double get m21;
-  external set m21(num value);
-  external double get m22;
-  external set m22(num value);
-  external double get m23;
-  external set m23(num value);
-  external double get m24;
-  external set m24(num value);
-  external double get m31;
-  external set m31(num value);
-  external double get m32;
-  external set m32(num value);
-  external double get m33;
-  external set m33(num value);
-  external double get m34;
-  external set m34(num value);
-  external double get m41;
-  external set m41(num value);
-  external double get m42;
-  external set m42(num value);
-  external double get m43;
-  external set m43(num value);
-  external double get m44;
-  external set m44(num value);
+  DOMMatrix skewXSelf([num sx]);
+  DOMMatrix skewYSelf([num sy]);
+  DOMMatrix invertSelf();
+  DOMMatrix setMatrixValue(String transformList);
+  double get a;
+  set a(num value);
+  double get b;
+  set b(num value);
+  double get c;
+  set c(num value);
+  double get d;
+  set d(num value);
+  double get e;
+  set e(num value);
+  double get f;
+  set f(num value);
+  double get m11;
+  set m11(num value);
+  double get m12;
+  set m12(num value);
+  double get m13;
+  set m13(num value);
+  double get m14;
+  set m14(num value);
+  double get m21;
+  set m21(num value);
+  double get m22;
+  set m22(num value);
+  double get m23;
+  set m23(num value);
+  double get m24;
+  set m24(num value);
+  double get m31;
+  set m31(num value);
+  double get m32;
+  set m32(num value);
+  double get m33;
+  set m33(num value);
+  double get m34;
+  set m34(num value);
+  double get m41;
+  set m41(num value);
+  double get m42;
+  set m42(num value);
+  double get m43;
+  set m43(num value);
+  double get m44;
+  set m44(num value);
 }
-extension type DOMMatrix2DInit._(JSObject _) implements JSObject {
-  external factory DOMMatrix2DInit({
-    num a,
-    num b,
-    num c,
-    num d,
-    num e,
-    num f,
-    num m11,
-    num m12,
-    num m21,
-    num m22,
-    num m41,
-    num m42,
-  });
 
-  external double get a;
-  external set a(num value);
-  external double get b;
-  external set b(num value);
-  external double get c;
-  external set c(num value);
-  external double get d;
-  external set d(num value);
-  external double get e;
-  external set e(num value);
-  external double get f;
-  external set f(num value);
-  external double get m11;
-  external set m11(num value);
-  external double get m12;
-  external set m12(num value);
-  external double get m21;
-  external set m21(num value);
-  external double get m22;
-  external set m22(num value);
-  external double get m41;
-  external set m41(num value);
-  external double get m42;
-  external set m42(num value);
+abstract class DOMMatrix2DInit implements JSObject {
+  double get a {
+    unsupportedPlatformError();
+  }
+
+  set a(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get b {
+    unsupportedPlatformError();
+  }
+
+  set b(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get c {
+    unsupportedPlatformError();
+  }
+
+  set c(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get d {
+    unsupportedPlatformError();
+  }
+
+  set d(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get e {
+    unsupportedPlatformError();
+  }
+
+  set e(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get f {
+    unsupportedPlatformError();
+  }
+
+  set f(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get m11 {
+    unsupportedPlatformError();
+  }
+
+  set m11(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get m12 {
+    unsupportedPlatformError();
+  }
+
+  set m12(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get m21 {
+    unsupportedPlatformError();
+  }
+
+  set m21(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get m22 {
+    unsupportedPlatformError();
+  }
+
+  set m22(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get m41 {
+    unsupportedPlatformError();
+  }
+
+  set m41(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get m42 {
+    unsupportedPlatformError();
+  }
+
+  set m42(num value) {
+    unsupportedPlatformError();
+  }
 }
-extension type DOMMatrixInit._(JSObject _)
-    implements DOMMatrix2DInit, JSObject {
-  external factory DOMMatrixInit({
-    num a,
-    num b,
-    num c,
-    num d,
-    num e,
-    num f,
-    num m11,
-    num m12,
-    num m21,
-    num m22,
-    num m41,
-    num m42,
-    num m13,
-    num m14,
-    num m23,
-    num m24,
-    num m31,
-    num m32,
-    num m33,
-    num m34,
-    num m43,
-    num m44,
-    bool is2D,
-  });
 
-  external double get m13;
-  external set m13(num value);
-  external double get m14;
-  external set m14(num value);
-  external double get m23;
-  external set m23(num value);
-  external double get m24;
-  external set m24(num value);
-  external double get m31;
-  external set m31(num value);
-  external double get m32;
-  external set m32(num value);
-  external double get m33;
-  external set m33(num value);
-  external double get m34;
-  external set m34(num value);
-  external double get m43;
-  external set m43(num value);
-  external double get m44;
-  external set m44(num value);
-  external bool get is2D;
-  external set is2D(bool value);
+abstract class DOMMatrixInit implements DOMMatrix2DInit, JSObject {
+  double get m13 {
+    unsupportedPlatformError();
+  }
+
+  set m13(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get m14 {
+    unsupportedPlatformError();
+  }
+
+  set m14(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get m23 {
+    unsupportedPlatformError();
+  }
+
+  set m23(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get m24 {
+    unsupportedPlatformError();
+  }
+
+  set m24(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get m31 {
+    unsupportedPlatformError();
+  }
+
+  set m31(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get m32 {
+    unsupportedPlatformError();
+  }
+
+  set m32(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get m33 {
+    unsupportedPlatformError();
+  }
+
+  set m33(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get m34 {
+    unsupportedPlatformError();
+  }
+
+  set m34(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get m43 {
+    unsupportedPlatformError();
+  }
+
+  set m43(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get m44 {
+    unsupportedPlatformError();
+  }
+
+  set m44(num value) {
+    unsupportedPlatformError();
+  }
+
+  bool get is2D {
+    unsupportedPlatformError();
+  }
+
+  set is2D(bool value) {
+    unsupportedPlatformError();
+  }
 }

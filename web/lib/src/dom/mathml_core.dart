@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,11 +10,7 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../js_interop.dart';
 import 'css_typed_om.dart';
 import 'cssom.dart';
 import 'dom.dart';
@@ -27,219 +23,9 @@ import 'html.dart';
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MathMLElement).
-extension type MathMLElement._(JSObject _) implements Element, JSObject {
-  /// Creates a [MathMLElement] using the tag 'math'.
-  MathMLElement.math()
-      : _ = document.createElementNS(
-          'http://www.w3.org/1998/Math/MathML',
-          'math',
-        );
-
-  /// Creates a [MathMLElement] using the tag 'mtext'.
-  MathMLElement.mtext()
-      : _ = document.createElementNS(
-          'http://www.w3.org/1998/Math/MathML',
-          'mtext',
-        );
-
-  /// Creates a [MathMLElement] using the tag 'mi'.
-  MathMLElement.mi()
-      : _ = document.createElementNS(
-          'http://www.w3.org/1998/Math/MathML',
-          'mi',
-        );
-
-  /// Creates a [MathMLElement] using the tag 'mn'.
-  MathMLElement.mn()
-      : _ = document.createElementNS(
-          'http://www.w3.org/1998/Math/MathML',
-          'mn',
-        );
-
-  /// Creates a [MathMLElement] using the tag 'mo'.
-  MathMLElement.mo()
-      : _ = document.createElementNS(
-          'http://www.w3.org/1998/Math/MathML',
-          'mo',
-        );
-
-  /// Creates a [MathMLElement] using the tag 'mspace'.
-  MathMLElement.mspace()
-      : _ = document.createElementNS(
-          'http://www.w3.org/1998/Math/MathML',
-          'mspace',
-        );
-
-  /// Creates a [MathMLElement] using the tag 'ms'.
-  MathMLElement.ms()
-      : _ = document.createElementNS(
-          'http://www.w3.org/1998/Math/MathML',
-          'ms',
-        );
-
-  /// Creates a [MathMLElement] using the tag 'mrow'.
-  MathMLElement.mrow()
-      : _ = document.createElementNS(
-          'http://www.w3.org/1998/Math/MathML',
-          'mrow',
-        );
-
-  /// Creates a [MathMLElement] using the tag 'mfrac'.
-  MathMLElement.mfrac()
-      : _ = document.createElementNS(
-          'http://www.w3.org/1998/Math/MathML',
-          'mfrac',
-        );
-
-  /// Creates a [MathMLElement] using the tag 'msqrt'.
-  MathMLElement.msqrt()
-      : _ = document.createElementNS(
-          'http://www.w3.org/1998/Math/MathML',
-          'msqrt',
-        );
-
-  /// Creates a [MathMLElement] using the tag 'mroot'.
-  MathMLElement.mroot()
-      : _ = document.createElementNS(
-          'http://www.w3.org/1998/Math/MathML',
-          'mroot',
-        );
-
-  /// Creates a [MathMLElement] using the tag 'mstyle'.
-  MathMLElement.mstyle()
-      : _ = document.createElementNS(
-          'http://www.w3.org/1998/Math/MathML',
-          'mstyle',
-        );
-
-  /// Creates a [MathMLElement] using the tag 'merror'.
-  MathMLElement.merror()
-      : _ = document.createElementNS(
-          'http://www.w3.org/1998/Math/MathML',
-          'merror',
-        );
-
-  /// Creates a [MathMLElement] using the tag 'mpadded'.
-  MathMLElement.mpadded()
-      : _ = document.createElementNS(
-          'http://www.w3.org/1998/Math/MathML',
-          'mpadded',
-        );
-
-  /// Creates a [MathMLElement] using the tag 'mphantom'.
-  MathMLElement.mphantom()
-      : _ = document.createElementNS(
-          'http://www.w3.org/1998/Math/MathML',
-          'mphantom',
-        );
-
-  /// Creates a [MathMLElement] using the tag 'msub'.
-  MathMLElement.msub()
-      : _ = document.createElementNS(
-          'http://www.w3.org/1998/Math/MathML',
-          'msub',
-        );
-
-  /// Creates a [MathMLElement] using the tag 'msup'.
-  MathMLElement.msup()
-      : _ = document.createElementNS(
-          'http://www.w3.org/1998/Math/MathML',
-          'msup',
-        );
-
-  /// Creates a [MathMLElement] using the tag 'msubsup'.
-  MathMLElement.msubsup()
-      : _ = document.createElementNS(
-          'http://www.w3.org/1998/Math/MathML',
-          'msubsup',
-        );
-
-  /// Creates a [MathMLElement] using the tag 'munder'.
-  MathMLElement.munder()
-      : _ = document.createElementNS(
-          'http://www.w3.org/1998/Math/MathML',
-          'munder',
-        );
-
-  /// Creates a [MathMLElement] using the tag 'mover'.
-  MathMLElement.mover()
-      : _ = document.createElementNS(
-          'http://www.w3.org/1998/Math/MathML',
-          'mover',
-        );
-
-  /// Creates a [MathMLElement] using the tag 'munderover'.
-  MathMLElement.munderover()
-      : _ = document.createElementNS(
-          'http://www.w3.org/1998/Math/MathML',
-          'munderover',
-        );
-
-  /// Creates a [MathMLElement] using the tag 'mmultiscripts'.
-  MathMLElement.mmultiscripts()
-      : _ = document.createElementNS(
-          'http://www.w3.org/1998/Math/MathML',
-          'mmultiscripts',
-        );
-
-  /// Creates a [MathMLElement] using the tag 'mprescripts'.
-  MathMLElement.mprescripts()
-      : _ = document.createElementNS(
-          'http://www.w3.org/1998/Math/MathML',
-          'mprescripts',
-        );
-
-  /// Creates a [MathMLElement] using the tag 'mtable'.
-  MathMLElement.mtable()
-      : _ = document.createElementNS(
-          'http://www.w3.org/1998/Math/MathML',
-          'mtable',
-        );
-
-  /// Creates a [MathMLElement] using the tag 'mtr'.
-  MathMLElement.mtr()
-      : _ = document.createElementNS(
-          'http://www.w3.org/1998/Math/MathML',
-          'mtr',
-        );
-
-  /// Creates a [MathMLElement] using the tag 'mtd'.
-  MathMLElement.mtd()
-      : _ = document.createElementNS(
-          'http://www.w3.org/1998/Math/MathML',
-          'mtd',
-        );
-
-  /// Creates a [MathMLElement] using the tag 'maction'.
-  MathMLElement.maction()
-      : _ = document.createElementNS(
-          'http://www.w3.org/1998/Math/MathML',
-          'maction',
-        );
-
-  /// Creates a [MathMLElement] using the tag 'semantics'.
-  MathMLElement.semantics()
-      : _ = document.createElementNS(
-          'http://www.w3.org/1998/Math/MathML',
-          'semantics',
-        );
-
-  /// Creates a [MathMLElement] using the tag 'annotation'.
-  MathMLElement.annotation()
-      : _ = document.createElementNS(
-          'http://www.w3.org/1998/Math/MathML',
-          'annotation',
-        );
-
-  /// Creates a [MathMLElement] using the tag 'annotation-xml'.
-  MathMLElement.annotation_xml()
-      : _ = document.createElementNS(
-          'http://www.w3.org/1998/Math/MathML',
-          'annotation-xml',
-        );
-
-  external void focus([FocusOptions options]);
-  external void blur();
+abstract class MathMLElement implements Element, JSObject {
+  void focus([FocusOptions options]);
+  void blur();
 
   /// The read-only **`style`** property of the [MathMLElement] returns the
   /// _inline_ style of an element in the form of a live [CSSStyleDeclaration]
@@ -280,7 +66,7 @@ extension type MathMLElement._(JSObject _) implements Element, JSObject {
   /// >
   /// > The `style` property has the same priority in the CSS cascade as an
   /// > inline style declaration set via the `style` attribute.
-  external CSSStyleDeclaration get style;
+  CSSStyleDeclaration get style;
 
   /// The **`attributeStyleMap`** read-only property of the [MathMLElement]
   /// interface returns a live [StylePropertyMap] object that contains a list of
@@ -300,200 +86,200 @@ extension type MathMLElement._(JSObject _) implements Element, JSObject {
   /// inline styles through the [StylePropertyMap] object that it returns, just
   /// like through the [CSSStyleDeclaration] object that returns via the `style`
   /// property.
-  external StylePropertyMap get attributeStyleMap;
-  external EventHandler get onabort;
-  external set onabort(EventHandler value);
-  external EventHandler get onauxclick;
-  external set onauxclick(EventHandler value);
-  external EventHandler get onbeforeinput;
-  external set onbeforeinput(EventHandler value);
-  external EventHandler get onbeforetoggle;
-  external set onbeforetoggle(EventHandler value);
-  external EventHandler get onblur;
-  external set onblur(EventHandler value);
-  external EventHandler get oncancel;
-  external set oncancel(EventHandler value);
-  external EventHandler get oncanplay;
-  external set oncanplay(EventHandler value);
-  external EventHandler get oncanplaythrough;
-  external set oncanplaythrough(EventHandler value);
-  external EventHandler get onchange;
-  external set onchange(EventHandler value);
-  external EventHandler get onclick;
-  external set onclick(EventHandler value);
-  external EventHandler get onclose;
-  external set onclose(EventHandler value);
-  external EventHandler get oncontextlost;
-  external set oncontextlost(EventHandler value);
-  external EventHandler get oncontextmenu;
-  external set oncontextmenu(EventHandler value);
-  external EventHandler get oncontextrestored;
-  external set oncontextrestored(EventHandler value);
-  external EventHandler get oncopy;
-  external set oncopy(EventHandler value);
-  external EventHandler get oncuechange;
-  external set oncuechange(EventHandler value);
-  external EventHandler get oncut;
-  external set oncut(EventHandler value);
-  external EventHandler get ondblclick;
-  external set ondblclick(EventHandler value);
-  external EventHandler get ondrag;
-  external set ondrag(EventHandler value);
-  external EventHandler get ondragend;
-  external set ondragend(EventHandler value);
-  external EventHandler get ondragenter;
-  external set ondragenter(EventHandler value);
-  external EventHandler get ondragleave;
-  external set ondragleave(EventHandler value);
-  external EventHandler get ondragover;
-  external set ondragover(EventHandler value);
-  external EventHandler get ondragstart;
-  external set ondragstart(EventHandler value);
-  external EventHandler get ondrop;
-  external set ondrop(EventHandler value);
-  external EventHandler get ondurationchange;
-  external set ondurationchange(EventHandler value);
-  external EventHandler get onemptied;
-  external set onemptied(EventHandler value);
-  external EventHandler get onended;
-  external set onended(EventHandler value);
-  external OnErrorEventHandler get onerror;
-  external set onerror(OnErrorEventHandler value);
-  external EventHandler get onfocus;
-  external set onfocus(EventHandler value);
-  external EventHandler get onformdata;
-  external set onformdata(EventHandler value);
-  external EventHandler get oninput;
-  external set oninput(EventHandler value);
-  external EventHandler get oninvalid;
-  external set oninvalid(EventHandler value);
-  external EventHandler get onkeydown;
-  external set onkeydown(EventHandler value);
-  external EventHandler get onkeypress;
-  external set onkeypress(EventHandler value);
-  external EventHandler get onkeyup;
-  external set onkeyup(EventHandler value);
-  external EventHandler get onload;
-  external set onload(EventHandler value);
-  external EventHandler get onloadeddata;
-  external set onloadeddata(EventHandler value);
-  external EventHandler get onloadedmetadata;
-  external set onloadedmetadata(EventHandler value);
-  external EventHandler get onloadstart;
-  external set onloadstart(EventHandler value);
-  external EventHandler get onmousedown;
-  external set onmousedown(EventHandler value);
-  external EventHandler get onmouseenter;
-  external set onmouseenter(EventHandler value);
-  external EventHandler get onmouseleave;
-  external set onmouseleave(EventHandler value);
-  external EventHandler get onmousemove;
-  external set onmousemove(EventHandler value);
-  external EventHandler get onmouseout;
-  external set onmouseout(EventHandler value);
-  external EventHandler get onmouseover;
-  external set onmouseover(EventHandler value);
-  external EventHandler get onmouseup;
-  external set onmouseup(EventHandler value);
-  external EventHandler get onpaste;
-  external set onpaste(EventHandler value);
-  external EventHandler get onpause;
-  external set onpause(EventHandler value);
-  external EventHandler get onplay;
-  external set onplay(EventHandler value);
-  external EventHandler get onplaying;
-  external set onplaying(EventHandler value);
-  external EventHandler get onprogress;
-  external set onprogress(EventHandler value);
-  external EventHandler get onratechange;
-  external set onratechange(EventHandler value);
-  external EventHandler get onreset;
-  external set onreset(EventHandler value);
-  external EventHandler get onresize;
-  external set onresize(EventHandler value);
-  external EventHandler get onscroll;
-  external set onscroll(EventHandler value);
-  external EventHandler get onscrollend;
-  external set onscrollend(EventHandler value);
-  external EventHandler get onsecuritypolicyviolation;
-  external set onsecuritypolicyviolation(EventHandler value);
-  external EventHandler get onseeked;
-  external set onseeked(EventHandler value);
-  external EventHandler get onseeking;
-  external set onseeking(EventHandler value);
-  external EventHandler get onselect;
-  external set onselect(EventHandler value);
-  external EventHandler get onslotchange;
-  external set onslotchange(EventHandler value);
-  external EventHandler get onstalled;
-  external set onstalled(EventHandler value);
-  external EventHandler get onsubmit;
-  external set onsubmit(EventHandler value);
-  external EventHandler get onsuspend;
-  external set onsuspend(EventHandler value);
-  external EventHandler get ontimeupdate;
-  external set ontimeupdate(EventHandler value);
-  external EventHandler get ontoggle;
-  external set ontoggle(EventHandler value);
-  external EventHandler get onvolumechange;
-  external set onvolumechange(EventHandler value);
-  external EventHandler get onwaiting;
-  external set onwaiting(EventHandler value);
-  external EventHandler get onwheel;
-  external set onwheel(EventHandler value);
-  external EventHandler get onanimationstart;
-  external set onanimationstart(EventHandler value);
-  external EventHandler get onanimationiteration;
-  external set onanimationiteration(EventHandler value);
-  external EventHandler get onanimationend;
-  external set onanimationend(EventHandler value);
-  external EventHandler get onanimationcancel;
-  external set onanimationcancel(EventHandler value);
-  external EventHandler get ontransitionrun;
-  external set ontransitionrun(EventHandler value);
-  external EventHandler get ontransitionstart;
-  external set ontransitionstart(EventHandler value);
-  external EventHandler get ontransitionend;
-  external set ontransitionend(EventHandler value);
-  external EventHandler get ontransitioncancel;
-  external set ontransitioncancel(EventHandler value);
-  external EventHandler get onpointerover;
-  external set onpointerover(EventHandler value);
-  external EventHandler get onpointerenter;
-  external set onpointerenter(EventHandler value);
-  external EventHandler get onpointerdown;
-  external set onpointerdown(EventHandler value);
-  external EventHandler get onpointermove;
-  external set onpointermove(EventHandler value);
-  external EventHandler get onpointerup;
-  external set onpointerup(EventHandler value);
-  external EventHandler get onpointercancel;
-  external set onpointercancel(EventHandler value);
-  external EventHandler get onpointerout;
-  external set onpointerout(EventHandler value);
-  external EventHandler get onpointerleave;
-  external set onpointerleave(EventHandler value);
-  external EventHandler get ongotpointercapture;
-  external set ongotpointercapture(EventHandler value);
-  external EventHandler get onlostpointercapture;
-  external set onlostpointercapture(EventHandler value);
-  external EventHandler get onselectstart;
-  external set onselectstart(EventHandler value);
-  external EventHandler get onselectionchange;
-  external set onselectionchange(EventHandler value);
-  external EventHandler get ontouchstart;
-  external set ontouchstart(EventHandler value);
-  external EventHandler get ontouchend;
-  external set ontouchend(EventHandler value);
-  external EventHandler get ontouchmove;
-  external set ontouchmove(EventHandler value);
-  external EventHandler get ontouchcancel;
-  external set ontouchcancel(EventHandler value);
-  external DOMStringMap get dataset;
-  external String get nonce;
-  external set nonce(String value);
-  external bool get autofocus;
-  external set autofocus(bool value);
-  external int get tabIndex;
-  external set tabIndex(int value);
+  StylePropertyMap get attributeStyleMap;
+  EventHandler get onabort;
+  set onabort(EventHandler value);
+  EventHandler get onauxclick;
+  set onauxclick(EventHandler value);
+  EventHandler get onbeforeinput;
+  set onbeforeinput(EventHandler value);
+  EventHandler get onbeforetoggle;
+  set onbeforetoggle(EventHandler value);
+  EventHandler get onblur;
+  set onblur(EventHandler value);
+  EventHandler get oncancel;
+  set oncancel(EventHandler value);
+  EventHandler get oncanplay;
+  set oncanplay(EventHandler value);
+  EventHandler get oncanplaythrough;
+  set oncanplaythrough(EventHandler value);
+  EventHandler get onchange;
+  set onchange(EventHandler value);
+  EventHandler get onclick;
+  set onclick(EventHandler value);
+  EventHandler get onclose;
+  set onclose(EventHandler value);
+  EventHandler get oncontextlost;
+  set oncontextlost(EventHandler value);
+  EventHandler get oncontextmenu;
+  set oncontextmenu(EventHandler value);
+  EventHandler get oncontextrestored;
+  set oncontextrestored(EventHandler value);
+  EventHandler get oncopy;
+  set oncopy(EventHandler value);
+  EventHandler get oncuechange;
+  set oncuechange(EventHandler value);
+  EventHandler get oncut;
+  set oncut(EventHandler value);
+  EventHandler get ondblclick;
+  set ondblclick(EventHandler value);
+  EventHandler get ondrag;
+  set ondrag(EventHandler value);
+  EventHandler get ondragend;
+  set ondragend(EventHandler value);
+  EventHandler get ondragenter;
+  set ondragenter(EventHandler value);
+  EventHandler get ondragleave;
+  set ondragleave(EventHandler value);
+  EventHandler get ondragover;
+  set ondragover(EventHandler value);
+  EventHandler get ondragstart;
+  set ondragstart(EventHandler value);
+  EventHandler get ondrop;
+  set ondrop(EventHandler value);
+  EventHandler get ondurationchange;
+  set ondurationchange(EventHandler value);
+  EventHandler get onemptied;
+  set onemptied(EventHandler value);
+  EventHandler get onended;
+  set onended(EventHandler value);
+  OnErrorEventHandler get onerror;
+  set onerror(OnErrorEventHandler value);
+  EventHandler get onfocus;
+  set onfocus(EventHandler value);
+  EventHandler get onformdata;
+  set onformdata(EventHandler value);
+  EventHandler get oninput;
+  set oninput(EventHandler value);
+  EventHandler get oninvalid;
+  set oninvalid(EventHandler value);
+  EventHandler get onkeydown;
+  set onkeydown(EventHandler value);
+  EventHandler get onkeypress;
+  set onkeypress(EventHandler value);
+  EventHandler get onkeyup;
+  set onkeyup(EventHandler value);
+  EventHandler get onload;
+  set onload(EventHandler value);
+  EventHandler get onloadeddata;
+  set onloadeddata(EventHandler value);
+  EventHandler get onloadedmetadata;
+  set onloadedmetadata(EventHandler value);
+  EventHandler get onloadstart;
+  set onloadstart(EventHandler value);
+  EventHandler get onmousedown;
+  set onmousedown(EventHandler value);
+  EventHandler get onmouseenter;
+  set onmouseenter(EventHandler value);
+  EventHandler get onmouseleave;
+  set onmouseleave(EventHandler value);
+  EventHandler get onmousemove;
+  set onmousemove(EventHandler value);
+  EventHandler get onmouseout;
+  set onmouseout(EventHandler value);
+  EventHandler get onmouseover;
+  set onmouseover(EventHandler value);
+  EventHandler get onmouseup;
+  set onmouseup(EventHandler value);
+  EventHandler get onpaste;
+  set onpaste(EventHandler value);
+  EventHandler get onpause;
+  set onpause(EventHandler value);
+  EventHandler get onplay;
+  set onplay(EventHandler value);
+  EventHandler get onplaying;
+  set onplaying(EventHandler value);
+  EventHandler get onprogress;
+  set onprogress(EventHandler value);
+  EventHandler get onratechange;
+  set onratechange(EventHandler value);
+  EventHandler get onreset;
+  set onreset(EventHandler value);
+  EventHandler get onresize;
+  set onresize(EventHandler value);
+  EventHandler get onscroll;
+  set onscroll(EventHandler value);
+  EventHandler get onscrollend;
+  set onscrollend(EventHandler value);
+  EventHandler get onsecuritypolicyviolation;
+  set onsecuritypolicyviolation(EventHandler value);
+  EventHandler get onseeked;
+  set onseeked(EventHandler value);
+  EventHandler get onseeking;
+  set onseeking(EventHandler value);
+  EventHandler get onselect;
+  set onselect(EventHandler value);
+  EventHandler get onslotchange;
+  set onslotchange(EventHandler value);
+  EventHandler get onstalled;
+  set onstalled(EventHandler value);
+  EventHandler get onsubmit;
+  set onsubmit(EventHandler value);
+  EventHandler get onsuspend;
+  set onsuspend(EventHandler value);
+  EventHandler get ontimeupdate;
+  set ontimeupdate(EventHandler value);
+  EventHandler get ontoggle;
+  set ontoggle(EventHandler value);
+  EventHandler get onvolumechange;
+  set onvolumechange(EventHandler value);
+  EventHandler get onwaiting;
+  set onwaiting(EventHandler value);
+  EventHandler get onwheel;
+  set onwheel(EventHandler value);
+  EventHandler get onanimationstart;
+  set onanimationstart(EventHandler value);
+  EventHandler get onanimationiteration;
+  set onanimationiteration(EventHandler value);
+  EventHandler get onanimationend;
+  set onanimationend(EventHandler value);
+  EventHandler get onanimationcancel;
+  set onanimationcancel(EventHandler value);
+  EventHandler get ontransitionrun;
+  set ontransitionrun(EventHandler value);
+  EventHandler get ontransitionstart;
+  set ontransitionstart(EventHandler value);
+  EventHandler get ontransitionend;
+  set ontransitionend(EventHandler value);
+  EventHandler get ontransitioncancel;
+  set ontransitioncancel(EventHandler value);
+  EventHandler get onpointerover;
+  set onpointerover(EventHandler value);
+  EventHandler get onpointerenter;
+  set onpointerenter(EventHandler value);
+  EventHandler get onpointerdown;
+  set onpointerdown(EventHandler value);
+  EventHandler get onpointermove;
+  set onpointermove(EventHandler value);
+  EventHandler get onpointerup;
+  set onpointerup(EventHandler value);
+  EventHandler get onpointercancel;
+  set onpointercancel(EventHandler value);
+  EventHandler get onpointerout;
+  set onpointerout(EventHandler value);
+  EventHandler get onpointerleave;
+  set onpointerleave(EventHandler value);
+  EventHandler get ongotpointercapture;
+  set ongotpointercapture(EventHandler value);
+  EventHandler get onlostpointercapture;
+  set onlostpointercapture(EventHandler value);
+  EventHandler get onselectstart;
+  set onselectstart(EventHandler value);
+  EventHandler get onselectionchange;
+  set onselectionchange(EventHandler value);
+  EventHandler get ontouchstart;
+  set ontouchstart(EventHandler value);
+  EventHandler get ontouchend;
+  set ontouchend(EventHandler value);
+  EventHandler get ontouchmove;
+  set ontouchmove(EventHandler value);
+  EventHandler get ontouchcancel;
+  set ontouchcancel(EventHandler value);
+  DOMStringMap get dataset;
+  String get nonce;
+  set nonce(String value);
+  bool get autofocus;
+  set autofocus(bool value);
+  int get tabIndex;
+  set tabIndex(int value);
 }

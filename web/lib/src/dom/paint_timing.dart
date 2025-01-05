@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,11 +10,7 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../js_interop.dart';
 import 'performance_timeline.dart';
 
 /// The **`PerformancePaintTiming`** interface provides timing information about
@@ -43,5 +39,4 @@ import 'performance_timeline.dart';
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/PerformancePaintTiming).
-extension type PerformancePaintTiming._(JSObject _)
-    implements PerformanceEntry, JSObject {}
+abstract class PerformancePaintTiming implements PerformanceEntry, JSObject {}

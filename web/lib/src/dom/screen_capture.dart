@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,38 +10,68 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
+import '../error.dart';
+import '../js_interop.dart';
 
 typedef SelfCapturePreferenceEnum = String;
 typedef SystemAudioPreferenceEnum = String;
 typedef SurfaceSwitchingPreferenceEnum = String;
 typedef MonitorTypeSurfacesEnum = String;
-extension type DisplayMediaStreamOptions._(JSObject _) implements JSObject {
-  external factory DisplayMediaStreamOptions({
-    JSAny video,
-    JSAny audio,
-    JSObject controller,
-    SelfCapturePreferenceEnum selfBrowserSurface,
-    SystemAudioPreferenceEnum systemAudio,
-    SurfaceSwitchingPreferenceEnum surfaceSwitching,
-    MonitorTypeSurfacesEnum monitorTypeSurfaces,
-  });
 
-  external JSAny get video;
-  external set video(JSAny value);
-  external JSAny get audio;
-  external set audio(JSAny value);
-  external JSObject get controller;
-  external set controller(JSObject value);
-  external SelfCapturePreferenceEnum get selfBrowserSurface;
-  external set selfBrowserSurface(SelfCapturePreferenceEnum value);
-  external SystemAudioPreferenceEnum get systemAudio;
-  external set systemAudio(SystemAudioPreferenceEnum value);
-  external SurfaceSwitchingPreferenceEnum get surfaceSwitching;
-  external set surfaceSwitching(SurfaceSwitchingPreferenceEnum value);
-  external MonitorTypeSurfacesEnum get monitorTypeSurfaces;
-  external set monitorTypeSurfaces(MonitorTypeSurfacesEnum value);
+abstract class DisplayMediaStreamOptions implements JSObject {
+  JSAny get video {
+    unsupportedPlatformError();
+  }
+
+  set video(JSAny value) {
+    unsupportedPlatformError();
+  }
+
+  JSAny get audio {
+    unsupportedPlatformError();
+  }
+
+  set audio(JSAny value) {
+    unsupportedPlatformError();
+  }
+
+  JSObject get controller {
+    unsupportedPlatformError();
+  }
+
+  set controller(JSObject value) {
+    unsupportedPlatformError();
+  }
+
+  SelfCapturePreferenceEnum get selfBrowserSurface {
+    unsupportedPlatformError();
+  }
+
+  set selfBrowserSurface(SelfCapturePreferenceEnum value) {
+    unsupportedPlatformError();
+  }
+
+  SystemAudioPreferenceEnum get systemAudio {
+    unsupportedPlatformError();
+  }
+
+  set systemAudio(SystemAudioPreferenceEnum value) {
+    unsupportedPlatformError();
+  }
+
+  SurfaceSwitchingPreferenceEnum get surfaceSwitching {
+    unsupportedPlatformError();
+  }
+
+  set surfaceSwitching(SurfaceSwitchingPreferenceEnum value) {
+    unsupportedPlatformError();
+  }
+
+  MonitorTypeSurfacesEnum get monitorTypeSurfaces {
+    unsupportedPlatformError();
+  }
+
+  set monitorTypeSurfaces(MonitorTypeSurfacesEnum value) {
+    unsupportedPlatformError();
+  }
 }

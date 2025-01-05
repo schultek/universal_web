@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,11 +10,8 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../error.dart';
+import '../js_interop.dart';
 import 'generic_sensor.dart';
 
 typedef RotationMatrixType = JSObject;
@@ -34,7 +31,7 @@ typedef OrientationSensorLocalCoordinateSystem = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/OrientationSensor).
-extension type OrientationSensor._(JSObject _) implements Sensor, JSObject {
+abstract class OrientationSensor implements Sensor, JSObject {
   /// The **`populateMatrix()`** method of the
   /// [OrientationSensor] interface populates the given target matrix with the
   /// rotation matrix based on the latest sensor reading. The rotation matrix is
@@ -50,7 +47,7 @@ extension type OrientationSensor._(JSObject _) implements Sensor, JSObject {
   /// - X = Vx \* sin(θ/2)
   /// - Y = Vy \* sin(θ/2)
   /// - Z = Vz \* sin(θ/2)
-  external void populateMatrix(RotationMatrixType targetMatrix);
+  void populateMatrix(RotationMatrixType targetMatrix);
 
   /// The **`quaternion`** read-only
   /// property of the [OrientationSensor] interface returns a four element
@@ -59,17 +56,17 @@ extension type OrientationSensor._(JSObject _) implements Sensor, JSObject {
   ///
   /// Because [OrientationSensor] is a base class, `quaternion` may
   /// only be read from one of its derived classes.
-  external JSArray<JSNumber>? get quaternion;
+  JSArray<JSNumber>? get quaternion;
 }
-extension type OrientationSensorOptions._(JSObject _)
-    implements SensorOptions, JSObject {
-  external factory OrientationSensorOptions({
-    num frequency,
-    OrientationSensorLocalCoordinateSystem referenceFrame,
-  });
 
-  external OrientationSensorLocalCoordinateSystem get referenceFrame;
-  external set referenceFrame(OrientationSensorLocalCoordinateSystem value);
+abstract class OrientationSensorOptions implements SensorOptions, JSObject {
+  OrientationSensorLocalCoordinateSystem get referenceFrame {
+    unsupportedPlatformError();
+  }
+
+  set referenceFrame(OrientationSensorLocalCoordinateSystem value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`AbsoluteOrientationSensor`** interface of the
@@ -89,11 +86,8 @@ extension type OrientationSensorOptions._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/AbsoluteOrientationSensor).
-extension type AbsoluteOrientationSensor._(JSObject _)
-    implements OrientationSensor, JSObject {
-  external factory AbsoluteOrientationSensor(
-      [OrientationSensorOptions sensorOptions]);
-}
+abstract class AbsoluteOrientationSensor
+    implements OrientationSensor, JSObject {}
 
 /// The **`RelativeOrientationSensor`** interface of the
 /// [Sensor APIs](https://developer.mozilla.org/en-US/docs/Web/API/Sensor_APIs)
@@ -111,8 +105,5 @@ extension type AbsoluteOrientationSensor._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/RelativeOrientationSensor).
-extension type RelativeOrientationSensor._(JSObject _)
-    implements OrientationSensor, JSObject {
-  external factory RelativeOrientationSensor(
-      [OrientationSensorOptions sensorOptions]);
-}
+abstract class RelativeOrientationSensor
+    implements OrientationSensor, JSObject {}

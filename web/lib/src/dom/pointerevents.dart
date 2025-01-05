@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,92 +10,122 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
-import 'dom.dart';
-import 'html.dart';
+import '../error.dart';
+import '../js_interop.dart';
 import 'uievents.dart';
 
-extension type PointerEventInit._(JSObject _)
-    implements MouseEventInit, JSObject {
-  external factory PointerEventInit({
-    bool bubbles,
-    bool cancelable,
-    bool composed,
-    Window? view,
-    int detail,
-    JSObject? sourceCapabilities,
-    int which,
-    bool ctrlKey,
-    bool shiftKey,
-    bool altKey,
-    bool metaKey,
-    bool modifierAltGraph,
-    bool modifierCapsLock,
-    bool modifierFn,
-    bool modifierFnLock,
-    bool modifierHyper,
-    bool modifierNumLock,
-    bool modifierScrollLock,
-    bool modifierSuper,
-    bool modifierSymbol,
-    bool modifierSymbolLock,
-    int screenX,
-    int screenY,
-    int clientX,
-    int clientY,
-    int button,
-    int buttons,
-    EventTarget? relatedTarget,
-    num movementX,
-    num movementY,
-    int pointerId,
-    num width,
-    num height,
-    num pressure,
-    num tangentialPressure,
-    int tiltX,
-    int tiltY,
-    int twist,
-    num altitudeAngle,
-    num azimuthAngle,
-    String pointerType,
-    bool isPrimary,
-    JSArray<PointerEvent> coalescedEvents,
-    JSArray<PointerEvent> predictedEvents,
-  });
+abstract class PointerEventInit implements MouseEventInit, JSObject {
+  int get pointerId {
+    unsupportedPlatformError();
+  }
 
-  external int get pointerId;
-  external set pointerId(int value);
-  external double get width;
-  external set width(num value);
-  external double get height;
-  external set height(num value);
-  external double get pressure;
-  external set pressure(num value);
-  external double get tangentialPressure;
-  external set tangentialPressure(num value);
-  external int get tiltX;
-  external set tiltX(int value);
-  external int get tiltY;
-  external set tiltY(int value);
-  external int get twist;
-  external set twist(int value);
-  external double get altitudeAngle;
-  external set altitudeAngle(num value);
-  external double get azimuthAngle;
-  external set azimuthAngle(num value);
-  external String get pointerType;
-  external set pointerType(String value);
-  external bool get isPrimary;
-  external set isPrimary(bool value);
-  external JSArray<PointerEvent> get coalescedEvents;
-  external set coalescedEvents(JSArray<PointerEvent> value);
-  external JSArray<PointerEvent> get predictedEvents;
-  external set predictedEvents(JSArray<PointerEvent> value);
+  set pointerId(int value) {
+    unsupportedPlatformError();
+  }
+
+  double get width {
+    unsupportedPlatformError();
+  }
+
+  set width(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get height {
+    unsupportedPlatformError();
+  }
+
+  set height(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get pressure {
+    unsupportedPlatformError();
+  }
+
+  set pressure(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get tangentialPressure {
+    unsupportedPlatformError();
+  }
+
+  set tangentialPressure(num value) {
+    unsupportedPlatformError();
+  }
+
+  int get tiltX {
+    unsupportedPlatformError();
+  }
+
+  set tiltX(int value) {
+    unsupportedPlatformError();
+  }
+
+  int get tiltY {
+    unsupportedPlatformError();
+  }
+
+  set tiltY(int value) {
+    unsupportedPlatformError();
+  }
+
+  int get twist {
+    unsupportedPlatformError();
+  }
+
+  set twist(int value) {
+    unsupportedPlatformError();
+  }
+
+  double get altitudeAngle {
+    unsupportedPlatformError();
+  }
+
+  set altitudeAngle(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get azimuthAngle {
+    unsupportedPlatformError();
+  }
+
+  set azimuthAngle(num value) {
+    unsupportedPlatformError();
+  }
+
+  String get pointerType {
+    unsupportedPlatformError();
+  }
+
+  set pointerType(String value) {
+    unsupportedPlatformError();
+  }
+
+  bool get isPrimary {
+    unsupportedPlatformError();
+  }
+
+  set isPrimary(bool value) {
+    unsupportedPlatformError();
+  }
+
+  JSArray<PointerEvent> get coalescedEvents {
+    unsupportedPlatformError();
+  }
+
+  set coalescedEvents(JSArray<PointerEvent> value) {
+    unsupportedPlatformError();
+  }
+
+  JSArray<PointerEvent> get predictedEvents {
+    unsupportedPlatformError();
+  }
+
+  set predictedEvents(JSArray<PointerEvent> value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`PointerEvent`** interface represents the state of a DOM event
@@ -117,12 +147,7 @@ extension type PointerEventInit._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/PointerEvent).
-extension type PointerEvent._(JSObject _) implements MouseEvent, JSObject {
-  external factory PointerEvent(
-    String type, [
-    PointerEventInit eventInitDict,
-  ]);
-
+abstract class PointerEvent implements MouseEvent, JSObject {
   /// The **`getCoalescedEvents()`** method of the [PointerEvent] interface
   /// returns a sequence of `PointerEvent` instances that were coalesced
   /// (merged) into a single [Element.pointermove_event] or
@@ -142,7 +167,7 @@ extension type PointerEvent._(JSObject _) implements MouseEvent, JSObject {
   ///
   /// For an illustration of coalesced events, see
   /// [Figure 7 in the specification](https://w3c.github.io/pointerevents/#figure_coalesced).
-  external JSArray<PointerEvent> getCoalescedEvents();
+  JSArray<PointerEvent> getCoalescedEvents();
 
   /// The **`getPredictedEvents()`** method of the [PointerEvent] interface
   /// returns a sequence of `PointerEvent` instances that are estimated future
@@ -156,7 +181,7 @@ extension type PointerEvent._(JSObject _) implements MouseEvent, JSObject {
   ///
   /// For an illustration of predicted events, see
   /// [Figure 8 in the specification](https://w3c.github.io/pointerevents/#figure_predicted).
-  external JSArray<PointerEvent> getPredictedEvents();
+  JSArray<PointerEvent> getPredictedEvents();
 
   /// The **`pointerId`** read-only property of the
   /// [PointerEvent] interface is an identifier assigned to a given pointer
@@ -165,7 +190,7 @@ extension type PointerEvent._(JSObject _) implements MouseEvent, JSObject {
   /// active pointer events. Since the value may be randomly generated, it is
   /// not guaranteed
   /// to convey any particular meaning.
-  external int get pointerId;
+  int get pointerId;
 
   /// The **`width`** read-only property of the
   /// [PointerEvent] interface represents the width of the pointer's contact
@@ -178,7 +203,7 @@ extension type PointerEvent._(JSObject _) implements MouseEvent, JSObject {
   /// If the input hardware cannot report the contact geometry to the browser,
   /// the width
   /// defaults to `1`.
-  external double get width;
+  double get width;
 
   /// The **`height`** read-only property of the
   /// [PointerEvent] interface represents the height of the pointer's contact
@@ -191,18 +216,18 @@ extension type PointerEvent._(JSObject _) implements MouseEvent, JSObject {
   /// If the input hardware cannot report the contact geometry to the browser,
   /// the height
   /// defaults to `1`.
-  external double get height;
+  double get height;
 
   /// The **`pressure`** read-only property of the
   /// [PointerEvent] interface indicates the normalized pressure of the pointer
   /// input.
-  external double get pressure;
+  double get pressure;
 
   /// The **`tangentialPressure`** read-only property of the
   /// [PointerEvent] interface represents the normalized tangential pressure of
   /// the pointer input (also known as barrel pressure or
   /// [cylinder stress](https://en.wikipedia.org/wiki/Cylinder_stress)).
-  external double get tangentialPressure;
+  double get tangentialPressure;
 
   /// The **`tiltX`** read-only property of the
   /// [PointerEvent] interface is the angle (in degrees) between the _Y-Z
@@ -212,7 +237,7 @@ extension type PointerEvent._(JSObject _) implements MouseEvent, JSObject {
   ///
   /// For an illustration of this property see
   /// [Figure 2 in the specification](https://w3c.github.io/pointerevents/#dom-pointerevent-tiltx).
-  external int get tiltX;
+  int get tiltX;
 
   /// The **`tiltY`** read-only property of the
   /// [PointerEvent] interface is the angle (in degrees) between the _X-Z
@@ -222,17 +247,17 @@ extension type PointerEvent._(JSObject _) implements MouseEvent, JSObject {
   ///
   /// For an illustration of this property, see
   /// [Figure 3 in the specification](https://w3c.github.io/pointerevents/#dom-pointerevent-tilty).
-  external int get tiltY;
+  int get tiltY;
 
   /// The **`twist`** read-only property of the
   /// [PointerEvent] interface represents the clockwise rotation of the pointer
   /// (e.g., pen stylus) around its major axis, in degrees.
-  external int get twist;
+  int get twist;
 
   /// The **`pointerType`** read-only property of the
   /// [PointerEvent] interface indicates the device type (mouse, pen, or touch)
   /// that caused a given pointer event.
-  external String get pointerType;
+  String get pointerType;
 
   /// The **`isPrimary`** read-only property of the
   /// [PointerEvent] interface indicates whether or not the pointer device that
@@ -271,5 +296,5 @@ extension type PointerEvent._(JSObject _) implements MouseEvent, JSObject {
   /// (see
   /// [Pointer_events] for more information about pointer, mouse and touch
   /// interaction).
-  external bool get isPrimary;
+  bool get isPrimary;
 }

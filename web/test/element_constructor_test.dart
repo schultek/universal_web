@@ -6,7 +6,7 @@
 library;
 
 import 'package:test/test.dart';
-import 'package:web/web.dart';
+import 'package:universal_web/web.dart';
 
 void main() {
   test('Element constructors create the expected element', () {

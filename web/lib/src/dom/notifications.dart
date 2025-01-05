@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,11 +10,8 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../error.dart';
+import '../js_interop.dart';
 import 'dom.dart';
 import 'hr_time.dart';
 import 'html.dart';
@@ -36,23 +33,22 @@ typedef NotificationDirection = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Notification).
-extension type Notification._(JSObject _) implements EventTarget, JSObject {
-  external factory Notification(
-    String title, [
-    NotificationOptions options,
-  ]);
-
+abstract class Notification implements EventTarget, JSObject {
   /// The **`requestPermission()`** static method of the [Notification]
   /// interface requests permission from the user for the current origin to
   /// display notifications.
-  external static JSPromise<JSString> requestPermission(
-      [NotificationPermissionCallback deprecatedCallback]);
+  static JSPromise<JSString> requestPermission(
+      [NotificationPermissionCallback? deprecatedCallback]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`permission`** read-only static property of the [Notification]
   /// interface indicates the current permission granted by the user for the
   /// current origin to
   /// display web notifications.
-  external static NotificationPermission get permission;
+  static NotificationPermission get permission {
+    unsupportedPlatformError();
+  }
 
   /// The **`close()`** method of the [Notification] interface is used to
   /// close/remove a previously displayed notification.
@@ -69,26 +65,26 @@ extension type Notification._(JSObject _) implements EventTarget, JSObject {
   /// > on the webpage in the case of a messaging app or the following song is
   /// > already playing
   /// > in a music app).
-  external void close();
-  external EventHandler get onclick;
-  external set onclick(EventHandler value);
-  external EventHandler get onshow;
-  external set onshow(EventHandler value);
-  external EventHandler get onerror;
-  external set onerror(EventHandler value);
-  external EventHandler get onclose;
-  external set onclose(EventHandler value);
+  void close();
+  EventHandler get onclick;
+  set onclick(EventHandler value);
+  EventHandler get onshow;
+  set onshow(EventHandler value);
+  EventHandler get onerror;
+  set onerror(EventHandler value);
+  EventHandler get onclose;
+  set onclose(EventHandler value);
 
   /// The **`title`** read-only property of the
   /// [Notification] interface indicates the title of the notification, as
   /// specified in the `title` parameter of the
   /// [Notification.Notification] constructor.
-  external String get title;
+  String get title;
 
   /// The **`dir`** read-only property of the [Notification] interface indicates
   /// the text direction of the notification, as specified in the `dir` option
   /// of the [Notification.Notification] constructor.
-  external NotificationDirection get dir;
+  NotificationDirection get dir;
 
   /// The **`lang`** read-only property of the
   /// [Notification] interface indicates the language used in the notification,
@@ -101,13 +97,13 @@ extension type Notification._(JSObject _) implements EventTarget, JSObject {
   /// See the Sitepoint
   /// [ISO 2 letter language codes](https://www.sitepoint.com/iso-2-letter-language-codes/)
   /// page for a simple reference.
-  external String get lang;
+  String get lang;
 
   /// The **`body`** read-only property of the
   /// [Notification] interface indicates the body string of the notification, as
   /// specified in the `body` option of the
   /// [Notification.Notification] constructor.
-  external String get body;
+  String get body;
 
   /// The **`tag`** read-only property of the
   /// [Notification] interface signifies an identifying tag for the
@@ -122,13 +118,13 @@ extension type Notification._(JSObject _) implements EventTarget, JSObject {
   /// another to avoid the users' screen being filled up with a huge number of
   /// similar
   /// notifications.
-  external String get tag;
+  String get tag;
 
   /// The **`icon`** read-only property of the
   /// [Notification] interface contains the URL of an icon to be displayed as
   /// part of the notification, as specified in the `icon` option of the
   /// [Notification.Notification] constructor.
-  external String get icon;
+  String get icon;
 
   /// The **`badge`** read-only property of the [Notification] interface returns
   /// a string containing the URL of an image to represent the notification when
@@ -136,7 +132,7 @@ extension type Notification._(JSObject _) implements EventTarget, JSObject {
   /// example, the Android Notification Bar. On Android devices, the badge
   /// should accommodate devices up to 4x resolution, about 96 by 96 px, and the
   /// image will be automatically masked.
-  external String get badge;
+  String get badge;
 
   /// The **`silent`** read-only property of the
   /// [Notification] interface specifies whether the notification should be
@@ -144,7 +140,7 @@ extension type Notification._(JSObject _) implements EventTarget, JSObject {
   /// device
   /// settings. This is specified in the `silent` option of the
   /// [Notification.Notification] constructor.
-  external bool? get silent;
+  bool? get silent;
 
   /// The **`requireInteraction`** read-only property of the [Notification]
   /// interface returns a boolean value indicating that a notification should
@@ -154,7 +150,7 @@ extension type Notification._(JSObject _) implements EventTarget, JSObject {
   /// > **Note:** This can be set when the notification is first created by
   /// > setting the `requireInteraction` option to `true` in the options object
   /// > of the [Notification.Notification] constructor.
-  external bool get requireInteraction;
+  bool get requireInteraction;
 
   /// The **`data`** read-only property of the
   /// [Notification] interface returns a structured clone of the notification's
@@ -164,74 +160,157 @@ extension type Notification._(JSObject _) implements EventTarget, JSObject {
   /// The notification's data can be any arbitrary data that you want associated
   /// with the
   /// notification.
-  external JSAny? get data;
+  JSAny? get data;
 }
-extension type NotificationOptions._(JSObject _) implements JSObject {
-  external factory NotificationOptions({
-    NotificationDirection dir,
-    String lang,
-    String body,
-    String tag,
-    String image,
-    String icon,
-    String badge,
-    VibratePattern vibrate,
-    EpochTimeStamp timestamp,
-    bool renotify,
-    bool? silent,
-    bool requireInteraction,
-    JSAny? data,
-    JSArray<NotificationAction> actions,
-  });
 
-  external NotificationDirection get dir;
-  external set dir(NotificationDirection value);
-  external String get lang;
-  external set lang(String value);
-  external String get body;
-  external set body(String value);
-  external String get tag;
-  external set tag(String value);
-  external String get image;
-  external set image(String value);
-  external String get icon;
-  external set icon(String value);
-  external String get badge;
-  external set badge(String value);
-  external VibratePattern get vibrate;
-  external set vibrate(VibratePattern value);
-  external EpochTimeStamp get timestamp;
-  external set timestamp(EpochTimeStamp value);
-  external bool get renotify;
-  external set renotify(bool value);
-  external bool? get silent;
-  external set silent(bool? value);
-  external bool get requireInteraction;
-  external set requireInteraction(bool value);
-  external JSAny? get data;
-  external set data(JSAny? value);
-  external JSArray<NotificationAction> get actions;
-  external set actions(JSArray<NotificationAction> value);
+abstract class NotificationOptions implements JSObject {
+  NotificationDirection get dir {
+    unsupportedPlatformError();
+  }
+
+  set dir(NotificationDirection value) {
+    unsupportedPlatformError();
+  }
+
+  String get lang {
+    unsupportedPlatformError();
+  }
+
+  set lang(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get body {
+    unsupportedPlatformError();
+  }
+
+  set body(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get tag {
+    unsupportedPlatformError();
+  }
+
+  set tag(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get image {
+    unsupportedPlatformError();
+  }
+
+  set image(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get icon {
+    unsupportedPlatformError();
+  }
+
+  set icon(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get badge {
+    unsupportedPlatformError();
+  }
+
+  set badge(String value) {
+    unsupportedPlatformError();
+  }
+
+  VibratePattern get vibrate {
+    unsupportedPlatformError();
+  }
+
+  set vibrate(VibratePattern value) {
+    unsupportedPlatformError();
+  }
+
+  EpochTimeStamp get timestamp {
+    unsupportedPlatformError();
+  }
+
+  set timestamp(EpochTimeStamp value) {
+    unsupportedPlatformError();
+  }
+
+  bool get renotify {
+    unsupportedPlatformError();
+  }
+
+  set renotify(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool? get silent {
+    unsupportedPlatformError();
+  }
+
+  set silent(bool? value) {
+    unsupportedPlatformError();
+  }
+
+  bool get requireInteraction {
+    unsupportedPlatformError();
+  }
+
+  set requireInteraction(bool value) {
+    unsupportedPlatformError();
+  }
+
+  JSAny? get data {
+    unsupportedPlatformError();
+  }
+
+  set data(JSAny? value) {
+    unsupportedPlatformError();
+  }
+
+  JSArray<NotificationAction> get actions {
+    unsupportedPlatformError();
+  }
+
+  set actions(JSArray<NotificationAction> value) {
+    unsupportedPlatformError();
+  }
 }
-extension type NotificationAction._(JSObject _) implements JSObject {
-  external factory NotificationAction({
-    required String action,
-    required String title,
-    String icon,
-  });
 
-  external String get action;
-  external set action(String value);
-  external String get title;
-  external set title(String value);
-  external String get icon;
-  external set icon(String value);
+abstract class NotificationAction implements JSObject {
+  String get action {
+    unsupportedPlatformError();
+  }
+
+  set action(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get title {
+    unsupportedPlatformError();
+  }
+
+  set title(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get icon {
+    unsupportedPlatformError();
+  }
+
+  set icon(String value) {
+    unsupportedPlatformError();
+  }
 }
-extension type GetNotificationOptions._(JSObject _) implements JSObject {
-  external factory GetNotificationOptions({String tag});
 
-  external String get tag;
-  external set tag(String value);
+abstract class GetNotificationOptions implements JSObject {
+  String get tag {
+    unsupportedPlatformError();
+  }
+
+  set tag(String value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// @AvailableInWorkers("service")
@@ -251,13 +330,7 @@ extension type GetNotificationOptions._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/NotificationEvent).
-extension type NotificationEvent._(JSObject _)
-    implements ExtendableEvent, JSObject {
-  external factory NotificationEvent(
-    String type,
-    NotificationEventInit eventInitDict,
-  );
-
+abstract class NotificationEvent implements ExtendableEvent, JSObject {
   /// @AvailableInWorkers("service")
   ///
   /// The **`notification`** read-only property of the [NotificationEvent]
@@ -266,7 +339,7 @@ extension type NotificationEvent._(JSObject _)
   /// properties that were set at the instantiation time of the Notification
   /// such as `tag` and `data` attributes that allow you to store information
   /// for deferred use in the `notificationclick` event.
-  external Notification get notification;
+  Notification get notification;
 
   /// @AvailableInWorkers("service")
   ///
@@ -277,20 +350,23 @@ extension type NotificationEvent._(JSObject _)
   /// button. The notification id is set during the creation of the Notification
   /// via the actions array attribute and can't be modified unless the
   /// notification is replaced.
-  external String get action;
+  String get action;
 }
-extension type NotificationEventInit._(JSObject _)
-    implements ExtendableEventInit, JSObject {
-  external factory NotificationEventInit({
-    bool bubbles,
-    bool cancelable,
-    bool composed,
-    required Notification notification,
-    String action,
-  });
 
-  external Notification get notification;
-  external set notification(Notification value);
-  external String get action;
-  external set action(String value);
+abstract class NotificationEventInit implements ExtendableEventInit, JSObject {
+  Notification get notification {
+    unsupportedPlatformError();
+  }
+
+  set notification(Notification value) {
+    unsupportedPlatformError();
+  }
+
+  String get action {
+    unsupportedPlatformError();
+  }
+
+  set action(String value) {
+    unsupportedPlatformError();
+  }
 }

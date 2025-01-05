@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,11 +10,7 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../js_interop.dart';
 import 'dom.dart';
 import 'performance_timeline.dart';
 
@@ -25,19 +21,18 @@ import 'performance_timeline.dart';
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/LargestContentfulPaint).
-extension type LargestContentfulPaint._(JSObject _)
-    implements PerformanceEntry, JSObject {
+abstract class LargestContentfulPaint implements PerformanceEntry, JSObject {
   /// The **`toJSON()`** method of the [LargestContentfulPaint] interface is a ;
   /// it returns a JSON representation of the [LargestContentfulPaint] object.
-  external JSObject toJSON();
+  JSObject toJSON();
 
   /// The **`renderTime`** read-only property of the [LargestContentfulPaint]
   /// interface represents the time that the element was rendered to the screen.
-  external double get renderTime;
+  double get renderTime;
 
   /// The **`loadTime`** read-only property of the [LargestContentfulPaint]
   /// interface returns the time that the element was loaded.
-  external double get loadTime;
+  double get loadTime;
 
   /// The **`size`** read-only property of the [LargestContentfulPaint]
   /// interface returns the intrinsic size of the element that is the largest
@@ -45,18 +40,18 @@ extension type LargestContentfulPaint._(JSObject _)
   ///
   /// The `size` of the element is the `width` times `height` of the
   /// [DOMRectReadOnly] that this element creates on the screen.
-  external int get size;
+  int get size;
 
   /// The **`id`** read-only property of the [LargestContentfulPaint] interface
   /// returns the ID of the element that is the largest contentful paint.
-  external String get id;
+  String get id;
 
   /// The **`url`** read-only property of the [LargestContentfulPaint] interface
   /// returns the request URL of the element, if the element is an image.
-  external String get url;
+  String get url;
 
   /// The **`element`** read-only property of the [LargestContentfulPaint]
   /// interface returns an object representing the [Element] that is the largest
   /// contentful paint.
-  external Element? get element;
+  Element? get element;
 }

@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,12 +10,7 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
-import 'dom.dart';
+import '../js_interop.dart';
 
 typedef HighlightType = String;
 
@@ -36,9 +31,7 @@ typedef HighlightType = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Highlight).
-extension type Highlight._(JSObject _) implements JSObject {
-  external factory Highlight(AbstractRange initialRanges);
-
+abstract class Highlight implements JSObject {
   /// It is possible to create [Range] objects that overlap in a document.
   ///
   /// When overlapping ranges are used by multiple different [Highlight]
@@ -63,8 +56,8 @@ extension type Highlight._(JSObject _) implements JSObject {
   /// also does not depend on the order in which the  pseudo-elements rules
   /// appear in the source, or whether or not CSS properties are marked as
   /// `!important`.
-  external int get priority;
-  external set priority(int value);
+  int get priority;
+  set priority(int value);
 
   /// The `type` property of the [Highlight] interface is an enumerated `String`
   /// used to specify the meaning of the highlight. This allows assistive
@@ -73,8 +66,8 @@ extension type Highlight._(JSObject _) implements JSObject {
   ///
   /// By default, a highlight object will have its type set to `highlight`, but
   /// you can change it to `spelling-error` or `grammar-error`.
-  external HighlightType get type;
-  external set type(HighlightType value);
+  HighlightType get type;
+  set type(HighlightType value);
 }
 
 /// The **`HighlightRegistry`** interface of the
@@ -91,4 +84,4 @@ extension type Highlight._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HighlightRegistry).
-extension type HighlightRegistry._(JSObject _) implements JSObject {}
+abstract class HighlightRegistry implements JSObject {}

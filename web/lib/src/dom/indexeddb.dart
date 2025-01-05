@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,11 +10,8 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../error.dart';
+import '../js_interop.dart';
 import 'dom.dart';
 import 'html.dart';
 import 'webidl.dart';
@@ -55,24 +52,24 @@ typedef IDBTransactionMode = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/IDBRequest).
-extension type IDBRequest._(JSObject _) implements EventTarget, JSObject {
+abstract class IDBRequest implements EventTarget, JSObject {
   /// The **`result`** read-only property of the
   /// [IDBRequest] interface returns the result of the request. If the request
   /// is not completed, the result is not available and an `InvalidStateError`
   /// exception is
   /// thrown.
-  external JSAny? get result;
+  JSAny? get result;
 
   /// The **`error`** read-only property of the
   /// [IDBRequest] interface returns the error in the event of an unsuccessful
   /// request.
-  external DOMException? get error;
+  DOMException? get error;
 
   /// The **`source`** read-only property of the
   /// [IDBRequest] interface returns the source of the request, such as an
   /// Index or an object store. If no source exists (such as when calling
   /// [IDBFactory.open]), it returns null.
-  external JSObject? get source;
+  JSObject? get source;
 
   /// The **`transaction`** read-only property of the IDBRequest
   /// interface returns the transaction for the request, that is, the
@@ -90,7 +87,7 @@ extension type IDBRequest._(JSObject _) implements EventTarget, JSObject {
   /// to `"versionchange"`, and can be used to access existing object stores and
   /// indexes, or abort the upgrade. Following the upgrade, the
   /// **`transaction`** property will again be `null`.
-  external IDBTransaction? get transaction;
+  IDBTransaction? get transaction;
 
   /// The **`readyState`** read-only property of the
   /// [IDBRequest] interface returns the state of the request.
@@ -98,11 +95,11 @@ extension type IDBRequest._(JSObject _) implements EventTarget, JSObject {
   /// Every request starts in the `pending` state. The state changes to
   /// `done` when the request completes successfully or when an error
   /// occurs.
-  external IDBRequestReadyState get readyState;
-  external EventHandler get onsuccess;
-  external set onsuccess(EventHandler value);
-  external EventHandler get onerror;
-  external set onerror(EventHandler value);
+  IDBRequestReadyState get readyState;
+  EventHandler get onsuccess;
+  set onsuccess(EventHandler value);
+  EventHandler get onerror;
+  set onerror(EventHandler value);
 }
 
 /// The **`IDBOpenDBRequest`** interface of the IndexedDB API provides access to
@@ -114,11 +111,11 @@ extension type IDBRequest._(JSObject _) implements EventTarget, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/IDBOpenDBRequest).
-extension type IDBOpenDBRequest._(JSObject _) implements IDBRequest, JSObject {
-  external EventHandler get onblocked;
-  external set onblocked(EventHandler value);
-  external EventHandler get onupgradeneeded;
-  external set onupgradeneeded(EventHandler value);
+abstract class IDBOpenDBRequest implements IDBRequest, JSObject {
+  EventHandler get onblocked;
+  set onblocked(EventHandler value);
+  EventHandler get onupgradeneeded;
+  set onupgradeneeded(EventHandler value);
 }
 
 /// The **`IDBVersionChangeEvent`** interface of the
@@ -130,39 +127,37 @@ extension type IDBOpenDBRequest._(JSObject _) implements IDBRequest, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/IDBVersionChangeEvent).
-extension type IDBVersionChangeEvent._(JSObject _) implements Event, JSObject {
-  external factory IDBVersionChangeEvent(
-    String type, [
-    IDBVersionChangeEventInit eventInitDict,
-  ]);
-
+abstract class IDBVersionChangeEvent implements Event, JSObject {
   /// The **`oldVersion`** read-only property of the
   /// [IDBVersionChangeEvent] interface returns the old version number of the
   /// database.
   ///
   /// When the opened database doesn't exist yet, the value of `oldVersion` is
   /// 0.
-  external int get oldVersion;
+  int get oldVersion;
 
   /// The **`newVersion`** read-only property of the
   /// [IDBVersionChangeEvent] interface returns the new version number of the
   /// database.
-  external int? get newVersion;
+  int? get newVersion;
 }
-extension type IDBVersionChangeEventInit._(JSObject _)
-    implements EventInit, JSObject {
-  external factory IDBVersionChangeEventInit({
-    bool bubbles,
-    bool cancelable,
-    bool composed,
-    int oldVersion,
-    int? newVersion,
-  });
 
-  external int get oldVersion;
-  external set oldVersion(int value);
-  external int? get newVersion;
-  external set newVersion(int? value);
+abstract class IDBVersionChangeEventInit implements EventInit, JSObject {
+  int get oldVersion {
+    unsupportedPlatformError();
+  }
+
+  set oldVersion(int value) {
+    unsupportedPlatformError();
+  }
+
+  int? get newVersion {
+    unsupportedPlatformError();
+  }
+
+  set newVersion(int? value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`IDBFactory`** interface of the
@@ -176,7 +171,7 @@ extension type IDBVersionChangeEventInit._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/IDBFactory).
-extension type IDBFactory._(JSObject _) implements JSObject {
+abstract class IDBFactory implements JSObject {
   /// The **`open()`** method of the [IDBFactory] interface requests opening a
   /// [connection to a database](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Basic_Terminology#database_connection).
   ///
@@ -187,7 +182,7 @@ extension type IDBFactory._(JSObject _) implements JSObject {
   /// to the new [IDBDatabase] object for the connection.
   ///
   /// May trigger `upgradeneeded`, `blocked` or `versionchange` events.
-  external IDBOpenDBRequest open(
+  IDBOpenDBRequest open(
     String name, [
     int version,
   ]);
@@ -210,7 +205,7 @@ extension type IDBFactory._(JSObject _) implements JSObject {
   /// particular database will get a
   /// [versionchange](https://developer.mozilla.org/en-US/docs/Web/API/IDBDatabase/versionchange_event)
   /// event.
-  external IDBOpenDBRequest deleteDatabase(String name);
+  IDBOpenDBRequest deleteDatabase(String name);
 
   /// The **`databases`** method of the [IDBFactory] interface returns a
   /// `Promise` that fulfills with an array of objects containing the name and
@@ -220,7 +215,7 @@ extension type IDBFactory._(JSObject _) implements JSObject {
   /// applications to check what databases have been created — in order to, for
   /// example, clean up databases created by earlier versions of application
   /// code.
-  external JSPromise<JSArray<IDBDatabaseInfo>> databases();
+  JSPromise<JSArray<IDBDatabaseInfo>> databases();
 
   /// The **`cmp()`** method of the [IDBFactory]
   /// interface compares two values as keys to determine equality and ordering
@@ -237,21 +232,28 @@ extension type IDBFactory._(JSObject _) implements JSObject {
   /// > arrays, so any non-numeric arrays are treated as equivalent). This
   /// > throws an exception
   /// > if either of the values is not a valid key.
-  external int cmp(
+  int cmp(
     JSAny? first,
     JSAny? second,
   );
 }
-extension type IDBDatabaseInfo._(JSObject _) implements JSObject {
-  external factory IDBDatabaseInfo({
-    String name,
-    int version,
-  });
 
-  external String get name;
-  external set name(String value);
-  external int get version;
-  external set version(int value);
+abstract class IDBDatabaseInfo implements JSObject {
+  String get name {
+    unsupportedPlatformError();
+  }
+
+  set name(String value) {
+    unsupportedPlatformError();
+  }
+
+  int get version {
+    unsupportedPlatformError();
+  }
+
+  set version(int value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`IDBDatabase`** interface of the IndexedDB API provides a
@@ -274,12 +276,12 @@ extension type IDBDatabaseInfo._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/IDBDatabase).
-extension type IDBDatabase._(JSObject _) implements EventTarget, JSObject {
+abstract class IDBDatabase implements EventTarget, JSObject {
   /// The **`transaction`** method of the [IDBDatabase] interface immediately
   /// returns a transaction object ([IDBTransaction]) containing the
   /// [IDBTransaction.objectStore] method, which you can use to access your
   /// object store.
-  external IDBTransaction transaction(
+  IDBTransaction transaction(
     JSAny storeNames, [
     IDBTransactionMode mode,
     IDBTransactionOptions options,
@@ -296,7 +298,7 @@ extension type IDBDatabase._(JSObject _) implements EventTarget, JSObject {
   /// this method is called. Methods that create transactions throw an exception
   /// if a closing
   /// operation is pending.
-  external void close();
+  void close();
 
   /// The **`createObjectStore()`** method of the
   /// [IDBDatabase] interface creates and returns a new [IDBObjectStore].
@@ -312,7 +314,7 @@ extension type IDBDatabase._(JSObject _) implements EventTarget, JSObject {
   /// This method can be called _only_ within a
   /// [`versionchange`](https://developer.mozilla.org/en-US/docs/Web/API/IDBTransaction#version_change)
   /// transaction.
-  external IDBObjectStore createObjectStore(
+  IDBObjectStore createObjectStore(
     String name, [
     IDBObjectStoreParameters options,
   ]);
@@ -325,51 +327,62 @@ extension type IDBDatabase._(JSObject _) implements EventTarget, JSObject {
   /// _only_ within a
   /// [`versionchange`](https://developer.mozilla.org/en-US/docs/Web/API/IDBTransaction#version_change)
   /// transaction.
-  external void deleteObjectStore(String name);
+  void deleteObjectStore(String name);
 
   /// The **`name`** read-only property of the
   /// `IDBDatabase` interface is a string that contains the
   /// name of the connected database.
-  external String get name;
+  String get name;
 
   /// The **`version`** property of the [IDBDatabase]
   /// interface is a
   /// [64-bit integer](https://developer.mozilla.org/en-US/docs/NSPR_API_Reference/Long_Long_%2864-bit%29_Integers)
   /// that contains the version of the connected database.
   /// When a database is first created, this attribute is an empty string.
-  external int get version;
+  int get version;
 
   /// The **`objectStoreNames`** read-only property of the
   /// [IDBDatabase] interface is a [DOMStringList] containing a
   /// list of the names of the
   /// [object stores](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Basic_Terminology#object_store)
   /// currently in the connected database.
-  external DOMStringList get objectStoreNames;
-  external EventHandler get onabort;
-  external set onabort(EventHandler value);
-  external EventHandler get onclose;
-  external set onclose(EventHandler value);
-  external EventHandler get onerror;
-  external set onerror(EventHandler value);
-  external EventHandler get onversionchange;
-  external set onversionchange(EventHandler value);
+  DOMStringList get objectStoreNames;
+  EventHandler get onabort;
+  set onabort(EventHandler value);
+  EventHandler get onclose;
+  set onclose(EventHandler value);
+  EventHandler get onerror;
+  set onerror(EventHandler value);
+  EventHandler get onversionchange;
+  set onversionchange(EventHandler value);
 }
-extension type IDBTransactionOptions._(JSObject _) implements JSObject {
-  external factory IDBTransactionOptions({IDBTransactionDurability durability});
 
-  external IDBTransactionDurability get durability;
-  external set durability(IDBTransactionDurability value);
+abstract class IDBTransactionOptions implements JSObject {
+  IDBTransactionDurability get durability {
+    unsupportedPlatformError();
+  }
+
+  set durability(IDBTransactionDurability value) {
+    unsupportedPlatformError();
+  }
 }
-extension type IDBObjectStoreParameters._(JSObject _) implements JSObject {
-  external factory IDBObjectStoreParameters({
-    JSAny? keyPath,
-    bool autoIncrement,
-  });
 
-  external JSAny? get keyPath;
-  external set keyPath(JSAny? value);
-  external bool get autoIncrement;
-  external set autoIncrement(bool value);
+abstract class IDBObjectStoreParameters implements JSObject {
+  JSAny? get keyPath {
+    unsupportedPlatformError();
+  }
+
+  set keyPath(JSAny? value) {
+    unsupportedPlatformError();
+  }
+
+  bool get autoIncrement {
+    unsupportedPlatformError();
+  }
+
+  set autoIncrement(bool value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`IDBObjectStore`** interface of the
@@ -382,7 +395,7 @@ extension type IDBObjectStoreParameters._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore).
-extension type IDBObjectStore._(JSObject _) implements JSObject {
+abstract class IDBObjectStore implements JSObject {
   /// The **`put()`** method of the [IDBObjectStore] interface updates a given
   /// record in a database, or inserts a new record if the given item does not
   /// already exist.
@@ -403,7 +416,7 @@ extension type IDBObjectStore._(JSObject _) implements JSObject {
   /// want to update, updating it with [IDBCursor.update] is preferable to
   /// using [IDBObjectStore.put]. Doing so makes it clear that an existing
   /// record will be updated, instead of a new record being inserted.
-  external IDBRequest put(
+  IDBRequest put(
     JSAny? value, [
     JSAny? key,
   ]);
@@ -428,7 +441,7 @@ extension type IDBObjectStore._(JSObject _) implements JSObject {
   /// request
   /// object. For updating existing records, you should use the
   /// [IDBObjectStore.put] method instead.
-  external IDBRequest add(
+  IDBRequest add(
     JSAny? value, [
     JSAny? key,
   ]);
@@ -444,7 +457,7 @@ extension type IDBObjectStore._(JSObject _) implements JSObject {
   /// Bear in mind that if you are using a [IDBCursor], you can use
   /// the [IDBCursor.delete] method to more efficiently delete the current
   /// record — without having to explicitly look up the record's key.
-  external IDBRequest delete(JSAny? query);
+  IDBRequest delete(JSAny? query);
 
   /// The **`clear()`** method of the [IDBObjectStore]
   /// interface creates and immediately returns an [IDBRequest] object, and
@@ -458,7 +471,7 @@ extension type IDBObjectStore._(JSObject _) implements JSObject {
   /// only some of
   /// the records in a store, use [IDBObjectStore.delete] passing a key
   /// or [IDBKeyRange].
-  external IDBRequest clear();
+  IDBRequest clear();
 
   /// The **`get()`** method of the [IDBObjectStore]
   /// interface returns an [IDBRequest] object, and, in a separate thread,
@@ -478,7 +491,7 @@ extension type IDBObjectStore._(JSObject _) implements JSObject {
   /// > To tell these situations apart, call the `openCursor()` method with the
   /// > same key. That method provides a cursor if the record exists, and no
   /// > cursor if it does not.
-  external IDBRequest get(JSAny? query);
+  IDBRequest get(JSAny? query);
 
   /// The **`getKey()`** method of the
   /// [IDBObjectStore] interface returns an [IDBRequest] object,
@@ -489,7 +502,7 @@ extension type IDBObjectStore._(JSObject _) implements JSObject {
   /// If a key is successfully found, then a structured clone of it is created
   /// and set as the
   /// result of the request object.
-  external IDBRequest getKey(JSAny? query);
+  IDBRequest getKey(JSAny? query);
 
   /// The **`getAll()`** method of the
   /// [IDBObjectStore] interface returns an [IDBRequest] object
@@ -513,7 +526,7 @@ extension type IDBObjectStore._(JSObject _) implements JSObject {
   /// it does not.
   /// 2. the [IDBObjectStore.count] method with the same key, which
   /// will return 1 if the row exists and 0 if it doesn't.
-  external IDBRequest getAll([
+  IDBRequest getAll([
     JSAny? query,
     int count,
   ]);
@@ -537,7 +550,7 @@ extension type IDBObjectStore._(JSObject _) implements JSObject {
   /// [IDBObjectStore.openCursor] method with the same key. That
   /// method provides a cursor if the record exists, and no cursor if it does
   /// not.
-  external IDBRequest getAllKeys([
+  IDBRequest getAllKeys([
     JSAny? query,
     int count,
   ]);
@@ -547,7 +560,7 @@ extension type IDBObjectStore._(JSObject _) implements JSObject {
   /// returns the total number of records that match the provided key or
   /// [IDBKeyRange]. If no arguments are provided, it returns the total number
   /// of records in the store.
-  external IDBRequest count([JSAny? query]);
+  IDBRequest count([JSAny? query]);
 
   /// The **`openCursor()`** method of the
   /// [IDBObjectStore] interface returns an [IDBRequest] object,
@@ -557,7 +570,7 @@ extension type IDBObjectStore._(JSObject _) implements JSObject {
   /// To determine if the add operation has completed successfully, listen for
   /// the results's
   /// `success` event.
-  external IDBRequest openCursor([
+  IDBRequest openCursor([
     JSAny? query,
     IDBCursorDirection direction,
   ]);
@@ -572,7 +585,7 @@ extension type IDBObjectStore._(JSObject _) implements JSObject {
   /// To determine if the add operation has completed successfully, listen for
   /// the
   /// results's `success` event.
-  external IDBRequest openKeyCursor([
+  IDBRequest openKeyCursor([
     JSAny? query,
     IDBCursorDirection direction,
   ]);
@@ -582,7 +595,7 @@ extension type IDBObjectStore._(JSObject _) implements JSObject {
   /// can be used
   /// to, for example, return a series of records sorted by that index using a
   /// cursor.
-  external IDBIndex index(String name);
+  IDBIndex index(String name);
 
   /// The **`createIndex()`** method of the
   /// [IDBObjectStore] interface creates and returns a new
@@ -600,7 +613,7 @@ extension type IDBObjectStore._(JSObject _) implements JSObject {
   /// Note that this method must be called only from a `VersionChange`
   /// transaction
   /// mode callback.
-  external IDBIndex createIndex(
+  IDBIndex createIndex(
     String name,
     JSAny keyPath, [
     IDBIndexParameters options,
@@ -614,12 +627,12 @@ extension type IDBObjectStore._(JSObject _) implements JSObject {
   /// transaction
   /// mode callback. Note that this method synchronously modifies the
   /// [IDBObjectStore.indexNames] property.
-  external void deleteIndex(String name);
+  void deleteIndex(String name);
 
   /// The **`name`** property of the [IDBObjectStore]
   /// interface indicates the name of this object store.
-  external String get name;
-  external set name(String value);
+  String get name;
+  set name(String value);
 
   /// The **`keyPath`** read-only property of the
   /// [IDBObjectStore] interface returns the
@@ -629,37 +642,44 @@ extension type IDBObjectStore._(JSObject _) implements JSObject {
   /// If this property is null, the application must provide a key for each
   /// modification
   /// operation.
-  external JSAny? get keyPath;
+  JSAny? get keyPath;
 
   /// The **`indexNames`** read-only property of the
   /// [IDBObjectStore] interface returns a list of the names of
   /// [indexes](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Basic_Terminology#index)
   /// on objects
   /// in this object store.
-  external DOMStringList get indexNames;
+  DOMStringList get indexNames;
 
   /// The **`transaction`** read-only property of the
   /// [IDBObjectStore] interface returns the transaction object to which this
   /// object store belongs.
-  external IDBTransaction get transaction;
+  IDBTransaction get transaction;
 
   /// The **`autoIncrement`** read-only property of the
   /// [IDBObjectStore] interface returns the value of the auto increment flag
   /// for this object store.
   ///
   /// Note that every object store has its own separate auto increment counter.
-  external bool get autoIncrement;
+  bool get autoIncrement;
 }
-extension type IDBIndexParameters._(JSObject _) implements JSObject {
-  external factory IDBIndexParameters({
-    bool unique,
-    bool multiEntry,
-  });
 
-  external bool get unique;
-  external set unique(bool value);
-  external bool get multiEntry;
-  external set multiEntry(bool value);
+abstract class IDBIndexParameters implements JSObject {
+  bool get unique {
+    unsupportedPlatformError();
+  }
+
+  set unique(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get multiEntry {
+    unsupportedPlatformError();
+  }
+
+  set multiEntry(bool value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// `IDBIndex` interface of the
@@ -690,7 +710,7 @@ extension type IDBIndexParameters._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/IDBIndex).
-extension type IDBIndex._(JSObject _) implements JSObject {
+abstract class IDBIndex implements JSObject {
   /// The **`get()`** method of the [IDBIndex]
   /// interface returns an [IDBRequest] object, and, in a separate thread,
   /// finds either the value in the referenced object store that corresponds to
@@ -703,7 +723,7 @@ extension type IDBIndex._(JSObject _) implements JSObject {
   /// `result` of the request object: this returns the record the key is
   /// associated
   /// with.
-  external IDBRequest get(JSAny? query);
+  IDBRequest get(JSAny? query);
 
   /// The **`getKey()`** method of the [IDBIndex]
   /// interface returns an [IDBRequest] object, and, in a separate thread,
@@ -715,7 +735,7 @@ extension type IDBIndex._(JSObject _) implements JSObject {
   /// If a primary key is found, it is set as the `result` of the request
   /// object.
   /// Note that this doesn't return the whole record as [IDBIndex.get] does.
-  external IDBRequest getKey(JSAny? query);
+  IDBRequest getKey(JSAny? query);
 
   /// The **`getAll()`** method of the [IDBIndex]
   /// interface retrieves all objects that are inside the index.
@@ -731,7 +751,7 @@ extension type IDBIndex._(JSObject _) implements JSObject {
   /// you are trying to get an
   /// array of all the objects in an object store, though, you should
   /// use `getAll()`.
-  external IDBRequest getAll([
+  IDBRequest getAll([
     JSAny? query,
     int count,
   ]);
@@ -740,7 +760,7 @@ extension type IDBIndex._(JSObject _) implements JSObject {
   /// interface asynchronously retrieves the primary keys of all objects inside
   /// the index,
   /// setting them as the `result` of the request object.
-  external IDBRequest getAllKeys([
+  IDBRequest getAllKeys([
     JSAny? query,
     int count,
   ]);
@@ -748,7 +768,7 @@ extension type IDBIndex._(JSObject _) implements JSObject {
   /// The **`count()`** method of the [IDBIndex]
   /// interface returns an [IDBRequest] object, and in a separate thread,
   /// returns the number of records within a key range.
-  external IDBRequest count([JSAny? query]);
+  IDBRequest count([JSAny? query]);
 
   /// The **`openCursor()`** method of the [IDBIndex]
   /// interface returns an [IDBRequest] object, and, in a separate thread,
@@ -763,7 +783,7 @@ extension type IDBIndex._(JSObject _) implements JSObject {
   ///
   /// If the key range is not specified or is null, then the range includes all
   /// the records.
-  external IDBRequest openCursor([
+  IDBRequest openCursor([
     JSAny? query,
     IDBCursorDirection direction,
   ]);
@@ -786,25 +806,25 @@ extension type IDBIndex._(JSObject _) implements JSObject {
   /// > [`IDBIndex.openCursor`](https://developer.mozilla.org/en-US/docs/Web/API/IDBIndex/openCursor)
   /// > does.
   /// > This makes obtaining a list of keys much more efficient.
-  external IDBRequest openKeyCursor([
+  IDBRequest openKeyCursor([
     JSAny? query,
     IDBCursorDirection direction,
   ]);
 
   /// The **`name`** property of the [IDBIndex]
   /// interface contains a string which names the index.
-  external String get name;
-  external set name(String value);
+  String get name;
+  set name(String value);
 
   /// The **`objectStore`** property of the [IDBIndex]
   /// interface returns the object store referenced by the current index.
-  external IDBObjectStore get objectStore;
+  IDBObjectStore get objectStore;
 
   /// The **`keyPath`** property of the [IDBIndex]
   /// interface returns the
   /// [key path](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Basic_Terminology#key_path)
   /// of the current index. If null, this index is not auto-populated.
-  external JSAny? get keyPath;
+  JSAny? get keyPath;
 
   /// The **`multiEntry`** read-only property of the
   /// [IDBIndex] interface returns a boolean value that affects how the index
@@ -814,7 +834,7 @@ extension type IDBIndex._(JSObject _) implements JSObject {
   /// This is decided when the index is created, using the
   /// [IDBObjectStore.createIndex] method. This method takes an optional
   /// `options` parameter whose `multiEntry` property is set to `true`/`false`.
-  external bool get multiEntry;
+  bool get multiEntry;
 
   /// The **`unique`** read-only property returns a boolean that
   /// states whether the index allows duplicate keys.
@@ -823,7 +843,7 @@ extension type IDBIndex._(JSObject _) implements JSObject {
   /// [IDBObjectStore.createIndex] method. This method takes an optional
   /// parameter, `unique`, which if set to `true` means that the index
   /// will not be able to accept duplicate entries.
-  external bool get unique;
+  bool get unique;
 }
 
 /// The **`IDBKeyRange`** interface of the
@@ -871,26 +891,32 @@ extension type IDBIndex._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/IDBKeyRange).
-extension type IDBKeyRange._(JSObject _) implements JSObject {
+abstract class IDBKeyRange implements JSObject {
   /// The **`only()`** static method of the [IDBKeyRange]
   /// interface creates a new key range containing a single value.
-  external static IDBKeyRange only(JSAny? value);
+  static IDBKeyRange only(JSAny? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`lowerBound()`** static method of the
   /// [IDBKeyRange] interface creates a new key range with only a lower bound.
   /// By default, it includes the lower endpoint value and is closed.
-  external static IDBKeyRange lowerBound(
+  static IDBKeyRange lowerBound(
     JSAny? lower, [
-    bool open,
-  ]);
+    bool? open,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`upperBound()`** static method of the
   /// [IDBKeyRange] interface creates a new upper-bound key range. By default,
   /// it includes the upper endpoint value and is closed.
-  external static IDBKeyRange upperBound(
+  static IDBKeyRange upperBound(
     JSAny? upper, [
-    bool open,
-  ]);
+    bool? open,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`bound()`** static method of the [IDBKeyRange]
   /// interface creates a new key range with the specified upper and lower
@@ -899,36 +925,38 @@ extension type IDBKeyRange._(JSObject _) implements JSObject {
   /// closed (that
   /// is, the bounds include the endpoint values). By default, the bounds are
   /// closed.
-  external static IDBKeyRange bound(
+  static IDBKeyRange bound(
     JSAny? lower,
     JSAny? upper, [
-    bool lowerOpen,
-    bool upperOpen,
-  ]);
+    bool? lowerOpen,
+    bool? upperOpen,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The `includes()` method of the [IDBKeyRange]
   /// interface returns a boolean indicating whether a specified key is inside
   /// the key
   /// range.
-  external bool includes(JSAny? key);
+  bool includes(JSAny? key);
 
   /// The **`lower`** read-only property of the
   /// [IDBKeyRange] interface returns the lower bound of the key range.
-  external JSAny? get lower;
+  JSAny? get lower;
 
   /// The **`upper`** read-only property of the
   /// [IDBKeyRange] interface returns the upper bound of the key range.
-  external JSAny? get upper;
+  JSAny? get upper;
 
   /// The **`lowerOpen`** read-only property of the
   /// [IDBKeyRange] interface returns a boolean indicating whether the
   /// lower-bound value is included in the key range.
-  external bool get lowerOpen;
+  bool get lowerOpen;
 
   /// The **`upperOpen`** read-only property of the
   /// [IDBKeyRange] interface returns a boolean indicating whether the
   /// upper-bound value is included in the key range.
-  external bool get upperOpen;
+  bool get upperOpen;
 }
 
 /// > **Note:** Not to be confused with [IDBCursorWithValue] which is just an
@@ -954,11 +982,11 @@ extension type IDBKeyRange._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/IDBCursor).
-extension type IDBCursor._(JSObject _) implements JSObject {
+abstract class IDBCursor implements JSObject {
   /// The **`advance()`** method of the [IDBCursor]
   /// interface sets the number of times a cursor should move
   /// its position forward.
-  external void advance(int count);
+  void advance(int count);
 
   /// The **`continue()`** method of the [IDBCursor]
   /// interface advances the cursor to the next position along its direction, to
@@ -966,8 +994,7 @@ extension type IDBCursor._(JSObject _) implements JSObject {
   /// whose key matches the optional key parameter. If no key is specified, the
   /// cursor
   /// advances to the immediate next position, based on its direction.
-  @JS('continue')
-  external void continue_([JSAny? key]);
+  void continue_([JSAny? key]);
 
   /// The **`continuePrimaryKey()`** method of the
   /// [IDBCursor] interface advances the cursor to the item whose key
@@ -990,7 +1017,7 @@ extension type IDBCursor._(JSObject _) implements JSObject {
   /// This method is only valid for cursors coming from an index. Using it for
   /// cursors coming
   /// from an object store will throw an error.
-  external void continuePrimaryKey(
+  void continuePrimaryKey(
     JSAny? key,
     JSAny? primaryKey,
   );
@@ -1006,7 +1033,7 @@ extension type IDBCursor._(JSObject _) implements JSObject {
   /// [IDBCursor.delete]) on cursors obtained from
   /// [IDBIndex.openKeyCursor]. For such needs, you have to use
   /// [IDBIndex.openCursor] instead.
-  external IDBRequest update(JSAny? value);
+  IDBRequest update(JSAny? value);
 
   /// The **`delete()`** method of the [IDBCursor]
   /// interface returns an [IDBRequest] object, and, in a separate thread,
@@ -1018,7 +1045,7 @@ extension type IDBCursor._(JSObject _) implements JSObject {
   /// [IDBCursor.update]) on cursors obtained from
   /// [IDBIndex.openKeyCursor]. For such needs, you have to use
   /// [IDBIndex.openCursor] instead.
-  external IDBRequest delete();
+  IDBRequest delete();
 
   /// The **`source`** read-only property of the
   /// [IDBCursor] interface returns the [IDBObjectStore] or
@@ -1026,32 +1053,32 @@ extension type IDBCursor._(JSObject _) implements JSObject {
   /// null or throws an exception, even if the cursor is currently being
   /// iterated, has
   /// iterated past its end, or its transaction is not active.
-  external JSObject get source;
+  JSObject get source;
 
   /// The **`direction`** read-only property of the
   /// [IDBCursor] interface is a string that returns the
   /// direction of traversal of the cursor (set using
   /// [IDBObjectStore.openCursor] for example). See the [Values](#values)
   /// section below for possible values.
-  external IDBCursorDirection get direction;
+  IDBCursorDirection get direction;
 
   /// The **`key`** read-only property of the
   /// [IDBCursor] interface returns the key for the record at the cursor's
   /// position. If the cursor is outside its range, this is set to undefined.
   /// The cursor's
   /// key can be any data type.
-  external JSAny? get key;
+  JSAny? get key;
 
   /// The **`primaryKey`** read-only property of the
   /// [IDBCursor] interface returns the cursor's current effective key. If the
   /// cursor is currently being iterated or has iterated outside its range, this
   /// is set to
   /// undefined. The cursor's primary key can be any data type.
-  external JSAny? get primaryKey;
+  JSAny? get primaryKey;
 
   /// The **`request`** read-only property of the [IDBCursor] interface returns
   /// the [IDBRequest] used to obtain the cursor.
-  external IDBRequest get request;
+  IDBRequest get request;
 }
 
 /// The **`IDBCursorWithValue`** interface of the
@@ -1075,11 +1102,11 @@ extension type IDBCursor._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/IDBCursorWithValue).
-extension type IDBCursorWithValue._(JSObject _) implements IDBCursor, JSObject {
+abstract class IDBCursorWithValue implements IDBCursor, JSObject {
   /// The **`value`** read-only property of the
   /// [IDBCursorWithValue] interface returns the value of the current cursor,
   /// whatever that is.
-  external JSAny? get value;
+  JSAny? get value;
 }
 
 /// The **`IDBTransaction`** interface of the
@@ -1121,7 +1148,7 @@ extension type IDBCursorWithValue._(JSObject _) implements IDBCursor, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/IDBTransaction).
-extension type IDBTransaction._(JSObject _) implements EventTarget, JSObject {
+abstract class IDBTransaction implements EventTarget, JSObject {
   /// The **`objectStore()`** method of the
   /// [IDBTransaction] interface returns an object store that has already been
   /// added to the scope of this transaction.
@@ -1131,7 +1158,7 @@ extension type IDBTransaction._(JSObject _) implements EventTarget, JSObject {
   /// the same [IDBObjectStore] instance. If this method is called on a
   /// different
   /// transaction object, a different [IDBObjectStore] instance is returned.
-  external IDBObjectStore objectStore(String name);
+  IDBObjectStore objectStore(String name);
 
   /// The **`commit()`** method of the [IDBTransaction] interface commits the
   /// transaction if it is called on an active transaction.
@@ -1144,7 +1171,7 @@ extension type IDBTransaction._(JSObject _) implements EventTarget, JSObject {
   ///
   /// If it is called on a transaction that is not active, it throws an
   /// `InvalidStateError` [DOMException].
-  external void commit();
+  void commit();
 
   /// The **`abort()`** method of the [IDBTransaction]
   /// interface rolls back all the changes to objects in the database associated
@@ -1153,12 +1180,12 @@ extension type IDBTransaction._(JSObject _) implements EventTarget, JSObject {
   ///
   /// All pending [IDBRequest] objects created during this transaction have
   /// their [IDBRequest.error] attribute set to an `AbortError` [DOMException].
-  external void abort();
+  void abort();
 
   /// The **`objectStoreNames`** read-only property of the
   /// [IDBTransaction] interface returns a [DOMStringList] of names
   /// of [IDBObjectStore] objects.
-  external DOMStringList get objectStoreNames;
+  DOMStringList get objectStoreNames;
 
   /// The **`mode`** read-only property of the
   /// [IDBTransaction] interface returns the current mode for accessing the
@@ -1167,7 +1194,7 @@ extension type IDBTransaction._(JSObject _) implements EventTarget, JSObject {
   /// read-only, or do you want to write to the object stores?) The default
   /// value is
   /// `readonly`.
-  external IDBTransactionMode get mode;
+  IDBTransactionMode get mode;
 
   /// The **`durability`** read-only property of the [IDBTransaction] interface
   /// returns the durability hint the transaction was created with.
@@ -1177,20 +1204,20 @@ extension type IDBTransaction._(JSObject _) implements EventTarget, JSObject {
   /// The value of this property is defined in the
   /// [`options.durability`](/en-US/docs/Web/API/IDBDatabase/transaction#options)
   /// parameter when creating a transaction using [IDBDatabase.transaction].
-  external IDBTransactionDurability get durability;
+  IDBTransactionDurability get durability;
 
   /// The **`db`** read-only property of the [IDBTransaction] interface returns
   /// the database connection
   /// with which this transaction is associated.
-  external IDBDatabase get db;
+  IDBDatabase get db;
 
   /// The **`IDBTransaction.error`** property of the [IDBTransaction] interface
   /// returns the type of error when there is an unsuccessful transaction.
-  external DOMException? get error;
-  external EventHandler get onabort;
-  external set onabort(EventHandler value);
-  external EventHandler get oncomplete;
-  external set oncomplete(EventHandler value);
-  external EventHandler get onerror;
-  external set onerror(EventHandler value);
+  DOMException? get error;
+  EventHandler get onabort;
+  set onabort(EventHandler value);
+  EventHandler get oncomplete;
+  set oncomplete(EventHandler value);
+  EventHandler get onerror;
+  set onerror(EventHandler value);
 }

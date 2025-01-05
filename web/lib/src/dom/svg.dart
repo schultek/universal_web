@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,11 +10,8 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../error.dart';
+import '../js_interop.dart';
 import 'css_typed_om.dart';
 import 'cssom.dart';
 import 'dom.dart';
@@ -28,199 +25,199 @@ import 'html.dart';
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGElement).
-extension type SVGElement._(JSObject _) implements Element, JSObject {
-  external void focus([FocusOptions options]);
-  external void blur();
-  external SVGSVGElement? get ownerSVGElement;
-  external SVGElement? get viewportElement;
-  external EventHandler get onabort;
-  external set onabort(EventHandler value);
-  external EventHandler get onauxclick;
-  external set onauxclick(EventHandler value);
-  external EventHandler get onbeforeinput;
-  external set onbeforeinput(EventHandler value);
-  external EventHandler get onbeforetoggle;
-  external set onbeforetoggle(EventHandler value);
-  external EventHandler get onblur;
-  external set onblur(EventHandler value);
-  external EventHandler get oncancel;
-  external set oncancel(EventHandler value);
-  external EventHandler get oncanplay;
-  external set oncanplay(EventHandler value);
-  external EventHandler get oncanplaythrough;
-  external set oncanplaythrough(EventHandler value);
-  external EventHandler get onchange;
-  external set onchange(EventHandler value);
-  external EventHandler get onclick;
-  external set onclick(EventHandler value);
-  external EventHandler get onclose;
-  external set onclose(EventHandler value);
-  external EventHandler get oncontextlost;
-  external set oncontextlost(EventHandler value);
-  external EventHandler get oncontextmenu;
-  external set oncontextmenu(EventHandler value);
-  external EventHandler get oncontextrestored;
-  external set oncontextrestored(EventHandler value);
-  external EventHandler get oncopy;
-  external set oncopy(EventHandler value);
-  external EventHandler get oncuechange;
-  external set oncuechange(EventHandler value);
-  external EventHandler get oncut;
-  external set oncut(EventHandler value);
-  external EventHandler get ondblclick;
-  external set ondblclick(EventHandler value);
-  external EventHandler get ondrag;
-  external set ondrag(EventHandler value);
-  external EventHandler get ondragend;
-  external set ondragend(EventHandler value);
-  external EventHandler get ondragenter;
-  external set ondragenter(EventHandler value);
-  external EventHandler get ondragleave;
-  external set ondragleave(EventHandler value);
-  external EventHandler get ondragover;
-  external set ondragover(EventHandler value);
-  external EventHandler get ondragstart;
-  external set ondragstart(EventHandler value);
-  external EventHandler get ondrop;
-  external set ondrop(EventHandler value);
-  external EventHandler get ondurationchange;
-  external set ondurationchange(EventHandler value);
-  external EventHandler get onemptied;
-  external set onemptied(EventHandler value);
-  external EventHandler get onended;
-  external set onended(EventHandler value);
-  external OnErrorEventHandler get onerror;
-  external set onerror(OnErrorEventHandler value);
-  external EventHandler get onfocus;
-  external set onfocus(EventHandler value);
-  external EventHandler get onformdata;
-  external set onformdata(EventHandler value);
-  external EventHandler get oninput;
-  external set oninput(EventHandler value);
-  external EventHandler get oninvalid;
-  external set oninvalid(EventHandler value);
-  external EventHandler get onkeydown;
-  external set onkeydown(EventHandler value);
-  external EventHandler get onkeypress;
-  external set onkeypress(EventHandler value);
-  external EventHandler get onkeyup;
-  external set onkeyup(EventHandler value);
-  external EventHandler get onload;
-  external set onload(EventHandler value);
-  external EventHandler get onloadeddata;
-  external set onloadeddata(EventHandler value);
-  external EventHandler get onloadedmetadata;
-  external set onloadedmetadata(EventHandler value);
-  external EventHandler get onloadstart;
-  external set onloadstart(EventHandler value);
-  external EventHandler get onmousedown;
-  external set onmousedown(EventHandler value);
-  external EventHandler get onmouseenter;
-  external set onmouseenter(EventHandler value);
-  external EventHandler get onmouseleave;
-  external set onmouseleave(EventHandler value);
-  external EventHandler get onmousemove;
-  external set onmousemove(EventHandler value);
-  external EventHandler get onmouseout;
-  external set onmouseout(EventHandler value);
-  external EventHandler get onmouseover;
-  external set onmouseover(EventHandler value);
-  external EventHandler get onmouseup;
-  external set onmouseup(EventHandler value);
-  external EventHandler get onpaste;
-  external set onpaste(EventHandler value);
-  external EventHandler get onpause;
-  external set onpause(EventHandler value);
-  external EventHandler get onplay;
-  external set onplay(EventHandler value);
-  external EventHandler get onplaying;
-  external set onplaying(EventHandler value);
-  external EventHandler get onprogress;
-  external set onprogress(EventHandler value);
-  external EventHandler get onratechange;
-  external set onratechange(EventHandler value);
-  external EventHandler get onreset;
-  external set onreset(EventHandler value);
-  external EventHandler get onresize;
-  external set onresize(EventHandler value);
-  external EventHandler get onscroll;
-  external set onscroll(EventHandler value);
-  external EventHandler get onscrollend;
-  external set onscrollend(EventHandler value);
-  external EventHandler get onsecuritypolicyviolation;
-  external set onsecuritypolicyviolation(EventHandler value);
-  external EventHandler get onseeked;
-  external set onseeked(EventHandler value);
-  external EventHandler get onseeking;
-  external set onseeking(EventHandler value);
-  external EventHandler get onselect;
-  external set onselect(EventHandler value);
-  external EventHandler get onslotchange;
-  external set onslotchange(EventHandler value);
-  external EventHandler get onstalled;
-  external set onstalled(EventHandler value);
-  external EventHandler get onsubmit;
-  external set onsubmit(EventHandler value);
-  external EventHandler get onsuspend;
-  external set onsuspend(EventHandler value);
-  external EventHandler get ontimeupdate;
-  external set ontimeupdate(EventHandler value);
-  external EventHandler get ontoggle;
-  external set ontoggle(EventHandler value);
-  external EventHandler get onvolumechange;
-  external set onvolumechange(EventHandler value);
-  external EventHandler get onwaiting;
-  external set onwaiting(EventHandler value);
-  external EventHandler get onwheel;
-  external set onwheel(EventHandler value);
-  external EventHandler get onanimationstart;
-  external set onanimationstart(EventHandler value);
-  external EventHandler get onanimationiteration;
-  external set onanimationiteration(EventHandler value);
-  external EventHandler get onanimationend;
-  external set onanimationend(EventHandler value);
-  external EventHandler get onanimationcancel;
-  external set onanimationcancel(EventHandler value);
-  external EventHandler get ontransitionrun;
-  external set ontransitionrun(EventHandler value);
-  external EventHandler get ontransitionstart;
-  external set ontransitionstart(EventHandler value);
-  external EventHandler get ontransitionend;
-  external set ontransitionend(EventHandler value);
-  external EventHandler get ontransitioncancel;
-  external set ontransitioncancel(EventHandler value);
-  external EventHandler get onpointerover;
-  external set onpointerover(EventHandler value);
-  external EventHandler get onpointerenter;
-  external set onpointerenter(EventHandler value);
-  external EventHandler get onpointerdown;
-  external set onpointerdown(EventHandler value);
-  external EventHandler get onpointermove;
-  external set onpointermove(EventHandler value);
-  external EventHandler get onpointerup;
-  external set onpointerup(EventHandler value);
-  external EventHandler get onpointercancel;
-  external set onpointercancel(EventHandler value);
-  external EventHandler get onpointerout;
-  external set onpointerout(EventHandler value);
-  external EventHandler get onpointerleave;
-  external set onpointerleave(EventHandler value);
-  external EventHandler get ongotpointercapture;
-  external set ongotpointercapture(EventHandler value);
-  external EventHandler get onlostpointercapture;
-  external set onlostpointercapture(EventHandler value);
-  external EventHandler get onselectstart;
-  external set onselectstart(EventHandler value);
-  external EventHandler get onselectionchange;
-  external set onselectionchange(EventHandler value);
-  external EventHandler get ontouchstart;
-  external set ontouchstart(EventHandler value);
-  external EventHandler get ontouchend;
-  external set ontouchend(EventHandler value);
-  external EventHandler get ontouchmove;
-  external set ontouchmove(EventHandler value);
-  external EventHandler get ontouchcancel;
-  external set ontouchcancel(EventHandler value);
+abstract class SVGElement implements Element, JSObject {
+  void focus([FocusOptions options]);
+  void blur();
+  SVGSVGElement? get ownerSVGElement;
+  SVGElement? get viewportElement;
+  EventHandler get onabort;
+  set onabort(EventHandler value);
+  EventHandler get onauxclick;
+  set onauxclick(EventHandler value);
+  EventHandler get onbeforeinput;
+  set onbeforeinput(EventHandler value);
+  EventHandler get onbeforetoggle;
+  set onbeforetoggle(EventHandler value);
+  EventHandler get onblur;
+  set onblur(EventHandler value);
+  EventHandler get oncancel;
+  set oncancel(EventHandler value);
+  EventHandler get oncanplay;
+  set oncanplay(EventHandler value);
+  EventHandler get oncanplaythrough;
+  set oncanplaythrough(EventHandler value);
+  EventHandler get onchange;
+  set onchange(EventHandler value);
+  EventHandler get onclick;
+  set onclick(EventHandler value);
+  EventHandler get onclose;
+  set onclose(EventHandler value);
+  EventHandler get oncontextlost;
+  set oncontextlost(EventHandler value);
+  EventHandler get oncontextmenu;
+  set oncontextmenu(EventHandler value);
+  EventHandler get oncontextrestored;
+  set oncontextrestored(EventHandler value);
+  EventHandler get oncopy;
+  set oncopy(EventHandler value);
+  EventHandler get oncuechange;
+  set oncuechange(EventHandler value);
+  EventHandler get oncut;
+  set oncut(EventHandler value);
+  EventHandler get ondblclick;
+  set ondblclick(EventHandler value);
+  EventHandler get ondrag;
+  set ondrag(EventHandler value);
+  EventHandler get ondragend;
+  set ondragend(EventHandler value);
+  EventHandler get ondragenter;
+  set ondragenter(EventHandler value);
+  EventHandler get ondragleave;
+  set ondragleave(EventHandler value);
+  EventHandler get ondragover;
+  set ondragover(EventHandler value);
+  EventHandler get ondragstart;
+  set ondragstart(EventHandler value);
+  EventHandler get ondrop;
+  set ondrop(EventHandler value);
+  EventHandler get ondurationchange;
+  set ondurationchange(EventHandler value);
+  EventHandler get onemptied;
+  set onemptied(EventHandler value);
+  EventHandler get onended;
+  set onended(EventHandler value);
+  OnErrorEventHandler get onerror;
+  set onerror(OnErrorEventHandler value);
+  EventHandler get onfocus;
+  set onfocus(EventHandler value);
+  EventHandler get onformdata;
+  set onformdata(EventHandler value);
+  EventHandler get oninput;
+  set oninput(EventHandler value);
+  EventHandler get oninvalid;
+  set oninvalid(EventHandler value);
+  EventHandler get onkeydown;
+  set onkeydown(EventHandler value);
+  EventHandler get onkeypress;
+  set onkeypress(EventHandler value);
+  EventHandler get onkeyup;
+  set onkeyup(EventHandler value);
+  EventHandler get onload;
+  set onload(EventHandler value);
+  EventHandler get onloadeddata;
+  set onloadeddata(EventHandler value);
+  EventHandler get onloadedmetadata;
+  set onloadedmetadata(EventHandler value);
+  EventHandler get onloadstart;
+  set onloadstart(EventHandler value);
+  EventHandler get onmousedown;
+  set onmousedown(EventHandler value);
+  EventHandler get onmouseenter;
+  set onmouseenter(EventHandler value);
+  EventHandler get onmouseleave;
+  set onmouseleave(EventHandler value);
+  EventHandler get onmousemove;
+  set onmousemove(EventHandler value);
+  EventHandler get onmouseout;
+  set onmouseout(EventHandler value);
+  EventHandler get onmouseover;
+  set onmouseover(EventHandler value);
+  EventHandler get onmouseup;
+  set onmouseup(EventHandler value);
+  EventHandler get onpaste;
+  set onpaste(EventHandler value);
+  EventHandler get onpause;
+  set onpause(EventHandler value);
+  EventHandler get onplay;
+  set onplay(EventHandler value);
+  EventHandler get onplaying;
+  set onplaying(EventHandler value);
+  EventHandler get onprogress;
+  set onprogress(EventHandler value);
+  EventHandler get onratechange;
+  set onratechange(EventHandler value);
+  EventHandler get onreset;
+  set onreset(EventHandler value);
+  EventHandler get onresize;
+  set onresize(EventHandler value);
+  EventHandler get onscroll;
+  set onscroll(EventHandler value);
+  EventHandler get onscrollend;
+  set onscrollend(EventHandler value);
+  EventHandler get onsecuritypolicyviolation;
+  set onsecuritypolicyviolation(EventHandler value);
+  EventHandler get onseeked;
+  set onseeked(EventHandler value);
+  EventHandler get onseeking;
+  set onseeking(EventHandler value);
+  EventHandler get onselect;
+  set onselect(EventHandler value);
+  EventHandler get onslotchange;
+  set onslotchange(EventHandler value);
+  EventHandler get onstalled;
+  set onstalled(EventHandler value);
+  EventHandler get onsubmit;
+  set onsubmit(EventHandler value);
+  EventHandler get onsuspend;
+  set onsuspend(EventHandler value);
+  EventHandler get ontimeupdate;
+  set ontimeupdate(EventHandler value);
+  EventHandler get ontoggle;
+  set ontoggle(EventHandler value);
+  EventHandler get onvolumechange;
+  set onvolumechange(EventHandler value);
+  EventHandler get onwaiting;
+  set onwaiting(EventHandler value);
+  EventHandler get onwheel;
+  set onwheel(EventHandler value);
+  EventHandler get onanimationstart;
+  set onanimationstart(EventHandler value);
+  EventHandler get onanimationiteration;
+  set onanimationiteration(EventHandler value);
+  EventHandler get onanimationend;
+  set onanimationend(EventHandler value);
+  EventHandler get onanimationcancel;
+  set onanimationcancel(EventHandler value);
+  EventHandler get ontransitionrun;
+  set ontransitionrun(EventHandler value);
+  EventHandler get ontransitionstart;
+  set ontransitionstart(EventHandler value);
+  EventHandler get ontransitionend;
+  set ontransitionend(EventHandler value);
+  EventHandler get ontransitioncancel;
+  set ontransitioncancel(EventHandler value);
+  EventHandler get onpointerover;
+  set onpointerover(EventHandler value);
+  EventHandler get onpointerenter;
+  set onpointerenter(EventHandler value);
+  EventHandler get onpointerdown;
+  set onpointerdown(EventHandler value);
+  EventHandler get onpointermove;
+  set onpointermove(EventHandler value);
+  EventHandler get onpointerup;
+  set onpointerup(EventHandler value);
+  EventHandler get onpointercancel;
+  set onpointercancel(EventHandler value);
+  EventHandler get onpointerout;
+  set onpointerout(EventHandler value);
+  EventHandler get onpointerleave;
+  set onpointerleave(EventHandler value);
+  EventHandler get ongotpointercapture;
+  set ongotpointercapture(EventHandler value);
+  EventHandler get onlostpointercapture;
+  set onlostpointercapture(EventHandler value);
+  EventHandler get onselectstart;
+  set onselectstart(EventHandler value);
+  EventHandler get onselectionchange;
+  set onselectionchange(EventHandler value);
+  EventHandler get ontouchstart;
+  set ontouchstart(EventHandler value);
+  EventHandler get ontouchend;
+  set ontouchend(EventHandler value);
+  EventHandler get ontouchmove;
+  set ontouchmove(EventHandler value);
+  EventHandler get ontouchcancel;
+  set ontouchcancel(EventHandler value);
 
   /// The **`dataset`** read-only property of the [SVGElement] interface
   /// provides read/write access to
@@ -230,13 +227,13 @@ extension type SVGElement._(JSObject _) implements Element, JSObject {
   ///
   /// For more information on the behavior of `dataset`, see
   /// [HTMLElement.dataset].
-  external DOMStringMap get dataset;
-  external String get nonce;
-  external set nonce(String value);
-  external bool get autofocus;
-  external set autofocus(bool value);
-  external int get tabIndex;
-  external set tabIndex(int value);
+  DOMStringMap get dataset;
+  String get nonce;
+  set nonce(String value);
+  bool get autofocus;
+  set autofocus(bool value);
+  int get tabIndex;
+  set tabIndex(int value);
 
   /// The read-only **`style`** property of the [SVGElement] returns the
   /// _inline_ style of an element in the form of a live [CSSStyleDeclaration]
@@ -277,7 +274,7 @@ extension type SVGElement._(JSObject _) implements Element, JSObject {
   /// >
   /// > The `style` property has the same priority in the CSS cascade as an
   /// > inline style declaration set via the `style` attribute.
-  external CSSStyleDeclaration get style;
+  CSSStyleDeclaration get style;
 
   /// The **`attributeStyleMap`** read-only property of the [SVGElement]
   /// interface returns a live [StylePropertyMap] object that contains a list of
@@ -297,29 +294,47 @@ extension type SVGElement._(JSObject _) implements Element, JSObject {
   /// inline styles through the [StylePropertyMap] object that it returns, just
   /// like through the [CSSStyleDeclaration] object that returns via the `style`
   /// property.
-  external StylePropertyMap get attributeStyleMap;
+  StylePropertyMap get attributeStyleMap;
 }
 
 extension SVGElementExtension on SVGElement {
-  external SVGAnimatedString get className;
+  SVGAnimatedString get className {
+    unsupportedPlatformError();
+  }
 }
 
-extension type SVGBoundingBoxOptions._(JSObject _) implements JSObject {
-  external factory SVGBoundingBoxOptions({
-    bool fill,
-    bool stroke,
-    bool markers,
-    bool clipped,
-  });
+abstract class SVGBoundingBoxOptions implements JSObject {
+  bool get fill {
+    unsupportedPlatformError();
+  }
 
-  external bool get fill;
-  external set fill(bool value);
-  external bool get stroke;
-  external set stroke(bool value);
-  external bool get markers;
-  external set markers(bool value);
-  external bool get clipped;
-  external set clipped(bool value);
+  set fill(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get stroke {
+    unsupportedPlatformError();
+  }
+
+  set stroke(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get markers {
+    unsupportedPlatformError();
+  }
+
+  set markers(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get clipped {
+    unsupportedPlatformError();
+  }
+
+  set clipped(bool value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SVGGraphicsElement`** interface represents SVG elements whose primary
@@ -329,8 +344,7 @@ extension type SVGBoundingBoxOptions._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGGraphicsElement).
-extension type SVGGraphicsElement._(JSObject _)
-    implements SVGElement, JSObject {
+abstract class SVGGraphicsElement implements SVGElement, JSObject {
   /// The **`SVGGraphicsElement.getBBox()`** method allows us to determine
   /// the coordinates of the smallest rectangle in which the object fits. The
   /// coordinates
@@ -347,12 +361,12 @@ extension type SVGGraphicsElement._(JSObject _)
   /// > **Note:** `getBBox` returns different values than
   /// > [Element.getBoundingClientRect], as the
   /// > latter returns value relative to the viewport
-  external DOMRect getBBox([SVGBoundingBoxOptions options]);
-  external DOMMatrix? getCTM();
-  external DOMMatrix? getScreenCTM();
-  external SVGAnimatedTransformList get transform;
-  external SVGStringList get requiredExtensions;
-  external SVGStringList get systemLanguage;
+  DOMRect getBBox([SVGBoundingBoxOptions options]);
+  DOMMatrix? getCTM();
+  DOMMatrix? getScreenCTM();
+  SVGAnimatedTransformList get transform;
+  SVGStringList get requiredExtensions;
+  SVGStringList get systemLanguage;
 }
 
 /// The `SVGGeometryElement` interface represents SVG elements whose rendering
@@ -363,8 +377,7 @@ extension type SVGGraphicsElement._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGGeometryElement).
-extension type SVGGeometryElement._(JSObject _)
-    implements SVGGraphicsElement, JSObject {
+abstract class SVGGeometryElement implements SVGGraphicsElement, JSObject {
   /// The **`SVGGeometryElement.isPointInFill()`** method determines
   /// whether a given point is within the fill shape of an element. Normal hit
   /// testing rules
@@ -372,7 +385,7 @@ extension type SVGGeometryElement._(JSObject _)
   /// whether a point is considered to be within the fill. The `point` argument
   /// is
   /// interpreted as a point in the local coordinate system of the element.
-  external bool isPointInFill([DOMPointInit point]);
+  bool isPointInFill([DOMPointInit point]);
 
   /// The **`SVGGeometryElement.isPointInStroke()`** method
   /// determines whether a given point is within the stroke shape of an element.
@@ -383,22 +396,22 @@ extension type SVGGeometryElement._(JSObject _)
   /// `point` argument is interpreted as a point in the local coordinate system
   /// of
   /// the element.
-  external bool isPointInStroke([DOMPointInit point]);
+  bool isPointInStroke([DOMPointInit point]);
 
   /// The **`SVGGeometryElement.getTotalLength()`** method returns
   /// the user agent's computed value for the total length of the path in user
   /// units.
-  external double getTotalLength();
+  double getTotalLength();
 
   /// The
   /// **`SVGGeometryElement.getPointAtLength()`** method returns the
   /// point at a given distance along the path.
-  external DOMPoint getPointAtLength(num distance);
+  DOMPoint getPointAtLength(num distance);
 
   /// The **`SVGGeometryElement.pathLength`** property reflects the
   /// `pathLength` attribute and returns the total length of the path, in user
   /// units.
-  external SVGAnimatedNumber get pathLength;
+  SVGAnimatedNumber get pathLength;
 }
 
 /// The **`SVGNumber`** interface corresponds to the  basic data type.
@@ -410,9 +423,9 @@ extension type SVGGeometryElement._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGNumber).
-extension type SVGNumber._(JSObject _) implements JSObject {
-  external double get value;
-  external set value(num value);
+abstract class SVGNumber implements JSObject {
+  double get value;
+  set value(num value);
 }
 
 ///
@@ -421,7 +434,7 @@ extension type SVGNumber._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGLength).
-extension type SVGLength._(JSObject _) implements JSObject {
+abstract class SVGLength implements JSObject {
   static const int SVG_LENGTHTYPE_UNKNOWN = 0;
 
   static const int SVG_LENGTHTYPE_NUMBER = 1;
@@ -444,18 +457,18 @@ extension type SVGLength._(JSObject _) implements JSObject {
 
   static const int SVG_LENGTHTYPE_PC = 10;
 
-  external void newValueSpecifiedUnits(
+  void newValueSpecifiedUnits(
     int unitType,
     num valueInSpecifiedUnits,
   );
-  external void convertToSpecifiedUnits(int unitType);
-  external int get unitType;
-  external double get value;
-  external set value(num value);
-  external double get valueInSpecifiedUnits;
-  external set valueInSpecifiedUnits(num value);
-  external String get valueAsString;
-  external set valueAsString(String value);
+  void convertToSpecifiedUnits(int unitType);
+  int get unitType;
+  double get value;
+  set value(num value);
+  double get valueInSpecifiedUnits;
+  set valueInSpecifiedUnits(num value);
+  String get valueAsString;
+  set valueAsString(String value);
 }
 
 /// The `SVGAngle` interface is used to represent a value that can be an  or
@@ -481,7 +494,7 @@ extension type SVGLength._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGAngle).
-extension type SVGAngle._(JSObject _) implements JSObject {
+abstract class SVGAngle implements JSObject {
   static const int SVG_ANGLETYPE_UNKNOWN = 0;
 
   static const int SVG_ANGLETYPE_UNSPECIFIED = 1;
@@ -492,18 +505,18 @@ extension type SVGAngle._(JSObject _) implements JSObject {
 
   static const int SVG_ANGLETYPE_GRAD = 4;
 
-  external void newValueSpecifiedUnits(
+  void newValueSpecifiedUnits(
     int unitType,
     num valueInSpecifiedUnits,
   );
-  external void convertToSpecifiedUnits(int unitType);
-  external int get unitType;
-  external double get value;
-  external set value(num value);
-  external double get valueInSpecifiedUnits;
-  external set valueInSpecifiedUnits(num value);
-  external String get valueAsString;
-  external set valueAsString(String value);
+  void convertToSpecifiedUnits(int unitType);
+  int get unitType;
+  double get value;
+  set value(num value);
+  double get valueInSpecifiedUnits;
+  set valueInSpecifiedUnits(num value);
+  String get valueAsString;
+  set valueAsString(String value);
 }
 
 ///
@@ -512,26 +525,26 @@ extension type SVGAngle._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGNumberList).
-extension type SVGNumberList._(JSObject _) implements JSObject {
-  external void clear();
-  external SVGNumber initialize(SVGNumber newItem);
-  external SVGNumber getItem(int index);
-  external SVGNumber insertItemBefore(
+abstract class SVGNumberList implements JSObject {
+  void clear();
+  SVGNumber initialize(SVGNumber newItem);
+  SVGNumber getItem(int index);
+  SVGNumber insertItemBefore(
     SVGNumber newItem,
     int index,
   );
-  external SVGNumber replaceItem(
+  SVGNumber replaceItem(
     SVGNumber newItem,
     int index,
   );
-  external SVGNumber removeItem(int index);
-  external SVGNumber appendItem(SVGNumber newItem);
-  external void operator []=(
+  SVGNumber removeItem(int index);
+  SVGNumber appendItem(SVGNumber newItem);
+  void operator []=(
     int index,
     SVGNumber newItem,
   );
-  external int get length;
-  external int get numberOfItems;
+  int get length;
+  int get numberOfItems;
 }
 
 ///
@@ -540,26 +553,26 @@ extension type SVGNumberList._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGLengthList).
-extension type SVGLengthList._(JSObject _) implements JSObject {
-  external void clear();
-  external SVGLength initialize(SVGLength newItem);
-  external SVGLength getItem(int index);
-  external SVGLength insertItemBefore(
+abstract class SVGLengthList implements JSObject {
+  void clear();
+  SVGLength initialize(SVGLength newItem);
+  SVGLength getItem(int index);
+  SVGLength insertItemBefore(
     SVGLength newItem,
     int index,
   );
-  external SVGLength replaceItem(
+  SVGLength replaceItem(
     SVGLength newItem,
     int index,
   );
-  external SVGLength removeItem(int index);
-  external SVGLength appendItem(SVGLength newItem);
-  external void operator []=(
+  SVGLength removeItem(int index);
+  SVGLength appendItem(SVGLength newItem);
+  void operator []=(
     int index,
     SVGLength newItem,
   );
-  external int get length;
-  external int get numberOfItems;
+  int get length;
+  int get numberOfItems;
 }
 
 ///
@@ -568,25 +581,25 @@ extension type SVGLengthList._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGStringList).
-extension type SVGStringList._(JSObject _) implements JSObject {
-  external void clear();
-  external String initialize(String newItem);
-  external String getItem(int index);
-  external String insertItemBefore(
+abstract class SVGStringList implements JSObject {
+  void clear();
+  String initialize(String newItem);
+  String getItem(int index);
+  String insertItemBefore(
     String newItem,
     int index,
   );
-  external String replaceItem(
+  String replaceItem(
     String newItem,
     int index,
   );
-  external String removeItem(int index);
-  external String appendItem(String newItem);
-  external void operator []=(
+  String removeItem(int index);
+  String appendItem(String newItem);
+  void operator []=(
     int index,
     String newItem,
   );
-  external int get numberOfItems;
+  int get numberOfItems;
 }
 
 ///
@@ -595,10 +608,10 @@ extension type SVGStringList._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedBoolean).
-extension type SVGAnimatedBoolean._(JSObject _) implements JSObject {
-  external bool get baseVal;
-  external set baseVal(bool value);
-  external bool get animVal;
+abstract class SVGAnimatedBoolean implements JSObject {
+  bool get baseVal;
+  set baseVal(bool value);
+  bool get animVal;
 }
 
 /// The **`SVGAnimatedEnumeration`** interface describes attribute values which
@@ -608,16 +621,16 @@ extension type SVGAnimatedBoolean._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedEnumeration).
-extension type SVGAnimatedEnumeration._(JSObject _) implements JSObject {
+abstract class SVGAnimatedEnumeration implements JSObject {
   /// The **`baseVal`** property of the [SVGAnimatedEnumeration] interface
   /// contains the initial value of an SVG enumeration.
-  external int get baseVal;
-  external set baseVal(int value);
+  int get baseVal;
+  set baseVal(int value);
 
   /// The **`animVal`** property of the [SVGAnimatedEnumeration] interface
   /// contains the current value of an SVG enumeration. If there is no
   /// animation, it is the same value as the [SVGAnimatedEnumeration.baseVal].
-  external int get animVal;
+  int get animVal;
 }
 
 ///
@@ -626,10 +639,10 @@ extension type SVGAnimatedEnumeration._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedInteger).
-extension type SVGAnimatedInteger._(JSObject _) implements JSObject {
-  external int get baseVal;
-  external set baseVal(int value);
-  external int get animVal;
+abstract class SVGAnimatedInteger implements JSObject {
+  int get baseVal;
+  set baseVal(int value);
+  int get animVal;
 }
 
 ///
@@ -638,10 +651,10 @@ extension type SVGAnimatedInteger._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedNumber).
-extension type SVGAnimatedNumber._(JSObject _) implements JSObject {
-  external double get baseVal;
-  external set baseVal(num value);
-  external double get animVal;
+abstract class SVGAnimatedNumber implements JSObject {
+  double get baseVal;
+  set baseVal(num value);
+  double get animVal;
 }
 
 /// The **`SVGAnimatedLength`** interface represents attributes of type
@@ -651,15 +664,15 @@ extension type SVGAnimatedNumber._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedLength).
-extension type SVGAnimatedLength._(JSObject _) implements JSObject {
+abstract class SVGAnimatedLength implements JSObject {
   /// The **`baseVal`** property of the [SVGAnimatedLength] interface contains
   /// the initial value of an SVG enumeration.
-  external SVGLength get baseVal;
+  SVGLength get baseVal;
 
   /// The **`animVal`** property of the [SVGAnimatedLength] interface contains
   /// the current value of an SVG enumeration. If there is no animation, it is
   /// the same value as the [SVGAnimatedLength.baseVal].
-  external SVGLength get animVal;
+  SVGLength get animVal;
 }
 
 ///
@@ -668,9 +681,9 @@ extension type SVGAnimatedLength._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedAngle).
-extension type SVGAnimatedAngle._(JSObject _) implements JSObject {
-  external SVGAngle get baseVal;
-  external SVGAngle get animVal;
+abstract class SVGAnimatedAngle implements JSObject {
+  SVGAngle get baseVal;
+  SVGAngle get animVal;
 }
 
 /// The **`SVGAnimatedString`** interface represents string attributes which can
@@ -681,12 +694,12 @@ extension type SVGAnimatedAngle._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedString).
-extension type SVGAnimatedString._(JSObject _) implements JSObject {
+abstract class SVGAnimatedString implements JSObject {
   /// BaseVal gets or sets the base value of the given attribute before any
   /// animations are applied. The base value of the given attribute before
   /// applying any animations. Setter throws DOMException.
-  external String get baseVal;
-  external set baseVal(String value);
+  String get baseVal;
+  set baseVal(String value);
 
   /// AnimVal attribute or animVal property contains the same value as the
   /// [SVGAnimatedString.baseVal] property. If the given attribute or property
@@ -695,7 +708,7 @@ extension type SVGAnimatedString._(JSObject _) implements JSObject {
   /// animated, then it contains the same value as baseVal
   ///
   /// > **Note:** The **animVal** property is a read only property.
-  external String get animVal;
+  String get animVal;
 }
 
 /// The `SVGAnimatedRect` interface is used for attributes of basic [SVGRect]
@@ -742,9 +755,9 @@ extension type SVGAnimatedString._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedRect).
-extension type SVGAnimatedRect._(JSObject _) implements JSObject {
-  external DOMRect get baseVal;
-  external DOMRectReadOnly get animVal;
+abstract class SVGAnimatedRect implements JSObject {
+  DOMRect get baseVal;
+  DOMRectReadOnly get animVal;
 }
 
 ///
@@ -753,9 +766,9 @@ extension type SVGAnimatedRect._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedNumberList).
-extension type SVGAnimatedNumberList._(JSObject _) implements JSObject {
-  external SVGNumberList get baseVal;
-  external SVGNumberList get animVal;
+abstract class SVGAnimatedNumberList implements JSObject {
+  SVGNumberList get baseVal;
+  SVGNumberList get animVal;
 }
 
 ///
@@ -764,9 +777,9 @@ extension type SVGAnimatedNumberList._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedLengthList).
-extension type SVGAnimatedLengthList._(JSObject _) implements JSObject {
-  external SVGLengthList get baseVal;
-  external SVGLengthList get animVal;
+abstract class SVGAnimatedLengthList implements JSObject {
+  SVGLengthList get baseVal;
+  SVGLengthList get animVal;
 }
 
 /// The **`SVGUnitTypes`** interface defines a commonly used set of constants
@@ -777,7 +790,7 @@ extension type SVGAnimatedLengthList._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGUnitTypes).
-extension type SVGUnitTypes._(JSObject _) implements JSObject {
+abstract class SVGUnitTypes implements JSObject {
   static const int SVG_UNIT_TYPE_UNKNOWN = 0;
 
   static const int SVG_UNIT_TYPE_USERSPACEONUSE = 1;
@@ -795,95 +808,87 @@ extension type SVGUnitTypes._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGSVGElement).
-extension type SVGSVGElement._(JSObject _)
-    implements SVGGraphicsElement, JSObject {
-  /// Creates an [SVGSVGElement] using the tag 'svg'.
-  SVGSVGElement()
-      : _ = document.createElementNS(
-          'http://www.w3.org/2000/svg',
-          'svg',
-        );
-
-  external NodeList getIntersectionList(
+abstract class SVGSVGElement implements SVGGraphicsElement, JSObject {
+  NodeList getIntersectionList(
     DOMRectReadOnly rect,
     SVGElement? referenceElement,
   );
-  external NodeList getEnclosureList(
+  NodeList getEnclosureList(
     DOMRectReadOnly rect,
     SVGElement? referenceElement,
   );
-  external bool checkIntersection(
+  bool checkIntersection(
     SVGElement element,
     DOMRectReadOnly rect,
   );
-  external bool checkEnclosure(
+  bool checkEnclosure(
     SVGElement element,
     DOMRectReadOnly rect,
   );
-  external void deselectAll();
-  external SVGNumber createSVGNumber();
-  external SVGLength createSVGLength();
-  external SVGAngle createSVGAngle();
-  external DOMPoint createSVGPoint();
-  external DOMMatrix createSVGMatrix();
-  external DOMRect createSVGRect();
-  external SVGTransform createSVGTransform();
-  external SVGTransform createSVGTransformFromMatrix([DOMMatrix2DInit matrix]);
-  external Element getElementById(String elementId);
-  external int suspendRedraw(int maxWaitMilliseconds);
-  external void unsuspendRedraw(int suspendHandleID);
-  external void unsuspendRedrawAll();
-  external void forceRedraw();
-  external void pauseAnimations();
-  external void unpauseAnimations();
-  external bool animationsPaused();
-  external double getCurrentTime();
-  external void setCurrentTime(num seconds);
-  external SVGAnimatedLength get x;
-  external SVGAnimatedLength get y;
-  external SVGAnimatedLength get width;
-  external SVGAnimatedLength get height;
-  external double get currentScale;
-  external set currentScale(num value);
-  external DOMPointReadOnly get currentTranslate;
-  external SVGAnimatedRect get viewBox;
-  external SVGAnimatedPreserveAspectRatio get preserveAspectRatio;
-  external EventHandler get onafterprint;
-  external set onafterprint(EventHandler value);
-  external EventHandler get onbeforeprint;
-  external set onbeforeprint(EventHandler value);
-  external OnBeforeUnloadEventHandler get onbeforeunload;
-  external set onbeforeunload(OnBeforeUnloadEventHandler value);
-  external EventHandler get onhashchange;
-  external set onhashchange(EventHandler value);
-  external EventHandler get onlanguagechange;
-  external set onlanguagechange(EventHandler value);
-  external EventHandler get onmessage;
-  external set onmessage(EventHandler value);
-  external EventHandler get onmessageerror;
-  external set onmessageerror(EventHandler value);
-  external EventHandler get onoffline;
-  external set onoffline(EventHandler value);
-  external EventHandler get ononline;
-  external set ononline(EventHandler value);
-  external EventHandler get onpagehide;
-  external set onpagehide(EventHandler value);
-  external EventHandler get onpageshow;
-  external set onpageshow(EventHandler value);
-  external EventHandler get onpopstate;
-  external set onpopstate(EventHandler value);
-  external EventHandler get onrejectionhandled;
-  external set onrejectionhandled(EventHandler value);
-  external EventHandler get onstorage;
-  external set onstorage(EventHandler value);
-  external EventHandler get onunhandledrejection;
-  external set onunhandledrejection(EventHandler value);
-  external EventHandler get onunload;
-  external set onunload(EventHandler value);
-  external EventHandler get ongamepadconnected;
-  external set ongamepadconnected(EventHandler value);
-  external EventHandler get ongamepaddisconnected;
-  external set ongamepaddisconnected(EventHandler value);
+  void deselectAll();
+  SVGNumber createSVGNumber();
+  SVGLength createSVGLength();
+  SVGAngle createSVGAngle();
+  DOMPoint createSVGPoint();
+  DOMMatrix createSVGMatrix();
+  DOMRect createSVGRect();
+  SVGTransform createSVGTransform();
+  SVGTransform createSVGTransformFromMatrix([DOMMatrix2DInit matrix]);
+  Element getElementById(String elementId);
+  int suspendRedraw(int maxWaitMilliseconds);
+  void unsuspendRedraw(int suspendHandleID);
+  void unsuspendRedrawAll();
+  void forceRedraw();
+  void pauseAnimations();
+  void unpauseAnimations();
+  bool animationsPaused();
+  double getCurrentTime();
+  void setCurrentTime(num seconds);
+  SVGAnimatedLength get x;
+  SVGAnimatedLength get y;
+  SVGAnimatedLength get width;
+  SVGAnimatedLength get height;
+  double get currentScale;
+  set currentScale(num value);
+  DOMPointReadOnly get currentTranslate;
+  SVGAnimatedRect get viewBox;
+  SVGAnimatedPreserveAspectRatio get preserveAspectRatio;
+  EventHandler get onafterprint;
+  set onafterprint(EventHandler value);
+  EventHandler get onbeforeprint;
+  set onbeforeprint(EventHandler value);
+  OnBeforeUnloadEventHandler get onbeforeunload;
+  set onbeforeunload(OnBeforeUnloadEventHandler value);
+  EventHandler get onhashchange;
+  set onhashchange(EventHandler value);
+  EventHandler get onlanguagechange;
+  set onlanguagechange(EventHandler value);
+  EventHandler get onmessage;
+  set onmessage(EventHandler value);
+  EventHandler get onmessageerror;
+  set onmessageerror(EventHandler value);
+  EventHandler get onoffline;
+  set onoffline(EventHandler value);
+  EventHandler get ononline;
+  set ononline(EventHandler value);
+  EventHandler get onpagehide;
+  set onpagehide(EventHandler value);
+  EventHandler get onpageshow;
+  set onpageshow(EventHandler value);
+  EventHandler get onpopstate;
+  set onpopstate(EventHandler value);
+  EventHandler get onrejectionhandled;
+  set onrejectionhandled(EventHandler value);
+  EventHandler get onstorage;
+  set onstorage(EventHandler value);
+  EventHandler get onunhandledrejection;
+  set onunhandledrejection(EventHandler value);
+  EventHandler get onunload;
+  set onunload(EventHandler value);
+  EventHandler get ongamepadconnected;
+  set ongamepadconnected(EventHandler value);
+  EventHandler get ongamepaddisconnected;
+  set ongamepaddisconnected(EventHandler value);
 }
 
 /// The **`SVGGElement`** interface corresponds to the  element.
@@ -892,15 +897,7 @@ extension type SVGSVGElement._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGGElement).
-extension type SVGGElement._(JSObject _)
-    implements SVGGraphicsElement, JSObject {
-  /// Creates an [SVGGElement] using the tag 'g'.
-  SVGGElement()
-      : _ = document.createElementNS(
-          'http://www.w3.org/2000/svg',
-          'g',
-        );
-}
+abstract class SVGGElement implements SVGGraphicsElement, JSObject {}
 
 /// The **`SVGDefsElement`** interface corresponds to the  element.
 ///
@@ -908,15 +905,7 @@ extension type SVGGElement._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGDefsElement).
-extension type SVGDefsElement._(JSObject _)
-    implements SVGGraphicsElement, JSObject {
-  /// Creates an [SVGDefsElement] using the tag 'defs'.
-  SVGDefsElement()
-      : _ = document.createElementNS(
-          'http://www.w3.org/2000/svg',
-          'defs',
-        );
-}
+abstract class SVGDefsElement implements SVGGraphicsElement, JSObject {}
 
 /// The **`SVGDescElement`** interface corresponds to the  element.
 ///
@@ -924,14 +913,7 @@ extension type SVGDefsElement._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGDescElement).
-extension type SVGDescElement._(JSObject _) implements SVGElement, JSObject {
-  /// Creates an [SVGDescElement] using the tag 'desc'.
-  SVGDescElement()
-      : _ = document.createElementNS(
-          'http://www.w3.org/2000/svg',
-          'desc',
-        );
-}
+abstract class SVGDescElement implements SVGElement, JSObject {}
 
 /// The **`SVGMetadataElement`** interface corresponds to the  element.
 ///
@@ -939,15 +921,7 @@ extension type SVGDescElement._(JSObject _) implements SVGElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGMetadataElement).
-extension type SVGMetadataElement._(JSObject _)
-    implements SVGElement, JSObject {
-  /// Creates an [SVGMetadataElement] using the tag 'metadata'.
-  SVGMetadataElement()
-      : _ = document.createElementNS(
-          'http://www.w3.org/2000/svg',
-          'metadata',
-        );
-}
+abstract class SVGMetadataElement implements SVGElement, JSObject {}
 
 /// The **`SVGTitleElement`** interface corresponds to the  element.
 ///
@@ -955,14 +929,7 @@ extension type SVGMetadataElement._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGTitleElement).
-extension type SVGTitleElement._(JSObject _) implements SVGElement, JSObject {
-  /// Creates an [SVGTitleElement] using the tag 'title'.
-  SVGTitleElement()
-      : _ = document.createElementNS(
-          'http://www.w3.org/2000/svg',
-          'title',
-        );
-}
+abstract class SVGTitleElement implements SVGElement, JSObject {}
 
 /// The **`SVGSymbolElement`** interface corresponds to the  element.
 ///
@@ -970,17 +937,9 @@ extension type SVGTitleElement._(JSObject _) implements SVGElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGSymbolElement).
-extension type SVGSymbolElement._(JSObject _)
-    implements SVGGraphicsElement, JSObject {
-  /// Creates an [SVGSymbolElement] using the tag 'symbol'.
-  SVGSymbolElement()
-      : _ = document.createElementNS(
-          'http://www.w3.org/2000/svg',
-          'symbol',
-        );
-
-  external SVGAnimatedRect get viewBox;
-  external SVGAnimatedPreserveAspectRatio get preserveAspectRatio;
+abstract class SVGSymbolElement implements SVGGraphicsElement, JSObject {
+  SVGAnimatedRect get viewBox;
+  SVGAnimatedPreserveAspectRatio get preserveAspectRatio;
 }
 
 ///
@@ -989,20 +948,12 @@ extension type SVGSymbolElement._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGUseElement).
-extension type SVGUseElement._(JSObject _)
-    implements SVGGraphicsElement, JSObject {
-  /// Creates an [SVGUseElement] using the tag 'use'.
-  SVGUseElement()
-      : _ = document.createElementNS(
-          'http://www.w3.org/2000/svg',
-          'use',
-        );
-
-  external SVGAnimatedLength get x;
-  external SVGAnimatedLength get y;
-  external SVGAnimatedLength get width;
-  external SVGAnimatedLength get height;
-  external SVGAnimatedString get href;
+abstract class SVGUseElement implements SVGGraphicsElement, JSObject {
+  SVGAnimatedLength get x;
+  SVGAnimatedLength get y;
+  SVGAnimatedLength get width;
+  SVGAnimatedLength get height;
+  SVGAnimatedString get href;
 }
 
 /// The **`SVGSwitchElement`** interface corresponds to the  element.
@@ -1011,15 +962,7 @@ extension type SVGUseElement._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGSwitchElement).
-extension type SVGSwitchElement._(JSObject _)
-    implements SVGGraphicsElement, JSObject {
-  /// Creates an [SVGSwitchElement] using the tag 'switch'.
-  SVGSwitchElement()
-      : _ = document.createElementNS(
-          'http://www.w3.org/2000/svg',
-          'switch',
-        );
-}
+abstract class SVGSwitchElement implements SVGGraphicsElement, JSObject {}
 
 /// The **`SVGStyleElement`** interface corresponds to the SVG  element.
 ///
@@ -1027,14 +970,7 @@ extension type SVGSwitchElement._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGStyleElement).
-extension type SVGStyleElement._(JSObject _) implements SVGElement, JSObject {
-  /// Creates an [SVGStyleElement] using the tag 'style'.
-  SVGStyleElement()
-      : _ = document.createElementNS(
-          'http://www.w3.org/2000/svg',
-          'style',
-        );
-
+abstract class SVGStyleElement implements SVGElement, JSObject {
   /// The **`SVGStyleElement.type`** property returns the type of the current
   /// style.
   /// The value reflects the associated SVG `<style>` element's
@@ -1042,8 +978,8 @@ extension type SVGStyleElement._(JSObject _) implements SVGElement, JSObject {
   /// attribute.
   ///
   /// Authors should not use this property or rely on the value.
-  external String get type;
-  external set type(String value);
+  String get type;
+  set type(String value);
 
   /// The **`SVGStyleElement.media`** property is a media query string
   /// corresponding to the
@@ -1051,21 +987,21 @@ extension type SVGStyleElement._(JSObject _) implements SVGElement, JSObject {
   /// attribute of the given SVG style element.
   ///
   /// The query must be matched for the style to apply.
-  external String get media;
-  external set media(String value);
+  String get media;
+  set media(String value);
 
   /// The **`SVGStyleElement.title`** property is a string corresponding to the
   /// [`title`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/style#title)
   /// attribute of the given SVG style element.
   /// It may be used to select between
   /// [alternate style sheets](https://developer.mozilla.org/en-US/docs/Web/CSS/Alternative_style_sheets).
-  external String get title;
-  external set title(String value);
+  String get title;
+  set title(String value);
 
   /// The **`SVGStyleElement.sheet`** read-only property returns the
   /// [CSSStyleSheet] corresponding to the given SVG style element, or `null` if
   /// there is none.
-  external CSSStyleSheet? get sheet;
+  CSSStyleSheet? get sheet;
 }
 
 ///
@@ -1074,7 +1010,7 @@ extension type SVGStyleElement._(JSObject _) implements SVGElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGTransform).
-extension type SVGTransform._(JSObject _) implements JSObject {
+abstract class SVGTransform implements JSObject {
   static const int SVG_TRANSFORM_UNKNOWN = 0;
 
   static const int SVG_TRANSFORM_MATRIX = 1;
@@ -1089,25 +1025,25 @@ extension type SVGTransform._(JSObject _) implements JSObject {
 
   static const int SVG_TRANSFORM_SKEWY = 6;
 
-  external void setMatrix([DOMMatrix2DInit matrix]);
-  external void setTranslate(
+  void setMatrix([DOMMatrix2DInit matrix]);
+  void setTranslate(
     num tx,
     num ty,
   );
-  external void setScale(
+  void setScale(
     num sx,
     num sy,
   );
-  external void setRotate(
+  void setRotate(
     num angle,
     num cx,
     num cy,
   );
-  external void setSkewX(num angle);
-  external void setSkewY(num angle);
-  external int get type;
-  external DOMMatrix get matrix;
-  external double get angle;
+  void setSkewX(num angle);
+  void setSkewY(num angle);
+  int get type;
+  DOMMatrix get matrix;
+  double get angle;
 }
 
 ///
@@ -1116,27 +1052,27 @@ extension type SVGTransform._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGTransformList).
-extension type SVGTransformList._(JSObject _) implements JSObject {
-  external void clear();
-  external SVGTransform initialize(SVGTransform newItem);
-  external SVGTransform getItem(int index);
-  external SVGTransform insertItemBefore(
+abstract class SVGTransformList implements JSObject {
+  void clear();
+  SVGTransform initialize(SVGTransform newItem);
+  SVGTransform getItem(int index);
+  SVGTransform insertItemBefore(
     SVGTransform newItem,
     int index,
   );
-  external SVGTransform replaceItem(
+  SVGTransform replaceItem(
     SVGTransform newItem,
     int index,
   );
-  external SVGTransform removeItem(int index);
-  external SVGTransform appendItem(SVGTransform newItem);
-  external void operator []=(
+  SVGTransform removeItem(int index);
+  SVGTransform appendItem(SVGTransform newItem);
+  void operator []=(
     int index,
     SVGTransform newItem,
   );
-  external SVGTransform createSVGTransformFromMatrix([DOMMatrix2DInit matrix]);
-  external SVGTransform? consolidate();
-  external int get numberOfItems;
+  SVGTransform createSVGTransformFromMatrix([DOMMatrix2DInit matrix]);
+  SVGTransform? consolidate();
+  int get numberOfItems;
 }
 
 ///
@@ -1145,9 +1081,9 @@ extension type SVGTransformList._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedTransformList).
-extension type SVGAnimatedTransformList._(JSObject _) implements JSObject {
-  external SVGTransformList get baseVal;
-  external SVGTransformList get animVal;
+abstract class SVGAnimatedTransformList implements JSObject {
+  SVGTransformList get baseVal;
+  SVGTransformList get animVal;
 }
 
 ///
@@ -1156,7 +1092,7 @@ extension type SVGAnimatedTransformList._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGPreserveAspectRatio).
-extension type SVGPreserveAspectRatio._(JSObject _) implements JSObject {
+abstract class SVGPreserveAspectRatio implements JSObject {
   static const int SVG_PRESERVEASPECTRATIO_UNKNOWN = 0;
 
   static const int SVG_PRESERVEASPECTRATIO_NONE = 1;
@@ -1185,10 +1121,10 @@ extension type SVGPreserveAspectRatio._(JSObject _) implements JSObject {
 
   static const int SVG_MEETORSLICE_SLICE = 2;
 
-  external int get align;
-  external set align(int value);
-  external int get meetOrSlice;
-  external set meetOrSlice(int value);
+  int get align;
+  set align(int value);
+  int get meetOrSlice;
+  set meetOrSlice(int value);
 }
 
 ///
@@ -1197,10 +1133,9 @@ extension type SVGPreserveAspectRatio._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedPreserveAspectRatio).
-extension type SVGAnimatedPreserveAspectRatio._(JSObject _)
-    implements JSObject {
-  external SVGPreserveAspectRatio get baseVal;
-  external SVGPreserveAspectRatio get animVal;
+abstract class SVGAnimatedPreserveAspectRatio implements JSObject {
+  SVGPreserveAspectRatio get baseVal;
+  SVGPreserveAspectRatio get animVal;
 }
 
 /// The **`SVGPathElement`** interface corresponds to the  element.
@@ -1214,15 +1149,7 @@ extension type SVGAnimatedPreserveAspectRatio._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGPathElement).
-extension type SVGPathElement._(JSObject _)
-    implements SVGGeometryElement, JSObject {
-  /// Creates an [SVGPathElement] using the tag 'path'.
-  SVGPathElement()
-      : _ = document.createElementNS(
-          'http://www.w3.org/2000/svg',
-          'path',
-        );
-}
+abstract class SVGPathElement implements SVGGeometryElement, JSObject {}
 
 /// The `SVGRectElement` interface provides access to the properties of
 /// elements, as well as methods to manipulate them.
@@ -1231,21 +1158,13 @@ extension type SVGPathElement._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGRectElement).
-extension type SVGRectElement._(JSObject _)
-    implements SVGGeometryElement, JSObject {
-  /// Creates an [SVGRectElement] using the tag 'rect'.
-  SVGRectElement()
-      : _ = document.createElementNS(
-          'http://www.w3.org/2000/svg',
-          'rect',
-        );
-
-  external SVGAnimatedLength get x;
-  external SVGAnimatedLength get y;
-  external SVGAnimatedLength get width;
-  external SVGAnimatedLength get height;
-  external SVGAnimatedLength get rx;
-  external SVGAnimatedLength get ry;
+abstract class SVGRectElement implements SVGGeometryElement, JSObject {
+  SVGAnimatedLength get x;
+  SVGAnimatedLength get y;
+  SVGAnimatedLength get width;
+  SVGAnimatedLength get height;
+  SVGAnimatedLength get rx;
+  SVGAnimatedLength get ry;
 }
 
 /// The **`SVGCircleElement`** interface is an interface for the  element.
@@ -1254,35 +1173,27 @@ extension type SVGRectElement._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGCircleElement).
-extension type SVGCircleElement._(JSObject _)
-    implements SVGGeometryElement, JSObject {
-  /// Creates an [SVGCircleElement] using the tag 'circle'.
-  SVGCircleElement()
-      : _ = document.createElementNS(
-          'http://www.w3.org/2000/svg',
-          'circle',
-        );
-
+abstract class SVGCircleElement implements SVGGeometryElement, JSObject {
   /// The **`cx`** read-only property of the [SVGCircleElement] interface
   /// reflects the `cx` attribute of a  element and by that defines the
   /// x-coordinate of the circle's center.<
   ///
   /// If unspecified, the effect is as if the value is set to `0`.
-  external SVGAnimatedLength get cx;
+  SVGAnimatedLength get cx;
 
   /// The **`cy`** read-only property of the [SVGCircleElement] interface
   /// reflects the `cy` attribute of a  element and by that defines the
   /// y-coordinate of the circle's center.
   ///
   /// If unspecified, the effect is as if the value is set to `0`.
-  external SVGAnimatedLength get cy;
+  SVGAnimatedLength get cy;
 
   /// The **`r`** read-only property of the [SVGCircleElement] interface
   /// reflects the `r` attribute of a  element and by that defines the radius of
   /// the circle.
   ///
   /// If unspecified, the effect is as if the value is set to `0`.
-  external SVGAnimatedLength get r;
+  SVGAnimatedLength get r;
 }
 
 /// The **`SVGEllipseElement`** interface provides access to the properties of
@@ -1292,19 +1203,11 @@ extension type SVGCircleElement._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGEllipseElement).
-extension type SVGEllipseElement._(JSObject _)
-    implements SVGGeometryElement, JSObject {
-  /// Creates an [SVGEllipseElement] using the tag 'ellipse'.
-  SVGEllipseElement()
-      : _ = document.createElementNS(
-          'http://www.w3.org/2000/svg',
-          'ellipse',
-        );
-
-  external SVGAnimatedLength get cx;
-  external SVGAnimatedLength get cy;
-  external SVGAnimatedLength get rx;
-  external SVGAnimatedLength get ry;
+abstract class SVGEllipseElement implements SVGGeometryElement, JSObject {
+  SVGAnimatedLength get cx;
+  SVGAnimatedLength get cy;
+  SVGAnimatedLength get rx;
+  SVGAnimatedLength get ry;
 }
 
 /// The **`SVGLineElement`** interface provides access to the properties of
@@ -1314,19 +1217,11 @@ extension type SVGEllipseElement._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGLineElement).
-extension type SVGLineElement._(JSObject _)
-    implements SVGGeometryElement, JSObject {
-  /// Creates an [SVGLineElement] using the tag 'line'.
-  SVGLineElement()
-      : _ = document.createElementNS(
-          'http://www.w3.org/2000/svg',
-          'line',
-        );
-
-  external SVGAnimatedLength get x1;
-  external SVGAnimatedLength get y1;
-  external SVGAnimatedLength get x2;
-  external SVGAnimatedLength get y2;
+abstract class SVGLineElement implements SVGGeometryElement, JSObject {
+  SVGAnimatedLength get x1;
+  SVGAnimatedLength get y1;
+  SVGAnimatedLength get x2;
+  SVGAnimatedLength get y2;
 }
 
 /// The **`SVGPointList`** interface represents a list of [SVGPoint] objects.
@@ -1338,52 +1233,52 @@ extension type SVGLineElement._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGPointList).
-extension type SVGPointList._(JSObject _) implements JSObject {
+abstract class SVGPointList implements JSObject {
   /// The **`clear()`** method of the [SVGPointList] interface removes all items
   /// from the list.
-  external void clear();
+  void clear();
 
   /// The **`initialize()`** method of the [SVGPointList] interface clears the
   /// list then adds a single new [SVGPoint] object to the list.
-  external DOMPoint initialize(DOMPoint newItem);
+  DOMPoint initialize(DOMPoint newItem);
 
   /// The **`getItem()`** method of the [SVGPointList] interface gets one item
   /// from the list at the specified index.
-  external DOMPoint getItem(int index);
+  DOMPoint getItem(int index);
 
   /// The **`insertItemBefore()`** method of the [SVGPointList] interface
   /// inserts a [SVGPoint] before another item in the list.
-  external DOMPoint insertItemBefore(
+  DOMPoint insertItemBefore(
     DOMPoint newItem,
     int index,
   );
 
   /// The **`replaceItem()`** method of the [SVGPointList] interface replaces a
   /// [SVGPoint] in the list.
-  external DOMPoint replaceItem(
+  DOMPoint replaceItem(
     DOMPoint newItem,
     int index,
   );
 
   /// The **`removeItem()`** method of the [SVGPointList] interface removes a
   /// [SVGPoint] from the list.
-  external DOMPoint removeItem(int index);
+  DOMPoint removeItem(int index);
 
   /// The **`appendItem()`** method of the [SVGPointList] interface adds a
   /// [SVGPoint] to the end of the list.
-  external DOMPoint appendItem(DOMPoint newItem);
-  external void operator []=(
+  DOMPoint appendItem(DOMPoint newItem);
+  void operator []=(
     int index,
     DOMPoint newItem,
   );
 
   /// The **`length`** read-only property of the [SVGPointList] interface
   /// returns the number of items in the list.
-  external int get length;
+  int get length;
 
   /// The **`numberOfItems`** read-only property of the [SVGPointList] interface
   /// returns the number of items in the list.
-  external int get numberOfItems;
+  int get numberOfItems;
 }
 
 /// The **`SVGPolylineElement`** interface provides access to the properties of
@@ -1393,17 +1288,9 @@ extension type SVGPointList._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGPolylineElement).
-extension type SVGPolylineElement._(JSObject _)
-    implements SVGGeometryElement, JSObject {
-  /// Creates an [SVGPolylineElement] using the tag 'polyline'.
-  SVGPolylineElement()
-      : _ = document.createElementNS(
-          'http://www.w3.org/2000/svg',
-          'polyline',
-        );
-
-  external SVGPointList get points;
-  external SVGPointList get animatedPoints;
+abstract class SVGPolylineElement implements SVGGeometryElement, JSObject {
+  SVGPointList get points;
+  SVGPointList get animatedPoints;
 }
 
 /// The **`SVGPolygonElement`** interface provides access to the properties of
@@ -1413,17 +1300,9 @@ extension type SVGPolylineElement._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGPolygonElement).
-extension type SVGPolygonElement._(JSObject _)
-    implements SVGGeometryElement, JSObject {
-  /// Creates an [SVGPolygonElement] using the tag 'polygon'.
-  SVGPolygonElement()
-      : _ = document.createElementNS(
-          'http://www.w3.org/2000/svg',
-          'polygon',
-        );
-
-  external SVGPointList get points;
-  external SVGPointList get animatedPoints;
+abstract class SVGPolygonElement implements SVGGeometryElement, JSObject {
+  SVGPointList get points;
+  SVGPointList get animatedPoints;
 }
 
 /// The **`SVGTextContentElement`** interface is implemented by elements that
@@ -1435,31 +1314,30 @@ extension type SVGPolygonElement._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGTextContentElement).
-extension type SVGTextContentElement._(JSObject _)
-    implements SVGGraphicsElement, JSObject {
+abstract class SVGTextContentElement implements SVGGraphicsElement, JSObject {
   static const int LENGTHADJUST_UNKNOWN = 0;
 
   static const int LENGTHADJUST_SPACING = 1;
 
   static const int LENGTHADJUST_SPACINGANDGLYPHS = 2;
 
-  external int getNumberOfChars();
-  external double getComputedTextLength();
-  external double getSubStringLength(
+  int getNumberOfChars();
+  double getComputedTextLength();
+  double getSubStringLength(
     int charnum,
     int nchars,
   );
-  external DOMPoint getStartPositionOfChar(int charnum);
-  external DOMPoint getEndPositionOfChar(int charnum);
-  external DOMRect getExtentOfChar(int charnum);
-  external double getRotationOfChar(int charnum);
-  external int getCharNumAtPosition([DOMPointInit point]);
-  external void selectSubString(
+  DOMPoint getStartPositionOfChar(int charnum);
+  DOMPoint getEndPositionOfChar(int charnum);
+  DOMRect getExtentOfChar(int charnum);
+  double getRotationOfChar(int charnum);
+  int getCharNumAtPosition([DOMPointInit point]);
+  void selectSubString(
     int charnum,
     int nchars,
   );
-  external SVGAnimatedLength get textLength;
-  external SVGAnimatedEnumeration get lengthAdjust;
+  SVGAnimatedLength get textLength;
+  SVGAnimatedEnumeration get lengthAdjust;
 }
 
 /// The **`SVGTextPositioningElement`** interface is implemented by elements
@@ -1470,13 +1348,13 @@ extension type SVGTextContentElement._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGTextPositioningElement).
-extension type SVGTextPositioningElement._(JSObject _)
+abstract class SVGTextPositioningElement
     implements SVGTextContentElement, JSObject {
-  external SVGAnimatedLengthList get x;
-  external SVGAnimatedLengthList get y;
-  external SVGAnimatedLengthList get dx;
-  external SVGAnimatedLengthList get dy;
-  external SVGAnimatedNumberList get rotate;
+  SVGAnimatedLengthList get x;
+  SVGAnimatedLengthList get y;
+  SVGAnimatedLengthList get dx;
+  SVGAnimatedLengthList get dy;
+  SVGAnimatedNumberList get rotate;
 }
 
 /// The **`SVGTextElement`** interface corresponds to the  elements.
@@ -1485,15 +1363,7 @@ extension type SVGTextPositioningElement._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGTextElement).
-extension type SVGTextElement._(JSObject _)
-    implements SVGTextPositioningElement, JSObject {
-  /// Creates an [SVGTextElement] using the tag 'text'.
-  SVGTextElement()
-      : _ = document.createElementNS(
-          'http://www.w3.org/2000/svg',
-          'text',
-        );
-}
+abstract class SVGTextElement implements SVGTextPositioningElement, JSObject {}
 
 /// The **`SVGTSpanElement`** interface represents a  element.
 ///
@@ -1501,15 +1371,7 @@ extension type SVGTextElement._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGTSpanElement).
-extension type SVGTSpanElement._(JSObject _)
-    implements SVGTextPositioningElement, JSObject {
-  /// Creates an [SVGTSpanElement] using the tag 'tspan'.
-  SVGTSpanElement()
-      : _ = document.createElementNS(
-          'http://www.w3.org/2000/svg',
-          'tspan',
-        );
-}
+abstract class SVGTSpanElement implements SVGTextPositioningElement, JSObject {}
 
 /// The **`SVGTextPathElement`** interface corresponds to the  element.
 ///
@@ -1517,15 +1379,7 @@ extension type SVGTSpanElement._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGTextPathElement).
-extension type SVGTextPathElement._(JSObject _)
-    implements SVGTextContentElement, JSObject {
-  /// Creates an [SVGTextPathElement] using the tag 'textPath'.
-  SVGTextPathElement()
-      : _ = document.createElementNS(
-          'http://www.w3.org/2000/svg',
-          'textPath',
-        );
-
+abstract class SVGTextPathElement implements SVGTextContentElement, JSObject {
   static const int TEXTPATH_METHODTYPE_UNKNOWN = 0;
 
   static const int TEXTPATH_METHODTYPE_ALIGN = 1;
@@ -1538,10 +1392,10 @@ extension type SVGTextPathElement._(JSObject _)
 
   static const int TEXTPATH_SPACINGTYPE_EXACT = 2;
 
-  external SVGAnimatedLength get startOffset;
-  external SVGAnimatedEnumeration get method;
-  external SVGAnimatedEnumeration get spacing;
-  external SVGAnimatedString get href;
+  SVGAnimatedLength get startOffset;
+  SVGAnimatedEnumeration get method;
+  SVGAnimatedEnumeration get spacing;
+  SVGAnimatedString get href;
 }
 
 /// The **`SVGImageElement`** interface corresponds to the  element.
@@ -1550,48 +1404,40 @@ extension type SVGTextPathElement._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGImageElement).
-extension type SVGImageElement._(JSObject _)
-    implements SVGGraphicsElement, JSObject {
-  /// Creates an [SVGImageElement] using the tag 'image'.
-  SVGImageElement()
-      : _ = document.createElementNS(
-          'http://www.w3.org/2000/svg',
-          'image',
-        );
-
+abstract class SVGImageElement implements SVGGraphicsElement, JSObject {
   /// The **`x`** read-only property of the
   /// [SVGImageElement] interface returns an [SVGAnimatedLength]
   /// corresponding to the `x` attribute of the given
   /// element.
-  external SVGAnimatedLength get x;
+  SVGAnimatedLength get x;
 
   /// The **`y`** read-only property of the
   /// [SVGImageElement] interface returns an [SVGAnimatedLength]
   /// corresponding to the `y` attribute of the given
   /// element.
-  external SVGAnimatedLength get y;
+  SVGAnimatedLength get y;
 
   /// The **`width`** read-only property of the
   /// [SVGImageElement] interface returns an [SVGAnimatedLength]
   /// corresponding to the `width` attribute of the given
   /// element.
-  external SVGAnimatedLength get width;
+  SVGAnimatedLength get width;
 
   /// The **`height`** read-only property of the
   /// [SVGImageElement] interface returns an [SVGAnimatedLength]
   /// corresponding to the `height` attribute of the given
   /// element.
-  external SVGAnimatedLength get height;
+  SVGAnimatedLength get height;
 
   /// The **`preserveAspectRatio`** read-only
   /// property of the [SVGImageElement] interface returns an
   /// [SVGAnimatedPreserveAspectRatio] corresponding to the
   /// `preserveAspectRatio` attribute of the given
   /// element.
-  external SVGAnimatedPreserveAspectRatio get preserveAspectRatio;
-  external String? get crossOrigin;
-  external set crossOrigin(String? value);
-  external SVGAnimatedString get href;
+  SVGAnimatedPreserveAspectRatio get preserveAspectRatio;
+  String? get crossOrigin;
+  set crossOrigin(String? value);
+  SVGAnimatedString get href;
 }
 
 /// The **`SVGForeignObjectElement`** interface provides access to the
@@ -1601,19 +1447,11 @@ extension type SVGImageElement._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGForeignObjectElement).
-extension type SVGForeignObjectElement._(JSObject _)
-    implements SVGGraphicsElement, JSObject {
-  /// Creates an [SVGForeignObjectElement] using the tag 'foreignObject'.
-  SVGForeignObjectElement()
-      : _ = document.createElementNS(
-          'http://www.w3.org/2000/svg',
-          'foreignObject',
-        );
-
-  external SVGAnimatedLength get x;
-  external SVGAnimatedLength get y;
-  external SVGAnimatedLength get width;
-  external SVGAnimatedLength get height;
+abstract class SVGForeignObjectElement implements SVGGraphicsElement, JSObject {
+  SVGAnimatedLength get x;
+  SVGAnimatedLength get y;
+  SVGAnimatedLength get width;
+  SVGAnimatedLength get height;
 }
 
 /// The **`SVGMarkerElement`** interface provides access to the properties of
@@ -1627,14 +1465,7 @@ extension type SVGForeignObjectElement._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGMarkerElement).
-extension type SVGMarkerElement._(JSObject _) implements SVGElement, JSObject {
-  /// Creates an [SVGMarkerElement] using the tag 'marker'.
-  SVGMarkerElement()
-      : _ = document.createElementNS(
-          'http://www.w3.org/2000/svg',
-          'marker',
-        );
-
+abstract class SVGMarkerElement implements SVGElement, JSObject {
   static const int SVG_MARKERUNITS_UNKNOWN = 0;
 
   static const int SVG_MARKERUNITS_USERSPACEONUSE = 1;
@@ -1649,38 +1480,38 @@ extension type SVGMarkerElement._(JSObject _) implements SVGElement, JSObject {
 
   /// The **`setOrientToAuto()`** method of the [SVGMarkerElement] interface
   /// sets the value of the `orient` attribute to `auto`.
-  external void setOrientToAuto();
+  void setOrientToAuto();
 
   /// The **`setOrientToAngle()`** method of the [SVGMarkerElement] interface
   /// sets the value of the `orient` attribute to the value in the [SVGAngle]
   /// passed in.
-  external void setOrientToAngle(SVGAngle angle);
+  void setOrientToAngle(SVGAngle angle);
 
   /// The **`refX`** read-only property of the [SVGMarkerElement] interface
   /// returns an [SVGAnimatedLength] object containing the value of the `refX`
   /// attribute of the .
-  external SVGAnimatedLength get refX;
+  SVGAnimatedLength get refX;
 
   /// The **`refY`** read-only property of the [SVGMarkerElement] interface
   /// returns an [SVGAnimatedLength] object containing the value of the `refY`
   /// attribute of the .
-  external SVGAnimatedLength get refY;
+  SVGAnimatedLength get refY;
 
   /// The **`markerUnits`** read-only property of the [SVGMarkerElement]
   /// interface returns an [SVGAnimatedEnumeration] object. This object returns
   /// an integer which represents the keyword values that the `markerUnits`
   /// attribute accepts.
-  external SVGAnimatedEnumeration get markerUnits;
+  SVGAnimatedEnumeration get markerUnits;
 
   /// The **`markerWidth`** read-only property of the [SVGMarkerElement]
   /// interface returns an [SVGAnimatedLength] object containing the width of
   /// the  viewport as defined by the `markerWidth` attribute.
-  external SVGAnimatedLength get markerWidth;
+  SVGAnimatedLength get markerWidth;
 
   /// The **`markerHeight`** read-only property of the [SVGMarkerElement]
   /// interface returns an [SVGAnimatedLength] object containing the height of
   /// the  viewport as defined by the `markerHeight` attribute.
-  external SVGAnimatedLength get markerHeight;
+  SVGAnimatedLength get markerHeight;
 
   /// The **`orientType`** read-only property of the [SVGMarkerElement]
   /// interface returns an [SVGAnimatedEnumeration] object indicating whether
@@ -1690,24 +1521,24 @@ extension type SVGMarkerElement._(JSObject _) implements SVGElement, JSObject {
   /// `auto-start-reverse` however the spec leaves it open for this to be other
   /// values. Unsupported values will generally be thrown away by the parser,
   /// leaving the value the default of `auto`.
-  external SVGAnimatedEnumeration get orientType;
+  SVGAnimatedEnumeration get orientType;
 
   /// The **`orientAngle`** read-only property of the [SVGMarkerElement]
   /// interface returns an [SVGAnimatedAngle] object containing the angle of the
   /// `orient` attribute.
-  external SVGAnimatedAngle get orientAngle;
-  external String get orient;
-  external set orient(String value);
+  SVGAnimatedAngle get orientAngle;
+  String get orient;
+  set orient(String value);
 
   /// The **`viewBox`** read-only property of the [SVGMarkerElement] interface
   /// returns an [SVGAnimatedRect] object which contains the values set by the
   /// `viewBox` attribute on the .
-  external SVGAnimatedRect get viewBox;
+  SVGAnimatedRect get viewBox;
 
   /// The **`preserveAspectRatio`** read-only property of the [SVGMarkerElement]
   /// interface returns an [SVGAnimatedPreserveAspectRatio] object containing
   /// the value of the `preserveAspectRatio` attribute of the .
-  external SVGAnimatedPreserveAspectRatio get preserveAspectRatio;
+  SVGAnimatedPreserveAspectRatio get preserveAspectRatio;
 }
 
 /// The **`SVGGradient`** interface is a base interface used by
@@ -1717,8 +1548,7 @@ extension type SVGMarkerElement._(JSObject _) implements SVGElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGGradientElement).
-extension type SVGGradientElement._(JSObject _)
-    implements SVGElement, JSObject {
+abstract class SVGGradientElement implements SVGElement, JSObject {
   static const int SVG_SPREADMETHOD_UNKNOWN = 0;
 
   static const int SVG_SPREADMETHOD_PAD = 1;
@@ -1727,10 +1557,10 @@ extension type SVGGradientElement._(JSObject _)
 
   static const int SVG_SPREADMETHOD_REPEAT = 3;
 
-  external SVGAnimatedEnumeration get gradientUnits;
-  external SVGAnimatedTransformList get gradientTransform;
-  external SVGAnimatedEnumeration get spreadMethod;
-  external SVGAnimatedString get href;
+  SVGAnimatedEnumeration get gradientUnits;
+  SVGAnimatedTransformList get gradientTransform;
+  SVGAnimatedEnumeration get spreadMethod;
+  SVGAnimatedString get href;
 }
 
 /// The **`SVGLinearGradientElement`** interface corresponds to the  element.
@@ -1739,19 +1569,12 @@ extension type SVGGradientElement._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGLinearGradientElement).
-extension type SVGLinearGradientElement._(JSObject _)
+abstract class SVGLinearGradientElement
     implements SVGGradientElement, JSObject {
-  /// Creates an [SVGLinearGradientElement] using the tag 'linearGradient'.
-  SVGLinearGradientElement()
-      : _ = document.createElementNS(
-          'http://www.w3.org/2000/svg',
-          'linearGradient',
-        );
-
-  external SVGAnimatedLength get x1;
-  external SVGAnimatedLength get y1;
-  external SVGAnimatedLength get x2;
-  external SVGAnimatedLength get y2;
+  SVGAnimatedLength get x1;
+  SVGAnimatedLength get y1;
+  SVGAnimatedLength get x2;
+  SVGAnimatedLength get y2;
 }
 
 /// The **`SVGRadialGradientElement`** interface corresponds to the  element.
@@ -1760,21 +1583,14 @@ extension type SVGLinearGradientElement._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGRadialGradientElement).
-extension type SVGRadialGradientElement._(JSObject _)
+abstract class SVGRadialGradientElement
     implements SVGGradientElement, JSObject {
-  /// Creates an [SVGRadialGradientElement] using the tag 'radialGradient'.
-  SVGRadialGradientElement()
-      : _ = document.createElementNS(
-          'http://www.w3.org/2000/svg',
-          'radialGradient',
-        );
-
-  external SVGAnimatedLength get cx;
-  external SVGAnimatedLength get cy;
-  external SVGAnimatedLength get r;
-  external SVGAnimatedLength get fx;
-  external SVGAnimatedLength get fy;
-  external SVGAnimatedLength get fr;
+  SVGAnimatedLength get cx;
+  SVGAnimatedLength get cy;
+  SVGAnimatedLength get r;
+  SVGAnimatedLength get fx;
+  SVGAnimatedLength get fy;
+  SVGAnimatedLength get fr;
 }
 
 /// The **`SVGStopElement`** interface corresponds to the  element.
@@ -1783,15 +1599,8 @@ extension type SVGRadialGradientElement._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGStopElement).
-extension type SVGStopElement._(JSObject _) implements SVGElement, JSObject {
-  /// Creates an [SVGStopElement] using the tag 'stop'.
-  SVGStopElement()
-      : _ = document.createElementNS(
-          'http://www.w3.org/2000/svg',
-          'stop',
-        );
-
-  external SVGAnimatedNumber get offset;
+abstract class SVGStopElement implements SVGElement, JSObject {
+  SVGAnimatedNumber get offset;
 }
 
 /// The **`SVGPatternElement`** interface corresponds to the  element.
@@ -1800,24 +1609,17 @@ extension type SVGStopElement._(JSObject _) implements SVGElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGPatternElement).
-extension type SVGPatternElement._(JSObject _) implements SVGElement, JSObject {
-  /// Creates an [SVGPatternElement] using the tag 'pattern'.
-  SVGPatternElement()
-      : _ = document.createElementNS(
-          'http://www.w3.org/2000/svg',
-          'pattern',
-        );
-
-  external SVGAnimatedEnumeration get patternUnits;
-  external SVGAnimatedEnumeration get patternContentUnits;
-  external SVGAnimatedTransformList get patternTransform;
-  external SVGAnimatedLength get x;
-  external SVGAnimatedLength get y;
-  external SVGAnimatedLength get width;
-  external SVGAnimatedLength get height;
-  external SVGAnimatedRect get viewBox;
-  external SVGAnimatedPreserveAspectRatio get preserveAspectRatio;
-  external SVGAnimatedString get href;
+abstract class SVGPatternElement implements SVGElement, JSObject {
+  SVGAnimatedEnumeration get patternUnits;
+  SVGAnimatedEnumeration get patternContentUnits;
+  SVGAnimatedTransformList get patternTransform;
+  SVGAnimatedLength get x;
+  SVGAnimatedLength get y;
+  SVGAnimatedLength get width;
+  SVGAnimatedLength get height;
+  SVGAnimatedRect get viewBox;
+  SVGAnimatedPreserveAspectRatio get preserveAspectRatio;
+  SVGAnimatedString get href;
 }
 
 /// The **`SVGScriptElement`** interface corresponds to the SVG  element.
@@ -1826,19 +1628,12 @@ extension type SVGPatternElement._(JSObject _) implements SVGElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGScriptElement).
-extension type SVGScriptElement._(JSObject _) implements SVGElement, JSObject {
-  /// Creates an [SVGScriptElement] using the tag 'script'.
-  SVGScriptElement()
-      : _ = document.createElementNS(
-          'http://www.w3.org/2000/svg',
-          'script',
-        );
-
-  external String get type;
-  external set type(String value);
-  external String? get crossOrigin;
-  external set crossOrigin(String? value);
-  external SVGAnimatedString get href;
+abstract class SVGScriptElement implements SVGElement, JSObject {
+  String get type;
+  set type(String value);
+  String? get crossOrigin;
+  set crossOrigin(String? value);
+  SVGAnimatedString get href;
 }
 
 /// The **`SVGAElement`** interface provides access to the properties of an
@@ -1848,15 +1643,7 @@ extension type SVGScriptElement._(JSObject _) implements SVGElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGAElement).
-extension type SVGAElement._(JSObject _)
-    implements SVGGraphicsElement, JSObject {
-  /// Creates an [SVGAElement] using the tag 'a'.
-  SVGAElement()
-      : _ = document.createElementNS(
-          'http://www.w3.org/2000/svg',
-          'a',
-        );
-
+abstract class SVGAElement implements SVGGraphicsElement, JSObject {
   /// The **`SVGAElement.target`** read-only property of [SVGAElement] returns
   /// an [SVGAnimatedString] object that specifies the portion of a target
   /// window, frame, pane into which a document is to be opened when a link is
@@ -1865,23 +1652,23 @@ extension type SVGAElement._(JSObject _)
   /// This property is used when there are multiple possible targets for the
   /// ending resource, like when the parent document is a multi-frame HTML or
   /// XHTML document.
-  external SVGAnimatedString get target;
-  external String get download;
-  external set download(String value);
-  external String get ping;
-  external set ping(String value);
-  external String get rel;
-  external set rel(String value);
-  external DOMTokenList get relList;
-  external String get hreflang;
-  external set hreflang(String value);
-  external String get type;
-  external set type(String value);
-  external String get text;
-  external set text(String value);
-  external String get referrerPolicy;
-  external set referrerPolicy(String value);
-  external SVGAnimatedString get href;
+  SVGAnimatedString get target;
+  String get download;
+  set download(String value);
+  String get ping;
+  set ping(String value);
+  String get rel;
+  set rel(String value);
+  DOMTokenList get relList;
+  String get hreflang;
+  set hreflang(String value);
+  String get type;
+  set type(String value);
+  String get text;
+  set text(String value);
+  String get referrerPolicy;
+  set referrerPolicy(String value);
+  SVGAnimatedString get href;
 }
 
 /// The **`SVGViewElement`** interface provides access to the properties of
@@ -1891,14 +1678,7 @@ extension type SVGAElement._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGViewElement).
-extension type SVGViewElement._(JSObject _) implements SVGElement, JSObject {
-  /// Creates an [SVGViewElement] using the tag 'view'.
-  SVGViewElement()
-      : _ = document.createElementNS(
-          'http://www.w3.org/2000/svg',
-          'view',
-        );
-
-  external SVGAnimatedRect get viewBox;
-  external SVGAnimatedPreserveAspectRatio get preserveAspectRatio;
+abstract class SVGViewElement implements SVGElement, JSObject {
+  SVGAnimatedRect get viewBox;
+  SVGAnimatedPreserveAspectRatio get preserveAspectRatio;
 }

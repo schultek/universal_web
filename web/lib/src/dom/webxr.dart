@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,11 +10,8 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../error.dart';
+import '../js_interop.dart';
 import 'dom.dart';
 import 'gamepad.dart';
 import 'geometry.dart';
@@ -44,7 +41,7 @@ typedef XRTargetRayMode = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/XRSpace).
-extension type XRSpace._(JSObject _) implements EventTarget, JSObject {}
+abstract class XRSpace implements EventTarget, JSObject {}
 
 /// The WebXR Device API's **`XRReferenceSpace`** interface describes the
 /// coordinate system for a specific tracked entity or object within the virtual
@@ -72,7 +69,7 @@ extension type XRSpace._(JSObject _) implements EventTarget, JSObject {}
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/XRReferenceSpace).
-extension type XRReferenceSpace._(JSObject _) implements XRSpace, JSObject {
+abstract class XRReferenceSpace implements XRSpace, JSObject {
   /// The [XRReferenceSpace]
   /// interface's **`getOffsetReferenceSpace()`** method returns a
   /// new reference space object which describes the relative difference in
@@ -101,10 +98,9 @@ extension type XRReferenceSpace._(JSObject _) implements XRSpace, JSObject {
   /// which demonstrates a way to
   /// use this method to let the user use their mouse to pitch and yaw their
   /// viewing angle.
-  external XRReferenceSpace getOffsetReferenceSpace(
-      XRRigidTransform originOffset);
-  external EventHandler get onreset;
-  external set onreset(EventHandler value);
+  XRReferenceSpace getOffsetReferenceSpace(XRRigidTransform originOffset);
+  EventHandler get onreset;
+  set onreset(EventHandler value);
 }
 
 /// The WebXR Device API's **`XRViewport`** interface provides properties used
@@ -115,7 +111,7 @@ extension type XRReferenceSpace._(JSObject _) implements XRSpace, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/XRViewport).
-extension type XRViewport._(JSObject _) implements JSObject {
+abstract class XRViewport implements JSObject {
   /// The read-only [XRViewport] interface's
   /// **`x`** property indicates the offset from the left edge of
   /// the destination surface (typically a [XRWebGLLayer]) to the left edge of
@@ -124,7 +120,7 @@ extension type XRViewport._(JSObject _) implements JSObject {
   /// viewport's [XRViewport.y] property identifies the `y`
   /// component of the origin, and its is given by the [XRViewPort.width]
   /// and [XRViewport.height] properties.
-  external int get x;
+  int get x;
 
   /// The read-only [XRViewport] interface's
   /// **`y`** property indicates the offset from the bottom edge of
@@ -134,7 +130,7 @@ extension type XRViewport._(JSObject _) implements JSObject {
   /// viewport's [XRViewport.x] property identifies the `x`
   /// component of the origin, and its is given by the [XRViewPort.width]
   /// and [XRViewport.height] properties.
-  external int get y;
+  int get y;
 
   /// The read-only [XRViewport] property
   /// **`width`** specifies the width of the viewport, in pixels,
@@ -143,7 +139,7 @@ extension type XRViewport._(JSObject _) implements JSObject {
   /// using this property along with the viewport's [XRViewport.height]
   /// and its origin given by its properties [XRViewport.x] and
   /// [XRViewport.y].
-  external int get width;
+  int get width;
 
   /// The read-only [XRViewport] property
   /// **`height`** specifies the height, in pixels, of the viewport
@@ -152,7 +148,7 @@ extension type XRViewport._(JSObject _) implements JSObject {
   /// with [XRViewport.width] and the origin point given by
   /// [XRViewport.x] and [XRViewport.y], this defines the
   /// area within which rendered content will be drawn.
-  external int get height;
+  int get height;
 }
 
 /// The **`XRRigidTransform`** is a
@@ -181,18 +177,13 @@ extension type XRViewport._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/XRRigidTransform).
-extension type XRRigidTransform._(JSObject _) implements JSObject {
-  external factory XRRigidTransform([
-    DOMPointInit position,
-    DOMPointInit orientation,
-  ]);
-
+abstract class XRRigidTransform implements JSObject {
   /// The read-only [XRRigidTransform] property
   /// **`position`** is a [DOMPointReadOnly] object which
   /// provides the 3D point, specified in meters, describing the translation
   /// component of the
   /// transform.
-  external DOMPointReadOnly get position;
+  DOMPointReadOnly get position;
 
   /// The read-only [XRRigidTransform] property
   /// **`orientation`** is a [DOMPointReadOnly]
@@ -203,7 +194,7 @@ extension type XRRigidTransform._(JSObject _) implements JSObject {
   /// If you specify a quaternion whose length is not exactly 1.0 meters, it
   /// will be
   /// normalized for you.
-  external DOMPointReadOnly get orientation;
+  DOMPointReadOnly get orientation;
 
   /// The read-only [XRRigidTransform] property
   /// **`matrix`** returns the transform
@@ -213,7 +204,7 @@ extension type XRRigidTransform._(JSObject _) implements JSObject {
   /// vector by the 3D rotation specified by the
   /// [XRRigidTransform.orientation], then translate
   /// it by the [XRRigidTransform.position].
-  external JSFloat32Array get matrix;
+  JSFloat32Array get matrix;
 
   /// The read-only **`inverse`** property
   /// of the [XRRigidTransform] interface returns another
@@ -221,7 +212,7 @@ extension type XRRigidTransform._(JSObject _) implements JSObject {
   /// transform. That is, you can always get the inverse of any
   /// `XRRigidTransform` using its `inverse` property, instead of having
   /// to explicitly generate it.
-  external XRRigidTransform get inverse;
+  XRRigidTransform get inverse;
 }
 
 /// `XRPose` is a
@@ -264,32 +255,32 @@ extension type XRRigidTransform._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/XRPose).
-extension type XRPose._(JSObject _) implements JSObject {
+abstract class XRPose implements JSObject {
   /// The `transform` read-only attribute of the
   /// [XRPose] interface is a [XRRigidTransform] object providing
   /// the position and orientation of the pose relative to the base [XRSpace]
   /// as specified when the pose was obtained by calling
   /// [XRFrame.getPose].
-  external XRRigidTransform get transform;
+  XRRigidTransform get transform;
 
   /// The `linearVelocity` read-only property of the
   /// [XRPose] interface is a [DOMPointReadOnly] describing
   /// the linear velocity in meters per second relative to the base
   /// [XRSpace].
-  external DOMPointReadOnly? get linearVelocity;
+  DOMPointReadOnly? get linearVelocity;
 
   /// The `angularVelocity` read-only property of the
   /// [XRPose] interface is a [DOMPointReadOnly] describing
   /// the angular velocity in radians per second relative to the base
   /// [XRSpace].
-  external DOMPointReadOnly? get angularVelocity;
+  DOMPointReadOnly? get angularVelocity;
 
   /// The `emulatedPosition` read-only attribute of the
   /// [XRPose] interface is a Boolean value indicating whether or not both the
   /// [XRRigidTransform.position] component of the pose's
   /// [XRPose.transform] is directly taken from the XR device, or
   /// it's simulated or computed based on other sources.
-  external bool get emulatedPosition;
+  bool get emulatedPosition;
 }
 
 /// The WebXR Device API interface **`XRViewerPose`** represents the pose (the
@@ -306,7 +297,7 @@ extension type XRPose._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/XRViewerPose).
-extension type XRViewerPose._(JSObject _) implements XRPose, JSObject {
+abstract class XRViewerPose implements XRPose, JSObject {
   /// The read-only [XRViewerPose] property **`views`**
   /// returns an array which contains every [XRView] which must be rendered in
   /// order to fully represent the scene from the viewpoint defined by the
@@ -322,7 +313,7 @@ extension type XRViewerPose._(JSObject _) implements XRPose, JSObject {
   /// view having its
   /// [XRView.eye] set to the string `left` and the right eye's
   /// view a value of `right`.
-  external JSArray<JSObject> get views;
+  JSArray<JSObject> get views;
 }
 
 /// The [WebXR Device
@@ -337,12 +328,12 @@ extension type XRViewerPose._(JSObject _) implements XRPose, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/XRInputSource).
-extension type XRInputSource._(JSObject _) implements JSObject {
+abstract class XRInputSource implements JSObject {
   /// The read-only [XRInputSource] property
   /// **`handedness`** indicates which of the user's hands the WebXR
   /// input source is associated with, or if it's not associated with a hand at
   /// all.
-  external XRHandedness get handedness;
+  XRHandedness get handedness;
 
   /// The read-only [XRInputSource]
   /// property **`targetRayMode`** indicates the method by which the
@@ -364,7 +355,7 @@ extension type XRInputSource._(JSObject _) implements JSObject {
   /// The target ray can be anything from a simple line (ideally fading over
   /// distance) to an animated effect, such as the science-fiction "phaser"
   /// style shown in the screenshot above.
-  external XRTargetRayMode get targetRayMode;
+  XRTargetRayMode get targetRayMode;
 
   /// The read-only [XRInputSource] property
   /// **`targetRaySpace`** returns an [XRSpace]
@@ -380,7 +371,7 @@ extension type XRInputSource._(JSObject _) implements JSObject {
   ///
   /// To obtain an `XRSpace` representing the input controller's position and
   /// orientation in virtual space, use the [XRInputSource.gripSpace] property.
-  external XRSpace get targetRaySpace;
+  XRSpace get targetRaySpace;
 
   /// The read-only [XRInputSource] property **`gripSpace`** returns an
   /// [XRSpace] whose native origin tracks the pose used to render virtual
@@ -388,7 +379,7 @@ extension type XRInputSource._(JSObject _) implements JSObject {
   /// example, if a user were holding a virtual straight rod, the native origin
   /// of this `XRSpace` would be located at the approximate center of mass of
   /// the user's fist.
-  external XRSpace? get gripSpace;
+  XRSpace? get gripSpace;
 
   /// The read-only [XRInputSource] property **`profiles`** returns an array of
   /// strings, each describing a configuration profile for the input source. The
@@ -397,7 +388,7 @@ extension type XRInputSource._(JSObject _) implements JSObject {
   ///
   /// > **Note:** The `profiles` list is always empty when the WebXR
   /// > session is in inline mode.
-  external JSArray<JSString> get profiles;
+  JSArray<JSString> get profiles;
 
   /// The read-only [XRInputSource] property **`gamepad`** returns a [Gamepad]
   /// object describing the state of the buttons and axes on the XR input
@@ -420,11 +411,11 @@ extension type XRInputSource._(JSObject _) implements JSObject {
   ///   the value is 0 when the associated [GamepadButton.touched] property is
   ///   `false`.
   /// - [Gamepad.mapping] returns "xr-standard".
-  external Gamepad? get gamepad;
+  Gamepad? get gamepad;
 
   /// The read-only **`hand`** property of the [XRInputSource] interface is a
   /// [XRHand] object providing access to a hand-tracking device.
-  external XRHand? get hand;
+  XRHand? get hand;
 }
 
 /// The
@@ -437,27 +428,21 @@ extension type XRInputSource._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/XRSessionEvent).
-extension type XRSessionEvent._(JSObject _) implements Event, JSObject {
-  external factory XRSessionEvent(
-    String type,
-    XRSessionEventInit eventInitDict,
-  );
-
+abstract class XRSessionEvent implements Event, JSObject {
   /// The read-only [XRSessionEvent] interface's
   /// **`session`** property indicates which
   /// [XRSession] the event is about.
-  external JSObject get session;
+  JSObject get session;
 }
-extension type XRSessionEventInit._(JSObject _) implements EventInit, JSObject {
-  external factory XRSessionEventInit({
-    bool bubbles,
-    bool cancelable,
-    bool composed,
-    required JSObject session,
-  });
 
-  external JSObject get session;
-  external set session(JSObject value);
+abstract class XRSessionEventInit implements EventInit, JSObject {
+  JSObject get session {
+    unsupportedPlatformError();
+  }
+
+  set session(JSObject value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The
@@ -474,12 +459,7 @@ extension type XRSessionEventInit._(JSObject _) implements EventInit, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/XRInputSourceEvent).
-extension type XRInputSourceEvent._(JSObject _) implements Event, JSObject {
-  external factory XRInputSourceEvent(
-    String type,
-    XRInputSourceEventInit eventInitDict,
-  );
-
+abstract class XRInputSourceEvent implements Event, JSObject {
   /// The read-only [XRInputSourceEvent] property
   /// **`frame`** specifies an [XRFrame] object
   /// representing the event frame during which a
@@ -488,7 +468,7 @@ extension type XRInputSourceEvent._(JSObject _) implements Event, JSObject {
   /// This may thus be an event which occurred in the past rather than a current
   /// or impending
   /// event.
-  external JSObject get frame;
+  JSObject get frame;
 
   /// The [XRInputSourceEvent] interface's read-only
   /// **`inputSource`** property specifies the
@@ -496,22 +476,25 @@ extension type XRInputSourceEvent._(JSObject _) implements Event, JSObject {
   /// lets you handle the event appropriately given the particulars of the user
   /// input device
   /// being manipulated.
-  external XRInputSource get inputSource;
+  XRInputSource get inputSource;
 }
-extension type XRInputSourceEventInit._(JSObject _)
-    implements EventInit, JSObject {
-  external factory XRInputSourceEventInit({
-    bool bubbles,
-    bool cancelable,
-    bool composed,
-    required JSObject frame,
-    required XRInputSource inputSource,
-  });
 
-  external JSObject get frame;
-  external set frame(JSObject value);
-  external XRInputSource get inputSource;
-  external set inputSource(XRInputSource value);
+abstract class XRInputSourceEventInit implements EventInit, JSObject {
+  JSObject get frame {
+    unsupportedPlatformError();
+  }
+
+  set frame(JSObject value) {
+    unsupportedPlatformError();
+  }
+
+  XRInputSource get inputSource {
+    unsupportedPlatformError();
+  }
+
+  set inputSource(XRInputSource value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The WebXR Device API interface **`XRInputSourcesChangeEvent`** is used to
@@ -522,47 +505,49 @@ extension type XRInputSourceEventInit._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/XRInputSourcesChangeEvent).
-extension type XRInputSourcesChangeEvent._(JSObject _)
-    implements Event, JSObject {
-  external factory XRInputSourcesChangeEvent(
-    String type,
-    XRInputSourcesChangeEventInit eventInitDict,
-  );
-
+abstract class XRInputSourcesChangeEvent implements Event, JSObject {
   /// The [XRInputSourcesChangeEvent] property
   /// [XRInputSourcesChangeEvent.session] specifies the
   /// [XRSession] to which the input source list change event applies.
-  external JSObject get session;
+  JSObject get session;
 
   /// The read-only [XRInputSourcesChangeEvent]
   /// property [XRInputSourcesChangeEvent.added] is a list of zero or
   /// more input sources, each identified using an [XRInputSource] object,
   /// which have been newly made available for use.
-  external JSArray<XRInputSource> get added;
+  JSArray<XRInputSource> get added;
 
   /// The read-only [XRInputSourcesChangeEvent] property
   /// [XRInputSourcesChangeEvent.removed] is an array of
   /// zero or more [XRInputSource] objects representing the input sources that
   /// have been removed from the [XRSession].
-  external JSArray<XRInputSource> get removed;
+  JSArray<XRInputSource> get removed;
 }
-extension type XRInputSourcesChangeEventInit._(JSObject _)
-    implements EventInit, JSObject {
-  external factory XRInputSourcesChangeEventInit({
-    bool bubbles,
-    bool cancelable,
-    bool composed,
-    required JSObject session,
-    required JSArray<XRInputSource> added,
-    required JSArray<XRInputSource> removed,
-  });
 
-  external JSObject get session;
-  external set session(JSObject value);
-  external JSArray<XRInputSource> get added;
-  external set added(JSArray<XRInputSource> value);
-  external JSArray<XRInputSource> get removed;
-  external set removed(JSArray<XRInputSource> value);
+abstract class XRInputSourcesChangeEventInit implements EventInit, JSObject {
+  JSObject get session {
+    unsupportedPlatformError();
+  }
+
+  set session(JSObject value) {
+    unsupportedPlatformError();
+  }
+
+  JSArray<XRInputSource> get added {
+    unsupportedPlatformError();
+  }
+
+  set added(JSArray<XRInputSource> value) {
+    unsupportedPlatformError();
+  }
+
+  JSArray<XRInputSource> get removed {
+    unsupportedPlatformError();
+  }
+
+  set removed(JSArray<XRInputSource> value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The
@@ -575,16 +560,11 @@ extension type XRInputSourcesChangeEventInit._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/XRReferenceSpaceEvent).
-extension type XRReferenceSpaceEvent._(JSObject _) implements Event, JSObject {
-  external factory XRReferenceSpaceEvent(
-    String type,
-    XRReferenceSpaceEventInit eventInitDict,
-  );
-
+abstract class XRReferenceSpaceEvent implements Event, JSObject {
   /// The read-only [XRReferenceSpaceEvent] property
   /// **`referenceSpace`** specifies the reference space which is the
   /// originator of the event.
-  external XRReferenceSpace get referenceSpace;
+  XRReferenceSpace get referenceSpace;
 
   /// The read-only [XRReferenceSpaceEvent] property
   /// **`transform`** indicates the position and orientation of the
@@ -595,20 +575,23 @@ extension type XRReferenceSpaceEvent._(JSObject _) implements Event, JSObject {
   /// used to convert coordinates from the pre-event coordinate system to the
   /// post-event
   /// coordinate system.
-  external XRRigidTransform? get transform;
+  XRRigidTransform? get transform;
 }
-extension type XRReferenceSpaceEventInit._(JSObject _)
-    implements EventInit, JSObject {
-  external factory XRReferenceSpaceEventInit({
-    bool bubbles,
-    bool cancelable,
-    bool composed,
-    required XRReferenceSpace referenceSpace,
-    XRRigidTransform? transform,
-  });
 
-  external XRReferenceSpace get referenceSpace;
-  external set referenceSpace(XRReferenceSpace value);
-  external XRRigidTransform? get transform;
-  external set transform(XRRigidTransform? value);
+abstract class XRReferenceSpaceEventInit implements EventInit, JSObject {
+  XRReferenceSpace get referenceSpace {
+    unsupportedPlatformError();
+  }
+
+  set referenceSpace(XRReferenceSpace value) {
+    unsupportedPlatformError();
+  }
+
+  XRRigidTransform? get transform {
+    unsupportedPlatformError();
+  }
+
+  set transform(XRRigidTransform? value) {
+    unsupportedPlatformError();
+  }
 }

@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,11 +10,8 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../error.dart';
+import '../js_interop.dart';
 import 'dom.dart';
 import 'hr_time.dart';
 import 'html.dart';
@@ -37,26 +34,26 @@ typedef CookieSameSite = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CookieStore).
-extension type CookieStore._(JSObject _) implements EventTarget, JSObject {
+abstract class CookieStore implements EventTarget, JSObject {
   /// @AvailableInWorkers("window_and_service")
   ///
   /// The **`get()`** method of the [CookieStore] interface returns a single
   /// cookie with the given `name` or `options` object. The method will return
   /// the first matching cookie for the passed parameters.
-  external JSPromise<CookieListItem?> get([JSAny nameOrOptions]);
+  JSPromise<CookieListItem?> get([JSAny nameOrOptions]);
 
   /// @AvailableInWorkers("window_and_service")
   ///
   /// The **`getAll()`** method of the [CookieStore] interface returns a list of
   /// cookies that match the `name` or `options` passed to it. Passing no
   /// parameters will return all cookies for the current context.
-  external JSPromise<CookieList> getAll([JSAny nameOrOptions]);
+  JSPromise<CookieList> getAll([JSAny nameOrOptions]);
 
   /// @AvailableInWorkers("window_and_service")
   ///
   /// The **`set()`** method of the [CookieStore] interface sets a cookie with
   /// the given `name` and `value` or `options` object.
-  external JSPromise<JSAny?> set(
+  JSPromise<JSAny?> set(
     JSAny nameOrOptions, [
     String value,
   ]);
@@ -66,92 +63,185 @@ extension type CookieStore._(JSObject _) implements EventTarget, JSObject {
   /// The **`delete()`** method of the [CookieStore] interface deletes a cookie
   /// with the given `name` or `options` object. The `delete()` method expires
   /// the cookie by changing the date to one in the past.
-  external JSPromise<JSAny?> delete(JSAny nameOrOptions);
-  external EventHandler get onchange;
-  external set onchange(EventHandler value);
+  JSPromise<JSAny?> delete(JSAny nameOrOptions);
+  EventHandler get onchange;
+  set onchange(EventHandler value);
 }
-extension type CookieStoreGetOptions._(JSObject _) implements JSObject {
-  external factory CookieStoreGetOptions({
-    String name,
-    String url,
-  });
 
-  external String get name;
-  external set name(String value);
-  external String get url;
-  external set url(String value);
+abstract class CookieStoreGetOptions implements JSObject {
+  String get name {
+    unsupportedPlatformError();
+  }
+
+  set name(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get url {
+    unsupportedPlatformError();
+  }
+
+  set url(String value) {
+    unsupportedPlatformError();
+  }
 }
-extension type CookieInit._(JSObject _) implements JSObject {
-  external factory CookieInit({
-    required String name,
-    required String value,
-    DOMHighResTimeStamp? expires,
-    String? domain,
-    String path,
-    CookieSameSite sameSite,
-    bool partitioned,
-  });
 
-  external String get name;
-  external set name(String value);
-  external String get value;
-  external set value(String value);
-  external double? get expires;
-  external set expires(DOMHighResTimeStamp? value);
-  external String? get domain;
-  external set domain(String? value);
-  external String get path;
-  external set path(String value);
-  external CookieSameSite get sameSite;
-  external set sameSite(CookieSameSite value);
-  external bool get partitioned;
-  external set partitioned(bool value);
+abstract class CookieInit implements JSObject {
+  String get name {
+    unsupportedPlatformError();
+  }
+
+  set name(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get value {
+    unsupportedPlatformError();
+  }
+
+  set value(String value) {
+    unsupportedPlatformError();
+  }
+
+  double? get expires {
+    unsupportedPlatformError();
+  }
+
+  set expires(DOMHighResTimeStamp? value) {
+    unsupportedPlatformError();
+  }
+
+  String? get domain {
+    unsupportedPlatformError();
+  }
+
+  set domain(String? value) {
+    unsupportedPlatformError();
+  }
+
+  String get path {
+    unsupportedPlatformError();
+  }
+
+  set path(String value) {
+    unsupportedPlatformError();
+  }
+
+  CookieSameSite get sameSite {
+    unsupportedPlatformError();
+  }
+
+  set sameSite(CookieSameSite value) {
+    unsupportedPlatformError();
+  }
+
+  bool get partitioned {
+    unsupportedPlatformError();
+  }
+
+  set partitioned(bool value) {
+    unsupportedPlatformError();
+  }
 }
-extension type CookieStoreDeleteOptions._(JSObject _) implements JSObject {
-  external factory CookieStoreDeleteOptions({
-    required String name,
-    String? domain,
-    String path,
-    bool partitioned,
-  });
 
-  external String get name;
-  external set name(String value);
-  external String? get domain;
-  external set domain(String? value);
-  external String get path;
-  external set path(String value);
-  external bool get partitioned;
-  external set partitioned(bool value);
+abstract class CookieStoreDeleteOptions implements JSObject {
+  String get name {
+    unsupportedPlatformError();
+  }
+
+  set name(String value) {
+    unsupportedPlatformError();
+  }
+
+  String? get domain {
+    unsupportedPlatformError();
+  }
+
+  set domain(String? value) {
+    unsupportedPlatformError();
+  }
+
+  String get path {
+    unsupportedPlatformError();
+  }
+
+  set path(String value) {
+    unsupportedPlatformError();
+  }
+
+  bool get partitioned {
+    unsupportedPlatformError();
+  }
+
+  set partitioned(bool value) {
+    unsupportedPlatformError();
+  }
 }
-extension type CookieListItem._(JSObject _) implements JSObject {
-  external factory CookieListItem({
-    String name,
-    String value,
-    String? domain,
-    String path,
-    DOMHighResTimeStamp? expires,
-    bool secure,
-    CookieSameSite sameSite,
-    bool partitioned,
-  });
 
-  external String get name;
-  external set name(String value);
-  external String get value;
-  external set value(String value);
-  external String? get domain;
-  external set domain(String? value);
-  external String get path;
-  external set path(String value);
-  external double? get expires;
-  external set expires(DOMHighResTimeStamp? value);
-  external bool get secure;
-  external set secure(bool value);
-  external CookieSameSite get sameSite;
-  external set sameSite(CookieSameSite value);
-  external bool get partitioned;
-  external set partitioned(bool value);
+abstract class CookieListItem implements JSObject {
+  String get name {
+    unsupportedPlatformError();
+  }
+
+  set name(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get value {
+    unsupportedPlatformError();
+  }
+
+  set value(String value) {
+    unsupportedPlatformError();
+  }
+
+  String? get domain {
+    unsupportedPlatformError();
+  }
+
+  set domain(String? value) {
+    unsupportedPlatformError();
+  }
+
+  String get path {
+    unsupportedPlatformError();
+  }
+
+  set path(String value) {
+    unsupportedPlatformError();
+  }
+
+  double? get expires {
+    unsupportedPlatformError();
+  }
+
+  set expires(DOMHighResTimeStamp? value) {
+    unsupportedPlatformError();
+  }
+
+  bool get secure {
+    unsupportedPlatformError();
+  }
+
+  set secure(bool value) {
+    unsupportedPlatformError();
+  }
+
+  CookieSameSite get sameSite {
+    unsupportedPlatformError();
+  }
+
+  set sameSite(CookieSameSite value) {
+    unsupportedPlatformError();
+  }
+
+  bool get partitioned {
+    unsupportedPlatformError();
+  }
+
+  set partitioned(bool value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// @AvailableInWorkers("window_and_service")
@@ -173,28 +263,26 @@ extension type CookieListItem._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CookieStoreManager).
-extension type CookieStoreManager._(JSObject _) implements JSObject {
+abstract class CookieStoreManager implements JSObject {
   /// @AvailableInWorkers("window_and_service")
   ///
   /// The **`subscribe()`** method of the [CookieStoreManager] interface
   /// subscribes a [ServiceWorkerRegistration] to cookie change events.
-  external JSPromise<JSAny?> subscribe(
-      JSArray<CookieStoreGetOptions> subscriptions);
+  JSPromise<JSAny?> subscribe(JSArray<CookieStoreGetOptions> subscriptions);
 
   /// @AvailableInWorkers("window_and_service")
   ///
   /// The **`getSubscriptions()`** method of the [CookieStoreManager] interface
   /// returns a list of all the cookie change subscriptions for this
   /// [ServiceWorkerRegistration].
-  external JSPromise<JSArray<CookieStoreGetOptions>> getSubscriptions();
+  JSPromise<JSArray<CookieStoreGetOptions>> getSubscriptions();
 
   /// @AvailableInWorkers("window_and_service")
   ///
   /// The **`unsubscribe()`** method of the [CookieStoreManager] interface stops
   /// the [ServiceWorkerRegistration] from receiving previously subscribed
   /// events.
-  external JSPromise<JSAny?> unsubscribe(
-      JSArray<CookieStoreGetOptions> subscriptions);
+  JSPromise<JSAny?> unsubscribe(JSArray<CookieStoreGetOptions> subscriptions);
 }
 
 /// The **`CookieChangeEvent`** interface of the [Cookie Store API] is the event
@@ -218,35 +306,33 @@ extension type CookieStoreManager._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CookieChangeEvent).
-extension type CookieChangeEvent._(JSObject _) implements Event, JSObject {
-  external factory CookieChangeEvent(
-    String type, [
-    CookieChangeEventInit eventInitDict,
-  ]);
-
+abstract class CookieChangeEvent implements Event, JSObject {
   /// The **`changed`** read-only property of the [CookieChangeEvent] interface
   /// returns an array of the cookies that have been changed.
-  external JSArray<CookieListItem> get changed;
+  JSArray<CookieListItem> get changed;
 
   /// The **`deleted`** read-only property of the [CookieChangeEvent] interface
   /// returns an array of the cookies that have been deleted by the given
   /// `CookieChangeEvent` instance.
-  external JSArray<CookieListItem> get deleted;
+  JSArray<CookieListItem> get deleted;
 }
-extension type CookieChangeEventInit._(JSObject _)
-    implements EventInit, JSObject {
-  external factory CookieChangeEventInit({
-    bool bubbles,
-    bool cancelable,
-    bool composed,
-    CookieList changed,
-    CookieList deleted,
-  });
 
-  external CookieList get changed;
-  external set changed(CookieList value);
-  external CookieList get deleted;
-  external set deleted(CookieList value);
+abstract class CookieChangeEventInit implements EventInit, JSObject {
+  CookieList get changed {
+    unsupportedPlatformError();
+  }
+
+  set changed(CookieList value) {
+    unsupportedPlatformError();
+  }
+
+  CookieList get deleted {
+    unsupportedPlatformError();
+  }
+
+  set deleted(CookieList value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// @AvailableInWorkers("service")
@@ -274,39 +360,38 @@ extension type CookieChangeEventInit._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ExtendableCookieChangeEvent).
-extension type ExtendableCookieChangeEvent._(JSObject _)
+abstract class ExtendableCookieChangeEvent
     implements ExtendableEvent, JSObject {
-  external factory ExtendableCookieChangeEvent(
-    String type, [
-    ExtendableCookieChangeEventInit eventInitDict,
-  ]);
-
   /// @AvailableInWorkers("service")
   ///
   /// The **`changed`** read-only property of the [ExtendableCookieChangeEvent]
   /// interface returns any cookies that have been changed by the given
   /// `ExtendableCookieChangeEvent` instance.
-  external JSArray<CookieListItem> get changed;
+  JSArray<CookieListItem> get changed;
 
   /// @AvailableInWorkers("service")
   ///
   /// The **`deleted`** read-only property of the [ExtendableCookieChangeEvent]
   /// interface returns any cookies that have been deleted by the given
   /// `ExtendableCookieChangeEvent` instance.
-  external JSArray<CookieListItem> get deleted;
+  JSArray<CookieListItem> get deleted;
 }
-extension type ExtendableCookieChangeEventInit._(JSObject _)
-    implements ExtendableEventInit, JSObject {
-  external factory ExtendableCookieChangeEventInit({
-    bool bubbles,
-    bool cancelable,
-    bool composed,
-    CookieList changed,
-    CookieList deleted,
-  });
 
-  external CookieList get changed;
-  external set changed(CookieList value);
-  external CookieList get deleted;
-  external set deleted(CookieList value);
+abstract class ExtendableCookieChangeEventInit
+    implements ExtendableEventInit, JSObject {
+  CookieList get changed {
+    unsupportedPlatformError();
+  }
+
+  set changed(CookieList value) {
+    unsupportedPlatformError();
+  }
+
+  CookieList get deleted {
+    unsupportedPlatformError();
+  }
+
+  set deleted(CookieList value) {
+    unsupportedPlatformError();
+  }
 }

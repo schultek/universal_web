@@ -1,4 +1,4 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -10,65 +10,133 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
-@JS()
-library;
-
-import 'dart:js_interop';
-
+import '../error.dart';
+import '../js_interop.dart';
 import 'dom.dart';
-import 'html.dart';
 import 'uievents.dart';
 
 typedef TouchType = String;
-extension type TouchInit._(JSObject _) implements JSObject {
-  external factory TouchInit({
-    required int identifier,
-    required EventTarget target,
-    num clientX,
-    num clientY,
-    num screenX,
-    num screenY,
-    num pageX,
-    num pageY,
-    num radiusX,
-    num radiusY,
-    num rotationAngle,
-    num force,
-    num altitudeAngle,
-    num azimuthAngle,
-    TouchType touchType,
-  });
 
-  external int get identifier;
-  external set identifier(int value);
-  external EventTarget get target;
-  external set target(EventTarget value);
-  external double get clientX;
-  external set clientX(num value);
-  external double get clientY;
-  external set clientY(num value);
-  external double get screenX;
-  external set screenX(num value);
-  external double get screenY;
-  external set screenY(num value);
-  external double get pageX;
-  external set pageX(num value);
-  external double get pageY;
-  external set pageY(num value);
-  external double get radiusX;
-  external set radiusX(num value);
-  external double get radiusY;
-  external set radiusY(num value);
-  external double get rotationAngle;
-  external set rotationAngle(num value);
-  external double get force;
-  external set force(num value);
-  external double get altitudeAngle;
-  external set altitudeAngle(num value);
-  external double get azimuthAngle;
-  external set azimuthAngle(num value);
-  external TouchType get touchType;
-  external set touchType(TouchType value);
+abstract class TouchInit implements JSObject {
+  int get identifier {
+    unsupportedPlatformError();
+  }
+
+  set identifier(int value) {
+    unsupportedPlatformError();
+  }
+
+  EventTarget get target {
+    unsupportedPlatformError();
+  }
+
+  set target(EventTarget value) {
+    unsupportedPlatformError();
+  }
+
+  double get clientX {
+    unsupportedPlatformError();
+  }
+
+  set clientX(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get clientY {
+    unsupportedPlatformError();
+  }
+
+  set clientY(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get screenX {
+    unsupportedPlatformError();
+  }
+
+  set screenX(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get screenY {
+    unsupportedPlatformError();
+  }
+
+  set screenY(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get pageX {
+    unsupportedPlatformError();
+  }
+
+  set pageX(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get pageY {
+    unsupportedPlatformError();
+  }
+
+  set pageY(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get radiusX {
+    unsupportedPlatformError();
+  }
+
+  set radiusX(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get radiusY {
+    unsupportedPlatformError();
+  }
+
+  set radiusY(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get rotationAngle {
+    unsupportedPlatformError();
+  }
+
+  set rotationAngle(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get force {
+    unsupportedPlatformError();
+  }
+
+  set force(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get altitudeAngle {
+    unsupportedPlatformError();
+  }
+
+  set altitudeAngle(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get azimuthAngle {
+    unsupportedPlatformError();
+  }
+
+  set azimuthAngle(num value) {
+    unsupportedPlatformError();
+  }
+
+  TouchType get touchType {
+    unsupportedPlatformError();
+  }
+
+  set touchType(TouchType value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`Touch`** interface represents a single contact point on a
@@ -91,16 +159,14 @@ extension type TouchInit._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Touch).
-extension type Touch._(JSObject _) implements JSObject {
-  external factory Touch(TouchInit touchInitDict);
-
+abstract class Touch implements JSObject {
   /// The **`Touch.identifier`** returns a value uniquely identifying
   /// this point of contact with the touch surface. This value remains
   /// consistent for every
   /// event involving this finger's (or stylus's) movement on the surface until
   /// it is lifted
   /// off the surface.
-  external int get identifier;
+  int get identifier;
 
   /// The read-only **`target`** property of the `Touch` interface returns the
   /// ([EventTarget]) on which the touch contact started when it was first
@@ -111,36 +177,36 @@ extension type Touch._(JSObject _) implements JSObject {
   /// window or document anymore. If there is any risk of an element being
   /// removed while it is being touched, the best practice is to attach the
   /// touch listeners directly to the target.
-  external EventTarget get target;
+  EventTarget get target;
 
   /// Returns the X coordinate of the touch point relative to the screen, not
   /// including any scroll offset.
-  external double get screenX;
+  double get screenX;
 
   /// Returns the Y coordinate of the touch point relative to the screen, not
   /// including any scroll offset.
-  external double get screenY;
+  double get screenY;
 
   /// The `Touch.clientX` read-only property returns the X coordinate of the
   /// touch
   /// point relative to the viewport, not including any scroll offset.
-  external double get clientX;
+  double get clientX;
 
   /// The **`Touch.clientY`** read-only property returns the Y
   /// coordinate of the touch point relative to the browser's viewport, not
   /// including any
   /// scroll offset.
-  external double get clientY;
+  double get clientY;
 
   /// The **`Touch.pageX`** read-only property returns the X
   /// coordinate of the touch point relative to the viewport, including any
   /// scroll offset.
-  external double get pageX;
+  double get pageX;
 
   /// The **`Touch.pageY`** read-only property returns the Y
   /// coordinate of the touch point relative to the viewport, including any
   /// scroll offset.
-  external double get pageY;
+  double get pageY;
 
   /// The **`radiusX`** read-only property of the [Touch] interface returns the
   /// X radius of the ellipse that most closely circumscribes the area of
@@ -152,7 +218,7 @@ extension type Touch._(JSObject _) implements JSObject {
   /// contact between the user and the screen. This may be a relatively large
   /// ellipse representing the contact between a fingertip and the screen or a
   /// small area representing the tip of a stylus, for example.
-  external double get radiusX;
+  double get radiusX;
 
   /// The **`radiusY`** read-only property of the [Touch] interface returns the
   /// Y radius of the ellipse that most closely circumscribes the area of
@@ -164,7 +230,7 @@ extension type Touch._(JSObject _) implements JSObject {
   /// contact between the user and the screen. This may be a large ellipse
   /// representing the contact between a fingertip and the screen or a small one
   /// representing the tip of a stylus, for example.
-  external double get radiusY;
+  double get radiusY;
 
   /// The **`rotationAngle`** read-only property of the [Touch] interface
   /// returns the rotation angle, in degrees, of the contact area ellipse
@@ -174,14 +240,14 @@ extension type Touch._(JSObject _) implements JSObject {
   /// This may be a relatively large ellipse representing the contact between a
   /// fingertip and the screen or a small area representing the tip of a stylus,
   /// for example.
-  external double get rotationAngle;
+  double get rotationAngle;
 
   /// The **`Touch.force`** read-only property returns the amount of
   /// pressure the user is applying to the touch surface for a [Touch] point.
-  external double get force;
-  external double get altitudeAngle;
-  external double get azimuthAngle;
-  external TouchType get touchType;
+  double get force;
+  double get altitudeAngle;
+  double get azimuthAngle;
+  TouchType get touchType;
 }
 
 /// The **`TouchList`** interface represents a list of contact points on a touch
@@ -207,50 +273,40 @@ extension type Touch._(JSObject _) implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/TouchList).
-extension type TouchList._(JSObject _) implements JSObject {
+abstract class TouchList implements JSObject {
   /// The **`item()`** method returns the [Touch]
   /// object at the specified index in the [TouchList].
-  external Touch? item(int index);
+  Touch? item(int index);
 
   /// The **`length`** read-only property indicates the number of
   /// items (touch points) in a given [TouchList].
-  external int get length;
+  int get length;
 }
-extension type TouchEventInit._(JSObject _)
-    implements EventModifierInit, JSObject {
-  external factory TouchEventInit({
-    bool bubbles,
-    bool cancelable,
-    bool composed,
-    Window? view,
-    int detail,
-    JSObject? sourceCapabilities,
-    int which,
-    bool ctrlKey,
-    bool shiftKey,
-    bool altKey,
-    bool metaKey,
-    bool modifierAltGraph,
-    bool modifierCapsLock,
-    bool modifierFn,
-    bool modifierFnLock,
-    bool modifierHyper,
-    bool modifierNumLock,
-    bool modifierScrollLock,
-    bool modifierSuper,
-    bool modifierSymbol,
-    bool modifierSymbolLock,
-    JSArray<Touch> touches,
-    JSArray<Touch> targetTouches,
-    JSArray<Touch> changedTouches,
-  });
 
-  external JSArray<Touch> get touches;
-  external set touches(JSArray<Touch> value);
-  external JSArray<Touch> get targetTouches;
-  external set targetTouches(JSArray<Touch> value);
-  external JSArray<Touch> get changedTouches;
-  external set changedTouches(JSArray<Touch> value);
+abstract class TouchEventInit implements EventModifierInit, JSObject {
+  JSArray<Touch> get touches {
+    unsupportedPlatformError();
+  }
+
+  set touches(JSArray<Touch> value) {
+    unsupportedPlatformError();
+  }
+
+  JSArray<Touch> get targetTouches {
+    unsupportedPlatformError();
+  }
+
+  set targetTouches(JSArray<Touch> value) {
+    unsupportedPlatformError();
+  }
+
+  JSArray<Touch> get changedTouches {
+    unsupportedPlatformError();
+  }
+
+  set changedTouches(JSArray<Touch> value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`TouchEvent`** interface represents an [UIEvent] which is sent when
@@ -267,12 +323,7 @@ extension type TouchEventInit._(JSObject _)
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/TouchEvent).
-extension type TouchEvent._(JSObject _) implements UIEvent, JSObject {
-  external factory TouchEvent(
-    String type, [
-    TouchEventInit eventInitDict,
-  ]);
-
+abstract class TouchEvent implements UIEvent, JSObject {
   /// **`touches`** is a read-only [TouchList] listing
   /// all the [Touch] objects for touch points that are currently in contact
   /// with the touch surface, regardless of whether or not they've changed or
@@ -288,13 +339,13 @@ extension type TouchEvent._(JSObject _) implements UIEvent, JSObject {
   /// > i-th element in the array being the i-th touch that happened). You
   /// > cannot assume a specific order. To determine the order of occurrences of
   /// > the touches, use the `touch` object IDs.
-  external TouchList get touches;
+  TouchList get touches;
 
   /// The **`targetTouches`** read-only property is a [TouchList] listing all
   /// the [Touch] objects for touch points that are still in contact with the
   /// touch surface **and** whose [Element.touchstart_event] event occurred
   /// inside the same target [element] as the current target element.
-  external TouchList get targetTouches;
+  TouchList get targetTouches;
 
   /// The **`changedTouches`** read-only property is a [TouchList] whose touch
   /// points ([Touch] objects) varies depending on the event type, as follows:
@@ -306,7 +357,7 @@ extension type TouchEvent._(JSObject _) implements UIEvent, JSObject {
   /// - For the [Element.touchend_event] event, it is a list of the touch points
   ///   that have been removed from the surface (that is, the set of touch
   ///   points corresponding to fingers no longer touching the surface).
-  external TouchList get changedTouches;
+  TouchList get changedTouches;
 
   /// The read-only **`altKey`** property of the [TouchEvent] interface returns
   /// a boolean value indicating whether or not the <kbd>alt</kbd> (Alternate)
@@ -314,7 +365,7 @@ extension type TouchEvent._(JSObject _) implements UIEvent, JSObject {
   /// is enabled, the attribute's value is `true`. Otherwise, it is `false`.
   ///
   /// This property is .
-  external bool get altKey;
+  bool get altKey;
 
   /// The read-only **`metaKey`** property of the [TouchEvent] interface returns
   /// a boolean value indicating whether or not the <kbd>Meta</kbd> key is
@@ -325,7 +376,7 @@ extension type TouchEvent._(JSObject _) implements UIEvent, JSObject {
   ///
   /// > **Note:** On Macintosh keyboards, this is the <kbd>⌘ Command</kbd> key.
   /// > On Windows keyboards, this is the Windows key (<kbd>⊞</kbd>).
-  external bool get metaKey;
+  bool get metaKey;
 
   /// The read-only **`ctrlKey`** property of the [TouchEvent] interface returns
   /// a boolean value indicating whether the <kbd>control</kbd> (Control) key is
@@ -333,11 +384,11 @@ extension type TouchEvent._(JSObject _) implements UIEvent, JSObject {
   /// attribute's value is `true`. Otherwise, it is `false`.
   ///
   /// This property is .
-  external bool get ctrlKey;
+  bool get ctrlKey;
 
   /// The read-only **`shiftKey`** property of the `TouchEvent` interface
   /// returns a boolean value indicating whether or not the <kbd>shift</kbd> key
   /// is enabled when the touch event is created. If this key is enabled, the
   /// attribute's value is `true`. Otherwise, it is `false`.
-  external bool get shiftKey;
+  bool get shiftKey;
 }

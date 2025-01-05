@@ -675,10 +675,21 @@ class Translator {
     browserCompatData = BrowserCompatData.read(generateAll: generateAll);
   }
 
+  /// Body that calls the unsupportedPlatformError function.
   late final unsupportedBody = code.Code.scope((s) {
     const ref = code.Reference('unsupportedPlatformError', '../error.dart');
     return '${s(ref)}();';
   });
+
+  /// Members that require a manual change in the generated code 
+  /// due to invalid_override errors.
+  late final overrideMemberTypes = {
+    ('PerformanceElementTiming', 'id', 'String', 'int'),
+    ('VisibilityStateEntry', 'duration', 'int', 'double'),
+    ('LargestContentfulPaint', 'id', 'String', 'int'),
+    ('HTMLFormControlsCollection', 'namedItem', 'JSObject', 'Element'),
+    ('BeforeUnloadEvent', 'returnValue', '', 'bool'),
+  };
 
   void _addOrUpdateInterfaceLike(idl.Interfacelike interfacelike) {
     final name = interfacelike.name;
@@ -1040,13 +1051,13 @@ class Translator {
         ? code.TypeReference((b) => b..symbol = 'void')
         : _typeReference(operation.returnType, returnType: true);
 
-    if (memberName.name == 'namedItem' &&
-        returnType.symbol == 'JSObject' &&
-        (operation.mdnProperty?.docs
-                .contains('HTMLFormControlsCollection.namedItem') ??
-            false)) {
-      // Fix for HTMLFormControlsCollection.namedItem.
-      returnType = code.TypeReference((b) => b..symbol = 'Element');
+    // Fixes for invalid_override errors.
+    for (var override in overrideMemberTypes) {
+      if ((operation.mdnProperty?.docs.contains(override.$1) ?? false) &&
+          memberName.name == override.$2 &&
+          returnType.symbol == override.$3) {
+        returnType = code.TypeReference((b) => b..symbol = override.$4);
+      }
     }
 
     return _overridableMember<code.Method>(
@@ -1086,10 +1097,14 @@ class Translator {
             [];
     final body = mdnInterface == null || isStatic ? unsupportedBody : null;
 
-    if (mdnInterface?.name == 'BeforeUnloadEvent' && name == 'returnValue') {
-      // Fix for BeforeUnloadEvent.returnValue.
-      getGetterType = () => code.TypeReference((b) => b..symbol = 'bool');
-      getSetterType = () => code.TypeReference((b) => b..symbol = 'bool');
+    // Fixes for invalid_override errors.
+    for (var override in overrideMemberTypes) {
+      if (mdnInterface?.name == override.$1 && name == override.$2) {
+        getGetterType =
+            () => code.TypeReference((b) => b..symbol = override.$4);
+        getSetterType =
+            () => code.TypeReference((b) => b..symbol = override.$4);
+      }
     }
 
     return [

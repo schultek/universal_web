@@ -44,7 +44,7 @@ abstract class LargestContentfulPaint implements PerformanceEntry, JSObject {
 
   /// The **`id`** read-only property of the [LargestContentfulPaint] interface
   /// returns the ID of the element that is the largest contentful paint.
-  String get id;
+  int get id;
 
   /// The **`url`** read-only property of the [LargestContentfulPaint] interface
   /// returns the request URL of the element, if the element is an image.

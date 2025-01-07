@@ -15,8 +15,15 @@ import '../js_interop.dart';
 import 'generic_sensor.dart';
 
 typedef AccelerometerLocalCoordinateSystem = String;
+extension type AccelerometerSensorOptions._(JSObject _)
+    implements SensorOptions, JSObject {
+  factory AccelerometerSensorOptions({
+    num? frequency,
+    AccelerometerLocalCoordinateSystem? referenceFrame,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class AccelerometerSensorOptions implements SensorOptions, JSObject {
   AccelerometerLocalCoordinateSystem get referenceFrame {
     unsupportedPlatformError();
   }
@@ -42,7 +49,12 @@ abstract class AccelerometerSensorOptions implements SensorOptions, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/LinearAccelerationSensor).
-abstract class LinearAccelerationSensor implements Sensor, JSObject {}
+extension type LinearAccelerationSensor._(JSObject _)
+    implements Sensor, JSObject {
+  factory LinearAccelerationSensor([AccelerometerSensorOptions? options]) {
+    unsupportedPlatformError();
+  }
+}
 
 /// The **`GravitySensor`** interface of the
 /// [Sensor APIs](https://developer.mozilla.org/en-US/docs/Web/API/Sensor_APIs)
@@ -60,4 +72,8 @@ abstract class LinearAccelerationSensor implements Sensor, JSObject {}
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/GravitySensor).
-abstract class GravitySensor implements Sensor, JSObject {}
+extension type GravitySensor._(JSObject _) implements Sensor, JSObject {
+  factory GravitySensor([AccelerometerSensorOptions? options]) {
+    unsupportedPlatformError();
+  }
+}

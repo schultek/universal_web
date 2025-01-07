@@ -10,6 +10,7 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
+import '../error.dart';
 import '../js_interop.dart';
 import 'cssom.dart';
 
@@ -21,12 +22,16 @@ import 'cssom.dart';
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSScopeRule).
-abstract class CSSScopeRule implements CSSGroupingRule, JSObject {
+extension type CSSScopeRule._(JSObject _) implements CSSGroupingRule, JSObject {
   /// The **`start`** property of the [CSSScopeRule] interface returns a string
   /// containing the value of the `@scope` at-rule's scope root.
-  String? get start;
+  String? get start {
+    unsupportedPlatformError();
+  }
 
   /// The **`end`** property of the [CSSScopeRule] interface returns a string
   /// containing the value of the `@scope` at-rule's scope limit.
-  String? get end;
+  String? get end {
+    unsupportedPlatformError();
+  }
 }

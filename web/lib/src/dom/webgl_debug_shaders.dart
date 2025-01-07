@@ -10,9 +10,12 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
+import '../error.dart';
 import '../js_interop.dart';
 import 'webgl1.dart';
 
-abstract class WEBGL_debug_shaders implements JSObject {
-  String getTranslatedShaderSource(WebGLShader shader);
+extension type WEBGL_debug_shaders._(JSObject _) implements JSObject {
+  String getTranslatedShaderSource(WebGLShader shader) {
+    unsupportedPlatformError();
+  }
 }

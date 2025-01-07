@@ -30,7 +30,14 @@ typedef BinaryType = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket).
-abstract class WebSocket implements EventTarget, JSObject {
+extension type WebSocket._(JSObject _) implements EventTarget, JSObject {
+  factory WebSocket(
+    String url, [
+    JSAny? protocols,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   static const int CONNECTING = 0;
 
   static const int OPEN = 1;
@@ -50,9 +57,11 @@ abstract class WebSocket implements EventTarget, JSObject {
   /// > busy sending those messages, the handshake will only start after the
   /// > messages are sent.
   void close([
-    int code,
-    String reason,
-  ]);
+    int? code,
+    String? reason,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebSocket.send()`** method enqueues the specified data
   /// to be transmitted to the server over the WebSocket connection, increasing
@@ -65,15 +74,21 @@ abstract class WebSocket implements EventTarget, JSObject {
   /// connection is in the `CONNECTING` state. If you call `send()` when the
   /// connection is in the `CLOSING` or `CLOSED` states, the browser will
   /// silently discard the data.
-  void send(JSAny data);
+  void send(JSAny data) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebSocket.url`** read-only property returns the absolute
   /// URL of the [WebSocket] as resolved by the constructor.
-  String get url;
+  String get url {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebSocket.readyState`** read-only property returns the
   /// current state of the [WebSocket] connection.
-  int get readyState;
+  int get readyState {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebSocket.bufferedAmount`** read-only property returns
   /// the number of bytes of data that have been queued using calls to
@@ -86,33 +101,68 @@ abstract class WebSocket implements EventTarget, JSObject {
   /// calling
   /// [`send()`](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/send),
   /// this will continue to climb.
-  int get bufferedAmount;
-  EventHandler get onopen;
-  set onopen(EventHandler value);
-  EventHandler get onerror;
-  set onerror(EventHandler value);
-  EventHandler get onclose;
-  set onclose(EventHandler value);
+  int get bufferedAmount {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onopen {
+    unsupportedPlatformError();
+  }
+
+  set onopen(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onerror {
+    unsupportedPlatformError();
+  }
+
+  set onerror(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onclose {
+    unsupportedPlatformError();
+  }
+
+  set onclose(EventHandler value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebSocket.extensions`** read-only property returns the
   /// extensions selected by the server. This is currently only the empty string
   /// or a list of
   /// extensions as negotiated by the connection.
-  String get extensions;
+  String get extensions {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebSocket.protocol`** read-only property returns the
   /// name of the sub-protocol the server selected; this will be one of the
   /// strings specified
   /// in the `protocols` parameter when creating the [WebSocket]
   /// object, or the empty string if no connection is established.
-  String get protocol;
-  EventHandler get onmessage;
-  set onmessage(EventHandler value);
+  String get protocol {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onmessage {
+    unsupportedPlatformError();
+  }
+
+  set onmessage(EventHandler value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebSocket.binaryType`** property controls the type of
   /// binary data being received over the WebSocket connection.
-  BinaryType get binaryType;
-  set binaryType(BinaryType value);
+  BinaryType get binaryType {
+    unsupportedPlatformError();
+  }
+
+  set binaryType(BinaryType value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// A `CloseEvent` is sent to clients using  when the connection is closed. This
@@ -123,25 +173,48 @@ abstract class WebSocket implements EventTarget, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CloseEvent).
-abstract class CloseEvent implements Event, JSObject {
+extension type CloseEvent._(JSObject _) implements Event, JSObject {
+  factory CloseEvent(
+    String type, [
+    CloseEventInit? eventInitDict,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// The **`wasClean`** read-only property of the [CloseEvent] interface
   /// returns `true` if the connection closed cleanly.
-  bool get wasClean;
+  bool get wasClean {
+    unsupportedPlatformError();
+  }
 
   /// The **`code`** read-only property of the [CloseEvent] interface returns a
   /// [WebSocket connection close code](https://www.rfc-editor.org/rfc/rfc6455.html#section-7.1.5)
   /// indicating the reason the server gave for closing the connection.
-  int get code;
+  int get code {
+    unsupportedPlatformError();
+  }
 
   /// The **`reason`** read-only property of the [CloseEvent] interface returns
   /// the
   /// [WebSocket connection close reason](https://www.rfc-editor.org/rfc/rfc6455.html#section-7.1.6)
   /// the server gave for closing the connection; that is, a concise
   /// human-readable prose explanation for the closure.
-  String get reason;
+  String get reason {
+    unsupportedPlatformError();
+  }
 }
+extension type CloseEventInit._(JSObject _) implements EventInit, JSObject {
+  factory CloseEventInit({
+    bool? bubbles,
+    bool? cancelable,
+    bool? composed,
+    bool? wasClean,
+    int? code,
+    String? reason,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class CloseEventInit implements EventInit, JSObject {
   bool get wasClean {
     unsupportedPlatformError();
   }

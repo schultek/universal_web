@@ -13,7 +13,7 @@
 import '../js_interop.dart';
 import 'webgl1.dart';
 
-abstract class EXT_sRGB implements JSObject {
+extension type EXT_sRGB._(JSObject _) implements JSObject {
   static const GLenum SRGB_EXT = 35904;
 
   static const GLenum SRGB_ALPHA_EXT = 35906;

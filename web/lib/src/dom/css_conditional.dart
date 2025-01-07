@@ -10,6 +10,7 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
+import '../error.dart';
 import '../js_interop.dart';
 import 'cssom.dart';
 
@@ -25,11 +26,14 @@ import 'cssom.dart';
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSConditionRule).
-abstract class CSSConditionRule implements CSSGroupingRule, JSObject {
+extension type CSSConditionRule._(JSObject _)
+    implements CSSGroupingRule, JSObject {
   /// The read-only **`conditionText`** property of
   /// the [CSSConditionRule] interface returns or sets the text of the CSS
   /// rule.
-  String get conditionText;
+  String get conditionText {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`CSSMediaRule`** interface represents a single CSS  rule.
@@ -38,11 +42,14 @@ abstract class CSSConditionRule implements CSSGroupingRule, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSMediaRule).
-abstract class CSSMediaRule implements CSSConditionRule, JSObject {
+extension type CSSMediaRule._(JSObject _)
+    implements CSSConditionRule, JSObject {
   /// The read-only **`media`** property of the
   /// [CSSMediaRule] interface [MediaList] represents the intended
   /// destination medium for style information.
-  MediaList get media;
+  MediaList get media {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`CSSSupportsRule`** interface represents a single CSS
@@ -52,4 +59,5 @@ abstract class CSSMediaRule implements CSSConditionRule, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSSupportsRule).
-abstract class CSSSupportsRule implements CSSConditionRule, JSObject {}
+extension type CSSSupportsRule._(JSObject _)
+    implements CSSConditionRule, JSObject {}

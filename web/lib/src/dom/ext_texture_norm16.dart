@@ -13,7 +13,7 @@
 import '../js_interop.dart';
 import 'webgl1.dart';
 
-abstract class EXT_texture_norm16 implements JSObject {
+extension type EXT_texture_norm16._(JSObject _) implements JSObject {
   static const GLenum R16_EXT = 33322;
 
   static const GLenum RG16_EXT = 33324;

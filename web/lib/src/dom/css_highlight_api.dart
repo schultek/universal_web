@@ -10,7 +10,9 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
+import '../error.dart';
 import '../js_interop.dart';
+import 'dom.dart';
 
 typedef HighlightType = String;
 
@@ -31,7 +33,11 @@ typedef HighlightType = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Highlight).
-abstract class Highlight implements JSObject {
+extension type Highlight._(JSObject _) implements JSObject {
+  factory Highlight(AbstractRange initialRanges) {
+    unsupportedPlatformError();
+  }
+
   /// It is possible to create [Range] objects that overlap in a document.
   ///
   /// When overlapping ranges are used by multiple different [Highlight]
@@ -56,8 +62,13 @@ abstract class Highlight implements JSObject {
   /// also does not depend on the order in which the  pseudo-elements rules
   /// appear in the source, or whether or not CSS properties are marked as
   /// `!important`.
-  int get priority;
-  set priority(int value);
+  int get priority {
+    unsupportedPlatformError();
+  }
+
+  set priority(int value) {
+    unsupportedPlatformError();
+  }
 
   /// The `type` property of the [Highlight] interface is an enumerated `String`
   /// used to specify the meaning of the highlight. This allows assistive
@@ -66,8 +77,13 @@ abstract class Highlight implements JSObject {
   ///
   /// By default, a highlight object will have its type set to `highlight`, but
   /// you can change it to `spelling-error` or `grammar-error`.
-  HighlightType get type;
-  set type(HighlightType value);
+  HighlightType get type {
+    unsupportedPlatformError();
+  }
+
+  set type(HighlightType value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`HighlightRegistry`** interface of the
@@ -84,4 +100,4 @@ abstract class Highlight implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HighlightRegistry).
-abstract class HighlightRegistry implements JSObject {}
+extension type HighlightRegistry._(JSObject _) implements JSObject {}

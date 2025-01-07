@@ -12,4 +12,4 @@
 
 import '../js_interop.dart';
 
-abstract class EXT_frag_depth implements JSObject {}
+extension type EXT_frag_depth._(JSObject _) implements JSObject {}

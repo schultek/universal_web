@@ -19,8 +19,14 @@ typedef MediaEncodingType = String;
 typedef HdrMetadataType = String;
 typedef ColorGamut = String;
 typedef TransferFunction = String;
+extension type MediaConfiguration._(JSObject _) implements JSObject {
+  factory MediaConfiguration({
+    VideoConfiguration? video,
+    AudioConfiguration? audio,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class MediaConfiguration implements JSObject {
   VideoConfiguration get video {
     unsupportedPlatformError();
   }
@@ -37,9 +43,17 @@ abstract class MediaConfiguration implements JSObject {
     unsupportedPlatformError();
   }
 }
-
-abstract class MediaDecodingConfiguration
+extension type MediaDecodingConfiguration._(JSObject _)
     implements MediaConfiguration, JSObject {
+  factory MediaDecodingConfiguration({
+    VideoConfiguration? video,
+    AudioConfiguration? audio,
+    required MediaDecodingType type,
+    MediaCapabilitiesKeySystemConfiguration? keySystemConfiguration,
+  }) {
+    unsupportedPlatformError();
+  }
+
   MediaDecodingType get type {
     unsupportedPlatformError();
   }
@@ -56,9 +70,16 @@ abstract class MediaDecodingConfiguration
     unsupportedPlatformError();
   }
 }
-
-abstract class MediaEncodingConfiguration
+extension type MediaEncodingConfiguration._(JSObject _)
     implements MediaConfiguration, JSObject {
+  factory MediaEncodingConfiguration({
+    VideoConfiguration? video,
+    AudioConfiguration? audio,
+    required MediaEncodingType type,
+  }) {
+    unsupportedPlatformError();
+  }
+
   MediaEncodingType get type {
     unsupportedPlatformError();
   }
@@ -67,8 +88,23 @@ abstract class MediaEncodingConfiguration
     unsupportedPlatformError();
   }
 }
+extension type VideoConfiguration._(JSObject _) implements JSObject {
+  factory VideoConfiguration({
+    required String contentType,
+    required int width,
+    required int height,
+    required int bitrate,
+    required num framerate,
+    bool? hasAlphaChannel,
+    HdrMetadataType? hdrMetadataType,
+    ColorGamut? colorGamut,
+    TransferFunction? transferFunction,
+    String? scalabilityMode,
+    bool? spatialScalability,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class VideoConfiguration implements JSObject {
   String get contentType {
     unsupportedPlatformError();
   }
@@ -157,8 +193,17 @@ abstract class VideoConfiguration implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type AudioConfiguration._(JSObject _) implements JSObject {
+  factory AudioConfiguration({
+    required String contentType,
+    String? channels,
+    int? bitrate,
+    int? samplerate,
+    bool? spatialRendering,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class AudioConfiguration implements JSObject {
   String get contentType {
     unsupportedPlatformError();
   }
@@ -199,8 +244,20 @@ abstract class AudioConfiguration implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type MediaCapabilitiesKeySystemConfiguration._(JSObject _)
+    implements JSObject {
+  factory MediaCapabilitiesKeySystemConfiguration({
+    required String keySystem,
+    String? initDataType,
+    MediaKeysRequirement? distinctiveIdentifier,
+    MediaKeysRequirement? persistentState,
+    JSArray<JSString>? sessionTypes,
+    KeySystemTrackConfiguration? audio,
+    KeySystemTrackConfiguration? video,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class MediaCapabilitiesKeySystemConfiguration implements JSObject {
   String get keySystem {
     unsupportedPlatformError();
   }
@@ -257,8 +314,14 @@ abstract class MediaCapabilitiesKeySystemConfiguration implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type KeySystemTrackConfiguration._(JSObject _) implements JSObject {
+  factory KeySystemTrackConfiguration({
+    String? robustness,
+    String? encryptionScheme,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class KeySystemTrackConfiguration implements JSObject {
   String get robustness {
     unsupportedPlatformError();
   }
@@ -275,8 +338,15 @@ abstract class KeySystemTrackConfiguration implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type MediaCapabilitiesInfo._(JSObject _) implements JSObject {
+  factory MediaCapabilitiesInfo({
+    required bool supported,
+    required bool smooth,
+    required bool powerEfficient,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class MediaCapabilitiesInfo implements JSObject {
   bool get supported {
     unsupportedPlatformError();
   }
@@ -301,9 +371,18 @@ abstract class MediaCapabilitiesInfo implements JSObject {
     unsupportedPlatformError();
   }
 }
-
-abstract class MediaCapabilitiesDecodingInfo
+extension type MediaCapabilitiesDecodingInfo._(JSObject _)
     implements MediaCapabilitiesInfo, JSObject {
+  factory MediaCapabilitiesDecodingInfo({
+    required bool supported,
+    required bool smooth,
+    required bool powerEfficient,
+    required MediaKeySystemAccess keySystemAccess,
+    MediaDecodingConfiguration? configuration,
+  }) {
+    unsupportedPlatformError();
+  }
+
   MediaKeySystemAccess get keySystemAccess {
     unsupportedPlatformError();
   }
@@ -320,9 +399,17 @@ abstract class MediaCapabilitiesDecodingInfo
     unsupportedPlatformError();
   }
 }
-
-abstract class MediaCapabilitiesEncodingInfo
+extension type MediaCapabilitiesEncodingInfo._(JSObject _)
     implements MediaCapabilitiesInfo, JSObject {
+  factory MediaCapabilitiesEncodingInfo({
+    required bool supported,
+    required bool smooth,
+    required bool powerEfficient,
+    MediaEncodingConfiguration? configuration,
+  }) {
+    unsupportedPlatformError();
+  }
+
   MediaEncodingConfiguration get configuration {
     unsupportedPlatformError();
   }
@@ -347,7 +434,7 @@ abstract class MediaCapabilitiesEncodingInfo
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MediaCapabilities).
-abstract class MediaCapabilities implements JSObject {
+extension type MediaCapabilities._(JSObject _) implements JSObject {
   /// The **`MediaCapabilities.decodingInfo()`** method, part of the
   /// [Media Capabilities API](https://developer.mozilla.org/en-US/docs/Web/API/MediaCapabilities),
   /// returns a promise with the tested media configuration's capabilities info.
@@ -355,7 +442,9 @@ abstract class MediaCapabilities implements JSObject {
   /// `powerefficient`, which describe whether decoding the media described
   /// would be supported, smooth, and powerefficient.
   JSPromise<MediaCapabilitiesDecodingInfo> decodingInfo(
-      MediaDecodingConfiguration configuration);
+      MediaDecodingConfiguration configuration) {
+    unsupportedPlatformError();
+  }
 
   /// The **`MediaCapabilities.encodingInfo()`** method, part of the
   /// [MediaCapabilities] interface of the
@@ -366,5 +455,7 @@ abstract class MediaCapabilities implements JSObject {
   /// `powerefficient`, which describe how compatible the device is with the
   /// type of media.
   JSPromise<MediaCapabilitiesEncodingInfo> encodingInfo(
-      MediaEncodingConfiguration configuration);
+      MediaEncodingConfiguration configuration) {
+    unsupportedPlatformError();
+  }
 }

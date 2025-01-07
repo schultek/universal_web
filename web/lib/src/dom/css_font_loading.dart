@@ -18,8 +18,22 @@ import 'html.dart';
 typedef BinaryData = JSObject;
 typedef FontFaceLoadStatus = String;
 typedef FontFaceSetLoadStatus = String;
+extension type FontFaceDescriptors._(JSObject _) implements JSObject {
+  factory FontFaceDescriptors({
+    String? style,
+    String? weight,
+    String? stretch,
+    String? unicodeRange,
+    String? featureSettings,
+    String? variationSettings,
+    String? display,
+    String? ascentOverride,
+    String? descentOverride,
+    String? lineGapOverride,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class FontFaceDescriptors implements JSObject {
   String get style {
     unsupportedPlatformError();
   }
@@ -115,7 +129,15 @@ abstract class FontFaceDescriptors implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/FontFace).
-abstract class FontFace implements JSObject {
+extension type FontFace._(JSObject _) implements JSObject {
+  factory FontFace(
+    String family,
+    JSAny source, [
+    FontFaceDescriptors? descriptors,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// The **`load()`** method of the [FontFace] interface requests and loads a
   /// font whose `source` was specified as a URL. It returns a `Promise` that
   /// resolves with the current `FontFace` object.
@@ -123,7 +145,9 @@ abstract class FontFace implements JSObject {
   /// If the `source` for the font face was specified as binary data, or the
   /// font [FontFace.status] property of the font face is anything other than
   /// `unloaded`, then this method does nothing.
-  JSPromise<FontFace> load();
+  JSPromise<FontFace> load() {
+    unsupportedPlatformError();
+  }
 
   /// The **`FontFace.family`** property allows the author to get or set the
   /// font family of a [FontFace] object.
@@ -136,44 +160,74 @@ abstract class FontFace implements JSObject {
   /// underlying font data.
   ///
   /// This property is equivalent to the  descriptor of .
-  String get family;
-  set family(String value);
+  String get family {
+    unsupportedPlatformError();
+  }
+
+  set family(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`style`** property of the [FontFace] interface retrieves or sets the
   /// font's style.
   ///
   /// This property is equivalent to the  descriptor.
-  String get style;
-  set style(String value);
+  String get style {
+    unsupportedPlatformError();
+  }
+
+  set style(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`weight`** property of the [FontFace] interface retrieves or sets
   /// the weight of the font.
   ///
   /// This property is equivalent to the  descriptor.
-  String get weight;
-  set weight(String value);
+  String get weight {
+    unsupportedPlatformError();
+  }
+
+  set weight(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`stretch`** property of the [FontFace] interface retrieves or sets
   /// how the font stretches.
   ///
   /// This property is equivalent to the  descriptor.
-  String get stretch;
-  set stretch(String value);
+  String get stretch {
+    unsupportedPlatformError();
+  }
+
+  set stretch(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`unicodeRange`** property of the [FontFace] interface retrieves or
   /// sets the range of unicode code points encompassing the font.
   ///
   /// This property is equivalent to the  descriptor.
-  String get unicodeRange;
-  set unicodeRange(String value);
+  String get unicodeRange {
+    unsupportedPlatformError();
+  }
+
+  set unicodeRange(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`featureSettings`** property of the [FontFace] interface retrieves
   /// or sets infrequently used font features that are not available from a
   /// font's variant properties.
   ///
   /// This property is equivalent to the  descriptor.
-  String get featureSettings;
-  set featureSettings(String value);
+  String get featureSettings {
+    unsupportedPlatformError();
+  }
+
+  set featureSettings(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`display`** property of the [FontFace] interface determines how a
   /// font face is displayed based on whether and when it is downloaded and
@@ -194,44 +248,77 @@ abstract class FontFace implements JSObject {
   /// font.
   /// - failure period
   ///   - : If the font face still is not loaded, the fallback font will be shown and no swap will occur.
-  String get display;
-  set display(String value);
+  String get display {
+    unsupportedPlatformError();
+  }
+
+  set display(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ascentOverride`** property of the [FontFace] interface returns and
   /// sets the ascent metric for the font, the height above the baseline that
   /// CSS uses to lay out line boxes in an inline formatting context.
   ///
   /// This property is equivalent to the  descriptor of .
-  String get ascentOverride;
-  set ascentOverride(String value);
+  String get ascentOverride {
+    unsupportedPlatformError();
+  }
+
+  set ascentOverride(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`descentOverride`** property of the [FontFace] interface returns and
   /// sets the value of the  descriptor.
   /// The possible values are `normal`, indicating that the metric used should
   /// be obtained from the font file, or a percentage.
-  String get descentOverride;
-  set descentOverride(String value);
+  String get descentOverride {
+    unsupportedPlatformError();
+  }
+
+  set descentOverride(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`lineGapOverride`** property of the [FontFace] interface returns and
   /// sets the value of the  descriptor.
   /// The possible values are `normal`, indicating that the metric used should
   /// be obtained from the font file, or a percentage.
-  String get lineGapOverride;
-  set lineGapOverride(String value);
+  String get lineGapOverride {
+    unsupportedPlatformError();
+  }
+
+  set lineGapOverride(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`status`** read-only property of the [FontFace] interface returns an
   /// enumerated value indicating the status of the font, one of `"unloaded"`,
   /// `"loading"`, `"loaded"`, or `"error"`.
-  FontFaceLoadStatus get status;
+  FontFaceLoadStatus get status {
+    unsupportedPlatformError();
+  }
 
   /// The **`loaded`** read-only property of the [FontFace] interface returns a
   /// `Promise` that resolves with the current `FontFace` object when the font
   /// specified in the object's constructor is done loading or rejects with a
   /// `SyntaxError`.
-  JSPromise<FontFace> get loaded;
+  JSPromise<FontFace> get loaded {
+    unsupportedPlatformError();
+  }
 }
+extension type FontFaceSetLoadEventInit._(JSObject _)
+    implements EventInit, JSObject {
+  factory FontFaceSetLoadEventInit({
+    bool? bubbles,
+    bool? cancelable,
+    bool? composed,
+    JSArray<FontFace>? fontfaces,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class FontFaceSetLoadEventInit implements EventInit, JSObject {
   JSArray<FontFace> get fontfaces {
     unsupportedPlatformError();
   }
@@ -257,11 +344,20 @@ abstract class FontFaceSetLoadEventInit implements EventInit, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/FontFaceSetLoadEvent).
-abstract class FontFaceSetLoadEvent implements Event, JSObject {
+extension type FontFaceSetLoadEvent._(JSObject _) implements Event, JSObject {
+  factory FontFaceSetLoadEvent(
+    String type, [
+    FontFaceSetLoadEventInit? eventInitDict,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// The **`fontfaces`** read-only property of the
   /// [FontFaceSetLoadEvent] interface returns an array of
   /// [FontFace] instances, each of which represents a single usable font.
-  JSArray<FontFace> get fontfaces;
+  JSArray<FontFace> get fontfaces {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`FontFaceSet`** interface of the
@@ -279,28 +375,40 @@ abstract class FontFaceSetLoadEvent implements Event, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/FontFaceSet).
-abstract class FontFaceSet implements EventTarget, JSObject {
+extension type FontFaceSet._(JSObject _) implements EventTarget, JSObject {
+  factory FontFaceSet(JSArray<FontFace> initialFaces) {
+    unsupportedPlatformError();
+  }
+
   /// The **`add()`** method of the [FontFaceSet] interface adds a new font to
   /// the set.
-  FontFaceSet add(FontFace font);
+  FontFaceSet add(FontFace font) {
+    unsupportedPlatformError();
+  }
 
   /// The **`delete()`** method of the [FontFaceSet] interface removes a font
   /// from the set.
   ///
   /// Font faces that were added to the set using the CSS  rule remain connected
   /// to the corresponding CSS, and cannot be deleted.
-  bool delete(FontFace font);
+  bool delete(FontFace font) {
+    unsupportedPlatformError();
+  }
 
   /// The **`clear()`** method of the [FontFaceSet] interface removes all fonts
   /// added via this interface. Fonts added with the  rule are not removed.
-  void clear();
+  void clear() {
+    unsupportedPlatformError();
+  }
 
   /// The `load()` method of the [FontFaceSet] forces all the fonts given in
   /// parameters to be loaded.
   JSPromise<JSArray<FontFace>> load(
     String font, [
-    String text,
-  ]);
+    String? text,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The `check()` method of the [FontFaceSet] returns `true` if you can render
   /// some text using the given font specification without attempting to use any
@@ -309,14 +417,34 @@ abstract class FontFaceSet implements EventTarget, JSObject {
   /// [font swap](https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display#the_font_display_timeline).
   bool check(
     String font, [
-    String text,
-  ]);
-  EventHandler get onloading;
-  set onloading(EventHandler value);
-  EventHandler get onloadingdone;
-  set onloadingdone(EventHandler value);
-  EventHandler get onloadingerror;
-  set onloadingerror(EventHandler value);
+    String? text,
+  ]) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onloading {
+    unsupportedPlatformError();
+  }
+
+  set onloading(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onloadingdone {
+    unsupportedPlatformError();
+  }
+
+  set onloadingdone(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onloadingerror {
+    unsupportedPlatformError();
+  }
+
+  set onloadingerror(EventHandler value) {
+    unsupportedPlatformError();
+  }
 
   /// The `ready` read-only property of the [FontFaceSet] interface returns a
   /// `Promise` that resolves to the given [FontFaceSet].
@@ -324,9 +452,13 @@ abstract class FontFaceSet implements EventTarget, JSObject {
   /// The promise will only resolve once the document has completed loading
   /// fonts, layout operations are completed, and no further font loads are
   /// needed.
-  JSPromise<FontFaceSet> get ready;
+  JSPromise<FontFaceSet> get ready {
+    unsupportedPlatformError();
+  }
 
   /// The **`status`** read-only property of the [FontFaceSet] interface returns
   /// the loading state of the fonts in the set.
-  FontFaceSetLoadStatus get status;
+  FontFaceSetLoadStatus get status {
+    unsupportedPlatformError();
+  }
 }

@@ -12,4 +12,4 @@
 
 import '../js_interop.dart';
 
-abstract class EXT_color_buffer_float implements JSObject {}
+extension type EXT_color_buffer_float._(JSObject _) implements JSObject {}

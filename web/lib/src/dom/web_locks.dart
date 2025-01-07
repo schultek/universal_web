@@ -27,7 +27,7 @@ typedef LockMode = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/LockManager).
-abstract class LockManager implements JSObject {
+extension type LockManager._(JSObject _) implements JSObject {
   /// The **`request()`** method of the [LockManager] interface requests a
   /// [Lock] object with parameters specifying its name and characteristics.
   /// The requested `Lock` is passed to a callback, while the function itself
@@ -62,16 +62,28 @@ abstract class LockManager implements JSObject {
   JSPromise<JSAny?> request(
     String name,
     JSObject callbackOrOptions, [
-    LockGrantedCallback callback,
-  ]);
+    LockGrantedCallback? callback,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`query()`** method of the [LockManager] interface returns a
   /// `Promise` that resolves with an object containing information about held
   /// and pending locks.
-  JSPromise<LockManagerSnapshot> query();
+  JSPromise<LockManagerSnapshot> query() {
+    unsupportedPlatformError();
+  }
 }
+extension type LockOptions._(JSObject _) implements JSObject {
+  factory LockOptions({
+    LockMode? mode,
+    bool? ifAvailable,
+    bool? steal,
+    AbortSignal? signal,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class LockOptions implements JSObject {
   LockMode get mode {
     unsupportedPlatformError();
   }
@@ -104,8 +116,14 @@ abstract class LockOptions implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type LockManagerSnapshot._(JSObject _) implements JSObject {
+  factory LockManagerSnapshot({
+    JSArray<LockInfo>? held,
+    JSArray<LockInfo>? pending,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class LockManagerSnapshot implements JSObject {
   JSArray<LockInfo> get held {
     unsupportedPlatformError();
   }
@@ -122,8 +140,15 @@ abstract class LockManagerSnapshot implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type LockInfo._(JSObject _) implements JSObject {
+  factory LockInfo({
+    String? name,
+    LockMode? mode,
+    String? clientId,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class LockInfo implements JSObject {
   String get name {
     unsupportedPlatformError();
   }
@@ -160,7 +185,7 @@ abstract class LockInfo implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Lock).
-abstract class Lock implements JSObject {
+extension type Lock._(JSObject _) implements JSObject {
   /// The **`name`** read-only property of
   /// the [Lock] interface returns the _name_ passed to
   /// [LockManager.request] selected when the lock was requested.
@@ -174,10 +199,14 @@ abstract class Lock implements JSObject {
   /// tab of a web application should be synchronizing network resources with an
   /// offline
   /// database, it could use a lock name such as `"net_db_sync"`.
-  String get name;
+  String get name {
+    unsupportedPlatformError();
+  }
 
   /// The **`mode`** read-only property of the [Lock] interface returns the
   /// access mode passed to [LockManager.request] when the lock was requested.
   /// The mode is either `"exclusive"` (the default) or `"shared"`.
-  LockMode get mode;
+  LockMode get mode {
+    unsupportedPlatformError();
+  }
 }

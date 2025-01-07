@@ -10,6 +10,7 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
+import '../error.dart';
 import '../js_interop.dart';
 
 /// The **`PerformanceServerTiming`** interface surfaces server metrics that are
@@ -24,22 +25,30 @@ import '../js_interop.dart';
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceServerTiming).
-abstract class PerformanceServerTiming implements JSObject {
+extension type PerformanceServerTiming._(JSObject _) implements JSObject {
   /// The **`toJSON()`** method of the [PerformanceServerTiming] interface is a
   /// ; it returns a JSON representation of the [PerformanceServerTiming]
   /// object.
-  JSObject toJSON();
+  JSObject toJSON() {
+    unsupportedPlatformError();
+  }
 
   /// The **`name`** read-only property returns a
   /// string value of the server-specified metric name.
-  String get name;
+  String get name {
+    unsupportedPlatformError();
+  }
 
   /// The **`duration`** read-only property returns a double that contains the
   /// server-specified metric duration, or the value `0.0`.
-  double get duration;
+  double get duration {
+    unsupportedPlatformError();
+  }
 
   /// The **`description`** read-only property returns a
   /// string value of the server-specified metric description, or an empty
   /// string.
-  String get description;
+  String get description {
+    unsupportedPlatformError();
+  }
 }

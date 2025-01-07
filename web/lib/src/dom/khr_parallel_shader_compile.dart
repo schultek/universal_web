@@ -13,6 +13,6 @@
 import '../js_interop.dart';
 import 'webgl1.dart';
 
-abstract class KHR_parallel_shader_compile implements JSObject {
+extension type KHR_parallel_shader_compile._(JSObject _) implements JSObject {
   static const GLenum COMPLETION_STATUS_KHR = 37297;
 }

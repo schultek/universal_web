@@ -31,7 +31,7 @@ typedef KeyFormat = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Crypto).
-abstract class Crypto implements JSObject {
+extension type Crypto._(JSObject _) implements JSObject {
   /// The **`Crypto.getRandomValues()`** method lets you get cryptographically
   /// strong random values.
   /// The array given as the parameter is filled with random numbers (random in
@@ -45,16 +45,22 @@ abstract class Crypto implements JSObject {
   ///
   /// `getRandomValues()` is the only member of the `Crypto` interface which can
   /// be used from an insecure context.
-  ArrayBufferView getRandomValues(ArrayBufferView array);
+  ArrayBufferView getRandomValues(ArrayBufferView array) {
+    unsupportedPlatformError();
+  }
 
   /// The **`randomUUID()`** method of the [Crypto] interface is used to
   /// generate a v4  using a cryptographically secure random number generator.
-  String randomUUID();
+  String randomUUID() {
+    unsupportedPlatformError();
+  }
 
   /// The **`Crypto.subtle`** read-only property returns a
   /// [SubtleCrypto] which can then be used to perform low-level
   /// cryptographic operations.
-  SubtleCrypto get subtle;
+  SubtleCrypto get subtle {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`CryptoKey`** interface of the
@@ -70,7 +76,7 @@ abstract class Crypto implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CryptoKey).
-abstract class CryptoKey implements JSObject {
+extension type CryptoKey._(JSObject _) implements JSObject {
   /// The read-only **`type`** property of the [CryptoKey] interface indicates
   /// which kind of key is represented by the object. It can have the following
   /// values:
@@ -80,7 +86,9 @@ abstract class CryptoKey implements JSObject {
   ///   [`CryptoKeyPair`](https://developer.mozilla.org/en-US/docs/Web/API/CryptoKeyPair).
   /// - `"public"`: This key is the public half of an
   ///   [`CryptoKeyPair`](https://developer.mozilla.org/en-US/docs/Web/API/CryptoKeyPair).
-  KeyType get type;
+  KeyType get type {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`extractable`** property of the [CryptoKey] interface
   /// indicates whether or not the key may be extracted using
@@ -93,18 +101,24 @@ abstract class CryptoKey implements JSObject {
   /// or
   /// [`wrapKey()`](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/wrapKey)
   /// will throw an exception if used to extract it.
-  bool get extractable;
+  bool get extractable {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`algorithm`** property of the [CryptoKey] interface
   /// returns an object describing the algorithm for which this key can be used,
   /// and any associated extra parameters.
   ///
   /// The object returned depends of the algorithm used to generate the key.
-  JSObject get algorithm;
+  JSObject get algorithm {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`usages`** property of the [CryptoKey] interface indicates
   /// what can be done with the key.
-  JSObject get usages;
+  JSObject get usages {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SubtleCrypto`** interface of the
@@ -137,7 +151,7 @@ abstract class CryptoKey implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto).
-abstract class SubtleCrypto implements JSObject {
+extension type SubtleCrypto._(JSObject _) implements JSObject {
   /// The **`encrypt()`** method of the [SubtleCrypto] interface encrypts data.
   ///
   /// It takes as its arguments a  to encrypt with, some algorithm-specific
@@ -148,7 +162,9 @@ abstract class SubtleCrypto implements JSObject {
     AlgorithmIdentifier algorithm,
     CryptoKey key,
     BufferSource data,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`decrypt()`** method of the [SubtleCrypto] interface decrypts some
   /// encrypted data.
@@ -160,7 +176,9 @@ abstract class SubtleCrypto implements JSObject {
     AlgorithmIdentifier algorithm,
     CryptoKey key,
     BufferSource data,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`sign()`** method of the [SubtleCrypto]
   /// interface generates a digital .
@@ -175,7 +193,9 @@ abstract class SubtleCrypto implements JSObject {
     AlgorithmIdentifier algorithm,
     CryptoKey key,
     BufferSource data,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`verify()`** method of the [SubtleCrypto]
   /// interface verifies a digital .
@@ -190,7 +210,9 @@ abstract class SubtleCrypto implements JSObject {
     CryptoKey key,
     BufferSource signature,
     BufferSource data,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`digest()`** method of the [SubtleCrypto]
   /// interface generates a  of the given data. A digest is a short
@@ -209,7 +231,9 @@ abstract class SubtleCrypto implements JSObject {
   JSPromise<JSAny?> digest(
     AlgorithmIdentifier algorithm,
     BufferSource data,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// Use the **`generateKey()`** method of the
   /// [SubtleCrypto] interface to generate a new key (for symmetric algorithms)
@@ -218,7 +242,9 @@ abstract class SubtleCrypto implements JSObject {
     AlgorithmIdentifier algorithm,
     bool extractable,
     JSArray<JSString> keyUsages,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`deriveKey()`** method of the [SubtleCrypto]
   /// interface can be used to derive a secret key from a master key.
@@ -241,7 +267,9 @@ abstract class SubtleCrypto implements JSObject {
     AlgorithmIdentifier derivedKeyType,
     bool extractable,
     JSArray<JSString> keyUsages,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`deriveBits()`** method of the
   /// [SubtleCrypto] interface can be used to derive an array of bits from a
@@ -273,7 +301,9 @@ abstract class SubtleCrypto implements JSObject {
     AlgorithmIdentifier algorithm,
     CryptoKey baseKey,
     int length,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`importKey()`** method of the [SubtleCrypto]
   /// interface imports a key: that is, it takes as input a key in an external,
@@ -289,7 +319,9 @@ abstract class SubtleCrypto implements JSObject {
     AlgorithmIdentifier algorithm,
     bool extractable,
     JSArray<JSString> keyUsages,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`exportKey()`** method of the [SubtleCrypto]
   /// interface exports a key: that is, it takes as input a [CryptoKey] object
@@ -312,7 +344,9 @@ abstract class SubtleCrypto implements JSObject {
   JSPromise<JSAny?> exportKey(
     KeyFormat format,
     CryptoKey key,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`wrapKey()`** method of the [SubtleCrypto] interface "wraps" a key.
   /// This means that it exports the key in an external, portable format, then
@@ -337,7 +371,9 @@ abstract class SubtleCrypto implements JSObject {
     CryptoKey key,
     CryptoKey wrappingKey,
     AlgorithmIdentifier wrapAlgorithm,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`unwrapKey()`** method of the [SubtleCrypto] interface "unwraps" a
   /// key.
@@ -369,10 +405,19 @@ abstract class SubtleCrypto implements JSObject {
     AlgorithmIdentifier unwrappedKeyAlgorithm,
     bool extractable,
     JSArray<JSString> keyUsages,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 }
+extension type RsaOtherPrimesInfo._(JSObject _) implements JSObject {
+  factory RsaOtherPrimesInfo({
+    String? r,
+    String? d,
+    String? t,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class RsaOtherPrimesInfo implements JSObject {
   String get r {
     unsupportedPlatformError();
   }
@@ -397,8 +442,30 @@ abstract class RsaOtherPrimesInfo implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type JsonWebKey._(JSObject _) implements JSObject {
+  factory JsonWebKey({
+    String? kty,
+    String? use,
+    JSArray<JSString>? key_ops,
+    String? alg,
+    bool? ext,
+    String? crv,
+    String? x,
+    String? y,
+    String? d,
+    String? n,
+    String? e,
+    String? p,
+    String? q,
+    String? dp,
+    String? dq,
+    String? qi,
+    JSArray<RsaOtherPrimesInfo>? oth,
+    String? k,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class JsonWebKey implements JSObject {
   String get kty {
     unsupportedPlatformError();
   }

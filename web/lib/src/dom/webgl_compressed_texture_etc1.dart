@@ -13,6 +13,6 @@
 import '../js_interop.dart';
 import 'webgl1.dart';
 
-abstract class WEBGL_compressed_texture_etc1 implements JSObject {
+extension type WEBGL_compressed_texture_etc1._(JSObject _) implements JSObject {
   static const GLenum COMPRESSED_RGB_ETC1_WEBGL = 36196;
 }

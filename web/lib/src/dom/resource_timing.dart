@@ -10,6 +10,7 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
+import '../error.dart';
 import '../js_interop.dart';
 import 'performance_timeline.dart';
 import 'server_timing.dart';
@@ -26,11 +27,14 @@ typedef RenderBlockingStatusType = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceResourceTiming).
-abstract class PerformanceResourceTiming implements PerformanceEntry, JSObject {
+extension type PerformanceResourceTiming._(JSObject _)
+    implements PerformanceEntry, JSObject {
   /// The **`toJSON()`** method of the [PerformanceResourceTiming] interface is
   /// a ; it returns a JSON representation of the [PerformanceResourceTiming]
   /// object.
-  JSObject toJSON();
+  JSObject toJSON() {
+    unsupportedPlatformError();
+  }
 
   /// The **`initiatorType`** read-only property is a string representing web
   /// platform feature that initiated the resource load.
@@ -39,7 +43,9 @@ abstract class PerformanceResourceTiming implements PerformanceEntry, JSObject {
   /// > A `.css` file can be fetched using a `link` element leading to an
   /// > `initiatorType` of `link`. When loading images using `background: url()`
   /// > in a CSS file, the `initiatorType` will be `css` and not `img`.
-  String get initiatorType;
+  String get initiatorType {
+    unsupportedPlatformError();
+  }
 
   /// The **`nextHopProtocol`** read-only property is a string representing the
   /// network protocol used to fetch the resource, as identified by the [ALPN
@@ -49,7 +55,9 @@ abstract class PerformanceResourceTiming implements PerformanceEntry, JSObject {
   /// When a proxy is used, if a tunnel connection is established, this property
   /// returns the ALPN Protocol ID of the tunneled protocol. Otherwise, this
   /// property returns the ALPN Protocol ID of the first hop to the proxy.
-  String get nextHopProtocol;
+  String get nextHopProtocol {
+    unsupportedPlatformError();
+  }
 
   /// The **`workerStart`** read-only property of the
   /// [PerformanceResourceTiming] interface returns a
@@ -57,7 +65,9 @@ abstract class PerformanceResourceTiming implements PerformanceEntry, JSObject {
   /// Service Worker thread is already running, or immediately before starting
   /// the Service Worker thread if it is not already running. If the resource is
   /// not intercepted by a Service Worker the property will always return 0.
-  double get workerStart;
+  double get workerStart {
+    unsupportedPlatformError();
+  }
 
   /// The **`redirectStart`** read-only property returns a [DOMHighResTimeStamp]
   /// representing the start time of the fetch which that initiates the
@@ -71,7 +81,9 @@ abstract class PerformanceResourceTiming implements PerformanceEntry, JSObject {
   ///
   /// To get the amount of redirects, see also
   /// [PerformanceNavigationTiming.redirectCount].
-  double get redirectStart;
+  double get redirectStart {
+    unsupportedPlatformError();
+  }
 
   /// The **`redirectEnd`** read-only property returns a [DOMHighResTimeStamp]
   /// immediately after receiving the last byte of the response of the last
@@ -85,7 +97,9 @@ abstract class PerformanceResourceTiming implements PerformanceEntry, JSObject {
   ///
   /// To get the amount of redirects, see also
   /// [PerformanceNavigationTiming.redirectCount].
-  double get redirectEnd;
+  double get redirectEnd {
+    unsupportedPlatformError();
+  }
 
   /// The **`fetchStart`** read-only property represents a [DOMHighResTimeStamp]
   /// immediately before the browser starts to fetch the resource.
@@ -97,12 +111,16 @@ abstract class PerformanceResourceTiming implements PerformanceEntry, JSObject {
   /// Unlike many other `PerformanceResourceTiming` properties, the `fetchStart`
   /// property is available for cross-origin requests without the need of the
   /// HTTP response header.
-  double get fetchStart;
+  double get fetchStart {
+    unsupportedPlatformError();
+  }
 
   /// The **`domainLookupStart`** read-only property returns the
   /// [DOMHighResTimeStamp] immediately before the browser starts the domain
   /// name lookup for the resource.
-  double get domainLookupStart;
+  double get domainLookupStart {
+    unsupportedPlatformError();
+  }
 
   /// The **`domainLookupEnd`** read-only property returns the
   /// [DOMHighResTimeStamp] immediately after the browser finishes the
@@ -112,12 +130,16 @@ abstract class PerformanceResourceTiming implements PerformanceEntry, JSObject {
   /// [PerformanceResourceTiming.domainLookupStart] and
   /// [PerformanceResourceTiming.domainLookupEnd] represent the times when the
   /// user agent starts and ends the domain data retrieval from the cache.
-  double get domainLookupEnd;
+  double get domainLookupEnd {
+    unsupportedPlatformError();
+  }
 
   /// The **`connectStart`** read-only property returns the
   /// [DOMHighResTimeStamp] immediately before the user agent starts
   /// establishing the connection to the server to retrieve the resource.
-  double get connectStart;
+  double get connectStart {
+    unsupportedPlatformError();
+  }
 
   /// The **`connectEnd`** read-only property returns the [DOMHighResTimeStamp]
   /// immediately after the browser finishes establishing the connection to the
@@ -125,13 +147,17 @@ abstract class PerformanceResourceTiming implements PerformanceEntry, JSObject {
   /// interval to establish the transport connection, as well as other time
   /// intervals such as TLS handshake and
   /// [SOCKS](https://en.wikipedia.org/wiki/SOCKS) authentication.
-  double get connectEnd;
+  double get connectEnd {
+    unsupportedPlatformError();
+  }
 
   /// The **`secureConnectionStart`** read-only property returns a
   /// [DOMHighResTimeStamp] immediately before the browser starts the handshake
   /// process to secure the current connection. If a secure connection is not
   /// used, the property returns zero.
-  double get secureConnectionStart;
+  double get secureConnectionStart {
+    unsupportedPlatformError();
+  }
 
   /// The **`requestStart`** read-only property returns a [DOMHighResTimeStamp]
   /// of the time immediately before the browser starts requesting the resource
@@ -142,12 +168,16 @@ abstract class PerformanceResourceTiming implements PerformanceEntry, JSObject {
   /// There is no _end_ property for `requestStart`. To measure the request
   /// time, calculate [PerformanceResourceTiming.responseStart] - `requestStart`
   /// (see the example below).
-  double get requestStart;
+  double get requestStart {
+    unsupportedPlatformError();
+  }
 
   /// The **`responseStart`** read-only property returns a [DOMHighResTimeStamp]
   /// immediately after the browser receives the first byte of the response from
   /// the server, cache, or local resource.
-  double get responseStart;
+  double get responseStart {
+    unsupportedPlatformError();
+  }
 
   /// The **`responseEnd`** read-only property returns a [DOMHighResTimeStamp]
   /// immediately after the browser receives the last byte of the resource or
@@ -157,7 +187,9 @@ abstract class PerformanceResourceTiming implements PerformanceEntry, JSObject {
   /// Unlike many other `PerformanceResourceTiming` properties, the
   /// `responseEnd` property is available for cross-origin requests without the
   /// need of the  HTTP response header.
-  double get responseEnd;
+  double get responseEnd {
+    unsupportedPlatformError();
+  }
 
   /// The **`transferSize`** read-only property represents the size (in octets)
   /// of the fetched resource. The size includes the response header fields plus
@@ -166,7 +198,9 @@ abstract class PerformanceResourceTiming implements PerformanceEntry, JSObject {
   ///
   /// If the resource is fetched from a local cache, or if it is a cross-origin
   /// resource, this property returns zero.
-  int get transferSize;
+  int get transferSize {
+    unsupportedPlatformError();
+  }
 
   /// The **`encodedBodySize`** read-only property represents the size (in
   /// octets) received from the fetch (HTTP or cache) of the payload body before
@@ -175,14 +209,18 @@ abstract class PerformanceResourceTiming implements PerformanceEntry, JSObject {
   /// must
   /// return the size of the payload body before removing any applied content
   /// encoding.
-  int get encodedBodySize;
+  int get encodedBodySize {
+    unsupportedPlatformError();
+  }
 
   /// The **`decodedBodySize`** read-only property returns the size (in octets)
   /// received from the fetch (HTTP or cache) of the message body after removing
   /// any applied content encoding (like gzip or Brotli). If the resource is
   /// retrieved from an application cache or local resources, it returns the
   /// size of the payload after removing any applied content encoding.
-  int get decodedBodySize;
+  int get decodedBodySize {
+    unsupportedPlatformError();
+  }
 
   /// The **`renderBlockingStatus`** read-only property returns the
   /// render-blocking status of the resource.
@@ -191,7 +229,9 @@ abstract class PerformanceResourceTiming implements PerformanceEntry, JSObject {
   ///
   /// - weren't render-blocking and therefore could be delayed, or
   /// - were render-blocking and therefore could be preloaded.
-  RenderBlockingStatusType get renderBlockingStatus;
+  RenderBlockingStatusType get renderBlockingStatus {
+    unsupportedPlatformError();
+  }
 
   /// The **`serverTiming`** read-only property returns an array of
   /// [PerformanceServerTiming] entries containing server timing metrics.
@@ -204,5 +244,7 @@ abstract class PerformanceResourceTiming implements PerformanceEntry, JSObject {
   ///
   /// The `serverTiming` entries can live on `navigation` and `resource`
   /// entries.
-  JSArray<PerformanceServerTiming> get serverTiming;
+  JSArray<PerformanceServerTiming> get serverTiming {
+    unsupportedPlatformError();
+  }
 }

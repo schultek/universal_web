@@ -10,10 +10,11 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
+import '../error.dart';
 import '../js_interop.dart';
 import 'webgl1.dart';
 
-abstract class WEBGL_draw_buffers implements JSObject {
+extension type WEBGL_draw_buffers._(JSObject _) implements JSObject {
   static const GLenum COLOR_ATTACHMENT0_WEBGL = 36064;
 
   static const GLenum COLOR_ATTACHMENT1_WEBGL = 36065;
@@ -82,5 +83,7 @@ abstract class WEBGL_draw_buffers implements JSObject {
 
   static const GLenum MAX_DRAW_BUFFERS_WEBGL = 34852;
 
-  void drawBuffersWEBGL(JSArray<JSNumber> buffers);
+  void drawBuffersWEBGL(JSArray<JSNumber> buffers) {
+    unsupportedPlatformError();
+  }
 }

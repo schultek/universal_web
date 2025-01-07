@@ -35,9 +35,19 @@ typedef SanitizerAttribute = JSAny;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Sanitizer).
-abstract class Sanitizer implements JSObject {}
+extension type Sanitizer._(JSObject _) implements JSObject {
+  factory Sanitizer([SanitizerConfig? config]) {
+    unsupportedPlatformError();
+  }
+}
+extension type SanitizerElementNamespace._(JSObject _) implements JSObject {
+  factory SanitizerElementNamespace({
+    required String name,
+    String? namespace,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class SanitizerElementNamespace implements JSObject {
   String get name {
     unsupportedPlatformError();
   }
@@ -54,9 +64,17 @@ abstract class SanitizerElementNamespace implements JSObject {
     unsupportedPlatformError();
   }
 }
-
-abstract class SanitizerElementNamespaceWithAttributes
+extension type SanitizerElementNamespaceWithAttributes._(JSObject _)
     implements SanitizerElementNamespace, JSObject {
+  factory SanitizerElementNamespaceWithAttributes({
+    required String name,
+    String? namespace,
+    JSArray<SanitizerAttribute>? attributes,
+    JSArray<SanitizerAttribute>? removeAttributes,
+  }) {
+    unsupportedPlatformError();
+  }
+
   JSArray<SanitizerAttribute> get attributes {
     unsupportedPlatformError();
   }
@@ -73,8 +91,14 @@ abstract class SanitizerElementNamespaceWithAttributes
     unsupportedPlatformError();
   }
 }
+extension type SanitizerAttributeNamespace._(JSObject _) implements JSObject {
+  factory SanitizerAttributeNamespace({
+    required String name,
+    String? namespace,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class SanitizerAttributeNamespace implements JSObject {
   String get name {
     unsupportedPlatformError();
   }
@@ -91,8 +115,19 @@ abstract class SanitizerAttributeNamespace implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type SanitizerConfig._(JSObject _) implements JSObject {
+  factory SanitizerConfig({
+    JSArray<SanitizerElementWithAttributes>? elements,
+    JSArray<SanitizerElement>? removeElements,
+    JSArray<SanitizerElement>? replaceWithChildrenElements,
+    JSArray<SanitizerAttribute>? attributes,
+    JSArray<SanitizerAttribute>? removeAttributes,
+    bool? comments,
+    bool? dataAttributes,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class SanitizerConfig implements JSObject {
   JSArray<SanitizerElementWithAttributes> get elements {
     unsupportedPlatformError();
   }

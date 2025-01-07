@@ -13,7 +13,12 @@
 import '../error.dart';
 import '../js_interop.dart';
 
-abstract class VideoEncoderEncodeOptionsForAv1 implements JSObject {
+extension type VideoEncoderEncodeOptionsForAv1._(JSObject _)
+    implements JSObject {
+  factory VideoEncoderEncodeOptionsForAv1({int? quantizer}) {
+    unsupportedPlatformError();
+  }
+
   int? get quantizer {
     unsupportedPlatformError();
   }

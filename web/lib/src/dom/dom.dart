@@ -77,7 +77,14 @@ typedef SlotAssignmentMode = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Event).
-abstract class Event implements JSObject {
+extension type Event._(JSObject _) implements JSObject {
+  factory Event(
+    String type, [
+    EventInit? eventInitDict,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   static const int NONE = 0;
 
   static const int CAPTURING_PHASE = 1;
@@ -92,7 +99,9 @@ abstract class Event implements JSObject {
   /// will be invoked. This does not include nodes in shadow trees if the shadow
   /// root was
   /// created with its [ShadowRoot.mode] closed.
-  JSArray<EventTarget> composedPath();
+  JSArray<EventTarget> composedPath() {
+    unsupportedPlatformError();
+  }
 
   /// The **`stopPropagation()`** method of the [Event]
   /// interface prevents further propagation of the current event in the
@@ -105,7 +114,9 @@ abstract class Event implements JSObject {
   /// prevent propagation to other event-handlers of the current element. If you
   /// want to stop those,
   /// see [Event.stopImmediatePropagation].
-  void stopPropagation();
+  void stopPropagation() {
+    unsupportedPlatformError();
+  }
 
   /// The **`stopImmediatePropagation()`** method of the
   /// [Event] interface prevents other listeners of the same event from being
@@ -115,7 +126,9 @@ abstract class Event implements JSObject {
   /// type, they are called in the order in which they were added. If
   /// `stopImmediatePropagation()` is invoked during one such call, no remaining
   /// listeners will be called, either on that element or any other element.
-  void stopImmediatePropagation();
+  void stopImmediatePropagation() {
+    unsupportedPlatformError();
+  }
 
   /// The **`preventDefault()`** method of the [Event] interface tells the  that
   /// if the event does not get explicitly handled, its default action should
@@ -131,7 +144,9 @@ abstract class Event implements JSObject {
   /// non-cancelable event, such as one dispatched via
   /// [EventTarget.dispatchEvent], without specifying
   /// `cancelable: true` has no effect.
-  void preventDefault();
+  void preventDefault() {
+    unsupportedPlatformError();
+  }
 
   /// The **`Event.initEvent()`** method is used to initialize the
   /// value of an [event] created using [Document.createEvent].
@@ -149,9 +164,11 @@ abstract class Event implements JSObject {
   /// > gives more information about the way to use these.
   void initEvent(
     String type, [
-    bool bubbles,
-    bool cancelable,
-  ]);
+    bool? bubbles,
+    bool? cancelable,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`type`** read-only property of the [Event]
   /// interface returns a string containing the event's type. It is set when the
@@ -159,17 +176,23 @@ abstract class Event implements JSObject {
   /// constructed and is the name commonly used to refer to the specific event,
   /// such as
   /// `click`, `load`, or `error`.
-  String get type;
+  String get type {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`target`** property of the
   /// [Event] interface is a reference to the object onto which the event was
   /// dispatched. It is different from [Event.currentTarget] when the event
   /// handler is called during the bubbling or capturing phase of the event.
-  EventTarget? get target;
+  EventTarget? get target {
+    unsupportedPlatformError();
+  }
 
   /// The deprecated **`Event.srcElement`** is an alias for the [Event.target]
   /// property. Use [Event.target] instead.
-  EventTarget? get srcElement;
+  EventTarget? get srcElement {
+    unsupportedPlatformError();
+  }
 
   /// The **`currentTarget`** read-only property of the [Event] interface
   /// identifies the element to which the event handler has been attached.
@@ -186,12 +209,16 @@ abstract class Event implements JSObject {
   /// for example, if you take a reference to the `Event` object inside an event
   /// handler and then access its `currentTarget` property outside the event
   /// handler, its value will be `null`.
-  EventTarget? get currentTarget;
+  EventTarget? get currentTarget {
+    unsupportedPlatformError();
+  }
 
   /// The **`eventPhase`** read-only property of the
   /// [Event] interface indicates which phase of the event flow is currently
   /// being evaluated.
-  int get eventPhase;
+  int get eventPhase {
+    unsupportedPlatformError();
+  }
 
   /// The **`cancelBubble`** property of the [Event]
   /// interface is deprecated. Use [Event.stopPropagation] instead.
@@ -200,8 +227,13 @@ abstract class Event implements JSObject {
   /// of the event. In later implementations, setting this to `false` does
   /// nothing.
   /// See [Browser compatibility](#browser_compatibility) for details.
-  bool get cancelBubble;
-  set cancelBubble(bool value);
+  bool get cancelBubble {
+    unsupportedPlatformError();
+  }
+
+  set cancelBubble(bool value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`bubbles`** read-only property of the [Event] interface indicates
   /// whether the event bubbles up through the DOM tree or not.
@@ -209,7 +241,9 @@ abstract class Event implements JSObject {
   /// > **Note:** See
   /// > [Event bubbling and capture](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events#event_bubbling)
   /// > for more information on bubbling.
-  bool get bubbles;
+  bool get bubbles {
+    unsupportedPlatformError();
+  }
 
   /// The **`cancelable`** read-only property of the [Event] interface indicates
   /// whether the event
@@ -237,7 +271,9 @@ abstract class Event implements JSObject {
   ///
   /// Event listeners that handle multiple kinds of events may want to check
   /// `cancelable` before invoking their [event.preventDefault] methods.
-  bool get cancelable;
+  bool get cancelable {
+    unsupportedPlatformError();
+  }
 
   /// The [Event] property
   /// **`returnValue`** indicates whether the default action for
@@ -252,13 +288,20 @@ abstract class Event implements JSObject {
   /// > [Event.preventDefault], and
   /// > [Event.defaultPrevented] instead of this historical
   /// > property.
-  bool get returnValue;
-  set returnValue(bool value);
+  bool get returnValue {
+    unsupportedPlatformError();
+  }
+
+  set returnValue(bool value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`defaultPrevented`** read-only property of the [Event] interface
   /// returns a boolean value indicating whether or not the call to
   /// [Event.preventDefault] canceled the event.
-  bool get defaultPrevented;
+  bool get defaultPrevented {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`composed`** property of the
   /// [Event] interface returns a boolean value which indicates whether
@@ -278,7 +321,9 @@ abstract class Event implements JSObject {
   /// will
   /// follow through the shadow root to the DOM root by calling
   /// [Event.composedPath].
-  bool get composed;
+  bool get composed {
+    unsupportedPlatformError();
+  }
 
   /// The **`isTrusted`** read-only property of the
   /// [Event] interface is a boolean value that is `true`
@@ -288,14 +333,25 @@ abstract class Event implements JSObject {
   /// [EventTarget.dispatchEvent].
   /// The only exception is the `click` event, which initializes the `isTrusted`
   /// property to `false` in user agents.
-  bool get isTrusted;
+  bool get isTrusted {
+    unsupportedPlatformError();
+  }
 
   /// The **`timeStamp`** read-only property of the [Event] interface returns
   /// the time (in milliseconds) at which the event was created.
-  double get timeStamp;
+  double get timeStamp {
+    unsupportedPlatformError();
+  }
 }
+extension type EventInit._(JSObject _) implements JSObject {
+  factory EventInit({
+    bool? bubbles,
+    bool? cancelable,
+    bool? composed,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class EventInit implements JSObject {
   bool get bubbles {
     unsupportedPlatformError();
   }
@@ -335,7 +391,14 @@ abstract class EventInit implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent).
-abstract class CustomEvent implements Event, JSObject {
+extension type CustomEvent._(JSObject _) implements Event, JSObject {
+  factory CustomEvent(
+    String type, [
+    CustomEventInit? eventInitDict,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// The **`CustomEvent.initCustomEvent()`** method initializes a [CustomEvent]
   /// object.
   /// If the event has already been dispatched, this method does nothing.
@@ -355,17 +418,29 @@ abstract class CustomEvent implements Event, JSObject {
   /// > gives more information about the way to use those.
   void initCustomEvent(
     String type, [
-    bool bubbles,
-    bool cancelable,
+    bool? bubbles,
+    bool? cancelable,
     JSAny? detail,
-  ]);
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`detail`** property of the [CustomEvent] interface returns
   /// any data passed when initializing the event.
-  JSAny? get detail;
+  JSAny? get detail {
+    unsupportedPlatformError();
+  }
 }
+extension type CustomEventInit._(JSObject _) implements EventInit, JSObject {
+  factory CustomEventInit({
+    bool? bubbles,
+    bool? cancelable,
+    bool? composed,
+    JSAny? detail,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class CustomEventInit implements EventInit, JSObject {
   JSAny? get detail {
     unsupportedPlatformError();
   }
@@ -395,7 +470,11 @@ abstract class CustomEventInit implements EventInit, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget).
-abstract class EventTarget implements JSObject {
+extension type EventTarget._(JSObject _) implements JSObject {
+  factory EventTarget() {
+    unsupportedPlatformError();
+  }
+
   /// The **`addEventListener()`** method of the [EventTarget] interface
   /// sets up a function that will be called whenever the specified event is
   /// delivered to the target.
@@ -446,8 +525,10 @@ abstract class EventTarget implements JSObject {
   void addEventListener(
     String type,
     EventListener? callback, [
-    JSAny options,
-  ]);
+    JSAny? options,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`removeEventListener()`** method of the [EventTarget] interface
   /// removes an event listener previously registered with
@@ -482,8 +563,10 @@ abstract class EventTarget implements JSObject {
   void removeEventListener(
     String type,
     EventListener? callback, [
-    JSAny options,
-  ]);
+    JSAny? options,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`dispatchEvent()`** method of the [EventTarget] sends an [Event] to
   /// the object, (synchronously) invoking the affected
@@ -506,10 +589,15 @@ abstract class EventTarget implements JSObject {
   /// `dispatchEvent()` invokes event handlers _synchronously_. All applicable
   /// event
   /// handlers are called and return before `dispatchEvent()` returns.
-  bool dispatchEvent(Event event);
+  bool dispatchEvent(Event event) {
+    unsupportedPlatformError();
+  }
 }
+extension type EventListenerOptions._(JSObject _) implements JSObject {
+  factory EventListenerOptions({bool? capture}) {
+    unsupportedPlatformError();
+  }
 
-abstract class EventListenerOptions implements JSObject {
   bool get capture {
     unsupportedPlatformError();
   }
@@ -518,9 +606,17 @@ abstract class EventListenerOptions implements JSObject {
     unsupportedPlatformError();
   }
 }
-
-abstract class AddEventListenerOptions
+extension type AddEventListenerOptions._(JSObject _)
     implements EventListenerOptions, JSObject {
+  factory AddEventListenerOptions({
+    bool? capture,
+    bool? passive,
+    bool? once,
+    AbortSignal? signal,
+  }) {
+    unsupportedPlatformError();
+  }
+
   bool get passive {
     unsupportedPlatformError();
   }
@@ -557,18 +653,26 @@ abstract class AddEventListenerOptions
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/AbortController).
-abstract class AbortController implements JSObject {
+extension type AbortController._(JSObject _) implements JSObject {
+  factory AbortController() {
+    unsupportedPlatformError();
+  }
+
   /// The **`abort()`** method of the [AbortController] interface aborts an
   /// asynchronous operation before it has completed.
   /// This is able to abort
   /// [fetch requests](https://developer.mozilla.org/en-US/docs/Web/API/fetch),
   /// the consumption of any response bodies, or streams.
-  void abort([JSAny? reason]);
+  void abort([JSAny? reason]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`signal`** read-only property of the [AbortController] interface
   /// returns an [AbortSignal] object instance, which can be used to communicate
   /// with/abort an asynchronous operation as desired.
-  AbortSignal get signal;
+  AbortSignal get signal {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`AbortSignal`** interface represents a signal object that allows you
@@ -579,7 +683,7 @@ abstract class AbortController implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal).
-abstract class AbortSignal implements EventTarget, JSObject {
+extension type AbortSignal._(JSObject _) implements EventTarget, JSObject {
   /// The **`AbortSignal.abort()`** static method returns an [AbortSignal] that
   /// is already set as aborted (and which does not trigger an
   /// [AbortSignal.abort_event] event).
@@ -644,12 +748,16 @@ abstract class AbortSignal implements EventTarget, JSObject {
   ///
   /// This method can also be used to abort operations at particular points in
   /// code, rather than passing to functions that take a signal.
-  void throwIfAborted();
+  void throwIfAborted() {
+    unsupportedPlatformError();
+  }
 
   /// The **`aborted`** read-only property returns a value that indicates
   /// whether the asynchronous operations the signal is communicating with are
   /// aborted (`true`) or not (`false`).
-  bool get aborted;
+  bool get aborted {
+    unsupportedPlatformError();
+  }
 
   /// The **`reason`** read-only property returns a JavaScript value that
   /// indicates the abort reason.
@@ -659,9 +767,17 @@ abstract class AbortSignal implements EventTarget, JSObject {
   /// [AbortController.abort] or [AbortSignal.abort_static].
   /// If not explicitly set in those methods, it defaults to "AbortError"
   /// [DOMException].
-  JSAny? get reason;
-  EventHandler get onabort;
-  set onabort(EventHandler value);
+  JSAny? get reason {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onabort {
+    unsupportedPlatformError();
+  }
+
+  set onabort(EventHandler value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// **`NodeList`** objects are collections of
@@ -691,7 +807,7 @@ abstract class AbortSignal implements EventTarget, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/NodeList).
-abstract class NodeList implements JSObject {
+extension type NodeList._(JSObject _) implements JSObject {
   /// Returns a node from a
   /// [`NodeList`](https://developer.mozilla.org/en-US/docs/Web/API/NodeList) by
   /// index. This method
@@ -700,11 +816,15 @@ abstract class NodeList implements JSObject {
   /// is returned if the index is out of range, and a `TypeError` is thrown if
   /// no
   /// argument is provided.
-  Node? item(int index);
+  Node? item(int index) {
+    unsupportedPlatformError();
+  }
 
   /// The **`NodeList.length`** property returns the number of items
   /// in a [NodeList].
-  int get length;
+  int get length {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`HTMLCollection`** interface represents a generic collection
@@ -738,7 +858,7 @@ abstract class NodeList implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCollection).
-abstract class HTMLCollection implements JSObject {
+extension type HTMLCollection._(JSObject _) implements JSObject {
   /// The [HTMLCollection] method `item()`
   /// returns the element located at the specified offset into the collection.
   ///
@@ -748,7 +868,9 @@ abstract class HTMLCollection implements JSObject {
   /// > elements in the collection to change, so the index value will not
   /// > necessarily remain
   /// > constant for a given element.
-  Element? item(int index);
+  Element? item(int index) {
+    unsupportedPlatformError();
+  }
 
   /// The **`namedItem()`** method of the [HTMLCollection] interface returns
   /// the first [Element] in the collection whose `id` or `name` attribute match
@@ -756,11 +878,15 @@ abstract class HTMLCollection implements JSObject {
   ///
   /// In JavaScript, using the array bracket syntax with a `String`, like
   /// `collection["value"]` is equivalent to `collection.namedItem("value")`.
-  Element? namedItem(String name);
+  Element? namedItem(String name) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLCollection.length`** property returns the number of
   /// items in a [HTMLCollection].
-  int get length;
+  int get length {
+    unsupportedPlatformError();
+  }
 }
 
 /// The [MutationObserver] interface provides the ability to watch for changes
@@ -774,7 +900,11 @@ abstract class HTMLCollection implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver).
-abstract class MutationObserver implements JSObject {
+extension type MutationObserver._(JSObject _) implements JSObject {
+  factory MutationObserver(MutationCallback callback) {
+    unsupportedPlatformError();
+  }
+
   /// The [MutationObserver] method **`observe()`** configures the
   /// `MutationObserver`
   /// callback to begin receiving notifications of changes to the DOM that match
@@ -787,8 +917,10 @@ abstract class MutationObserver implements JSObject {
   /// triggered any longer), call [MutationObserver.disconnect].
   void observe(
     Node target, [
-    MutationObserverInit options,
-  ]);
+    MutationObserverInit? options,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The [MutationObserver] method
   /// **`disconnect()`** tells the observer to stop watching for
@@ -796,7 +928,9 @@ abstract class MutationObserver implements JSObject {
   ///
   /// The observer can be reused by calling its
   /// [MutationObserver.observe] method again.
-  void disconnect();
+  void disconnect() {
+    unsupportedPlatformError();
+  }
 
   /// The [MutationObserver] method
   /// **`takeRecords()`** returns a list of all matching DOM changes
@@ -810,10 +944,23 @@ abstract class MutationObserver implements JSObject {
   /// observer, so that any pending mutations can be processed when shutting
   /// down the
   /// observer.
-  JSArray<MutationRecord> takeRecords();
+  JSArray<MutationRecord> takeRecords() {
+    unsupportedPlatformError();
+  }
 }
+extension type MutationObserverInit._(JSObject _) implements JSObject {
+  factory MutationObserverInit({
+    bool? childList,
+    bool? attributes,
+    bool? characterData,
+    bool? subtree,
+    bool? attributeOldValue,
+    bool? characterDataOldValue,
+    JSArray<JSString>? attributeFilter,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class MutationObserverInit implements JSObject {
   bool get childList {
     unsupportedPlatformError();
   }
@@ -879,52 +1026,70 @@ abstract class MutationObserverInit implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MutationRecord).
-abstract class MutationRecord implements JSObject {
+extension type MutationRecord._(JSObject _) implements JSObject {
   /// The [MutationRecord] read-only property **`type`** is the type of the
   /// [MutationRecord] observed by a [MutationObserver].
-  String get type;
+  String get type {
+    unsupportedPlatformError();
+  }
 
   /// The [MutationRecord] read-only property **`target`** is the target (i.e.
   /// the mutated/changed node) of a mutation observed with a
   /// [MutationObserver].
-  Node get target;
+  Node get target {
+    unsupportedPlatformError();
+  }
 
   /// The [MutationRecord] read-only property **`addedNodes`** is a [NodeList]
   /// of nodes added to a target node by a mutation observed with a
   /// [MutationObserver].
-  NodeList get addedNodes;
+  NodeList get addedNodes {
+    unsupportedPlatformError();
+  }
 
   /// The [MutationRecord] read-only property **`removedNodes`** is a [NodeList]
   /// of nodes removed from a target node by a mutation observed with a
   /// [MutationObserver].
-  NodeList get removedNodes;
+  NodeList get removedNodes {
+    unsupportedPlatformError();
+  }
 
   /// The [MutationRecord] read-only property **`previousSibling`** is the
   /// previous sibling of an added or removed child node of the
   /// [`target`](https://developer.mozilla.org/en-US/docs/Web/API/MutationRecord/target)
   /// of a [MutationObserver].
-  Node? get previousSibling;
+  Node? get previousSibling {
+    unsupportedPlatformError();
+  }
 
   /// The [MutationRecord] read-only property **`nextSibling`** is the next
   /// sibling of an added or removed child node of the
   /// [`target`](https://developer.mozilla.org/en-US/docs/Web/API/MutationRecord/target)
   /// of a [MutationObserver].
-  Node? get nextSibling;
+  Node? get nextSibling {
+    unsupportedPlatformError();
+  }
 
   /// The [MutationRecord] read-only property **`attributeName`** contains the
   /// name of a changed attribute belonging to a node that is observed by a
   /// [MutationObserver].
-  String? get attributeName;
+  String? get attributeName {
+    unsupportedPlatformError();
+  }
 
   /// The [MutationRecord] read-only property **`attributeNamespace`** is the
   /// namespace of the mutated attribute in the [MutationRecord] observed by a
   /// [MutationObserver].
-  String? get attributeNamespace;
+  String? get attributeNamespace {
+    unsupportedPlatformError();
+  }
 
   /// The [MutationRecord] read-only property **`oldValue`** contains the
   /// character data or attribute value of an observed node before it was
   /// changed.
-  String? get oldValue;
+  String? get oldValue {
+    unsupportedPlatformError();
+  }
 }
 
 /// The  **`Node`** interface is an abstract base
@@ -953,7 +1118,7 @@ abstract class MutationRecord implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Node).
-abstract class Node implements EventTarget, JSObject {
+extension type Node._(JSObject _) implements EventTarget, JSObject {
   static const int ELEMENT_NODE = 1;
 
   static const int ATTRIBUTE_NODE = 2;
@@ -993,21 +1158,27 @@ abstract class Node implements EventTarget, JSObject {
   /// The **`getRootNode()`** method of the [Node] interface
   /// returns the context object's root,
   /// which optionally includes the shadow root if it is available.
-  Node getRootNode([GetRootNodeOptions options]);
+  Node getRootNode([GetRootNodeOptions? options]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`hasChildNodes()`** method of the [Node] interface
   /// returns a boolean value indicating
   /// whether the given [Node] has
   /// [child nodes](https://developer.mozilla.org/en-US/docs/Web/API/Node/childNodes)
   /// or not.
-  bool hasChildNodes();
+  bool hasChildNodes() {
+    unsupportedPlatformError();
+  }
 
   /// The **`normalize()`** method of the [Node] interface puts the specified
   /// node
   /// and all of its sub-tree into a _normalized_ form.
   /// In a normalized sub-tree, no text nodes in the sub-tree are empty and
   /// there are no adjacent text nodes.
-  void normalize();
+  void normalize() {
+    unsupportedPlatformError();
+  }
 
   /// The **`cloneNode()`** method of the [Node] interface
   /// returns a duplicate of the node on which this method was called.
@@ -1037,7 +1208,9 @@ abstract class Node implements EventTarget, JSObject {
   ///
   /// To clone a node to insert into a _different_ document, use
   /// [Document.importNode] instead.
-  Node cloneNode([bool deep]);
+  Node cloneNode([bool? deep]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`isEqualNode()`** method of the [Node] interface tests whether two
   /// nodes are equal.
@@ -1048,7 +1221,9 @@ abstract class Node implements EventTarget, JSObject {
   /// match, and so on. The specific set of data points that must match varies
   /// depending on
   /// the types of the nodes.
-  bool isEqualNode(Node? otherNode);
+  bool isEqualNode(Node? otherNode) {
+    unsupportedPlatformError();
+  }
 
   /// The **`isSameNode()`** method of the [Node] interface
   /// is a legacy alias the [for the `===` strict equality
@@ -1058,12 +1233,16 @@ abstract class Node implements EventTarget, JSObject {
   ///
   /// > **Note:** There is no need to use `isSameNode()`; instead use the `===`
   /// > strict equality operator.
-  bool isSameNode(Node? otherNode);
+  bool isSameNode(Node? otherNode) {
+    unsupportedPlatformError();
+  }
 
   /// The **`compareDocumentPosition()`** method of the [Node] interface
   /// reports the position of its argument node relative to the node on which it
   /// is called.
-  int compareDocumentPosition(Node other);
+  int compareDocumentPosition(Node other) {
+    unsupportedPlatformError();
+  }
 
   /// The **`contains()`** method of the [Node] interface
   /// returns a boolean value indicating
@@ -1072,20 +1251,26 @@ abstract class Node implements EventTarget, JSObject {
   /// one of the children's direct children, and so on.
   ///
   /// > **Note:** A node is _contained_ inside itself.
-  bool contains(Node? other);
+  bool contains(Node? other) {
+    unsupportedPlatformError();
+  }
 
   /// The **`lookupPrefix()`** method of the [Node] interface
   /// returns a string containing the prefix for a given namespace URI, if
   /// present,
   /// and `null` if not.
   /// When multiple prefixes are possible, the first prefix is returned.
-  String? lookupPrefix(String? namespace);
+  String? lookupPrefix(String? namespace) {
+    unsupportedPlatformError();
+  }
 
   /// The **`lookupNamespaceURI()`** method of the [Node] interface
   /// takes a prefix as parameter and returns the namespace URI associated with
   /// it on the given node if found (and
   /// `null` if not).
-  String? lookupNamespaceURI(String? prefix);
+  String? lookupNamespaceURI(String? prefix) {
+    unsupportedPlatformError();
+  }
 
   /// The **`isDefaultNamespace()`** method of the [Node] interface accepts a
   /// namespace URI as an argument.
@@ -1094,7 +1279,9 @@ abstract class Node implements EventTarget, JSObject {
   ///
   /// > **Note:** The default namespace of an HTML element is always `""`. For a
   /// > SVG element, it is set by the `xmlns` attribute.
-  bool isDefaultNamespace(String? namespace);
+  bool isDefaultNamespace(String? namespace) {
+    unsupportedPlatformError();
+  }
 
   /// The **`insertBefore()`** method of the [Node] interface
   /// inserts a node before a _reference node_ as a child of a specified _parent
@@ -1119,7 +1306,9 @@ abstract class Node implements EventTarget, JSObject {
   Node insertBefore(
     Node node,
     Node? child,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`appendChild()`** method of the [Node] interface adds a node to the
   /// end of the list of children of a specified parent node.
@@ -1138,14 +1327,18 @@ abstract class Node implements EventTarget, JSObject {
   /// > **Note:** Unlike this method, the [Element.append] method supports
   /// > multiple arguments and appending strings. You can prefer using it if
   /// > your node is an element.
-  Node appendChild(Node node);
+  Node appendChild(Node node) {
+    unsupportedPlatformError();
+  }
 
   /// The **`replaceChild()`** method of the [Node] interface replaces a child
   /// node within the given (parent) node.
   Node replaceChild(
     Node node,
     Node child,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`removeChild()`** method of the [Node] interface
   /// removes a child node from the DOM and returns the removed node.
@@ -1162,17 +1355,23 @@ abstract class Node implements EventTarget, JSObject {
   ///
   /// Unlike [Node.cloneNode] the return value preserves the `EventListener`
   /// objects associated with it.
-  Node removeChild(Node child);
+  Node removeChild(Node child) {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`nodeType`** property of a [Node] interface is an integer
   /// that identifies what the node is. It distinguishes different kind of nodes
   /// from each other,
   /// such as [Element], [Text] and [Comment].
-  int get nodeType;
+  int get nodeType {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`nodeName`** property of [Node] returns the name of the
   /// current node as a string.
-  String get nodeName;
+  String get nodeName {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`baseURI`** property of the [Node] interface
   /// returns the absolute base URL of the document containing the node.
@@ -1194,16 +1393,22 @@ abstract class Node implements EventTarget, JSObject {
   /// document,
   /// the `href` value of the _first_ `Base` element with such an attribute is
   /// used instead.
-  String get baseURI;
+  String get baseURI {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`isConnected`** property of the [Node] interface
   /// returns a boolean indicating whether the node is connected
   /// (directly or indirectly) to a [Document] object.
-  bool get isConnected;
+  bool get isConnected {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`ownerDocument`** property of the [Node] interface
   /// returns the top-level document object of the node.
-  Document? get ownerDocument;
+  Document? get ownerDocument {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`parentNode`** property of the [Node] interface
   /// returns the parent of the specified node in the DOM tree.
@@ -1214,13 +1419,17 @@ abstract class Node implements EventTarget, JSObject {
   /// `parentNode` will always return `null`.
   /// It also returns `null` if the node has just been created
   /// and is not yet attached to the tree.
-  Node? get parentNode;
+  Node? get parentNode {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`parentElement`** property of [Node] interface
   /// returns the DOM node's parent [Element], or `null` if the node either has
   /// no
   /// parent, or its parent isn't a DOM [Element].
-  Element? get parentElement;
+  Element? get parentElement {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`childNodes`** property of the [Node] interface returns a
   /// live
@@ -1258,7 +1467,9 @@ abstract class Node implements EventTarget, JSObject {
   /// including non-element nodes like text and comment.
   /// To get a collection containing only elements, use [Element.children]
   /// instead.
-  NodeList get childNodes;
+  NodeList get childNodes {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`firstChild`** property of the [Node] interface
   /// returns the node's first child in the tree,
@@ -1273,7 +1484,9 @@ abstract class Node implements EventTarget, JSObject {
   /// > If you want to get the first [Element] that is a child of another
   /// > element,
   /// > consider using [Element.firstElementChild].
-  Node? get firstChild;
+  Node? get firstChild {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`lastChild`** property of the [Node] interface
   /// returns the last child of the node, or `null` if there are no child nodes.
@@ -1284,7 +1497,9 @@ abstract class Node implements EventTarget, JSObject {
   /// > If you want to get the last [Element] that is a child of another
   /// > element,
   /// > consider using [Element.lastElementChild].
-  Node? get lastChild;
+  Node? get lastChild {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`previousSibling`** property of the [Node] interface
   /// returns the node immediately preceding the specified one in its parent's
@@ -1310,7 +1525,9 @@ abstract class Node implements EventTarget, JSObject {
   /// >
   /// > To navigate the opposite way through the child nodes list use
   /// > [Node.nextSibling](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling).
-  Node? get previousSibling;
+  Node? get previousSibling {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`nextSibling`** property of the [Node] interface
   /// returns the node immediately following the specified one in their
@@ -1336,12 +1553,19 @@ abstract class Node implements EventTarget, JSObject {
   /// >
   /// > To navigate the opposite way through the child nodes list use
   /// > [Node.previousSibling](https://developer.mozilla.org/en-US/docs/Web/API/Node/previousSibling).
-  Node? get nextSibling;
+  Node? get nextSibling {
+    unsupportedPlatformError();
+  }
 
   /// The **`nodeValue`** property of the [Node] interface returns or sets the
   /// value of the current node.
-  String? get nodeValue;
-  set nodeValue(String? value);
+  String? get nodeValue {
+    unsupportedPlatformError();
+  }
+
+  set nodeValue(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`textContent`** property of the [Node]
   /// interface represents the text content of the node and its descendants.
@@ -1349,11 +1573,19 @@ abstract class Node implements EventTarget, JSObject {
   /// > **Note:** `textContent` and [HTMLElement.innerText] are easily confused,
   /// > but the two properties are
   /// > [different in important ways](#differences_from_innertext).
-  String? get textContent;
-  set textContent(String? value);
-}
+  String? get textContent {
+    unsupportedPlatformError();
+  }
 
-abstract class GetRootNodeOptions implements JSObject {
+  set textContent(String? value) {
+    unsupportedPlatformError();
+  }
+}
+extension type GetRootNodeOptions._(JSObject _) implements JSObject {
+  factory GetRootNodeOptions({bool? composed}) {
+    unsupportedPlatformError();
+  }
+
   bool get composed {
     unsupportedPlatformError();
   }
@@ -1362,7 +1594,6 @@ abstract class GetRootNodeOptions implements JSObject {
     unsupportedPlatformError();
   }
 }
-
 Document get document {
   unsupportedPlatformError();
 }
@@ -1388,7 +1619,11 @@ Document get document {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Document).
-abstract class Document implements Node, JSObject {
+extension type Document._(JSObject _) implements Node, JSObject {
+  factory Document() {
+    unsupportedPlatformError();
+  }
+
   /// The **`parseHTMLUnsafe()`** static method of the [Document] object is used
   /// to parse a string of HTML, which may contain
   /// [declarative shadow roots](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template#declarative_shadow_dom),
@@ -1417,7 +1652,9 @@ abstract class Document implements Node, JSObject {
   /// is live, meaning that it updates itself automatically to stay in sync with
   /// the DOM tree
   /// without having to call `document.getElementsByTagName()` again.
-  HTMLCollection getElementsByTagName(String qualifiedName);
+  HTMLCollection getElementsByTagName(String qualifiedName) {
+    unsupportedPlatformError();
+  }
 
   /// Returns a list of elements with the given tag name belonging to the given
   /// namespace.
@@ -1425,7 +1662,9 @@ abstract class Document implements Node, JSObject {
   HTMLCollection getElementsByTagNameNS(
     String? namespace,
     String localName,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`getElementsByClassName`** method of
   /// [Document] interface returns an array-like object
@@ -1443,7 +1682,9 @@ abstract class Document implements Node, JSObject {
   /// > longer qualifies for the selector, it will automatically be removed. Be
   /// > aware of this
   /// > for iteration purposes.
-  HTMLCollection getElementsByClassName(String classNames);
+  HTMLCollection getElementsByClassName(String classNames) {
+    unsupportedPlatformError();
+  }
 
   /// In an [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML) document,
   /// the **`document.createElement()`** method creates the HTML element
@@ -1451,8 +1692,10 @@ abstract class Document implements Node, JSObject {
   /// recognized.
   Element createElement(
     String localName, [
-    JSAny options,
-  ]);
+    JSAny? options,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// Creates an element with the specified namespace URI and qualified name.
   ///
@@ -1461,24 +1704,34 @@ abstract class Document implements Node, JSObject {
   Element createElementNS(
     String? namespace,
     String qualifiedName, [
-    JSAny options,
-  ]);
+    JSAny? options,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// Creates a new empty [DocumentFragment] into which
   /// DOM nodes can be added to build an offscreen DOM tree.
-  DocumentFragment createDocumentFragment();
+  DocumentFragment createDocumentFragment() {
+    unsupportedPlatformError();
+  }
 
   /// Creates a new [Text] node. This method can be used to escape HTML
   /// characters.
-  Text createTextNode(String data);
+  Text createTextNode(String data) {
+    unsupportedPlatformError();
+  }
 
   /// **`createCDATASection()`** creates a new CDATA section node,
   /// and returns it.
-  CDATASection createCDATASection(String data);
+  CDATASection createCDATASection(String data) {
+    unsupportedPlatformError();
+  }
 
   /// **`createComment()`** creates a new comment node, and returns
   /// it.
-  Comment createComment(String data);
+  Comment createComment(String data) {
+    unsupportedPlatformError();
+  }
 
   /// `createProcessingInstruction()` generates a new
   /// [processing instruction](https://developer.mozilla.org/en-US/docs/Web/API/ProcessingInstruction)
@@ -1489,7 +1742,9 @@ abstract class Document implements Node, JSObject {
   ProcessingInstruction createProcessingInstruction(
     String target,
     String data,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The [Document] object's **`importNode()`** method creates a copy of a
   /// [Node] or [DocumentFragment] from another document, to be
@@ -1505,8 +1760,10 @@ abstract class Document implements Node, JSObject {
   /// original document. The imported node is a clone of the original.
   Node importNode(
     Node node, [
-    bool deep,
-  ]);
+    bool? deep,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// **`Document.adoptNode()`** transfers a  from another [Document] into the
   /// method's document.
@@ -1514,7 +1771,9 @@ abstract class Document implements Node, JSObject {
   /// (if any), and their [Node.ownerDocument] is changed to the current
   /// document.
   /// The node can then be inserted into the current document.
-  Node adoptNode(Node node);
+  Node adoptNode(Node node) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Document.createAttribute()`** method creates a new
   /// attribute node, and returns it. The object created is a node implementing
@@ -1523,7 +1782,9 @@ abstract class Document implements Node, JSObject {
   /// added to a particular element in this manner.
   ///
   /// > **Note:** The string given in parameter is converted to lowercase.
-  Attr createAttribute(String localName);
+  Attr createAttribute(String localName) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Document.createAttributeNS()`** method creates a new attribute node
   /// with the specified namespace URI and qualified name, and returns it.
@@ -1533,7 +1794,9 @@ abstract class Document implements Node, JSObject {
   Attr createAttributeNS(
     String? namespace,
     String qualifiedName,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// > **Warning:** Many methods used with `createEvent`, such as
   /// > `initCustomEvent`, are deprecated.
@@ -1545,28 +1808,36 @@ abstract class Document implements Node, JSObject {
   /// of the type specified. The
   /// returned object should be first initialized and can then be passed to
   /// [EventTarget.dispatchEvent].
-  Event createEvent(String interface);
+  Event createEvent(String interface) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Document.createRange()`** method returns a new
   /// [Range] object.
-  Range createRange();
+  Range createRange() {
+    unsupportedPlatformError();
+  }
 
   /// The **`Document.createNodeIterator()`** method returns a new
   /// [`NodeIterator`](https://developer.mozilla.org/en-US/docs/Web/API/NodeIterator)
   /// object.
   NodeIterator createNodeIterator(
     Node root, [
-    int whatToShow,
+    int? whatToShow,
     NodeFilter? filter,
-  ]);
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Document.createTreeWalker()`** creator method returns a newly
   /// created [TreeWalker] object.
   TreeWalker createTreeWalker(
     Node root, [
-    int whatToShow,
+    int? whatToShow,
     NodeFilter? filter,
-  ]);
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`startViewTransition()`** method of the [Document] interface starts
   /// a new same-document (SPA)
@@ -1576,7 +1847,9 @@ abstract class Document implements Node, JSObject {
   /// When `startViewTransition()` is invoked, a sequence of steps is followed
   /// as explained in
   /// [The view transition process](https://developer.mozilla.org/en-US/docs/Web/API/View_Transitions_API/Using#the_view_transition_process).
-  ViewTransition startViewTransition([JSObject callbackOptions]);
+  ViewTransition startViewTransition([JSObject? callbackOptions]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`elementFromPoint()`**
   /// method, available on the [Document] object, returns the topmost [Element]
@@ -1608,7 +1881,9 @@ abstract class Document implements Node, JSObject {
   Element? elementFromPoint(
     num x,
     num y,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`elementsFromPoint()`** method
   /// of the [Document] interface returns an array of all elements
@@ -1620,7 +1895,9 @@ abstract class Document implements Node, JSObject {
   JSArray<Element> elementsFromPoint(
     num x,
     num y,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`caretPositionFromPoint()`**
   /// method of the [Document] interface returns a
@@ -1629,8 +1906,10 @@ abstract class Document implements Node, JSObject {
   JSObject? caretPositionFromPoint(
     num x,
     num y, [
-    CaretPositionFromPointOptions options,
-  ]);
+    CaretPositionFromPointOptions? options,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The [Document] method
   /// **`exitFullscreen()`** requests that the element on this
@@ -1638,13 +1917,20 @@ abstract class Document implements Node, JSObject {
   /// out of
   /// fullscreen mode, restoring the previous state of the screen. This usually
   /// reverses the effects of a previous call to [Element.requestFullscreen].
-  JSPromise<JSAny?> exitFullscreen();
-  JSObject operator [](String name);
+  JSPromise<JSAny?> exitFullscreen() {
+    unsupportedPlatformError();
+  }
+
+  JSObject operator [](String name) {
+    unsupportedPlatformError();
+  }
 
   /// The **`getElementsByName()`** method
   /// of the [Document] object returns a [NodeList] Collection of
   /// elements with a given `name` attribute in the document.
-  NodeList getElementsByName(String elementName);
+  NodeList getElementsByName(String elementName) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Document.open()`** method opens a document for
   /// [Document.write].
@@ -1656,14 +1942,18 @@ abstract class Document implements Node, JSObject {
   /// or the document's window are removed.
   /// - All existing nodes are removed from the document.
   JSObject? open([
-    String unused1OrUrl,
-    String nameOrUnused2,
-    String features,
-  ]);
+    String? unused1OrUrl,
+    String? nameOrUnused2,
+    String? features,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Document.close()`** method finishes writing to a
   /// document, opened with [Document.open].
-  void close();
+  void close() {
+    unsupportedPlatformError();
+  }
 
   /// > **Warning:** Use of the `document.write()` method is strongly
   /// > discouraged.
@@ -1696,7 +1986,9 @@ abstract class Document implements Node, JSObject {
   /// > calling `document.write()` on a closed (loaded) document automatically
   /// > calls `document.open()`,
   /// > [which will clear the document](https://developer.mozilla.org/en-US/docs/Web/API/Document/open#notes).
-  void write(JSAny text);
+  void write(JSAny text) {
+    unsupportedPlatformError();
+  }
 
   /// > **Warning:** Use of the `document.writeln()` method is strongly
   /// > discouraged.
@@ -1723,7 +2015,9 @@ abstract class Document implements Node, JSObject {
   /// > any existing code that is still using it.
   ///
   /// Writes a string of text followed by a newline character to a document.
-  void writeln(JSAny text);
+  void writeln(JSAny text) {
+    unsupportedPlatformError();
+  }
 
   /// The **`hasFocus()`** method of the [Document] interface returns a boolean
   /// value indicating whether the document or any element inside the document
@@ -1736,7 +2030,9 @@ abstract class Document implements Node, JSObject {
   /// > in the document, but an active element does not necessarily have focus.
   /// > For example, an active element within a popup window that is not the
   /// > foreground doesn't have focus.
-  bool hasFocus();
+  bool hasFocus() {
+    unsupportedPlatformError();
+  }
 
   /// The **`execCommand`** method implements multiple different commands. Some
   /// of them provide access to the clipboard, while others are for editing
@@ -1769,17 +2065,33 @@ abstract class Document implements Node, JSObject {
   /// > [bug 1634262](https://bugzil.la/1634262).
   bool execCommand(
     String commandId, [
-    bool showUI,
-    String value,
-  ]);
-  bool queryCommandIndeterm(String commandId);
-  String queryCommandValue(String commandId);
+    bool? showUI,
+    String? value,
+  ]) {
+    unsupportedPlatformError();
+  }
+
+  bool queryCommandIndeterm(String commandId) {
+    unsupportedPlatformError();
+  }
+
+  String queryCommandValue(String commandId) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Document.clear()`** method does nothing, but doesn't raise any
   /// error.
-  void clear();
-  void captureEvents();
-  void releaseEvents();
+  void clear() {
+    unsupportedPlatformError();
+  }
+
+  void captureEvents() {
+    unsupportedPlatformError();
+  }
+
+  void releaseEvents() {
+    unsupportedPlatformError();
+  }
 
   /// The **`exitPictureInPicture()`** method of the [Document] interface
   /// requests that a video contained
@@ -1788,7 +2100,9 @@ abstract class Document implements Node, JSObject {
   /// mode, restoring the previous state of the screen. This usually reverses
   /// the
   /// effects of a previous call to [HTMLVideoElement.requestPictureInPicture].
-  JSPromise<JSAny?> exitPictureInPicture();
+  JSPromise<JSAny?> exitPictureInPicture() {
+    unsupportedPlatformError();
+  }
 
   /// The **`exitPointerLock()`** method of the [Document] interface
   /// asynchronously releases a pointer lock previously requested through
@@ -1800,7 +2114,9 @@ abstract class Document implements Node, JSObject {
   /// To track the success or failure of the request, it is necessary to listen
   /// for the [Document.pointerlockchange_event] and
   /// [Document.pointerlockerror_event] events.
-  void exitPointerLock();
+  void exitPointerLock() {
+    unsupportedPlatformError();
+  }
 
   /// The **`hasUnpartitionedCookieAccess()`** method of the [Document]
   /// interface returns a `Promise` that resolves with a boolean value
@@ -1813,14 +2129,18 @@ abstract class Document implements Node, JSObject {
   /// [Storage Access API](https://developer.mozilla.org/en-US/docs/Web/API/Storage_Access_API).
   ///
   /// This method is a new name for [Document.hasStorageAccess].
-  JSPromise<JSBoolean> hasUnpartitionedCookieAccess();
+  JSPromise<JSBoolean> hasUnpartitionedCookieAccess() {
+    unsupportedPlatformError();
+  }
 
   /// The **`getSelection()`** method of
   /// the [Document] interface returns a [Selection]
   /// object representing the range of text selected by the user, or the current
   /// position of
   /// the caret.
-  Selection? getSelection();
+  Selection? getSelection() {
+    unsupportedPlatformError();
+  }
 
   /// The **`hasStorageAccess()`** method of the [Document] interface returns a
   /// `Promise` that resolves with a boolean value indicating whether the
@@ -1835,7 +2155,9 @@ abstract class Document implements Node, JSObject {
   /// > **Note:** This method is another name for
   /// > [Document.hasUnpartitionedCookieAccess]. There are no current plans to
   /// > remove this method in favor of [Document.hasUnpartitionedCookieAccess].
-  JSPromise<JSBoolean> hasStorageAccess();
+  JSPromise<JSBoolean> hasStorageAccess() {
+    unsupportedPlatformError();
+  }
 
   /// The **`requestStorageAccess()`** method of the [Document] interface allows
   /// content loaded in a third-party context (i.e., embedded in an `iframe`) to
@@ -1860,7 +2182,9 @@ abstract class Document implements Node, JSObject {
   /// > classification, user settings,
   /// > anti-[clickjacking](https://developer.mozilla.org/en-US/docs/Glossary/Clickjacking)
   /// > heuristics, or prompting the user for explicit permission.
-  JSPromise<JSAny?> requestStorageAccess();
+  JSPromise<JSAny?> requestStorageAccess() {
+    unsupportedPlatformError();
+  }
 
   /// The **`getElementById()`** method of the [Document] interface returns an
   /// [Element] object representing the element whose [Element.id] property
@@ -1874,7 +2198,9 @@ abstract class Document implements Node, JSObject {
   /// > **Note:** IDs should be unique inside a document. If two or more
   /// > elements in a document have the same ID, this method returns the first
   /// > element found.
-  Element? getElementById(String elementId);
+  Element? getElementById(String elementId) {
+    unsupportedPlatformError();
+  }
 
   /// The `getAnimations()` method of the [Document] interface
   /// returns an array of all [Animation] objects currently in effect whose
@@ -1883,7 +2209,9 @@ abstract class Document implements Node, JSObject {
   /// [CSS Transitions](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_transitions),
   /// and
   /// [Web Animations](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API).
-  JSArray<Animation> getAnimations();
+  JSArray<Animation> getAnimations() {
+    unsupportedPlatformError();
+  }
 
   /// The **`Document.prepend()`** method
   /// inserts a set of [Node] objects or string objects before
@@ -1892,7 +2220,9 @@ abstract class Document implements Node, JSObject {
   ///
   /// This method prepends a child to a `Document`. To prepend to an arbitrary
   /// element in the tree, see [Element.prepend].
-  void prepend(JSAny nodes);
+  void prepend(JSAny nodes) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Document.append()`** method
   /// inserts a set of [Node] objects or string objects after
@@ -1901,11 +2231,15 @@ abstract class Document implements Node, JSObject {
   ///
   /// This method appends a child to a `Document`. To append to an arbitrary
   /// element in the tree, see [Element.append].
-  void append(JSAny nodes);
+  void append(JSAny nodes) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Document.replaceChildren()`** method replaces the
   /// existing children of a `Document` with a specified new set of children.
-  void replaceChildren(JSAny nodes);
+  void replaceChildren(JSAny nodes) {
+    unsupportedPlatformError();
+  }
 
   /// The [Document] method **`querySelector()`**
   /// returns the first [Element] within the document that matches the specified
@@ -1917,12 +2251,16 @@ abstract class Document implements Node, JSObject {
   /// > markup and
   /// > iterating through sequential nodes by order of the number of child
   /// > nodes.
-  Element? querySelector(String selectors);
+  Element? querySelector(String selectors) {
+    unsupportedPlatformError();
+  }
 
   /// The [Document] method **`querySelectorAll()`**
   /// returns a static (not live) [NodeList] representing a list of the
   /// document's elements that match the specified group of selectors.
-  NodeList querySelectorAll(String selectors);
+  NodeList querySelectorAll(String selectors) {
+    unsupportedPlatformError();
+  }
 
   /// This method compiles an [XPathExpression] which can then be used for
   /// (repeated) evaluations.
@@ -1932,11 +2270,15 @@ abstract class Document implements Node, JSObject {
   XPathExpression createExpression(
     String expression, [
     XPathNSResolver? resolver,
-  ]);
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// Creates an `XPathNSResolver` which resolves namespaces with respect to the
   /// definitions in scope for a specified node.
-  Node createNSResolver(Node nodeResolver);
+  Node createNSResolver(Node nodeResolver) {
+    unsupportedPlatformError();
+  }
 
   /// The **`evaluate()`** method of the [Document] interface selects elements
   /// based on the [XPath](https://developer.mozilla.org/en-US/docs/Web/XPath)
@@ -1947,28 +2289,38 @@ abstract class Document implements Node, JSObject {
     String expression,
     Node contextNode, [
     XPathNSResolver? resolver,
-    int type,
+    int? type,
     XPathResult? result,
-  ]);
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Document.implementation`** property returns a
   /// [DOMImplementation] object associated with the current document.
-  DOMImplementation get implementation;
+  DOMImplementation get implementation {
+    unsupportedPlatformError();
+  }
 
   /// The **`URL`** read-only property of the [Document]
   /// interface returns the document location as a string.
-  String get URL;
+  String get URL {
+    unsupportedPlatformError();
+  }
 
   /// The **`documentURI`** read-only property of the
   /// [Document] interface returns the document location as a string.
-  String get documentURI;
+  String get documentURI {
+    unsupportedPlatformError();
+  }
 
   /// The **`Document.compatMode`** read-only property indicates
   /// whether the document is rendered in
   /// [Quirks mode](https://developer.mozilla.org/en-US/docs/Web/HTML/Quirks_Mode_and_Standards_Mode)
   /// or
   /// Standards mode.
-  String get compatMode;
+  String get compatMode {
+    unsupportedPlatformError();
+  }
 
   /// The **`Document.characterSet`**
   /// read-only property returns the
@@ -1979,7 +2331,9 @@ abstract class Document implements Node, JSObject {
   /// > **Note:** A "character set" and a "character encoding" are related, but
   /// > different. Despite the
   /// > name of this property, it returns the _encoding_.
-  String get characterSet;
+  String get characterSet {
+    unsupportedPlatformError();
+  }
 
   /// The **`Document.contentType`** read-only property returns the
   /// MIME type that the document is being rendered as. This may come from HTTP
@@ -1990,25 +2344,33 @@ abstract class Document implements Node, JSObject {
   ///
   /// > **Note:** This property is unaffected by `meta`
   /// > elements.
-  String get contentType;
+  String get contentType {
+    unsupportedPlatformError();
+  }
 
   /// The **`doctype`** read-only property of the [Document] interface is a
   /// [DocumentType] object representing the the  associated with the current
   /// document.
-  DocumentType? get doctype;
+  DocumentType? get doctype {
+    unsupportedPlatformError();
+  }
 
   /// The **`documentElement`** read-only property of the [Document] interface
   /// returns the
   /// [Element] that is the root element of the [document] (for
   /// example, the `html` element for HTML documents).
-  Element? get documentElement;
+  Element? get documentElement {
+    unsupportedPlatformError();
+  }
 
   /// **`Document.rootElement`** returns the [Element]
   /// that is the root element of the [document] if it is an
   /// element, otherwise `null`. It is deprecated in favor of
   /// [Document.documentElement], which returns the root element for all
   /// documents.
-  SVGSVGElement? get rootElement;
+  SVGSVGElement? get rootElement {
+    unsupportedPlatformError();
+  }
 
   /// The **`scrollingElement`** read-only property of the
   /// [Document] interface returns a reference to the [Element] that
@@ -2019,7 +2381,9 @@ abstract class Document implements Node, JSObject {
   /// `body` element if it exists and is
   /// [potentially scrollable](https://drafts.csswg.org/cssom-view/#potentially-scrollable),
   /// otherwise it returns null.
-  Element? get scrollingElement;
+  Element? get scrollingElement {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`fullscreenEnabled`**
   /// property on the [Document] interface indicates whether or not fullscreen
@@ -2034,7 +2398,9 @@ abstract class Document implements Node, JSObject {
   /// Although this property is read-only, it will not throw if it is modified
   /// (even in
   /// strict mode); the setter is a no-operation and it will be ignored.
-  bool get fullscreenEnabled;
+  bool get fullscreenEnabled {
+    unsupportedPlatformError();
+  }
 
   /// The obsolete [Document] interface's **`fullscreen`** read-only property
   /// reports whether or not the document is currently displaying content in
@@ -2047,11 +2413,25 @@ abstract class Document implements Node, JSObject {
   /// > **Note:** Since this property is deprecated, you can determine if
   /// > fullscreen mode is active on the document by checking to see if
   /// > [Document.fullscreenElement] is not `null`.
-  bool get fullscreen;
-  EventHandler get onfullscreenchange;
-  set onfullscreenchange(EventHandler value);
-  EventHandler get onfullscreenerror;
-  set onfullscreenerror(EventHandler value);
+  bool get fullscreen {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onfullscreenchange {
+    unsupportedPlatformError();
+  }
+
+  set onfullscreenchange(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onfullscreenerror {
+    unsupportedPlatformError();
+  }
+
+  set onfullscreenerror(EventHandler value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Document.location`** read-only property returns a
   /// [Location] object, which contains information about the URL of the
@@ -2071,46 +2451,69 @@ abstract class Document implements Node, JSObject {
   /// If the current document is not in a browsing context, the returned value
   /// is
   /// `null`.
-  Location? get location;
+  Location? get location {
+    unsupportedPlatformError();
+  }
 
   /// The **`domain`** property of the [Document]
   /// interface gets/sets the domain portion of the  of the current
   /// document, as used by the
   /// [same-origin policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy).
-  String get domain;
-  set domain(String value);
+  String get domain {
+    unsupportedPlatformError();
+  }
+
+  set domain(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Document.referrer`** property returns the
   /// [URI](https://www.w3.org/Addressing/#background) of the page that linked
   /// to
   /// this page.
-  String get referrer;
+  String get referrer {
+    unsupportedPlatformError();
+  }
 
   /// The [Document] property `cookie` lets you read and write
   /// [cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies)
   /// associated with the document.
   /// It serves as a getter and setter for the actual values of the cookies.
-  String get cookie;
-  set cookie(String value);
+  String get cookie {
+    unsupportedPlatformError();
+  }
+
+  set cookie(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`lastModified`** property of the [Document]
   /// interface returns a string containing the date and local time on which the
   /// current document
   /// was last modified.
-  String get lastModified;
+  String get lastModified {
+    unsupportedPlatformError();
+  }
 
   /// The **`Document.readyState`** property describes the loading state of the
   /// [document].
   /// When the value of this property changes, a
   /// [Document.readystatechange_event] event fires on the [document] object.
-  DocumentReadyState get readyState;
+  DocumentReadyState get readyState {
+    unsupportedPlatformError();
+  }
 
   /// The **`document.title`** property gets or sets the current title of the
   /// document.
   /// When present, it defaults to the value of the
   /// [`<title>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title).
-  String get title;
-  set title(String value);
+  String get title {
+    unsupportedPlatformError();
+  }
+
+  set title(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Document.dir`** property is a string
   /// representing the directionality of the text of the document, whether left
@@ -2118,31 +2521,47 @@ abstract class Document implements Node, JSObject {
   /// (default) or right to left. Possible values are `'rtl'`, right to left,
   /// and
   /// `'ltr'`, left to right.
-  String get dir;
-  set dir(String value);
+  String get dir {
+    unsupportedPlatformError();
+  }
+
+  set dir(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Document.body`** property represents the
   /// `body` or `frameset` node of the current document, or
   /// `null` if no such element exists.
-  HTMLElement? get body;
-  set body(HTMLElement? value);
+  HTMLElement? get body {
+    unsupportedPlatformError();
+  }
+
+  set body(HTMLElement? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`head`** read-only property of
   /// the [Document] interface returns the `head` element of
   /// the current document.
-  HTMLHeadElement? get head;
+  HTMLHeadElement? get head {
+    unsupportedPlatformError();
+  }
 
   /// The **`images`** read-only property of the [Document] interface returns a
   /// [collection](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCollection)
   /// of the
   /// [images](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement)
   /// in the current HTML document.
-  HTMLCollection get images;
+  HTMLCollection get images {
+    unsupportedPlatformError();
+  }
 
   /// The **`embeds`** read-only property of the
   /// [Document] interface returns a list of the embedded
   /// `embed` elements within the current document.
-  HTMLCollection get embeds;
+  HTMLCollection get embeds {
+    unsupportedPlatformError();
+  }
 
   /// The **`plugins`** read-only property of the
   /// [Document] interface returns an [HTMLCollection] object
@@ -2152,14 +2571,18 @@ abstract class Document implements Node, JSObject {
   /// > **Note:** For a list of installed plugins, use
   /// > [Navigator.plugins](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/plugins)
   /// > instead.
-  HTMLCollection get plugins;
+  HTMLCollection get plugins {
+    unsupportedPlatformError();
+  }
 
   /// The **`links`** read-only property of the [Document] interface returns a
   /// collection of all `area` elements and `a` elements in a document with a
   /// value for the
   /// [href](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#href)
   /// attribute.
-  HTMLCollection get links;
+  HTMLCollection get links {
+    unsupportedPlatformError();
+  }
 
   /// The **`forms`** read-only property of
   /// the [Document] interface returns an [HTMLCollection] listing
@@ -2167,13 +2590,17 @@ abstract class Document implements Node, JSObject {
   ///
   /// > **Note:** Similarly, you can access a list of a form's component user
   /// > input elements using the [HTMLFormElement.elements] property.
-  HTMLCollection get forms;
+  HTMLCollection get forms {
+    unsupportedPlatformError();
+  }
 
   /// The **`scripts`** property of the [Document]
   /// interface returns a list of the `script`
   /// elements in the document. The returned object is an
   /// [HTMLCollection].
-  HTMLCollection get scripts;
+  HTMLCollection get scripts {
+    unsupportedPlatformError();
+  }
 
   /// The **`Document.currentScript`** property returns the `script` element
   /// whose script is currently being processed and [isn't a JavaScript
@@ -2185,13 +2612,17 @@ abstract class Document implements Node, JSObject {
   /// element if the code in the script is being called as a callback or event
   /// handler; it
   /// will only reference the element while it's initially being processed.
-  HTMLOrSVGScriptElement? get currentScript;
+  HTMLOrSVGScriptElement? get currentScript {
+    unsupportedPlatformError();
+  }
 
   /// In browsers, **`document.defaultView`** returns the
   /// [Window] object associated with , or `null` if none is available.
   ///
   /// This property is read-only.
-  Window? get defaultView;
+  Window? get defaultView {
+    unsupportedPlatformError();
+  }
 
   /// **`document.designMode`** controls whether the entire document
   /// is editable. Valid values are `"on"` and `"off"`. According to the
@@ -2201,15 +2632,22 @@ abstract class Document implements Node, JSObject {
   /// `"inherit"`.
   /// Starting in Chrome 43, the default is `"off"` and `"inherit"` is
   /// no longer supported. In IE6-10, the value is capitalized.
-  String get designMode;
-  set designMode(String value);
+  String get designMode {
+    unsupportedPlatformError();
+  }
+
+  set designMode(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Document.hidden`** read-only property returns a Boolean
   /// value indicating if the page is considered hidden or not.
   ///
   /// The [Document.visibilityState] property provides an alternative way to
   /// determine whether the page is hidden.
-  bool get hidden;
+  bool get hidden {
+    unsupportedPlatformError();
+  }
 
   /// The **`Document.visibilityState`**
   /// read-only property returns the visibility of the document. It can be used
@@ -2221,16 +2659,35 @@ abstract class Document implements Node, JSObject {
   ///
   /// The [Document.hidden] property provides an alternative way to determine
   /// whether the page is hidden.
-  DocumentVisibilityState get visibilityState;
-  EventHandler get onreadystatechange;
-  set onreadystatechange(EventHandler value);
-  EventHandler get onvisibilitychange;
-  set onvisibilitychange(EventHandler value);
+  DocumentVisibilityState get visibilityState {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onreadystatechange {
+    unsupportedPlatformError();
+  }
+
+  set onreadystatechange(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onvisibilitychange {
+    unsupportedPlatformError();
+  }
+
+  set onvisibilitychange(EventHandler value) {
+    unsupportedPlatformError();
+  }
 
   /// **`fgColor`** gets/sets the foreground color, or text color, of
   /// the current document.
-  String get fgColor;
-  set fgColor(String value);
+  String get fgColor {
+    unsupportedPlatformError();
+  }
+
+  set fgColor(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Document.linkColor`** property gets/sets the color of
   /// links within the document.
@@ -2240,28 +2697,50 @@ abstract class Document implements Node, JSObject {
   /// pseudo-classes. Another alternative is
   /// `document.body.link`, although this is [deprecated in HTML
   /// 4.01](https://www.w3.org/TR/html401/struct/global.html#adef-link).
-  String get linkColor;
-  set linkColor(String value);
+  String get linkColor {
+    unsupportedPlatformError();
+  }
+
+  set linkColor(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Document.vlinkColor`** property gets/sets the color of
   /// links that the user has visited in the document.
-  String get vlinkColor;
-  set vlinkColor(String value);
+  String get vlinkColor {
+    unsupportedPlatformError();
+  }
+
+  set vlinkColor(String value) {
+    unsupportedPlatformError();
+  }
 
   /// Returns or sets the color of an active link in the document body. A link
   /// is active
   /// during the time between `mousedown` and `mouseup` events.
-  String get alinkColor;
-  set alinkColor(String value);
+  String get alinkColor {
+    unsupportedPlatformError();
+  }
+
+  set alinkColor(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The deprecated `bgColor` property gets or sets the background color of the
   /// current document.
-  String get bgColor;
-  set bgColor(String value);
+  String get bgColor {
+    unsupportedPlatformError();
+  }
+
+  set bgColor(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`anchors`** read-only property of the
   /// [Document] interface returns a list of all of the anchors in the document.
-  HTMLCollection get anchors;
+  HTMLCollection get anchors {
+    unsupportedPlatformError();
+  }
 
   /// The **`applets`** property of the [Document] returns an empty
   /// [HTMLCollection]. This property is kept only for compatibility reasons; in
@@ -2271,7 +2750,9 @@ abstract class Document implements Node, JSObject {
   /// > **Note:** Support for the `<applet>` element has been removed by all
   /// > browsers. Therefore, calling `document.applets` always
   /// > returns an empty collection.
-  HTMLCollection get applets;
+  HTMLCollection get applets {
+    unsupportedPlatformError();
+  }
 
   /// The [Document] interface's read-only **`all`** property returns an
   /// [HTMLAllCollection] rooted at the document node.
@@ -2284,7 +2765,9 @@ abstract class Document implements Node, JSObject {
   /// ```js
   /// const allElements = document.querySelectorAll("*");
   /// ```
-  HTMLAllCollection get all;
+  HTMLAllCollection get all {
+    unsupportedPlatformError();
+  }
 
   /// The read-only
   /// **`pictureInPictureEnabled`** property of the
@@ -2298,11 +2781,25 @@ abstract class Document implements Node, JSObject {
   /// Although this property is read-only, it will not throw if it is modified
   /// (even in
   /// strict mode); the setter is a no-operation and will be ignored.
-  bool get pictureInPictureEnabled;
-  EventHandler get onpointerlockchange;
-  set onpointerlockchange(EventHandler value);
-  EventHandler get onpointerlockerror;
-  set onpointerlockerror(EventHandler value);
+  bool get pictureInPictureEnabled {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onpointerlockchange {
+    unsupportedPlatformError();
+  }
+
+  set onpointerlockchange(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onpointerlockerror {
+    unsupportedPlatformError();
+  }
+
+  set onpointerlockerror(EventHandler value) {
+    unsupportedPlatformError();
+  }
 
   /// The `timeline` readonly property of the [Document] interface represents
   /// the default timeline of the current document. This timeline is a special
@@ -2319,19 +2816,25 @@ abstract class Document implements Node, JSObject {
   /// > **Note:** A document timeline that is associated with a non-active
   /// > document (a [Document] not associated with a [Window], `iframe`, or
   /// > `frame`) is also considered to be inactive.
-  DocumentTimeline get timeline;
+  DocumentTimeline get timeline {
+    unsupportedPlatformError();
+  }
 
   /// The **`fonts`** property of the [Document] interface returns the
   /// [FontFaceSet] interface of the document.
   ///
   /// This feature is part of the
   /// [CSS Font Loading API](https://developer.mozilla.org/en-US/docs/Web/API/CSS_Font_Loading_API).
-  FontFaceSet get fonts;
+  FontFaceSet get fonts {
+    unsupportedPlatformError();
+  }
 
   /// The **`styleSheets`** read-only property of the [Document] interface
   /// returns a [StyleSheetList] of [CSSStyleSheet] objects, for stylesheets
   /// explicitly linked into or embedded in a document.
-  StyleSheetList get styleSheets;
+  StyleSheetList get styleSheets {
+    unsupportedPlatformError();
+  }
 
   /// The **`adoptedStyleSheets`** property of the [Document] interface is used
   /// for setting an array of constructed stylesheets to be used by the
@@ -2359,8 +2862,13 @@ abstract class Document implements Node, JSObject {
   /// Only stylesheets created using the [`CSSStyleSheet()`
   /// constructor](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet/CSSStyleSheet)
   /// within the context of the current [Document] may be adopted.
-  JSArray<CSSStyleSheet> get adoptedStyleSheets;
-  set adoptedStyleSheets(JSArray<CSSStyleSheet> value);
+  JSArray<CSSStyleSheet> get adoptedStyleSheets {
+    unsupportedPlatformError();
+  }
+
+  set adoptedStyleSheets(JSArray<CSSStyleSheet> value) {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`Document.fullscreenElement`** read-only
@@ -2371,7 +2879,9 @@ abstract class Document implements Node, JSObject {
   /// Although this property is read-only, it will not throw if it is modified
   /// (even in
   /// strict mode); the setter is a no-operation and it will be ignored.
-  Element? get fullscreenElement;
+  Element? get fullscreenElement {
+    unsupportedPlatformError();
+  }
 
   /// The **`activeElement`** read-only property
   /// of the [Document] interface returns the [Element] within the DOM that
@@ -2398,7 +2908,9 @@ abstract class Document implements Node, JSObject {
   /// > the same thing as selection (the currently highlighted part of the
   /// > document). You can
   /// > get the current selection using [window.getSelection].
-  Element? get activeElement;
+  Element? get activeElement {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`pictureInPictureElement`** property of the [Document]
   /// interface returns the [Element] that is currently being
@@ -2408,14 +2920,18 @@ abstract class Document implements Node, JSObject {
   /// Although this property is read-only, it will not throw if it is modified
   /// (even in
   /// strict mode); the setter is a no-operation and will be ignored.
-  Element? get pictureInPictureElement;
+  Element? get pictureInPictureElement {
+    unsupportedPlatformError();
+  }
 
   /// The **`pointerLockElement`** read-only property of the [Document]
   /// interface provides the element set as the target for mouse events while
   /// the pointer is locked.
   /// It is `null` if lock is pending, pointer is unlocked, or the target is in
   /// another document.
-  Element? get pointerLockElement;
+  Element? get pointerLockElement {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`children`** property returns a live [HTMLCollection]
   /// which contains all of the child [Element] of the document upon which it
@@ -2425,7 +2941,9 @@ abstract class Document implements Node, JSObject {
   ///
   /// See [Element.children] for child elements of specific HTML elements within
   /// the document.
-  HTMLCollection get children;
+  HTMLCollection get children {
+    unsupportedPlatformError();
+  }
 
   /// The **`Document.firstElementChild`** read-only property
   /// returns the document's first child [Element], or `null` if there
@@ -2436,7 +2954,9 @@ abstract class Document implements Node, JSObject {
   ///
   /// See [Element.firstElementChild] for the first child element of specific
   /// elements within a document.
-  Element? get firstElementChild;
+  Element? get firstElementChild {
+    unsupportedPlatformError();
+  }
 
   /// The **`Document.lastElementChild`** read-only property
   /// returns the document's last child [Element], or `null` if there
@@ -2447,202 +2967,770 @@ abstract class Document implements Node, JSObject {
   ///
   /// See [Element.lastElementChild] for the last child element of specific
   /// elements within a document.
-  Element? get lastElementChild;
+  Element? get lastElementChild {
+    unsupportedPlatformError();
+  }
 
   /// The **`Document.childElementCount`** read-only property
   /// returns the number of child elements of the document.
   ///
   /// To get the number of children of a specific element, see
   /// [Element.childElementCount].
-  int get childElementCount;
-  EventHandler get onabort;
-  set onabort(EventHandler value);
-  EventHandler get onauxclick;
-  set onauxclick(EventHandler value);
-  EventHandler get onbeforeinput;
-  set onbeforeinput(EventHandler value);
-  EventHandler get onbeforetoggle;
-  set onbeforetoggle(EventHandler value);
-  EventHandler get onblur;
-  set onblur(EventHandler value);
-  EventHandler get oncancel;
-  set oncancel(EventHandler value);
-  EventHandler get oncanplay;
-  set oncanplay(EventHandler value);
-  EventHandler get oncanplaythrough;
-  set oncanplaythrough(EventHandler value);
-  EventHandler get onchange;
-  set onchange(EventHandler value);
-  EventHandler get onclick;
-  set onclick(EventHandler value);
-  EventHandler get onclose;
-  set onclose(EventHandler value);
-  EventHandler get oncontextlost;
-  set oncontextlost(EventHandler value);
-  EventHandler get oncontextmenu;
-  set oncontextmenu(EventHandler value);
-  EventHandler get oncontextrestored;
-  set oncontextrestored(EventHandler value);
-  EventHandler get oncopy;
-  set oncopy(EventHandler value);
-  EventHandler get oncuechange;
-  set oncuechange(EventHandler value);
-  EventHandler get oncut;
-  set oncut(EventHandler value);
-  EventHandler get ondblclick;
-  set ondblclick(EventHandler value);
-  EventHandler get ondrag;
-  set ondrag(EventHandler value);
-  EventHandler get ondragend;
-  set ondragend(EventHandler value);
-  EventHandler get ondragenter;
-  set ondragenter(EventHandler value);
-  EventHandler get ondragleave;
-  set ondragleave(EventHandler value);
-  EventHandler get ondragover;
-  set ondragover(EventHandler value);
-  EventHandler get ondragstart;
-  set ondragstart(EventHandler value);
-  EventHandler get ondrop;
-  set ondrop(EventHandler value);
-  EventHandler get ondurationchange;
-  set ondurationchange(EventHandler value);
-  EventHandler get onemptied;
-  set onemptied(EventHandler value);
-  EventHandler get onended;
-  set onended(EventHandler value);
-  OnErrorEventHandler get onerror;
-  set onerror(OnErrorEventHandler value);
-  EventHandler get onfocus;
-  set onfocus(EventHandler value);
-  EventHandler get onformdata;
-  set onformdata(EventHandler value);
-  EventHandler get oninput;
-  set oninput(EventHandler value);
-  EventHandler get oninvalid;
-  set oninvalid(EventHandler value);
-  EventHandler get onkeydown;
-  set onkeydown(EventHandler value);
-  EventHandler get onkeypress;
-  set onkeypress(EventHandler value);
-  EventHandler get onkeyup;
-  set onkeyup(EventHandler value);
-  EventHandler get onload;
-  set onload(EventHandler value);
-  EventHandler get onloadeddata;
-  set onloadeddata(EventHandler value);
-  EventHandler get onloadedmetadata;
-  set onloadedmetadata(EventHandler value);
-  EventHandler get onloadstart;
-  set onloadstart(EventHandler value);
-  EventHandler get onmousedown;
-  set onmousedown(EventHandler value);
-  EventHandler get onmouseenter;
-  set onmouseenter(EventHandler value);
-  EventHandler get onmouseleave;
-  set onmouseleave(EventHandler value);
-  EventHandler get onmousemove;
-  set onmousemove(EventHandler value);
-  EventHandler get onmouseout;
-  set onmouseout(EventHandler value);
-  EventHandler get onmouseover;
-  set onmouseover(EventHandler value);
-  EventHandler get onmouseup;
-  set onmouseup(EventHandler value);
-  EventHandler get onpaste;
-  set onpaste(EventHandler value);
-  EventHandler get onpause;
-  set onpause(EventHandler value);
-  EventHandler get onplay;
-  set onplay(EventHandler value);
-  EventHandler get onplaying;
-  set onplaying(EventHandler value);
-  EventHandler get onprogress;
-  set onprogress(EventHandler value);
-  EventHandler get onratechange;
-  set onratechange(EventHandler value);
-  EventHandler get onreset;
-  set onreset(EventHandler value);
-  EventHandler get onresize;
-  set onresize(EventHandler value);
-  EventHandler get onscroll;
-  set onscroll(EventHandler value);
-  EventHandler get onscrollend;
-  set onscrollend(EventHandler value);
-  EventHandler get onsecuritypolicyviolation;
-  set onsecuritypolicyviolation(EventHandler value);
-  EventHandler get onseeked;
-  set onseeked(EventHandler value);
-  EventHandler get onseeking;
-  set onseeking(EventHandler value);
-  EventHandler get onselect;
-  set onselect(EventHandler value);
-  EventHandler get onslotchange;
-  set onslotchange(EventHandler value);
-  EventHandler get onstalled;
-  set onstalled(EventHandler value);
-  EventHandler get onsubmit;
-  set onsubmit(EventHandler value);
-  EventHandler get onsuspend;
-  set onsuspend(EventHandler value);
-  EventHandler get ontimeupdate;
-  set ontimeupdate(EventHandler value);
-  EventHandler get ontoggle;
-  set ontoggle(EventHandler value);
-  EventHandler get onvolumechange;
-  set onvolumechange(EventHandler value);
-  EventHandler get onwaiting;
-  set onwaiting(EventHandler value);
-  EventHandler get onwheel;
-  set onwheel(EventHandler value);
-  EventHandler get onanimationstart;
-  set onanimationstart(EventHandler value);
-  EventHandler get onanimationiteration;
-  set onanimationiteration(EventHandler value);
-  EventHandler get onanimationend;
-  set onanimationend(EventHandler value);
-  EventHandler get onanimationcancel;
-  set onanimationcancel(EventHandler value);
-  EventHandler get ontransitionrun;
-  set ontransitionrun(EventHandler value);
-  EventHandler get ontransitionstart;
-  set ontransitionstart(EventHandler value);
-  EventHandler get ontransitionend;
-  set ontransitionend(EventHandler value);
-  EventHandler get ontransitioncancel;
-  set ontransitioncancel(EventHandler value);
-  EventHandler get onpointerover;
-  set onpointerover(EventHandler value);
-  EventHandler get onpointerenter;
-  set onpointerenter(EventHandler value);
-  EventHandler get onpointerdown;
-  set onpointerdown(EventHandler value);
-  EventHandler get onpointermove;
-  set onpointermove(EventHandler value);
-  EventHandler get onpointerup;
-  set onpointerup(EventHandler value);
-  EventHandler get onpointercancel;
-  set onpointercancel(EventHandler value);
-  EventHandler get onpointerout;
-  set onpointerout(EventHandler value);
-  EventHandler get onpointerleave;
-  set onpointerleave(EventHandler value);
-  EventHandler get ongotpointercapture;
-  set ongotpointercapture(EventHandler value);
-  EventHandler get onlostpointercapture;
-  set onlostpointercapture(EventHandler value);
-  EventHandler get onselectstart;
-  set onselectstart(EventHandler value);
-  EventHandler get onselectionchange;
-  set onselectionchange(EventHandler value);
-  EventHandler get ontouchstart;
-  set ontouchstart(EventHandler value);
-  EventHandler get ontouchend;
-  set ontouchend(EventHandler value);
-  EventHandler get ontouchmove;
-  set ontouchmove(EventHandler value);
-  EventHandler get ontouchcancel;
-  set ontouchcancel(EventHandler value);
+  int get childElementCount {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onabort {
+    unsupportedPlatformError();
+  }
+
+  set onabort(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onauxclick {
+    unsupportedPlatformError();
+  }
+
+  set onauxclick(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onbeforeinput {
+    unsupportedPlatformError();
+  }
+
+  set onbeforeinput(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onbeforetoggle {
+    unsupportedPlatformError();
+  }
+
+  set onbeforetoggle(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onblur {
+    unsupportedPlatformError();
+  }
+
+  set onblur(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get oncancel {
+    unsupportedPlatformError();
+  }
+
+  set oncancel(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get oncanplay {
+    unsupportedPlatformError();
+  }
+
+  set oncanplay(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get oncanplaythrough {
+    unsupportedPlatformError();
+  }
+
+  set oncanplaythrough(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onchange {
+    unsupportedPlatformError();
+  }
+
+  set onchange(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onclick {
+    unsupportedPlatformError();
+  }
+
+  set onclick(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onclose {
+    unsupportedPlatformError();
+  }
+
+  set onclose(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get oncontextlost {
+    unsupportedPlatformError();
+  }
+
+  set oncontextlost(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get oncontextmenu {
+    unsupportedPlatformError();
+  }
+
+  set oncontextmenu(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get oncontextrestored {
+    unsupportedPlatformError();
+  }
+
+  set oncontextrestored(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get oncopy {
+    unsupportedPlatformError();
+  }
+
+  set oncopy(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get oncuechange {
+    unsupportedPlatformError();
+  }
+
+  set oncuechange(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get oncut {
+    unsupportedPlatformError();
+  }
+
+  set oncut(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ondblclick {
+    unsupportedPlatformError();
+  }
+
+  set ondblclick(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ondrag {
+    unsupportedPlatformError();
+  }
+
+  set ondrag(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ondragend {
+    unsupportedPlatformError();
+  }
+
+  set ondragend(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ondragenter {
+    unsupportedPlatformError();
+  }
+
+  set ondragenter(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ondragleave {
+    unsupportedPlatformError();
+  }
+
+  set ondragleave(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ondragover {
+    unsupportedPlatformError();
+  }
+
+  set ondragover(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ondragstart {
+    unsupportedPlatformError();
+  }
+
+  set ondragstart(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ondrop {
+    unsupportedPlatformError();
+  }
+
+  set ondrop(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ondurationchange {
+    unsupportedPlatformError();
+  }
+
+  set ondurationchange(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onemptied {
+    unsupportedPlatformError();
+  }
+
+  set onemptied(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onended {
+    unsupportedPlatformError();
+  }
+
+  set onended(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  OnErrorEventHandler get onerror {
+    unsupportedPlatformError();
+  }
+
+  set onerror(OnErrorEventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onfocus {
+    unsupportedPlatformError();
+  }
+
+  set onfocus(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onformdata {
+    unsupportedPlatformError();
+  }
+
+  set onformdata(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get oninput {
+    unsupportedPlatformError();
+  }
+
+  set oninput(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get oninvalid {
+    unsupportedPlatformError();
+  }
+
+  set oninvalid(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onkeydown {
+    unsupportedPlatformError();
+  }
+
+  set onkeydown(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onkeypress {
+    unsupportedPlatformError();
+  }
+
+  set onkeypress(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onkeyup {
+    unsupportedPlatformError();
+  }
+
+  set onkeyup(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onload {
+    unsupportedPlatformError();
+  }
+
+  set onload(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onloadeddata {
+    unsupportedPlatformError();
+  }
+
+  set onloadeddata(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onloadedmetadata {
+    unsupportedPlatformError();
+  }
+
+  set onloadedmetadata(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onloadstart {
+    unsupportedPlatformError();
+  }
+
+  set onloadstart(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onmousedown {
+    unsupportedPlatformError();
+  }
+
+  set onmousedown(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onmouseenter {
+    unsupportedPlatformError();
+  }
+
+  set onmouseenter(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onmouseleave {
+    unsupportedPlatformError();
+  }
+
+  set onmouseleave(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onmousemove {
+    unsupportedPlatformError();
+  }
+
+  set onmousemove(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onmouseout {
+    unsupportedPlatformError();
+  }
+
+  set onmouseout(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onmouseover {
+    unsupportedPlatformError();
+  }
+
+  set onmouseover(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onmouseup {
+    unsupportedPlatformError();
+  }
+
+  set onmouseup(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onpaste {
+    unsupportedPlatformError();
+  }
+
+  set onpaste(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onpause {
+    unsupportedPlatformError();
+  }
+
+  set onpause(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onplay {
+    unsupportedPlatformError();
+  }
+
+  set onplay(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onplaying {
+    unsupportedPlatformError();
+  }
+
+  set onplaying(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onprogress {
+    unsupportedPlatformError();
+  }
+
+  set onprogress(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onratechange {
+    unsupportedPlatformError();
+  }
+
+  set onratechange(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onreset {
+    unsupportedPlatformError();
+  }
+
+  set onreset(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onresize {
+    unsupportedPlatformError();
+  }
+
+  set onresize(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onscroll {
+    unsupportedPlatformError();
+  }
+
+  set onscroll(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onscrollend {
+    unsupportedPlatformError();
+  }
+
+  set onscrollend(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onsecuritypolicyviolation {
+    unsupportedPlatformError();
+  }
+
+  set onsecuritypolicyviolation(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onseeked {
+    unsupportedPlatformError();
+  }
+
+  set onseeked(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onseeking {
+    unsupportedPlatformError();
+  }
+
+  set onseeking(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onselect {
+    unsupportedPlatformError();
+  }
+
+  set onselect(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onslotchange {
+    unsupportedPlatformError();
+  }
+
+  set onslotchange(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onstalled {
+    unsupportedPlatformError();
+  }
+
+  set onstalled(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onsubmit {
+    unsupportedPlatformError();
+  }
+
+  set onsubmit(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onsuspend {
+    unsupportedPlatformError();
+  }
+
+  set onsuspend(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ontimeupdate {
+    unsupportedPlatformError();
+  }
+
+  set ontimeupdate(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ontoggle {
+    unsupportedPlatformError();
+  }
+
+  set ontoggle(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onvolumechange {
+    unsupportedPlatformError();
+  }
+
+  set onvolumechange(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onwaiting {
+    unsupportedPlatformError();
+  }
+
+  set onwaiting(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onwheel {
+    unsupportedPlatformError();
+  }
+
+  set onwheel(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onanimationstart {
+    unsupportedPlatformError();
+  }
+
+  set onanimationstart(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onanimationiteration {
+    unsupportedPlatformError();
+  }
+
+  set onanimationiteration(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onanimationend {
+    unsupportedPlatformError();
+  }
+
+  set onanimationend(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onanimationcancel {
+    unsupportedPlatformError();
+  }
+
+  set onanimationcancel(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ontransitionrun {
+    unsupportedPlatformError();
+  }
+
+  set ontransitionrun(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ontransitionstart {
+    unsupportedPlatformError();
+  }
+
+  set ontransitionstart(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ontransitionend {
+    unsupportedPlatformError();
+  }
+
+  set ontransitionend(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ontransitioncancel {
+    unsupportedPlatformError();
+  }
+
+  set ontransitioncancel(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onpointerover {
+    unsupportedPlatformError();
+  }
+
+  set onpointerover(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onpointerenter {
+    unsupportedPlatformError();
+  }
+
+  set onpointerenter(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onpointerdown {
+    unsupportedPlatformError();
+  }
+
+  set onpointerdown(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onpointermove {
+    unsupportedPlatformError();
+  }
+
+  set onpointermove(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onpointerup {
+    unsupportedPlatformError();
+  }
+
+  set onpointerup(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onpointercancel {
+    unsupportedPlatformError();
+  }
+
+  set onpointercancel(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onpointerout {
+    unsupportedPlatformError();
+  }
+
+  set onpointerout(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onpointerleave {
+    unsupportedPlatformError();
+  }
+
+  set onpointerleave(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ongotpointercapture {
+    unsupportedPlatformError();
+  }
+
+  set ongotpointercapture(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onlostpointercapture {
+    unsupportedPlatformError();
+  }
+
+  set onlostpointercapture(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onselectstart {
+    unsupportedPlatformError();
+  }
+
+  set onselectstart(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onselectionchange {
+    unsupportedPlatformError();
+  }
+
+  set onselectionchange(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ontouchstart {
+    unsupportedPlatformError();
+  }
+
+  set ontouchstart(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ontouchend {
+    unsupportedPlatformError();
+  }
+
+  set ontouchend(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ontouchmove {
+    unsupportedPlatformError();
+  }
+
+  set ontouchmove(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ontouchcancel {
+    unsupportedPlatformError();
+  }
+
+  set ontouchcancel(EventHandler value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **XMLDocument** interface represents an XML document. It inherits from
@@ -2654,9 +3742,12 @@ abstract class Document implements Node, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/XMLDocument).
-abstract class XMLDocument implements Document, JSObject {}
+extension type XMLDocument._(JSObject _) implements Document, JSObject {}
+extension type ElementCreationOptions._(JSObject _) implements JSObject {
+  factory ElementCreationOptions({String? is_}) {
+    unsupportedPlatformError();
+  }
 
-abstract class ElementCreationOptions implements JSObject {
   String get is_ {
     unsupportedPlatformError();
   }
@@ -2674,7 +3765,7 @@ abstract class ElementCreationOptions implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/DOMImplementation).
-abstract class DOMImplementation implements JSObject {
+extension type DOMImplementation._(JSObject _) implements JSObject {
   /// The **`DOMImplementation.createDocumentType()`** method returns
   /// a [DocumentType] object which can either be used with
   /// [DOMImplementation.createDocument] upon document creation or can be put
@@ -2684,7 +3775,9 @@ abstract class DOMImplementation implements JSObject {
     String qualifiedName,
     String publicId,
     String systemId,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`DOMImplementation.createDocument()`** method creates and
   /// returns an [XMLDocument].
@@ -2692,12 +3785,16 @@ abstract class DOMImplementation implements JSObject {
     String? namespace,
     String qualifiedName, [
     DocumentType? doctype,
-  ]);
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`DOMImplementation.createHTMLDocument()`** method creates a
   /// new HTML [Document].
-  Document createHTMLDocument([String title]);
+  Document createHTMLDocument([String? title]) {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`DOMImplementation.hasFeature()`** method returns a
@@ -2709,7 +3806,9 @@ abstract class DOMImplementation implements JSObject {
   /// The latest version of the spec settled to force this method to always
   /// return
   /// `true`, where the functionality was accurate and in use.
-  bool hasFeature();
+  bool hasFeature() {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`DocumentType`** interface represents a [Node] containing a doctype.
@@ -2718,25 +3817,33 @@ abstract class DOMImplementation implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/DocumentType).
-abstract class DocumentType implements Node, JSObject {
+extension type DocumentType._(JSObject _) implements Node, JSObject {
   /// The **`DocumentType.before()`** method inserts a set of
   /// [Node] objects or strings in the children list of the
   /// `DocumentType`'s parent, just before the `DocumentType`.
   /// Strings are inserted as equivalent [Text] nodes.
-  void before(JSAny nodes);
+  void before(JSAny nodes) {
+    unsupportedPlatformError();
+  }
 
   /// The **`DocumentType.after()`** method inserts a set of
   /// [Node] objects or strings in the children list of the
   /// `DocumentType`'s parent, just after the `DocumentType`.
   /// Strings are inserted as equivalent [Text] nodes.
-  void after(JSAny nodes);
+  void after(JSAny nodes) {
+    unsupportedPlatformError();
+  }
 
   /// The **`DocumentType.replaceWith()`** method replaces the document type
   /// with a set of given nodes.
-  void replaceWith(JSAny nodes);
+  void replaceWith(JSAny nodes) {
+    unsupportedPlatformError();
+  }
 
   /// The **`DocumentType.remove()`** method removes a document's `doctype`.
-  void remove();
+  void remove() {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`name`** property of the [DocumentType] returns the type
   /// of the document.
@@ -2746,7 +3853,9 @@ abstract class DocumentType implements Node, JSObject {
   ///
   /// For HTML documents, browsers always set it up to `html`, whatever the
   /// actual `DOCTYPE` in the source code is.
-  String get name;
+  String get name {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`publicId`** property of the [DocumentType] returns a
   /// formal identifier of the document.
@@ -2757,7 +3866,9 @@ abstract class DocumentType implements Node, JSObject {
   /// For HTML documents, browsers always set it up to `html`, whatever the
   /// actual `DOCTYPE` in the source code is. For SVG documents, for example, it
   /// can be `"-//W3C//DTD SVG 1.1//EN"`.
-  String get publicId;
+  String get publicId {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`systemId`** property of the [DocumentType] returns the
   /// URL of the associated DTD.
@@ -2768,7 +3879,9 @@ abstract class DocumentType implements Node, JSObject {
   /// For HTML documents, browsers always set it up to `html`, whatever the
   /// actual `DOCTYPE` in the source code is. For SVG documents, for example, it
   /// can be `"http://www.w3.org/2000/svg"`.
-  String get systemId;
+  String get systemId {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`DocumentFragment`** interface represents a minimal document object
@@ -2784,7 +3897,11 @@ abstract class DocumentType implements Node, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment).
-abstract class DocumentFragment implements Node, JSObject {
+extension type DocumentFragment._(JSObject _) implements Node, JSObject {
+  factory DocumentFragment() {
+    unsupportedPlatformError();
+  }
+
   /// The **`getElementById()`** method of the [DocumentFragment] returns an
   /// [Element] object representing the element whose [Element.id] property
   /// matches the specified string. Since element IDs are required to be unique
@@ -2797,7 +3914,9 @@ abstract class DocumentFragment implements Node, JSObject {
   /// > **Note:** IDs should be unique inside a document fragment. If two or
   /// > more elements in a document fragment have the same ID, this method
   /// > returns the first element found.
-  Element? getElementById(String elementId);
+  Element? getElementById(String elementId) {
+    unsupportedPlatformError();
+  }
 
   /// The **`DocumentFragment.prepend()`** method
   /// inserts a set of [Node] objects or string objects before
@@ -2806,7 +3925,9 @@ abstract class DocumentFragment implements Node, JSObject {
   ///
   /// This method prepends a child to a `DocumentFragment`. To prepend to an
   /// arbitrary element in the tree, see [Element.prepend].
-  void prepend(JSAny nodes);
+  void prepend(JSAny nodes) {
+    unsupportedPlatformError();
+  }
 
   /// The **`DocumentFragment.append()`** method
   /// inserts a set of [Node] objects or string objects after
@@ -2815,13 +3936,17 @@ abstract class DocumentFragment implements Node, JSObject {
   ///
   /// This method appends a child to a `DocumentFragment`. To append to an
   /// arbitrary element in the tree, see [Element.append].
-  void append(JSAny nodes);
+  void append(JSAny nodes) {
+    unsupportedPlatformError();
+  }
 
   /// The **`DocumentFragment.replaceChildren()`** method replaces the
   /// existing children of a `DocumentFragment` with a specified new set of
   /// children. These
   /// can be string or [Node] objects.
-  void replaceChildren(JSAny nodes);
+  void replaceChildren(JSAny nodes) {
+    unsupportedPlatformError();
+  }
 
   /// The **`DocumentFragment.querySelector()`** method returns the
   /// first element, or `null` if no matches are found, within the
@@ -2834,7 +3959,9 @@ abstract class DocumentFragment implements Node, JSObject {
   ///
   /// If the selectors specified in parameter are invalid a [DOMException] with
   /// a `SYNTAX_ERR` value is raised.
-  Element? querySelector(String selectors);
+  Element? querySelector(String selectors) {
+    unsupportedPlatformError();
+  }
 
   /// The **`DocumentFragment.querySelectorAll()`** method returns a
   /// [NodeList] of elements within the [DocumentFragment] (using
@@ -2844,29 +3971,39 @@ abstract class DocumentFragment implements Node, JSObject {
   ///
   /// If the selectors specified in parameter are invalid a [DOMException] with
   /// a `SYNTAX_ERR` value is raised.
-  NodeList querySelectorAll(String selectors);
+  NodeList querySelectorAll(String selectors) {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`children`** property returns a live [HTMLCollection]
   /// which contains all of the child [Element] of the document fragment upon
   /// which it was called.
-  HTMLCollection get children;
+  HTMLCollection get children {
+    unsupportedPlatformError();
+  }
 
   /// The **`DocumentFragment.firstElementChild`** read-only property
   /// returns the document fragment's first child [Element], or `null` if there
   /// are no child elements.
-  Element? get firstElementChild;
+  Element? get firstElementChild {
+    unsupportedPlatformError();
+  }
 
   /// The **`DocumentFragment.lastElementChild`** read-only property
   /// returns the document fragment's last child [Element], or `null` if there
   /// are no child elements.
-  Element? get lastElementChild;
+  Element? get lastElementChild {
+    unsupportedPlatformError();
+  }
 
   /// The **`DocumentFragment.childElementCount`** read-only property
   /// returns the number of child elements of a `DocumentFragment`.
   ///
   /// To get the number of children of a specific element, see
   /// [Element.childElementCount].
-  int get childElementCount;
+  int get childElementCount {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`ShadowRoot`** interface of the Shadow DOM API is the root node of a
@@ -2880,7 +4017,7 @@ abstract class DocumentFragment implements Node, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot).
-abstract class ShadowRoot implements DocumentFragment, JSObject {
+extension type ShadowRoot._(JSObject _) implements DocumentFragment, JSObject {
   /// The **`setHTMLUnsafe()`** method of the [ShadowRoot] interface is used to
   /// parse a string of HTML into a [DocumentFragment], which then replaces the
   /// element's subtree in the DOM.
@@ -2899,7 +4036,9 @@ abstract class ShadowRoot implements DocumentFragment, JSObject {
   ///
   /// > **Note:** This method should be used instead of [ShadowRoot.innerHTML]
   /// > when a string of HTML may contain declarative shadow roots.
-  void setHTMLUnsafe(JSAny html);
+  void setHTMLUnsafe(JSAny html) {
+    unsupportedPlatformError();
+  }
 
   /// The **`getHTML()`** method of the [ShadowRoot] interface is used to
   /// serialize a shadow root's DOM to an HTML string.
@@ -2913,7 +4052,9 @@ abstract class ShadowRoot implements DocumentFragment, JSObject {
   /// Without arguments, child nodes that are shadow roots are not serialized,
   /// and this method behaves in the same way as reading the value of
   /// [Element.innerHTML].
-  String getHTML([GetHTMLOptions options]);
+  String getHTML([GetHTMLOptions? options]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`getAnimations()`** method of the [ShadowRoot] interface
   /// returns an array of all [Animation] objects currently in effect whose
@@ -2922,7 +4063,9 @@ abstract class ShadowRoot implements DocumentFragment, JSObject {
   /// [CSS Transitions](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_transitions),
   /// and
   /// [Web Animations](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API).
-  JSArray<Animation> getAnimations();
+  JSArray<Animation> getAnimations() {
+    unsupportedPlatformError();
+  }
 
   /// The **`mode`** read-only property of the [ShadowRoot] specifies its mode —
   /// either `open` or `closed`.
@@ -2940,7 +4083,9 @@ abstract class ShadowRoot implements DocumentFragment, JSObject {
   /// attribute of the
   /// [`<template>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template)
   /// element when a shadow root is created declaratively.
-  ShadowRootMode get mode;
+  ShadowRootMode get mode {
+    unsupportedPlatformError();
+  }
 
   /// The **`delegatesFocus`** read-only property of the [ShadowRoot] interface
   /// returns `true` if the shadow root delegates focus, and `false` otherwise.
@@ -2967,14 +4112,18 @@ abstract class ShadowRoot implements DocumentFragment, JSObject {
   /// attribute of the
   /// [`<template>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template)
   /// element when a shadow root is created declaratively.
-  bool get delegatesFocus;
+  bool get delegatesFocus {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`slotAssignment`** property of the [ShadowRoot] interface
   /// returns the _slot assignment mode_ for the shadow DOM tree. Nodes are
   /// either automatically assigned (`named`) or manually assigned (`manual`).
   /// The value of this property defined using the `slotAssignment` option when
   /// calling [Element.attachShadow].
-  SlotAssignmentMode get slotAssignment;
+  SlotAssignmentMode get slotAssignment {
+    unsupportedPlatformError();
+  }
 
   /// The **`clonable`** read-only property of the [ShadowRoot] interface
   /// returns `true` if the shadow root is clonable, and `false` otherwise.
@@ -2988,7 +4137,9 @@ abstract class ShadowRoot implements DocumentFragment, JSObject {
   /// [`shadowrootclonable`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template#shadowrootclonable)
   /// attribute of the `<template>` element that is being used to declaratively
   /// attach a shadow root.
-  bool get clonable;
+  bool get clonable {
+    unsupportedPlatformError();
+  }
 
   /// The **`serializable`** read-only property of the [ShadowRoot] interface
   /// returns `true` if the shadow root is serializable.
@@ -3006,25 +4157,42 @@ abstract class ShadowRoot implements DocumentFragment, JSObject {
   /// [`options.serializable`](/en-US/docs/Web/API/Element/attachShadow#serializable)
   /// parameter to `true` when using
   /// [`Element.attachShadow()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/attachShadow).
-  bool get serializable;
+  bool get serializable {
+    unsupportedPlatformError();
+  }
 
   /// The **`host`** read-only property of
   /// the [ShadowRoot] returns a reference to the DOM element the
   /// `ShadowRoot` is attached to.
-  Element get host;
-  EventHandler get onslotchange;
-  set onslotchange(EventHandler value);
+  Element get host {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onslotchange {
+    unsupportedPlatformError();
+  }
+
+  set onslotchange(EventHandler value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`innerHTML`** property of the [ShadowRoot]
   /// interface sets or returns a reference to the DOM tree inside the
   /// `ShadowRoot`.
-  JSAny get innerHTML;
-  set innerHTML(JSAny value);
+  JSAny get innerHTML {
+    unsupportedPlatformError();
+  }
+
+  set innerHTML(JSAny value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`styleSheets`** read-only property of the [ShadowRoot] interface
   /// returns a [StyleSheetList] of [CSSStyleSheet] objects, for stylesheets
   /// explicitly linked into or embedded in a shadow tree.
-  StyleSheetList get styleSheets;
+  StyleSheetList get styleSheets {
+    unsupportedPlatformError();
+  }
 
   /// The **`adoptedStyleSheets`** property of the [ShadowRoot] interface sets
   /// an array of constructed stylesheets to be used by the shadow DOM subtree.
@@ -3051,31 +4219,44 @@ abstract class ShadowRoot implements DocumentFragment, JSObject {
   /// constructor](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet/CSSStyleSheet),
   /// and from within the same parent [Document] as the shadow root, may be
   /// adopted.
-  JSArray<CSSStyleSheet> get adoptedStyleSheets;
-  set adoptedStyleSheets(JSArray<CSSStyleSheet> value);
+  JSArray<CSSStyleSheet> get adoptedStyleSheets {
+    unsupportedPlatformError();
+  }
+
+  set adoptedStyleSheets(JSArray<CSSStyleSheet> value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`fullscreenElement`** read-only property of the
   /// [ShadowRoot] interface returns the element within the shadow tree that is
   /// currently displayed in full screen.
-  Element? get fullscreenElement;
+  Element? get fullscreenElement {
+    unsupportedPlatformError();
+  }
 
   /// The **`activeElement`** read-only property of the
   /// [ShadowRoot] interface returns the element within the shadow tree that has
   /// focus.
-  Element? get activeElement;
+  Element? get activeElement {
+    unsupportedPlatformError();
+  }
 
   /// The **`pictureInPictureElement`** read-only property of the
   /// [ShadowRoot] interface returns the [Element] that is currently being
   /// presented in picture-in-picture mode in this shadow tree, or `null` if
   /// picture-in-picture mode is not currently in use.
-  Element? get pictureInPictureElement;
+  Element? get pictureInPictureElement {
+    unsupportedPlatformError();
+  }
 
   /// The **`pointerLockElement`** read-only property of the [ShadowRoot]
   /// interface provides the element set as the target for mouse events while
   /// the pointer is locked.
   /// It is `null` if lock is pending, pointer is unlocked, or the target is in
   /// another tree.
-  Element? get pointerLockElement;
+  Element? get pointerLockElement {
+    unsupportedPlatformError();
+  }
 }
 
 /// **`Element`** is the most general base class from which all element objects
@@ -3095,12 +4276,14 @@ abstract class ShadowRoot implements DocumentFragment, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Element).
-abstract class Element implements Node, JSObject {
+extension type Element._(JSObject _) implements Node, JSObject {
   /// The **`hasAttributes()`** method of the [Element]
   /// interface returns a boolean value indicating whether the current element
   /// has any
   /// attributes or not.
-  bool hasAttributes();
+  bool hasAttributes() {
+    unsupportedPlatformError();
+  }
 
   /// The **`getAttributeNames()`** method of the
   /// [Element] interface returns the attribute names of the element as an
@@ -3117,7 +4300,9 @@ abstract class Element implements Node, JSObject {
   /// by a colon, followed by the attribute name (for example,
   /// **`xlink:href`**), while any attributes which have no namespace prefix
   /// have their names returned as-is (for example, **`href`**).
-  JSArray<JSString> getAttributeNames();
+  JSArray<JSString> getAttributeNames() {
+    unsupportedPlatformError();
+  }
 
   /// The **`getAttribute()`** method of the
   /// [Element] interface returns the value of a specified attribute on the
@@ -3127,7 +4312,9 @@ abstract class Element implements Node, JSObject {
   ///
   /// If you need to inspect the [Attr] node's properties, you can use the
   /// [Element.getAttributeNode] method instead.
-  String? getAttribute(String qualifiedName);
+  String? getAttribute(String qualifiedName) {
+    unsupportedPlatformError();
+  }
 
   /// The **`getAttributeNS()`** method of the [Element]
   /// interface returns the string value of the attribute with the specified
@@ -3143,7 +4330,9 @@ abstract class Element implements Node, JSObject {
   String? getAttributeNS(
     String? namespace,
     String localName,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`setAttribute()`** method of the [Element] interface sets the value
   /// of an attribute on the specified element. If the attribute already exists,
@@ -3159,7 +4348,9 @@ abstract class Element implements Node, JSObject {
   void setAttribute(
     String qualifiedName,
     String value,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// `setAttributeNS` adds a new attribute or changes the value of an attribute
   /// with the given namespace and name.
@@ -3171,12 +4362,16 @@ abstract class Element implements Node, JSObject {
     String? namespace,
     String qualifiedName,
     String value,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The [Element] method
   /// **`removeAttribute()`** removes the attribute with the
   /// specified name from the element.
-  void removeAttribute(String qualifiedName);
+  void removeAttribute(String qualifiedName) {
+    unsupportedPlatformError();
+  }
 
   /// The **`removeAttributeNS()`** method of the
   /// [Element] interface removes the specified attribute with the specified
@@ -3188,20 +4383,26 @@ abstract class Element implements Node, JSObject {
   void removeAttributeNS(
     String? namespace,
     String localName,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`toggleAttribute()`** method of the
   /// [Element] interface toggles a Boolean attribute (removing it if it is
   /// present and adding it if it is not present) on the given element.
   bool toggleAttribute(
     String qualifiedName, [
-    bool force,
-  ]);
+    bool? force,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Element.hasAttribute()`** method returns a
   /// **Boolean** value indicating whether the specified element has the
   /// specified attribute or not.
-  bool hasAttribute(String qualifiedName);
+  bool hasAttribute(String qualifiedName) {
+    unsupportedPlatformError();
+  }
 
   /// The **`hasAttributeNS()`** method of the [Element] interface returns a
   /// boolean value indicating whether the current element has the specified
@@ -3213,7 +4414,9 @@ abstract class Element implements Node, JSObject {
   bool hasAttributeNS(
     String? namespace,
     String localName,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// Returns the specified attribute of the specified element, as an [Attr]
   /// node.
@@ -3222,7 +4425,9 @@ abstract class Element implements Node, JSObject {
   /// [instance properties](https://developer.mozilla.org/en-US/docs/Web/API/Attr#instance_properties).
   /// If you only need the attribute's value, you can use the
   /// [Element.getAttribute] method instead.
-  Attr? getAttributeNode(String qualifiedName);
+  Attr? getAttributeNode(String qualifiedName) {
+    unsupportedPlatformError();
+  }
 
   /// The **`getAttributeNodeNS()`** method of the [Element] interface returns
   /// the namespaced [Attr] node of an element.
@@ -3238,7 +4443,9 @@ abstract class Element implements Node, JSObject {
   Attr? getAttributeNodeNS(
     String? namespace,
     String localName,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`setAttributeNode()`** method of the [Element] interface adds a new
   /// [Attr] node to the specified element.
@@ -3246,7 +4453,9 @@ abstract class Element implements Node, JSObject {
   /// If you don't need to work with the attribute node (such as cloning from
   /// another element) before adding it, you can use the [Element.setAttribute]
   /// method instead.
-  Attr? setAttributeNode(Attr attr);
+  Attr? setAttributeNode(Attr attr) {
+    unsupportedPlatformError();
+  }
 
   /// The **`setAttributeNodeNS()`** method of the [Element] interface adds a
   /// new namespaced [Attr] node to an element.
@@ -3258,29 +4467,39 @@ abstract class Element implements Node, JSObject {
   /// If you are working with HTML documents and you don't need to specify the
   /// requested attribute as being part of a specific namespace, use the
   /// [Element.setAttribute] method instead.
-  Attr? setAttributeNodeNS(Attr attr);
+  Attr? setAttributeNodeNS(Attr attr) {
+    unsupportedPlatformError();
+  }
 
   /// The **`removeAttributeNode()`** method of the [Element] interface removes
   /// the specified [Attr] node from the element.
   ///
   /// If you don't need to inspect the attribute node before removing it, you
   /// can use the [Element.removeAttribute] method instead.
-  Attr removeAttributeNode(Attr attr);
+  Attr removeAttributeNode(Attr attr) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Element.attachShadow()`** method attaches a shadow DOM tree to the
   /// specified element and returns a reference to its [ShadowRoot].
-  ShadowRoot attachShadow(ShadowRootInit init);
+  ShadowRoot attachShadow(ShadowRootInit init) {
+    unsupportedPlatformError();
+  }
 
   /// The **`closest()`** method of the [Element] interface traverses the
   /// element and its parents (heading toward the document root) until it finds
   /// a node that matches the specified
   /// [CSS selector](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors).
-  Element? closest(String selectors);
+  Element? closest(String selectors) {
+    unsupportedPlatformError();
+  }
 
   /// The **`matches()`** method of the [Element] interface tests whether the
   /// element would be selected by the specified
   /// [CSS selector](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors).
-  bool matches(String selectors);
+  bool matches(String selectors) {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`Element.getElementsByTagName()`** method returns a live
@@ -3306,7 +4525,9 @@ abstract class Element implements Node, JSObject {
   /// `Element.getElementsByTagName` is similar to
   /// [Document.getElementsByTagName], except that it only searches for
   /// elements that are descendants of the specified element.
-  HTMLCollection getElementsByTagName(String qualifiedName);
+  HTMLCollection getElementsByTagName(String qualifiedName) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Element.getElementsByTagNameNS()`** method returns a
   /// live [HTMLCollection] of elements with the given tag name belonging to the
@@ -3316,7 +4537,9 @@ abstract class Element implements Node, JSObject {
   HTMLCollection getElementsByTagNameNS(
     String? namespace,
     String localName,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The [Element] method
   /// **`getElementsByClassName()`** returns a live
@@ -3326,7 +4549,9 @@ abstract class Element implements Node, JSObject {
   /// The method [Document.getElementsByClassName]
   /// on the [Document] interface works essentially the same way, except it acts
   /// on the entire document, starting at the document root.
-  HTMLCollection getElementsByClassName(String classNames);
+  HTMLCollection getElementsByClassName(String classNames) {
+    unsupportedPlatformError();
+  }
 
   /// The **`insertAdjacentElement()`** method of the
   /// [Element] interface inserts a given element node at a given position
@@ -3334,7 +4559,9 @@ abstract class Element implements Node, JSObject {
   Element? insertAdjacentElement(
     String where,
     Element element,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`insertAdjacentText()`** method of the [Element] interface, given a
   /// relative position and a string, inserts a new text node at the given
@@ -3342,14 +4569,18 @@ abstract class Element implements Node, JSObject {
   void insertAdjacentText(
     String where,
     String data,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`computedStyleMap()`** method of
   /// the [Element] interface returns a [StylePropertyMapReadOnly]
   /// interface which provides a read-only representation of a CSS declaration
   /// block that is
   /// an alternative to [CSSStyleDeclaration].
-  StylePropertyMapReadOnly computedStyleMap();
+  StylePropertyMapReadOnly computedStyleMap() {
+    unsupportedPlatformError();
+  }
 
   /// The **`getClientRects()`** method of the [Element]
   /// interface returns a collection of [DOMRect] objects that indicate the
@@ -3361,14 +4592,18 @@ abstract class Element implements Node, JSObject {
   /// [inline-level element](https://developer.mozilla.org/en-US/docs/Glossary/Inline-level_content)
   /// (such as a multiline
   /// `span` element, by default) has a border box around each line.
-  DOMRectList getClientRects();
+  DOMRectList getClientRects() {
+    unsupportedPlatformError();
+  }
 
   /// The **`Element.getBoundingClientRect()`** method returns a
   /// [DOMRect] object providing information about the size of an element and
   /// its
   /// position relative to the
   /// [viewport](https://developer.mozilla.org/en-US/docs/Glossary/Viewport).
-  DOMRect getBoundingClientRect();
+  DOMRect getBoundingClientRect() {
+    unsupportedPlatformError();
+  }
 
   /// The **`checkVisibility()`** method of the [Element] interface checks
   /// whether the element is visible.
@@ -3392,37 +4627,47 @@ abstract class Element implements Node, JSObject {
   /// property makes it invisible, or if the element  property has a value of
   /// [`auto`](https://developer.mozilla.org/en-US/docs/Web/CSS/content-visibility#auto)
   /// and its rendering is currently being skipped.
-  bool checkVisibility([CheckVisibilityOptions options]);
+  bool checkVisibility([CheckVisibilityOptions? options]) {
+    unsupportedPlatformError();
+  }
 
   /// The [Element] interface's
   /// **`scrollIntoView()`** method scrolls the element's ancestor
   /// containers such that the element on which `scrollIntoView()` is called is
   /// visible to the user.
-  void scrollIntoView([JSAny arg]);
+  void scrollIntoView([JSAny? arg]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`scroll()`** method of the [Element]
   /// interface scrolls the element to a particular set of coordinates inside a
   /// given
   /// element.
   void scroll([
-    JSAny optionsOrX,
-    num y,
-  ]);
+    JSAny? optionsOrX,
+    num? y,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`scrollTo()`** method of the [Element]
   /// interface scrolls to a particular set of coordinates inside a given
   /// element.
   void scrollTo([
-    JSAny optionsOrX,
-    num y,
-  ]);
+    JSAny? optionsOrX,
+    num? y,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`scrollBy()`** method of the [Element]
   /// interface scrolls an element by the given amount.
   void scrollBy([
-    JSAny optionsOrX,
-    num y,
-  ]);
+    JSAny? optionsOrX,
+    num? y,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Element.requestFullscreen()`**
   /// method issues an asynchronous request to make the element be displayed in
@@ -3440,7 +4685,9 @@ abstract class Element implements Node, JSObject {
   /// element has been
   /// detached from the original document, then the document receives these
   /// events instead.
-  JSPromise<JSAny?> requestFullscreen([FullscreenOptions options]);
+  JSPromise<JSAny?> requestFullscreen([FullscreenOptions? options]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`setHTMLUnsafe()`** method of the [Element] interface is used to
   /// parse a string of HTML into a [DocumentFragment], which then replaces the
@@ -3460,7 +4707,9 @@ abstract class Element implements Node, JSObject {
   ///
   /// > **Note:** This method should be used instead of [Element.innerHTML] when
   /// > a string of HTML may contain declarative shadow roots.
-  void setHTMLUnsafe(JSAny html);
+  void setHTMLUnsafe(JSAny html) {
+    unsupportedPlatformError();
+  }
 
   /// The **`getHTML()`** method of the [Element] interface is used to serialize
   /// an element's DOM to an HTML string.
@@ -3474,7 +4723,9 @@ abstract class Element implements Node, JSObject {
   /// Without arguments, child nodes that are shadow roots are not serialized,
   /// and this method behaves in the same way as reading the value of
   /// [Element.innerHTML].
-  String getHTML([GetHTMLOptions options]);
+  String getHTML([GetHTMLOptions? options]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`insertAdjacentHTML()`** method of the
   /// [Element] interface parses the specified text as HTML or XML and inserts
@@ -3482,7 +4733,9 @@ abstract class Element implements Node, JSObject {
   void insertAdjacentHTML(
     String position,
     JSAny string,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`setPointerCapture()`** method of the
   /// [Element] interface is used to designate a specific element as the
@@ -3521,7 +4774,9 @@ abstract class Element implements Node, JSObject {
   /// that an element continues to receive pointer events even if the pointer
   /// device's contact
   /// moves off the element (such as by scrolling or panning).
-  void setPointerCapture(int pointerId);
+  void setPointerCapture(int pointerId) {
+    unsupportedPlatformError();
+  }
 
   /// The **`releasePointerCapture()`** method of the
   /// [Element] interface releases (stops) _pointer capture_ that was
@@ -3530,12 +4785,16 @@ abstract class Element implements Node, JSObject {
   /// See the [Element.setPointerCapture] method
   /// for a description of _pointer capture_ and how to set it for a particular
   /// element.
-  void releasePointerCapture(int pointerId);
+  void releasePointerCapture(int pointerId) {
+    unsupportedPlatformError();
+  }
 
   /// The **`hasPointerCapture()`** method of the
   /// [Element] interface checks whether the element on which it is invoked has
   /// pointer capture for the pointer identified by the given pointer ID.
-  bool hasPointerCapture(int pointerId);
+  bool hasPointerCapture(int pointerId) {
+    unsupportedPlatformError();
+  }
 
   /// The **`requestPointerLock()`** method of the [Element] interface lets you
   /// asynchronously ask for the pointer to be locked on the given element.
@@ -3554,13 +4813,17 @@ abstract class Element implements Node, JSObject {
   /// > `Promise`. However, note that this version is not yet a standard and is
   /// > not implemented by all browsers. See
   /// > [Browser compatibility](#browser_compatibility) for more information.
-  JSPromise<JSAny?> requestPointerLock([PointerLockOptions options]);
+  JSPromise<JSAny?> requestPointerLock([PointerLockOptions? options]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Element.prepend()`** method inserts a set of
   /// [Node] objects or string objects before the first child
   /// of the [Element]. String objects are inserted as
   /// equivalent [Text] nodes.
-  void prepend(JSAny nodes);
+  void prepend(JSAny nodes) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Element.append()`** method
   /// inserts a set of [Node] objects or string objects after
@@ -3576,46 +4839,62 @@ abstract class Element implements Node, JSObject {
   /// `Node.appendChild()` returns the appended [Node] object.
   /// - `Element.append()` can append several nodes and strings, whereas
   /// `Node.appendChild()` can only append one node.
-  void append(JSAny nodes);
+  void append(JSAny nodes) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Element.replaceChildren()`** method replaces the
   /// existing children of a [Node] with a specified new set of children. These
   /// can be string or [Node] objects.
-  void replaceChildren(JSAny nodes);
+  void replaceChildren(JSAny nodes) {
+    unsupportedPlatformError();
+  }
 
   /// The **`querySelector()`** method of the [Element]
   /// interface returns the first element that is a descendant of the element on
   /// which it is
   /// invoked that matches the specified group of selectors.
-  Element? querySelector(String selectors);
+  Element? querySelector(String selectors) {
+    unsupportedPlatformError();
+  }
 
   /// The [Element] method **`querySelectorAll()`**
   /// returns a static (not live) [NodeList] representing a list of elements
   /// matching the specified group of selectors which are descendants of the
   /// element on which
   /// the method was called.
-  NodeList querySelectorAll(String selectors);
+  NodeList querySelectorAll(String selectors) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Element.before()`** method inserts a set of
   /// [Node] or string objects in the children list of this
   /// `Element`'s parent, just before this `Element`.
   /// String objects are inserted as equivalent [Text] nodes.
-  void before(JSAny nodes);
+  void before(JSAny nodes) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Element.after()`** method inserts a set of
   /// [Node] or string objects in the children list of the
   /// `Element`'s parent, just after the `Element`.
   /// String objects are inserted as equivalent [Text] nodes.
-  void after(JSAny nodes);
+  void after(JSAny nodes) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Element.replaceWith()`** method replaces this
   /// `Element` in the children list of its parent with a set of
   /// [Node] or string objects. String
   /// objects are inserted as equivalent [Text] nodes.
-  void replaceWith(JSAny nodes);
+  void replaceWith(JSAny nodes) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Element.remove()`** method removes the element from the DOM.
-  void remove();
+  void remove() {
+    unsupportedPlatformError();
+  }
 
   /// The [Element] interface's **`animate()`** method
   /// is a shortcut method which creates a new [Animation], applies it to the
@@ -3627,8 +4906,10 @@ abstract class Element implements Node, JSObject {
   /// > animations that affect an element by calling [Element.getAnimations].
   Animation animate(
     JSObject? keyframes, [
-    JSAny options,
-  ]);
+    JSAny? options,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The `getAnimations()` method of the [Element] interface
   /// (specified on the `Animatable` mixin) returns an array of all
@@ -3641,20 +4922,28 @@ abstract class Element implements Node, JSObject {
   /// > [CSS Transitions](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_transitions),
   /// > and
   /// > [Web Animations](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API).
-  JSArray<Animation> getAnimations([GetAnimationsOptions options]);
+  JSArray<Animation> getAnimations([GetAnimationsOptions? options]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Element.namespaceURI`** read-only property returns the namespace
   /// URI of the element, or `null` if the element is not in a namespace.
-  String? get namespaceURI;
+  String? get namespaceURI {
+    unsupportedPlatformError();
+  }
 
   /// The **`Element.prefix`** read-only property returns the
   /// namespace prefix of the specified element, or `null` if no prefix is
   /// specified.
-  String? get prefix;
+  String? get prefix {
+    unsupportedPlatformError();
+  }
 
   /// The **`Element.localName`** read-only property returns the
   /// local part of the qualified name of an element.
-  String get localName;
+  String get localName {
+    unsupportedPlatformError();
+  }
 
   /// The **`tagName`** read-only property
   /// of the [Element] interface returns the tag name of the element on which
@@ -3666,7 +4955,9 @@ abstract class Element implements Node, JSObject {
   /// [Element.localName] property
   /// to access the Element's local name — which for the case in the example is
   /// `img` (lowercase) .
-  String get tagName;
+  String get tagName {
+    unsupportedPlatformError();
+  }
 
   /// The **`id`** property of the [Element] interface
   /// represents the element's identifier, reflecting the
@@ -3685,15 +4976,25 @@ abstract class Element implements Node, JSObject {
   ///
   /// > **Note:** Identifiers are case-sensitive, but you should avoid creating
   /// > IDs that differ only in the capitalization.
-  String get id;
-  set id(String value);
+  String get id {
+    unsupportedPlatformError();
+  }
+
+  set id(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`className`** property of the
   /// [Element] interface gets and sets the value of the
   /// [`class` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/class)
   /// of the specified element.
-  String get className;
-  set className(String value);
+  String get className {
+    unsupportedPlatformError();
+  }
+
+  set className(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Element.classList`** is a read-only property that
   /// returns a live [DOMTokenList] collection of the `class`
@@ -3703,7 +5004,9 @@ abstract class Element implements Node, JSObject {
   /// Using `classList` is a convenient alternative to accessing an element's
   /// list
   /// of classes as a space-delimited string via [element.className].
-  DOMTokenList get classList;
+  DOMTokenList get classList {
+    unsupportedPlatformError();
+  }
 
   /// The **`slot`** property of the [Element] interface
   /// returns the name of the shadow DOM slot the element is inserted in.
@@ -3713,8 +5016,13 @@ abstract class Element implements Node, JSObject {
   /// that users can fill with their own markup (see
   /// [Using templates and slots](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_templates_and_slots)
   /// for more information).
-  String get slot;
-  set slot(String value);
+  String get slot {
+    unsupportedPlatformError();
+  }
+
+  set slot(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Element.attributes`** property returns a live collection
   /// of all attribute nodes registered to the specified node. It is a
@@ -3723,34 +5031,50 @@ abstract class Element implements Node, JSObject {
   /// more
   /// specific, `attributes` is a key/value pair of strings that represents any
   /// information regarding that attribute.
-  NamedNodeMap get attributes;
+  NamedNodeMap get attributes {
+    unsupportedPlatformError();
+  }
 
   /// The `Element.shadowRoot` read-only property
   /// represents the shadow root hosted by the element.
   ///
   /// Use [Element.attachShadow] to add a shadow root to an existing element.
-  ShadowRoot? get shadowRoot;
+  ShadowRoot? get shadowRoot {
+    unsupportedPlatformError();
+  }
 
   /// The **`part`** property of the [Element] interface
   /// represents the part identifier(s) of the element (i.e. set using the
   /// `part`
   /// attribute), returned as a [DOMTokenList]. These can be used to style parts
   /// of a shadow DOM, via the  pseudo-element.
-  DOMTokenList get part;
+  DOMTokenList get part {
+    unsupportedPlatformError();
+  }
 
   /// The **`Element.scrollTop`** property gets or sets the number of pixels by
   /// which an element's content is scrolled from its top edge. This value is
   /// subpixel precise in modern browsers, meaning that it isn't necessarily a
   /// whole number.
-  double get scrollTop;
-  set scrollTop(num value);
+  double get scrollTop {
+    unsupportedPlatformError();
+  }
+
+  set scrollTop(num value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Element.scrollLeft`** property gets or sets the number of pixels by
   /// which an element's content is scrolled from its left edge. This value is
   /// subpixel precise in modern browsers, meaning that it isn't necessarily a
   /// whole number.
-  double get scrollLeft;
-  set scrollLeft(num value);
+  double get scrollLeft {
+    unsupportedPlatformError();
+  }
+
+  set scrollLeft(num value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Element.scrollWidth`** read-only property is a
   /// measurement of the width of an element's content, including content not
@@ -3771,7 +5095,9 @@ abstract class Element implements Node, JSObject {
   /// > **Note:** This property will round the value to an integer. If you need
   /// > a fractional value,
   /// > use [element.getBoundingClientRect].
-  int get scrollWidth;
+  int get scrollWidth {
+    unsupportedPlatformError();
+  }
 
   /// The **`Element.scrollHeight`** read-only property is a
   /// measurement of the height of an element's content, including content not
@@ -3798,7 +5124,9 @@ abstract class Element implements Node, JSObject {
   /// > **Note:** This property will round the value to an integer. If you need
   /// > a fractional value, use
   /// > [Element.getBoundingClientRect].
-  int get scrollHeight;
+  int get scrollHeight {
+    unsupportedPlatformError();
+  }
 
   /// The width of the top border of an element in pixels. It is a read-only,
   /// integer
@@ -3818,7 +5146,9 @@ abstract class Element implements Node, JSObject {
   ///
   /// > **Note:** This property will round the value to an integer. If you
   /// > need a fractional value, use [element.getBoundingClientRect].
-  int get clientTop;
+  int get clientTop {
+    unsupportedPlatformError();
+  }
 
   /// The width of the left border of an element in pixels. It includes the
   /// width of the
@@ -3834,7 +5164,9 @@ abstract class Element implements Node, JSObject {
   /// > **Note:** When an element has
   /// > `display: inline`, `clientLeft` returns `0`
   /// > regardless of the element's border.
-  int get clientLeft;
+  int get clientLeft {
+    unsupportedPlatformError();
+  }
 
   /// The **`Element.clientWidth`** property is zero for inline
   /// elements and elements with no CSS; otherwise, it's the inner width of an
@@ -3851,7 +5183,9 @@ abstract class Element implements Node, JSObject {
   ///
   /// > **Note:** This property will round the value to an integer. If you need
   /// > a fractional value, use [element.getBoundingClientRect].
-  int get clientWidth;
+  int get clientWidth {
+    unsupportedPlatformError();
+  }
 
   /// The **`Element.clientHeight`** read-only property is zero for
   /// elements with no CSS or inline layout boxes; otherwise, it's the inner
@@ -3871,11 +5205,25 @@ abstract class Element implements Node, JSObject {
   ///
   /// > **Note:** This property will round the value to an integer. If you need
   /// > a fractional value, use [element.getBoundingClientRect].
-  int get clientHeight;
-  EventHandler get onfullscreenchange;
-  set onfullscreenchange(EventHandler value);
-  EventHandler get onfullscreenerror;
-  set onfullscreenerror(EventHandler value);
+  int get clientHeight {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onfullscreenchange {
+    unsupportedPlatformError();
+  }
+
+  set onfullscreenchange(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onfullscreenerror {
+    unsupportedPlatformError();
+  }
+
+  set onfullscreenerror(EventHandler value) {
+    unsupportedPlatformError();
+  }
 
   /// The [Element] property **`innerHTML`** gets or sets the HTML or XML markup
   /// contained within the element.
@@ -3901,8 +5249,13 @@ abstract class Element implements Node, JSObject {
   /// In order to set an element's contents from an HTML string that includes
   /// declarative shadow roots, you must use either [Element.setHTMLUnsafe] or
   /// [ShadowRoot.setHTMLUnsafe].
-  JSAny get innerHTML;
-  set innerHTML(JSAny value);
+  JSAny get innerHTML {
+    unsupportedPlatformError();
+  }
+
+  set innerHTML(JSAny value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`outerHTML`** attribute of the [Element]
   /// DOM interface gets the serialized HTML fragment describing the element
@@ -3915,8 +5268,13 @@ abstract class Element implements Node, JSObject {
   /// to replace the
   /// contents of an element, use the [Element.innerHTML] property
   /// instead.
-  JSAny get outerHTML;
-  set outerHTML(JSAny value);
+  JSAny get outerHTML {
+    unsupportedPlatformError();
+  }
+
+  set outerHTML(JSAny value) {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`children`** property returns a live [HTMLCollection]
   /// which contains all of the child [Element] of the element upon which it was
@@ -3925,7 +5283,9 @@ abstract class Element implements Node, JSObject {
   /// `Element.children` includes only element nodes. To get all child nodes,
   /// including non-element nodes like text and comment nodes, use
   /// [Node.childNodes].
-  HTMLCollection get children;
+  HTMLCollection get children {
+    unsupportedPlatformError();
+  }
 
   /// The **`Element.firstElementChild`** read-only property
   /// returns an element's first child [Element], or `null` if there
@@ -3934,7 +5294,9 @@ abstract class Element implements Node, JSObject {
   /// `Element.firstElementChild` includes only element nodes.
   /// To get all child nodes, including non-element nodes like text and comment
   /// nodes, use [Node.firstChild].
-  Element? get firstElementChild;
+  Element? get firstElementChild {
+    unsupportedPlatformError();
+  }
 
   /// The **`Element.lastElementChild`** read-only property
   /// returns an element's last child [Element], or `null` if there
@@ -3943,33 +5305,49 @@ abstract class Element implements Node, JSObject {
   /// `Element.lastElementChild` includes only element nodes.
   /// To get all child nodes, including non-element nodes like text and comment
   /// nodes, use [Node.lastChild].
-  Element? get lastElementChild;
+  Element? get lastElementChild {
+    unsupportedPlatformError();
+  }
 
   /// The **`Element.childElementCount`** read-only property
   /// returns the number of child elements of this element.
-  int get childElementCount;
+  int get childElementCount {
+    unsupportedPlatformError();
+  }
 
   /// The **`Element.previousElementSibling`**
   /// read-only property returns the [Element] immediately prior to the
   /// specified
   /// one in its parent's children list, or `null` if the specified element is
   /// the first one in the list.
-  Element? get previousElementSibling;
+  Element? get previousElementSibling {
+    unsupportedPlatformError();
+  }
 
   /// The **`Element.nextElementSibling`** read-only
   /// property returns the element immediately following the specified one in
   /// its parent's
   /// children list, or `null` if the specified element is the last one in the
   /// list.
-  Element? get nextElementSibling;
+  Element? get nextElementSibling {
+    unsupportedPlatformError();
+  }
 
   /// The **`assignedSlot`** read-only
   /// property of the [Element] interface returns an
   /// [HTMLSlotElement] representing the `slot` element the
   /// node is inserted in.
-  HTMLSlotElement? get assignedSlot;
-  String? get role;
-  set role(String? value);
+  HTMLSlotElement? get assignedSlot {
+    unsupportedPlatformError();
+  }
+
+  String? get role {
+    unsupportedPlatformError();
+  }
+
+  set role(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaAtomic`** property of the [Element] interface reflects the
   /// value of the
@@ -3979,8 +5357,13 @@ abstract class Element implements Node, JSObject {
   /// notifications defined by the
   /// [`aria-relevant`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-relevant)
   /// attribute.
-  String? get ariaAtomic;
-  set ariaAtomic(String? value);
+  String? get ariaAtomic {
+    unsupportedPlatformError();
+  }
+
+  set ariaAtomic(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaAutoComplete`** property of the [Element] interface reflects
   /// the value of the
@@ -3989,8 +5372,13 @@ abstract class Element implements Node, JSObject {
   /// one or more predictions of the user's intended value for a combobox,
   /// searchbox, or textbox and specifies how predictions would be presented if
   /// they were made.
-  String? get ariaAutoComplete;
-  set ariaAutoComplete(String? value);
+  String? get ariaAutoComplete {
+    unsupportedPlatformError();
+  }
+
+  set ariaAutoComplete(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaBrailleLabel`** property of the [Element] interface reflects
   /// the value of the
@@ -4003,8 +5391,13 @@ abstract class Element implements Node, JSObject {
   /// The
   /// [`aria-braillelabel`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-braillelabel)
   /// contains additional information about when the property should be set.
-  String? get ariaBrailleLabel;
-  set ariaBrailleLabel(String? value);
+  String? get ariaBrailleLabel {
+    unsupportedPlatformError();
+  }
+
+  set ariaBrailleLabel(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaBrailleRoleDescription`** property of the [Element] interface
   /// reflects the value of the
@@ -4019,8 +5412,13 @@ abstract class Element implements Node, JSObject {
   /// The
   /// [`aria-brailleroledescription`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-brailleroledescription)
   /// contains additional information about when the property should be set.
-  String? get ariaBrailleRoleDescription;
-  set ariaBrailleRoleDescription(String? value);
+  String? get ariaBrailleRoleDescription {
+    unsupportedPlatformError();
+  }
+
+  set ariaBrailleRoleDescription(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaBusy`** property of the [Element] interface reflects the value
   /// of the
@@ -4028,8 +5426,13 @@ abstract class Element implements Node, JSObject {
   /// attribute, which indicates whether an element is being modified, as
   /// assistive technologies may want to wait until the modifications are
   /// complete before exposing them to the user.
-  String? get ariaBusy;
-  set ariaBusy(String? value);
+  String? get ariaBusy {
+    unsupportedPlatformError();
+  }
+
+  set ariaBusy(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaChecked`** property of the [Element] interface reflects the
   /// value of the
@@ -4040,48 +5443,78 @@ abstract class Element implements Node, JSObject {
   /// > **Note:** Where possible use an HTML `input` element with
   /// > `type="checkbox"` as this element has built in semantics and does not
   /// > require ARIA attributes.
-  String? get ariaChecked;
-  set ariaChecked(String? value);
+  String? get ariaChecked {
+    unsupportedPlatformError();
+  }
+
+  set ariaChecked(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaColCount`** property of the [Element] interface reflects the
   /// value of the
   /// [`aria-colcount`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-colcount)
   /// attribute, which defines the number of columns in a table, grid, or
   /// treegrid.
-  String? get ariaColCount;
-  set ariaColCount(String? value);
+  String? get ariaColCount {
+    unsupportedPlatformError();
+  }
+
+  set ariaColCount(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaColIndex`** property of the [Element] interface reflects the
   /// value of the
   /// [`aria-colindex`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-colindex)
   /// attribute, which defines an element's column index or position with
   /// respect to the total number of columns within a table, grid, or treegrid.
-  String? get ariaColIndex;
-  set ariaColIndex(String? value);
+  String? get ariaColIndex {
+    unsupportedPlatformError();
+  }
+
+  set ariaColIndex(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaColSpan`** property of the [Element] interface reflects the
   /// value of the
   /// [`aria-colspan`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-colspan)
   /// attribute, which defines the number of columns spanned by a cell or
   /// gridcell within a table, grid, or treegrid.
-  String? get ariaColSpan;
-  set ariaColSpan(String? value);
+  String? get ariaColSpan {
+    unsupportedPlatformError();
+  }
+
+  set ariaColSpan(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaCurrent`** property of the [Element] interface reflects the
   /// value of the
   /// [`aria-current`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
   /// attribute, which indicates the element that represents the current item
   /// within a container or set of related elements.
-  String? get ariaCurrent;
-  set ariaCurrent(String? value);
+  String? get ariaCurrent {
+    unsupportedPlatformError();
+  }
+
+  set ariaCurrent(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaDescription`** property of the [Element] interface reflects the
   /// value of the
   /// [`aria-description`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-description)
   /// attribute, which defines a string value that describes or annotates the
   /// current element.
-  String? get ariaDescription;
-  set ariaDescription(String? value);
+  String? get ariaDescription {
+    unsupportedPlatformError();
+  }
+
+  set ariaDescription(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaDisabled`** property of the [Element] interface reflects the
   /// value of the
@@ -4092,48 +5525,84 @@ abstract class Element implements Node, JSObject {
   /// > **Note:** Where possible, use the `input` element with `type="button"`
   /// > or the `button` element — because those elements have built in semantics
   /// > and do not require ARIA attributes.
-  String? get ariaDisabled;
-  set ariaDisabled(String? value);
+  String? get ariaDisabled {
+    unsupportedPlatformError();
+  }
+
+  set ariaDisabled(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaExpanded`** property of the [Element] interface reflects the
   /// value of the
   /// [`aria-expanded`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
   /// attribute, which indicates whether a grouping element owned or controlled
   /// by this element is expanded or collapsed.
-  String? get ariaExpanded;
-  set ariaExpanded(String? value);
+  String? get ariaExpanded {
+    unsupportedPlatformError();
+  }
+
+  set ariaExpanded(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaHasPopup`** property of the [Element] interface reflects the
   /// value of the
   /// [`aria-haspopup`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-haspopup)
   /// attribute, which indicates the availability and type of interactive popup
   /// element, such as menu or dialog, that can be triggered by an element.
-  String? get ariaHasPopup;
-  set ariaHasPopup(String? value);
+  String? get ariaHasPopup {
+    unsupportedPlatformError();
+  }
+
+  set ariaHasPopup(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaHidden`** property of the [Element] interface reflects the
   /// value of the
   /// [`aria-hidden`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-hidden))
   /// attribute, which indicates whether the element is exposed to an
   /// accessibility API.
-  String? get ariaHidden;
-  set ariaHidden(String? value);
-  String? get ariaInvalid;
-  set ariaInvalid(String? value);
+  String? get ariaHidden {
+    unsupportedPlatformError();
+  }
+
+  set ariaHidden(String? value) {
+    unsupportedPlatformError();
+  }
+
+  String? get ariaInvalid {
+    unsupportedPlatformError();
+  }
+
+  set ariaInvalid(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaKeyShortcuts`** property of the [Element] interface reflects
   /// the value of the `aria-keyshortcuts` attribute, which indicates keyboard
   /// shortcuts that an author has implemented to activate or give focus to an
   /// element.
-  String? get ariaKeyShortcuts;
-  set ariaKeyShortcuts(String? value);
+  String? get ariaKeyShortcuts {
+    unsupportedPlatformError();
+  }
+
+  set ariaKeyShortcuts(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaLabel`** property of the [Element] interface reflects the value
   /// of the
   /// [`aria-label`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label)
   /// attribute, which defines a string value that labels the current element.
-  String? get ariaLabel;
-  set ariaLabel(String? value);
+  String? get ariaLabel {
+    unsupportedPlatformError();
+  }
+
+  set ariaLabel(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaLevel`** property of the [Element] interface reflects the value
   /// of the `aria-level` attribute, which defines the hierarchical level of an
@@ -4141,8 +5610,13 @@ abstract class Element implements Node, JSObject {
   ///
   /// > **Note:** Where possible use an HTML `h1` or other correct heading level
   /// > as these have built in semantics and do not require ARIA attributes.
-  String? get ariaLevel;
-  set ariaLevel(String? value);
+  String? get ariaLevel {
+    unsupportedPlatformError();
+  }
+
+  set ariaLevel(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaLive`** property of the [Element] interface reflects the value
   /// of the
@@ -4151,8 +5625,13 @@ abstract class Element implements Node, JSObject {
   /// the types of updates the user agents, assistive technologies, and user can
   /// expect from the
   /// [live region](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions).
-  String? get ariaLive;
-  set ariaLive(String? value);
+  String? get ariaLive {
+    unsupportedPlatformError();
+  }
+
+  set ariaLive(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaModal`** property of the [Element] interface reflects the value
   /// of the `aria-modal` attribute, which indicates whether an element is modal
@@ -4160,8 +5639,13 @@ abstract class Element implements Node, JSObject {
   /// `role="dialog"` replaces the technique of using aria-hidden on the
   /// background for informing assistive technologies that content outside a
   /// dialog is inert.
-  String? get ariaModal;
-  set ariaModal(String? value);
+  String? get ariaModal {
+    unsupportedPlatformError();
+  }
+
+  set ariaModal(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaMultiLine`** property of the [Element] interface reflects the
   /// value of the
@@ -4172,8 +5656,13 @@ abstract class Element implements Node, JSObject {
   /// > **Note:** Where possible use an HTML `input` element with `type="text"`
   /// > or a `textarea` as these have built in semantics and do not require ARIA
   /// > attributes.
-  String? get ariaMultiLine;
-  set ariaMultiLine(String? value);
+  String? get ariaMultiLine {
+    unsupportedPlatformError();
+  }
+
+  set ariaMultiLine(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaMultiSelectable`** property of the [Element] interface reflects
   /// the value of the
@@ -4183,16 +5672,26 @@ abstract class Element implements Node, JSObject {
   ///
   /// > **Note:** Where possible use an HTML `select` element as this has built
   /// > in semantics and does not require ARIA attributes.
-  String? get ariaMultiSelectable;
-  set ariaMultiSelectable(String? value);
+  String? get ariaMultiSelectable {
+    unsupportedPlatformError();
+  }
+
+  set ariaMultiSelectable(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaOrientation`** property of the [Element] interface reflects the
   /// value of the
   /// [`aria-orientation`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-orientation)
   /// attribute, which indicates whether the element's orientation is
   /// horizontal, vertical, or unknown/ambiguous.
-  String? get ariaOrientation;
-  set ariaOrientation(String? value);
+  String? get ariaOrientation {
+    unsupportedPlatformError();
+  }
+
+  set ariaOrientation(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaPlaceholder`** property of the [Element] interface reflects the
   /// value of the `aria-placeholder` attribute, which defines a short hint
@@ -4201,16 +5700,26 @@ abstract class Element implements Node, JSObject {
   /// > **Note:** Where possible use an HTML `input` element with `type="text"`
   /// > or a `textarea` as these have built in semantics and do not require ARIA
   /// > attributes.
-  String? get ariaPlaceholder;
-  set ariaPlaceholder(String? value);
+  String? get ariaPlaceholder {
+    unsupportedPlatformError();
+  }
+
+  set ariaPlaceholder(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaPosInSet`** property of the [Element] interface reflects the
   /// value of the
   /// [`aria-posinset`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-posinset)
   /// attribute, which defines an element's number or position in the current
   /// set of listitems or treeitems.
-  String? get ariaPosInSet;
-  set ariaPosInSet(String? value);
+  String? get ariaPosInSet {
+    unsupportedPlatformError();
+  }
+
+  set ariaPosInSet(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaPressed`** property of the [Element] interface reflects the
   /// value of the
@@ -4220,8 +5729,13 @@ abstract class Element implements Node, JSObject {
   /// > **Note:** Where possible use an HTML `input` element with
   /// > `type="button"` or the `button` element as these have built in semantics
   /// > and do not require ARIA attributes.
-  String? get ariaPressed;
-  set ariaPressed(String? value);
+  String? get ariaPressed {
+    unsupportedPlatformError();
+  }
+
+  set ariaPressed(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaReadOnly`** property of the [Element] interface reflects the
   /// value of the
@@ -4232,8 +5746,13 @@ abstract class Element implements Node, JSObject {
   /// > **Note:** Where possible use an HTML `input` element with `type="text"`
   /// > or a `textarea` as these have built in semantics and do not require ARIA
   /// > attributes.
-  String? get ariaReadOnly;
-  set ariaReadOnly(String? value);
+  String? get ariaReadOnly {
+    unsupportedPlatformError();
+  }
+
+  set ariaReadOnly(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaRequired`** property of the [Element] interface reflects the
   /// value of the `aria-required` attribute, which indicates that user input is
@@ -4242,96 +5761,165 @@ abstract class Element implements Node, JSObject {
   /// > **Note:** Where possible use an HTML `input` element with `type="text"`
   /// > or a `textarea` as these have built in semantics and do not require ARIA
   /// > attributes.
-  String? get ariaRequired;
-  set ariaRequired(String? value);
+  String? get ariaRequired {
+    unsupportedPlatformError();
+  }
+
+  set ariaRequired(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaRoleDescription`** property of the [Element] interface reflects
   /// the value of the
   /// [`aria-roledescription`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-roledescription)
   /// attribute, which defines a human-readable, author-localized description
   /// for the role of an element.
-  String? get ariaRoleDescription;
-  set ariaRoleDescription(String? value);
+  String? get ariaRoleDescription {
+    unsupportedPlatformError();
+  }
+
+  set ariaRoleDescription(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaRowCount`** property of the [Element] interface reflects the
   /// value of the
   /// [`aria-rowcount`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-rowcount)
   /// attribute, which defines the total number of rows in a table, grid, or
   /// treegrid.
-  String? get ariaRowCount;
-  set ariaRowCount(String? value);
+  String? get ariaRowCount {
+    unsupportedPlatformError();
+  }
+
+  set ariaRowCount(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaRowIndex`** property of the [Element] interface reflects the
   /// value of the
   /// [`aria-rowindex`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-rowindex)
   /// attribute, which defines an element's row index or position with respect
   /// to the total number of rows within a table, grid, or treegrid.
-  String? get ariaRowIndex;
-  set ariaRowIndex(String? value);
+  String? get ariaRowIndex {
+    unsupportedPlatformError();
+  }
+
+  set ariaRowIndex(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaRowSpan`** property of the [Element] interface reflects the
   /// value of the
   /// [`aria-rowspan`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-rowspan)
   /// attribute, which defines the number of rows spanned by a cell or gridcell
   /// within a table, grid, or treegrid.
-  String? get ariaRowSpan;
-  set ariaRowSpan(String? value);
+  String? get ariaRowSpan {
+    unsupportedPlatformError();
+  }
+
+  set ariaRowSpan(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaSelected`** property of the [Element] interface reflects the
   /// value of the
   /// [`aria-selected`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
   /// attribute, which indicates the current "selected" state of elements that
   /// have a selected state.
-  String? get ariaSelected;
-  set ariaSelected(String? value);
+  String? get ariaSelected {
+    unsupportedPlatformError();
+  }
+
+  set ariaSelected(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaSetSize`** property of the [Element] interface reflects the
   /// value of the
   /// [`aria-setsize`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-setsize)
   /// attribute, which defines the number of items in the current set of
   /// listitems or treeitems.
-  String? get ariaSetSize;
-  set ariaSetSize(String? value);
+  String? get ariaSetSize {
+    unsupportedPlatformError();
+  }
+
+  set ariaSetSize(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaSort`** property of the [Element] interface reflects the value
   /// of the
   /// [`aria-sort`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-sort)
   /// attribute, which indicates if items in a table or grid are sorted in
   /// ascending or descending order.
-  String? get ariaSort;
-  set ariaSort(String? value);
+  String? get ariaSort {
+    unsupportedPlatformError();
+  }
+
+  set ariaSort(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaValueMax`** property of the [Element] interface reflects the
   /// value of the
   /// [`aria-valuemax`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-valuemax)
   /// attribute, which defines the maximum allowed value for a range widget.
-  String? get ariaValueMax;
-  set ariaValueMax(String? value);
+  String? get ariaValueMax {
+    unsupportedPlatformError();
+  }
+
+  set ariaValueMax(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaValueMin`** property of the [Element] interface reflects the
   /// value of the
   /// [`aria-valuemin`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-valuemin)
   /// attribute, which defines the minimum allowed value for a range widget.
-  String? get ariaValueMin;
-  set ariaValueMin(String? value);
+  String? get ariaValueMin {
+    unsupportedPlatformError();
+  }
+
+  set ariaValueMin(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaValueNow`** property of the [Element] interface reflects the
   /// value of the
   /// [`aria-valuenow`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-valuenow)
   /// attribute, which defines the current value for a range widget.
-  String? get ariaValueNow;
-  set ariaValueNow(String? value);
+  String? get ariaValueNow {
+    unsupportedPlatformError();
+  }
+
+  set ariaValueNow(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaValueText`** property of the [Element] interface reflects the
   /// value of the
   /// [`aria-valuetext`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-valuetext)
   /// attribute, which defines the human-readable text alternative of
   /// aria-valuenow for a range widget.
-  String? get ariaValueText;
-  set ariaValueText(String? value);
-}
+  String? get ariaValueText {
+    unsupportedPlatformError();
+  }
 
-abstract class ShadowRootInit implements JSObject {
+  set ariaValueText(String? value) {
+    unsupportedPlatformError();
+  }
+}
+extension type ShadowRootInit._(JSObject _) implements JSObject {
+  factory ShadowRootInit({
+    required ShadowRootMode mode,
+    bool? delegatesFocus,
+    SlotAssignmentMode? slotAssignment,
+    bool? clonable,
+    bool? serializable,
+  }) {
+    unsupportedPlatformError();
+  }
+
   ShadowRootMode get mode {
     unsupportedPlatformError();
   }
@@ -4388,14 +5976,16 @@ abstract class ShadowRootInit implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/NamedNodeMap).
-abstract class NamedNodeMap implements JSObject {
+extension type NamedNodeMap._(JSObject _) implements JSObject {
   /// The **`item()`** method of the [NamedNodeMap] interface
   /// returns the item in the map matching the index.
   ///
   /// > **Note:** This method is also called when you use the operator `[]`
   /// > syntax.
   /// > So, `myMap[i]`is equivalent to `myMap.item(i)` where `i` is a number.
-  Attr? item(int index);
+  Attr? item(int index) {
+    unsupportedPlatformError();
+  }
 
   /// The **`getNamedItem()`** method of the [NamedNodeMap] interface returns
   /// the [Attr] corresponding to the given name, or `null` if there is no
@@ -4405,7 +5995,9 @@ abstract class NamedNodeMap implements JSObject {
   /// > syntax.
   /// > So, `myMap[str]`is equivalent to `myMap.getNamedItem(str)` where `str`
   /// > is a string.
-  Attr? getNamedItem(String qualifiedName);
+  Attr? getNamedItem(String qualifiedName) {
+    unsupportedPlatformError();
+  }
 
   /// The **`getNamedItemNS()`** method of the [NamedNodeMap] interface returns
   /// the [Attr] corresponding to the given local name in the given namespace,
@@ -4413,13 +6005,17 @@ abstract class NamedNodeMap implements JSObject {
   Attr? getNamedItemNS(
     String? namespace,
     String localName,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`setNamedItem()`** method of the [NamedNodeMap] interface
   /// puts the [Attr] identified by its name in the map.
   /// If there is already an [Attr] with the same name in the map,
   /// it is _replaced_.
-  Attr? setNamedItem(Attr attr);
+  Attr? setNamedItem(Attr attr) {
+    unsupportedPlatformError();
+  }
 
   /// The **`setNamedItemNS()`** method of the [NamedNodeMap] interface
   /// puts the [Attr] identified by its name in the map.
@@ -4428,11 +6024,15 @@ abstract class NamedNodeMap implements JSObject {
   ///
   /// > **Note:** This method is an alias of `setNamedItem()` you can use them
   /// > interchangeably.
-  Attr? setNamedItemNS(Attr attr);
+  Attr? setNamedItemNS(Attr attr) {
+    unsupportedPlatformError();
+  }
 
   /// The **`removeNamedItem()`** method of the [NamedNodeMap] interface
   /// removes the [Attr] corresponding to the given name from the map.
-  Attr removeNamedItem(String qualifiedName);
+  Attr removeNamedItem(String qualifiedName) {
+    unsupportedPlatformError();
+  }
 
   /// The **`removeNamedItemNS()`** method of the [NamedNodeMap] interface
   /// removes the [Attr] corresponding to the given namespace and local name
@@ -4440,11 +6040,15 @@ abstract class NamedNodeMap implements JSObject {
   Attr removeNamedItemNS(
     String? namespace,
     String localName,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`length`** property of the [NamedNodeMap] interface
   /// is the number of objects stored in the map.
-  int get length;
+  int get length {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`Attr`** interface represents one of an element's attributes as an
@@ -4480,7 +6084,7 @@ abstract class NamedNodeMap implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Attr).
-abstract class Attr implements Node, JSObject {
+extension type Attr._(JSObject _) implements Node, JSObject {
   /// The read-only **`namespaceURI`** property of the [Attr] interface returns
   /// the namespace URI of the attribute,
   /// or `null` if the element is not in a namespace.
@@ -4499,7 +6103,9 @@ abstract class Attr implements Node, JSObject {
   /// application to do any necessary validation. Note, too, that the namespace
   /// prefix, once it
   /// is associated with a particular attribute node, cannot be changed.
-  String? get namespaceURI;
+  String? get namespaceURI {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`prefix`** property of the [Attr] returns the namespace
   /// prefix of the attribute, or `null` if no prefix is specified.
@@ -4513,7 +6119,9 @@ abstract class Attr implements Node, JSObject {
   /// Also, only the `xml` (for the `xml:lang` attribute), `xlink` (for the
   /// `xlink:href`, `xlink:show`, `xlink:target` and `xlink:title` attributes)
   /// and `xpath` namespaces are supported, and only on SVG and MathML elements.
-  String? get prefix;
+  String? get prefix {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`localName`** property of the [Attr] interface returns the
   /// _local part_ of the _qualified name_ of an attribute, that is the name of
@@ -4534,7 +6142,9 @@ abstract class Attr implements Node, JSObject {
   /// > characters. In XML, like in SVG or MathML, the colon denotes the end of
   /// > the prefix and what is before is the namespace; the local name may be
   /// > different from the qualified name.
-  String get localName;
+  String get localName {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`name`** property of the [Attr] interface returns the
   /// _qualified name_ of an attribute, that is the name of the attribute, with
@@ -4544,20 +6154,31 @@ abstract class Attr implements Node, JSObject {
   ///
   /// The qualified name is always in lower case, whatever case at the attribute
   /// creation.
-  String get name;
+  String get name {
+    unsupportedPlatformError();
+  }
 
   /// The **`value`** property of the [Attr] interface contains the value of the
   /// attribute.
-  String get value;
-  set value(String value);
+  String get value {
+    unsupportedPlatformError();
+  }
+
+  set value(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`ownerElement`** property of the [Attr] interface returns
   /// the [Element] the attribute belongs to.
-  Element? get ownerElement;
+  Element? get ownerElement {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`specified`** property of the [Attr] interface always
   /// returns `true`.
-  bool get specified;
+  bool get specified {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`CharacterData`** abstract interface represents a [Node] object that
@@ -4570,7 +6191,7 @@ abstract class Attr implements Node, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CharacterData).
-abstract class CharacterData implements Node, JSObject {
+extension type CharacterData._(JSObject _) implements Node, JSObject {
   /// The **`substringData()`** method of the [CharacterData] interface
   /// returns a portion of the existing data,
   /// starting at the specified index
@@ -4578,11 +6199,15 @@ abstract class CharacterData implements Node, JSObject {
   String substringData(
     int offset,
     int count,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`appendData()`** method of the [CharacterData] interface
   /// adds the provided data to the end of the node's current data.
-  void appendData(String data);
+  void appendData(String data) {
+    unsupportedPlatformError();
+  }
 
   /// The **`insertData()`** method of the [CharacterData] interface
   /// inserts the provided data into this `CharacterData` node's current data,
@@ -4591,14 +6216,18 @@ abstract class CharacterData implements Node, JSObject {
   void insertData(
     int offset,
     String data,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`deleteData()`** method of the [CharacterData] interface
   /// removes all or part of the data from this `CharacterData` node.
   void deleteData(
     int offset,
     int count,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`replaceData()`** method of the [CharacterData] interface removes a
   /// certain number of characters of the existing text in a given
@@ -4607,7 +6236,9 @@ abstract class CharacterData implements Node, JSObject {
     int offset,
     int count,
     String data,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`before()`** method of the [CharacterData] interface
   /// inserts a set of [Node] objects and strings
@@ -4616,7 +6247,9 @@ abstract class CharacterData implements Node, JSObject {
   ///
   /// Strings are inserted as [Text] nodes; the string is being passed as
   /// argument to the [Text.Text] constructor.
-  void before(JSAny nodes);
+  void before(JSAny nodes) {
+    unsupportedPlatformError();
+  }
 
   /// The **`after()`** method of the [CharacterData] interface
   /// inserts a set of [Node] objects or strings in the children list of the
@@ -4624,7 +6257,9 @@ abstract class CharacterData implements Node, JSObject {
   ///
   /// Strings are inserted as [Text] nodes; the string is being passed as
   /// argument to the [Text.Text] constructor.
-  void after(JSAny nodes);
+  void after(JSAny nodes) {
+    unsupportedPlatformError();
+  }
 
   /// The **`replaceWith()`** method of the [CharacterData] interface
   /// replaces this node in the children list of its parent
@@ -4632,28 +6267,41 @@ abstract class CharacterData implements Node, JSObject {
   ///
   /// Strings are inserted as [Text] nodes; the string is being passed as
   /// argument to the [Text.Text] constructor.
-  void replaceWith(JSAny nodes);
+  void replaceWith(JSAny nodes) {
+    unsupportedPlatformError();
+  }
 
   /// The **`remove()`** method of the [CharacterData] removes the text
   /// contained in the node.
-  void remove();
+  void remove() {
+    unsupportedPlatformError();
+  }
 
   /// The **`data`** property of the [CharacterData] interface represent the
   /// value of the current object's data.
-  String get data;
-  set data(String value);
+  String get data {
+    unsupportedPlatformError();
+  }
+
+  set data(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`CharacterData.length`** property
   /// returns the number of characters in the contained data, as a positive
   /// integer.
-  int get length;
+  int get length {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`previousElementSibling`** property of the [CharacterData]
   /// interface
   /// returns the first [Element] before the current node in its parent's
   /// children list,
   /// or `null` if there is none.
-  Element? get previousElementSibling;
+  Element? get previousElementSibling {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`nextElementSibling`** property of the [CharacterData]
   /// interface
@@ -4661,7 +6309,9 @@ abstract class CharacterData implements Node, JSObject {
   /// parent's
   /// children list, or `null` if the specified element is the last one in the
   /// list.
-  Element? get nextElementSibling;
+  Element? get nextElementSibling {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`Text`** interface represents a text [Node] in a DOM tree.
@@ -4695,7 +6345,11 @@ abstract class CharacterData implements Node, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Text).
-abstract class Text implements CharacterData, JSObject {
+extension type Text._(JSObject _) implements CharacterData, JSObject {
+  factory Text([String? data]) {
+    unsupportedPlatformError();
+  }
+
   /// The **`splitText()`** method of the [Text] interface
   /// breaks the [Text] node into two nodes at the specified offset,
   /// keeping both nodes in the tree as siblings.
@@ -4711,7 +6365,9 @@ abstract class Text implements CharacterData, JSObject {
   ///
   /// Separated text nodes can be concatenated using the [Node.normalize]
   /// method.
-  Text splitText(int offset);
+  Text splitText(int offset) {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`wholeText`** property of the [Text] interface
   /// returns the full text of all [Text] nodes logically adjacent to the node.
@@ -4722,11 +6378,15 @@ abstract class Text implements CharacterData, JSObject {
   /// > **Note:** This is similar to call [Node.normalize] followed by reading
   /// > the text value,
   /// > but without modifying the tree.
-  String get wholeText;
+  String get wholeText {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`assignedSlot`** property of the [Text] interface
   /// returns the [HTMLSlotElement] object associated with the element.
-  HTMLSlotElement? get assignedSlot;
+  HTMLSlotElement? get assignedSlot {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`CDATASection`** interface represents a CDATA section
@@ -4759,7 +6419,7 @@ abstract class Text implements CharacterData, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CDATASection).
-abstract class CDATASection implements Text, JSObject {}
+extension type CDATASection._(JSObject _) implements Text, JSObject {}
 
 /// The **`ProcessingInstruction`** interface represents a
 /// [processing instruction](https://www.w3.org/TR/xml/#sec-pi); that is, a
@@ -4792,7 +6452,8 @@ abstract class CDATASection implements Text, JSObject {}
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ProcessingInstruction).
-abstract class ProcessingInstruction implements CharacterData, JSObject {
+extension type ProcessingInstruction._(JSObject _)
+    implements CharacterData, JSObject {
   /// The read-only **`target`** property of the [ProcessingInstruction]
   /// interface
   /// represent the application to which the `ProcessingInstruction` is
@@ -4805,7 +6466,9 @@ abstract class ProcessingInstruction implements CharacterData, JSObject {
   /// ```
   ///
   /// is a processing instruction whose `target` is `xml`.
-  String get target;
+  String get target {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`sheet`** property of the [ProcessingInstruction]
   /// interface
@@ -4813,7 +6476,9 @@ abstract class ProcessingInstruction implements CharacterData, JSObject {
   ///
   /// The `xml-stylesheet` processing instruction is used to associate a
   /// stylesheet in an XML file.
-  CSSStyleSheet? get sheet;
+  CSSStyleSheet? get sheet {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`Comment`** interface represents textual notations within markup;
@@ -4828,7 +6493,11 @@ abstract class ProcessingInstruction implements CharacterData, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Comment).
-abstract class Comment implements CharacterData, JSObject {}
+extension type Comment._(JSObject _) implements CharacterData, JSObject {
+  factory Comment([String? data]) {
+    unsupportedPlatformError();
+  }
+}
 
 /// The **`AbstractRange`** abstract interface is the base class upon which all
 /// range types are defined. A **range** is an object that indicates the start
@@ -4844,30 +6513,48 @@ abstract class Comment implements CharacterData, JSObject {}
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/AbstractRange).
-abstract class AbstractRange implements JSObject {
+extension type AbstractRange._(JSObject _) implements JSObject {
   /// The read-only **`startContainer`** property of the [AbstractRange]
   /// interface returns the start [Node] for the range.
-  Node get startContainer;
+  Node get startContainer {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`startOffset`** property of the [AbstractRange] interface
   /// returns the offset into the start node of the range's start position.
-  int get startOffset;
+  int get startOffset {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`endContainer`** property of the [AbstractRange] interface
   /// returns the [Node] in which the end of the range is located.
-  Node get endContainer;
+  Node get endContainer {
+    unsupportedPlatformError();
+  }
 
   /// The **`endOffset`** property of the [AbstractRange] interface returns the
   /// offset into the end node of the range's end position.
-  int get endOffset;
+  int get endOffset {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`collapsed`** property of the [AbstractRange] interface
   /// returns `true` if the range's start position and end position are the
   /// same.
-  bool get collapsed;
+  bool get collapsed {
+    unsupportedPlatformError();
+  }
 }
+extension type StaticRangeInit._(JSObject _) implements JSObject {
+  factory StaticRangeInit({
+    required Node startContainer,
+    required int startOffset,
+    required Node endContainer,
+    required int endOffset,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class StaticRangeInit implements JSObject {
   Node get startContainer {
     unsupportedPlatformError();
   }
@@ -4917,7 +6604,11 @@ abstract class StaticRangeInit implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/StaticRange).
-abstract class StaticRange implements AbstractRange, JSObject {}
+extension type StaticRange._(JSObject _) implements AbstractRange, JSObject {
+  factory StaticRange(StaticRangeInit init) {
+    unsupportedPlatformError();
+  }
+}
 
 /// The **`Range`** interface represents a fragment of a document that can
 /// contain nodes and parts of text nodes.
@@ -4933,7 +6624,11 @@ abstract class StaticRange implements AbstractRange, JSObject {}
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Range).
-abstract class Range implements AbstractRange, JSObject {
+extension type Range._(JSObject _) implements AbstractRange, JSObject {
+  factory Range() {
+    unsupportedPlatformError();
+  }
+
   static const int START_TO_START = 0;
 
   static const int START_TO_END = 1;
@@ -4958,7 +6653,9 @@ abstract class Range implements AbstractRange, JSObject {
   void setStart(
     Node node,
     int offset,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Range.setEnd()`** method sets the end position of a [Range] to be
   /// located at the given offset into the specified node x.Setting
@@ -4969,31 +6666,41 @@ abstract class Range implements AbstractRange, JSObject {
   void setEnd(
     Node node,
     int offset,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Range.setStartBefore()`** method sets the start position
   /// of a [Range] relative to another [Node]. The parent
   /// [Node] of the start of the [Range] will be the same as that
   /// for the `referenceNode`.
-  void setStartBefore(Node node);
+  void setStartBefore(Node node) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Range.setStartAfter()`** method sets the start position
   /// of a [Range] relative to a [Node]. The parent
   /// [Node] of the start of the [Range] will be the same as that
   /// for the `referenceNode`.
-  void setStartAfter(Node node);
+  void setStartAfter(Node node) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Range.setEndBefore()`** method sets the end position of
   /// a `Range` relative to another [Node]. The parent
   /// `Node` of end of the `Range` will be the same as that for the
   /// `referenceNode`.
-  void setEndBefore(Node node);
+  void setEndBefore(Node node) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Range.setEndAfter()`** method sets the end position of a
   /// [Range] relative to another [Node]. The parent
   /// `Node` of end of the `Range` will be the same as that for the
   /// `referenceNode`.
-  void setEndAfter(Node node);
+  void setEndAfter(Node node) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Range.collapse()`** method collapses the
   /// [Range] to one of its boundary points.
@@ -5002,13 +6709,17 @@ abstract class Range implements AbstractRange, JSObject {
   /// single-point in a DOM tree. To determine if a [Range] is already
   /// collapsed,
   /// see the [Range.collapsed] property.
-  void collapse([bool toStart]);
+  void collapse([bool? toStart]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Range.selectNode()`** method sets the
   /// [Range] to contain the [Node] and its contents. The parent
   /// [Node] of the start and end of the [Range] will be the same as
   /// the parent of the _referenceNode_.
-  void selectNode(Node node);
+  void selectNode(Node node) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Range.selectNodeContents()`** method sets the [Range] to contain
   /// the contents of a [Node].
@@ -5017,7 +6728,9 @@ abstract class Range implements AbstractRange, JSObject {
   /// reference node. The `startOffset` is 0, and the `endOffset` is the
   /// number of child `Node`s or number of characters contained in the reference
   /// node.
-  void selectNodeContents(Node node);
+  void selectNodeContents(Node node) {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`Range.compareBoundaryPoints()`** method compares the
@@ -5025,14 +6738,18 @@ abstract class Range implements AbstractRange, JSObject {
   int compareBoundaryPoints(
     int how,
     Range sourceRange,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Range.deleteContents()`** method removes the contents of
   /// the [Range] from the [Document].
   ///
   /// Unlike [Range.extractContents], this method does not return a
   /// [DocumentFragment] containing the deleted content.
-  void deleteContents();
+  void deleteContents() {
+    unsupportedPlatformError();
+  }
 
   /// The **`Range.extractContents()`** method moves contents of the
   /// [Range] from the document tree into a [DocumentFragment].
@@ -5048,7 +6765,9 @@ abstract class Range implements AbstractRange, JSObject {
   /// Partially selected nodes are cloned to include the parent tags necessary
   /// to make the
   /// document fragment valid.
-  DocumentFragment extractContents();
+  DocumentFragment extractContents() {
+    unsupportedPlatformError();
+  }
 
   /// The **`Range.cloneContents()`** returns a [DocumentFragment] copying the
   /// objects of type [Node]
@@ -5063,7 +6782,9 @@ abstract class Range implements AbstractRange, JSObject {
   /// Partially selected nodes include the parent tags necessary to make the
   /// document
   /// fragment valid.
-  DocumentFragment cloneContents();
+  DocumentFragment cloneContents() {
+    unsupportedPlatformError();
+  }
 
   /// The **`Range.insertNode()`** method inserts a node at the start
   /// of the [Range].
@@ -5077,7 +6798,9 @@ abstract class Range implements AbstractRange, JSObject {
   /// If the new node is a document fragment, the children of the document
   /// fragment are
   /// inserted instead.
-  void insertNode(Node node);
+  void insertNode(Node node) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Range.surroundContents()`** method moves content of the
   /// [Range] into a new node, placing the new node at the start of the
@@ -5093,7 +6816,9 @@ abstract class Range implements AbstractRange, JSObject {
   /// alternative above, if there are partially selected nodes, they will not be
   /// cloned and
   /// instead the operation will fail.
-  void surroundContents(Node newParent);
+  void surroundContents(Node newParent) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Range.cloneRange()`** method returns a
   /// [Range] object with boundary points identical to the cloned
@@ -5102,12 +6827,16 @@ abstract class Range implements AbstractRange, JSObject {
   /// The returned clone is copied by value, not reference, so a change in
   /// either
   /// [Range] does not affect the other.
-  Range cloneRange();
+  Range cloneRange() {
+    unsupportedPlatformError();
+  }
 
   /// The **`Range.detach()`** method does nothing. It used to
   /// disable the [Range] object and enable the browser to release associated
   /// resources. The method has been kept for compatibility.
-  void detach();
+  void detach() {
+    unsupportedPlatformError();
+  }
 
   /// The **`Range.isPointInRange()`** method returns a boolean
   /// indicating whether the given point is in the [Range]. It returns
@@ -5116,7 +6845,9 @@ abstract class Range implements AbstractRange, JSObject {
   bool isPointInRange(
     Node node,
     int offset,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Range.comparePoint()`** method returns `-1`,
   /// `0`, or `1` depending on whether the `referenceNode` is
@@ -5131,18 +6862,24 @@ abstract class Range implements AbstractRange, JSObject {
   int comparePoint(
     Node node,
     int offset,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Range.intersectsNode()`** method returns a boolean
   /// indicating whether the given [Node] intersects the [Range].
-  bool intersectsNode(Node node);
+  bool intersectsNode(Node node) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Range.getClientRects()`** method returns a list of [DOMRect]
   /// objects representing the area of the screen occupied by the
   /// [range](https://developer.mozilla.org/en-US/docs/Web/API/Range). This is
   /// created by aggregating the results of calls to
   /// [Element.getClientRects] for all the elements in the range.
-  DOMRectList getClientRects();
+  DOMRectList getClientRects() {
+    unsupportedPlatformError();
+  }
 
   /// The **`Range.getBoundingClientRect()`** method returns a [DOMRect] object
   /// that bounds the contents of the range; this is a rectangle
@@ -5153,7 +6890,9 @@ abstract class Range implements AbstractRange, JSObject {
   /// cursor or
   /// selection inside a text box. See [Element.getBoundingClientRect] for
   /// details on the returned value.
-  DOMRect getBoundingClientRect();
+  DOMRect getBoundingClientRect() {
+    unsupportedPlatformError();
+  }
 
   /// The **`Range.createContextualFragment()`** method returns a
   /// [DocumentFragment] by invoking the HTML fragment parsing algorithm or the
@@ -5166,7 +6905,9 @@ abstract class Range implements AbstractRange, JSObject {
   /// the context node would be `html`, for historical reasons the fragment
   /// parsing
   /// algorithm is invoked with `body` as the context instead.
-  DocumentFragment createContextualFragment(JSAny string);
+  DocumentFragment createContextualFragment(JSAny string) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Range.commonAncestorContainer`** read-only property
   /// returns the deepest — or furthest down the document tree — [Node] that
@@ -5186,7 +6927,9 @@ abstract class Range implements AbstractRange, JSObject {
   /// positions of the
   /// `Range`, such as [Range.setStart] and
   /// [Range.setEnd].
-  Node get commonAncestorContainer;
+  Node get commonAncestorContainer {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`NodeIterator`** interface represents an iterator to traverse nodes of
@@ -5196,7 +6939,7 @@ abstract class Range implements AbstractRange, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/NodeIterator).
-abstract class NodeIterator implements JSObject {
+extension type NodeIterator._(JSObject _) implements JSObject {
   /// The **`NodeIterator.nextNode()`** method returns the next node
   /// in the set represented by the [NodeIterator] and advances the position of
   /// the iterator within the set. The first call to `nextNode()` returns the
@@ -5209,7 +6952,9 @@ abstract class NodeIterator implements JSObject {
   /// throws the `INVALID_STATE_ERR` [DOMException] if this method
   /// is called after the [NodeIterator.detach]method. Recent browsers never
   /// throw.
-  Node? nextNode();
+  Node? nextNode() {
+    unsupportedPlatformError();
+  }
 
   /// The **`NodeIterator.previousNode()`** method returns the
   /// previous node in the set represented by the [NodeIterator] and moves the
@@ -5223,7 +6968,9 @@ abstract class NodeIterator implements JSObject {
   /// throws the `INVALID_STATE_ERR` [DOMException] if this method
   /// is called after the [NodeIterator.detach]method. Recent browsers never
   /// throw.
-  Node? previousNode();
+  Node? previousNode() {
+    unsupportedPlatformError();
+  }
 
   /// The **`NodeIterator.detach()`** method is a no-op, kept for
   /// backward compatibility only.
@@ -5233,31 +6980,41 @@ abstract class NodeIterator implements JSObject {
   /// iterator's state to
   /// `INVALID`. Once this method had been called, calls to other methods on
   /// `NodeIterator` would raise the `INVALID_STATE_ERR` exception.
-  void detach();
+  void detach() {
+    unsupportedPlatformError();
+  }
 
   /// The **`NodeIterator.root`** read-only property represents the
   /// [Node] that is the root of what the [NodeIterator]
   /// traverses.
-  Node get root;
+  Node get root {
+    unsupportedPlatformError();
+  }
 
   /// The **`NodeIterator.referenceNode`** read-only property returns the
   /// [Node] to which the iterator is anchored; as new nodes are inserted, the
   /// iterator remains anchored to the reference node as specified by this
   /// property.
-  Node get referenceNode;
+  Node get referenceNode {
+    unsupportedPlatformError();
+  }
 
   /// The **`NodeIterator.pointerBeforeReferenceNode`** read-only
   /// property returns a boolean flag that indicates whether the
   /// `NodeFilter` is anchored before (if this value is `true`) or
   /// after (if this value is `false`) the anchor node indicated by the
   /// [NodeIterator.referenceNode] property.
-  bool get pointerBeforeReferenceNode;
+  bool get pointerBeforeReferenceNode {
+    unsupportedPlatformError();
+  }
 
   /// The **`NodeIterator.whatToShow`** read-only property represents
   /// an `unsigned integer` representing a bitmask signifying what types of
   /// nodes
   /// should be returned by the [NodeIterator].
-  int get whatToShow;
+  int get whatToShow {
+    unsupportedPlatformError();
+  }
 
   /// The **`NodeIterator.filter`** read-only property returns a
   /// `NodeFilter` object, that is an object which implements an
@@ -5270,7 +7027,9 @@ abstract class NodeIterator implements JSObject {
   /// should return the constant `NodeFilter.FILTER_ACCEPT` for cases when the
   /// node should be accepted and `NodeFilter.FILTER_REJECT` for cases when the
   /// node should be rejected.
-  NodeFilter? get filter;
+  NodeFilter? get filter {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`TreeWalker`** object represents the nodes of a document subtree and a
@@ -5282,54 +7041,70 @@ abstract class NodeIterator implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/TreeWalker).
-abstract class TreeWalker implements JSObject {
+extension type TreeWalker._(JSObject _) implements JSObject {
   /// The **`TreeWalker.parentNode()`** method moves the current
   /// [Node] to the first _visible_ ancestor node in the document order,
   /// and returns the found node. If no such node exists, or if it is above the
   /// `TreeWalker`'s _root node_, it returns `null` and the current
   /// node is not changed.
-  Node? parentNode();
+  Node? parentNode() {
+    unsupportedPlatformError();
+  }
 
   /// The **`TreeWalker.firstChild()`** method moves the current
   /// [Node] to the first _visible_ child of the current node, and returns
   /// the found child. If no such child exists, it returns `null` and the
   /// current node is not changed.
-  Node? firstChild();
+  Node? firstChild() {
+    unsupportedPlatformError();
+  }
 
   /// The **`TreeWalker.lastChild()`** method moves the current
   /// [Node] to the last _visible_ child of the current node, and returns
   /// the found child. If no such child exists, it returns `null` and the
   /// current node is not changed.
-  Node? lastChild();
+  Node? lastChild() {
+    unsupportedPlatformError();
+  }
 
   /// The **`TreeWalker.previousSibling()`** method moves the current
   /// [Node] to its previous sibling, if any, and returns the found sibling. If
   /// there is no such node, it returns `null` and the current node is not
   /// changed.
-  Node? previousSibling();
+  Node? previousSibling() {
+    unsupportedPlatformError();
+  }
 
   /// The **`TreeWalker.nextSibling()`** method moves the current
   /// [Node] to its next sibling, if any, and returns the found sibling. If
   /// there
   /// is no such node, it returns `null` and the current node is not changed.
-  Node? nextSibling();
+  Node? nextSibling() {
+    unsupportedPlatformError();
+  }
 
   /// The **`TreeWalker.previousNode()`** method moves the current
   /// [Node] to the previous _visible_ node in the document order, and
   /// returns the found node. If no such node
   /// exists, or if it is before that the _root node_ defined at the object
   /// construction, it returns `null` and the current node is not changed.
-  Node? previousNode();
+  Node? previousNode() {
+    unsupportedPlatformError();
+  }
 
   /// The **`TreeWalker.nextNode()`** method moves the current
   /// [Node] to the next _visible_ node in the document order, and returns
   /// the found node. If no such node exists, it returns `null` and the current
   /// node is not changed.
-  Node? nextNode();
+  Node? nextNode() {
+    unsupportedPlatformError();
+  }
 
   /// The **`TreeWalker.root`** read-only property returns the node
   /// that is the root of what the TreeWalker traverses.
-  Node get root;
+  Node get root {
+    unsupportedPlatformError();
+  }
 
   /// The **`TreeWalker.whatToShow`** read-only property returns a
   /// bitmask that indicates the types of
@@ -5430,7 +7205,9 @@ abstract class TreeWalker implements JSObject {
   ///     </tr>
   ///   </tbody>
   /// </table>
-  int get whatToShow;
+  int get whatToShow {
+    unsupportedPlatformError();
+  }
 
   /// The **`TreeWalker.filter`** read-only property returns a
   /// `NodeFilter` that is the filtering object associated with the
@@ -5440,12 +7217,19 @@ abstract class TreeWalker implements JSObject {
   /// third
   /// parameter, and its method `acceptNode()` is called on every
   /// single node to determine whether or not to accept it.
-  NodeFilter? get filter;
+  NodeFilter? get filter {
+    unsupportedPlatformError();
+  }
 
   /// The **`TreeWalker.currentNode`** property represents the
   /// [Node] which the [TreeWalker] is currently pointing at.
-  Node get currentNode;
-  set currentNode(Node value);
+  Node get currentNode {
+    unsupportedPlatformError();
+  }
+
+  set currentNode(Node value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`DOMTokenList`** interface represents a set of space-separated tokens.
@@ -5459,7 +7243,7 @@ abstract class TreeWalker implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/DOMTokenList).
-abstract class DOMTokenList implements JSObject {
+extension type DOMTokenList._(JSObject _) implements JSObject {
   /// The **`item()`** method of the [DOMTokenList] interface returns an item in
   /// the list,
   /// determined by its position in the list, its index.
@@ -5467,29 +7251,39 @@ abstract class DOMTokenList implements JSObject {
   /// > **Note:** This method is equivalent as the
   /// > [bracket notation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Property_accessors#bracket_notation).
   /// > So `aList.item(i)` is the same as `aList[i]`.
-  String? item(int index);
+  String? item(int index) {
+    unsupportedPlatformError();
+  }
 
   /// The **`contains()`** method of the [DOMTokenList] interface
   /// returns a boolean value — `true` if the underlying list contains the given
   /// token,
   /// otherwise `false`.
-  bool contains(String token);
+  bool contains(String token) {
+    unsupportedPlatformError();
+  }
 
   /// The **`add()`** method of the [DOMTokenList] interface adds the given
   /// tokens to the list, omitting any that are already present.
-  void add(String tokens);
+  void add(String tokens) {
+    unsupportedPlatformError();
+  }
 
   /// The **`remove()`** method of the [DOMTokenList] interface
   /// removes the specified _tokens_ from the list.
-  void remove(String tokens);
+  void remove(String tokens) {
+    unsupportedPlatformError();
+  }
 
   /// The **`toggle()`** method of the [DOMTokenList] interface
   /// removes an existing token from the list and returns `false`.
   /// If the token doesn't exist it's added and the function returns `true`.
   bool toggle(
     String token, [
-    bool force,
-  ]);
+    bool? force,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`replace()`** method of the [DOMTokenList] interface
   /// replaces an existing token with a new token.
@@ -5498,24 +7292,35 @@ abstract class DOMTokenList implements JSObject {
   bool replace(
     String token,
     String newToken,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`supports()`** method of the [DOMTokenList] interface
   /// returns `true` if a given `token` is in the associated attribute's
   /// supported tokens.
   /// This method is intended to support feature detection.
-  bool supports(String token);
+  bool supports(String token) {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`length`** property of the [DOMTokenList] interface is an
   /// `integer` representing the number
   /// of objects stored in the object.
-  int get length;
+  int get length {
+    unsupportedPlatformError();
+  }
 
   /// The **`value`** property of the [DOMTokenList]
   /// interface is a  that returns the value of the list serialized as a
   /// string, or clears and sets the list to the given value.
-  String get value;
-  set value(String value);
+  String get value {
+    unsupportedPlatformError();
+  }
+
+  set value(String value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`XPathResult`** interface represents the results generated by
@@ -5529,7 +7334,7 @@ abstract class DOMTokenList implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/XPathResult).
-abstract class XPathResult implements JSObject {
+extension type XPathResult._(JSObject _) implements JSObject {
   static const int ANY_TYPE = 0;
 
   static const int NUMBER_TYPE = 1;
@@ -5553,7 +7358,9 @@ abstract class XPathResult implements JSObject {
   /// The **`iterateNext()`** method of the
   /// [XPathResult] interface iterates over a node set result and returns the
   /// next node from it or `null` if there are no more nodes.
-  Node? iterateNext();
+  Node? iterateNext() {
+    unsupportedPlatformError();
+  }
 
   /// The **`snapshotItem()`** method of the
   /// [XPathResult] interface returns an item of the snapshot collection or
@@ -5561,46 +7368,62 @@ abstract class XPathResult implements JSObject {
   /// iterator result, the snapshot does not become invalid, but may not
   /// correspond to the
   /// current document if it is mutated.
-  Node? snapshotItem(int index);
+  Node? snapshotItem(int index) {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`resultType`** property of the
   /// [XPathResult] interface represents the type of the result, as defined by
   /// the type constants.
-  int get resultType;
+  int get resultType {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`numberValue`** property of the
   /// [XPathResult] interface returns the numeric value of a result with
   /// [XPathResult.resultType] being `NUMBER_TYPE`.
-  double get numberValue;
+  double get numberValue {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`stringValue`** property of the
   /// [XPathResult] interface returns the string value of a result with
   /// [XPathResult.resultType] being `STRING_TYPE`.
-  String get stringValue;
+  String get stringValue {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`booleanValue`** property of the
   /// [XPathResult] interface returns the boolean value of a result with
   /// [XPathResult.resultType] being `BOOLEAN_TYPE`.
-  bool get booleanValue;
+  bool get booleanValue {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`singleNodeValue`** property of the
   /// [XPathResult] interface returns a [Node] value or
   /// `null` in case no node was matched of a result with
   /// [XPathResult.resultType] being `ANY_UNORDERED_NODE_TYPE` or
   /// `FIRST_ORDERED_NODE_TYPE`.
-  Node? get singleNodeValue;
+  Node? get singleNodeValue {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`invalidIteratorState`** property of the
   /// [XPathResult] interface signifies that the iterator has become invalid. It
   /// is `true` if [XPathResult.resultType] is
   /// `UNORDERED_NODE_ITERATOR_TYPE` or `ORDERED_NODE_ITERATOR_TYPE` and
   /// the document has been modified since this result was returned.
-  bool get invalidIteratorState;
+  bool get invalidIteratorState {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`snapshotLength`** property of the
   /// [XPathResult] interface represents the number of nodes in the result
   /// snapshot.
-  int get snapshotLength;
+  int get snapshotLength {
+    unsupportedPlatformError();
+  }
 }
 
 /// This interface is a compiled XPath expression that can be evaluated on a
@@ -5617,7 +7440,7 @@ abstract class XPathResult implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/XPathExpression).
-abstract class XPathExpression implements JSObject {
+extension type XPathExpression._(JSObject _) implements JSObject {
   /// The **`evaluate()`** method of the
   /// [XPathExpression] interface executes an
   /// [XPath](https://developer.mozilla.org/en-US/docs/Web/XPath) expression on
@@ -5625,9 +7448,11 @@ abstract class XPathExpression implements JSObject {
   /// returns an [XPathResult].
   XPathResult evaluate(
     Node contextNode, [
-    int type,
+    int? type,
     XPathResult? result,
-  ]);
+  ]) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The `XPathEvaluator` interface allows to compile and evaluate  expressions.
@@ -5636,13 +7461,19 @@ abstract class XPathExpression implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/XPathEvaluator).
-abstract class XPathEvaluator implements JSObject {
+extension type XPathEvaluator._(JSObject _) implements JSObject {
+  factory XPathEvaluator() {
+    unsupportedPlatformError();
+  }
+
   /// This method compiles an [XPathExpression] which can then be used for
   /// (repeated) evaluations of the  expression.
   XPathExpression createExpression(
     String expression, [
     XPathNSResolver? resolver,
-  ]);
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// This method adapts any DOM node to resolve namespaces so that an XPath
   /// expression can
@@ -5655,7 +7486,9 @@ abstract class XPathEvaluator implements JSObject {
   /// the current information available in the node's hierarchy at the time the
   /// method is
   /// called, also correctly resolving the implicit `xml` prefix.
-  Node createNSResolver(Node nodeResolver);
+  Node createNSResolver(Node nodeResolver) {
+    unsupportedPlatformError();
+  }
 
   /// The `evaluate()` method of the [XPathEvaluator] interface
   /// executes an XPath expression on the given node or document and returns an
@@ -5664,9 +7497,11 @@ abstract class XPathEvaluator implements JSObject {
     String expression,
     Node contextNode, [
     XPathNSResolver? resolver,
-    int type,
+    int? type,
     XPathResult? result,
-  ]);
+  ]) {
+    unsupportedPlatformError();
+  }
 }
 
 /// An **`XSLTProcessor`** applies an
@@ -5681,10 +7516,16 @@ abstract class XPathEvaluator implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/XSLTProcessor).
-abstract class XSLTProcessor implements JSObject {
+extension type XSLTProcessor._(JSObject _) implements JSObject {
+  factory XSLTProcessor() {
+    unsupportedPlatformError();
+  }
+
   /// The `importStylesheet()` method of the [XSLTProcessor] interface imports
   /// an XSLT stylesheet for the processor.
-  void importStylesheet(Node style);
+  void importStylesheet(Node style) {
+    unsupportedPlatformError();
+  }
 
   /// The `transformToFragment()` method of the [XSLTProcessor] interface
   /// transforms a provided [Node] source to a [DocumentFragment] using the XSLT
@@ -5692,12 +7533,16 @@ abstract class XSLTProcessor implements JSObject {
   DocumentFragment transformToFragment(
     Node source,
     Document output,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The `transformToDocument()` method of the [XSLTProcessor] interface
   /// transforms the provided [Node] source to a [Document] using the XSLT
   /// stylesheet associated with `XSLTProcessor`.
-  Document transformToDocument(Node source);
+  Document transformToDocument(Node source) {
+    unsupportedPlatformError();
+  }
 
   /// The `setParameter()` method of the [XSLTProcessor] interface sets the
   /// value of a parameter (`<xsl:param>`) in the stylesheet imported in the
@@ -5706,7 +7551,9 @@ abstract class XSLTProcessor implements JSObject {
     String namespaceURI,
     String localName,
     JSAny? value,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The `getParameter()` method of the [XSLTProcessor] interface returns the
   /// value of a parameter (`<xsl:param>`) from the stylesheet imported in the
@@ -5714,7 +7561,9 @@ abstract class XSLTProcessor implements JSObject {
   JSAny? getParameter(
     String namespaceURI,
     String localName,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The `removeParameter()` method of the [XSLTProcessor] interface removes
   /// the parameter (`<xsl:param>`) and its value from the stylesheet imported
@@ -5722,16 +7571,22 @@ abstract class XSLTProcessor implements JSObject {
   void removeParameter(
     String namespaceURI,
     String localName,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The `clearParameters()` method of the [XSLTProcessor] interface removes
   /// all parameters (`<xsl:param>`) and their values from the stylesheet
   /// imported in the processor. The `XSLTProcessor` will then use the default
   /// values specified in the XSLT stylesheet.
-  void clearParameters();
+  void clearParameters() {
+    unsupportedPlatformError();
+  }
 
   /// The `reset()` method of the [XSLTProcessor] interface removes all
   /// parameters (`<xsl:param>`) and the XSLT stylesheet from the processor. The
   /// `XSLTProcessor` will then be in its original state when it was created.
-  void reset();
+  void reset() {
+    unsupportedPlatformError();
+  }
 }

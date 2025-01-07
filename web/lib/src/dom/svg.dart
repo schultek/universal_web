@@ -25,199 +25,774 @@ import 'html.dart';
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGElement).
-abstract class SVGElement implements Element, JSObject {
-  void focus([FocusOptions options]);
-  void blur();
-  SVGSVGElement? get ownerSVGElement;
-  SVGElement? get viewportElement;
-  EventHandler get onabort;
-  set onabort(EventHandler value);
-  EventHandler get onauxclick;
-  set onauxclick(EventHandler value);
-  EventHandler get onbeforeinput;
-  set onbeforeinput(EventHandler value);
-  EventHandler get onbeforetoggle;
-  set onbeforetoggle(EventHandler value);
-  EventHandler get onblur;
-  set onblur(EventHandler value);
-  EventHandler get oncancel;
-  set oncancel(EventHandler value);
-  EventHandler get oncanplay;
-  set oncanplay(EventHandler value);
-  EventHandler get oncanplaythrough;
-  set oncanplaythrough(EventHandler value);
-  EventHandler get onchange;
-  set onchange(EventHandler value);
-  EventHandler get onclick;
-  set onclick(EventHandler value);
-  EventHandler get onclose;
-  set onclose(EventHandler value);
-  EventHandler get oncontextlost;
-  set oncontextlost(EventHandler value);
-  EventHandler get oncontextmenu;
-  set oncontextmenu(EventHandler value);
-  EventHandler get oncontextrestored;
-  set oncontextrestored(EventHandler value);
-  EventHandler get oncopy;
-  set oncopy(EventHandler value);
-  EventHandler get oncuechange;
-  set oncuechange(EventHandler value);
-  EventHandler get oncut;
-  set oncut(EventHandler value);
-  EventHandler get ondblclick;
-  set ondblclick(EventHandler value);
-  EventHandler get ondrag;
-  set ondrag(EventHandler value);
-  EventHandler get ondragend;
-  set ondragend(EventHandler value);
-  EventHandler get ondragenter;
-  set ondragenter(EventHandler value);
-  EventHandler get ondragleave;
-  set ondragleave(EventHandler value);
-  EventHandler get ondragover;
-  set ondragover(EventHandler value);
-  EventHandler get ondragstart;
-  set ondragstart(EventHandler value);
-  EventHandler get ondrop;
-  set ondrop(EventHandler value);
-  EventHandler get ondurationchange;
-  set ondurationchange(EventHandler value);
-  EventHandler get onemptied;
-  set onemptied(EventHandler value);
-  EventHandler get onended;
-  set onended(EventHandler value);
-  OnErrorEventHandler get onerror;
-  set onerror(OnErrorEventHandler value);
-  EventHandler get onfocus;
-  set onfocus(EventHandler value);
-  EventHandler get onformdata;
-  set onformdata(EventHandler value);
-  EventHandler get oninput;
-  set oninput(EventHandler value);
-  EventHandler get oninvalid;
-  set oninvalid(EventHandler value);
-  EventHandler get onkeydown;
-  set onkeydown(EventHandler value);
-  EventHandler get onkeypress;
-  set onkeypress(EventHandler value);
-  EventHandler get onkeyup;
-  set onkeyup(EventHandler value);
-  EventHandler get onload;
-  set onload(EventHandler value);
-  EventHandler get onloadeddata;
-  set onloadeddata(EventHandler value);
-  EventHandler get onloadedmetadata;
-  set onloadedmetadata(EventHandler value);
-  EventHandler get onloadstart;
-  set onloadstart(EventHandler value);
-  EventHandler get onmousedown;
-  set onmousedown(EventHandler value);
-  EventHandler get onmouseenter;
-  set onmouseenter(EventHandler value);
-  EventHandler get onmouseleave;
-  set onmouseleave(EventHandler value);
-  EventHandler get onmousemove;
-  set onmousemove(EventHandler value);
-  EventHandler get onmouseout;
-  set onmouseout(EventHandler value);
-  EventHandler get onmouseover;
-  set onmouseover(EventHandler value);
-  EventHandler get onmouseup;
-  set onmouseup(EventHandler value);
-  EventHandler get onpaste;
-  set onpaste(EventHandler value);
-  EventHandler get onpause;
-  set onpause(EventHandler value);
-  EventHandler get onplay;
-  set onplay(EventHandler value);
-  EventHandler get onplaying;
-  set onplaying(EventHandler value);
-  EventHandler get onprogress;
-  set onprogress(EventHandler value);
-  EventHandler get onratechange;
-  set onratechange(EventHandler value);
-  EventHandler get onreset;
-  set onreset(EventHandler value);
-  EventHandler get onresize;
-  set onresize(EventHandler value);
-  EventHandler get onscroll;
-  set onscroll(EventHandler value);
-  EventHandler get onscrollend;
-  set onscrollend(EventHandler value);
-  EventHandler get onsecuritypolicyviolation;
-  set onsecuritypolicyviolation(EventHandler value);
-  EventHandler get onseeked;
-  set onseeked(EventHandler value);
-  EventHandler get onseeking;
-  set onseeking(EventHandler value);
-  EventHandler get onselect;
-  set onselect(EventHandler value);
-  EventHandler get onslotchange;
-  set onslotchange(EventHandler value);
-  EventHandler get onstalled;
-  set onstalled(EventHandler value);
-  EventHandler get onsubmit;
-  set onsubmit(EventHandler value);
-  EventHandler get onsuspend;
-  set onsuspend(EventHandler value);
-  EventHandler get ontimeupdate;
-  set ontimeupdate(EventHandler value);
-  EventHandler get ontoggle;
-  set ontoggle(EventHandler value);
-  EventHandler get onvolumechange;
-  set onvolumechange(EventHandler value);
-  EventHandler get onwaiting;
-  set onwaiting(EventHandler value);
-  EventHandler get onwheel;
-  set onwheel(EventHandler value);
-  EventHandler get onanimationstart;
-  set onanimationstart(EventHandler value);
-  EventHandler get onanimationiteration;
-  set onanimationiteration(EventHandler value);
-  EventHandler get onanimationend;
-  set onanimationend(EventHandler value);
-  EventHandler get onanimationcancel;
-  set onanimationcancel(EventHandler value);
-  EventHandler get ontransitionrun;
-  set ontransitionrun(EventHandler value);
-  EventHandler get ontransitionstart;
-  set ontransitionstart(EventHandler value);
-  EventHandler get ontransitionend;
-  set ontransitionend(EventHandler value);
-  EventHandler get ontransitioncancel;
-  set ontransitioncancel(EventHandler value);
-  EventHandler get onpointerover;
-  set onpointerover(EventHandler value);
-  EventHandler get onpointerenter;
-  set onpointerenter(EventHandler value);
-  EventHandler get onpointerdown;
-  set onpointerdown(EventHandler value);
-  EventHandler get onpointermove;
-  set onpointermove(EventHandler value);
-  EventHandler get onpointerup;
-  set onpointerup(EventHandler value);
-  EventHandler get onpointercancel;
-  set onpointercancel(EventHandler value);
-  EventHandler get onpointerout;
-  set onpointerout(EventHandler value);
-  EventHandler get onpointerleave;
-  set onpointerleave(EventHandler value);
-  EventHandler get ongotpointercapture;
-  set ongotpointercapture(EventHandler value);
-  EventHandler get onlostpointercapture;
-  set onlostpointercapture(EventHandler value);
-  EventHandler get onselectstart;
-  set onselectstart(EventHandler value);
-  EventHandler get onselectionchange;
-  set onselectionchange(EventHandler value);
-  EventHandler get ontouchstart;
-  set ontouchstart(EventHandler value);
-  EventHandler get ontouchend;
-  set ontouchend(EventHandler value);
-  EventHandler get ontouchmove;
-  set ontouchmove(EventHandler value);
-  EventHandler get ontouchcancel;
-  set ontouchcancel(EventHandler value);
+extension type SVGElement._(JSObject _) implements Element, JSObject {
+  void focus([FocusOptions? options]) {
+    unsupportedPlatformError();
+  }
+
+  void blur() {
+    unsupportedPlatformError();
+  }
+
+  SVGSVGElement? get ownerSVGElement {
+    unsupportedPlatformError();
+  }
+
+  SVGElement? get viewportElement {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onabort {
+    unsupportedPlatformError();
+  }
+
+  set onabort(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onauxclick {
+    unsupportedPlatformError();
+  }
+
+  set onauxclick(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onbeforeinput {
+    unsupportedPlatformError();
+  }
+
+  set onbeforeinput(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onbeforetoggle {
+    unsupportedPlatformError();
+  }
+
+  set onbeforetoggle(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onblur {
+    unsupportedPlatformError();
+  }
+
+  set onblur(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get oncancel {
+    unsupportedPlatformError();
+  }
+
+  set oncancel(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get oncanplay {
+    unsupportedPlatformError();
+  }
+
+  set oncanplay(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get oncanplaythrough {
+    unsupportedPlatformError();
+  }
+
+  set oncanplaythrough(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onchange {
+    unsupportedPlatformError();
+  }
+
+  set onchange(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onclick {
+    unsupportedPlatformError();
+  }
+
+  set onclick(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onclose {
+    unsupportedPlatformError();
+  }
+
+  set onclose(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get oncontextlost {
+    unsupportedPlatformError();
+  }
+
+  set oncontextlost(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get oncontextmenu {
+    unsupportedPlatformError();
+  }
+
+  set oncontextmenu(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get oncontextrestored {
+    unsupportedPlatformError();
+  }
+
+  set oncontextrestored(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get oncopy {
+    unsupportedPlatformError();
+  }
+
+  set oncopy(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get oncuechange {
+    unsupportedPlatformError();
+  }
+
+  set oncuechange(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get oncut {
+    unsupportedPlatformError();
+  }
+
+  set oncut(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ondblclick {
+    unsupportedPlatformError();
+  }
+
+  set ondblclick(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ondrag {
+    unsupportedPlatformError();
+  }
+
+  set ondrag(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ondragend {
+    unsupportedPlatformError();
+  }
+
+  set ondragend(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ondragenter {
+    unsupportedPlatformError();
+  }
+
+  set ondragenter(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ondragleave {
+    unsupportedPlatformError();
+  }
+
+  set ondragleave(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ondragover {
+    unsupportedPlatformError();
+  }
+
+  set ondragover(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ondragstart {
+    unsupportedPlatformError();
+  }
+
+  set ondragstart(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ondrop {
+    unsupportedPlatformError();
+  }
+
+  set ondrop(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ondurationchange {
+    unsupportedPlatformError();
+  }
+
+  set ondurationchange(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onemptied {
+    unsupportedPlatformError();
+  }
+
+  set onemptied(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onended {
+    unsupportedPlatformError();
+  }
+
+  set onended(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  OnErrorEventHandler get onerror {
+    unsupportedPlatformError();
+  }
+
+  set onerror(OnErrorEventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onfocus {
+    unsupportedPlatformError();
+  }
+
+  set onfocus(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onformdata {
+    unsupportedPlatformError();
+  }
+
+  set onformdata(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get oninput {
+    unsupportedPlatformError();
+  }
+
+  set oninput(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get oninvalid {
+    unsupportedPlatformError();
+  }
+
+  set oninvalid(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onkeydown {
+    unsupportedPlatformError();
+  }
+
+  set onkeydown(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onkeypress {
+    unsupportedPlatformError();
+  }
+
+  set onkeypress(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onkeyup {
+    unsupportedPlatformError();
+  }
+
+  set onkeyup(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onload {
+    unsupportedPlatformError();
+  }
+
+  set onload(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onloadeddata {
+    unsupportedPlatformError();
+  }
+
+  set onloadeddata(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onloadedmetadata {
+    unsupportedPlatformError();
+  }
+
+  set onloadedmetadata(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onloadstart {
+    unsupportedPlatformError();
+  }
+
+  set onloadstart(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onmousedown {
+    unsupportedPlatformError();
+  }
+
+  set onmousedown(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onmouseenter {
+    unsupportedPlatformError();
+  }
+
+  set onmouseenter(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onmouseleave {
+    unsupportedPlatformError();
+  }
+
+  set onmouseleave(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onmousemove {
+    unsupportedPlatformError();
+  }
+
+  set onmousemove(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onmouseout {
+    unsupportedPlatformError();
+  }
+
+  set onmouseout(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onmouseover {
+    unsupportedPlatformError();
+  }
+
+  set onmouseover(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onmouseup {
+    unsupportedPlatformError();
+  }
+
+  set onmouseup(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onpaste {
+    unsupportedPlatformError();
+  }
+
+  set onpaste(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onpause {
+    unsupportedPlatformError();
+  }
+
+  set onpause(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onplay {
+    unsupportedPlatformError();
+  }
+
+  set onplay(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onplaying {
+    unsupportedPlatformError();
+  }
+
+  set onplaying(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onprogress {
+    unsupportedPlatformError();
+  }
+
+  set onprogress(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onratechange {
+    unsupportedPlatformError();
+  }
+
+  set onratechange(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onreset {
+    unsupportedPlatformError();
+  }
+
+  set onreset(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onresize {
+    unsupportedPlatformError();
+  }
+
+  set onresize(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onscroll {
+    unsupportedPlatformError();
+  }
+
+  set onscroll(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onscrollend {
+    unsupportedPlatformError();
+  }
+
+  set onscrollend(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onsecuritypolicyviolation {
+    unsupportedPlatformError();
+  }
+
+  set onsecuritypolicyviolation(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onseeked {
+    unsupportedPlatformError();
+  }
+
+  set onseeked(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onseeking {
+    unsupportedPlatformError();
+  }
+
+  set onseeking(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onselect {
+    unsupportedPlatformError();
+  }
+
+  set onselect(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onslotchange {
+    unsupportedPlatformError();
+  }
+
+  set onslotchange(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onstalled {
+    unsupportedPlatformError();
+  }
+
+  set onstalled(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onsubmit {
+    unsupportedPlatformError();
+  }
+
+  set onsubmit(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onsuspend {
+    unsupportedPlatformError();
+  }
+
+  set onsuspend(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ontimeupdate {
+    unsupportedPlatformError();
+  }
+
+  set ontimeupdate(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ontoggle {
+    unsupportedPlatformError();
+  }
+
+  set ontoggle(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onvolumechange {
+    unsupportedPlatformError();
+  }
+
+  set onvolumechange(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onwaiting {
+    unsupportedPlatformError();
+  }
+
+  set onwaiting(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onwheel {
+    unsupportedPlatformError();
+  }
+
+  set onwheel(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onanimationstart {
+    unsupportedPlatformError();
+  }
+
+  set onanimationstart(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onanimationiteration {
+    unsupportedPlatformError();
+  }
+
+  set onanimationiteration(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onanimationend {
+    unsupportedPlatformError();
+  }
+
+  set onanimationend(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onanimationcancel {
+    unsupportedPlatformError();
+  }
+
+  set onanimationcancel(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ontransitionrun {
+    unsupportedPlatformError();
+  }
+
+  set ontransitionrun(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ontransitionstart {
+    unsupportedPlatformError();
+  }
+
+  set ontransitionstart(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ontransitionend {
+    unsupportedPlatformError();
+  }
+
+  set ontransitionend(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ontransitioncancel {
+    unsupportedPlatformError();
+  }
+
+  set ontransitioncancel(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onpointerover {
+    unsupportedPlatformError();
+  }
+
+  set onpointerover(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onpointerenter {
+    unsupportedPlatformError();
+  }
+
+  set onpointerenter(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onpointerdown {
+    unsupportedPlatformError();
+  }
+
+  set onpointerdown(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onpointermove {
+    unsupportedPlatformError();
+  }
+
+  set onpointermove(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onpointerup {
+    unsupportedPlatformError();
+  }
+
+  set onpointerup(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onpointercancel {
+    unsupportedPlatformError();
+  }
+
+  set onpointercancel(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onpointerout {
+    unsupportedPlatformError();
+  }
+
+  set onpointerout(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onpointerleave {
+    unsupportedPlatformError();
+  }
+
+  set onpointerleave(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ongotpointercapture {
+    unsupportedPlatformError();
+  }
+
+  set ongotpointercapture(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onlostpointercapture {
+    unsupportedPlatformError();
+  }
+
+  set onlostpointercapture(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onselectstart {
+    unsupportedPlatformError();
+  }
+
+  set onselectstart(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onselectionchange {
+    unsupportedPlatformError();
+  }
+
+  set onselectionchange(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ontouchstart {
+    unsupportedPlatformError();
+  }
+
+  set ontouchstart(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ontouchend {
+    unsupportedPlatformError();
+  }
+
+  set ontouchend(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ontouchmove {
+    unsupportedPlatformError();
+  }
+
+  set ontouchmove(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ontouchcancel {
+    unsupportedPlatformError();
+  }
+
+  set ontouchcancel(EventHandler value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`dataset`** read-only property of the [SVGElement] interface
   /// provides read/write access to
@@ -227,13 +802,33 @@ abstract class SVGElement implements Element, JSObject {
   ///
   /// For more information on the behavior of `dataset`, see
   /// [HTMLElement.dataset].
-  DOMStringMap get dataset;
-  String get nonce;
-  set nonce(String value);
-  bool get autofocus;
-  set autofocus(bool value);
-  int get tabIndex;
-  set tabIndex(int value);
+  DOMStringMap get dataset {
+    unsupportedPlatformError();
+  }
+
+  String get nonce {
+    unsupportedPlatformError();
+  }
+
+  set nonce(String value) {
+    unsupportedPlatformError();
+  }
+
+  bool get autofocus {
+    unsupportedPlatformError();
+  }
+
+  set autofocus(bool value) {
+    unsupportedPlatformError();
+  }
+
+  int get tabIndex {
+    unsupportedPlatformError();
+  }
+
+  set tabIndex(int value) {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`style`** property of the [SVGElement] returns the
   /// _inline_ style of an element in the form of a live [CSSStyleDeclaration]
@@ -274,7 +869,9 @@ abstract class SVGElement implements Element, JSObject {
   /// >
   /// > The `style` property has the same priority in the CSS cascade as an
   /// > inline style declaration set via the `style` attribute.
-  CSSStyleDeclaration get style;
+  CSSStyleDeclaration get style {
+    unsupportedPlatformError();
+  }
 
   /// The **`attributeStyleMap`** read-only property of the [SVGElement]
   /// interface returns a live [StylePropertyMap] object that contains a list of
@@ -294,7 +891,9 @@ abstract class SVGElement implements Element, JSObject {
   /// inline styles through the [StylePropertyMap] object that it returns, just
   /// like through the [CSSStyleDeclaration] object that returns via the `style`
   /// property.
-  StylePropertyMap get attributeStyleMap;
+  StylePropertyMap get attributeStyleMap {
+    unsupportedPlatformError();
+  }
 }
 
 extension SVGElementExtension on SVGElement {
@@ -303,7 +902,16 @@ extension SVGElementExtension on SVGElement {
   }
 }
 
-abstract class SVGBoundingBoxOptions implements JSObject {
+extension type SVGBoundingBoxOptions._(JSObject _) implements JSObject {
+  factory SVGBoundingBoxOptions({
+    bool? fill,
+    bool? stroke,
+    bool? markers,
+    bool? clipped,
+  }) {
+    unsupportedPlatformError();
+  }
+
   bool get fill {
     unsupportedPlatformError();
   }
@@ -344,7 +952,8 @@ abstract class SVGBoundingBoxOptions implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGGraphicsElement).
-abstract class SVGGraphicsElement implements SVGElement, JSObject {
+extension type SVGGraphicsElement._(JSObject _)
+    implements SVGElement, JSObject {
   /// The **`SVGGraphicsElement.getBBox()`** method allows us to determine
   /// the coordinates of the smallest rectangle in which the object fits. The
   /// coordinates
@@ -361,12 +970,29 @@ abstract class SVGGraphicsElement implements SVGElement, JSObject {
   /// > **Note:** `getBBox` returns different values than
   /// > [Element.getBoundingClientRect], as the
   /// > latter returns value relative to the viewport
-  DOMRect getBBox([SVGBoundingBoxOptions options]);
-  DOMMatrix? getCTM();
-  DOMMatrix? getScreenCTM();
-  SVGAnimatedTransformList get transform;
-  SVGStringList get requiredExtensions;
-  SVGStringList get systemLanguage;
+  DOMRect getBBox([SVGBoundingBoxOptions? options]) {
+    unsupportedPlatformError();
+  }
+
+  DOMMatrix? getCTM() {
+    unsupportedPlatformError();
+  }
+
+  DOMMatrix? getScreenCTM() {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedTransformList get transform {
+    unsupportedPlatformError();
+  }
+
+  SVGStringList get requiredExtensions {
+    unsupportedPlatformError();
+  }
+
+  SVGStringList get systemLanguage {
+    unsupportedPlatformError();
+  }
 }
 
 /// The `SVGGeometryElement` interface represents SVG elements whose rendering
@@ -377,7 +1003,8 @@ abstract class SVGGraphicsElement implements SVGElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGGeometryElement).
-abstract class SVGGeometryElement implements SVGGraphicsElement, JSObject {
+extension type SVGGeometryElement._(JSObject _)
+    implements SVGGraphicsElement, JSObject {
   /// The **`SVGGeometryElement.isPointInFill()`** method determines
   /// whether a given point is within the fill shape of an element. Normal hit
   /// testing rules
@@ -385,7 +1012,9 @@ abstract class SVGGeometryElement implements SVGGraphicsElement, JSObject {
   /// whether a point is considered to be within the fill. The `point` argument
   /// is
   /// interpreted as a point in the local coordinate system of the element.
-  bool isPointInFill([DOMPointInit point]);
+  bool isPointInFill([DOMPointInit? point]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`SVGGeometryElement.isPointInStroke()`** method
   /// determines whether a given point is within the stroke shape of an element.
@@ -396,22 +1025,30 @@ abstract class SVGGeometryElement implements SVGGraphicsElement, JSObject {
   /// `point` argument is interpreted as a point in the local coordinate system
   /// of
   /// the element.
-  bool isPointInStroke([DOMPointInit point]);
+  bool isPointInStroke([DOMPointInit? point]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`SVGGeometryElement.getTotalLength()`** method returns
   /// the user agent's computed value for the total length of the path in user
   /// units.
-  double getTotalLength();
+  double getTotalLength() {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`SVGGeometryElement.getPointAtLength()`** method returns the
   /// point at a given distance along the path.
-  DOMPoint getPointAtLength(num distance);
+  DOMPoint getPointAtLength(num distance) {
+    unsupportedPlatformError();
+  }
 
   /// The **`SVGGeometryElement.pathLength`** property reflects the
   /// `pathLength` attribute and returns the total length of the path, in user
   /// units.
-  SVGAnimatedNumber get pathLength;
+  SVGAnimatedNumber get pathLength {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SVGNumber`** interface corresponds to the  basic data type.
@@ -423,9 +1060,14 @@ abstract class SVGGeometryElement implements SVGGraphicsElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGNumber).
-abstract class SVGNumber implements JSObject {
-  double get value;
-  set value(num value);
+extension type SVGNumber._(JSObject _) implements JSObject {
+  double get value {
+    unsupportedPlatformError();
+  }
+
+  set value(num value) {
+    unsupportedPlatformError();
+  }
 }
 
 ///
@@ -434,7 +1076,7 @@ abstract class SVGNumber implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGLength).
-abstract class SVGLength implements JSObject {
+extension type SVGLength._(JSObject _) implements JSObject {
   static const int SVG_LENGTHTYPE_UNKNOWN = 0;
 
   static const int SVG_LENGTHTYPE_NUMBER = 1;
@@ -460,15 +1102,41 @@ abstract class SVGLength implements JSObject {
   void newValueSpecifiedUnits(
     int unitType,
     num valueInSpecifiedUnits,
-  );
-  void convertToSpecifiedUnits(int unitType);
-  int get unitType;
-  double get value;
-  set value(num value);
-  double get valueInSpecifiedUnits;
-  set valueInSpecifiedUnits(num value);
-  String get valueAsString;
-  set valueAsString(String value);
+  ) {
+    unsupportedPlatformError();
+  }
+
+  void convertToSpecifiedUnits(int unitType) {
+    unsupportedPlatformError();
+  }
+
+  int get unitType {
+    unsupportedPlatformError();
+  }
+
+  double get value {
+    unsupportedPlatformError();
+  }
+
+  set value(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get valueInSpecifiedUnits {
+    unsupportedPlatformError();
+  }
+
+  set valueInSpecifiedUnits(num value) {
+    unsupportedPlatformError();
+  }
+
+  String get valueAsString {
+    unsupportedPlatformError();
+  }
+
+  set valueAsString(String value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The `SVGAngle` interface is used to represent a value that can be an  or
@@ -494,7 +1162,7 @@ abstract class SVGLength implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGAngle).
-abstract class SVGAngle implements JSObject {
+extension type SVGAngle._(JSObject _) implements JSObject {
   static const int SVG_ANGLETYPE_UNKNOWN = 0;
 
   static const int SVG_ANGLETYPE_UNSPECIFIED = 1;
@@ -508,15 +1176,41 @@ abstract class SVGAngle implements JSObject {
   void newValueSpecifiedUnits(
     int unitType,
     num valueInSpecifiedUnits,
-  );
-  void convertToSpecifiedUnits(int unitType);
-  int get unitType;
-  double get value;
-  set value(num value);
-  double get valueInSpecifiedUnits;
-  set valueInSpecifiedUnits(num value);
-  String get valueAsString;
-  set valueAsString(String value);
+  ) {
+    unsupportedPlatformError();
+  }
+
+  void convertToSpecifiedUnits(int unitType) {
+    unsupportedPlatformError();
+  }
+
+  int get unitType {
+    unsupportedPlatformError();
+  }
+
+  double get value {
+    unsupportedPlatformError();
+  }
+
+  set value(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get valueInSpecifiedUnits {
+    unsupportedPlatformError();
+  }
+
+  set valueInSpecifiedUnits(num value) {
+    unsupportedPlatformError();
+  }
+
+  String get valueAsString {
+    unsupportedPlatformError();
+  }
+
+  set valueAsString(String value) {
+    unsupportedPlatformError();
+  }
 }
 
 ///
@@ -525,26 +1219,55 @@ abstract class SVGAngle implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGNumberList).
-abstract class SVGNumberList implements JSObject {
-  void clear();
-  SVGNumber initialize(SVGNumber newItem);
-  SVGNumber getItem(int index);
+extension type SVGNumberList._(JSObject _) implements JSObject {
+  void clear() {
+    unsupportedPlatformError();
+  }
+
+  SVGNumber initialize(SVGNumber newItem) {
+    unsupportedPlatformError();
+  }
+
+  SVGNumber getItem(int index) {
+    unsupportedPlatformError();
+  }
+
   SVGNumber insertItemBefore(
     SVGNumber newItem,
     int index,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   SVGNumber replaceItem(
     SVGNumber newItem,
     int index,
-  );
-  SVGNumber removeItem(int index);
-  SVGNumber appendItem(SVGNumber newItem);
+  ) {
+    unsupportedPlatformError();
+  }
+
+  SVGNumber removeItem(int index) {
+    unsupportedPlatformError();
+  }
+
+  SVGNumber appendItem(SVGNumber newItem) {
+    unsupportedPlatformError();
+  }
+
   void operator []=(
     int index,
     SVGNumber newItem,
-  );
-  int get length;
-  int get numberOfItems;
+  ) {
+    unsupportedPlatformError();
+  }
+
+  int get length {
+    unsupportedPlatformError();
+  }
+
+  int get numberOfItems {
+    unsupportedPlatformError();
+  }
 }
 
 ///
@@ -553,26 +1276,55 @@ abstract class SVGNumberList implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGLengthList).
-abstract class SVGLengthList implements JSObject {
-  void clear();
-  SVGLength initialize(SVGLength newItem);
-  SVGLength getItem(int index);
+extension type SVGLengthList._(JSObject _) implements JSObject {
+  void clear() {
+    unsupportedPlatformError();
+  }
+
+  SVGLength initialize(SVGLength newItem) {
+    unsupportedPlatformError();
+  }
+
+  SVGLength getItem(int index) {
+    unsupportedPlatformError();
+  }
+
   SVGLength insertItemBefore(
     SVGLength newItem,
     int index,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   SVGLength replaceItem(
     SVGLength newItem,
     int index,
-  );
-  SVGLength removeItem(int index);
-  SVGLength appendItem(SVGLength newItem);
+  ) {
+    unsupportedPlatformError();
+  }
+
+  SVGLength removeItem(int index) {
+    unsupportedPlatformError();
+  }
+
+  SVGLength appendItem(SVGLength newItem) {
+    unsupportedPlatformError();
+  }
+
   void operator []=(
     int index,
     SVGLength newItem,
-  );
-  int get length;
-  int get numberOfItems;
+  ) {
+    unsupportedPlatformError();
+  }
+
+  int get length {
+    unsupportedPlatformError();
+  }
+
+  int get numberOfItems {
+    unsupportedPlatformError();
+  }
 }
 
 ///
@@ -581,25 +1333,51 @@ abstract class SVGLengthList implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGStringList).
-abstract class SVGStringList implements JSObject {
-  void clear();
-  String initialize(String newItem);
-  String getItem(int index);
+extension type SVGStringList._(JSObject _) implements JSObject {
+  void clear() {
+    unsupportedPlatformError();
+  }
+
+  String initialize(String newItem) {
+    unsupportedPlatformError();
+  }
+
+  String getItem(int index) {
+    unsupportedPlatformError();
+  }
+
   String insertItemBefore(
     String newItem,
     int index,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   String replaceItem(
     String newItem,
     int index,
-  );
-  String removeItem(int index);
-  String appendItem(String newItem);
+  ) {
+    unsupportedPlatformError();
+  }
+
+  String removeItem(int index) {
+    unsupportedPlatformError();
+  }
+
+  String appendItem(String newItem) {
+    unsupportedPlatformError();
+  }
+
   void operator []=(
     int index,
     String newItem,
-  );
-  int get numberOfItems;
+  ) {
+    unsupportedPlatformError();
+  }
+
+  int get numberOfItems {
+    unsupportedPlatformError();
+  }
 }
 
 ///
@@ -608,10 +1386,18 @@ abstract class SVGStringList implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedBoolean).
-abstract class SVGAnimatedBoolean implements JSObject {
-  bool get baseVal;
-  set baseVal(bool value);
-  bool get animVal;
+extension type SVGAnimatedBoolean._(JSObject _) implements JSObject {
+  bool get baseVal {
+    unsupportedPlatformError();
+  }
+
+  set baseVal(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get animVal {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SVGAnimatedEnumeration`** interface describes attribute values which
@@ -621,16 +1407,23 @@ abstract class SVGAnimatedBoolean implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedEnumeration).
-abstract class SVGAnimatedEnumeration implements JSObject {
+extension type SVGAnimatedEnumeration._(JSObject _) implements JSObject {
   /// The **`baseVal`** property of the [SVGAnimatedEnumeration] interface
   /// contains the initial value of an SVG enumeration.
-  int get baseVal;
-  set baseVal(int value);
+  int get baseVal {
+    unsupportedPlatformError();
+  }
+
+  set baseVal(int value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`animVal`** property of the [SVGAnimatedEnumeration] interface
   /// contains the current value of an SVG enumeration. If there is no
   /// animation, it is the same value as the [SVGAnimatedEnumeration.baseVal].
-  int get animVal;
+  int get animVal {
+    unsupportedPlatformError();
+  }
 }
 
 ///
@@ -639,10 +1432,18 @@ abstract class SVGAnimatedEnumeration implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedInteger).
-abstract class SVGAnimatedInteger implements JSObject {
-  int get baseVal;
-  set baseVal(int value);
-  int get animVal;
+extension type SVGAnimatedInteger._(JSObject _) implements JSObject {
+  int get baseVal {
+    unsupportedPlatformError();
+  }
+
+  set baseVal(int value) {
+    unsupportedPlatformError();
+  }
+
+  int get animVal {
+    unsupportedPlatformError();
+  }
 }
 
 ///
@@ -651,10 +1452,18 @@ abstract class SVGAnimatedInteger implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedNumber).
-abstract class SVGAnimatedNumber implements JSObject {
-  double get baseVal;
-  set baseVal(num value);
-  double get animVal;
+extension type SVGAnimatedNumber._(JSObject _) implements JSObject {
+  double get baseVal {
+    unsupportedPlatformError();
+  }
+
+  set baseVal(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get animVal {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SVGAnimatedLength`** interface represents attributes of type
@@ -664,15 +1473,19 @@ abstract class SVGAnimatedNumber implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedLength).
-abstract class SVGAnimatedLength implements JSObject {
+extension type SVGAnimatedLength._(JSObject _) implements JSObject {
   /// The **`baseVal`** property of the [SVGAnimatedLength] interface contains
   /// the initial value of an SVG enumeration.
-  SVGLength get baseVal;
+  SVGLength get baseVal {
+    unsupportedPlatformError();
+  }
 
   /// The **`animVal`** property of the [SVGAnimatedLength] interface contains
   /// the current value of an SVG enumeration. If there is no animation, it is
   /// the same value as the [SVGAnimatedLength.baseVal].
-  SVGLength get animVal;
+  SVGLength get animVal {
+    unsupportedPlatformError();
+  }
 }
 
 ///
@@ -681,9 +1494,14 @@ abstract class SVGAnimatedLength implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedAngle).
-abstract class SVGAnimatedAngle implements JSObject {
-  SVGAngle get baseVal;
-  SVGAngle get animVal;
+extension type SVGAnimatedAngle._(JSObject _) implements JSObject {
+  SVGAngle get baseVal {
+    unsupportedPlatformError();
+  }
+
+  SVGAngle get animVal {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SVGAnimatedString`** interface represents string attributes which can
@@ -694,12 +1512,17 @@ abstract class SVGAnimatedAngle implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedString).
-abstract class SVGAnimatedString implements JSObject {
+extension type SVGAnimatedString._(JSObject _) implements JSObject {
   /// BaseVal gets or sets the base value of the given attribute before any
   /// animations are applied. The base value of the given attribute before
   /// applying any animations. Setter throws DOMException.
-  String get baseVal;
-  set baseVal(String value);
+  String get baseVal {
+    unsupportedPlatformError();
+  }
+
+  set baseVal(String value) {
+    unsupportedPlatformError();
+  }
 
   /// AnimVal attribute or animVal property contains the same value as the
   /// [SVGAnimatedString.baseVal] property. If the given attribute or property
@@ -708,7 +1531,9 @@ abstract class SVGAnimatedString implements JSObject {
   /// animated, then it contains the same value as baseVal
   ///
   /// > **Note:** The **animVal** property is a read only property.
-  String get animVal;
+  String get animVal {
+    unsupportedPlatformError();
+  }
 }
 
 /// The `SVGAnimatedRect` interface is used for attributes of basic [SVGRect]
@@ -755,9 +1580,14 @@ abstract class SVGAnimatedString implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedRect).
-abstract class SVGAnimatedRect implements JSObject {
-  DOMRect get baseVal;
-  DOMRectReadOnly get animVal;
+extension type SVGAnimatedRect._(JSObject _) implements JSObject {
+  DOMRect get baseVal {
+    unsupportedPlatformError();
+  }
+
+  DOMRectReadOnly get animVal {
+    unsupportedPlatformError();
+  }
 }
 
 ///
@@ -766,9 +1596,14 @@ abstract class SVGAnimatedRect implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedNumberList).
-abstract class SVGAnimatedNumberList implements JSObject {
-  SVGNumberList get baseVal;
-  SVGNumberList get animVal;
+extension type SVGAnimatedNumberList._(JSObject _) implements JSObject {
+  SVGNumberList get baseVal {
+    unsupportedPlatformError();
+  }
+
+  SVGNumberList get animVal {
+    unsupportedPlatformError();
+  }
 }
 
 ///
@@ -777,9 +1612,14 @@ abstract class SVGAnimatedNumberList implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedLengthList).
-abstract class SVGAnimatedLengthList implements JSObject {
-  SVGLengthList get baseVal;
-  SVGLengthList get animVal;
+extension type SVGAnimatedLengthList._(JSObject _) implements JSObject {
+  SVGLengthList get baseVal {
+    unsupportedPlatformError();
+  }
+
+  SVGLengthList get animVal {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SVGUnitTypes`** interface defines a commonly used set of constants
@@ -790,7 +1630,7 @@ abstract class SVGAnimatedLengthList implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGUnitTypes).
-abstract class SVGUnitTypes implements JSObject {
+extension type SVGUnitTypes._(JSObject _) implements JSObject {
   static const int SVG_UNIT_TYPE_UNKNOWN = 0;
 
   static const int SVG_UNIT_TYPE_USERSPACEONUSE = 1;
@@ -808,87 +1648,298 @@ abstract class SVGUnitTypes implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGSVGElement).
-abstract class SVGSVGElement implements SVGGraphicsElement, JSObject {
+extension type SVGSVGElement._(JSObject _)
+    implements SVGGraphicsElement, JSObject {
+  /// Creates an [SVGSVGElement] using the tag 'svg'.
+  SVGSVGElement()
+      : _ = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'svg',
+        );
+
   NodeList getIntersectionList(
     DOMRectReadOnly rect,
     SVGElement? referenceElement,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   NodeList getEnclosureList(
     DOMRectReadOnly rect,
     SVGElement? referenceElement,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   bool checkIntersection(
     SVGElement element,
     DOMRectReadOnly rect,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   bool checkEnclosure(
     SVGElement element,
     DOMRectReadOnly rect,
-  );
-  void deselectAll();
-  SVGNumber createSVGNumber();
-  SVGLength createSVGLength();
-  SVGAngle createSVGAngle();
-  DOMPoint createSVGPoint();
-  DOMMatrix createSVGMatrix();
-  DOMRect createSVGRect();
-  SVGTransform createSVGTransform();
-  SVGTransform createSVGTransformFromMatrix([DOMMatrix2DInit matrix]);
-  Element getElementById(String elementId);
-  int suspendRedraw(int maxWaitMilliseconds);
-  void unsuspendRedraw(int suspendHandleID);
-  void unsuspendRedrawAll();
-  void forceRedraw();
-  void pauseAnimations();
-  void unpauseAnimations();
-  bool animationsPaused();
-  double getCurrentTime();
-  void setCurrentTime(num seconds);
-  SVGAnimatedLength get x;
-  SVGAnimatedLength get y;
-  SVGAnimatedLength get width;
-  SVGAnimatedLength get height;
-  double get currentScale;
-  set currentScale(num value);
-  DOMPointReadOnly get currentTranslate;
-  SVGAnimatedRect get viewBox;
-  SVGAnimatedPreserveAspectRatio get preserveAspectRatio;
-  EventHandler get onafterprint;
-  set onafterprint(EventHandler value);
-  EventHandler get onbeforeprint;
-  set onbeforeprint(EventHandler value);
-  OnBeforeUnloadEventHandler get onbeforeunload;
-  set onbeforeunload(OnBeforeUnloadEventHandler value);
-  EventHandler get onhashchange;
-  set onhashchange(EventHandler value);
-  EventHandler get onlanguagechange;
-  set onlanguagechange(EventHandler value);
-  EventHandler get onmessage;
-  set onmessage(EventHandler value);
-  EventHandler get onmessageerror;
-  set onmessageerror(EventHandler value);
-  EventHandler get onoffline;
-  set onoffline(EventHandler value);
-  EventHandler get ononline;
-  set ononline(EventHandler value);
-  EventHandler get onpagehide;
-  set onpagehide(EventHandler value);
-  EventHandler get onpageshow;
-  set onpageshow(EventHandler value);
-  EventHandler get onpopstate;
-  set onpopstate(EventHandler value);
-  EventHandler get onrejectionhandled;
-  set onrejectionhandled(EventHandler value);
-  EventHandler get onstorage;
-  set onstorage(EventHandler value);
-  EventHandler get onunhandledrejection;
-  set onunhandledrejection(EventHandler value);
-  EventHandler get onunload;
-  set onunload(EventHandler value);
-  EventHandler get ongamepadconnected;
-  set ongamepadconnected(EventHandler value);
-  EventHandler get ongamepaddisconnected;
-  set ongamepaddisconnected(EventHandler value);
+  ) {
+    unsupportedPlatformError();
+  }
+
+  void deselectAll() {
+    unsupportedPlatformError();
+  }
+
+  SVGNumber createSVGNumber() {
+    unsupportedPlatformError();
+  }
+
+  SVGLength createSVGLength() {
+    unsupportedPlatformError();
+  }
+
+  SVGAngle createSVGAngle() {
+    unsupportedPlatformError();
+  }
+
+  DOMPoint createSVGPoint() {
+    unsupportedPlatformError();
+  }
+
+  DOMMatrix createSVGMatrix() {
+    unsupportedPlatformError();
+  }
+
+  DOMRect createSVGRect() {
+    unsupportedPlatformError();
+  }
+
+  SVGTransform createSVGTransform() {
+    unsupportedPlatformError();
+  }
+
+  SVGTransform createSVGTransformFromMatrix([DOMMatrix2DInit? matrix]) {
+    unsupportedPlatformError();
+  }
+
+  Element getElementById(String elementId) {
+    unsupportedPlatformError();
+  }
+
+  int suspendRedraw(int maxWaitMilliseconds) {
+    unsupportedPlatformError();
+  }
+
+  void unsuspendRedraw(int suspendHandleID) {
+    unsupportedPlatformError();
+  }
+
+  void unsuspendRedrawAll() {
+    unsupportedPlatformError();
+  }
+
+  void forceRedraw() {
+    unsupportedPlatformError();
+  }
+
+  void pauseAnimations() {
+    unsupportedPlatformError();
+  }
+
+  void unpauseAnimations() {
+    unsupportedPlatformError();
+  }
+
+  bool animationsPaused() {
+    unsupportedPlatformError();
+  }
+
+  double getCurrentTime() {
+    unsupportedPlatformError();
+  }
+
+  void setCurrentTime(num seconds) {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get x {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get y {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get width {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get height {
+    unsupportedPlatformError();
+  }
+
+  double get currentScale {
+    unsupportedPlatformError();
+  }
+
+  set currentScale(num value) {
+    unsupportedPlatformError();
+  }
+
+  DOMPointReadOnly get currentTranslate {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedRect get viewBox {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedPreserveAspectRatio get preserveAspectRatio {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onafterprint {
+    unsupportedPlatformError();
+  }
+
+  set onafterprint(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onbeforeprint {
+    unsupportedPlatformError();
+  }
+
+  set onbeforeprint(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  OnBeforeUnloadEventHandler get onbeforeunload {
+    unsupportedPlatformError();
+  }
+
+  set onbeforeunload(OnBeforeUnloadEventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onhashchange {
+    unsupportedPlatformError();
+  }
+
+  set onhashchange(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onlanguagechange {
+    unsupportedPlatformError();
+  }
+
+  set onlanguagechange(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onmessage {
+    unsupportedPlatformError();
+  }
+
+  set onmessage(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onmessageerror {
+    unsupportedPlatformError();
+  }
+
+  set onmessageerror(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onoffline {
+    unsupportedPlatformError();
+  }
+
+  set onoffline(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ononline {
+    unsupportedPlatformError();
+  }
+
+  set ononline(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onpagehide {
+    unsupportedPlatformError();
+  }
+
+  set onpagehide(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onpageshow {
+    unsupportedPlatformError();
+  }
+
+  set onpageshow(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onpopstate {
+    unsupportedPlatformError();
+  }
+
+  set onpopstate(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onrejectionhandled {
+    unsupportedPlatformError();
+  }
+
+  set onrejectionhandled(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onstorage {
+    unsupportedPlatformError();
+  }
+
+  set onstorage(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onunhandledrejection {
+    unsupportedPlatformError();
+  }
+
+  set onunhandledrejection(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onunload {
+    unsupportedPlatformError();
+  }
+
+  set onunload(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ongamepadconnected {
+    unsupportedPlatformError();
+  }
+
+  set ongamepadconnected(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ongamepaddisconnected {
+    unsupportedPlatformError();
+  }
+
+  set ongamepaddisconnected(EventHandler value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SVGGElement`** interface corresponds to the  element.
@@ -897,7 +1948,15 @@ abstract class SVGSVGElement implements SVGGraphicsElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGGElement).
-abstract class SVGGElement implements SVGGraphicsElement, JSObject {}
+extension type SVGGElement._(JSObject _)
+    implements SVGGraphicsElement, JSObject {
+  /// Creates an [SVGGElement] using the tag 'g'.
+  SVGGElement()
+      : _ = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'g',
+        );
+}
 
 /// The **`SVGDefsElement`** interface corresponds to the  element.
 ///
@@ -905,7 +1964,15 @@ abstract class SVGGElement implements SVGGraphicsElement, JSObject {}
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGDefsElement).
-abstract class SVGDefsElement implements SVGGraphicsElement, JSObject {}
+extension type SVGDefsElement._(JSObject _)
+    implements SVGGraphicsElement, JSObject {
+  /// Creates an [SVGDefsElement] using the tag 'defs'.
+  SVGDefsElement()
+      : _ = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'defs',
+        );
+}
 
 /// The **`SVGDescElement`** interface corresponds to the  element.
 ///
@@ -913,7 +1980,14 @@ abstract class SVGDefsElement implements SVGGraphicsElement, JSObject {}
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGDescElement).
-abstract class SVGDescElement implements SVGElement, JSObject {}
+extension type SVGDescElement._(JSObject _) implements SVGElement, JSObject {
+  /// Creates an [SVGDescElement] using the tag 'desc'.
+  SVGDescElement()
+      : _ = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'desc',
+        );
+}
 
 /// The **`SVGMetadataElement`** interface corresponds to the  element.
 ///
@@ -921,7 +1995,15 @@ abstract class SVGDescElement implements SVGElement, JSObject {}
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGMetadataElement).
-abstract class SVGMetadataElement implements SVGElement, JSObject {}
+extension type SVGMetadataElement._(JSObject _)
+    implements SVGElement, JSObject {
+  /// Creates an [SVGMetadataElement] using the tag 'metadata'.
+  SVGMetadataElement()
+      : _ = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'metadata',
+        );
+}
 
 /// The **`SVGTitleElement`** interface corresponds to the  element.
 ///
@@ -929,7 +2011,14 @@ abstract class SVGMetadataElement implements SVGElement, JSObject {}
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGTitleElement).
-abstract class SVGTitleElement implements SVGElement, JSObject {}
+extension type SVGTitleElement._(JSObject _) implements SVGElement, JSObject {
+  /// Creates an [SVGTitleElement] using the tag 'title'.
+  SVGTitleElement()
+      : _ = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'title',
+        );
+}
 
 /// The **`SVGSymbolElement`** interface corresponds to the  element.
 ///
@@ -937,9 +2026,22 @@ abstract class SVGTitleElement implements SVGElement, JSObject {}
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGSymbolElement).
-abstract class SVGSymbolElement implements SVGGraphicsElement, JSObject {
-  SVGAnimatedRect get viewBox;
-  SVGAnimatedPreserveAspectRatio get preserveAspectRatio;
+extension type SVGSymbolElement._(JSObject _)
+    implements SVGGraphicsElement, JSObject {
+  /// Creates an [SVGSymbolElement] using the tag 'symbol'.
+  SVGSymbolElement()
+      : _ = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'symbol',
+        );
+
+  SVGAnimatedRect get viewBox {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedPreserveAspectRatio get preserveAspectRatio {
+    unsupportedPlatformError();
+  }
 }
 
 ///
@@ -948,12 +2050,34 @@ abstract class SVGSymbolElement implements SVGGraphicsElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGUseElement).
-abstract class SVGUseElement implements SVGGraphicsElement, JSObject {
-  SVGAnimatedLength get x;
-  SVGAnimatedLength get y;
-  SVGAnimatedLength get width;
-  SVGAnimatedLength get height;
-  SVGAnimatedString get href;
+extension type SVGUseElement._(JSObject _)
+    implements SVGGraphicsElement, JSObject {
+  /// Creates an [SVGUseElement] using the tag 'use'.
+  SVGUseElement()
+      : _ = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'use',
+        );
+
+  SVGAnimatedLength get x {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get y {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get width {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get height {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedString get href {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SVGSwitchElement`** interface corresponds to the  element.
@@ -962,7 +2086,15 @@ abstract class SVGUseElement implements SVGGraphicsElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGSwitchElement).
-abstract class SVGSwitchElement implements SVGGraphicsElement, JSObject {}
+extension type SVGSwitchElement._(JSObject _)
+    implements SVGGraphicsElement, JSObject {
+  /// Creates an [SVGSwitchElement] using the tag 'switch'.
+  SVGSwitchElement()
+      : _ = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'switch',
+        );
+}
 
 /// The **`SVGStyleElement`** interface corresponds to the SVG  element.
 ///
@@ -970,7 +2102,14 @@ abstract class SVGSwitchElement implements SVGGraphicsElement, JSObject {}
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGStyleElement).
-abstract class SVGStyleElement implements SVGElement, JSObject {
+extension type SVGStyleElement._(JSObject _) implements SVGElement, JSObject {
+  /// Creates an [SVGStyleElement] using the tag 'style'.
+  SVGStyleElement()
+      : _ = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'style',
+        );
+
   /// The **`SVGStyleElement.type`** property returns the type of the current
   /// style.
   /// The value reflects the associated SVG `<style>` element's
@@ -978,8 +2117,13 @@ abstract class SVGStyleElement implements SVGElement, JSObject {
   /// attribute.
   ///
   /// Authors should not use this property or rely on the value.
-  String get type;
-  set type(String value);
+  String get type {
+    unsupportedPlatformError();
+  }
+
+  set type(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`SVGStyleElement.media`** property is a media query string
   /// corresponding to the
@@ -987,21 +2131,33 @@ abstract class SVGStyleElement implements SVGElement, JSObject {
   /// attribute of the given SVG style element.
   ///
   /// The query must be matched for the style to apply.
-  String get media;
-  set media(String value);
+  String get media {
+    unsupportedPlatformError();
+  }
+
+  set media(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`SVGStyleElement.title`** property is a string corresponding to the
   /// [`title`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/style#title)
   /// attribute of the given SVG style element.
   /// It may be used to select between
   /// [alternate style sheets](https://developer.mozilla.org/en-US/docs/Web/CSS/Alternative_style_sheets).
-  String get title;
-  set title(String value);
+  String get title {
+    unsupportedPlatformError();
+  }
+
+  set title(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`SVGStyleElement.sheet`** read-only property returns the
   /// [CSSStyleSheet] corresponding to the given SVG style element, or `null` if
   /// there is none.
-  CSSStyleSheet? get sheet;
+  CSSStyleSheet? get sheet {
+    unsupportedPlatformError();
+  }
 }
 
 ///
@@ -1010,7 +2166,7 @@ abstract class SVGStyleElement implements SVGElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGTransform).
-abstract class SVGTransform implements JSObject {
+extension type SVGTransform._(JSObject _) implements JSObject {
   static const int SVG_TRANSFORM_UNKNOWN = 0;
 
   static const int SVG_TRANSFORM_MATRIX = 1;
@@ -1025,25 +2181,51 @@ abstract class SVGTransform implements JSObject {
 
   static const int SVG_TRANSFORM_SKEWY = 6;
 
-  void setMatrix([DOMMatrix2DInit matrix]);
+  void setMatrix([DOMMatrix2DInit? matrix]) {
+    unsupportedPlatformError();
+  }
+
   void setTranslate(
     num tx,
     num ty,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void setScale(
     num sx,
     num sy,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void setRotate(
     num angle,
     num cx,
     num cy,
-  );
-  void setSkewX(num angle);
-  void setSkewY(num angle);
-  int get type;
-  DOMMatrix get matrix;
-  double get angle;
+  ) {
+    unsupportedPlatformError();
+  }
+
+  void setSkewX(num angle) {
+    unsupportedPlatformError();
+  }
+
+  void setSkewY(num angle) {
+    unsupportedPlatformError();
+  }
+
+  int get type {
+    unsupportedPlatformError();
+  }
+
+  DOMMatrix get matrix {
+    unsupportedPlatformError();
+  }
+
+  double get angle {
+    unsupportedPlatformError();
+  }
 }
 
 ///
@@ -1052,27 +2234,59 @@ abstract class SVGTransform implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGTransformList).
-abstract class SVGTransformList implements JSObject {
-  void clear();
-  SVGTransform initialize(SVGTransform newItem);
-  SVGTransform getItem(int index);
+extension type SVGTransformList._(JSObject _) implements JSObject {
+  void clear() {
+    unsupportedPlatformError();
+  }
+
+  SVGTransform initialize(SVGTransform newItem) {
+    unsupportedPlatformError();
+  }
+
+  SVGTransform getItem(int index) {
+    unsupportedPlatformError();
+  }
+
   SVGTransform insertItemBefore(
     SVGTransform newItem,
     int index,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   SVGTransform replaceItem(
     SVGTransform newItem,
     int index,
-  );
-  SVGTransform removeItem(int index);
-  SVGTransform appendItem(SVGTransform newItem);
+  ) {
+    unsupportedPlatformError();
+  }
+
+  SVGTransform removeItem(int index) {
+    unsupportedPlatformError();
+  }
+
+  SVGTransform appendItem(SVGTransform newItem) {
+    unsupportedPlatformError();
+  }
+
   void operator []=(
     int index,
     SVGTransform newItem,
-  );
-  SVGTransform createSVGTransformFromMatrix([DOMMatrix2DInit matrix]);
-  SVGTransform? consolidate();
-  int get numberOfItems;
+  ) {
+    unsupportedPlatformError();
+  }
+
+  SVGTransform createSVGTransformFromMatrix([DOMMatrix2DInit? matrix]) {
+    unsupportedPlatformError();
+  }
+
+  SVGTransform? consolidate() {
+    unsupportedPlatformError();
+  }
+
+  int get numberOfItems {
+    unsupportedPlatformError();
+  }
 }
 
 ///
@@ -1081,9 +2295,14 @@ abstract class SVGTransformList implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedTransformList).
-abstract class SVGAnimatedTransformList implements JSObject {
-  SVGTransformList get baseVal;
-  SVGTransformList get animVal;
+extension type SVGAnimatedTransformList._(JSObject _) implements JSObject {
+  SVGTransformList get baseVal {
+    unsupportedPlatformError();
+  }
+
+  SVGTransformList get animVal {
+    unsupportedPlatformError();
+  }
 }
 
 ///
@@ -1092,7 +2311,7 @@ abstract class SVGAnimatedTransformList implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGPreserveAspectRatio).
-abstract class SVGPreserveAspectRatio implements JSObject {
+extension type SVGPreserveAspectRatio._(JSObject _) implements JSObject {
   static const int SVG_PRESERVEASPECTRATIO_UNKNOWN = 0;
 
   static const int SVG_PRESERVEASPECTRATIO_NONE = 1;
@@ -1121,10 +2340,21 @@ abstract class SVGPreserveAspectRatio implements JSObject {
 
   static const int SVG_MEETORSLICE_SLICE = 2;
 
-  int get align;
-  set align(int value);
-  int get meetOrSlice;
-  set meetOrSlice(int value);
+  int get align {
+    unsupportedPlatformError();
+  }
+
+  set align(int value) {
+    unsupportedPlatformError();
+  }
+
+  int get meetOrSlice {
+    unsupportedPlatformError();
+  }
+
+  set meetOrSlice(int value) {
+    unsupportedPlatformError();
+  }
 }
 
 ///
@@ -1133,9 +2363,15 @@ abstract class SVGPreserveAspectRatio implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedPreserveAspectRatio).
-abstract class SVGAnimatedPreserveAspectRatio implements JSObject {
-  SVGPreserveAspectRatio get baseVal;
-  SVGPreserveAspectRatio get animVal;
+extension type SVGAnimatedPreserveAspectRatio._(JSObject _)
+    implements JSObject {
+  SVGPreserveAspectRatio get baseVal {
+    unsupportedPlatformError();
+  }
+
+  SVGPreserveAspectRatio get animVal {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SVGPathElement`** interface corresponds to the  element.
@@ -1149,7 +2385,15 @@ abstract class SVGAnimatedPreserveAspectRatio implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGPathElement).
-abstract class SVGPathElement implements SVGGeometryElement, JSObject {}
+extension type SVGPathElement._(JSObject _)
+    implements SVGGeometryElement, JSObject {
+  /// Creates an [SVGPathElement] using the tag 'path'.
+  SVGPathElement()
+      : _ = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'path',
+        );
+}
 
 /// The `SVGRectElement` interface provides access to the properties of
 /// elements, as well as methods to manipulate them.
@@ -1158,13 +2402,38 @@ abstract class SVGPathElement implements SVGGeometryElement, JSObject {}
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGRectElement).
-abstract class SVGRectElement implements SVGGeometryElement, JSObject {
-  SVGAnimatedLength get x;
-  SVGAnimatedLength get y;
-  SVGAnimatedLength get width;
-  SVGAnimatedLength get height;
-  SVGAnimatedLength get rx;
-  SVGAnimatedLength get ry;
+extension type SVGRectElement._(JSObject _)
+    implements SVGGeometryElement, JSObject {
+  /// Creates an [SVGRectElement] using the tag 'rect'.
+  SVGRectElement()
+      : _ = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'rect',
+        );
+
+  SVGAnimatedLength get x {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get y {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get width {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get height {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get rx {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get ry {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SVGCircleElement`** interface is an interface for the  element.
@@ -1173,27 +2442,41 @@ abstract class SVGRectElement implements SVGGeometryElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGCircleElement).
-abstract class SVGCircleElement implements SVGGeometryElement, JSObject {
+extension type SVGCircleElement._(JSObject _)
+    implements SVGGeometryElement, JSObject {
+  /// Creates an [SVGCircleElement] using the tag 'circle'.
+  SVGCircleElement()
+      : _ = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'circle',
+        );
+
   /// The **`cx`** read-only property of the [SVGCircleElement] interface
   /// reflects the `cx` attribute of a  element and by that defines the
   /// x-coordinate of the circle's center.<
   ///
   /// If unspecified, the effect is as if the value is set to `0`.
-  SVGAnimatedLength get cx;
+  SVGAnimatedLength get cx {
+    unsupportedPlatformError();
+  }
 
   /// The **`cy`** read-only property of the [SVGCircleElement] interface
   /// reflects the `cy` attribute of a  element and by that defines the
   /// y-coordinate of the circle's center.
   ///
   /// If unspecified, the effect is as if the value is set to `0`.
-  SVGAnimatedLength get cy;
+  SVGAnimatedLength get cy {
+    unsupportedPlatformError();
+  }
 
   /// The **`r`** read-only property of the [SVGCircleElement] interface
   /// reflects the `r` attribute of a  element and by that defines the radius of
   /// the circle.
   ///
   /// If unspecified, the effect is as if the value is set to `0`.
-  SVGAnimatedLength get r;
+  SVGAnimatedLength get r {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SVGEllipseElement`** interface provides access to the properties of
@@ -1203,11 +2486,30 @@ abstract class SVGCircleElement implements SVGGeometryElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGEllipseElement).
-abstract class SVGEllipseElement implements SVGGeometryElement, JSObject {
-  SVGAnimatedLength get cx;
-  SVGAnimatedLength get cy;
-  SVGAnimatedLength get rx;
-  SVGAnimatedLength get ry;
+extension type SVGEllipseElement._(JSObject _)
+    implements SVGGeometryElement, JSObject {
+  /// Creates an [SVGEllipseElement] using the tag 'ellipse'.
+  SVGEllipseElement()
+      : _ = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'ellipse',
+        );
+
+  SVGAnimatedLength get cx {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get cy {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get rx {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get ry {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SVGLineElement`** interface provides access to the properties of
@@ -1217,11 +2519,30 @@ abstract class SVGEllipseElement implements SVGGeometryElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGLineElement).
-abstract class SVGLineElement implements SVGGeometryElement, JSObject {
-  SVGAnimatedLength get x1;
-  SVGAnimatedLength get y1;
-  SVGAnimatedLength get x2;
-  SVGAnimatedLength get y2;
+extension type SVGLineElement._(JSObject _)
+    implements SVGGeometryElement, JSObject {
+  /// Creates an [SVGLineElement] using the tag 'line'.
+  SVGLineElement()
+      : _ = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'line',
+        );
+
+  SVGAnimatedLength get x1 {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get y1 {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get x2 {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get y2 {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SVGPointList`** interface represents a list of [SVGPoint] objects.
@@ -1233,52 +2554,73 @@ abstract class SVGLineElement implements SVGGeometryElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGPointList).
-abstract class SVGPointList implements JSObject {
+extension type SVGPointList._(JSObject _) implements JSObject {
   /// The **`clear()`** method of the [SVGPointList] interface removes all items
   /// from the list.
-  void clear();
+  void clear() {
+    unsupportedPlatformError();
+  }
 
   /// The **`initialize()`** method of the [SVGPointList] interface clears the
   /// list then adds a single new [SVGPoint] object to the list.
-  DOMPoint initialize(DOMPoint newItem);
+  DOMPoint initialize(DOMPoint newItem) {
+    unsupportedPlatformError();
+  }
 
   /// The **`getItem()`** method of the [SVGPointList] interface gets one item
   /// from the list at the specified index.
-  DOMPoint getItem(int index);
+  DOMPoint getItem(int index) {
+    unsupportedPlatformError();
+  }
 
   /// The **`insertItemBefore()`** method of the [SVGPointList] interface
   /// inserts a [SVGPoint] before another item in the list.
   DOMPoint insertItemBefore(
     DOMPoint newItem,
     int index,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`replaceItem()`** method of the [SVGPointList] interface replaces a
   /// [SVGPoint] in the list.
   DOMPoint replaceItem(
     DOMPoint newItem,
     int index,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`removeItem()`** method of the [SVGPointList] interface removes a
   /// [SVGPoint] from the list.
-  DOMPoint removeItem(int index);
+  DOMPoint removeItem(int index) {
+    unsupportedPlatformError();
+  }
 
   /// The **`appendItem()`** method of the [SVGPointList] interface adds a
   /// [SVGPoint] to the end of the list.
-  DOMPoint appendItem(DOMPoint newItem);
+  DOMPoint appendItem(DOMPoint newItem) {
+    unsupportedPlatformError();
+  }
+
   void operator []=(
     int index,
     DOMPoint newItem,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`length`** read-only property of the [SVGPointList] interface
   /// returns the number of items in the list.
-  int get length;
+  int get length {
+    unsupportedPlatformError();
+  }
 
   /// The **`numberOfItems`** read-only property of the [SVGPointList] interface
   /// returns the number of items in the list.
-  int get numberOfItems;
+  int get numberOfItems {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SVGPolylineElement`** interface provides access to the properties of
@@ -1288,9 +2630,22 @@ abstract class SVGPointList implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGPolylineElement).
-abstract class SVGPolylineElement implements SVGGeometryElement, JSObject {
-  SVGPointList get points;
-  SVGPointList get animatedPoints;
+extension type SVGPolylineElement._(JSObject _)
+    implements SVGGeometryElement, JSObject {
+  /// Creates an [SVGPolylineElement] using the tag 'polyline'.
+  SVGPolylineElement()
+      : _ = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'polyline',
+        );
+
+  SVGPointList get points {
+    unsupportedPlatformError();
+  }
+
+  SVGPointList get animatedPoints {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SVGPolygonElement`** interface provides access to the properties of
@@ -1300,9 +2655,22 @@ abstract class SVGPolylineElement implements SVGGeometryElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGPolygonElement).
-abstract class SVGPolygonElement implements SVGGeometryElement, JSObject {
-  SVGPointList get points;
-  SVGPointList get animatedPoints;
+extension type SVGPolygonElement._(JSObject _)
+    implements SVGGeometryElement, JSObject {
+  /// Creates an [SVGPolygonElement] using the tag 'polygon'.
+  SVGPolygonElement()
+      : _ = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'polygon',
+        );
+
+  SVGPointList get points {
+    unsupportedPlatformError();
+  }
+
+  SVGPointList get animatedPoints {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SVGTextContentElement`** interface is implemented by elements that
@@ -1314,30 +2682,63 @@ abstract class SVGPolygonElement implements SVGGeometryElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGTextContentElement).
-abstract class SVGTextContentElement implements SVGGraphicsElement, JSObject {
+extension type SVGTextContentElement._(JSObject _)
+    implements SVGGraphicsElement, JSObject {
   static const int LENGTHADJUST_UNKNOWN = 0;
 
   static const int LENGTHADJUST_SPACING = 1;
 
   static const int LENGTHADJUST_SPACINGANDGLYPHS = 2;
 
-  int getNumberOfChars();
-  double getComputedTextLength();
+  int getNumberOfChars() {
+    unsupportedPlatformError();
+  }
+
+  double getComputedTextLength() {
+    unsupportedPlatformError();
+  }
+
   double getSubStringLength(
     int charnum,
     int nchars,
-  );
-  DOMPoint getStartPositionOfChar(int charnum);
-  DOMPoint getEndPositionOfChar(int charnum);
-  DOMRect getExtentOfChar(int charnum);
-  double getRotationOfChar(int charnum);
-  int getCharNumAtPosition([DOMPointInit point]);
+  ) {
+    unsupportedPlatformError();
+  }
+
+  DOMPoint getStartPositionOfChar(int charnum) {
+    unsupportedPlatformError();
+  }
+
+  DOMPoint getEndPositionOfChar(int charnum) {
+    unsupportedPlatformError();
+  }
+
+  DOMRect getExtentOfChar(int charnum) {
+    unsupportedPlatformError();
+  }
+
+  double getRotationOfChar(int charnum) {
+    unsupportedPlatformError();
+  }
+
+  int getCharNumAtPosition([DOMPointInit? point]) {
+    unsupportedPlatformError();
+  }
+
   void selectSubString(
     int charnum,
     int nchars,
-  );
-  SVGAnimatedLength get textLength;
-  SVGAnimatedEnumeration get lengthAdjust;
+  ) {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get textLength {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedEnumeration get lengthAdjust {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SVGTextPositioningElement`** interface is implemented by elements
@@ -1348,13 +2749,27 @@ abstract class SVGTextContentElement implements SVGGraphicsElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGTextPositioningElement).
-abstract class SVGTextPositioningElement
+extension type SVGTextPositioningElement._(JSObject _)
     implements SVGTextContentElement, JSObject {
-  SVGAnimatedLengthList get x;
-  SVGAnimatedLengthList get y;
-  SVGAnimatedLengthList get dx;
-  SVGAnimatedLengthList get dy;
-  SVGAnimatedNumberList get rotate;
+  SVGAnimatedLengthList get x {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLengthList get y {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLengthList get dx {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLengthList get dy {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedNumberList get rotate {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SVGTextElement`** interface corresponds to the  elements.
@@ -1363,7 +2778,15 @@ abstract class SVGTextPositioningElement
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGTextElement).
-abstract class SVGTextElement implements SVGTextPositioningElement, JSObject {}
+extension type SVGTextElement._(JSObject _)
+    implements SVGTextPositioningElement, JSObject {
+  /// Creates an [SVGTextElement] using the tag 'text'.
+  SVGTextElement()
+      : _ = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'text',
+        );
+}
 
 /// The **`SVGTSpanElement`** interface represents a  element.
 ///
@@ -1371,7 +2794,15 @@ abstract class SVGTextElement implements SVGTextPositioningElement, JSObject {}
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGTSpanElement).
-abstract class SVGTSpanElement implements SVGTextPositioningElement, JSObject {}
+extension type SVGTSpanElement._(JSObject _)
+    implements SVGTextPositioningElement, JSObject {
+  /// Creates an [SVGTSpanElement] using the tag 'tspan'.
+  SVGTSpanElement()
+      : _ = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'tspan',
+        );
+}
 
 /// The **`SVGTextPathElement`** interface corresponds to the  element.
 ///
@@ -1379,7 +2810,15 @@ abstract class SVGTSpanElement implements SVGTextPositioningElement, JSObject {}
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGTextPathElement).
-abstract class SVGTextPathElement implements SVGTextContentElement, JSObject {
+extension type SVGTextPathElement._(JSObject _)
+    implements SVGTextContentElement, JSObject {
+  /// Creates an [SVGTextPathElement] using the tag 'textPath'.
+  SVGTextPathElement()
+      : _ = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'textPath',
+        );
+
   static const int TEXTPATH_METHODTYPE_UNKNOWN = 0;
 
   static const int TEXTPATH_METHODTYPE_ALIGN = 1;
@@ -1392,10 +2831,21 @@ abstract class SVGTextPathElement implements SVGTextContentElement, JSObject {
 
   static const int TEXTPATH_SPACINGTYPE_EXACT = 2;
 
-  SVGAnimatedLength get startOffset;
-  SVGAnimatedEnumeration get method;
-  SVGAnimatedEnumeration get spacing;
-  SVGAnimatedString get href;
+  SVGAnimatedLength get startOffset {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedEnumeration get method {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedEnumeration get spacing {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedString get href {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SVGImageElement`** interface corresponds to the  element.
@@ -1404,40 +2854,67 @@ abstract class SVGTextPathElement implements SVGTextContentElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGImageElement).
-abstract class SVGImageElement implements SVGGraphicsElement, JSObject {
+extension type SVGImageElement._(JSObject _)
+    implements SVGGraphicsElement, JSObject {
+  /// Creates an [SVGImageElement] using the tag 'image'.
+  SVGImageElement()
+      : _ = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'image',
+        );
+
   /// The **`x`** read-only property of the
   /// [SVGImageElement] interface returns an [SVGAnimatedLength]
   /// corresponding to the `x` attribute of the given
   /// element.
-  SVGAnimatedLength get x;
+  SVGAnimatedLength get x {
+    unsupportedPlatformError();
+  }
 
   /// The **`y`** read-only property of the
   /// [SVGImageElement] interface returns an [SVGAnimatedLength]
   /// corresponding to the `y` attribute of the given
   /// element.
-  SVGAnimatedLength get y;
+  SVGAnimatedLength get y {
+    unsupportedPlatformError();
+  }
 
   /// The **`width`** read-only property of the
   /// [SVGImageElement] interface returns an [SVGAnimatedLength]
   /// corresponding to the `width` attribute of the given
   /// element.
-  SVGAnimatedLength get width;
+  SVGAnimatedLength get width {
+    unsupportedPlatformError();
+  }
 
   /// The **`height`** read-only property of the
   /// [SVGImageElement] interface returns an [SVGAnimatedLength]
   /// corresponding to the `height` attribute of the given
   /// element.
-  SVGAnimatedLength get height;
+  SVGAnimatedLength get height {
+    unsupportedPlatformError();
+  }
 
   /// The **`preserveAspectRatio`** read-only
   /// property of the [SVGImageElement] interface returns an
   /// [SVGAnimatedPreserveAspectRatio] corresponding to the
   /// `preserveAspectRatio` attribute of the given
   /// element.
-  SVGAnimatedPreserveAspectRatio get preserveAspectRatio;
-  String? get crossOrigin;
-  set crossOrigin(String? value);
-  SVGAnimatedString get href;
+  SVGAnimatedPreserveAspectRatio get preserveAspectRatio {
+    unsupportedPlatformError();
+  }
+
+  String? get crossOrigin {
+    unsupportedPlatformError();
+  }
+
+  set crossOrigin(String? value) {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedString get href {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SVGForeignObjectElement`** interface provides access to the
@@ -1447,11 +2924,30 @@ abstract class SVGImageElement implements SVGGraphicsElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGForeignObjectElement).
-abstract class SVGForeignObjectElement implements SVGGraphicsElement, JSObject {
-  SVGAnimatedLength get x;
-  SVGAnimatedLength get y;
-  SVGAnimatedLength get width;
-  SVGAnimatedLength get height;
+extension type SVGForeignObjectElement._(JSObject _)
+    implements SVGGraphicsElement, JSObject {
+  /// Creates an [SVGForeignObjectElement] using the tag 'foreignObject'.
+  SVGForeignObjectElement()
+      : _ = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'foreignObject',
+        );
+
+  SVGAnimatedLength get x {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get y {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get width {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get height {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SVGMarkerElement`** interface provides access to the properties of
@@ -1465,7 +2961,14 @@ abstract class SVGForeignObjectElement implements SVGGraphicsElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGMarkerElement).
-abstract class SVGMarkerElement implements SVGElement, JSObject {
+extension type SVGMarkerElement._(JSObject _) implements SVGElement, JSObject {
+  /// Creates an [SVGMarkerElement] using the tag 'marker'.
+  SVGMarkerElement()
+      : _ = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'marker',
+        );
+
   static const int SVG_MARKERUNITS_UNKNOWN = 0;
 
   static const int SVG_MARKERUNITS_USERSPACEONUSE = 1;
@@ -1480,38 +2983,52 @@ abstract class SVGMarkerElement implements SVGElement, JSObject {
 
   /// The **`setOrientToAuto()`** method of the [SVGMarkerElement] interface
   /// sets the value of the `orient` attribute to `auto`.
-  void setOrientToAuto();
+  void setOrientToAuto() {
+    unsupportedPlatformError();
+  }
 
   /// The **`setOrientToAngle()`** method of the [SVGMarkerElement] interface
   /// sets the value of the `orient` attribute to the value in the [SVGAngle]
   /// passed in.
-  void setOrientToAngle(SVGAngle angle);
+  void setOrientToAngle(SVGAngle angle) {
+    unsupportedPlatformError();
+  }
 
   /// The **`refX`** read-only property of the [SVGMarkerElement] interface
   /// returns an [SVGAnimatedLength] object containing the value of the `refX`
   /// attribute of the .
-  SVGAnimatedLength get refX;
+  SVGAnimatedLength get refX {
+    unsupportedPlatformError();
+  }
 
   /// The **`refY`** read-only property of the [SVGMarkerElement] interface
   /// returns an [SVGAnimatedLength] object containing the value of the `refY`
   /// attribute of the .
-  SVGAnimatedLength get refY;
+  SVGAnimatedLength get refY {
+    unsupportedPlatformError();
+  }
 
   /// The **`markerUnits`** read-only property of the [SVGMarkerElement]
   /// interface returns an [SVGAnimatedEnumeration] object. This object returns
   /// an integer which represents the keyword values that the `markerUnits`
   /// attribute accepts.
-  SVGAnimatedEnumeration get markerUnits;
+  SVGAnimatedEnumeration get markerUnits {
+    unsupportedPlatformError();
+  }
 
   /// The **`markerWidth`** read-only property of the [SVGMarkerElement]
   /// interface returns an [SVGAnimatedLength] object containing the width of
   /// the  viewport as defined by the `markerWidth` attribute.
-  SVGAnimatedLength get markerWidth;
+  SVGAnimatedLength get markerWidth {
+    unsupportedPlatformError();
+  }
 
   /// The **`markerHeight`** read-only property of the [SVGMarkerElement]
   /// interface returns an [SVGAnimatedLength] object containing the height of
   /// the  viewport as defined by the `markerHeight` attribute.
-  SVGAnimatedLength get markerHeight;
+  SVGAnimatedLength get markerHeight {
+    unsupportedPlatformError();
+  }
 
   /// The **`orientType`** read-only property of the [SVGMarkerElement]
   /// interface returns an [SVGAnimatedEnumeration] object indicating whether
@@ -1521,24 +3038,38 @@ abstract class SVGMarkerElement implements SVGElement, JSObject {
   /// `auto-start-reverse` however the spec leaves it open for this to be other
   /// values. Unsupported values will generally be thrown away by the parser,
   /// leaving the value the default of `auto`.
-  SVGAnimatedEnumeration get orientType;
+  SVGAnimatedEnumeration get orientType {
+    unsupportedPlatformError();
+  }
 
   /// The **`orientAngle`** read-only property of the [SVGMarkerElement]
   /// interface returns an [SVGAnimatedAngle] object containing the angle of the
   /// `orient` attribute.
-  SVGAnimatedAngle get orientAngle;
-  String get orient;
-  set orient(String value);
+  SVGAnimatedAngle get orientAngle {
+    unsupportedPlatformError();
+  }
+
+  String get orient {
+    unsupportedPlatformError();
+  }
+
+  set orient(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`viewBox`** read-only property of the [SVGMarkerElement] interface
   /// returns an [SVGAnimatedRect] object which contains the values set by the
   /// `viewBox` attribute on the .
-  SVGAnimatedRect get viewBox;
+  SVGAnimatedRect get viewBox {
+    unsupportedPlatformError();
+  }
 
   /// The **`preserveAspectRatio`** read-only property of the [SVGMarkerElement]
   /// interface returns an [SVGAnimatedPreserveAspectRatio] object containing
   /// the value of the `preserveAspectRatio` attribute of the .
-  SVGAnimatedPreserveAspectRatio get preserveAspectRatio;
+  SVGAnimatedPreserveAspectRatio get preserveAspectRatio {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SVGGradient`** interface is a base interface used by
@@ -1548,7 +3079,8 @@ abstract class SVGMarkerElement implements SVGElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGGradientElement).
-abstract class SVGGradientElement implements SVGElement, JSObject {
+extension type SVGGradientElement._(JSObject _)
+    implements SVGElement, JSObject {
   static const int SVG_SPREADMETHOD_UNKNOWN = 0;
 
   static const int SVG_SPREADMETHOD_PAD = 1;
@@ -1557,10 +3089,21 @@ abstract class SVGGradientElement implements SVGElement, JSObject {
 
   static const int SVG_SPREADMETHOD_REPEAT = 3;
 
-  SVGAnimatedEnumeration get gradientUnits;
-  SVGAnimatedTransformList get gradientTransform;
-  SVGAnimatedEnumeration get spreadMethod;
-  SVGAnimatedString get href;
+  SVGAnimatedEnumeration get gradientUnits {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedTransformList get gradientTransform {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedEnumeration get spreadMethod {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedString get href {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SVGLinearGradientElement`** interface corresponds to the  element.
@@ -1569,12 +3112,30 @@ abstract class SVGGradientElement implements SVGElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGLinearGradientElement).
-abstract class SVGLinearGradientElement
+extension type SVGLinearGradientElement._(JSObject _)
     implements SVGGradientElement, JSObject {
-  SVGAnimatedLength get x1;
-  SVGAnimatedLength get y1;
-  SVGAnimatedLength get x2;
-  SVGAnimatedLength get y2;
+  /// Creates an [SVGLinearGradientElement] using the tag 'linearGradient'.
+  SVGLinearGradientElement()
+      : _ = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'linearGradient',
+        );
+
+  SVGAnimatedLength get x1 {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get y1 {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get x2 {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get y2 {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SVGRadialGradientElement`** interface corresponds to the  element.
@@ -1583,14 +3144,38 @@ abstract class SVGLinearGradientElement
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGRadialGradientElement).
-abstract class SVGRadialGradientElement
+extension type SVGRadialGradientElement._(JSObject _)
     implements SVGGradientElement, JSObject {
-  SVGAnimatedLength get cx;
-  SVGAnimatedLength get cy;
-  SVGAnimatedLength get r;
-  SVGAnimatedLength get fx;
-  SVGAnimatedLength get fy;
-  SVGAnimatedLength get fr;
+  /// Creates an [SVGRadialGradientElement] using the tag 'radialGradient'.
+  SVGRadialGradientElement()
+      : _ = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'radialGradient',
+        );
+
+  SVGAnimatedLength get cx {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get cy {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get r {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get fx {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get fy {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get fr {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SVGStopElement`** interface corresponds to the  element.
@@ -1599,8 +3184,17 @@ abstract class SVGRadialGradientElement
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGStopElement).
-abstract class SVGStopElement implements SVGElement, JSObject {
-  SVGAnimatedNumber get offset;
+extension type SVGStopElement._(JSObject _) implements SVGElement, JSObject {
+  /// Creates an [SVGStopElement] using the tag 'stop'.
+  SVGStopElement()
+      : _ = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'stop',
+        );
+
+  SVGAnimatedNumber get offset {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SVGPatternElement`** interface corresponds to the  element.
@@ -1609,17 +3203,53 @@ abstract class SVGStopElement implements SVGElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGPatternElement).
-abstract class SVGPatternElement implements SVGElement, JSObject {
-  SVGAnimatedEnumeration get patternUnits;
-  SVGAnimatedEnumeration get patternContentUnits;
-  SVGAnimatedTransformList get patternTransform;
-  SVGAnimatedLength get x;
-  SVGAnimatedLength get y;
-  SVGAnimatedLength get width;
-  SVGAnimatedLength get height;
-  SVGAnimatedRect get viewBox;
-  SVGAnimatedPreserveAspectRatio get preserveAspectRatio;
-  SVGAnimatedString get href;
+extension type SVGPatternElement._(JSObject _) implements SVGElement, JSObject {
+  /// Creates an [SVGPatternElement] using the tag 'pattern'.
+  SVGPatternElement()
+      : _ = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'pattern',
+        );
+
+  SVGAnimatedEnumeration get patternUnits {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedEnumeration get patternContentUnits {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedTransformList get patternTransform {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get x {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get y {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get width {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get height {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedRect get viewBox {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedPreserveAspectRatio get preserveAspectRatio {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedString get href {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SVGScriptElement`** interface corresponds to the SVG  element.
@@ -1628,12 +3258,33 @@ abstract class SVGPatternElement implements SVGElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGScriptElement).
-abstract class SVGScriptElement implements SVGElement, JSObject {
-  String get type;
-  set type(String value);
-  String? get crossOrigin;
-  set crossOrigin(String? value);
-  SVGAnimatedString get href;
+extension type SVGScriptElement._(JSObject _) implements SVGElement, JSObject {
+  /// Creates an [SVGScriptElement] using the tag 'script'.
+  SVGScriptElement()
+      : _ = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'script',
+        );
+
+  String get type {
+    unsupportedPlatformError();
+  }
+
+  set type(String value) {
+    unsupportedPlatformError();
+  }
+
+  String? get crossOrigin {
+    unsupportedPlatformError();
+  }
+
+  set crossOrigin(String? value) {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedString get href {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SVGAElement`** interface provides access to the properties of an
@@ -1643,7 +3294,15 @@ abstract class SVGScriptElement implements SVGElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGAElement).
-abstract class SVGAElement implements SVGGraphicsElement, JSObject {
+extension type SVGAElement._(JSObject _)
+    implements SVGGraphicsElement, JSObject {
+  /// Creates an [SVGAElement] using the tag 'a'.
+  SVGAElement()
+      : _ = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'a',
+        );
+
   /// The **`SVGAElement.target`** read-only property of [SVGAElement] returns
   /// an [SVGAnimatedString] object that specifies the portion of a target
   /// window, frame, pane into which a document is to be opened when a link is
@@ -1652,23 +3311,73 @@ abstract class SVGAElement implements SVGGraphicsElement, JSObject {
   /// This property is used when there are multiple possible targets for the
   /// ending resource, like when the parent document is a multi-frame HTML or
   /// XHTML document.
-  SVGAnimatedString get target;
-  String get download;
-  set download(String value);
-  String get ping;
-  set ping(String value);
-  String get rel;
-  set rel(String value);
-  DOMTokenList get relList;
-  String get hreflang;
-  set hreflang(String value);
-  String get type;
-  set type(String value);
-  String get text;
-  set text(String value);
-  String get referrerPolicy;
-  set referrerPolicy(String value);
-  SVGAnimatedString get href;
+  SVGAnimatedString get target {
+    unsupportedPlatformError();
+  }
+
+  String get download {
+    unsupportedPlatformError();
+  }
+
+  set download(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get ping {
+    unsupportedPlatformError();
+  }
+
+  set ping(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get rel {
+    unsupportedPlatformError();
+  }
+
+  set rel(String value) {
+    unsupportedPlatformError();
+  }
+
+  DOMTokenList get relList {
+    unsupportedPlatformError();
+  }
+
+  String get hreflang {
+    unsupportedPlatformError();
+  }
+
+  set hreflang(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get type {
+    unsupportedPlatformError();
+  }
+
+  set type(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get text {
+    unsupportedPlatformError();
+  }
+
+  set text(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get referrerPolicy {
+    unsupportedPlatformError();
+  }
+
+  set referrerPolicy(String value) {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedString get href {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SVGViewElement`** interface provides access to the properties of
@@ -1678,7 +3387,19 @@ abstract class SVGAElement implements SVGGraphicsElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGViewElement).
-abstract class SVGViewElement implements SVGElement, JSObject {
-  SVGAnimatedRect get viewBox;
-  SVGAnimatedPreserveAspectRatio get preserveAspectRatio;
+extension type SVGViewElement._(JSObject _) implements SVGElement, JSObject {
+  /// Creates an [SVGViewElement] using the tag 'view'.
+  SVGViewElement()
+      : _ = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'view',
+        );
+
+  SVGAnimatedRect get viewBox {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedPreserveAspectRatio get preserveAspectRatio {
+    unsupportedPlatformError();
+  }
 }

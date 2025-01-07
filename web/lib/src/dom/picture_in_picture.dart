@@ -26,16 +26,27 @@ import 'html.dart';
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/PictureInPictureWindow).
-abstract class PictureInPictureWindow implements EventTarget, JSObject {
+extension type PictureInPictureWindow._(JSObject _)
+    implements EventTarget, JSObject {
   /// The read-only **`width`** property of the [PictureInPictureWindow]
   /// inbterface returns the width of the floating video window in pixels.
-  int get width;
+  int get width {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`height`** property of the [PictureInPictureWindow]
   /// interface returns the height of the floating video window in pixels.
-  int get height;
-  EventHandler get onresize;
-  set onresize(EventHandler value);
+  int get height {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onresize {
+    unsupportedPlatformError();
+  }
+
+  set onresize(EventHandler value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`PictureInPictureEvent`** interface represents
@@ -48,14 +59,32 @@ abstract class PictureInPictureWindow implements EventTarget, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/PictureInPictureEvent).
-abstract class PictureInPictureEvent implements Event, JSObject {
+extension type PictureInPictureEvent._(JSObject _) implements Event, JSObject {
+  factory PictureInPictureEvent(
+    String type,
+    PictureInPictureEventInit eventInitDict,
+  ) {
+    unsupportedPlatformError();
+  }
+
   /// The read-only **`pictureInPictureWindow`** property of the
   /// [PictureInPictureEvent] interface returns the [PictureInPictureWindow] the
   /// event relates to.
-  PictureInPictureWindow get pictureInPictureWindow;
+  PictureInPictureWindow get pictureInPictureWindow {
+    unsupportedPlatformError();
+  }
 }
+extension type PictureInPictureEventInit._(JSObject _)
+    implements EventInit, JSObject {
+  factory PictureInPictureEventInit({
+    bool? bubbles,
+    bool? cancelable,
+    bool? composed,
+    required PictureInPictureWindow pictureInPictureWindow,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class PictureInPictureEventInit implements EventInit, JSObject {
   PictureInPictureWindow get pictureInPictureWindow {
     unsupportedPlatformError();
   }

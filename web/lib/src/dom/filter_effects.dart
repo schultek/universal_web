@@ -10,7 +10,9 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
+import '../error.dart';
 import '../js_interop.dart';
+import 'dom.dart';
 import 'svg.dart';
 
 /// The **`SVGFilterElement`** interface provides access to the properties of
@@ -20,14 +22,41 @@ import 'svg.dart';
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGFilterElement).
-abstract class SVGFilterElement implements SVGElement, JSObject {
-  SVGAnimatedEnumeration get filterUnits;
-  SVGAnimatedEnumeration get primitiveUnits;
-  SVGAnimatedLength get x;
-  SVGAnimatedLength get y;
-  SVGAnimatedLength get width;
-  SVGAnimatedLength get height;
-  SVGAnimatedString get href;
+extension type SVGFilterElement._(JSObject _) implements SVGElement, JSObject {
+  /// Creates an [SVGFilterElement] using the tag 'filter'.
+  SVGFilterElement()
+      : _ = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'filter',
+        );
+
+  SVGAnimatedEnumeration get filterUnits {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedEnumeration get primitiveUnits {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get x {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get y {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get width {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get height {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedString get href {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SVGFEBlendElement`** interface corresponds to the  element.
@@ -36,7 +65,14 @@ abstract class SVGFilterElement implements SVGElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGFEBlendElement).
-abstract class SVGFEBlendElement implements SVGElement, JSObject {
+extension type SVGFEBlendElement._(JSObject _) implements SVGElement, JSObject {
+  /// Creates an [SVGFEBlendElement] using the tag 'feBlend'.
+  SVGFEBlendElement()
+      : _ = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'feBlend',
+        );
+
   static const int SVG_FEBLEND_MODE_UNKNOWN = 0;
 
   static const int SVG_FEBLEND_MODE_NORMAL = 1;
@@ -71,14 +107,37 @@ abstract class SVGFEBlendElement implements SVGElement, JSObject {
 
   static const int SVG_FEBLEND_MODE_LUMINOSITY = 16;
 
-  SVGAnimatedString get in1;
-  SVGAnimatedString get in2;
-  SVGAnimatedEnumeration get mode;
-  SVGAnimatedLength get x;
-  SVGAnimatedLength get y;
-  SVGAnimatedLength get width;
-  SVGAnimatedLength get height;
-  SVGAnimatedString get result;
+  SVGAnimatedString get in1 {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedString get in2 {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedEnumeration get mode {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get x {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get y {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get width {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get height {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedString get result {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SVGFEColorMatrixElement`** interface corresponds to the  element.
@@ -87,7 +146,15 @@ abstract class SVGFEBlendElement implements SVGElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGFEColorMatrixElement).
-abstract class SVGFEColorMatrixElement implements SVGElement, JSObject {
+extension type SVGFEColorMatrixElement._(JSObject _)
+    implements SVGElement, JSObject {
+  /// Creates an [SVGFEColorMatrixElement] using the tag 'feColorMatrix'.
+  SVGFEColorMatrixElement()
+      : _ = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'feColorMatrix',
+        );
+
   static const int SVG_FECOLORMATRIX_TYPE_UNKNOWN = 0;
 
   static const int SVG_FECOLORMATRIX_TYPE_MATRIX = 1;
@@ -98,14 +165,37 @@ abstract class SVGFEColorMatrixElement implements SVGElement, JSObject {
 
   static const int SVG_FECOLORMATRIX_TYPE_LUMINANCETOALPHA = 4;
 
-  SVGAnimatedString get in1;
-  SVGAnimatedEnumeration get type;
-  SVGAnimatedNumberList get values;
-  SVGAnimatedLength get x;
-  SVGAnimatedLength get y;
-  SVGAnimatedLength get width;
-  SVGAnimatedLength get height;
-  SVGAnimatedString get result;
+  SVGAnimatedString get in1 {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedEnumeration get type {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedNumberList get values {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get x {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get y {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get width {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get height {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedString get result {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SVGFEComponentTransferElement`** interface corresponds to the
@@ -115,13 +205,39 @@ abstract class SVGFEColorMatrixElement implements SVGElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGFEComponentTransferElement).
-abstract class SVGFEComponentTransferElement implements SVGElement, JSObject {
-  SVGAnimatedString get in1;
-  SVGAnimatedLength get x;
-  SVGAnimatedLength get y;
-  SVGAnimatedLength get width;
-  SVGAnimatedLength get height;
-  SVGAnimatedString get result;
+extension type SVGFEComponentTransferElement._(JSObject _)
+    implements SVGElement, JSObject {
+  /// Creates an [SVGFEComponentTransferElement] using the tag
+  /// 'feComponentTransfer'.
+  SVGFEComponentTransferElement()
+      : _ = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'feComponentTransfer',
+        );
+
+  SVGAnimatedString get in1 {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get x {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get y {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get width {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get height {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedString get result {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SVGComponentTransferFunctionElement`** interface defines a base
@@ -131,7 +247,7 @@ abstract class SVGFEComponentTransferElement implements SVGElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGComponentTransferFunctionElement).
-abstract class SVGComponentTransferFunctionElement
+extension type SVGComponentTransferFunctionElement._(JSObject _)
     implements SVGElement, JSObject {
   static const int SVG_FECOMPONENTTRANSFER_TYPE_UNKNOWN = 0;
 
@@ -145,13 +261,33 @@ abstract class SVGComponentTransferFunctionElement
 
   static const int SVG_FECOMPONENTTRANSFER_TYPE_GAMMA = 5;
 
-  SVGAnimatedEnumeration get type;
-  SVGAnimatedNumberList get tableValues;
-  SVGAnimatedNumber get slope;
-  SVGAnimatedNumber get intercept;
-  SVGAnimatedNumber get amplitude;
-  SVGAnimatedNumber get exponent;
-  SVGAnimatedNumber get offset;
+  SVGAnimatedEnumeration get type {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedNumberList get tableValues {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedNumber get slope {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedNumber get intercept {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedNumber get amplitude {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedNumber get exponent {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedNumber get offset {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SVGFEFuncRElement`** interface corresponds to the  element.
@@ -160,8 +296,15 @@ abstract class SVGComponentTransferFunctionElement
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGFEFuncRElement).
-abstract class SVGFEFuncRElement
-    implements SVGComponentTransferFunctionElement, JSObject {}
+extension type SVGFEFuncRElement._(JSObject _)
+    implements SVGComponentTransferFunctionElement, JSObject {
+  /// Creates an [SVGFEFuncRElement] using the tag 'feFuncR'.
+  SVGFEFuncRElement()
+      : _ = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'feFuncR',
+        );
+}
 
 /// The **`SVGFEFuncGElement`** interface corresponds to the  element.
 ///
@@ -169,8 +312,15 @@ abstract class SVGFEFuncRElement
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGFEFuncGElement).
-abstract class SVGFEFuncGElement
-    implements SVGComponentTransferFunctionElement, JSObject {}
+extension type SVGFEFuncGElement._(JSObject _)
+    implements SVGComponentTransferFunctionElement, JSObject {
+  /// Creates an [SVGFEFuncGElement] using the tag 'feFuncG'.
+  SVGFEFuncGElement()
+      : _ = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'feFuncG',
+        );
+}
 
 /// The **`SVGFEFuncBElement`** interface corresponds to the  element.
 ///
@@ -178,8 +328,15 @@ abstract class SVGFEFuncGElement
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGFEFuncBElement).
-abstract class SVGFEFuncBElement
-    implements SVGComponentTransferFunctionElement, JSObject {}
+extension type SVGFEFuncBElement._(JSObject _)
+    implements SVGComponentTransferFunctionElement, JSObject {
+  /// Creates an [SVGFEFuncBElement] using the tag 'feFuncB'.
+  SVGFEFuncBElement()
+      : _ = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'feFuncB',
+        );
+}
 
 /// The **`SVGFEFuncAElement`** interface corresponds to the  element.
 ///
@@ -187,8 +344,15 @@ abstract class SVGFEFuncBElement
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGFEFuncAElement).
-abstract class SVGFEFuncAElement
-    implements SVGComponentTransferFunctionElement, JSObject {}
+extension type SVGFEFuncAElement._(JSObject _)
+    implements SVGComponentTransferFunctionElement, JSObject {
+  /// Creates an [SVGFEFuncAElement] using the tag 'feFuncA'.
+  SVGFEFuncAElement()
+      : _ = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'feFuncA',
+        );
+}
 
 /// The **`SVGFECompositeElement`** interface corresponds to the  element.
 ///
@@ -196,7 +360,15 @@ abstract class SVGFEFuncAElement
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGFECompositeElement).
-abstract class SVGFECompositeElement implements SVGElement, JSObject {
+extension type SVGFECompositeElement._(JSObject _)
+    implements SVGElement, JSObject {
+  /// Creates an [SVGFECompositeElement] using the tag 'feComposite'.
+  SVGFECompositeElement()
+      : _ = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'feComposite',
+        );
+
   static const int SVG_FECOMPOSITE_OPERATOR_UNKNOWN = 0;
 
   static const int SVG_FECOMPOSITE_OPERATOR_OVER = 1;
@@ -211,18 +383,53 @@ abstract class SVGFECompositeElement implements SVGElement, JSObject {
 
   static const int SVG_FECOMPOSITE_OPERATOR_ARITHMETIC = 6;
 
-  SVGAnimatedString get in1;
-  SVGAnimatedString get in2;
-  SVGAnimatedEnumeration get operator;
-  SVGAnimatedNumber get k1;
-  SVGAnimatedNumber get k2;
-  SVGAnimatedNumber get k3;
-  SVGAnimatedNumber get k4;
-  SVGAnimatedLength get x;
-  SVGAnimatedLength get y;
-  SVGAnimatedLength get width;
-  SVGAnimatedLength get height;
-  SVGAnimatedString get result;
+  SVGAnimatedString get in1 {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedString get in2 {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedEnumeration get operator {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedNumber get k1 {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedNumber get k2 {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedNumber get k3 {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedNumber get k4 {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get x {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get y {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get width {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get height {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedString get result {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SVGFEConvolveMatrixElement`** interface corresponds to the  element.
@@ -231,7 +438,15 @@ abstract class SVGFECompositeElement implements SVGElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGFEConvolveMatrixElement).
-abstract class SVGFEConvolveMatrixElement implements SVGElement, JSObject {
+extension type SVGFEConvolveMatrixElement._(JSObject _)
+    implements SVGElement, JSObject {
+  /// Creates an [SVGFEConvolveMatrixElement] using the tag 'feConvolveMatrix'.
+  SVGFEConvolveMatrixElement()
+      : _ = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'feConvolveMatrix',
+        );
+
   static const int SVG_EDGEMODE_UNKNOWN = 0;
 
   static const int SVG_EDGEMODE_DUPLICATE = 1;
@@ -240,23 +455,73 @@ abstract class SVGFEConvolveMatrixElement implements SVGElement, JSObject {
 
   static const int SVG_EDGEMODE_NONE = 3;
 
-  SVGAnimatedString get in1;
-  SVGAnimatedInteger get orderX;
-  SVGAnimatedInteger get orderY;
-  SVGAnimatedNumberList get kernelMatrix;
-  SVGAnimatedNumber get divisor;
-  SVGAnimatedNumber get bias;
-  SVGAnimatedInteger get targetX;
-  SVGAnimatedInteger get targetY;
-  SVGAnimatedEnumeration get edgeMode;
-  SVGAnimatedNumber get kernelUnitLengthX;
-  SVGAnimatedNumber get kernelUnitLengthY;
-  SVGAnimatedBoolean get preserveAlpha;
-  SVGAnimatedLength get x;
-  SVGAnimatedLength get y;
-  SVGAnimatedLength get width;
-  SVGAnimatedLength get height;
-  SVGAnimatedString get result;
+  SVGAnimatedString get in1 {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedInteger get orderX {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedInteger get orderY {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedNumberList get kernelMatrix {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedNumber get divisor {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedNumber get bias {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedInteger get targetX {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedInteger get targetY {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedEnumeration get edgeMode {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedNumber get kernelUnitLengthX {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedNumber get kernelUnitLengthY {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedBoolean get preserveAlpha {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get x {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get y {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get width {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get height {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedString get result {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SVGFEDiffuseLightingElement`** interface corresponds to the  element.
@@ -265,17 +530,55 @@ abstract class SVGFEConvolveMatrixElement implements SVGElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGFEDiffuseLightingElement).
-abstract class SVGFEDiffuseLightingElement implements SVGElement, JSObject {
-  SVGAnimatedString get in1;
-  SVGAnimatedNumber get surfaceScale;
-  SVGAnimatedNumber get diffuseConstant;
-  SVGAnimatedNumber get kernelUnitLengthX;
-  SVGAnimatedNumber get kernelUnitLengthY;
-  SVGAnimatedLength get x;
-  SVGAnimatedLength get y;
-  SVGAnimatedLength get width;
-  SVGAnimatedLength get height;
-  SVGAnimatedString get result;
+extension type SVGFEDiffuseLightingElement._(JSObject _)
+    implements SVGElement, JSObject {
+  /// Creates an [SVGFEDiffuseLightingElement] using the tag
+  /// 'feDiffuseLighting'.
+  SVGFEDiffuseLightingElement()
+      : _ = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'feDiffuseLighting',
+        );
+
+  SVGAnimatedString get in1 {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedNumber get surfaceScale {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedNumber get diffuseConstant {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedNumber get kernelUnitLengthX {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedNumber get kernelUnitLengthY {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get x {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get y {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get width {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get height {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedString get result {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SVGFEDistantLightElement`** interface corresponds to the  element.
@@ -284,9 +587,22 @@ abstract class SVGFEDiffuseLightingElement implements SVGElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGFEDistantLightElement).
-abstract class SVGFEDistantLightElement implements SVGElement, JSObject {
-  SVGAnimatedNumber get azimuth;
-  SVGAnimatedNumber get elevation;
+extension type SVGFEDistantLightElement._(JSObject _)
+    implements SVGElement, JSObject {
+  /// Creates an [SVGFEDistantLightElement] using the tag 'feDistantLight'.
+  SVGFEDistantLightElement()
+      : _ = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'feDistantLight',
+        );
+
+  SVGAnimatedNumber get azimuth {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedNumber get elevation {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SVGFEPointLightElement`** interface corresponds to the  element.
@@ -295,10 +611,26 @@ abstract class SVGFEDistantLightElement implements SVGElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGFEPointLightElement).
-abstract class SVGFEPointLightElement implements SVGElement, JSObject {
-  SVGAnimatedNumber get x;
-  SVGAnimatedNumber get y;
-  SVGAnimatedNumber get z;
+extension type SVGFEPointLightElement._(JSObject _)
+    implements SVGElement, JSObject {
+  /// Creates an [SVGFEPointLightElement] using the tag 'fePointLight'.
+  SVGFEPointLightElement()
+      : _ = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'fePointLight',
+        );
+
+  SVGAnimatedNumber get x {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedNumber get y {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedNumber get z {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SVGFESpotLightElement`** interface corresponds to the  element.
@@ -307,15 +639,46 @@ abstract class SVGFEPointLightElement implements SVGElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGFESpotLightElement).
-abstract class SVGFESpotLightElement implements SVGElement, JSObject {
-  SVGAnimatedNumber get x;
-  SVGAnimatedNumber get y;
-  SVGAnimatedNumber get z;
-  SVGAnimatedNumber get pointsAtX;
-  SVGAnimatedNumber get pointsAtY;
-  SVGAnimatedNumber get pointsAtZ;
-  SVGAnimatedNumber get specularExponent;
-  SVGAnimatedNumber get limitingConeAngle;
+extension type SVGFESpotLightElement._(JSObject _)
+    implements SVGElement, JSObject {
+  /// Creates an [SVGFESpotLightElement] using the tag 'feSpotLight'.
+  SVGFESpotLightElement()
+      : _ = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'feSpotLight',
+        );
+
+  SVGAnimatedNumber get x {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedNumber get y {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedNumber get z {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedNumber get pointsAtX {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedNumber get pointsAtY {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedNumber get pointsAtZ {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedNumber get specularExponent {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedNumber get limitingConeAngle {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SVGFEDisplacementMapElement`** interface corresponds to the  element.
@@ -324,7 +687,16 @@ abstract class SVGFESpotLightElement implements SVGElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGFEDisplacementMapElement).
-abstract class SVGFEDisplacementMapElement implements SVGElement, JSObject {
+extension type SVGFEDisplacementMapElement._(JSObject _)
+    implements SVGElement, JSObject {
+  /// Creates an [SVGFEDisplacementMapElement] using the tag
+  /// 'feDisplacementMap'.
+  SVGFEDisplacementMapElement()
+      : _ = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'feDisplacementMap',
+        );
+
   static const int SVG_CHANNEL_UNKNOWN = 0;
 
   static const int SVG_CHANNEL_R = 1;
@@ -335,16 +707,45 @@ abstract class SVGFEDisplacementMapElement implements SVGElement, JSObject {
 
   static const int SVG_CHANNEL_A = 4;
 
-  SVGAnimatedString get in1;
-  SVGAnimatedString get in2;
-  SVGAnimatedNumber get scale;
-  SVGAnimatedEnumeration get xChannelSelector;
-  SVGAnimatedEnumeration get yChannelSelector;
-  SVGAnimatedLength get x;
-  SVGAnimatedLength get y;
-  SVGAnimatedLength get width;
-  SVGAnimatedLength get height;
-  SVGAnimatedString get result;
+  SVGAnimatedString get in1 {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedString get in2 {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedNumber get scale {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedEnumeration get xChannelSelector {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedEnumeration get yChannelSelector {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get x {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get y {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get width {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get height {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedString get result {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SVGFEDropShadowElement`** interface corresponds to the  element.
@@ -353,21 +754,61 @@ abstract class SVGFEDisplacementMapElement implements SVGElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGFEDropShadowElement).
-abstract class SVGFEDropShadowElement implements SVGElement, JSObject {
+extension type SVGFEDropShadowElement._(JSObject _)
+    implements SVGElement, JSObject {
+  /// Creates an [SVGFEDropShadowElement] using the tag 'feDropShadow'.
+  SVGFEDropShadowElement()
+      : _ = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'feDropShadow',
+        );
+
   void setStdDeviation(
     num stdDeviationX,
     num stdDeviationY,
-  );
-  SVGAnimatedString get in1;
-  SVGAnimatedNumber get dx;
-  SVGAnimatedNumber get dy;
-  SVGAnimatedNumber get stdDeviationX;
-  SVGAnimatedNumber get stdDeviationY;
-  SVGAnimatedLength get x;
-  SVGAnimatedLength get y;
-  SVGAnimatedLength get width;
-  SVGAnimatedLength get height;
-  SVGAnimatedString get result;
+  ) {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedString get in1 {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedNumber get dx {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedNumber get dy {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedNumber get stdDeviationX {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedNumber get stdDeviationY {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get x {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get y {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get width {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get height {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedString get result {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SVGFEFloodElement`** interface corresponds to the  element.
@@ -376,12 +817,33 @@ abstract class SVGFEDropShadowElement implements SVGElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGFEFloodElement).
-abstract class SVGFEFloodElement implements SVGElement, JSObject {
-  SVGAnimatedLength get x;
-  SVGAnimatedLength get y;
-  SVGAnimatedLength get width;
-  SVGAnimatedLength get height;
-  SVGAnimatedString get result;
+extension type SVGFEFloodElement._(JSObject _) implements SVGElement, JSObject {
+  /// Creates an [SVGFEFloodElement] using the tag 'feFlood'.
+  SVGFEFloodElement()
+      : _ = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'feFlood',
+        );
+
+  SVGAnimatedLength get x {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get y {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get width {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get height {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedString get result {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SVGFEGaussianBlurElement`** interface corresponds to the  element.
@@ -390,7 +852,15 @@ abstract class SVGFEFloodElement implements SVGElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGFEGaussianBlurElement).
-abstract class SVGFEGaussianBlurElement implements SVGElement, JSObject {
+extension type SVGFEGaussianBlurElement._(JSObject _)
+    implements SVGElement, JSObject {
+  /// Creates an [SVGFEGaussianBlurElement] using the tag 'feGaussianBlur'.
+  SVGFEGaussianBlurElement()
+      : _ = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'feGaussianBlur',
+        );
+
   static const int SVG_EDGEMODE_UNKNOWN = 0;
 
   static const int SVG_EDGEMODE_DUPLICATE = 1;
@@ -402,16 +872,45 @@ abstract class SVGFEGaussianBlurElement implements SVGElement, JSObject {
   void setStdDeviation(
     num stdDeviationX,
     num stdDeviationY,
-  );
-  SVGAnimatedString get in1;
-  SVGAnimatedNumber get stdDeviationX;
-  SVGAnimatedNumber get stdDeviationY;
-  SVGAnimatedEnumeration get edgeMode;
-  SVGAnimatedLength get x;
-  SVGAnimatedLength get y;
-  SVGAnimatedLength get width;
-  SVGAnimatedLength get height;
-  SVGAnimatedString get result;
+  ) {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedString get in1 {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedNumber get stdDeviationX {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedNumber get stdDeviationY {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedEnumeration get edgeMode {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get x {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get y {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get width {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get height {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedString get result {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SVGFEImageElement`** interface corresponds to the  element.
@@ -420,15 +919,45 @@ abstract class SVGFEGaussianBlurElement implements SVGElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGFEImageElement).
-abstract class SVGFEImageElement implements SVGElement, JSObject {
-  SVGAnimatedPreserveAspectRatio get preserveAspectRatio;
-  SVGAnimatedString get crossOrigin;
-  SVGAnimatedLength get x;
-  SVGAnimatedLength get y;
-  SVGAnimatedLength get width;
-  SVGAnimatedLength get height;
-  SVGAnimatedString get result;
-  SVGAnimatedString get href;
+extension type SVGFEImageElement._(JSObject _) implements SVGElement, JSObject {
+  /// Creates an [SVGFEImageElement] using the tag 'feImage'.
+  SVGFEImageElement()
+      : _ = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'feImage',
+        );
+
+  SVGAnimatedPreserveAspectRatio get preserveAspectRatio {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedString get crossOrigin {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get x {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get y {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get width {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get height {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedString get result {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedString get href {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SVGFEMergeElement`** interface corresponds to the  element.
@@ -437,12 +966,33 @@ abstract class SVGFEImageElement implements SVGElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGFEMergeElement).
-abstract class SVGFEMergeElement implements SVGElement, JSObject {
-  SVGAnimatedLength get x;
-  SVGAnimatedLength get y;
-  SVGAnimatedLength get width;
-  SVGAnimatedLength get height;
-  SVGAnimatedString get result;
+extension type SVGFEMergeElement._(JSObject _) implements SVGElement, JSObject {
+  /// Creates an [SVGFEMergeElement] using the tag 'feMerge'.
+  SVGFEMergeElement()
+      : _ = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'feMerge',
+        );
+
+  SVGAnimatedLength get x {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get y {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get width {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get height {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedString get result {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SVGFEMergeNodeElement`** interface corresponds to the  element.
@@ -451,8 +1001,18 @@ abstract class SVGFEMergeElement implements SVGElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGFEMergeNodeElement).
-abstract class SVGFEMergeNodeElement implements SVGElement, JSObject {
-  SVGAnimatedString get in1;
+extension type SVGFEMergeNodeElement._(JSObject _)
+    implements SVGElement, JSObject {
+  /// Creates an [SVGFEMergeNodeElement] using the tag 'feMergeNode'.
+  SVGFEMergeNodeElement()
+      : _ = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'feMergeNode',
+        );
+
+  SVGAnimatedString get in1 {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SVGFEMorphologyElement`** interface corresponds to the  element.
@@ -461,22 +1021,56 @@ abstract class SVGFEMergeNodeElement implements SVGElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGFEMorphologyElement).
-abstract class SVGFEMorphologyElement implements SVGElement, JSObject {
+extension type SVGFEMorphologyElement._(JSObject _)
+    implements SVGElement, JSObject {
+  /// Creates an [SVGFEMorphologyElement] using the tag 'feMorphology'.
+  SVGFEMorphologyElement()
+      : _ = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'feMorphology',
+        );
+
   static const int SVG_MORPHOLOGY_OPERATOR_UNKNOWN = 0;
 
   static const int SVG_MORPHOLOGY_OPERATOR_ERODE = 1;
 
   static const int SVG_MORPHOLOGY_OPERATOR_DILATE = 2;
 
-  SVGAnimatedString get in1;
-  SVGAnimatedEnumeration get operator;
-  SVGAnimatedNumber get radiusX;
-  SVGAnimatedNumber get radiusY;
-  SVGAnimatedLength get x;
-  SVGAnimatedLength get y;
-  SVGAnimatedLength get width;
-  SVGAnimatedLength get height;
-  SVGAnimatedString get result;
+  SVGAnimatedString get in1 {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedEnumeration get operator {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedNumber get radiusX {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedNumber get radiusY {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get x {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get y {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get width {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get height {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedString get result {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SVGFEOffsetElement`** interface corresponds to the  element.
@@ -485,15 +1079,46 @@ abstract class SVGFEMorphologyElement implements SVGElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGFEOffsetElement).
-abstract class SVGFEOffsetElement implements SVGElement, JSObject {
-  SVGAnimatedString get in1;
-  SVGAnimatedNumber get dx;
-  SVGAnimatedNumber get dy;
-  SVGAnimatedLength get x;
-  SVGAnimatedLength get y;
-  SVGAnimatedLength get width;
-  SVGAnimatedLength get height;
-  SVGAnimatedString get result;
+extension type SVGFEOffsetElement._(JSObject _)
+    implements SVGElement, JSObject {
+  /// Creates an [SVGFEOffsetElement] using the tag 'feOffset'.
+  SVGFEOffsetElement()
+      : _ = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'feOffset',
+        );
+
+  SVGAnimatedString get in1 {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedNumber get dx {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedNumber get dy {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get x {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get y {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get width {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get height {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedString get result {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SVGFESpecularLightingElement`** interface corresponds to the
@@ -503,18 +1128,59 @@ abstract class SVGFEOffsetElement implements SVGElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGFESpecularLightingElement).
-abstract class SVGFESpecularLightingElement implements SVGElement, JSObject {
-  SVGAnimatedString get in1;
-  SVGAnimatedNumber get surfaceScale;
-  SVGAnimatedNumber get specularConstant;
-  SVGAnimatedNumber get specularExponent;
-  SVGAnimatedNumber get kernelUnitLengthX;
-  SVGAnimatedNumber get kernelUnitLengthY;
-  SVGAnimatedLength get x;
-  SVGAnimatedLength get y;
-  SVGAnimatedLength get width;
-  SVGAnimatedLength get height;
-  SVGAnimatedString get result;
+extension type SVGFESpecularLightingElement._(JSObject _)
+    implements SVGElement, JSObject {
+  /// Creates an [SVGFESpecularLightingElement] using the tag
+  /// 'feSpecularLighting'.
+  SVGFESpecularLightingElement()
+      : _ = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'feSpecularLighting',
+        );
+
+  SVGAnimatedString get in1 {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedNumber get surfaceScale {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedNumber get specularConstant {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedNumber get specularExponent {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedNumber get kernelUnitLengthX {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedNumber get kernelUnitLengthY {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get x {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get y {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get width {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get height {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedString get result {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SVGFETileElement`** interface corresponds to the  element.
@@ -523,13 +1189,37 @@ abstract class SVGFESpecularLightingElement implements SVGElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGFETileElement).
-abstract class SVGFETileElement implements SVGElement, JSObject {
-  SVGAnimatedString get in1;
-  SVGAnimatedLength get x;
-  SVGAnimatedLength get y;
-  SVGAnimatedLength get width;
-  SVGAnimatedLength get height;
-  SVGAnimatedString get result;
+extension type SVGFETileElement._(JSObject _) implements SVGElement, JSObject {
+  /// Creates an [SVGFETileElement] using the tag 'feTile'.
+  SVGFETileElement()
+      : _ = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'feTile',
+        );
+
+  SVGAnimatedString get in1 {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get x {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get y {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get width {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get height {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedString get result {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SVGFETurbulenceElement`** interface corresponds to the  element.
@@ -538,7 +1228,15 @@ abstract class SVGFETileElement implements SVGElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGFETurbulenceElement).
-abstract class SVGFETurbulenceElement implements SVGElement, JSObject {
+extension type SVGFETurbulenceElement._(JSObject _)
+    implements SVGElement, JSObject {
+  /// Creates an [SVGFETurbulenceElement] using the tag 'feTurbulence'.
+  SVGFETurbulenceElement()
+      : _ = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'feTurbulence',
+        );
+
   static const int SVG_TURBULENCE_TYPE_UNKNOWN = 0;
 
   static const int SVG_TURBULENCE_TYPE_FRACTALNOISE = 1;
@@ -551,15 +1249,47 @@ abstract class SVGFETurbulenceElement implements SVGElement, JSObject {
 
   static const int SVG_STITCHTYPE_NOSTITCH = 2;
 
-  SVGAnimatedNumber get baseFrequencyX;
-  SVGAnimatedNumber get baseFrequencyY;
-  SVGAnimatedInteger get numOctaves;
-  SVGAnimatedNumber get seed;
-  SVGAnimatedEnumeration get stitchTiles;
-  SVGAnimatedEnumeration get type;
-  SVGAnimatedLength get x;
-  SVGAnimatedLength get y;
-  SVGAnimatedLength get width;
-  SVGAnimatedLength get height;
-  SVGAnimatedString get result;
+  SVGAnimatedNumber get baseFrequencyX {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedNumber get baseFrequencyY {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedInteger get numOctaves {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedNumber get seed {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedEnumeration get stitchTiles {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedEnumeration get type {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get x {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get y {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get width {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedLength get height {
+    unsupportedPlatformError();
+  }
+
+  SVGAnimatedString get result {
+    unsupportedPlatformError();
+  }
 }

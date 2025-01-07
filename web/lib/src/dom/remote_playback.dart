@@ -10,6 +10,7 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
+import '../error.dart';
 import '../js_interop.dart';
 import 'dom.dart';
 import 'html.dart';
@@ -25,16 +26,20 @@ typedef RemotePlaybackState = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/RemotePlayback).
-abstract class RemotePlayback implements EventTarget, JSObject {
+extension type RemotePlayback._(JSObject _) implements EventTarget, JSObject {
   /// The **`watchAvailability()`** method of the [RemotePlayback] interface
   /// watches the list of available remote playback devices and returns a
   /// `Promise` that resolves with the `callbackId` of a remote playback device.
   JSPromise<JSNumber> watchAvailability(
-      RemotePlaybackAvailabilityCallback callback);
+      RemotePlaybackAvailabilityCallback callback) {
+    unsupportedPlatformError();
+  }
 
   /// The **`cancelWatchAvailability()`** method of the [RemotePlayback]
   /// interface cancels the request to watch for one or all available devices.
-  JSPromise<JSAny?> cancelWatchAvailability([int id]);
+  JSPromise<JSAny?> cancelWatchAvailability([int? id]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`prompt()`** method of the [RemotePlayback] interface prompts the
   /// user to select an available remote playback device and give permission for
@@ -47,15 +52,37 @@ abstract class RemotePlayback implements EventTarget, JSObject {
   /// If the user chooses to instead disconnect from the device, the
   /// [RemotePlayback.state] will be set to `disconnected` and user agent will
   /// disconnect from this device.
-  JSPromise<JSAny?> prompt();
+  JSPromise<JSAny?> prompt() {
+    unsupportedPlatformError();
+  }
 
   /// The **`state`** read-only property of the [RemotePlayback] interface
   /// returns the current state of the `RemotePlayback` connection.
-  RemotePlaybackState get state;
-  EventHandler get onconnecting;
-  set onconnecting(EventHandler value);
-  EventHandler get onconnect;
-  set onconnect(EventHandler value);
-  EventHandler get ondisconnect;
-  set ondisconnect(EventHandler value);
+  RemotePlaybackState get state {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onconnecting {
+    unsupportedPlatformError();
+  }
+
+  set onconnecting(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onconnect {
+    unsupportedPlatformError();
+  }
+
+  set onconnect(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ondisconnect {
+    unsupportedPlatformError();
+  }
+
+  set ondisconnect(EventHandler value) {
+    unsupportedPlatformError();
+  }
 }

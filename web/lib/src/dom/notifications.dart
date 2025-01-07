@@ -33,7 +33,14 @@ typedef NotificationDirection = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Notification).
-abstract class Notification implements EventTarget, JSObject {
+extension type Notification._(JSObject _) implements EventTarget, JSObject {
+  factory Notification(
+    String title, [
+    NotificationOptions? options,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// The **`requestPermission()`** static method of the [Notification]
   /// interface requests permission from the user for the current origin to
   /// display notifications.
@@ -65,26 +72,56 @@ abstract class Notification implements EventTarget, JSObject {
   /// > on the webpage in the case of a messaging app or the following song is
   /// > already playing
   /// > in a music app).
-  void close();
-  EventHandler get onclick;
-  set onclick(EventHandler value);
-  EventHandler get onshow;
-  set onshow(EventHandler value);
-  EventHandler get onerror;
-  set onerror(EventHandler value);
-  EventHandler get onclose;
-  set onclose(EventHandler value);
+  void close() {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onclick {
+    unsupportedPlatformError();
+  }
+
+  set onclick(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onshow {
+    unsupportedPlatformError();
+  }
+
+  set onshow(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onerror {
+    unsupportedPlatformError();
+  }
+
+  set onerror(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onclose {
+    unsupportedPlatformError();
+  }
+
+  set onclose(EventHandler value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`title`** read-only property of the
   /// [Notification] interface indicates the title of the notification, as
   /// specified in the `title` parameter of the
   /// [Notification.Notification] constructor.
-  String get title;
+  String get title {
+    unsupportedPlatformError();
+  }
 
   /// The **`dir`** read-only property of the [Notification] interface indicates
   /// the text direction of the notification, as specified in the `dir` option
   /// of the [Notification.Notification] constructor.
-  NotificationDirection get dir;
+  NotificationDirection get dir {
+    unsupportedPlatformError();
+  }
 
   /// The **`lang`** read-only property of the
   /// [Notification] interface indicates the language used in the notification,
@@ -97,13 +134,17 @@ abstract class Notification implements EventTarget, JSObject {
   /// See the Sitepoint
   /// [ISO 2 letter language codes](https://www.sitepoint.com/iso-2-letter-language-codes/)
   /// page for a simple reference.
-  String get lang;
+  String get lang {
+    unsupportedPlatformError();
+  }
 
   /// The **`body`** read-only property of the
   /// [Notification] interface indicates the body string of the notification, as
   /// specified in the `body` option of the
   /// [Notification.Notification] constructor.
-  String get body;
+  String get body {
+    unsupportedPlatformError();
+  }
 
   /// The **`tag`** read-only property of the
   /// [Notification] interface signifies an identifying tag for the
@@ -118,13 +159,17 @@ abstract class Notification implements EventTarget, JSObject {
   /// another to avoid the users' screen being filled up with a huge number of
   /// similar
   /// notifications.
-  String get tag;
+  String get tag {
+    unsupportedPlatformError();
+  }
 
   /// The **`icon`** read-only property of the
   /// [Notification] interface contains the URL of an icon to be displayed as
   /// part of the notification, as specified in the `icon` option of the
   /// [Notification.Notification] constructor.
-  String get icon;
+  String get icon {
+    unsupportedPlatformError();
+  }
 
   /// The **`badge`** read-only property of the [Notification] interface returns
   /// a string containing the URL of an image to represent the notification when
@@ -132,7 +177,9 @@ abstract class Notification implements EventTarget, JSObject {
   /// example, the Android Notification Bar. On Android devices, the badge
   /// should accommodate devices up to 4x resolution, about 96 by 96 px, and the
   /// image will be automatically masked.
-  String get badge;
+  String get badge {
+    unsupportedPlatformError();
+  }
 
   /// The **`silent`** read-only property of the
   /// [Notification] interface specifies whether the notification should be
@@ -140,7 +187,9 @@ abstract class Notification implements EventTarget, JSObject {
   /// device
   /// settings. This is specified in the `silent` option of the
   /// [Notification.Notification] constructor.
-  bool? get silent;
+  bool? get silent {
+    unsupportedPlatformError();
+  }
 
   /// The **`requireInteraction`** read-only property of the [Notification]
   /// interface returns a boolean value indicating that a notification should
@@ -150,7 +199,9 @@ abstract class Notification implements EventTarget, JSObject {
   /// > **Note:** This can be set when the notification is first created by
   /// > setting the `requireInteraction` option to `true` in the options object
   /// > of the [Notification.Notification] constructor.
-  bool get requireInteraction;
+  bool get requireInteraction {
+    unsupportedPlatformError();
+  }
 
   /// The **`data`** read-only property of the
   /// [Notification] interface returns a structured clone of the notification's
@@ -160,10 +211,30 @@ abstract class Notification implements EventTarget, JSObject {
   /// The notification's data can be any arbitrary data that you want associated
   /// with the
   /// notification.
-  JSAny? get data;
+  JSAny? get data {
+    unsupportedPlatformError();
+  }
 }
+extension type NotificationOptions._(JSObject _) implements JSObject {
+  factory NotificationOptions({
+    NotificationDirection? dir,
+    String? lang,
+    String? body,
+    String? tag,
+    String? image,
+    String? icon,
+    String? badge,
+    VibratePattern? vibrate,
+    EpochTimeStamp? timestamp,
+    bool? renotify,
+    bool? silent,
+    bool? requireInteraction,
+    JSAny? data,
+    JSArray<NotificationAction>? actions,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class NotificationOptions implements JSObject {
   NotificationDirection get dir {
     unsupportedPlatformError();
   }
@@ -276,8 +347,15 @@ abstract class NotificationOptions implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type NotificationAction._(JSObject _) implements JSObject {
+  factory NotificationAction({
+    required String action,
+    required String title,
+    String? icon,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class NotificationAction implements JSObject {
   String get action {
     unsupportedPlatformError();
   }
@@ -302,8 +380,11 @@ abstract class NotificationAction implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type GetNotificationOptions._(JSObject _) implements JSObject {
+  factory GetNotificationOptions({String? tag}) {
+    unsupportedPlatformError();
+  }
 
-abstract class GetNotificationOptions implements JSObject {
   String get tag {
     unsupportedPlatformError();
   }
@@ -330,7 +411,15 @@ abstract class GetNotificationOptions implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/NotificationEvent).
-abstract class NotificationEvent implements ExtendableEvent, JSObject {
+extension type NotificationEvent._(JSObject _)
+    implements ExtendableEvent, JSObject {
+  factory NotificationEvent(
+    String type,
+    NotificationEventInit eventInitDict,
+  ) {
+    unsupportedPlatformError();
+  }
+
   /// @AvailableInWorkers("service")
   ///
   /// The **`notification`** read-only property of the [NotificationEvent]
@@ -339,7 +428,9 @@ abstract class NotificationEvent implements ExtendableEvent, JSObject {
   /// properties that were set at the instantiation time of the Notification
   /// such as `tag` and `data` attributes that allow you to store information
   /// for deferred use in the `notificationclick` event.
-  Notification get notification;
+  Notification get notification {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("service")
   ///
@@ -350,10 +441,22 @@ abstract class NotificationEvent implements ExtendableEvent, JSObject {
   /// button. The notification id is set during the creation of the Notification
   /// via the actions array attribute and can't be modified unless the
   /// notification is replaced.
-  String get action;
+  String get action {
+    unsupportedPlatformError();
+  }
 }
+extension type NotificationEventInit._(JSObject _)
+    implements ExtendableEventInit, JSObject {
+  factory NotificationEventInit({
+    bool? bubbles,
+    bool? cancelable,
+    bool? composed,
+    required Notification notification,
+    String? action,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class NotificationEventInit implements ExtendableEventInit, JSObject {
   Notification get notification {
     unsupportedPlatformError();
   }

@@ -30,7 +30,7 @@ typedef CSSMathOperator = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleValue).
-abstract class CSSStyleValue implements JSObject {
+extension type CSSStyleValue._(JSObject _) implements JSObject {
   /// The **`parse()`** static method of the [CSSStyleValue]
   /// interface sets a specific CSS property to the specified values and returns
   /// the first
@@ -65,26 +65,34 @@ abstract class CSSStyleValue implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/StylePropertyMapReadOnly).
-abstract class StylePropertyMapReadOnly implements JSObject {
+extension type StylePropertyMapReadOnly._(JSObject _) implements JSObject {
   /// The **`get()`** method of the
   /// [StylePropertyMapReadOnly] interface returns a [CSSStyleValue]
   /// object for the first value of the specified property.
-  CSSStyleValue? get(String property);
+  CSSStyleValue? get(String property) {
+    unsupportedPlatformError();
+  }
 
   /// The **`getAll()`** method of the
   /// [StylePropertyMapReadOnly] interface returns an array of
   /// [CSSStyleValue] objects containing the values for the provided property.
-  JSArray<CSSStyleValue> getAll(String property);
+  JSArray<CSSStyleValue> getAll(String property) {
+    unsupportedPlatformError();
+  }
 
   /// The **`has()`** method of the
   /// [StylePropertyMapReadOnly] interface indicates whether the specified
   /// property is in the `StylePropertyMapReadOnly` object.
-  bool has(String property);
+  bool has(String property) {
+    unsupportedPlatformError();
+  }
 
   /// The **`size`** read-only property of the
   /// [StylePropertyMapReadOnly] interface returns an unsigned long integer
   /// containing the size of the `StylePropertyMapReadOnly` object.
-  int get size;
+  int get size {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`StylePropertyMap`** interface of the
@@ -96,13 +104,16 @@ abstract class StylePropertyMapReadOnly implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/StylePropertyMap).
-abstract class StylePropertyMap implements StylePropertyMapReadOnly, JSObject {
+extension type StylePropertyMap._(JSObject _)
+    implements StylePropertyMapReadOnly, JSObject {
   /// The **`set()`** method of the [StylePropertyMap]
   /// interface changes the CSS declaration with the given property.
   void set(
     String property,
     JSAny values,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`append()`** method of the
   /// [StylePropertyMap] interface adds the passed CSS value to the
@@ -110,16 +121,22 @@ abstract class StylePropertyMap implements StylePropertyMapReadOnly, JSObject {
   void append(
     String property,
     JSAny values,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`delete()`** method of the
   /// [StylePropertyMap] interface removes the CSS declaration with the given
   /// property.
-  void delete(String property);
+  void delete(String property) {
+    unsupportedPlatformError();
+  }
 
   /// The **`clear()`** method of the [StylePropertyMap]
   /// interface removes all declarations in the `StylePropertyMap`.
-  void clear();
+  void clear() {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`CSSUnparsedValue`** interface of the
@@ -135,16 +152,28 @@ abstract class StylePropertyMap implements StylePropertyMapReadOnly, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSUnparsedValue).
-abstract class CSSUnparsedValue implements CSSStyleValue, JSObject {
-  CSSUnparsedSegment operator [](int index);
+extension type CSSUnparsedValue._(JSObject _)
+    implements CSSStyleValue, JSObject {
+  factory CSSUnparsedValue(JSArray<CSSUnparsedSegment> members) {
+    unsupportedPlatformError();
+  }
+
+  CSSUnparsedSegment operator [](int index) {
+    unsupportedPlatformError();
+  }
+
   void operator []=(
     int index,
     CSSUnparsedSegment val,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`length`** read-only property of the
   /// [CSSUnparsedValue] interface returns the number of items in the object.
-  int get length;
+  int get length {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`CSSVariableReferenceValue`** interface of the
@@ -157,20 +186,34 @@ abstract class CSSUnparsedValue implements CSSStyleValue, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSVariableReferenceValue).
-abstract class CSSVariableReferenceValue implements JSObject {
+extension type CSSVariableReferenceValue._(JSObject _) implements JSObject {
+  factory CSSVariableReferenceValue(
+    String variable, [
+    CSSUnparsedValue? fallback,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// The **`variable`** property of the
   /// [CSSVariableReferenceValue] interface returns the
   /// [custom property name](https://developer.mozilla.org/en-US/docs/Web/CSS/--*)
   /// of the
   /// [CSSVariableReferenceValue].
-  String get variable;
-  set variable(String value);
+  String get variable {
+    unsupportedPlatformError();
+  }
+
+  set variable(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`fallback`** read-only property of the
   /// [CSSVariableReferenceValue] interface returns the
   /// [custom property fallback value](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties#custom_property_fallback_values)
   /// of the [CSSVariableReferenceValue].
-  CSSUnparsedValue? get fallback;
+  CSSUnparsedValue? get fallback {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`CSSKeywordValue`** interface of the
@@ -184,15 +227,37 @@ abstract class CSSVariableReferenceValue implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSKeywordValue).
-abstract class CSSKeywordValue implements CSSStyleValue, JSObject {
+extension type CSSKeywordValue._(JSObject _)
+    implements CSSStyleValue, JSObject {
+  factory CSSKeywordValue(String value) {
+    unsupportedPlatformError();
+  }
+
   /// The **`value`** property of the
   /// [CSSKeywordValue] interface returns or sets the value of the
   /// `CSSKeywordValue`.
-  String get value;
-  set value(String value);
-}
+  String get value {
+    unsupportedPlatformError();
+  }
 
-abstract class CSSNumericType implements JSObject {
+  set value(String value) {
+    unsupportedPlatformError();
+  }
+}
+extension type CSSNumericType._(JSObject _) implements JSObject {
+  factory CSSNumericType({
+    int? length,
+    int? angle,
+    int? time,
+    int? frequency,
+    int? resolution,
+    int? flex,
+    int? percent,
+    CSSNumericBaseType? percentHint,
+  }) {
+    unsupportedPlatformError();
+  }
+
   int get length {
     unsupportedPlatformError();
   }
@@ -266,7 +331,8 @@ abstract class CSSNumericType implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSNumericValue).
-abstract class CSSNumericValue implements CSSStyleValue, JSObject {
+extension type CSSNumericValue._(JSObject _)
+    implements CSSStyleValue, JSObject {
   /// The **`parse()`** static method of the
   /// [CSSNumericValue] interface converts a value string into an object whose
   /// members are value and the units.
@@ -277,33 +343,45 @@ abstract class CSSNumericValue implements CSSStyleValue, JSObject {
   /// The **`add()`** method of the
   /// [CSSNumericValue] interface adds a supplied number to the
   /// `CSSNumericValue`.
-  CSSNumericValue add(CSSNumberish values);
+  CSSNumericValue add(CSSNumberish values) {
+    unsupportedPlatformError();
+  }
 
   /// The **`sub()`** method of the
   /// [CSSNumericValue] interface subtracts a supplied number from the
   /// `CSSNumericValue`.
-  CSSNumericValue sub(CSSNumberish values);
+  CSSNumericValue sub(CSSNumberish values) {
+    unsupportedPlatformError();
+  }
 
   /// The **`mul()`** method of the
   /// [CSSNumericValue] interface multiplies the `CSSNumericValue` by
   /// the supplied value.
-  CSSNumericValue mul(CSSNumberish values);
+  CSSNumericValue mul(CSSNumberish values) {
+    unsupportedPlatformError();
+  }
 
   /// The **`div()`** method of the
   /// [CSSNumericValue] interface divides the `CSSNumericValue` by the
   /// supplied value.
-  CSSNumericValue div(CSSNumberish values);
+  CSSNumericValue div(CSSNumberish values) {
+    unsupportedPlatformError();
+  }
 
   /// The **`min()`** method of the
   /// [CSSNumericValue] interface returns the lowest value from among those
   /// values passed. The passed values must be of the same type.
-  CSSNumericValue min(CSSNumberish values);
+  CSSNumericValue min(CSSNumberish values) {
+    unsupportedPlatformError();
+  }
 
   /// The **`max()`** method of the
   /// [CSSNumericValue] interface returns the highest value from among the
   /// values
   /// passed. The passed values must be of the same type.
-  CSSNumericValue max(CSSNumberish values);
+  CSSNumericValue max(CSSNumberish values) {
+    unsupportedPlatformError();
+  }
 
   /// The **`equals()`** method of the
   /// [CSSNumericValue] interface returns a boolean indicating whether the
@@ -313,24 +391,32 @@ abstract class CSSNumericValue implements CSSStyleValue, JSObject {
   /// be of the same type and value and must be in the same order. This allows
   /// structural
   /// equality to be tested quickly.
-  bool equals(CSSNumberish value);
+  bool equals(CSSNumberish value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`to()`** method of the
   /// [CSSNumericValue] interface converts a numeric value from one unit to
   /// another.
-  CSSUnitValue to(String unit);
+  CSSUnitValue to(String unit) {
+    unsupportedPlatformError();
+  }
 
   /// The **`toSum()`** method of the
   /// [CSSNumericValue] interface converts the object's value to a
   /// [CSSMathSum] object to values of the specified unit.
-  CSSMathSum toSum(String units);
+  CSSMathSum toSum(String units) {
+    unsupportedPlatformError();
+  }
 
   /// The **`type()`** method of the
   /// [CSSNumericValue] interface returns the type of
   /// `CSSNumericValue`, one of `angle`, `flex`,
   /// `frequency`, `length`, `resolution`,
   /// `percent`, `percentHint`, or `time`.
-  CSSNumericType type();
+  CSSNumericType type() {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`CSSUnitValue`** interface of the
@@ -342,16 +428,30 @@ abstract class CSSNumericValue implements CSSStyleValue, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSUnitValue).
-abstract class CSSUnitValue implements CSSNumericValue, JSObject {
+extension type CSSUnitValue._(JSObject _) implements CSSNumericValue, JSObject {
+  factory CSSUnitValue(
+    num value,
+    String unit,
+  ) {
+    unsupportedPlatformError();
+  }
+
   /// The **`CSSUnitValue.value`** property of the
   /// [CSSUnitValue] interface returns a double indicating the number of units.
-  double get value;
-  set value(num value);
+  double get value {
+    unsupportedPlatformError();
+  }
+
+  set value(num value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`CSSUnitValue.unit`** read-only property
   /// of the [CSSUnitValue] interface returns a string
   /// indicating the type of unit.
-  String get unit;
+  String get unit {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`CSSMathValue`** interface of the
@@ -362,13 +462,15 @@ abstract class CSSUnitValue implements CSSNumericValue, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSMathValue).
-abstract class CSSMathValue implements CSSNumericValue, JSObject {
+extension type CSSMathValue._(JSObject _) implements CSSNumericValue, JSObject {
   /// The **`CSSMathValue.operator`** read-only
   /// property of the [CSSMathValue] interface indicates the operator that the
   /// current subtype represents. For example, if the current `CSSMathValue`
   /// subtype is `CSSMathSum`, this property will return the string
   /// `"sum"`.
-  CSSMathOperator get operator;
+  CSSMathOperator get operator {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`CSSMathSum`** interface of the
@@ -385,11 +487,13 @@ abstract class CSSMathValue implements CSSNumericValue, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSMathSum).
-abstract class CSSMathSum implements CSSMathValue, JSObject {
+extension type CSSMathSum._(JSObject _) implements CSSMathValue, JSObject {
   /// The **`CSSMathSum.values`** read-only property
   /// of the [CSSMathSum] interface returns a [CSSNumericArray]
   /// object which contains one or more [CSSNumericValue] objects.
-  CSSNumericArray get values;
+  CSSNumericArray get values {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`CSSMathProduct`** interface of the
@@ -402,12 +506,14 @@ abstract class CSSMathSum implements CSSMathValue, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSMathProduct).
-abstract class CSSMathProduct implements CSSMathValue, JSObject {
+extension type CSSMathProduct._(JSObject _) implements CSSMathValue, JSObject {
   /// The **`CSSMathProduct.values`** read-only
   /// property of the [CSSMathProduct] interface returns a
   /// [CSSNumericArray] object which contains one or more
   /// [CSSNumericValue] objects.
-  CSSNumericArray get values;
+  CSSNumericArray get values {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`CSSMathNegate`** interface of the
@@ -419,10 +525,16 @@ abstract class CSSMathProduct implements CSSMathValue, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSMathNegate).
-abstract class CSSMathNegate implements CSSMathValue, JSObject {
+extension type CSSMathNegate._(JSObject _) implements CSSMathValue, JSObject {
+  factory CSSMathNegate(CSSNumberish arg) {
+    unsupportedPlatformError();
+  }
+
   /// The CSSMathNegate.value read-only property of the
   /// [CSSMathNegate] interface returns a [CSSNumericValue] object.
-  CSSNumericValue get value;
+  CSSNumericValue get value {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`CSSMathInvert`** interface of the
@@ -434,10 +546,16 @@ abstract class CSSMathNegate implements CSSMathValue, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSMathInvert).
-abstract class CSSMathInvert implements CSSMathValue, JSObject {
+extension type CSSMathInvert._(JSObject _) implements CSSMathValue, JSObject {
+  factory CSSMathInvert(CSSNumberish arg) {
+    unsupportedPlatformError();
+  }
+
   /// The CSSMathInvert.value read-only property of the
   /// [CSSMathInvert] interface returns a [CSSNumericValue] object.
-  CSSNumericValue get value;
+  CSSNumericValue get value {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`CSSMathMin`** interface of the
@@ -449,11 +567,13 @@ abstract class CSSMathInvert implements CSSMathValue, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSMathMin).
-abstract class CSSMathMin implements CSSMathValue, JSObject {
+extension type CSSMathMin._(JSObject _) implements CSSMathValue, JSObject {
   /// The CSSMathMin.values read-only property of the
   /// [CSSMathMin] interface returns a [CSSNumericArray] object
   /// which contains one or more [CSSNumericValue] objects.
-  CSSNumericArray get values;
+  CSSNumericArray get values {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`CSSMathMax`** interface of the
@@ -465,14 +585,23 @@ abstract class CSSMathMin implements CSSMathValue, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSMathMax).
-abstract class CSSMathMax implements CSSMathValue, JSObject {
+extension type CSSMathMax._(JSObject _) implements CSSMathValue, JSObject {
   /// The CSSMathMax.values read-only property of the
   /// [CSSMathMax] interface returns a [CSSNumericArray] object
   /// which contains one or more [CSSNumericValue] objects.
-  CSSNumericArray get values;
+  CSSNumericArray get values {
+    unsupportedPlatformError();
+  }
 }
+extension type CSSMathClamp._(JSObject _) implements CSSMathValue, JSObject {
+  factory CSSMathClamp(
+    CSSNumberish lower,
+    CSSNumberish value,
+    CSSNumberish upper,
+  ) {
+    unsupportedPlatformError();
+  }
 
-abstract class CSSMathClamp implements CSSMathValue, JSObject {
   CSSNumericValue get lower {
     unsupportedPlatformError();
   }
@@ -494,13 +623,17 @@ abstract class CSSMathClamp implements CSSMathValue, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSNumericArray).
-abstract class CSSNumericArray implements JSObject {
-  CSSNumericValue operator [](int index);
+extension type CSSNumericArray._(JSObject _) implements JSObject {
+  CSSNumericValue operator [](int index) {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`length`** property of the
   /// [CSSNumericArray] interface returns the number of
   /// [CSSNumericValue] objects in the list.
-  int get length;
+  int get length {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`CSSTransformValue`** interface of the
@@ -511,22 +644,36 @@ abstract class CSSNumericArray implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSTransformValue).
-abstract class CSSTransformValue implements CSSStyleValue, JSObject {
-  CSSTransformComponent operator [](int index);
+extension type CSSTransformValue._(JSObject _)
+    implements CSSStyleValue, JSObject {
+  factory CSSTransformValue(JSArray<CSSTransformComponent> transforms) {
+    unsupportedPlatformError();
+  }
+
+  CSSTransformComponent operator [](int index) {
+    unsupportedPlatformError();
+  }
+
   void operator []=(
     int index,
     CSSTransformComponent val,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`toMatrix()`** method of the
   /// [CSSTransformValue] interface returns a [DOMMatrix] object.
-  DOMMatrix toMatrix();
+  DOMMatrix toMatrix() {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`length`** property of the
   /// [CSSTransformValue] interface returns the number of transform components
   /// in
   /// the list.
-  int get length;
+  int get length {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`is2D`** property of the
   /// [CSSTransformValue] interface returns whether the transform is 2D or 3D.
@@ -535,7 +682,9 @@ abstract class CSSTransformValue implements CSSStyleValue, JSObject {
   /// true unless any of the individual functions return false for `Is2D`, in
   /// which
   /// case it returns false.
-  bool get is2D;
+  bool get is2D {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`CSSTransformComponent`** interface of the
@@ -546,7 +695,7 @@ abstract class CSSTransformValue implements CSSStyleValue, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSTransformComponent).
-abstract class CSSTransformComponent implements JSObject {
+extension type CSSTransformComponent._(JSObject _) implements JSObject {
   /// The **`toMatrix()`** method of the
   /// [CSSTransformComponent] interface returns a [DOMMatrix]
   /// object.
@@ -560,12 +709,19 @@ abstract class CSSTransformComponent implements JSObject {
   /// > for legacy reasons. A brief explanation of 2D vs. 3D transforms can be
   /// > found in
   /// > [Using CSS transforms](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_transforms/Using_CSS_transforms).
-  DOMMatrix toMatrix();
+  DOMMatrix toMatrix() {
+    unsupportedPlatformError();
+  }
 
   /// The **`is2D`** read-only property of the [CSSTransformComponent] interface
   /// indicates where the transform is 2D or 3D.
-  bool get is2D;
-  set is2D(bool value);
+  bool get is2D {
+    unsupportedPlatformError();
+  }
+
+  set is2D(bool value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`CSSTranslate`** interface of the
@@ -579,18 +735,37 @@ abstract class CSSTransformComponent implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSTranslate).
-abstract class CSSTranslate implements CSSTransformComponent, JSObject {
+extension type CSSTranslate._(JSObject _)
+    implements CSSTransformComponent, JSObject {
+  factory CSSTranslate(
+    CSSNumericValue x,
+    CSSNumericValue y, [
+    CSSNumericValue? z,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// The **`x`** property of the
   /// [CSSTranslate] interface gets and sets the abscissa or x-axis of the
   /// translating vector.
-  CSSNumericValue get x;
-  set x(CSSNumericValue value);
+  CSSNumericValue get x {
+    unsupportedPlatformError();
+  }
+
+  set x(CSSNumericValue value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`y`** property of the
   /// [CSSTranslate] interface gets and sets the ordinate or y-axis of the
   /// translating vector.
-  CSSNumericValue get y;
-  set y(CSSNumericValue value);
+  CSSNumericValue get y {
+    unsupportedPlatformError();
+  }
+
+  set y(CSSNumericValue value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`z`** property of the
   /// [CSSTranslate] interface representing the z-component of the translating
@@ -601,8 +776,13 @@ abstract class CSSTranslate implements CSSTransformComponent, JSObject {
   /// If this value is present then the transform is a 3D transform and the
   /// `is2D`
   /// property will be set to false.
-  CSSNumericValue get z;
-  set z(CSSNumericValue value);
+  CSSNumericValue get z {
+    unsupportedPlatformError();
+  }
+
+  set z(CSSNumericValue value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`CSSRotate`** interface of the
@@ -614,33 +794,63 @@ abstract class CSSTranslate implements CSSTransformComponent, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSRotate).
-abstract class CSSRotate implements CSSTransformComponent, JSObject {
+extension type CSSRotate._(JSObject _)
+    implements CSSTransformComponent, JSObject {
+  factory CSSRotate(
+    JSAny angleOrX, [
+    CSSNumberish? y,
+    CSSNumberish? z,
+    CSSNumericValue? angle,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// The **`x`** property of the
   /// [CSSRotate] interface gets and sets the abscissa or x-axis of the
   /// translating vector.
-  CSSNumberish get x;
-  set x(CSSNumberish value);
+  CSSNumberish get x {
+    unsupportedPlatformError();
+  }
+
+  set x(CSSNumberish value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`y`** property of the
   /// [CSSRotate] interface gets and sets the ordinate or y-axis of the
   /// translating vector.
-  CSSNumberish get y;
-  set y(CSSNumberish value);
+  CSSNumberish get y {
+    unsupportedPlatformError();
+  }
+
+  set y(CSSNumberish value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`z`** property of the
   /// [CSSRotate] interface representing the z-component of the translating
   /// vector. A positive value moves the element towards the viewer, and a
   /// negative value
   /// farther away.
-  CSSNumberish get z;
-  set z(CSSNumberish value);
+  CSSNumberish get z {
+    unsupportedPlatformError();
+  }
+
+  set z(CSSNumberish value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`angle`** property of the
   /// [CSSRotate] interface gets and sets the angle of rotation. A positive
   /// angle
   /// denotes a clockwise rotation, a negative angle a counter-clockwise one.
-  CSSNumericValue get angle;
-  set angle(CSSNumericValue value);
+  CSSNumericValue get angle {
+    unsupportedPlatformError();
+  }
+
+  set angle(CSSNumericValue value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`CSSScale`** interface of the
@@ -656,18 +866,37 @@ abstract class CSSRotate implements CSSTransformComponent, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSScale).
-abstract class CSSScale implements CSSTransformComponent, JSObject {
+extension type CSSScale._(JSObject _)
+    implements CSSTransformComponent, JSObject {
+  factory CSSScale(
+    CSSNumberish x,
+    CSSNumberish y, [
+    CSSNumberish? z,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// The **`x`** property of the
   /// [CSSScale] interface gets and sets the abscissa or x-axis of the
   /// translating vector.
-  CSSNumberish get x;
-  set x(CSSNumberish value);
+  CSSNumberish get x {
+    unsupportedPlatformError();
+  }
+
+  set x(CSSNumberish value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`y`** property of the
   /// [CSSScale] interface gets and sets the ordinate or y-axis of the
   /// translating vector.
-  CSSNumberish get y;
-  set y(CSSNumberish value);
+  CSSNumberish get y {
+    unsupportedPlatformError();
+  }
+
+  set y(CSSNumberish value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`z`** property of the
   /// [CSSScale] interface representing the z-component of the translating
@@ -678,8 +907,13 @@ abstract class CSSScale implements CSSTransformComponent, JSObject {
   /// If this value is present then the transform is a 3D transform and the
   /// `is2D`
   /// property will be set to false.
-  CSSNumberish get z;
-  set z(CSSNumberish value);
+  CSSNumberish get z {
+    unsupportedPlatformError();
+  }
+
+  set z(CSSNumberish value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`CSSSkew`** interface of the
@@ -692,18 +926,36 @@ abstract class CSSScale implements CSSTransformComponent, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSSkew).
-abstract class CSSSkew implements CSSTransformComponent, JSObject {
+extension type CSSSkew._(JSObject _)
+    implements CSSTransformComponent, JSObject {
+  factory CSSSkew(
+    CSSNumericValue ax,
+    CSSNumericValue ay,
+  ) {
+    unsupportedPlatformError();
+  }
+
   /// The **`ax`** property of the
   /// [CSSSkew] interface gets and sets the angle used to distort the element
   /// along the x-axis (or abscissa).
-  CSSNumericValue get ax;
-  set ax(CSSNumericValue value);
+  CSSNumericValue get ax {
+    unsupportedPlatformError();
+  }
+
+  set ax(CSSNumericValue value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ay`** property of the
   /// [CSSSkew] interface gets and sets the angle used to distort the element
   /// along the y-axis (or ordinate).
-  CSSNumericValue get ay;
-  set ay(CSSNumericValue value);
+  CSSNumericValue get ay {
+    unsupportedPlatformError();
+  }
+
+  set ay(CSSNumericValue value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`CSSSkewX`** interface of the
@@ -717,12 +969,22 @@ abstract class CSSSkew implements CSSTransformComponent, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSSkewX).
-abstract class CSSSkewX implements CSSTransformComponent, JSObject {
+extension type CSSSkewX._(JSObject _)
+    implements CSSTransformComponent, JSObject {
+  factory CSSSkewX(CSSNumericValue ax) {
+    unsupportedPlatformError();
+  }
+
   /// The **`ax`** property of the
   /// [CSSSkewX] interface gets and sets the angle used to distort the element
   /// along the x-axis (or abscissa).
-  CSSNumericValue get ax;
-  set ax(CSSNumericValue value);
+  CSSNumericValue get ax {
+    unsupportedPlatformError();
+  }
+
+  set ax(CSSNumericValue value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`CSSSkewY`** interface of the
@@ -736,12 +998,22 @@ abstract class CSSSkewX implements CSSTransformComponent, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSSkewY).
-abstract class CSSSkewY implements CSSTransformComponent, JSObject {
+extension type CSSSkewY._(JSObject _)
+    implements CSSTransformComponent, JSObject {
+  factory CSSSkewY(CSSNumericValue ay) {
+    unsupportedPlatformError();
+  }
+
   /// The **`ay`** property of the
   /// [CSSSkewY] interface gets and sets the angle used to distort the element
   /// along the y-axis (or ordinate).
-  CSSNumericValue get ay;
-  set ay(CSSNumericValue value);
+  CSSNumericValue get ay {
+    unsupportedPlatformError();
+  }
+
+  set ay(CSSNumericValue value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`CSSPerspective`** interface of the
@@ -755,15 +1027,25 @@ abstract class CSSSkewY implements CSSTransformComponent, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSPerspective).
-abstract class CSSPerspective implements CSSTransformComponent, JSObject {
+extension type CSSPerspective._(JSObject _)
+    implements CSSTransformComponent, JSObject {
+  factory CSSPerspective(CSSPerspectiveValue length) {
+    unsupportedPlatformError();
+  }
+
   /// The **`length`** property of the
   /// [CSSPerspective] interface sets the distance from z=0.
   ///
   /// It is used to apply a perspective transform to the element and its
   /// content. If the
   /// value is 0 or a negative number, no perspective transform is applied.
-  CSSPerspectiveValue get length;
-  set length(CSSPerspectiveValue value);
+  CSSPerspectiveValue get length {
+    unsupportedPlatformError();
+  }
+
+  set length(CSSPerspectiveValue value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`CSSMatrixComponent`** interface of the
@@ -779,7 +1061,15 @@ abstract class CSSPerspective implements CSSTransformComponent, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSMatrixComponent).
-abstract class CSSMatrixComponent implements CSSTransformComponent, JSObject {
+extension type CSSMatrixComponent._(JSObject _)
+    implements CSSTransformComponent, JSObject {
+  factory CSSMatrixComponent(
+    DOMMatrixReadOnly matrix, [
+    CSSMatrixComponentOptions? options,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// The **`matrix`** property of the
   /// [CSSMatrixComponent] interface gets and sets a 2d or 3d matrix.
   ///
@@ -789,11 +1079,19 @@ abstract class CSSMatrixComponent implements CSSTransformComponent, JSObject {
   /// [matrix3d()](https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/matrix3d)
   /// pages for
   /// examples.
-  DOMMatrix get matrix;
-  set matrix(DOMMatrix value);
-}
+  DOMMatrix get matrix {
+    unsupportedPlatformError();
+  }
 
-abstract class CSSMatrixComponentOptions implements JSObject {
+  set matrix(DOMMatrix value) {
+    unsupportedPlatformError();
+  }
+}
+extension type CSSMatrixComponentOptions._(JSObject _) implements JSObject {
+  factory CSSMatrixComponentOptions({bool? is2D}) {
+    unsupportedPlatformError();
+  }
+
   bool get is2D {
     unsupportedPlatformError();
   }
@@ -819,4 +1117,4 @@ abstract class CSSMatrixComponentOptions implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSImageValue).
-abstract class CSSImageValue implements CSSStyleValue, JSObject {}
+extension type CSSImageValue._(JSObject _) implements CSSStyleValue, JSObject {}

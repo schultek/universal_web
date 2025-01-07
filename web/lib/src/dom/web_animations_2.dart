@@ -16,8 +16,14 @@ import 'css_typed_om.dart';
 import 'dom.dart';
 
 typedef IterationCompositeOperation = String;
+extension type TimelineRangeOffset._(JSObject _) implements JSObject {
+  factory TimelineRangeOffset({
+    String? rangeName,
+    CSSNumericValue? offset,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class TimelineRangeOffset implements JSObject {
   String? get rangeName {
     unsupportedPlatformError();
   }
@@ -46,22 +52,43 @@ abstract class TimelineRangeOffset implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/AnimationPlaybackEvent).
-abstract class AnimationPlaybackEvent implements Event, JSObject {
+extension type AnimationPlaybackEvent._(JSObject _) implements Event, JSObject {
+  factory AnimationPlaybackEvent(
+    String type, [
+    AnimationPlaybackEventInit? eventInitDict,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// The **`currentTime`** read-only property of the [AnimationPlaybackEvent]
   /// interface represents the current time of the animation that generated the
   /// event at the moment the event is queued. This will be unresolved if the
   /// animation was `idle` at the time the event was generated.
-  CSSNumberish? get currentTime;
+  CSSNumberish? get currentTime {
+    unsupportedPlatformError();
+  }
 
   /// The **`timelineTime`** read-only property of the [AnimationPlaybackEvent]
   /// interface represents the time value of the animation's [AnimationTimeline]
   /// at the moment the event is queued. This will be unresolved if the
   /// animation was not associated with a timeline at the time the event was
   /// generated or if the associated timeline was inactive.
-  CSSNumberish? get timelineTime;
+  CSSNumberish? get timelineTime {
+    unsupportedPlatformError();
+  }
 }
+extension type AnimationPlaybackEventInit._(JSObject _)
+    implements EventInit, JSObject {
+  factory AnimationPlaybackEventInit({
+    bool? bubbles,
+    bool? cancelable,
+    bool? composed,
+    CSSNumberish? currentTime,
+    CSSNumberish? timelineTime,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class AnimationPlaybackEventInit implements EventInit, JSObject {
   CSSNumberish? get currentTime {
     unsupportedPlatformError();
   }

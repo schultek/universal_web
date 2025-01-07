@@ -44,7 +44,11 @@ typedef VideoMatrixCoefficients = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/VideoDecoder).
-abstract class VideoDecoder implements EventTarget, JSObject {
+extension type VideoDecoder._(JSObject _) implements EventTarget, JSObject {
+  factory VideoDecoder(VideoDecoderInit init) {
+    unsupportedPlatformError();
+  }
+
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`isConfigSupported()`** static method of the [VideoDecoder]
@@ -60,49 +64,75 @@ abstract class VideoDecoder implements EventTarget, JSObject {
   ///
   /// The **`configure()`** method of the [VideoDecoder] interface enqueues a
   /// control message to configure the video decoder for decoding chunks.
-  void configure(VideoDecoderConfig config);
+  void configure(VideoDecoderConfig config) {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`decode()`** method of the [VideoDecoder] interface enqueues a
   /// control message to decode a given chunk of video.
-  void decode(EncodedVideoChunk chunk);
+  void decode(EncodedVideoChunk chunk) {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`flush()`** method of the [VideoDecoder] interface returns a Promise
   /// that resolves once all pending messages in the queue have been completed.
-  JSPromise<JSAny?> flush();
+  JSPromise<JSAny?> flush() {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`reset()`** method of the [VideoDecoder] interface resets all states
   /// including configuration, control messages in the control message queue,
   /// and all pending callbacks.
-  void reset();
+  void reset() {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`close()`** method of the [VideoDecoder] interface ends all pending
   /// work and releases system resources.
-  void close();
+  void close() {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`state`** property of the [VideoDecoder] interface returns the
   /// current state of the underlying codec.
-  CodecState get state;
+  CodecState get state {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`decodeQueueSize`** read-only property of the [VideoDecoder]
   /// interface returns the number of pending decode requests in the queue.
-  int get decodeQueueSize;
-  EventHandler get ondequeue;
-  set ondequeue(EventHandler value);
-}
+  int get decodeQueueSize {
+    unsupportedPlatformError();
+  }
 
-abstract class VideoDecoderInit implements JSObject {
+  EventHandler get ondequeue {
+    unsupportedPlatformError();
+  }
+
+  set ondequeue(EventHandler value) {
+    unsupportedPlatformError();
+  }
+}
+extension type VideoDecoderInit._(JSObject _) implements JSObject {
+  factory VideoDecoderInit({
+    required VideoFrameOutputCallback output,
+    required WebCodecsErrorCallback error,
+  }) {
+    unsupportedPlatformError();
+  }
+
   VideoFrameOutputCallback get output {
     unsupportedPlatformError();
   }
@@ -129,7 +159,11 @@ abstract class VideoDecoderInit implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/VideoEncoder).
-abstract class VideoEncoder implements EventTarget, JSObject {
+extension type VideoEncoder._(JSObject _) implements EventTarget, JSObject {
+  factory VideoEncoder(VideoEncoderInit init) {
+    unsupportedPlatformError();
+  }
+
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`isConfigSupported()`** static method of the [VideoEncoder]
@@ -152,7 +186,9 @@ abstract class VideoEncoder implements EventTarget, JSObject {
   ///
   /// If the [VideoEncoder] has been previously configured, the new
   /// configuration will not be applied until all previous tasks have completed.
-  void configure(VideoEncoderConfig config);
+  void configure(VideoEncoderConfig config) {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
@@ -162,14 +198,18 @@ abstract class VideoEncoder implements EventTarget, JSObject {
   /// via the callbacks provided to the [VideoEncoder] constructor.
   void encode(
     VideoFrame frame, [
-    VideoEncoderEncodeOptions options,
-  ]);
+    VideoEncoderEncodeOptions? options,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`flush()`** method of the [VideoEncoder] interface forces all
   /// pending encodes to complete.
-  JSPromise<JSAny?> flush();
+  JSPromise<JSAny?> flush() {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
@@ -182,30 +222,50 @@ abstract class VideoEncoder implements EventTarget, JSObject {
   /// > **Note:** To avoid discarding frames queued via [VideoEncoder.encode],
   /// > [VideoEncoder.flush] should be called and completed before calling
   /// > [VideoEncoder.reset].
-  void reset();
+  void reset() {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`close()`** method of the [VideoEncoder] interface ends all pending
   /// work and releases system resources.
-  void close();
+  void close() {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`state`** read-only property of the [VideoEncoder] interface returns
   /// the current state of the underlying codec.
-  CodecState get state;
+  CodecState get state {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`encodeQueueSize`** read-only property of the [VideoEncoder]
   /// interface returns the number of pending encode requests in the queue.
-  int get encodeQueueSize;
-  EventHandler get ondequeue;
-  set ondequeue(EventHandler value);
-}
+  int get encodeQueueSize {
+    unsupportedPlatformError();
+  }
 
-abstract class VideoEncoderInit implements JSObject {
+  EventHandler get ondequeue {
+    unsupportedPlatformError();
+  }
+
+  set ondequeue(EventHandler value) {
+    unsupportedPlatformError();
+  }
+}
+extension type VideoEncoderInit._(JSObject _) implements JSObject {
+  factory VideoEncoderInit({
+    required EncodedVideoChunkOutputCallback output,
+    required WebCodecsErrorCallback error,
+  }) {
+    unsupportedPlatformError();
+  }
+
   EncodedVideoChunkOutputCallback get output {
     unsupportedPlatformError();
   }
@@ -222,8 +282,14 @@ abstract class VideoEncoderInit implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type VideoDecoderSupport._(JSObject _) implements JSObject {
+  factory VideoDecoderSupport({
+    bool? supported,
+    VideoDecoderConfig? config,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class VideoDecoderSupport implements JSObject {
   bool get supported {
     unsupportedPlatformError();
   }
@@ -240,8 +306,14 @@ abstract class VideoDecoderSupport implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type VideoEncoderSupport._(JSObject _) implements JSObject {
+  factory VideoEncoderSupport({
+    bool? supported,
+    VideoEncoderConfig? config,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class VideoEncoderSupport implements JSObject {
   bool get supported {
     unsupportedPlatformError();
   }
@@ -258,8 +330,21 @@ abstract class VideoEncoderSupport implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type VideoDecoderConfig._(JSObject _) implements JSObject {
+  factory VideoDecoderConfig({
+    required String codec,
+    AllowSharedBufferSource? description,
+    int? codedWidth,
+    int? codedHeight,
+    int? displayAspectWidth,
+    int? displayAspectHeight,
+    VideoColorSpaceInit? colorSpace,
+    HardwareAcceleration? hardwareAcceleration,
+    bool? optimizeForLatency,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class VideoDecoderConfig implements JSObject {
   String get codec {
     unsupportedPlatformError();
   }
@@ -332,8 +417,27 @@ abstract class VideoDecoderConfig implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type VideoEncoderConfig._(JSObject _) implements JSObject {
+  factory VideoEncoderConfig({
+    required String codec,
+    required int width,
+    required int height,
+    int? displayWidth,
+    int? displayHeight,
+    int? bitrate,
+    num? framerate,
+    HardwareAcceleration? hardwareAcceleration,
+    AlphaOption? alpha,
+    String? scalabilityMode,
+    VideoEncoderBitrateMode? bitrateMode,
+    LatencyMode? latencyMode,
+    String? contentHint,
+    AvcEncoderConfig? avc,
+    HevcEncoderConfig? hevc,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class VideoEncoderConfig implements JSObject {
   String get codec {
     unsupportedPlatformError();
   }
@@ -454,8 +558,17 @@ abstract class VideoEncoderConfig implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type VideoEncoderEncodeOptions._(JSObject _) implements JSObject {
+  factory VideoEncoderEncodeOptions({
+    bool? keyFrame,
+    VideoEncoderEncodeOptionsForAv1? av1,
+    VideoEncoderEncodeOptionsForAvc? avc,
+    VideoEncoderEncodeOptionsForHevc? hevc,
+    VideoEncoderEncodeOptionsForVp9? vp9,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class VideoEncoderEncodeOptions implements JSObject {
   bool get keyFrame {
     unsupportedPlatformError();
   }
@@ -506,41 +619,64 @@ abstract class VideoEncoderEncodeOptions implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/EncodedVideoChunk).
-abstract class EncodedVideoChunk implements JSObject {
+extension type EncodedVideoChunk._(JSObject _) implements JSObject {
+  factory EncodedVideoChunk(EncodedVideoChunkInit init) {
+    unsupportedPlatformError();
+  }
+
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`copyTo()`** method of the [EncodedVideoChunk] interface copies the
   /// encoded chunk of video data.
-  void copyTo(AllowSharedBufferSource destination);
+  void copyTo(AllowSharedBufferSource destination) {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`type`** read-only property of the [EncodedVideoChunk] interface
   /// returns a value indicating whether the video chunk is a key chunk, which
   /// does not rely on other frames for decoding.
-  EncodedVideoChunkType get type;
+  EncodedVideoChunkType get type {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`timestamp`** read-only property of the [EncodedVideoChunk]
   /// interface returns an integer indicating the timestamp of the video in
   /// microseconds.
-  int get timestamp;
+  int get timestamp {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`duration`** read-only property of the [EncodedVideoChunk] interface
   /// returns an integer indicating the duration of the video in microseconds.
-  int? get duration;
+  int? get duration {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`byteLength`** read-only property of the [EncodedVideoChunk]
   /// interface returns the length in bytes of the encoded video data.
-  int get byteLength;
+  int get byteLength {
+    unsupportedPlatformError();
+  }
 }
+extension type EncodedVideoChunkInit._(JSObject _) implements JSObject {
+  factory EncodedVideoChunkInit({
+    required EncodedVideoChunkType type,
+    required int timestamp,
+    int? duration,
+    required AllowSharedBufferSource data,
+    JSArray<JSArrayBuffer>? transfer,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class EncodedVideoChunkInit implements JSObject {
   EncodedVideoChunkType get type {
     unsupportedPlatformError();
   }
@@ -595,13 +731,22 @@ abstract class EncodedVideoChunkInit implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/VideoFrame).
-abstract class VideoFrame implements JSObject {
+extension type VideoFrame._(JSObject _) implements JSObject {
+  factory VideoFrame(
+    JSObject dataOrImage, [
+    JSObject? init,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`allocationSize()`** method of the [VideoFrame] interface returns
   /// the number of bytes required to hold the video as filtered by options
   /// passed into the method.
-  int allocationSize([VideoFrameCopyToOptions options]);
+  int allocationSize([VideoFrameCopyToOptions? options]) {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
@@ -609,87 +754,124 @@ abstract class VideoFrame implements JSObject {
   /// contents of the `VideoFrame` to an `ArrayBuffer`.
   JSPromise<JSArray<PlaneLayout>> copyTo(
     AllowSharedBufferSource destination, [
-    VideoFrameCopyToOptions options,
-  ]);
+    VideoFrameCopyToOptions? options,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`clone()`** method of the [VideoFrame] interface creates a new
   /// `VideoFrame` object referencing the same media resource as the original.
-  VideoFrame clone();
+  VideoFrame clone() {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`close()`** method of the [VideoFrame] interface clears all states
   /// and releases the reference to the media resource.
-  void close();
+  void close() {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`format`** property of the [VideoFrame] interface returns the pixel
   /// format of the `VideoFrame`.
-  VideoPixelFormat? get format;
+  VideoPixelFormat? get format {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`codedWidth`** property of the [VideoFrame] interface returns the
   /// width of the `VideoFrame` in pixels, potentially including non-visible
   /// padding, and prior to considering potential ratio adjustments.
-  int get codedWidth;
+  int get codedWidth {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`codedHeight`** property of the [VideoFrame] interface returns the
   /// height of the VideoFrame in pixels, potentially including non-visible
   /// padding, and prior to considering potential ratio adjustments.
-  int get codedHeight;
+  int get codedHeight {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`codedRect`** property of the [VideoFrame] interface returns a
   /// [DOMRectReadOnly] with the width and height matching
   /// [VideoFrame.codedWidth] and [VideoFrame.codedHeight].
-  DOMRectReadOnly? get codedRect;
+  DOMRectReadOnly? get codedRect {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`visibleRect`** property of the [VideoFrame] interface returns a
   /// [DOMRectReadOnly] describing the visible rectangle of pixels for this
   /// `VideoFrame`.
-  DOMRectReadOnly? get visibleRect;
+  DOMRectReadOnly? get visibleRect {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`displayWidth`** property of the [VideoFrame] interface returns the
   /// width of the `VideoFrame` after applying aspect ratio adjustments.
-  int get displayWidth;
+  int get displayWidth {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`displayHeight`** property of the [VideoFrame] interface returns the
   /// height of the `VideoFrame` after applying aspect ratio adjustments.
-  int get displayHeight;
+  int get displayHeight {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`duration`** property of the [VideoFrame] interface returns an
   /// integer indicating the duration of the video in microseconds.
-  int? get duration;
+  int? get duration {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`timestamp`** property of the [VideoFrame] interface returns an
   /// integer indicating the timestamp of the video in microseconds.
-  int get timestamp;
+  int get timestamp {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`colorSpace`** property of the [VideoFrame] interface returns a
   /// [VideoColorSpace] object representing the color space of the video.
-  VideoColorSpace get colorSpace;
+  VideoColorSpace get colorSpace {
+    unsupportedPlatformError();
+  }
 }
+extension type VideoFrameInit._(JSObject _) implements JSObject {
+  factory VideoFrameInit({
+    int? duration,
+    int? timestamp,
+    AlphaOption? alpha,
+    DOMRectInit? visibleRect,
+    int? displayWidth,
+    int? displayHeight,
+    VideoFrameMetadata? metadata,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class VideoFrameInit implements JSObject {
   int get duration {
     unsupportedPlatformError();
   }
@@ -746,8 +928,24 @@ abstract class VideoFrameInit implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type VideoFrameBufferInit._(JSObject _) implements JSObject {
+  factory VideoFrameBufferInit({
+    required VideoPixelFormat format,
+    required int codedWidth,
+    required int codedHeight,
+    required int timestamp,
+    int? duration,
+    JSArray<PlaneLayout>? layout,
+    DOMRectInit? visibleRect,
+    int? displayWidth,
+    int? displayHeight,
+    VideoColorSpaceInit? colorSpace,
+    JSArray<JSArrayBuffer>? transfer,
+    VideoFrameMetadata? metadata,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class VideoFrameBufferInit implements JSObject {
   VideoPixelFormat get format {
     unsupportedPlatformError();
   }
@@ -844,10 +1042,19 @@ abstract class VideoFrameBufferInit implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type VideoFrameMetadata._(JSObject _) implements JSObject {
+  VideoFrameMetadata() : _ = JSObject();
+}
+extension type VideoFrameCopyToOptions._(JSObject _) implements JSObject {
+  factory VideoFrameCopyToOptions({
+    DOMRectInit? rect,
+    JSArray<PlaneLayout>? layout,
+    VideoPixelFormat? format,
+    PredefinedColorSpace? colorSpace,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class VideoFrameMetadata implements JSObject {}
-
-abstract class VideoFrameCopyToOptions implements JSObject {
   DOMRectInit get rect {
     unsupportedPlatformError();
   }
@@ -880,8 +1087,14 @@ abstract class VideoFrameCopyToOptions implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type PlaneLayout._(JSObject _) implements JSObject {
+  factory PlaneLayout({
+    required int offset,
+    required int stride,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class PlaneLayout implements JSObject {
   int get offset {
     unsupportedPlatformError();
   }
@@ -908,41 +1121,63 @@ abstract class PlaneLayout implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/VideoColorSpace).
-abstract class VideoColorSpace implements JSObject {
+extension type VideoColorSpace._(JSObject _) implements JSObject {
+  factory VideoColorSpace([VideoColorSpaceInit? init]) {
+    unsupportedPlatformError();
+  }
+
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`toJSON()`** method of the [VideoColorSpace] interface is a
   /// _serializer_ that returns a JSON representation of the `VideoColorSpace`
   /// object.
-  VideoColorSpaceInit toJSON();
+  VideoColorSpaceInit toJSON() {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`primaries`** read-only property of the [VideoColorSpace] interface
   /// returns the color  of the video.
-  VideoColorPrimaries? get primaries;
+  VideoColorPrimaries? get primaries {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`transfer`** read-only property of the [VideoColorSpace] interface
   /// returns the opto-electronic transfer characteristics of the video.
-  VideoTransferCharacteristics? get transfer;
+  VideoTransferCharacteristics? get transfer {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`matrix`** read-only property of the [VideoColorSpace] interface
   /// returns the matrix coefficient of the video. Matrix coefficients describe
   /// the relationship between sample component values and color coordinates.
-  VideoMatrixCoefficients? get matrix;
+  VideoMatrixCoefficients? get matrix {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`fullRange`** read-only property of the [VideoColorSpace] interface
   /// returns `true` if full-range color values are used.
-  bool? get fullRange;
+  bool? get fullRange {
+    unsupportedPlatformError();
+  }
 }
+extension type VideoColorSpaceInit._(JSObject _) implements JSObject {
+  factory VideoColorSpaceInit({
+    VideoColorPrimaries? primaries,
+    VideoTransferCharacteristics? transfer,
+    VideoMatrixCoefficients? matrix,
+    bool? fullRange,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class VideoColorSpaceInit implements JSObject {
   VideoColorPrimaries? get primaries {
     unsupportedPlatformError();
   }

@@ -27,30 +27,43 @@ import 'css_typed_om.dart';
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MediaList).
-abstract class MediaList implements JSObject {
+extension type MediaList._(JSObject _) implements JSObject {
   /// The **`item()`** method of the [MediaList] interface returns the media
   /// query at the specified `index`, or `null` if the specified `index` doesn't
   /// exist.
-  String? item(int index);
+  String? item(int index) {
+    unsupportedPlatformError();
+  }
 
   /// The `appendMedium()` method of the [MediaList] interface adds a media
   /// query to the list. If the media query is already in the collection, this
   /// method does nothing.
-  void appendMedium(String medium);
+  void appendMedium(String medium) {
+    unsupportedPlatformError();
+  }
 
   /// The `deleteMedium()` method of the [MediaList] interface removes from this
   /// `MediaList` the given media query.
-  void deleteMedium(String medium);
+  void deleteMedium(String medium) {
+    unsupportedPlatformError();
+  }
 
   /// The **`mediaText`** property of the [MediaList]
   /// interface is a  that returns a string representing the
   /// `MediaList` as text, and also allows you to set a new `MediaList`.
-  String get mediaText;
-  set mediaText(String value);
+  String get mediaText {
+    unsupportedPlatformError();
+  }
+
+  set mediaText(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`length`** property of the [MediaList] interface returns
   /// the number of media queries in the list.
-  int get length;
+  int get length {
+    unsupportedPlatformError();
+  }
 }
 
 /// An object implementing the `StyleSheet` interface represents a single style
@@ -61,16 +74,20 @@ abstract class MediaList implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/StyleSheet).
-abstract class StyleSheet implements JSObject {
+extension type StyleSheet._(JSObject _) implements JSObject {
   /// The **`type`** property of the [StyleSheet]
   /// interface specifies the style sheet language for the given style sheet.
-  String get type;
+  String get type {
+    unsupportedPlatformError();
+  }
 
   /// The **`href`** property of the [StyleSheet]
   /// interface returns the location of the style sheet.
   ///
   /// This property is read-only.
-  String? get href;
+  String? get href {
+    unsupportedPlatformError();
+  }
 
   /// The **`ownerNode`** property of the
   /// [StyleSheet] interface returns the node that associates this style sheet
@@ -84,24 +101,32 @@ abstract class StyleSheet implements JSObject {
   /// can also return a
   /// [processing instruction node](https://developer.mozilla.org/en-US/docs/Web/API/ProcessingInstruction)
   /// in the case of `<?xml-stylesheet ?>`.
-  JSObject? get ownerNode;
+  JSObject? get ownerNode {
+    unsupportedPlatformError();
+  }
 
   /// The **`parentStyleSheet`** property of the
   /// [StyleSheet] interface returns the style sheet, if any, that is including
   /// the given style sheet.
-  CSSStyleSheet? get parentStyleSheet;
+  CSSStyleSheet? get parentStyleSheet {
+    unsupportedPlatformError();
+  }
 
   /// The **`title`** property of the [StyleSheet] interface returns the
   /// advisory title of the current style sheet.
   ///
   /// The title is often specified in the [StyleSheet.OwnerNode].
-  String? get title;
+  String? get title {
+    unsupportedPlatformError();
+  }
 
   /// The **`media`** property of the [StyleSheet] interface specifies the
   /// intended destination media for style information. It is a read-only,
   /// array-like `MediaList` object and can be removed with `deleteMedium()` and
   /// added with `appendMedium()`.
-  MediaList get media;
+  MediaList get media {
+    unsupportedPlatformError();
+  }
 
   /// The **`disabled`** property of the
   /// [StyleSheet] interface determines whether the style sheet is prevented
@@ -114,8 +139,13 @@ abstract class StyleSheet implements JSObject {
   /// [alternative style sheet](https://developer.mozilla.org/en-US/docs/Web/CSS/Alternative_style_sheets).
   /// Note that `disabled === false` does not guarantee the style
   /// sheet is applied (it could be removed from the document, for instance).
-  bool get disabled;
-  set disabled(bool value);
+  bool get disabled {
+    unsupportedPlatformError();
+  }
+
+  set disabled(bool value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`CSSStyleSheet`** interface represents a single
@@ -150,7 +180,11 @@ abstract class StyleSheet implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet).
-abstract class CSSStyleSheet implements StyleSheet, JSObject {
+extension type CSSStyleSheet._(JSObject _) implements StyleSheet, JSObject {
+  factory CSSStyleSheet([CSSStyleSheetInit? options]) {
+    unsupportedPlatformError();
+  }
+
   /// The **`CSSStyleSheet.insertRule()`**
   /// method inserts a new
   /// [CSS rule](https://developer.mozilla.org/en-US/docs/Web/API/CSSRule) into
@@ -163,13 +197,17 @@ abstract class CSSStyleSheet implements StyleSheet, JSObject {
   /// > [CSSRuleList].
   int insertRule(
     String rule, [
-    int index,
-  ]);
+    int? index,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The [CSSStyleSheet] method
   /// **`deleteRule()`** removes a rule from the stylesheet
   /// object.
-  void deleteRule(int index);
+  void deleteRule(int index) {
+    unsupportedPlatformError();
+  }
 
   /// The **`replace()`** method of the [CSSStyleSheet] interface asynchronously
   /// replaces the content of the stylesheet with the content passed into it.
@@ -179,7 +217,9 @@ abstract class CSSStyleSheet implements StyleSheet, JSObject {
   /// The `replace()` and [CSSStyleSheet.replaceSync] methods can only be used
   /// on a stylesheet created with the [CSSStyleSheet.CSSStyleSheet]
   /// constructor.
-  JSPromise<CSSStyleSheet> replace(String text);
+  JSPromise<CSSStyleSheet> replace(String text) {
+    unsupportedPlatformError();
+  }
 
   /// The **`replaceSync()`** method of the [CSSStyleSheet] interface
   /// synchronously replaces the content of the stylesheet with the content
@@ -188,7 +228,9 @@ abstract class CSSStyleSheet implements StyleSheet, JSObject {
   /// The `replaceSync()` and [CSSStyleSheet.replace] methods can only be used
   /// on a stylesheet created with the [CSSStyleSheet.CSSStyleSheet]
   /// constructor.
-  void replaceSync(String text);
+  void replaceSync(String text) {
+    unsupportedPlatformError();
+  }
 
   /// The obsolete [CSSStyleSheet] interface's
   /// **`addRule()`** _legacy method_ adds a new rule to the
@@ -196,10 +238,12 @@ abstract class CSSStyleSheet implements StyleSheet, JSObject {
   /// more standard
   /// [CSSStyleSheet.insertRule] method.
   int addRule([
-    String selector,
-    String style,
-    int index,
-  ]);
+    String? selector,
+    String? style,
+    int? index,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The obsolete [CSSStyleSheet] method
   /// **`removeRule()`** removes a rule from the stylesheet
@@ -209,14 +253,18 @@ abstract class CSSStyleSheet implements StyleSheet, JSObject {
   /// > **Note:** This is a _legacy method_ which has been replaced by
   /// > the standard method [CSSStyleSheet.deleteRule]. You
   /// > should use that instead.
-  void removeRule([int index]);
+  void removeRule([int? index]) {
+    unsupportedPlatformError();
+  }
 
   /// The read-only [CSSStyleSheet] property
   /// **`ownerRule`** returns the [CSSImportRule]
   /// corresponding to the  at-rule which imported the stylesheet into
   /// the document. If the stylesheet wasn't imported into the document using
   /// `@import`, the returned value is `null`.
-  CSSRule? get ownerRule;
+  CSSRule? get ownerRule {
+    unsupportedPlatformError();
+  }
 
   /// The read-only [CSSStyleSheet] property
   /// **`cssRules`** returns a live [CSSRuleList] which
@@ -224,7 +272,9 @@ abstract class CSSStyleSheet implements StyleSheet, JSObject {
   /// the
   /// stylesheet. Each item in the list is a [CSSRule] defining a single
   /// rule.
-  CSSRuleList get cssRules;
+  CSSRuleList get cssRules {
+    unsupportedPlatformError();
+  }
 
   /// **`rules`** is a _deprecated_
   /// _legacy property_ of the [CSSStyleSheet] interface. Functionally
@@ -237,10 +287,19 @@ abstract class CSSStyleSheet implements StyleSheet, JSObject {
   /// > While `rules` is unlikely to be removed soon, its availability is not as
   /// > widespread and using it will result in compatibility problems for your
   /// > site or app.
-  CSSRuleList get rules;
+  CSSRuleList get rules {
+    unsupportedPlatformError();
+  }
 }
+extension type CSSStyleSheetInit._(JSObject _) implements JSObject {
+  factory CSSStyleSheetInit({
+    String? baseURL,
+    JSAny? media,
+    bool? disabled,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class CSSStyleSheetInit implements JSObject {
   String get baseURL {
     unsupportedPlatformError();
   }
@@ -284,14 +343,18 @@ abstract class CSSStyleSheetInit implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/StyleSheetList).
-abstract class StyleSheetList implements JSObject {
+extension type StyleSheetList._(JSObject _) implements JSObject {
   /// The **`item()`** method of the [StyleSheetList] interface returns a single
   /// [CSSStyleSheet] object.
-  CSSStyleSheet? item(int index);
+  CSSStyleSheet? item(int index) {
+    unsupportedPlatformError();
+  }
 
   /// The **`length`** read-only property of the [StyleSheetList] interface
   /// returns the number of [CSSStyleSheet] objects in the collection.
-  int get length;
+  int get length {
+    unsupportedPlatformError();
+  }
 }
 
 /// A `CSSRuleList` represents an ordered collection of read-only [CSSRule]
@@ -323,15 +386,19 @@ abstract class StyleSheetList implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSRuleList).
-abstract class CSSRuleList implements JSObject {
+extension type CSSRuleList._(JSObject _) implements JSObject {
   /// The **`item()`** method of the [CSSRuleList] interface returns the
   /// [CSSRule] object at the specified `index` or `null` if the specified
   /// `index` doesn't exist.
-  CSSRule? item(int index);
+  CSSRule? item(int index) {
+    unsupportedPlatformError();
+  }
 
   /// The **`length`** property of the [CSSRuleList] interface returns the
   /// number of [CSSRule] objects in the list.
-  int get length;
+  int get length {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`CSSRule`** interface represents a single CSS rule. There are several
@@ -358,7 +425,7 @@ abstract class CSSRuleList implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSRule).
-abstract class CSSRule implements JSObject {
+extension type CSSRule._(JSObject _) implements JSObject {
   static const int STYLE_RULE = 1;
 
   static const int CHARSET_RULE = 2;
@@ -406,19 +473,28 @@ abstract class CSSRule implements JSObject {
   /// [CSSStyleRule.style] (or its sub-properties). See
   /// [Using dynamic styling information](https://developer.mozilla.org/en-US/docs/Web/API/CSS_Object_Model/Using_dynamic_styling_information)
   /// for details.
-  String get cssText;
-  set cssText(String value);
+  String get cssText {
+    unsupportedPlatformError();
+  }
+
+  set cssText(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`parentRule`** property of the [CSSRule]
   /// interface returns the containing rule of the current rule if this exists,
   /// or otherwise
   /// returns null.
-  CSSRule? get parentRule;
+  CSSRule? get parentRule {
+    unsupportedPlatformError();
+  }
 
   /// The **`parentStyleSheet`** property of the
   /// [CSSRule] interface returns the [StyleSheet] object in which
   /// the current rule is defined.
-  CSSStyleSheet? get parentStyleSheet;
+  CSSStyleSheet? get parentStyleSheet {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`type`** property of the
   /// [CSSRule] interface is a deprecated property that returns an integer
@@ -436,7 +512,9 @@ abstract class CSSRule implements JSObject {
   ///   console.log(rule.constructor.name);
   /// }
   /// ```
-  int get type;
+  int get type {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`CSSStyleRule`** interface represents a single CSS style rule.
@@ -445,22 +523,31 @@ abstract class CSSRule implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleRule).
-abstract class CSSStyleRule implements CSSGroupingRule, JSObject {
+extension type CSSStyleRule._(JSObject _) implements CSSGroupingRule, JSObject {
   /// The **`selectorText`** property of the [CSSStyleRule] interface gets and
   /// sets the selectors associated with the `CSSStyleRule`.
-  String get selectorText;
-  set selectorText(String value);
+  String get selectorText {
+    unsupportedPlatformError();
+  }
+
+  set selectorText(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`style`** property is the [CSSStyleDeclaration] interface
   /// for the
   /// [declaration block](https://www.w3.org/TR/1998/REC-CSS2-19980512/syndata.html#block)
   /// of the [CSSStyleRule].
-  JSObject get style;
+  JSObject get style {
+    unsupportedPlatformError();
+  }
 
   /// The **`styleMap`** read-only property of the
   /// [CSSStyleRule] interface returns a [StylePropertyMap] object
   /// which provides access to the rule's property-value pairs.
-  StylePropertyMap get styleMap;
+  StylePropertyMap get styleMap {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`CSSImportRule`** interface represents an
@@ -470,7 +557,7 @@ abstract class CSSStyleRule implements CSSGroupingRule, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSImportRule).
-abstract class CSSImportRule implements CSSRule, JSObject {
+extension type CSSImportRule._(JSObject _) implements CSSRule, JSObject {
   /// The read-only **`href`** property of the
   /// [CSSImportRule] interface returns the URL specified by the
   /// [at-rule](https://developer.mozilla.org/en-US/docs/Web/CSS/At-rule).
@@ -479,13 +566,17 @@ abstract class CSSImportRule implements CSSRule, JSObject {
   /// [`href`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link#href)
   /// attribute of the
   /// associated stylesheet.
-  String get href;
+  String get href {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`media`** property of the
   /// [CSSImportRule] interface returns a [MediaList] object,
   /// containing the value of the `media` attribute of the associated
   /// stylesheet.
-  MediaList get media;
+  MediaList get media {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`styleSheet`** property of the
   /// [CSSImportRule] interface returns the CSS Stylesheet specified by the
@@ -496,7 +587,9 @@ abstract class CSSImportRule implements CSSRule, JSObject {
   /// An  [at-rule](https://developer.mozilla.org/en-US/docs/Web/CSS/At-rule)
   /// always has
   /// an associated stylesheet.
-  CSSStyleSheet? get styleSheet;
+  CSSStyleSheet? get styleSheet {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`layerName`** property of the [CSSImportRule] interface
   /// returns the name of the cascade layer created by the
@@ -505,12 +598,16 @@ abstract class CSSImportRule implements CSSRule, JSObject {
   /// If the created layer is anonymous, the string is empty (`""`), if no layer
   /// has been
   /// created, it is the `null` object.
-  String? get layerName;
+  String? get layerName {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`supportsText`** property of the [CSSImportRule] interface
   /// returns the supports condition specified by the
   /// [at-rule](https://developer.mozilla.org/en-US/docs/Web/CSS/At-rule).
-  String? get supportsText;
+  String? get supportsText {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`CSSGroupingRule`** interface of the
@@ -523,23 +620,29 @@ abstract class CSSImportRule implements CSSRule, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSGroupingRule).
-abstract class CSSGroupingRule implements CSSRule, JSObject {
+extension type CSSGroupingRule._(JSObject _) implements CSSRule, JSObject {
   /// The **`insertRule()`** method of the
   /// [CSSGroupingRule] interface adds a new CSS rule to a list of CSS rules.
   int insertRule(
     String rule, [
-    int index,
-  ]);
+    int? index,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`deleteRule()`** method of the
   /// [CSSGroupingRule] interface removes a CSS rule from a list of child CSS
   /// rules.
-  void deleteRule(int index);
+  void deleteRule(int index) {
+    unsupportedPlatformError();
+  }
 
   /// The **`cssRules`** property of the
   /// [CSSGroupingRule] interface returns a [CSSRuleList] containing
   /// a collection of [CSSRule] objects.
-  CSSRuleList get cssRules;
+  CSSRuleList get cssRules {
+    unsupportedPlatformError();
+  }
 }
 
 /// **`CSSPageRule`** represents a single CSS  rule.
@@ -548,18 +651,25 @@ abstract class CSSGroupingRule implements CSSRule, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSPageRule).
-abstract class CSSPageRule implements CSSGroupingRule, JSObject {
+extension type CSSPageRule._(JSObject _) implements CSSGroupingRule, JSObject {
   /// The **`selectorText`** property of the [CSSPageRule] interface gets and
   /// sets the selectors associated with the `CSSPageRule`.
-  String get selectorText;
-  set selectorText(String value);
+  String get selectorText {
+    unsupportedPlatformError();
+  }
+
+  set selectorText(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`style`** read-only property of the [CSSPageRule] interface returns
   /// a [CSSStyleDeclaration] object. This represents an object that is a
   /// [CSS declaration block](https://developer.mozilla.org/en-US/docs/Web/API/CSS_Object_Model/CSS_Declaration_Block),
   /// and exposes style information and various style-related methods and
   /// properties.
-  JSObject get style;
+  JSObject get style {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`CSSNamespaceRule`** interface describes an object representing a
@@ -570,15 +680,19 @@ abstract class CSSPageRule implements CSSGroupingRule, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSNamespaceRule).
-abstract class CSSNamespaceRule implements CSSRule, JSObject {
+extension type CSSNamespaceRule._(JSObject _) implements CSSRule, JSObject {
   /// The read-only **`namespaceURI`** property of the [CSSNamespaceRule]
   /// returns a string containing the text of the URI of the given namespace.
-  String get namespaceURI;
+  String get namespaceURI {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`prefix`** property of the [CSSNamespaceRule] returns a
   /// string with the name of the prefix associated to this namespace. If there
   /// is no such prefix, it returns an empty string.
-  String get prefix;
+  String get prefix {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`CSSStyleDeclaration`** interface represents an object that is a CSS
@@ -600,7 +714,7 @@ abstract class CSSNamespaceRule implements CSSRule, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration).
-abstract class CSSStyleDeclaration implements JSObject {
+extension type CSSStyleDeclaration._(JSObject _) implements JSObject {
   /// The `CSSStyleDeclaration.item()`
   /// method interface returns a CSS property name from a [CSSStyleDeclaration]
   /// by index.
@@ -608,16 +722,22 @@ abstract class CSSStyleDeclaration implements JSObject {
   /// This method doesn't throw exceptions as long as you provide
   /// arguments; the empty string is returned if the index is out of range and a
   /// `TypeError` is thrown if no argument is provided.
-  String item(int index);
+  String item(int index) {
+    unsupportedPlatformError();
+  }
 
   /// The **CSSStyleDeclaration.getPropertyValue()** method interface returns a
   /// string containing the value of a specified CSS property.
-  String getPropertyValue(String property);
+  String getPropertyValue(String property) {
+    unsupportedPlatformError();
+  }
 
   /// The **CSSStyleDeclaration.getPropertyPriority()** method interface returns
   /// a string that provides all explicitly set priorities on the CSS
   /// property.
-  String getPropertyPriority(String property);
+  String getPropertyPriority(String property) {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`CSSStyleDeclaration.setProperty()`** method interface sets
@@ -625,12 +745,16 @@ abstract class CSSStyleDeclaration implements JSObject {
   void setProperty(
     String property,
     String value, [
-    String priority,
-  ]);
+    String? priority,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`CSSStyleDeclaration.removeProperty()`** method interface
   /// removes a property from a CSS style declaration object.
-  String removeProperty(String property);
+  String removeProperty(String property) {
+    unsupportedPlatformError();
+  }
 
   /// The **`cssText`** property of the [CSSStyleDeclaration] interface returns
   /// or sets the text of the element's **inline** style declaration only.
@@ -639,18 +763,28 @@ abstract class CSSStyleDeclaration implements JSObject {
   /// [Using dynamic styling information](https://developer.mozilla.org/en-US/docs/Web/API/CSS_Object_Model/Using_dynamic_styling_information).
   ///
   /// Not to be confused with stylesheet style-rule [CSSRule.cssText].
-  String get cssText;
-  set cssText(String value);
+  String get cssText {
+    unsupportedPlatformError();
+  }
+
+  set cssText(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The read-only property returns an integer that represents the
   /// number of style declarations in this CSS declaration block.
-  int get length;
+  int get length {
+    unsupportedPlatformError();
+  }
 
   /// The **CSSStyleDeclaration.parentRule** read-only
   /// property returns a [CSSRule] that is the parent of this style
   /// block, e.g. a [CSSStyleRule] representing the style for a CSS
   /// selector.
-  CSSRule? get parentRule;
+  CSSRule? get parentRule {
+    unsupportedPlatformError();
+  }
+
   String get accentColor {
     unsupportedPlatformError();
   }
@@ -5731,7 +5865,6 @@ abstract class CSSStyleDeclaration implements JSObject {
     unsupportedPlatformError();
   }
 }
-
 $CSS get CSS {
   unsupportedPlatformError();
 }
@@ -5744,75 +5877,275 @@ $CSS get CSS {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSS).
-abstract class $CSS implements JSObject {
-  String escape(String ident);
+extension type $CSS._(JSObject _) implements JSObject {
+  String escape(String ident) {
+    unsupportedPlatformError();
+  }
+
   bool supports(
     String conditionTextOrProperty, [
-    String value,
-  ]);
-  void registerProperty(PropertyDefinition definition);
-  CSSUnitValue number(num value);
-  CSSUnitValue percent(num value);
-  CSSUnitValue cap(num value);
-  CSSUnitValue ch(num value);
-  CSSUnitValue em(num value);
-  CSSUnitValue ex(num value);
-  CSSUnitValue ic(num value);
-  CSSUnitValue lh(num value);
-  CSSUnitValue rcap(num value);
-  CSSUnitValue rch(num value);
-  CSSUnitValue rem(num value);
-  CSSUnitValue rex(num value);
-  CSSUnitValue ric(num value);
-  CSSUnitValue rlh(num value);
-  CSSUnitValue vw(num value);
-  CSSUnitValue vh(num value);
-  CSSUnitValue vi(num value);
-  CSSUnitValue vb(num value);
-  CSSUnitValue vmin(num value);
-  CSSUnitValue vmax(num value);
-  CSSUnitValue svw(num value);
-  CSSUnitValue svh(num value);
-  CSSUnitValue svi(num value);
-  CSSUnitValue svb(num value);
-  CSSUnitValue svmin(num value);
-  CSSUnitValue svmax(num value);
-  CSSUnitValue lvw(num value);
-  CSSUnitValue lvh(num value);
-  CSSUnitValue lvi(num value);
-  CSSUnitValue lvb(num value);
-  CSSUnitValue lvmin(num value);
-  CSSUnitValue lvmax(num value);
-  CSSUnitValue dvw(num value);
-  CSSUnitValue dvh(num value);
-  CSSUnitValue dvi(num value);
-  CSSUnitValue dvb(num value);
-  CSSUnitValue dvmin(num value);
-  CSSUnitValue dvmax(num value);
-  CSSUnitValue cqw(num value);
-  CSSUnitValue cqh(num value);
-  CSSUnitValue cqi(num value);
-  CSSUnitValue cqb(num value);
-  CSSUnitValue cqmin(num value);
-  CSSUnitValue cqmax(num value);
-  CSSUnitValue cm(num value);
-  CSSUnitValue mm(num value);
-  CSSUnitValue Q(num value);
-  CSSUnitValue in_(num value);
-  CSSUnitValue pt(num value);
-  CSSUnitValue pc(num value);
-  CSSUnitValue px(num value);
-  CSSUnitValue deg(num value);
-  CSSUnitValue grad(num value);
-  CSSUnitValue rad(num value);
-  CSSUnitValue turn(num value);
-  CSSUnitValue s(num value);
-  CSSUnitValue ms(num value);
-  CSSUnitValue Hz(num value);
-  CSSUnitValue kHz(num value);
-  CSSUnitValue dpi(num value);
-  CSSUnitValue dpcm(num value);
-  CSSUnitValue dppx(num value);
-  CSSUnitValue fr(num value);
-  HighlightRegistry get highlights;
+    String? value,
+  ]) {
+    unsupportedPlatformError();
+  }
+
+  void registerProperty(PropertyDefinition definition) {
+    unsupportedPlatformError();
+  }
+
+  CSSUnitValue number(num value) {
+    unsupportedPlatformError();
+  }
+
+  CSSUnitValue percent(num value) {
+    unsupportedPlatformError();
+  }
+
+  CSSUnitValue cap(num value) {
+    unsupportedPlatformError();
+  }
+
+  CSSUnitValue ch(num value) {
+    unsupportedPlatformError();
+  }
+
+  CSSUnitValue em(num value) {
+    unsupportedPlatformError();
+  }
+
+  CSSUnitValue ex(num value) {
+    unsupportedPlatformError();
+  }
+
+  CSSUnitValue ic(num value) {
+    unsupportedPlatformError();
+  }
+
+  CSSUnitValue lh(num value) {
+    unsupportedPlatformError();
+  }
+
+  CSSUnitValue rcap(num value) {
+    unsupportedPlatformError();
+  }
+
+  CSSUnitValue rch(num value) {
+    unsupportedPlatformError();
+  }
+
+  CSSUnitValue rem(num value) {
+    unsupportedPlatformError();
+  }
+
+  CSSUnitValue rex(num value) {
+    unsupportedPlatformError();
+  }
+
+  CSSUnitValue ric(num value) {
+    unsupportedPlatformError();
+  }
+
+  CSSUnitValue rlh(num value) {
+    unsupportedPlatformError();
+  }
+
+  CSSUnitValue vw(num value) {
+    unsupportedPlatformError();
+  }
+
+  CSSUnitValue vh(num value) {
+    unsupportedPlatformError();
+  }
+
+  CSSUnitValue vi(num value) {
+    unsupportedPlatformError();
+  }
+
+  CSSUnitValue vb(num value) {
+    unsupportedPlatformError();
+  }
+
+  CSSUnitValue vmin(num value) {
+    unsupportedPlatformError();
+  }
+
+  CSSUnitValue vmax(num value) {
+    unsupportedPlatformError();
+  }
+
+  CSSUnitValue svw(num value) {
+    unsupportedPlatformError();
+  }
+
+  CSSUnitValue svh(num value) {
+    unsupportedPlatformError();
+  }
+
+  CSSUnitValue svi(num value) {
+    unsupportedPlatformError();
+  }
+
+  CSSUnitValue svb(num value) {
+    unsupportedPlatformError();
+  }
+
+  CSSUnitValue svmin(num value) {
+    unsupportedPlatformError();
+  }
+
+  CSSUnitValue svmax(num value) {
+    unsupportedPlatformError();
+  }
+
+  CSSUnitValue lvw(num value) {
+    unsupportedPlatformError();
+  }
+
+  CSSUnitValue lvh(num value) {
+    unsupportedPlatformError();
+  }
+
+  CSSUnitValue lvi(num value) {
+    unsupportedPlatformError();
+  }
+
+  CSSUnitValue lvb(num value) {
+    unsupportedPlatformError();
+  }
+
+  CSSUnitValue lvmin(num value) {
+    unsupportedPlatformError();
+  }
+
+  CSSUnitValue lvmax(num value) {
+    unsupportedPlatformError();
+  }
+
+  CSSUnitValue dvw(num value) {
+    unsupportedPlatformError();
+  }
+
+  CSSUnitValue dvh(num value) {
+    unsupportedPlatformError();
+  }
+
+  CSSUnitValue dvi(num value) {
+    unsupportedPlatformError();
+  }
+
+  CSSUnitValue dvb(num value) {
+    unsupportedPlatformError();
+  }
+
+  CSSUnitValue dvmin(num value) {
+    unsupportedPlatformError();
+  }
+
+  CSSUnitValue dvmax(num value) {
+    unsupportedPlatformError();
+  }
+
+  CSSUnitValue cqw(num value) {
+    unsupportedPlatformError();
+  }
+
+  CSSUnitValue cqh(num value) {
+    unsupportedPlatformError();
+  }
+
+  CSSUnitValue cqi(num value) {
+    unsupportedPlatformError();
+  }
+
+  CSSUnitValue cqb(num value) {
+    unsupportedPlatformError();
+  }
+
+  CSSUnitValue cqmin(num value) {
+    unsupportedPlatformError();
+  }
+
+  CSSUnitValue cqmax(num value) {
+    unsupportedPlatformError();
+  }
+
+  CSSUnitValue cm(num value) {
+    unsupportedPlatformError();
+  }
+
+  CSSUnitValue mm(num value) {
+    unsupportedPlatformError();
+  }
+
+  CSSUnitValue Q(num value) {
+    unsupportedPlatformError();
+  }
+
+  CSSUnitValue in_(num value) {
+    unsupportedPlatformError();
+  }
+
+  CSSUnitValue pt(num value) {
+    unsupportedPlatformError();
+  }
+
+  CSSUnitValue pc(num value) {
+    unsupportedPlatformError();
+  }
+
+  CSSUnitValue px(num value) {
+    unsupportedPlatformError();
+  }
+
+  CSSUnitValue deg(num value) {
+    unsupportedPlatformError();
+  }
+
+  CSSUnitValue grad(num value) {
+    unsupportedPlatformError();
+  }
+
+  CSSUnitValue rad(num value) {
+    unsupportedPlatformError();
+  }
+
+  CSSUnitValue turn(num value) {
+    unsupportedPlatformError();
+  }
+
+  CSSUnitValue s(num value) {
+    unsupportedPlatformError();
+  }
+
+  CSSUnitValue ms(num value) {
+    unsupportedPlatformError();
+  }
+
+  CSSUnitValue Hz(num value) {
+    unsupportedPlatformError();
+  }
+
+  CSSUnitValue kHz(num value) {
+    unsupportedPlatformError();
+  }
+
+  CSSUnitValue dpi(num value) {
+    unsupportedPlatformError();
+  }
+
+  CSSUnitValue dpcm(num value) {
+    unsupportedPlatformError();
+  }
+
+  CSSUnitValue dppx(num value) {
+    unsupportedPlatformError();
+  }
+
+  CSSUnitValue fr(num value) {
+    unsupportedPlatformError();
+  }
+
+  HighlightRegistry get highlights {
+    unsupportedPlatformError();
+  }
 }

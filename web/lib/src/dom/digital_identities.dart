@@ -13,7 +13,13 @@
 import '../error.dart';
 import '../js_interop.dart';
 
-abstract class DigitalCredentialRequestOptions implements JSObject {
+extension type DigitalCredentialRequestOptions._(JSObject _)
+    implements JSObject {
+  factory DigitalCredentialRequestOptions(
+      {JSArray<IdentityRequestProvider>? providers}) {
+    unsupportedPlatformError();
+  }
+
   JSArray<IdentityRequestProvider> get providers {
     unsupportedPlatformError();
   }
@@ -22,8 +28,14 @@ abstract class DigitalCredentialRequestOptions implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type IdentityRequestProvider._(JSObject _) implements JSObject {
+  factory IdentityRequestProvider({
+    required String protocol,
+    required JSObject request,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class IdentityRequestProvider implements JSObject {
   String get protocol {
     unsupportedPlatformError();
   }

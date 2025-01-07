@@ -21,18 +21,22 @@ import 'service_workers.dart';
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SyncManager).
-abstract class SyncManager implements JSObject {
+extension type SyncManager._(JSObject _) implements JSObject {
   /// The **`register()`** method of the [SyncManager] interface registers a
   /// synchronization event, triggering a [ServiceWorkerGlobalScope.sync_event]
   /// event inside the associated service worker as soon as network connectivity
   /// is available.
-  JSPromise<JSAny?> register(String tag);
+  JSPromise<JSAny?> register(String tag) {
+    unsupportedPlatformError();
+  }
 
   /// The **`getTags()`** method of the
   /// [SyncManager] interface returns a list of developer-defined identifiers
   /// for
   /// `SyncManager` registrations.
-  JSPromise<JSArray<JSString>> getTags();
+  JSPromise<JSArray<JSString>> getTags() {
+    unsupportedPlatformError();
+  }
 }
 
 /// @AvailableInWorkers("service")
@@ -47,14 +51,23 @@ abstract class SyncManager implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SyncEvent).
-abstract class SyncEvent implements ExtendableEvent, JSObject {
+extension type SyncEvent._(JSObject _) implements ExtendableEvent, JSObject {
+  factory SyncEvent(
+    String type,
+    SyncEventInit init,
+  ) {
+    unsupportedPlatformError();
+  }
+
   /// @AvailableInWorkers("service")
   ///
   /// The **`tag`** read-only property of the
   /// [SyncEvent] interface returns the developer-defined identifier for
   /// this `SyncEvent`. This is the value passed in the `tag` parameter
   /// of the [SyncEvent.SyncEvent] constructor.
-  String get tag;
+  String get tag {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("service")
   ///
@@ -64,10 +77,22 @@ abstract class SyncEvent implements ExtendableEvent, JSObject {
   /// the value
   /// passed in the `lastChance` parameter of the
   /// [SyncEvent.SyncEvent] constructor.
-  bool get lastChance;
+  bool get lastChance {
+    unsupportedPlatformError();
+  }
 }
+extension type SyncEventInit._(JSObject _)
+    implements ExtendableEventInit, JSObject {
+  factory SyncEventInit({
+    bool? bubbles,
+    bool? cancelable,
+    bool? composed,
+    required String tag,
+    bool? lastChance,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class SyncEventInit implements ExtendableEventInit, JSObject {
   String get tag {
     unsupportedPlatformError();
   }

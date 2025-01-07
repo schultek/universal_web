@@ -13,7 +13,15 @@
 import '../error.dart';
 import '../js_interop.dart';
 
-abstract class AttributionReportingRequestOptions implements JSObject {
+extension type AttributionReportingRequestOptions._(JSObject _)
+    implements JSObject {
+  factory AttributionReportingRequestOptions({
+    required bool eventSourceEligible,
+    required bool triggerEligible,
+  }) {
+    unsupportedPlatformError();
+  }
+
   bool get eventSourceEligible {
     unsupportedPlatformError();
   }

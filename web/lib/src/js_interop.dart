@@ -9,7 +9,11 @@ class JS {
 
 abstract class JSAny {}
 
-abstract class JSObject implements JSAny {}
+class JSObject implements JSAny {
+  JSObject() {
+    unsupportedPlatformError();
+  }
+}
 
 abstract class JSFunction implements JSObject {}
 

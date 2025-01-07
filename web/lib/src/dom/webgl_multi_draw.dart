@@ -10,10 +10,11 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
+import '../error.dart';
 import '../js_interop.dart';
 import 'webgl1.dart';
 
-abstract class WEBGL_multi_draw implements JSObject {
+extension type WEBGL_multi_draw._(JSObject _) implements JSObject {
   void multiDrawArraysWEBGL(
     GLenum mode,
     JSObject firstsList,
@@ -21,7 +22,10 @@ abstract class WEBGL_multi_draw implements JSObject {
     JSObject countsList,
     int countsOffset,
     GLsizei drawcount,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void multiDrawElementsWEBGL(
     GLenum mode,
     JSObject countsList,
@@ -30,7 +34,10 @@ abstract class WEBGL_multi_draw implements JSObject {
     JSObject offsetsList,
     int offsetsOffset,
     GLsizei drawcount,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void multiDrawArraysInstancedWEBGL(
     GLenum mode,
     JSObject firstsList,
@@ -40,7 +47,10 @@ abstract class WEBGL_multi_draw implements JSObject {
     JSObject instanceCountsList,
     int instanceCountsOffset,
     GLsizei drawcount,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void multiDrawElementsInstancedWEBGL(
     GLenum mode,
     JSObject countsList,
@@ -51,5 +61,7 @@ abstract class WEBGL_multi_draw implements JSObject {
     JSObject instanceCountsList,
     int instanceCountsOffset,
     GLsizei drawcount,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 }

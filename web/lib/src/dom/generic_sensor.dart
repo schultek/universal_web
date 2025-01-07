@@ -40,14 +40,18 @@ import 'webidl.dart';
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Sensor).
-abstract class Sensor implements EventTarget, JSObject {
+extension type Sensor._(JSObject _) implements EventTarget, JSObject {
   /// The **`start()`** method of the [Sensor] interface activates one of the
   /// sensors based on `Sensor`.
-  void start();
+  void start() {
+    unsupportedPlatformError();
+  }
 
   /// The **`stop()`** method of the [Sensor] interface deactivates the current
   /// sensor.
-  void stop();
+  void stop() {
+    unsupportedPlatformError();
+  }
 
   /// The **`activated`** read-only property
   /// of the [Sensor] interface returns a boolean value indicating
@@ -55,7 +59,9 @@ abstract class Sensor implements EventTarget, JSObject {
   ///
   /// Because [Sensor] is a base class, `activated` may only be read
   /// from one of its derived classes.
-  bool get activated;
+  bool get activated {
+    unsupportedPlatformError();
+  }
 
   /// The **`hasReading`** read-only
   /// property of the [Sensor] interface returns a boolean value
@@ -63,7 +69,9 @@ abstract class Sensor implements EventTarget, JSObject {
   ///
   /// Because [Sensor] is a base class, `hasReading` may only be read
   /// from one of its derived classes.
-  bool get hasReading;
+  bool get hasReading {
+    unsupportedPlatformError();
+  }
 
   /// The **`timestamp`** read-only property
   /// of the [Sensor] interface returns the timestamp of the latest sensor
@@ -71,16 +79,39 @@ abstract class Sensor implements EventTarget, JSObject {
   ///
   /// Because [Sensor] is a base class, `timestamp` may only be read
   /// from one of its derived classes.
-  double? get timestamp;
-  EventHandler get onreading;
-  set onreading(EventHandler value);
-  EventHandler get onactivate;
-  set onactivate(EventHandler value);
-  EventHandler get onerror;
-  set onerror(EventHandler value);
-}
+  double? get timestamp {
+    unsupportedPlatformError();
+  }
 
-abstract class SensorOptions implements JSObject {
+  EventHandler get onreading {
+    unsupportedPlatformError();
+  }
+
+  set onreading(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onactivate {
+    unsupportedPlatformError();
+  }
+
+  set onactivate(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onerror {
+    unsupportedPlatformError();
+  }
+
+  set onerror(EventHandler value) {
+    unsupportedPlatformError();
+  }
+}
+extension type SensorOptions._(JSObject _) implements JSObject {
+  factory SensorOptions({num? frequency}) {
+    unsupportedPlatformError();
+  }
+
   double get frequency {
     unsupportedPlatformError();
   }
@@ -98,14 +129,32 @@ abstract class SensorOptions implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SensorErrorEvent).
-abstract class SensorErrorEvent implements Event, JSObject {
+extension type SensorErrorEvent._(JSObject _) implements Event, JSObject {
+  factory SensorErrorEvent(
+    String type,
+    SensorErrorEventInit errorEventInitDict,
+  ) {
+    unsupportedPlatformError();
+  }
+
   /// The **`error`** read-only property of
   /// the [SensorErrorEvent] interface returns the [DOMException]
   /// object passed in the event's constructor.
-  DOMException get error;
+  DOMException get error {
+    unsupportedPlatformError();
+  }
 }
+extension type SensorErrorEventInit._(JSObject _)
+    implements EventInit, JSObject {
+  factory SensorErrorEventInit({
+    bool? bubbles,
+    bool? cancelable,
+    bool? composed,
+    required DOMException error,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class SensorErrorEventInit implements EventInit, JSObject {
   DOMException get error {
     unsupportedPlatformError();
   }

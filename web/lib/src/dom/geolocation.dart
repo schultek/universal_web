@@ -34,14 +34,16 @@ typedef PositionErrorCallback = JSFunction;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation).
-abstract class Geolocation implements JSObject {
+extension type Geolocation._(JSObject _) implements JSObject {
   /// The **`getCurrentPosition()`** method of the [Geolocation] interface is
   /// used to get the current position of the device.
   void getCurrentPosition(
     PositionCallback successCallback, [
     PositionErrorCallback? errorCallback,
-    PositionOptions options,
-  ]);
+    PositionOptions? options,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`watchPosition()`** method of the [Geolocation] interface is used to
   /// register a handler function that will be called automatically each time
@@ -50,16 +52,27 @@ abstract class Geolocation implements JSObject {
   int watchPosition(
     PositionCallback successCallback, [
     PositionErrorCallback? errorCallback,
-    PositionOptions options,
-  ]);
+    PositionOptions? options,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`clearWatch()`** method of the [Geolocation] interface is used to
   /// unregister location/error monitoring handlers previously installed using
   /// [Geolocation.watchPosition].
-  void clearWatch(int watchId);
+  void clearWatch(int watchId) {
+    unsupportedPlatformError();
+  }
 }
+extension type PositionOptions._(JSObject _) implements JSObject {
+  factory PositionOptions({
+    bool? enableHighAccuracy,
+    int? timeout,
+    int? maximumAge,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class PositionOptions implements JSObject {
   bool get enableHighAccuracy {
     unsupportedPlatformError();
   }
@@ -94,10 +107,12 @@ abstract class PositionOptions implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/GeolocationPosition).
-abstract class GeolocationPosition implements JSObject {
+extension type GeolocationPosition._(JSObject _) implements JSObject {
   /// The **`toJSON()`** method of the [GeolocationPosition] interface is a ; it
   /// returns a JSON representation of the [GeolocationPosition] object.
-  JSObject toJSON();
+  JSObject toJSON() {
+    unsupportedPlatformError();
+  }
 
   /// The **`coords`** read-only property of the [GeolocationPosition] interface
   /// returns a [GeolocationCoordinates] object representing a geographic
@@ -105,12 +120,16 @@ abstract class GeolocationPosition implements JSObject {
   /// Earth, the altitude, and the speed of the object concerned, regrouped
   /// inside the returned value. It also contains accuracy information about
   /// these values.
-  GeolocationCoordinates get coords;
+  GeolocationCoordinates get coords {
+    unsupportedPlatformError();
+  }
 
   /// The **`timestamp`** read-only property of the [GeolocationPosition]
   /// interface represents the date and time that the position was acquired by
   /// the device.
-  EpochTimeStamp get timestamp;
+  EpochTimeStamp get timestamp {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`GeolocationCoordinates`** interface represents the position and
@@ -123,21 +142,27 @@ abstract class GeolocationPosition implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/GeolocationCoordinates).
-abstract class GeolocationCoordinates implements JSObject {
+extension type GeolocationCoordinates._(JSObject _) implements JSObject {
   /// The **`toJSON()`** method of the [GeolocationCoordinates] interface is a ;
   /// it returns a JSON representation of the [GeolocationCoordinates] object.
-  JSObject toJSON();
+  JSObject toJSON() {
+    unsupportedPlatformError();
+  }
 
   /// The **`accuracy`** read-only property of the [GeolocationCoordinates]
   /// interface is a strictly positive `double` representing the accuracy, with
   /// a 95% confidence level, of the [GeolocationCoordinates.latitude] and
   /// [GeolocationCoordinates.longitude] properties expressed in meters.
-  double get accuracy;
+  double get accuracy {
+    unsupportedPlatformError();
+  }
 
   /// The **`latitude`** read-only property of the [GeolocationCoordinates]
   /// interface is a `double` representing the latitude of the position in
   /// decimal degrees.
-  double get latitude;
+  double get latitude {
+    unsupportedPlatformError();
+  }
 
   /// The **`longitude`** read-only property of the [GeolocationCoordinates]
   /// interface is a number which represents the longitude of a geographical
@@ -146,7 +171,9 @@ abstract class GeolocationCoordinates implements JSObject {
   /// measurement, the `GeolocationCoordinates` object is part of the
   /// [GeolocationPosition] interface, which is the object type returned by
   /// Geolocation API functions that obtain and return a geographical position.
-  double get longitude;
+  double get longitude {
+    unsupportedPlatformError();
+  }
 
   /// The **`altitude`** read-only property of the [GeolocationCoordinates]
   /// interface is a `double` representing the altitude of the position in
@@ -154,14 +181,18 @@ abstract class GeolocationCoordinates implements JSObject {
   /// [WGS84](https://gis-lab.info/docs/nima-tr8350.2-wgs84fin.pdf) ellipsoid
   /// (which defines the nominal sea level surface). This value is `null` if the
   /// implementation cannot provide this data.
-  double? get altitude;
+  double? get altitude {
+    unsupportedPlatformError();
+  }
 
   /// The **`altitudeAccuracy`** read-only property of the
   /// [GeolocationCoordinates] interface is a strictly positive `double`
   /// representing the accuracy, with a 95% confidence level, of the `altitude`
   /// expressed in meters. This value is `null` if the implementation doesn't
   /// support measuring altitude.
-  double? get altitudeAccuracy;
+  double? get altitudeAccuracy {
+    unsupportedPlatformError();
+  }
 
   /// The **`heading`** read-only property of the [GeolocationCoordinates]
   /// interface is a `double` representing the direction in which the device is
@@ -171,13 +202,17 @@ abstract class GeolocationCoordinates implements JSObject {
   /// degrees and west is `270` degrees). If [GeolocationCoordinates.speed] is
   /// `0`, `heading` is `NaN`. If the device is not able to provide heading
   /// information, this value is `null`.
-  double? get heading;
+  double? get heading {
+    unsupportedPlatformError();
+  }
 
   /// The **`speed`** read-only property of the [GeolocationCoordinates]
   /// interface is a `double` representing the velocity of the device in meters
   /// per second. This value is `null` if the implementation is not able to
   /// measure it.
-  double? get speed;
+  double? get speed {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`GeolocationPositionError`** interface represents the reason of an
@@ -187,7 +222,7 @@ abstract class GeolocationCoordinates implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/GeolocationPositionError).
-abstract class GeolocationPositionError implements JSObject {
+extension type GeolocationPositionError._(JSObject _) implements JSObject {
   static const int PERMISSION_DENIED = 1;
 
   static const int POSITION_UNAVAILABLE = 2;
@@ -231,10 +266,14 @@ abstract class GeolocationPositionError implements JSObject {
   ///     </tr>
   ///   </tbody>
   /// </table>
-  int get code;
+  int get code {
+    unsupportedPlatformError();
+  }
 
   /// The **`message`** read-only property of the [GeolocationPositionError]
   /// interface returns a human-readable string describing the details of the
   /// error.
-  String get message;
+  String get message {
+    unsupportedPlatformError();
+  }
 }

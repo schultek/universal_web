@@ -43,36 +43,92 @@ $Console get console {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/console).
-abstract class $Console implements JSObject {
+extension type $Console._(JSObject _) implements JSObject {
   void assert_(
     JSAny? data, [
-    bool condition,
-  ]);
-  void clear();
-  void debug(JSAny? data);
-  void error(JSAny? data);
-  void info(JSAny? data);
-  void log(JSAny? data);
+    bool? condition,
+  ]) {
+    unsupportedPlatformError();
+  }
+
+  void clear() {
+    unsupportedPlatformError();
+  }
+
+  void debug(JSAny? data) {
+    unsupportedPlatformError();
+  }
+
+  void error(JSAny? data) {
+    unsupportedPlatformError();
+  }
+
+  void info(JSAny? data) {
+    unsupportedPlatformError();
+  }
+
+  void log(JSAny? data) {
+    unsupportedPlatformError();
+  }
+
   void table([
     JSAny? tabularData,
-    JSArray<JSString> properties,
-  ]);
-  void trace(JSAny? data);
-  void warn(JSAny? data);
+    JSArray<JSString>? properties,
+  ]) {
+    unsupportedPlatformError();
+  }
+
+  void trace(JSAny? data) {
+    unsupportedPlatformError();
+  }
+
+  void warn(JSAny? data) {
+    unsupportedPlatformError();
+  }
+
   void dir([
     JSAny? item,
     JSObject? options,
-  ]);
-  void dirxml(JSAny? data);
-  void count([String label]);
-  void countReset([String label]);
-  void group(JSAny? data);
-  void groupCollapsed(JSAny? data);
-  void groupEnd();
-  void time([String label]);
+  ]) {
+    unsupportedPlatformError();
+  }
+
+  void dirxml(JSAny? data) {
+    unsupportedPlatformError();
+  }
+
+  void count([String? label]) {
+    unsupportedPlatformError();
+  }
+
+  void countReset([String? label]) {
+    unsupportedPlatformError();
+  }
+
+  void group(JSAny? data) {
+    unsupportedPlatformError();
+  }
+
+  void groupCollapsed(JSAny? data) {
+    unsupportedPlatformError();
+  }
+
+  void groupEnd() {
+    unsupportedPlatformError();
+  }
+
+  void time([String? label]) {
+    unsupportedPlatformError();
+  }
+
   void timeLog(
     JSAny? data, [
-    String label,
-  ]);
-  void timeEnd([String label]);
+    String? label,
+  ]) {
+    unsupportedPlatformError();
+  }
+
+  void timeEnd([String? label]) {
+    unsupportedPlatformError();
+  }
 }

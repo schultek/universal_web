@@ -21,4 +21,4 @@ import '../js_interop.dart';
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothUUID).
-abstract class BluetoothUUID implements JSObject {}
+extension type BluetoothUUID._(JSObject _) implements JSObject {}

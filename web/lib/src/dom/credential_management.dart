@@ -38,17 +38,21 @@ typedef CredentialMediationRequirement = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Credential).
-abstract class Credential implements JSObject {
+extension type Credential._(JSObject _) implements JSObject {
   /// The **`id`** read-only property of the [Credential] interface returns a
   /// string containing the credential's identifier. This might be a GUID,
   /// username, or email address, or some other value, depending on the type of
   /// credential.
-  String get id;
+  String get id {
+    unsupportedPlatformError();
+  }
 
   /// The **`type`** read-only property of the [Credential] interface returns a
   /// string containing the credential's type. Valid values are `password`,
   /// `federated`, `public-key`, `identity` and `otp`.
-  String get type;
+  String get type {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`CredentialsContainer`** interface of the
@@ -61,7 +65,7 @@ abstract class Credential implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CredentialsContainer).
-abstract class CredentialsContainer implements JSObject {
+extension type CredentialsContainer._(JSObject _) implements JSObject {
   /// The **`get()`** method of the [CredentialsContainer] interface returns a
   /// `Promise` that fulfills with a single credential instance that matches the
   /// provided parameters, which the browser can then use to authenticate with a
@@ -88,7 +92,9 @@ abstract class CredentialsContainer implements JSObject {
   /// general method call structure and parameters that apply to all the
   /// different APIs. After that, it is split into separate sections providing
   /// parameters, return values, and examples specific to each API.
-  JSPromise<Credential?> get([CredentialRequestOptions options]);
+  JSPromise<Credential?> get([CredentialRequestOptions? options]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`store()`** method of the
   /// [CredentialsContainer] stores a set of credentials for the user inside a
@@ -97,7 +103,9 @@ abstract class CredentialsContainer implements JSObject {
   /// > **Note:** This method is restricted to top-level contexts. Calls to it
   /// > within an
   /// > `<iframe>` element will resolve without effect.
-  JSPromise<JSAny?> store(Credential credential);
+  JSPromise<JSAny?> store(Credential credential) {
+    unsupportedPlatformError();
+  }
 
   /// The **`create()`** method of the [CredentialsContainer] interface creates
   /// a new , which can then be stored and later used to authenticate users via
@@ -115,7 +123,9 @@ abstract class CredentialsContainer implements JSObject {
   /// Note that the [Federated Credential Management API
   /// (FedCM)](https://developer.mozilla.org/en-US/docs/Web/API/FedCM_API)
   /// supersedes the federated credential type.
-  JSPromise<Credential?> create([CredentialCreationOptions options]);
+  JSPromise<Credential?> create([CredentialCreationOptions? options]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`preventSilentAccess()`** method of the [CredentialsContainer]
   /// interface sets a flag that specifies whether automatic log in is allowed
@@ -132,10 +142,15 @@ abstract class CredentialsContainer implements JSObject {
   /// The
   /// [Browser compatibility](https://developer.mozilla.org/en-US/docs/Web/API/CredentialsContainer#browser_compatibility)
   /// section has support details.
-  JSPromise<JSAny?> preventSilentAccess();
+  JSPromise<JSAny?> preventSilentAccess() {
+    unsupportedPlatformError();
+  }
 }
+extension type CredentialData._(JSObject _) implements JSObject {
+  factory CredentialData({required String id}) {
+    unsupportedPlatformError();
+  }
 
-abstract class CredentialData implements JSObject {
   String get id {
     unsupportedPlatformError();
   }
@@ -144,8 +159,20 @@ abstract class CredentialData implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type CredentialRequestOptions._(JSObject _) implements JSObject {
+  factory CredentialRequestOptions({
+    CredentialMediationRequirement? mediation,
+    AbortSignal? signal,
+    IdentityCredentialRequestOptions? identity,
+    bool? password,
+    FederatedCredentialRequestOptions? federated,
+    DigitalCredentialRequestOptions? digital,
+    OTPCredentialRequestOptions? otp,
+    PublicKeyCredentialRequestOptions? publicKey,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class CredentialRequestOptions implements JSObject {
   CredentialMediationRequirement get mediation {
     unsupportedPlatformError();
   }
@@ -210,8 +237,17 @@ abstract class CredentialRequestOptions implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type CredentialCreationOptions._(JSObject _) implements JSObject {
+  factory CredentialCreationOptions({
+    CredentialMediationRequirement? mediation,
+    AbortSignal? signal,
+    PasswordCredentialInit? password,
+    FederatedCredentialInit? federated,
+    PublicKeyCredentialCreationOptions? publicKey,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class CredentialCreationOptions implements JSObject {
   CredentialMediationRequirement get mediation {
     unsupportedPlatformError();
   }
@@ -252,8 +288,18 @@ abstract class CredentialCreationOptions implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type PasswordCredentialData._(JSObject _)
+    implements CredentialData, JSObject {
+  factory PasswordCredentialData({
+    required String id,
+    String? name,
+    String? iconURL,
+    required String origin,
+    required String password,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class PasswordCredentialData implements CredentialData, JSObject {
   String get name {
     unsupportedPlatformError();
   }
@@ -286,8 +332,15 @@ abstract class PasswordCredentialData implements CredentialData, JSObject {
     unsupportedPlatformError();
   }
 }
+extension type FederatedCredentialRequestOptions._(JSObject _)
+    implements JSObject {
+  factory FederatedCredentialRequestOptions({
+    JSArray<JSString>? providers,
+    JSArray<JSString>? protocols,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class FederatedCredentialRequestOptions implements JSObject {
   JSArray<JSString> get providers {
     unsupportedPlatformError();
   }
@@ -322,15 +375,56 @@ abstract class FederatedCredentialRequestOptions implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/FederatedCredentialInit).
-abstract class FederatedCredentialInit implements CredentialData, JSObject {
-  String get name;
-  set name(String value);
-  String get iconURL;
-  set iconURL(String value);
-  String get origin;
-  set origin(String value);
-  String get provider;
-  set provider(String value);
-  String get protocol;
-  set protocol(String value);
+extension type FederatedCredentialInit._(JSObject _)
+    implements CredentialData, JSObject {
+  factory FederatedCredentialInit({
+    required String id,
+    String? name,
+    String? iconURL,
+    required String origin,
+    required String provider,
+    String? protocol,
+  }) {
+    unsupportedPlatformError();
+  }
+
+  String get name {
+    unsupportedPlatformError();
+  }
+
+  set name(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get iconURL {
+    unsupportedPlatformError();
+  }
+
+  set iconURL(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get origin {
+    unsupportedPlatformError();
+  }
+
+  set origin(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get provider {
+    unsupportedPlatformError();
+  }
+
+  set provider(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get protocol {
+    unsupportedPlatformError();
+  }
+
+  set protocol(String value) {
+    unsupportedPlatformError();
+  }
 }

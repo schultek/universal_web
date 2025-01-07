@@ -10,9 +10,15 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
+import '../error.dart';
 import '../js_interop.dart';
 
-abstract class WEBGL_lose_context implements JSObject {
-  void loseContext();
-  void restoreContext();
+extension type WEBGL_lose_context._(JSObject _) implements JSObject {
+  void loseContext() {
+    unsupportedPlatformError();
+  }
+
+  void restoreContext() {
+    unsupportedPlatformError();
+  }
 }

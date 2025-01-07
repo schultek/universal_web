@@ -13,12 +13,29 @@
 import '../error.dart';
 import '../js_interop.dart';
 import 'dom.dart';
+import 'html.dart';
 import 'streams.dart';
 
 typedef RTCRtpTransform = JSObject;
 typedef RTCEncodedVideoFrameType = String;
+extension type RTCEncodedVideoFrameMetadata._(JSObject _) implements JSObject {
+  factory RTCEncodedVideoFrameMetadata({
+    int? frameId,
+    JSArray<JSNumber>? dependencies,
+    int? width,
+    int? height,
+    int? spatialIndex,
+    int? temporalIndex,
+    int? synchronizationSource,
+    int? payloadType,
+    JSArray<JSNumber>? contributingSources,
+    int? timestamp,
+    int? rtpTimestamp,
+    String? mimeType,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class RTCEncodedVideoFrameMetadata implements JSObject {
   int get frameId {
     unsupportedPlatformError();
   }
@@ -131,7 +148,7 @@ abstract class RTCEncodedVideoFrameMetadata implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/RTCEncodedVideoFrame).
-abstract class RTCEncodedVideoFrame implements JSObject {
+extension type RTCEncodedVideoFrame._(JSObject _) implements JSObject {
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`getMetadata()`** method of the [RTCEncodedVideoFrame] interface
@@ -140,23 +157,42 @@ abstract class RTCEncodedVideoFrame implements JSObject {
   /// This includes information about the frame, including its size, video
   /// encoding, other frames needed to construct a full image, timestamp, and
   /// other information.
-  RTCEncodedVideoFrameMetadata getMetadata();
+  RTCEncodedVideoFrameMetadata getMetadata() {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The readonly **`type`** property of the [RTCEncodedVideoFrame] interface
   /// indicates whether this frame is a key frame, delta frame, or empty frame.
-  RTCEncodedVideoFrameType get type;
+  RTCEncodedVideoFrameType get type {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`data`** property of the [RTCEncodedVideoFrame] interface returns a
   /// buffer containing the frame data.
-  JSArrayBuffer get data;
-  set data(JSArrayBuffer value);
-}
+  JSArrayBuffer get data {
+    unsupportedPlatformError();
+  }
 
-abstract class RTCEncodedAudioFrameMetadata implements JSObject {
+  set data(JSArrayBuffer value) {
+    unsupportedPlatformError();
+  }
+}
+extension type RTCEncodedAudioFrameMetadata._(JSObject _) implements JSObject {
+  factory RTCEncodedAudioFrameMetadata({
+    int? synchronizationSource,
+    int? payloadType,
+    JSArray<JSNumber>? contributingSources,
+    int? sequenceNumber,
+    int? rtpTimestamp,
+    String? mimeType,
+  }) {
+    unsupportedPlatformError();
+  }
+
   int get synchronizationSource {
     unsupportedPlatformError();
   }
@@ -227,7 +263,7 @@ abstract class RTCEncodedAudioFrameMetadata implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/RTCEncodedAudioFrame).
-abstract class RTCEncodedAudioFrame implements JSObject {
+extension type RTCEncodedAudioFrame._(JSObject _) implements JSObject {
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`getMetadata()`** method of the [RTCEncodedAudioFrame] interface
@@ -236,14 +272,21 @@ abstract class RTCEncodedAudioFrame implements JSObject {
   /// This includes information about the frame, including the audio encoding
   /// used, the synchronization source and contributing sources, and the
   /// sequence number (for incoming frames).
-  RTCEncodedAudioFrameMetadata getMetadata();
+  RTCEncodedAudioFrameMetadata getMetadata() {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
   /// The **`data`** property of the [RTCEncodedAudioFrame] interface returns a
   /// buffer containing the data for an encoded frame.
-  JSArrayBuffer get data;
-  set data(JSArrayBuffer value);
+  JSArrayBuffer get data {
+    unsupportedPlatformError();
+  }
+
+  set data(JSArrayBuffer value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`RTCTransformEvent`** of the
@@ -265,7 +308,7 @@ abstract class RTCEncodedAudioFrame implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/RTCTransformEvent).
-abstract class RTCTransformEvent implements Event, JSObject {
+extension type RTCTransformEvent._(JSObject _) implements Event, JSObject {
   /// The read-only **`transformer`** property of the [RTCTransformEvent]
   /// interface returns the [RTCRtpScriptTransformer] associated with the event.
   ///
@@ -273,7 +316,9 @@ abstract class RTCTransformEvent implements Event, JSObject {
   /// and writable stream of encoded media frames, which a
   /// [WebRTC Encoded Transform](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API/Using_Encoded_Transforms)
   /// can insert itself into in order to modify frames.
-  RTCRtpScriptTransformer get transformer;
+  RTCRtpScriptTransformer get transformer {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`RTCRtpScriptTransformer`** interface of the
@@ -292,10 +337,13 @@ abstract class RTCTransformEvent implements Event, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpScriptTransformer).
-abstract class RTCRtpScriptTransformer implements EventTarget, JSObject {
+extension type RTCRtpScriptTransformer._(JSObject _)
+    implements EventTarget, JSObject {
   /// The **`generateKeyFrame()`** method of the [RTCRtpScriptTransformer]
   /// interface causes a video encoder to generate a key frame.
-  JSPromise<JSNumber> generateKeyFrame([String rid]);
+  JSPromise<JSNumber> generateKeyFrame([String? rid]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`sendKeyFrameRequest()`** method of the [RTCRtpScriptTransformer]
   /// interface may be called by a
@@ -316,7 +364,9 @@ abstract class RTCRtpScriptTransformer implements EventTarget, JSObject {
   /// > For more information see
   /// > [Triggering a key frame](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API/Using_Encoded_Transforms#triggering_a_key_frame)
   /// > in Using WebRTC Encoded Transforms.
-  JSPromise<JSAny?> sendKeyFrameRequest();
+  JSPromise<JSAny?> sendKeyFrameRequest() {
+    unsupportedPlatformError();
+  }
 
   /// The **`readable`** read-only property of the [RTCRtpScriptTransformer]
   /// interface returns a [ReadableStream] instance is a source for encoded
@@ -331,7 +381,9 @@ abstract class RTCRtpScriptTransformer implements EventTarget, JSObject {
   /// [RTCRtpScriptTransformer.writable].
   /// A common way to perform this operation is to pipe the frames through a
   /// [TransformStream].
-  ReadableStream get readable;
+  ReadableStream get readable {
+    unsupportedPlatformError();
+  }
 
   /// The **`writable`** read-only property of the [RTCRtpScriptTransformer]
   /// interface returns a [WritableStream] instance that can be used as a sink
@@ -347,14 +399,18 @@ abstract class RTCRtpScriptTransformer implements EventTarget, JSObject {
   /// sending them to this `writable`.
   /// A common way to perform this operation is to pipe the frames through a
   /// [TransformStream].
-  WritableStream get writable;
+  WritableStream get writable {
+    unsupportedPlatformError();
+  }
 
   /// The **`options`** read-only property of the [RTCRtpScriptTransformer]
   /// interface returns the object that was (optionally) passed as the second
   /// argument
   /// [during construction](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpScriptTransform/RTCRtpScriptTransform)
   /// of the corresponding [RTCRtpScriptTransform].
-  JSAny? get options;
+  JSAny? get options {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`RTCRtpScriptTransform`** interface of the
@@ -368,4 +424,12 @@ abstract class RTCRtpScriptTransformer implements EventTarget, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpScriptTransform).
-abstract class RTCRtpScriptTransform implements JSObject {}
+extension type RTCRtpScriptTransform._(JSObject _) implements JSObject {
+  factory RTCRtpScriptTransform(
+    Worker worker, [
+    JSAny? options,
+    JSArray<JSObject>? transfer,
+  ]) {
+    unsupportedPlatformError();
+  }
+}

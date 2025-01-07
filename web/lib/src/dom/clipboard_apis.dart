@@ -18,8 +18,16 @@ import 'html.dart';
 
 typedef ClipboardItems = JSArray<ClipboardItem>;
 typedef PresentationStyle = String;
+extension type ClipboardEventInit._(JSObject _) implements EventInit, JSObject {
+  factory ClipboardEventInit({
+    bool? bubbles,
+    bool? cancelable,
+    bool? composed,
+    DataTransfer? clipboardData,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class ClipboardEventInit implements EventInit, JSObject {
   DataTransfer? get clipboardData {
     unsupportedPlatformError();
   }
@@ -39,7 +47,14 @@ abstract class ClipboardEventInit implements EventInit, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ClipboardEvent).
-abstract class ClipboardEvent implements Event, JSObject {
+extension type ClipboardEvent._(JSObject _) implements Event, JSObject {
+  factory ClipboardEvent(
+    String type, [
+    ClipboardEventInit? eventInitDict,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// The **`clipboardData`** property of the [ClipboardEvent] interface holds a
   /// [DataTransfer] object, which can be used to:
   ///
@@ -51,7 +66,9 @@ abstract class ClipboardEvent implements Event, JSObject {
   ///
   /// See the [Element.cut_event], [Element.copy_event], and
   /// [Element.paste_event] events documentation for more information.
-  DataTransfer? get clipboardData;
+  DataTransfer? get clipboardData {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`ClipboardItem`** interface of the
@@ -70,7 +87,14 @@ abstract class ClipboardEvent implements Event, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ClipboardItem).
-abstract class ClipboardItem implements JSObject {
+extension type ClipboardItem._(JSObject _) implements JSObject {
+  factory ClipboardItem(
+    JSObject items, [
+    ClipboardItemOptions? options,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// The **`supports()`** static method of the [ClipboardItem] interface
   /// returns `true` if the given  is supported by the clipboard, and `false`
   /// otherwise.
@@ -87,21 +111,30 @@ abstract class ClipboardItem implements JSObject {
   /// The **`getType()`** method of the [ClipboardItem] interface returns a
   /// `Promise` that resolves with a [Blob] of the requested  or an error if the
   /// MIME type is not found.
-  JSPromise<Blob> getType(String type);
+  JSPromise<Blob> getType(String type) {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`presentationStyle`** property of the [ClipboardItem]
   /// interface returns a string indicating how an item should be presented.
   ///
   /// For example, in some contexts an image might be displayed inline, while in
   /// others it might be represented as an attachment.
-  PresentationStyle get presentationStyle;
+  PresentationStyle get presentationStyle {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`types`** property of the [ClipboardItem] interface
   /// returns an `Array` of  available within the [ClipboardItem]
-  JSArray<JSString> get types;
+  JSArray<JSString> get types {
+    unsupportedPlatformError();
+  }
 }
+extension type ClipboardItemOptions._(JSObject _) implements JSObject {
+  factory ClipboardItemOptions({PresentationStyle? presentationStyle}) {
+    unsupportedPlatformError();
+  }
 
-abstract class ClipboardItemOptions implements JSObject {
   PresentationStyle get presentationStyle {
     unsupportedPlatformError();
   }
@@ -133,7 +166,7 @@ abstract class ClipboardItemOptions implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard).
-abstract class Clipboard implements EventTarget, JSObject {
+extension type Clipboard._(JSObject _) implements EventTarget, JSObject {
   /// The **`read()`** method of the [Clipboard] interface requests a copy of
   /// the clipboard's contents, fulfilling the returned `Promise` with the data.
   ///
@@ -141,7 +174,9 @@ abstract class Clipboard implements EventTarget, JSObject {
   /// [Clipboard.readText], which can only return text).
   /// Browsers commonly support reading text, HTML, and PNG image data — see
   /// [browser compatibility](#browser_compatibility) for more information.
-  JSPromise<ClipboardItems> read([ClipboardUnsanitizedFormats formats]);
+  JSPromise<ClipboardItems> read([ClipboardUnsanitizedFormats? formats]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`readText()`** method of the [Clipboard] interface returns a
   /// `Promise` which fulfils with a copy of the textual contents of the system
@@ -150,7 +185,9 @@ abstract class Clipboard implements EventTarget, JSObject {
   /// > **Note:** To read non-text contents from the clipboard, use the
   /// > [Clipboard.read] method instead.
   /// > You can write text to the clipboard using [Clipboard.writeText].
-  JSPromise<JSString> readText();
+  JSPromise<JSString> readText() {
+    unsupportedPlatformError();
+  }
 
   /// The **`write()`** method of the [Clipboard] interface writes arbitrary
   /// data to the clipboard, such as images, fulfilling the returned `Promise`
@@ -161,15 +198,22 @@ abstract class Clipboard implements EventTarget, JSObject {
   /// [Clipboard.writeText], which can only write text).
   /// Browsers commonly support writing text, HTML, and PNG image data — see
   /// [browser compatibility](#browser_compatibility) for more information.
-  JSPromise<JSAny?> write(ClipboardItems data);
+  JSPromise<JSAny?> write(ClipboardItems data) {
+    unsupportedPlatformError();
+  }
 
   /// The **`writeText()`** method of the [Clipboard] interface writes the
   /// specified text to the system clipboard, returning a `Promise` that is
   /// resolved once the system clipboard has been updated.
-  JSPromise<JSAny?> writeText(String data);
+  JSPromise<JSAny?> writeText(String data) {
+    unsupportedPlatformError();
+  }
 }
+extension type ClipboardUnsanitizedFormats._(JSObject _) implements JSObject {
+  factory ClipboardUnsanitizedFormats({JSArray<JSString>? unsanitized}) {
+    unsupportedPlatformError();
+  }
 
-abstract class ClipboardUnsanitizedFormats implements JSObject {
   JSArray<JSString> get unsanitized {
     unsupportedPlatformError();
   }

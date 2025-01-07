@@ -22,18 +22,29 @@ import 'dom.dart';
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/TransitionEvent).
-abstract class TransitionEvent implements Event, JSObject {
+extension type TransitionEvent._(JSObject _) implements Event, JSObject {
+  factory TransitionEvent(
+    String type, [
+    TransitionEventInit? transitionEventInitDict,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// The **`propertyName`** read-only property of [TransitionEvent] objects is
   /// a string containing the name of the CSS property associated with the
   /// transition.
-  String get propertyName;
+  String get propertyName {
+    unsupportedPlatformError();
+  }
 
   /// The **`TransitionEvent.elapsedTime`** read-only property is a
   /// `float` giving the amount of time the animation has been running, in
   /// seconds,
   /// when this event fired. This value is not affected by the
   /// property.
-  double get elapsedTime;
+  double get elapsedTime {
+    unsupportedPlatformError();
+  }
 
   /// The **`TransitionEvent.pseudoElement`** read-only property is a
   /// string, starting with `'::'`, containing the name of the
@@ -42,10 +53,23 @@ abstract class TransitionEvent implements Event, JSObject {
   /// If the transition doesn't run on a pseudo-element but on the element, an
   /// empty string:
   /// `''``.`
-  String get pseudoElement;
+  String get pseudoElement {
+    unsupportedPlatformError();
+  }
 }
+extension type TransitionEventInit._(JSObject _)
+    implements EventInit, JSObject {
+  factory TransitionEventInit({
+    bool? bubbles,
+    bool? cancelable,
+    bool? composed,
+    String? propertyName,
+    num? elapsedTime,
+    String? pseudoElement,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class TransitionEventInit implements EventInit, JSObject {
   String get propertyName {
     unsupportedPlatformError();
   }

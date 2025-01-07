@@ -30,21 +30,63 @@ typedef XMLHttpRequestResponseType = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequestEventTarget).
-abstract class XMLHttpRequestEventTarget implements EventTarget, JSObject {
-  EventHandler get onloadstart;
-  set onloadstart(EventHandler value);
-  EventHandler get onprogress;
-  set onprogress(EventHandler value);
-  EventHandler get onabort;
-  set onabort(EventHandler value);
-  EventHandler get onerror;
-  set onerror(EventHandler value);
-  EventHandler get onload;
-  set onload(EventHandler value);
-  EventHandler get ontimeout;
-  set ontimeout(EventHandler value);
-  EventHandler get onloadend;
-  set onloadend(EventHandler value);
+extension type XMLHttpRequestEventTarget._(JSObject _)
+    implements EventTarget, JSObject {
+  EventHandler get onloadstart {
+    unsupportedPlatformError();
+  }
+
+  set onloadstart(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onprogress {
+    unsupportedPlatformError();
+  }
+
+  set onprogress(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onabort {
+    unsupportedPlatformError();
+  }
+
+  set onabort(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onerror {
+    unsupportedPlatformError();
+  }
+
+  set onerror(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onload {
+    unsupportedPlatformError();
+  }
+
+  set onload(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ontimeout {
+    unsupportedPlatformError();
+  }
+
+  set ontimeout(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onloadend {
+    unsupportedPlatformError();
+  }
+
+  set onloadend(EventHandler value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// @AvailableInWorkers("window_and_worker_except_service")
@@ -59,7 +101,7 @@ abstract class XMLHttpRequestEventTarget implements EventTarget, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequestUpload).
-abstract class XMLHttpRequestUpload
+extension type XMLHttpRequestUpload._(JSObject _)
     implements XMLHttpRequestEventTarget, JSObject {}
 
 /// @AvailableInWorkers("window_and_worker_except_service")
@@ -83,7 +125,12 @@ abstract class XMLHttpRequestUpload
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest).
-abstract class XMLHttpRequest implements XMLHttpRequestEventTarget, JSObject {
+extension type XMLHttpRequest._(JSObject _)
+    implements XMLHttpRequestEventTarget, JSObject {
+  factory XMLHttpRequest() {
+    unsupportedPlatformError();
+  }
+
   static const int UNSENT = 0;
 
   static const int OPENED = 1;
@@ -106,10 +153,12 @@ abstract class XMLHttpRequest implements XMLHttpRequestEventTarget, JSObject {
   void open(
     String method,
     String url, [
-    bool async,
+    bool? async,
     String? username,
     String? password,
-  ]);
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("window_and_worker_except_service")
   ///
@@ -145,7 +194,9 @@ abstract class XMLHttpRequest implements XMLHttpRequestEventTarget, JSObject {
   void setRequestHeader(
     String name,
     String value,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("window_and_worker_except_service")
   ///
@@ -168,7 +219,9 @@ abstract class XMLHttpRequest implements XMLHttpRequestEventTarget, JSObject {
   /// If no `Accept` header has been set using the
   /// [XMLHttpRequest.setRequestHeader], an
   /// `Accept` header with the type `"*/*"` (any type) is sent.
-  void send([JSAny? body]);
+  void send([JSAny? body]) {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("window_and_worker_except_service")
   ///
@@ -177,7 +230,9 @@ abstract class XMLHttpRequest implements XMLHttpRequestEventTarget, JSObject {
   /// [XMLHttpRequest.readyState] is changed to
   /// `XMLHttpRequest.UNSENT` (0) and the request's
   /// [XMLHttpRequest.status] code is set to 0.
-  void abort();
+  void abort() {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("window_and_worker_except_service")
   ///
@@ -197,7 +252,9 @@ abstract class XMLHttpRequest implements XMLHttpRequestEventTarget, JSObject {
   /// If you need to get the raw string of all of the headers, use the
   /// [XMLHttpRequest.getAllResponseHeaders] method,
   /// which returns the entire raw header string.
-  String? getResponseHeader(String name);
+  String? getResponseHeader(String name) {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("window_and_worker_except_service")
   ///
@@ -211,7 +268,9 @@ abstract class XMLHttpRequest implements XMLHttpRequestEventTarget, JSObject {
   ///
   /// > **Note:** For multipart requests, this returns the headers from the
   /// > _current_ part of the request, not from the original channel.
-  String getAllResponseHeaders();
+  String getAllResponseHeaders() {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("window_and_worker_except_service")
   ///
@@ -225,9 +284,17 @@ abstract class XMLHttpRequest implements XMLHttpRequestEventTarget, JSObject {
   /// be treated and parsed as `"text/xml"`, even if the server does not report
   /// it
   /// as such. This method must be called before calling [XMLHttpRequest.send].
-  void overrideMimeType(String mime);
-  EventHandler get onreadystatechange;
-  set onreadystatechange(EventHandler value);
+  void overrideMimeType(String mime) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onreadystatechange {
+    unsupportedPlatformError();
+  }
+
+  set onreadystatechange(EventHandler value) {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("window_and_worker_except_service")
   ///
@@ -253,7 +320,9 @@ abstract class XMLHttpRequest implements XMLHttpRequestEventTarget, JSObject {
   ///   - : Response's body is being received. If [`responseType`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/responseType) is "text" or empty string, [`responseText`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/responseText) will have the partial text response as it loads.
   /// - DONE
   ///   - : The fetch operation is complete. This could mean that either the data transfer has been completed successfully or failed.
-  int get readyState;
+  int get readyState {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("window_and_worker_except_service")
   ///
@@ -270,8 +339,13 @@ abstract class XMLHttpRequest implements XMLHttpRequestEventTarget, JSObject {
   /// > owning window.
   ///
   /// [Using a timeout with an asynchronous request](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest_API/Synchronous_and_Asynchronous_Requests#example_using_a_timeout).
-  int get timeout;
-  set timeout(int value);
+  int get timeout {
+    unsupportedPlatformError();
+  }
+
+  set timeout(int value) {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("window_and_worker_except_service")
   ///
@@ -299,8 +373,13 @@ abstract class XMLHttpRequest implements XMLHttpRequestEventTarget, JSObject {
   /// > set cookie values for their own domain unless `withCredentials` is set
   /// > to `true` before making the request, regardless of `Access-Control-`
   /// > header values.
-  bool get withCredentials;
-  set withCredentials(bool value);
+  bool get withCredentials {
+    unsupportedPlatformError();
+  }
+
+  set withCredentials(bool value) {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("window_and_worker_except_service")
   ///
@@ -376,7 +455,9 @@ abstract class XMLHttpRequest implements XMLHttpRequestEventTarget, JSObject {
   ///     </tr>
   ///   </tbody>
   /// </table>
-  XMLHttpRequestUpload get upload;
+  XMLHttpRequestUpload get upload {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("window_and_worker_except_service")
   ///
@@ -385,7 +466,9 @@ abstract class XMLHttpRequest implements XMLHttpRequestEventTarget, JSObject {
   /// If the URL is returned, any URL fragment present in the URL will be
   /// stripped away. The value of `responseURL` will be the final URL obtained
   /// after any redirects.
-  String get responseURL;
+  String get responseURL {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("window_and_worker_except_service")
   ///
@@ -396,7 +479,9 @@ abstract class XMLHttpRequest implements XMLHttpRequestEventTarget, JSObject {
   ///
   /// Before the request completes, the value of `status` is 0. Browsers also
   /// report a status of 0 in case of `XMLHttpRequest` errors.
-  int get status;
+  int get status {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("window_and_worker_except_service")
   ///
@@ -415,7 +500,9 @@ abstract class XMLHttpRequest implements XMLHttpRequestEventTarget, JSObject {
   ///
   /// > **Note:** Responses over an HTTP/2 connection will always have an empty
   /// > string as status message as HTTP/2 does not support them.
-  String get statusText;
+  String get statusText {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("window_and_worker_except_service")
   ///
@@ -427,8 +514,13 @@ abstract class XMLHttpRequest implements XMLHttpRequestEventTarget, JSObject {
   /// response type. If an empty string is set as the value of `responseType`,
   /// the
   /// default value of `text` is used.
-  XMLHttpRequestResponseType get responseType;
-  set responseType(XMLHttpRequestResponseType value);
+  XMLHttpRequestResponseType get responseType {
+    unsupportedPlatformError();
+  }
+
+  set responseType(XMLHttpRequestResponseType value) {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("window_and_worker_except_service")
   ///
@@ -438,14 +530,18 @@ abstract class XMLHttpRequest implements XMLHttpRequestEventTarget, JSObject {
   /// a JavaScript `Object`, or a string, depending on the value
   /// of the request's [XMLHttpRequest.responseType]
   /// property.
-  JSAny? get response;
+  JSAny? get response {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("window_and_worker_except_service")
   ///
   /// The read-only [XMLHttpRequest] property
   /// **`responseText`** returns the text received from a server
   /// following a request being sent.
-  String get responseText;
+  String get responseText {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("window_and_worker_except_service")
   ///
@@ -471,7 +567,9 @@ abstract class XMLHttpRequest implements XMLHttpRequestEventTarget, JSObject {
   /// [XMLHttpRequest.overrideMimeType] to parse it as XML anyway.
   ///
   /// This property isn't available to workers.
-  Document? get responseXML;
+  Document? get responseXML {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`FormData`** interface provides a way to construct a set of key/value
@@ -492,7 +590,14 @@ abstract class XMLHttpRequest implements XMLHttpRequestEventTarget, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/FormData).
-abstract class FormData implements JSObject {
+extension type FormData._(JSObject _) implements JSObject {
+  factory FormData([
+    HTMLFormElement? form,
+    HTMLElement? submitter,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// The **`append()`** method of the [FormData] interface appends a new value
   /// onto an existing key inside a `FormData` object, or adds the key if it
   /// does not already exist.
@@ -504,27 +609,37 @@ abstract class FormData implements JSObject {
   void append(
     String name,
     JSAny blobValueOrValue, [
-    String filename,
-  ]);
+    String? filename,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`delete()`** method of the [FormData] interface deletes a key and
   /// its value(s) from a `FormData` object.
-  void delete(String name);
+  void delete(String name) {
+    unsupportedPlatformError();
+  }
 
   /// The **`get()`** method of the [FormData] interface
   /// returns the first value associated with a given key from within a
   /// `FormData`
   /// object. If you expect multiple values and want all of them, use the
   /// [FormData.getAll] method instead.
-  FormDataEntryValue? get(String name);
+  FormDataEntryValue? get(String name) {
+    unsupportedPlatformError();
+  }
 
   /// The **`getAll()`** method of the [FormData] interface returns all the
   /// values associated with a given key from within a `FormData` object.
-  JSArray<FormDataEntryValue> getAll(String name);
+  JSArray<FormDataEntryValue> getAll(String name) {
+    unsupportedPlatformError();
+  }
 
   /// The **`has()`** method of the [FormData] interface returns whether a
   /// `FormData` object contains a certain key.
-  bool has(String name);
+  bool has(String name) {
+    unsupportedPlatformError();
+  }
 
   /// The **`set()`** method of the [FormData] interface sets a new value for an
   /// existing key inside a `FormData` object, or adds the key/value if it does
@@ -537,8 +652,10 @@ abstract class FormData implements JSObject {
   void set(
     String name,
     JSAny blobValueOrValue, [
-    String filename,
-  ]);
+    String? filename,
+  ]) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`ProgressEvent`** interface represents events measuring progress of an
@@ -550,13 +667,22 @@ abstract class FormData implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ProgressEvent).
-abstract class ProgressEvent implements Event, JSObject {
+extension type ProgressEvent._(JSObject _) implements Event, JSObject {
+  factory ProgressEvent(
+    String type, [
+    ProgressEventInit? eventInitDict,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// The
   /// **`ProgressEvent.lengthComputable`** read-only property is a
   /// boolean flag indicating if the resource concerned by the
   /// [ProgressEvent] has a length that can be calculated. If not, the
   /// [ProgressEvent.total] property has no significant value.
-  bool get lengthComputable;
+  bool get lengthComputable {
+    unsupportedPlatformError();
+  }
 
   /// The **`ProgressEvent.loaded`** read-only property is a 64-bit unsigned
   /// integer
@@ -570,7 +696,9 @@ abstract class ProgressEvent implements Event, JSObject {
   /// contain the size of the compressed, or decompressed, data, depending on
   /// the browser. As of 2024, it contains the size of the compressed data in
   /// Firefox, and the size of the uncompressed data in Chrome.
-  int get loaded;
+  int get loaded {
+    unsupportedPlatformError();
+  }
 
   /// The **`ProgressEvent.total`** read-only property is a 64-bit unsigned
   /// integer
@@ -583,10 +711,22 @@ abstract class ProgressEvent implements Event, JSObject {
   ///
   /// If the event's [ProgressEvent.lengthComputable]
   /// property is `false`, this value is meaningless and should be ignored.
-  int get total;
+  int get total {
+    unsupportedPlatformError();
+  }
 }
+extension type ProgressEventInit._(JSObject _) implements EventInit, JSObject {
+  factory ProgressEventInit({
+    bool? bubbles,
+    bool? cancelable,
+    bool? composed,
+    bool? lengthComputable,
+    int? loaded,
+    int? total,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class ProgressEventInit implements EventInit, JSObject {
   bool get lengthComputable {
     unsupportedPlatformError();
   }

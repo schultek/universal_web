@@ -10,6 +10,7 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
+import '../error.dart';
 import '../js_interop.dart';
 import 'webgl1.dart';
 
@@ -31,20 +32,24 @@ import 'webgl1.dart';
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/OES_draw_buffers_indexed).
-abstract class OES_draw_buffers_indexed implements JSObject {
+extension type OES_draw_buffers_indexed._(JSObject _) implements JSObject {
   /// The `enableiOES()` method of the [OES_draw_buffers_indexed] WebGL
   /// extension enables blending for a particular draw buffer.
   void enableiOES(
     GLenum target,
     GLuint index,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The `disableiOES()` method of the [OES_draw_buffers_indexed] WebGL
   /// extension enables blending for a particular draw buffer.
   void disableiOES(
     GLenum target,
     GLuint index,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The `blendEquationiOES()` method of the `OES_draw_buffers_indexed` WebGL
   /// extension sets both the RGB blend and alpha blend equations for a
@@ -56,7 +61,9 @@ abstract class OES_draw_buffers_indexed implements JSObject {
   void blendEquationiOES(
     GLuint buf,
     GLenum mode,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The `blendEquationSeparateiOES()` method of the [OES_draw_buffers_indexed]
   /// WebGL extension sets the RGB and alpha blend equations separately for a
@@ -69,7 +76,9 @@ abstract class OES_draw_buffers_indexed implements JSObject {
     GLuint buf,
     GLenum modeRGB,
     GLenum modeAlpha,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The `blendFunciOES()` method of the [OES_draw_buffers_indexed] WebGL
   /// extension defines which function is used when blending pixels for a
@@ -82,7 +91,9 @@ abstract class OES_draw_buffers_indexed implements JSObject {
     GLuint buf,
     GLenum src,
     GLenum dst,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The `blendFuncSeparateiOES()` method of the [OES_draw_buffers_indexed]
   /// WebGL extension defines which function is used when blending pixels for
@@ -97,7 +108,9 @@ abstract class OES_draw_buffers_indexed implements JSObject {
     GLenum dstRGB,
     GLenum srcAlpha,
     GLenum dstAlpha,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The `colorMaskiOES()` method of the [OES_draw_buffers_indexed] WebGL
   /// extension sets which color components to enable or to disable when drawing
@@ -109,5 +122,7 @@ abstract class OES_draw_buffers_indexed implements JSObject {
     GLboolean g,
     GLboolean b,
     GLboolean a,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 }

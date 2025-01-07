@@ -15,7 +15,14 @@ import '../js_interop.dart';
 import 'hr_time.dart';
 import 'performance_timeline.dart';
 
-abstract class PerformanceMarkOptions implements JSObject {
+extension type PerformanceMarkOptions._(JSObject _) implements JSObject {
+  factory PerformanceMarkOptions({
+    JSAny? detail,
+    DOMHighResTimeStamp? startTime,
+  }) {
+    unsupportedPlatformError();
+  }
+
   JSAny? get detail {
     unsupportedPlatformError();
   }
@@ -32,8 +39,16 @@ abstract class PerformanceMarkOptions implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type PerformanceMeasureOptions._(JSObject _) implements JSObject {
+  factory PerformanceMeasureOptions({
+    JSAny? detail,
+    JSAny? start,
+    DOMHighResTimeStamp? duration,
+    JSAny? end,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class PerformanceMeasureOptions implements JSObject {
   JSAny? get detail {
     unsupportedPlatformError();
   }
@@ -79,11 +94,21 @@ abstract class PerformanceMeasureOptions implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceMark).
-abstract class PerformanceMark implements PerformanceEntry, JSObject {
+extension type PerformanceMark._(JSObject _)
+    implements PerformanceEntry, JSObject {
+  factory PerformanceMark(
+    String markName, [
+    PerformanceMarkOptions? markOptions,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// The read-only **`detail`** property returns arbitrary metadata that was
   /// included in the mark upon construction (either when using
   /// [Performance.mark] or the [PerformanceMark.PerformanceMark] constructor).
-  JSAny? get detail;
+  JSAny? get detail {
+    unsupportedPlatformError();
+  }
 }
 
 /// **`PerformanceMeasure`** is an _abstract_ interface for [PerformanceEntry]
@@ -96,8 +121,11 @@ abstract class PerformanceMark implements PerformanceEntry, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceMeasure).
-abstract class PerformanceMeasure implements PerformanceEntry, JSObject {
+extension type PerformanceMeasure._(JSObject _)
+    implements PerformanceEntry, JSObject {
   /// The read-only **`detail`** property returns arbitrary metadata that was
   /// included in the mark upon construction (when using [Performance.measure].
-  JSAny? get detail;
+  JSAny? get detail {
+    unsupportedPlatformError();
+  }
 }

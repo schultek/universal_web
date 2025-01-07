@@ -33,7 +33,14 @@ typedef ReadableStreamReaderMode = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream).
-abstract class ReadableStream implements JSObject {
+extension type ReadableStream._(JSObject _) implements JSObject {
+  factory ReadableStream([
+    JSObject? underlyingSource,
+    QueuingStrategy? strategy,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// The **`cancel()`** method of the [ReadableStream] interface returns a
   /// `Promise` that resolves when the stream is canceled.
   ///
@@ -44,13 +51,17 @@ abstract class ReadableStream implements JSObject {
   /// any more.
   /// To read those chunks still and not completely get rid of the stream, you'd
   /// use [ReadableStreamDefaultController.close].
-  JSPromise<JSAny?> cancel([JSAny? reason]);
+  JSPromise<JSAny?> cancel([JSAny? reason]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`getReader()`** method of the [ReadableStream] interface creates a
   /// reader and locks the stream to it.
   /// While the stream is locked, no other reader can be acquired until this one
   /// is released.
-  ReadableStreamReader getReader([ReadableStreamGetReaderOptions options]);
+  ReadableStreamReader getReader([ReadableStreamGetReaderOptions? options]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`pipeThrough()`** method of the [ReadableStream] interface provides
   /// a chainable way of piping the current stream through a transform stream or
@@ -60,8 +71,10 @@ abstract class ReadableStream implements JSObject {
   /// preventing other readers from locking it.
   ReadableStream pipeThrough(
     ReadableWritablePair transform, [
-    StreamPipeOptions options,
-  ]);
+    StreamPipeOptions? options,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`pipeTo()`** method of the [ReadableStream] interface pipes the
   /// current `ReadableStream` to a given [WritableStream] and returns a
@@ -73,8 +86,10 @@ abstract class ReadableStream implements JSObject {
   /// it for the duration of the pipe, preventing other readers from locking it.
   JSPromise<JSAny?> pipeTo(
     WritableStream destination, [
-    StreamPipeOptions options,
-  ]);
+    StreamPipeOptions? options,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`tee()`** method of the
   /// [ReadableStream] interface
@@ -119,7 +134,9 @@ abstract class ReadableStream implements JSObject {
   /// Teeing a stream
   /// will generally lock it for the duration, preventing other readers from
   /// locking it.
-  JSArray<ReadableStream> tee();
+  JSArray<ReadableStream> tee() {
+    unsupportedPlatformError();
+  }
 
   /// The **`locked`** read-only property of the [ReadableStream] interface
   /// returns whether or not the readable stream is locked to a reader.
@@ -129,10 +146,16 @@ abstract class ReadableStream implements JSObject {
   /// A reader might be obtained using
   /// [`ReadableStream.getReader()`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/getReader)
   /// and released using the reader's `releaseLock()` method.
-  bool get locked;
+  bool get locked {
+    unsupportedPlatformError();
+  }
 }
+extension type ReadableStreamGetReaderOptions._(JSObject _)
+    implements JSObject {
+  factory ReadableStreamGetReaderOptions({ReadableStreamReaderMode? mode}) {
+    unsupportedPlatformError();
+  }
 
-abstract class ReadableStreamGetReaderOptions implements JSObject {
   ReadableStreamReaderMode get mode {
     unsupportedPlatformError();
   }
@@ -141,8 +164,14 @@ abstract class ReadableStreamGetReaderOptions implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type ReadableWritablePair._(JSObject _) implements JSObject {
+  factory ReadableWritablePair({
+    required ReadableStream readable,
+    required WritableStream writable,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class ReadableWritablePair implements JSObject {
   ReadableStream get readable {
     unsupportedPlatformError();
   }
@@ -159,8 +188,16 @@ abstract class ReadableWritablePair implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type StreamPipeOptions._(JSObject _) implements JSObject {
+  factory StreamPipeOptions({
+    bool? preventClose,
+    bool? preventAbort,
+    bool? preventCancel,
+    AbortSignal? signal,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class StreamPipeOptions implements JSObject {
   bool get preventClose {
     unsupportedPlatformError();
   }
@@ -218,11 +255,17 @@ abstract class StreamPipeOptions implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamDefaultReader).
-abstract class ReadableStreamDefaultReader implements JSObject {
+extension type ReadableStreamDefaultReader._(JSObject _) implements JSObject {
+  factory ReadableStreamDefaultReader(ReadableStream stream) {
+    unsupportedPlatformError();
+  }
+
   /// The **`read()`** method of the [ReadableStreamDefaultReader] interface
   /// returns a `Promise` providing access to the next chunk in the stream's
   /// internal queue.
-  JSPromise<ReadableStreamReadResult> read();
+  JSPromise<ReadableStreamReadResult> read() {
+    unsupportedPlatformError();
+  }
 
   /// The **`releaseLock()`** method of the [ReadableStreamDefaultReader]
   /// interface releases the reader's lock on the stream.
@@ -237,7 +280,9 @@ abstract class ReadableStreamDefaultReader implements JSObject {
   /// `TypeError`.
   /// Unread chunks remain in the stream's internal queue and can be read later
   /// by acquiring a new reader.
-  void releaseLock();
+  void releaseLock() {
+    unsupportedPlatformError();
+  }
 
   /// The **`cancel()`** method of the
   /// [ReadableStreamDefaultReader] interface returns a `Promise` that resolves
@@ -256,7 +301,9 @@ abstract class ReadableStreamDefaultReader implements JSObject {
   /// > **Note:** If the reader is active, the
   /// > `cancel()` method behaves the same as that for the associated stream
   /// > ([ReadableStream.cancel]).
-  JSPromise<JSAny?> cancel([JSAny? reason]);
+  JSPromise<JSAny?> cancel([JSAny? reason]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`closed`** read-only property of the
   /// [ReadableStreamDefaultReader] interface returns a
@@ -264,10 +311,18 @@ abstract class ReadableStreamDefaultReader implements JSObject {
   /// stream throws an error or the reader's lock is released. This property
   /// enables you
   /// to write code that responds to an end to the streaming process.
-  JSPromise<JSAny?> get closed;
+  JSPromise<JSAny?> get closed {
+    unsupportedPlatformError();
+  }
 }
+extension type ReadableStreamReadResult._(JSObject _) implements JSObject {
+  factory ReadableStreamReadResult({
+    JSAny? value,
+    bool? done,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class ReadableStreamReadResult implements JSObject {
   JSAny? get value {
     unsupportedPlatformError();
   }
@@ -317,7 +372,11 @@ abstract class ReadableStreamReadResult implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamBYOBReader).
-abstract class ReadableStreamBYOBReader implements JSObject {
+extension type ReadableStreamBYOBReader._(JSObject _) implements JSObject {
+  factory ReadableStreamBYOBReader(ReadableStream stream) {
+    unsupportedPlatformError();
+  }
+
   /// The **`read()`** method of the [ReadableStreamBYOBReader] interface is
   /// used to read data into a view on a user-supplied buffer from an associated
   /// [readable byte stream](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API/Using_readable_byte_streams).
@@ -351,8 +410,10 @@ abstract class ReadableStreamBYOBReader implements JSObject {
   /// otherwise.
   JSPromise<ReadableStreamReadResult> read(
     ArrayBufferView view, [
-    ReadableStreamBYOBReaderReadOptions options,
-  ]);
+    ReadableStreamBYOBReaderReadOptions? options,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`releaseLock()`** method of the [ReadableStreamBYOBReader] interface
   /// releases the reader's lock on the stream.
@@ -366,7 +427,9 @@ abstract class ReadableStreamBYOBReader implements JSObject {
   /// method are immediately rejected with a `TypeError`.
   /// Unread chunks remain in the stream's internal queue and can be read later
   /// by acquiring a new reader.
-  void releaseLock();
+  void releaseLock() {
+    unsupportedPlatformError();
+  }
 
   /// The **`cancel()`** method of the [ReadableStreamBYOBReader] interface
   /// returns a `Promise` that resolves when the stream is canceled.
@@ -375,7 +438,9 @@ abstract class ReadableStreamBYOBReader implements JSObject {
   ///
   /// > **Note:** If the reader is active, the `cancel()` method behaves the
   /// > same as that for the associated stream ([ReadableStream.cancel]).
-  JSPromise<JSAny?> cancel([JSAny? reason]);
+  JSPromise<JSAny?> cancel([JSAny? reason]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`closed`** read-only property of the [ReadableStreamBYOBReader]
   /// interface returns a `Promise` that fulfills when the stream closes, or
@@ -383,10 +448,16 @@ abstract class ReadableStreamBYOBReader implements JSObject {
   ///
   /// This property enables you to write code that responds to an end to the
   /// streaming process.
-  JSPromise<JSAny?> get closed;
+  JSPromise<JSAny?> get closed {
+    unsupportedPlatformError();
+  }
 }
+extension type ReadableStreamBYOBReaderReadOptions._(JSObject _)
+    implements JSObject {
+  factory ReadableStreamBYOBReaderReadOptions({int? min}) {
+    unsupportedPlatformError();
+  }
 
-abstract class ReadableStreamBYOBReaderReadOptions implements JSObject {
   int get min {
     unsupportedPlatformError();
   }
@@ -406,7 +477,8 @@ abstract class ReadableStreamBYOBReaderReadOptions implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamDefaultController).
-abstract class ReadableStreamDefaultController implements JSObject {
+extension type ReadableStreamDefaultController._(JSObject _)
+    implements JSObject {
   /// The **`close()`** method of the
   /// [ReadableStreamDefaultController] interface closes the associated stream.
   ///
@@ -417,12 +489,16 @@ abstract class ReadableStreamDefaultController implements JSObject {
   /// rid of the stream and discard any enqueued chunks, you'd use
   /// [ReadableStream.cancel] or
   /// [ReadableStreamDefaultReader.cancel].
-  void close();
+  void close() {
+    unsupportedPlatformError();
+  }
 
   /// The **`enqueue()`** method of the
   /// [ReadableStreamDefaultController] interface enqueues a given chunk in the
   /// associated stream.
-  void enqueue([JSAny? chunk]);
+  void enqueue([JSAny? chunk]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`error()`** method of the
   /// [ReadableStreamDefaultController] interface causes any future interactions
@@ -430,12 +506,16 @@ abstract class ReadableStreamDefaultController implements JSObject {
   ///
   /// > **Note:** The `error()` method can be called
   /// > more than once, and can be called when the stream is not readable.
-  void error([JSAny? e]);
+  void error([JSAny? e]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`desiredSize`** read-only property of the
   /// [ReadableStreamDefaultController] interface returns the desired size
   /// required to fill the stream's internal queue.
-  double? get desiredSize;
+  double? get desiredSize {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`ReadableByteStreamController`** interface of the
@@ -500,7 +580,7 @@ abstract class ReadableStreamDefaultController implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ReadableByteStreamController).
-abstract class ReadableByteStreamController implements JSObject {
+extension type ReadableByteStreamController._(JSObject _) implements JSObject {
   /// The **`close()`** method of the [ReadableByteStreamController] interface
   /// closes the associated stream.
   ///
@@ -513,7 +593,9 @@ abstract class ReadableByteStreamController implements JSObject {
   /// > However if there is an outstanding and partially written
   /// > [ReadableByteStreamController.byobRequest] when `close()` is called, the
   /// > stream will be errored.
-  void close();
+  void close() {
+    unsupportedPlatformError();
+  }
 
   /// The **`enqueue()`** method of the [ReadableByteStreamController] interface
   /// enqueues a given chunk on the associated readable byte stream (the chunk
@@ -521,7 +603,9 @@ abstract class ReadableByteStreamController implements JSObject {
   ///
   /// This should only be used to transfer data to the queue when
   /// [ReadableByteStreamController.byobRequest] is `null`.
-  void enqueue(ArrayBufferView chunk);
+  void enqueue(ArrayBufferView chunk) {
+    unsupportedPlatformError();
+  }
 
   /// The **`error()`** method of the [ReadableByteStreamController] interface
   /// causes any future interactions with the associated stream to error with
@@ -532,7 +616,9 @@ abstract class ReadableByteStreamController implements JSObject {
   /// error).
   /// It can also be called from elsewhere to trigger a stream error, for
   /// example if another part of the system that the stream relies on fails.
-  void error([JSAny? e]);
+  void error([JSAny? e]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`byobRequest`** read-only property of the
   /// [ReadableByteStreamController] interface returns the current BYOB request,
@@ -543,7 +629,9 @@ abstract class ReadableByteStreamController implements JSObject {
   /// [ReadableByteStreamController.enqueue]).
   /// This will result in an efficient zero-byte transfer of the data to the
   /// consumer.
-  ReadableStreamBYOBRequest? get byobRequest;
+  ReadableStreamBYOBRequest? get byobRequest {
+    unsupportedPlatformError();
+  }
 
   /// The **`desiredSize`** read-only property of the
   /// [ReadableByteStreamController] interface returns the number of bytes
@@ -558,7 +646,9 @@ abstract class ReadableByteStreamController implements JSObject {
   /// The `desiredSize` is used to apply
   /// [backpressure](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API/Concepts#backpressure)
   /// from downstream consumers.
-  double? get desiredSize;
+  double? get desiredSize {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`ReadableStreamBYOBRequest`** interface of the
@@ -610,7 +700,7 @@ abstract class ReadableByteStreamController implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamBYOBRequest).
-abstract class ReadableStreamBYOBRequest implements JSObject {
+extension type ReadableStreamBYOBRequest._(JSObject _) implements JSObject {
   /// The **`respond()`** method of the [ReadableStreamBYOBRequest] interface is
   /// used to signal to the associated
   /// [readable byte stream](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API/Using_readable_byte_streams)
@@ -619,7 +709,9 @@ abstract class ReadableStreamBYOBRequest implements JSObject {
   ///
   /// After this method is called, the [ReadableStreamBYOBRequest.view] will be
   /// transferred and no longer modifiable.
-  void respond(int bytesWritten);
+  void respond(int bytesWritten) {
+    unsupportedPlatformError();
+  }
 
   /// The **`respondWithNewView()`** method of the [ReadableStreamBYOBRequest]
   /// interface specifies a new view that the consumer of the associated
@@ -636,11 +728,15 @@ abstract class ReadableStreamBYOBRequest implements JSObject {
   /// For example, the source may transfer the BYOB view to a separate worker
   /// thread, and wait for the worker to transfer it back once it has been
   /// filled.
-  void respondWithNewView(ArrayBufferView view);
+  void respondWithNewView(ArrayBufferView view) {
+    unsupportedPlatformError();
+  }
 
   /// The **`view`** getter property of the [ReadableStreamBYOBRequest]
   /// interface returns the current view.
-  ArrayBufferView? get view;
+  ArrayBufferView? get view {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`WritableStream`** interface of the
@@ -656,12 +752,21 @@ abstract class ReadableStreamBYOBRequest implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WritableStream).
-abstract class WritableStream implements JSObject {
+extension type WritableStream._(JSObject _) implements JSObject {
+  factory WritableStream([
+    JSObject? underlyingSink,
+    QueuingStrategy? strategy,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// The **`abort()`** method of the [WritableStream] interface aborts the
   /// stream, signaling that the producer can no longer successfully write to
   /// the stream and it is to be immediately moved to an error state, with any
   /// queued writes discarded.
-  JSPromise<JSAny?> abort([JSAny? reason]);
+  JSPromise<JSAny?> abort([JSAny? reason]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`close()`** method of the [WritableStream] interface closes the
   /// associated stream. All chunks written before this method is called are
@@ -670,19 +775,25 @@ abstract class WritableStream implements JSObject {
   /// This is equivalent to getting a [WritableStreamDefaultWriter] with
   /// [WritableStream.getWriter], calling [WritableStreamDefaultWriter.close] on
   /// it.
-  JSPromise<JSAny?> close();
+  JSPromise<JSAny?> close() {
+    unsupportedPlatformError();
+  }
 
   /// The **`getWriter()`** method of the [WritableStream] interface returns a
   /// new instance of [WritableStreamDefaultWriter] and locks the stream to that
   /// instance.
   /// While the stream is locked, no other writer can be acquired until this one
   /// is released.
-  WritableStreamDefaultWriter getWriter();
+  WritableStreamDefaultWriter getWriter() {
+    unsupportedPlatformError();
+  }
 
   /// The **`locked`** read-only property of the [WritableStream] interface
   /// returns a boolean indicating whether the `WritableStream` is locked to a
   /// writer.
-  bool get locked;
+  bool get locked {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`WritableStreamDefaultWriter`** interface of the
@@ -695,7 +806,11 @@ abstract class WritableStream implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WritableStreamDefaultWriter).
-abstract class WritableStreamDefaultWriter implements JSObject {
+extension type WritableStreamDefaultWriter._(JSObject _) implements JSObject {
+  factory WritableStreamDefaultWriter(WritableStream stream) {
+    unsupportedPlatformError();
+  }
+
   /// The **`abort()`** method of the
   /// [WritableStreamDefaultWriter] interface aborts the stream, signaling that
   /// the producer can no longer successfully write to the stream and it is to
@@ -705,7 +820,9 @@ abstract class WritableStreamDefaultWriter implements JSObject {
   /// If the writer is active, the `abort()` method behaves the same as that for
   /// the associated stream ([WritableStream.abort]). If not, it returns a
   /// rejected promise.
-  JSPromise<JSAny?> abort([JSAny? reason]);
+  JSPromise<JSAny?> abort([JSAny? reason]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`close()`** method of the
   /// [WritableStreamDefaultWriter] interface closes the associated writable
@@ -716,7 +833,9 @@ abstract class WritableStreamDefaultWriter implements JSObject {
   /// invoking the close behavior. During this time any further attempts to
   /// write will fail
   /// (without erroring the stream).
-  JSPromise<JSAny?> close();
+  JSPromise<JSAny?> close() {
+    unsupportedPlatformError();
+  }
 
   /// The **`releaseLock()`** method of the
   /// [WritableStreamDefaultWriter] interface releases the writer's lock on the
@@ -725,7 +844,9 @@ abstract class WritableStreamDefaultWriter implements JSObject {
   /// associated stream is errored when the lock is released, the writer will
   /// appear errored
   /// in the same way from now on; otherwise, the writer will appear closed.
-  void releaseLock();
+  void releaseLock() {
+    unsupportedPlatformError();
+  }
 
   /// The **`write()`** method of the
   /// [WritableStreamDefaultWriter] interface writes a passed chunk of data to a
@@ -738,18 +859,24 @@ abstract class WritableStreamDefaultWriter implements JSObject {
   /// chunk has been accepted, and not necessarily that it is safely saved to
   /// its ultimate
   /// destination.
-  JSPromise<JSAny?> write([JSAny? chunk]);
+  JSPromise<JSAny?> write([JSAny? chunk]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`closed`** read-only property of the
   /// [WritableStreamDefaultWriter] interface returns a
   /// `Promise` that fulfills if the stream becomes closed, or rejects if
   /// the stream errors or the writer's lock is released.
-  JSPromise<JSAny?> get closed;
+  JSPromise<JSAny?> get closed {
+    unsupportedPlatformError();
+  }
 
   /// The **`desiredSize`** read-only property of the
   /// [WritableStreamDefaultWriter] interface returns the desired size required
   /// to fill the stream's internal queue.
-  double? get desiredSize;
+  double? get desiredSize {
+    unsupportedPlatformError();
+  }
 
   /// The **`ready`** read-only property of the
   /// [WritableStreamDefaultWriter] interface returns a `Promise`
@@ -757,7 +884,9 @@ abstract class WritableStreamDefaultWriter implements JSObject {
   /// transitions from
   /// non-positive to positive, signaling that it is no longer applying
   /// backpressure.
-  JSPromise<JSAny?> get ready;
+  JSPromise<JSAny?> get ready {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`WritableStreamDefaultController`** interface of the
@@ -770,7 +899,8 @@ abstract class WritableStreamDefaultWriter implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WritableStreamDefaultController).
-abstract class WritableStreamDefaultController implements JSObject {
+extension type WritableStreamDefaultController._(JSObject _)
+    implements JSObject {
   /// The **`error()`** method of the
   /// [WritableStreamDefaultController] interface causes any future interactions
   /// with the associated stream to error.
@@ -782,12 +912,16 @@ abstract class WritableStreamDefaultController implements JSObject {
   /// down a stream in response to an event outside the normal lifecycle of
   /// interactions with
   /// the underlying sink.
-  void error([JSAny? e]);
+  void error([JSAny? e]) {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`signal`** property of the
   /// [WritableStreamDefaultController] interface returns the [AbortSignal]
   /// associated with the controller.
-  AbortSignal get signal;
+  AbortSignal get signal {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`TransformStream`** interface of the
@@ -812,16 +946,28 @@ abstract class WritableStreamDefaultController implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/TransformStream).
-abstract class TransformStream implements JSObject {
+extension type TransformStream._(JSObject _) implements JSObject {
+  factory TransformStream([
+    JSObject? transformer,
+    QueuingStrategy? writableStrategy,
+    QueuingStrategy? readableStrategy,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// The **`readable`** read-only property of the [TransformStream] interface
   /// returns the [ReadableStream] instance controlled by this
   /// `TransformStream`.
-  ReadableStream get readable;
+  ReadableStream get readable {
+    unsupportedPlatformError();
+  }
 
   /// The **`writable`** read-only property of the [TransformStream] interface
   /// returns the [WritableStream] instance controlled by this
   /// `TransformStream`.
-  WritableStream get writable;
+  WritableStream get writable {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`TransformStreamDefaultController`** interface of the
@@ -839,24 +985,31 @@ abstract class TransformStream implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/TransformStreamDefaultController).
-abstract class TransformStreamDefaultController implements JSObject {
+extension type TransformStreamDefaultController._(JSObject _)
+    implements JSObject {
   /// The **`enqueue()`** method of the [TransformStreamDefaultController]
   /// interface enqueues the given chunk in the readable side of the stream.
   ///
   /// For more information on readable streams and chunks see
   /// [Using Readable Streams](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API/Using_readable_streams).
-  void enqueue([JSAny? chunk]);
+  void enqueue([JSAny? chunk]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`error()`** method of the [TransformStreamDefaultController]
   /// interface errors both sides of the stream. Any further interactions with
   /// it will fail with the given error message, and any chunks in the queue
   /// will be discarded.
-  void error([JSAny? reason]);
+  void error([JSAny? reason]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`terminate()`** method of the [TransformStreamDefaultController]
   /// interface closes the readable side and errors the writable side of the
   /// stream.
-  void terminate();
+  void terminate() {
+    unsupportedPlatformError();
+  }
 
   /// The **`desiredSize`** read-only property of the
   /// [TransformStreamDefaultController] interface returns the desired size to
@@ -871,10 +1024,18 @@ abstract class TransformStreamDefaultController implements JSObject {
   /// this information to
   /// [manually apply backpressure](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API/Concepts#backpressure)
   /// to manage the queue.
-  double? get desiredSize;
+  double? get desiredSize {
+    unsupportedPlatformError();
+  }
 }
+extension type QueuingStrategy._(JSObject _) implements JSObject {
+  factory QueuingStrategy({
+    num? highWaterMark,
+    QueuingStrategySize? size,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class QueuingStrategy implements JSObject {
   double get highWaterMark {
     unsupportedPlatformError();
   }
@@ -891,8 +1052,11 @@ abstract class QueuingStrategy implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type QueuingStrategyInit._(JSObject _) implements JSObject {
+  factory QueuingStrategyInit({required num highWaterMark}) {
+    unsupportedPlatformError();
+  }
 
-abstract class QueuingStrategyInit implements JSObject {
   double get highWaterMark {
     unsupportedPlatformError();
   }
@@ -911,7 +1075,11 @@ abstract class QueuingStrategyInit implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ByteLengthQueuingStrategy).
-abstract class ByteLengthQueuingStrategy implements JSObject {
+extension type ByteLengthQueuingStrategy._(JSObject _) implements JSObject {
+  factory ByteLengthQueuingStrategy(QueuingStrategyInit init) {
+    unsupportedPlatformError();
+  }
+
   /// The read-only **`ByteLengthQueuingStrategy.highWaterMark`** property
   /// returns the total number of bytes that can be contained in the internal
   /// queue before
@@ -926,12 +1094,16 @@ abstract class ByteLengthQueuingStrategy implements JSObject {
   /// > given a stream of chunks, how many bytes worth of those chunks (rather
   /// > than a count of how many of those chunks) can be contained in the
   /// > internal queue before backpressure is applied.
-  double get highWaterMark;
+  double get highWaterMark {
+    unsupportedPlatformError();
+  }
 
   /// The **`size()`** method of the
   /// [ByteLengthQueuingStrategy] interface returns the given chunk's
   /// `byteLength` property.
-  JSFunction get size;
+  JSFunction get size {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`CountQueuingStrategy`** interface of the
@@ -943,14 +1115,22 @@ abstract class ByteLengthQueuingStrategy implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CountQueuingStrategy).
-abstract class CountQueuingStrategy implements JSObject {
+extension type CountQueuingStrategy._(JSObject _) implements JSObject {
+  factory CountQueuingStrategy(QueuingStrategyInit init) {
+    unsupportedPlatformError();
+  }
+
   /// The read-only **`CountQueuingStrategy.highWaterMark`** property returns
   /// the total number of chunks that can be contained in the internal queue
   /// before backpressure is applied.
-  double get highWaterMark;
+  double get highWaterMark {
+    unsupportedPlatformError();
+  }
 
   /// The **`size()`** method of the
   /// [CountQueuingStrategy] interface always returns `1`, so that the
   /// total queue size is a count of the number of chunks in the queue.
-  JSFunction get size;
+  JSFunction get size {
+    unsupportedPlatformError();
+  }
 }

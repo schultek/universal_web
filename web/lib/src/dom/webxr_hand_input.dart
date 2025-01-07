@@ -10,6 +10,7 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
+import '../error.dart';
 import '../js_interop.dart';
 import 'webxr.dart';
 
@@ -24,7 +25,7 @@ typedef XRHandJoint = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/XRHand).
-abstract class XRHand implements JSObject {}
+extension type XRHand._(JSObject _) implements JSObject {}
 
 /// The **`XRJointSpace`** interface is an [XRSpace] and represents the position
 /// and orientation of an [XRHand] joint.
@@ -33,10 +34,12 @@ abstract class XRHand implements JSObject {}
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/XRJointSpace).
-abstract class XRJointSpace implements XRSpace, JSObject {
+extension type XRJointSpace._(JSObject _) implements XRSpace, JSObject {
   /// The read-only **`jointName`** property of the [XRJointSpace] interface
   /// contains the name of the joint it tracks.
-  XRHandJoint get jointName;
+  XRHandJoint get jointName {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`XRJointPose`** interface is an [XRPose] with additional information
@@ -46,8 +49,10 @@ abstract class XRJointSpace implements XRSpace, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/XRJointPose).
-abstract class XRJointPose implements XRPose, JSObject {
+extension type XRJointPose._(JSObject _) implements XRPose, JSObject {
   /// The read-only **`radius`** property of the [XRJointPose] interface
   /// indicates the radius (distance from skin) for a joint.
-  double get radius;
+  double get radius {
+    unsupportedPlatformError();
+  }
 }

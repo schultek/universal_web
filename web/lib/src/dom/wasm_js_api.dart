@@ -18,8 +18,14 @@ import 'webidl.dart';
 typedef ImportExportKind = String;
 typedef TableKind = String;
 typedef ValueType = String;
+extension type WebAssemblyInstantiatedSource._(JSObject _) implements JSObject {
+  factory WebAssemblyInstantiatedSource({
+    required Module module,
+    required Instance instance,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class WebAssemblyInstantiatedSource implements JSObject {
   Module get module {
     unsupportedPlatformError();
   }
@@ -36,26 +42,45 @@ abstract class WebAssemblyInstantiatedSource implements JSObject {
     unsupportedPlatformError();
   }
 }
-
 $WebAssembly get WebAssembly {
   unsupportedPlatformError();
 }
 
-abstract class $WebAssembly implements JSObject {
-  bool validate(BufferSource bytes);
-  JSPromise<Module> compile(BufferSource bytes);
+extension type $WebAssembly._(JSObject _) implements JSObject {
+  bool validate(BufferSource bytes) {
+    unsupportedPlatformError();
+  }
+
+  JSPromise<Module> compile(BufferSource bytes) {
+    unsupportedPlatformError();
+  }
+
   JSPromise<JSObject> instantiate(
     JSObject bytesOrModuleObject, [
-    JSObject importObject,
-  ]);
-  JSPromise<Module> compileStreaming(JSPromise<Response> source);
+    JSObject? importObject,
+  ]) {
+    unsupportedPlatformError();
+  }
+
+  JSPromise<Module> compileStreaming(JSPromise<Response> source) {
+    unsupportedPlatformError();
+  }
+
   JSPromise<WebAssemblyInstantiatedSource> instantiateStreaming(
     JSPromise<Response> source, [
-    JSObject importObject,
-  ]);
+    JSObject? importObject,
+  ]) {
+    unsupportedPlatformError();
+  }
 }
+extension type ModuleExportDescriptor._(JSObject _) implements JSObject {
+  factory ModuleExportDescriptor({
+    required String name,
+    required ImportExportKind kind,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class ModuleExportDescriptor implements JSObject {
   String get name {
     unsupportedPlatformError();
   }
@@ -72,8 +97,15 @@ abstract class ModuleExportDescriptor implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type ModuleImportDescriptor._(JSObject _) implements JSObject {
+  factory ModuleImportDescriptor({
+    required String module,
+    required String name,
+    required ImportExportKind kind,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class ModuleImportDescriptor implements JSObject {
   String get module {
     unsupportedPlatformError();
   }
@@ -98,8 +130,11 @@ abstract class ModuleImportDescriptor implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type Module._(JSObject _) implements JSObject {
+  factory Module(BufferSource bytes) {
+    unsupportedPlatformError();
+  }
 
-abstract class Module implements JSObject {
   static JSArray<ModuleExportDescriptor> exports(Module moduleObject) {
     unsupportedPlatformError();
   }
@@ -115,14 +150,26 @@ abstract class Module implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type Instance._(JSObject _) implements JSObject {
+  factory Instance(
+    Module module, [
+    JSObject? importObject,
+  ]) {
+    unsupportedPlatformError();
+  }
 
-abstract class Instance implements JSObject {
   JSObject get exports {
     unsupportedPlatformError();
   }
 }
+extension type MemoryDescriptor._(JSObject _) implements JSObject {
+  factory MemoryDescriptor({
+    required int initial,
+    int? maximum,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class MemoryDescriptor implements JSObject {
   int get initial {
     unsupportedPlatformError();
   }
@@ -139,15 +186,28 @@ abstract class MemoryDescriptor implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type Memory._(JSObject _) implements JSObject {
+  factory Memory(MemoryDescriptor descriptor) {
+    unsupportedPlatformError();
+  }
 
-abstract class Memory implements JSObject {
-  int grow(int delta);
+  int grow(int delta) {
+    unsupportedPlatformError();
+  }
+
   JSArrayBuffer get buffer {
     unsupportedPlatformError();
   }
 }
+extension type TableDescriptor._(JSObject _) implements JSObject {
+  factory TableDescriptor({
+    required TableKind element,
+    required int initial,
+    int? maximum,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class TableDescriptor implements JSObject {
   TableKind get element {
     unsupportedPlatformError();
   }
@@ -172,23 +232,44 @@ abstract class TableDescriptor implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type Table._(JSObject _) implements JSObject {
+  factory Table(
+    TableDescriptor descriptor, [
+    JSAny? value,
+  ]) {
+    unsupportedPlatformError();
+  }
 
-abstract class Table implements JSObject {
   int grow(
     int delta, [
     JSAny? value,
-  ]);
-  JSAny? get(int index);
+  ]) {
+    unsupportedPlatformError();
+  }
+
+  JSAny? get(int index) {
+    unsupportedPlatformError();
+  }
+
   void set(
     int index, [
     JSAny? value,
-  ]);
+  ]) {
+    unsupportedPlatformError();
+  }
+
   int get length {
     unsupportedPlatformError();
   }
 }
+extension type GlobalDescriptor._(JSObject _) implements JSObject {
+  factory GlobalDescriptor({
+    required ValueType value,
+    bool? mutable,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class GlobalDescriptor implements JSObject {
   ValueType get value {
     unsupportedPlatformError();
   }
@@ -205,9 +286,18 @@ abstract class GlobalDescriptor implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type Global._(JSObject _) implements JSObject {
+  factory Global(
+    GlobalDescriptor descriptor, [
+    JSAny? v,
+  ]) {
+    unsupportedPlatformError();
+  }
 
-abstract class Global implements JSObject {
-  JSAny? valueOf();
+  JSAny? valueOf() {
+    unsupportedPlatformError();
+  }
+
   JSAny? get value {
     unsupportedPlatformError();
   }

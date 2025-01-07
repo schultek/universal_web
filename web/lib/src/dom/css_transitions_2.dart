@@ -10,6 +10,7 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
+import '../error.dart';
 import '../js_interop.dart';
 import 'cssom.dart';
 import 'web_animations.dart';
@@ -22,7 +23,8 @@ import 'web_animations.dart';
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSStartingStyleRule).
-abstract class CSSStartingStyleRule implements CSSGroupingRule, JSObject {}
+extension type CSSStartingStyleRule._(JSObject _)
+    implements CSSGroupingRule, JSObject {}
 
 /// The **`CSSTransition`** interface of the [Web Animations API] represents an
 /// [Animation] object used for a
@@ -32,10 +34,12 @@ abstract class CSSStartingStyleRule implements CSSGroupingRule, JSObject {}
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSTransition).
-abstract class CSSTransition implements Animation, JSObject {
+extension type CSSTransition._(JSObject _) implements Animation, JSObject {
   /// The **`transitionProperty`** property of the
   /// [CSSTransition] interface returns the **expanded transition property
   /// name** of the transition. This is the longhand CSS property for which the
   /// transition was generated.
-  String get transitionProperty;
+  String get transitionProperty {
+    unsupportedPlatformError();
+  }
 }

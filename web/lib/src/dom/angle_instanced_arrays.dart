@@ -10,6 +10,7 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
+import '../error.dart';
 import '../js_interop.dart';
 import 'webgl1.dart';
 
@@ -38,7 +39,7 @@ import 'webgl1.dart';
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ANGLE_instanced_arrays).
-abstract class ANGLE_instanced_arrays implements JSObject {
+extension type ANGLE_instanced_arrays._(JSObject _) implements JSObject {
   static const GLenum VERTEX_ATTRIB_ARRAY_DIVISOR_ANGLE = 35070;
 
   /// The **`ANGLE_instanced_arrays.drawArraysInstancedANGLE()`** method of the
@@ -54,7 +55,9 @@ abstract class ANGLE_instanced_arrays implements JSObject {
     GLint first,
     GLsizei count,
     GLsizei primcount,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ANGLE_instanced_arrays.drawElementsInstancedANGLE()`** method of
   /// the
@@ -71,7 +74,9 @@ abstract class ANGLE_instanced_arrays implements JSObject {
     GLenum type,
     GLintptr offset,
     GLsizei primcount,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **ANGLE_instanced_arrays.vertexAttribDivisorANGLE()** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -85,5 +90,7 @@ abstract class ANGLE_instanced_arrays implements JSObject {
   void vertexAttribDivisorANGLE(
     GLuint index,
     GLuint divisor,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 }

@@ -10,6 +10,7 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
+import '../error.dart';
 import '../js_interop.dart';
 import 'dom.dart';
 import 'html.dart';
@@ -24,14 +25,22 @@ import 'svg.dart';
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/TimeEvent).
-abstract class TimeEvent implements Event, JSObject {
+extension type TimeEvent._(JSObject _) implements Event, JSObject {
   void initTimeEvent(
     String typeArg,
     Window? viewArg,
     int detailArg,
-  );
-  Window? get view;
-  int get detail;
+  ) {
+    unsupportedPlatformError();
+  }
+
+  Window? get view {
+    unsupportedPlatformError();
+  }
+
+  int get detail {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SVGAnimationElement`** interface is the base interface for all of the
@@ -43,25 +52,60 @@ abstract class TimeEvent implements Event, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimationElement).
-abstract class SVGAnimationElement implements SVGElement, JSObject {
-  double getStartTime();
-  double getCurrentTime();
-  double getSimpleDuration();
-  void beginElement();
-  void beginElementAt(num offset);
-  void endElement();
-  void endElementAt(num offset);
+extension type SVGAnimationElement._(JSObject _)
+    implements SVGElement, JSObject {
+  double getStartTime() {
+    unsupportedPlatformError();
+  }
+
+  double getCurrentTime() {
+    unsupportedPlatformError();
+  }
+
+  double getSimpleDuration() {
+    unsupportedPlatformError();
+  }
+
+  void beginElement() {
+    unsupportedPlatformError();
+  }
+
+  void beginElementAt(num offset) {
+    unsupportedPlatformError();
+  }
+
+  void endElement() {
+    unsupportedPlatformError();
+  }
+
+  void endElementAt(num offset) {
+    unsupportedPlatformError();
+  }
 
   /// The **`SVGAnimationElement.targetElement`** property refers to
   /// the element which is being animated. If no target element is being
   /// animated (for
   /// example, because the `href` attribute specifies an unknown element), the
   /// value returned is `null`.
-  SVGElement? get targetElement;
-  EventHandler get onend;
-  set onend(EventHandler value);
-  SVGStringList get requiredExtensions;
-  SVGStringList get systemLanguage;
+  SVGElement? get targetElement {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onend {
+    unsupportedPlatformError();
+  }
+
+  set onend(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  SVGStringList get requiredExtensions {
+    unsupportedPlatformError();
+  }
+
+  SVGStringList get systemLanguage {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SVGAnimateElement`** interface corresponds to the  element.
@@ -70,7 +114,15 @@ abstract class SVGAnimationElement implements SVGElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimateElement).
-abstract class SVGAnimateElement implements SVGAnimationElement, JSObject {}
+extension type SVGAnimateElement._(JSObject _)
+    implements SVGAnimationElement, JSObject {
+  /// Creates an [SVGAnimateElement] using the tag 'animate'.
+  SVGAnimateElement()
+      : _ = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'animate',
+        );
+}
 
 /// The **`SVGSetElement`** interface corresponds to the  element.
 ///
@@ -78,7 +130,15 @@ abstract class SVGAnimateElement implements SVGAnimationElement, JSObject {}
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGSetElement).
-abstract class SVGSetElement implements SVGAnimationElement, JSObject {}
+extension type SVGSetElement._(JSObject _)
+    implements SVGAnimationElement, JSObject {
+  /// Creates an [SVGSetElement] using the tag 'set'.
+  SVGSetElement()
+      : _ = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'set',
+        );
+}
 
 /// The **`SVGAnimateMotionElement`** interface corresponds to the  element.
 ///
@@ -86,8 +146,15 @@ abstract class SVGSetElement implements SVGAnimationElement, JSObject {}
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimateMotionElement).
-abstract class SVGAnimateMotionElement
-    implements SVGAnimationElement, JSObject {}
+extension type SVGAnimateMotionElement._(JSObject _)
+    implements SVGAnimationElement, JSObject {
+  /// Creates an [SVGAnimateMotionElement] using the tag 'animateMotion'.
+  SVGAnimateMotionElement()
+      : _ = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'animateMotion',
+        );
+}
 
 /// The **`SVGMPathElement`** interface corresponds to the  element.
 ///
@@ -95,8 +162,17 @@ abstract class SVGAnimateMotionElement
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGMPathElement).
-abstract class SVGMPathElement implements SVGElement, JSObject {
-  SVGAnimatedString get href;
+extension type SVGMPathElement._(JSObject _) implements SVGElement, JSObject {
+  /// Creates an [SVGMPathElement] using the tag 'mpath'.
+  SVGMPathElement()
+      : _ = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'mpath',
+        );
+
+  SVGAnimatedString get href {
+    unsupportedPlatformError();
+  }
 }
 
 /// The `SVGAnimateTransformElement` interface corresponds to the  element.
@@ -105,5 +181,12 @@ abstract class SVGMPathElement implements SVGElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimateTransformElement).
-abstract class SVGAnimateTransformElement
-    implements SVGAnimationElement, JSObject {}
+extension type SVGAnimateTransformElement._(JSObject _)
+    implements SVGAnimationElement, JSObject {
+  /// Creates an [SVGAnimateTransformElement] using the tag 'animateTransform'.
+  SVGAnimateTransformElement()
+      : _ = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'animateTransform',
+        );
+}

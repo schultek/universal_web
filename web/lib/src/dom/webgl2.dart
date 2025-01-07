@@ -10,6 +10,7 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
+import '../error.dart';
 import '../js_interop.dart';
 import 'html.dart';
 import 'webgl1.dart';
@@ -43,7 +44,7 @@ typedef Uint32List = JSObject;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WebGLQuery).
-abstract class WebGLQuery implements JSObject {}
+extension type WebGLQuery._(JSObject _) implements JSObject {}
 
 /// The **`WebGLSampler`** interface is part of the
 /// [WebGL 2](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API) API
@@ -62,7 +63,7 @@ abstract class WebGLQuery implements JSObject {}
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WebGLSampler).
-abstract class WebGLSampler implements JSObject {}
+extension type WebGLSampler._(JSObject _) implements JSObject {}
 
 /// The **`WebGLSync`** interface is part of the
 /// [WebGL 2](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API) API
@@ -82,7 +83,7 @@ abstract class WebGLSampler implements JSObject {}
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WebGLSync).
-abstract class WebGLSync implements JSObject {}
+extension type WebGLSync._(JSObject _) implements JSObject {}
 
 /// The **`WebGLTransformFeedback`** interface is part of the
 /// [WebGL 2](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API) API
@@ -108,7 +109,7 @@ abstract class WebGLSync implements JSObject {}
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WebGLTransformFeedback).
-abstract class WebGLTransformFeedback implements JSObject {}
+extension type WebGLTransformFeedback._(JSObject _) implements JSObject {}
 
 /// The **`WebGLVertexArrayObject`** interface is part of the
 /// [WebGL 2 API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API),
@@ -130,7 +131,7 @@ abstract class WebGLTransformFeedback implements JSObject {}
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WebGLVertexArrayObject).
-abstract class WebGLVertexArrayObject implements JSObject {}
+extension type WebGLVertexArrayObject._(JSObject _) implements JSObject {}
 
 /// The **WebGL2RenderingContext** interface provides the OpenGL ES 3.0
 /// rendering context for the drawing surface of an HTML `canvas` element.
@@ -158,7 +159,7 @@ abstract class WebGLVertexArrayObject implements JSObject {}
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext).
-abstract class WebGL2RenderingContext implements JSObject {
+extension type WebGL2RenderingContext._(JSObject _) implements JSObject {
   static const GLenum DEPTH_BUFFER_BIT = 256;
 
   static const GLenum STENCIL_BUFFER_BIT = 1024;
@@ -1277,74 +1278,143 @@ abstract class WebGL2RenderingContext implements JSObject {
 
   static const GLenum MAX_CLIENT_WAIT_TIMEOUT_WEBGL = 37447;
 
-  WebGLContextAttributes? getContextAttributes();
-  bool isContextLost();
-  JSArray<JSString>? getSupportedExtensions();
-  JSObject? getExtension(String name);
-  void activeTexture(GLenum texture);
+  WebGLContextAttributes? getContextAttributes() {
+    unsupportedPlatformError();
+  }
+
+  bool isContextLost() {
+    unsupportedPlatformError();
+  }
+
+  JSArray<JSString>? getSupportedExtensions() {
+    unsupportedPlatformError();
+  }
+
+  JSObject? getExtension(String name) {
+    unsupportedPlatformError();
+  }
+
+  void activeTexture(GLenum texture) {
+    unsupportedPlatformError();
+  }
+
   void attachShader(
     WebGLProgram program,
     WebGLShader shader,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void bindAttribLocation(
     WebGLProgram program,
     GLuint index,
     String name,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void bindBuffer(
     GLenum target,
     WebGLBuffer? buffer,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void bindFramebuffer(
     GLenum target,
     WebGLFramebuffer? framebuffer,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void bindRenderbuffer(
     GLenum target,
     WebGLRenderbuffer? renderbuffer,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void bindTexture(
     GLenum target,
     WebGLTexture? texture,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void blendColor(
     GLclampf red,
     GLclampf green,
     GLclampf blue,
     GLclampf alpha,
-  );
-  void blendEquation(GLenum mode);
+  ) {
+    unsupportedPlatformError();
+  }
+
+  void blendEquation(GLenum mode) {
+    unsupportedPlatformError();
+  }
+
   void blendEquationSeparate(
     GLenum modeRGB,
     GLenum modeAlpha,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void blendFunc(
     GLenum sfactor,
     GLenum dfactor,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void blendFuncSeparate(
     GLenum srcRGB,
     GLenum dstRGB,
     GLenum srcAlpha,
     GLenum dstAlpha,
-  );
-  GLenum checkFramebufferStatus(GLenum target);
-  void clear(GLbitfield mask);
+  ) {
+    unsupportedPlatformError();
+  }
+
+  GLenum checkFramebufferStatus(GLenum target) {
+    unsupportedPlatformError();
+  }
+
+  void clear(GLbitfield mask) {
+    unsupportedPlatformError();
+  }
+
   void clearColor(
     GLclampf red,
     GLclampf green,
     GLclampf blue,
     GLclampf alpha,
-  );
-  void clearDepth(GLclampf depth);
-  void clearStencil(GLint s);
+  ) {
+    unsupportedPlatformError();
+  }
+
+  void clearDepth(GLclampf depth) {
+    unsupportedPlatformError();
+  }
+
+  void clearStencil(GLint s) {
+    unsupportedPlatformError();
+  }
+
   void colorMask(
     GLboolean red,
     GLboolean green,
     GLboolean blue,
     GLboolean alpha,
-  );
-  void compileShader(WebGLShader shader);
+  ) {
+    unsupportedPlatformError();
+  }
+
+  void compileShader(WebGLShader shader) {
+    unsupportedPlatformError();
+  }
+
   void copyTexImage2D(
     GLenum target,
     GLint level,
@@ -1354,7 +1424,10 @@ abstract class WebGL2RenderingContext implements JSObject {
     GLsizei width,
     GLsizei height,
     GLint border,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void copyTexSubImage2D(
     GLenum target,
     GLint level,
@@ -1364,287 +1437,563 @@ abstract class WebGL2RenderingContext implements JSObject {
     GLint y,
     GLsizei width,
     GLsizei height,
-  );
-  WebGLBuffer? createBuffer();
-  WebGLFramebuffer? createFramebuffer();
-  WebGLProgram? createProgram();
-  WebGLRenderbuffer? createRenderbuffer();
-  WebGLShader? createShader(GLenum type);
-  WebGLTexture? createTexture();
-  void cullFace(GLenum mode);
-  void deleteBuffer(WebGLBuffer? buffer);
-  void deleteFramebuffer(WebGLFramebuffer? framebuffer);
-  void deleteProgram(WebGLProgram? program);
-  void deleteRenderbuffer(WebGLRenderbuffer? renderbuffer);
-  void deleteShader(WebGLShader? shader);
-  void deleteTexture(WebGLTexture? texture);
-  void depthFunc(GLenum func);
-  void depthMask(GLboolean flag);
+  ) {
+    unsupportedPlatformError();
+  }
+
+  WebGLBuffer? createBuffer() {
+    unsupportedPlatformError();
+  }
+
+  WebGLFramebuffer? createFramebuffer() {
+    unsupportedPlatformError();
+  }
+
+  WebGLProgram? createProgram() {
+    unsupportedPlatformError();
+  }
+
+  WebGLRenderbuffer? createRenderbuffer() {
+    unsupportedPlatformError();
+  }
+
+  WebGLShader? createShader(GLenum type) {
+    unsupportedPlatformError();
+  }
+
+  WebGLTexture? createTexture() {
+    unsupportedPlatformError();
+  }
+
+  void cullFace(GLenum mode) {
+    unsupportedPlatformError();
+  }
+
+  void deleteBuffer(WebGLBuffer? buffer) {
+    unsupportedPlatformError();
+  }
+
+  void deleteFramebuffer(WebGLFramebuffer? framebuffer) {
+    unsupportedPlatformError();
+  }
+
+  void deleteProgram(WebGLProgram? program) {
+    unsupportedPlatformError();
+  }
+
+  void deleteRenderbuffer(WebGLRenderbuffer? renderbuffer) {
+    unsupportedPlatformError();
+  }
+
+  void deleteShader(WebGLShader? shader) {
+    unsupportedPlatformError();
+  }
+
+  void deleteTexture(WebGLTexture? texture) {
+    unsupportedPlatformError();
+  }
+
+  void depthFunc(GLenum func) {
+    unsupportedPlatformError();
+  }
+
+  void depthMask(GLboolean flag) {
+    unsupportedPlatformError();
+  }
+
   void depthRange(
     GLclampf zNear,
     GLclampf zFar,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void detachShader(
     WebGLProgram program,
     WebGLShader shader,
-  );
-  void disable(GLenum cap);
-  void disableVertexAttribArray(GLuint index);
+  ) {
+    unsupportedPlatformError();
+  }
+
+  void disable(GLenum cap) {
+    unsupportedPlatformError();
+  }
+
+  void disableVertexAttribArray(GLuint index) {
+    unsupportedPlatformError();
+  }
+
   void drawArrays(
     GLenum mode,
     GLint first,
     GLsizei count,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void drawElements(
     GLenum mode,
     GLsizei count,
     GLenum type,
     GLintptr offset,
-  );
-  void enable(GLenum cap);
-  void enableVertexAttribArray(GLuint index);
-  void finish();
-  void flush();
+  ) {
+    unsupportedPlatformError();
+  }
+
+  void enable(GLenum cap) {
+    unsupportedPlatformError();
+  }
+
+  void enableVertexAttribArray(GLuint index) {
+    unsupportedPlatformError();
+  }
+
+  void finish() {
+    unsupportedPlatformError();
+  }
+
+  void flush() {
+    unsupportedPlatformError();
+  }
+
   void framebufferRenderbuffer(
     GLenum target,
     GLenum attachment,
     GLenum renderbuffertarget,
     WebGLRenderbuffer? renderbuffer,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void framebufferTexture2D(
     GLenum target,
     GLenum attachment,
     GLenum textarget,
     WebGLTexture? texture,
     GLint level,
-  );
-  void frontFace(GLenum mode);
-  void generateMipmap(GLenum target);
+  ) {
+    unsupportedPlatformError();
+  }
+
+  void frontFace(GLenum mode) {
+    unsupportedPlatformError();
+  }
+
+  void generateMipmap(GLenum target) {
+    unsupportedPlatformError();
+  }
+
   WebGLActiveInfo? getActiveAttrib(
     WebGLProgram program,
     GLuint index,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   WebGLActiveInfo? getActiveUniform(
     WebGLProgram program,
     GLuint index,
-  );
-  JSArray<WebGLShader>? getAttachedShaders(WebGLProgram program);
+  ) {
+    unsupportedPlatformError();
+  }
+
+  JSArray<WebGLShader>? getAttachedShaders(WebGLProgram program) {
+    unsupportedPlatformError();
+  }
+
   GLint getAttribLocation(
     WebGLProgram program,
     String name,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   JSAny? getBufferParameter(
     GLenum target,
     GLenum pname,
-  );
-  JSAny? getParameter(GLenum pname);
-  GLenum getError();
+  ) {
+    unsupportedPlatformError();
+  }
+
+  JSAny? getParameter(GLenum pname) {
+    unsupportedPlatformError();
+  }
+
+  GLenum getError() {
+    unsupportedPlatformError();
+  }
+
   JSAny? getFramebufferAttachmentParameter(
     GLenum target,
     GLenum attachment,
     GLenum pname,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   JSAny? getProgramParameter(
     WebGLProgram program,
     GLenum pname,
-  );
-  String? getProgramInfoLog(WebGLProgram program);
+  ) {
+    unsupportedPlatformError();
+  }
+
+  String? getProgramInfoLog(WebGLProgram program) {
+    unsupportedPlatformError();
+  }
+
   JSAny? getRenderbufferParameter(
     GLenum target,
     GLenum pname,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   JSAny? getShaderParameter(
     WebGLShader shader,
     GLenum pname,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   WebGLShaderPrecisionFormat? getShaderPrecisionFormat(
     GLenum shadertype,
     GLenum precisiontype,
-  );
-  String? getShaderInfoLog(WebGLShader shader);
-  String? getShaderSource(WebGLShader shader);
+  ) {
+    unsupportedPlatformError();
+  }
+
+  String? getShaderInfoLog(WebGLShader shader) {
+    unsupportedPlatformError();
+  }
+
+  String? getShaderSource(WebGLShader shader) {
+    unsupportedPlatformError();
+  }
+
   JSAny? getTexParameter(
     GLenum target,
     GLenum pname,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   JSAny? getUniform(
     WebGLProgram program,
     WebGLUniformLocation location,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   WebGLUniformLocation? getUniformLocation(
     WebGLProgram program,
     String name,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   JSAny? getVertexAttrib(
     GLuint index,
     GLenum pname,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   GLintptr getVertexAttribOffset(
     GLuint index,
     GLenum pname,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void hint(
     GLenum target,
     GLenum mode,
-  );
-  GLboolean isBuffer(WebGLBuffer? buffer);
-  GLboolean isEnabled(GLenum cap);
-  GLboolean isFramebuffer(WebGLFramebuffer? framebuffer);
-  GLboolean isProgram(WebGLProgram? program);
-  GLboolean isRenderbuffer(WebGLRenderbuffer? renderbuffer);
-  GLboolean isShader(WebGLShader? shader);
-  GLboolean isTexture(WebGLTexture? texture);
-  void lineWidth(GLfloat width);
-  void linkProgram(WebGLProgram program);
+  ) {
+    unsupportedPlatformError();
+  }
+
+  GLboolean isBuffer(WebGLBuffer? buffer) {
+    unsupportedPlatformError();
+  }
+
+  GLboolean isEnabled(GLenum cap) {
+    unsupportedPlatformError();
+  }
+
+  GLboolean isFramebuffer(WebGLFramebuffer? framebuffer) {
+    unsupportedPlatformError();
+  }
+
+  GLboolean isProgram(WebGLProgram? program) {
+    unsupportedPlatformError();
+  }
+
+  GLboolean isRenderbuffer(WebGLRenderbuffer? renderbuffer) {
+    unsupportedPlatformError();
+  }
+
+  GLboolean isShader(WebGLShader? shader) {
+    unsupportedPlatformError();
+  }
+
+  GLboolean isTexture(WebGLTexture? texture) {
+    unsupportedPlatformError();
+  }
+
+  void lineWidth(GLfloat width) {
+    unsupportedPlatformError();
+  }
+
+  void linkProgram(WebGLProgram program) {
+    unsupportedPlatformError();
+  }
+
   void pixelStorei(
     GLenum pname,
     GLint param,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void polygonOffset(
     GLfloat factor,
     GLfloat units,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void renderbufferStorage(
     GLenum target,
     GLenum internalformat,
     GLsizei width,
     GLsizei height,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void sampleCoverage(
     GLclampf value,
     GLboolean invert,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void scissor(
     GLint x,
     GLint y,
     GLsizei width,
     GLsizei height,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void shaderSource(
     WebGLShader shader,
     String source,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void stencilFunc(
     GLenum func,
     GLint ref,
     GLuint mask,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void stencilFuncSeparate(
     GLenum face,
     GLenum func,
     GLint ref,
     GLuint mask,
-  );
-  void stencilMask(GLuint mask);
+  ) {
+    unsupportedPlatformError();
+  }
+
+  void stencilMask(GLuint mask) {
+    unsupportedPlatformError();
+  }
+
   void stencilMaskSeparate(
     GLenum face,
     GLuint mask,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void stencilOp(
     GLenum fail,
     GLenum zfail,
     GLenum zpass,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void stencilOpSeparate(
     GLenum face,
     GLenum fail,
     GLenum zfail,
     GLenum zpass,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void texParameterf(
     GLenum target,
     GLenum pname,
     GLfloat param,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void texParameteri(
     GLenum target,
     GLenum pname,
     GLint param,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void uniform1f(
     WebGLUniformLocation? location,
     GLfloat x,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void uniform2f(
     WebGLUniformLocation? location,
     GLfloat x,
     GLfloat y,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void uniform3f(
     WebGLUniformLocation? location,
     GLfloat x,
     GLfloat y,
     GLfloat z,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void uniform4f(
     WebGLUniformLocation? location,
     GLfloat x,
     GLfloat y,
     GLfloat z,
     GLfloat w,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void uniform1i(
     WebGLUniformLocation? location,
     GLint x,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void uniform2i(
     WebGLUniformLocation? location,
     GLint x,
     GLint y,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void uniform3i(
     WebGLUniformLocation? location,
     GLint x,
     GLint y,
     GLint z,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void uniform4i(
     WebGLUniformLocation? location,
     GLint x,
     GLint y,
     GLint z,
     GLint w,
-  );
-  void useProgram(WebGLProgram? program);
-  void validateProgram(WebGLProgram program);
+  ) {
+    unsupportedPlatformError();
+  }
+
+  void useProgram(WebGLProgram? program) {
+    unsupportedPlatformError();
+  }
+
+  void validateProgram(WebGLProgram program) {
+    unsupportedPlatformError();
+  }
+
   void vertexAttrib1f(
     GLuint index,
     GLfloat x,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void vertexAttrib2f(
     GLuint index,
     GLfloat x,
     GLfloat y,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void vertexAttrib3f(
     GLuint index,
     GLfloat x,
     GLfloat y,
     GLfloat z,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void vertexAttrib4f(
     GLuint index,
     GLfloat x,
     GLfloat y,
     GLfloat z,
     GLfloat w,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void vertexAttrib1fv(
     GLuint index,
     Float32List values,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void vertexAttrib2fv(
     GLuint index,
     Float32List values,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void vertexAttrib3fv(
     GLuint index,
     Float32List values,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void vertexAttrib4fv(
     GLuint index,
     Float32List values,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void vertexAttribPointer(
     GLuint index,
     GLint size,
@@ -1652,14 +2001,22 @@ abstract class WebGL2RenderingContext implements JSObject {
     GLboolean normalized,
     GLsizei stride,
     GLintptr offset,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void viewport(
     GLint x,
     GLint y,
     GLsizei width,
     GLsizei height,
-  );
-  JSPromise<JSAny?> makeXRCompatible();
+  ) {
+    unsupportedPlatformError();
+  }
+
+  JSPromise<JSAny?> makeXRCompatible() {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGL2RenderingContext.copyBufferSubData()`** method of
   /// the
@@ -1672,7 +2029,9 @@ abstract class WebGL2RenderingContext implements JSObject {
     GLintptr readOffset,
     GLintptr writeOffset,
     GLsizeiptr size,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGL2RenderingContext.getBufferSubData()`** method of
   /// the
@@ -1684,9 +2043,11 @@ abstract class WebGL2RenderingContext implements JSObject {
     GLenum target,
     GLintptr srcByteOffset,
     ArrayBufferView dstBuffer, [
-    int dstOffset,
-    GLuint length,
-  ]);
+    int? dstOffset,
+    GLuint? length,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGL2RenderingContext.blitFramebuffer()`** method of
   /// the
@@ -1706,7 +2067,9 @@ abstract class WebGL2RenderingContext implements JSObject {
     GLint dstY1,
     GLbitfield mask,
     GLenum filter,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGL2RenderingContext.framebufferTextureLayer()`**
   /// method of the
@@ -1723,7 +2086,9 @@ abstract class WebGL2RenderingContext implements JSObject {
     WebGLTexture? texture,
     GLint level,
     GLint layer,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGL2RenderingContext.invalidateFramebuffer()`** method
   /// of the
@@ -1733,7 +2098,9 @@ abstract class WebGL2RenderingContext implements JSObject {
   void invalidateFramebuffer(
     GLenum target,
     JSArray<JSNumber> attachments,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGL2RenderingContext.invalidateSubFramebuffer()`**
   /// method of the
@@ -1747,7 +2114,9 @@ abstract class WebGL2RenderingContext implements JSObject {
     GLint y,
     GLsizei width,
     GLsizei height,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGL2RenderingContext.readBuffer()`** method of the
   /// [WebGL 2 API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -1757,7 +2126,9 @@ abstract class WebGL2RenderingContext implements JSObject {
   /// [WebGLRenderingContext.copyTexSubImage2D],
   /// [WebGL2RenderingContext.copyTexSubImage3D] or
   /// [WebGLRenderingContext.readPixels].
-  void readBuffer(GLenum src);
+  void readBuffer(GLenum src) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGL2RenderingContext.getInternalformatParameter()`**
   /// method of the
@@ -1768,7 +2139,9 @@ abstract class WebGL2RenderingContext implements JSObject {
     GLenum target,
     GLenum internalformat,
     GLenum pname,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`WebGL2RenderingContext.renderbufferStorageMultisample()`**
@@ -1784,7 +2157,9 @@ abstract class WebGL2RenderingContext implements JSObject {
     GLenum internalformat,
     GLsizei width,
     GLsizei height,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGL2RenderingContext.texStorage2D()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -1796,7 +2171,9 @@ abstract class WebGL2RenderingContext implements JSObject {
     GLenum internalformat,
     GLsizei width,
     GLsizei height,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGL2RenderingContext.texStorage3D()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -1809,7 +2186,9 @@ abstract class WebGL2RenderingContext implements JSObject {
     GLsizei width,
     GLsizei height,
     GLsizei depth,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.texImage3D()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -1826,8 +2205,10 @@ abstract class WebGL2RenderingContext implements JSObject {
     GLenum format,
     GLenum type,
     JSAny? pboOffsetOrSourceOrSrcData, [
-    int srcOffset,
-  ]);
+    int? srcOffset,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGL2RenderingContext.texSubImage3D()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -1845,8 +2226,10 @@ abstract class WebGL2RenderingContext implements JSObject {
     GLenum format,
     GLenum type,
     JSAny? pboOffsetOrSourceOrSrcData, [
-    int srcOffset,
-  ]);
+    int? srcOffset,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGL2RenderingContext.copyTexSubImage3D()`** method of
   /// the
@@ -1863,7 +2246,10 @@ abstract class WebGL2RenderingContext implements JSObject {
     GLint y,
     GLsizei width,
     GLsizei height,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void compressedTexImage3D(
     GLenum target,
     GLint level,
@@ -1873,9 +2259,11 @@ abstract class WebGL2RenderingContext implements JSObject {
     GLsizei depth,
     GLint border,
     JSAny imageSizeOrSrcData, [
-    JSAny offsetOrSrcOffset,
-    GLuint srcLengthOverride,
-  ]);
+    JSAny? offsetOrSrcOffset,
+    GLuint? srcLengthOverride,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGL2RenderingContext.compressedTexSubImage3D()`**
   /// method of the
@@ -1894,9 +2282,11 @@ abstract class WebGL2RenderingContext implements JSObject {
     GLsizei depth,
     GLenum format,
     JSAny imageSizeOrSrcData, [
-    JSAny offsetOrSrcOffset,
-    GLuint srcLengthOverride,
-  ]);
+    JSAny? offsetOrSrcOffset,
+    GLuint? srcLengthOverride,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGL2RenderingContext.getFragDataLocation()`** method
   /// of the
@@ -1906,117 +2296,173 @@ abstract class WebGL2RenderingContext implements JSObject {
   GLint getFragDataLocation(
     WebGLProgram program,
     String name,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void uniform1ui(
     WebGLUniformLocation? location,
     GLuint v0,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void uniform2ui(
     WebGLUniformLocation? location,
     GLuint v0,
     GLuint v1,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void uniform3ui(
     WebGLUniformLocation? location,
     GLuint v0,
     GLuint v1,
     GLuint v2,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void uniform4ui(
     WebGLUniformLocation? location,
     GLuint v0,
     GLuint v1,
     GLuint v2,
     GLuint v3,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void uniform1uiv(
     WebGLUniformLocation? location,
     Uint32List data, [
-    int srcOffset,
-    GLuint srcLength,
-  ]);
+    int? srcOffset,
+    GLuint? srcLength,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   void uniform2uiv(
     WebGLUniformLocation? location,
     Uint32List data, [
-    int srcOffset,
-    GLuint srcLength,
-  ]);
+    int? srcOffset,
+    GLuint? srcLength,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   void uniform3uiv(
     WebGLUniformLocation? location,
     Uint32List data, [
-    int srcOffset,
-    GLuint srcLength,
-  ]);
+    int? srcOffset,
+    GLuint? srcLength,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   void uniform4uiv(
     WebGLUniformLocation? location,
     Uint32List data, [
-    int srcOffset,
-    GLuint srcLength,
-  ]);
+    int? srcOffset,
+    GLuint? srcLength,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   void uniformMatrix3x2fv(
     WebGLUniformLocation? location,
     GLboolean transpose,
     Float32List data, [
-    int srcOffset,
-    GLuint srcLength,
-  ]);
+    int? srcOffset,
+    GLuint? srcLength,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   void uniformMatrix4x2fv(
     WebGLUniformLocation? location,
     GLboolean transpose,
     Float32List data, [
-    int srcOffset,
-    GLuint srcLength,
-  ]);
+    int? srcOffset,
+    GLuint? srcLength,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   void uniformMatrix2x3fv(
     WebGLUniformLocation? location,
     GLboolean transpose,
     Float32List data, [
-    int srcOffset,
-    GLuint srcLength,
-  ]);
+    int? srcOffset,
+    GLuint? srcLength,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   void uniformMatrix4x3fv(
     WebGLUniformLocation? location,
     GLboolean transpose,
     Float32List data, [
-    int srcOffset,
-    GLuint srcLength,
-  ]);
+    int? srcOffset,
+    GLuint? srcLength,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   void uniformMatrix2x4fv(
     WebGLUniformLocation? location,
     GLboolean transpose,
     Float32List data, [
-    int srcOffset,
-    GLuint srcLength,
-  ]);
+    int? srcOffset,
+    GLuint? srcLength,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   void uniformMatrix3x4fv(
     WebGLUniformLocation? location,
     GLboolean transpose,
     Float32List data, [
-    int srcOffset,
-    GLuint srcLength,
-  ]);
+    int? srcOffset,
+    GLuint? srcLength,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   void vertexAttribI4i(
     GLuint index,
     GLint x,
     GLint y,
     GLint z,
     GLint w,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void vertexAttribI4iv(
     GLuint index,
     Int32List values,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void vertexAttribI4ui(
     GLuint index,
     GLuint x,
     GLuint y,
     GLuint z,
     GLuint w,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void vertexAttribI4uiv(
     GLuint index,
     Uint32List values,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGL2RenderingContext.vertexAttribIPointer()`** method
   /// of the
@@ -2029,7 +2475,9 @@ abstract class WebGL2RenderingContext implements JSObject {
     GLenum type,
     GLsizei stride,
     GLintptr offset,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGL2RenderingContext.vertexAttribDivisor()`** method
   /// of the
@@ -2046,7 +2494,9 @@ abstract class WebGL2RenderingContext implements JSObject {
   void vertexAttribDivisor(
     GLuint index,
     GLuint divisor,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGL2RenderingContext.drawArraysInstanced()`** method
   /// of the
@@ -2064,7 +2514,9 @@ abstract class WebGL2RenderingContext implements JSObject {
     GLint first,
     GLsizei count,
     GLsizei instanceCount,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGL2RenderingContext.drawElementsInstanced()`** method
   /// of the
@@ -2083,7 +2535,9 @@ abstract class WebGL2RenderingContext implements JSObject {
     GLenum type,
     GLintptr offset,
     GLsizei instanceCount,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGL2RenderingContext.drawRangeElements()`** method of
   /// the
@@ -2097,7 +2551,9 @@ abstract class WebGL2RenderingContext implements JSObject {
     GLsizei count,
     GLenum type,
     GLintptr offset,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGL2RenderingContext.drawBuffers()`** method of the
   /// [WebGL 2 API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -2106,50 +2562,70 @@ abstract class WebGL2RenderingContext implements JSObject {
   /// state of the
   /// currently bound framebuffer or the drawingbuffer if no framebuffer is
   /// bound.
-  void drawBuffers(JSArray<JSNumber> buffers);
+  void drawBuffers(JSArray<JSNumber> buffers) {
+    unsupportedPlatformError();
+  }
+
   void clearBufferfv(
     GLenum buffer,
     GLint drawbuffer,
     Float32List values, [
-    int srcOffset,
-  ]);
+    int? srcOffset,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   void clearBufferiv(
     GLenum buffer,
     GLint drawbuffer,
     Int32List values, [
-    int srcOffset,
-  ]);
+    int? srcOffset,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   void clearBufferuiv(
     GLenum buffer,
     GLint drawbuffer,
     Uint32List values, [
-    int srcOffset,
-  ]);
+    int? srcOffset,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   void clearBufferfi(
     GLenum buffer,
     GLint drawbuffer,
     GLfloat depth,
     GLint stencil,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGL2RenderingContext.createQuery()`** method of the
   /// [WebGL 2 API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// creates and initializes
   /// [WebGLQuery] objects, which provide ways to asynchronously query for
   /// information.
-  WebGLQuery? createQuery();
+  WebGLQuery? createQuery() {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGL2RenderingContext.deleteQuery()`** method of the
   /// [WebGL 2 API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// deletes a given
   /// [WebGLQuery] object.
-  void deleteQuery(WebGLQuery? query);
+  void deleteQuery(WebGLQuery? query) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGL2RenderingContext.isQuery()`** method of the
   /// [WebGL 2 API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// returns `true` if the
   /// passed object is a valid [WebGLQuery] object.
-  GLboolean isQuery(WebGLQuery? query);
+  GLboolean isQuery(WebGLQuery? query) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGL2RenderingContext.beginQuery()`** method of the
   /// [WebGL 2 API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -2158,13 +2634,17 @@ abstract class WebGL2RenderingContext implements JSObject {
   void beginQuery(
     GLenum target,
     WebGLQuery query,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGL2RenderingContext.endQuery()`** method of the
   /// [WebGL 2 API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// marks the end of a given query
   /// target.
-  void endQuery(GLenum target);
+  void endQuery(GLenum target) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGL2RenderingContext.getQuery()`** method of the
   /// [WebGL 2 API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -2174,7 +2654,9 @@ abstract class WebGL2RenderingContext implements JSObject {
   WebGLQuery? getQuery(
     GLenum target,
     GLenum pname,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGL2RenderingContext.getQueryParameter()`** method of
   /// the
@@ -2184,25 +2666,33 @@ abstract class WebGL2RenderingContext implements JSObject {
   JSAny? getQueryParameter(
     WebGLQuery query,
     GLenum pname,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGL2RenderingContext.createSampler()`** method of the
   /// [WebGL 2 API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// creates and initializes
   /// [WebGLSampler] objects.
-  WebGLSampler? createSampler();
+  WebGLSampler? createSampler() {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGL2RenderingContext.deleteSampler()`** method of the
   /// [WebGL 2 API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// deletes a given
   /// [WebGLSampler] object.
-  void deleteSampler(WebGLSampler? sampler);
+  void deleteSampler(WebGLSampler? sampler) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGL2RenderingContext.isSampler()`** method of the
   /// [WebGL 2 API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// returns `true` if the
   /// passed object is a valid [WebGLSampler] object.
-  GLboolean isSampler(WebGLSampler? sampler);
+  GLboolean isSampler(WebGLSampler? sampler) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGL2RenderingContext.bindSampler()`** method of the
   /// [WebGL 2 API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -2211,17 +2701,25 @@ abstract class WebGL2RenderingContext implements JSObject {
   void bindSampler(
     GLuint unit,
     WebGLSampler? sampler,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void samplerParameteri(
     WebGLSampler sampler,
     GLenum pname,
     GLint param,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void samplerParameterf(
     WebGLSampler sampler,
     GLenum pname,
     GLfloat param,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGL2RenderingContext.getSamplerParameter()`** method
   /// of the
@@ -2231,7 +2729,9 @@ abstract class WebGL2RenderingContext implements JSObject {
   JSAny? getSamplerParameter(
     WebGLSampler sampler,
     GLenum pname,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGL2RenderingContext.fenceSync()`** method of the
   /// [WebGL 2 API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -2240,19 +2740,25 @@ abstract class WebGL2RenderingContext implements JSObject {
   WebGLSync? fenceSync(
     GLenum condition,
     GLbitfield flags,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGL2RenderingContext.isSync()`** method of the
   /// [WebGL 2 API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// returns `true` if the
   /// passed object is a valid [WebGLSync] object.
-  GLboolean isSync(WebGLSync? sync);
+  GLboolean isSync(WebGLSync? sync) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGL2RenderingContext.deleteSync()`** method of the
   /// [WebGL 2 API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// deletes a given
   /// [WebGLSync] object.
-  void deleteSync(WebGLSync? sync);
+  void deleteSync(WebGLSync? sync) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGL2RenderingContext.clientWaitSync()`** method of the
   /// [WebGL 2 API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -2262,7 +2768,9 @@ abstract class WebGL2RenderingContext implements JSObject {
     WebGLSync sync,
     GLbitfield flags,
     GLuint64 timeout,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGL2RenderingContext.waitSync()`** method of the
   /// [WebGL 2 API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -2276,7 +2784,9 @@ abstract class WebGL2RenderingContext implements JSObject {
     WebGLSync sync,
     GLbitfield flags,
     GLint64 timeout,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGL2RenderingContext.getSyncParameter()`** method of
   /// the
@@ -2286,28 +2796,36 @@ abstract class WebGL2RenderingContext implements JSObject {
   JSAny? getSyncParameter(
     WebGLSync sync,
     GLenum pname,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGL2RenderingContext.createTransformFeedback()`**
   /// method of the
   /// [WebGL 2 API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// creates and
   /// initializes [WebGLTransformFeedback] objects.
-  WebGLTransformFeedback? createTransformFeedback();
+  WebGLTransformFeedback? createTransformFeedback() {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGL2RenderingContext.deleteTransformFeedback()`**
   /// method of the
   /// [WebGL 2 API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// deletes a given
   /// [WebGLTransformFeedback] object.
-  void deleteTransformFeedback(WebGLTransformFeedback? tf);
+  void deleteTransformFeedback(WebGLTransformFeedback? tf) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGL2RenderingContext.isTransformFeedback()`** method
   /// of the
   /// [WebGL 2 API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// returns `true`
   /// if the passed object is a valid [WebGLTransformFeedback] object.
-  GLboolean isTransformFeedback(WebGLTransformFeedback? tf);
+  GLboolean isTransformFeedback(WebGLTransformFeedback? tf) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGL2RenderingContext.bindTransformFeedback()`** method
   /// of the
@@ -2317,21 +2835,27 @@ abstract class WebGL2RenderingContext implements JSObject {
   void bindTransformFeedback(
     GLenum target,
     WebGLTransformFeedback? tf,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGL2RenderingContext.beginTransformFeedback()`**
   /// method of the
   /// [WebGL 2 API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// starts a transform
   /// feedback operation.
-  void beginTransformFeedback(GLenum primitiveMode);
+  void beginTransformFeedback(GLenum primitiveMode) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGL2RenderingContext.endTransformFeedback()`** method
   /// of the
   /// [WebGL 2 API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// ends a transform feedback
   /// operation.
-  void endTransformFeedback();
+  void endTransformFeedback() {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGL2RenderingContext.transformFeedbackVaryings()`**
   /// method of the
@@ -2342,7 +2866,9 @@ abstract class WebGL2RenderingContext implements JSObject {
     WebGLProgram program,
     JSArray<JSString> varyings,
     GLenum bufferMode,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGL2RenderingContext.getTransformFeedbackVarying()`**
   /// method of the
@@ -2352,21 +2878,27 @@ abstract class WebGL2RenderingContext implements JSObject {
   WebGLActiveInfo? getTransformFeedbackVarying(
     WebGLProgram program,
     GLuint index,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGL2RenderingContext.pauseTransformFeedback()`**
   /// method of the
   /// [WebGL 2 API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// pauses a transform
   /// feedback operation.
-  void pauseTransformFeedback();
+  void pauseTransformFeedback() {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGL2RenderingContext.resumeTransformFeedback()`**
   /// method of the
   /// [WebGL 2 API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// resumes a
   /// transform feedback operation.
-  void resumeTransformFeedback();
+  void resumeTransformFeedback() {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGL2RenderingContext.bindBufferBase()`** method of the
   /// [WebGL 2 API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -2377,7 +2909,9 @@ abstract class WebGL2RenderingContext implements JSObject {
     GLenum target,
     GLuint index,
     WebGLBuffer? buffer,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGL2RenderingContext.bindBufferRange()`** method of
   /// the
@@ -2391,7 +2925,9 @@ abstract class WebGL2RenderingContext implements JSObject {
     WebGLBuffer? buffer,
     GLintptr offset,
     GLsizeiptr size,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGL2RenderingContext.getIndexedParameter()`** method
   /// of the
@@ -2401,7 +2937,9 @@ abstract class WebGL2RenderingContext implements JSObject {
   JSAny? getIndexedParameter(
     GLenum target,
     GLuint index,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGL2RenderingContext.getUniformIndices()`** method of
   /// the
@@ -2411,7 +2949,9 @@ abstract class WebGL2RenderingContext implements JSObject {
   JSArray<JSNumber>? getUniformIndices(
     WebGLProgram program,
     JSArray<JSString> uniformNames,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGL2RenderingContext.getActiveUniforms()`** method of
   /// the
@@ -2422,7 +2962,9 @@ abstract class WebGL2RenderingContext implements JSObject {
     WebGLProgram program,
     JSArray<JSNumber> uniformIndices,
     GLenum pname,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGL2RenderingContext.getUniformBlockIndex()`** method
   /// of the
@@ -2432,7 +2974,9 @@ abstract class WebGL2RenderingContext implements JSObject {
   GLuint getUniformBlockIndex(
     WebGLProgram program,
     String uniformBlockName,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`WebGL2RenderingContext.getActiveUniformBlockParameter()`**
@@ -2444,7 +2988,9 @@ abstract class WebGL2RenderingContext implements JSObject {
     WebGLProgram program,
     GLuint uniformBlockIndex,
     GLenum pname,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGL2RenderingContext.getActiveUniformBlockName()`**
   /// method of the
@@ -2454,7 +3000,9 @@ abstract class WebGL2RenderingContext implements JSObject {
   String? getActiveUniformBlockName(
     WebGLProgram program,
     GLuint uniformBlockIndex,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGL2RenderingContext.uniformBlockBinding()`** method
   /// of the
@@ -2465,7 +3013,9 @@ abstract class WebGL2RenderingContext implements JSObject {
     WebGLProgram program,
     GLuint uniformBlockIndex,
     GLuint uniformBlockBinding,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGL2RenderingContext.createVertexArray()`** method of
   /// the
@@ -2476,27 +3026,35 @@ abstract class WebGL2RenderingContext implements JSObject {
   /// pointing to vertex array data and which provides names for different sets
   /// of vertex
   /// data.
-  WebGLVertexArrayObject? createVertexArray();
+  WebGLVertexArrayObject? createVertexArray() {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGL2RenderingContext.deleteVertexArray()`** method of
   /// the
   /// [WebGL 2 API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// deletes a given
   /// [WebGLVertexArrayObject] object.
-  void deleteVertexArray(WebGLVertexArrayObject? vertexArray);
+  void deleteVertexArray(WebGLVertexArrayObject? vertexArray) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGL2RenderingContext.isVertexArray()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// returns `true` if the
   /// passed object is a valid [WebGLVertexArrayObject] object.
-  GLboolean isVertexArray(WebGLVertexArrayObject? vertexArray);
+  GLboolean isVertexArray(WebGLVertexArrayObject? vertexArray) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGL2RenderingContext.bindVertexArray()`** method of
   /// the
   /// [WebGL 2 API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// binds a
   /// passed [WebGLVertexArrayObject] object to the buffer.
-  void bindVertexArray(WebGLVertexArrayObject? array);
+  void bindVertexArray(WebGLVertexArrayObject? array) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGL2RenderingContext.bufferData()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -2505,9 +3063,11 @@ abstract class WebGL2RenderingContext implements JSObject {
     GLenum target,
     JSAny? sizeOrSrcData,
     GLenum usage, [
-    int srcOffset,
-    GLuint length,
-  ]);
+    int? srcOffset,
+    GLuint? length,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGL2RenderingContext.bufferSubData()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -2517,9 +3077,12 @@ abstract class WebGL2RenderingContext implements JSObject {
     GLenum target,
     GLintptr dstByteOffset,
     JSObject srcData, [
-    int srcOffset,
-    GLuint length,
-  ]);
+    int? srcOffset,
+    GLuint? length,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   void texImage2D(
     GLenum target,
     GLint level,
@@ -2527,11 +3090,14 @@ abstract class WebGL2RenderingContext implements JSObject {
     JSAny formatOrWidth,
     JSAny heightOrType,
     JSAny borderOrSource, [
-    GLenum format,
-    GLenum type,
+    GLenum? format,
+    GLenum? type,
     JSAny? pboOffsetOrPixelsOrSourceOrSrcData,
-    int srcOffset,
-  ]);
+    int? srcOffset,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   void texSubImage2D(
     GLenum target,
     GLint level,
@@ -2540,10 +3106,13 @@ abstract class WebGL2RenderingContext implements JSObject {
     JSAny formatOrWidth,
     JSAny heightOrType,
     JSAny formatOrSource, [
-    GLenum type,
+    GLenum? type,
     JSAny? pboOffsetOrPixelsOrSourceOrSrcData,
-    int srcOffset,
-  ]);
+    int? srcOffset,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   void compressedTexImage2D(
     GLenum target,
     GLint level,
@@ -2552,9 +3121,12 @@ abstract class WebGL2RenderingContext implements JSObject {
     GLsizei height,
     GLint border,
     JSAny imageSizeOrSrcData, [
-    JSAny offsetOrSrcOffset,
-    GLuint srcLengthOverride,
-  ]);
+    JSAny? offsetOrSrcOffset,
+    GLuint? srcLengthOverride,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   void compressedTexSubImage2D(
     GLenum target,
     GLint level,
@@ -2564,78 +3136,114 @@ abstract class WebGL2RenderingContext implements JSObject {
     GLsizei height,
     GLenum format,
     JSAny imageSizeOrSrcData, [
-    JSAny offsetOrSrcOffset,
-    GLuint srcLengthOverride,
-  ]);
+    JSAny? offsetOrSrcOffset,
+    GLuint? srcLengthOverride,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   void uniform1fv(
     WebGLUniformLocation? location,
     Float32List data, [
-    int srcOffset,
-    GLuint srcLength,
-  ]);
+    int? srcOffset,
+    GLuint? srcLength,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   void uniform2fv(
     WebGLUniformLocation? location,
     Float32List data, [
-    int srcOffset,
-    GLuint srcLength,
-  ]);
+    int? srcOffset,
+    GLuint? srcLength,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   void uniform3fv(
     WebGLUniformLocation? location,
     Float32List data, [
-    int srcOffset,
-    GLuint srcLength,
-  ]);
+    int? srcOffset,
+    GLuint? srcLength,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   void uniform4fv(
     WebGLUniformLocation? location,
     Float32List data, [
-    int srcOffset,
-    GLuint srcLength,
-  ]);
+    int? srcOffset,
+    GLuint? srcLength,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   void uniform1iv(
     WebGLUniformLocation? location,
     Int32List data, [
-    int srcOffset,
-    GLuint srcLength,
-  ]);
+    int? srcOffset,
+    GLuint? srcLength,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   void uniform2iv(
     WebGLUniformLocation? location,
     Int32List data, [
-    int srcOffset,
-    GLuint srcLength,
-  ]);
+    int? srcOffset,
+    GLuint? srcLength,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   void uniform3iv(
     WebGLUniformLocation? location,
     Int32List data, [
-    int srcOffset,
-    GLuint srcLength,
-  ]);
+    int? srcOffset,
+    GLuint? srcLength,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   void uniform4iv(
     WebGLUniformLocation? location,
     Int32List data, [
-    int srcOffset,
-    GLuint srcLength,
-  ]);
+    int? srcOffset,
+    GLuint? srcLength,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   void uniformMatrix2fv(
     WebGLUniformLocation? location,
     GLboolean transpose,
     Float32List data, [
-    int srcOffset,
-    GLuint srcLength,
-  ]);
+    int? srcOffset,
+    GLuint? srcLength,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   void uniformMatrix3fv(
     WebGLUniformLocation? location,
     GLboolean transpose,
     Float32List data, [
-    int srcOffset,
-    GLuint srcLength,
-  ]);
+    int? srcOffset,
+    GLuint? srcLength,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   void uniformMatrix4fv(
     WebGLUniformLocation? location,
     GLboolean transpose,
     Float32List data, [
-    int srcOffset,
-    GLuint srcLength,
-  ]);
+    int? srcOffset,
+    GLuint? srcLength,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   void readPixels(
     GLint x,
     GLint y,
@@ -2644,11 +3252,28 @@ abstract class WebGL2RenderingContext implements JSObject {
     GLenum format,
     GLenum type,
     JSAny? dstDataOrOffset, [
-    int dstOffset,
-  ]);
-  JSObject get canvas;
-  GLsizei get drawingBufferWidth;
-  GLsizei get drawingBufferHeight;
-  PredefinedColorSpace get drawingBufferColorSpace;
-  set drawingBufferColorSpace(PredefinedColorSpace value);
+    int? dstOffset,
+  ]) {
+    unsupportedPlatformError();
+  }
+
+  JSObject get canvas {
+    unsupportedPlatformError();
+  }
+
+  GLsizei get drawingBufferWidth {
+    unsupportedPlatformError();
+  }
+
+  GLsizei get drawingBufferHeight {
+    unsupportedPlatformError();
+  }
+
+  PredefinedColorSpace get drawingBufferColorSpace {
+    unsupportedPlatformError();
+  }
+
+  set drawingBufferColorSpace(PredefinedColorSpace value) {
+    unsupportedPlatformError();
+  }
 }

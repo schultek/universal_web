@@ -36,18 +36,35 @@ import 'dom.dart';
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ContentVisibilityAutoStateChangeEvent).
-abstract class ContentVisibilityAutoStateChangeEvent
+extension type ContentVisibilityAutoStateChangeEvent._(JSObject _)
     implements Event, JSObject {
+  factory ContentVisibilityAutoStateChangeEvent(
+    String type, [
+    ContentVisibilityAutoStateChangeEventInit? eventInitDict,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// The `skipped` read-only property of the
   /// [ContentVisibilityAutoStateChangeEvent] interface returns `true` if the
   /// user agent [skips the element's
   /// contents](/en-US/docs/Web/CSS/CSS_containment#skips_its_contents), or
   /// `false` otherwise.
-  bool get skipped;
+  bool get skipped {
+    unsupportedPlatformError();
+  }
 }
-
-abstract class ContentVisibilityAutoStateChangeEventInit
+extension type ContentVisibilityAutoStateChangeEventInit._(JSObject _)
     implements EventInit, JSObject {
+  factory ContentVisibilityAutoStateChangeEventInit({
+    bool? bubbles,
+    bool? cancelable,
+    bool? composed,
+    bool? skipped,
+  }) {
+    unsupportedPlatformError();
+  }
+
   bool get skipped {
     unsupportedPlatformError();
   }

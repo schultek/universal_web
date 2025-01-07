@@ -14,7 +14,14 @@ import '../error.dart';
 import '../js_interop.dart';
 import 'css_view_transitions.dart';
 
-abstract class StartViewTransitionOptions implements JSObject {
+extension type StartViewTransitionOptions._(JSObject _) implements JSObject {
+  factory StartViewTransitionOptions({
+    UpdateCallback? update,
+    JSArray<JSString>? types,
+  }) {
+    unsupportedPlatformError();
+  }
+
   UpdateCallback? get update {
     unsupportedPlatformError();
   }

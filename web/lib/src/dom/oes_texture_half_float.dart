@@ -13,6 +13,6 @@
 import '../js_interop.dart';
 import 'webgl1.dart';
 
-abstract class OES_texture_half_float implements JSObject {
+extension type OES_texture_half_float._(JSObject _) implements JSObject {
   static const GLenum HALF_FLOAT_OES = 36193;
 }

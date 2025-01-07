@@ -15,7 +15,14 @@ import '../js_interop.dart';
 import 'streams.dart';
 import 'webidl.dart';
 
-abstract class TextDecoderOptions implements JSObject {
+extension type TextDecoderOptions._(JSObject _) implements JSObject {
+  factory TextDecoderOptions({
+    bool? fatal,
+    bool? ignoreBOM,
+  }) {
+    unsupportedPlatformError();
+  }
+
   bool get fatal {
     unsupportedPlatformError();
   }
@@ -32,8 +39,11 @@ abstract class TextDecoderOptions implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type TextDecodeOptions._(JSObject _) implements JSObject {
+  factory TextDecodeOptions({bool? stream}) {
+    unsupportedPlatformError();
+  }
 
-abstract class TextDecodeOptions implements JSObject {
   bool get stream {
     unsupportedPlatformError();
   }
@@ -51,7 +61,14 @@ abstract class TextDecodeOptions implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder).
-abstract class TextDecoder implements JSObject {
+extension type TextDecoder._(JSObject _) implements JSObject {
+  factory TextDecoder([
+    String? label,
+    TextDecoderOptions? options,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// The **`TextDecoder.decode()`** method returns a string containing text
   /// decoded from the buffer passed as a parameter.
   ///
@@ -59,9 +76,11 @@ abstract class TextDecoder implements JSObject {
   /// This includes the expected encoding of the data, and how decoding errors
   /// are handled.
   String decode([
-    AllowSharedBufferSource input,
-    TextDecodeOptions options,
-  ]);
+    AllowSharedBufferSource? input,
+    TextDecodeOptions? options,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`TextDecoder.encoding`** read-only property returns a string
   /// containing the name of the decoding algorithm used by the specific decoder
@@ -70,7 +89,9 @@ abstract class TextDecoder implements JSObject {
   /// The encoding is set by the
   /// [constructor](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder/TextDecoder)
   /// `label` parameter, and defaults to `utf-8`.
-  String get encoding;
+  String get encoding {
+    unsupportedPlatformError();
+  }
 
   /// The **`fatal`** read-only property of the [TextDecoder] interface is a
   /// `Boolean` indicating whether the error mode is fatal.
@@ -81,16 +102,26 @@ abstract class TextDecoder implements JSObject {
   /// replacement character `U+FFFD` (�).
   /// The value of the property is set in the [`TextDecoder()`
   /// constructor](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder/TextDecoder).
-  bool get fatal;
+  bool get fatal {
+    unsupportedPlatformError();
+  }
 
   /// The **`ignoreBOM`** read-only property of the [TextDecoder] interface is a
   /// `Boolean` indicating whether the
   /// [byte order mark](https://www.w3.org/International/questions/qa-byte-order-mark)
   /// will be included in the output or skipped over.
-  bool get ignoreBOM;
+  bool get ignoreBOM {
+    unsupportedPlatformError();
+  }
 }
+extension type TextEncoderEncodeIntoResult._(JSObject _) implements JSObject {
+  factory TextEncoderEncodeIntoResult({
+    int? read,
+    int? written,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class TextEncoderEncodeIntoResult implements JSObject {
   int get read {
     unsupportedPlatformError();
   }
@@ -115,11 +146,17 @@ abstract class TextEncoderEncodeIntoResult implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/TextEncoder).
-abstract class TextEncoder implements JSObject {
+extension type TextEncoder._(JSObject _) implements JSObject {
+  factory TextEncoder() {
+    unsupportedPlatformError();
+  }
+
   /// The **`TextEncoder.encode()`** method takes a string as input, and returns
   /// a `Uint8Array` containing the text given in parameters encoded with the
   /// specific method for that [TextEncoder] object.
-  JSUint8Array encode([String input]);
+  JSUint8Array encode([String? input]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`TextEncoder.encodeInto()`** method takes a
   /// string to encode and a destination `Uint8Array` to put resulting UTF-8
@@ -130,14 +167,18 @@ abstract class TextEncoder implements JSObject {
   TextEncoderEncodeIntoResult encodeInto(
     String source,
     JSUint8Array destination,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`TextEncoder.encoding`** read-only property returns a string
   /// containing the name of the encoding algorithm used by the specific
   /// encoder.
   ///
   /// It can only have the following value `utf-8`.
-  String get encoding;
+  String get encoding {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`TextDecoderStream`** interface of the [Encoding API] converts a
@@ -149,7 +190,14 @@ abstract class TextEncoder implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoderStream).
-abstract class TextDecoderStream implements JSObject {
+extension type TextDecoderStream._(JSObject _) implements JSObject {
+  factory TextDecoderStream([
+    String? label,
+    TextDecoderOptions? options,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// The **`encoding`** read-only property of the [TextDecoderStream] interface
   /// returns a string containing the name of the encoding algorithm used by the
   /// specific decoder.
@@ -157,7 +205,9 @@ abstract class TextDecoderStream implements JSObject {
   /// The encoding is set by the
   /// [constructor](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoderStream/TextDecoderStream)
   /// `label` parameter, and defaults to `utf-8`.
-  String get encoding;
+  String get encoding {
+    unsupportedPlatformError();
+  }
 
   /// The **`fatal`** read-only property of the [TextDecoderStream] interface is
   /// a `boolean` indicating if the error mode of the `TextDecoderStream` object
@@ -169,21 +219,29 @@ abstract class TextDecoderStream implements JSObject {
   /// replacement character `U+FFFD` (�).
   /// The value of the property is set in the [`TextDecoderStream()`
   /// constructor](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoderStream/TextDecoderStream).
-  bool get fatal;
+  bool get fatal {
+    unsupportedPlatformError();
+  }
 
   /// The **`ignoreBOM`** read-only property of the [TextDecoderStream]
   /// interface is a `Boolean` indicating whether the
   /// [byte order mark](https://www.w3.org/International/questions/qa-byte-order-mark)
   /// will be included in the output or skipped over.
-  bool get ignoreBOM;
+  bool get ignoreBOM {
+    unsupportedPlatformError();
+  }
 
   /// The **`readable`** read-only property of the [TextDecoderStream] interface
   /// returns a [ReadableStream].
-  ReadableStream get readable;
+  ReadableStream get readable {
+    unsupportedPlatformError();
+  }
 
   /// The **`writable`** read-only property of the [TextDecoderStream] interface
   /// returns a [WritableStream].
-  WritableStream get writable;
+  WritableStream get writable {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`TextEncoderStream`** interface of the [Encoding API] converts a
@@ -194,18 +252,28 @@ abstract class TextDecoderStream implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/TextEncoderStream).
-abstract class TextEncoderStream implements JSObject {
+extension type TextEncoderStream._(JSObject _) implements JSObject {
+  factory TextEncoderStream() {
+    unsupportedPlatformError();
+  }
+
   /// The **`encoding`** read-only property of the [TextEncoderStream] interface
   /// returns a
   /// string containing the name of the encoding algorithm used by the current
   /// `TextEncoderStream` object.
-  String get encoding;
+  String get encoding {
+    unsupportedPlatformError();
+  }
 
   /// The **`readable`** read-only property of the [TextEncoderStream] interface
   /// returns a [ReadableStream].
-  ReadableStream get readable;
+  ReadableStream get readable {
+    unsupportedPlatformError();
+  }
 
   /// The **`writable`** read-only property of the [TextEncoderStream] interface
   /// returns a [WritableStream].
-  WritableStream get writable;
+  WritableStream get writable {
+    unsupportedPlatformError();
+  }
 }

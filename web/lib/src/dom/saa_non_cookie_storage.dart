@@ -12,6 +12,7 @@
 
 import '../error.dart';
 import '../js_interop.dart';
+import 'fetch.dart';
 import 'fs.dart';
 import 'html.dart';
 import 'indexeddb.dart';
@@ -29,55 +30,86 @@ typedef SameSiteCookiesType = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/StorageAccessHandle).
-abstract class StorageAccessHandle implements JSObject {
+extension type StorageAccessHandle._(JSObject _) implements JSObject {
   /// > **Note:** See [StorageManager.getDirectory] to understand usage.
-  JSPromise<FileSystemDirectoryHandle> getDirectory();
+  JSPromise<FileSystemDirectoryHandle> getDirectory() {
+    unsupportedPlatformError();
+  }
 
   /// > **Note:** See [StorageManager.estimate] to understand usage.
-  JSPromise<StorageEstimate> estimate();
+  JSPromise<StorageEstimate> estimate() {
+    unsupportedPlatformError();
+  }
 
   /// > **Note:** See [URL.createObjectURL_static] to understand usage.
-  String createObjectURL(JSObject obj);
+  String createObjectURL(JSObject obj) {
+    unsupportedPlatformError();
+  }
 
   /// > **Note:** See [URL.revokeObjectURL_static] to understand usage.
-  void revokeObjectURL(String url);
+  void revokeObjectURL(String url) {
+    unsupportedPlatformError();
+  }
 
   /// > **Note:** See [BroadcastChannel.BroadcastChannel] to understand usage.
-  BroadcastChannel BroadcastChannel_(String name);
+  BroadcastChannel BroadcastChannel_(String name) {
+    unsupportedPlatformError();
+  }
 
   /// > **Note:** See [SharedWorker.SharedWorker] to understand usage.
   SharedWorker SharedWorker_(
     String scriptURL, [
-    JSAny options,
-  ]);
+    JSAny? options,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`sessionStorage`** property of the [StorageAccessHandle] interface
   /// returns an unpartitioned session [Storage] object if access was granted,
   /// and throws a `SecurityError` [DOMException] otherwise.
-  Storage get sessionStorage;
+  Storage get sessionStorage {
+    unsupportedPlatformError();
+  }
 
   /// The **`localStorage`** property of the [StorageAccessHandle] interface
   /// returns an unpartitioned local [Storage] object if access was granted, and
   /// throws a `SecurityError` [DOMException] otherwise.
-  Storage get localStorage;
+  Storage get localStorage {
+    unsupportedPlatformError();
+  }
 
   /// The **`indexedDB`** property of the [StorageAccessHandle] interface
   /// returns an unpartitioned [IDBFactory] object if access was granted, and
   /// throws a `SecurityError` [DOMException] otherwise.
-  IDBFactory get indexedDB;
+  IDBFactory get indexedDB {
+    unsupportedPlatformError();
+  }
 
   /// The **`locks`** property of the [StorageAccessHandle] interface returns an
   /// unpartitioned session [LockManager] object if access was granted, and
   /// throws a `SecurityError` [DOMException] otherwise.
-  LockManager get locks;
+  LockManager get locks {
+    unsupportedPlatformError();
+  }
 
   /// The **`caches`** property of the [StorageAccessHandle] interface returns
   /// an unpartitioned [CacheStorage] object if access was granted, and throws a
   /// `SecurityError` [DOMException] otherwise.
-  CacheStorage get caches;
+  CacheStorage get caches {
+    unsupportedPlatformError();
+  }
 }
+extension type SharedWorkerOptions._(JSObject _)
+    implements WorkerOptions, JSObject {
+  factory SharedWorkerOptions({
+    WorkerType? type,
+    RequestCredentials? credentials,
+    String? name,
+    SameSiteCookiesType? sameSiteCookies,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class SharedWorkerOptions implements WorkerOptions, JSObject {
   SameSiteCookiesType get sameSiteCookies {
     unsupportedPlatformError();
   }

@@ -17,8 +17,19 @@ typedef SelfCapturePreferenceEnum = String;
 typedef SystemAudioPreferenceEnum = String;
 typedef SurfaceSwitchingPreferenceEnum = String;
 typedef MonitorTypeSurfacesEnum = String;
+extension type DisplayMediaStreamOptions._(JSObject _) implements JSObject {
+  factory DisplayMediaStreamOptions({
+    JSAny? video,
+    JSAny? audio,
+    JSObject? controller,
+    SelfCapturePreferenceEnum? selfBrowserSurface,
+    SystemAudioPreferenceEnum? systemAudio,
+    SurfaceSwitchingPreferenceEnum? surfaceSwitching,
+    MonitorTypeSurfacesEnum? monitorTypeSurfaces,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class DisplayMediaStreamOptions implements JSObject {
   JSAny get video {
     unsupportedPlatformError();
   }

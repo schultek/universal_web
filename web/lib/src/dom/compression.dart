@@ -10,6 +10,7 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
+import '../error.dart';
 import '../js_interop.dart';
 import 'streams.dart';
 
@@ -22,14 +23,22 @@ typedef CompressionFormat = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CompressionStream).
-abstract class CompressionStream implements JSObject {
+extension type CompressionStream._(JSObject _) implements JSObject {
+  factory CompressionStream(CompressionFormat format) {
+    unsupportedPlatformError();
+  }
+
   /// The **`readable`** read-only property of the [CompressionStream] interface
   /// returns a [ReadableStream].
-  ReadableStream get readable;
+  ReadableStream get readable {
+    unsupportedPlatformError();
+  }
 
   /// The **`writable`** read-only property of the [CompressionStream] interface
   /// returns a [WritableStream].
-  WritableStream get writable;
+  WritableStream get writable {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`DecompressionStream`** interface of the [Compression Streams API] is
@@ -39,12 +48,20 @@ abstract class CompressionStream implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/DecompressionStream).
-abstract class DecompressionStream implements JSObject {
+extension type DecompressionStream._(JSObject _) implements JSObject {
+  factory DecompressionStream(CompressionFormat format) {
+    unsupportedPlatformError();
+  }
+
   /// The **`readable`** read-only property of the [DecompressionStream]
   /// interface returns a [ReadableStream].
-  ReadableStream get readable;
+  ReadableStream get readable {
+    unsupportedPlatformError();
+  }
 
   /// The **`writable`** read-only property of the [DecompressionStream]
   /// interface returns a [WritableStream].
-  WritableStream get writable;
+  WritableStream get writable {
+    unsupportedPlatformError();
+  }
 }

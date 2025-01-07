@@ -30,11 +30,13 @@ typedef WriteCommandType = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemHandle).
-abstract class FileSystemHandle implements JSObject {
+extension type FileSystemHandle._(JSObject _) implements JSObject {
   /// The **`isSameEntry()`** method of the
   /// [FileSystemHandle] interface compares two [FileSystemHandle] to see if the
   /// associated entries (either a file or directory) match.
-  JSPromise<JSBoolean> isSameEntry(FileSystemHandle other);
+  JSPromise<JSBoolean> isSameEntry(FileSystemHandle other) {
+    unsupportedPlatformError();
+  }
 
   /// The **`kind`** read-only property of the
   /// [FileSystemHandle] interface returns the type of entry. This is
@@ -42,15 +44,23 @@ abstract class FileSystemHandle implements JSObject {
   /// used to distinguish files from directories when iterating over the
   /// contents of a
   /// directory.
-  FileSystemHandleKind get kind;
+  FileSystemHandleKind get kind {
+    unsupportedPlatformError();
+  }
 
   /// The **`name`** read-only property of the
   /// [FileSystemHandle] interface returns the name of the entry represented by
   /// handle.
-  String get name;
+  String get name {
+    unsupportedPlatformError();
+  }
 }
+extension type FileSystemCreateWritableOptions._(JSObject _)
+    implements JSObject {
+  factory FileSystemCreateWritableOptions({bool? keepExistingData}) {
+    unsupportedPlatformError();
+  }
 
-abstract class FileSystemCreateWritableOptions implements JSObject {
   bool get keepExistingData {
     unsupportedPlatformError();
   }
@@ -74,7 +84,8 @@ abstract class FileSystemCreateWritableOptions implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemFileHandle).
-abstract class FileSystemFileHandle implements FileSystemHandle, JSObject {
+extension type FileSystemFileHandle._(JSObject _)
+    implements FileSystemHandle, JSObject {
   /// The **`getFile()`** method of the
   /// [FileSystemFileHandle] interface returns a `Promise` which resolves to a
   /// [File] object representing the state on disk of the entry represented by
@@ -83,7 +94,9 @@ abstract class FileSystemFileHandle implements FileSystemHandle, JSObject {
   /// If the file on disk changes or is removed after this method is called, the
   /// returned
   /// [File] object will likely be no longer readable.
-  JSPromise<File> getFile();
+  JSPromise<File> getFile() {
+    unsupportedPlatformError();
+  }
 
   /// The **`createWritable()`** method of the [FileSystemFileHandle] interface
   /// creates a [FileSystemWritableFileStream] that can be used to write to a
@@ -96,7 +109,9 @@ abstract class FileSystemFileHandle implements FileSystemHandle, JSObject {
   /// only replacing the file represented by file handle with the temporary file
   /// when the writable filestream is closed.
   JSPromise<FileSystemWritableFileStream> createWritable(
-      [FileSystemCreateWritableOptions options]);
+      [FileSystemCreateWritableOptions? options]) {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("dedicated")
   ///
@@ -114,10 +129,15 @@ abstract class FileSystemFileHandle implements FileSystemHandle, JSObject {
   /// file associated with the file handle. This prevents the creation of
   /// further [FileSystemSyncAccessHandle]s or [FileSystemWritableFileStream]s
   /// for the file until the existing access handle is closed.
-  JSPromise<FileSystemSyncAccessHandle> createSyncAccessHandle();
+  JSPromise<FileSystemSyncAccessHandle> createSyncAccessHandle() {
+    unsupportedPlatformError();
+  }
 }
+extension type FileSystemGetFileOptions._(JSObject _) implements JSObject {
+  factory FileSystemGetFileOptions({bool? create}) {
+    unsupportedPlatformError();
+  }
 
-abstract class FileSystemGetFileOptions implements JSObject {
   bool get create {
     unsupportedPlatformError();
   }
@@ -126,8 +146,11 @@ abstract class FileSystemGetFileOptions implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type FileSystemGetDirectoryOptions._(JSObject _) implements JSObject {
+  factory FileSystemGetDirectoryOptions({bool? create}) {
+    unsupportedPlatformError();
+  }
 
-abstract class FileSystemGetDirectoryOptions implements JSObject {
   bool get create {
     unsupportedPlatformError();
   }
@@ -136,8 +159,11 @@ abstract class FileSystemGetDirectoryOptions implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type FileSystemRemoveOptions._(JSObject _) implements JSObject {
+  factory FileSystemRemoveOptions({bool? recursive}) {
+    unsupportedPlatformError();
+  }
 
-abstract class FileSystemRemoveOptions implements JSObject {
   bool get recursive {
     unsupportedPlatformError();
   }
@@ -158,15 +184,18 @@ abstract class FileSystemRemoveOptions implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemDirectoryHandle).
-abstract class FileSystemDirectoryHandle implements FileSystemHandle, JSObject {
+extension type FileSystemDirectoryHandle._(JSObject _)
+    implements FileSystemHandle, JSObject {
   /// The **`getFileHandle()`** method of the
   /// [FileSystemDirectoryHandle] interface returns a
   /// [FileSystemFileHandle] for a file with the specified name, within the
   /// directory the method is called.
   JSPromise<FileSystemFileHandle> getFileHandle(
     String name, [
-    FileSystemGetFileOptions options,
-  ]);
+    FileSystemGetFileOptions? options,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`getDirectoryHandle()`** method of the
   /// [FileSystemDirectoryHandle] interface returns a
@@ -174,26 +203,40 @@ abstract class FileSystemDirectoryHandle implements FileSystemHandle, JSObject {
   /// within the directory handle on which the method is called.
   JSPromise<FileSystemDirectoryHandle> getDirectoryHandle(
     String name, [
-    FileSystemGetDirectoryOptions options,
-  ]);
+    FileSystemGetDirectoryOptions? options,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`removeEntry()`** method of the
   /// [FileSystemDirectoryHandle] interface attempts to remove an entry if the
   /// directory handle contains a file or directory called the name specified.
   JSPromise<JSAny?> removeEntry(
     String name, [
-    FileSystemRemoveOptions options,
-  ]);
+    FileSystemRemoveOptions? options,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`resolve()`** method of the
   /// [FileSystemDirectoryHandle] interface returns an `Array` of
   /// directory names from the parent handle to the specified child entry, with
   /// the name of
   /// the child entry as the last array item.
-  JSPromise<JSArray<JSString>?> resolve(FileSystemHandle possibleDescendant);
+  JSPromise<JSArray<JSString>?> resolve(FileSystemHandle possibleDescendant) {
+    unsupportedPlatformError();
+  }
 }
+extension type WriteParams._(JSObject _) implements JSObject {
+  factory WriteParams({
+    required WriteCommandType type,
+    int? size,
+    int? position,
+    JSAny? data,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class WriteParams implements JSObject {
   WriteCommandType get type {
     unsupportedPlatformError();
   }
@@ -236,7 +279,7 @@ abstract class WriteParams implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemWritableFileStream).
-abstract class FileSystemWritableFileStream
+extension type FileSystemWritableFileStream._(JSObject _)
     implements WritableStream, JSObject {
   /// The **`write()`** method of the [FileSystemWritableFileStream] interface
   /// writes content into the file the method is called on, at the current file
@@ -247,12 +290,16 @@ abstract class FileSystemWritableFileStream
   /// Changes are typically written to a temporary file instead. This method can
   /// also be used to seek to a byte point within the stream and truncate to
   /// modify the total bytes the file contains.
-  JSPromise<JSAny?> write(FileSystemWriteChunkType data);
+  JSPromise<JSAny?> write(FileSystemWriteChunkType data) {
+    unsupportedPlatformError();
+  }
 
   /// The **`seek()`** method of the [FileSystemWritableFileStream] interface
   /// updates the current file cursor offset to the position (in bytes)
   /// specified when calling the method.
-  JSPromise<JSAny?> seek(int position);
+  JSPromise<JSAny?> seek(int position) {
+    unsupportedPlatformError();
+  }
 
   /// The **`truncate()`** method of the [FileSystemWritableFileStream]
   /// interface resizes the file associated with the stream to the specified
@@ -269,10 +316,15 @@ abstract class FileSystemWritableFileStream
   /// No changes are written to the actual file on disk until the stream has
   /// been closed.
   /// Changes are typically written to a temporary file instead.
-  JSPromise<JSAny?> truncate(int size);
+  JSPromise<JSAny?> truncate(int size) {
+    unsupportedPlatformError();
+  }
 }
+extension type FileSystemReadWriteOptions._(JSObject _) implements JSObject {
+  factory FileSystemReadWriteOptions({int? at}) {
+    unsupportedPlatformError();
+  }
 
-abstract class FileSystemReadWriteOptions implements JSObject {
   int get at {
     unsupportedPlatformError();
   }
@@ -315,7 +367,7 @@ abstract class FileSystemReadWriteOptions implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemSyncAccessHandle).
-abstract class FileSystemSyncAccessHandle implements JSObject {
+extension type FileSystemSyncAccessHandle._(JSObject _) implements JSObject {
   /// @AvailableInWorkers("dedicated")
   ///
   /// The **`read()`** method of the
@@ -324,8 +376,10 @@ abstract class FileSystemSyncAccessHandle implements JSObject {
   /// offset.
   int read(
     AllowSharedBufferSource buffer, [
-    FileSystemReadWriteOptions options,
-  ]);
+    FileSystemReadWriteOptions? options,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("dedicated")
   ///
@@ -344,8 +398,10 @@ abstract class FileSystemSyncAccessHandle implements JSObject {
   /// [SQLite](https://www.sqlite.org/wasm) database modifications.
   int write(
     AllowSharedBufferSource buffer, [
-    FileSystemReadWriteOptions options,
-  ]);
+    FileSystemReadWriteOptions? options,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("dedicated")
   ///
@@ -359,7 +415,9 @@ abstract class FileSystemSyncAccessHandle implements JSObject {
   /// > specified as asynchronous methods, and older versions of some browsers
   /// > implement them in this way. However, all current browsers that support
   /// > these methods implement them as synchronous methods.
-  void truncate(int newSize);
+  void truncate(int newSize) {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("dedicated")
   ///
@@ -373,7 +431,9 @@ abstract class FileSystemSyncAccessHandle implements JSObject {
   /// > specified as asynchronous methods, and older versions of some browsers
   /// > implement them in this way. However, all current browsers that support
   /// > these methods implement them as synchronous methods.
-  int getSize();
+  int getSize() {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("dedicated")
   ///
@@ -394,7 +454,9 @@ abstract class FileSystemSyncAccessHandle implements JSObject {
   /// > asynchronous methods, and older versions of some browsers implement them
   /// > in this way. However, all current browsers that support these methods
   /// > implement them as synchronous methods.
-  void flush();
+  void flush() {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("dedicated")
   ///
@@ -410,5 +472,7 @@ abstract class FileSystemSyncAccessHandle implements JSObject {
   /// > asynchronous methods, and older versions of some browsers implement them
   /// > in this way. However, all current browsers that support these methods
   /// > implement them as synchronous methods.
-  void close();
+  void close() {
+    unsupportedPlatformError();
+  }
 }

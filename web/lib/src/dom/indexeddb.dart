@@ -52,24 +52,30 @@ typedef IDBTransactionMode = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/IDBRequest).
-abstract class IDBRequest implements EventTarget, JSObject {
+extension type IDBRequest._(JSObject _) implements EventTarget, JSObject {
   /// The **`result`** read-only property of the
   /// [IDBRequest] interface returns the result of the request. If the request
   /// is not completed, the result is not available and an `InvalidStateError`
   /// exception is
   /// thrown.
-  JSAny? get result;
+  JSAny? get result {
+    unsupportedPlatformError();
+  }
 
   /// The **`error`** read-only property of the
   /// [IDBRequest] interface returns the error in the event of an unsuccessful
   /// request.
-  DOMException? get error;
+  DOMException? get error {
+    unsupportedPlatformError();
+  }
 
   /// The **`source`** read-only property of the
   /// [IDBRequest] interface returns the source of the request, such as an
   /// Index or an object store. If no source exists (such as when calling
   /// [IDBFactory.open]), it returns null.
-  JSObject? get source;
+  JSObject? get source {
+    unsupportedPlatformError();
+  }
 
   /// The **`transaction`** read-only property of the IDBRequest
   /// interface returns the transaction for the request, that is, the
@@ -87,7 +93,9 @@ abstract class IDBRequest implements EventTarget, JSObject {
   /// to `"versionchange"`, and can be used to access existing object stores and
   /// indexes, or abort the upgrade. Following the upgrade, the
   /// **`transaction`** property will again be `null`.
-  IDBTransaction? get transaction;
+  IDBTransaction? get transaction {
+    unsupportedPlatformError();
+  }
 
   /// The **`readyState`** read-only property of the
   /// [IDBRequest] interface returns the state of the request.
@@ -95,11 +103,25 @@ abstract class IDBRequest implements EventTarget, JSObject {
   /// Every request starts in the `pending` state. The state changes to
   /// `done` when the request completes successfully or when an error
   /// occurs.
-  IDBRequestReadyState get readyState;
-  EventHandler get onsuccess;
-  set onsuccess(EventHandler value);
-  EventHandler get onerror;
-  set onerror(EventHandler value);
+  IDBRequestReadyState get readyState {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onsuccess {
+    unsupportedPlatformError();
+  }
+
+  set onsuccess(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onerror {
+    unsupportedPlatformError();
+  }
+
+  set onerror(EventHandler value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`IDBOpenDBRequest`** interface of the IndexedDB API provides access to
@@ -111,11 +133,22 @@ abstract class IDBRequest implements EventTarget, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/IDBOpenDBRequest).
-abstract class IDBOpenDBRequest implements IDBRequest, JSObject {
-  EventHandler get onblocked;
-  set onblocked(EventHandler value);
-  EventHandler get onupgradeneeded;
-  set onupgradeneeded(EventHandler value);
+extension type IDBOpenDBRequest._(JSObject _) implements IDBRequest, JSObject {
+  EventHandler get onblocked {
+    unsupportedPlatformError();
+  }
+
+  set onblocked(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onupgradeneeded {
+    unsupportedPlatformError();
+  }
+
+  set onupgradeneeded(EventHandler value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`IDBVersionChangeEvent`** interface of the
@@ -127,22 +160,43 @@ abstract class IDBOpenDBRequest implements IDBRequest, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/IDBVersionChangeEvent).
-abstract class IDBVersionChangeEvent implements Event, JSObject {
+extension type IDBVersionChangeEvent._(JSObject _) implements Event, JSObject {
+  factory IDBVersionChangeEvent(
+    String type, [
+    IDBVersionChangeEventInit? eventInitDict,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// The **`oldVersion`** read-only property of the
   /// [IDBVersionChangeEvent] interface returns the old version number of the
   /// database.
   ///
   /// When the opened database doesn't exist yet, the value of `oldVersion` is
   /// 0.
-  int get oldVersion;
+  int get oldVersion {
+    unsupportedPlatformError();
+  }
 
   /// The **`newVersion`** read-only property of the
   /// [IDBVersionChangeEvent] interface returns the new version number of the
   /// database.
-  int? get newVersion;
+  int? get newVersion {
+    unsupportedPlatformError();
+  }
 }
+extension type IDBVersionChangeEventInit._(JSObject _)
+    implements EventInit, JSObject {
+  factory IDBVersionChangeEventInit({
+    bool? bubbles,
+    bool? cancelable,
+    bool? composed,
+    int? oldVersion,
+    int? newVersion,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class IDBVersionChangeEventInit implements EventInit, JSObject {
   int get oldVersion {
     unsupportedPlatformError();
   }
@@ -171,7 +225,7 @@ abstract class IDBVersionChangeEventInit implements EventInit, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/IDBFactory).
-abstract class IDBFactory implements JSObject {
+extension type IDBFactory._(JSObject _) implements JSObject {
   /// The **`open()`** method of the [IDBFactory] interface requests opening a
   /// [connection to a database](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Basic_Terminology#database_connection).
   ///
@@ -184,8 +238,10 @@ abstract class IDBFactory implements JSObject {
   /// May trigger `upgradeneeded`, `blocked` or `versionchange` events.
   IDBOpenDBRequest open(
     String name, [
-    int version,
-  ]);
+    int? version,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`deleteDatabase()`** method of the
   /// [IDBFactory] interface requests the deletion of a database. The method
@@ -205,7 +261,9 @@ abstract class IDBFactory implements JSObject {
   /// particular database will get a
   /// [versionchange](https://developer.mozilla.org/en-US/docs/Web/API/IDBDatabase/versionchange_event)
   /// event.
-  IDBOpenDBRequest deleteDatabase(String name);
+  IDBOpenDBRequest deleteDatabase(String name) {
+    unsupportedPlatformError();
+  }
 
   /// The **`databases`** method of the [IDBFactory] interface returns a
   /// `Promise` that fulfills with an array of objects containing the name and
@@ -215,7 +273,9 @@ abstract class IDBFactory implements JSObject {
   /// applications to check what databases have been created — in order to, for
   /// example, clean up databases created by earlier versions of application
   /// code.
-  JSPromise<JSArray<IDBDatabaseInfo>> databases();
+  JSPromise<JSArray<IDBDatabaseInfo>> databases() {
+    unsupportedPlatformError();
+  }
 
   /// The **`cmp()`** method of the [IDBFactory]
   /// interface compares two values as keys to determine equality and ordering
@@ -235,10 +295,18 @@ abstract class IDBFactory implements JSObject {
   int cmp(
     JSAny? first,
     JSAny? second,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 }
+extension type IDBDatabaseInfo._(JSObject _) implements JSObject {
+  factory IDBDatabaseInfo({
+    String? name,
+    int? version,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class IDBDatabaseInfo implements JSObject {
   String get name {
     unsupportedPlatformError();
   }
@@ -276,16 +344,18 @@ abstract class IDBDatabaseInfo implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/IDBDatabase).
-abstract class IDBDatabase implements EventTarget, JSObject {
+extension type IDBDatabase._(JSObject _) implements EventTarget, JSObject {
   /// The **`transaction`** method of the [IDBDatabase] interface immediately
   /// returns a transaction object ([IDBTransaction]) containing the
   /// [IDBTransaction.objectStore] method, which you can use to access your
   /// object store.
   IDBTransaction transaction(
     JSAny storeNames, [
-    IDBTransactionMode mode,
-    IDBTransactionOptions options,
-  ]);
+    IDBTransactionMode? mode,
+    IDBTransactionOptions? options,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`close()`** method of the [IDBDatabase]
   /// interface returns immediately and closes the connection in a separate
@@ -298,7 +368,9 @@ abstract class IDBDatabase implements EventTarget, JSObject {
   /// this method is called. Methods that create transactions throw an exception
   /// if a closing
   /// operation is pending.
-  void close();
+  void close() {
+    unsupportedPlatformError();
+  }
 
   /// The **`createObjectStore()`** method of the
   /// [IDBDatabase] interface creates and returns a new [IDBObjectStore].
@@ -316,8 +388,10 @@ abstract class IDBDatabase implements EventTarget, JSObject {
   /// transaction.
   IDBObjectStore createObjectStore(
     String name, [
-    IDBObjectStoreParameters options,
-  ]);
+    IDBObjectStoreParameters? options,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`deleteObjectStore()`** method of the
   /// [IDBDatabase] interface destroys the object store with the given name in
@@ -327,37 +401,72 @@ abstract class IDBDatabase implements EventTarget, JSObject {
   /// _only_ within a
   /// [`versionchange`](https://developer.mozilla.org/en-US/docs/Web/API/IDBTransaction#version_change)
   /// transaction.
-  void deleteObjectStore(String name);
+  void deleteObjectStore(String name) {
+    unsupportedPlatformError();
+  }
 
   /// The **`name`** read-only property of the
   /// `IDBDatabase` interface is a string that contains the
   /// name of the connected database.
-  String get name;
+  String get name {
+    unsupportedPlatformError();
+  }
 
   /// The **`version`** property of the [IDBDatabase]
   /// interface is a
   /// [64-bit integer](https://developer.mozilla.org/en-US/docs/NSPR_API_Reference/Long_Long_%2864-bit%29_Integers)
   /// that contains the version of the connected database.
   /// When a database is first created, this attribute is an empty string.
-  int get version;
+  int get version {
+    unsupportedPlatformError();
+  }
 
   /// The **`objectStoreNames`** read-only property of the
   /// [IDBDatabase] interface is a [DOMStringList] containing a
   /// list of the names of the
   /// [object stores](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Basic_Terminology#object_store)
   /// currently in the connected database.
-  DOMStringList get objectStoreNames;
-  EventHandler get onabort;
-  set onabort(EventHandler value);
-  EventHandler get onclose;
-  set onclose(EventHandler value);
-  EventHandler get onerror;
-  set onerror(EventHandler value);
-  EventHandler get onversionchange;
-  set onversionchange(EventHandler value);
-}
+  DOMStringList get objectStoreNames {
+    unsupportedPlatformError();
+  }
 
-abstract class IDBTransactionOptions implements JSObject {
+  EventHandler get onabort {
+    unsupportedPlatformError();
+  }
+
+  set onabort(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onclose {
+    unsupportedPlatformError();
+  }
+
+  set onclose(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onerror {
+    unsupportedPlatformError();
+  }
+
+  set onerror(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onversionchange {
+    unsupportedPlatformError();
+  }
+
+  set onversionchange(EventHandler value) {
+    unsupportedPlatformError();
+  }
+}
+extension type IDBTransactionOptions._(JSObject _) implements JSObject {
+  factory IDBTransactionOptions({IDBTransactionDurability? durability}) {
+    unsupportedPlatformError();
+  }
+
   IDBTransactionDurability get durability {
     unsupportedPlatformError();
   }
@@ -366,8 +475,14 @@ abstract class IDBTransactionOptions implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type IDBObjectStoreParameters._(JSObject _) implements JSObject {
+  factory IDBObjectStoreParameters({
+    JSAny? keyPath,
+    bool? autoIncrement,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class IDBObjectStoreParameters implements JSObject {
   JSAny? get keyPath {
     unsupportedPlatformError();
   }
@@ -395,7 +510,7 @@ abstract class IDBObjectStoreParameters implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore).
-abstract class IDBObjectStore implements JSObject {
+extension type IDBObjectStore._(JSObject _) implements JSObject {
   /// The **`put()`** method of the [IDBObjectStore] interface updates a given
   /// record in a database, or inserts a new record if the given item does not
   /// already exist.
@@ -419,7 +534,9 @@ abstract class IDBObjectStore implements JSObject {
   IDBRequest put(
     JSAny? value, [
     JSAny? key,
-  ]);
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`add()`** method of the [IDBObjectStore] interface returns an
   /// [IDBRequest] object, and, in a separate thread, creates a
@@ -444,7 +561,9 @@ abstract class IDBObjectStore implements JSObject {
   IDBRequest add(
     JSAny? value, [
     JSAny? key,
-  ]);
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`delete()`** method of the
   /// [IDBObjectStore] interface returns an [IDBRequest] object,
@@ -457,7 +576,9 @@ abstract class IDBObjectStore implements JSObject {
   /// Bear in mind that if you are using a [IDBCursor], you can use
   /// the [IDBCursor.delete] method to more efficiently delete the current
   /// record — without having to explicitly look up the record's key.
-  IDBRequest delete(JSAny? query);
+  IDBRequest delete(JSAny? query) {
+    unsupportedPlatformError();
+  }
 
   /// The **`clear()`** method of the [IDBObjectStore]
   /// interface creates and immediately returns an [IDBRequest] object, and
@@ -471,7 +592,9 @@ abstract class IDBObjectStore implements JSObject {
   /// only some of
   /// the records in a store, use [IDBObjectStore.delete] passing a key
   /// or [IDBKeyRange].
-  IDBRequest clear();
+  IDBRequest clear() {
+    unsupportedPlatformError();
+  }
 
   /// The **`get()`** method of the [IDBObjectStore]
   /// interface returns an [IDBRequest] object, and, in a separate thread,
@@ -491,7 +614,9 @@ abstract class IDBObjectStore implements JSObject {
   /// > To tell these situations apart, call the `openCursor()` method with the
   /// > same key. That method provides a cursor if the record exists, and no
   /// > cursor if it does not.
-  IDBRequest get(JSAny? query);
+  IDBRequest get(JSAny? query) {
+    unsupportedPlatformError();
+  }
 
   /// The **`getKey()`** method of the
   /// [IDBObjectStore] interface returns an [IDBRequest] object,
@@ -502,7 +627,9 @@ abstract class IDBObjectStore implements JSObject {
   /// If a key is successfully found, then a structured clone of it is created
   /// and set as the
   /// result of the request object.
-  IDBRequest getKey(JSAny? query);
+  IDBRequest getKey(JSAny? query) {
+    unsupportedPlatformError();
+  }
 
   /// The **`getAll()`** method of the
   /// [IDBObjectStore] interface returns an [IDBRequest] object
@@ -528,8 +655,10 @@ abstract class IDBObjectStore implements JSObject {
   /// will return 1 if the row exists and 0 if it doesn't.
   IDBRequest getAll([
     JSAny? query,
-    int count,
-  ]);
+    int? count,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The `getAllKeys()` method of the [IDBObjectStore]
   /// interface returns an [IDBRequest] object retrieves record keys for all
@@ -552,15 +681,19 @@ abstract class IDBObjectStore implements JSObject {
   /// not.
   IDBRequest getAllKeys([
     JSAny? query,
-    int count,
-  ]);
+    int? count,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`count()`** method of the [IDBObjectStore]
   /// interface returns an [IDBRequest] object, and, in a separate thread,
   /// returns the total number of records that match the provided key or
   /// [IDBKeyRange]. If no arguments are provided, it returns the total number
   /// of records in the store.
-  IDBRequest count([JSAny? query]);
+  IDBRequest count([JSAny? query]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`openCursor()`** method of the
   /// [IDBObjectStore] interface returns an [IDBRequest] object,
@@ -572,8 +705,10 @@ abstract class IDBObjectStore implements JSObject {
   /// `success` event.
   IDBRequest openCursor([
     JSAny? query,
-    IDBCursorDirection direction,
-  ]);
+    IDBCursorDirection? direction,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`openKeyCursor()`** method of the
   /// [IDBObjectStore] interface returns an [IDBRequest] object
@@ -587,15 +722,19 @@ abstract class IDBObjectStore implements JSObject {
   /// results's `success` event.
   IDBRequest openKeyCursor([
     JSAny? query,
-    IDBCursorDirection direction,
-  ]);
+    IDBCursorDirection? direction,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`index()`** method of the [IDBObjectStore]
   /// interface opens a named index in the current object store, after which it
   /// can be used
   /// to, for example, return a series of records sorted by that index using a
   /// cursor.
-  IDBIndex index(String name);
+  IDBIndex index(String name) {
+    unsupportedPlatformError();
+  }
 
   /// The **`createIndex()`** method of the
   /// [IDBObjectStore] interface creates and returns a new
@@ -616,8 +755,10 @@ abstract class IDBObjectStore implements JSObject {
   IDBIndex createIndex(
     String name,
     JSAny keyPath, [
-    IDBIndexParameters options,
-  ]);
+    IDBIndexParameters? options,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`deleteIndex()`** method of the
   /// [IDBObjectStore] interface destroys the index with the specified name in
@@ -627,12 +768,19 @@ abstract class IDBObjectStore implements JSObject {
   /// transaction
   /// mode callback. Note that this method synchronously modifies the
   /// [IDBObjectStore.indexNames] property.
-  void deleteIndex(String name);
+  void deleteIndex(String name) {
+    unsupportedPlatformError();
+  }
 
   /// The **`name`** property of the [IDBObjectStore]
   /// interface indicates the name of this object store.
-  String get name;
-  set name(String value);
+  String get name {
+    unsupportedPlatformError();
+  }
+
+  set name(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`keyPath`** read-only property of the
   /// [IDBObjectStore] interface returns the
@@ -642,29 +790,43 @@ abstract class IDBObjectStore implements JSObject {
   /// If this property is null, the application must provide a key for each
   /// modification
   /// operation.
-  JSAny? get keyPath;
+  JSAny? get keyPath {
+    unsupportedPlatformError();
+  }
 
   /// The **`indexNames`** read-only property of the
   /// [IDBObjectStore] interface returns a list of the names of
   /// [indexes](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Basic_Terminology#index)
   /// on objects
   /// in this object store.
-  DOMStringList get indexNames;
+  DOMStringList get indexNames {
+    unsupportedPlatformError();
+  }
 
   /// The **`transaction`** read-only property of the
   /// [IDBObjectStore] interface returns the transaction object to which this
   /// object store belongs.
-  IDBTransaction get transaction;
+  IDBTransaction get transaction {
+    unsupportedPlatformError();
+  }
 
   /// The **`autoIncrement`** read-only property of the
   /// [IDBObjectStore] interface returns the value of the auto increment flag
   /// for this object store.
   ///
   /// Note that every object store has its own separate auto increment counter.
-  bool get autoIncrement;
+  bool get autoIncrement {
+    unsupportedPlatformError();
+  }
 }
+extension type IDBIndexParameters._(JSObject _) implements JSObject {
+  factory IDBIndexParameters({
+    bool? unique,
+    bool? multiEntry,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class IDBIndexParameters implements JSObject {
   bool get unique {
     unsupportedPlatformError();
   }
@@ -710,7 +872,7 @@ abstract class IDBIndexParameters implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/IDBIndex).
-abstract class IDBIndex implements JSObject {
+extension type IDBIndex._(JSObject _) implements JSObject {
   /// The **`get()`** method of the [IDBIndex]
   /// interface returns an [IDBRequest] object, and, in a separate thread,
   /// finds either the value in the referenced object store that corresponds to
@@ -723,7 +885,9 @@ abstract class IDBIndex implements JSObject {
   /// `result` of the request object: this returns the record the key is
   /// associated
   /// with.
-  IDBRequest get(JSAny? query);
+  IDBRequest get(JSAny? query) {
+    unsupportedPlatformError();
+  }
 
   /// The **`getKey()`** method of the [IDBIndex]
   /// interface returns an [IDBRequest] object, and, in a separate thread,
@@ -735,7 +899,9 @@ abstract class IDBIndex implements JSObject {
   /// If a primary key is found, it is set as the `result` of the request
   /// object.
   /// Note that this doesn't return the whole record as [IDBIndex.get] does.
-  IDBRequest getKey(JSAny? query);
+  IDBRequest getKey(JSAny? query) {
+    unsupportedPlatformError();
+  }
 
   /// The **`getAll()`** method of the [IDBIndex]
   /// interface retrieves all objects that are inside the index.
@@ -753,8 +919,10 @@ abstract class IDBIndex implements JSObject {
   /// use `getAll()`.
   IDBRequest getAll([
     JSAny? query,
-    int count,
-  ]);
+    int? count,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`getAllKeys()`** method of the [IDBIndex]
   /// interface asynchronously retrieves the primary keys of all objects inside
@@ -762,13 +930,17 @@ abstract class IDBIndex implements JSObject {
   /// setting them as the `result` of the request object.
   IDBRequest getAllKeys([
     JSAny? query,
-    int count,
-  ]);
+    int? count,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`count()`** method of the [IDBIndex]
   /// interface returns an [IDBRequest] object, and in a separate thread,
   /// returns the number of records within a key range.
-  IDBRequest count([JSAny? query]);
+  IDBRequest count([JSAny? query]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`openCursor()`** method of the [IDBIndex]
   /// interface returns an [IDBRequest] object, and, in a separate thread,
@@ -785,8 +957,10 @@ abstract class IDBIndex implements JSObject {
   /// the records.
   IDBRequest openCursor([
     JSAny? query,
-    IDBCursorDirection direction,
-  ]);
+    IDBCursorDirection? direction,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`openKeyCursor()`** method of the
   /// [IDBIndex] interface returns an [IDBRequest] object, and, in
@@ -808,23 +982,34 @@ abstract class IDBIndex implements JSObject {
   /// > This makes obtaining a list of keys much more efficient.
   IDBRequest openKeyCursor([
     JSAny? query,
-    IDBCursorDirection direction,
-  ]);
+    IDBCursorDirection? direction,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`name`** property of the [IDBIndex]
   /// interface contains a string which names the index.
-  String get name;
-  set name(String value);
+  String get name {
+    unsupportedPlatformError();
+  }
+
+  set name(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`objectStore`** property of the [IDBIndex]
   /// interface returns the object store referenced by the current index.
-  IDBObjectStore get objectStore;
+  IDBObjectStore get objectStore {
+    unsupportedPlatformError();
+  }
 
   /// The **`keyPath`** property of the [IDBIndex]
   /// interface returns the
   /// [key path](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Basic_Terminology#key_path)
   /// of the current index. If null, this index is not auto-populated.
-  JSAny? get keyPath;
+  JSAny? get keyPath {
+    unsupportedPlatformError();
+  }
 
   /// The **`multiEntry`** read-only property of the
   /// [IDBIndex] interface returns a boolean value that affects how the index
@@ -834,7 +1019,9 @@ abstract class IDBIndex implements JSObject {
   /// This is decided when the index is created, using the
   /// [IDBObjectStore.createIndex] method. This method takes an optional
   /// `options` parameter whose `multiEntry` property is set to `true`/`false`.
-  bool get multiEntry;
+  bool get multiEntry {
+    unsupportedPlatformError();
+  }
 
   /// The **`unique`** read-only property returns a boolean that
   /// states whether the index allows duplicate keys.
@@ -843,7 +1030,9 @@ abstract class IDBIndex implements JSObject {
   /// [IDBObjectStore.createIndex] method. This method takes an optional
   /// parameter, `unique`, which if set to `true` means that the index
   /// will not be able to accept duplicate entries.
-  bool get unique;
+  bool get unique {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`IDBKeyRange`** interface of the
@@ -891,7 +1080,7 @@ abstract class IDBIndex implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/IDBKeyRange).
-abstract class IDBKeyRange implements JSObject {
+extension type IDBKeyRange._(JSObject _) implements JSObject {
   /// The **`only()`** static method of the [IDBKeyRange]
   /// interface creates a new key range containing a single value.
   static IDBKeyRange only(JSAny? value) {
@@ -938,25 +1127,35 @@ abstract class IDBKeyRange implements JSObject {
   /// interface returns a boolean indicating whether a specified key is inside
   /// the key
   /// range.
-  bool includes(JSAny? key);
+  bool includes(JSAny? key) {
+    unsupportedPlatformError();
+  }
 
   /// The **`lower`** read-only property of the
   /// [IDBKeyRange] interface returns the lower bound of the key range.
-  JSAny? get lower;
+  JSAny? get lower {
+    unsupportedPlatformError();
+  }
 
   /// The **`upper`** read-only property of the
   /// [IDBKeyRange] interface returns the upper bound of the key range.
-  JSAny? get upper;
+  JSAny? get upper {
+    unsupportedPlatformError();
+  }
 
   /// The **`lowerOpen`** read-only property of the
   /// [IDBKeyRange] interface returns a boolean indicating whether the
   /// lower-bound value is included in the key range.
-  bool get lowerOpen;
+  bool get lowerOpen {
+    unsupportedPlatformError();
+  }
 
   /// The **`upperOpen`** read-only property of the
   /// [IDBKeyRange] interface returns a boolean indicating whether the
   /// upper-bound value is included in the key range.
-  bool get upperOpen;
+  bool get upperOpen {
+    unsupportedPlatformError();
+  }
 }
 
 /// > **Note:** Not to be confused with [IDBCursorWithValue] which is just an
@@ -982,11 +1181,13 @@ abstract class IDBKeyRange implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/IDBCursor).
-abstract class IDBCursor implements JSObject {
+extension type IDBCursor._(JSObject _) implements JSObject {
   /// The **`advance()`** method of the [IDBCursor]
   /// interface sets the number of times a cursor should move
   /// its position forward.
-  void advance(int count);
+  void advance(int count) {
+    unsupportedPlatformError();
+  }
 
   /// The **`continue()`** method of the [IDBCursor]
   /// interface advances the cursor to the next position along its direction, to
@@ -994,7 +1195,9 @@ abstract class IDBCursor implements JSObject {
   /// whose key matches the optional key parameter. If no key is specified, the
   /// cursor
   /// advances to the immediate next position, based on its direction.
-  void continue_([JSAny? key]);
+  void continue_([JSAny? key]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`continuePrimaryKey()`** method of the
   /// [IDBCursor] interface advances the cursor to the item whose key
@@ -1020,7 +1223,9 @@ abstract class IDBCursor implements JSObject {
   void continuePrimaryKey(
     JSAny? key,
     JSAny? primaryKey,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`update()`** method of the [IDBCursor]
   /// interface returns an [IDBRequest] object, and, in a separate thread,
@@ -1033,7 +1238,9 @@ abstract class IDBCursor implements JSObject {
   /// [IDBCursor.delete]) on cursors obtained from
   /// [IDBIndex.openKeyCursor]. For such needs, you have to use
   /// [IDBIndex.openCursor] instead.
-  IDBRequest update(JSAny? value);
+  IDBRequest update(JSAny? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`delete()`** method of the [IDBCursor]
   /// interface returns an [IDBRequest] object, and, in a separate thread,
@@ -1045,7 +1252,9 @@ abstract class IDBCursor implements JSObject {
   /// [IDBCursor.update]) on cursors obtained from
   /// [IDBIndex.openKeyCursor]. For such needs, you have to use
   /// [IDBIndex.openCursor] instead.
-  IDBRequest delete();
+  IDBRequest delete() {
+    unsupportedPlatformError();
+  }
 
   /// The **`source`** read-only property of the
   /// [IDBCursor] interface returns the [IDBObjectStore] or
@@ -1053,32 +1262,42 @@ abstract class IDBCursor implements JSObject {
   /// null or throws an exception, even if the cursor is currently being
   /// iterated, has
   /// iterated past its end, or its transaction is not active.
-  JSObject get source;
+  JSObject get source {
+    unsupportedPlatformError();
+  }
 
   /// The **`direction`** read-only property of the
   /// [IDBCursor] interface is a string that returns the
   /// direction of traversal of the cursor (set using
   /// [IDBObjectStore.openCursor] for example). See the [Values](#values)
   /// section below for possible values.
-  IDBCursorDirection get direction;
+  IDBCursorDirection get direction {
+    unsupportedPlatformError();
+  }
 
   /// The **`key`** read-only property of the
   /// [IDBCursor] interface returns the key for the record at the cursor's
   /// position. If the cursor is outside its range, this is set to undefined.
   /// The cursor's
   /// key can be any data type.
-  JSAny? get key;
+  JSAny? get key {
+    unsupportedPlatformError();
+  }
 
   /// The **`primaryKey`** read-only property of the
   /// [IDBCursor] interface returns the cursor's current effective key. If the
   /// cursor is currently being iterated or has iterated outside its range, this
   /// is set to
   /// undefined. The cursor's primary key can be any data type.
-  JSAny? get primaryKey;
+  JSAny? get primaryKey {
+    unsupportedPlatformError();
+  }
 
   /// The **`request`** read-only property of the [IDBCursor] interface returns
   /// the [IDBRequest] used to obtain the cursor.
-  IDBRequest get request;
+  IDBRequest get request {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`IDBCursorWithValue`** interface of the
@@ -1102,11 +1321,13 @@ abstract class IDBCursor implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/IDBCursorWithValue).
-abstract class IDBCursorWithValue implements IDBCursor, JSObject {
+extension type IDBCursorWithValue._(JSObject _) implements IDBCursor, JSObject {
   /// The **`value`** read-only property of the
   /// [IDBCursorWithValue] interface returns the value of the current cursor,
   /// whatever that is.
-  JSAny? get value;
+  JSAny? get value {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`IDBTransaction`** interface of the
@@ -1148,7 +1369,7 @@ abstract class IDBCursorWithValue implements IDBCursor, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/IDBTransaction).
-abstract class IDBTransaction implements EventTarget, JSObject {
+extension type IDBTransaction._(JSObject _) implements EventTarget, JSObject {
   /// The **`objectStore()`** method of the
   /// [IDBTransaction] interface returns an object store that has already been
   /// added to the scope of this transaction.
@@ -1158,7 +1379,9 @@ abstract class IDBTransaction implements EventTarget, JSObject {
   /// the same [IDBObjectStore] instance. If this method is called on a
   /// different
   /// transaction object, a different [IDBObjectStore] instance is returned.
-  IDBObjectStore objectStore(String name);
+  IDBObjectStore objectStore(String name) {
+    unsupportedPlatformError();
+  }
 
   /// The **`commit()`** method of the [IDBTransaction] interface commits the
   /// transaction if it is called on an active transaction.
@@ -1171,7 +1394,9 @@ abstract class IDBTransaction implements EventTarget, JSObject {
   ///
   /// If it is called on a transaction that is not active, it throws an
   /// `InvalidStateError` [DOMException].
-  void commit();
+  void commit() {
+    unsupportedPlatformError();
+  }
 
   /// The **`abort()`** method of the [IDBTransaction]
   /// interface rolls back all the changes to objects in the database associated
@@ -1180,12 +1405,16 @@ abstract class IDBTransaction implements EventTarget, JSObject {
   ///
   /// All pending [IDBRequest] objects created during this transaction have
   /// their [IDBRequest.error] attribute set to an `AbortError` [DOMException].
-  void abort();
+  void abort() {
+    unsupportedPlatformError();
+  }
 
   /// The **`objectStoreNames`** read-only property of the
   /// [IDBTransaction] interface returns a [DOMStringList] of names
   /// of [IDBObjectStore] objects.
-  DOMStringList get objectStoreNames;
+  DOMStringList get objectStoreNames {
+    unsupportedPlatformError();
+  }
 
   /// The **`mode`** read-only property of the
   /// [IDBTransaction] interface returns the current mode for accessing the
@@ -1194,7 +1423,9 @@ abstract class IDBTransaction implements EventTarget, JSObject {
   /// read-only, or do you want to write to the object stores?) The default
   /// value is
   /// `readonly`.
-  IDBTransactionMode get mode;
+  IDBTransactionMode get mode {
+    unsupportedPlatformError();
+  }
 
   /// The **`durability`** read-only property of the [IDBTransaction] interface
   /// returns the durability hint the transaction was created with.
@@ -1204,20 +1435,44 @@ abstract class IDBTransaction implements EventTarget, JSObject {
   /// The value of this property is defined in the
   /// [`options.durability`](/en-US/docs/Web/API/IDBDatabase/transaction#options)
   /// parameter when creating a transaction using [IDBDatabase.transaction].
-  IDBTransactionDurability get durability;
+  IDBTransactionDurability get durability {
+    unsupportedPlatformError();
+  }
 
   /// The **`db`** read-only property of the [IDBTransaction] interface returns
   /// the database connection
   /// with which this transaction is associated.
-  IDBDatabase get db;
+  IDBDatabase get db {
+    unsupportedPlatformError();
+  }
 
   /// The **`IDBTransaction.error`** property of the [IDBTransaction] interface
   /// returns the type of error when there is an unsuccessful transaction.
-  DOMException? get error;
-  EventHandler get onabort;
-  set onabort(EventHandler value);
-  EventHandler get oncomplete;
-  set oncomplete(EventHandler value);
-  EventHandler get onerror;
-  set onerror(EventHandler value);
+  DOMException? get error {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onabort {
+    unsupportedPlatformError();
+  }
+
+  set onabort(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get oncomplete {
+    unsupportedPlatformError();
+  }
+
+  set oncomplete(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onerror {
+    unsupportedPlatformError();
+  }
+
+  set onerror(EventHandler value) {
+    unsupportedPlatformError();
+  }
 }

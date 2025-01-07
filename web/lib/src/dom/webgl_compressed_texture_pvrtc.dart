@@ -13,7 +13,8 @@
 import '../js_interop.dart';
 import 'webgl1.dart';
 
-abstract class WEBGL_compressed_texture_pvrtc implements JSObject {
+extension type WEBGL_compressed_texture_pvrtc._(JSObject _)
+    implements JSObject {
   static const GLenum COMPRESSED_RGB_PVRTC_4BPPV1_IMG = 35840;
 
   static const GLenum COMPRESSED_RGB_PVRTC_2BPPV1_IMG = 35841;

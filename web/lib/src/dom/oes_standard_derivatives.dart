@@ -13,6 +13,6 @@
 import '../js_interop.dart';
 import 'webgl1.dart';
 
-abstract class OES_standard_derivatives implements JSObject {
+extension type OES_standard_derivatives._(JSObject _) implements JSObject {
   static const GLenum FRAGMENT_SHADER_DERIVATIVE_HINT_OES = 35723;
 }

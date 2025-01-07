@@ -10,6 +10,7 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
+import '../error.dart';
 import '../js_interop.dart';
 
 typedef UpdateCallback = JSFunction;
@@ -37,11 +38,13 @@ typedef UpdateCallback = JSFunction;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ViewTransition).
-abstract class ViewTransition implements JSObject {
+extension type ViewTransition._(JSObject _) implements JSObject {
   /// The **`skipTransition()`** method of the
   /// [ViewTransition] interface skips the animation part of the view
   /// transition, but doesn't skip running the associated view update.
-  void skipTransition();
+  void skipTransition() {
+    unsupportedPlatformError();
+  }
 
   /// The **`updateCallbackDone`** read-only property of the
   /// [ViewTransition] interface is a `Promise` that fulfills when the promise
@@ -55,7 +58,9 @@ abstract class ViewTransition implements JSObject {
   /// > **Note:** In the case of a cross-document (MPA) view transition, the
   /// > `updateCallbackDone` promise of the associated `ViewTransition` is
   /// > automatically fulfilled.
-  JSPromise<JSAny?> get updateCallbackDone;
+  JSPromise<JSAny?> get updateCallbackDone {
+    unsupportedPlatformError();
+  }
 
   /// The **`ready`** read-only property of the
   /// [ViewTransition] interface is a `Promise` that fulfills once the
@@ -65,7 +70,9 @@ abstract class ViewTransition implements JSObject {
   /// `ready` will reject if the transition cannot begin. This can be due to
   /// misconfiguration, for example, duplicate s, or if the callback passed to
   /// [Document.startViewTransition] throws or returns a promise that rejects.
-  JSPromise<JSAny?> get ready;
+  JSPromise<JSAny?> get ready {
+    unsupportedPlatformError();
+  }
 
   /// The **`finished`** read-only property of the
   /// [ViewTransition] interface is a `Promise` that fulfills once the
@@ -80,5 +87,7 @@ abstract class ViewTransition implements JSObject {
   /// If a transition animation fails to start or is skipped during the
   /// transition using [ViewTransition.skipTransition], the end state is still
   /// reached therefore `finished` will still fulfill.
-  JSPromise<JSAny?> get finished;
+  JSPromise<JSAny?> get finished {
+    unsupportedPlatformError();
+  }
 }

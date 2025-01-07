@@ -31,7 +31,7 @@ typedef OrientationSensorLocalCoordinateSystem = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/OrientationSensor).
-abstract class OrientationSensor implements Sensor, JSObject {
+extension type OrientationSensor._(JSObject _) implements Sensor, JSObject {
   /// The **`populateMatrix()`** method of the
   /// [OrientationSensor] interface populates the given target matrix with the
   /// rotation matrix based on the latest sensor reading. The rotation matrix is
@@ -47,7 +47,9 @@ abstract class OrientationSensor implements Sensor, JSObject {
   /// - X = Vx \* sin(θ/2)
   /// - Y = Vy \* sin(θ/2)
   /// - Z = Vz \* sin(θ/2)
-  void populateMatrix(RotationMatrixType targetMatrix);
+  void populateMatrix(RotationMatrixType targetMatrix) {
+    unsupportedPlatformError();
+  }
 
   /// The **`quaternion`** read-only
   /// property of the [OrientationSensor] interface returns a four element
@@ -56,10 +58,19 @@ abstract class OrientationSensor implements Sensor, JSObject {
   ///
   /// Because [OrientationSensor] is a base class, `quaternion` may
   /// only be read from one of its derived classes.
-  JSArray<JSNumber>? get quaternion;
+  JSArray<JSNumber>? get quaternion {
+    unsupportedPlatformError();
+  }
 }
+extension type OrientationSensorOptions._(JSObject _)
+    implements SensorOptions, JSObject {
+  factory OrientationSensorOptions({
+    num? frequency,
+    OrientationSensorLocalCoordinateSystem? referenceFrame,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class OrientationSensorOptions implements SensorOptions, JSObject {
   OrientationSensorLocalCoordinateSystem get referenceFrame {
     unsupportedPlatformError();
   }
@@ -86,8 +97,12 @@ abstract class OrientationSensorOptions implements SensorOptions, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/AbsoluteOrientationSensor).
-abstract class AbsoluteOrientationSensor
-    implements OrientationSensor, JSObject {}
+extension type AbsoluteOrientationSensor._(JSObject _)
+    implements OrientationSensor, JSObject {
+  factory AbsoluteOrientationSensor([OrientationSensorOptions? sensorOptions]) {
+    unsupportedPlatformError();
+  }
+}
 
 /// The **`RelativeOrientationSensor`** interface of the
 /// [Sensor APIs](https://developer.mozilla.org/en-US/docs/Web/API/Sensor_APIs)
@@ -105,5 +120,9 @@ abstract class AbsoluteOrientationSensor
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/RelativeOrientationSensor).
-abstract class RelativeOrientationSensor
-    implements OrientationSensor, JSObject {}
+extension type RelativeOrientationSensor._(JSObject _)
+    implements OrientationSensor, JSObject {
+  factory RelativeOrientationSensor([OrientationSensorOptions? sensorOptions]) {
+    unsupportedPlatformError();
+  }
+}

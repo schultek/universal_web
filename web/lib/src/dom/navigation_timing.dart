@@ -10,6 +10,7 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
+import '../error.dart';
 import '../js_interop.dart';
 import 'resource_timing.dart';
 
@@ -34,26 +35,32 @@ typedef NavigationTimingType = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceNavigationTiming).
-abstract class PerformanceNavigationTiming
+extension type PerformanceNavigationTiming._(JSObject _)
     implements PerformanceResourceTiming, JSObject {
   /// The **`toJSON()`** method of the [PerformanceNavigationTiming] interface
   /// is a ; it returns a JSON representation of the
   /// [PerformanceNavigationTiming] object.
-  JSObject toJSON();
+  JSObject toJSON() {
+    unsupportedPlatformError();
+  }
 
   /// The **`unloadEventStart`** read-only property returns a
   /// [DOMHighResTimeStamp] representing the time immediately before the current
   /// document's
   /// [`unload`](https://developer.mozilla.org/en-US/docs/Web/API/Window/unload_event)
   /// event handler starts.
-  double get unloadEventStart;
+  double get unloadEventStart {
+    unsupportedPlatformError();
+  }
 
   /// The **`unloadEventEnd`** read-only property returns a
   /// [DOMHighResTimeStamp] representing the time immediately after the current
   /// document's
   /// [`unload`](https://developer.mozilla.org/en-US/docs/Web/API/Window/unload_event)
   /// event handler completes.
-  double get unloadEventEnd;
+  double get unloadEventEnd {
+    unsupportedPlatformError();
+  }
 
   /// The **`domInteractive`** read-only property returns a
   /// [DOMHighResTimeStamp] representing the time immediately before the user
@@ -74,7 +81,9 @@ abstract class PerformanceNavigationTiming
   /// event (see
   /// [`domContentLoadedEventStart`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceNavigationTiming/domContentLoadedEventStart)
   /// for the timestamp) will fire immediately after `domInteractive`.
-  double get domInteractive;
+  double get domInteractive {
+    unsupportedPlatformError();
+  }
 
   /// The **`domContentLoadedEventStart`** read-only property returns a
   /// [DOMHighResTimeStamp] representing the time immediately before the current
@@ -87,7 +96,9 @@ abstract class PerformanceNavigationTiming
   /// `domContentLoadedEventStart` and the
   /// [`domContentLoadedEventEnd`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceNavigationTiming/domContentLoadedEventEnd)
   /// properties to calculate how long this takes to run.
-  double get domContentLoadedEventStart;
+  double get domContentLoadedEventStart {
+    unsupportedPlatformError();
+  }
 
   /// The **`domContentLoadedEventEnd`** read-only property returns a
   /// [DOMHighResTimeStamp] representing the time immediately after the current
@@ -100,7 +111,9 @@ abstract class PerformanceNavigationTiming
   /// `domContentLoadedEventEnd` and the
   /// [`domContentLoadedEventStart`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceNavigationTiming/domContentLoadedEventStart)
   /// properties to calculate how long this takes to run.
-  double get domContentLoadedEventEnd;
+  double get domContentLoadedEventEnd {
+    unsupportedPlatformError();
+  }
 
   /// The **`domComplete`** read-only property returns a [DOMHighResTimeStamp]
   /// representing the time immediately before the user agent sets the
@@ -112,20 +125,26 @@ abstract class PerformanceNavigationTiming
   /// to this property and refers to the state in which the document and all
   /// sub-resources have finished loading. The state also indicates that the
   /// [Window.load_event] event is about to fire.
-  double get domComplete;
+  double get domComplete {
+    unsupportedPlatformError();
+  }
 
   /// The **`loadEventStart`** read-only property returns a
   /// [DOMHighResTimeStamp] representing the time immediately before the current
   /// document's
   /// [`load`](https://developer.mozilla.org/en-US/docs/Web/API/Window/load_event)
   /// event handler starts.
-  double get loadEventStart;
+  double get loadEventStart {
+    unsupportedPlatformError();
+  }
 
   /// The **`loadEventEnd`** read-only property returns a [DOMHighResTimeStamp]
   /// representing the time immediately after the current document's
   /// [`load`](https://developer.mozilla.org/en-US/docs/Web/API/Window/load_event)
   /// event handler completes.
-  double get loadEventEnd;
+  double get loadEventEnd {
+    unsupportedPlatformError();
+  }
 
   /// The **`type`** read-only property returns the type of navigation.
   ///
@@ -140,7 +159,9 @@ abstract class PerformanceNavigationTiming
   /// similar and avoid users having to hit reload for the entire page all the
   /// time. The `"reload"` type can help you find pages that are reloaded
   /// frequently.
-  NavigationTimingType get type;
+  NavigationTimingType get type {
+    unsupportedPlatformError();
+  }
 
   /// The **`redirectCount`** read-only property returns a number representing
   /// the number of redirects since the last non-redirect navigation in the
@@ -157,7 +178,9 @@ abstract class PerformanceNavigationTiming
   ///
   /// Note that client side redirects, such as `<meta http-equiv="refresh"
   /// content="0; url=https://example.com/">` are not considered here.
-  int get redirectCount;
+  int get redirectCount {
+    unsupportedPlatformError();
+  }
 }
 
 /// > **Warning:** This interface is deprecated in the
@@ -174,7 +197,7 @@ abstract class PerformanceNavigationTiming
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceTiming).
-abstract class PerformanceTiming implements JSObject {
+extension type PerformanceTiming._(JSObject _) implements JSObject {
   /// > **Warning:** This interface of this property is deprecated in the
   /// > [Navigation Timing Level 2 specification](https://w3c.github.io/navigation-timing/#obsolete).
   /// > Please use the [PerformanceNavigationTiming]
@@ -182,7 +205,9 @@ abstract class PerformanceTiming implements JSObject {
   ///
   /// The legacy **`toJSON()`** method of the [PerformanceTiming] interface is a
   /// ; it returns a JSON representation of the [PerformanceTiming] object.
-  JSObject toJSON();
+  JSObject toJSON() {
+    unsupportedPlatformError();
+  }
 
   /// > **Warning:** This interface of this property is deprecated in the
   /// > [Navigation Timing Level 2 specification](https://w3c.github.io/navigation-timing/#obsolete).
@@ -197,7 +222,9 @@ abstract class PerformanceTiming implements JSObject {
   /// the previous document in the same browsing context. If there is no
   /// previous document,
   /// this value will be the same as [PerformanceTiming.fetchStart].
-  int get navigationStart;
+  int get navigationStart {
+    unsupportedPlatformError();
+  }
 
   /// > **Warning:** This interface of this property is deprecated in the
   /// > [Navigation Timing Level 2 specification](https://w3c.github.io/navigation-timing/#obsolete).
@@ -213,7 +240,9 @@ abstract class PerformanceTiming implements JSObject {
   /// there is no previous document, or if the previous document, or one of the
   /// needed
   /// redirects, is not of the same origin, the value returned is `0`.
-  int get unloadEventStart;
+  int get unloadEventStart {
+    unsupportedPlatformError();
+  }
 
   /// > **Warning:** This interface of this property is deprecated in the
   /// > [Navigation Timing Level 2 specification](https://w3c.github.io/navigation-timing/#obsolete).
@@ -229,7 +258,9 @@ abstract class PerformanceTiming implements JSObject {
   /// there is no previous document, or if the previous document, or one of the
   /// needed
   /// redirects, is not of the same origin, the value returned is `0`.
-  int get unloadEventEnd;
+  int get unloadEventEnd {
+    unsupportedPlatformError();
+  }
 
   /// > **Warning:** This interface of this property is deprecated in the
   /// > [Navigation Timing Level 2 specification](https://w3c.github.io/navigation-timing/#obsolete).
@@ -245,7 +276,9 @@ abstract class PerformanceTiming implements JSObject {
   /// redirect, or if one of the redirect is not of the same origin, the value
   /// returned is
   /// `0`.
-  int get redirectStart;
+  int get redirectStart {
+    unsupportedPlatformError();
+  }
 
   /// > **Warning:** This interface of this property is deprecated in the
   /// > [Navigation Timing Level 2 specification](https://w3c.github.io/navigation-timing/#obsolete).
@@ -261,7 +294,9 @@ abstract class PerformanceTiming implements JSObject {
   /// the last byte of the HTTP response has been received. If there is no
   /// redirect, or if one
   /// of the redirect is not of the same origin, the value returned is `0`.
-  int get redirectEnd;
+  int get redirectEnd {
+    unsupportedPlatformError();
+  }
 
   /// > **Warning:** This interface of this property is deprecated in the
   /// > [Navigation Timing Level 2 specification](https://w3c.github.io/navigation-timing/#obsolete).
@@ -276,7 +311,9 @@ abstract class PerformanceTiming implements JSObject {
   /// document using
   /// an HTTP request. This moment is _before_ the check to any application
   /// cache.
-  int get fetchStart;
+  int get fetchStart {
+    unsupportedPlatformError();
+  }
 
   /// > **Warning:** This interface of this property is deprecated in the
   /// > [Navigation Timing Level 2 specification](https://w3c.github.io/navigation-timing/#obsolete).
@@ -292,7 +329,9 @@ abstract class PerformanceTiming implements JSObject {
   /// connection is used, or the information is stored in a cache or a local
   /// resource, the
   /// value will be the same as [PerformanceTiming.fetchStart].
-  int get domainLookupStart;
+  int get domainLookupStart {
+    unsupportedPlatformError();
+  }
 
   /// > **Warning:** This interface of this property is deprecated in the
   /// > [Navigation Timing Level 2 specification](https://w3c.github.io/navigation-timing/#obsolete).
@@ -308,7 +347,9 @@ abstract class PerformanceTiming implements JSObject {
   /// persistent connection is used, or the information is stored in a cache or
   /// a local
   /// resource, the value will be the same as [PerformanceTiming.fetchStart].
-  int get domainLookupEnd;
+  int get domainLookupEnd {
+    unsupportedPlatformError();
+  }
 
   /// > **Warning:** This interface of this property is deprecated in the
   /// > [Navigation Timing Level 2 specification](https://w3c.github.io/navigation-timing/#obsolete).
@@ -327,7 +368,9 @@ abstract class PerformanceTiming implements JSObject {
   /// persistent
   /// connection is used, the value will be the same as
   /// [PerformanceTiming.fetchStart].
-  int get connectStart;
+  int get connectStart {
+    unsupportedPlatformError();
+  }
 
   /// > **Warning:** This interface of this property is deprecated in the
   /// > [Navigation Timing Level 2 specification](https://w3c.github.io/navigation-timing/#obsolete).
@@ -348,7 +391,9 @@ abstract class PerformanceTiming implements JSObject {
   /// considered as opened when all secure connection handshake, or SOCKS
   /// authentication, is
   /// terminated.
-  int get connectEnd;
+  int get connectEnd {
+    unsupportedPlatformError();
+  }
 
   /// > **Warning:** This interface of this property is deprecated in the
   /// > [Navigation Timing Level 2 specification](https://w3c.github.io/navigation-timing/#obsolete).
@@ -361,7 +406,9 @@ abstract class PerformanceTiming implements JSObject {
   /// in milliseconds since the UNIX epoch, where the secure connection
   /// handshake starts. If
   /// no such connection is requested, it returns `0`.
-  int get secureConnectionStart;
+  int get secureConnectionStart {
+    unsupportedPlatformError();
+  }
 
   /// > **Warning:** This interface of this property is deprecated in the
   /// > [Navigation Timing Level 2 specification](https://w3c.github.io/navigation-timing/#obsolete).
@@ -379,7 +426,9 @@ abstract class PerformanceTiming implements JSObject {
   /// start of the request and the connection is reopened, this property will be
   /// set to the
   /// time corresponding to the new request.
-  int get requestStart;
+  int get requestStart {
+    unsupportedPlatformError();
+  }
 
   /// > **Warning:** This interface of this property is deprecated in the
   /// > [Navigation Timing Level 2 specification](https://w3c.github.io/navigation-timing/#obsolete).
@@ -393,7 +442,9 @@ abstract class PerformanceTiming implements JSObject {
   /// time (in milliseconds since the UNIX epoch) when the browser received the
   /// first byte of
   /// the response from the server, cache, or local resource.
-  int get responseStart;
+  int get responseStart {
+    unsupportedPlatformError();
+  }
 
   /// > **Warning:** This interface of this property is deprecated in the
   /// > [Navigation Timing Level 2 specification](https://w3c.github.io/navigation-timing/#obsolete).
@@ -409,7 +460,9 @@ abstract class PerformanceTiming implements JSObject {
   /// response, or when the connection is closed if this happened first, from
   /// the server from
   /// a cache or from a local resource.
-  int get responseEnd;
+  int get responseEnd {
+    unsupportedPlatformError();
+  }
 
   /// > **Warning:** This interface of this property is deprecated in the
   /// > [Navigation Timing Level 2 specification](https://w3c.github.io/navigation-timing/#obsolete).
@@ -424,7 +477,9 @@ abstract class PerformanceTiming implements JSObject {
   /// that is when its
   /// [Document.readyState] changes to `'loading'` and the
   /// corresponding [Document.readystatechange_event] event is thrown.
-  int get domLoading;
+  int get domLoading {
+    unsupportedPlatformError();
+  }
 
   /// > **Warning:** This interface of this property is deprecated in the
   /// > [Navigation Timing Level 2 specification](https://w3c.github.io/navigation-timing/#obsolete).
@@ -449,7 +504,9 @@ abstract class PerformanceTiming implements JSObject {
   /// [Check if you are in one of these cases](https://www.stevesouders.com/blog/2015/08/07/dominteractive-is-it-really/)
   /// before using this property as a proxy for the
   /// user experience of a website's speed of loading.
-  int get domInteractive;
+  int get domInteractive {
+    unsupportedPlatformError();
+  }
 
   /// > **Warning:** This interface of this property is deprecated in the
   /// > [Navigation Timing Level 2 specification](https://w3c.github.io/navigation-timing/#obsolete).
@@ -464,7 +521,9 @@ abstract class PerformanceTiming implements JSObject {
   /// [Document.DOMContentLoaded_event] event, that is right after all the
   /// scripts that need to be
   /// executed right after parsing has been executed.
-  int get domContentLoadedEventStart;
+  int get domContentLoadedEventStart {
+    unsupportedPlatformError();
+  }
 
   /// > **Warning:** This interface of this property is deprecated in the
   /// > [Navigation Timing Level 2 specification](https://w3c.github.io/navigation-timing/#obsolete).
@@ -478,7 +537,9 @@ abstract class PerformanceTiming implements JSObject {
   /// in milliseconds since the UNIX epoch, right after all the scripts that
   /// need to be
   /// executed as soon as possible, in order or not, has been executed.
-  int get domContentLoadedEventEnd;
+  int get domContentLoadedEventEnd {
+    unsupportedPlatformError();
+  }
 
   /// > **Warning:** This interface of this property is deprecated in the
   /// > [Navigation Timing Level 2 specification](https://w3c.github.io/navigation-timing/#obsolete).
@@ -495,7 +556,9 @@ abstract class PerformanceTiming implements JSObject {
   /// `'complete'` and the corresponding [Document.readystatechange_event] event
   /// is
   /// thrown.
-  int get domComplete;
+  int get domComplete {
+    unsupportedPlatformError();
+  }
 
   /// > **Warning:** This interface of this property is deprecated in the
   /// > [Navigation Timing Level 2 specification](https://w3c.github.io/navigation-timing/#obsolete).
@@ -510,7 +573,9 @@ abstract class PerformanceTiming implements JSObject {
   /// in milliseconds since the UNIX epoch, when the [Window.load_event] event
   /// was sent for the
   /// current document. If this event has not yet been sent, it returns `0.`
-  int get loadEventStart;
+  int get loadEventStart {
+    unsupportedPlatformError();
+  }
 
   /// > **Warning:** This interface of this property is deprecated in the
   /// > [Navigation Timing Level 2 specification](https://w3c.github.io/navigation-timing/#obsolete).
@@ -527,7 +592,9 @@ abstract class PerformanceTiming implements JSObject {
   /// terminated, that is when the load event is completed. If this event has
   /// not yet been
   /// sent, or is not yet completed, it returns `0.`
-  int get loadEventEnd;
+  int get loadEventEnd {
+    unsupportedPlatformError();
+  }
 }
 
 /// The legacy **`PerformanceNavigation`** interface represents information
@@ -544,7 +611,7 @@ abstract class PerformanceTiming implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceNavigation).
-abstract class PerformanceNavigation implements JSObject {
+extension type PerformanceNavigation._(JSObject _) implements JSObject {
   static const int TYPE_NAVIGATE = 0;
 
   static const int TYPE_RELOAD = 1;
@@ -560,7 +627,9 @@ abstract class PerformanceNavigation implements JSObject {
   ///
   /// The **`toJSON()`** method of the [PerformanceNavigation] interface is a ;
   /// it returns a JSON representation of the [PerformanceNavigation] object.
-  JSObject toJSON();
+  JSObject toJSON() {
+    unsupportedPlatformError();
+  }
 
   /// The legacy
   /// **`PerformanceNavigation.type`**
@@ -570,7 +639,9 @@ abstract class PerformanceNavigation implements JSObject {
   /// > **Warning:** This interface of this property is deprecated in the
   /// > [Navigation Timing Level 2 specification](https://w3c.github.io/navigation-timing/#obsolete).
   /// > Please use the [PerformanceNavigationTiming] interface instead.
-  int get type;
+  int get type {
+    unsupportedPlatformError();
+  }
 
   /// The legacy
   /// **`PerformanceNavigation.redirectCount`**
@@ -580,5 +651,7 @@ abstract class PerformanceNavigation implements JSObject {
   /// > **Warning:** This interface of this property is deprecated in the
   /// > [Navigation Timing Level 2 specification](https://w3c.github.io/navigation-timing/#obsolete).
   /// > Please use the [PerformanceNavigationTiming] interface instead.
-  int get redirectCount;
+  int get redirectCount {
+    unsupportedPlatformError();
+  }
 }

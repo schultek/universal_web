@@ -13,11 +13,31 @@
 import '../error.dart';
 import '../js_interop.dart';
 import 'dom.dart';
+import 'html.dart';
 import 'uievents.dart';
 
 typedef TouchType = String;
+extension type TouchInit._(JSObject _) implements JSObject {
+  factory TouchInit({
+    required int identifier,
+    required EventTarget target,
+    num? clientX,
+    num? clientY,
+    num? screenX,
+    num? screenY,
+    num? pageX,
+    num? pageY,
+    num? radiusX,
+    num? radiusY,
+    num? rotationAngle,
+    num? force,
+    num? altitudeAngle,
+    num? azimuthAngle,
+    TouchType? touchType,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class TouchInit implements JSObject {
   int get identifier {
     unsupportedPlatformError();
   }
@@ -159,14 +179,20 @@ abstract class TouchInit implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Touch).
-abstract class Touch implements JSObject {
+extension type Touch._(JSObject _) implements JSObject {
+  factory Touch(TouchInit touchInitDict) {
+    unsupportedPlatformError();
+  }
+
   /// The **`Touch.identifier`** returns a value uniquely identifying
   /// this point of contact with the touch surface. This value remains
   /// consistent for every
   /// event involving this finger's (or stylus's) movement on the surface until
   /// it is lifted
   /// off the surface.
-  int get identifier;
+  int get identifier {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`target`** property of the `Touch` interface returns the
   /// ([EventTarget]) on which the touch contact started when it was first
@@ -177,36 +203,50 @@ abstract class Touch implements JSObject {
   /// window or document anymore. If there is any risk of an element being
   /// removed while it is being touched, the best practice is to attach the
   /// touch listeners directly to the target.
-  EventTarget get target;
+  EventTarget get target {
+    unsupportedPlatformError();
+  }
 
   /// Returns the X coordinate of the touch point relative to the screen, not
   /// including any scroll offset.
-  double get screenX;
+  double get screenX {
+    unsupportedPlatformError();
+  }
 
   /// Returns the Y coordinate of the touch point relative to the screen, not
   /// including any scroll offset.
-  double get screenY;
+  double get screenY {
+    unsupportedPlatformError();
+  }
 
   /// The `Touch.clientX` read-only property returns the X coordinate of the
   /// touch
   /// point relative to the viewport, not including any scroll offset.
-  double get clientX;
+  double get clientX {
+    unsupportedPlatformError();
+  }
 
   /// The **`Touch.clientY`** read-only property returns the Y
   /// coordinate of the touch point relative to the browser's viewport, not
   /// including any
   /// scroll offset.
-  double get clientY;
+  double get clientY {
+    unsupportedPlatformError();
+  }
 
   /// The **`Touch.pageX`** read-only property returns the X
   /// coordinate of the touch point relative to the viewport, including any
   /// scroll offset.
-  double get pageX;
+  double get pageX {
+    unsupportedPlatformError();
+  }
 
   /// The **`Touch.pageY`** read-only property returns the Y
   /// coordinate of the touch point relative to the viewport, including any
   /// scroll offset.
-  double get pageY;
+  double get pageY {
+    unsupportedPlatformError();
+  }
 
   /// The **`radiusX`** read-only property of the [Touch] interface returns the
   /// X radius of the ellipse that most closely circumscribes the area of
@@ -218,7 +258,9 @@ abstract class Touch implements JSObject {
   /// contact between the user and the screen. This may be a relatively large
   /// ellipse representing the contact between a fingertip and the screen or a
   /// small area representing the tip of a stylus, for example.
-  double get radiusX;
+  double get radiusX {
+    unsupportedPlatformError();
+  }
 
   /// The **`radiusY`** read-only property of the [Touch] interface returns the
   /// Y radius of the ellipse that most closely circumscribes the area of
@@ -230,7 +272,9 @@ abstract class Touch implements JSObject {
   /// contact between the user and the screen. This may be a large ellipse
   /// representing the contact between a fingertip and the screen or a small one
   /// representing the tip of a stylus, for example.
-  double get radiusY;
+  double get radiusY {
+    unsupportedPlatformError();
+  }
 
   /// The **`rotationAngle`** read-only property of the [Touch] interface
   /// returns the rotation angle, in degrees, of the contact area ellipse
@@ -240,14 +284,27 @@ abstract class Touch implements JSObject {
   /// This may be a relatively large ellipse representing the contact between a
   /// fingertip and the screen or a small area representing the tip of a stylus,
   /// for example.
-  double get rotationAngle;
+  double get rotationAngle {
+    unsupportedPlatformError();
+  }
 
   /// The **`Touch.force`** read-only property returns the amount of
   /// pressure the user is applying to the touch surface for a [Touch] point.
-  double get force;
-  double get altitudeAngle;
-  double get azimuthAngle;
-  TouchType get touchType;
+  double get force {
+    unsupportedPlatformError();
+  }
+
+  double get altitudeAngle {
+    unsupportedPlatformError();
+  }
+
+  double get azimuthAngle {
+    unsupportedPlatformError();
+  }
+
+  TouchType get touchType {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`TouchList`** interface represents a list of contact points on a touch
@@ -273,17 +330,50 @@ abstract class Touch implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/TouchList).
-abstract class TouchList implements JSObject {
+extension type TouchList._(JSObject _) implements JSObject {
   /// The **`item()`** method returns the [Touch]
   /// object at the specified index in the [TouchList].
-  Touch? item(int index);
+  Touch? item(int index) {
+    unsupportedPlatformError();
+  }
 
   /// The **`length`** read-only property indicates the number of
   /// items (touch points) in a given [TouchList].
-  int get length;
+  int get length {
+    unsupportedPlatformError();
+  }
 }
+extension type TouchEventInit._(JSObject _)
+    implements EventModifierInit, JSObject {
+  factory TouchEventInit({
+    bool? bubbles,
+    bool? cancelable,
+    bool? composed,
+    Window? view,
+    int? detail,
+    JSObject? sourceCapabilities,
+    int? which,
+    bool? ctrlKey,
+    bool? shiftKey,
+    bool? altKey,
+    bool? metaKey,
+    bool? modifierAltGraph,
+    bool? modifierCapsLock,
+    bool? modifierFn,
+    bool? modifierFnLock,
+    bool? modifierHyper,
+    bool? modifierNumLock,
+    bool? modifierScrollLock,
+    bool? modifierSuper,
+    bool? modifierSymbol,
+    bool? modifierSymbolLock,
+    JSArray<Touch>? touches,
+    JSArray<Touch>? targetTouches,
+    JSArray<Touch>? changedTouches,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class TouchEventInit implements EventModifierInit, JSObject {
   JSArray<Touch> get touches {
     unsupportedPlatformError();
   }
@@ -323,7 +413,14 @@ abstract class TouchEventInit implements EventModifierInit, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/TouchEvent).
-abstract class TouchEvent implements UIEvent, JSObject {
+extension type TouchEvent._(JSObject _) implements UIEvent, JSObject {
+  factory TouchEvent(
+    String type, [
+    TouchEventInit? eventInitDict,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// **`touches`** is a read-only [TouchList] listing
   /// all the [Touch] objects for touch points that are currently in contact
   /// with the touch surface, regardless of whether or not they've changed or
@@ -339,13 +436,17 @@ abstract class TouchEvent implements UIEvent, JSObject {
   /// > i-th element in the array being the i-th touch that happened). You
   /// > cannot assume a specific order. To determine the order of occurrences of
   /// > the touches, use the `touch` object IDs.
-  TouchList get touches;
+  TouchList get touches {
+    unsupportedPlatformError();
+  }
 
   /// The **`targetTouches`** read-only property is a [TouchList] listing all
   /// the [Touch] objects for touch points that are still in contact with the
   /// touch surface **and** whose [Element.touchstart_event] event occurred
   /// inside the same target [element] as the current target element.
-  TouchList get targetTouches;
+  TouchList get targetTouches {
+    unsupportedPlatformError();
+  }
 
   /// The **`changedTouches`** read-only property is a [TouchList] whose touch
   /// points ([Touch] objects) varies depending on the event type, as follows:
@@ -357,7 +458,9 @@ abstract class TouchEvent implements UIEvent, JSObject {
   /// - For the [Element.touchend_event] event, it is a list of the touch points
   ///   that have been removed from the surface (that is, the set of touch
   ///   points corresponding to fingers no longer touching the surface).
-  TouchList get changedTouches;
+  TouchList get changedTouches {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`altKey`** property of the [TouchEvent] interface returns
   /// a boolean value indicating whether or not the <kbd>alt</kbd> (Alternate)
@@ -365,7 +468,9 @@ abstract class TouchEvent implements UIEvent, JSObject {
   /// is enabled, the attribute's value is `true`. Otherwise, it is `false`.
   ///
   /// This property is .
-  bool get altKey;
+  bool get altKey {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`metaKey`** property of the [TouchEvent] interface returns
   /// a boolean value indicating whether or not the <kbd>Meta</kbd> key is
@@ -376,7 +481,9 @@ abstract class TouchEvent implements UIEvent, JSObject {
   ///
   /// > **Note:** On Macintosh keyboards, this is the <kbd>⌘ Command</kbd> key.
   /// > On Windows keyboards, this is the Windows key (<kbd>⊞</kbd>).
-  bool get metaKey;
+  bool get metaKey {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`ctrlKey`** property of the [TouchEvent] interface returns
   /// a boolean value indicating whether the <kbd>control</kbd> (Control) key is
@@ -384,11 +491,15 @@ abstract class TouchEvent implements UIEvent, JSObject {
   /// attribute's value is `true`. Otherwise, it is `false`.
   ///
   /// This property is .
-  bool get ctrlKey;
+  bool get ctrlKey {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`shiftKey`** property of the `TouchEvent` interface
   /// returns a boolean value indicating whether or not the <kbd>shift</kbd> key
   /// is enabled when the touch event is created. If this key is enabled, the
   /// attribute's value is `true`. Otherwise, it is `false`.
-  bool get shiftKey;
+  bool get shiftKey {
+    unsupportedPlatformError();
+  }
 }

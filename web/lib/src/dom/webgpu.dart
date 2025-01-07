@@ -18,7 +18,7 @@ $GPUBufferUsage get GPUBufferUsage {
   unsupportedPlatformError();
 }
 
-abstract class $GPUBufferUsage implements JSObject {
+extension type $GPUBufferUsage._(JSObject _) implements JSObject {
   static const GPUFlagsConstant MAP_READ = 1;
 
   static const GPUFlagsConstant MAP_WRITE = 2;
@@ -39,22 +39,20 @@ abstract class $GPUBufferUsage implements JSObject {
 
   static const GPUFlagsConstant QUERY_RESOLVE = 512;
 }
-
 $GPUMapMode get GPUMapMode {
   unsupportedPlatformError();
 }
 
-abstract class $GPUMapMode implements JSObject {
+extension type $GPUMapMode._(JSObject _) implements JSObject {
   static const GPUFlagsConstant READ = 1;
 
   static const GPUFlagsConstant WRITE = 2;
 }
-
 $GPUTextureUsage get GPUTextureUsage {
   unsupportedPlatformError();
 }
 
-abstract class $GPUTextureUsage implements JSObject {
+extension type $GPUTextureUsage._(JSObject _) implements JSObject {
   static const GPUFlagsConstant COPY_SRC = 1;
 
   static const GPUFlagsConstant COPY_DST = 2;
@@ -65,24 +63,22 @@ abstract class $GPUTextureUsage implements JSObject {
 
   static const GPUFlagsConstant RENDER_ATTACHMENT = 16;
 }
-
 $GPUShaderStage get GPUShaderStage {
   unsupportedPlatformError();
 }
 
-abstract class $GPUShaderStage implements JSObject {
+extension type $GPUShaderStage._(JSObject _) implements JSObject {
   static const GPUFlagsConstant VERTEX = 1;
 
   static const GPUFlagsConstant FRAGMENT = 2;
 
   static const GPUFlagsConstant COMPUTE = 4;
 }
-
 $GPUColorWrite get GPUColorWrite {
   unsupportedPlatformError();
 }
 
-abstract class $GPUColorWrite implements JSObject {
+extension type $GPUColorWrite._(JSObject _) implements JSObject {
   static const GPUFlagsConstant RED = 1;
 
   static const GPUFlagsConstant GREEN = 2;

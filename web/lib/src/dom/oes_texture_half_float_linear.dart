@@ -12,4 +12,5 @@
 
 import '../js_interop.dart';
 
-abstract class OES_texture_half_float_linear implements JSObject {}
+extension type OES_texture_half_float_linear._(JSObject _)
+    implements JSObject {}

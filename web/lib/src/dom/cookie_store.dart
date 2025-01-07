@@ -34,20 +34,24 @@ typedef CookieSameSite = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CookieStore).
-abstract class CookieStore implements EventTarget, JSObject {
+extension type CookieStore._(JSObject _) implements EventTarget, JSObject {
   /// @AvailableInWorkers("window_and_service")
   ///
   /// The **`get()`** method of the [CookieStore] interface returns a single
   /// cookie with the given `name` or `options` object. The method will return
   /// the first matching cookie for the passed parameters.
-  JSPromise<CookieListItem?> get([JSAny nameOrOptions]);
+  JSPromise<CookieListItem?> get([JSAny? nameOrOptions]) {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("window_and_service")
   ///
   /// The **`getAll()`** method of the [CookieStore] interface returns a list of
   /// cookies that match the `name` or `options` passed to it. Passing no
   /// parameters will return all cookies for the current context.
-  JSPromise<CookieList> getAll([JSAny nameOrOptions]);
+  JSPromise<CookieList> getAll([JSAny? nameOrOptions]) {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("window_and_service")
   ///
@@ -55,20 +59,36 @@ abstract class CookieStore implements EventTarget, JSObject {
   /// the given `name` and `value` or `options` object.
   JSPromise<JSAny?> set(
     JSAny nameOrOptions, [
-    String value,
-  ]);
+    String? value,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("window_and_service")
   ///
   /// The **`delete()`** method of the [CookieStore] interface deletes a cookie
   /// with the given `name` or `options` object. The `delete()` method expires
   /// the cookie by changing the date to one in the past.
-  JSPromise<JSAny?> delete(JSAny nameOrOptions);
-  EventHandler get onchange;
-  set onchange(EventHandler value);
-}
+  JSPromise<JSAny?> delete(JSAny nameOrOptions) {
+    unsupportedPlatformError();
+  }
 
-abstract class CookieStoreGetOptions implements JSObject {
+  EventHandler get onchange {
+    unsupportedPlatformError();
+  }
+
+  set onchange(EventHandler value) {
+    unsupportedPlatformError();
+  }
+}
+extension type CookieStoreGetOptions._(JSObject _) implements JSObject {
+  factory CookieStoreGetOptions({
+    String? name,
+    String? url,
+  }) {
+    unsupportedPlatformError();
+  }
+
   String get name {
     unsupportedPlatformError();
   }
@@ -85,8 +105,19 @@ abstract class CookieStoreGetOptions implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type CookieInit._(JSObject _) implements JSObject {
+  factory CookieInit({
+    required String name,
+    required String value,
+    DOMHighResTimeStamp? expires,
+    String? domain,
+    String? path,
+    CookieSameSite? sameSite,
+    bool? partitioned,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class CookieInit implements JSObject {
   String get name {
     unsupportedPlatformError();
   }
@@ -143,8 +174,16 @@ abstract class CookieInit implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type CookieStoreDeleteOptions._(JSObject _) implements JSObject {
+  factory CookieStoreDeleteOptions({
+    required String name,
+    String? domain,
+    String? path,
+    bool? partitioned,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class CookieStoreDeleteOptions implements JSObject {
   String get name {
     unsupportedPlatformError();
   }
@@ -177,8 +216,20 @@ abstract class CookieStoreDeleteOptions implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type CookieListItem._(JSObject _) implements JSObject {
+  factory CookieListItem({
+    String? name,
+    String? value,
+    String? domain,
+    String? path,
+    DOMHighResTimeStamp? expires,
+    bool? secure,
+    CookieSameSite? sameSite,
+    bool? partitioned,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class CookieListItem implements JSObject {
   String get name {
     unsupportedPlatformError();
   }
@@ -263,26 +314,32 @@ abstract class CookieListItem implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CookieStoreManager).
-abstract class CookieStoreManager implements JSObject {
+extension type CookieStoreManager._(JSObject _) implements JSObject {
   /// @AvailableInWorkers("window_and_service")
   ///
   /// The **`subscribe()`** method of the [CookieStoreManager] interface
   /// subscribes a [ServiceWorkerRegistration] to cookie change events.
-  JSPromise<JSAny?> subscribe(JSArray<CookieStoreGetOptions> subscriptions);
+  JSPromise<JSAny?> subscribe(JSArray<CookieStoreGetOptions> subscriptions) {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("window_and_service")
   ///
   /// The **`getSubscriptions()`** method of the [CookieStoreManager] interface
   /// returns a list of all the cookie change subscriptions for this
   /// [ServiceWorkerRegistration].
-  JSPromise<JSArray<CookieStoreGetOptions>> getSubscriptions();
+  JSPromise<JSArray<CookieStoreGetOptions>> getSubscriptions() {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("window_and_service")
   ///
   /// The **`unsubscribe()`** method of the [CookieStoreManager] interface stops
   /// the [ServiceWorkerRegistration] from receiving previously subscribed
   /// events.
-  JSPromise<JSAny?> unsubscribe(JSArray<CookieStoreGetOptions> subscriptions);
+  JSPromise<JSAny?> unsubscribe(JSArray<CookieStoreGetOptions> subscriptions) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`CookieChangeEvent`** interface of the [Cookie Store API] is the event
@@ -306,18 +363,39 @@ abstract class CookieStoreManager implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CookieChangeEvent).
-abstract class CookieChangeEvent implements Event, JSObject {
+extension type CookieChangeEvent._(JSObject _) implements Event, JSObject {
+  factory CookieChangeEvent(
+    String type, [
+    CookieChangeEventInit? eventInitDict,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// The **`changed`** read-only property of the [CookieChangeEvent] interface
   /// returns an array of the cookies that have been changed.
-  JSArray<CookieListItem> get changed;
+  JSArray<CookieListItem> get changed {
+    unsupportedPlatformError();
+  }
 
   /// The **`deleted`** read-only property of the [CookieChangeEvent] interface
   /// returns an array of the cookies that have been deleted by the given
   /// `CookieChangeEvent` instance.
-  JSArray<CookieListItem> get deleted;
+  JSArray<CookieListItem> get deleted {
+    unsupportedPlatformError();
+  }
 }
+extension type CookieChangeEventInit._(JSObject _)
+    implements EventInit, JSObject {
+  factory CookieChangeEventInit({
+    bool? bubbles,
+    bool? cancelable,
+    bool? composed,
+    CookieList? changed,
+    CookieList? deleted,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class CookieChangeEventInit implements EventInit, JSObject {
   CookieList get changed {
     unsupportedPlatformError();
   }
@@ -360,25 +438,45 @@ abstract class CookieChangeEventInit implements EventInit, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ExtendableCookieChangeEvent).
-abstract class ExtendableCookieChangeEvent
+extension type ExtendableCookieChangeEvent._(JSObject _)
     implements ExtendableEvent, JSObject {
+  factory ExtendableCookieChangeEvent(
+    String type, [
+    ExtendableCookieChangeEventInit? eventInitDict,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// @AvailableInWorkers("service")
   ///
   /// The **`changed`** read-only property of the [ExtendableCookieChangeEvent]
   /// interface returns any cookies that have been changed by the given
   /// `ExtendableCookieChangeEvent` instance.
-  JSArray<CookieListItem> get changed;
+  JSArray<CookieListItem> get changed {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("service")
   ///
   /// The **`deleted`** read-only property of the [ExtendableCookieChangeEvent]
   /// interface returns any cookies that have been deleted by the given
   /// `ExtendableCookieChangeEvent` instance.
-  JSArray<CookieListItem> get deleted;
+  JSArray<CookieListItem> get deleted {
+    unsupportedPlatformError();
+  }
 }
-
-abstract class ExtendableCookieChangeEventInit
+extension type ExtendableCookieChangeEventInit._(JSObject _)
     implements ExtendableEventInit, JSObject {
+  factory ExtendableCookieChangeEventInit({
+    bool? bubbles,
+    bool? cancelable,
+    bool? composed,
+    CookieList? changed,
+    CookieList? deleted,
+  }) {
+    unsupportedPlatformError();
+  }
+
   CookieList get changed {
     unsupportedPlatformError();
   }

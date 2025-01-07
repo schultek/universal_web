@@ -10,6 +10,7 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
+import '../error.dart';
 import '../js_interop.dart';
 import 'web_animations.dart';
 
@@ -20,11 +21,13 @@ import 'web_animations.dart';
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSAnimation).
-abstract class CSSAnimation implements Animation, JSObject {
+extension type CSSAnimation._(JSObject _) implements Animation, JSObject {
   /// The **`animationName`** property of the
   /// [CSSAnimation] interface returns the . This
   /// specifies one or more keyframe at-rules which describe the animation
   /// applied to the
   /// element.
-  String get animationName;
+  String get animationName {
+    unsupportedPlatformError();
+  }
 }

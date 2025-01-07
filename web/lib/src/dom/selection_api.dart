@@ -10,6 +10,7 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
+import '../error.dart';
 import '../js_interop.dart';
 import 'dom.dart';
 
@@ -32,7 +33,7 @@ import 'dom.dart';
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Selection).
-abstract class Selection implements JSObject {
+extension type Selection._(JSObject _) implements JSObject {
   /// The **`getRangeAt()`** method of the [Selection] interface returns a range
   /// object representing a currently selected range.
   ///
@@ -46,15 +47,21 @@ abstract class Selection implements JSObject {
   /// > you can use [Selection.getComposedRanges] (if supported) to get a
   /// > selection range inside a shadow tree, or to reliably re-scope the
   /// > selection to the host node.
-  Range getRangeAt(int index);
+  Range getRangeAt(int index) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Selection.addRange()`** method adds a
   /// [Range] to a [Selection].
-  void addRange(Range range);
+  void addRange(Range range) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Selection.removeRange()`** method removes a range from a
   /// selection.
-  void removeRange(Range range);
+  void removeRange(Range range) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Selection.removeAllRanges()`** method removes all ranges from the
   /// selection, leaving the [Selection.anchorNode] and [Selection.focusNode]
@@ -62,7 +69,9 @@ abstract class Selection implements JSObject {
   /// called, a [Document.selectionchange_event] event is fired at the document.
   ///
   /// > **Note:** This method is an alias for the [Selection.empty] method.
-  void removeAllRanges();
+  void removeAllRanges() {
+    unsupportedPlatformError();
+  }
 
   /// The **`Selection.empty()`** method removes all ranges from the selection,
   /// leaving the [Selection.anchorNode] and [Selection.focusNode] properties
@@ -71,7 +80,9 @@ abstract class Selection implements JSObject {
   ///
   /// > **Note:** This method is an alias for the [Selection.removeAllRanges]
   /// > method.
-  void empty();
+  void empty() {
+    unsupportedPlatformError();
+  }
 
   /// The **`Selection.collapse()`** method collapses the current selection to a
   /// single point. The document is not modified. If the content is focused and
@@ -81,8 +92,10 @@ abstract class Selection implements JSObject {
   /// > method.
   void collapse(
     Node? node, [
-    int offset,
-  ]);
+    int? offset,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Selection.setPosition()`** method collapses the current selection
   /// to a single point. The document is not modified. If the content is focused
@@ -91,20 +104,26 @@ abstract class Selection implements JSObject {
   /// > **Note:** This method is an alias for the [Selection.collapse] method.
   void setPosition(
     Node? node, [
-    int offset,
-  ]);
+    int? offset,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Selection.collapseToStart()`** method collapses the
   /// selection to the start of the first range in the selection. If the content
   /// of the
   /// selection is focused and editable, the caret will blink there.
-  void collapseToStart();
+  void collapseToStart() {
+    unsupportedPlatformError();
+  }
 
   /// The **`Selection.collapseToEnd()`** method collapses the
   /// selection to the end of the last range in the selection. If the content of
   /// the selection
   /// is focused and editable, the caret will blink there.
-  void collapseToEnd();
+  void collapseToEnd() {
+    unsupportedPlatformError();
+  }
 
   /// The **`Selection.extend()`** method moves the focus of the
   /// selection to a specified point. The anchor of the selection does not move.
@@ -112,8 +131,10 @@ abstract class Selection implements JSObject {
   /// will be from the anchor to the new focus, regardless of direction.
   void extend(
     Node node, [
-    int offset,
-  ]);
+    int? offset,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`setBaseAndExtent()`** method of the [Selection] interface sets the
   /// selection to be a range including all or parts of two specified DOM nodes,
@@ -126,31 +147,41 @@ abstract class Selection implements JSObject {
     int anchorOffset,
     Node focusNode,
     int focusOffset,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Selection.selectAllChildren()`** method adds all the
   /// children of the specified node to the selection. Previous selection is
   /// lost.
-  void selectAllChildren(Node node);
+  void selectAllChildren(Node node) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Selection.modify()`** method applies a change to the
   /// current selection or cursor position, using simple textual commands.
   void modify([
-    String alter,
-    String direction,
-    String granularity,
-  ]);
+    String? alter,
+    String? direction,
+    String? granularity,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`deleteFromDocument()`** method of the
   /// [Selection] interface deletes the selected text from the document's DOM.
-  void deleteFromDocument();
+  void deleteFromDocument() {
+    unsupportedPlatformError();
+  }
 
   /// The **`Selection.containsNode()`** method indicates whether a
   /// specified node is part of the selection.
   bool containsNode(
     Node node, [
-    bool allowPartialContainment,
-  ]);
+    bool? allowPartialContainment,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Selection.anchorNode`** read-only property returns the
   /// [Node] in which the selection begins.
@@ -164,7 +195,9 @@ abstract class Selection implements JSObject {
   /// selection's anchor does not move, but the selection's focus, the other end
   /// of the
   /// selection, does move.
-  Node? get anchorNode;
+  Node? get anchorNode {
+    unsupportedPlatformError();
+  }
 
   /// The **`Selection.anchorOffset`** read-only property returns the
   /// number of characters that the selection's anchor is offset within the
@@ -173,7 +206,9 @@ abstract class Selection implements JSObject {
   /// This number is zero-based. If the selection begins with the first
   /// character in the
   /// [Selection.anchorNode], `0` is returned.
-  int get anchorOffset;
+  int get anchorOffset {
+    unsupportedPlatformError();
+  }
 
   /// The **`Selection.focusNode`** read-only property returns the
   /// [Node] in which the selection ends.
@@ -187,7 +222,9 @@ abstract class Selection implements JSObject {
   /// keyboard to modify the current selection. The selection's focus moves, but
   /// the
   /// selection's anchor, the other end of the selection, does not move.
-  Node? get focusNode;
+  Node? get focusNode {
+    unsupportedPlatformError();
+  }
 
   /// The **`Selection.focusOffset`** read-only property returns the
   /// number of characters that the selection's focus is offset within the
@@ -196,7 +233,9 @@ abstract class Selection implements JSObject {
   /// This number is zero-based. If the selection ends with the first character
   /// in the
   /// [Selection.focusNode], `0` is returned.
-  int get focusOffset;
+  int get focusOffset {
+    unsupportedPlatformError();
+  }
 
   /// The **`Selection.isCollapsed`** read-only property returns a
   /// boolean value which indicates whether or not there is currently any text
@@ -209,7 +248,9 @@ abstract class Selection implements JSObject {
   /// [Range]s, so [Selection.rangeCount] may not be zero. In that
   /// scenario, calling a [Selection] object's [Selection.getRangeAt]
   /// method may return a `Range` object which is collapsed.
-  bool get isCollapsed;
+  bool get isCollapsed {
+    unsupportedPlatformError();
+  }
 
   /// The **`Selection.rangeCount`** read-only property returns the
   /// number of ranges in the selection.
@@ -228,12 +269,16 @@ abstract class Selection implements JSObject {
   /// multiple ranges in the document by using Ctrl+click (unless the click
   /// occurs within an
   /// element that has the `display: table-cell` CSS property assigned).
-  int get rangeCount;
+  int get rangeCount {
+    unsupportedPlatformError();
+  }
 
   /// The **`type`** read-only property of the
   /// [Selection] interface returns a string describing the
   /// type of the current selection.
-  String get type;
+  String get type {
+    unsupportedPlatformError();
+  }
 
   /// The **`direction`** read-only property of the [Selection] interface is a
   /// string that provides the direction of the current selection.
@@ -251,5 +296,7 @@ abstract class Selection implements JSObject {
   ///
   /// The direction does not change if a selection's range is mutated, for
   /// example, using methods like [Range.selectNode].
-  String get direction;
+  String get direction {
+    unsupportedPlatformError();
+  }
 }

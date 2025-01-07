@@ -34,7 +34,14 @@ typedef IntersectionObserverCallback = JSFunction;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver).
-abstract class IntersectionObserver implements JSObject {
+extension type IntersectionObserver._(JSObject _) implements JSObject {
+  factory IntersectionObserver(
+    IntersectionObserverCallback callback, [
+    IntersectionObserverInit? options,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// The [IntersectionObserver] method
   /// **`observe()`** adds an element to the set of target elements
   /// being watched by the `IntersectionObserver`. One observer has one set of
@@ -70,18 +77,24 @@ abstract class IntersectionObserver implements JSObject {
   /// > An element inside the viewport will result in the callback being
   /// > immediately called with at least one entry with `intersecting` set to
   /// > `true`.
-  void observe(Element target);
+  void observe(Element target) {
+    unsupportedPlatformError();
+  }
 
   /// The [IntersectionObserver] method
   /// **`unobserve()`** instructs the
   /// `IntersectionObserver` to stop observing the specified target
   /// element.
-  void unobserve(Element target);
+  void unobserve(Element target) {
+    unsupportedPlatformError();
+  }
 
   /// The [IntersectionObserver] method
   /// **`disconnect()`** stops watching all of its target elements
   /// for visibility changes.
-  void disconnect();
+  void disconnect() {
+    unsupportedPlatformError();
+  }
 
   /// The [IntersectionObserver] method
   /// **`takeRecords()`** returns an array of
@@ -96,7 +109,9 @@ abstract class IntersectionObserver implements JSObject {
   /// > need to call this method. Calling this method clears the pending
   /// > intersection list, so
   /// > the callback will not be run.
-  JSArray<IntersectionObserverEntry> takeRecords();
+  JSArray<IntersectionObserverEntry> takeRecords() {
+    unsupportedPlatformError();
+  }
 
   /// The [IntersectionObserver] interface's read-only
   /// **`root`** property identifies the [Element] or
@@ -105,7 +120,9 @@ abstract class IntersectionObserver implements JSObject {
   ///
   /// If the `root` is `null`, then the bounds of the actual document
   /// viewport are used.
-  JSObject? get root;
+  JSObject? get root {
+    unsupportedPlatformError();
+  }
 
   /// The [IntersectionObserver] interface's read-only
   /// **`rootMargin`** property is a string with syntax similar to
@@ -124,7 +141,9 @@ abstract class IntersectionObserver implements JSObject {
   /// [how intersections are calculated](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API#how_intersection_is_calculated)
   /// for a more in-depth look at the root margin and how it works with
   /// the root's bounding box.
-  String get rootMargin;
+  String get rootMargin {
+    unsupportedPlatformError();
+  }
 
   /// The [IntersectionObserver] interface's read-only
   /// **`thresholds`** property returns the list of intersection
@@ -138,7 +157,9 @@ abstract class IntersectionObserver implements JSObject {
   /// [Intersection Observer](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API#thresholds)
   /// page to
   /// learn how thresholds work.
-  JSArray<JSNumber> get thresholds;
+  JSArray<JSNumber> get thresholds {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`IntersectionObserverEntry`** interface of the
@@ -154,12 +175,14 @@ abstract class IntersectionObserver implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserverEntry).
-abstract class IntersectionObserverEntry implements JSObject {
+extension type IntersectionObserverEntry._(JSObject _) implements JSObject {
   /// The [IntersectionObserverEntry] interface's
   /// read-only **`time`** property is a
   /// [DOMHighResTimeStamp] that indicates the time at which the intersection
   /// change occurred relative to the time at which the document was created.
-  double get time;
+  double get time {
+    unsupportedPlatformError();
+  }
 
   /// The [IntersectionObserverEntry] interface's
   /// read-only **`rootBounds`** property is a
@@ -167,13 +190,17 @@ abstract class IntersectionObserverEntry implements JSObject {
   /// [IntersectionObserverEntry.target]'s root intersection
   /// rectangle, offset by the [IntersectionObserver.rootMargin] if one is
   /// specified.
-  DOMRectReadOnly? get rootBounds;
+  DOMRectReadOnly? get rootBounds {
+    unsupportedPlatformError();
+  }
 
   /// The [IntersectionObserverEntry] interface's read-only
   /// **`boundingClientRect`** property returns a
   /// [DOMRectReadOnly] which in essence describes a rectangle describing the
   /// smallest rectangle that contains the entire target element.
-  DOMRectReadOnly get boundingClientRect;
+  DOMRectReadOnly get boundingClientRect {
+    unsupportedPlatformError();
+  }
 
   /// The [IntersectionObserverEntry] interface's
   /// read-only **`intersectionRect`** property is a
@@ -181,7 +208,9 @@ abstract class IntersectionObserverEntry implements JSObject {
   /// contains the entire portion of the target element which is currently
   /// visible within
   /// the intersection root.
-  DOMRectReadOnly get intersectionRect;
+  DOMRectReadOnly get intersectionRect {
+    unsupportedPlatformError();
+  }
 
   /// The [IntersectionObserverEntry] interface's
   /// read-only **`isIntersecting`** property is a Boolean value
@@ -190,23 +219,37 @@ abstract class IntersectionObserverEntry implements JSObject {
   /// `IntersectionObserverEntry` describes a transition into a state of
   /// intersection; if it's `false`, then you know the transition is from
   /// intersecting to not-intersecting.
-  bool get isIntersecting;
+  bool get isIntersecting {
+    unsupportedPlatformError();
+  }
 
   /// The [IntersectionObserverEntry] interface's
   /// read-only **`intersectionRatio`** property tells you how much
   /// of the target element is currently visible within the root's intersection
   /// ratio, as a
   /// value between 0.0 and 1.0.
-  double get intersectionRatio;
+  double get intersectionRatio {
+    unsupportedPlatformError();
+  }
 
   /// The [IntersectionObserverEntry] interface's
   /// read-only **`target`** property indicates which targeted
   /// [Element] has changed its amount of intersection with the intersection
   /// root.
-  Element get target;
+  Element get target {
+    unsupportedPlatformError();
+  }
 }
+extension type IntersectionObserverInit._(JSObject _) implements JSObject {
+  factory IntersectionObserverInit({
+    JSObject? root,
+    String? rootMargin,
+    String? scrollMargin,
+    JSAny? threshold,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class IntersectionObserverInit implements JSObject {
   JSObject? get root {
     unsupportedPlatformError();
   }

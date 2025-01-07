@@ -10,6 +10,7 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
+import '../error.dart';
 import '../js_interop.dart';
 import 'dom.dart';
 import 'html.dart';
@@ -28,14 +29,16 @@ typedef WakeLockType = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WakeLock).
-abstract class WakeLock implements JSObject {
+extension type WakeLock._(JSObject _) implements JSObject {
   /// The **`request()`** method of the [WakeLock] interface returns a `Promise`
   /// that fullfills with a [WakeLockSentinel] object if the system screen wake
   /// lock is granted.
   ///
   /// The screen wake lock prevents device screens from dimming or locking when
   /// an application needs to keep running.
-  JSPromise<WakeLockSentinel> request([WakeLockType type]);
+  JSPromise<WakeLockSentinel> request([WakeLockType? type]) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`WakeLockSentinel`** interface of the
@@ -68,11 +71,13 @@ abstract class WakeLock implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WakeLockSentinel).
-abstract class WakeLockSentinel implements EventTarget, JSObject {
+extension type WakeLockSentinel._(JSObject _) implements EventTarget, JSObject {
   /// The **`release()`** method of the [WakeLockSentinel] interface releases
   /// the [WakeLockSentinel], returning a `Promise` that is resolved once the
   /// sentinel has been successfully released.
-  JSPromise<JSAny?> release();
+  JSPromise<JSAny?> release() {
+    unsupportedPlatformError();
+  }
 
   /// The **`released`** read-only property of the [WakeLockSentinel] interface
   /// returns a boolean that indicates whether a [WakeLockSentinel] has been
@@ -83,12 +88,22 @@ abstract class WakeLockSentinel implements EventTarget, JSObject {
   /// If a subsequent screen wake lock is required, the application will need to
   /// request a new screen wake lock (the current `WakeLockSentinel` cannot be
   /// reused).
-  bool get released;
+  bool get released {
+    unsupportedPlatformError();
+  }
 
   /// The **`type`** read-only property of the [WakeLockSentinel] interface
   /// returns a string representation of the currently acquired
   /// [WakeLockSentinel] type.
-  WakeLockType get type;
-  EventHandler get onrelease;
-  set onrelease(EventHandler value);
+  WakeLockType get type {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onrelease {
+    unsupportedPlatformError();
+  }
+
+  set onrelease(EventHandler value) {
+    unsupportedPlatformError();
+  }
 }

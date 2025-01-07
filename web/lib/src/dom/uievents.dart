@@ -29,7 +29,14 @@ import 'html.dart';
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/UIEvent).
-abstract class UIEvent implements Event, JSObject {
+extension type UIEvent._(JSObject _) implements Event, JSObject {
+  factory UIEvent(
+    String type, [
+    UIEventInit? eventInitDict,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// The **`UIEvent.initUIEvent()`** method initializes a UI event
   /// once it's been created.
   ///
@@ -46,16 +53,20 @@ abstract class UIEvent implements Event, JSObject {
   /// > gives more information about the way to use these.
   void initUIEvent(
     String typeArg, [
-    bool bubblesArg,
-    bool cancelableArg,
+    bool? bubblesArg,
+    bool? cancelableArg,
     Window? viewArg,
-    int detailArg,
-  ]);
+    int? detailArg,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`UIEvent.view`** read-only property returns the
   /// object from which the event was generated. In browsers, this
   /// is the [Window] object the event happened in.
-  Window? get view;
+  Window? get view {
+    unsupportedPlatformError();
+  }
 
   /// The **`UIEvent.detail`** read-only property, when non-zero, provides the
   /// current (or next, depending on the event) click count.
@@ -67,16 +78,31 @@ abstract class UIEvent implements Event, JSObject {
   /// `UIEvent.detail` is _1 plus_ the current click count.
   ///
   /// For all other [UIEvent] objects, `UIEvent.detail` is always zero.
-  int get detail;
+  int get detail {
+    unsupportedPlatformError();
+  }
 
   /// The **`UIEvent.which`** read-only property of the [UIEvent] interface
   /// returns a number that indicates which button was pressed on the mouse, or
   /// the numeric `keyCode` or the character code (`charCode`) of the key
   /// pressed on the keyboard.
-  int get which;
+  int get which {
+    unsupportedPlatformError();
+  }
 }
+extension type UIEventInit._(JSObject _) implements EventInit, JSObject {
+  factory UIEventInit({
+    bool? bubbles,
+    bool? cancelable,
+    bool? composed,
+    Window? view,
+    int? detail,
+    JSObject? sourceCapabilities,
+    int? which,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class UIEventInit implements EventInit, JSObject {
   Window? get view {
     unsupportedPlatformError();
   }
@@ -118,7 +144,14 @@ abstract class UIEventInit implements EventInit, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/FocusEvent).
-abstract class FocusEvent implements UIEvent, JSObject {
+extension type FocusEvent._(JSObject _) implements UIEvent, JSObject {
+  factory FocusEvent(
+    String type, [
+    FocusEventInit? eventInitDict,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// The **`relatedTarget`** read-only property of the [FocusEvent] interface
   /// is the secondary target, depending on the type of event:
   ///
@@ -161,10 +194,24 @@ abstract class FocusEvent implements UIEvent, JSObject {
   /// out of a page.
   ///
   /// [MouseEvent.relatedTarget] is a similar property for mouse events.
-  EventTarget? get relatedTarget;
+  EventTarget? get relatedTarget {
+    unsupportedPlatformError();
+  }
 }
+extension type FocusEventInit._(JSObject _) implements UIEventInit, JSObject {
+  factory FocusEventInit({
+    bool? bubbles,
+    bool? cancelable,
+    bool? composed,
+    Window? view,
+    int? detail,
+    JSObject? sourceCapabilities,
+    int? which,
+    EventTarget? relatedTarget,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class FocusEventInit implements UIEventInit, JSObject {
   EventTarget? get relatedTarget {
     unsupportedPlatformError();
   }
@@ -192,13 +239,22 @@ abstract class FocusEventInit implements UIEventInit, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent).
-abstract class MouseEvent implements UIEvent, JSObject {
+extension type MouseEvent._(JSObject _) implements UIEvent, JSObject {
+  factory MouseEvent(
+    String type, [
+    MouseEventInit? eventInitDict,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// The **`MouseEvent.getModifierState()`** method returns the current state
   /// of the specified modifier key: `true` if the modifier is active (i.e., the
   /// modifier key is pressed or locked), otherwise, `false`.
   ///
   /// See [KeyboardEvent.getModifierState] for details.
-  bool getModifierState(String keyArg);
+  bool getModifierState(String keyArg) {
+    unsupportedPlatformError();
+  }
 
   /// The **`MouseEvent.initMouseEvent()`** method initializes the
   /// value of a mouse event once it's been created (normally using the
@@ -217,21 +273,23 @@ abstract class MouseEvent implements UIEvent, JSObject {
   /// before it is dispatched, using [EventTarget.dispatchEvent].
   void initMouseEvent(
     String typeArg, [
-    bool bubblesArg,
-    bool cancelableArg,
+    bool? bubblesArg,
+    bool? cancelableArg,
     Window? viewArg,
-    int detailArg,
-    int screenXArg,
-    int screenYArg,
-    int clientXArg,
-    int clientYArg,
-    bool ctrlKeyArg,
-    bool altKeyArg,
-    bool shiftKeyArg,
-    bool metaKeyArg,
-    int buttonArg,
+    int? detailArg,
+    int? screenXArg,
+    int? screenYArg,
+    int? clientXArg,
+    int? clientYArg,
+    bool? ctrlKeyArg,
+    bool? altKeyArg,
+    bool? shiftKeyArg,
+    bool? metaKeyArg,
+    int? buttonArg,
     EventTarget? relatedTargetArg,
-  ]);
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`screenX`** read-only property of the [MouseEvent] interface
   /// provides the horizontal coordinate (offset) of the mouse pointer in
@@ -240,12 +298,16 @@ abstract class MouseEvent implements UIEvent, JSObject {
   /// > **Note:** In a multiscreen environment, screens aligned horizontally
   /// > will be treated as a single device, and so the range of the `screenX`
   /// > value will increase to the combined width of the screens.
-  int get screenX;
+  int get screenX {
+    unsupportedPlatformError();
+  }
 
   /// The **`screenY`** read-only property of the [MouseEvent] interface
   /// provides the vertical coordinate (offset) of the mouse pointer in
   /// [screen coordinates](https://developer.mozilla.org/en-US/docs/Web/CSS/CSSOM_view/Coordinate_systems#screen).
-  int get screenY;
+  int get screenY {
+    unsupportedPlatformError();
+  }
 
   /// The **`clientX`** read-only property of the [MouseEvent] interface
   /// provides the horizontal coordinate within the application's  at which the
@@ -254,7 +316,9 @@ abstract class MouseEvent implements UIEvent, JSObject {
   /// For example, clicking on the left edge of the viewport will always result
   /// in a mouse event with a `clientX` value of `0`, regardless of whether the
   /// page is scrolled horizontally.
-  int get clientX;
+  int get clientX {
+    unsupportedPlatformError();
+  }
 
   /// The **`clientY`** read-only property of the [MouseEvent] interface
   /// provides the vertical coordinate within the application's  at which the
@@ -263,7 +327,9 @@ abstract class MouseEvent implements UIEvent, JSObject {
   /// For example, clicking on the top edge of the viewport will always result
   /// in a mouse event with a `clientY` value of `0`, regardless of whether the
   /// page is scrolled vertically.
-  int get clientY;
+  int get clientY {
+    unsupportedPlatformError();
+  }
 
   /// The **`MouseEvent.ctrlKey`** read-only property is a boolean value that
   /// indicates whether the <kbd>ctrl</kbd> key was pressed or not when a given
@@ -273,12 +339,16 @@ abstract class MouseEvent implements UIEvent, JSObject {
   /// Also, note that on a Mac, a click combined with the <kbd>control</kbd> key
   /// is intercepted by the operating system and used to open a context menu, so
   /// `ctrlKey` is not detectable on click events.
-  bool get ctrlKey;
+  bool get ctrlKey {
+    unsupportedPlatformError();
+  }
 
   /// The **`MouseEvent.shiftKey`** read-only property is a boolean value that
   /// indicates whether the <kbd>shift</kbd> key was pressed or not when a given
   /// mouse event occurs.
-  bool get shiftKey;
+  bool get shiftKey {
+    unsupportedPlatformError();
+  }
 
   /// The **`MouseEvent.altKey`** read-only property is a boolean value that
   /// indicates whether the <kbd>alt</kbd> key was pressed or not when a given
@@ -291,7 +361,9 @@ abstract class MouseEvent implements UIEvent, JSObject {
   ///
   /// > **Note:** On Macintosh keyboards, this key is also known as the
   /// > <kbd>option</kbd> key.
-  bool get altKey;
+  bool get altKey {
+    unsupportedPlatformError();
+  }
 
   /// The **`MouseEvent.metaKey`** read-only property is a boolean value that
   /// indicates whether the <kbd>meta</kbd> key was pressed or not when a given
@@ -305,7 +377,9 @@ abstract class MouseEvent implements UIEvent, JSObject {
   /// > **Note:** On Macintosh keyboards, this key is the <kbd>command</kbd> key
   /// > (<kbd>⌘</kbd>).
   /// > On Windows keyboards, this key is the Windows key (<kbd>⊞</kbd>).
-  bool get metaKey;
+  bool get metaKey {
+    unsupportedPlatformError();
+  }
 
   /// The **`MouseEvent.button`** read-only property indicates which button was
   /// pressed on the mouse to trigger the event.
@@ -325,7 +399,9 @@ abstract class MouseEvent implements UIEvent, JSObject {
   /// > **Note:** Do not confuse this property with the [MouseEvent.buttons]
   /// > property, which indicates which buttons are pressed for all mouse events
   /// > types.
-  int get button;
+  int get button {
+    unsupportedPlatformError();
+  }
 
   /// The **`MouseEvent.buttons`** read-only property indicates which buttons
   /// are pressed on the mouse (or other input device) when a mouse event is
@@ -345,7 +421,9 @@ abstract class MouseEvent implements UIEvent, JSObject {
   /// > while the [MouseEvent.button] property only guarantees the correct value
   /// > for mouse events caused by pressing or releasing one or multiple
   /// > buttons.
-  int get buttons;
+  int get buttons {
+    unsupportedPlatformError();
+  }
 
   /// The **`MouseEvent.relatedTarget`** read-only property is the secondary
   /// target for the mouse event, if there is one.
@@ -422,7 +500,9 @@ abstract class MouseEvent implements UIEvent, JSObject {
   /// `null`.
   ///
   /// [FocusEvent.relatedTarget] is a similar property for focus events.
-  EventTarget? get relatedTarget;
+  EventTarget? get relatedTarget {
+    unsupportedPlatformError();
+  }
 
   /// The **`pageX`** read-only property of the [MouseEvent] interface returns
   /// the X (horizontal) coordinate (in pixels) at which the mouse was clicked,
@@ -446,7 +526,9 @@ abstract class MouseEvent implements UIEvent, JSObject {
   /// See
   /// [Coordinate systems](https://developer.mozilla.org/en-US/docs/Web/CSS/CSSOM_view/Coordinate_systems#page)
   /// for additional information about coordinates specified in this fashion.
-  double get pageX;
+  double get pageX {
+    unsupportedPlatformError();
+  }
 
   /// The **`pageY`** read-only property of the [MouseEvent] interface returns
   /// the Y (vertical) coordinate (in pixels) at which the mouse was clicked,
@@ -454,25 +536,35 @@ abstract class MouseEvent implements UIEvent, JSObject {
   /// This includes any portion of the document not currently visible.
   ///
   /// See [MouseEvent.pageX] for more information.
-  double get pageY;
+  double get pageY {
+    unsupportedPlatformError();
+  }
 
   /// The **`MouseEvent.x`** property is an alias for the [MouseEvent.clientX]
   /// property.
-  double get x;
+  double get x {
+    unsupportedPlatformError();
+  }
 
   /// The **`MouseEvent.y`** property is an alias for the [MouseEvent.clientY]
   /// property.
-  double get y;
+  double get y {
+    unsupportedPlatformError();
+  }
 
   /// The **`offsetX`** read-only property of the [MouseEvent] interface
   /// provides the offset in the X coordinate of the mouse pointer between that
   /// event and the padding edge of the target node.
-  double get offsetX;
+  double get offsetX {
+    unsupportedPlatformError();
+  }
 
   /// The **`offsetY`** read-only property of the [MouseEvent] interface
   /// provides the offset in the Y coordinate of the mouse pointer between that
   /// event and the padding edge of the target node.
-  double get offsetY;
+  double get offsetY {
+    unsupportedPlatformError();
+  }
 
   /// The **`movementX`** read-only property of the [MouseEvent] interface
   /// provides the difference in the X coordinate of the mouse pointer between
@@ -488,7 +580,9 @@ abstract class MouseEvent implements UIEvent, JSObject {
   /// > instead calculate the delta between the current client values
   /// > ([MouseEvent.screenX], [MouseEvent.screenY]) and the previous client
   /// > values.
-  double get movementX;
+  double get movementX {
+    unsupportedPlatformError();
+  }
 
   /// The **`movementY`** read-only property of the [MouseEvent] interface
   /// provides the difference in the Y coordinate of the mouse pointer between
@@ -504,10 +598,47 @@ abstract class MouseEvent implements UIEvent, JSObject {
   /// > instead calculate the delta between the current client values
   /// > ([MouseEvent.screenX], [MouseEvent.screenY]) and the previous client
   /// > values.
-  double get movementY;
+  double get movementY {
+    unsupportedPlatformError();
+  }
 }
+extension type MouseEventInit._(JSObject _)
+    implements EventModifierInit, JSObject {
+  factory MouseEventInit({
+    bool? bubbles,
+    bool? cancelable,
+    bool? composed,
+    Window? view,
+    int? detail,
+    JSObject? sourceCapabilities,
+    int? which,
+    bool? ctrlKey,
+    bool? shiftKey,
+    bool? altKey,
+    bool? metaKey,
+    bool? modifierAltGraph,
+    bool? modifierCapsLock,
+    bool? modifierFn,
+    bool? modifierFnLock,
+    bool? modifierHyper,
+    bool? modifierNumLock,
+    bool? modifierScrollLock,
+    bool? modifierSuper,
+    bool? modifierSymbol,
+    bool? modifierSymbolLock,
+    int? screenX,
+    int? screenY,
+    int? clientX,
+    int? clientY,
+    int? button,
+    int? buttons,
+    EventTarget? relatedTarget,
+    num? movementX,
+    num? movementY,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class MouseEventInit implements EventModifierInit, JSObject {
   int get screenX {
     unsupportedPlatformError();
   }
@@ -580,8 +711,34 @@ abstract class MouseEventInit implements EventModifierInit, JSObject {
     unsupportedPlatformError();
   }
 }
+extension type EventModifierInit._(JSObject _)
+    implements UIEventInit, JSObject {
+  factory EventModifierInit({
+    bool? bubbles,
+    bool? cancelable,
+    bool? composed,
+    Window? view,
+    int? detail,
+    JSObject? sourceCapabilities,
+    int? which,
+    bool? ctrlKey,
+    bool? shiftKey,
+    bool? altKey,
+    bool? metaKey,
+    bool? modifierAltGraph,
+    bool? modifierCapsLock,
+    bool? modifierFn,
+    bool? modifierFnLock,
+    bool? modifierHyper,
+    bool? modifierNumLock,
+    bool? modifierScrollLock,
+    bool? modifierSuper,
+    bool? modifierSymbol,
+    bool? modifierSymbolLock,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class EventModifierInit implements UIEventInit, JSObject {
   bool get ctrlKey {
     unsupportedPlatformError();
   }
@@ -719,7 +876,14 @@ abstract class EventModifierInit implements UIEventInit, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WheelEvent).
-abstract class WheelEvent implements MouseEvent, JSObject {
+extension type WheelEvent._(JSObject _) implements MouseEvent, JSObject {
+  factory WheelEvent(
+    String type, [
+    WheelEventInit? eventInitDict,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   static const int DOM_DELTA_PIXEL = 0;
 
   static const int DOM_DELTA_LINE = 1;
@@ -729,17 +893,23 @@ abstract class WheelEvent implements MouseEvent, JSObject {
   /// The **`WheelEvent.deltaX`** read-only property is a
   /// `double` representing the horizontal scroll amount in the
   /// [WheelEvent.deltaMode] unit.
-  double get deltaX;
+  double get deltaX {
+    unsupportedPlatformError();
+  }
 
   /// The **`WheelEvent.deltaY`** read-only property is a
   /// `double` representing the vertical scroll amount in the
   /// [WheelEvent.deltaMode] unit.
-  double get deltaY;
+  double get deltaY {
+    unsupportedPlatformError();
+  }
 
   /// The **`WheelEvent.deltaZ`** read-only property is a
   /// `double` representing the scroll amount along the z-axis, in the
   /// [WheelEvent.deltaMode] unit.
-  double get deltaZ;
+  double get deltaZ {
+    unsupportedPlatformError();
+  }
 
   /// The **`WheelEvent.deltaMode`** read-only property returns an
   /// `unsigned long` representing the unit of the delta values scroll amount.
@@ -750,10 +920,51 @@ abstract class WheelEvent implements MouseEvent, JSObject {
   /// | `DOM_DELTA_PIXEL` | `0x00` | The delta values are specified in pixels. |
   /// | `DOM_DELTA_LINE`  | `0x01` | The delta values are specified in lines.  |
   /// | `DOM_DELTA_PAGE`  | `0x02` | The delta values are specified in pages.  |
-  int get deltaMode;
+  int get deltaMode {
+    unsupportedPlatformError();
+  }
 }
+extension type WheelEventInit._(JSObject _)
+    implements MouseEventInit, JSObject {
+  factory WheelEventInit({
+    bool? bubbles,
+    bool? cancelable,
+    bool? composed,
+    Window? view,
+    int? detail,
+    JSObject? sourceCapabilities,
+    int? which,
+    bool? ctrlKey,
+    bool? shiftKey,
+    bool? altKey,
+    bool? metaKey,
+    bool? modifierAltGraph,
+    bool? modifierCapsLock,
+    bool? modifierFn,
+    bool? modifierFnLock,
+    bool? modifierHyper,
+    bool? modifierNumLock,
+    bool? modifierScrollLock,
+    bool? modifierSuper,
+    bool? modifierSymbol,
+    bool? modifierSymbolLock,
+    int? screenX,
+    int? screenY,
+    int? clientX,
+    int? clientY,
+    int? button,
+    int? buttons,
+    EventTarget? relatedTarget,
+    num? movementX,
+    num? movementY,
+    num? deltaX,
+    num? deltaY,
+    num? deltaZ,
+    int? deltaMode,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class WheelEventInit implements MouseEventInit, JSObject {
   double get deltaX {
     unsupportedPlatformError();
   }
@@ -794,7 +1005,14 @@ abstract class WheelEventInit implements MouseEventInit, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/InputEvent).
-abstract class InputEvent implements UIEvent, JSObject {
+extension type InputEvent._(JSObject _) implements UIEvent, JSObject {
+  factory InputEvent(
+    String type, [
+    InputEventInit? eventInitDict,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// The **`getTargetRanges()`** method of the [InputEvent] interface returns
   /// an array of [StaticRange] objects that will be affected by a change to the
   /// DOM if the input event is not canceled.
@@ -842,37 +1060,63 @@ abstract class InputEvent implements UIEvent, JSObject {
   ///     </tr>
   ///   </tbody>
   /// </table>
-  JSArray<StaticRange> getTargetRanges();
+  JSArray<StaticRange> getTargetRanges() {
+    unsupportedPlatformError();
+  }
 
   /// The **`data`** read-only property of the
   /// [InputEvent] interface returns a string with inserted
   /// characters. This may be an empty string if the change doesn't insert text,
   /// such as when
   /// characters are deleted.
-  String? get data;
+  String? get data {
+    unsupportedPlatformError();
+  }
 
   /// The **`InputEvent.isComposing`** read-only property returns a
   /// boolean value indicating if the event is fired after
   /// [Element.compositionstart_event] and before
   /// [Element.compositionend_event].
-  bool get isComposing;
+  bool get isComposing {
+    unsupportedPlatformError();
+  }
 
   /// The **`inputType`** read-only property of the
   /// [InputEvent] interface returns the type of change made to editable
   /// content.
   /// Possible changes include for example inserting, deleting, and formatting
   /// text.
-  String get inputType;
+  String get inputType {
+    unsupportedPlatformError();
+  }
 
   /// The **`dataTransfer`** read-only property of the
   /// [InputEvent] interface returns a [DataTransfer] object
   /// containing information about richtext or plaintext data being added to or
   /// removed from
   /// editable content.
-  DataTransfer? get dataTransfer;
+  DataTransfer? get dataTransfer {
+    unsupportedPlatformError();
+  }
 }
+extension type InputEventInit._(JSObject _) implements UIEventInit, JSObject {
+  factory InputEventInit({
+    bool? bubbles,
+    bool? cancelable,
+    bool? composed,
+    Window? view,
+    int? detail,
+    JSObject? sourceCapabilities,
+    int? which,
+    String? data,
+    bool? isComposing,
+    String? inputType,
+    DataTransfer? dataTransfer,
+    JSArray<StaticRange>? targetRanges,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class InputEventInit implements UIEventInit, JSObject {
   String? get data {
     unsupportedPlatformError();
   }
@@ -931,7 +1175,14 @@ abstract class InputEventInit implements UIEventInit, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent).
-abstract class KeyboardEvent implements UIEvent, JSObject {
+extension type KeyboardEvent._(JSObject _) implements UIEvent, JSObject {
+  factory KeyboardEvent(
+    String type, [
+    KeyboardEventInit? eventInitDict,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   static const int DOM_KEY_LOCATION_STANDARD = 0;
 
   static const int DOM_KEY_LOCATION_LEFT = 1;
@@ -944,7 +1195,9 @@ abstract class KeyboardEvent implements UIEvent, JSObject {
   /// current state of the specified modifier key: `true` if the modifier is
   /// active
   /// (that is the modifier key is pressed or locked), otherwise, `false`.
-  bool getModifierState(String keyArg);
+  bool getModifierState(String keyArg) {
+    unsupportedPlatformError();
+  }
 
   /// The **`KeyboardEvent.initKeyboardEvent()`** method initializes
   /// the attributes of a keyboard event object. This method was introduced in
@@ -956,22 +1209,26 @@ abstract class KeyboardEvent implements UIEvent, JSObject {
   /// Web applications should use constructor instead of this if it's available.
   void initKeyboardEvent(
     String typeArg, [
-    bool bubblesArg,
-    bool cancelableArg,
+    bool? bubblesArg,
+    bool? cancelableArg,
     Window? viewArg,
-    String keyArg,
-    int locationArg,
-    bool ctrlKey,
-    bool altKey,
-    bool shiftKey,
-    bool metaKey,
-  ]);
+    String? keyArg,
+    int? locationArg,
+    bool? ctrlKey,
+    bool? altKey,
+    bool? shiftKey,
+    bool? metaKey,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The [KeyboardEvent] interface's **`key`** read-only property returns the
   /// value of the key pressed by the user, taking into consideration the state
   /// of modifier keys such as <kbd>Shift</kbd> as well as the keyboard locale
   /// and layout.
-  String get key;
+  String get key {
+    unsupportedPlatformError();
+  }
 
   /// The `KeyboardEvent.code` property represents a physical key on the
   /// keyboard (as opposed to the character generated by pressing the key). In
@@ -1003,7 +1260,9 @@ abstract class KeyboardEvent implements UIEvent, JSObject {
   ///
   /// To determine what character corresponds with the key event, use the
   /// [KeyboardEvent.key] property instead.
-  String get code;
+  String get code {
+    unsupportedPlatformError();
+  }
 
   /// The **`KeyboardEvent.location`** read-only property returns an
   /// `unsigned long` representing the location of the key on the keyboard or
@@ -1106,12 +1365,16 @@ abstract class KeyboardEvent implements UIEvent, JSObject {
   ///     </tr>
   ///   </tbody>
   /// </table>
-  int get location;
+  int get location {
+    unsupportedPlatformError();
+  }
 
   /// The **`KeyboardEvent.ctrlKey`** read-only property returns a
   /// boolean value that indicates if the <kbd>control</kbd> key was pressed
   /// (`true`) or not (`false`) when the event occurred.
-  bool get ctrlKey;
+  bool get ctrlKey {
+    unsupportedPlatformError();
+  }
 
   /// The **`KeyboardEvent.shiftKey`** read-only property is a
   /// boolean value that indicates if the <kbd>shift</kbd> key was pressed
@@ -1120,13 +1383,17 @@ abstract class KeyboardEvent implements UIEvent, JSObject {
   /// The pressing of the shift key may change the [KeyboardEvent.key] of the
   /// event too. For example, pressing <kbd>B</kbd> generates `key: "b"`, while
   /// simultaneously pressing <kbd>Shift</kbd> generates `key: "B"`.
-  bool get shiftKey;
+  bool get shiftKey {
+    unsupportedPlatformError();
+  }
 
   /// The **`KeyboardEvent.altKey`** read-only property is a
   /// boolean value that indicates if the <kbd>alt</kbd> key (<kbd>Option</kbd>
   /// or <kbd>⌥</kbd> on macOS) was pressed (`true`) or not (`false`) when
   /// the event occurred.
-  bool get altKey;
+  bool get altKey {
+    unsupportedPlatformError();
+  }
 
   /// The **`KeyboardEvent.metaKey`** read-only property returning a
   /// boolean value that indicates if the <kbd>Meta</kbd> key was pressed
@@ -1138,19 +1405,25 @@ abstract class KeyboardEvent implements UIEvent, JSObject {
   /// > **Note:** Before Firefox 118, the <kbd>⊞ Windows</kbd> key was handled
   /// > as an "OS" key rather than the "Meta" key. `KeyboardEvent.metaKey` was
   /// > `false` when the <kbd>⊞ Windows</kbd> key was pressed.
-  bool get metaKey;
+  bool get metaKey {
+    unsupportedPlatformError();
+  }
 
   /// The **`repeat`** read-only property of the
   /// [KeyboardEvent] interface returns a boolean value that is
   /// `true` if the given key is being held down such that it is automatically
   /// repeating.
-  bool get repeat;
+  bool get repeat {
+    unsupportedPlatformError();
+  }
 
   /// The **`KeyboardEvent.isComposing`** read-only property returns
   /// a boolean value indicating if the event is fired within a composition
   /// session, i.e. after [Element.compositionstart_event]
   /// and before [Element.compositionend_event].
-  bool get isComposing;
+  bool get isComposing {
+    unsupportedPlatformError();
+  }
 
   /// The **`charCode`** read-only property of the
   /// [KeyboardEvent] interface returns the Unicode value of a character key
@@ -1160,7 +1433,9 @@ abstract class KeyboardEvent implements UIEvent, JSObject {
   /// > the
   /// > Unicode value of the character using the [KeyboardEvent.key]
   /// > property.
-  int get charCode;
+  int get charCode {
+    unsupportedPlatformError();
+  }
 
   /// The deprecated **`KeyboardEvent.keyCode`** read-only property represents a
   /// system and implementation dependent numerical code identifying the
@@ -1180,10 +1455,45 @@ abstract class KeyboardEvent implements UIEvent, JSObject {
   /// > described above, the `keyCode` attribute is not useful for printable
   /// > characters, especially those input with the <kbd>Shift</kbd> or
   /// > <kbd>Alt</kbd> key pressed.
-  int get keyCode;
+  int get keyCode {
+    unsupportedPlatformError();
+  }
 }
+extension type KeyboardEventInit._(JSObject _)
+    implements EventModifierInit, JSObject {
+  factory KeyboardEventInit({
+    bool? bubbles,
+    bool? cancelable,
+    bool? composed,
+    Window? view,
+    int? detail,
+    JSObject? sourceCapabilities,
+    int? which,
+    bool? ctrlKey,
+    bool? shiftKey,
+    bool? altKey,
+    bool? metaKey,
+    bool? modifierAltGraph,
+    bool? modifierCapsLock,
+    bool? modifierFn,
+    bool? modifierFnLock,
+    bool? modifierHyper,
+    bool? modifierNumLock,
+    bool? modifierScrollLock,
+    bool? modifierSuper,
+    bool? modifierSymbol,
+    bool? modifierSymbolLock,
+    String? key,
+    String? code,
+    int? location,
+    bool? repeat,
+    bool? isComposing,
+    int? charCode,
+    int? keyCode,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class KeyboardEventInit implements EventModifierInit, JSObject {
   String get key {
     unsupportedPlatformError();
   }
@@ -1248,7 +1558,14 @@ abstract class KeyboardEventInit implements EventModifierInit, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CompositionEvent).
-abstract class CompositionEvent implements UIEvent, JSObject {
+extension type CompositionEvent._(JSObject _) implements UIEvent, JSObject {
+  factory CompositionEvent(
+    String type, [
+    CompositionEventInit? eventInitDict,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// The **`initCompositionEvent()`**
   /// method of the [CompositionEvent] interface initializes the attributes of a
   /// `CompositionEvent` object instance.
@@ -1257,21 +1574,38 @@ abstract class CompositionEvent implements UIEvent, JSObject {
   /// > the constructor [CompositionEvent.CompositionEvent].
   void initCompositionEvent(
     String typeArg, [
-    bool bubblesArg,
-    bool cancelableArg,
+    bool? bubblesArg,
+    bool? cancelableArg,
     Window? viewArg,
-    String dataArg,
-  ]);
+    String? dataArg,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`data`** read-only property of the
   /// [CompositionEvent] interface returns the characters generated by the input
   /// method that raised the event; its exact nature varies depending on the
   /// type of event
   /// that generated the `CompositionEvent` object.
-  String get data;
+  String get data {
+    unsupportedPlatformError();
+  }
 }
+extension type CompositionEventInit._(JSObject _)
+    implements UIEventInit, JSObject {
+  factory CompositionEventInit({
+    bool? bubbles,
+    bool? cancelable,
+    bool? composed,
+    Window? view,
+    int? detail,
+    JSObject? sourceCapabilities,
+    int? which,
+    String? data,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class CompositionEventInit implements UIEventInit, JSObject {
   String get data {
     unsupportedPlatformError();
   }
@@ -1280,15 +1614,17 @@ abstract class CompositionEventInit implements UIEventInit, JSObject {
     unsupportedPlatformError();
   }
 }
-
-abstract class TextEvent implements UIEvent, JSObject {
+extension type TextEvent._(JSObject _) implements UIEvent, JSObject {
   void initTextEvent(
     String type, [
-    bool bubbles,
-    bool cancelable,
+    bool? bubbles,
+    bool? cancelable,
     Window? view,
-    String data,
-  ]);
+    String? data,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   String get data {
     unsupportedPlatformError();
   }
@@ -1319,7 +1655,7 @@ abstract class TextEvent implements UIEvent, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MutationEvent).
-abstract class MutationEvent implements Event, JSObject {
+extension type MutationEvent._(JSObject _) implements Event, JSObject {
   static const int MODIFICATION = 1;
 
   static const int ADDITION = 2;
@@ -1338,44 +1674,56 @@ abstract class MutationEvent implements Event, JSObject {
   /// > created by the browser.
   void initMutationEvent(
     String typeArg, [
-    bool bubblesArg,
-    bool cancelableArg,
+    bool? bubblesArg,
+    bool? cancelableArg,
     Node? relatedNodeArg,
-    String prevValueArg,
-    String newValueArg,
-    String attrNameArg,
-    int attrChangeArg,
-  ]);
+    String? prevValueArg,
+    String? newValueArg,
+    String? attrNameArg,
+    int? attrChangeArg,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`relatedNode`** read-only property of the [MutationEvent] interface
   /// returns a string indicating the node related to the event, like the
   /// changed node inside the subtree for `DOMSubtreeModified`.
-  Node? get relatedNode;
+  Node? get relatedNode {
+    unsupportedPlatformError();
+  }
 
   /// The **`prevValue`** read-only property of the [MutationEvent] interface
   /// returns a string. In `DOMAttrModified` events, it represents the previous
   /// value of the [Attr] node. In `DOMCharacterDataModified` events, it
   /// contains the previous value of the [CharacterData] node. In all other
   /// cases, returns the empty string (`""`).
-  String get prevValue;
+  String get prevValue {
+    unsupportedPlatformError();
+  }
 
   /// The **`newValue`** read-only property of the [MutationEvent] interface
   /// returns a string. In `DOMAttrModified` events, it represents the new value
   /// of the [Attr] node. In `DOMCharacterDataModified` events, it contains the
   /// new value of the [CharacterData] node. In all other cases, returns the
   /// empty string (`""`).
-  String get newValue;
+  String get newValue {
+    unsupportedPlatformError();
+  }
 
   /// The **`attrName`** read-only property of the [MutationEvent] interface
   /// returns a string with the name of the node affected by the
   /// `DOMAttrModified` event. It has no meaning for other events and is then
   /// set to the empty string (`""`).
-  String get attrName;
+  String get attrName {
+    unsupportedPlatformError();
+  }
 
   /// The **`attrChange`** read-only property of the [MutationEvent] interface
   /// returns a number indicating what kind of change triggered the
   /// `DOMAttrModified` event. The three possible values are `MODIFICATION`
   /// (`1`), `ADDITION` (`2`) or `REMOVAL` (`3`). It has no meaning for other
   /// events and is then set to `0`.
-  int get attrChange;
+  int get attrChange {
+    unsupportedPlatformError();
+  }
 }

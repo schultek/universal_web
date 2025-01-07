@@ -10,6 +10,7 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
+import '../error.dart';
 import '../js_interop.dart';
 import 'dom.dart';
 import 'event_timing.dart';
@@ -33,17 +34,21 @@ typedef EpochTimeStamp = int;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Performance).
-abstract class Performance implements EventTarget, JSObject {
+extension type Performance._(JSObject _) implements EventTarget, JSObject {
   /// The **`performance.now()`** method returns a high resolution timestamp in
   /// milliseconds. It represents the time elapsed since
   /// [Performance.timeOrigin] (the time when navigation has started in window
   /// contexts, or the time when the worker is run in [Worker] and
   /// [ServiceWorker] contexts).
-  double now();
+  double now() {
+    unsupportedPlatformError();
+  }
 
   /// The **`toJSON()`** method of the [Performance] interface is a ; it returns
   /// a JSON representation of the [Performance] object.
-  JSObject toJSON();
+  JSObject toJSON() {
+    unsupportedPlatformError();
+  }
 
   /// The **`getEntries()`** method returns an array of all [PerformanceEntry]
   /// objects currently present in the performance timeline.
@@ -69,7 +74,9 @@ abstract class Performance implements EventTarget, JSObject {
   ///
   /// To access entries of these types, you must use a [PerformanceObserver]
   /// instead.
-  PerformanceEntryList getEntries();
+  PerformanceEntryList getEntries() {
+    unsupportedPlatformError();
+  }
 
   /// The **`getEntriesByType()`** method returns an array of [PerformanceEntry]
   /// objects currently present in the performance timeline for a given _type_.
@@ -95,7 +102,9 @@ abstract class Performance implements EventTarget, JSObject {
   ///
   /// To access entries of these types, you must use a [PerformanceObserver]
   /// instead.
-  PerformanceEntryList getEntriesByType(String type);
+  PerformanceEntryList getEntriesByType(String type) {
+    unsupportedPlatformError();
+  }
 
   /// The **`getEntriesByName()`** method returns an array of [PerformanceEntry]
   /// objects currently present in the performance timeline with the given
@@ -124,8 +133,10 @@ abstract class Performance implements EventTarget, JSObject {
   /// instead.
   PerformanceEntryList getEntriesByName(
     String name, [
-    String type,
-  ]);
+    String? type,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`clearResourceTimings()`** method removes all performance entries
   /// with an [PerformanceEntry.entryType] of "`resource`" from the browser's
@@ -137,7 +148,9 @@ abstract class Performance implements EventTarget, JSObject {
   ///
   /// To get notified when the browser's resource timing buffer is full, listen
   /// for the [Performance.resourcetimingbufferfull_event] event.
-  void clearResourceTimings();
+  void clearResourceTimings() {
+    unsupportedPlatformError();
+  }
 
   /// The **`setResourceTimingBufferSize()`** method sets the desired size of
   /// the browser's resource timing buffer which stores the "`resource`"
@@ -151,19 +164,25 @@ abstract class Performance implements EventTarget, JSObject {
   ///
   /// To get notified when the browser's resource timing buffer is full, listen
   /// for the [Performance.resourcetimingbufferfull_event] event.
-  void setResourceTimingBufferSize(int maxSize);
+  void setResourceTimingBufferSize(int maxSize) {
+    unsupportedPlatformError();
+  }
 
   /// The **`mark()`** method creates a named [PerformanceMark] object
   /// representing a high resolution timestamp marker in the browser's
   /// performance timeline.
   PerformanceMark mark(
     String markName, [
-    PerformanceMarkOptions markOptions,
-  ]);
+    PerformanceMarkOptions? markOptions,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`clearMarks()`** method removes all or specific [PerformanceMark]
   /// objects from the browser's performance timeline.
-  void clearMarks([String markName]);
+  void clearMarks([String? markName]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`measure()`** method creates a named [PerformanceMeasure] object
   /// representing a time measurement between two marks in the browser's
@@ -174,13 +193,17 @@ abstract class Performance implements EventTarget, JSObject {
   /// The named timestamp is referred to as a _measure_.
   PerformanceMeasure measure(
     String measureName, [
-    JSAny startOrMeasureOptions,
-    String endMark,
-  ]);
+    JSAny? startOrMeasureOptions,
+    String? endMark,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`clearMeasures()`** method removes all or specific
   /// [PerformanceMeasure] objects from the browser's performance timeline.
-  void clearMeasures([String measureName]);
+  void clearMeasures([String? measureName]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`timeOrigin`** read-only property of the [Performance] interface
   /// returns the high resolution timestamp that is used as the baseline for
@@ -198,14 +221,18 @@ abstract class Performance implements EventTarget, JSObject {
   /// > [monotonic clock](https://w3c.github.io/hr-time/#dfn-monotonic-clock)
   /// > which current time never decreases and which isn't subject to these
   /// > adjustments.
-  double get timeOrigin;
+  double get timeOrigin {
+    unsupportedPlatformError();
+  }
 
   /// The read-only `performance.eventCounts` property is an [EventCounts] map
   /// containing the number of events which have been dispatched per event type.
   ///
   /// Not all event types are exposed. You can only get counts for event types
   /// supported by the [PerformanceEventTiming] interface.
-  EventCounts get eventCounts;
+  EventCounts get eventCounts {
+    unsupportedPlatformError();
+  }
 
   /// The legacy
   /// **`Performance.timing`** read-only
@@ -218,7 +245,9 @@ abstract class Performance implements EventTarget, JSObject {
   /// > [Navigation Timing Level 2 specification](https://w3c.github.io/navigation-timing/#obsolete).
   /// > Please use the [PerformanceNavigationTiming]
   /// > interface instead.
-  PerformanceTiming get timing;
+  PerformanceTiming get timing {
+    unsupportedPlatformError();
+  }
 
   /// The legacy
   /// **`Performance.navigation`**
@@ -233,7 +262,15 @@ abstract class Performance implements EventTarget, JSObject {
   /// > [Navigation Timing Level 2 specification](https://w3c.github.io/navigation-timing/#obsolete).
   /// > Please use the
   /// > [PerformanceNavigationTiming] interface instead.
-  PerformanceNavigation get navigation;
-  EventHandler get onresourcetimingbufferfull;
-  set onresourcetimingbufferfull(EventHandler value);
+  PerformanceNavigation get navigation {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onresourcetimingbufferfull {
+    unsupportedPlatformError();
+  }
+
+  set onresourcetimingbufferfull(EventHandler value) {
+    unsupportedPlatformError();
+  }
 }

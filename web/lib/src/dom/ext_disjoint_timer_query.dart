@@ -10,12 +10,12 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
+import '../error.dart';
 import '../js_interop.dart';
 import 'webgl1.dart';
 
-abstract class WebGLTimerQueryEXT implements JSObject {}
-
-abstract class EXT_disjoint_timer_query implements JSObject {
+extension type WebGLTimerQueryEXT._(JSObject _) implements JSObject {}
+extension type EXT_disjoint_timer_query._(JSObject _) implements JSObject {
   static const GLenum QUERY_COUNTER_BITS_EXT = 34916;
 
   static const GLenum CURRENT_QUERY_EXT = 34917;
@@ -30,24 +30,47 @@ abstract class EXT_disjoint_timer_query implements JSObject {
 
   static const GLenum GPU_DISJOINT_EXT = 36795;
 
-  WebGLTimerQueryEXT? createQueryEXT();
-  void deleteQueryEXT(WebGLTimerQueryEXT? query);
-  bool isQueryEXT(WebGLTimerQueryEXT? query);
+  WebGLTimerQueryEXT? createQueryEXT() {
+    unsupportedPlatformError();
+  }
+
+  void deleteQueryEXT(WebGLTimerQueryEXT? query) {
+    unsupportedPlatformError();
+  }
+
+  bool isQueryEXT(WebGLTimerQueryEXT? query) {
+    unsupportedPlatformError();
+  }
+
   void beginQueryEXT(
     GLenum target,
     WebGLTimerQueryEXT query,
-  );
-  void endQueryEXT(GLenum target);
+  ) {
+    unsupportedPlatformError();
+  }
+
+  void endQueryEXT(GLenum target) {
+    unsupportedPlatformError();
+  }
+
   void queryCounterEXT(
     WebGLTimerQueryEXT query,
     GLenum target,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   JSAny? getQueryEXT(
     GLenum target,
     GLenum pname,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   JSAny? getQueryObjectEXT(
     WebGLTimerQueryEXT query,
     GLenum pname,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 }

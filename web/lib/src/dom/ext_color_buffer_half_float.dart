@@ -13,7 +13,7 @@
 import '../js_interop.dart';
 import 'webgl1.dart';
 
-abstract class EXT_color_buffer_half_float implements JSObject {
+extension type EXT_color_buffer_half_float._(JSObject _) implements JSObject {
   static const GLenum RGBA16F_EXT = 34842;
 
   static const GLenum RGB16F_EXT = 34843;

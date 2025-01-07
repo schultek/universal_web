@@ -12,4 +12,4 @@
 
 import '../js_interop.dart';
 
-abstract class EXT_shader_texture_lod implements JSObject {}
+extension type EXT_shader_texture_lod._(JSObject _) implements JSObject {}

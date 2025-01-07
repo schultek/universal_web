@@ -14,8 +14,14 @@ import '../error.dart';
 import '../js_interop.dart';
 
 typedef FullscreenNavigationUI = String;
+extension type FullscreenOptions._(JSObject _) implements JSObject {
+  factory FullscreenOptions({
+    FullscreenNavigationUI? navigationUI,
+    JSObject? screen,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class FullscreenOptions implements JSObject {
   FullscreenNavigationUI get navigationUI {
     unsupportedPlatformError();
   }

@@ -12,4 +12,4 @@
 
 import '../js_interop.dart';
 
-abstract class OES_element_index_uint implements JSObject {}
+extension type OES_element_index_uint._(JSObject _) implements JSObject {}

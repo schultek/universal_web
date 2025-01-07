@@ -10,11 +10,13 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
+import '../error.dart';
 import '../js_interop.dart';
 import 'webgl1.dart';
 import 'webgl2.dart';
 
-abstract class EXT_disjoint_timer_query_webgl2 implements JSObject {
+extension type EXT_disjoint_timer_query_webgl2._(JSObject _)
+    implements JSObject {
   static const GLenum QUERY_COUNTER_BITS_EXT = 34916;
 
   static const GLenum TIME_ELAPSED_EXT = 35007;
@@ -26,5 +28,7 @@ abstract class EXT_disjoint_timer_query_webgl2 implements JSObject {
   void queryCounterEXT(
     WebGLQuery query,
     GLenum target,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 }

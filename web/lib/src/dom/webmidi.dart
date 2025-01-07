@@ -19,8 +19,14 @@ import 'html.dart';
 typedef MIDIPortType = String;
 typedef MIDIPortDeviceState = String;
 typedef MIDIPortConnectionState = String;
+extension type MIDIOptions._(JSObject _) implements JSObject {
+  factory MIDIOptions({
+    bool? sysex,
+    bool? software,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class MIDIOptions implements JSObject {
   bool get sysex {
     unsupportedPlatformError();
   }
@@ -51,7 +57,7 @@ abstract class MIDIOptions implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MIDIInputMap).
-abstract class MIDIInputMap implements JSObject {}
+extension type MIDIInputMap._(JSObject _) implements JSObject {}
 
 /// The **`MIDIOutputMap`** read-only interface of the
 /// [Web MIDI API](https://developer.mozilla.org/en-US/docs/Web/API/Web_MIDI_API)
@@ -66,7 +72,7 @@ abstract class MIDIInputMap implements JSObject {}
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MIDIOutputMap).
-abstract class MIDIOutputMap implements JSObject {}
+extension type MIDIOutputMap._(JSObject _) implements JSObject {}
 
 /// The **`MIDIAccess`** interface of the
 /// [Web MIDI API](https://developer.mozilla.org/en-US/docs/Web/API/Web_MIDI_API)
@@ -77,21 +83,33 @@ abstract class MIDIOutputMap implements JSObject {}
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MIDIAccess).
-abstract class MIDIAccess implements EventTarget, JSObject {
+extension type MIDIAccess._(JSObject _) implements EventTarget, JSObject {
   /// The **`inputs`** read-only property of the [MIDIAccess] interface provides
   /// access to any available MIDI input ports.
-  MIDIInputMap get inputs;
+  MIDIInputMap get inputs {
+    unsupportedPlatformError();
+  }
 
   /// The **`outputs`** read-only property of the [MIDIAccess] interface
   /// provides access to any available MIDI output ports.
-  MIDIOutputMap get outputs;
-  EventHandler get onstatechange;
-  set onstatechange(EventHandler value);
+  MIDIOutputMap get outputs {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onstatechange {
+    unsupportedPlatformError();
+  }
+
+  set onstatechange(EventHandler value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`sysexEnabled`** read-only property of the [MIDIAccess] interface
   /// indicates whether system exclusive support is enabled on the current
   /// MIDIAccess instance.
-  bool get sysexEnabled;
+  bool get sysexEnabled {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`MIDIPort`** interface of the [Web MIDI API] represents a MIDI input
@@ -104,7 +122,7 @@ abstract class MIDIAccess implements EventTarget, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MIDIPort).
-abstract class MIDIPort implements EventTarget, JSObject {
+extension type MIDIPort._(JSObject _) implements EventTarget, JSObject {
   /// The **`open()`** method of the [MIDIPort] interface makes the MIDI device
   /// connected to this `MIDIPort` explicitly available.
   ///
@@ -114,7 +132,9 @@ abstract class MIDIPort implements EventTarget, JSObject {
   ///
   /// If the port is already open when this method is called, then the promise
   /// will resolve successfully.
-  JSPromise<MIDIPort> open();
+  JSPromise<MIDIPort> open() {
+    unsupportedPlatformError();
+  }
 
   /// The **`close()`** method of the [MIDIPort] interface makes the access to
   /// the MIDI device connected to this `MIDIPort` unavailable.
@@ -122,37 +142,59 @@ abstract class MIDIPort implements EventTarget, JSObject {
   /// If the port is successfully closed a new [MIDIConnectionEvent] is queued
   /// to the [MIDIPort.statechange_event] and [MIDIAccess.statechange_event]
   /// events, and the [MIDIPort.connection] property is changed to `"closed"`.
-  JSPromise<MIDIPort> close();
+  JSPromise<MIDIPort> close() {
+    unsupportedPlatformError();
+  }
 
   /// The **`id`** read-only property of the [MIDIPort] interface returns the
   /// unique ID of the port.
-  String get id;
+  String get id {
+    unsupportedPlatformError();
+  }
 
   /// The **`manufacturer`** read-only property of the [MIDIPort] interface
   /// returns the manufacturer of the port.
-  String? get manufacturer;
+  String? get manufacturer {
+    unsupportedPlatformError();
+  }
 
   /// The **`name`** read-only property of the [MIDIPort] interface returns the
   /// system name of the port.
-  String? get name;
+  String? get name {
+    unsupportedPlatformError();
+  }
 
   /// The **`type`** read-only property of the [MIDIPort] interface returns the
   /// type of the port, indicating whether this is an input or output MIDI port.
-  MIDIPortType get type;
+  MIDIPortType get type {
+    unsupportedPlatformError();
+  }
 
   /// The **`version`** read-only property of the [MIDIPort] interface returns
   /// the version of the port.
-  String? get version;
+  String? get version {
+    unsupportedPlatformError();
+  }
 
   /// The **`state`** read-only property of the [MIDIPort] interface returns the
   /// state of the port.
-  MIDIPortDeviceState get state;
+  MIDIPortDeviceState get state {
+    unsupportedPlatformError();
+  }
 
   /// The **`connection`** read-only property of the [MIDIPort] interface
   /// returns the connection state of the port.
-  MIDIPortConnectionState get connection;
-  EventHandler get onstatechange;
-  set onstatechange(EventHandler value);
+  MIDIPortConnectionState get connection {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onstatechange {
+    unsupportedPlatformError();
+  }
+
+  set onstatechange(EventHandler value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`MIDIInput`** interface of the
@@ -163,9 +205,14 @@ abstract class MIDIPort implements EventTarget, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MIDIInput).
-abstract class MIDIInput implements MIDIPort, JSObject {
-  EventHandler get onmidimessage;
-  set onmidimessage(EventHandler value);
+extension type MIDIInput._(JSObject _) implements MIDIPort, JSObject {
+  EventHandler get onmidimessage {
+    unsupportedPlatformError();
+  }
+
+  set onmidimessage(EventHandler value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`MIDIOutput`** interface of the [Web MIDI API] provides methods to add
@@ -176,18 +223,22 @@ abstract class MIDIInput implements MIDIPort, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MIDIOutput).
-abstract class MIDIOutput implements MIDIPort, JSObject {
+extension type MIDIOutput._(JSObject _) implements MIDIPort, JSObject {
   /// The **`send()`** method of the [MIDIOutput] interface queues messages for
   /// the corresponding MIDI port. The message can be sent immediately, or with
   /// an optional timestamp to delay sending.
   void send(
     JSArray<JSNumber> data, [
-    DOMHighResTimeStamp timestamp,
-  ]);
+    DOMHighResTimeStamp? timestamp,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`clear()`** method of the [MIDIOutput] interface clears the queue of
   /// messages being sent to the output device.
-  void clear();
+  void clear() {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`MIDIMessageEvent`** interface of the
@@ -201,13 +252,31 @@ abstract class MIDIOutput implements MIDIPort, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MIDIMessageEvent).
-abstract class MIDIMessageEvent implements Event, JSObject {
+extension type MIDIMessageEvent._(JSObject _) implements Event, JSObject {
+  factory MIDIMessageEvent(
+    String type, [
+    MIDIMessageEventInit? eventInitDict,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// The **`data`** read-only property of the [MIDIMessageEvent] interface
   /// returns the MIDI data bytes of a single MIDI message.
-  JSUint8Array? get data;
+  JSUint8Array? get data {
+    unsupportedPlatformError();
+  }
 }
+extension type MIDIMessageEventInit._(JSObject _)
+    implements EventInit, JSObject {
+  factory MIDIMessageEventInit({
+    bool? bubbles,
+    bool? cancelable,
+    bool? composed,
+    JSUint8Array? data,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class MIDIMessageEventInit implements EventInit, JSObject {
   JSUint8Array get data {
     unsupportedPlatformError();
   }
@@ -230,13 +299,31 @@ abstract class MIDIMessageEventInit implements EventInit, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MIDIConnectionEvent).
-abstract class MIDIConnectionEvent implements Event, JSObject {
+extension type MIDIConnectionEvent._(JSObject _) implements Event, JSObject {
+  factory MIDIConnectionEvent(
+    String type, [
+    MIDIConnectionEventInit? eventInitDict,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// The **`port`** read-only property of the [MIDIConnectionEvent] interface
   /// returns the port that has been disconnected or connected.
-  MIDIPort? get port;
+  MIDIPort? get port {
+    unsupportedPlatformError();
+  }
 }
+extension type MIDIConnectionEventInit._(JSObject _)
+    implements EventInit, JSObject {
+  factory MIDIConnectionEventInit({
+    bool? bubbles,
+    bool? cancelable,
+    bool? composed,
+    MIDIPort? port,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class MIDIConnectionEventInit implements EventInit, JSObject {
   MIDIPort get port {
     unsupportedPlatformError();
   }

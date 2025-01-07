@@ -10,6 +10,7 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
+import '../error.dart';
 import '../js_interop.dart';
 
 typedef ArrayBufferView = JSObject;
@@ -33,7 +34,14 @@ typedef VoidFunction = JSFunction;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/DOMException).
-abstract class DOMException implements JSObject {
+extension type DOMException._(JSObject _) implements JSObject {
+  factory DOMException([
+    String? message,
+    String? name,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   static const int INDEX_SIZE_ERR = 1;
 
   static const int DOMSTRING_SIZE_ERR = 2;
@@ -88,13 +96,17 @@ abstract class DOMException implements JSObject {
   /// [DOMException] interface returns a string that contains
   /// one of the strings associated with an
   /// [error name](https://developer.mozilla.org/en-US/docs/Web/API/DOMException#error_names).
-  String get name;
+  String get name {
+    unsupportedPlatformError();
+  }
 
   /// The **`message`** read-only property of the
   /// [DOMException] interface returns a string representing
   /// a message or description associated with the given
   /// [error name](https://developer.mozilla.org/en-US/docs/Web/API/DOMException#error_names).
-  String get message;
+  String get message {
+    unsupportedPlatformError();
+  }
 
   /// The **`code`** read-only property of the [DOMException] interface returns
   /// one of the legacy
@@ -103,5 +115,7 @@ abstract class DOMException implements JSObject {
   ///
   /// This field is used for historical reasons. New DOM exceptions don't use
   /// this anymore: they put this info in the [DOMException.name] attribute.
-  int get code;
+  int get code {
+    unsupportedPlatformError();
+  }
 }

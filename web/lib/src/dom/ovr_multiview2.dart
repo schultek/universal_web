@@ -10,10 +10,11 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
+import '../error.dart';
 import '../js_interop.dart';
 import 'webgl1.dart';
 
-abstract class OVR_multiview2 implements JSObject {
+extension type OVR_multiview2._(JSObject _) implements JSObject {
   static const GLenum FRAMEBUFFER_ATTACHMENT_TEXTURE_NUM_VIEWS_OVR = 38448;
 
   static const GLenum FRAMEBUFFER_ATTACHMENT_TEXTURE_BASE_VIEW_INDEX_OVR =
@@ -30,5 +31,7 @@ abstract class OVR_multiview2 implements JSObject {
     GLint level,
     GLint baseViewIndex,
     GLsizei numViews,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 }

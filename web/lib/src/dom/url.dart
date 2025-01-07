@@ -30,7 +30,14 @@ import '../js_interop.dart';
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/URL).
-abstract class URL implements JSObject {
+extension type URL._(JSObject _) implements JSObject {
+  factory URL(
+    String url, [
+    String? base,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// The **`URL.parse()`** static method of the [URL] interface returns a newly
   /// created [URL] object representing the URL defined by the parameters.
   ///
@@ -111,12 +118,19 @@ abstract class URL implements JSObject {
   /// returns a string containing a serialized version of the URL,
   /// although in practice it seems to have the same effect as
   /// [URL.toString].
-  String toJSON();
+  String toJSON() {
+    unsupportedPlatformError();
+  }
 
   /// The **`href`** property of the [URL] interface is
   /// a string containing the whole URL.
-  String get href;
-  set href(String value);
+  String get href {
+    unsupportedPlatformError();
+  }
+
+  set href(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`origin`** read-only property of the [URL] interface returns a
   /// string containing the Unicode serialization of the origin of the
@@ -131,38 +145,65 @@ abstract class URL implements JSObject {
   /// - For URL using the `blob:` scheme, the origin of the URL following
   ///   `blob:`. For example, `blob:https://mozilla.org` will have
   ///   `https://mozilla.org`.
-  String get origin;
+  String get origin {
+    unsupportedPlatformError();
+  }
 
   /// The **`protocol`** property of the [URL] interface
   /// is a string representing the protocol scheme of the URL, including the
   /// final `':'`.
-  String get protocol;
-  set protocol(String value);
+  String get protocol {
+    unsupportedPlatformError();
+  }
+
+  set protocol(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`username`** property of the [URL] interface
   /// is a string containing the username specified before the domain name.
-  String get username;
-  set username(String value);
+  String get username {
+    unsupportedPlatformError();
+  }
+
+  set username(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`password`** property of the [URL] interface
   /// is a string containing the password specified before the domain name.
   ///
   /// If it is set without first setting the [URL.username]
   /// property, it silently fails.
-  String get password;
-  set password(String value);
+  String get password {
+    unsupportedPlatformError();
+  }
+
+  set password(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`host`** property of the [URL] interface is
   /// a string containing the host, that is the [URL.hostname], and then, if the
   /// of the URL is nonempty, a
   /// `':'`, followed by the [URL.port] of the URL.
-  String get host;
-  set host(String value);
+  String get host {
+    unsupportedPlatformError();
+  }
+
+  set host(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`hostname`** property of the [URL] interface
   /// is a string containing the  of the URL.
-  String get hostname;
-  set hostname(String value);
+  String get hostname {
+    unsupportedPlatformError();
+  }
+
+  set hostname(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`port`** property of the [URL] interface is
   /// a string containing the port number of the URL.
@@ -176,8 +217,13 @@ abstract class URL implements JSObject {
   /// > [`URL`](https://developer.mozilla.org/en-US/docs/Web/API/URL) object the
   /// > constructor returns, the value of the port property will be the empty
   /// > string: `''`.
-  String get port;
-  set port(String value);
+  String get port {
+    unsupportedPlatformError();
+  }
+
+  set port(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`pathname`** property of the [URL] interface represents a location
   /// in a hierarchical structure. It is a string constructed from a list of
@@ -208,8 +254,13 @@ abstract class URL implements JSObject {
   /// `https://example.org/users;id=42/tasks;state=open?sort=modified`, a system
   /// might extract and use the path segment parameters `id=42` and `state=open`
   /// from the path segments `users;id=42` and `tasks;state=open`.
-  String get pathname;
-  set pathname(String value);
+  String get pathname {
+    unsupportedPlatformError();
+  }
+
+  set pathname(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`search`** property of the [URL] interface
   /// is a search string, also called a _query string_, that is a
@@ -218,13 +269,20 @@ abstract class URL implements JSObject {
   ///
   /// Modern browsers provide the [URL.searchParams] property to make it easy to
   /// parse out the parameters from the query string.
-  String get search;
-  set search(String value);
+  String get search {
+    unsupportedPlatformError();
+  }
+
+  set search(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`searchParams`** read-only property of the
   /// [URL] interface returns a [URLSearchParams] object allowing
   /// access to the `GET` decoded query arguments contained in the URL.
-  URLSearchParams get searchParams;
+  URLSearchParams get searchParams {
+    unsupportedPlatformError();
+  }
 
   /// The **`hash`** property of the
   /// [URL] interface is a string containing a
@@ -234,8 +292,13 @@ abstract class URL implements JSObject {
   /// [URL decoded](https://en.wikipedia.org/wiki/URL_encoding). If the URL does
   /// not
   /// have a fragment identifier, this property contains an empty string — `""`.
-  String get hash;
-  set hash(String value);
+  String get hash {
+    unsupportedPlatformError();
+  }
+
+  set hash(String value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`URLSearchParams`** interface defines utility methods to work with the
@@ -257,7 +320,11 @@ abstract class URL implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams).
-abstract class URLSearchParams implements JSObject {
+extension type URLSearchParams._(JSObject _) implements JSObject {
+  factory URLSearchParams([JSAny? init]) {
+    unsupportedPlatformError();
+  }
+
   /// The **`append()`** method of the [URLSearchParams]
   /// interface appends a specified key/value pair as a new search parameter.
   ///
@@ -267,7 +334,9 @@ abstract class URLSearchParams implements JSObject {
   void append(
     String name,
     String value,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`delete()`** method of the [URLSearchParams] interface deletes
   /// specified parameters and their associated value(s) from the list of all
@@ -280,18 +349,24 @@ abstract class URLSearchParams implements JSObject {
   /// parameters that match both the parameter name and value are deleted.
   void delete(
     String name, [
-    String value,
-  ]);
+    String? value,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`get()`** method of the [URLSearchParams]
   /// interface returns the first value associated to the given search
   /// parameter.
-  String? get(String name);
+  String? get(String name) {
+    unsupportedPlatformError();
+  }
 
   /// The **`getAll()`** method of the [URLSearchParams]
   /// interface returns all the values associated with a given search parameter
   /// as an array.
-  JSArray<JSString> getAll(String name);
+  JSArray<JSString> getAll(String name) {
+    unsupportedPlatformError();
+  }
 
   /// The **`has()`** method of the [URLSearchParams] interface returns a
   /// boolean value that indicates whether the specified parameter is in the
@@ -305,8 +380,10 @@ abstract class URLSearchParams implements JSObject {
   /// return `true` if a parameter matches both the name and value.
   bool has(
     String name, [
-    String value,
-  ]);
+    String? value,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`set()`** method of the [URLSearchParams]
   /// interface sets the value associated with a given search parameter to the
@@ -317,7 +394,9 @@ abstract class URLSearchParams implements JSObject {
   void set(
     String name,
     String value,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`URLSearchParams.sort()`** method sorts all key/value
   /// pairs contained in this object in place and returns `undefined`. The sort
@@ -326,9 +405,13 @@ abstract class URLSearchParams implements JSObject {
   /// algorithm (i.e. the relative order between key/value pairs with equal keys
   /// will be
   /// preserved).
-  void sort();
+  void sort() {
+    unsupportedPlatformError();
+  }
 
   /// The **`size`** read-only property of the [URLSearchParams] interface
   /// indicates the total number of search parameter entries.
-  int get size;
+  int get size {
+    unsupportedPlatformError();
+  }
 }

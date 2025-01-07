@@ -14,7 +14,20 @@ import '../error.dart';
 import '../js_interop.dart';
 import 'payment_request.dart';
 
-abstract class AuthenticationExtensionsPaymentInputs implements JSObject {
+extension type AuthenticationExtensionsPaymentInputs._(JSObject _)
+    implements JSObject {
+  factory AuthenticationExtensionsPaymentInputs({
+    bool? isPayment,
+    String? rpId,
+    String? topOrigin,
+    String? payeeName,
+    String? payeeOrigin,
+    PaymentCurrencyAmount? total,
+    PaymentCredentialInstrument? instrument,
+  }) {
+    unsupportedPlatformError();
+  }
+
   bool get isPayment {
     unsupportedPlatformError();
   }
@@ -71,8 +84,15 @@ abstract class AuthenticationExtensionsPaymentInputs implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type PaymentCredentialInstrument._(JSObject _) implements JSObject {
+  factory PaymentCredentialInstrument({
+    required String displayName,
+    required String icon,
+    bool? iconMustBeShown,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class PaymentCredentialInstrument implements JSObject {
   String get displayName {
     unsupportedPlatformError();
   }

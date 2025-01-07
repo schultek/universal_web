@@ -32,23 +32,40 @@ typedef GyroscopeLocalCoordinateSystem = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Gyroscope).
-abstract class Gyroscope implements Sensor, JSObject {
+extension type Gyroscope._(JSObject _) implements Sensor, JSObject {
+  factory Gyroscope([GyroscopeSensorOptions? sensorOptions]) {
+    unsupportedPlatformError();
+  }
+
   /// The **`x`** read-only property of the
   /// [Gyroscope] interface returns a number specifying the
   /// angular velocity of the device along its x-axis.
-  double? get x;
+  double? get x {
+    unsupportedPlatformError();
+  }
 
   /// The **`y`** read-only property of the [Gyroscope] interface returns a
   /// number specifying the angular velocity of the device along its y-axis.
-  double? get y;
+  double? get y {
+    unsupportedPlatformError();
+  }
 
   /// The **`z`** read-only property of the
   /// [Gyroscope] interface returns a number specifying the
   /// angular velocity of the device along its z-axis.
-  double? get z;
+  double? get z {
+    unsupportedPlatformError();
+  }
 }
+extension type GyroscopeSensorOptions._(JSObject _)
+    implements SensorOptions, JSObject {
+  factory GyroscopeSensorOptions({
+    num? frequency,
+    GyroscopeLocalCoordinateSystem? referenceFrame,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class GyroscopeSensorOptions implements SensorOptions, JSObject {
   GyroscopeLocalCoordinateSystem get referenceFrame {
     unsupportedPlatformError();
   }

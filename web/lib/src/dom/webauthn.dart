@@ -36,7 +36,8 @@ typedef UvmEntries = JSArray<UvmEntry>;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/PublicKeyCredential).
-abstract class PublicKeyCredential implements Credential, JSObject {
+extension type PublicKeyCredential._(JSObject _)
+    implements Credential, JSObject {
   static JSPromise<JSBoolean> isConditionalMediationAvailable() {
     unsupportedPlatformError();
   }
@@ -78,7 +79,9 @@ abstract class PublicKeyCredential implements Credential, JSObject {
   /// > extensions processed by the authenticator can be found in the
   /// > [authenticator data](https://developer.mozilla.org/en-US/docs/Web/API/Web_Authentication_API/Authenticator_data)
   /// > available in [AuthenticatorAssertionResponse.authenticatorData].
-  AuthenticationExtensionsClientOutputs getClientExtensionResults();
+  AuthenticationExtensionsClientOutputs getClientExtensionResults() {
+    unsupportedPlatformError();
+  }
 
   /// The **`rawId`** read-only property of the
   /// [PublicKeyCredential] interface is an `ArrayBuffer` object
@@ -90,7 +93,9 @@ abstract class PublicKeyCredential implements Credential, JSObject {
   ///
   /// > **Note:** This property may only be used in top-level contexts and will
   /// > not be available in an `iframe` for example.
-  JSArrayBuffer get rawId;
+  JSArrayBuffer get rawId {
+    unsupportedPlatformError();
+  }
 
   /// The **`response`** read-only property of the
   /// [PublicKeyCredential] interface is an [AuthenticatorResponse]
@@ -125,13 +130,17 @@ abstract class PublicKeyCredential implements Credential, JSObject {
   ///
   /// > **Note:** This property may only be used in top-level contexts and will
   /// > not be available in an `iframe` for example.
-  AuthenticatorResponse get response;
+  AuthenticatorResponse get response {
+    unsupportedPlatformError();
+  }
 
   /// The **`authenticatorAttachment`** read-only property of the
   /// [PublicKeyCredential] interface is a string that indicates the general
   /// category of authenticator used during the associated
   /// [CredentialsContainer.create] or [CredentialsContainer.get] call.
-  String? get authenticatorAttachment;
+  String? get authenticatorAttachment {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`AuthenticatorResponse`** interface of the
@@ -145,7 +154,7 @@ abstract class PublicKeyCredential implements Credential, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/AuthenticatorResponse).
-abstract class AuthenticatorResponse implements JSObject {
+extension type AuthenticatorResponse._(JSObject _) implements JSObject {
   /// The **`clientDataJSON`** property of the [AuthenticatorResponse] interface
   /// stores a
   /// [JSON](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON)
@@ -155,7 +164,9 @@ abstract class AuthenticatorResponse implements JSObject {
   /// is only accessed on one of the child objects of `AuthenticatorResponse`,
   /// specifically [AuthenticatorAttestationResponse] or
   /// [AuthenticatorAssertionResponse].
-  JSArrayBuffer get clientDataJSON;
+  JSArrayBuffer get clientDataJSON {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`AuthenticatorAttestationResponse`** interface of the
@@ -177,7 +188,7 @@ abstract class AuthenticatorResponse implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/AuthenticatorAttestationResponse).
-abstract class AuthenticatorAttestationResponse
+extension type AuthenticatorAttestationResponse._(JSObject _)
     implements AuthenticatorResponse, JSObject {
   /// The **`getTransports()`** method of the [AuthenticatorAttestationResponse]
   /// interface returns an array of strings describing the different transports
@@ -191,7 +202,9 @@ abstract class AuthenticatorAttestationResponse
   /// inside `publicKey.allowCredentials` should be set to the stored array
   /// value. This provides a hint to the browser as to which types of
   /// authenticators to try when making an assertion for this credential.
-  JSArray<JSString> getTransports();
+  JSArray<JSString> getTransports() {
+    unsupportedPlatformError();
+  }
 
   /// The **`getAuthenticatorData()`** method of the
   /// [AuthenticatorAttestationResponse] interface returns an `ArrayBuffer`
@@ -201,7 +214,9 @@ abstract class AuthenticatorAttestationResponse
   /// This is a convenience function, created to allow easy access to the
   /// authenticator data without having to write extra parsing code to extract
   /// it from the `attestationObject`.
-  JSArrayBuffer getAuthenticatorData();
+  JSArrayBuffer getAuthenticatorData() {
+    unsupportedPlatformError();
+  }
 
   /// The **`getPublicKey()`** method of the [AuthenticatorAttestationResponse]
   /// interface returns an `ArrayBuffer` containing the DER
@@ -212,7 +227,9 @@ abstract class AuthenticatorAttestationResponse
   /// This is a convenience function, created to allow easy access to the public
   /// key. This key will need to be stored in order to verify future
   /// authentication operations (i.e., using [CredentialsContainer.get]).
-  JSArrayBuffer? getPublicKey();
+  JSArrayBuffer? getPublicKey() {
+    unsupportedPlatformError();
+  }
 
   /// The **`getPublicKeyAlgorithm()`** method of the
   /// [AuthenticatorAttestationResponse] interface returns a number that is
@@ -223,7 +240,9 @@ abstract class AuthenticatorAttestationResponse
   /// This is a convenience function created to allow easy access to the
   /// algorithm type. This information will need to be stored in order to verify
   /// future authentication operations (i.e., using [CredentialsContainer.get]).
-  COSEAlgorithmIdentifier getPublicKeyAlgorithm();
+  COSEAlgorithmIdentifier getPublicKeyAlgorithm() {
+    unsupportedPlatformError();
+  }
 
   /// The **`attestationObject`** property of the
   /// [AuthenticatorAttestationResponse] interface returns an
@@ -239,7 +258,9 @@ abstract class AuthenticatorAttestationResponse
   /// known; however, there are various well known attestation public key chains
   /// for different
   /// ecosystems (for example, Android or TPM attestations).
-  JSArrayBuffer get attestationObject;
+  JSArrayBuffer get attestationObject {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`AuthenticatorAssertionResponse`** interface of the
@@ -263,14 +284,16 @@ abstract class AuthenticatorAttestationResponse
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/AuthenticatorAssertionResponse).
-abstract class AuthenticatorAssertionResponse
+extension type AuthenticatorAssertionResponse._(JSObject _)
     implements AuthenticatorResponse, JSObject {
   /// The **`authenticatorData`** property of the
   /// [AuthenticatorAssertionResponse] interface returns an `ArrayBuffer`
   /// containing information from the authenticator such as the Relying Party ID
   /// Hash (rpIdHash), a signature counter, test of user presence, user
   /// verification flags, and any extensions processed by the authenticator.
-  JSArrayBuffer get authenticatorData;
+  JSArrayBuffer get authenticatorData {
+    unsupportedPlatformError();
+  }
 
   /// The **`signature`** read-only property of the
   /// [AuthenticatorAssertionResponse] interface is an `ArrayBuffer`
@@ -284,7 +307,9 @@ abstract class AuthenticatorAssertionResponse
   /// provides the proof that an authenticator does possess the private key
   /// which was used for
   /// the credential's generation.
-  JSArrayBuffer get signature;
+  JSArrayBuffer get signature {
+    unsupportedPlatformError();
+  }
 
   /// The **`userHandle`** read-only property of the
   /// [AuthenticatorAssertionResponse] interface is an `ArrayBuffer` object
@@ -294,10 +319,18 @@ abstract class AuthenticatorAssertionResponse
   ///
   /// This value is specified as `user.id` in the options passed to the
   /// originating [CredentialsContainer.create] call.
-  JSArrayBuffer? get userHandle;
+  JSArrayBuffer? get userHandle {
+    unsupportedPlatformError();
+  }
 }
+extension type PublicKeyCredentialParameters._(JSObject _) implements JSObject {
+  factory PublicKeyCredentialParameters({
+    required String type,
+    required COSEAlgorithmIdentifier alg,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class PublicKeyCredentialParameters implements JSObject {
   String get type {
     unsupportedPlatformError();
   }
@@ -325,32 +358,117 @@ abstract class PublicKeyCredentialParameters implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/PublicKeyCredentialCreationOptions).
-abstract class PublicKeyCredentialCreationOptions implements JSObject {
-  PublicKeyCredentialRpEntity get rp;
-  set rp(PublicKeyCredentialRpEntity value);
-  PublicKeyCredentialUserEntity get user;
-  set user(PublicKeyCredentialUserEntity value);
-  BufferSource get challenge;
-  set challenge(BufferSource value);
-  JSArray<PublicKeyCredentialParameters> get pubKeyCredParams;
-  set pubKeyCredParams(JSArray<PublicKeyCredentialParameters> value);
-  int get timeout;
-  set timeout(int value);
-  JSArray<PublicKeyCredentialDescriptor> get excludeCredentials;
-  set excludeCredentials(JSArray<PublicKeyCredentialDescriptor> value);
-  AuthenticatorSelectionCriteria get authenticatorSelection;
-  set authenticatorSelection(AuthenticatorSelectionCriteria value);
-  JSArray<JSString> get hints;
-  set hints(JSArray<JSString> value);
-  String get attestation;
-  set attestation(String value);
-  JSArray<JSString> get attestationFormats;
-  set attestationFormats(JSArray<JSString> value);
-  AuthenticationExtensionsClientInputs get extensions;
-  set extensions(AuthenticationExtensionsClientInputs value);
-}
+extension type PublicKeyCredentialCreationOptions._(JSObject _)
+    implements JSObject {
+  factory PublicKeyCredentialCreationOptions({
+    required PublicKeyCredentialRpEntity rp,
+    required PublicKeyCredentialUserEntity user,
+    required BufferSource challenge,
+    required JSArray<PublicKeyCredentialParameters> pubKeyCredParams,
+    int? timeout,
+    JSArray<PublicKeyCredentialDescriptor>? excludeCredentials,
+    AuthenticatorSelectionCriteria? authenticatorSelection,
+    JSArray<JSString>? hints,
+    String? attestation,
+    JSArray<JSString>? attestationFormats,
+    AuthenticationExtensionsClientInputs? extensions,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class PublicKeyCredentialEntity implements JSObject {
+  PublicKeyCredentialRpEntity get rp {
+    unsupportedPlatformError();
+  }
+
+  set rp(PublicKeyCredentialRpEntity value) {
+    unsupportedPlatformError();
+  }
+
+  PublicKeyCredentialUserEntity get user {
+    unsupportedPlatformError();
+  }
+
+  set user(PublicKeyCredentialUserEntity value) {
+    unsupportedPlatformError();
+  }
+
+  BufferSource get challenge {
+    unsupportedPlatformError();
+  }
+
+  set challenge(BufferSource value) {
+    unsupportedPlatformError();
+  }
+
+  JSArray<PublicKeyCredentialParameters> get pubKeyCredParams {
+    unsupportedPlatformError();
+  }
+
+  set pubKeyCredParams(JSArray<PublicKeyCredentialParameters> value) {
+    unsupportedPlatformError();
+  }
+
+  int get timeout {
+    unsupportedPlatformError();
+  }
+
+  set timeout(int value) {
+    unsupportedPlatformError();
+  }
+
+  JSArray<PublicKeyCredentialDescriptor> get excludeCredentials {
+    unsupportedPlatformError();
+  }
+
+  set excludeCredentials(JSArray<PublicKeyCredentialDescriptor> value) {
+    unsupportedPlatformError();
+  }
+
+  AuthenticatorSelectionCriteria get authenticatorSelection {
+    unsupportedPlatformError();
+  }
+
+  set authenticatorSelection(AuthenticatorSelectionCriteria value) {
+    unsupportedPlatformError();
+  }
+
+  JSArray<JSString> get hints {
+    unsupportedPlatformError();
+  }
+
+  set hints(JSArray<JSString> value) {
+    unsupportedPlatformError();
+  }
+
+  String get attestation {
+    unsupportedPlatformError();
+  }
+
+  set attestation(String value) {
+    unsupportedPlatformError();
+  }
+
+  JSArray<JSString> get attestationFormats {
+    unsupportedPlatformError();
+  }
+
+  set attestationFormats(JSArray<JSString> value) {
+    unsupportedPlatformError();
+  }
+
+  AuthenticationExtensionsClientInputs get extensions {
+    unsupportedPlatformError();
+  }
+
+  set extensions(AuthenticationExtensionsClientInputs value) {
+    unsupportedPlatformError();
+  }
+}
+extension type PublicKeyCredentialEntity._(JSObject _) implements JSObject {
+  factory PublicKeyCredentialEntity({required String name}) {
+    unsupportedPlatformError();
+  }
+
   String get name {
     unsupportedPlatformError();
   }
@@ -359,9 +477,15 @@ abstract class PublicKeyCredentialEntity implements JSObject {
     unsupportedPlatformError();
   }
 }
-
-abstract class PublicKeyCredentialRpEntity
+extension type PublicKeyCredentialRpEntity._(JSObject _)
     implements PublicKeyCredentialEntity, JSObject {
+  factory PublicKeyCredentialRpEntity({
+    required String name,
+    String? id,
+  }) {
+    unsupportedPlatformError();
+  }
+
   String get id {
     unsupportedPlatformError();
   }
@@ -370,9 +494,16 @@ abstract class PublicKeyCredentialRpEntity
     unsupportedPlatformError();
   }
 }
-
-abstract class PublicKeyCredentialUserEntity
+extension type PublicKeyCredentialUserEntity._(JSObject _)
     implements PublicKeyCredentialEntity, JSObject {
+  factory PublicKeyCredentialUserEntity({
+    required String name,
+    required BufferSource id,
+    required String displayName,
+  }) {
+    unsupportedPlatformError();
+  }
+
   BufferSource get id {
     unsupportedPlatformError();
   }
@@ -389,8 +520,17 @@ abstract class PublicKeyCredentialUserEntity
     unsupportedPlatformError();
   }
 }
+extension type AuthenticatorSelectionCriteria._(JSObject _)
+    implements JSObject {
+  factory AuthenticatorSelectionCriteria({
+    String? authenticatorAttachment,
+    String? residentKey,
+    bool? requireResidentKey,
+    String? userVerification,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class AuthenticatorSelectionCriteria implements JSObject {
   String get authenticatorAttachment {
     unsupportedPlatformError();
   }
@@ -423,8 +563,20 @@ abstract class AuthenticatorSelectionCriteria implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type PublicKeyCredentialRequestOptions._(JSObject _)
+    implements JSObject {
+  factory PublicKeyCredentialRequestOptions({
+    required BufferSource challenge,
+    int? timeout,
+    String? rpId,
+    JSArray<PublicKeyCredentialDescriptor>? allowCredentials,
+    String? userVerification,
+    JSArray<JSString>? hints,
+    AuthenticationExtensionsClientInputs? extensions,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class PublicKeyCredentialRequestOptions implements JSObject {
   BufferSource get challenge {
     unsupportedPlatformError();
   }
@@ -481,8 +633,28 @@ abstract class PublicKeyCredentialRequestOptions implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type AuthenticationExtensionsClientInputs._(JSObject _)
+    implements JSObject {
+  factory AuthenticationExtensionsClientInputs({
+    String? credentialProtectionPolicy,
+    bool? enforceCredentialProtectionPolicy,
+    JSArrayBuffer? credBlob,
+    bool? getCredBlob,
+    bool? minPinLength,
+    bool? hmacCreateSecret,
+    HMACGetSecretInput? hmacGetSecret,
+    AuthenticationExtensionsPaymentInputs? payment,
+    String? appid,
+    String? appidExclude,
+    bool? credProps,
+    AuthenticationExtensionsPRFInputs? prf,
+    AuthenticationExtensionsLargeBlobInputs? largeBlob,
+    bool? uvm,
+    AuthenticationExtensionsSupplementalPubKeysInputs? supplementalPubKeys,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class AuthenticationExtensionsClientInputs implements JSObject {
   String get credentialProtectionPolicy {
     unsupportedPlatformError();
   }
@@ -604,8 +776,22 @@ abstract class AuthenticationExtensionsClientInputs implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type AuthenticationExtensionsClientOutputs._(JSObject _)
+    implements JSObject {
+  factory AuthenticationExtensionsClientOutputs({
+    bool? hmacCreateSecret,
+    HMACGetSecretOutput? hmacGetSecret,
+    bool? appid,
+    bool? appidExclude,
+    CredentialPropertiesOutput? credProps,
+    AuthenticationExtensionsPRFOutputs? prf,
+    AuthenticationExtensionsLargeBlobOutputs? largeBlob,
+    UvmEntries? uvm,
+    AuthenticationExtensionsSupplementalPubKeysOutputs? supplementalPubKeys,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class AuthenticationExtensionsClientOutputs implements JSObject {
   bool get hmacCreateSecret {
     unsupportedPlatformError();
   }
@@ -679,8 +865,15 @@ abstract class AuthenticationExtensionsClientOutputs implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type PublicKeyCredentialDescriptor._(JSObject _) implements JSObject {
+  factory PublicKeyCredentialDescriptor({
+    required String type,
+    required BufferSource id,
+    JSArray<JSString>? transports,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class PublicKeyCredentialDescriptor implements JSObject {
   String get type {
     unsupportedPlatformError();
   }
@@ -705,8 +898,14 @@ abstract class PublicKeyCredentialDescriptor implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type CredentialPropertiesOutput._(JSObject _) implements JSObject {
+  factory CredentialPropertiesOutput({
+    bool? rk,
+    String? authenticatorDisplayName,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class CredentialPropertiesOutput implements JSObject {
   bool get rk {
     unsupportedPlatformError();
   }
@@ -723,8 +922,15 @@ abstract class CredentialPropertiesOutput implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type AuthenticationExtensionsPRFValues._(JSObject _)
+    implements JSObject {
+  factory AuthenticationExtensionsPRFValues({
+    required BufferSource first,
+    BufferSource? second,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class AuthenticationExtensionsPRFValues implements JSObject {
   BufferSource get first {
     unsupportedPlatformError();
   }
@@ -741,8 +947,15 @@ abstract class AuthenticationExtensionsPRFValues implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type AuthenticationExtensionsPRFInputs._(JSObject _)
+    implements JSObject {
+  factory AuthenticationExtensionsPRFInputs({
+    AuthenticationExtensionsPRFValues? eval,
+    JSObject? evalByCredential,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class AuthenticationExtensionsPRFInputs implements JSObject {
   AuthenticationExtensionsPRFValues get eval {
     unsupportedPlatformError();
   }
@@ -759,8 +972,15 @@ abstract class AuthenticationExtensionsPRFInputs implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type AuthenticationExtensionsPRFOutputs._(JSObject _)
+    implements JSObject {
+  factory AuthenticationExtensionsPRFOutputs({
+    bool? enabled,
+    AuthenticationExtensionsPRFValues? results,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class AuthenticationExtensionsPRFOutputs implements JSObject {
   bool get enabled {
     unsupportedPlatformError();
   }
@@ -777,8 +997,16 @@ abstract class AuthenticationExtensionsPRFOutputs implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type AuthenticationExtensionsLargeBlobInputs._(JSObject _)
+    implements JSObject {
+  factory AuthenticationExtensionsLargeBlobInputs({
+    String? support,
+    bool? read,
+    BufferSource? write,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class AuthenticationExtensionsLargeBlobInputs implements JSObject {
   String get support {
     unsupportedPlatformError();
   }
@@ -803,8 +1031,16 @@ abstract class AuthenticationExtensionsLargeBlobInputs implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type AuthenticationExtensionsLargeBlobOutputs._(JSObject _)
+    implements JSObject {
+  factory AuthenticationExtensionsLargeBlobOutputs({
+    bool? supported,
+    JSArrayBuffer? blob,
+    bool? written,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class AuthenticationExtensionsLargeBlobOutputs implements JSObject {
   bool get supported {
     unsupportedPlatformError();
   }
@@ -829,9 +1065,16 @@ abstract class AuthenticationExtensionsLargeBlobOutputs implements JSObject {
     unsupportedPlatformError();
   }
 }
-
-abstract class AuthenticationExtensionsSupplementalPubKeysInputs
+extension type AuthenticationExtensionsSupplementalPubKeysInputs._(JSObject _)
     implements JSObject {
+  factory AuthenticationExtensionsSupplementalPubKeysInputs({
+    required JSArray<JSString> scopes,
+    String? attestation,
+    JSArray<JSString>? attestationFormats,
+  }) {
+    unsupportedPlatformError();
+  }
+
   JSArray<JSString> get scopes {
     unsupportedPlatformError();
   }
@@ -856,9 +1099,13 @@ abstract class AuthenticationExtensionsSupplementalPubKeysInputs
     unsupportedPlatformError();
   }
 }
-
-abstract class AuthenticationExtensionsSupplementalPubKeysOutputs
+extension type AuthenticationExtensionsSupplementalPubKeysOutputs._(JSObject _)
     implements JSObject {
+  factory AuthenticationExtensionsSupplementalPubKeysOutputs(
+      {required JSArray<JSArrayBuffer> signatures}) {
+    unsupportedPlatformError();
+  }
+
   JSArray<JSArrayBuffer> get signatures {
     unsupportedPlatformError();
   }

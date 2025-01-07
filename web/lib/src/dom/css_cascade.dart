@@ -10,6 +10,7 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
+import '../error.dart';
 import '../js_interop.dart';
 import 'cssom.dart';
 
@@ -21,10 +22,13 @@ import 'cssom.dart';
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSLayerBlockRule).
-abstract class CSSLayerBlockRule implements CSSGroupingRule, JSObject {
+extension type CSSLayerBlockRule._(JSObject _)
+    implements CSSGroupingRule, JSObject {
   /// The read-only **`name`** property of the [CSSLayerBlockRule] interface
   /// represents the name of the associated cascade layer.
-  String get name;
+  String get name {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`CSSLayerStatementRule`** represents a  statement rule. Unlike
@@ -42,9 +46,12 @@ abstract class CSSLayerBlockRule implements CSSGroupingRule, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSLayerStatementRule).
-abstract class CSSLayerStatementRule implements CSSRule, JSObject {
+extension type CSSLayerStatementRule._(JSObject _)
+    implements CSSRule, JSObject {
   /// The read-only **`nameList`** property of the [CSSLayerStatementRule]
   /// interface return the list of associated cascade layer names. The names
   /// can't be modified.
-  JSArray<JSString> get nameList;
+  JSArray<JSString> get nameList {
+    unsupportedPlatformError();
+  }
 }

@@ -43,7 +43,16 @@ import '../js_interop.dart';
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/DOMPointReadOnly).
-abstract class DOMPointReadOnly implements JSObject {
+extension type DOMPointReadOnly._(JSObject _) implements JSObject {
+  factory DOMPointReadOnly([
+    num? x,
+    num? y,
+    num? z,
+    num? w,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// The static **[DOMPointReadOnly]**
   /// method `fromPoint()` creates and returns a new
   /// `DOMPointReadOnly` object given a source point.
@@ -54,12 +63,16 @@ abstract class DOMPointReadOnly implements JSObject {
     unsupportedPlatformError();
   }
 
-  DOMPoint matrixTransform([DOMMatrixInit matrix]);
+  DOMPoint matrixTransform([DOMMatrixInit? matrix]) {
+    unsupportedPlatformError();
+  }
 
   /// The [DOMPointReadOnly] method
   /// `toJSON()` returns an object giving the
   /// form of the point object.
-  JSObject toJSON();
+  JSObject toJSON() {
+    unsupportedPlatformError();
+  }
 
   /// The **`DOMPointReadOnly`** interface's
   /// **`x`** property holds the horizontal coordinate, x, for a
@@ -69,7 +82,9 @@ abstract class DOMPointReadOnly implements JSObject {
   ///
   /// In general, positive values `x` mean to the right, and negative values of
   /// `x` means to the left, assuming no transforms have resulted in a reversal.
-  double get x;
+  double get x {
+    unsupportedPlatformError();
+  }
 
   /// The **`DOMPointReadOnly`** interface's
   /// **`y`** property holds the vertical coordinate, y, for a
@@ -80,7 +95,9 @@ abstract class DOMPointReadOnly implements JSObject {
   ///
   /// In general, positive values of `y` mean downward, and negative values of
   /// `y` mean upward, assuming no transforms have resulted in a reversal.
-  double get y;
+  double get y {
+    unsupportedPlatformError();
+  }
 
   /// The **`DOMPointReadOnly`** interface's
   /// **`z`** property holds the depth coordinate, z, for a
@@ -92,7 +109,9 @@ abstract class DOMPointReadOnly implements JSObject {
   /// In general, positive values of `z` mean toward the user (out from the
   /// screen), and negative values of `z` mean away from the user (into the
   /// screen), assuming no transforms have resulted in a reversal.
-  double get z;
+  double get z {
+    unsupportedPlatformError();
+  }
 
   /// The **`DOMPointReadOnly`** interface's
   /// **`w`** property holds the point's perspective value,
@@ -102,7 +121,9 @@ abstract class DOMPointReadOnly implements JSObject {
   /// to change the value of this property, you should instead use the
   /// [DOMPoint]
   /// object.
-  double get w;
+  double get w {
+    unsupportedPlatformError();
+  }
 }
 
 /// A **`DOMPoint`** object represents a 2D or 3D point in a coordinate system;
@@ -119,7 +140,16 @@ abstract class DOMPointReadOnly implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/DOMPoint).
-abstract class DOMPoint implements DOMPointReadOnly, JSObject {
+extension type DOMPoint._(JSObject _) implements DOMPointReadOnly, JSObject {
+  factory DOMPoint([
+    num? x,
+    num? y,
+    num? z,
+    num? w,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// The **[DOMPoint]** static method
   /// `fromPoint()` creates and returns a new mutable `DOMPoint`
   /// object given a source point.
@@ -142,8 +172,13 @@ abstract class DOMPoint implements DOMPointReadOnly, JSObject {
   /// and negative values of `x` means to the left, barring any transforms that
   /// may
   /// have altered the orientation of the axes.
-  double get x;
-  set x(num value);
+  double get x {
+    unsupportedPlatformError();
+  }
+
+  set x(num value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`DOMPoint`** interface's
   /// **`y`** property holds the vertical coordinate, _y_,
@@ -151,8 +186,13 @@ abstract class DOMPoint implements DOMPointReadOnly, JSObject {
   ///
   /// Unless transforms have been applied to alter the
   /// orientation, the value of `y` increases downward and decreases upward.
-  double get y;
-  set y(num value);
+  double get y {
+    unsupportedPlatformError();
+  }
+
+  set y(num value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`DOMPoint`** interface's
   /// **`z`** property specifies the depth coordinate of a point in
@@ -162,17 +202,35 @@ abstract class DOMPoint implements DOMPointReadOnly, JSObject {
   /// the plane of the screen, with positive values extending outward toward the
   /// user from the
   /// screen, and negative values receding into the distance behind the screen.
-  double get z;
-  set z(num value);
+  double get z {
+    unsupportedPlatformError();
+  }
+
+  set z(num value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`DOMPoint`** interface's
   /// **`w`** property holds the point's perspective value, w, for a
   /// point in space.
-  double get w;
-  set w(num value);
-}
+  double get w {
+    unsupportedPlatformError();
+  }
 
-abstract class DOMPointInit implements JSObject {
+  set w(num value) {
+    unsupportedPlatformError();
+  }
+}
+extension type DOMPointInit._(JSObject _) implements JSObject {
+  factory DOMPointInit({
+    num? x,
+    num? y,
+    num? z,
+    num? w,
+  }) {
+    unsupportedPlatformError();
+  }
+
   double get x {
     unsupportedPlatformError();
   }
@@ -213,7 +271,16 @@ abstract class DOMPointInit implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/DOMRectReadOnly).
-abstract class DOMRectReadOnly implements JSObject {
+extension type DOMRectReadOnly._(JSObject _) implements JSObject {
+  factory DOMRectReadOnly([
+    num? x,
+    num? y,
+    num? width,
+    num? height,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// The **`fromRect()`** static method of the
   /// [DOMRectReadOnly] object creates a new `DOMRectReadOnly`
   /// object with a given location and dimensions.
@@ -221,43 +288,61 @@ abstract class DOMRectReadOnly implements JSObject {
     unsupportedPlatformError();
   }
 
-  JSObject toJSON();
+  JSObject toJSON() {
+    unsupportedPlatformError();
+  }
 
   /// The **`x`** read-only property of the **`DOMRectReadOnly`** interface
   /// represents the x coordinate of the `DOMRect`'s origin.
-  double get x;
+  double get x {
+    unsupportedPlatformError();
+  }
 
   /// The **`y`** read-only property of the **`DOMRectReadOnly`** interface
   /// represents the y coordinate of the `DOMRect`'s origin.
-  double get y;
+  double get y {
+    unsupportedPlatformError();
+  }
 
   /// The **`width`** read-only property of the **`DOMRectReadOnly`** interface
   /// represents the width of the `DOMRect`.
-  double get width;
+  double get width {
+    unsupportedPlatformError();
+  }
 
   /// The **`height`** read-only property of the **`DOMRectReadOnly`** interface
   /// represents the height of the `DOMRect`.
-  double get height;
+  double get height {
+    unsupportedPlatformError();
+  }
 
   /// The **`top`** read-only property of the **`DOMRectReadOnly`** interface
   /// returns the top coordinate value of the `DOMRect`. (Has the same value as
   /// `y`, or `y + height` if `height` is negative.)
-  double get top;
+  double get top {
+    unsupportedPlatformError();
+  }
 
   /// The **`right`** read-only property of the **`DOMRectReadOnly`** interface
   /// returns the right coordinate value of the `DOMRect`. (Has the same value
   /// as `x + width`, or `x` if `width` is negative.)
-  double get right;
+  double get right {
+    unsupportedPlatformError();
+  }
 
   /// The **`bottom`** read-only property of the **`DOMRectReadOnly`** interface
   /// returns the bottom coordinate value of the `DOMRect`. (Has the same value
   /// as `y + height`, or `y` if `height` is negative.)
-  double get bottom;
+  double get bottom {
+    unsupportedPlatformError();
+  }
 
   /// The **`left`** read-only property of the **`DOMRectReadOnly`** interface
   /// returns the left coordinate value of the `DOMRect`. (Has the same value as
   /// `x`, or `x + width` if `width` is negative.)
-  double get left;
+  double get left {
+    unsupportedPlatformError();
+  }
 }
 
 /// A **`DOMRect`** describes the size and position of a rectangle.
@@ -273,7 +358,16 @@ abstract class DOMRectReadOnly implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/DOMRect).
-abstract class DOMRect implements DOMRectReadOnly, JSObject {
+extension type DOMRect._(JSObject _) implements DOMRectReadOnly, JSObject {
+  factory DOMRect([
+    num? x,
+    num? y,
+    num? width,
+    num? height,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// The **`fromRect()`** static method of the
   /// [DOMRect] object creates a new `DOMRect`
   /// object with a given location and dimensions.
@@ -281,17 +375,6 @@ abstract class DOMRect implements DOMRectReadOnly, JSObject {
     unsupportedPlatformError();
   }
 
-  double get x;
-  set x(num value);
-  double get y;
-  set y(num value);
-  double get width;
-  set width(num value);
-  double get height;
-  set height(num value);
-}
-
-abstract class DOMRectInit implements JSObject {
   double get x {
     unsupportedPlatformError();
   }
@@ -324,9 +407,53 @@ abstract class DOMRectInit implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type DOMRectInit._(JSObject _) implements JSObject {
+  factory DOMRectInit({
+    num? x,
+    num? y,
+    num? width,
+    num? height,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class DOMRectList implements JSObject {
-  DOMRect? item(int index);
+  double get x {
+    unsupportedPlatformError();
+  }
+
+  set x(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get y {
+    unsupportedPlatformError();
+  }
+
+  set y(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get width {
+    unsupportedPlatformError();
+  }
+
+  set width(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get height {
+    unsupportedPlatformError();
+  }
+
+  set height(num value) {
+    unsupportedPlatformError();
+  }
+}
+extension type DOMRectList._(JSObject _) implements JSObject {
+  DOMRect? item(int index) {
+    unsupportedPlatformError();
+  }
+
   int get length {
     unsupportedPlatformError();
   }
@@ -342,7 +469,16 @@ abstract class DOMRectList implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/DOMQuad).
-abstract class DOMQuad implements JSObject {
+extension type DOMQuad._(JSObject _) implements JSObject {
+  factory DOMQuad([
+    DOMPointInit? p1,
+    DOMPointInit? p2,
+    DOMPointInit? p3,
+    DOMPointInit? p4,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   static DOMQuad fromRect([DOMRectInit? other]) {
     unsupportedPlatformError();
   }
@@ -351,15 +487,40 @@ abstract class DOMQuad implements JSObject {
     unsupportedPlatformError();
   }
 
-  DOMRect getBounds();
-  JSObject toJSON();
-  DOMPoint get p1;
-  DOMPoint get p2;
-  DOMPoint get p3;
-  DOMPoint get p4;
-}
+  DOMRect getBounds() {
+    unsupportedPlatformError();
+  }
 
-abstract class DOMQuadInit implements JSObject {
+  JSObject toJSON() {
+    unsupportedPlatformError();
+  }
+
+  DOMPoint get p1 {
+    unsupportedPlatformError();
+  }
+
+  DOMPoint get p2 {
+    unsupportedPlatformError();
+  }
+
+  DOMPoint get p3 {
+    unsupportedPlatformError();
+  }
+
+  DOMPoint get p4 {
+    unsupportedPlatformError();
+  }
+}
+extension type DOMQuadInit._(JSObject _) implements JSObject {
+  factory DOMQuadInit({
+    DOMPointInit? p1,
+    DOMPointInit? p2,
+    DOMPointInit? p3,
+    DOMPointInit? p4,
+  }) {
+    unsupportedPlatformError();
+  }
+
   DOMPointInit get p1 {
     unsupportedPlatformError();
   }
@@ -407,7 +568,11 @@ abstract class DOMQuadInit implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrixReadOnly).
-abstract class DOMMatrixReadOnly implements JSObject {
+extension type DOMMatrixReadOnly._(JSObject _) implements JSObject {
+  factory DOMMatrixReadOnly([JSAny? init]) {
+    unsupportedPlatformError();
+  }
+
   static DOMMatrixReadOnly fromMatrix([DOMMatrixInit? other]) {
     unsupportedPlatformError();
   }
@@ -424,84 +589,204 @@ abstract class DOMMatrixReadOnly implements JSObject {
   /// creates a new matrix being the result of the original matrix with a
   /// translation applied.
   DOMMatrix translate([
-    num tx,
-    num ty,
-    num tz,
-  ]);
+    num? tx,
+    num? ty,
+    num? tz,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`scale()`** method of the
   /// [DOMMatrixReadOnly] interface creates a new matrix being the result of the
   /// original matrix with a scale transform applied.
   DOMMatrix scale([
-    num scaleX,
-    num scaleY,
-    num scaleZ,
-    num originX,
-    num originY,
-    num originZ,
-  ]);
+    num? scaleX,
+    num? scaleY,
+    num? scaleZ,
+    num? originX,
+    num? originY,
+    num? originZ,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   DOMMatrix scaleNonUniform([
-    num scaleX,
-    num scaleY,
-  ]);
+    num? scaleX,
+    num? scaleY,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   DOMMatrix scale3d([
-    num scale,
-    num originX,
-    num originY,
-    num originZ,
-  ]);
+    num? scale,
+    num? originX,
+    num? originY,
+    num? originZ,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   DOMMatrix rotate([
-    num rotX,
-    num rotY,
-    num rotZ,
-  ]);
+    num? rotX,
+    num? rotY,
+    num? rotZ,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   DOMMatrix rotateFromVector([
-    num x,
-    num y,
-  ]);
+    num? x,
+    num? y,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   DOMMatrix rotateAxisAngle([
-    num x,
-    num y,
-    num z,
-    num angle,
-  ]);
-  DOMMatrix skewX([num sx]);
-  DOMMatrix skewY([num sy]);
-  DOMMatrix multiply([DOMMatrixInit other]);
+    num? x,
+    num? y,
+    num? z,
+    num? angle,
+  ]) {
+    unsupportedPlatformError();
+  }
+
+  DOMMatrix skewX([num? sx]) {
+    unsupportedPlatformError();
+  }
+
+  DOMMatrix skewY([num? sy]) {
+    unsupportedPlatformError();
+  }
+
+  DOMMatrix multiply([DOMMatrixInit? other]) {
+    unsupportedPlatformError();
+  }
 
   /// The `flipX()` method of the [DOMMatrixReadOnly] interface creates a new
   /// matrix being the result of the original matrix flipped about the x-axis.
-  DOMMatrix flipX();
-  DOMMatrix flipY();
-  DOMMatrix inverse();
-  DOMPoint transformPoint([DOMPointInit point]);
-  JSFloat32Array toFloat32Array();
-  JSFloat64Array toFloat64Array();
-  JSObject toJSON();
-  double get a;
-  double get b;
-  double get c;
-  double get d;
-  double get e;
-  double get f;
-  double get m11;
-  double get m12;
-  double get m13;
-  double get m14;
-  double get m21;
-  double get m22;
-  double get m23;
-  double get m24;
-  double get m31;
-  double get m32;
-  double get m33;
-  double get m34;
-  double get m41;
-  double get m42;
-  double get m43;
-  double get m44;
-  bool get is2D;
-  bool get isIdentity;
+  DOMMatrix flipX() {
+    unsupportedPlatformError();
+  }
+
+  DOMMatrix flipY() {
+    unsupportedPlatformError();
+  }
+
+  DOMMatrix inverse() {
+    unsupportedPlatformError();
+  }
+
+  DOMPoint transformPoint([DOMPointInit? point]) {
+    unsupportedPlatformError();
+  }
+
+  JSFloat32Array toFloat32Array() {
+    unsupportedPlatformError();
+  }
+
+  JSFloat64Array toFloat64Array() {
+    unsupportedPlatformError();
+  }
+
+  JSObject toJSON() {
+    unsupportedPlatformError();
+  }
+
+  double get a {
+    unsupportedPlatformError();
+  }
+
+  double get b {
+    unsupportedPlatformError();
+  }
+
+  double get c {
+    unsupportedPlatformError();
+  }
+
+  double get d {
+    unsupportedPlatformError();
+  }
+
+  double get e {
+    unsupportedPlatformError();
+  }
+
+  double get f {
+    unsupportedPlatformError();
+  }
+
+  double get m11 {
+    unsupportedPlatformError();
+  }
+
+  double get m12 {
+    unsupportedPlatformError();
+  }
+
+  double get m13 {
+    unsupportedPlatformError();
+  }
+
+  double get m14 {
+    unsupportedPlatformError();
+  }
+
+  double get m21 {
+    unsupportedPlatformError();
+  }
+
+  double get m22 {
+    unsupportedPlatformError();
+  }
+
+  double get m23 {
+    unsupportedPlatformError();
+  }
+
+  double get m24 {
+    unsupportedPlatformError();
+  }
+
+  double get m31 {
+    unsupportedPlatformError();
+  }
+
+  double get m32 {
+    unsupportedPlatformError();
+  }
+
+  double get m33 {
+    unsupportedPlatformError();
+  }
+
+  double get m34 {
+    unsupportedPlatformError();
+  }
+
+  double get m41 {
+    unsupportedPlatformError();
+  }
+
+  double get m42 {
+    unsupportedPlatformError();
+  }
+
+  double get m43 {
+    unsupportedPlatformError();
+  }
+
+  double get m44 {
+    unsupportedPlatformError();
+  }
+
+  bool get is2D {
+    unsupportedPlatformError();
+  }
+
+  bool get isIdentity {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`DOMMatrix`** interface represents 4×4 matrices, suitable for 2D and
@@ -518,7 +803,11 @@ abstract class DOMMatrixReadOnly implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrix).
-abstract class DOMMatrix implements DOMMatrixReadOnly, JSObject {
+extension type DOMMatrix._(JSObject _) implements DOMMatrixReadOnly, JSObject {
+  factory DOMMatrix([JSAny? init]) {
+    unsupportedPlatformError();
+  }
+
   static DOMMatrix fromMatrix([DOMMatrixInit? other]) {
     unsupportedPlatformError();
   }
@@ -531,93 +820,276 @@ abstract class DOMMatrix implements DOMMatrixReadOnly, JSObject {
     unsupportedPlatformError();
   }
 
-  DOMMatrix multiplySelf([DOMMatrixInit other]);
-  DOMMatrix preMultiplySelf([DOMMatrixInit other]);
-  DOMMatrix translateSelf([
-    num tx,
-    num ty,
-    num tz,
-  ]);
-  DOMMatrix scaleSelf([
-    num scaleX,
-    num scaleY,
-    num scaleZ,
-    num originX,
-    num originY,
-    num originZ,
-  ]);
-  DOMMatrix scale3dSelf([
-    num scale,
-    num originX,
-    num originY,
-    num originZ,
-  ]);
-  DOMMatrix rotateSelf([
-    num rotX,
-    num rotY,
-    num rotZ,
-  ]);
-  DOMMatrix rotateFromVectorSelf([
-    num x,
-    num y,
-  ]);
-  DOMMatrix rotateAxisAngleSelf([
-    num x,
-    num y,
-    num z,
-    num angle,
-  ]);
-  DOMMatrix skewXSelf([num sx]);
-  DOMMatrix skewYSelf([num sy]);
-  DOMMatrix invertSelf();
-  DOMMatrix setMatrixValue(String transformList);
-  double get a;
-  set a(num value);
-  double get b;
-  set b(num value);
-  double get c;
-  set c(num value);
-  double get d;
-  set d(num value);
-  double get e;
-  set e(num value);
-  double get f;
-  set f(num value);
-  double get m11;
-  set m11(num value);
-  double get m12;
-  set m12(num value);
-  double get m13;
-  set m13(num value);
-  double get m14;
-  set m14(num value);
-  double get m21;
-  set m21(num value);
-  double get m22;
-  set m22(num value);
-  double get m23;
-  set m23(num value);
-  double get m24;
-  set m24(num value);
-  double get m31;
-  set m31(num value);
-  double get m32;
-  set m32(num value);
-  double get m33;
-  set m33(num value);
-  double get m34;
-  set m34(num value);
-  double get m41;
-  set m41(num value);
-  double get m42;
-  set m42(num value);
-  double get m43;
-  set m43(num value);
-  double get m44;
-  set m44(num value);
-}
+  DOMMatrix multiplySelf([DOMMatrixInit? other]) {
+    unsupportedPlatformError();
+  }
 
-abstract class DOMMatrix2DInit implements JSObject {
+  DOMMatrix preMultiplySelf([DOMMatrixInit? other]) {
+    unsupportedPlatformError();
+  }
+
+  DOMMatrix translateSelf([
+    num? tx,
+    num? ty,
+    num? tz,
+  ]) {
+    unsupportedPlatformError();
+  }
+
+  DOMMatrix scaleSelf([
+    num? scaleX,
+    num? scaleY,
+    num? scaleZ,
+    num? originX,
+    num? originY,
+    num? originZ,
+  ]) {
+    unsupportedPlatformError();
+  }
+
+  DOMMatrix scale3dSelf([
+    num? scale,
+    num? originX,
+    num? originY,
+    num? originZ,
+  ]) {
+    unsupportedPlatformError();
+  }
+
+  DOMMatrix rotateSelf([
+    num? rotX,
+    num? rotY,
+    num? rotZ,
+  ]) {
+    unsupportedPlatformError();
+  }
+
+  DOMMatrix rotateFromVectorSelf([
+    num? x,
+    num? y,
+  ]) {
+    unsupportedPlatformError();
+  }
+
+  DOMMatrix rotateAxisAngleSelf([
+    num? x,
+    num? y,
+    num? z,
+    num? angle,
+  ]) {
+    unsupportedPlatformError();
+  }
+
+  DOMMatrix skewXSelf([num? sx]) {
+    unsupportedPlatformError();
+  }
+
+  DOMMatrix skewYSelf([num? sy]) {
+    unsupportedPlatformError();
+  }
+
+  DOMMatrix invertSelf() {
+    unsupportedPlatformError();
+  }
+
+  DOMMatrix setMatrixValue(String transformList) {
+    unsupportedPlatformError();
+  }
+
+  double get a {
+    unsupportedPlatformError();
+  }
+
+  set a(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get b {
+    unsupportedPlatformError();
+  }
+
+  set b(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get c {
+    unsupportedPlatformError();
+  }
+
+  set c(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get d {
+    unsupportedPlatformError();
+  }
+
+  set d(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get e {
+    unsupportedPlatformError();
+  }
+
+  set e(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get f {
+    unsupportedPlatformError();
+  }
+
+  set f(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get m11 {
+    unsupportedPlatformError();
+  }
+
+  set m11(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get m12 {
+    unsupportedPlatformError();
+  }
+
+  set m12(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get m13 {
+    unsupportedPlatformError();
+  }
+
+  set m13(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get m14 {
+    unsupportedPlatformError();
+  }
+
+  set m14(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get m21 {
+    unsupportedPlatformError();
+  }
+
+  set m21(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get m22 {
+    unsupportedPlatformError();
+  }
+
+  set m22(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get m23 {
+    unsupportedPlatformError();
+  }
+
+  set m23(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get m24 {
+    unsupportedPlatformError();
+  }
+
+  set m24(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get m31 {
+    unsupportedPlatformError();
+  }
+
+  set m31(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get m32 {
+    unsupportedPlatformError();
+  }
+
+  set m32(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get m33 {
+    unsupportedPlatformError();
+  }
+
+  set m33(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get m34 {
+    unsupportedPlatformError();
+  }
+
+  set m34(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get m41 {
+    unsupportedPlatformError();
+  }
+
+  set m41(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get m42 {
+    unsupportedPlatformError();
+  }
+
+  set m42(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get m43 {
+    unsupportedPlatformError();
+  }
+
+  set m43(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get m44 {
+    unsupportedPlatformError();
+  }
+
+  set m44(num value) {
+    unsupportedPlatformError();
+  }
+}
+extension type DOMMatrix2DInit._(JSObject _) implements JSObject {
+  factory DOMMatrix2DInit({
+    num? a,
+    num? b,
+    num? c,
+    num? d,
+    num? e,
+    num? f,
+    num? m11,
+    num? m12,
+    num? m21,
+    num? m22,
+    num? m41,
+    num? m42,
+  }) {
+    unsupportedPlatformError();
+  }
+
   double get a {
     unsupportedPlatformError();
   }
@@ -714,8 +1186,36 @@ abstract class DOMMatrix2DInit implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type DOMMatrixInit._(JSObject _)
+    implements DOMMatrix2DInit, JSObject {
+  factory DOMMatrixInit({
+    num? a,
+    num? b,
+    num? c,
+    num? d,
+    num? e,
+    num? f,
+    num? m11,
+    num? m12,
+    num? m21,
+    num? m22,
+    num? m41,
+    num? m42,
+    num? m13,
+    num? m14,
+    num? m23,
+    num? m24,
+    num? m31,
+    num? m32,
+    num? m33,
+    num? m34,
+    num? m43,
+    num? m44,
+    bool? is2D,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class DOMMatrixInit implements DOMMatrix2DInit, JSObject {
   double get m13 {
     unsupportedPlatformError();
   }

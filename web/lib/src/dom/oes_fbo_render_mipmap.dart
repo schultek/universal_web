@@ -12,4 +12,4 @@
 
 import '../js_interop.dart';
 
-abstract class OES_fbo_render_mipmap implements JSObject {}
+extension type OES_fbo_render_mipmap._(JSObject _) implements JSObject {}

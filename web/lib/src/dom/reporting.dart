@@ -33,10 +33,12 @@ typedef ReportingObserverCallback = JSFunction;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ReportBody).
-abstract class ReportBody implements JSObject {
+extension type ReportBody._(JSObject _) implements JSObject {
   /// The **`toJSON()`** method of the [ReportBody] interface is a _serializer_,
   /// and returns a JSON representation of the `ReportBody` object.
-  JSObject toJSON();
+  JSObject toJSON() {
+    unsupportedPlatformError();
+  }
 }
 
 /// The `Report` interface of the
@@ -57,22 +59,30 @@ abstract class ReportBody implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Report).
-abstract class Report implements JSObject {
-  JSObject toJSON();
+extension type Report._(JSObject _) implements JSObject {
+  JSObject toJSON() {
+    unsupportedPlatformError();
+  }
 
   /// The **`type`** read-only property of the [Report]
   /// interface returns the type of report generated, e.g. `deprecation` or
   /// `intervention`.
-  String get type;
+  String get type {
+    unsupportedPlatformError();
+  }
 
   /// The **`url`** read-only property of the [Report]
   /// interface returns the URL of the document that generated the report.
-  String get url;
+  String get url {
+    unsupportedPlatformError();
+  }
 
   /// The **`body`** read-only property of the [Report]
   /// interface returns the body of the report, which is a `ReportBody` object
   /// containing the detailed report information.
-  ReportBody? get body;
+  ReportBody? get body {
+    unsupportedPlatformError();
+  }
 }
 
 /// The `ReportingObserver` interface of the
@@ -83,11 +93,20 @@ abstract class Report implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ReportingObserver).
-abstract class ReportingObserver implements JSObject {
+extension type ReportingObserver._(JSObject _) implements JSObject {
+  factory ReportingObserver(
+    ReportingObserverCallback callback, [
+    ReportingObserverOptions? options,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// The **`observe()`** method of the
   /// [ReportingObserver] interface instructs a reporting observer to start
   /// collecting reports in its report queue.
-  void observe();
+  void observe() {
+    unsupportedPlatformError();
+  }
 
   /// The **`disconnect()`** method of the
   /// [ReportingObserver] interface stops a reporting observer that had
@@ -99,16 +118,26 @@ abstract class ReportingObserver implements JSObject {
   /// [`ReportingObserver()`](https://developer.mozilla.org/en-US/docs/Web/API/ReportingObserver/ReportingObserver)
   /// callback will return any reports. The associated observer will no longer
   /// be active.
-  void disconnect();
+  void disconnect() {
+    unsupportedPlatformError();
+  }
 
   /// The **`takeRecords()`** method of the
   /// [ReportingObserver] interface returns the current list of reports
   /// contained
   /// in the observer's report queue, and empties the queue.
-  ReportList takeRecords();
+  ReportList takeRecords() {
+    unsupportedPlatformError();
+  }
 }
+extension type ReportingObserverOptions._(JSObject _) implements JSObject {
+  factory ReportingObserverOptions({
+    JSArray<JSString>? types,
+    bool? buffered,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class ReportingObserverOptions implements JSObject {
   JSArray<JSString> get types {
     unsupportedPlatformError();
   }

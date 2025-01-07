@@ -29,7 +29,11 @@ typedef AppendMode = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MediaSource).
-abstract class MediaSource implements EventTarget, JSObject {
+extension type MediaSource._(JSObject _) implements EventTarget, JSObject {
+  factory MediaSource() {
+    unsupportedPlatformError();
+  }
+
   /// The **`MediaSource.isTypeSupported()`** static method returns a boolean
   /// value which is `true` if the given MIME type and (optional) codec are
   /// _likely_ to be supported by the current .
@@ -58,16 +62,22 @@ abstract class MediaSource implements EventTarget, JSObject {
   /// given  and adds it to the `MediaSource`'s
   /// [MediaSource.sourceBuffers] list. The new
   /// `SourceBuffer` is also returned.
-  SourceBuffer addSourceBuffer(String type);
+  SourceBuffer addSourceBuffer(String type) {
+    unsupportedPlatformError();
+  }
 
   /// The **`removeSourceBuffer()`** method of the [MediaSource] interface
   /// removes the given [SourceBuffer] from the [SourceBufferList] associated
   /// with this `MediaSource` object.
-  void removeSourceBuffer(SourceBuffer sourceBuffer);
+  void removeSourceBuffer(SourceBuffer sourceBuffer) {
+    unsupportedPlatformError();
+  }
 
   /// The **`endOfStream()`** method of the
   /// [MediaSource] interface signals the end of the stream.
-  void endOfStream([EndOfStreamError error]);
+  void endOfStream([EndOfStreamError? error]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`setLiveSeekableRange()`** method of the
   /// [MediaSource] interface sets the range that the user can seek to in the
@@ -75,12 +85,16 @@ abstract class MediaSource implements EventTarget, JSObject {
   void setLiveSeekableRange(
     num start,
     num end,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`clearLiveSeekableRange()`** method of the
   /// [MediaSource] interface clears a seekable range previously set with a call
   /// to [MediaSource.setLiveSeekableRange].
-  void clearLiveSeekableRange();
+  void clearLiveSeekableRange() {
+    unsupportedPlatformError();
+  }
 
   /// The **`handle`** read-only property of the [MediaSource] interface returns
   /// a [MediaSourceHandle] object, a proxy for the `MediaSource` that can be
@@ -97,13 +111,17 @@ abstract class MediaSource implements EventTarget, JSObject {
   /// main thread using [DedicatedWorkerGlobalScope.postMessage], the handle
   /// instance in the worker is technically detached and can't be transferred
   /// again.
-  MediaSourceHandle get handle;
+  MediaSourceHandle get handle {
+    unsupportedPlatformError();
+  }
 
   /// The **`sourceBuffers`** read-only property of the
   /// [MediaSource] interface returns a [SourceBufferList] object
   /// containing the list of [SourceBuffer] objects associated with this
   /// `MediaSource`.
-  SourceBufferList get sourceBuffers;
+  SourceBufferList get sourceBuffers {
+    unsupportedPlatformError();
+  }
 
   /// The **`activeSourceBuffers`** read-only property of the
   /// [MediaSource] interface returns a [SourceBufferList] object
@@ -111,7 +129,9 @@ abstract class MediaSource implements EventTarget, JSObject {
   /// [MediaSource.sourceBuffers] — the list of objects
   /// providing the selected video track, enabled audio tracks, and shown/hidden
   /// text tracks.
-  SourceBufferList get activeSourceBuffers;
+  SourceBufferList get activeSourceBuffers {
+    unsupportedPlatformError();
+  }
 
   /// The **`readyState`** read-only property of the
   /// [MediaSource] interface returns an enum representing the state of the
@@ -122,18 +142,43 @@ abstract class MediaSource implements EventTarget, JSObject {
   /// [SourceBuffer] objects.
   /// - `ended`: The source is attached to a media element but the stream has
   /// been ended via a call to [MediaSource.endOfStream].
-  ReadyState get readyState;
+  ReadyState get readyState {
+    unsupportedPlatformError();
+  }
 
   /// The **`duration`** property of the [MediaSource]
   /// interface gets and sets the duration of the current media being presented.
-  double get duration;
-  set duration(num value);
-  EventHandler get onsourceopen;
-  set onsourceopen(EventHandler value);
-  EventHandler get onsourceended;
-  set onsourceended(EventHandler value);
-  EventHandler get onsourceclose;
-  set onsourceclose(EventHandler value);
+  double get duration {
+    unsupportedPlatformError();
+  }
+
+  set duration(num value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onsourceopen {
+    unsupportedPlatformError();
+  }
+
+  set onsourceopen(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onsourceended {
+    unsupportedPlatformError();
+  }
+
+  set onsourceended(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onsourceclose {
+    unsupportedPlatformError();
+  }
+
+  set onsourceclose(EventHandler value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`MediaSourceHandle`** interface of the [Media Source Extensions API]
@@ -157,7 +202,7 @@ abstract class MediaSource implements EventTarget, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MediaSourceHandle).
-abstract class MediaSourceHandle implements JSObject {}
+extension type MediaSourceHandle._(JSObject _) implements JSObject {}
 
 /// The **`SourceBuffer`** interface represents a chunk of media to be passed
 /// into an [HTMLMediaElement] and played, via a [MediaSource] object. This can
@@ -167,16 +212,20 @@ abstract class MediaSourceHandle implements JSObject {}
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SourceBuffer).
-abstract class SourceBuffer implements EventTarget, JSObject {
+extension type SourceBuffer._(JSObject _) implements EventTarget, JSObject {
   /// The **`appendBuffer()`** method of the
   /// [SourceBuffer] interface appends media segment data from an
   /// `ArrayBuffer`, a `TypedArray` or a `DataView` object
   /// to the `SourceBuffer`.
-  void appendBuffer(BufferSource data);
+  void appendBuffer(BufferSource data) {
+    unsupportedPlatformError();
+  }
 
   /// The **`abort()`** method of the [SourceBuffer]
   /// interface aborts the current segment and resets the segment parser.
-  void abort();
+  void abort() {
+    unsupportedPlatformError();
+  }
 
   /// The **`changeType()`** method of the
   /// [SourceBuffer] interface sets the MIME type that future calls to
@@ -190,7 +239,9 @@ abstract class SourceBuffer implements EventTarget, JSObject {
   /// changing bandwidth availability, by transitioning from one codec to
   /// another as resource
   /// constraints change.
-  void changeType(String type);
+  void changeType(String type) {
+    unsupportedPlatformError();
+  }
 
   /// The **`remove()`** method of the [SourceBuffer]
   /// interface removes media segments within a specific time range from the
@@ -201,7 +252,9 @@ abstract class SourceBuffer implements EventTarget, JSObject {
   void remove(
     num start,
     num end,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`mode`** property of the [SourceBuffer]
   /// interface controls whether media segments can be appended to the
@@ -234,39 +287,57 @@ abstract class SourceBuffer implements EventTarget, JSObject {
   /// This property cannot be changed during while the `SourceBuffer` is
   /// processing either an [SourceBuffer.appendBuffer] or
   /// [SourceBuffer.remove] call.
-  AppendMode get mode;
-  set mode(AppendMode value);
+  AppendMode get mode {
+    unsupportedPlatformError();
+  }
+
+  set mode(AppendMode value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`updating`** read-only property of the
   /// [SourceBuffer] interface indicates whether the `SourceBuffer` is
   /// currently being updated — i.e. whether an [SourceBuffer.appendBuffer] or
   /// [SourceBuffer.remove]
   /// operation is currently in progress.
-  bool get updating;
+  bool get updating {
+    unsupportedPlatformError();
+  }
 
   /// The **`buffered`** read-only property of the
   /// [SourceBuffer] interface returns the time ranges that are currently
   /// buffered in the `SourceBuffer` as a normalized [TimeRanges]
   /// object.
-  TimeRanges get buffered;
+  TimeRanges get buffered {
+    unsupportedPlatformError();
+  }
 
   /// The **`timestampOffset`** property of the
   /// [SourceBuffer] interface controls the offset applied to timestamps inside
   /// media segments that are appended to the `SourceBuffer`.
   ///
   /// The initial value of `timestampOffset` is 0.
-  double get timestampOffset;
-  set timestampOffset(num value);
+  double get timestampOffset {
+    unsupportedPlatformError();
+  }
+
+  set timestampOffset(num value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`audioTracks`** read-only property of the
   /// [SourceBuffer] interface returns a list of the audio tracks currently
   /// contained inside the `SourceBuffer`.
-  AudioTrackList get audioTracks;
+  AudioTrackList get audioTracks {
+    unsupportedPlatformError();
+  }
 
   /// The **`videoTracks`** read-only property of the
   /// [SourceBuffer] interface returns a list of the video tracks currently
   /// contained inside the `SourceBuffer`.
-  VideoTrackList get videoTracks;
+  VideoTrackList get videoTracks {
+    unsupportedPlatformError();
+  }
 
   /// The **`appendWindowStart`** property of the
   /// [SourceBuffer] interface controls the timestamp for the start of the
@@ -279,8 +350,13 @@ abstract class SourceBuffer implements EventTarget, JSObject {
   ///
   /// The default value of `appendWindowStart` is the presentation start time,
   /// which is the beginning time of the playable media.
-  double get appendWindowStart;
-  set appendWindowStart(num value);
+  double get appendWindowStart {
+    unsupportedPlatformError();
+  }
+
+  set appendWindowStart(num value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`appendWindowEnd`** property of the
   /// [SourceBuffer] interface controls the timestamp for the end of the
@@ -292,18 +368,53 @@ abstract class SourceBuffer implements EventTarget, JSObject {
   /// appended, whereas those outside the range will be filtered out.
   ///
   /// The default value of `appendWindowEnd` is positive infinity.
-  double get appendWindowEnd;
-  set appendWindowEnd(num value);
-  EventHandler get onupdatestart;
-  set onupdatestart(EventHandler value);
-  EventHandler get onupdate;
-  set onupdate(EventHandler value);
-  EventHandler get onupdateend;
-  set onupdateend(EventHandler value);
-  EventHandler get onerror;
-  set onerror(EventHandler value);
-  EventHandler get onabort;
-  set onabort(EventHandler value);
+  double get appendWindowEnd {
+    unsupportedPlatformError();
+  }
+
+  set appendWindowEnd(num value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onupdatestart {
+    unsupportedPlatformError();
+  }
+
+  set onupdatestart(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onupdate {
+    unsupportedPlatformError();
+  }
+
+  set onupdate(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onupdateend {
+    unsupportedPlatformError();
+  }
+
+  set onupdateend(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onerror {
+    unsupportedPlatformError();
+  }
+
+  set onerror(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onabort {
+    unsupportedPlatformError();
+  }
+
+  set onabort(EventHandler value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SourceBufferList`** interface represents a simple container list for
@@ -321,15 +432,31 @@ abstract class SourceBuffer implements EventTarget, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SourceBufferList).
-abstract class SourceBufferList implements EventTarget, JSObject {
-  SourceBuffer operator [](int index);
+extension type SourceBufferList._(JSObject _) implements EventTarget, JSObject {
+  SourceBuffer operator [](int index) {
+    unsupportedPlatformError();
+  }
 
   /// The **`length`** read-only property of the
   /// [SourceBufferList] interface returns the number of
   /// [SourceBuffer] objects in the list.
-  int get length;
-  EventHandler get onaddsourcebuffer;
-  set onaddsourcebuffer(EventHandler value);
-  EventHandler get onremovesourcebuffer;
-  set onremovesourcebuffer(EventHandler value);
+  int get length {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onaddsourcebuffer {
+    unsupportedPlatformError();
+  }
+
+  set onaddsourcebuffer(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onremovesourcebuffer {
+    unsupportedPlatformError();
+  }
+
+  set onremovesourcebuffer(EventHandler value) {
+    unsupportedPlatformError();
+  }
 }

@@ -30,8 +30,22 @@ typedef TexImageSource = JSObject;
 typedef Float32List = JSObject;
 typedef Int32List = JSObject;
 typedef WebGLPowerPreference = String;
+extension type WebGLContextAttributes._(JSObject _) implements JSObject {
+  factory WebGLContextAttributes({
+    bool? alpha,
+    bool? depth,
+    bool? stencil,
+    bool? antialias,
+    bool? premultipliedAlpha,
+    bool? preserveDrawingBuffer,
+    WebGLPowerPreference? powerPreference,
+    bool? failIfMajorPerformanceCaveat,
+    bool? desynchronized,
+    bool? xrCompatible,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class WebGLContextAttributes implements JSObject {
   bool get alpha {
     unsupportedPlatformError();
   }
@@ -121,7 +135,7 @@ abstract class WebGLContextAttributes implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WebGLBuffer).
-abstract class WebGLBuffer implements JSObject {}
+extension type WebGLBuffer._(JSObject _) implements JSObject {}
 
 /// The **WebGLFramebuffer** interface is part of the
 /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API) and
@@ -131,7 +145,7 @@ abstract class WebGLBuffer implements JSObject {}
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WebGLFramebuffer).
-abstract class WebGLFramebuffer implements JSObject {}
+extension type WebGLFramebuffer._(JSObject _) implements JSObject {}
 
 /// The **`WebGLProgram`** is part of the
 /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API) and
@@ -165,7 +179,7 @@ abstract class WebGLFramebuffer implements JSObject {}
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WebGLProgram).
-abstract class WebGLProgram implements JSObject {}
+extension type WebGLProgram._(JSObject _) implements JSObject {}
 
 /// The **WebGLRenderbuffer** interface is part of the
 /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API) and
@@ -176,7 +190,7 @@ abstract class WebGLProgram implements JSObject {}
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderbuffer).
-abstract class WebGLRenderbuffer implements JSObject {}
+extension type WebGLRenderbuffer._(JSObject _) implements JSObject {}
 
 /// The **WebGLShader** is part of the
 /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API) and
@@ -187,7 +201,7 @@ abstract class WebGLRenderbuffer implements JSObject {}
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WebGLShader).
-abstract class WebGLShader implements JSObject {}
+extension type WebGLShader._(JSObject _) implements JSObject {}
 
 /// The **WebGLTexture** interface is part of the
 /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API) and
@@ -198,7 +212,7 @@ abstract class WebGLShader implements JSObject {}
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WebGLTexture).
-abstract class WebGLTexture implements JSObject {}
+extension type WebGLTexture._(JSObject _) implements JSObject {}
 
 /// The **WebGLUniformLocation** interface is part of the
 /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API) and
@@ -208,7 +222,7 @@ abstract class WebGLTexture implements JSObject {}
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WebGLUniformLocation).
-abstract class WebGLUniformLocation implements JSObject {}
+extension type WebGLUniformLocation._(JSObject _) implements JSObject {}
 
 /// The **WebGLActiveInfo** interface is part of the
 /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API) and
@@ -220,24 +234,30 @@ abstract class WebGLUniformLocation implements JSObject {}
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WebGLActiveInfo).
-abstract class WebGLActiveInfo implements JSObject {
+extension type WebGLActiveInfo._(JSObject _) implements JSObject {
   /// The read-only **`WebGLActiveInfo.size`** property is a `Number`
   /// representing the size of the requested data returned by calling the
   /// [WebGLRenderingContext.getActiveAttrib] or
   /// [WebGLRenderingContext.getActiveUniform] methods.
-  GLint get size;
+  GLint get size {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`WebGLActiveInfo.type`** property represents the type of
   /// the requested data returned by calling the
   /// [WebGLRenderingContext.getActiveAttrib] or
   /// [WebGLRenderingContext.getActiveUniform] methods.
-  GLenum get type;
+  GLenum get type {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`WebGLActiveInfo.name`** property represents the name of
   /// the requested data returned by calling the
   /// [WebGLRenderingContext.getActiveAttrib] or
   /// [WebGLRenderingContext.getActiveUniform] methods.
-  String get name;
+  String get name {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **WebGLShaderPrecisionFormat** interface is part of the
@@ -249,22 +269,28 @@ abstract class WebGLActiveInfo implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WebGLShaderPrecisionFormat).
-abstract class WebGLShaderPrecisionFormat implements JSObject {
+extension type WebGLShaderPrecisionFormat._(JSObject _) implements JSObject {
   /// The read-only **`WebGLShaderPrecisionFormat.rangeMin`** property returns
   /// the base 2 log of the absolute value of the minimum value that can be
   /// represented.
-  GLint get rangeMin;
+  GLint get rangeMin {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`WebGLShaderPrecisionFormat.rangeMax`** property returns
   /// the base 2 log of the absolute value of the maximum value that can be
   /// represented.
-  GLint get rangeMax;
+  GLint get rangeMax {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`WebGLShaderPrecisionFormat.precision`** property returns
   /// the number of bits of precision that can be represented.
   ///
   /// For integer formats this value is always 0.
-  GLint get precision;
+  GLint get precision {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`WebGLRenderingContext`** interface provides an interface to the
@@ -293,7 +319,7 @@ abstract class WebGLShaderPrecisionFormat implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext).
-abstract class WebGLRenderingContext implements JSObject {
+extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   static const GLenum DEPTH_BUFFER_BIT = 256;
 
   static const GLenum STENCIL_BUFFER_BIT = 1024;
@@ -893,31 +919,41 @@ abstract class WebGLRenderingContext implements JSObject {
   /// parameters. Might return
   /// [`null`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/null),
   /// if the context is lost.
-  WebGLContextAttributes? getContextAttributes();
+  WebGLContextAttributes? getContextAttributes() {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`WebGLRenderingContext.isContextLost()`** method returns a
   /// boolean value indicating whether or not the WebGL context has been lost
   /// and
   /// must be re-established before rendering can resume.
-  bool isContextLost();
+  bool isContextLost() {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.getSupportedExtensions()`** method
   /// returns a list of all the supported
   /// [WebGL](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// extensions.
-  JSArray<JSString>? getSupportedExtensions();
+  JSArray<JSString>? getSupportedExtensions() {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.getExtension()`** method enables a
   /// [WebGL](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// extension.
-  JSObject? getExtension(String name);
+  JSObject? getExtension(String name) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.activeTexture()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// specifies which texture unit to
   /// make active.
-  void activeTexture(GLenum texture);
+  void activeTexture(GLenum texture) {
+    unsupportedPlatformError();
+  }
 
   /// The **WebGLRenderingContext.attachShader()** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -926,7 +962,9 @@ abstract class WebGLRenderingContext implements JSObject {
   void attachShader(
     WebGLProgram program,
     WebGLShader shader,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.bindAttribLocation()`** method of
   /// the
@@ -937,7 +975,9 @@ abstract class WebGLRenderingContext implements JSObject {
     WebGLProgram program,
     GLuint index,
     String name,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.bindBuffer()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -946,7 +986,9 @@ abstract class WebGLRenderingContext implements JSObject {
   void bindBuffer(
     GLenum target,
     WebGLBuffer? buffer,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.bindFramebuffer()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -956,7 +998,9 @@ abstract class WebGLRenderingContext implements JSObject {
   void bindFramebuffer(
     GLenum target,
     WebGLFramebuffer? framebuffer,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.bindRenderbuffer()`** method of
   /// the
@@ -967,7 +1011,9 @@ abstract class WebGLRenderingContext implements JSObject {
   void bindRenderbuffer(
     GLenum target,
     WebGLRenderbuffer? renderbuffer,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.bindTexture()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -976,7 +1022,9 @@ abstract class WebGLRenderingContext implements JSObject {
   void bindTexture(
     GLenum target,
     WebGLTexture? texture,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.blendColor()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API) is
@@ -987,7 +1035,9 @@ abstract class WebGLRenderingContext implements JSObject {
     GLclampf green,
     GLclampf blue,
     GLclampf alpha,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.blendEquation()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API) is
@@ -997,7 +1047,9 @@ abstract class WebGLRenderingContext implements JSObject {
   /// The blend equation determines how a new pixel is combined with a pixel
   /// already in the
   /// [WebGLFramebuffer].
-  void blendEquation(GLenum mode);
+  void blendEquation(GLenum mode) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.blendEquationSeparate()`** method
   /// of the
@@ -1011,7 +1063,9 @@ abstract class WebGLRenderingContext implements JSObject {
   void blendEquationSeparate(
     GLenum modeRGB,
     GLenum modeAlpha,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.blendFunc()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -1020,7 +1074,9 @@ abstract class WebGLRenderingContext implements JSObject {
   void blendFunc(
     GLenum sfactor,
     GLenum dfactor,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.blendFuncSeparate()`** method of
   /// the
@@ -1032,14 +1088,18 @@ abstract class WebGLRenderingContext implements JSObject {
     GLenum dstRGB,
     GLenum srcAlpha,
     GLenum dstAlpha,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.checkFramebufferStatus()`** method
   /// of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// returns the completeness
   /// status of the [WebGLFramebuffer] object.
-  GLenum checkFramebufferStatus(GLenum target);
+  GLenum checkFramebufferStatus(GLenum target) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.clear()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -1051,7 +1111,9 @@ abstract class WebGLRenderingContext implements JSObject {
   ///
   /// The scissor box, dithering, and buffer writemasks can affect the `clear()`
   /// method.
-  void clear(GLbitfield mask);
+  void clear(GLbitfield mask) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.clearColor()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -1066,7 +1128,9 @@ abstract class WebGLRenderingContext implements JSObject {
     GLclampf green,
     GLclampf blue,
     GLclampf alpha,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.clearDepth()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -1076,7 +1140,9 @@ abstract class WebGLRenderingContext implements JSObject {
   /// This specifies what depth value to use when calling the
   /// [WebGLRenderingContext.clear] method. The value is clamped
   /// between 0 and 1.
-  void clearDepth(GLclampf depth);
+  void clearDepth(GLclampf depth) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.clearStencil()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -1085,7 +1151,9 @@ abstract class WebGLRenderingContext implements JSObject {
   ///
   /// This specifies what stencil value to use when calling the
   /// [WebGLRenderingContext.clear] method.
-  void clearStencil(GLint s);
+  void clearStencil(GLint s) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.colorMask()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -1096,13 +1164,17 @@ abstract class WebGLRenderingContext implements JSObject {
     GLboolean green,
     GLboolean blue,
     GLboolean alpha,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **WebGLRenderingContext.compileShader()** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// compiles a GLSL shader into binary
   /// data so that it can be used by a [WebGLProgram].
-  void compileShader(WebGLShader shader);
+  void compileShader(WebGLShader shader) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.copyTexImage2D()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -1117,7 +1189,9 @@ abstract class WebGLRenderingContext implements JSObject {
     GLsizei width,
     GLsizei height,
     GLint border,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.copyTexSubImage2D()`** method of
   /// the
@@ -1133,33 +1207,43 @@ abstract class WebGLRenderingContext implements JSObject {
     GLint y,
     GLsizei width,
     GLsizei height,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.createBuffer()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// creates and initializes a
   /// [WebGLBuffer] storing data such as vertices or colors.
-  WebGLBuffer? createBuffer();
+  WebGLBuffer? createBuffer() {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.createFramebuffer()`** method of
   /// the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// creates and initializes a
   /// [WebGLFramebuffer] object.
-  WebGLFramebuffer? createFramebuffer();
+  WebGLFramebuffer? createFramebuffer() {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.createProgram()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// creates and initializes a
   /// [WebGLProgram] object.
-  WebGLProgram? createProgram();
+  WebGLProgram? createProgram() {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.createRenderbuffer()`** method of
   /// the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// creates and initializes a
   /// [WebGLRenderbuffer] object.
-  WebGLRenderbuffer? createRenderbuffer();
+  WebGLRenderbuffer? createRenderbuffer() {
+    unsupportedPlatformError();
+  }
 
   /// The [WebGLRenderingContext]
   /// method **`createShader()`** of the
@@ -1168,19 +1252,25 @@ abstract class WebGLRenderingContext implements JSObject {
   /// [WebGLShader] that can then be configured further using
   /// [WebGLRenderingContext.shaderSource] and
   /// [WebGLRenderingContext.compileShader].
-  WebGLShader? createShader(GLenum type);
+  WebGLShader? createShader(GLenum type) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.createTexture()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// creates and initializes a
   /// [WebGLTexture] object.
-  WebGLTexture? createTexture();
+  WebGLTexture? createTexture() {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.cullFace()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// specifies whether or not front-
   /// and/or back-facing polygons can be culled.
-  void cullFace(GLenum mode);
+  void cullFace(GLenum mode) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.deleteBuffer()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -1188,7 +1278,9 @@ abstract class WebGLRenderingContext implements JSObject {
   /// [WebGLBuffer]. This method has no effect if the buffer has already been
   /// deleted. Normally you don't need to call this method yourself, when the
   /// buffer object is dereferenced it will be marked as free.
-  void deleteBuffer(WebGLBuffer? buffer);
+  void deleteBuffer(WebGLBuffer? buffer) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.deleteFramebuffer()`** method of
   /// the
@@ -1196,7 +1288,9 @@ abstract class WebGLRenderingContext implements JSObject {
   /// deletes a given
   /// [WebGLFramebuffer] object. This method has no effect if the frame buffer
   /// has already been deleted.
-  void deleteFramebuffer(WebGLFramebuffer? framebuffer);
+  void deleteFramebuffer(WebGLFramebuffer? framebuffer) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.deleteProgram()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -1204,7 +1298,9 @@ abstract class WebGLRenderingContext implements JSObject {
   /// [WebGLProgram] object. This method has no effect if the program has
   /// already
   /// been deleted.
-  void deleteProgram(WebGLProgram? program);
+  void deleteProgram(WebGLProgram? program) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.deleteRenderbuffer()`** method of
   /// the
@@ -1212,7 +1308,9 @@ abstract class WebGLRenderingContext implements JSObject {
   /// deletes a given
   /// [WebGLRenderbuffer] object. This method has no effect if the render buffer
   /// has already been deleted.
-  void deleteRenderbuffer(WebGLRenderbuffer? renderbuffer);
+  void deleteRenderbuffer(WebGLRenderbuffer? renderbuffer) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.deleteShader()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -1223,7 +1321,9 @@ abstract class WebGLRenderingContext implements JSObject {
   /// deleted, and the [WebGLShader] is automatically marked for deletion when
   /// it
   /// is destroyed by the garbage collector.
-  void deleteShader(WebGLShader? shader);
+  void deleteShader(WebGLShader? shader) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.deleteTexture()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -1231,19 +1331,25 @@ abstract class WebGLRenderingContext implements JSObject {
   /// [WebGLTexture] object. This method has no effect if the texture has
   /// already
   /// been deleted.
-  void deleteTexture(WebGLTexture? texture);
+  void deleteTexture(WebGLTexture? texture) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.depthFunc()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// specifies a function that compares
   /// incoming pixel depth to the current depth buffer value.
-  void depthFunc(GLenum func);
+  void depthFunc(GLenum func) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.depthMask()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// sets whether writing into the depth
   /// buffer is enabled or disabled.
-  void depthMask(GLboolean flag);
+  void depthMask(GLboolean flag) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.depthRange()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -1252,7 +1358,9 @@ abstract class WebGLRenderingContext implements JSObject {
   void depthRange(
     GLclampf zNear,
     GLclampf zFar,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **WebGLRenderingContext.detachShader()** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -1261,20 +1369,26 @@ abstract class WebGLRenderingContext implements JSObject {
   void detachShader(
     WebGLProgram program,
     WebGLShader shader,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.disable()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// disables specific WebGL
   /// capabilities for this context.
-  void disable(GLenum cap);
+  void disable(GLenum cap) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.disableVertexAttribArray()`**
   /// method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// turns the generic
   /// vertex attribute array off at a given index position.
-  void disableVertexAttribArray(GLuint index);
+  void disableVertexAttribArray(GLuint index) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.drawArrays()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -1283,7 +1397,9 @@ abstract class WebGLRenderingContext implements JSObject {
     GLenum mode,
     GLint first,
     GLsizei count,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.drawElements()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -1293,13 +1409,17 @@ abstract class WebGLRenderingContext implements JSObject {
     GLsizei count,
     GLenum type,
     GLintptr offset,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.enable()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// enables specific WebGL capabilities
   /// for this context.
-  void enable(GLenum cap);
+  void enable(GLenum cap) {
+    unsupportedPlatformError();
+  }
 
   /// The [WebGLRenderingContext] method
   /// **`enableVertexAttribArray()`**, part of the
@@ -1330,19 +1450,25 @@ abstract class WebGLRenderingContext implements JSObject {
   /// [WebGLRenderingContext.vertexAttribPointer],
   /// [WebGLRenderingContext.vertexAttrib], and
   /// [WebGLRenderingContext.getVertexAttrib].
-  void enableVertexAttribArray(GLuint index);
+  void enableVertexAttribArray(GLuint index) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.finish()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// blocks execution until all
   /// previously called commands are finished.
-  void finish();
+  void finish() {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.flush()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// empties different buffer commands,
   /// causing all commands to be executed as quickly as possible.
-  void flush();
+  void flush() {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.framebufferRenderbuffer()`**
   /// method of the
@@ -1354,7 +1480,9 @@ abstract class WebGLRenderingContext implements JSObject {
     GLenum attachment,
     GLenum renderbuffertarget,
     WebGLRenderbuffer? renderbuffer,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.framebufferTexture2D()`** method
   /// of the
@@ -1367,13 +1495,17 @@ abstract class WebGLRenderingContext implements JSObject {
     GLenum textarget,
     WebGLTexture? texture,
     GLint level,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.frontFace()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// specifies whether polygons are
   /// front- or back-facing by setting a winding orientation.
-  void frontFace(GLenum mode);
+  void frontFace(GLenum mode) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.generateMipmap()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -1387,7 +1519,9 @@ abstract class WebGLRenderingContext implements JSObject {
   /// farther away. It starts with the resolution of the texture image and
   /// halves the
   /// resolution until a 1x1 dimension texture image is created.
-  void generateMipmap(GLenum target);
+  void generateMipmap(GLenum target) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.getActiveAttrib()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -1399,7 +1533,9 @@ abstract class WebGLRenderingContext implements JSObject {
   WebGLActiveInfo? getActiveAttrib(
     WebGLProgram program,
     GLuint index,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.getActiveUniform()`** method of
   /// the
@@ -1412,14 +1548,18 @@ abstract class WebGLRenderingContext implements JSObject {
   WebGLActiveInfo? getActiveUniform(
     WebGLProgram program,
     GLuint index,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.getAttachedShaders()`** method of
   /// the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// returns a list of
   /// [WebGLShader] objects attached to a [WebGLProgram].
-  JSArray<WebGLShader>? getAttachedShaders(WebGLProgram program);
+  JSArray<WebGLShader>? getAttachedShaders(WebGLProgram program) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.getAttribLocation()`** method of
   /// the
@@ -1429,7 +1569,9 @@ abstract class WebGLRenderingContext implements JSObject {
   GLint getAttribLocation(
     WebGLProgram program,
     String name,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.getBufferParameter()`** method of
   /// the
@@ -1439,18 +1581,24 @@ abstract class WebGLRenderingContext implements JSObject {
   JSAny? getBufferParameter(
     GLenum target,
     GLenum pname,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.getParameter()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// returns a value for the passed
   /// parameter name.
-  JSAny? getParameter(GLenum pname);
+  JSAny? getParameter(GLenum pname) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.getError()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// returns error information.
-  GLenum getError();
+  GLenum getError() {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`WebGLRenderingContext.getFramebufferAttachmentParameter()`**
@@ -1462,7 +1610,9 @@ abstract class WebGLRenderingContext implements JSObject {
     GLenum target,
     GLenum attachment,
     GLenum pname,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.getProgramParameter()`** method of
   /// the
@@ -1472,12 +1622,16 @@ abstract class WebGLRenderingContext implements JSObject {
   JSAny? getProgramParameter(
     WebGLProgram program,
     GLenum pname,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **WebGLRenderingContext.getProgramInfoLog** returns the information
   /// log for the specified [WebGLProgram] object. It contains errors that
   /// occurred during failed linking or validation of `WebGLProgram` objects.
-  String? getProgramInfoLog(WebGLProgram program);
+  String? getProgramInfoLog(WebGLProgram program) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.getRenderbufferParameter()`**
   /// method of the
@@ -1487,7 +1641,9 @@ abstract class WebGLRenderingContext implements JSObject {
   JSAny? getRenderbufferParameter(
     GLenum target,
     GLenum pname,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.getShaderParameter()`** method of
   /// the
@@ -1497,7 +1653,9 @@ abstract class WebGLRenderingContext implements JSObject {
   JSAny? getShaderParameter(
     WebGLShader shader,
     GLenum pname,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`WebGLRenderingContext.getShaderPrecisionFormat()`** method of
@@ -1509,19 +1667,25 @@ abstract class WebGLRenderingContext implements JSObject {
   WebGLShaderPrecisionFormat? getShaderPrecisionFormat(
     GLenum shadertype,
     GLenum precisiontype,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **WebGLRenderingContext.getShaderInfoLog** returns the information log
   /// for the specified [WebGLShader] object. It contains warnings, debugging
   /// and
   /// compile information.
-  String? getShaderInfoLog(WebGLShader shader);
+  String? getShaderInfoLog(WebGLShader shader) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.getShaderSource()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// returns the source code of a
   /// [WebGLShader] as a string.
-  String? getShaderSource(WebGLShader shader);
+  String? getShaderSource(WebGLShader shader) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.getTexParameter()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -1530,7 +1694,9 @@ abstract class WebGLRenderingContext implements JSObject {
   JSAny? getTexParameter(
     GLenum target,
     GLenum pname,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.getUniform()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -1539,7 +1705,9 @@ abstract class WebGLRenderingContext implements JSObject {
   JSAny? getUniform(
     WebGLProgram program,
     WebGLUniformLocation location,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// Part of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API),
@@ -1576,7 +1744,9 @@ abstract class WebGLRenderingContext implements JSObject {
   WebGLUniformLocation? getUniformLocation(
     WebGLProgram program,
     String name,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.getVertexAttrib()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -1585,7 +1755,9 @@ abstract class WebGLRenderingContext implements JSObject {
   JSAny? getVertexAttrib(
     GLuint index,
     GLenum pname,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.getVertexAttribOffset()`** method
   /// of the
@@ -1595,7 +1767,9 @@ abstract class WebGLRenderingContext implements JSObject {
   GLintptr getVertexAttribOffset(
     GLuint index,
     GLenum pname,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.hint()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -1604,13 +1778,17 @@ abstract class WebGLRenderingContext implements JSObject {
   void hint(
     GLenum target,
     GLenum mode,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.isBuffer()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// returns `true` if the
   /// passed [WebGLBuffer] is valid and `false` otherwise.
-  GLboolean isBuffer(WebGLBuffer? buffer);
+  GLboolean isBuffer(WebGLBuffer? buffer) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.isEnabled()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -1619,37 +1797,49 @@ abstract class WebGLRenderingContext implements JSObject {
   ///
   /// By default, all capabilities except `gl.DITHER` are
   /// **disabled**.
-  GLboolean isEnabled(GLenum cap);
+  GLboolean isEnabled(GLenum cap) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.isFramebuffer()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// returns `true` if the
   /// passed [WebGLFramebuffer] is valid and `false` otherwise.
-  GLboolean isFramebuffer(WebGLFramebuffer? framebuffer);
+  GLboolean isFramebuffer(WebGLFramebuffer? framebuffer) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.isProgram()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// returns `true` if the
   /// passed [WebGLProgram] is valid, `false` otherwise.
-  GLboolean isProgram(WebGLProgram? program);
+  GLboolean isProgram(WebGLProgram? program) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.isRenderbuffer()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// returns `true` if the
   /// passed [WebGLRenderbuffer] is valid and `false` otherwise.
-  GLboolean isRenderbuffer(WebGLRenderbuffer? renderbuffer);
+  GLboolean isRenderbuffer(WebGLRenderbuffer? renderbuffer) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.isShader()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// returns `true` if the
   /// passed [WebGLShader] is valid, `false` otherwise.
-  GLboolean isShader(WebGLShader? shader);
+  GLboolean isShader(WebGLShader? shader) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.isTexture()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// returns `true` if the
   /// passed [WebGLTexture] is valid and `false` otherwise.
-  GLboolean isTexture(WebGLTexture? texture);
+  GLboolean isTexture(WebGLTexture? texture) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.lineWidth()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -1670,13 +1860,17 @@ abstract class WebGLRenderingContext implements JSObject {
   /// > As of January 2017 most implementations of WebGL only support a minimum
   /// > of 1 and a
   /// > maximum of 1 as the technology they are based on has these same limits.
-  void lineWidth(GLfloat width);
+  void lineWidth(GLfloat width) {
+    unsupportedPlatformError();
+  }
 
   /// The [WebGLRenderingContext] interface's
   /// **`linkProgram()`** method links a given
   /// [WebGLProgram], completing the process of preparing the GPU code for the
   /// program's fragment and vertex shaders.
-  void linkProgram(WebGLProgram program);
+  void linkProgram(WebGLProgram program) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.pixelStorei()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -1684,7 +1878,9 @@ abstract class WebGLRenderingContext implements JSObject {
   void pixelStorei(
     GLenum pname,
     GLint param,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.polygonOffset()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -1697,7 +1893,9 @@ abstract class WebGLRenderingContext implements JSObject {
   void polygonOffset(
     GLfloat factor,
     GLfloat units,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.renderbufferStorage()`** method of
   /// the
@@ -1709,7 +1907,9 @@ abstract class WebGLRenderingContext implements JSObject {
     GLenum internalformat,
     GLsizei width,
     GLsizei height,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.sampleCoverage()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -1718,7 +1918,9 @@ abstract class WebGLRenderingContext implements JSObject {
   void sampleCoverage(
     GLclampf value,
     GLboolean invert,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.scissor()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -1729,7 +1931,9 @@ abstract class WebGLRenderingContext implements JSObject {
     GLint y,
     GLsizei width,
     GLsizei height,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.shaderSource()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -1738,7 +1942,9 @@ abstract class WebGLRenderingContext implements JSObject {
   void shaderSource(
     WebGLShader shader,
     String source,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.stencilFunc()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -1752,7 +1958,9 @@ abstract class WebGLRenderingContext implements JSObject {
     GLenum func,
     GLint ref,
     GLuint mask,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.stencilFuncSeparate()`** method of
   /// the
@@ -1768,7 +1976,9 @@ abstract class WebGLRenderingContext implements JSObject {
     GLenum func,
     GLint ref,
     GLuint mask,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.stencilMask()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -1777,7 +1987,9 @@ abstract class WebGLRenderingContext implements JSObject {
   ///
   /// The [WebGLRenderingContext.stencilMaskSeparate] method can set front and
   /// back stencil writemasks to different values.
-  void stencilMask(GLuint mask);
+  void stencilMask(GLuint mask) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.stencilMaskSeparate()`** method of
   /// the
@@ -1791,7 +2003,9 @@ abstract class WebGLRenderingContext implements JSObject {
   void stencilMaskSeparate(
     GLenum face,
     GLuint mask,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.stencilOp()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -1801,7 +2015,9 @@ abstract class WebGLRenderingContext implements JSObject {
     GLenum fail,
     GLenum zfail,
     GLenum zpass,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.stencilOpSeparate()`** method of
   /// the
@@ -1813,112 +2029,172 @@ abstract class WebGLRenderingContext implements JSObject {
     GLenum fail,
     GLenum zfail,
     GLenum zpass,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void texParameterf(
     GLenum target,
     GLenum pname,
     GLfloat param,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void texParameteri(
     GLenum target,
     GLenum pname,
     GLint param,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void uniform1f(
     WebGLUniformLocation? location,
     GLfloat x,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void uniform2f(
     WebGLUniformLocation? location,
     GLfloat x,
     GLfloat y,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void uniform3f(
     WebGLUniformLocation? location,
     GLfloat x,
     GLfloat y,
     GLfloat z,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void uniform4f(
     WebGLUniformLocation? location,
     GLfloat x,
     GLfloat y,
     GLfloat z,
     GLfloat w,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void uniform1i(
     WebGLUniformLocation? location,
     GLint x,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void uniform2i(
     WebGLUniformLocation? location,
     GLint x,
     GLint y,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void uniform3i(
     WebGLUniformLocation? location,
     GLint x,
     GLint y,
     GLint z,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void uniform4i(
     WebGLUniformLocation? location,
     GLint x,
     GLint y,
     GLint z,
     GLint w,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.useProgram()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// sets the specified
   /// [WebGLProgram] as part of the current rendering state.
-  void useProgram(WebGLProgram? program);
+  void useProgram(WebGLProgram? program) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.validateProgram()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// validates a
   /// [WebGLProgram]. It checks if it is successfully linked and if it can be
   /// used in the current WebGL state.
-  void validateProgram(WebGLProgram program);
+  void validateProgram(WebGLProgram program) {
+    unsupportedPlatformError();
+  }
+
   void vertexAttrib1f(
     GLuint index,
     GLfloat x,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void vertexAttrib2f(
     GLuint index,
     GLfloat x,
     GLfloat y,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void vertexAttrib3f(
     GLuint index,
     GLfloat x,
     GLfloat y,
     GLfloat z,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void vertexAttrib4f(
     GLuint index,
     GLfloat x,
     GLfloat y,
     GLfloat z,
     GLfloat w,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void vertexAttrib1fv(
     GLuint index,
     Float32List values,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void vertexAttrib2fv(
     GLuint index,
     Float32List values,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void vertexAttrib3fv(
     GLuint index,
     Float32List values,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void vertexAttrib4fv(
     GLuint index,
     Float32List values,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`WebGLRenderingContext.vertexAttribPointer()`** method of the
@@ -1933,7 +2209,9 @@ abstract class WebGLRenderingContext implements JSObject {
     GLboolean normalized,
     GLsizei stride,
     GLintptr offset,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.viewport()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -1946,7 +2224,9 @@ abstract class WebGLRenderingContext implements JSObject {
     GLint y,
     GLsizei width,
     GLsizei height,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The [WebGLRenderingContext] method
   /// **`makeXRCompatible()`** ensures that the rendering context
@@ -1964,7 +2244,9 @@ abstract class WebGLRenderingContext implements JSObject {
   /// This is useful if you have an application which can start out being
   /// presented on a
   /// standard 2D display but can then be transitioned to a 3D immersion system.
-  JSPromise<JSAny?> makeXRCompatible();
+  JSPromise<JSAny?> makeXRCompatible() {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.bufferData()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -1974,7 +2256,9 @@ abstract class WebGLRenderingContext implements JSObject {
     GLenum target,
     JSAny? dataOrSize,
     GLenum usage,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.bufferSubData()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -1984,7 +2268,9 @@ abstract class WebGLRenderingContext implements JSObject {
     GLenum target,
     GLintptr offset,
     AllowSharedBufferSource data,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.compressedTexImage2D()`**
   /// and **`WebGL2RenderingContext.compressedTexImage3D()`** methods
@@ -2005,7 +2291,9 @@ abstract class WebGLRenderingContext implements JSObject {
     GLsizei height,
     GLint border,
     ArrayBufferView data,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.compressedTexSubImage2D()`**
   /// method of the
@@ -2026,7 +2314,9 @@ abstract class WebGLRenderingContext implements JSObject {
     GLsizei height,
     GLenum format,
     ArrayBufferView data,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.readPixels()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -2041,7 +2331,9 @@ abstract class WebGLRenderingContext implements JSObject {
     GLenum format,
     GLenum type,
     ArrayBufferView? pixels,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.texImage2D()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -2054,10 +2346,12 @@ abstract class WebGLRenderingContext implements JSObject {
     JSAny formatOrWidth,
     JSAny heightOrType,
     JSAny borderOrSource, [
-    GLenum format,
-    GLenum type,
+    GLenum? format,
+    GLenum? type,
     ArrayBufferView? pixels,
-  ]);
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.texSubImage2D()`** method of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -2071,56 +2365,91 @@ abstract class WebGLRenderingContext implements JSObject {
     JSAny formatOrWidth,
     JSAny heightOrType,
     JSAny formatOrSource, [
-    GLenum type,
+    GLenum? type,
     ArrayBufferView? pixels,
-  ]);
+  ]) {
+    unsupportedPlatformError();
+  }
+
   void uniform1fv(
     WebGLUniformLocation? location,
     Float32List v,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void uniform2fv(
     WebGLUniformLocation? location,
     Float32List v,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void uniform3fv(
     WebGLUniformLocation? location,
     Float32List v,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void uniform4fv(
     WebGLUniformLocation? location,
     Float32List v,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void uniform1iv(
     WebGLUniformLocation? location,
     Int32List v,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void uniform2iv(
     WebGLUniformLocation? location,
     Int32List v,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void uniform3iv(
     WebGLUniformLocation? location,
     Int32List v,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void uniform4iv(
     WebGLUniformLocation? location,
     Int32List v,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void uniformMatrix2fv(
     WebGLUniformLocation? location,
     GLboolean transpose,
     Float32List value,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void uniformMatrix3fv(
     WebGLUniformLocation? location,
     GLboolean transpose,
     Float32List value,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void uniformMatrix4fv(
     WebGLUniformLocation? location,
     GLboolean transpose,
     Float32List value,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.canvas`** property is a read-only
   /// reference to the [HTMLCanvasElement] or [OffscreenCanvas]
@@ -2129,7 +2458,9 @@ abstract class WebGLRenderingContext implements JSObject {
   /// if it is not
   /// associated with a `canvas` element or an [OffscreenCanvas]
   /// object.
-  JSObject get canvas;
+  JSObject get canvas {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`WebGLRenderingContext.drawingBufferWidth`**
   /// property represents the actual width of the current drawing buffer. It
@@ -2138,7 +2469,9 @@ abstract class WebGLRenderingContext implements JSObject {
   /// this context, but might differ if the implementation is not able to
   /// provide the
   /// requested width.
-  GLsizei get drawingBufferWidth;
+  GLsizei get drawingBufferWidth {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`WebGLRenderingContext.drawingBufferHeight`**
   /// property represents the actual height of the current drawing buffer. It
@@ -2147,7 +2480,9 @@ abstract class WebGLRenderingContext implements JSObject {
   /// this context, but might differ if the implementation is not able to
   /// provide the
   /// requested height.
-  GLsizei get drawingBufferHeight;
+  GLsizei get drawingBufferHeight {
+    unsupportedPlatformError();
+  }
 
   /// The **`WebGLRenderingContext.drawingBufferColorSpace`** property specifies
   /// the color space of the WebGL drawing buffer. Along with the default
@@ -2156,8 +2491,13 @@ abstract class WebGLRenderingContext implements JSObject {
   /// See
   /// [`WebGLRenderingContext.unpackColorSpace`](https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/unpackColorSpace)
   /// for specifying the color space for textures.
-  PredefinedColorSpace get drawingBufferColorSpace;
-  set drawingBufferColorSpace(PredefinedColorSpace value);
+  PredefinedColorSpace get drawingBufferColorSpace {
+    unsupportedPlatformError();
+  }
+
+  set drawingBufferColorSpace(PredefinedColorSpace value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **WebContextEvent** interface is part of the
@@ -2169,14 +2509,32 @@ abstract class WebGLRenderingContext implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WebGLContextEvent).
-abstract class WebGLContextEvent implements Event, JSObject {
+extension type WebGLContextEvent._(JSObject _) implements Event, JSObject {
+  factory WebGLContextEvent(
+    String type, [
+    WebGLContextEventInit? eventInit,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// The read-only **`WebGLContextEvent.statusMessage`** property contains
   /// additional event status information, or is an empty string if no
   /// additional information is available.
-  String get statusMessage;
+  String get statusMessage {
+    unsupportedPlatformError();
+  }
 }
+extension type WebGLContextEventInit._(JSObject _)
+    implements EventInit, JSObject {
+  factory WebGLContextEventInit({
+    bool? bubbles,
+    bool? cancelable,
+    bool? composed,
+    String? statusMessage,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class WebGLContextEventInit implements EventInit, JSObject {
   String get statusMessage {
     unsupportedPlatformError();
   }

@@ -39,7 +39,11 @@ typedef MediaDeviceKind = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MediaStream).
-abstract class MediaStream implements EventTarget, JSObject {
+extension type MediaStream._(JSObject _) implements EventTarget, JSObject {
+  factory MediaStream([JSObject? streamOrTracks]) {
+    unsupportedPlatformError();
+  }
+
   /// The **`getAudioTracks()`** method of the
   /// [MediaStream] interface returns a sequence that represents all the
   /// [MediaStreamTrack] objects in this
@@ -47,12 +51,16 @@ abstract class MediaStream implements EventTarget, JSObject {
   /// [`track set`](https://www.w3.org/TR/mediacapture-streams/#track-set) where
   /// [MediaStreamTrack.kind]
   /// is `audio`.
-  JSArray<MediaStreamTrack> getAudioTracks();
+  JSArray<MediaStreamTrack> getAudioTracks() {
+    unsupportedPlatformError();
+  }
 
   /// The **`getVideoTracks()`** method of the
   /// [MediaStream] interface returns a sequence of
   /// [MediaStreamTrack] objects representing the video tracks in this stream.
-  JSArray<MediaStreamTrack> getVideoTracks();
+  JSArray<MediaStreamTrack> getVideoTracks() {
+    unsupportedPlatformError();
+  }
 
   /// The **`getTracks()`** method of the
   /// [MediaStream] interface returns a sequence that represents all the
@@ -60,14 +68,18 @@ abstract class MediaStream implements EventTarget, JSObject {
   /// stream's
   /// [`track set`](https://www.w3.org/TR/mediacapture-streams/#track-set),
   /// regardless of [MediaStreamTrack.kind].
-  JSArray<MediaStreamTrack> getTracks();
+  JSArray<MediaStreamTrack> getTracks() {
+    unsupportedPlatformError();
+  }
 
   /// The **`getTrackById()`** method of the [MediaStream] interface
   /// returns a [MediaStreamTrack] object representing the track with the
   /// specified ID
   /// string. If there is no track with the specified ID, this method returns
   /// `null`.
-  MediaStreamTrack? getTrackById(String trackId);
+  MediaStreamTrack? getTrackById(String trackId) {
+    unsupportedPlatformError();
+  }
 
   /// The **`addTrack()`** method of the [MediaStream] interface adds a new
   /// track to the
@@ -76,23 +88,31 @@ abstract class MediaStream implements EventTarget, JSObject {
   /// > **Note:** If the specified track is already in the stream's track set,
   /// > this method has no
   /// > effect.
-  void addTrack(MediaStreamTrack track);
+  void addTrack(MediaStreamTrack track) {
+    unsupportedPlatformError();
+  }
 
   /// The **`removeTrack()`** method of the [MediaStream] interface removes a
   /// [MediaStreamTrack] from a stream.
-  void removeTrack(MediaStreamTrack track);
+  void removeTrack(MediaStreamTrack track) {
+    unsupportedPlatformError();
+  }
 
   /// The **`clone()`** method of the [MediaStream]
   /// interface creates a duplicate of the `MediaStream`. This new
   /// `MediaStream` object has a new unique [MediaStream.id] and
   /// contains clones of every [MediaStreamTrack] contained by the
   /// `MediaStream` on which `clone()` was called.
-  MediaStream clone();
+  MediaStream clone() {
+    unsupportedPlatformError();
+  }
 
   /// The **`id`** read-only property of the [MediaStream] interface is a
   /// string containing 36 characters denoting a unique identifier (GUID)
   /// for the object.
-  String get id;
+  String get id {
+    unsupportedPlatformError();
+  }
 
   /// The **`active`** read-only property of the
   /// [MediaStream] interface returns a Boolean value which is
@@ -103,11 +123,25 @@ abstract class MediaStream implements EventTarget, JSObject {
   /// set to `ended`. Once every track has ended, the stream's `active` property
   /// becomes
   /// `false`.
-  bool get active;
-  EventHandler get onaddtrack;
-  set onaddtrack(EventHandler value);
-  EventHandler get onremovetrack;
-  set onremovetrack(EventHandler value);
+  bool get active {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onaddtrack {
+    unsupportedPlatformError();
+  }
+
+  set onaddtrack(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onremovetrack {
+    unsupportedPlatformError();
+  }
+
+  set onremovetrack(EventHandler value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`MediaStreamTrack`** interface of the [Media Capture and Streams API]
@@ -121,16 +155,20 @@ abstract class MediaStream implements EventTarget, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack).
-abstract class MediaStreamTrack implements EventTarget, JSObject {
+extension type MediaStreamTrack._(JSObject _) implements EventTarget, JSObject {
   /// The **`clone()`** method of the [MediaStreamTrack]
   /// interface creates a duplicate of the `MediaStreamTrack`. This new
   /// `MediaStreamTrack` object is identical except for its unique
   /// [MediaStreamTrack.id].
-  MediaStreamTrack clone();
+  MediaStreamTrack clone() {
+    unsupportedPlatformError();
+  }
 
   /// The **`stop()`** method of the [MediaStreamTrack] interface stops the
   /// track.
-  void stop();
+  void stop() {
+    unsupportedPlatformError();
+  }
 
   /// The **`getCapabilities()`** method of
   /// the [MediaStreamTrack] interface returns a
@@ -143,7 +181,9 @@ abstract class MediaStreamTrack implements EventTarget, JSObject {
   /// [Capabilities, constraints, and
   /// settings](https://developer.mozilla.org/en-US/docs/Web/API/Media_Capture_and_Streams_API/Constraints)
   /// for details on how to work with constrainable properties.
-  MediaTrackCapabilities getCapabilities();
+  MediaTrackCapabilities getCapabilities() {
+    unsupportedPlatformError();
+  }
 
   /// The **`getConstraints()`** method of
   /// the [MediaStreamTrack] interface returns a
@@ -165,7 +205,9 @@ abstract class MediaStreamTrack implements EventTarget, JSObject {
   /// [Capabilities, constraints, and
   /// settings](https://developer.mozilla.org/en-US/docs/Web/API/Media_Capture_and_Streams_API/Constraints)
   /// for details on how to work with constrainable properties.
-  MediaTrackConstraints getConstraints();
+  MediaTrackConstraints getConstraints() {
+    unsupportedPlatformError();
+  }
 
   /// The **`getSettings()`** method of the
   /// [MediaStreamTrack] interface returns a [MediaTrackSettings]
@@ -176,7 +218,9 @@ abstract class MediaStreamTrack implements EventTarget, JSObject {
   /// See [Capabilities, constraints, and
   /// settings](https://developer.mozilla.org/en-US/docs/Web/API/Media_Capture_and_Streams_API/Constraints)
   /// for details on how to work with constrainable properties.
-  MediaTrackSettings getSettings();
+  MediaTrackSettings getSettings() {
+    unsupportedPlatformError();
+  }
 
   /// The **`applyConstraints()`** method of the [MediaStreamTrack] interface
   /// applies a set of constraints to the track; these constraints let the
@@ -196,19 +240,25 @@ abstract class MediaStreamTrack implements EventTarget, JSObject {
   /// in [Capabilities, constraints, and
   /// settings](https://developer.mozilla.org/en-US/docs/Web/API/Media_Capture_and_Streams_API/Constraints)
   /// for more information on how to apply your preferred constraints.
-  JSPromise<JSAny?> applyConstraints([MediaTrackConstraints constraints]);
+  JSPromise<JSAny?> applyConstraints([MediaTrackConstraints? constraints]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`kind`** read-only property of the [MediaStreamTrack] interface
   /// returns a string set to `"audio"` if the track is an audio track and to
   /// `"video"` if it is a video track.
   /// It doesn't change if the track is disassociated from its source.
-  String get kind;
+  String get kind {
+    unsupportedPlatformError();
+  }
 
   /// The **`id`** read-only property of the [MediaStreamTrack] interface
   /// returns a
   /// string containing a unique identifier (GUID) for the track, which is
   /// generated by the .
-  String get id;
+  String get id {
+    unsupportedPlatformError();
+  }
 
   /// The **`label`** read-only property of the [MediaStreamTrack] interface
   /// returns a string containing a -assigned label that identifies the track
@@ -217,7 +267,9 @@ abstract class MediaStreamTrack implements EventTarget, JSObject {
   /// The string may be left empty and is empty as long as no source has been
   /// connected.
   /// When the track is disassociated from its source, the label is not changed.
-  String get label;
+  String get label {
+    unsupportedPlatformError();
+  }
 
   /// The **`enabled`** property of the
   /// [MediaStreamTrack] interface is a Boolean value which is
@@ -243,8 +295,13 @@ abstract class MediaStreamTrack implements EventTarget, JSObject {
   ///
   /// > **Note:** If the track has been disconnected, the value of this property
   /// > can be changed, but has no effect.
-  bool get enabled;
-  set enabled(bool value);
+  bool get enabled {
+    unsupportedPlatformError();
+  }
+
+  set enabled(bool value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`muted`** read-only property of the
   /// [MediaStreamTrack] interface returns a boolean value
@@ -258,23 +315,50 @@ abstract class MediaStreamTrack implements EventTarget, JSObject {
   /// > (audio frames in which every sample is 0, or video frames in which every
   /// > pixel is
   /// > black).
-  bool get muted;
-  EventHandler get onmute;
-  set onmute(EventHandler value);
-  EventHandler get onunmute;
-  set onunmute(EventHandler value);
+  bool get muted {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onmute {
+    unsupportedPlatformError();
+  }
+
+  set onmute(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onunmute {
+    unsupportedPlatformError();
+  }
+
+  set onunmute(EventHandler value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`readyState`** read-only property of the [MediaStreamTrack]
   /// interface returns an enumerated value giving the status of the track.
-  MediaStreamTrackState get readyState;
-  EventHandler get onended;
-  set onended(EventHandler value);
+  MediaStreamTrackState get readyState {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onended {
+    unsupportedPlatformError();
+  }
+
+  set onended(EventHandler value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`contentHint`** property of the [MediaStreamTrack] interface is a
   /// string that hints at the type of content the track contains. Allowable
   /// values depend on the value of the [MediaStreamTrack.kind] property.
-  String get contentHint;
-  set contentHint(String value);
+  String get contentHint {
+    unsupportedPlatformError();
+  }
+
+  set contentHint(String value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`MediaTrackSupportedConstraints`** dictionary establishes the list of
@@ -302,7 +386,50 @@ abstract class MediaStreamTrack implements EventTarget, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MediaTrackSupportedConstraints).
-abstract class MediaTrackSupportedConstraints implements JSObject {
+extension type MediaTrackSupportedConstraints._(JSObject _)
+    implements JSObject {
+  factory MediaTrackSupportedConstraints({
+    bool? width,
+    bool? height,
+    bool? aspectRatio,
+    bool? frameRate,
+    bool? facingMode,
+    bool? resizeMode,
+    bool? sampleRate,
+    bool? sampleSize,
+    bool? echoCancellation,
+    bool? autoGainControl,
+    bool? noiseSuppression,
+    bool? latency,
+    bool? channelCount,
+    bool? deviceId,
+    bool? groupId,
+    bool? whiteBalanceMode,
+    bool? exposureMode,
+    bool? focusMode,
+    bool? pointsOfInterest,
+    bool? exposureCompensation,
+    bool? exposureTime,
+    bool? colorTemperature,
+    bool? iso,
+    bool? brightness,
+    bool? contrast,
+    bool? pan,
+    bool? saturation,
+    bool? sharpness,
+    bool? focusDistance,
+    bool? tilt,
+    bool? zoom,
+    bool? torch,
+    bool? displaySurface,
+    bool? logicalSurface,
+    bool? cursor,
+    bool? restrictOwnAudio,
+    bool? suppressLocalAudioPlayback,
+  }) {
+    unsupportedPlatformError();
+  }
+
   /// The [MediaTrackSupportedConstraints] dictionary's
   /// **`width`** property is a read-only Boolean value which is
   /// present (and set to `true`) in the object returned by
@@ -314,8 +441,13 @@ abstract class MediaTrackSupportedConstraints implements JSObject {
   ///
   /// You can access the supported constraints dictionary by calling
   /// `navigator.mediaDevices.getSupportedConstraints()`.
-  bool get width;
-  set width(bool value);
+  bool get width {
+    unsupportedPlatformError();
+  }
+
+  set width(bool value) {
+    unsupportedPlatformError();
+  }
 
   /// The [MediaTrackSupportedConstraints] dictionary's
   /// **`height`** property is a read-only Boolean value which is
@@ -328,8 +460,13 @@ abstract class MediaTrackSupportedConstraints implements JSObject {
   ///
   /// You can access the supported constraints dictionary by calling
   /// `navigator.mediaDevices.getSupportedConstraints()`.
-  bool get height;
-  set height(bool value);
+  bool get height {
+    unsupportedPlatformError();
+  }
+
+  set height(bool value) {
+    unsupportedPlatformError();
+  }
 
   /// The [MediaTrackSupportedConstraints] dictionary's **`aspectRatio`**
   /// property is a read-only Boolean value which is present (and set to `true`)
@@ -341,8 +478,13 @@ abstract class MediaTrackSupportedConstraints implements JSObject {
   ///
   /// You can access the supported constraints dictionary by calling
   /// `navigator.mediaDevices.getSupportedConstraints()`.
-  bool get aspectRatio;
-  set aspectRatio(bool value);
+  bool get aspectRatio {
+    unsupportedPlatformError();
+  }
+
+  set aspectRatio(bool value) {
+    unsupportedPlatformError();
+  }
 
   /// The [MediaTrackSupportedConstraints] dictionary's **`frameRate`** property
   /// is a read-only Boolean value which is
@@ -359,8 +501,13 @@ abstract class MediaTrackSupportedConstraints implements JSObject {
   /// Checking the value of this property lets you determine if the user agent
   /// allows constraining the video track configuration by frame rate. See the
   /// [example](#examples) to see how this can be used.
-  bool get frameRate;
-  set frameRate(bool value);
+  bool get frameRate {
+    unsupportedPlatformError();
+  }
+
+  set frameRate(bool value) {
+    unsupportedPlatformError();
+  }
 
   /// The [MediaTrackSupportedConstraints] dictionary's
   /// **`facingMode`** property is a read-only Boolean value which is
@@ -373,10 +520,21 @@ abstract class MediaTrackSupportedConstraints implements JSObject {
   ///
   /// You can access the supported constraints dictionary by calling
   /// `navigator.mediaDevices.getSupportedConstraints()`.
-  bool get facingMode;
-  set facingMode(bool value);
-  bool get resizeMode;
-  set resizeMode(bool value);
+  bool get facingMode {
+    unsupportedPlatformError();
+  }
+
+  set facingMode(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get resizeMode {
+    unsupportedPlatformError();
+  }
+
+  set resizeMode(bool value) {
+    unsupportedPlatformError();
+  }
 
   /// The [MediaTrackSupportedConstraints] dictionary's
   /// **`sampleRate`** property is a read-only Boolean value which is
@@ -389,8 +547,13 @@ abstract class MediaTrackSupportedConstraints implements JSObject {
   ///
   /// You can access the supported constraints dictionary by calling
   /// `navigator.mediaDevices.getSupportedConstraints()`.
-  bool get sampleRate;
-  set sampleRate(bool value);
+  bool get sampleRate {
+    unsupportedPlatformError();
+  }
+
+  set sampleRate(bool value) {
+    unsupportedPlatformError();
+  }
 
   /// The [MediaTrackSupportedConstraints] dictionary's
   /// **`sampleSize`** property is a read-only Boolean value which is
@@ -403,8 +566,13 @@ abstract class MediaTrackSupportedConstraints implements JSObject {
   ///
   /// You can access the supported constraints dictionary by calling
   /// `navigator.mediaDevices.getSupportedConstraints()`.
-  bool get sampleSize;
-  set sampleSize(bool value);
+  bool get sampleSize {
+    unsupportedPlatformError();
+  }
+
+  set sampleSize(bool value) {
+    unsupportedPlatformError();
+  }
 
   /// The [MediaTrackSupportedConstraints] dictionary's
   /// **`echoCancellation`** property is a read-only Boolean value
@@ -417,8 +585,13 @@ abstract class MediaTrackSupportedConstraints implements JSObject {
   ///
   /// You can access the supported constraints dictionary by calling
   /// `navigator.mediaDevices.getSupportedConstraints()`.
-  bool get echoCancellation;
-  set echoCancellation(bool value);
+  bool get echoCancellation {
+    unsupportedPlatformError();
+  }
+
+  set echoCancellation(bool value) {
+    unsupportedPlatformError();
+  }
 
   /// The [MediaTrackSupportedConstraints] dictionary's **`autoGainControl`**
   /// property is a read-only Boolean value which is present (and set to `true`)
@@ -435,8 +608,13 @@ abstract class MediaTrackSupportedConstraints implements JSObject {
   /// tracks; this obviously is contingent on whether or not the individual
   /// device supports automatic gain control as well; it's typically a feature
   /// provided by microphones.
-  bool get autoGainControl;
-  set autoGainControl(bool value);
+  bool get autoGainControl {
+    unsupportedPlatformError();
+  }
+
+  set autoGainControl(bool value) {
+    unsupportedPlatformError();
+  }
 
   /// The [MediaTrackSupportedConstraints] dictionary's
   /// **`noiseSuppression`** property is a read-only Boolean value
@@ -456,8 +634,13 @@ abstract class MediaTrackSupportedConstraints implements JSObject {
   /// obviously is contingent on whether or not the individual device supports
   /// automatic gain
   /// control as well.
-  bool get noiseSuppression;
-  set noiseSuppression(bool value);
+  bool get noiseSuppression {
+    unsupportedPlatformError();
+  }
+
+  set noiseSuppression(bool value) {
+    unsupportedPlatformError();
+  }
 
   /// The [MediaTrackSupportedConstraints] dictionary's **`latency`** property
   /// is a read-only Boolean value which is present (and set to `true`) in the
@@ -468,8 +651,13 @@ abstract class MediaTrackSupportedConstraints implements JSObject {
   ///
   /// You can access the supported constraints dictionary by calling
   /// `navigator.mediaDevices.getSupportedConstraints()`.
-  bool get latency;
-  set latency(bool value);
+  bool get latency {
+    unsupportedPlatformError();
+  }
+
+  set latency(bool value) {
+    unsupportedPlatformError();
+  }
 
   /// The [MediaTrackSupportedConstraints] dictionary's
   /// **`channelCount`** property is a read-only Boolean value which
@@ -482,8 +670,13 @@ abstract class MediaTrackSupportedConstraints implements JSObject {
   ///
   /// You can access the supported constraints dictionary by calling
   /// `navigator.mediaDevices.getSupportedConstraints()`.
-  bool get channelCount;
-  set channelCount(bool value);
+  bool get channelCount {
+    unsupportedPlatformError();
+  }
+
+  set channelCount(bool value) {
+    unsupportedPlatformError();
+  }
 
   /// The [MediaTrackSupportedConstraints] dictionary's
   /// **`deviceId`** property is a read-only Boolean value which is
@@ -496,8 +689,13 @@ abstract class MediaTrackSupportedConstraints implements JSObject {
   ///
   /// You can access the supported constraints dictionary by calling
   /// `navigator.mediaDevices.getSupportedConstraints()`.
-  bool get deviceId;
-  set deviceId(bool value);
+  bool get deviceId {
+    unsupportedPlatformError();
+  }
+
+  set deviceId(bool value) {
+    unsupportedPlatformError();
+  }
 
   /// The [MediaTrackSupportedConstraints] dictionary's
   /// **`groupId`** property is a read-only Boolean value which is
@@ -510,42 +708,149 @@ abstract class MediaTrackSupportedConstraints implements JSObject {
   ///
   /// You can access the supported constraints dictionary by calling
   /// `navigator.mediaDevices.getSupportedConstraints()`.
-  bool get groupId;
-  set groupId(bool value);
-  bool get whiteBalanceMode;
-  set whiteBalanceMode(bool value);
-  bool get exposureMode;
-  set exposureMode(bool value);
-  bool get focusMode;
-  set focusMode(bool value);
-  bool get pointsOfInterest;
-  set pointsOfInterest(bool value);
-  bool get exposureCompensation;
-  set exposureCompensation(bool value);
-  bool get exposureTime;
-  set exposureTime(bool value);
-  bool get colorTemperature;
-  set colorTemperature(bool value);
-  bool get iso;
-  set iso(bool value);
-  bool get brightness;
-  set brightness(bool value);
-  bool get contrast;
-  set contrast(bool value);
-  bool get pan;
-  set pan(bool value);
-  bool get saturation;
-  set saturation(bool value);
-  bool get sharpness;
-  set sharpness(bool value);
-  bool get focusDistance;
-  set focusDistance(bool value);
-  bool get tilt;
-  set tilt(bool value);
-  bool get zoom;
-  set zoom(bool value);
-  bool get torch;
-  set torch(bool value);
+  bool get groupId {
+    unsupportedPlatformError();
+  }
+
+  set groupId(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get whiteBalanceMode {
+    unsupportedPlatformError();
+  }
+
+  set whiteBalanceMode(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get exposureMode {
+    unsupportedPlatformError();
+  }
+
+  set exposureMode(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get focusMode {
+    unsupportedPlatformError();
+  }
+
+  set focusMode(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get pointsOfInterest {
+    unsupportedPlatformError();
+  }
+
+  set pointsOfInterest(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get exposureCompensation {
+    unsupportedPlatformError();
+  }
+
+  set exposureCompensation(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get exposureTime {
+    unsupportedPlatformError();
+  }
+
+  set exposureTime(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get colorTemperature {
+    unsupportedPlatformError();
+  }
+
+  set colorTemperature(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get iso {
+    unsupportedPlatformError();
+  }
+
+  set iso(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get brightness {
+    unsupportedPlatformError();
+  }
+
+  set brightness(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get contrast {
+    unsupportedPlatformError();
+  }
+
+  set contrast(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get pan {
+    unsupportedPlatformError();
+  }
+
+  set pan(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get saturation {
+    unsupportedPlatformError();
+  }
+
+  set saturation(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get sharpness {
+    unsupportedPlatformError();
+  }
+
+  set sharpness(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get focusDistance {
+    unsupportedPlatformError();
+  }
+
+  set focusDistance(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get tilt {
+    unsupportedPlatformError();
+  }
+
+  set tilt(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get zoom {
+    unsupportedPlatformError();
+  }
+
+  set zoom(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get torch {
+    unsupportedPlatformError();
+  }
+
+  set torch(bool value) {
+    unsupportedPlatformError();
+  }
 
   /// The [MediaTrackSupportedConstraints] dictionary's **`displaySurface`**
   /// property indicates whether or not the
@@ -554,8 +859,13 @@ abstract class MediaTrackSupportedConstraints implements JSObject {
   ///
   /// The supported constraints list is obtained by calling
   /// [MediaDevices.getSupportedConstraints].
-  bool get displaySurface;
-  set displaySurface(bool value);
+  bool get displaySurface {
+    unsupportedPlatformError();
+  }
+
+  set displaySurface(bool value) {
+    unsupportedPlatformError();
+  }
 
   /// The [MediaTrackSupportedConstraints] dictionary's **`logicalSurface`**
   /// property indicates whether or not the
@@ -564,12 +874,29 @@ abstract class MediaTrackSupportedConstraints implements JSObject {
   ///
   /// The supported constraints list is obtained by calling
   /// [MediaDevices.getSupportedConstraints].
-  bool get logicalSurface;
-  set logicalSurface(bool value);
-  bool get cursor;
-  set cursor(bool value);
-  bool get restrictOwnAudio;
-  set restrictOwnAudio(bool value);
+  bool get logicalSurface {
+    unsupportedPlatformError();
+  }
+
+  set logicalSurface(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get cursor {
+    unsupportedPlatformError();
+  }
+
+  set cursor(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get restrictOwnAudio {
+    unsupportedPlatformError();
+  }
+
+  set restrictOwnAudio(bool value) {
+    unsupportedPlatformError();
+  }
 
   /// The [MediaTrackSupportedConstraints] dictionary's
   /// **`suppressLocalAudioPlayback`** property indicates whether or not the
@@ -578,11 +905,54 @@ abstract class MediaTrackSupportedConstraints implements JSObject {
   ///
   /// The supported constraints list is obtained by calling
   /// [MediaDevices.getSupportedConstraints].
-  bool get suppressLocalAudioPlayback;
-  set suppressLocalAudioPlayback(bool value);
-}
+  bool get suppressLocalAudioPlayback {
+    unsupportedPlatformError();
+  }
 
-abstract class MediaTrackCapabilities implements JSObject {
+  set suppressLocalAudioPlayback(bool value) {
+    unsupportedPlatformError();
+  }
+}
+extension type MediaTrackCapabilities._(JSObject _) implements JSObject {
+  factory MediaTrackCapabilities({
+    ULongRange? width,
+    ULongRange? height,
+    DoubleRange? aspectRatio,
+    DoubleRange? frameRate,
+    JSArray<JSString>? facingMode,
+    JSArray<JSString>? resizeMode,
+    ULongRange? sampleRate,
+    ULongRange? sampleSize,
+    JSArray<JSBoolean>? echoCancellation,
+    JSArray<JSBoolean>? autoGainControl,
+    JSArray<JSBoolean>? noiseSuppression,
+    DoubleRange? latency,
+    ULongRange? channelCount,
+    String? deviceId,
+    String? groupId,
+    JSArray<JSString>? whiteBalanceMode,
+    JSArray<JSString>? exposureMode,
+    JSArray<JSString>? focusMode,
+    MediaSettingsRange? exposureCompensation,
+    MediaSettingsRange? exposureTime,
+    MediaSettingsRange? colorTemperature,
+    MediaSettingsRange? iso,
+    MediaSettingsRange? brightness,
+    MediaSettingsRange? contrast,
+    MediaSettingsRange? saturation,
+    MediaSettingsRange? sharpness,
+    MediaSettingsRange? focusDistance,
+    MediaSettingsRange? pan,
+    MediaSettingsRange? tilt,
+    MediaSettingsRange? zoom,
+    JSArray<JSBoolean>? torch,
+    String? displaySurface,
+    bool? logicalSurface,
+    JSArray<JSString>? cursor,
+  }) {
+    unsupportedPlatformError();
+  }
+
   ULongRange get width {
     unsupportedPlatformError();
   }
@@ -868,13 +1238,102 @@ abstract class MediaTrackCapabilities implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MediaTrackConstraints).
-abstract class MediaTrackConstraints
+extension type MediaTrackConstraints._(JSObject _)
     implements MediaTrackConstraintSet, JSObject {
-  JSArray<MediaTrackConstraintSet> get advanced;
-  set advanced(JSArray<MediaTrackConstraintSet> value);
-}
+  factory MediaTrackConstraints({
+    ConstrainULong? width,
+    ConstrainULong? height,
+    ConstrainDouble? aspectRatio,
+    ConstrainDouble? frameRate,
+    ConstrainDOMString? facingMode,
+    ConstrainDOMString? resizeMode,
+    ConstrainULong? sampleRate,
+    ConstrainULong? sampleSize,
+    ConstrainBoolean? echoCancellation,
+    ConstrainBoolean? autoGainControl,
+    ConstrainBoolean? noiseSuppression,
+    ConstrainDouble? latency,
+    ConstrainULong? channelCount,
+    ConstrainDOMString? deviceId,
+    ConstrainDOMString? groupId,
+    ConstrainDOMString? whiteBalanceMode,
+    ConstrainDOMString? exposureMode,
+    ConstrainDOMString? focusMode,
+    ConstrainPoint2D? pointsOfInterest,
+    ConstrainDouble? exposureCompensation,
+    ConstrainDouble? exposureTime,
+    ConstrainDouble? colorTemperature,
+    ConstrainDouble? iso,
+    ConstrainDouble? brightness,
+    ConstrainDouble? contrast,
+    ConstrainDouble? saturation,
+    ConstrainDouble? sharpness,
+    ConstrainDouble? focusDistance,
+    JSAny? pan,
+    JSAny? tilt,
+    JSAny? zoom,
+    ConstrainBoolean? torch,
+    ConstrainDOMString? displaySurface,
+    ConstrainBoolean? logicalSurface,
+    ConstrainDOMString? cursor,
+    ConstrainBoolean? restrictOwnAudio,
+    ConstrainBoolean? suppressLocalAudioPlayback,
+    JSArray<MediaTrackConstraintSet>? advanced,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class MediaTrackConstraintSet implements JSObject {
+  JSArray<MediaTrackConstraintSet> get advanced {
+    unsupportedPlatformError();
+  }
+
+  set advanced(JSArray<MediaTrackConstraintSet> value) {
+    unsupportedPlatformError();
+  }
+}
+extension type MediaTrackConstraintSet._(JSObject _) implements JSObject {
+  factory MediaTrackConstraintSet({
+    ConstrainULong? width,
+    ConstrainULong? height,
+    ConstrainDouble? aspectRatio,
+    ConstrainDouble? frameRate,
+    ConstrainDOMString? facingMode,
+    ConstrainDOMString? resizeMode,
+    ConstrainULong? sampleRate,
+    ConstrainULong? sampleSize,
+    ConstrainBoolean? echoCancellation,
+    ConstrainBoolean? autoGainControl,
+    ConstrainBoolean? noiseSuppression,
+    ConstrainDouble? latency,
+    ConstrainULong? channelCount,
+    ConstrainDOMString? deviceId,
+    ConstrainDOMString? groupId,
+    ConstrainDOMString? whiteBalanceMode,
+    ConstrainDOMString? exposureMode,
+    ConstrainDOMString? focusMode,
+    ConstrainPoint2D? pointsOfInterest,
+    ConstrainDouble? exposureCompensation,
+    ConstrainDouble? exposureTime,
+    ConstrainDouble? colorTemperature,
+    ConstrainDouble? iso,
+    ConstrainDouble? brightness,
+    ConstrainDouble? contrast,
+    ConstrainDouble? saturation,
+    ConstrainDouble? sharpness,
+    ConstrainDouble? focusDistance,
+    JSAny? pan,
+    JSAny? tilt,
+    JSAny? zoom,
+    ConstrainBoolean? torch,
+    ConstrainDOMString? displaySurface,
+    ConstrainBoolean? logicalSurface,
+    ConstrainDOMString? cursor,
+    ConstrainBoolean? restrictOwnAudio,
+    ConstrainBoolean? suppressLocalAudioPlayback,
+  }) {
+    unsupportedPlatformError();
+  }
+
   ConstrainULong get width {
     unsupportedPlatformError();
   }
@@ -1188,7 +1647,49 @@ abstract class MediaTrackConstraintSet implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MediaTrackSettings).
-abstract class MediaTrackSettings implements JSObject {
+extension type MediaTrackSettings._(JSObject _) implements JSObject {
+  factory MediaTrackSettings({
+    int? width,
+    int? height,
+    num? aspectRatio,
+    num? frameRate,
+    String? facingMode,
+    String? resizeMode,
+    int? sampleRate,
+    int? sampleSize,
+    bool? echoCancellation,
+    bool? autoGainControl,
+    bool? noiseSuppression,
+    num? latency,
+    int? channelCount,
+    String? deviceId,
+    String? groupId,
+    String? whiteBalanceMode,
+    String? exposureMode,
+    String? focusMode,
+    JSArray<Point2D>? pointsOfInterest,
+    num? exposureCompensation,
+    num? exposureTime,
+    num? colorTemperature,
+    num? iso,
+    num? brightness,
+    num? contrast,
+    num? saturation,
+    num? sharpness,
+    num? focusDistance,
+    num? pan,
+    num? tilt,
+    num? zoom,
+    bool? torch,
+    String? displaySurface,
+    bool? logicalSurface,
+    String? cursor,
+    bool? restrictOwnAudio,
+    bool? suppressLocalAudioPlayback,
+  }) {
+    unsupportedPlatformError();
+  }
+
   /// The [MediaTrackSettings] dictionary's **`width`**
   /// property is an integer indicating the number of pixels wide
   /// [MediaStreamTrack] is currently configured to be. This lets you determine
@@ -1204,8 +1705,13 @@ abstract class MediaTrackSettings implements JSObject {
   /// to [MediaDevices.getSupportedConstraints]. However, typically this is
   /// unnecessary since browsers will ignore any constraints they're unfamiliar
   /// with.
-  int get width;
-  set width(int value);
+  int get width {
+    unsupportedPlatformError();
+  }
+
+  set width(int value) {
+    unsupportedPlatformError();
+  }
 
   /// The [MediaTrackSettings] dictionary's **`height`**
   /// property is an integer indicating the number of pixels tall
@@ -1222,8 +1728,13 @@ abstract class MediaTrackSettings implements JSObject {
   /// to [MediaDevices.getSupportedConstraints]. However, typically this is
   /// unnecessary since browsers will ignore any constraints they're unfamiliar
   /// with.
-  int get height;
-  set height(int value);
+  int get height {
+    unsupportedPlatformError();
+  }
+
+  set height(int value) {
+    unsupportedPlatformError();
+  }
 
   /// The [MediaTrackSettings] dictionary's **`aspectRatio`** property is a
   /// double-precision floating-point number indicating the  of the
@@ -1239,8 +1750,13 @@ abstract class MediaTrackSettings implements JSObject {
   /// call to [MediaDevices.getSupportedConstraints]. However, typically this
   /// is unnecessary since browsers will ignore any constraints they're
   /// unfamiliar with.
-  double get aspectRatio;
-  set aspectRatio(num value);
+  double get aspectRatio {
+    unsupportedPlatformError();
+  }
+
+  set aspectRatio(num value) {
+    unsupportedPlatformError();
+  }
 
   /// The [MediaTrackSettings] dictionary's
   /// **`frameRate`** property is a double-precision floating-point
@@ -1259,8 +1775,13 @@ abstract class MediaTrackSettings implements JSObject {
   /// call to [MediaDevices.getSupportedConstraints]. However, typically this
   /// is unnecessary since browsers will ignore any constraints they're
   /// unfamiliar with.
-  double get frameRate;
-  set frameRate(num value);
+  double get frameRate {
+    unsupportedPlatformError();
+  }
+
+  set frameRate(num value) {
+    unsupportedPlatformError();
+  }
 
   /// The [MediaTrackSettings] dictionary's
   /// **`facingMode`** property is a string
@@ -1284,10 +1805,21 @@ abstract class MediaTrackSettings implements JSObject {
   /// [WebRTC](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API)
   /// [RTCPeerConnection]
   /// will never include this property.
-  String get facingMode;
-  set facingMode(String value);
-  String get resizeMode;
-  set resizeMode(String value);
+  String get facingMode {
+    unsupportedPlatformError();
+  }
+
+  set facingMode(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get resizeMode {
+    unsupportedPlatformError();
+  }
+
+  set resizeMode(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The [MediaTrackSettings] dictionary's
   /// **`sampleRate`** property is an integer indicating how many
@@ -1305,8 +1837,13 @@ abstract class MediaTrackSettings implements JSObject {
   /// call to [MediaDevices.getSupportedConstraints]. However, typically this
   /// is unnecessary since browsers will ignore any constraints they're
   /// unfamiliar with.
-  int get sampleRate;
-  set sampleRate(int value);
+  int get sampleRate {
+    unsupportedPlatformError();
+  }
+
+  set sampleRate(int value) {
+    unsupportedPlatformError();
+  }
 
   /// The [MediaTrackSettings] dictionary's
   /// **`sampleSize`** property is an integer indicating the linear
@@ -1324,8 +1861,13 @@ abstract class MediaTrackSettings implements JSObject {
   /// call to [MediaDevices.getSupportedConstraints]. However, typically this
   /// is unnecessary since browsers will ignore any constraints they're
   /// unfamiliar with.
-  int get sampleSize;
-  set sampleSize(int value);
+  int get sampleSize {
+    unsupportedPlatformError();
+  }
+
+  set sampleSize(int value) {
+    unsupportedPlatformError();
+  }
 
   /// The [MediaTrackSettings] dictionary's
   /// **`echoCancellation`** property is a Boolean value whose value
@@ -1360,8 +1902,13 @@ abstract class MediaTrackSettings implements JSObject {
   /// [WebRTC](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API)
   /// [RTCPeerConnection]
   /// will never include this property.
-  bool get echoCancellation;
-  set echoCancellation(bool value);
+  bool get echoCancellation {
+    unsupportedPlatformError();
+  }
+
+  set echoCancellation(bool value) {
+    unsupportedPlatformError();
+  }
 
   /// The [MediaTrackSettings] dictionary's
   /// **`autoGainControl`** property is a Boolean value whose value
@@ -1388,8 +1935,13 @@ abstract class MediaTrackSettings implements JSObject {
   /// by a call to [MediaDevices.getSupportedConstraints]. However, typically
   /// this is unnecessary since browsers will ignore any constraints they're
   /// unfamiliar with.
-  bool get autoGainControl;
-  set autoGainControl(bool value);
+  bool get autoGainControl {
+    unsupportedPlatformError();
+  }
+
+  set autoGainControl(bool value) {
+    unsupportedPlatformError();
+  }
 
   /// The [MediaTrackSettings] dictionary's
   /// **`noiseSuppression`** property is a Boolean value whose value
@@ -1417,8 +1969,13 @@ abstract class MediaTrackSettings implements JSObject {
   /// by a call to [MediaDevices.getSupportedConstraints]. However, typically
   /// this is unnecessary since browsers will ignore any constraints they're
   /// unfamiliar with.
-  bool get noiseSuppression;
-  set noiseSuppression(bool value);
+  bool get noiseSuppression {
+    unsupportedPlatformError();
+  }
+
+  set noiseSuppression(bool value) {
+    unsupportedPlatformError();
+  }
 
   /// The [MediaTrackSettings] dictionary's
   /// **`latency`** property is a double-precision floating-point
@@ -1446,8 +2003,13 @@ abstract class MediaTrackSettings implements JSObject {
   /// [WebRTC](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API)
   /// [RTCPeerConnection]
   /// will never include this property.
-  double get latency;
-  set latency(num value);
+  double get latency {
+    unsupportedPlatformError();
+  }
+
+  set latency(num value) {
+    unsupportedPlatformError();
+  }
 
   /// The [MediaTrackSettings] dictionary's
   /// **`channelCount`** property is an integer indicating how many
@@ -1467,8 +2029,13 @@ abstract class MediaTrackSettings implements JSObject {
   /// call to [MediaDevices.getSupportedConstraints]. However, typically this
   /// is unnecessary since browsers will ignore any constraints they're
   /// unfamiliar with.
-  int get channelCount;
-  set channelCount(int value);
+  int get channelCount {
+    unsupportedPlatformError();
+  }
+
+  set channelCount(int value) {
+    unsupportedPlatformError();
+  }
 
   /// The [MediaTrackSettings] dictionary's
   /// **`deviceId`** property is a string which
@@ -1492,8 +2059,13 @@ abstract class MediaTrackSettings implements JSObject {
   /// [WebRTC](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API)
   /// [RTCPeerConnection]
   /// will never include this property.
-  String get deviceId;
-  set deviceId(String value);
+  String get deviceId {
+    unsupportedPlatformError();
+  }
+
+  set deviceId(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The [MediaTrackSettings] dictionary's
   /// **`groupId`** property is a browsing-session unique
@@ -1517,48 +2089,160 @@ abstract class MediaTrackSettings implements JSObject {
   /// [WebRTC](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API)
   /// [RTCPeerConnection]
   /// will never include this property.
-  String get groupId;
-  set groupId(String value);
-  String get whiteBalanceMode;
-  set whiteBalanceMode(String value);
-  String get exposureMode;
-  set exposureMode(String value);
-  String get focusMode;
-  set focusMode(String value);
-  JSArray<Point2D> get pointsOfInterest;
-  set pointsOfInterest(JSArray<Point2D> value);
-  double get exposureCompensation;
-  set exposureCompensation(num value);
-  double get exposureTime;
-  set exposureTime(num value);
-  double get colorTemperature;
-  set colorTemperature(num value);
-  double get iso;
-  set iso(num value);
-  double get brightness;
-  set brightness(num value);
-  double get contrast;
-  set contrast(num value);
-  double get saturation;
-  set saturation(num value);
-  double get sharpness;
-  set sharpness(num value);
-  double get focusDistance;
-  set focusDistance(num value);
-  double get pan;
-  set pan(num value);
-  double get tilt;
-  set tilt(num value);
-  double get zoom;
-  set zoom(num value);
-  bool get torch;
-  set torch(bool value);
+  String get groupId {
+    unsupportedPlatformError();
+  }
+
+  set groupId(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get whiteBalanceMode {
+    unsupportedPlatformError();
+  }
+
+  set whiteBalanceMode(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get exposureMode {
+    unsupportedPlatformError();
+  }
+
+  set exposureMode(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get focusMode {
+    unsupportedPlatformError();
+  }
+
+  set focusMode(String value) {
+    unsupportedPlatformError();
+  }
+
+  JSArray<Point2D> get pointsOfInterest {
+    unsupportedPlatformError();
+  }
+
+  set pointsOfInterest(JSArray<Point2D> value) {
+    unsupportedPlatformError();
+  }
+
+  double get exposureCompensation {
+    unsupportedPlatformError();
+  }
+
+  set exposureCompensation(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get exposureTime {
+    unsupportedPlatformError();
+  }
+
+  set exposureTime(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get colorTemperature {
+    unsupportedPlatformError();
+  }
+
+  set colorTemperature(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get iso {
+    unsupportedPlatformError();
+  }
+
+  set iso(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get brightness {
+    unsupportedPlatformError();
+  }
+
+  set brightness(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get contrast {
+    unsupportedPlatformError();
+  }
+
+  set contrast(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get saturation {
+    unsupportedPlatformError();
+  }
+
+  set saturation(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get sharpness {
+    unsupportedPlatformError();
+  }
+
+  set sharpness(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get focusDistance {
+    unsupportedPlatformError();
+  }
+
+  set focusDistance(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get pan {
+    unsupportedPlatformError();
+  }
+
+  set pan(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get tilt {
+    unsupportedPlatformError();
+  }
+
+  set tilt(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get zoom {
+    unsupportedPlatformError();
+  }
+
+  set zoom(num value) {
+    unsupportedPlatformError();
+  }
+
+  bool get torch {
+    unsupportedPlatformError();
+  }
+
+  set torch(bool value) {
+    unsupportedPlatformError();
+  }
 
   /// The [MediaTrackSettings] dictionary's
   /// **`displaySurface`** property indicates the type of display
   /// surface being captured.
-  String get displaySurface;
-  set displaySurface(String value);
+  String get displaySurface {
+    unsupportedPlatformError();
+  }
+
+  set displaySurface(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The [MediaTrackSettings] dictionary's
   /// **`logicalSurface`** property indicates whether or not the
@@ -1569,16 +2253,32 @@ abstract class MediaTrackSettings implements JSObject {
   /// buffers (where only part of the buffer is visible without scrolling the
   /// containing
   /// window) and offscreen rendering contexts.
-  bool get logicalSurface;
-  set logicalSurface(bool value);
+  bool get logicalSurface {
+    unsupportedPlatformError();
+  }
+
+  set logicalSurface(bool value) {
+    unsupportedPlatformError();
+  }
 
   /// The [MediaTrackSettings] dictionary's **`cursor`** property indicates
   /// whether or not the cursor should be captured as part of the video track
   /// included in the [MediaStream] returned by [MediaDevices.getDisplayMedia].
-  String get cursor;
-  set cursor(String value);
-  bool get restrictOwnAudio;
-  set restrictOwnAudio(bool value);
+  String get cursor {
+    unsupportedPlatformError();
+  }
+
+  set cursor(String value) {
+    unsupportedPlatformError();
+  }
+
+  bool get restrictOwnAudio {
+    unsupportedPlatformError();
+  }
+
+  set restrictOwnAudio(bool value) {
+    unsupportedPlatformError();
+  }
 
   /// The [MediaTrackSettings] dictionary's **`suppressLocalAudioPlayback`**
   /// property controls whether the audio playing in a tab will continue to be
@@ -1588,8 +2288,13 @@ abstract class MediaTrackSettings implements JSObject {
   /// system in a conference room, you will want the audio to play out of the AV
   /// system, and not the local speakers. This way, the audio will be louder and
   /// clearer, and also in sync with the conference video.
-  bool get suppressLocalAudioPlayback;
-  set suppressLocalAudioPlayback(bool value);
+  bool get suppressLocalAudioPlayback {
+    unsupportedPlatformError();
+  }
+
+  set suppressLocalAudioPlayback(bool value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`MediaStreamTrackEvent`** interface of the
@@ -1606,13 +2311,31 @@ abstract class MediaTrackSettings implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrackEvent).
-abstract class MediaStreamTrackEvent implements Event, JSObject {
+extension type MediaStreamTrackEvent._(JSObject _) implements Event, JSObject {
+  factory MediaStreamTrackEvent(
+    String type,
+    MediaStreamTrackEventInit eventInitDict,
+  ) {
+    unsupportedPlatformError();
+  }
+
   /// The **`track`** read-only property of the [MediaStreamTrackEvent]
   /// interface returns the [MediaStreamTrack] associated with this event.
-  MediaStreamTrack get track;
+  MediaStreamTrack get track {
+    unsupportedPlatformError();
+  }
 }
+extension type MediaStreamTrackEventInit._(JSObject _)
+    implements EventInit, JSObject {
+  factory MediaStreamTrackEventInit({
+    bool? bubbles,
+    bool? cancelable,
+    bool? composed,
+    required MediaStreamTrack track,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class MediaStreamTrackEventInit implements EventInit, JSObject {
   MediaStreamTrack get track {
     unsupportedPlatformError();
   }
@@ -1633,11 +2356,21 @@ abstract class MediaStreamTrackEventInit implements EventInit, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/OverconstrainedError).
-abstract class OverconstrainedError implements DOMException, JSObject {
+extension type OverconstrainedError._(JSObject _)
+    implements DOMException, JSObject {
+  factory OverconstrainedError(
+    String constraint, [
+    String? message,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// The **`constraint`** read-only property of the
   /// [OverconstrainedError] interface returns the constraint that was supplied
   /// in the constructor, meaning the constraint that was not satisfied.
-  String get constraint;
+  String get constraint {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`MediaDevices`** interface of the [Media Capture and Streams API]
@@ -1649,7 +2382,7 @@ abstract class OverconstrainedError implements DOMException, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices).
-abstract class MediaDevices implements EventTarget, JSObject {
+extension type MediaDevices._(JSObject _) implements EventTarget, JSObject {
   /// The **`enumerateDevices()`** method of the [MediaDevices] interface
   /// requests a list of the currently available media input and output devices,
   /// such as microphones, cameras, headsets, and so forth.
@@ -1666,13 +2399,17 @@ abstract class MediaDevices implements EventTarget, JSObject {
   /// [Permissions API](https://developer.mozilla.org/en-US/docs/Web/API/Permissions_API),
   /// and the list will omit devices for which the user has not granted explicit
   /// permission.
-  JSPromise<JSArray<MediaDeviceInfo>> enumerateDevices();
+  JSPromise<JSArray<MediaDeviceInfo>> enumerateDevices() {
+    unsupportedPlatformError();
+  }
 
   /// The **`getSupportedConstraints()`** method of the [MediaDevices] interface
   /// returns an object based on the [MediaTrackSupportedConstraints]
   /// dictionary, whose member fields each specify one of the constrainable
   /// properties the  understands.
-  MediaTrackSupportedConstraints getSupportedConstraints();
+  MediaTrackSupportedConstraints getSupportedConstraints() {
+    unsupportedPlatformError();
+  }
 
   /// The **`getUserMedia()`** method of the [MediaDevices] interface prompts
   /// the user for permission to use a media input which produces a
@@ -1692,7 +2429,9 @@ abstract class MediaDevices implements EventTarget, JSObject {
   /// > **Note:** It's possible for the returned promise to _neither_ resolve
   /// > nor reject, as the user is not required to make a choice at all and may
   /// > ignore the request.
-  JSPromise<MediaStream> getUserMedia([MediaStreamConstraints constraints]);
+  JSPromise<MediaStream> getUserMedia([MediaStreamConstraints? constraints]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`getDisplayMedia()`** method of the [MediaDevices] interface prompts
   /// the user to select and
@@ -1709,9 +2448,17 @@ abstract class MediaDevices implements EventTarget, JSObject {
   /// See
   /// [Using the Screen Capture API](https://developer.mozilla.org/en-US/docs/Web/API/Screen_Capture_API/Using_Screen_Capture)
   /// for more details and an example.
-  JSPromise<MediaStream> getDisplayMedia([DisplayMediaStreamOptions options]);
-  EventHandler get ondevicechange;
-  set ondevicechange(EventHandler value);
+  JSPromise<MediaStream> getDisplayMedia([DisplayMediaStreamOptions? options]) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ondevicechange {
+    unsupportedPlatformError();
+  }
+
+  set ondevicechange(EventHandler value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`MediaDeviceInfo`** interface of the [Media Capture and Streams API]
@@ -1724,10 +2471,12 @@ abstract class MediaDevices implements EventTarget, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MediaDeviceInfo).
-abstract class MediaDeviceInfo implements JSObject {
+extension type MediaDeviceInfo._(JSObject _) implements JSObject {
   /// The **`toJSON()`** method of the [MediaDeviceInfo] interface is a ; it
   /// returns a JSON representation of the [MediaDeviceInfo] object.
-  JSObject toJSON();
+  JSObject toJSON() {
+    unsupportedPlatformError();
+  }
 
   /// The **`deviceId`** read-only property
   /// of the [MediaDeviceInfo] interface returns a string
@@ -1738,12 +2487,16 @@ abstract class MediaDeviceInfo implements JSObject {
   /// the calling application. It is reset when the user clears cookies. For
   /// private browsing,
   /// a different identifier is used that is not persisted across sessions.
-  String get deviceId;
+  String get deviceId {
+    unsupportedPlatformError();
+  }
 
   /// The **`kind`** read-only property of
   /// the [MediaDeviceInfo] interface returns an enumerated value, that is
   /// either `"videoinput"`, `"audioinput"` or `"audiooutput"`.
-  MediaDeviceKind get kind;
+  MediaDeviceKind get kind {
+    unsupportedPlatformError();
+  }
 
   /// The **`label`** read-only
   /// property of the [MediaDeviceInfo] interface returns a
@@ -1752,7 +2505,9 @@ abstract class MediaDeviceInfo implements JSObject {
   ///
   /// Only available during active `MediaStream`
   /// use, or when persistent permissions have been granted.
-  String get label;
+  String get label {
+    unsupportedPlatformError();
+  }
 
   /// The **`groupId`** read-only property of
   /// the [MediaDeviceInfo] interface returns a string that
@@ -1762,7 +2517,9 @@ abstract class MediaDeviceInfo implements JSObject {
   /// belong to the same physical device; for example, a monitor with both a
   /// built-in camera
   /// and microphone.
-  String get groupId;
+  String get groupId {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`InputDeviceInfo`** interface of the [Media Capture and Streams API]
@@ -1775,14 +2532,25 @@ abstract class MediaDeviceInfo implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/InputDeviceInfo).
-abstract class InputDeviceInfo implements MediaDeviceInfo, JSObject {
+extension type InputDeviceInfo._(JSObject _)
+    implements MediaDeviceInfo, JSObject {
   /// The **`getCapabilities()`** method of the [InputDeviceInfo] interface
   /// returns a `MediaTrackCapabilities` object describing the primary audio or
   /// video track of the device's [MediaStream].
-  MediaTrackCapabilities getCapabilities();
+  MediaTrackCapabilities getCapabilities() {
+    unsupportedPlatformError();
+  }
 }
+extension type MediaStreamConstraints._(JSObject _) implements JSObject {
+  factory MediaStreamConstraints({
+    JSAny? video,
+    JSAny? audio,
+    bool? preferCurrentTab,
+    String? peerIdentity,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class MediaStreamConstraints implements JSObject {
   JSAny get video {
     unsupportedPlatformError();
   }
@@ -1815,8 +2583,14 @@ abstract class MediaStreamConstraints implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type DoubleRange._(JSObject _) implements JSObject {
+  factory DoubleRange({
+    num? max,
+    num? min,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class DoubleRange implements JSObject {
   double get max {
     unsupportedPlatformError();
   }
@@ -1833,8 +2607,17 @@ abstract class DoubleRange implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type ConstrainDoubleRange._(JSObject _)
+    implements DoubleRange, JSObject {
+  factory ConstrainDoubleRange({
+    num? max,
+    num? min,
+    num? exact,
+    num? ideal,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class ConstrainDoubleRange implements DoubleRange, JSObject {
   double get exact {
     unsupportedPlatformError();
   }
@@ -1851,8 +2634,14 @@ abstract class ConstrainDoubleRange implements DoubleRange, JSObject {
     unsupportedPlatformError();
   }
 }
+extension type ULongRange._(JSObject _) implements JSObject {
+  factory ULongRange({
+    int? max,
+    int? min,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class ULongRange implements JSObject {
   int get max {
     unsupportedPlatformError();
   }
@@ -1869,8 +2658,17 @@ abstract class ULongRange implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type ConstrainULongRange._(JSObject _)
+    implements ULongRange, JSObject {
+  factory ConstrainULongRange({
+    int? max,
+    int? min,
+    int? exact,
+    int? ideal,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class ConstrainULongRange implements ULongRange, JSObject {
   int get exact {
     unsupportedPlatformError();
   }
@@ -1887,8 +2685,14 @@ abstract class ConstrainULongRange implements ULongRange, JSObject {
     unsupportedPlatformError();
   }
 }
+extension type ConstrainBooleanParameters._(JSObject _) implements JSObject {
+  factory ConstrainBooleanParameters({
+    bool? exact,
+    bool? ideal,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class ConstrainBooleanParameters implements JSObject {
   bool get exact {
     unsupportedPlatformError();
   }
@@ -1905,8 +2709,14 @@ abstract class ConstrainBooleanParameters implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type ConstrainDOMStringParameters._(JSObject _) implements JSObject {
+  factory ConstrainDOMStringParameters({
+    JSAny? exact,
+    JSAny? ideal,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class ConstrainDOMStringParameters implements JSObject {
   JSAny get exact {
     unsupportedPlatformError();
   }

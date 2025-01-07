@@ -15,18 +15,33 @@ import '../js_interop.dart';
 import 'geometry.dart';
 import 'html.dart';
 
-abstract class PaintRenderingContext2D implements JSObject {
-  void save();
-  void restore();
+extension type PaintRenderingContext2D._(JSObject _) implements JSObject {
+  void save() {
+    unsupportedPlatformError();
+  }
+
+  void restore() {
+    unsupportedPlatformError();
+  }
+
   void scale(
     num x,
     num y,
-  );
-  void rotate(num angle);
+  ) {
+    unsupportedPlatformError();
+  }
+
+  void rotate(num angle) {
+    unsupportedPlatformError();
+  }
+
   void translate(
     num x,
     num y,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void transform(
     num a,
     num b,
@@ -34,23 +49,38 @@ abstract class PaintRenderingContext2D implements JSObject {
     num d,
     num e,
     num f,
-  );
-  DOMMatrix getTransform();
+  ) {
+    unsupportedPlatformError();
+  }
+
+  DOMMatrix getTransform() {
+    unsupportedPlatformError();
+  }
+
   void setTransform([
-    JSAny aOrTransform,
-    num b,
-    num c,
-    num d,
-    num e,
-    num f,
-  ]);
-  void resetTransform();
+    JSAny? aOrTransform,
+    num? b,
+    num? c,
+    num? d,
+    num? e,
+    num? f,
+  ]) {
+    unsupportedPlatformError();
+  }
+
+  void resetTransform() {
+    unsupportedPlatformError();
+  }
+
   CanvasGradient createLinearGradient(
     num x0,
     num y0,
     num x1,
     num y1,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   CanvasGradient createRadialGradient(
     num x0,
     num y0,
@@ -58,63 +88,105 @@ abstract class PaintRenderingContext2D implements JSObject {
     num x1,
     num y1,
     num r1,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   CanvasPattern? createPattern(
     CanvasImageSource image,
     String repetition,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void clearRect(
     num x,
     num y,
     num w,
     num h,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void fillRect(
     num x,
     num y,
     num w,
     num h,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void strokeRect(
     num x,
     num y,
     num w,
     num h,
-  );
-  void beginPath();
+  ) {
+    unsupportedPlatformError();
+  }
+
+  void beginPath() {
+    unsupportedPlatformError();
+  }
+
   void fill([
-    JSAny fillRuleOrPath,
-    CanvasFillRule fillRule,
-  ]);
-  void stroke([Path2D path]);
+    JSAny? fillRuleOrPath,
+    CanvasFillRule? fillRule,
+  ]) {
+    unsupportedPlatformError();
+  }
+
+  void stroke([Path2D? path]) {
+    unsupportedPlatformError();
+  }
+
   void clip([
-    JSAny fillRuleOrPath,
-    CanvasFillRule fillRule,
-  ]);
+    JSAny? fillRuleOrPath,
+    CanvasFillRule? fillRule,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   bool isPointInPath(
     JSAny pathOrX,
     num xOrY, [
-    JSAny fillRuleOrY,
-    CanvasFillRule fillRule,
-  ]);
+    JSAny? fillRuleOrY,
+    CanvasFillRule? fillRule,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   bool isPointInStroke(
     JSAny pathOrX,
     num xOrY, [
-    num y,
-  ]);
+    num? y,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   void drawImage(
     CanvasImageSource image,
     num dxOrSx,
     num dyOrSy, [
-    num dwOrSw,
-    num dhOrSh,
-    num dx,
-    num dy,
-    num dw,
-    num dh,
-  ]);
-  void setLineDash(JSArray<JSNumber> segments);
-  JSArray<JSNumber> getLineDash();
+    num? dwOrSw,
+    num? dhOrSh,
+    num? dx,
+    num? dy,
+    num? dw,
+    num? dh,
+  ]) {
+    unsupportedPlatformError();
+  }
+
+  void setLineDash(JSArray<JSNumber> segments) {
+    unsupportedPlatformError();
+  }
+
+  JSArray<JSNumber> getLineDash() {
+    unsupportedPlatformError();
+  }
+
   double get globalAlpha {
     unsupportedPlatformError();
   }
@@ -235,8 +307,7 @@ abstract class PaintRenderingContext2D implements JSObject {
     unsupportedPlatformError();
   }
 }
-
-abstract class PaintSize implements JSObject {
+extension type PaintSize._(JSObject _) implements JSObject {
   double get width {
     unsupportedPlatformError();
   }

@@ -14,7 +14,16 @@ import '../error.dart';
 import '../js_interop.dart';
 import 'cssom.dart';
 
-abstract class PropertyDefinition implements JSObject {
+extension type PropertyDefinition._(JSObject _) implements JSObject {
+  factory PropertyDefinition({
+    required String name,
+    String? syntax,
+    required bool inherits,
+    String? initialValue,
+  }) {
+    unsupportedPlatformError();
+  }
+
   String get name {
     unsupportedPlatformError();
   }
@@ -56,27 +65,35 @@ abstract class PropertyDefinition implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSPropertyRule).
-abstract class CSSPropertyRule implements CSSRule, JSObject {
+extension type CSSPropertyRule._(JSObject _) implements CSSRule, JSObject {
   /// The read-only **`name`** property of the [CSSPropertyRule] interface
   /// represents the property name, this being the serialization of the name
   /// given to the custom property in the  rule's prelude.
-  String get name;
+  String get name {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`syntax`** property of the [CSSPropertyRule] interface
   /// returns the literal syntax of the custom property registration represented
   /// by the  rule, controlling how the property's value is parsed at
   /// computed-value time.
-  String get syntax;
+  String get syntax {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`inherits`** property of the [CSSPropertyRule] interface
   /// returns the inherit flag of the custom property registration represented
   /// by the  rule, a boolean describing whether or not the property inherits by
   /// default.
-  bool get inherits;
+  bool get inherits {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`initialValue`** nullable property of the
   /// [CSSPropertyRule] interface returns the initial value of the custom
   /// property registration represented by the  rule, controlling the property's
   /// initial value.
-  String? get initialValue;
+  String? get initialValue {
+    unsupportedPlatformError();
+  }
 }

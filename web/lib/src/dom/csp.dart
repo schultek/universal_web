@@ -34,19 +34,55 @@ typedef SecurityPolicyViolationEventDisposition = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSPViolationReportBody).
-abstract class CSPViolationReportBody implements ReportBody, JSObject {
-  JSObject toJSON();
-  String get documentURL;
-  String? get referrer;
-  String? get blockedURL;
-  String get effectiveDirective;
-  String get originalPolicy;
-  String? get sourceFile;
-  String? get sample;
-  SecurityPolicyViolationEventDisposition get disposition;
-  int get statusCode;
-  int? get lineNumber;
-  int? get columnNumber;
+extension type CSPViolationReportBody._(JSObject _)
+    implements ReportBody, JSObject {
+  JSObject toJSON() {
+    unsupportedPlatformError();
+  }
+
+  String get documentURL {
+    unsupportedPlatformError();
+  }
+
+  String? get referrer {
+    unsupportedPlatformError();
+  }
+
+  String? get blockedURL {
+    unsupportedPlatformError();
+  }
+
+  String get effectiveDirective {
+    unsupportedPlatformError();
+  }
+
+  String get originalPolicy {
+    unsupportedPlatformError();
+  }
+
+  String? get sourceFile {
+    unsupportedPlatformError();
+  }
+
+  String? get sample {
+    unsupportedPlatformError();
+  }
+
+  SecurityPolicyViolationEventDisposition get disposition {
+    unsupportedPlatformError();
+  }
+
+  int get statusCode {
+    unsupportedPlatformError();
+  }
+
+  int? get lineNumber {
+    unsupportedPlatformError();
+  }
+
+  int? get columnNumber {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SecurityPolicyViolationEvent`** interface inherits from [Event], and
@@ -57,75 +93,127 @@ abstract class CSPViolationReportBody implements ReportBody, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SecurityPolicyViolationEvent).
-abstract class SecurityPolicyViolationEvent implements Event, JSObject {
+extension type SecurityPolicyViolationEvent._(JSObject _)
+    implements Event, JSObject {
+  factory SecurityPolicyViolationEvent(
+    String type, [
+    SecurityPolicyViolationEventInit? eventInitDict,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// The **`documentURI`** read-only property of the
   /// [SecurityPolicyViolationEvent] interface is a string
   /// representing the URI of the document or worker in which the violation was
   /// found.
-  String get documentURI;
+  String get documentURI {
+    unsupportedPlatformError();
+  }
 
   /// The **`referrer`** read-only property of the
   /// [SecurityPolicyViolationEvent] interface is a string
   /// representing the referrer of the resources whose policy was violated. This
   /// will be a URL
   /// or `null`.
-  String get referrer;
+  String get referrer {
+    unsupportedPlatformError();
+  }
 
   /// The **`blockedURI`** read-only property of the
   /// [SecurityPolicyViolationEvent] interface is a string
   /// representing the URI of the resource that was blocked because it violates
   /// a policy.
-  String get blockedURI;
+  String get blockedURI {
+    unsupportedPlatformError();
+  }
 
   /// The **`effectiveDirective`** read-only property of the
   /// [SecurityPolicyViolationEvent] interface is a string
   /// representing the directive whose enforcement uncovered the violation.
-  String get effectiveDirective;
+  String get effectiveDirective {
+    unsupportedPlatformError();
+  }
 
   /// The **`violatedDirective`** read-only property of the
   /// [SecurityPolicyViolationEvent] interface is a string
   /// representing the directive whose enforcement uncovered the violation.
-  String get violatedDirective;
+  String get violatedDirective {
+    unsupportedPlatformError();
+  }
 
   /// The **`originalPolicy`** read-only property of the
   /// [SecurityPolicyViolationEvent] interface is a string
   /// containing the policy whose enforcement uncovered the violation.
-  String get originalPolicy;
+  String get originalPolicy {
+    unsupportedPlatformError();
+  }
 
   /// The **`sourceFile`** read-only property of the
   /// [SecurityPolicyViolationEvent] interface is a string
   /// representing the URI of the document or worker in which the violation was
   /// found.
-  String get sourceFile;
+  String get sourceFile {
+    unsupportedPlatformError();
+  }
 
   /// The **`sample`** read-only property of the
   /// [SecurityPolicyViolationEvent] interface is a string
   /// representing a sample of the resource that caused the violation.
-  String get sample;
+  String get sample {
+    unsupportedPlatformError();
+  }
 
   /// The **`disposition`** read-only property of the
   /// [SecurityPolicyViolationEvent] interface indicates how the violated policy
   /// is configured to be treated by the user agent.
-  SecurityPolicyViolationEventDisposition get disposition;
+  SecurityPolicyViolationEventDisposition get disposition {
+    unsupportedPlatformError();
+  }
 
   /// The **`statusCode`** read-only property of the
   /// [SecurityPolicyViolationEvent] interface is a number representing the HTTP
   /// status code of the document or worker in which the violation occurred.
-  int get statusCode;
+  int get statusCode {
+    unsupportedPlatformError();
+  }
 
   /// The **`lineNumber`** read-only property of the
   /// [SecurityPolicyViolationEvent] interface is the line number in the
   /// document
   /// or worker at which the violation occurred.
-  int get lineNumber;
+  int get lineNumber {
+    unsupportedPlatformError();
+  }
 
   /// The **`columnNumber`** read-only property of the
   /// [SecurityPolicyViolationEvent] interface is the column number in the
   /// document or worker at which the violation occurred.
-  int get columnNumber;
+  int get columnNumber {
+    unsupportedPlatformError();
+  }
 }
+extension type SecurityPolicyViolationEventInit._(JSObject _)
+    implements EventInit, JSObject {
+  factory SecurityPolicyViolationEventInit({
+    bool? bubbles,
+    bool? cancelable,
+    bool? composed,
+    String? documentURI,
+    String? referrer,
+    String? blockedURI,
+    String? violatedDirective,
+    String? effectiveDirective,
+    String? originalPolicy,
+    String? sourceFile,
+    String? sample,
+    SecurityPolicyViolationEventDisposition? disposition,
+    int? statusCode,
+    int? lineNumber,
+    int? columnNumber,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class SecurityPolicyViolationEventInit implements EventInit, JSObject {
   String get documentURI {
     unsupportedPlatformError();
   }

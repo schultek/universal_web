@@ -21,8 +21,19 @@ typedef MediaKeySessionType = String;
 typedef MediaKeySessionClosedReason = String;
 typedef MediaKeyStatus = String;
 typedef MediaKeyMessageType = String;
+extension type MediaKeySystemConfiguration._(JSObject _) implements JSObject {
+  factory MediaKeySystemConfiguration({
+    String? label,
+    JSArray<JSString>? initDataTypes,
+    JSArray<MediaKeySystemMediaCapability>? audioCapabilities,
+    JSArray<MediaKeySystemMediaCapability>? videoCapabilities,
+    MediaKeysRequirement? distinctiveIdentifier,
+    MediaKeysRequirement? persistentState,
+    JSArray<JSString>? sessionTypes,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class MediaKeySystemConfiguration implements JSObject {
   String get label {
     unsupportedPlatformError();
   }
@@ -79,8 +90,15 @@ abstract class MediaKeySystemConfiguration implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type MediaKeySystemMediaCapability._(JSObject _) implements JSObject {
+  factory MediaKeySystemMediaCapability({
+    String? contentType,
+    String? encryptionScheme,
+    String? robustness,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class MediaKeySystemMediaCapability implements JSObject {
   String get contentType {
     unsupportedPlatformError();
   }
@@ -116,7 +134,7 @@ abstract class MediaKeySystemMediaCapability implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MediaKeySystemAccess).
-abstract class MediaKeySystemAccess implements JSObject {
+extension type MediaKeySystemAccess._(JSObject _) implements JSObject {
   /// The **`getConfiguration()`** method of the [MediaKeySystemAccess]
   /// interface returns an object with the supported combination of the
   /// following configuration options:
@@ -131,15 +149,21 @@ abstract class MediaKeySystemAccess implements JSObject {
   ///   - : Indicates whether a persistent distinctive identifier is required.
   /// - `persistentState`
   ///   - : Indicates whether the ability to persist state is required.
-  MediaKeySystemConfiguration getConfiguration();
+  MediaKeySystemConfiguration getConfiguration() {
+    unsupportedPlatformError();
+  }
 
   /// The `MediaKeySystemAccess.createMediaKeys()` method returns a
   /// `Promise` that resolves to a new [MediaKeys] object.
-  JSPromise<MediaKeys> createMediaKeys();
+  JSPromise<MediaKeys> createMediaKeys() {
+    unsupportedPlatformError();
+  }
 
   /// The `MediaKeySystemAccess.keySystem` read-only property returns a
   /// string identifying the key system being used.
-  String get keySystem;
+  String get keySystem {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`MediaKeys`** interface of
@@ -151,20 +175,30 @@ abstract class MediaKeySystemAccess implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MediaKeys).
-abstract class MediaKeys implements JSObject {
+extension type MediaKeys._(JSObject _) implements JSObject {
   /// The `createSession()` method of the [MediaKeys] interface returns a new
   /// [MediaKeySession] object, which represents a context for message exchange
   /// with a content decryption module (CDM).
-  MediaKeySession createSession([MediaKeySessionType sessionType]);
-  JSPromise<JSString> getStatusForPolicy([MediaKeysPolicy policy]);
+  MediaKeySession createSession([MediaKeySessionType? sessionType]) {
+    unsupportedPlatformError();
+  }
+
+  JSPromise<JSString> getStatusForPolicy([MediaKeysPolicy? policy]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`setServerCertificate()`** method of the [MediaKeys] interface
   /// provides a server certificate to be used to encrypt messages to the
   /// license server.
-  JSPromise<JSBoolean> setServerCertificate(BufferSource serverCertificate);
+  JSPromise<JSBoolean> setServerCertificate(BufferSource serverCertificate) {
+    unsupportedPlatformError();
+  }
 }
+extension type MediaKeysPolicy._(JSObject _) implements JSObject {
+  factory MediaKeysPolicy({String? minHdcpVersion}) {
+    unsupportedPlatformError();
+  }
 
-abstract class MediaKeysPolicy implements JSObject {
   String get minHdcpVersion {
     unsupportedPlatformError();
   }
@@ -183,39 +217,51 @@ abstract class MediaKeysPolicy implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MediaKeySession).
-abstract class MediaKeySession implements EventTarget, JSObject {
+extension type MediaKeySession._(JSObject _) implements EventTarget, JSObject {
   /// The `generateRequest()` method of the [MediaKeySession] interface returns
   /// a `Promise` after generating a media request based on initialization data.
   JSPromise<JSAny?> generateRequest(
     String initDataType,
     BufferSource initData,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The `load()` method of the [MediaKeySession] interface returns a `Promise`
   /// that resolves to a boolean value after loading data for a specified
   /// session object.
-  JSPromise<JSBoolean> load(String sessionId);
+  JSPromise<JSBoolean> load(String sessionId) {
+    unsupportedPlatformError();
+  }
 
   /// The `update()` method of the [MediaKeySession] interface loads messages
   /// and licenses to the CDM, and then returns a `Promise` .
-  JSPromise<JSAny?> update(BufferSource response);
+  JSPromise<JSAny?> update(BufferSource response) {
+    unsupportedPlatformError();
+  }
 
   /// The `close()` method of the [MediaKeySession] interface notifies that the
   /// current media session is no longer needed, and that the content decryption
   /// module should release any resources associated with this object and close
   /// it.
   /// Then, it returns a `Promise`.
-  JSPromise<JSAny?> close();
+  JSPromise<JSAny?> close() {
+    unsupportedPlatformError();
+  }
 
   /// The `remove()` method of the [MediaKeySession] interface returns a
   /// `Promise` after removing any session data associated with the current
   /// object.
-  JSPromise<JSAny?> remove();
+  JSPromise<JSAny?> remove() {
+    unsupportedPlatformError();
+  }
 
   /// The **`sessionId`** read-only property of the [MediaKeySession] interface
   /// contains a unique string generated by the content decryption module (CDM)
   /// for the current media object and its associated keys or licenses.
-  String get sessionId;
+  String get sessionId {
+    unsupportedPlatformError();
+  }
 
   /// The **`expiration`** read-only property of the [MediaKeySession] interface
   /// returns the time after which the keys in the current session can no longer
@@ -225,23 +271,41 @@ abstract class MediaKeySession implements EventTarget, JSObject {
   /// January 1, 1970, UTC.
   /// This value may change during a session lifetime, such as when an action
   /// triggers the start of a window.
-  double get expiration;
+  double get expiration {
+    unsupportedPlatformError();
+  }
 
   /// The **`closed`** read-only property of the [MediaKeySession] interface
   /// returns a `Promise` signaling when a [MediaKeySession] closes.
   /// This promise can only be fulfilled and is never rejected.
   /// Closing a session means that licenses and keys associated with it are no
   /// longer valid for decrypting media data.
-  JSPromise<JSString> get closed;
+  JSPromise<JSString> get closed {
+    unsupportedPlatformError();
+  }
 
   /// The **`keyStatuses`** read-only property of the [MediaKeySession]
   /// interface returns a reference to a read-only [MediaKeyStatusMap] of the
   /// current session's keys and their statuses.
-  MediaKeyStatusMap get keyStatuses;
-  EventHandler get onkeystatuseschange;
-  set onkeystatuseschange(EventHandler value);
-  EventHandler get onmessage;
-  set onmessage(EventHandler value);
+  MediaKeyStatusMap get keyStatuses {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onkeystatuseschange {
+    unsupportedPlatformError();
+  }
+
+  set onkeystatuseschange(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onmessage {
+    unsupportedPlatformError();
+  }
+
+  set onmessage(EventHandler value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`MediaKeyStatusMap`** interface of the
@@ -252,21 +316,27 @@ abstract class MediaKeySession implements EventTarget, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MediaKeyStatusMap).
-abstract class MediaKeyStatusMap implements JSObject {
+extension type MediaKeyStatusMap._(JSObject _) implements JSObject {
   /// The **`has()`** method of the
   /// [MediaKeyStatusMap] interface returns a `Boolean`, asserting
   /// whether a value has been associated with the given key.
-  bool has(BufferSource keyId);
+  bool has(BufferSource keyId) {
+    unsupportedPlatformError();
+  }
 
   /// The **`get()`** method of the
   /// [MediaKeyStatusMap] interface returns the value associated with the given
   /// key, or `undefined` if there is none.
-  MediaKeyStatus? get(BufferSource keyId);
+  MediaKeyStatus? get(BufferSource keyId) {
+    unsupportedPlatformError();
+  }
 
   /// The **`size`** read-only property of
   /// the [MediaKeyStatusMap] interface returns the number of key/value paIrs
   /// in the status map.
-  int get size;
+  int get size {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`MediaKeyMessageEvent`** interface of the
@@ -278,22 +348,43 @@ abstract class MediaKeyStatusMap implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MediaKeyMessageEvent).
-abstract class MediaKeyMessageEvent implements Event, JSObject {
+extension type MediaKeyMessageEvent._(JSObject _) implements Event, JSObject {
+  factory MediaKeyMessageEvent(
+    String type,
+    MediaKeyMessageEventInit eventInitDict,
+  ) {
+    unsupportedPlatformError();
+  }
+
   /// The **`MediaKeyMessageEvent.messageType`** read-only property indicates
   /// the
   /// type of message. It may be one of `license-request`,
   /// `license-renewal`, `license-release`, or
   /// `individualization-request`.
-  MediaKeyMessageType get messageType;
+  MediaKeyMessageType get messageType {
+    unsupportedPlatformError();
+  }
 
   /// The **`MediaKeyMessageEvent.message`** read-only property
   /// returns an `ArrayBuffer` with a message from the content decryption
   /// module.
   /// Messages vary by key system.
-  JSArrayBuffer get message;
+  JSArrayBuffer get message {
+    unsupportedPlatformError();
+  }
 }
+extension type MediaKeyMessageEventInit._(JSObject _)
+    implements EventInit, JSObject {
+  factory MediaKeyMessageEventInit({
+    bool? bubbles,
+    bool? cancelable,
+    bool? composed,
+    required MediaKeyMessageType messageType,
+    required JSArrayBuffer message,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class MediaKeyMessageEventInit implements EventInit, JSObject {
   MediaKeyMessageType get messageType {
     unsupportedPlatformError();
   }
@@ -321,18 +412,39 @@ abstract class MediaKeyMessageEventInit implements EventInit, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MediaEncryptedEvent).
-abstract class MediaEncryptedEvent implements Event, JSObject {
+extension type MediaEncryptedEvent._(JSObject _) implements Event, JSObject {
+  factory MediaEncryptedEvent(
+    String type, [
+    MediaEncryptedEventInit? eventInitDict,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// The read-only **`initDataType`** property of the [MediaKeyMessageEvent]
   /// returns a case-sensitive string describing the type of the initialization
   /// data associated with this event.
-  String get initDataType;
+  String get initDataType {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`initData`** property of the [MediaKeyMessageEvent]
   /// returns the initialization data contained in this event, if any.
-  JSArrayBuffer? get initData;
+  JSArrayBuffer? get initData {
+    unsupportedPlatformError();
+  }
 }
+extension type MediaEncryptedEventInit._(JSObject _)
+    implements EventInit, JSObject {
+  factory MediaEncryptedEventInit({
+    bool? bubbles,
+    bool? cancelable,
+    bool? composed,
+    String? initDataType,
+    JSArrayBuffer? initData,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class MediaEncryptedEventInit implements EventInit, JSObject {
   String get initDataType {
     unsupportedPlatformError();
   }

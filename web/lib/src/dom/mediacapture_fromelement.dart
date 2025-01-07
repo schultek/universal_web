@@ -10,6 +10,7 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
+import '../error.dart';
 import '../js_interop.dart';
 import 'html.dart';
 import 'mediacapture_streams.dart';
@@ -23,7 +24,7 @@ import 'mediacapture_streams.dart';
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CanvasCaptureMediaStreamTrack).
-abstract class CanvasCaptureMediaStreamTrack
+extension type CanvasCaptureMediaStreamTrack._(JSObject _)
     implements MediaStreamTrack, JSObject {
   /// The **`requestFrame()`** method of the [CanvasCaptureMediaStreamTrack]
   /// interface requests that a frame be captured from the canvas and sent to
@@ -38,10 +39,14 @@ abstract class CanvasCaptureMediaStreamTrack
   /// `requestFrame()` is called, specify a value of 0 for the
   /// [HTMLCanvasElement.captureStream] method when creating
   /// the stream.
-  void requestFrame();
+  void requestFrame() {
+    unsupportedPlatformError();
+  }
 
   /// The **`canvas`** read-only property of the [CanvasCaptureMediaStreamTrack]
   /// interface returns the [HTMLCanvasElement] from which frames are being
   /// captured.
-  HTMLCanvasElement get canvas;
+  HTMLCanvasElement get canvas {
+    unsupportedPlatformError();
+  }
 }

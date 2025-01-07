@@ -13,7 +13,15 @@
 import '../error.dart';
 import '../js_interop.dart';
 
-abstract class RTCIdentityProviderOptions implements JSObject {
+extension type RTCIdentityProviderOptions._(JSObject _) implements JSObject {
+  factory RTCIdentityProviderOptions({
+    String? protocol,
+    String? usernameHint,
+    String? peerIdentity,
+  }) {
+    unsupportedPlatformError();
+  }
+
   String get protocol {
     unsupportedPlatformError();
   }

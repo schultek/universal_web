@@ -13,7 +13,7 @@
 import '../js_interop.dart';
 import 'webgl1.dart';
 
-abstract class EXT_texture_compression_rgtc implements JSObject {
+extension type EXT_texture_compression_rgtc._(JSObject _) implements JSObject {
   static const GLenum COMPRESSED_RED_RGTC1_EXT = 36283;
 
   static const GLenum COMPRESSED_SIGNED_RED_RGTC1_EXT = 36284;

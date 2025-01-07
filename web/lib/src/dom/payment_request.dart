@@ -27,7 +27,14 @@ typedef PaymentComplete = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/PaymentRequest).
-abstract class PaymentRequest implements EventTarget, JSObject {
+extension type PaymentRequest._(JSObject _) implements EventTarget, JSObject {
+  factory PaymentRequest(
+    JSArray<PaymentMethodData> methodData,
+    PaymentDetailsInit details,
+  ) {
+    unsupportedPlatformError();
+  }
+
   /// The **[PaymentRequest]** interface's
   /// **`show()`** method instructs the user agent to begin the
   /// process of showing and handling the user interface for the payment request
@@ -67,13 +74,17 @@ abstract class PaymentRequest implements EventTarget, JSObject {
   /// [`async`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function)/[`await`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/await)
   /// to wait asynchronously while results are validated and so forth.
   JSPromise<PaymentResponse> show(
-      [JSPromise<PaymentDetailsUpdate> detailsPromise]);
+      [JSPromise<PaymentDetailsUpdate>? detailsPromise]) {
+    unsupportedPlatformError();
+  }
 
   /// The `PaymentRequest.abort()` method of the [PaymentRequest]
   /// interface causes the user agent to end the payment request and to remove
   /// any user
   /// interface that might be shown.
-  JSPromise<JSAny?> abort();
+  JSPromise<JSAny?> abort() {
+    unsupportedPlatformError();
+  }
 
   /// The [PaymentRequest] method
   /// **`canMakePayment()`** determines whether or not the request
@@ -93,7 +104,9 @@ abstract class PaymentRequest implements EventTarget, JSObject {
   /// another payment method, or offer a list of methods that aren't handled by
   /// Payment
   /// Request API (or even provide instructions for paying by mail or by phone).
-  JSPromise<JSBoolean> canMakePayment();
+  JSPromise<JSBoolean> canMakePayment() {
+    unsupportedPlatformError();
+  }
 
   /// The **`id`** read-only attribute of the
   /// [PaymentRequest] interface returns a unique identifier for a particular
@@ -102,12 +115,26 @@ abstract class PaymentRequest implements EventTarget, JSObject {
   /// When constructing an instance of the [PaymentRequest], you are able to
   /// supply an custom id. If none is provided, the browser automatically sets
   /// the id value to a UUID.
-  String get id;
-  EventHandler get onpaymentmethodchange;
-  set onpaymentmethodchange(EventHandler value);
-}
+  String get id {
+    unsupportedPlatformError();
+  }
 
-abstract class PaymentMethodData implements JSObject {
+  EventHandler get onpaymentmethodchange {
+    unsupportedPlatformError();
+  }
+
+  set onpaymentmethodchange(EventHandler value) {
+    unsupportedPlatformError();
+  }
+}
+extension type PaymentMethodData._(JSObject _) implements JSObject {
+  factory PaymentMethodData({
+    required String supportedMethods,
+    JSObject? data,
+  }) {
+    unsupportedPlatformError();
+  }
+
   String get supportedMethods {
     unsupportedPlatformError();
   }
@@ -124,8 +151,14 @@ abstract class PaymentMethodData implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type PaymentCurrencyAmount._(JSObject _) implements JSObject {
+  factory PaymentCurrencyAmount({
+    required String currency,
+    required String value,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class PaymentCurrencyAmount implements JSObject {
   String get currency {
     unsupportedPlatformError();
   }
@@ -142,8 +175,14 @@ abstract class PaymentCurrencyAmount implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type PaymentDetailsBase._(JSObject _) implements JSObject {
+  factory PaymentDetailsBase({
+    JSArray<PaymentItem>? displayItems,
+    JSArray<PaymentDetailsModifier>? modifiers,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class PaymentDetailsBase implements JSObject {
   JSArray<PaymentItem> get displayItems {
     unsupportedPlatformError();
   }
@@ -160,8 +199,17 @@ abstract class PaymentDetailsBase implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type PaymentDetailsInit._(JSObject _)
+    implements PaymentDetailsBase, JSObject {
+  factory PaymentDetailsInit({
+    JSArray<PaymentItem>? displayItems,
+    JSArray<PaymentDetailsModifier>? modifiers,
+    String? id,
+    required PaymentItem total,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class PaymentDetailsInit implements PaymentDetailsBase, JSObject {
   String get id {
     unsupportedPlatformError();
   }
@@ -178,8 +226,17 @@ abstract class PaymentDetailsInit implements PaymentDetailsBase, JSObject {
     unsupportedPlatformError();
   }
 }
+extension type PaymentDetailsUpdate._(JSObject _)
+    implements PaymentDetailsBase, JSObject {
+  factory PaymentDetailsUpdate({
+    JSArray<PaymentItem>? displayItems,
+    JSArray<PaymentDetailsModifier>? modifiers,
+    PaymentItem? total,
+    JSObject? paymentMethodErrors,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class PaymentDetailsUpdate implements PaymentDetailsBase, JSObject {
   PaymentItem get total {
     unsupportedPlatformError();
   }
@@ -196,8 +253,16 @@ abstract class PaymentDetailsUpdate implements PaymentDetailsBase, JSObject {
     unsupportedPlatformError();
   }
 }
+extension type PaymentDetailsModifier._(JSObject _) implements JSObject {
+  factory PaymentDetailsModifier({
+    required String supportedMethods,
+    PaymentItem? total,
+    JSArray<PaymentItem>? additionalDisplayItems,
+    JSObject? data,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class PaymentDetailsModifier implements JSObject {
   String get supportedMethods {
     unsupportedPlatformError();
   }
@@ -230,8 +295,15 @@ abstract class PaymentDetailsModifier implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type PaymentItem._(JSObject _) implements JSObject {
+  factory PaymentItem({
+    required String label,
+    required PaymentCurrencyAmount amount,
+    bool? pending,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class PaymentItem implements JSObject {
   String get label {
     unsupportedPlatformError();
   }
@@ -256,8 +328,11 @@ abstract class PaymentItem implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type PaymentCompleteDetails._(JSObject _) implements JSObject {
+  factory PaymentCompleteDetails({JSObject? data}) {
+    unsupportedPlatformError();
+  }
 
-abstract class PaymentCompleteDetails implements JSObject {
   JSObject? get data {
     unsupportedPlatformError();
   }
@@ -276,10 +351,12 @@ abstract class PaymentCompleteDetails implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/PaymentResponse).
-abstract class PaymentResponse implements EventTarget, JSObject {
+extension type PaymentResponse._(JSObject _) implements EventTarget, JSObject {
   /// The **`toJSON()`** method of the [PaymentResponse] interface is a ; it
   /// returns a JSON representation of the [PaymentResponse] object.
-  JSObject toJSON();
+  JSObject toJSON() {
+    unsupportedPlatformError();
+  }
 
   /// The [PaymentRequest] method
   /// **`complete()`** of the
@@ -292,9 +369,11 @@ abstract class PaymentResponse implements EventTarget, JSObject {
   /// the payment request and the `Promise` returned by the
   /// [PaymentRequest.show] method is resolved.
   JSPromise<JSAny?> complete([
-    PaymentComplete result,
-    PaymentCompleteDetails details,
-  ]);
+    PaymentComplete? result,
+    PaymentCompleteDetails? details,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The [PaymentResponse] interface's
   /// **`retry()`** method makes it possible to ask the user to
@@ -304,12 +383,16 @@ abstract class PaymentResponse implements EventTarget, JSObject {
   /// gracefully deal with situations such as invalid shipping addresses or
   /// declined credit
   /// cards.
-  JSPromise<JSAny?> retry([PaymentValidationErrors errorFields]);
+  JSPromise<JSAny?> retry([PaymentValidationErrors? errorFields]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`requestId`** read-only property of the
   /// [PaymentResponse] interface returns the free-form identifier supplied by
   /// the `PaymentResponse()` constructor by details.id.
-  String get requestId;
+  String get requestId {
+    unsupportedPlatformError();
+  }
 
   /// The **`methodName`** read-only
   /// property of the [PaymentResponse] interface returns a string uniquely
@@ -319,7 +402,9 @@ abstract class PaymentResponse implements EventTarget, JSObject {
   /// one of the standardized payment method identifiers or a URL used by the
   /// payment handler
   /// to process payments.
-  String get methodName;
+  String get methodName {
+    unsupportedPlatformError();
+  }
 
   /// The **`details`** read-only property of the
   /// [PaymentResponse] interface returns a JSON-serializable object that
@@ -330,10 +415,18 @@ abstract class PaymentResponse implements EventTarget, JSObject {
   /// This data is returned by the payment app that satisfies the payment
   /// request. Developers need to consult whomever controls the URL for the
   /// expected shape of the details object.
-  JSObject get details;
+  JSObject get details {
+    unsupportedPlatformError();
+  }
 }
+extension type PaymentValidationErrors._(JSObject _) implements JSObject {
+  factory PaymentValidationErrors({
+    String? error,
+    JSObject? paymentMethod,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class PaymentValidationErrors implements JSObject {
   String get error {
     unsupportedPlatformError();
   }
@@ -362,8 +455,15 @@ abstract class PaymentValidationErrors implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/PaymentMethodChangeEvent).
-abstract class PaymentMethodChangeEvent
+extension type PaymentMethodChangeEvent._(JSObject _)
     implements PaymentRequestUpdateEvent, JSObject {
+  factory PaymentMethodChangeEvent(
+    String type, [
+    PaymentMethodChangeEventInit? eventInitDict,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// The read-only **`methodName`** property of the [PaymentMethodChangeEvent]
   /// interface is a string which
   /// uniquely identifies the payment handler currently selected by the user.
@@ -374,7 +474,9 @@ abstract class PaymentMethodChangeEvent
   /// payment method
   /// within the payment handler are described by the
   /// `PaymentMethodChangeEvent`.
-  String get methodName;
+  String get methodName {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`methodDetails`** property of the
   /// [PaymentMethodChangeEvent] interface is an object
@@ -382,11 +484,22 @@ abstract class PaymentMethodChangeEvent
   /// the user
   /// has made to their payment method. The value is `null` if no details
   /// are available.
-  JSObject? get methodDetails;
+  JSObject? get methodDetails {
+    unsupportedPlatformError();
+  }
 }
-
-abstract class PaymentMethodChangeEventInit
+extension type PaymentMethodChangeEventInit._(JSObject _)
     implements PaymentRequestUpdateEventInit, JSObject {
+  factory PaymentMethodChangeEventInit({
+    bool? bubbles,
+    bool? cancelable,
+    bool? composed,
+    String? methodName,
+    JSObject? methodDetails,
+  }) {
+    unsupportedPlatformError();
+  }
+
   String get methodName {
     unsupportedPlatformError();
   }
@@ -417,11 +530,29 @@ abstract class PaymentMethodChangeEventInit
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/PaymentRequestUpdateEvent).
-abstract class PaymentRequestUpdateEvent implements Event, JSObject {
+extension type PaymentRequestUpdateEvent._(JSObject _)
+    implements Event, JSObject {
+  factory PaymentRequestUpdateEvent(
+    String type, [
+    PaymentRequestUpdateEventInit? eventInitDict,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// The **`updateWith()`** method of the
   /// [PaymentRequestUpdateEvent] interface updates the details of an existing
   /// [PaymentRequest].
-  void updateWith(JSPromise<PaymentDetailsUpdate> detailsPromise);
+  void updateWith(JSPromise<PaymentDetailsUpdate> detailsPromise) {
+    unsupportedPlatformError();
+  }
 }
-
-abstract class PaymentRequestUpdateEventInit implements EventInit, JSObject {}
+extension type PaymentRequestUpdateEventInit._(JSObject _)
+    implements EventInit, JSObject {
+  factory PaymentRequestUpdateEventInit({
+    bool? bubbles,
+    bool? cancelable,
+    bool? composed,
+  }) {
+    unsupportedPlatformError();
+  }
+}

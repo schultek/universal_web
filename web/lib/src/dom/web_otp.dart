@@ -14,8 +14,11 @@ import '../error.dart';
 import '../js_interop.dart';
 
 typedef OTPCredentialTransportType = String;
+extension type OTPCredentialRequestOptions._(JSObject _) implements JSObject {
+  factory OTPCredentialRequestOptions({JSArray<JSString>? transport}) {
+    unsupportedPlatformError();
+  }
 
-abstract class OTPCredentialRequestOptions implements JSObject {
   JSArray<JSString> get transport {
     unsupportedPlatformError();
   }

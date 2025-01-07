@@ -29,14 +29,16 @@ typedef FileCallback = JSFunction;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemEntry).
-abstract class FileSystemEntry implements JSObject {
+extension type FileSystemEntry._(JSObject _) implements JSObject {
   /// The [FileSystemEntry] interface's method
   /// **`getParent()`** obtains a
   /// [FileSystemDirectoryEntry].
   void getParent([
-    FileSystemEntryCallback successCallback,
-    ErrorCallback errorCallback,
-  ]);
+    FileSystemEntryCallback? successCallback,
+    ErrorCallback? errorCallback,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`isFile`** property of
   /// the [FileSystemEntry] interface is `true` if the entry
@@ -52,7 +54,9 @@ abstract class FileSystemEntry implements JSObject {
   /// > sure to use
   /// > both `isDirectory` and `isFile` as needed to ensure that the
   /// > entry is something you know how to work with.
-  bool get isFile;
+  bool get isFile {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`isDirectory`**
   /// property of the [FileSystemEntry] interface is `true` if the
@@ -68,7 +72,9 @@ abstract class FileSystemEntry implements JSObject {
   /// > sure to use
   /// > both `isDirectory` and `isFile` as needed to ensure that the
   /// > entry is something you know how to work with.
-  bool get isDirectory;
+  bool get isDirectory {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`name`** property of
   /// the [FileSystemEntry] interface returns a string
@@ -76,7 +82,9 @@ abstract class FileSystemEntry implements JSObject {
   /// (the last
   /// component of the path as indicated by the [FileSystemEntry.fullPath]
   /// property).
-  String get name;
+  String get name {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`fullPath`** property
   /// of the [FileSystemEntry] interface returns a string
@@ -87,13 +95,17 @@ abstract class FileSystemEntry implements JSObject {
   /// This can also be thought of as a path which is relative to the root
   /// directory, with a
   /// "/" prepended to it to make it absolute.
-  String get fullPath;
+  String get fullPath {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`filesystem`**
   /// property of the [FileSystemEntry] interface contains a
   /// [FileSystem] object that represents the file system on which the entry
   /// resides.
-  FileSystem get filesystem;
+  FileSystem get filesystem {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`FileSystemDirectoryEntry`** interface of the
@@ -106,13 +118,16 @@ abstract class FileSystemEntry implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemDirectoryEntry).
-abstract class FileSystemDirectoryEntry implements FileSystemEntry, JSObject {
+extension type FileSystemDirectoryEntry._(JSObject _)
+    implements FileSystemEntry, JSObject {
   /// The [FileSystemDirectoryEntry] interface's method
   /// **`createReader()`** returns a
   /// [FileSystemDirectoryReader] object which can be used to read the entries
   /// in
   /// the directory.
-  FileSystemDirectoryReader createReader();
+  FileSystemDirectoryReader createReader() {
+    unsupportedPlatformError();
+  }
 
   /// The [FileSystemDirectoryEntry] interface's method
   /// **`getFile()`** returns a
@@ -120,10 +135,12 @@ abstract class FileSystemDirectoryEntry implements FileSystemEntry, JSObject {
   /// within the directory subtree rooted at the directory on which it's called.
   void getFile([
     String? path,
-    FileSystemFlags options,
-    FileSystemEntryCallback successCallback,
-    ErrorCallback errorCallback,
-  ]);
+    FileSystemFlags? options,
+    FileSystemEntryCallback? successCallback,
+    ErrorCallback? errorCallback,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The [FileSystemDirectoryEntry] interface's method
   /// **`getDirectory()`** returns a
@@ -132,13 +149,21 @@ abstract class FileSystemDirectoryEntry implements FileSystemEntry, JSObject {
   /// it's called.
   void getDirectory([
     String? path,
-    FileSystemFlags options,
-    FileSystemEntryCallback successCallback,
-    ErrorCallback errorCallback,
-  ]);
+    FileSystemFlags? options,
+    FileSystemEntryCallback? successCallback,
+    ErrorCallback? errorCallback,
+  ]) {
+    unsupportedPlatformError();
+  }
 }
+extension type FileSystemFlags._(JSObject _) implements JSObject {
+  factory FileSystemFlags({
+    bool? create,
+    bool? exclusive,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class FileSystemFlags implements JSObject {
   bool get create {
     unsupportedPlatformError();
   }
@@ -166,7 +191,7 @@ abstract class FileSystemFlags implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemDirectoryReader).
-abstract class FileSystemDirectoryReader implements JSObject {
+extension type FileSystemDirectoryReader._(JSObject _) implements JSObject {
   /// The [FileSystemDirectoryReader] interface's **`readEntries()`** method
   /// retrieves the directory entries
   /// within the directory being read and delivers them in an array to a
@@ -178,8 +203,10 @@ abstract class FileSystemDirectoryReader implements JSObject {
   /// directories.
   void readEntries(
     FileSystemEntriesCallback successCallback, [
-    ErrorCallback errorCallback,
-  ]);
+    ErrorCallback? errorCallback,
+  ]) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`FileSystemFileEntry`** interface of the
@@ -192,15 +219,18 @@ abstract class FileSystemDirectoryReader implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemFileEntry).
-abstract class FileSystemFileEntry implements FileSystemEntry, JSObject {
+extension type FileSystemFileEntry._(JSObject _)
+    implements FileSystemEntry, JSObject {
   /// The [FileSystemFileEntry] interface's method
   /// **`file()`** returns a
   /// [File] object which can be used to read data from the file represented by
   /// the directory entry.
   void file(
     FileCallback successCallback, [
-    ErrorCallback errorCallback,
-  ]);
+    ErrorCallback? errorCallback,
+  ]) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The File and Directory Entries API interface **`FileSystem`** is used to
@@ -220,17 +250,21 @@ abstract class FileSystemFileEntry implements FileSystemEntry, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/FileSystem).
-abstract class FileSystem implements JSObject {
+extension type FileSystem._(JSObject _) implements JSObject {
   /// The read-only **`name`** property of the
   /// [FileSystem] interface indicates the file system's name. This
   /// string is unique among all file systems currently exposed by the
   /// [File and Directory Entries API](https://developer.mozilla.org/en-US/docs/Web/API/File_and_Directory_Entries_API).
-  String get name;
+  String get name {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`root`** property of the
   /// [FileSystem] interface specifies a [FileSystemDirectoryEntry]
   /// object representing the root directory of the file system, for use with
   /// the
   /// [File and Directory Entries API](https://developer.mozilla.org/en-US/docs/Web/API/File_and_Directory_Entries_API).
-  FileSystemDirectoryEntry get root;
+  FileSystemDirectoryEntry get root {
+    unsupportedPlatformError();
+  }
 }

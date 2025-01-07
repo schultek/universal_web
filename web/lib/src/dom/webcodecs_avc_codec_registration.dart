@@ -14,8 +14,11 @@ import '../error.dart';
 import '../js_interop.dart';
 
 typedef AvcBitstreamFormat = String;
+extension type AvcEncoderConfig._(JSObject _) implements JSObject {
+  factory AvcEncoderConfig({AvcBitstreamFormat? format}) {
+    unsupportedPlatformError();
+  }
 
-abstract class AvcEncoderConfig implements JSObject {
   AvcBitstreamFormat get format {
     unsupportedPlatformError();
   }
@@ -24,8 +27,12 @@ abstract class AvcEncoderConfig implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type VideoEncoderEncodeOptionsForAvc._(JSObject _)
+    implements JSObject {
+  factory VideoEncoderEncodeOptionsForAvc({int? quantizer}) {
+    unsupportedPlatformError();
+  }
 
-abstract class VideoEncoderEncodeOptionsForAvc implements JSObject {
   int? get quantizer {
     unsupportedPlatformError();
   }

@@ -10,10 +10,11 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
+import '../error.dart';
 import '../js_interop.dart';
 import 'webgl1.dart';
 
-abstract class WEBGL_compressed_texture_astc implements JSObject {
+extension type WEBGL_compressed_texture_astc._(JSObject _) implements JSObject {
   static const GLenum COMPRESSED_RGBA_ASTC_4x4_KHR = 37808;
 
   static const GLenum COMPRESSED_RGBA_ASTC_5x4_KHR = 37809;
@@ -70,5 +71,7 @@ abstract class WEBGL_compressed_texture_astc implements JSObject {
 
   static const GLenum COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR = 37853;
 
-  JSArray<JSString> getSupportedProfiles();
+  JSArray<JSString> getSupportedProfiles() {
+    unsupportedPlatformError();
+  }
 }

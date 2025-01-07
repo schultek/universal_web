@@ -22,7 +22,14 @@ import 'dom.dart';
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/DeviceOrientationEvent).
-abstract class DeviceOrientationEvent implements Event, JSObject {
+extension type DeviceOrientationEvent._(JSObject _) implements Event, JSObject {
+  factory DeviceOrientationEvent(
+    String type, [
+    DeviceOrientationEventInit? eventInitDict,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// The **`alpha`** read-only property of the [DeviceOrientationEvent]
   /// interface returns the rotation of the device around the Z axis; that is,
   /// the number of degrees by
@@ -30,7 +37,9 @@ abstract class DeviceOrientationEvent implements Event, JSObject {
   /// See
   /// [Orientation and motion data explained](https://developer.mozilla.org/en-US/docs/Web/API/Device_orientation_events/Orientation_and_motion_data_explained)
   /// for details.
-  double? get alpha;
+  double? get alpha {
+    unsupportedPlatformError();
+  }
 
   /// The **`beta`** read-only property of the [DeviceOrientationEvent]
   /// interface returns the rotation of the device around the X axis; that is,
@@ -40,7 +49,9 @@ abstract class DeviceOrientationEvent implements Event, JSObject {
   /// See
   /// [Orientation and motion data explained](https://developer.mozilla.org/en-US/docs/Web/API/Device_orientation_events/Orientation_and_motion_data_explained)
   /// for details.
-  double? get beta;
+  double? get beta {
+    unsupportedPlatformError();
+  }
 
   /// The **`gamma`** read-only property of the [DeviceOrientationEvent]
   /// interface returns the rotation of the device around the Y axis; that is,
@@ -50,7 +61,9 @@ abstract class DeviceOrientationEvent implements Event, JSObject {
   /// See
   /// [Orientation and motion data explained](https://developer.mozilla.org/en-US/docs/Web/API/Device_orientation_events/Orientation_and_motion_data_explained)
   /// for details.
-  double? get gamma;
+  double? get gamma {
+    unsupportedPlatformError();
+  }
 
   /// The **`absolute`** read-only property of the [DeviceOrientationEvent]
   /// interface indicates whether or not the device is providing orientation
@@ -61,10 +74,24 @@ abstract class DeviceOrientationEvent implements Event, JSObject {
   /// See
   /// [Orientation and motion data explained](https://developer.mozilla.org/en-US/docs/Web/API/Device_orientation_events/Orientation_and_motion_data_explained)
   /// for details.
-  bool get absolute;
+  bool get absolute {
+    unsupportedPlatformError();
+  }
 }
+extension type DeviceOrientationEventInit._(JSObject _)
+    implements EventInit, JSObject {
+  factory DeviceOrientationEventInit({
+    bool? bubbles,
+    bool? cancelable,
+    bool? composed,
+    num? alpha,
+    num? beta,
+    num? gamma,
+    bool? absolute,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class DeviceOrientationEventInit implements EventInit, JSObject {
   double? get alpha {
     unsupportedPlatformError();
   }
@@ -106,27 +133,33 @@ abstract class DeviceOrientationEventInit implements EventInit, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/DeviceMotionEventAcceleration).
-abstract class DeviceMotionEventAcceleration implements JSObject {
+extension type DeviceMotionEventAcceleration._(JSObject _) implements JSObject {
   /// The **`x`** read-only property of the [DeviceMotionEventAcceleration]
   /// interface indicates the amount of acceleration that occurred along the X
   /// axis in a
   /// [`DeviceMotionEventAcceleration`](https://developer.mozilla.org/en-US/docs/Web/API/DeviceMotionEventAcceleration)
   /// object.
-  double? get x;
+  double? get x {
+    unsupportedPlatformError();
+  }
 
   /// The **`y`** read-only property of the [DeviceMotionEventAcceleration]
   /// interface indicates the amount of acceleration that occurred along the Y
   /// axis in a
   /// [`DeviceMotionEventAcceleration`](https://developer.mozilla.org/en-US/docs/Web/API/DeviceMotionEventAcceleration)
   /// object.
-  double? get y;
+  double? get y {
+    unsupportedPlatformError();
+  }
 
   /// The **`z`** read-only property of the [DeviceMotionEventAcceleration]
   /// interface indicates the amount of acceleration that occurred along the Z
   /// axis in a
   /// [`DeviceMotionEventAcceleration`](https://developer.mozilla.org/en-US/docs/Web/API/DeviceMotionEventAcceleration)
   /// object.
-  double? get z;
+  double? get z {
+    unsupportedPlatformError();
+  }
 }
 
 /// A **`DeviceMotionEventRotationRate`** interface of the
@@ -137,21 +170,27 @@ abstract class DeviceMotionEventAcceleration implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/DeviceMotionEventRotationRate).
-abstract class DeviceMotionEventRotationRate implements JSObject {
+extension type DeviceMotionEventRotationRate._(JSObject _) implements JSObject {
   /// The **`alpha`** read-only property of the [DeviceMotionEventRotationRate]
   /// interface indicates the rate of rotation around the Z axis, in degrees per
   /// second.
-  double? get alpha;
+  double? get alpha {
+    unsupportedPlatformError();
+  }
 
   /// The **`beta`** read-only property of the [DeviceMotionEventRotationRate]
   /// interface indicates the rate of rotation around the X axis, in degrees per
   /// second.
-  double? get beta;
+  double? get beta {
+    unsupportedPlatformError();
+  }
 
   /// The **`gamma`** read-only property of the [DeviceMotionEventRotationRate]
   /// interface indicates the rate of rotation around the Y axis, in degrees per
   /// second.
-  double? get gamma;
+  double? get gamma {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`DeviceMotionEvent`** interface of the [Device Orientation Events]
@@ -165,7 +204,14 @@ abstract class DeviceMotionEventRotationRate implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/DeviceMotionEvent).
-abstract class DeviceMotionEvent implements Event, JSObject {
+extension type DeviceMotionEvent._(JSObject _) implements Event, JSObject {
+  factory DeviceMotionEvent(
+    String type, [
+    DeviceMotionEventInit? eventInitDict,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// The **`acceleration`** read-only property of the [DeviceMotionEvent]
   /// interface returns the amount of acceleration recorded by
   /// the device, in [meters per second squared
@@ -178,7 +224,9 @@ abstract class DeviceMotionEvent implements Event, JSObject {
   /// > acceleration data, this value may not be present in the
   /// > [DeviceMotionEvent]. In this situation, you'll need to use
   /// > [DeviceMotionEvent.accelerationIncludingGravity] instead.
-  DeviceMotionEventAcceleration? get acceleration;
+  DeviceMotionEventAcceleration? get acceleration {
+    unsupportedPlatformError();
+  }
 
   /// The **`accelerationIncludingGravity`** read-only property of the
   /// [DeviceMotionEvent] interface returns the
@@ -209,7 +257,9 @@ abstract class DeviceMotionEvent implements Event, JSObject {
   /// > horizontal and pointing up, gravity would be -9.8 along the Z axis,
   /// > while `acceleration.z` would be -9.8 and
   /// > `accelerationIncludingGravity.z` would be 0.
-  DeviceMotionEventAcceleration? get accelerationIncludingGravity;
+  DeviceMotionEventAcceleration? get accelerationIncludingGravity {
+    unsupportedPlatformError();
+  }
 
   /// The **`rotationRate`** read-only property of the [DeviceMotionEvent]
   /// interface returns the rate at which the device is rotating around each of
@@ -218,16 +268,28 @@ abstract class DeviceMotionEvent implements Event, JSObject {
   ///
   /// > **Note:** If the hardware isn't capable of providing this
   /// > information, this property returns `null`.
-  DeviceMotionEventRotationRate? get rotationRate;
+  DeviceMotionEventRotationRate? get rotationRate {
+    unsupportedPlatformError();
+  }
 
   /// The **`interval`** read-only property of the [DeviceMotionEvent] interface
   /// returns the interval, in milliseconds, at which data is obtained from the
   /// underlying
   /// hardware. You can use this to determine the granularity of motion events.
-  double get interval;
+  double get interval {
+    unsupportedPlatformError();
+  }
 }
+extension type DeviceMotionEventAccelerationInit._(JSObject _)
+    implements JSObject {
+  factory DeviceMotionEventAccelerationInit({
+    num? x,
+    num? y,
+    num? z,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class DeviceMotionEventAccelerationInit implements JSObject {
   double? get x {
     unsupportedPlatformError();
   }
@@ -252,8 +314,16 @@ abstract class DeviceMotionEventAccelerationInit implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type DeviceMotionEventRotationRateInit._(JSObject _)
+    implements JSObject {
+  factory DeviceMotionEventRotationRateInit({
+    num? alpha,
+    num? beta,
+    num? gamma,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class DeviceMotionEventRotationRateInit implements JSObject {
   double? get alpha {
     unsupportedPlatformError();
   }
@@ -278,8 +348,20 @@ abstract class DeviceMotionEventRotationRateInit implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type DeviceMotionEventInit._(JSObject _)
+    implements EventInit, JSObject {
+  factory DeviceMotionEventInit({
+    bool? bubbles,
+    bool? cancelable,
+    bool? composed,
+    DeviceMotionEventAccelerationInit? acceleration,
+    DeviceMotionEventAccelerationInit? accelerationIncludingGravity,
+    DeviceMotionEventRotationRateInit? rotationRate,
+    num? interval,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class DeviceMotionEventInit implements EventInit, JSObject {
   DeviceMotionEventAccelerationInit get acceleration {
     unsupportedPlatformError();
   }

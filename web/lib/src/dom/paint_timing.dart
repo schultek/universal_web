@@ -39,4 +39,5 @@ import 'performance_timeline.dart';
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/PerformancePaintTiming).
-abstract class PerformancePaintTiming implements PerformanceEntry, JSObject {}
+extension type PerformancePaintTiming._(JSObject _)
+    implements PerformanceEntry, JSObject {}

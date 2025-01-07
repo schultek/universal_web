@@ -50,33 +50,43 @@ typedef PerformanceObserverCallback = JSFunction;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceEntry).
-abstract class PerformanceEntry implements JSObject {
+extension type PerformanceEntry._(JSObject _) implements JSObject {
   /// The **`toJSON()`** method is a ; it returns a JSON representation of the
   /// [PerformanceEntry] object.
-  JSObject toJSON();
+  JSObject toJSON() {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`name`** property of the [PerformanceEntry] interface is a
   /// string representing the name for a performance entry. It acts as an
   /// identifier, but it does not have to be unique. The value depends on the
   /// subclass.
-  String get name;
+  String get name {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`entryType`** property returns a string representing the
   /// type of performance metric that this entry represents.
   ///
   /// All supported `entryTypes` are available using the static property
   /// [PerformanceObserver.supportedEntryTypes_static].
-  String get entryType;
+  String get entryType {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`startTime`** property returns the first  recorded for
   /// this . The meaning of this property depends on the value of this entry's
   /// [PerformanceEntry.entryType].
-  double get startTime;
+  double get startTime {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`duration`** property returns a  that is the duration of
   /// the . The meaning of this property depends on the value of this entry's
   /// [PerformanceEntry.entryType].
-  double get duration;
+  double get duration {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`PerformanceObserver`** interface is used to observe performance
@@ -87,7 +97,11 @@ abstract class PerformanceEntry implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceObserver).
-abstract class PerformanceObserver implements JSObject {
+extension type PerformanceObserver._(JSObject _) implements JSObject {
+  factory PerformanceObserver(PerformanceObserverCallback callback) {
+    unsupportedPlatformError();
+  }
+
   /// The static **`supportedEntryTypes`** read-only property of the
   /// [PerformanceObserver] interface returns an array of the
   /// [PerformanceEntry.entryType] values supported by the user agent.
@@ -107,20 +121,34 @@ abstract class PerformanceObserver implements JSObject {
   ///
   /// When a matching performance entry is recorded, the performance observer's
   /// callback function—set when creating the [PerformanceObserver]—is invoked.
-  void observe([PerformanceObserverInit options]);
+  void observe([PerformanceObserverInit? options]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`disconnect()`** method of the [PerformanceObserver] interface is
   /// used to stop the performance observer from receiving any
   /// [PerformanceEntry] events.
-  void disconnect();
+  void disconnect() {
+    unsupportedPlatformError();
+  }
 
   /// The **`takeRecords()`** method of the [PerformanceObserver] interface
   /// returns the current list of [PerformanceEntry] stored in the performance
   /// observer, emptying it out.
-  PerformanceEntryList takeRecords();
+  PerformanceEntryList takeRecords() {
+    unsupportedPlatformError();
+  }
 }
+extension type PerformanceObserverInit._(JSObject _) implements JSObject {
+  factory PerformanceObserverInit({
+    JSArray<JSString>? entryTypes,
+    String? type,
+    bool? buffered,
+    DOMHighResTimeStamp? durationThreshold,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class PerformanceObserverInit implements JSObject {
   JSArray<JSString> get entryTypes {
     unsupportedPlatformError();
   }
@@ -162,14 +190,16 @@ abstract class PerformanceObserverInit implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceObserverEntryList).
-abstract class PerformanceObserverEntryList implements JSObject {
+extension type PerformanceObserverEntryList._(JSObject _) implements JSObject {
   /// The **`getEntries()`** method of the [PerformanceObserverEntryList]
   /// interface returns a list of explicitly observed [PerformanceEntry]
   /// objects. The list's members are determined by the set of
   /// [PerformanceEntry.entryType] specified in the call to the
   /// [PerformanceObserver.observe] method. The list is available in the
   /// observer's callback function (as the first parameter in the callback).
-  PerformanceEntryList getEntries();
+  PerformanceEntryList getEntries() {
+    unsupportedPlatformError();
+  }
 
   /// The **`getEntriesByType()`** method of the [PerformanceObserverEntryList]
   /// returns a list of explicitly _observed_ [PerformanceEntry] objects for a
@@ -177,7 +207,9 @@ abstract class PerformanceObserverEntryList implements JSObject {
   /// the set of [PerformanceEntry.entryType] specified in the call to the
   /// [PerformanceObserver.observe] method. The list is available in the
   /// observer's callback function (as the first parameter in the callback).
-  PerformanceEntryList getEntriesByType(String type);
+  PerformanceEntryList getEntriesByType(String type) {
+    unsupportedPlatformError();
+  }
 
   /// The **`getEntriesByName()`** method of the [PerformanceObserverEntryList]
   /// interface returns a list of explicitly observed [PerformanceEntry] objects
@@ -188,6 +220,8 @@ abstract class PerformanceObserverEntryList implements JSObject {
   /// parameter in the callback).
   PerformanceEntryList getEntriesByName(
     String name, [
-    String type,
-  ]);
+    String? type,
+  ]) {
+    unsupportedPlatformError();
+  }
 }

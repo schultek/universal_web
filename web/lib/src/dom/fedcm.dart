@@ -14,8 +14,15 @@ import '../error.dart';
 import '../js_interop.dart';
 
 typedef IdentityCredentialRequestOptionsContext = String;
+extension type IdentityCredentialRequestOptions._(JSObject _)
+    implements JSObject {
+  factory IdentityCredentialRequestOptions({
+    required JSArray<IdentityProviderRequestOptions> providers,
+    IdentityCredentialRequestOptionsContext? context,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class IdentityCredentialRequestOptions implements JSObject {
   JSArray<IdentityProviderRequestOptions> get providers {
     unsupportedPlatformError();
   }
@@ -32,8 +39,14 @@ abstract class IdentityCredentialRequestOptions implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type IdentityProviderConfig._(JSObject _) implements JSObject {
+  factory IdentityProviderConfig({
+    required String configURL,
+    required String clientId,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class IdentityProviderConfig implements JSObject {
   String get configURL {
     unsupportedPlatformError();
   }
@@ -50,9 +63,18 @@ abstract class IdentityProviderConfig implements JSObject {
     unsupportedPlatformError();
   }
 }
-
-abstract class IdentityProviderRequestOptions
+extension type IdentityProviderRequestOptions._(JSObject _)
     implements IdentityProviderConfig, JSObject {
+  factory IdentityProviderRequestOptions({
+    required String configURL,
+    required String clientId,
+    String? nonce,
+    String? loginHint,
+    String? domainHint,
+  }) {
+    unsupportedPlatformError();
+  }
+
   String get nonce {
     unsupportedPlatformError();
   }

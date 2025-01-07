@@ -10,6 +10,7 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
+import '../error.dart';
 import '../js_interop.dart';
 import 'dom.dart';
 import 'html.dart';
@@ -25,17 +26,21 @@ typedef PermissionState = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Permissions).
-abstract class Permissions implements JSObject {
+extension type Permissions._(JSObject _) implements JSObject {
   /// The **`query()`** method of the [Permissions] interface returns the state
   /// of a user permission on the global scope.
-  JSPromise<PermissionStatus> query(JSObject permissionDesc);
+  JSPromise<PermissionStatus> query(JSObject permissionDesc) {
+    unsupportedPlatformError();
+  }
 
   /// The **`revoke()`** method of the
   /// [Permissions] interface reverts a currently set permission back to its
   /// default state, which is usually `prompt`.
   /// This method is called on the global [Permissions] object
   /// [navigator.permissions].
-  JSPromise<PermissionStatus> revoke(JSObject permissionDesc);
+  JSPromise<PermissionStatus> revoke(JSObject permissionDesc) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`PermissionStatus`** interface of the
@@ -47,16 +52,26 @@ abstract class Permissions implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/PermissionStatus).
-abstract class PermissionStatus implements EventTarget, JSObject {
+extension type PermissionStatus._(JSObject _) implements EventTarget, JSObject {
   /// The **`state`** read-only property of the
   /// [PermissionStatus] interface returns the state of a requested permission.
   /// This property returns one of `'granted'`, `'denied'`, or
   /// `'prompt'`.
-  PermissionState get state;
+  PermissionState get state {
+    unsupportedPlatformError();
+  }
 
   /// The **`name`** read-only property of the [PermissionStatus] interface
   /// returns the name of a requested permission.
-  String get name;
-  EventHandler get onchange;
-  set onchange(EventHandler value);
+  String get name {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onchange {
+    unsupportedPlatformError();
+  }
+
+  set onchange(EventHandler value) {
+    unsupportedPlatformError();
+  }
 }

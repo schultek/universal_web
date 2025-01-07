@@ -31,14 +31,21 @@ typedef SpeechSynthesisErrorCode = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition).
-abstract class SpeechRecognition implements EventTarget, JSObject {
+extension type SpeechRecognition._(JSObject _)
+    implements EventTarget, JSObject {
+  factory SpeechRecognition() {
+    unsupportedPlatformError();
+  }
+
   /// The **`start()`** method of the
   /// [Web Speech API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API)
   /// starts the speech
   /// recognition service listening to incoming audio with intent to recognize
   /// grammars
   /// associated with the current [SpeechRecognition].
-  void start();
+  void start() {
+    unsupportedPlatformError();
+  }
 
   /// The **`stop()`** method of the
   /// [Web Speech API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API)
@@ -46,7 +53,9 @@ abstract class SpeechRecognition implements EventTarget, JSObject {
   /// recognition service from listening to incoming audio, and attempts to
   /// return a
   /// [SpeechRecognitionResult] using the audio captured so far.
-  void stop();
+  void stop() {
+    unsupportedPlatformError();
+  }
 
   /// The **`abort()`** method of the
   /// [Web Speech API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API)
@@ -54,15 +63,22 @@ abstract class SpeechRecognition implements EventTarget, JSObject {
   /// recognition service from listening to incoming audio, and doesn't attempt
   /// to return a
   /// [SpeechRecognitionResult].
-  void abort();
+  void abort() {
+    unsupportedPlatformError();
+  }
 
   /// The **`grammars`** property of the
   /// [SpeechRecognition] interface returns and sets a collection of
   /// [SpeechGrammar] objects that represent the grammars that will be
   /// understood
   /// by the current `SpeechRecognition`.
-  JSObject get grammars;
-  set grammars(JSObject value);
+  JSObject get grammars {
+    unsupportedPlatformError();
+  }
+
+  set grammars(JSObject value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`lang`** property of the [SpeechRecognition]
   /// interface returns and sets the language of the current
@@ -71,16 +87,26 @@ abstract class SpeechRecognition implements EventTarget, JSObject {
   /// [`lang`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/html#lang)
   /// attribute
   /// value, or the user agent's language setting if that isn't set either.
-  String get lang;
-  set lang(String value);
+  String get lang {
+    unsupportedPlatformError();
+  }
+
+  set lang(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`continuous`** property of the
   /// [SpeechRecognition] interface controls whether continuous results are
   /// returned for each recognition, or only a single result.
   ///
   /// It defaults to single results (`false`.)
-  bool get continuous;
-  set continuous(bool value);
+  bool get continuous {
+    unsupportedPlatformError();
+  }
+
+  set continuous(bool value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`interimResults`** property of the
   /// [SpeechRecognition] interface controls whether interim results should be
@@ -90,8 +116,13 @@ abstract class SpeechRecognition implements EventTarget, JSObject {
   /// is `false`).
   ///
   /// The default value for **`interimResults`** is `false`.
-  bool get interimResults;
-  set interimResults(bool value);
+  bool get interimResults {
+    unsupportedPlatformError();
+  }
+
+  set interimResults(bool value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`maxAlternatives`** property of the
   /// [SpeechRecognition] interface sets the maximum number of
@@ -99,30 +130,101 @@ abstract class SpeechRecognition implements EventTarget, JSObject {
   /// [SpeechRecognitionResult].
   ///
   /// The default value is 1.
-  int get maxAlternatives;
-  set maxAlternatives(int value);
-  EventHandler get onaudiostart;
-  set onaudiostart(EventHandler value);
-  EventHandler get onsoundstart;
-  set onsoundstart(EventHandler value);
-  EventHandler get onspeechstart;
-  set onspeechstart(EventHandler value);
-  EventHandler get onspeechend;
-  set onspeechend(EventHandler value);
-  EventHandler get onsoundend;
-  set onsoundend(EventHandler value);
-  EventHandler get onaudioend;
-  set onaudioend(EventHandler value);
-  EventHandler get onresult;
-  set onresult(EventHandler value);
-  EventHandler get onnomatch;
-  set onnomatch(EventHandler value);
-  EventHandler get onerror;
-  set onerror(EventHandler value);
-  EventHandler get onstart;
-  set onstart(EventHandler value);
-  EventHandler get onend;
-  set onend(EventHandler value);
+  int get maxAlternatives {
+    unsupportedPlatformError();
+  }
+
+  set maxAlternatives(int value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onaudiostart {
+    unsupportedPlatformError();
+  }
+
+  set onaudiostart(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onsoundstart {
+    unsupportedPlatformError();
+  }
+
+  set onsoundstart(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onspeechstart {
+    unsupportedPlatformError();
+  }
+
+  set onspeechstart(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onspeechend {
+    unsupportedPlatformError();
+  }
+
+  set onspeechend(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onsoundend {
+    unsupportedPlatformError();
+  }
+
+  set onsoundend(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onaudioend {
+    unsupportedPlatformError();
+  }
+
+  set onaudioend(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onresult {
+    unsupportedPlatformError();
+  }
+
+  set onresult(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onnomatch {
+    unsupportedPlatformError();
+  }
+
+  set onnomatch(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onerror {
+    unsupportedPlatformError();
+  }
+
+  set onerror(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onstart {
+    unsupportedPlatformError();
+  }
+
+  set onstart(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onend {
+    unsupportedPlatformError();
+  }
+
+  set onend(EventHandler value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SpeechRecognitionErrorEvent`** interface of the
@@ -133,15 +235,20 @@ abstract class SpeechRecognition implements EventTarget, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognitionErrorEvent).
-abstract class SpeechRecognitionErrorEvent implements Event, JSObject {
+extension type SpeechRecognitionErrorEvent._(JSObject _)
+    implements Event, JSObject {
   /// The **`error`** read-only property of the
   /// [SpeechRecognitionErrorEvent] interface returns the type of error raised.
-  SpeechRecognitionErrorCode get error;
+  SpeechRecognitionErrorCode get error {
+    unsupportedPlatformError();
+  }
 
   /// The **`message`** read-only property of the
   /// [SpeechRecognitionErrorEvent] interface returns a message describing the
   /// error in more detail.
-  String get message;
+  String get message {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SpeechRecognitionAlternative`** interface of the
@@ -153,7 +260,7 @@ abstract class SpeechRecognitionErrorEvent implements Event, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognitionAlternative).
-abstract class SpeechRecognitionAlternative implements JSObject {
+extension type SpeechRecognitionAlternative._(JSObject _) implements JSObject {
   /// The **`transcript`** read-only property of the
   /// [SpeechRecognitionResult] interface returns a string containing the
   /// transcript of the recognized word(s).
@@ -162,7 +269,9 @@ abstract class SpeechRecognitionAlternative implements JSObject {
   /// included where
   /// necessary so that concatenation of consecutive [SpeechRecognitionResult]s
   /// produces a proper transcript of the session.
-  String get transcript;
+  String get transcript {
+    unsupportedPlatformError();
+  }
 
   /// The **`confidence`** read-only property of the
   /// [SpeechRecognitionResult] interface returns a numeric estimate of how
@@ -171,7 +280,9 @@ abstract class SpeechRecognitionAlternative implements JSObject {
   ///
   /// > **Note:** Mozilla's implementation of `confidence` is still
   /// > being worked on — at the moment, it always seems to return 1.
-  double get confidence;
+  double get confidence {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SpeechRecognitionResult`** interface of the
@@ -183,13 +294,15 @@ abstract class SpeechRecognitionAlternative implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognitionResult).
-abstract class SpeechRecognitionResult implements JSObject {
+extension type SpeechRecognitionResult._(JSObject _) implements JSObject {
   /// The **`item`** getter of the
   /// [SpeechRecognitionResult] interface is a standard getter that allows
   /// [SpeechRecognitionAlternative] objects within the result to be accessed
   /// via
   /// array syntax.
-  SpeechRecognitionAlternative item(int index);
+  SpeechRecognitionAlternative item(int index) {
+    unsupportedPlatformError();
+  }
 
   /// The **`length`** read-only property of the
   /// [SpeechRecognitionResult] interface returns the length of the "array"
@@ -199,7 +312,9 @@ abstract class SpeechRecognitionResult implements JSObject {
   /// The number of alternatives contained in the result depends on what the
   /// [SpeechRecognition.maxAlternatives] property was set to when the speech
   /// recognition was first initiated.
-  int get length;
+  int get length {
+    unsupportedPlatformError();
+  }
 
   /// The **`isFinal`** read-only property of the
   /// [SpeechRecognitionResult] interface is a boolean value that states
@@ -207,7 +322,9 @@ abstract class SpeechRecognitionResult implements JSObject {
   /// then this is the final time this result will be returned; if not, then
   /// this result is an
   /// interim result, and may be updated later on.
-  bool get isFinal;
+  bool get isFinal {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SpeechRecognitionResultList`** interface of the
@@ -219,18 +336,22 @@ abstract class SpeechRecognitionResult implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognitionResultList).
-abstract class SpeechRecognitionResultList implements JSObject {
+extension type SpeechRecognitionResultList._(JSObject _) implements JSObject {
   /// The **`item`** getter of the
   /// [SpeechRecognitionResultList] interface is a standard getter — it allows
   /// [SpeechRecognitionResult] objects in the list to be accessed via array
   /// syntax.
-  SpeechRecognitionResult item(int index);
+  SpeechRecognitionResult item(int index) {
+    unsupportedPlatformError();
+  }
 
   /// The **`length`** read-only property of the
   /// [SpeechRecognitionResultList] interface returns the length of the
   /// "array" — the number of [SpeechRecognitionResult] objects in the
   /// list.
-  int get length;
+  int get length {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SpeechRecognitionEvent`** interface of the
@@ -243,7 +364,7 @@ abstract class SpeechRecognitionResultList implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognitionEvent).
-abstract class SpeechRecognitionEvent implements Event, JSObject {
+extension type SpeechRecognitionEvent._(JSObject _) implements Event, JSObject {
   /// The **`resultIndex`** read-only property of the
   /// [SpeechRecognitionEvent] interface returns the lowest index value result
   /// in
@@ -251,7 +372,9 @@ abstract class SpeechRecognitionEvent implements Event, JSObject {
   ///
   /// The [SpeechRecognitionResultList] object is not an array, but it has a
   /// getter that allows it to be accessed by array syntax.
-  int get resultIndex;
+  int get resultIndex {
+    unsupportedPlatformError();
+  }
 
   /// The **`results`** read-only property of the
   /// [SpeechRecognitionEvent] interface returns a
@@ -269,7 +392,9 @@ abstract class SpeechRecognitionEvent implements Event, JSObject {
   /// of the "results" array and the array length decreases. Final results on
   /// the other hand
   /// will not be overwritten or removed.
-  SpeechRecognitionResultList get results;
+  SpeechRecognitionResultList get results {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SpeechSynthesis`** interface of the
@@ -282,46 +407,60 @@ abstract class SpeechRecognitionEvent implements Event, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis).
-abstract class SpeechSynthesis implements EventTarget, JSObject {
+extension type SpeechSynthesis._(JSObject _) implements EventTarget, JSObject {
   /// The **`speak()`** method of the [SpeechSynthesis]
   /// interface adds an [SpeechSynthesisUtterance] to the utterance
   /// queue; it will be spoken when any other utterances queued before it have
   /// been spoken.
-  void speak(SpeechSynthesisUtterance utterance);
+  void speak(SpeechSynthesisUtterance utterance) {
+    unsupportedPlatformError();
+  }
 
   /// The **`cancel()`** method of the [SpeechSynthesis]
   /// interface removes all utterances from the utterance queue.
   ///
   /// If an utterance is currently being spoken, speaking will stop immediately.
-  void cancel();
+  void cancel() {
+    unsupportedPlatformError();
+  }
 
   /// The **`pause()`** method of the [SpeechSynthesis]
   /// interface puts the `SpeechSynthesis` object into a paused state.
-  void pause();
+  void pause() {
+    unsupportedPlatformError();
+  }
 
   /// The **`resume()`** method of the [SpeechSynthesis]
   /// interface puts the `SpeechSynthesis` object into a non-paused state:
   /// resumes it if it was already paused.
-  void resume();
+  void resume() {
+    unsupportedPlatformError();
+  }
 
   /// The **`getVoices()`** method of the
   /// [SpeechSynthesis] interface returns a list of
   /// [SpeechSynthesisVoice] objects representing all the available voices on
   /// the
   /// current device.
-  JSArray<SpeechSynthesisVoice> getVoices();
+  JSArray<SpeechSynthesisVoice> getVoices() {
+    unsupportedPlatformError();
+  }
 
   /// The **`pending`** read-only property of the
   /// [SpeechSynthesis] interface is a boolean value that returns
   /// `true` if the utterance queue contains as-yet-unspoken utterances.
-  bool get pending;
+  bool get pending {
+    unsupportedPlatformError();
+  }
 
   /// The **`speaking`** read-only property of the
   /// [SpeechSynthesis] interface is a boolean value that returns
   /// `true` if an utterance is currently in the process of being spoken — even
   /// if `SpeechSynthesis` is in a
   /// [SpeechSynthesis.pause] state.
-  bool get speaking;
+  bool get speaking {
+    unsupportedPlatformError();
+  }
 
   /// The **`paused`** read-only property of the
   /// [SpeechSynthesis] interface is a boolean value that returns
@@ -333,9 +472,17 @@ abstract class SpeechSynthesis implements EventTarget, JSObject {
   /// [SpeechSynthesisUtterance] are then added to the utterance
   /// queue, they will not be spoken until the `SpeechSynthesis` object is
   /// unpaused, using [SpeechSynthesis.resume].
-  bool get paused;
-  EventHandler get onvoiceschanged;
-  set onvoiceschanged(EventHandler value);
+  bool get paused {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onvoiceschanged {
+    unsupportedPlatformError();
+  }
+
+  set onvoiceschanged(EventHandler value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SpeechSynthesisUtterance`** interface of the
@@ -348,7 +495,12 @@ abstract class SpeechSynthesis implements EventTarget, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance).
-abstract class SpeechSynthesisUtterance implements EventTarget, JSObject {
+extension type SpeechSynthesisUtterance._(JSObject _)
+    implements EventTarget, JSObject {
+  factory SpeechSynthesisUtterance([String? text]) {
+    unsupportedPlatformError();
+  }
+
   /// The **`text`** property of the
   /// [SpeechSynthesisUtterance] interface gets and sets the text that will be
   /// synthesized when the utterance is spoken.
@@ -356,8 +508,13 @@ abstract class SpeechSynthesisUtterance implements EventTarget, JSObject {
   /// The text may be provided as plain text, or a well-formed
   /// [SSML](https://www.w3.org/TR/speech-synthesis/) document.
   /// The SSML tags will be stripped away by devices that don't support SSML.
-  String get text;
-  set text(String value);
+  String get text {
+    unsupportedPlatformError();
+  }
+
+  set text(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`lang`** property of the [SpeechSynthesisUtterance] interface gets
   /// and sets the language of the utterance.
@@ -365,8 +522,13 @@ abstract class SpeechSynthesisUtterance implements EventTarget, JSObject {
   /// If unset, the app's (i.e. the `html`
   /// [`lang`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/html#lang)
   /// value) lang will be used, or the user-agent default if that is unset too.
-  String get lang;
-  set lang(String value);
+  String get lang {
+    unsupportedPlatformError();
+  }
+
+  set lang(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`voice`** property of the [SpeechSynthesisUtterance] interface gets
   /// and sets the voice that will be used to speak the utterance.
@@ -376,43 +538,105 @@ abstract class SpeechSynthesisUtterance implements EventTarget, JSObject {
   /// If not set by the time the utterance is spoken, the voice used will be the
   /// most suitable default voice available for the utterance's
   /// [SpeechSynthesisUtterance.lang] setting.
-  SpeechSynthesisVoice? get voice;
-  set voice(SpeechSynthesisVoice? value);
+  SpeechSynthesisVoice? get voice {
+    unsupportedPlatformError();
+  }
+
+  set voice(SpeechSynthesisVoice? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`volume`** property of the [SpeechSynthesisUtterance] interface gets
   /// and sets the volume that the utterance will be spoken at.
   ///
   /// If not set, the default value 1 will be used.
-  double get volume;
-  set volume(num value);
+  double get volume {
+    unsupportedPlatformError();
+  }
+
+  set volume(num value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`rate`** property of the [SpeechSynthesisUtterance] interface gets
   /// and sets the speed at which the utterance will be spoken at.
   ///
   /// If unset, a default value of 1 will be used.
-  double get rate;
-  set rate(num value);
+  double get rate {
+    unsupportedPlatformError();
+  }
+
+  set rate(num value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`pitch`** property of the [SpeechSynthesisUtterance] interface gets
   /// and sets the pitch at which the utterance will be spoken at.
   ///
   /// If unset, a default value of 1 will be used.
-  double get pitch;
-  set pitch(num value);
-  EventHandler get onstart;
-  set onstart(EventHandler value);
-  EventHandler get onend;
-  set onend(EventHandler value);
-  EventHandler get onerror;
-  set onerror(EventHandler value);
-  EventHandler get onpause;
-  set onpause(EventHandler value);
-  EventHandler get onresume;
-  set onresume(EventHandler value);
-  EventHandler get onmark;
-  set onmark(EventHandler value);
-  EventHandler get onboundary;
-  set onboundary(EventHandler value);
+  double get pitch {
+    unsupportedPlatformError();
+  }
+
+  set pitch(num value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onstart {
+    unsupportedPlatformError();
+  }
+
+  set onstart(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onend {
+    unsupportedPlatformError();
+  }
+
+  set onend(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onerror {
+    unsupportedPlatformError();
+  }
+
+  set onerror(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onpause {
+    unsupportedPlatformError();
+  }
+
+  set onpause(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onresume {
+    unsupportedPlatformError();
+  }
+
+  set onresume(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onmark {
+    unsupportedPlatformError();
+  }
+
+  set onmark(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onboundary {
+    unsupportedPlatformError();
+  }
+
+  set onboundary(EventHandler value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SpeechSynthesisEvent`** interface of the
@@ -424,31 +648,46 @@ abstract class SpeechSynthesisUtterance implements EventTarget, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisEvent).
-abstract class SpeechSynthesisEvent implements Event, JSObject {
+extension type SpeechSynthesisEvent._(JSObject _) implements Event, JSObject {
+  factory SpeechSynthesisEvent(
+    String type,
+    SpeechSynthesisEventInit eventInitDict,
+  ) {
+    unsupportedPlatformError();
+  }
+
   /// The **`utterance`** read-only property of the [SpeechSynthesisUtterance]
   /// interface returns the [SpeechSynthesisUtterance] instance that the event
   /// was triggered on.
-  SpeechSynthesisUtterance get utterance;
+  SpeechSynthesisUtterance get utterance {
+    unsupportedPlatformError();
+  }
 
   /// The **`charIndex`** read-only property of the [SpeechSynthesisUtterance]
   /// interface returns the index position of the character in
   /// [SpeechSynthesisUtterance.text] that was being spoken when the event was
   /// triggered.
-  int get charIndex;
+  int get charIndex {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`charLength`** property of the [SpeechSynthesisEvent]
   /// interface returns the number of characters left to be spoken after the
   /// character at the [SpeechSynthesisEvent.charIndex] position.
   ///
   /// If the speech engine can't determine it, it returns 0.
-  int get charLength;
+  int get charLength {
+    unsupportedPlatformError();
+  }
 
   /// The **`elapsedTime`** read-only property of the [SpeechSynthesisEvent]
   /// returns the elapsed time in seconds, after the
   /// [SpeechSynthesisUtterance.text] started being spoken, at which the
   /// [event](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance#events)
   /// was triggered.
-  double get elapsedTime;
+  double get elapsedTime {
+    unsupportedPlatformError();
+  }
 
   /// The **`name`** read-only property of the [SpeechSynthesisUtterance]
   /// interface returns the name associated with certain types of events
@@ -457,10 +696,25 @@ abstract class SpeechSynthesisEvent implements Event, JSObject {
   /// marker reached in the case of a [SpeechSynthesisUtterance.mark_event]
   /// event, or the type of boundary reached in the case of a
   /// [SpeechSynthesisUtterance.boundary_event] event.
-  String get name;
+  String get name {
+    unsupportedPlatformError();
+  }
 }
+extension type SpeechSynthesisEventInit._(JSObject _)
+    implements EventInit, JSObject {
+  factory SpeechSynthesisEventInit({
+    bool? bubbles,
+    bool? cancelable,
+    bool? composed,
+    required SpeechSynthesisUtterance utterance,
+    int? charIndex,
+    int? charLength,
+    num? elapsedTime,
+    String? name,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class SpeechSynthesisEventInit implements EventInit, JSObject {
   SpeechSynthesisUtterance get utterance {
     unsupportedPlatformError();
   }
@@ -511,16 +765,38 @@ abstract class SpeechSynthesisEventInit implements EventInit, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisErrorEvent).
-abstract class SpeechSynthesisErrorEvent
+extension type SpeechSynthesisErrorEvent._(JSObject _)
     implements SpeechSynthesisEvent, JSObject {
+  factory SpeechSynthesisErrorEvent(
+    String type,
+    SpeechSynthesisErrorEventInit eventInitDict,
+  ) {
+    unsupportedPlatformError();
+  }
+
   /// The **`error`** property of the
   /// [SpeechSynthesisErrorEvent] interface returns an error code indicating
   /// what has gone wrong with a speech synthesis attempt.
-  SpeechSynthesisErrorCode get error;
+  SpeechSynthesisErrorCode get error {
+    unsupportedPlatformError();
+  }
 }
-
-abstract class SpeechSynthesisErrorEventInit
+extension type SpeechSynthesisErrorEventInit._(JSObject _)
     implements SpeechSynthesisEventInit, JSObject {
+  factory SpeechSynthesisErrorEventInit({
+    bool? bubbles,
+    bool? cancelable,
+    bool? composed,
+    required SpeechSynthesisUtterance utterance,
+    int? charIndex,
+    int? charLength,
+    num? elapsedTime,
+    String? name,
+    required SpeechSynthesisErrorCode error,
+  }) {
+    unsupportedPlatformError();
+  }
+
   SpeechSynthesisErrorCode get error {
     unsupportedPlatformError();
   }
@@ -540,20 +816,26 @@ abstract class SpeechSynthesisErrorEventInit
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisVoice).
-abstract class SpeechSynthesisVoice implements JSObject {
+extension type SpeechSynthesisVoice._(JSObject _) implements JSObject {
   /// The **`voiceURI`** read-only property of the
   /// [SpeechSynthesisVoice] interface returns the type of URI and location of
   /// the speech synthesis service for this voice.
-  String get voiceURI;
+  String get voiceURI {
+    unsupportedPlatformError();
+  }
 
   /// The **`name`** read-only property of the
   /// [SpeechSynthesisVoice] interface returns a human-readable name that
   /// represents the voice.
-  String get name;
+  String get name {
+    unsupportedPlatformError();
+  }
 
   /// The **`lang`** read-only property of the [SpeechSynthesisVoice] interface
   /// returns a BCP 47 language tag indicating the language of the voice.
-  String get lang;
+  String get lang {
+    unsupportedPlatformError();
+  }
 
   /// The **`localService`** read-only property of the
   /// [SpeechSynthesisVoice] interface returns a boolean value
@@ -567,6 +849,11 @@ abstract class SpeechSynthesisVoice implements JSObject {
   /// have extra
   /// latency, bandwidth or cost associated with them, so such distinction may
   /// be useful.
-  bool get localService;
-  bool get default_;
+  bool get localService {
+    unsupportedPlatformError();
+  }
+
+  bool get default_ {
+    unsupportedPlatformError();
+  }
 }

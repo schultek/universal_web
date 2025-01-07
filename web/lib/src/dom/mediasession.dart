@@ -31,7 +31,7 @@ typedef MediaSessionAction = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MediaSession).
-abstract class MediaSession implements JSObject {
+extension type MediaSession._(JSObject _) implements JSObject {
   /// The **`setActionHandler()`** method of the [MediaSession] interface sets a
   /// handler for a media session action.
   /// These actions let a web app receive notifications when the user engages a
@@ -40,7 +40,9 @@ abstract class MediaSession implements JSObject {
   void setActionHandler(
     MediaSessionAction action,
     MediaSessionActionHandler? handler,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`setPositionState()`** method of the
   /// [MediaSession] interface is used to update the current
@@ -53,7 +55,9 @@ abstract class MediaSession implements JSObject {
   ///
   /// Call this method on the `navigator` object's
   /// [navigator.mediaSession] object.
-  void setPositionState([MediaPositionState state]);
+  void setPositionState([MediaPositionState? state]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`metadata`** property of the [MediaSession]
   /// interface contains a [MediaMetadata] object providing descriptive
@@ -62,14 +66,24 @@ abstract class MediaSession implements JSObject {
   /// not been set. This metadata is provided by the browser to the device for
   /// presentation in
   /// any standard media control user interface the device might offer.
-  MediaMetadata? get metadata;
-  set metadata(MediaMetadata? value);
+  MediaMetadata? get metadata {
+    unsupportedPlatformError();
+  }
+
+  set metadata(MediaMetadata? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`playbackState`** property of the
   /// [MediaSession] interface indicates whether the current media session is
   /// playing or paused.
-  MediaSessionPlaybackState get playbackState;
-  set playbackState(MediaSessionPlaybackState value);
+  MediaSessionPlaybackState get playbackState {
+    unsupportedPlatformError();
+  }
+
+  set playbackState(MediaSessionPlaybackState value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`MediaMetadata`** interface of the [Media Session API] allows a web
@@ -79,34 +93,67 @@ abstract class MediaSession implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MediaMetadata).
-abstract class MediaMetadata implements JSObject {
+extension type MediaMetadata._(JSObject _) implements JSObject {
+  factory MediaMetadata([MediaMetadataInit? init]) {
+    unsupportedPlatformError();
+  }
+
   /// The **`title`** property of the
   /// [MediaMetaData] interface returns or sets the title of the media to be
   /// played.
-  String get title;
-  set title(String value);
+  String get title {
+    unsupportedPlatformError();
+  }
+
+  set title(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`artist`** property of the
   /// [MediaMetaData] interface returns or sets the name of the artist, group,
   /// creator, etc., of the media to be played.
-  String get artist;
-  set artist(String value);
+  String get artist {
+    unsupportedPlatformError();
+  }
+
+  set artist(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`album`** property of the
   /// [MediaMetaData] interface returns or sets the name of the album or
   /// collection containing the media to be played.
-  String get album;
-  set album(String value);
+  String get album {
+    unsupportedPlatformError();
+  }
+
+  set album(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`artwork`** property of the
   /// [MediaMetaData] interface returns or sets an array of
   /// objects representing images associated with playing
   /// media.
-  JSArray<MediaImage> get artwork;
-  set artwork(JSArray<MediaImage> value);
-}
+  JSArray<MediaImage> get artwork {
+    unsupportedPlatformError();
+  }
 
-abstract class MediaMetadataInit implements JSObject {
+  set artwork(JSArray<MediaImage> value) {
+    unsupportedPlatformError();
+  }
+}
+extension type MediaMetadataInit._(JSObject _) implements JSObject {
+  factory MediaMetadataInit({
+    String? title,
+    String? artist,
+    String? album,
+    JSArray<MediaImage>? artwork,
+    JSArray<ChapterInformationInit>? chapterInfo,
+  }) {
+    unsupportedPlatformError();
+  }
+
   String get title {
     unsupportedPlatformError();
   }
@@ -147,8 +194,15 @@ abstract class MediaMetadataInit implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type ChapterInformationInit._(JSObject _) implements JSObject {
+  factory ChapterInformationInit({
+    String? title,
+    num? startTime,
+    JSArray<MediaImage>? artwork,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class ChapterInformationInit implements JSObject {
   String get title {
     unsupportedPlatformError();
   }
@@ -173,8 +227,15 @@ abstract class ChapterInformationInit implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type MediaImage._(JSObject _) implements JSObject {
+  factory MediaImage({
+    required String src,
+    String? sizes,
+    String? type,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class MediaImage implements JSObject {
   String get src {
     unsupportedPlatformError();
   }
@@ -199,8 +260,15 @@ abstract class MediaImage implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type MediaPositionState._(JSObject _) implements JSObject {
+  factory MediaPositionState({
+    num? duration,
+    num? playbackRate,
+    num? position,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class MediaPositionState implements JSObject {
   double get duration {
     unsupportedPlatformError();
   }

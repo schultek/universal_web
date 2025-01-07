@@ -32,36 +32,53 @@ typedef EndingType = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Blob).
-abstract class Blob implements JSObject {
+extension type Blob._(JSObject _) implements JSObject {
+  factory Blob([
+    JSArray<BlobPart>? blobParts,
+    BlobPropertyBag? options,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// The **`slice()`** method of the [Blob] interface
   /// creates and returns a new `Blob` object which contains data from a subset
   /// of
   /// the blob on which it's called.
   Blob slice([
-    int start,
-    int end,
-    String contentType,
-  ]);
+    int? start,
+    int? end,
+    String? contentType,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`stream()`** method of the [Blob] interface returns a
   /// [ReadableStream] which upon reading returns the data contained within the
   /// `Blob`.
-  ReadableStream stream();
+  ReadableStream stream() {
+    unsupportedPlatformError();
+  }
 
   /// The **`text()`** method of the
   /// [Blob] interface returns a `Promise` that resolves with a
   /// string containing the contents of the blob, interpreted as UTF-8.
-  JSPromise<JSString> text();
+  JSPromise<JSString> text() {
+    unsupportedPlatformError();
+  }
 
   /// The **`arrayBuffer()`** method of the [Blob]
   /// interface returns a `Promise` that resolves with the contents of the blob
   /// as
   /// binary data contained in an `ArrayBuffer`.
-  JSPromise<JSArrayBuffer> arrayBuffer();
+  JSPromise<JSArrayBuffer> arrayBuffer() {
+    unsupportedPlatformError();
+  }
 
   /// The **`size`** read-only property of the [Blob] interface returns
   /// the size of the [Blob] or [File] in bytes.
-  int get size;
+  int get size {
+    unsupportedPlatformError();
+  }
 
   /// The **`type`** read-only property of the [Blob] interface returns the  of
   /// the file.
@@ -76,10 +93,18 @@ abstract class Blob implements JSObject {
   /// > Client configuration (for instance, the Windows Registry) may result in
   /// > unexpected values even for common types. **Developers are advised not to
   /// > rely on this property as a sole validation scheme.**
-  String get type;
+  String get type {
+    unsupportedPlatformError();
+  }
 }
+extension type BlobPropertyBag._(JSObject _) implements JSObject {
+  factory BlobPropertyBag({
+    String? type,
+    EndingType? endings,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class BlobPropertyBag implements JSObject {
   String get type {
     unsupportedPlatformError();
   }
@@ -118,11 +143,21 @@ abstract class BlobPropertyBag implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/File).
-abstract class File implements Blob, JSObject {
+extension type File._(JSObject _) implements Blob, JSObject {
+  factory File(
+    JSArray<BlobPart> fileBits,
+    String fileName, [
+    FilePropertyBag? options,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// The **`name`** read-only property of the [File] interface returns the name
   /// of the file represented by a [File] object. For security
   /// reasons, the path is excluded from this property.
-  String get name;
+  String get name {
+    unsupportedPlatformError();
+  }
 
   /// The **`lastModified`** read-only property of the [File] interface provides
   /// the
@@ -131,17 +166,29 @@ abstract class File implements Blob, JSObject {
   /// epoch (January 1, 1970 at midnight). Files without a known last modified
   /// date return the
   /// current date.
-  int get lastModified;
+  int get lastModified {
+    unsupportedPlatformError();
+  }
 
   /// The **`webkitRelativePath`** read-only property of the [File] interface
   /// contains a string which specifies the file's path relative to the
   /// directory selected by the user in an `input` element with its
   /// [`webkitdirectory`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#webkitdirectory)
   /// attribute set.
-  String get webkitRelativePath;
+  String get webkitRelativePath {
+    unsupportedPlatformError();
+  }
 }
+extension type FilePropertyBag._(JSObject _)
+    implements BlobPropertyBag, JSObject {
+  factory FilePropertyBag({
+    String? type,
+    EndingType? endings,
+    int? lastModified,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class FilePropertyBag implements BlobPropertyBag, JSObject {
   int get lastModified {
     unsupportedPlatformError();
   }
@@ -190,14 +237,18 @@ abstract class FilePropertyBag implements BlobPropertyBag, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/FileList).
-abstract class FileList implements JSObject {
+extension type FileList._(JSObject _) implements JSObject {
   /// The **`item()`** method of the [FileList] interface returns a [File]
   /// object representing the file at the specified index in the file list.
-  File? item(int index);
+  File? item(int index) {
+    unsupportedPlatformError();
+  }
 
   /// The **`length`** read-only property of the [FileList] interface returns
   /// the number of files in the `FileList`.
-  int get length;
+  int get length {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`FileReader`** interface lets web applications asynchronously read the
@@ -222,7 +273,11 @@ abstract class FileList implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/FileReader).
-abstract class FileReader implements EventTarget, JSObject {
+extension type FileReader._(JSObject _) implements EventTarget, JSObject {
+  factory FileReader() {
+    unsupportedPlatformError();
+  }
+
   static const int EMPTY = 0;
 
   static const int LOADING = 1;
@@ -240,7 +295,9 @@ abstract class FileReader implements EventTarget, JSObject {
   /// > **Note:** The [Blob.arrayBuffer] method is a newer promise-based API to
   /// > read a
   /// > file as an array buffer.
-  void readAsArrayBuffer(Blob blob);
+  void readAsArrayBuffer(Blob blob) {
+    unsupportedPlatformError();
+  }
 
   /// > **Note:** This method is deprecated in favor of
   /// > [FileReader.readAsArrayBuffer].
@@ -258,7 +315,9 @@ abstract class FileReader implements EventTarget, JSObject {
   /// but
   /// re-introduced for backward compatibility.
   /// Using [FileReader.readAsArrayBuffer] is recommended.
-  void readAsBinaryString(Blob blob);
+  void readAsBinaryString(Blob blob) {
+    unsupportedPlatformError();
+  }
 
   /// The **`readAsText()`** method of the [FileReader] interface is used to
   /// read the contents of the specified [Blob] or [File].
@@ -276,8 +335,10 @@ abstract class FileReader implements EventTarget, JSObject {
   /// > large files.
   void readAsText(
     Blob blob, [
-    String encoding,
-  ]);
+    String? encoding,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`readAsDataURL()`** method of the [FileReader] interface is used to
   /// read the contents of the specified
@@ -295,17 +356,23 @@ abstract class FileReader implements EventTarget, JSObject {
   /// > the Base64-encoded data. To retrieve only the Base64 encoded string,
   /// > first
   /// > remove `data:*/*;base64,` from the result.
-  void readAsDataURL(Blob blob);
+  void readAsDataURL(Blob blob) {
+    unsupportedPlatformError();
+  }
 
   /// The **`abort()`** method of the [FileReader] interface aborts the read
   /// operation. Upon return,
   /// the [FileReader.readyState] will be `DONE`.
-  void abort();
+  void abort() {
+    unsupportedPlatformError();
+  }
 
   /// The **`readyState`** read-only property of the [FileReader] interface
   /// provides the current state of the reading operation.
   /// This will be one of the states: `EMPTY`, `LOADING`, or `DONE`.
-  int get readyState;
+  int get readyState {
+    unsupportedPlatformError();
+  }
 
   /// The **`result`** read-only property of the [FileReader] interface returns
   /// the
@@ -314,24 +381,64 @@ abstract class FileReader implements EventTarget, JSObject {
   /// the format of the data depends on which of the methods was used to
   /// initiate the read
   /// operation.
-  JSAny? get result;
+  JSAny? get result {
+    unsupportedPlatformError();
+  }
 
   /// The **`error`** read-only property of the [FileReader] interface returns
   /// the
   /// error that occurred while reading the file.
-  DOMException? get error;
-  EventHandler get onloadstart;
-  set onloadstart(EventHandler value);
-  EventHandler get onprogress;
-  set onprogress(EventHandler value);
-  EventHandler get onload;
-  set onload(EventHandler value);
-  EventHandler get onabort;
-  set onabort(EventHandler value);
-  EventHandler get onerror;
-  set onerror(EventHandler value);
-  EventHandler get onloadend;
-  set onloadend(EventHandler value);
+  DOMException? get error {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onloadstart {
+    unsupportedPlatformError();
+  }
+
+  set onloadstart(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onprogress {
+    unsupportedPlatformError();
+  }
+
+  set onprogress(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onload {
+    unsupportedPlatformError();
+  }
+
+  set onload(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onabort {
+    unsupportedPlatformError();
+  }
+
+  set onabort(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onerror {
+    unsupportedPlatformError();
+  }
+
+  set onerror(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onloadend {
+    unsupportedPlatformError();
+  }
+
+  set onloadend(EventHandler value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// @AvailableInWorkers("worker_except_service")
@@ -346,7 +453,11 @@ abstract class FileReader implements EventTarget, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/FileReaderSync).
-abstract class FileReaderSync implements JSObject {
+extension type FileReaderSync._(JSObject _) implements JSObject {
+  factory FileReaderSync() {
+    unsupportedPlatformError();
+  }
+
   /// @AvailableInWorkers("worker_except_service")
   ///
   /// The **`readAsArrayBuffer()`** method of the [FileReaderSync] interface
@@ -355,7 +466,9 @@ abstract class FileReaderSync implements JSObject {
   /// [only available](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Functions_and_classes_available_to_workers)
   /// in [workers](https://developer.mozilla.org/en-US/docs/Web/API/Worker) as
   /// it enables synchronous I/O that could potentially block.
-  JSArrayBuffer readAsArrayBuffer(Blob blob);
+  JSArrayBuffer readAsArrayBuffer(Blob blob) {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("worker_except_service")
   ///
@@ -368,7 +481,9 @@ abstract class FileReaderSync implements JSObject {
   /// [only available](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Functions_and_classes_available_to_workers)
   /// in [workers](https://developer.mozilla.org/en-US/docs/Web/API/Worker) as
   /// it enables synchronous I/O that could potentially block.
-  String readAsBinaryString(Blob blob);
+  String readAsBinaryString(Blob blob) {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("worker_except_service")
   ///
@@ -380,8 +495,10 @@ abstract class FileReaderSync implements JSObject {
   /// it enables synchronous I/O that could potentially block.
   String readAsText(
     Blob blob, [
-    String encoding,
-  ]);
+    String? encoding,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("worker_except_service")
   ///
@@ -391,5 +508,7 @@ abstract class FileReaderSync implements JSObject {
   /// [only available](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Functions_and_classes_available_to_workers)
   /// in [workers](https://developer.mozilla.org/en-US/docs/Web/API/Worker) as
   /// it enables synchronous I/O that could potentially block.
-  String readAsDataURL(Blob blob);
+  String readAsDataURL(Blob blob) {
+    unsupportedPlatformError();
+  }
 }

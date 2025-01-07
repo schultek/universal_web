@@ -14,8 +14,11 @@ import '../error.dart';
 import '../js_interop.dart';
 
 typedef IdleRequestCallback = JSFunction;
+extension type IdleRequestOptions._(JSObject _) implements JSObject {
+  factory IdleRequestOptions({int? timeout}) {
+    unsupportedPlatformError();
+  }
 
-abstract class IdleRequestOptions implements JSObject {
   int get timeout {
     unsupportedPlatformError();
   }
@@ -39,7 +42,7 @@ abstract class IdleRequestOptions implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/IdleDeadline).
-abstract class IdleDeadline implements JSObject {
+extension type IdleDeadline._(JSObject _) implements JSObject {
   /// The **`timeRemaining()`** method
   /// on the [IdleDeadline] interface returns the estimated number of
   /// milliseconds remaining in the current idle period. The callback can call
@@ -56,7 +59,9 @@ abstract class IdleDeadline implements JSObject {
   ///
   /// By the time `timeRemaining()` reaches 0, it is suggested that the callback
   /// should return control to the user agent's event loop.
-  double timeRemaining();
+  double timeRemaining() {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`didTimeout`** property on the
   /// **[IdleDeadline]** interface is a Boolean value which
@@ -81,5 +86,7 @@ abstract class IdleDeadline implements JSObject {
   /// that can be done to keep things moving along, then schedule a new callback
   /// to try again
   /// to get the rest of the work done.
-  bool get didTimeout;
+  bool get didTimeout {
+    unsupportedPlatformError();
+  }
 }

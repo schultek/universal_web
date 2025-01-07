@@ -10,16 +10,27 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
+import '../error.dart';
 import '../js_interop.dart';
 import 'webgl1.dart';
 
-abstract class WebGLVertexArrayObjectOES implements JSObject {}
-
-abstract class OES_vertex_array_object implements JSObject {
+extension type WebGLVertexArrayObjectOES._(JSObject _) implements JSObject {}
+extension type OES_vertex_array_object._(JSObject _) implements JSObject {
   static const GLenum VERTEX_ARRAY_BINDING_OES = 34229;
 
-  WebGLVertexArrayObjectOES? createVertexArrayOES();
-  void deleteVertexArrayOES(WebGLVertexArrayObjectOES? arrayObject);
-  GLboolean isVertexArrayOES(WebGLVertexArrayObjectOES? arrayObject);
-  void bindVertexArrayOES(WebGLVertexArrayObjectOES? arrayObject);
+  WebGLVertexArrayObjectOES? createVertexArrayOES() {
+    unsupportedPlatformError();
+  }
+
+  void deleteVertexArrayOES(WebGLVertexArrayObjectOES? arrayObject) {
+    unsupportedPlatformError();
+  }
+
+  GLboolean isVertexArrayOES(WebGLVertexArrayObjectOES? arrayObject) {
+    unsupportedPlatformError();
+  }
+
+  void bindVertexArrayOES(WebGLVertexArrayObjectOES? arrayObject) {
+    unsupportedPlatformError();
+  }
 }

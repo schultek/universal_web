@@ -10,6 +10,7 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
+import '../error.dart';
 import '../js_interop.dart';
 import 'dom.dart';
 import 'performance_timeline.dart';
@@ -21,18 +22,25 @@ import 'performance_timeline.dart';
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/LargestContentfulPaint).
-abstract class LargestContentfulPaint implements PerformanceEntry, JSObject {
+extension type LargestContentfulPaint._(JSObject _)
+    implements PerformanceEntry, JSObject {
   /// The **`toJSON()`** method of the [LargestContentfulPaint] interface is a ;
   /// it returns a JSON representation of the [LargestContentfulPaint] object.
-  JSObject toJSON();
+  JSObject toJSON() {
+    unsupportedPlatformError();
+  }
 
   /// The **`renderTime`** read-only property of the [LargestContentfulPaint]
   /// interface represents the time that the element was rendered to the screen.
-  double get renderTime;
+  double get renderTime {
+    unsupportedPlatformError();
+  }
 
   /// The **`loadTime`** read-only property of the [LargestContentfulPaint]
   /// interface returns the time that the element was loaded.
-  double get loadTime;
+  double get loadTime {
+    unsupportedPlatformError();
+  }
 
   /// The **`size`** read-only property of the [LargestContentfulPaint]
   /// interface returns the intrinsic size of the element that is the largest
@@ -40,18 +48,26 @@ abstract class LargestContentfulPaint implements PerformanceEntry, JSObject {
   ///
   /// The `size` of the element is the `width` times `height` of the
   /// [DOMRectReadOnly] that this element creates on the screen.
-  int get size;
+  int get size {
+    unsupportedPlatformError();
+  }
 
   /// The **`id`** read-only property of the [LargestContentfulPaint] interface
   /// returns the ID of the element that is the largest contentful paint.
-  int get id;
+  String get id {
+    unsupportedPlatformError();
+  }
 
   /// The **`url`** read-only property of the [LargestContentfulPaint] interface
   /// returns the request URL of the element, if the element is an image.
-  String get url;
+  String get url {
+    unsupportedPlatformError();
+  }
 
   /// The **`element`** read-only property of the [LargestContentfulPaint]
   /// interface returns an object representing the [Element] that is the largest
   /// contentful paint.
-  Element? get element;
+  Element? get element {
+    unsupportedPlatformError();
+  }
 }

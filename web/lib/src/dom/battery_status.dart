@@ -10,6 +10,7 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
+import '../error.dart';
 import '../js_interop.dart';
 import 'dom.dart';
 import 'html.dart';
@@ -26,7 +27,7 @@ import 'html.dart';
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/BatteryManager).
-abstract class BatteryManager implements EventTarget, JSObject {
+extension type BatteryManager._(JSObject _) implements EventTarget, JSObject {
   /// The **`charging`** read-only property of the [BatteryManager] interface is
   /// a Boolean value indicating whether or not the device's battery is
   /// currently being charged. When its value changes, the
@@ -35,7 +36,9 @@ abstract class BatteryManager implements EventTarget, JSObject {
   /// If the battery is charging or the user agent is unable to report the
   /// battery status information, this value is `true`. Otherwise, it is
   /// `false`.
-  bool get charging;
+  bool get charging {
+    unsupportedPlatformError();
+  }
 
   /// The **`chargingTime`** read-only property of the [BatteryManager]
   /// interface indicates the amount of time, in seconds, that remain until the
@@ -48,7 +51,9 @@ abstract class BatteryManager implements EventTarget, JSObject {
   /// > **Note:** Even if the time returned is precise to the second,
   /// > browsers round them to a higher interval
   /// > (typically to the closest 15 minutes) for privacy reasons.
-  double get chargingTime;
+  double get chargingTime {
+    unsupportedPlatformError();
+  }
 
   /// The **`dischargingTime`** read-only property of the [BatteryManager]
   /// interface indicates the amount of time, in seconds, that remains until the
@@ -61,7 +66,9 @@ abstract class BatteryManager implements EventTarget, JSObject {
   /// > **Note:** Even if the time returned is precise to the second, browsers
   /// > round them to a higher
   /// > interval (typically to the closest 15 minutes) for privacy reasons.
-  double get dischargingTime;
+  double get dischargingTime {
+    unsupportedPlatformError();
+  }
 
   /// The **`level`** read-only property of the [BatteryManager] interface
   /// indicates the current battery charge level as a value between `0.0` and
@@ -72,13 +79,39 @@ abstract class BatteryManager implements EventTarget, JSObject {
   /// report the battery status information.
   /// When its value changes, the [BatteryManager.levelchange_event] event is
   /// fired.
-  double get level;
-  EventHandler get onchargingchange;
-  set onchargingchange(EventHandler value);
-  EventHandler get onchargingtimechange;
-  set onchargingtimechange(EventHandler value);
-  EventHandler get ondischargingtimechange;
-  set ondischargingtimechange(EventHandler value);
-  EventHandler get onlevelchange;
-  set onlevelchange(EventHandler value);
+  double get level {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onchargingchange {
+    unsupportedPlatformError();
+  }
+
+  set onchargingchange(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onchargingtimechange {
+    unsupportedPlatformError();
+  }
+
+  set onchargingtimechange(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ondischargingtimechange {
+    unsupportedPlatformError();
+  }
+
+  set ondischargingtimechange(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onlevelchange {
+    unsupportedPlatformError();
+  }
+
+  set onlevelchange(EventHandler value) {
+    unsupportedPlatformError();
+  }
 }

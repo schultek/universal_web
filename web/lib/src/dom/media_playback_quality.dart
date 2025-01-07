@@ -10,6 +10,7 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
+import '../error.dart';
 import '../js_interop.dart';
 
 /// A **`VideoPlaybackQuality`** object is returned by the
@@ -20,29 +21,37 @@ import '../js_interop.dart';
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/VideoPlaybackQuality).
-abstract class VideoPlaybackQuality implements JSObject {
+extension type VideoPlaybackQuality._(JSObject _) implements JSObject {
   /// The read-only **`creationTime`** property on the
   /// [VideoPlaybackQuality] interface reports the number of milliseconds since
   /// the browsing context was created this quality sample was recorded.
-  double get creationTime;
+  double get creationTime {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`droppedVideoFrames`**
   /// property of the [VideoPlaybackQuality] interface returns the number of
   /// video frames which have been dropped rather than being displayed since the
   /// last time
   /// the media was loaded into the [HTMLVideoElement].
-  int get droppedVideoFrames;
+  int get droppedVideoFrames {
+    unsupportedPlatformError();
+  }
 
   /// The [VideoPlaybackQuality] interface's
   /// **`totalVideoFrames`** read-only property returns the total
   /// number of video frames that have been displayed or dropped since the media
   /// was
   /// loaded.
-  int get totalVideoFrames;
+  int get totalVideoFrames {
+    unsupportedPlatformError();
+  }
 
   /// The [VideoPlaybackQuality] interface's read-only
   /// **`corruptedVideoFrames`** property the number of corrupted
   /// video frames that have been received since the `video` element was
   /// last loaded or reloaded.
-  int get corruptedVideoFrames;
+  int get corruptedVideoFrames {
+    unsupportedPlatformError();
+  }
 }

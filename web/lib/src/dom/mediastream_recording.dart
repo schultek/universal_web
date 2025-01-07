@@ -30,7 +30,14 @@ typedef RecordingState = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MediaRecorder).
-abstract class MediaRecorder implements EventTarget, JSObject {
+extension type MediaRecorder._(JSObject _) implements EventTarget, JSObject {
+  factory MediaRecorder(
+    MediaStream stream, [
+    MediaRecorderOptions? options,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// The **`isTypeSupported()`** static method of the [MediaRecorder] interface
   /// returns a `Boolean` which is `true` if the MIME media type specified is
   /// one the user agent should be able to successfully record.
@@ -73,7 +80,9 @@ abstract class MediaRecorder implements EventTarget, JSObject {
   /// > by a
   /// > [MediaRecorder.dataavailable_event] event containing the `Blob` it
   /// > has gathered, followed by the [MediaRecorder.stop_event] event.
-  void start([int timeslice]);
+  void start([int? timeslice]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`stop()`** method of the [MediaRecorder] interface is
   /// used to stop media capture.
@@ -88,7 +97,9 @@ abstract class MediaRecorder implements EventTarget, JSObject {
   /// 3. Raise a `dataavailable` event containing the Blob of data that has been
   /// gathered.
   /// 4. Raise a `stop` event.
-  void stop();
+  void stop() {
+    unsupportedPlatformError();
+  }
 
   /// The **`pause()`** method of the [MediaRecorder] interface is used
   /// to pause recording of media streams.
@@ -103,7 +114,9 @@ abstract class MediaRecorder implements EventTarget, JSObject {
   /// 3. Stop gathering data into the current [Blob], but keep it available so
   /// that recording can be resumed later on.
   /// 4. Raise a [MediaRecorder.pause_event] event.
-  void pause();
+  void pause() {
+    unsupportedPlatformError();
+  }
 
   /// The **`resume()`** method of the [MediaRecorder] interface is used to
   /// resume media recording when it has been previously paused.
@@ -120,7 +133,9 @@ abstract class MediaRecorder implements EventTarget, JSObject {
   /// 2. Set [MediaRecorder.state] to "recording".
   /// 3. Continue gathering data into the current [Blob].
   /// 4. Raise a `resume` event.
-  void resume();
+  void resume() {
+    unsupportedPlatformError();
+  }
 
   /// The **`requestData()`**
   /// method of the [MediaRecorder] interface is used to raise a
@@ -139,12 +154,16 @@ abstract class MediaRecorder implements EventTarget, JSObject {
   /// currently captured data (the Blob is available under the event's `data`
   /// attribute.)
   /// 3. Create a new Blob and place subsequently captured data into it.
-  void requestData();
+  void requestData() {
+    unsupportedPlatformError();
+  }
 
   /// The **`stream`** read-only property of the [MediaRecorder] interface
   /// returns the stream that was passed into the [MediaRecorder.MediaRecorder]
   /// constructor when the `MediaRecorder` was created.
-  MediaStream get stream;
+  MediaStream get stream {
+    unsupportedPlatformError();
+  }
 
   /// The **`mimeType`** read-only property of the [MediaRecorder] interface
   /// returns the  media type that was specified when creating the
@@ -164,23 +183,63 @@ abstract class MediaRecorder implements EventTarget, JSObject {
   /// > **Note:** The term "MIME type" is officially considered to be
   /// > historical; these strings are now officially known as **media types**.
   /// > MDN Web Docs content uses the terms interchangeably.
-  String get mimeType;
+  String get mimeType {
+    unsupportedPlatformError();
+  }
 
   /// The **`state`** read-only property of the [MediaRecorder] interface
   /// returns the current state of the current `MediaRecorder` object.
-  RecordingState get state;
-  EventHandler get onstart;
-  set onstart(EventHandler value);
-  EventHandler get onstop;
-  set onstop(EventHandler value);
-  EventHandler get ondataavailable;
-  set ondataavailable(EventHandler value);
-  EventHandler get onpause;
-  set onpause(EventHandler value);
-  EventHandler get onresume;
-  set onresume(EventHandler value);
-  EventHandler get onerror;
-  set onerror(EventHandler value);
+  RecordingState get state {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onstart {
+    unsupportedPlatformError();
+  }
+
+  set onstart(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onstop {
+    unsupportedPlatformError();
+  }
+
+  set onstop(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ondataavailable {
+    unsupportedPlatformError();
+  }
+
+  set ondataavailable(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onpause {
+    unsupportedPlatformError();
+  }
+
+  set onpause(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onresume {
+    unsupportedPlatformError();
+  }
+
+  set onresume(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onerror {
+    unsupportedPlatformError();
+  }
+
+  set onerror(EventHandler value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`videoBitsPerSecond`** read-only
   /// property of the [MediaRecorder] interface returns the video encoding
@@ -188,7 +247,9 @@ abstract class MediaRecorder implements EventTarget, JSObject {
   ///
   /// This may differ from the bit rate specified in the
   /// constructor, if it was provided.
-  int get videoBitsPerSecond;
+  int get videoBitsPerSecond {
+    unsupportedPlatformError();
+  }
 
   /// The **`audioBitsPerSecond`** read-only
   /// property of the [MediaRecorder] interface returns the audio encoding bit
@@ -196,10 +257,23 @@ abstract class MediaRecorder implements EventTarget, JSObject {
   ///
   /// This may differ from the bit rate specified in the constructor (if
   /// it was provided).
-  int get audioBitsPerSecond;
+  int get audioBitsPerSecond {
+    unsupportedPlatformError();
+  }
 }
+extension type MediaRecorderOptions._(JSObject _) implements JSObject {
+  factory MediaRecorderOptions({
+    String? mimeType,
+    int? audioBitsPerSecond,
+    int? videoBitsPerSecond,
+    int? bitsPerSecond,
+    BitrateMode? audioBitrateMode,
+    DOMHighResTimeStamp? videoKeyFrameIntervalDuration,
+    int? videoKeyFrameIntervalCount,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class MediaRecorderOptions implements JSObject {
   String get mimeType {
     unsupportedPlatformError();
   }
@@ -266,10 +340,19 @@ abstract class MediaRecorderOptions implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/BlobEvent).
-abstract class BlobEvent implements Event, JSObject {
+extension type BlobEvent._(JSObject _) implements Event, JSObject {
+  factory BlobEvent(
+    String type,
+    BlobEventInit eventInitDict,
+  ) {
+    unsupportedPlatformError();
+  }
+
   /// The **`data`** read-only property of the [BlobEvent] interface represents
   /// a [Blob] associated with the event.
-  Blob get data;
+  Blob get data {
+    unsupportedPlatformError();
+  }
 
   /// The **`timecode`** read-only property of the [BlobEvent] interface
   /// indicates the difference between the timestamp of the first chunk of data,
@@ -278,10 +361,18 @@ abstract class BlobEvent implements Event, JSObject {
   ///
   /// Note that the `timecode` in the first produced `BlobEvent` does not need
   /// to be zero.
-  double get timecode;
+  double get timecode {
+    unsupportedPlatformError();
+  }
 }
+extension type BlobEventInit._(JSObject _) implements JSObject {
+  factory BlobEventInit({
+    required Blob data,
+    DOMHighResTimeStamp? timecode,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class BlobEventInit implements JSObject {
   Blob get data {
     unsupportedPlatformError();
   }

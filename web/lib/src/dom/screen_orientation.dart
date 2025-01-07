@@ -10,6 +10,7 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
+import '../error.dart';
 import '../js_interop.dart';
 import 'dom.dart';
 import 'html.dart';
@@ -28,7 +29,8 @@ typedef OrientationType = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ScreenOrientation).
-abstract class ScreenOrientation implements EventTarget, JSObject {
+extension type ScreenOrientation._(JSObject _)
+    implements EventTarget, JSObject {
   /// The **`lock()`** property of the [ScreenOrientation] interface locks the
   /// orientation of the containing document to the specified orientation.
   ///
@@ -36,24 +38,38 @@ abstract class ScreenOrientation implements EventTarget, JSObject {
   /// the browser context is full screen.
   /// If locking is supported, then it must work for all the parameter values
   /// listed below.
-  JSPromise<JSAny?> lock(OrientationLockType orientation);
+  JSPromise<JSAny?> lock(OrientationLockType orientation) {
+    unsupportedPlatformError();
+  }
 
   /// The **`unlock()`** property of the
   /// [ScreenOrientation] interface unlocks the orientation of the containing
   /// document from its default orientation.
-  void unlock();
+  void unlock() {
+    unsupportedPlatformError();
+  }
 
   /// The **`type`** read-only property of the
   /// [ScreenOrientation] interface returns the document's current orientation
   /// type, one of `portrait-primary`, `portrait-secondary`,
   /// `landscape-primary`, or
   /// `landscape-secondary`.
-  OrientationType get type;
+  OrientationType get type {
+    unsupportedPlatformError();
+  }
 
   /// The **`angle`** read-only property of the
   /// [ScreenOrientation] interface returns the document's current orientation
   /// angle.
-  int get angle;
-  EventHandler get onchange;
-  set onchange(EventHandler value);
+  int get angle {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onchange {
+    unsupportedPlatformError();
+  }
+
+  set onchange(EventHandler value) {
+    unsupportedPlatformError();
+  }
 }

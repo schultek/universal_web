@@ -10,6 +10,7 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
+import '../error.dart';
 import '../js_interop.dart';
 import 'dom.dart';
 import 'html.dart';
@@ -30,61 +31,121 @@ typedef ScrollSetting = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/VTTCue).
-abstract class VTTCue implements TextTrackCue, JSObject {
+extension type VTTCue._(JSObject _) implements TextTrackCue, JSObject {
+  factory VTTCue(
+    num startTime,
+    num endTime,
+    String text,
+  ) {
+    unsupportedPlatformError();
+  }
+
   /// The **`getCueAsHTML()`** method of the [VTTCue] interface returns a
   /// [DocumentFragment] containing the cue content.
-  DocumentFragment getCueAsHTML();
+  DocumentFragment getCueAsHTML() {
+    unsupportedPlatformError();
+  }
 
   /// The **`region`** property of the [VTTCue] interface returns and sets the
   /// [VTTRegion] that this cue belongs to.
-  VTTRegion? get region;
-  set region(VTTRegion? value);
+  VTTRegion? get region {
+    unsupportedPlatformError();
+  }
+
+  set region(VTTRegion? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`vertical`** property of the [VTTCue] interface is a string
   /// representing the cue's writing direction.
-  DirectionSetting get vertical;
-  set vertical(DirectionSetting value);
+  DirectionSetting get vertical {
+    unsupportedPlatformError();
+  }
+
+  set vertical(DirectionSetting value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`snapToLines`** property of the [VTTCue] interface is a `Boolean`
   /// indicating if the [VTTCue.line] property is an integer number of lines, or
   /// a percentage of the video size.
-  bool get snapToLines;
-  set snapToLines(bool value);
+  bool get snapToLines {
+    unsupportedPlatformError();
+  }
+
+  set snapToLines(bool value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`line`** property of the [VTTCue] interface represents the cue line
   /// of this WebVTT cue.
-  LineAndPositionSetting get line;
-  set line(LineAndPositionSetting value);
+  LineAndPositionSetting get line {
+    unsupportedPlatformError();
+  }
+
+  set line(LineAndPositionSetting value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`lineAlign`** property of the [VTTCue] interface represents the
   /// alignment of this VTT cue.
-  LineAlignSetting get lineAlign;
-  set lineAlign(LineAlignSetting value);
+  LineAlignSetting get lineAlign {
+    unsupportedPlatformError();
+  }
+
+  set lineAlign(LineAlignSetting value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`position`** property of the [VTTCue] interface represents the
   /// indentation of the cue within the line.
-  LineAndPositionSetting get position;
-  set position(LineAndPositionSetting value);
+  LineAndPositionSetting get position {
+    unsupportedPlatformError();
+  }
+
+  set position(LineAndPositionSetting value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`positionAlign`** property of the [VTTCue] interface is used to
   /// determine what [VTTCue.position] is anchored to.
-  PositionAlignSetting get positionAlign;
-  set positionAlign(PositionAlignSetting value);
+  PositionAlignSetting get positionAlign {
+    unsupportedPlatformError();
+  }
+
+  set positionAlign(PositionAlignSetting value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`size`** property of the [VTTCue] interface represents the size of
   /// the cue as a percentage of the video size.
-  double get size;
-  set size(num value);
+  double get size {
+    unsupportedPlatformError();
+  }
+
+  set size(num value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`align`** property of the [VTTCue] interface represents the
   /// alignment of all of the lines of text in the text box.
-  AlignSetting get align;
-  set align(AlignSetting value);
+  AlignSetting get align {
+    unsupportedPlatformError();
+  }
+
+  set align(AlignSetting value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`text`** property of the [VTTCue] interface represents the text
   /// contents of the cue.
-  String get text;
-  set text(String value);
+  String get text {
+    unsupportedPlatformError();
+  }
+
+  set text(String value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The `VTTRegion` interface—part of the API for handling WebVTT (text tracks
@@ -95,21 +156,72 @@ abstract class VTTCue implements TextTrackCue, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/VTTRegion).
-abstract class VTTRegion implements JSObject {
-  String get id;
-  set id(String value);
-  double get width;
-  set width(num value);
-  int get lines;
-  set lines(int value);
-  double get regionAnchorX;
-  set regionAnchorX(num value);
-  double get regionAnchorY;
-  set regionAnchorY(num value);
-  double get viewportAnchorX;
-  set viewportAnchorX(num value);
-  double get viewportAnchorY;
-  set viewportAnchorY(num value);
-  ScrollSetting get scroll;
-  set scroll(ScrollSetting value);
+extension type VTTRegion._(JSObject _) implements JSObject {
+  factory VTTRegion() {
+    unsupportedPlatformError();
+  }
+
+  String get id {
+    unsupportedPlatformError();
+  }
+
+  set id(String value) {
+    unsupportedPlatformError();
+  }
+
+  double get width {
+    unsupportedPlatformError();
+  }
+
+  set width(num value) {
+    unsupportedPlatformError();
+  }
+
+  int get lines {
+    unsupportedPlatformError();
+  }
+
+  set lines(int value) {
+    unsupportedPlatformError();
+  }
+
+  double get regionAnchorX {
+    unsupportedPlatformError();
+  }
+
+  set regionAnchorX(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get regionAnchorY {
+    unsupportedPlatformError();
+  }
+
+  set regionAnchorY(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get viewportAnchorX {
+    unsupportedPlatformError();
+  }
+
+  set viewportAnchorX(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get viewportAnchorY {
+    unsupportedPlatformError();
+  }
+
+  set viewportAnchorY(num value) {
+    unsupportedPlatformError();
+  }
+
+  ScrollSetting get scroll {
+    unsupportedPlatformError();
+  }
+
+  set scroll(ScrollSetting value) {
+    unsupportedPlatformError();
+  }
 }

@@ -46,8 +46,19 @@ typedef RTCIceComponent = String;
 typedef RTCSctpTransportState = String;
 typedef RTCDataChannelState = String;
 typedef RTCErrorDetailType = String;
+extension type RTCConfiguration._(JSObject _) implements JSObject {
+  factory RTCConfiguration({
+    JSArray<RTCIceServer>? iceServers,
+    RTCIceTransportPolicy? iceTransportPolicy,
+    RTCBundlePolicy? bundlePolicy,
+    RTCRtcpMuxPolicy? rtcpMuxPolicy,
+    JSArray<RTCCertificate>? certificates,
+    int? iceCandidatePoolSize,
+    String? peerIdentity,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class RTCConfiguration implements JSObject {
   JSArray<RTCIceServer> get iceServers {
     unsupportedPlatformError();
   }
@@ -104,8 +115,15 @@ abstract class RTCConfiguration implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type RTCIceServer._(JSObject _) implements JSObject {
+  factory RTCIceServer({
+    required JSAny urls,
+    String? username,
+    String? credential,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class RTCIceServer implements JSObject {
   JSAny get urls {
     unsupportedPlatformError();
   }
@@ -130,10 +148,19 @@ abstract class RTCIceServer implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type RTCOfferAnswerOptions._(JSObject _) implements JSObject {
+  RTCOfferAnswerOptions() : _ = JSObject();
+}
+extension type RTCOfferOptions._(JSObject _)
+    implements RTCOfferAnswerOptions, JSObject {
+  factory RTCOfferOptions({
+    bool? iceRestart,
+    bool? offerToReceiveAudio,
+    bool? offerToReceiveVideo,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class RTCOfferAnswerOptions implements JSObject {}
-
-abstract class RTCOfferOptions implements RTCOfferAnswerOptions, JSObject {
   bool get iceRestart {
     unsupportedPlatformError();
   }
@@ -158,8 +185,10 @@ abstract class RTCOfferOptions implements RTCOfferAnswerOptions, JSObject {
     unsupportedPlatformError();
   }
 }
-
-abstract class RTCAnswerOptions implements RTCOfferAnswerOptions, JSObject {}
+extension type RTCAnswerOptions._(JSObject _)
+    implements RTCOfferAnswerOptions, JSObject {
+  RTCAnswerOptions() : _ = JSObject();
+}
 
 /// The **`RTCPeerConnection`** interface represents a WebRTC connection between
 /// the local computer and a remote peer.
@@ -170,7 +199,12 @@ abstract class RTCAnswerOptions implements RTCOfferAnswerOptions, JSObject {}
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection).
-abstract class RTCPeerConnection implements EventTarget, JSObject {
+extension type RTCPeerConnection._(JSObject _)
+    implements EventTarget, JSObject {
+  factory RTCPeerConnection([RTCConfiguration? configuration]) {
+    unsupportedPlatformError();
+  }
+
   /// The **`generateCertificate()`** static function of the [RTCPeerConnection]
   /// interface creates an X.509 certificate and corresponding private key,
   /// returning a promise that resolves with the new [RTCCertificate] once it's
@@ -196,10 +230,12 @@ abstract class RTCPeerConnection implements EventTarget, JSObject {
   /// [RTCSessionDescriptionInit](https://developer.mozilla.org/en-US/docs/Web/API/RTCSessionDescription/RTCSessionDescription#options)
   /// dictionary containing the newly-created offer.
   JSPromise<RTCSessionDescriptionInit?> createOffer([
-    JSObject optionsOrSuccessCallback,
-    RTCPeerConnectionErrorCallback failureCallback,
-    RTCOfferOptions options,
-  ]);
+    JSObject? optionsOrSuccessCallback,
+    RTCPeerConnectionErrorCallback? failureCallback,
+    RTCOfferOptions? options,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`createAnswer()`** method of the [RTCPeerConnection] interface
   /// creates an  answer to an offer received from a remote peer during the
@@ -211,9 +247,11 @@ abstract class RTCPeerConnection implements EventTarget, JSObject {
   /// The answer is delivered to the returned `Promise`, and should then be sent
   /// to the source of the offer to continue the negotiation process.
   JSPromise<RTCSessionDescriptionInit?> createAnswer([
-    JSObject optionsOrSuccessCallback,
-    RTCPeerConnectionErrorCallback failureCallback,
-  ]);
+    JSObject? optionsOrSuccessCallback,
+    RTCPeerConnectionErrorCallback? failureCallback,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`setLocalDescription()`** method of the [RTCPeerConnection]
   /// interface changes the local description associated with the connection.
@@ -233,10 +271,12 @@ abstract class RTCPeerConnection implements EventTarget, JSObject {
   /// negotiation is complete. Only then does the agreed-upon configuration take
   /// effect.
   JSPromise<JSAny?> setLocalDescription([
-    RTCLocalSessionDescriptionInit description,
-    VoidFunction successCallback,
-    RTCPeerConnectionErrorCallback failureCallback,
-  ]);
+    RTCLocalSessionDescriptionInit? description,
+    VoidFunction? successCallback,
+    RTCPeerConnectionErrorCallback? failureCallback,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`setRemoteDescription()`** method of the [RTCPeerConnection]
   /// interface sets the specified session description as the remote peer's
@@ -261,9 +301,11 @@ abstract class RTCPeerConnection implements EventTarget, JSObject {
   /// Only then does the agreed-upon configuration take effect.
   JSPromise<JSAny?> setRemoteDescription(
     RTCSessionDescriptionInit description, [
-    VoidFunction successCallback,
-    RTCPeerConnectionErrorCallback failureCallback,
-  ]);
+    VoidFunction? successCallback,
+    RTCPeerConnectionErrorCallback? failureCallback,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`addIceCandidate()`** method of the [RTCPeerConnection] interface
   /// adds a new remote candidate to the connection's remote description, which
@@ -295,10 +337,12 @@ abstract class RTCPeerConnection implements EventTarget, JSObject {
   /// and
   /// [Signaling and video calling](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API/Signaling_and_video_calling).
   JSPromise<JSAny?> addIceCandidate([
-    RTCIceCandidateInit candidate,
-    VoidFunction successCallback,
-    RTCPeerConnectionErrorCallback failureCallback,
-  ]);
+    RTCIceCandidateInit? candidate,
+    VoidFunction? successCallback,
+    RTCPeerConnectionErrorCallback? failureCallback,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`restartIce()`** method of the [RTCPeerConnection] interface allows
   /// a web application to request that  candidate gathering be redone on both
@@ -325,7 +369,9 @@ abstract class RTCPeerConnection implements EventTarget, JSObject {
   /// [RTCPeerConnection.negotiationneeded_event] event.
   /// This process continues until an ICE restart has been successfully
   /// completed.
-  void restartIce();
+  void restartIce() {
+    unsupportedPlatformError();
+  }
 
   /// The **`getConfiguration()`** method of the [RTCPeerConnection] interface
   /// returns an object which indicates the current configuration of the
@@ -338,7 +384,9 @@ abstract class RTCPeerConnection implements EventTarget, JSObject {
   /// The configuration includes a list of the ICE servers used by the
   /// connection, information about transport policies, and identity
   /// information.
-  RTCConfiguration getConfiguration();
+  RTCConfiguration getConfiguration() {
+    unsupportedPlatformError();
+  }
 
   /// The **`setConfiguration()`** method of the [RTCPeerConnection] interface
   /// sets the current configuration of the connection based on the values
@@ -366,11 +414,15 @@ abstract class RTCPeerConnection implements EventTarget, JSObject {
   ///
   /// > **Note:** You cannot change the identity information for a connection
   /// > once it's already been set.
-  void setConfiguration([RTCConfiguration configuration]);
+  void setConfiguration([RTCConfiguration? configuration]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`close()`** method of the [RTCPeerConnection] interface closes the
   /// current peer connection.
-  void close();
+  void close() {
+    unsupportedPlatformError();
+  }
 
   /// The **`setIdentityProvider()`** method of the [RTCPeerConnection]
   /// interface sets the Identity Provider (IdP) to the triplet given in
@@ -382,8 +434,10 @@ abstract class RTCPeerConnection implements EventTarget, JSObject {
   /// `InvalidStateError` is raised.
   void setIdentityProvider(
     String provider, [
-    RTCIdentityProviderOptions options,
-  ]);
+    RTCIdentityProviderOptions? options,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`getIdentityAssertion()`** method of the [RTCPeerConnection]
   /// interface initiates the gathering of an identity assertion.
@@ -396,26 +450,34 @@ abstract class RTCPeerConnection implements EventTarget, JSObject {
   /// It is not expected for the application dealing with the
   /// `RTCPeerConnection`: this is automatically done; an explicit call only
   /// allows to anticipate the need.
-  JSPromise<JSString> getIdentityAssertion();
+  JSPromise<JSString> getIdentityAssertion() {
+    unsupportedPlatformError();
+  }
 
   /// The **`getSenders()`** method of the [RTCPeerConnection] interface returns
   /// an array of [RTCRtpSender] objects, each of which represents the RTP
   /// sender responsible for transmitting one track's data.
   /// A sender object provides methods and properties for examining and
   /// controlling the encoding and transmission of the track's data.
-  JSArray<RTCRtpSender> getSenders();
+  JSArray<RTCRtpSender> getSenders() {
+    unsupportedPlatformError();
+  }
 
   /// The **`getReceivers()`** method of the [RTCPeerConnection] interface
   /// returns an array of [RTCRtpReceiver] objects, each of which represents one
   /// RTP receiver.
   /// Each RTP receiver manages the reception and decoding of data for a
   /// [MediaStreamTrack] on an [RTCPeerConnection].
-  JSArray<RTCRtpReceiver> getReceivers();
+  JSArray<RTCRtpReceiver> getReceivers() {
+    unsupportedPlatformError();
+  }
 
   /// The **`getTransceivers()`** method of the [RTCPeerConnection] interface
   /// returns a list of the [RTCRtpTransceiver] objects being used to send and
   /// receive data on the connection.
-  JSArray<RTCRtpTransceiver> getTransceivers();
+  JSArray<RTCRtpTransceiver> getTransceivers() {
+    unsupportedPlatformError();
+  }
 
   /// The **`addTrack()`** method of the [RTCPeerConnection] interface adds a
   /// new media track to the set of tracks which will be transmitted to the
@@ -429,7 +491,9 @@ abstract class RTCPeerConnection implements EventTarget, JSObject {
   RTCRtpSender addTrack(
     MediaStreamTrack track,
     MediaStream streams,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`removeTrack()`** method of the [RTCPeerConnection] interface tells
   /// the local end of the connection to stop sending media from the specified
@@ -444,7 +508,9 @@ abstract class RTCPeerConnection implements EventTarget, JSObject {
   /// change until this negotiation occurs.
   /// A [RTCPeerConnection.negotiationneeded_event] event is sent to the
   /// [RTCPeerConnection] to let the local end know this negotiation must occur.
-  void removeTrack(RTCRtpSender sender);
+  void removeTrack(RTCRtpSender sender) {
+    unsupportedPlatformError();
+  }
 
   /// The **`addTransceiver()`** method of the [RTCPeerConnection] interface
   /// creates a new [RTCRtpTransceiver] and adds it to the set of transceivers
@@ -453,8 +519,10 @@ abstract class RTCPeerConnection implements EventTarget, JSObject {
   /// [RTCRtpSender] and an [RTCRtpReceiver] associated with it.
   RTCRtpTransceiver addTransceiver(
     JSAny trackOrKind, [
-    RTCRtpTransceiverInit init,
-  ]);
+    RTCRtpTransceiverInit? init,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`createDataChannel()`** method of the [RTCPeerConnection] interface
   /// creates a new channel linked with the remote peer, over which any kind of
@@ -467,19 +535,25 @@ abstract class RTCPeerConnection implements EventTarget, JSObject {
   /// [RTCPeerConnection.negotiationneeded_event] event.
   RTCDataChannel createDataChannel(
     String label, [
-    RTCDataChannelInit dataChannelDict,
-  ]);
+    RTCDataChannelInit? dataChannelDict,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`getStats()`** method of the [RTCPeerConnection] interface returns a
   /// promise which resolves with data providing statistics about either the
   /// overall connection or about the specified [MediaStreamTrack].
-  JSPromise<RTCStatsReport> getStats([MediaStreamTrack? selector]);
+  JSPromise<RTCStatsReport> getStats([MediaStreamTrack? selector]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`localDescription`** read-only property of the [RTCPeerConnection]
   /// interface returns an [RTCSessionDescription] describing the session for
   /// the local end of the connection.
   /// If it has not yet been set, this is `null`.
-  RTCSessionDescription? get localDescription;
+  RTCSessionDescription? get localDescription {
+    unsupportedPlatformError();
+  }
 
   /// The **`currentLocalDescription`** read-only property of the
   /// [RTCPeerConnection] interface returns an [RTCSessionDescription] object
@@ -502,7 +576,9 @@ abstract class RTCPeerConnection implements EventTarget, JSObject {
   /// > represents the actual current state of the local end of the connection;
   /// > `localDescription` may specify a description which the connection is
   /// > currently in the process of switching over to.
-  RTCSessionDescription? get currentLocalDescription;
+  RTCSessionDescription? get currentLocalDescription {
+    unsupportedPlatformError();
+  }
 
   /// The **`pendingLocalDescription`** read-only property of the
   /// [RTCPeerConnection] interface returns an [RTCSessionDescription] object
@@ -517,7 +593,9 @@ abstract class RTCPeerConnection implements EventTarget, JSObject {
   /// For details on the difference, see
   /// [Pending and current descriptions](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API/Connectivity#pending_and_current_descriptions)
   /// in the WebRTC Connectivity page.
-  RTCSessionDescription? get pendingLocalDescription;
+  RTCSessionDescription? get pendingLocalDescription {
+    unsupportedPlatformError();
+  }
 
   /// The **`remoteDescription`** read-only property of the [RTCPeerConnection]
   /// interface returns a [RTCSessionDescription] describing the session (which
@@ -529,7 +607,9 @@ abstract class RTCPeerConnection implements EventTarget, JSObject {
   /// received over the signaling server (as either an offer or an answer) and
   /// then put into effect by your code calling
   /// [RTCPeerConnection.setRemoteDescription] in response.
-  RTCSessionDescription? get remoteDescription;
+  RTCSessionDescription? get remoteDescription {
+    unsupportedPlatformError();
+  }
 
   /// The **`currentRemoteDescription`** read-only property of the
   /// [RTCPeerConnection] interface returns an
@@ -552,7 +632,9 @@ abstract class RTCPeerConnection implements EventTarget, JSObject {
   /// > represents the actual current state of the local end of the connection;
   /// > `remoteDescription` may specify a description which the connection is
   /// > currently in the process of switching over to.
-  RTCSessionDescription? get currentRemoteDescription;
+  RTCSessionDescription? get currentRemoteDescription {
+    unsupportedPlatformError();
+  }
 
   /// The **`pendingRemoteDescription`** read-only property of the
   /// [RTCPeerConnection] interface returns an [RTCSessionDescription] object
@@ -567,7 +649,9 @@ abstract class RTCPeerConnection implements EventTarget, JSObject {
   /// For details on the difference, see
   /// [Pending and current descriptions](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API/Connectivity#pending_and_current_descriptions)
   /// in the WebRTC Connectivity page.
-  RTCSessionDescription? get pendingRemoteDescription;
+  RTCSessionDescription? get pendingRemoteDescription {
+    unsupportedPlatformError();
+  }
 
   /// The **`signalingState`** read-only property of the [RTCPeerConnection]
   /// interface returns a string value describing the state of the signaling
@@ -592,7 +676,9 @@ abstract class RTCPeerConnection implements EventTarget, JSObject {
   /// In addition, when the value of this property changes, a
   /// [RTCPeerConnection.signalingstatechange_event] event is sent to the
   /// [RTCPeerConnection] instance.
-  RTCSignalingState get signalingState;
+  RTCSignalingState get signalingState {
+    unsupportedPlatformError();
+  }
 
   /// The **`iceGatheringState`** read-only property of the [RTCPeerConnection]
   /// interface returns a string that describes the overall ICE gathering state
@@ -608,7 +694,9 @@ abstract class RTCPeerConnection implements EventTarget, JSObject {
   /// [RTCRtpSender] and every [RTCRtpReceiver] on the entire connection.
   /// This contrasts with [RTCIceTransport.gatheringState], which represents the
   /// gathering state for a single transport.
-  RTCIceGatheringState get iceGatheringState;
+  RTCIceGatheringState get iceGatheringState {
+    unsupportedPlatformError();
+  }
 
   /// The **`iceConnectionState`** read-only property of the [RTCPeerConnection]
   /// interface returns a string which state of the  agent associated with the
@@ -621,7 +709,9 @@ abstract class RTCPeerConnection implements EventTarget, JSObject {
   ///
   /// You can detect when this value has changed by watching for the
   /// [RTCPeerConnection.iceconnectionstatechange_event] event.
-  RTCIceConnectionState get iceConnectionState;
+  RTCIceConnectionState get iceConnectionState {
+    unsupportedPlatformError();
+  }
 
   /// The **`connectionState`** read-only property of the [RTCPeerConnection]
   /// interface indicates the current state of the peer connection by returning
@@ -635,7 +725,9 @@ abstract class RTCPeerConnection implements EventTarget, JSObject {
   /// When this property's value changes, a
   /// [RTCPeerConnection.connectionstatechange_event] event is sent to the
   /// [RTCPeerConnection] instance.
-  RTCPeerConnectionState get connectionState;
+  RTCPeerConnectionState get connectionState {
+    unsupportedPlatformError();
+  }
 
   /// The **`canTrickleIceCandidates`** read-only property of the
   /// [RTCPeerConnection] interface returns a boolean value which indicates
@@ -655,21 +747,65 @@ abstract class RTCPeerConnection implements EventTarget, JSObject {
   /// [RTCPeerConnection.iceGatheringState] changes to `"completed"` before
   /// creating and sending the initial offer.
   /// That way, the offer contains all of the candidates.
-  bool? get canTrickleIceCandidates;
-  EventHandler get onnegotiationneeded;
-  set onnegotiationneeded(EventHandler value);
-  EventHandler get onicecandidate;
-  set onicecandidate(EventHandler value);
-  EventHandler get onicecandidateerror;
-  set onicecandidateerror(EventHandler value);
-  EventHandler get onsignalingstatechange;
-  set onsignalingstatechange(EventHandler value);
-  EventHandler get oniceconnectionstatechange;
-  set oniceconnectionstatechange(EventHandler value);
-  EventHandler get onicegatheringstatechange;
-  set onicegatheringstatechange(EventHandler value);
-  EventHandler get onconnectionstatechange;
-  set onconnectionstatechange(EventHandler value);
+  bool? get canTrickleIceCandidates {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onnegotiationneeded {
+    unsupportedPlatformError();
+  }
+
+  set onnegotiationneeded(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onicecandidate {
+    unsupportedPlatformError();
+  }
+
+  set onicecandidate(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onicecandidateerror {
+    unsupportedPlatformError();
+  }
+
+  set onicecandidateerror(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onsignalingstatechange {
+    unsupportedPlatformError();
+  }
+
+  set onsignalingstatechange(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get oniceconnectionstatechange {
+    unsupportedPlatformError();
+  }
+
+  set oniceconnectionstatechange(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onicegatheringstatechange {
+    unsupportedPlatformError();
+  }
+
+  set onicegatheringstatechange(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onconnectionstatechange {
+    unsupportedPlatformError();
+  }
+
+  set onconnectionstatechange(EventHandler value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`peerIdentity`** read-only property of the [RTCPeerConnection]
   /// interface returns a JavaScript `Promise` that resolves to an
@@ -678,10 +814,21 @@ abstract class RTCPeerConnection implements EventTarget, JSObject {
   /// Once this promise resolves successfully, the resulting identity is the
   /// **target peer identity** and cannot change for the duration of the
   /// connection.
-  JSPromise<JSObject> get peerIdentity;
-  String? get idpLoginUrl;
-  EventHandler get ontrack;
-  set ontrack(EventHandler value);
+  JSPromise<JSObject> get peerIdentity {
+    unsupportedPlatformError();
+  }
+
+  String? get idpLoginUrl {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ontrack {
+    unsupportedPlatformError();
+  }
+
+  set ontrack(EventHandler value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`sctp`** read-only property of the [RTCPeerConnection] interface
   /// returns an [RTCSctpTransport] describing the  transport over which SCTP
@@ -690,9 +837,17 @@ abstract class RTCPeerConnection implements EventTarget, JSObject {
   ///
   /// The SCTP transport is used for transmitting and receiving data for any and
   /// all [RTCDataChannel]s on the peer connection.
-  RTCSctpTransport? get sctp;
-  EventHandler get ondatachannel;
-  set ondatachannel(EventHandler value);
+  RTCSctpTransport? get sctp {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ondatachannel {
+    unsupportedPlatformError();
+  }
+
+  set ondatachannel(EventHandler value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`RTCSessionDescription`** interface describes one end of a
@@ -711,23 +866,39 @@ abstract class RTCPeerConnection implements EventTarget, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/RTCSessionDescription).
-abstract class RTCSessionDescription implements JSObject {
+extension type RTCSessionDescription._(JSObject _) implements JSObject {
+  factory RTCSessionDescription(RTCSessionDescriptionInit descriptionInitDict) {
+    unsupportedPlatformError();
+  }
+
   /// The **`RTCSessionDescription.toJSON()`** method generates a
   /// description of the object. Both properties,
   /// [RTCSessionDescription.type] and
   /// [RTCSessionDescription.sdp], are contained in the generated JSON.
-  RTCSessionDescriptionInit toJSON();
+  RTCSessionDescriptionInit toJSON() {
+    unsupportedPlatformError();
+  }
 
   /// The property **`RTCSessionDescription.type`** is a read-only
   /// string value which describes the description's type.
-  RTCSdpType get type;
+  RTCSdpType get type {
+    unsupportedPlatformError();
+  }
 
   /// The property **`RTCSessionDescription.sdp`** is a read-only
   /// string containing the  which describes the session.
-  String get sdp;
+  String get sdp {
+    unsupportedPlatformError();
+  }
 }
+extension type RTCSessionDescriptionInit._(JSObject _) implements JSObject {
+  factory RTCSessionDescriptionInit({
+    required RTCSdpType type,
+    String? sdp,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class RTCSessionDescriptionInit implements JSObject {
   RTCSdpType get type {
     unsupportedPlatformError();
   }
@@ -744,8 +915,15 @@ abstract class RTCSessionDescriptionInit implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type RTCLocalSessionDescriptionInit._(JSObject _)
+    implements JSObject {
+  factory RTCLocalSessionDescriptionInit({
+    RTCSdpType? type,
+    String? sdp,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class RTCLocalSessionDescriptionInit implements JSObject {
   RTCSdpType get type {
     unsupportedPlatformError();
   }
@@ -785,13 +963,19 @@ abstract class RTCLocalSessionDescriptionInit implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/RTCIceCandidate).
-abstract class RTCIceCandidate implements JSObject {
+extension type RTCIceCandidate._(JSObject _) implements JSObject {
+  factory RTCIceCandidate([RTCIceCandidateInit? candidateInitDict]) {
+    unsupportedPlatformError();
+  }
+
   /// The [RTCIceCandidate] method **`toJSON()`** converts the `RTCIceCandidate`
   /// on which it's called into JSON.
   ///
   /// A stringified version of the object can then be obtained by calling
   /// `stringify()` on the returned object.
-  RTCIceCandidateInit toJSON();
+  RTCIceCandidateInit toJSON() {
+    unsupportedPlatformError();
+  }
 
   /// The read-only property **`candidate`** on the [RTCIceCandidate] interface
   /// returns a string describing the candidate in detail.
@@ -801,7 +985,9 @@ abstract class RTCIceCandidate implements JSObject {
   /// This property can be configured using the `candidate` property of the
   /// object passed into the [RTCIceCandidate.RTCIceCandidate] or
   /// [RTCPeerConnection.addIceCandidate].
-  String get candidate;
+  String get candidate {
+    unsupportedPlatformError();
+  }
 
   /// The read-only property **`sdpMid`** on the [RTCIceCandidate] interface
   /// returns a string
@@ -816,7 +1002,9 @@ abstract class RTCIceCandidate implements JSObject {
   /// If you call the constructor with an m-line string instead of the options
   /// object, the value of `sdpMid` is extracted from the specified candidate
   /// m-line string.
-  String? get sdpMid;
+  String? get sdpMid {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`sdpMLineIndex`** property on the [RTCIceCandidate]
   /// interface
@@ -829,7 +1017,9 @@ abstract class RTCIceCandidate implements JSObject {
   /// If you call the constructor with an m-line string instead of the options
   /// object, the value of `sdpMLineIndex` is extracted from the specified
   /// candidate m-line string.
-  int? get sdpMLineIndex;
+  int? get sdpMLineIndex {
+    unsupportedPlatformError();
+  }
 
   /// The **[RTCIceCandidate]**
   /// interface's read-only **`foundation`** property is a string
@@ -838,7 +1028,9 @@ abstract class RTCIceCandidate implements JSObject {
   /// The `foundation` can therefore be used to correlate candidates that are
   /// present on
   /// multiple [RTCIceTransport] objects
-  String? get foundation;
+  String? get foundation {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`component`** property
   /// on the [RTCIceCandidate] interface is a string which indicates whether
@@ -850,7 +1042,9 @@ abstract class RTCIceCandidate implements JSObject {
   /// If a candidate represents both RTP and RTCP multiplexed together, it is
   /// reported as an
   /// RTP candidate.
-  RTCIceComponent? get component;
+  RTCIceComponent? get component {
+    unsupportedPlatformError();
+  }
 
   /// The **[RTCIceCandidate]** interface's read-only **`priority`** property
   /// specifies the candidate's priority according to the remote peer; the
@@ -862,7 +1056,9 @@ abstract class RTCIceCandidate implements JSObject {
   /// You can't specify the value of `priority` directly in the options object,
   /// but its value is automatically extracted from the object's `candidate`
   /// a-line, if it's formatted properly.
-  int? get priority;
+  int? get priority {
+    unsupportedPlatformError();
+  }
 
   /// The **[RTCIceCandidate]** interface's read-only **`address`** property is
   /// a string providing the IP address of the device which is the source of the
@@ -874,7 +1070,9 @@ abstract class RTCIceCandidate implements JSObject {
   /// You can't specify the value of `address` directly in the options object,
   /// but its value is automatically extracted from the object's `candidate`
   /// a-line, if it's formatted properly.
-  String? get address;
+  String? get address {
+    unsupportedPlatformError();
+  }
 
   /// The **[RTCIceCandidate]** interface's read-only **`protocol`** property is
   /// a string
@@ -889,7 +1087,9 @@ abstract class RTCIceCandidate implements JSObject {
   /// `protocol` is `null` by default if not specified properly in the SDP, but
   /// this is an error condition and will result in a thrown exception when you
   /// call [RTCPeerConnection.addIceCandidate].
-  RTCIceProtocol? get protocol;
+  RTCIceProtocol? get protocol {
+    unsupportedPlatformError();
+  }
 
   /// The **[RTCIceCandidate]** interface's read-only **`port`** property
   /// contains the port
@@ -901,7 +1101,9 @@ abstract class RTCIceCandidate implements JSObject {
   /// You can't specify the value of `port` directly in the options object, but
   /// its value is automatically extracted from the object's `candidate` a-line,
   /// if it's formatted properly.
-  int? get port;
+  int? get port {
+    unsupportedPlatformError();
+  }
 
   /// The **[RTCIceCandidate]** interface's read-only **`type`** specifies the
   /// type of candidate the object represents.
@@ -911,7 +1113,9 @@ abstract class RTCIceCandidate implements JSObject {
   /// You can't specify the value of `type` directly in the options object, but
   /// its value is automatically extracted from the object's `candidate` a-line
   /// (the `cand-type` field), if it's formatted properly.
-  RTCIceCandidateType? get type;
+  RTCIceCandidateType? get type {
+    unsupportedPlatformError();
+  }
 
   /// The **[RTCIceCandidate]** interface's read-only **`tcpType`** property is
   /// included on TCP candidates to provide additional details about the
@@ -922,7 +1126,9 @@ abstract class RTCIceCandidate implements JSObject {
   /// You can't specify the value of `tcpType` directly in the options object,
   /// but its value is automatically extracted from the object's `candidate`
   /// a-line, if it's formatted properly.
-  RTCIceTcpCandidateType? get tcpType;
+  RTCIceTcpCandidateType? get tcpType {
+    unsupportedPlatformError();
+  }
 
   /// The **[RTCIceCandidate]** interface's read-only **`relatedAddress`**
   /// property is a string indicating the **related address** of a relay or
@@ -942,7 +1148,9 @@ abstract class RTCIceCandidate implements JSObject {
   /// at all by  itself; they are provided for analysis and diagnostic purposes
   /// only, and their inclusion may be blocked by security systems, so do not
   /// rely on them having non-`null` values.
-  String? get relatedAddress;
+  String? get relatedAddress {
+    unsupportedPlatformError();
+  }
 
   /// The **[RTCIceCandidate]** interface's read-only **`relatedPort`** property
   /// indicates the port number of reflexive or relay candidates.
@@ -961,7 +1169,9 @@ abstract class RTCIceCandidate implements JSObject {
   /// used at all by  itself; they are provided for
   /// analysis and diagnostic purposes only, and their inclusion may be blocked
   /// by security systems, so do not rely on them having non-`null` values.
-  int? get relatedPort;
+  int? get relatedPort {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`usernameFragment`** property on the [RTCIceCandidate]
   /// interface is a string indicating the
@@ -977,10 +1187,20 @@ abstract class RTCIceCandidate implements JSObject {
   ///
   /// Note that 24 bits of the username fragment are required to be randomized
   /// by the browser. See [Randomization](#randomization) below for details.
-  String? get usernameFragment;
+  String? get usernameFragment {
+    unsupportedPlatformError();
+  }
 }
+extension type RTCIceCandidateInit._(JSObject _) implements JSObject {
+  factory RTCIceCandidateInit({
+    String? candidate,
+    String? sdpMid,
+    int? sdpMLineIndex,
+    String? usernameFragment,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class RTCIceCandidateInit implements JSObject {
   String get candidate {
     unsupportedPlatformError();
   }
@@ -1023,15 +1243,38 @@ abstract class RTCIceCandidateInit implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnectionIceEvent).
-abstract class RTCPeerConnectionIceEvent implements Event, JSObject {
+extension type RTCPeerConnectionIceEvent._(JSObject _)
+    implements Event, JSObject {
+  factory RTCPeerConnectionIceEvent(
+    String type, [
+    RTCPeerConnectionIceEventInit? eventInitDict,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// The read-only **`candidate`** property
   /// of the [RTCPeerConnectionIceEvent] interface returns the
   /// [RTCIceCandidate] associated with the event.
-  RTCIceCandidate? get candidate;
-  String? get url;
-}
+  RTCIceCandidate? get candidate {
+    unsupportedPlatformError();
+  }
 
-abstract class RTCPeerConnectionIceEventInit implements EventInit, JSObject {
+  String? get url {
+    unsupportedPlatformError();
+  }
+}
+extension type RTCPeerConnectionIceEventInit._(JSObject _)
+    implements EventInit, JSObject {
+  factory RTCPeerConnectionIceEventInit({
+    bool? bubbles,
+    bool? cancelable,
+    bool? composed,
+    RTCIceCandidate? candidate,
+    String? url,
+  }) {
+    unsupportedPlatformError();
+  }
+
   RTCIceCandidate? get candidate {
     unsupportedPlatformError();
   }
@@ -1058,20 +1301,54 @@ abstract class RTCPeerConnectionIceEventInit implements EventInit, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnectionIceErrorEvent).
-abstract class RTCPeerConnectionIceErrorEvent implements Event, JSObject {
+extension type RTCPeerConnectionIceErrorEvent._(JSObject _)
+    implements Event, JSObject {
+  factory RTCPeerConnectionIceErrorEvent(
+    String type,
+    RTCPeerConnectionIceErrorEventInit eventInitDict,
+  ) {
+    unsupportedPlatformError();
+  }
+
   /// The [RTCPeerConnectionIceErrorEvent] property
   /// **`address`** is a string which indicates the local IP address
   /// being used to communicate with the  or  server
   /// during negotiations. The error which occurred involved this address.
-  String? get address;
-  int? get port;
-  String get url;
-  int get errorCode;
-  String get errorText;
-}
+  String? get address {
+    unsupportedPlatformError();
+  }
 
-abstract class RTCPeerConnectionIceErrorEventInit
+  int? get port {
+    unsupportedPlatformError();
+  }
+
+  String get url {
+    unsupportedPlatformError();
+  }
+
+  int get errorCode {
+    unsupportedPlatformError();
+  }
+
+  String get errorText {
+    unsupportedPlatformError();
+  }
+}
+extension type RTCPeerConnectionIceErrorEventInit._(JSObject _)
     implements EventInit, JSObject {
+  factory RTCPeerConnectionIceErrorEventInit({
+    bool? bubbles,
+    bool? cancelable,
+    bool? composed,
+    String? address,
+    int? port,
+    String? url,
+    required int errorCode,
+    String? errorText,
+  }) {
+    unsupportedPlatformError();
+  }
+
   String? get address {
     unsupportedPlatformError();
   }
@@ -1126,7 +1403,7 @@ abstract class RTCPeerConnectionIceErrorEventInit
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/RTCCertificate).
-abstract class RTCCertificate implements JSObject {
+extension type RTCCertificate._(JSObject _) implements JSObject {
   /// The **`getFingerprints()`** method of the **[RTCCertificate]** interface
   /// is used to get an array of certificate fingerprints.
   ///
@@ -1135,7 +1412,9 @@ abstract class RTCCertificate implements JSObject {
   /// The server and client may support different sets of algorithms: all
   /// fingerprint values for the set of algorithms supported by both client and
   /// server should match.
-  JSArray<RTCDtlsFingerprint> getFingerprints();
+  JSArray<RTCDtlsFingerprint> getFingerprints() {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`expires`** property of the [RTCCertificate] interface
   /// returns the expiration date of the certificate.
@@ -1145,10 +1424,19 @@ abstract class RTCCertificate implements JSObject {
   /// The expiration time cannot exceed 31536000000 milliseconds, or 365 days.
   /// It's also useful to note that browsers may further restrict the expiration
   /// time of certificates if they choose.
-  EpochTimeStamp get expires;
+  EpochTimeStamp get expires {
+    unsupportedPlatformError();
+  }
 }
+extension type RTCRtpTransceiverInit._(JSObject _) implements JSObject {
+  factory RTCRtpTransceiverInit({
+    RTCRtpTransceiverDirection? direction,
+    JSArray<MediaStream>? streams,
+    JSArray<RTCRtpEncodingParameters>? sendEncodings,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class RTCRtpTransceiverInit implements JSObject {
   RTCRtpTransceiverDirection get direction {
     unsupportedPlatformError();
   }
@@ -1188,7 +1476,7 @@ abstract class RTCRtpTransceiverInit implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpSender).
-abstract class RTCRtpSender implements JSObject {
+extension type RTCRtpSender._(JSObject _) implements JSObject {
   /// The _static method_ **`RTCRtpSender.getCapabilities()`** returns an object
   /// describing the codec and header extension capabilities supported by the
   /// [RTCRtpSender].
@@ -1211,14 +1499,18 @@ abstract class RTCRtpSender implements JSObject {
   /// connection.
   JSPromise<JSAny?> setParameters(
     RTCRtpSendParameters parameters, [
-    RTCSetParameterOptions setParameterOptions,
-  ]);
+    RTCSetParameterOptions? setParameterOptions,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`getParameters()`** method of the [RTCRtpSender] interface returns
   /// an object describing the current configuration for how the sender's
   /// [RTCRtpSender.track] will be encoded and transmitted to a remote
   /// [RTCRtpReceiver].
-  RTCRtpSendParameters getParameters();
+  RTCRtpSendParameters getParameters() {
+    unsupportedPlatformError();
+  }
 
   /// The [RTCRtpSender] method
   /// **`replaceTrack()`** replaces the track currently being used
@@ -1235,22 +1527,30 @@ abstract class RTCRtpSender implements JSObject {
   /// you can have a track object for each camera and switch between the two as
   /// needed. See
   /// the example [Switching cameras](#switching_cameras) below.
-  JSPromise<JSAny?> replaceTrack(MediaStreamTrack? withTrack);
+  JSPromise<JSAny?> replaceTrack(MediaStreamTrack? withTrack) {
+    unsupportedPlatformError();
+  }
 
   /// The [RTCRtpSender] method **`setStreams()`** associates the sender's
   /// [RTCRtpSender.track] with the specified [MediaStream] objects.
-  void setStreams(MediaStream streams);
+  void setStreams(MediaStream streams) {
+    unsupportedPlatformError();
+  }
 
   /// The [RTCRtpSender] method **`getStats()`** asynchronously requests an
   /// [RTCStatsReport] object which provides statistics about outgoing traffic
   /// on the [RTCPeerConnection] which owns the sender, returning a `Promise`
   /// which is fulfilled when the results are available.
-  JSPromise<RTCStatsReport> getStats();
+  JSPromise<RTCStatsReport> getStats() {
+    unsupportedPlatformError();
+  }
 
   /// The **`track`** read-only property of
   /// the [RTCRtpSender] interface returns the [MediaStreamTrack]
   /// which is being handled by the `RTCRtpSender`.
-  MediaStreamTrack? get track;
+  MediaStreamTrack? get track {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`transport`** property of an
   /// [RTCRtpSender] object provides the [RTCDtlsTransport] object
@@ -1261,7 +1561,9 @@ abstract class RTCRtpSender implements JSObject {
   /// This transport is responsible for receiving the data for the media on the
   /// sender's
   /// [RTCRtpReceiver.track].
-  RTCDtlsTransport? get transport;
+  RTCDtlsTransport? get transport {
+    unsupportedPlatformError();
+  }
 
   /// The **`transform`** property of the [RTCRtpSender] object is used to
   /// insert a transform stream ([TransformStream]) running in a worker thread
@@ -1279,8 +1581,13 @@ abstract class RTCRtpSender implements JSObject {
   ///
   /// A [RTCRtpScriptTransform]<!-- or [SFrameTransform] -->, or `null` if the
   /// sender has no associated transform stream.
-  RTCRtpTransform? get transform;
-  set transform(RTCRtpTransform? value);
+  RTCRtpTransform? get transform {
+    unsupportedPlatformError();
+  }
+
+  set transform(RTCRtpTransform? value) {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`dtmf`** property on the
   /// **[RTCRtpSender]** interface returns a
@@ -1289,10 +1596,19 @@ abstract class RTCRtpSender implements JSObject {
   /// [Using DTMF](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API/Using_DTMF)
   /// for details on how to
   /// make use of the returned `RTCDTMFSender` object.
-  RTCDTMFSender? get dtmf;
+  RTCDTMFSender? get dtmf {
+    unsupportedPlatformError();
+  }
 }
+extension type RTCRtpParameters._(JSObject _) implements JSObject {
+  factory RTCRtpParameters({
+    required JSArray<RTCRtpHeaderExtensionParameters> headerExtensions,
+    required RTCRtcpParameters rtcp,
+    required JSArray<RTCRtpCodecParameters> codecs,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class RTCRtpParameters implements JSObject {
   JSArray<RTCRtpHeaderExtensionParameters> get headerExtensions {
     unsupportedPlatformError();
   }
@@ -1317,8 +1633,19 @@ abstract class RTCRtpParameters implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type RTCRtpSendParameters._(JSObject _)
+    implements RTCRtpParameters, JSObject {
+  factory RTCRtpSendParameters({
+    required JSArray<RTCRtpHeaderExtensionParameters> headerExtensions,
+    required RTCRtcpParameters rtcp,
+    required JSArray<RTCRtpCodecParameters> codecs,
+    required String transactionId,
+    required JSArray<RTCRtpEncodingParameters> encodings,
+    RTCDegradationPreference? degradationPreference,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class RTCRtpSendParameters implements RTCRtpParameters, JSObject {
   String get transactionId {
     unsupportedPlatformError();
   }
@@ -1343,10 +1670,21 @@ abstract class RTCRtpSendParameters implements RTCRtpParameters, JSObject {
     unsupportedPlatformError();
   }
 }
+extension type RTCRtpReceiveParameters._(JSObject _)
+    implements RTCRtpParameters, JSObject {
+  factory RTCRtpReceiveParameters({
+    required JSArray<RTCRtpHeaderExtensionParameters> headerExtensions,
+    required RTCRtcpParameters rtcp,
+    required JSArray<RTCRtpCodecParameters> codecs,
+  }) {
+    unsupportedPlatformError();
+  }
+}
+extension type RTCRtpCodingParameters._(JSObject _) implements JSObject {
+  factory RTCRtpCodingParameters({String? rid}) {
+    unsupportedPlatformError();
+  }
 
-abstract class RTCRtpReceiveParameters implements RTCRtpParameters, JSObject {}
-
-abstract class RTCRtpCodingParameters implements JSObject {
   String get rid {
     unsupportedPlatformError();
   }
@@ -1355,9 +1693,21 @@ abstract class RTCRtpCodingParameters implements JSObject {
     unsupportedPlatformError();
   }
 }
-
-abstract class RTCRtpEncodingParameters
+extension type RTCRtpEncodingParameters._(JSObject _)
     implements RTCRtpCodingParameters, JSObject {
+  factory RTCRtpEncodingParameters({
+    String? rid,
+    bool? active,
+    int? maxBitrate,
+    num? maxFramerate,
+    num? scaleResolutionDownBy,
+    RTCPriorityType? priority,
+    RTCPriorityType? networkPriority,
+    String? scalabilityMode,
+  }) {
+    unsupportedPlatformError();
+  }
+
   bool get active {
     unsupportedPlatformError();
   }
@@ -1414,8 +1764,14 @@ abstract class RTCRtpEncodingParameters
     unsupportedPlatformError();
   }
 }
+extension type RTCRtcpParameters._(JSObject _) implements JSObject {
+  factory RTCRtcpParameters({
+    String? cname,
+    bool? reducedSize,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class RTCRtcpParameters implements JSObject {
   String get cname {
     unsupportedPlatformError();
   }
@@ -1432,8 +1788,16 @@ abstract class RTCRtcpParameters implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type RTCRtpHeaderExtensionParameters._(JSObject _)
+    implements JSObject {
+  factory RTCRtpHeaderExtensionParameters({
+    required String uri,
+    required int id,
+    bool? encrypted,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class RTCRtpHeaderExtensionParameters implements JSObject {
   String get uri {
     unsupportedPlatformError();
   }
@@ -1458,8 +1822,16 @@ abstract class RTCRtpHeaderExtensionParameters implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type RTCRtpCodec._(JSObject _) implements JSObject {
+  factory RTCRtpCodec({
+    required String mimeType,
+    required int clockRate,
+    int? channels,
+    String? sdpFmtpLine,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class RTCRtpCodec implements JSObject {
   String get mimeType {
     unsupportedPlatformError();
   }
@@ -1492,8 +1864,18 @@ abstract class RTCRtpCodec implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type RTCRtpCodecParameters._(JSObject _)
+    implements RTCRtpCodec, JSObject {
+  factory RTCRtpCodecParameters({
+    required String mimeType,
+    required int clockRate,
+    int? channels,
+    String? sdpFmtpLine,
+    required int payloadType,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class RTCRtpCodecParameters implements RTCRtpCodec, JSObject {
   int get payloadType {
     unsupportedPlatformError();
   }
@@ -1502,8 +1884,14 @@ abstract class RTCRtpCodecParameters implements RTCRtpCodec, JSObject {
     unsupportedPlatformError();
   }
 }
+extension type RTCRtpCapabilities._(JSObject _) implements JSObject {
+  factory RTCRtpCapabilities({
+    required JSArray<RTCRtpCodec> codecs,
+    required JSArray<RTCRtpHeaderExtensionCapability> headerExtensions,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class RTCRtpCapabilities implements JSObject {
   JSArray<RTCRtpCodec> get codecs {
     unsupportedPlatformError();
   }
@@ -1520,8 +1908,12 @@ abstract class RTCRtpCapabilities implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type RTCRtpHeaderExtensionCapability._(JSObject _)
+    implements JSObject {
+  factory RTCRtpHeaderExtensionCapability({required String uri}) {
+    unsupportedPlatformError();
+  }
 
-abstract class RTCRtpHeaderExtensionCapability implements JSObject {
   String get uri {
     unsupportedPlatformError();
   }
@@ -1530,8 +1922,9 @@ abstract class RTCRtpHeaderExtensionCapability implements JSObject {
     unsupportedPlatformError();
   }
 }
-
-abstract class RTCSetParameterOptions implements JSObject {}
+extension type RTCSetParameterOptions._(JSObject _) implements JSObject {
+  RTCSetParameterOptions() : _ = JSObject();
+}
 
 /// The **`RTCRtpReceiver`** interface of the
 /// [WebRTC API](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API)
@@ -1542,7 +1935,7 @@ abstract class RTCSetParameterOptions implements JSObject {}
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpReceiver).
-abstract class RTCRtpReceiver implements JSObject {
+extension type RTCRtpReceiver._(JSObject _) implements JSObject {
   /// The _static method_ **`RTCRtpReceiver.getCapabilities()`** returns an
   /// object describing the codec and header extension capabilities supported by
   /// [RTCRtpReceiver] objects on the current device.
@@ -1556,30 +1949,40 @@ abstract class RTCRtpReceiver implements JSObject {
   /// The **`getParameters()`** method of the [RTCRtpReceiver] interface returns
   /// an object describing the current configuration for how the receiver's
   /// [RTCRtpReceiver.track] is decoded.
-  RTCRtpReceiveParameters getParameters();
+  RTCRtpReceiveParameters getParameters() {
+    unsupportedPlatformError();
+  }
 
   /// The **`getContributingSources()`** method of the [RTCRtpReceiver]
   /// interface returns an array of objects, each corresponding to one CSRC
   /// (contributing source) identifier received by the current `RTCRtpReceiver`
   /// in the last ten seconds.
-  JSArray<RTCRtpContributingSource> getContributingSources();
+  JSArray<RTCRtpContributingSource> getContributingSources() {
+    unsupportedPlatformError();
+  }
 
   /// The **`getSynchronizationSources()`** method of the [RTCRtpReceiver]
   /// interface returns an array of objects, each corresponding to one SSRC
   /// (synchronization source) identifier received by the current
   /// `RTCRtpReceiver` in the last ten seconds.
-  JSArray<RTCRtpSynchronizationSource> getSynchronizationSources();
+  JSArray<RTCRtpSynchronizationSource> getSynchronizationSources() {
+    unsupportedPlatformError();
+  }
 
   /// The [RTCRtpReceiver] method **`getStats()`** asynchronously requests an
   /// [RTCStatsReport] object which provides statistics about incoming traffic
   /// on the owning [RTCPeerConnection], returning a `Promise` whose fulfillment
   /// handler will be called once the results are available.
-  JSPromise<RTCStatsReport> getStats();
+  JSPromise<RTCStatsReport> getStats() {
+    unsupportedPlatformError();
+  }
 
   /// The **`track`** read-only property of the
   /// [RTCRtpReceiver] interface returns the [MediaStreamTrack]
   /// associated with the current [RTCRtpReceiver] instance.
-  MediaStreamTrack get track;
+  MediaStreamTrack get track {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`transport`** property of an
   /// [RTCRtpReceiver] object provides the [RTCDtlsTransport] object
@@ -1590,7 +1993,9 @@ abstract class RTCRtpReceiver implements JSObject {
   /// This transport is responsible for receiving the data for the media on the
   /// receiver's
   /// [RTCRtpReceiver.track].
-  RTCDtlsTransport? get transport;
+  RTCDtlsTransport? get transport {
+    unsupportedPlatformError();
+  }
 
   /// The **`jitterBufferTarget`** property of the [RTCRtpReceiver] interface is
   /// a [DOMHighResTimeStamp] that indicates the application's preferred
@@ -1600,8 +2005,13 @@ abstract class RTCRtpReceiver implements JSObject {
   /// The application can use it to influence the tradeoff between playout delay
   /// and the risk of running out of audio or video frames due to network
   /// jitter.
-  double? get jitterBufferTarget;
-  set jitterBufferTarget(DOMHighResTimeStamp? value);
+  double? get jitterBufferTarget {
+    unsupportedPlatformError();
+  }
+
+  set jitterBufferTarget(DOMHighResTimeStamp? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`transform`** property of the [RTCRtpReceiver] object is used to
   /// insert a transform stream ([TransformStream]) running in a worker thread
@@ -1621,11 +2031,24 @@ abstract class RTCRtpReceiver implements JSObject {
   ///
   /// A [RTCRtpScriptTransform]<!-- or [SFrameTransform] -->, or `null` if the
   /// receiver has no associated transform stream.
-  RTCRtpTransform? get transform;
-  set transform(RTCRtpTransform? value);
-}
+  RTCRtpTransform? get transform {
+    unsupportedPlatformError();
+  }
 
-abstract class RTCRtpContributingSource implements JSObject {
+  set transform(RTCRtpTransform? value) {
+    unsupportedPlatformError();
+  }
+}
+extension type RTCRtpContributingSource._(JSObject _) implements JSObject {
+  factory RTCRtpContributingSource({
+    required DOMHighResTimeStamp timestamp,
+    required int source,
+    num? audioLevel,
+    required int rtpTimestamp,
+  }) {
+    unsupportedPlatformError();
+  }
+
   double get timestamp {
     unsupportedPlatformError();
   }
@@ -1658,9 +2081,17 @@ abstract class RTCRtpContributingSource implements JSObject {
     unsupportedPlatformError();
   }
 }
-
-abstract class RTCRtpSynchronizationSource
-    implements RTCRtpContributingSource, JSObject {}
+extension type RTCRtpSynchronizationSource._(JSObject _)
+    implements RTCRtpContributingSource, JSObject {
+  factory RTCRtpSynchronizationSource({
+    required DOMHighResTimeStamp timestamp,
+    required int source,
+    num? audioLevel,
+    required int rtpTimestamp,
+  }) {
+    unsupportedPlatformError();
+  }
+}
 
 /// The WebRTC interface **`RTCRtpTransceiver`** describes a permanent pairing
 /// of an [RTCRtpSender] and an [RTCRtpReceiver], along with some shared state.
@@ -1683,11 +2114,13 @@ abstract class RTCRtpSynchronizationSource
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpTransceiver).
-abstract class RTCRtpTransceiver implements JSObject {
+extension type RTCRtpTransceiver._(JSObject _) implements JSObject {
   /// The **`stop()`** method in the [RTCRtpTransceiver] interface permanently
   /// stops the transceiver by stopping both the associated [RTCRtpSender] and
   /// [RTCRtpReceiver].
-  void stop();
+  void stop() {
+    unsupportedPlatformError();
+  }
 
   /// The [RTCRtpTransceiver] method **`setCodecPreferences()`** configures the
   /// transceiver's preferred list of codecs.
@@ -1703,25 +2136,33 @@ abstract class RTCRtpTransceiver implements JSObject {
   /// A guide to codecs supported by WebRTC—and each codec's positive and
   /// negative characteristics—can be found in
   /// [Codecs used by WebRTC](https://developer.mozilla.org/en-US/docs/Web/Media/Formats/WebRTC_codecs).
-  void setCodecPreferences(JSArray<RTCRtpCodec> codecs);
+  void setCodecPreferences(JSArray<RTCRtpCodec> codecs) {
+    unsupportedPlatformError();
+  }
 
   /// The read-only [RTCRtpTransceiver] interface's
   /// **`mid`** property specifies the negotiated media ID
   /// (`mid`) which the local and remote peers have agreed upon to uniquely
   /// identify the stream's pairing of sender and receiver.
-  String? get mid;
+  String? get mid {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`sender`** property
   /// of WebRTC's [RTCRtpTransceiver] interface indicates the
   /// [RTCRtpSender] responsible for encoding and sending outgoing media data
   /// for the transceiver's stream.
-  RTCRtpSender get sender;
+  RTCRtpSender get sender {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`receiver`** property
   /// of WebRTC's [RTCRtpTransceiver] interface indicates the
   /// [RTCRtpReceiver] responsible for receiving and decoding incoming media
   /// data for the transceiver's stream.
-  RTCRtpReceiver get receiver;
+  RTCRtpReceiver get receiver {
+    unsupportedPlatformError();
+  }
 
   /// The [RTCRtpTransceiver] property **`direction`** is a string that
   /// indicates the transceiver's _preferred_ directionality.
@@ -1732,8 +2173,13 @@ abstract class RTCRtpTransceiver implements JSObject {
   /// immediately.
   /// The _current_ direction is indicated by the
   /// [RTCRtpTransceiver.currentDirection] property.
-  RTCRtpTransceiverDirection get direction;
-  set direction(RTCRtpTransceiverDirection value);
+  RTCRtpTransceiverDirection get direction {
+    unsupportedPlatformError();
+  }
+
+  set direction(RTCRtpTransceiverDirection value) {
+    unsupportedPlatformError();
+  }
 
   /// The read-only [RTCRtpTransceiver] property **`currentDirection`** is a
   /// string which indicates the current negotiated directionality of the
@@ -1747,7 +2193,9 @@ abstract class RTCRtpTransceiver implements JSObject {
   /// [RTCRtpTransceiver.direction] property.
   /// Changing the `direction` triggers a renegotiation, which may eventually
   /// result in the `currentDirection` also changing.
-  RTCRtpTransceiverDirection? get currentDirection;
+  RTCRtpTransceiverDirection? get currentDirection {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`RTCDtlsTransport`** interface provides access to information about
@@ -1768,24 +2216,48 @@ abstract class RTCRtpTransceiver implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/RTCDtlsTransport).
-abstract class RTCDtlsTransport implements EventTarget, JSObject {
-  JSArray<JSArrayBuffer> getRemoteCertificates();
+extension type RTCDtlsTransport._(JSObject _) implements EventTarget, JSObject {
+  JSArray<JSArrayBuffer> getRemoteCertificates() {
+    unsupportedPlatformError();
+  }
 
   /// The **`iceTransport`** read-only property of the **[RTCDtlsTransport]**
   /// interface contains a reference to the underlying [RTCIceTransport].
-  RTCIceTransport get iceTransport;
+  RTCIceTransport get iceTransport {
+    unsupportedPlatformError();
+  }
 
   /// The **`state`** read-only property of the
   /// [RTCDtlsTransport] interface provides information which describes a
   /// Datagram Transport Layer Security (****) transport state.
-  RTCDtlsTransportState get state;
-  EventHandler get onstatechange;
-  set onstatechange(EventHandler value);
-  EventHandler get onerror;
-  set onerror(EventHandler value);
-}
+  RTCDtlsTransportState get state {
+    unsupportedPlatformError();
+  }
 
-abstract class RTCDtlsFingerprint implements JSObject {
+  EventHandler get onstatechange {
+    unsupportedPlatformError();
+  }
+
+  set onstatechange(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onerror {
+    unsupportedPlatformError();
+  }
+
+  set onerror(EventHandler value) {
+    unsupportedPlatformError();
+  }
+}
+extension type RTCDtlsFingerprint._(JSObject _) implements JSObject {
+  factory RTCDtlsFingerprint({
+    String? algorithm,
+    String? value,
+  }) {
+    unsupportedPlatformError();
+  }
+
   String get algorithm {
     unsupportedPlatformError();
   }
@@ -1812,7 +2284,7 @@ abstract class RTCDtlsFingerprint implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/RTCIceTransport).
-abstract class RTCIceTransport implements EventTarget, JSObject {
+extension type RTCIceTransport._(JSObject _) implements EventTarget, JSObject {
   /// The **`getLocalCandidates()`** method of the [RTCIceTransport] interface
   /// returns an array of [RTCIceCandidate] objects, one for each of the
   /// candidates that have been gathered by the local device during the current
@@ -1822,7 +2294,9 @@ abstract class RTCIceTransport implements EventTarget, JSObject {
   /// being delivered to the local client's code in an
   /// [RTCPeerConnection.icecandidate_event] event so that the client can
   /// forward the candidates to the remote peer.
-  JSArray<RTCIceCandidate> getLocalCandidates();
+  JSArray<RTCIceCandidate> getLocalCandidates() {
+    unsupportedPlatformError();
+  }
 
   /// The **`getRemoteCandidates()`** method of the [RTCIceTransport] interface
   /// returns an array that contains one [RTCIceCandidate] for each of the
@@ -1832,13 +2306,17 @@ abstract class RTCIceTransport implements EventTarget, JSObject {
   /// Each time your signaling code calls [RTCPeerConnection.addIceCandidate] to
   /// add a received candidate to the ICE session, the ICE agent places it in
   /// the list returned by this function.
-  JSArray<RTCIceCandidate> getRemoteCandidates();
+  JSArray<RTCIceCandidate> getRemoteCandidates() {
+    unsupportedPlatformError();
+  }
 
   /// The **`getSelectedCandidatePair()`** method of the [RTCIceTransport]
   /// interface returns an [RTCIceCandidatePair] object containing the current
   /// best-choice pair of  candidates describing the configuration of the
   /// endpoints of the transport.
-  JSObject? getSelectedCandidatePair();
+  JSObject? getSelectedCandidatePair() {
+    unsupportedPlatformError();
+  }
 
   /// The **`getLocalParameters()`** method of the [RTCIceTransport] interface
   /// returns an [RTCIceParameters] object that provides information uniquely
@@ -1847,7 +2325,9 @@ abstract class RTCIceTransport implements EventTarget, JSObject {
   /// The local peer's parameters are obtained during ICE signaling and
   /// delivered to the transport when the client calls
   /// [RTCPeerConnection.setLocalDescription].
-  RTCIceParameters? getLocalParameters();
+  RTCIceParameters? getLocalParameters() {
+    unsupportedPlatformError();
+  }
 
   /// The **`getRemoteParameters()`** method of the [RTCIceTransport] interface
   /// returns an [RTCIceParameters] object that provides information uniquely
@@ -1856,7 +2336,9 @@ abstract class RTCIceTransport implements EventTarget, JSObject {
   /// The remote peer's parameters are received during ICE signaling and
   /// delivered to the transport when the client calls
   /// [RTCPeerConnection.setRemoteDescription].
-  RTCIceParameters? getRemoteParameters();
+  RTCIceParameters? getRemoteParameters() {
+    unsupportedPlatformError();
+  }
 
   /// The **`role`** read-only property of the [RTCIceTransport] interface
   /// indicates which  role the transport is fulfilling: that of the controlling
@@ -1864,7 +2346,9 @@ abstract class RTCIceTransport implements EventTarget, JSObject {
   ///
   /// You can learn more about ICE roles in
   /// [Choosing a candidate pair](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API/Connectivity#choosing_a_candidate_pair).
-  RTCIceRole get role;
+  RTCIceRole get role {
+    unsupportedPlatformError();
+  }
 
   /// The **`state`** read-only property of the [RTCIceTransport] interface
   /// returns the current state of the ICE transport, so you can determine the
@@ -1875,7 +2359,9 @@ abstract class RTCIceTransport implements EventTarget, JSObject {
   /// It also differs from [RTCPeerConnection.connectionState], which aggregates
   /// the states across every [RTCIceTransport] used by every [RTCRtpSender] and
   /// every [RTCRtpReceiver] on the entire connection.
-  RTCIceTransportState get state;
+  RTCIceTransportState get state {
+    unsupportedPlatformError();
+  }
 
   /// The **`gatheringState`** read-only property of the [RTCIceTransport]
   /// interface returns a string that indicates the current gathering state of
@@ -1889,17 +2375,49 @@ abstract class RTCIceTransport implements EventTarget, JSObject {
   /// overall gathering state of the whole connection, including every
   /// [RTCIceTransport] used by every [RTCRtpSender] and every [RTCRtpReceiver]
   /// on the entire connection.
-  RTCIceGathererState get gatheringState;
-  EventHandler get onstatechange;
-  set onstatechange(EventHandler value);
-  EventHandler get ongatheringstatechange;
-  set ongatheringstatechange(EventHandler value);
-  EventHandler get onselectedcandidatepairchange;
-  set onselectedcandidatepairchange(EventHandler value);
-  EventHandler get onerror;
-  set onerror(EventHandler value);
-  EventHandler get onicecandidate;
-  set onicecandidate(EventHandler value);
+  RTCIceGathererState get gatheringState {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onstatechange {
+    unsupportedPlatformError();
+  }
+
+  set onstatechange(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ongatheringstatechange {
+    unsupportedPlatformError();
+  }
+
+  set ongatheringstatechange(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onselectedcandidatepairchange {
+    unsupportedPlatformError();
+  }
+
+  set onselectedcandidatepairchange(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onerror {
+    unsupportedPlatformError();
+  }
+
+  set onerror(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onicecandidate {
+    unsupportedPlatformError();
+  }
+
+  set onicecandidate(EventHandler value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`RTCIceParameters`** dictionary specifies the username fragment and
@@ -1915,24 +2433,48 @@ abstract class RTCIceTransport implements EventTarget, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/RTCIceParameters).
-abstract class RTCIceParameters implements JSObject {
+extension type RTCIceParameters._(JSObject _) implements JSObject {
+  factory RTCIceParameters({
+    String? usernameFragment,
+    String? password,
+    bool? iceLite,
+  }) {
+    unsupportedPlatformError();
+  }
+
   /// The **[RTCIceParameters]** dictionary's
   /// **`usernameFragment`** property specifies the username fragment
   /// ("ufrag") that uniquely identifies the corresponding ICE session for the
   /// duration of the
   /// current ICE session.
-  String get usernameFragment;
-  set usernameFragment(String value);
+  String get usernameFragment {
+    unsupportedPlatformError();
+  }
+
+  set usernameFragment(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **[RTCIceParameters]**
   /// dictionary's **`password`** property specifies the ICE
   /// password that, in tandem with the [RTCIceParameters.usernameFragment],
   /// uniquely identifies an ICE session for its entire
   /// duration.
-  String get password;
-  set password(String value);
-  bool get iceLite;
-  set iceLite(bool value);
+  String get password {
+    unsupportedPlatformError();
+  }
+
+  set password(String value) {
+    unsupportedPlatformError();
+  }
+
+  bool get iceLite {
+    unsupportedPlatformError();
+  }
+
+  set iceLite(bool value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The
@@ -1951,19 +2493,30 @@ abstract class RTCIceParameters implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/RTCTrackEvent).
-abstract class RTCTrackEvent implements Event, JSObject {
+extension type RTCTrackEvent._(JSObject _) implements Event, JSObject {
+  factory RTCTrackEvent(
+    String type,
+    RTCTrackEventInit eventInitDict,
+  ) {
+    unsupportedPlatformError();
+  }
+
   /// The read-only **`receiver`** property
   /// of the [RTCTrackEvent] interface indicates the
   /// [RTCRtpReceiver] which is used to receive data containing media for the
   /// [RTCTrackEvent.track] to which the event refers.
-  RTCRtpReceiver get receiver;
+  RTCRtpReceiver get receiver {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// [WebRTC API](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API)
   /// interface [RTCTrackEvent]'s read-only **`track`**
   /// property specifies the [MediaStreamTrack] that has been added to the
   /// [RTCPeerConnection].
-  MediaStreamTrack get track;
+  MediaStreamTrack get track {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// [WebRTC API](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API)
@@ -1971,7 +2524,9 @@ abstract class RTCTrackEvent implements Event, JSObject {
   /// **`streams`** property specifies an array of
   /// [MediaStream] objects, one for each of the streams that comprise the
   /// track being added to the [RTCPeerConnection].
-  JSArray<MediaStream> get streams;
+  JSArray<MediaStream> get streams {
+    unsupportedPlatformError();
+  }
 
   /// The WebRTC API interface [RTCTrackEvent]'s
   /// read-only **`transceiver`** property indicates the
@@ -1980,10 +2535,23 @@ abstract class RTCTrackEvent implements Event, JSObject {
   ///
   /// The transceiver pairs the track's
   /// [RTCTrackEvent.receiver] with an [RTCRtpSender].
-  RTCRtpTransceiver get transceiver;
+  RTCRtpTransceiver get transceiver {
+    unsupportedPlatformError();
+  }
 }
+extension type RTCTrackEventInit._(JSObject _) implements EventInit, JSObject {
+  factory RTCTrackEventInit({
+    bool? bubbles,
+    bool? cancelable,
+    bool? composed,
+    required RTCRtpReceiver receiver,
+    required MediaStreamTrack track,
+    JSArray<MediaStream>? streams,
+    required RTCRtpTransceiver transceiver,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class RTCTrackEventInit implements EventInit, JSObject {
   RTCRtpReceiver get receiver {
     unsupportedPlatformError();
   }
@@ -2037,28 +2605,42 @@ abstract class RTCTrackEventInit implements EventInit, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/RTCSctpTransport).
-abstract class RTCSctpTransport implements EventTarget, JSObject {
+extension type RTCSctpTransport._(JSObject _) implements EventTarget, JSObject {
   /// The **`transport`** read-only property of the [RTCSctpTransport] interface
   /// returns a [RTCDtlsTransport] object representing the  transport used for
   /// the transmission and receipt of data packets.
-  RTCDtlsTransport get transport;
+  RTCDtlsTransport get transport {
+    unsupportedPlatformError();
+  }
 
   /// The **`state`** read-only property of the [RTCSctpTransport] interface
   /// provides information which describes a Stream Control Transmission
   /// Protocol () transport state.
-  RTCSctpTransportState get state;
+  RTCSctpTransportState get state {
+    unsupportedPlatformError();
+  }
 
   /// The **`maxMessageSize`** read-only property of the [RTCSctpTransport]
   /// interface indicates the maximum size of a message that can be sent using
   /// the [RTCDataChannel.send] method.
-  double get maxMessageSize;
+  double get maxMessageSize {
+    unsupportedPlatformError();
+  }
 
   /// The **`maxChannels`** read-only property of the [RTCSctpTransport]
   /// interface indicates the maximum number of [RTCDataChannel] objects that
   /// can be opened simultaneously.
-  int? get maxChannels;
-  EventHandler get onstatechange;
-  set onstatechange(EventHandler value);
+  int? get maxChannels {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onstatechange {
+    unsupportedPlatformError();
+  }
+
+  set onstatechange(EventHandler value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`RTCDataChannel`** interface represents a network channel which can be
@@ -2081,7 +2663,7 @@ abstract class RTCSctpTransport implements EventTarget, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/RTCDataChannel).
-abstract class RTCDataChannel implements EventTarget, JSObject {
+extension type RTCDataChannel._(JSObject _) implements EventTarget, JSObject {
   /// The **`RTCDataChannel.close()`** method closes the
   /// [RTCDataChannel]. Either peer is permitted to call this method to initiate
   /// closure of the channel.
@@ -2111,7 +2693,9 @@ abstract class RTCDataChannel implements EventTarget, JSObject {
   /// an [RTCDataChannel.error_event] event
   /// with its [DOMException.name] set to `NetworkError`.
   /// 7. A [RTCDataChannel.close_event] event is sent to the channel.
-  void close();
+  void close() {
+    unsupportedPlatformError();
+  }
 
   /// The **`send()`** method of the
   /// [RTCDataChannel] interface sends data across the data channel to the
@@ -2133,7 +2717,9 @@ abstract class RTCDataChannel implements EventTarget, JSObject {
   /// > you have
   /// > questions, see
   /// > [Understanding message size limits](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API/Using_data_channels#understanding_message_size_limits).
-  void send(JSAny data);
+  void send(JSAny data) {
+    unsupportedPlatformError();
+  }
 
   /// The read-only `RTCDataChannel` property **`label`**
   /// returns a string containing a name describing the data channel. These
@@ -2152,7 +2738,9 @@ abstract class RTCDataChannel implements EventTarget, JSObject {
   /// > **Note:** A data channel's label is set when the channel is created by
   /// > calling
   /// > [RTCPeerConnection.createDataChannel]. It cannot be changed after that.
-  String get label;
+  String get label {
+    unsupportedPlatformError();
+  }
 
   /// The read-only `RTCDataChannel` property **`ordered`** indicates
   /// whether or not the data channel guarantees in-order delivery of messages;
@@ -2162,7 +2750,9 @@ abstract class RTCDataChannel implements EventTarget, JSObject {
   /// by setting the `ordered` property
   /// on the object passed as [RTCPeerConnection.createDataChannel]'s `options`
   /// parameter.
-  bool get ordered;
+  bool get ordered {
+    unsupportedPlatformError();
+  }
 
   /// The read-only `RTCDataChannel` property
   /// **`maxPacketLifeTime`** returns the amount of time, in
@@ -2172,7 +2762,9 @@ abstract class RTCDataChannel implements EventTarget, JSObject {
   /// the browser can continue to attempt to transmit and retransmit the message
   /// before giving
   /// up.
-  int? get maxPacketLifeTime;
+  int? get maxPacketLifeTime {
+    unsupportedPlatformError();
+  }
 
   /// The read-only `RTCDataChannel` property
   /// **`maxRetransmits`** returns the maximum number of times the
@@ -2182,7 +2774,9 @@ abstract class RTCDataChannel implements EventTarget, JSObject {
   /// maximum. This can only be set when the [RTCDataChannel] is created
   /// by calling [RTCPeerConnection.createDataChannel], using the
   /// `maxRetransmits` field in the specified `options`.
-  int? get maxRetransmits;
+  int? get maxRetransmits {
+    unsupportedPlatformError();
+  }
 
   /// The read-only `RTCDataChannel` property
   /// **`protocol`** returns a string containing the
@@ -2199,7 +2793,9 @@ abstract class RTCDataChannel implements EventTarget, JSObject {
   /// use JSON objects as messages on one channel while another channel is
   /// plaintext and
   /// another is raw binary or even some other format.
-  String get protocol;
+  String get protocol {
+    unsupportedPlatformError();
+  }
 
   /// The read-only `RTCDataChannel` property
   /// **`negotiated`** indicates whether the
@@ -2210,7 +2806,9 @@ abstract class RTCDataChannel implements EventTarget, JSObject {
   /// See
   /// [Creating a data channel](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API/Using_data_channels#creating_a_data_channel)
   /// for further information about this property.
-  bool get negotiated;
+  bool get negotiated {
+    unsupportedPlatformError();
+  }
 
   /// The read-only `RTCDataChannel` property
   /// **`id`** returns an ID number (between 0 and 65,534) which
@@ -2223,12 +2821,16 @@ abstract class RTCDataChannel implements EventTarget, JSObject {
   /// 65,534 data channels on it, although the actual maximum may vary from
   /// browser to
   /// browser.
-  int? get id;
+  int? get id {
+    unsupportedPlatformError();
+  }
 
   /// The read-only `RTCDataChannel` property **`readyState`** returns a string
   /// which indicates the state of the data channel's underlying data
   /// connection.
-  RTCDataChannelState get readyState;
+  RTCDataChannelState get readyState {
+    unsupportedPlatformError();
+  }
 
   /// The read-only `RTCDataChannel` property
   /// **`bufferedAmount`** returns the number of bytes of data
@@ -2260,7 +2862,9 @@ abstract class RTCDataChannel implements EventTarget, JSObject {
   /// be used, for example, to implement code which queues more messages to be
   /// sent whenever
   /// there's room to buffer them.
-  int get bufferedAmount;
+  int get bufferedAmount {
+    unsupportedPlatformError();
+  }
 
   /// The `RTCDataChannel` property
   /// **`bufferedAmountLowThreshold`** is used to specify the number
@@ -2284,20 +2888,61 @@ abstract class RTCDataChannel implements EventTarget, JSObject {
   ///
   /// > **Note:** `bufferedamountlow` events are not fired after the data
   /// > channel is closed.
-  int get bufferedAmountLowThreshold;
-  set bufferedAmountLowThreshold(int value);
-  EventHandler get onopen;
-  set onopen(EventHandler value);
-  EventHandler get onbufferedamountlow;
-  set onbufferedamountlow(EventHandler value);
-  EventHandler get onerror;
-  set onerror(EventHandler value);
-  EventHandler get onclosing;
-  set onclosing(EventHandler value);
-  EventHandler get onclose;
-  set onclose(EventHandler value);
-  EventHandler get onmessage;
-  set onmessage(EventHandler value);
+  int get bufferedAmountLowThreshold {
+    unsupportedPlatformError();
+  }
+
+  set bufferedAmountLowThreshold(int value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onopen {
+    unsupportedPlatformError();
+  }
+
+  set onopen(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onbufferedamountlow {
+    unsupportedPlatformError();
+  }
+
+  set onbufferedamountlow(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onerror {
+    unsupportedPlatformError();
+  }
+
+  set onerror(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onclosing {
+    unsupportedPlatformError();
+  }
+
+  set onclosing(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onclose {
+    unsupportedPlatformError();
+  }
+
+  set onclose(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onmessage {
+    unsupportedPlatformError();
+  }
+
+  set onmessage(EventHandler value) {
+    unsupportedPlatformError();
+  }
 
   /// The property **`binaryType`** on the
   /// [RTCDataChannel] interface is a string which specifies
@@ -2312,11 +2957,27 @@ abstract class RTCDataChannel implements EventTarget, JSObject {
   /// [RTCDataChannel.message_event] event's [MessageEvent.data] property is an
   /// object of
   /// the type specified by the `binaryType`.
-  BinaryType get binaryType;
-  set binaryType(BinaryType value);
-}
+  BinaryType get binaryType {
+    unsupportedPlatformError();
+  }
 
-abstract class RTCDataChannelInit implements JSObject {
+  set binaryType(BinaryType value) {
+    unsupportedPlatformError();
+  }
+}
+extension type RTCDataChannelInit._(JSObject _) implements JSObject {
+  factory RTCDataChannelInit({
+    bool? ordered,
+    int? maxPacketLifeTime,
+    int? maxRetransmits,
+    String? protocol,
+    bool? negotiated,
+    int? id,
+    RTCPriorityType? priority,
+  }) {
+    unsupportedPlatformError();
+  }
+
   bool get ordered {
     unsupportedPlatformError();
   }
@@ -2381,13 +3042,31 @@ abstract class RTCDataChannelInit implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/RTCDataChannelEvent).
-abstract class RTCDataChannelEvent implements Event, JSObject {
+extension type RTCDataChannelEvent._(JSObject _) implements Event, JSObject {
+  factory RTCDataChannelEvent(
+    String type,
+    RTCDataChannelEventInit eventInitDict,
+  ) {
+    unsupportedPlatformError();
+  }
+
   /// The read-only property **`RTCDataChannelEvent.channel`**
   /// returns the [RTCDataChannel] associated with the event.
-  RTCDataChannel get channel;
+  RTCDataChannel get channel {
+    unsupportedPlatformError();
+  }
 }
+extension type RTCDataChannelEventInit._(JSObject _)
+    implements EventInit, JSObject {
+  factory RTCDataChannelEventInit({
+    bool? bubbles,
+    bool? cancelable,
+    bool? composed,
+    required RTCDataChannel channel,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class RTCDataChannelEventInit implements EventInit, JSObject {
   RTCDataChannel get channel {
     unsupportedPlatformError();
   }
@@ -2417,7 +3096,7 @@ abstract class RTCDataChannelEventInit implements EventInit, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/RTCDTMFSender).
-abstract class RTCDTMFSender implements EventTarget, JSObject {
+extension type RTCDTMFSender._(JSObject _) implements EventTarget, JSObject {
   /// The **`insertDTMF()`** method on the [RTCDTMFSender] interface
   /// starts sending  tones to the remote peer over the
   /// [RTCPeerConnection].
@@ -2439,17 +3118,27 @@ abstract class RTCDTMFSender implements EventTarget, JSObject {
   /// the `toneBuffer`) and the new tones appended together.
   void insertDTMF(
     String tones, [
-    int duration,
-    int interToneGap,
-  ]);
-  EventHandler get ontonechange;
-  set ontonechange(EventHandler value);
+    int? duration,
+    int? interToneGap,
+  ]) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ontonechange {
+    unsupportedPlatformError();
+  }
+
+  set ontonechange(EventHandler value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`canInsertDTMF`** read-only property of the [RTCDTMFSender]
   /// interface returns a boolean value which indicates whether the
   /// `RTCDTMFSender` is capable of sending DTMF tones over the
   /// [RTCPeerConnection].
-  bool get canInsertDTMF;
+  bool get canInsertDTMF {
+    unsupportedPlatformError();
+  }
 
   /// The [RTCDTMFSender] interface's toneBuffer property returns a string
   /// containing a list of the  tones currently queued for sending to the
@@ -2458,7 +3147,9 @@ abstract class RTCDTMFSender implements EventTarget, JSObject {
   ///
   /// Tones are removed from the string as they're played, so only upcoming
   /// tones are listed.
-  String get toneBuffer;
+  String get toneBuffer {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`RTCDTMFToneChangeEvent`** interface represents events sent to
@@ -2471,16 +3162,34 @@ abstract class RTCDTMFSender implements EventTarget, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/RTCDTMFToneChangeEvent).
-abstract class RTCDTMFToneChangeEvent implements Event, JSObject {
+extension type RTCDTMFToneChangeEvent._(JSObject _) implements Event, JSObject {
+  factory RTCDTMFToneChangeEvent(
+    String type, [
+    RTCDTMFToneChangeEventInit? eventInitDict,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// The read-only property **`RTCDTMFToneChangeEvent.tone`**
   /// returns the DTMF character which has just begun to play, or an empty
   /// string
   /// (`""`). if all queued tones have finished playing (that is,
   /// [RTCDTMFSender.toneBuffer] is empty).
-  String get tone;
+  String get tone {
+    unsupportedPlatformError();
+  }
 }
+extension type RTCDTMFToneChangeEventInit._(JSObject _)
+    implements EventInit, JSObject {
+  factory RTCDTMFToneChangeEventInit({
+    bool? bubbles,
+    bool? cancelable,
+    bool? composed,
+    String? tone,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class RTCDTMFToneChangeEventInit implements EventInit, JSObject {
   String get tone {
     unsupportedPlatformError();
   }
@@ -2505,7 +3214,7 @@ abstract class RTCDTMFToneChangeEventInit implements EventInit, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/RTCStatsReport).
-abstract class RTCStatsReport implements JSObject {}
+extension type RTCStatsReport._(JSObject _) implements JSObject {}
 
 /// The **`RTCError`** interface describes an error which has occurred while
 /// handling
@@ -2517,38 +3226,68 @@ abstract class RTCStatsReport implements JSObject {}
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/RTCError).
-abstract class RTCError implements DOMException, JSObject {
+extension type RTCError._(JSObject _) implements DOMException, JSObject {
+  factory RTCError(
+    RTCErrorInit init, [
+    String? message,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// The [RTCError] interface's read-only
   /// **`errorDetail`** property is a string indicating the
   /// [WebRTC](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API)-specific
   /// error code that occurred.
-  RTCErrorDetailType get errorDetail;
+  RTCErrorDetailType get errorDetail {
+    unsupportedPlatformError();
+  }
 
   /// The [RTCError] interface's read-only property
   /// **`sdpLineNumber`** specifies the line number within the
   /// at which a syntax error occurred while parsing it.
-  int? get sdpLineNumber;
+  int? get sdpLineNumber {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`sctpCauseCode`** property in an
   /// [RTCError] object provides the  cause code explaining
   /// why the SCTP negotiation failed, if the `RTCError` represents an SCTP
   /// error.
-  int? get sctpCauseCode;
+  int? get sctpCauseCode {
+    unsupportedPlatformError();
+  }
 
   /// The [RTCError] read-only property
   /// **`receivedAlert`** specifies the fatal
   /// error which resulted in an alert being received from the remote peer.
-  int? get receivedAlert;
+  int? get receivedAlert {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`sentAlert`** property in an
   /// [RTCError] object specifies the  alert number occurred
   /// while sending data to the remote peer, if the error represents an outbound
   /// DTLS error.
-  int? get sentAlert;
-  int? get httpRequestStatusCode;
-}
+  int? get sentAlert {
+    unsupportedPlatformError();
+  }
 
-abstract class RTCErrorInit implements JSObject {
+  int? get httpRequestStatusCode {
+    unsupportedPlatformError();
+  }
+}
+extension type RTCErrorInit._(JSObject _) implements JSObject {
+  factory RTCErrorInit({
+    required RTCErrorDetailType errorDetail,
+    int? sdpLineNumber,
+    int? sctpCauseCode,
+    int? receivedAlert,
+    int? sentAlert,
+    int? httpRequestStatusCode,
+  }) {
+    unsupportedPlatformError();
+  }
+
   RTCErrorDetailType get errorDetail {
     unsupportedPlatformError();
   }
@@ -2606,15 +3345,32 @@ abstract class RTCErrorInit implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/RTCErrorEvent).
-abstract class RTCErrorEvent implements Event, JSObject {
+extension type RTCErrorEvent._(JSObject _) implements Event, JSObject {
+  factory RTCErrorEvent(
+    String type,
+    RTCErrorEventInit eventInitDict,
+  ) {
+    unsupportedPlatformError();
+  }
+
   /// The read-only [RTCErrorEvent] property **`error`**
   /// contains an [RTCError] object describing the details of the error which
   /// the
   /// event is announcing.
-  RTCError get error;
+  RTCError get error {
+    unsupportedPlatformError();
+  }
 }
+extension type RTCErrorEventInit._(JSObject _) implements EventInit, JSObject {
+  factory RTCErrorEventInit({
+    bool? bubbles,
+    bool? cancelable,
+    bool? composed,
+    required RTCError error,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class RTCErrorEventInit implements EventInit, JSObject {
   RTCError get error {
     unsupportedPlatformError();
   }

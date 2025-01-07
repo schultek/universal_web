@@ -16,8 +16,16 @@ import '../js_interop.dart';
 typedef RefreshPolicy = String;
 typedef TokenVersion = String;
 typedef OperationType = String;
+extension type PrivateToken._(JSObject _) implements JSObject {
+  factory PrivateToken({
+    required TokenVersion version,
+    required OperationType operation,
+    RefreshPolicy? refreshPolicy,
+    JSArray<JSString>? issuers,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class PrivateToken implements JSObject {
   TokenVersion get version {
     unsupportedPlatformError();
   }

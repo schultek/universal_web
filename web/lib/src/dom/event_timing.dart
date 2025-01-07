@@ -10,6 +10,7 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
+import '../error.dart';
 import '../js_interop.dart';
 import 'dom.dart';
 import 'performance_timeline.dart';
@@ -22,32 +23,43 @@ import 'performance_timeline.dart';
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceEventTiming).
-abstract class PerformanceEventTiming implements PerformanceEntry, JSObject {
+extension type PerformanceEventTiming._(JSObject _)
+    implements PerformanceEntry, JSObject {
   /// The **`toJSON()`** method of the [PerformanceEventTiming] interface is a ;
   /// it returns a JSON representation of the [PerformanceEventTiming] object.
-  JSObject toJSON();
+  JSObject toJSON() {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`processingStart`** property returns the time at which
   /// event dispatch started. This is when event handlers are about to be
   /// executed.
-  double get processingStart;
+  double get processingStart {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`processingEnd`** property returns the time the last event
   /// handler finished executing.
   ///
   /// It's equal to [PerformanceEventTiming.processingStart] when there are no
   /// such event handlers.
-  double get processingEnd;
+  double get processingEnd {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`cancelable`** property returns the associated event's
   /// [`cancelable`](https://developer.mozilla.org/en-US/docs/Web/API/Event/cancelable)
   /// property, indicating whether the event can be canceled.
-  bool get cancelable;
+  bool get cancelable {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`target`** property returns the associated event's last
   /// [`target`](https://developer.mozilla.org/en-US/docs/Web/API/Event/target)
   /// which is the node onto which the event was last dispatched.
-  Node? get target;
+  Node? get target {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`EventCounts`** interface of the
@@ -64,4 +76,4 @@ abstract class PerformanceEventTiming implements PerformanceEntry, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/EventCounts).
-abstract class EventCounts implements JSObject {}
+extension type EventCounts._(JSObject _) implements JSObject {}

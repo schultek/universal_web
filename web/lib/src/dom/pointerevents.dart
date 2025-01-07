@@ -12,9 +12,61 @@
 
 import '../error.dart';
 import '../js_interop.dart';
+import 'dom.dart';
+import 'html.dart';
 import 'uievents.dart';
 
-abstract class PointerEventInit implements MouseEventInit, JSObject {
+extension type PointerEventInit._(JSObject _)
+    implements MouseEventInit, JSObject {
+  factory PointerEventInit({
+    bool? bubbles,
+    bool? cancelable,
+    bool? composed,
+    Window? view,
+    int? detail,
+    JSObject? sourceCapabilities,
+    int? which,
+    bool? ctrlKey,
+    bool? shiftKey,
+    bool? altKey,
+    bool? metaKey,
+    bool? modifierAltGraph,
+    bool? modifierCapsLock,
+    bool? modifierFn,
+    bool? modifierFnLock,
+    bool? modifierHyper,
+    bool? modifierNumLock,
+    bool? modifierScrollLock,
+    bool? modifierSuper,
+    bool? modifierSymbol,
+    bool? modifierSymbolLock,
+    int? screenX,
+    int? screenY,
+    int? clientX,
+    int? clientY,
+    int? button,
+    int? buttons,
+    EventTarget? relatedTarget,
+    num? movementX,
+    num? movementY,
+    int? pointerId,
+    num? width,
+    num? height,
+    num? pressure,
+    num? tangentialPressure,
+    int? tiltX,
+    int? tiltY,
+    int? twist,
+    num? altitudeAngle,
+    num? azimuthAngle,
+    String? pointerType,
+    bool? isPrimary,
+    JSArray<PointerEvent>? coalescedEvents,
+    JSArray<PointerEvent>? predictedEvents,
+  }) {
+    unsupportedPlatformError();
+  }
+
   int get pointerId {
     unsupportedPlatformError();
   }
@@ -147,7 +199,14 @@ abstract class PointerEventInit implements MouseEventInit, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/PointerEvent).
-abstract class PointerEvent implements MouseEvent, JSObject {
+extension type PointerEvent._(JSObject _) implements MouseEvent, JSObject {
+  factory PointerEvent(
+    String type, [
+    PointerEventInit? eventInitDict,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// The **`getCoalescedEvents()`** method of the [PointerEvent] interface
   /// returns a sequence of `PointerEvent` instances that were coalesced
   /// (merged) into a single [Element.pointermove_event] or
@@ -167,7 +226,9 @@ abstract class PointerEvent implements MouseEvent, JSObject {
   ///
   /// For an illustration of coalesced events, see
   /// [Figure 7 in the specification](https://w3c.github.io/pointerevents/#figure_coalesced).
-  JSArray<PointerEvent> getCoalescedEvents();
+  JSArray<PointerEvent> getCoalescedEvents() {
+    unsupportedPlatformError();
+  }
 
   /// The **`getPredictedEvents()`** method of the [PointerEvent] interface
   /// returns a sequence of `PointerEvent` instances that are estimated future
@@ -181,7 +242,9 @@ abstract class PointerEvent implements MouseEvent, JSObject {
   ///
   /// For an illustration of predicted events, see
   /// [Figure 8 in the specification](https://w3c.github.io/pointerevents/#figure_predicted).
-  JSArray<PointerEvent> getPredictedEvents();
+  JSArray<PointerEvent> getPredictedEvents() {
+    unsupportedPlatformError();
+  }
 
   /// The **`pointerId`** read-only property of the
   /// [PointerEvent] interface is an identifier assigned to a given pointer
@@ -190,7 +253,9 @@ abstract class PointerEvent implements MouseEvent, JSObject {
   /// active pointer events. Since the value may be randomly generated, it is
   /// not guaranteed
   /// to convey any particular meaning.
-  int get pointerId;
+  int get pointerId {
+    unsupportedPlatformError();
+  }
 
   /// The **`width`** read-only property of the
   /// [PointerEvent] interface represents the width of the pointer's contact
@@ -203,7 +268,9 @@ abstract class PointerEvent implements MouseEvent, JSObject {
   /// If the input hardware cannot report the contact geometry to the browser,
   /// the width
   /// defaults to `1`.
-  double get width;
+  double get width {
+    unsupportedPlatformError();
+  }
 
   /// The **`height`** read-only property of the
   /// [PointerEvent] interface represents the height of the pointer's contact
@@ -216,18 +283,24 @@ abstract class PointerEvent implements MouseEvent, JSObject {
   /// If the input hardware cannot report the contact geometry to the browser,
   /// the height
   /// defaults to `1`.
-  double get height;
+  double get height {
+    unsupportedPlatformError();
+  }
 
   /// The **`pressure`** read-only property of the
   /// [PointerEvent] interface indicates the normalized pressure of the pointer
   /// input.
-  double get pressure;
+  double get pressure {
+    unsupportedPlatformError();
+  }
 
   /// The **`tangentialPressure`** read-only property of the
   /// [PointerEvent] interface represents the normalized tangential pressure of
   /// the pointer input (also known as barrel pressure or
   /// [cylinder stress](https://en.wikipedia.org/wiki/Cylinder_stress)).
-  double get tangentialPressure;
+  double get tangentialPressure {
+    unsupportedPlatformError();
+  }
 
   /// The **`tiltX`** read-only property of the
   /// [PointerEvent] interface is the angle (in degrees) between the _Y-Z
@@ -237,7 +310,9 @@ abstract class PointerEvent implements MouseEvent, JSObject {
   ///
   /// For an illustration of this property see
   /// [Figure 2 in the specification](https://w3c.github.io/pointerevents/#dom-pointerevent-tiltx).
-  int get tiltX;
+  int get tiltX {
+    unsupportedPlatformError();
+  }
 
   /// The **`tiltY`** read-only property of the
   /// [PointerEvent] interface is the angle (in degrees) between the _X-Z
@@ -247,17 +322,23 @@ abstract class PointerEvent implements MouseEvent, JSObject {
   ///
   /// For an illustration of this property, see
   /// [Figure 3 in the specification](https://w3c.github.io/pointerevents/#dom-pointerevent-tilty).
-  int get tiltY;
+  int get tiltY {
+    unsupportedPlatformError();
+  }
 
   /// The **`twist`** read-only property of the
   /// [PointerEvent] interface represents the clockwise rotation of the pointer
   /// (e.g., pen stylus) around its major axis, in degrees.
-  int get twist;
+  int get twist {
+    unsupportedPlatformError();
+  }
 
   /// The **`pointerType`** read-only property of the
   /// [PointerEvent] interface indicates the device type (mouse, pen, or touch)
   /// that caused a given pointer event.
-  String get pointerType;
+  String get pointerType {
+    unsupportedPlatformError();
+  }
 
   /// The **`isPrimary`** read-only property of the
   /// [PointerEvent] interface indicates whether or not the pointer device that
@@ -296,5 +377,7 @@ abstract class PointerEvent implements MouseEvent, JSObject {
   /// (see
   /// [Pointer_events] for more information about pointer, mouse and touch
   /// interaction).
-  bool get isPrimary;
+  bool get isPrimary {
+    unsupportedPlatformError();
+  }
 }

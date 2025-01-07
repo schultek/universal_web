@@ -10,6 +10,7 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
+import '../error.dart';
 import '../js_interop.dart';
 import 'dom.dart';
 
@@ -20,9 +21,15 @@ import 'dom.dart';
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/XMLSerializer).
-abstract class XMLSerializer implements JSObject {
+extension type XMLSerializer._(JSObject _) implements JSObject {
+  factory XMLSerializer() {
+    unsupportedPlatformError();
+  }
+
   /// The [XMLSerializer] method
   /// **`serializeToString()`** constructs a string representing the
   /// specified  tree in  form.
-  String serializeToString(Node root);
+  String serializeToString(Node root) {
+    unsupportedPlatformError();
+  }
 }

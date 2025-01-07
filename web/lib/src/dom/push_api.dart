@@ -31,7 +31,7 @@ typedef PushEncryptionKeyName = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/PushManager).
-abstract class PushManager implements JSObject {
+extension type PushManager._(JSObject _) implements JSObject {
   /// The **`supportedContentEncodings`** read-only static property of the
   /// [PushManager] interface returns an array of supported content codings that
   /// can be used to encrypt the payload of a push message.
@@ -46,7 +46,10 @@ abstract class PushManager implements JSObject {
   /// object containing details of a push subscription. A new push subscription
   /// is created if
   /// the current service worker does not have an existing subscription.
-  JSPromise<PushSubscription> subscribe([PushSubscriptionOptionsInit options]);
+  JSPromise<PushSubscription> subscribe(
+      [PushSubscriptionOptionsInit? options]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`PushManager.getSubscription()`** method of the [PushManager]
   /// interface retrieves an existing push subscription.
@@ -54,7 +57,9 @@ abstract class PushManager implements JSObject {
   /// It returns a `Promise` that resolves to a [PushSubscription] object
   /// containing details of an existing subscription. If no existing
   /// subscription exists, this resolves to a `null` value.
-  JSPromise<PushSubscription?> getSubscription();
+  JSPromise<PushSubscription?> getSubscription() {
+    unsupportedPlatformError();
+  }
 
   /// The **`permissionState()`** method of the
   /// [PushManager] interface returns a `Promise` that resolves to a
@@ -66,7 +71,9 @@ abstract class PushManager implements JSObject {
   /// > and [Push](https://developer.mozilla.org/en-US/docs/Web/API/Push_API)
   /// > have been merged. If permission is
   /// > granted for notifications, push will also be enabled.
-  JSPromise<JSString> permissionState([PushSubscriptionOptionsInit options]);
+  JSPromise<JSString> permissionState([PushSubscriptionOptionsInit? options]) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`PushSubscriptionOptions`** interface of the [Push API] represents the
@@ -80,20 +87,30 @@ abstract class PushManager implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/PushSubscriptionOptions).
-abstract class PushSubscriptionOptions implements JSObject {
+extension type PushSubscriptionOptions._(JSObject _) implements JSObject {
   /// The **`userVisibleOnly`** read-only property of the
   /// [PushSubscriptionOptions] interface indicates if the returned push
   /// subscription will only be used for messages whose effect is made visible
   /// to the user.
-  bool get userVisibleOnly;
+  bool get userVisibleOnly {
+    unsupportedPlatformError();
+  }
 
   /// The **`applicationServerKey`** read-only property of the
   /// [PushSubscriptionOptions] interface contains the public key used by the
   /// push server.
-  JSArrayBuffer? get applicationServerKey;
+  JSArrayBuffer? get applicationServerKey {
+    unsupportedPlatformError();
+  }
 }
+extension type PushSubscriptionOptionsInit._(JSObject _) implements JSObject {
+  factory PushSubscriptionOptionsInit({
+    bool? userVisibleOnly,
+    JSAny? applicationServerKey,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class PushSubscriptionOptionsInit implements JSObject {
   bool get userVisibleOnly {
     unsupportedPlatformError();
   }
@@ -122,22 +139,28 @@ abstract class PushSubscriptionOptionsInit implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/PushSubscription).
-abstract class PushSubscription implements JSObject {
+extension type PushSubscription._(JSObject _) implements JSObject {
   /// The `getKey()` method of the [PushSubscription] interface
   /// returns an `ArrayBuffer` representing a client public key, which can then
   /// be sent to a server and used in encrypting push message data.
-  JSArrayBuffer? getKey(PushEncryptionKeyName name);
+  JSArrayBuffer? getKey(PushEncryptionKeyName name) {
+    unsupportedPlatformError();
+  }
 
   /// The `unsubscribe()` method of the [PushSubscription] interface
   /// returns a `Promise` that resolves to a boolean value when the
   /// current subscription is successfully unsubscribed.
-  JSPromise<JSBoolean> unsubscribe();
+  JSPromise<JSBoolean> unsubscribe() {
+    unsupportedPlatformError();
+  }
 
   /// The `toJSON()` method of the [PushSubscription] interface is a
   /// standard serializer: it returns a JSON representation of the subscription
   /// properties,
   /// providing a useful shortcut.
-  PushSubscriptionJSON toJSON();
+  PushSubscriptionJSON toJSON() {
+    unsupportedPlatformError();
+  }
 
   /// The **`endpoint`** read-only property of the
   /// [PushSubscription] interface returns a string containing
@@ -150,22 +173,35 @@ abstract class PushSubscription implements JSObject {
   /// the push service. For this reason, it is a good idea to keep your endpoint
   /// a secret, so
   /// others do not hijack it and abuse the push functionality.
-  String get endpoint;
+  String get endpoint {
+    unsupportedPlatformError();
+  }
 
   /// The **`expirationTime`** read-only property of the
   /// [PushSubscription] interface returns a [DOMHighResTimeStamp]
   /// of the subscription expiration time associated with the push subscription,
   /// if there is
   /// one, or `null` otherwise.
-  EpochTimeStamp? get expirationTime;
+  EpochTimeStamp? get expirationTime {
+    unsupportedPlatformError();
+  }
 
   /// The **`options`** read-only property
   /// of the [PushSubscription] interface is an object containing the options
   /// used to create the subscription.
-  PushSubscriptionOptions get options;
+  PushSubscriptionOptions get options {
+    unsupportedPlatformError();
+  }
 }
+extension type PushSubscriptionJSON._(JSObject _) implements JSObject {
+  factory PushSubscriptionJSON({
+    String? endpoint,
+    EpochTimeStamp? expirationTime,
+    JSObject? keys,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class PushSubscriptionJSON implements JSObject {
   String get endpoint {
     unsupportedPlatformError();
   }
@@ -211,18 +247,22 @@ abstract class PushSubscriptionJSON implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/PushMessageData).
-abstract class PushMessageData implements JSObject {
+extension type PushMessageData._(JSObject _) implements JSObject {
   /// @AvailableInWorkers("service")
   ///
   /// The **`arrayBuffer()`** method of the [PushMessageData] interface extracts
   /// push message data as an `ArrayBuffer` object.
-  JSArrayBuffer arrayBuffer();
+  JSArrayBuffer arrayBuffer() {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("service")
   ///
   /// The **`blob()`** method of the [PushMessageData] interface extracts push
   /// message data as a [Blob] object.
-  Blob blob();
+  Blob blob() {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("service")
   ///
@@ -230,13 +270,17 @@ abstract class PushMessageData implements JSObject {
   /// message data by parsing it as a
   /// [JSON](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON)
   /// string and returning the result.
-  JSAny? json();
+  JSAny? json() {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("service")
   ///
   /// The **`text()`** method of the [PushMessageData] interface extracts push
   /// message data as a plain text string.
-  String text();
+  String text() {
+    unsupportedPlatformError();
+  }
 }
 
 /// @AvailableInWorkers("service")
@@ -252,16 +296,34 @@ abstract class PushMessageData implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/PushEvent).
-abstract class PushEvent implements ExtendableEvent, JSObject {
+extension type PushEvent._(JSObject _) implements ExtendableEvent, JSObject {
+  factory PushEvent(
+    String type, [
+    PushEventInit? eventInitDict,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// @AvailableInWorkers("service")
   ///
   /// The `data` read-only property of the **`PushEvent`** interface returns a
   /// reference to a [PushMessageData] object containing data sent to the
   /// [PushSubscription].
-  PushMessageData? get data;
+  PushMessageData? get data {
+    unsupportedPlatformError();
+  }
 }
+extension type PushEventInit._(JSObject _)
+    implements ExtendableEventInit, JSObject {
+  factory PushEventInit({
+    bool? bubbles,
+    bool? cancelable,
+    bool? composed,
+    PushMessageDataInit? data,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class PushEventInit implements ExtendableEventInit, JSObject {
   PushMessageDataInit get data {
     unsupportedPlatformError();
   }
@@ -270,8 +332,7 @@ abstract class PushEventInit implements ExtendableEventInit, JSObject {
     unsupportedPlatformError();
   }
 }
-
-abstract class PushSubscriptionChangeEvent
+extension type PushSubscriptionChangeEvent._(JSObject _)
     implements ExtendableEvent, JSObject {
   PushSubscription? get newSubscription {
     unsupportedPlatformError();

@@ -117,22 +117,30 @@ typedef WorkerType = String;
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLAllCollection).
-abstract class HTMLAllCollection implements JSObject {
-  Element operator [](int index);
+extension type HTMLAllCollection._(JSObject _) implements JSObject {
+  Element operator [](int index) {
+    unsupportedPlatformError();
+  }
 
   /// The **`namedItem()`** method of the [HTMLAllCollection] interface returns
   /// the first [Element] in the collection whose `id` or `name` attribute
   /// matches the specified name, or `null` if no element matches.
-  JSObject? namedItem(String name);
+  JSObject? namedItem(String name) {
+    unsupportedPlatformError();
+  }
 
   /// The **`item()`** method of the [HTMLAllCollection] interface returns the
   /// element located at the specified offset into the collection, or the
   /// element with the specified value for its `id` or `name` attribute.
-  JSObject? item([String nameOrIndex]);
+  JSObject? item([String? nameOrIndex]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLAllCollection.length`** property returns the number of items in
   /// this [HTMLAllCollection].
-  int get length;
+  int get length {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`HTMLFormControlsCollection`** interface represents a _collection_ of
@@ -146,7 +154,8 @@ abstract class HTMLAllCollection implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormControlsCollection).
-abstract class HTMLFormControlsCollection implements HTMLCollection, JSObject {
+extension type HTMLFormControlsCollection._(JSObject _)
+    implements HTMLCollection, JSObject {
   /// The **`HTMLFormControlsCollection.namedItem()`** method returns
   /// the [RadioNodeList] or the [Element] in the collection whose
   /// `name` or `id` match the specified name, or `null` if
@@ -156,7 +165,9 @@ abstract class HTMLFormControlsCollection implements HTMLCollection, JSObject {
   /// [HTMLCollection]. Like that one, in JavaScript, using the array bracket
   /// syntax with a `String`, like `collection["value"]` is
   /// equivalent to `collection.namedItem("value")`.
-  Element namedItem(String name);
+  JSObject? namedItem(String name) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`RadioNodeList`** interface represents a collection of elements in a
@@ -166,7 +177,7 @@ abstract class HTMLFormControlsCollection implements HTMLCollection, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/RadioNodeList).
-abstract class RadioNodeList implements NodeList, JSObject {
+extension type RadioNodeList._(JSObject _) implements NodeList, JSObject {
   /// If the underlying element collection contains radio buttons, the
   /// **`RadioNodeList.value`** property represents the checked radio
   /// button. On retrieving the `value` property, the `value` of the
@@ -178,8 +189,13 @@ abstract class RadioNodeList implements NodeList, JSObject {
   /// `value` property, the first radio button input element whose
   /// `value` property is equal to the new value will be set to
   /// `checked`.
-  String get value;
-  set value(String value);
+  String get value {
+    unsupportedPlatformError();
+  }
+
+  set value(String value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`HTMLOptionsCollection`** interface represents a collection of
@@ -193,20 +209,41 @@ abstract class RadioNodeList implements NodeList, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOptionsCollection).
-abstract class HTMLOptionsCollection implements HTMLCollection, JSObject {
+extension type HTMLOptionsCollection._(JSObject _)
+    implements HTMLCollection, JSObject {
   void operator []=(
     int index,
     HTMLOptionElement? option,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void add(
     JSObject element, [
     JSAny? before,
-  ]);
-  void remove(int index);
-  int get length;
-  set length(int value);
-  int get selectedIndex;
-  set selectedIndex(int value);
+  ]) {
+    unsupportedPlatformError();
+  }
+
+  void remove(int index) {
+    unsupportedPlatformError();
+  }
+
+  int get length {
+    unsupportedPlatformError();
+  }
+
+  set length(int value) {
+    unsupportedPlatformError();
+  }
+
+  int get selectedIndex {
+    unsupportedPlatformError();
+  }
+
+  set selectedIndex(int value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`DOMStringList`** interface is a legacy type returned by some APIs and
@@ -238,19 +275,25 @@ abstract class HTMLOptionsCollection implements HTMLCollection, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/DOMStringList).
-abstract class DOMStringList implements JSObject {
+extension type DOMStringList._(JSObject _) implements JSObject {
   /// The **`item()`** method returns a string from a
   /// [`DOMStringList`](https://developer.mozilla.org/en-US/docs/Web/API/DOMStringList)
   /// by index.
-  String? item(int index);
+  String? item(int index) {
+    unsupportedPlatformError();
+  }
 
   /// The **`contains()`** method returns a boolean indicating whether the given
   /// string is in the list.
-  bool contains(String string);
+  bool contains(String string) {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`length`** property indicates the number of strings in the
   /// [DOMStringList].
-  int get length;
+  int get length {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`HTMLElement`** interface represents any
@@ -262,13 +305,171 @@ abstract class DOMStringList implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement).
-abstract class HTMLElement implements Element, JSObject {
+extension type HTMLElement._(JSObject _) implements Element, JSObject {
+  /// Creates an [HTMLElement] using the tag 'article'.
+  HTMLElement.article() : _ = document.createElement('article');
+
+  /// Creates an [HTMLElement] using the tag 'section'.
+  HTMLElement.section() : _ = document.createElement('section');
+
+  /// Creates an [HTMLElement] using the tag 'nav'.
+  HTMLElement.nav() : _ = document.createElement('nav');
+
+  /// Creates an [HTMLElement] using the tag 'aside'.
+  HTMLElement.aside() : _ = document.createElement('aside');
+
+  /// Creates an [HTMLElement] using the tag 'hgroup'.
+  HTMLElement.hgroup() : _ = document.createElement('hgroup');
+
+  /// Creates an [HTMLElement] using the tag 'header'.
+  HTMLElement.header() : _ = document.createElement('header');
+
+  /// Creates an [HTMLElement] using the tag 'footer'.
+  HTMLElement.footer() : _ = document.createElement('footer');
+
+  /// Creates an [HTMLElement] using the tag 'address'.
+  HTMLElement.address() : _ = document.createElement('address');
+
+  /// Creates an [HTMLElement] using the tag 'dt'.
+  HTMLElement.dt() : _ = document.createElement('dt');
+
+  /// Creates an [HTMLElement] using the tag 'dd'.
+  HTMLElement.dd() : _ = document.createElement('dd');
+
+  /// Creates an [HTMLElement] using the tag 'figure'.
+  HTMLElement.figure() : _ = document.createElement('figure');
+
+  /// Creates an [HTMLElement] using the tag 'figcaption'.
+  HTMLElement.figcaption() : _ = document.createElement('figcaption');
+
+  /// Creates an [HTMLElement] using the tag 'main'.
+  HTMLElement.main() : _ = document.createElement('main');
+
+  /// Creates an [HTMLElement] using the tag 'search'.
+  HTMLElement.search() : _ = document.createElement('search');
+
+  /// Creates an [HTMLElement] using the tag 'em'.
+  HTMLElement.em() : _ = document.createElement('em');
+
+  /// Creates an [HTMLElement] using the tag 'strong'.
+  HTMLElement.strong() : _ = document.createElement('strong');
+
+  /// Creates an [HTMLElement] using the tag 'small'.
+  HTMLElement.small() : _ = document.createElement('small');
+
+  /// Creates an [HTMLElement] using the tag 's'.
+  HTMLElement.s() : _ = document.createElement('s');
+
+  /// Creates an [HTMLElement] using the tag 'cite'.
+  HTMLElement.cite() : _ = document.createElement('cite');
+
+  /// Creates an [HTMLElement] using the tag 'dfn'.
+  HTMLElement.dfn() : _ = document.createElement('dfn');
+
+  /// Creates an [HTMLElement] using the tag 'abbr'.
+  HTMLElement.abbr() : _ = document.createElement('abbr');
+
+  /// Creates an [HTMLElement] using the tag 'ruby'.
+  HTMLElement.ruby() : _ = document.createElement('ruby');
+
+  /// Creates an [HTMLElement] using the tag 'rt'.
+  HTMLElement.rt() : _ = document.createElement('rt');
+
+  /// Creates an [HTMLElement] using the tag 'rp'.
+  HTMLElement.rp() : _ = document.createElement('rp');
+
+  /// Creates an [HTMLElement] using the tag 'code'.
+  HTMLElement.code() : _ = document.createElement('code');
+
+  /// Creates an [HTMLElement] using the tag 'var'.
+  HTMLElement.var_() : _ = document.createElement('var');
+
+  /// Creates an [HTMLElement] using the tag 'samp'.
+  HTMLElement.samp() : _ = document.createElement('samp');
+
+  /// Creates an [HTMLElement] using the tag 'kbd'.
+  HTMLElement.kbd() : _ = document.createElement('kbd');
+
+  /// Creates an [HTMLElement] using the tag 'sub'.
+  HTMLElement.sub() : _ = document.createElement('sub');
+
+  /// Creates an [HTMLElement] using the tag 'sup'.
+  HTMLElement.sup() : _ = document.createElement('sup');
+
+  /// Creates an [HTMLElement] using the tag 'i'.
+  HTMLElement.i() : _ = document.createElement('i');
+
+  /// Creates an [HTMLElement] using the tag 'b'.
+  HTMLElement.b() : _ = document.createElement('b');
+
+  /// Creates an [HTMLElement] using the tag 'u'.
+  HTMLElement.u() : _ = document.createElement('u');
+
+  /// Creates an [HTMLElement] using the tag 'mark'.
+  HTMLElement.mark() : _ = document.createElement('mark');
+
+  /// Creates an [HTMLElement] using the tag 'bdi'.
+  HTMLElement.bdi() : _ = document.createElement('bdi');
+
+  /// Creates an [HTMLElement] using the tag 'bdo'.
+  HTMLElement.bdo() : _ = document.createElement('bdo');
+
+  /// Creates an [HTMLElement] using the tag 'wbr'.
+  HTMLElement.wbr() : _ = document.createElement('wbr');
+
+  /// Creates an [HTMLElement] using the tag 'summary'.
+  HTMLElement.summary() : _ = document.createElement('summary');
+
+  /// Creates an [HTMLElement] using the tag 'noscript'.
+  HTMLElement.noscript() : _ = document.createElement('noscript');
+
+  /// Creates an [HTMLElement] using the tag 'acronym'.
+  HTMLElement.acronym() : _ = document.createElement('acronym');
+
+  /// Creates an [HTMLElement] using the tag 'noframes'.
+  HTMLElement.noframes() : _ = document.createElement('noframes');
+
+  /// Creates an [HTMLElement] using the tag 'menuitem'.
+  HTMLElement.menuitem() : _ = document.createElement('menuitem');
+
+  /// Creates an [HTMLElement] using the tag 'noembed'.
+  HTMLElement.noembed() : _ = document.createElement('noembed');
+
+  /// Creates an [HTMLElement] using the tag 'plaintext'.
+  HTMLElement.plaintext() : _ = document.createElement('plaintext');
+
+  /// Creates an [HTMLElement] using the tag 'rb'.
+  HTMLElement.rb() : _ = document.createElement('rb');
+
+  /// Creates an [HTMLElement] using the tag 'rtc'.
+  HTMLElement.rtc() : _ = document.createElement('rtc');
+
+  /// Creates an [HTMLElement] using the tag 'strike'.
+  HTMLElement.strike() : _ = document.createElement('strike');
+
+  /// Creates an [HTMLElement] using the tag 'basefont'.
+  HTMLElement.basefont() : _ = document.createElement('basefont');
+
+  /// Creates an [HTMLElement] using the tag 'big'.
+  HTMLElement.big() : _ = document.createElement('big');
+
+  /// Creates an [HTMLElement] using the tag 'center'.
+  HTMLElement.center() : _ = document.createElement('center');
+
+  /// Creates an [HTMLElement] using the tag 'nobr'.
+  HTMLElement.nobr() : _ = document.createElement('nobr');
+
+  /// Creates an [HTMLElement] using the tag 'tt'.
+  HTMLElement.tt() : _ = document.createElement('tt');
+
   /// The **`HTMLElement.click()`** method simulates a mouse click on an
   /// element. When called on an element, the element's [Element.click_event]
   /// event is fired (unless its
   /// [`disabled`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled)
   /// attribute is set).
-  void click();
+  void click() {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLElement.attachInternals()`** method returns an
   /// [ElementInternals] object.
@@ -279,7 +480,9 @@ abstract class HTMLElement implements Element, JSObject {
   /// with any standard HTML form element, and also exposes the
   /// [Accessibility Object Model](https://wicg.github.io/aom/explainer.html) to
   /// the element.
-  ElementInternals attachInternals();
+  ElementInternals attachInternals() {
+    unsupportedPlatformError();
+  }
 
   /// The **`showPopover()`** method of the [HTMLElement] interface shows a
   /// [Popover_API] element (i.e. one that has a valid
@@ -292,7 +495,9 @@ abstract class HTMLElement implements Element, JSObject {
   /// event will be fired, followed by the popover showing, and then the
   /// [HTMLElement.toggle_event] event firing. If the element is already
   /// showing, an error will be thrown.
-  void showPopover();
+  void showPopover() {
+    unsupportedPlatformError();
+  }
 
   /// The **`hidePopover()`** method of the [HTMLElement] interface hides a
   /// [popover](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API)
@@ -306,7 +511,9 @@ abstract class HTMLElement implements Element, JSObject {
   /// followed by the popover being hidden, and then the
   /// [HTMLElement.toggle_event] event firing. If the element is already hidden,
   /// an error is thrown.
-  void hidePopover();
+  void hidePopover() {
+    unsupportedPlatformError();
+  }
 
   /// The **`togglePopover()`** method of the [HTMLElement] interface toggles a
   /// [Popover_API] element (i.e. one that has a valid
@@ -322,7 +529,9 @@ abstract class HTMLElement implements Element, JSObject {
   /// 1. If it was initially showing, it toggles to hidden.
   /// 2. If it was initially hidden, it toggles to showing.
   /// 3. A [HTMLElement.toggle_event] event is fired.
-  bool togglePopover([bool force]);
+  bool togglePopover([bool? force]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLElement.focus()`** method sets focus on the specified element,
   /// if it can be focused.
@@ -334,18 +543,27 @@ abstract class HTMLElement implements Element, JSObject {
   /// (typically by displaying a "focus ring" around the element).
   /// Parameter options are provided to disable the default scrolling and force
   /// visible indication on elements.
-  void focus([FocusOptions options]);
+  void focus([FocusOptions? options]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLElement.blur()`** method removes keyboard focus from the
   /// current element.
-  void blur();
+  void blur() {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLElement.title`** property
   /// represents the title of the element: the text usually displayed in a
   /// 'tooltip' popup
   /// when the mouse is over the node.
-  String get title;
-  set title(String value);
+  String get title {
+    unsupportedPlatformError();
+  }
+
+  set title(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLElement.lang`** property gets or sets the base
   /// language of an element's attribute values and text content.
@@ -362,8 +580,13 @@ abstract class HTMLElement implements Element, JSObject {
   ///
   /// This also only works with the `lang` attribute and not with
   /// `xml:lang`.
-  String get lang;
-  set lang(String value);
+  String get lang {
+    unsupportedPlatformError();
+  }
+
+  set lang(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`translate`** property of the [HTMLElement] interface indicates
   /// whether an element's attribute values and the values of its [Text] node
@@ -373,8 +596,13 @@ abstract class HTMLElement implements Element, JSObject {
   /// It reflects the value of the
   /// [`translate`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/translate)
   /// HTML global attribute.
-  bool get translate;
-  set translate(bool value);
+  bool get translate {
+    unsupportedPlatformError();
+  }
+
+  set translate(bool value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLElement.dir`** property gets or sets the text
   /// writing directionality of the content of the current element.
@@ -408,15 +636,25 @@ abstract class HTMLElement implements Element, JSObject {
   /// > Firefox uses <kbd>Ctrl</kbd>/<kbd>Cmd</kbd> + <kbd>Shift</kbd> +
   /// > <kbd>X</kbd> but does NOT update
   /// > the **`dir`** attribute value.
-  String get dir;
-  set dir(String value);
+  String get dir {
+    unsupportedPlatformError();
+  }
+
+  set dir(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The [HTMLElement] property **`hidden`** reflects the value of the
   /// element's
   /// [`hidden`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/hidden)
   /// attribute.
-  JSAny? get hidden;
-  set hidden(JSAny? value);
+  JSAny? get hidden {
+    unsupportedPlatformError();
+  }
+
+  set hidden(JSAny? value) {
+    unsupportedPlatformError();
+  }
 
   /// The [HTMLElement] property **`inert`** reflects the value of the element's
   /// [`inert`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inert)
@@ -430,8 +668,13 @@ abstract class HTMLElement implements Element, JSObject {
   /// > **Note:** Do not nest interactive elements or important content within
   /// > elements with the `inert` attribute as inert content and their
   /// > descendants are neither focusable nor perceivable by all users.
-  bool get inert;
-  set inert(bool value);
+  bool get inert {
+    unsupportedPlatformError();
+  }
+
+  set inert(bool value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLElement.accessKey`** property sets the keystroke which a user
   /// can press to jump to a given element.
@@ -441,14 +684,21 @@ abstract class HTMLElement implements Element, JSObject {
   /// > work around this, browsers implement accesskey behavior if the keys are
   /// > pressed with other "qualifying" keys (such as <kbd>Alt</kbd> +
   /// > accesskey).
-  String get accessKey;
-  set accessKey(String value);
+  String get accessKey {
+    unsupportedPlatformError();
+  }
+
+  set accessKey(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLElement.accessKeyLabel`**
   /// read-only property returns a string containing the element's
   /// browser-assigned access key (if any); otherwise it returns an empty
   /// string.
-  String get accessKeyLabel;
+  String get accessKeyLabel {
+    unsupportedPlatformError();
+  }
 
   /// The **`draggable`** property of the [HTMLElement] interface gets and sets
   /// a `Boolean` primitive indicating if the element is draggable.
@@ -456,8 +706,13 @@ abstract class HTMLElement implements Element, JSObject {
   /// It reflects the value of the
   /// [`draggable`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/draggable)
   /// HTML global attribute.
-  bool get draggable;
-  set draggable(bool value);
+  bool get draggable {
+    unsupportedPlatformError();
+  }
+
+  set draggable(bool value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`spellcheck`** property of the [HTMLElement] interface represents a
   /// boolean value that controls the
@@ -468,8 +723,13 @@ abstract class HTMLElement implements Element, JSObject {
   /// It reflects the value of the
   /// [`spellcheck`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/spellcheck)
   /// HTML global attribute.
-  bool get spellcheck;
-  set spellcheck(bool value);
+  bool get spellcheck {
+    unsupportedPlatformError();
+  }
+
+  set spellcheck(bool value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`autocapitalize`** property of the [HTMLElement] interface
   /// represents the element's capitalization behavior for user input. It is
@@ -490,8 +750,13 @@ abstract class HTMLElement implements Element, JSObject {
   /// It reflects the value of the
   /// [`autocapitalize`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/autocapitalize)
   /// HTML global attribute.
-  String get autocapitalize;
-  set autocapitalize(String value);
+  String get autocapitalize {
+    unsupportedPlatformError();
+  }
+
+  set autocapitalize(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`innerText`** property of the [HTMLElement] interface represents the
   /// rendered text content of a node and its descendants.
@@ -506,8 +771,13 @@ abstract class HTMLElement implements Element, JSObject {
   /// > there are important differences between the two.
   /// > Basically, `innerText` is aware of the rendered appearance of text,
   /// > while `textContent` is not.
-  String get innerText;
-  set innerText(String value);
+  String get innerText {
+    unsupportedPlatformError();
+  }
+
+  set innerText(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`outerText`** property of the [HTMLElement] interface returns the
   /// same value as [HTMLElement.innerText].
@@ -517,8 +787,13 @@ abstract class HTMLElement implements Element, JSObject {
   ///
   /// See [HTMLElement.innerText] for more information and examples showing how
   /// both properties are used as getters.
-  String get outerText;
-  set outerText(String value);
+  String get outerText {
+    unsupportedPlatformError();
+  }
+
+  set outerText(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`popover`** property of the [HTMLElement] interface gets and sets an
   /// element's popover state via JavaScript (`"auto"` or `"manual"`), and can
@@ -527,8 +802,13 @@ abstract class HTMLElement implements Element, JSObject {
   /// It reflects the value of the
   /// [`popover`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/popover)
   /// global HTML attribute.
-  String? get popover;
-  set popover(String? value);
+  String? get popover {
+    unsupportedPlatformError();
+  }
+
+  set popover(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLElement.offsetParent`** read-only property returns a
   /// reference to the element which is the closest (nearest in the containment
@@ -554,14 +834,18 @@ abstract class HTMLElement implements Element, JSObject {
   /// `offsetParent` is useful because
   /// [HTMLElement.offsetTop] and
   /// [HTMLElement.offsetLeft] are relative to its padding edge.
-  Element? get offsetParent;
+  Element? get offsetParent {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLElement.offsetTop`** read-only property returns the
   /// distance from the outer border of the current element (including its
   /// margin) to the top padding edge of the [HTMLelement.offsetParent], the
   /// _closest positioned_
   /// ancestor element.
-  int get offsetTop;
+  int get offsetTop {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLElement.offsetLeft`** read-only property returns the number of
   /// pixels that the _upper left corner_ of the current element is offset to
@@ -580,7 +864,9 @@ abstract class HTMLElement implements Element, JSObject {
   /// with the left, top, width and height of `offsetLeft`, `offsetTop`,
   /// `offsetWidth` and `offsetHeight` will not be a bounding box for a span
   /// with wrapped text.
-  int get offsetLeft;
+  int get offsetLeft {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLElement.offsetWidth`** read-only property returns
   /// the layout width of an element as an integer.
@@ -594,7 +880,9 @@ abstract class HTMLElement implements Element, JSObject {
   /// If the element is hidden (for example, by setting `style.display` on the
   /// element or one of its ancestors to `"none"`), then `0` is
   /// returned.
-  int get offsetWidth;
+  int get offsetWidth {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLElement.offsetHeight`** read-only property returns
   /// the height of an element, including vertical padding and borders, as an
@@ -616,7 +904,9 @@ abstract class HTMLElement implements Element, JSObject {
   /// > **Note:** This property will round the value to an integer. If you need
   /// > a fractional value, use
   /// > [element.getBoundingClientRect].
-  int get offsetHeight;
+  int get offsetHeight {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`style`** property of the [HTMLElement] returns the
   /// _inline_ style of an element in the form of a live [CSSStyleDeclaration]
@@ -659,7 +949,9 @@ abstract class HTMLElement implements Element, JSObject {
   /// >
   /// > The `style` property has the same priority in the CSS cascade as an
   /// > inline style declaration set via the `style` attribute.
-  CSSStyleDeclaration get style;
+  CSSStyleDeclaration get style {
+    unsupportedPlatformError();
+  }
 
   /// The **`attributeStyleMap`** read-only property of the [HTMLElement]
   /// interface returns a live [StylePropertyMap] object that contains a list of
@@ -679,195 +971,761 @@ abstract class HTMLElement implements Element, JSObject {
   /// inline styles through the [StylePropertyMap] object that it returns, just
   /// like through the [CSSStyleDeclaration] object that returns via the `style`
   /// property.
-  StylePropertyMap get attributeStyleMap;
-  EventHandler get onabort;
-  set onabort(EventHandler value);
-  EventHandler get onauxclick;
-  set onauxclick(EventHandler value);
-  EventHandler get onbeforeinput;
-  set onbeforeinput(EventHandler value);
-  EventHandler get onbeforetoggle;
-  set onbeforetoggle(EventHandler value);
-  EventHandler get onblur;
-  set onblur(EventHandler value);
-  EventHandler get oncancel;
-  set oncancel(EventHandler value);
-  EventHandler get oncanplay;
-  set oncanplay(EventHandler value);
-  EventHandler get oncanplaythrough;
-  set oncanplaythrough(EventHandler value);
-  EventHandler get onchange;
-  set onchange(EventHandler value);
-  EventHandler get onclick;
-  set onclick(EventHandler value);
-  EventHandler get onclose;
-  set onclose(EventHandler value);
-  EventHandler get oncontextlost;
-  set oncontextlost(EventHandler value);
-  EventHandler get oncontextmenu;
-  set oncontextmenu(EventHandler value);
-  EventHandler get oncontextrestored;
-  set oncontextrestored(EventHandler value);
-  EventHandler get oncopy;
-  set oncopy(EventHandler value);
-  EventHandler get oncuechange;
-  set oncuechange(EventHandler value);
-  EventHandler get oncut;
-  set oncut(EventHandler value);
-  EventHandler get ondblclick;
-  set ondblclick(EventHandler value);
-  EventHandler get ondrag;
-  set ondrag(EventHandler value);
-  EventHandler get ondragend;
-  set ondragend(EventHandler value);
-  EventHandler get ondragenter;
-  set ondragenter(EventHandler value);
-  EventHandler get ondragleave;
-  set ondragleave(EventHandler value);
-  EventHandler get ondragover;
-  set ondragover(EventHandler value);
-  EventHandler get ondragstart;
-  set ondragstart(EventHandler value);
-  EventHandler get ondrop;
-  set ondrop(EventHandler value);
-  EventHandler get ondurationchange;
-  set ondurationchange(EventHandler value);
-  EventHandler get onemptied;
-  set onemptied(EventHandler value);
-  EventHandler get onended;
-  set onended(EventHandler value);
-  OnErrorEventHandler get onerror;
-  set onerror(OnErrorEventHandler value);
-  EventHandler get onfocus;
-  set onfocus(EventHandler value);
-  EventHandler get onformdata;
-  set onformdata(EventHandler value);
-  EventHandler get oninput;
-  set oninput(EventHandler value);
-  EventHandler get oninvalid;
-  set oninvalid(EventHandler value);
-  EventHandler get onkeydown;
-  set onkeydown(EventHandler value);
-  EventHandler get onkeypress;
-  set onkeypress(EventHandler value);
-  EventHandler get onkeyup;
-  set onkeyup(EventHandler value);
-  EventHandler get onload;
-  set onload(EventHandler value);
-  EventHandler get onloadeddata;
-  set onloadeddata(EventHandler value);
-  EventHandler get onloadedmetadata;
-  set onloadedmetadata(EventHandler value);
-  EventHandler get onloadstart;
-  set onloadstart(EventHandler value);
-  EventHandler get onmousedown;
-  set onmousedown(EventHandler value);
-  EventHandler get onmouseenter;
-  set onmouseenter(EventHandler value);
-  EventHandler get onmouseleave;
-  set onmouseleave(EventHandler value);
-  EventHandler get onmousemove;
-  set onmousemove(EventHandler value);
-  EventHandler get onmouseout;
-  set onmouseout(EventHandler value);
-  EventHandler get onmouseover;
-  set onmouseover(EventHandler value);
-  EventHandler get onmouseup;
-  set onmouseup(EventHandler value);
-  EventHandler get onpaste;
-  set onpaste(EventHandler value);
-  EventHandler get onpause;
-  set onpause(EventHandler value);
-  EventHandler get onplay;
-  set onplay(EventHandler value);
-  EventHandler get onplaying;
-  set onplaying(EventHandler value);
-  EventHandler get onprogress;
-  set onprogress(EventHandler value);
-  EventHandler get onratechange;
-  set onratechange(EventHandler value);
-  EventHandler get onreset;
-  set onreset(EventHandler value);
-  EventHandler get onresize;
-  set onresize(EventHandler value);
-  EventHandler get onscroll;
-  set onscroll(EventHandler value);
-  EventHandler get onscrollend;
-  set onscrollend(EventHandler value);
-  EventHandler get onsecuritypolicyviolation;
-  set onsecuritypolicyviolation(EventHandler value);
-  EventHandler get onseeked;
-  set onseeked(EventHandler value);
-  EventHandler get onseeking;
-  set onseeking(EventHandler value);
-  EventHandler get onselect;
-  set onselect(EventHandler value);
-  EventHandler get onslotchange;
-  set onslotchange(EventHandler value);
-  EventHandler get onstalled;
-  set onstalled(EventHandler value);
-  EventHandler get onsubmit;
-  set onsubmit(EventHandler value);
-  EventHandler get onsuspend;
-  set onsuspend(EventHandler value);
-  EventHandler get ontimeupdate;
-  set ontimeupdate(EventHandler value);
-  EventHandler get ontoggle;
-  set ontoggle(EventHandler value);
-  EventHandler get onvolumechange;
-  set onvolumechange(EventHandler value);
-  EventHandler get onwaiting;
-  set onwaiting(EventHandler value);
-  EventHandler get onwheel;
-  set onwheel(EventHandler value);
-  EventHandler get onanimationstart;
-  set onanimationstart(EventHandler value);
-  EventHandler get onanimationiteration;
-  set onanimationiteration(EventHandler value);
-  EventHandler get onanimationend;
-  set onanimationend(EventHandler value);
-  EventHandler get onanimationcancel;
-  set onanimationcancel(EventHandler value);
-  EventHandler get ontransitionrun;
-  set ontransitionrun(EventHandler value);
-  EventHandler get ontransitionstart;
-  set ontransitionstart(EventHandler value);
-  EventHandler get ontransitionend;
-  set ontransitionend(EventHandler value);
-  EventHandler get ontransitioncancel;
-  set ontransitioncancel(EventHandler value);
-  EventHandler get onpointerover;
-  set onpointerover(EventHandler value);
-  EventHandler get onpointerenter;
-  set onpointerenter(EventHandler value);
-  EventHandler get onpointerdown;
-  set onpointerdown(EventHandler value);
-  EventHandler get onpointermove;
-  set onpointermove(EventHandler value);
-  EventHandler get onpointerup;
-  set onpointerup(EventHandler value);
-  EventHandler get onpointercancel;
-  set onpointercancel(EventHandler value);
-  EventHandler get onpointerout;
-  set onpointerout(EventHandler value);
-  EventHandler get onpointerleave;
-  set onpointerleave(EventHandler value);
-  EventHandler get ongotpointercapture;
-  set ongotpointercapture(EventHandler value);
-  EventHandler get onlostpointercapture;
-  set onlostpointercapture(EventHandler value);
-  EventHandler get onselectstart;
-  set onselectstart(EventHandler value);
-  EventHandler get onselectionchange;
-  set onselectionchange(EventHandler value);
-  EventHandler get ontouchstart;
-  set ontouchstart(EventHandler value);
-  EventHandler get ontouchend;
-  set ontouchend(EventHandler value);
-  EventHandler get ontouchmove;
-  set ontouchmove(EventHandler value);
-  EventHandler get ontouchcancel;
-  set ontouchcancel(EventHandler value);
+  StylePropertyMap get attributeStyleMap {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onabort {
+    unsupportedPlatformError();
+  }
+
+  set onabort(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onauxclick {
+    unsupportedPlatformError();
+  }
+
+  set onauxclick(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onbeforeinput {
+    unsupportedPlatformError();
+  }
+
+  set onbeforeinput(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onbeforetoggle {
+    unsupportedPlatformError();
+  }
+
+  set onbeforetoggle(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onblur {
+    unsupportedPlatformError();
+  }
+
+  set onblur(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get oncancel {
+    unsupportedPlatformError();
+  }
+
+  set oncancel(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get oncanplay {
+    unsupportedPlatformError();
+  }
+
+  set oncanplay(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get oncanplaythrough {
+    unsupportedPlatformError();
+  }
+
+  set oncanplaythrough(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onchange {
+    unsupportedPlatformError();
+  }
+
+  set onchange(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onclick {
+    unsupportedPlatformError();
+  }
+
+  set onclick(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onclose {
+    unsupportedPlatformError();
+  }
+
+  set onclose(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get oncontextlost {
+    unsupportedPlatformError();
+  }
+
+  set oncontextlost(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get oncontextmenu {
+    unsupportedPlatformError();
+  }
+
+  set oncontextmenu(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get oncontextrestored {
+    unsupportedPlatformError();
+  }
+
+  set oncontextrestored(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get oncopy {
+    unsupportedPlatformError();
+  }
+
+  set oncopy(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get oncuechange {
+    unsupportedPlatformError();
+  }
+
+  set oncuechange(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get oncut {
+    unsupportedPlatformError();
+  }
+
+  set oncut(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ondblclick {
+    unsupportedPlatformError();
+  }
+
+  set ondblclick(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ondrag {
+    unsupportedPlatformError();
+  }
+
+  set ondrag(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ondragend {
+    unsupportedPlatformError();
+  }
+
+  set ondragend(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ondragenter {
+    unsupportedPlatformError();
+  }
+
+  set ondragenter(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ondragleave {
+    unsupportedPlatformError();
+  }
+
+  set ondragleave(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ondragover {
+    unsupportedPlatformError();
+  }
+
+  set ondragover(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ondragstart {
+    unsupportedPlatformError();
+  }
+
+  set ondragstart(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ondrop {
+    unsupportedPlatformError();
+  }
+
+  set ondrop(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ondurationchange {
+    unsupportedPlatformError();
+  }
+
+  set ondurationchange(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onemptied {
+    unsupportedPlatformError();
+  }
+
+  set onemptied(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onended {
+    unsupportedPlatformError();
+  }
+
+  set onended(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  OnErrorEventHandler get onerror {
+    unsupportedPlatformError();
+  }
+
+  set onerror(OnErrorEventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onfocus {
+    unsupportedPlatformError();
+  }
+
+  set onfocus(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onformdata {
+    unsupportedPlatformError();
+  }
+
+  set onformdata(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get oninput {
+    unsupportedPlatformError();
+  }
+
+  set oninput(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get oninvalid {
+    unsupportedPlatformError();
+  }
+
+  set oninvalid(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onkeydown {
+    unsupportedPlatformError();
+  }
+
+  set onkeydown(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onkeypress {
+    unsupportedPlatformError();
+  }
+
+  set onkeypress(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onkeyup {
+    unsupportedPlatformError();
+  }
+
+  set onkeyup(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onload {
+    unsupportedPlatformError();
+  }
+
+  set onload(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onloadeddata {
+    unsupportedPlatformError();
+  }
+
+  set onloadeddata(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onloadedmetadata {
+    unsupportedPlatformError();
+  }
+
+  set onloadedmetadata(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onloadstart {
+    unsupportedPlatformError();
+  }
+
+  set onloadstart(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onmousedown {
+    unsupportedPlatformError();
+  }
+
+  set onmousedown(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onmouseenter {
+    unsupportedPlatformError();
+  }
+
+  set onmouseenter(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onmouseleave {
+    unsupportedPlatformError();
+  }
+
+  set onmouseleave(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onmousemove {
+    unsupportedPlatformError();
+  }
+
+  set onmousemove(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onmouseout {
+    unsupportedPlatformError();
+  }
+
+  set onmouseout(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onmouseover {
+    unsupportedPlatformError();
+  }
+
+  set onmouseover(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onmouseup {
+    unsupportedPlatformError();
+  }
+
+  set onmouseup(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onpaste {
+    unsupportedPlatformError();
+  }
+
+  set onpaste(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onpause {
+    unsupportedPlatformError();
+  }
+
+  set onpause(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onplay {
+    unsupportedPlatformError();
+  }
+
+  set onplay(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onplaying {
+    unsupportedPlatformError();
+  }
+
+  set onplaying(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onprogress {
+    unsupportedPlatformError();
+  }
+
+  set onprogress(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onratechange {
+    unsupportedPlatformError();
+  }
+
+  set onratechange(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onreset {
+    unsupportedPlatformError();
+  }
+
+  set onreset(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onresize {
+    unsupportedPlatformError();
+  }
+
+  set onresize(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onscroll {
+    unsupportedPlatformError();
+  }
+
+  set onscroll(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onscrollend {
+    unsupportedPlatformError();
+  }
+
+  set onscrollend(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onsecuritypolicyviolation {
+    unsupportedPlatformError();
+  }
+
+  set onsecuritypolicyviolation(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onseeked {
+    unsupportedPlatformError();
+  }
+
+  set onseeked(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onseeking {
+    unsupportedPlatformError();
+  }
+
+  set onseeking(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onselect {
+    unsupportedPlatformError();
+  }
+
+  set onselect(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onslotchange {
+    unsupportedPlatformError();
+  }
+
+  set onslotchange(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onstalled {
+    unsupportedPlatformError();
+  }
+
+  set onstalled(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onsubmit {
+    unsupportedPlatformError();
+  }
+
+  set onsubmit(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onsuspend {
+    unsupportedPlatformError();
+  }
+
+  set onsuspend(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ontimeupdate {
+    unsupportedPlatformError();
+  }
+
+  set ontimeupdate(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ontoggle {
+    unsupportedPlatformError();
+  }
+
+  set ontoggle(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onvolumechange {
+    unsupportedPlatformError();
+  }
+
+  set onvolumechange(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onwaiting {
+    unsupportedPlatformError();
+  }
+
+  set onwaiting(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onwheel {
+    unsupportedPlatformError();
+  }
+
+  set onwheel(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onanimationstart {
+    unsupportedPlatformError();
+  }
+
+  set onanimationstart(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onanimationiteration {
+    unsupportedPlatformError();
+  }
+
+  set onanimationiteration(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onanimationend {
+    unsupportedPlatformError();
+  }
+
+  set onanimationend(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onanimationcancel {
+    unsupportedPlatformError();
+  }
+
+  set onanimationcancel(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ontransitionrun {
+    unsupportedPlatformError();
+  }
+
+  set ontransitionrun(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ontransitionstart {
+    unsupportedPlatformError();
+  }
+
+  set ontransitionstart(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ontransitionend {
+    unsupportedPlatformError();
+  }
+
+  set ontransitionend(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ontransitioncancel {
+    unsupportedPlatformError();
+  }
+
+  set ontransitioncancel(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onpointerover {
+    unsupportedPlatformError();
+  }
+
+  set onpointerover(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onpointerenter {
+    unsupportedPlatformError();
+  }
+
+  set onpointerenter(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onpointerdown {
+    unsupportedPlatformError();
+  }
+
+  set onpointerdown(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onpointermove {
+    unsupportedPlatformError();
+  }
+
+  set onpointermove(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onpointerup {
+    unsupportedPlatformError();
+  }
+
+  set onpointerup(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onpointercancel {
+    unsupportedPlatformError();
+  }
+
+  set onpointercancel(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onpointerout {
+    unsupportedPlatformError();
+  }
+
+  set onpointerout(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onpointerleave {
+    unsupportedPlatformError();
+  }
+
+  set onpointerleave(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ongotpointercapture {
+    unsupportedPlatformError();
+  }
+
+  set ongotpointercapture(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onlostpointercapture {
+    unsupportedPlatformError();
+  }
+
+  set onlostpointercapture(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onselectstart {
+    unsupportedPlatformError();
+  }
+
+  set onselectstart(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onselectionchange {
+    unsupportedPlatformError();
+  }
+
+  set onselectionchange(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ontouchstart {
+    unsupportedPlatformError();
+  }
+
+  set ontouchstart(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ontouchend {
+    unsupportedPlatformError();
+  }
+
+  set ontouchend(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ontouchmove {
+    unsupportedPlatformError();
+  }
+
+  set ontouchmove(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ontouchcancel {
+    unsupportedPlatformError();
+  }
+
+  set ontouchcancel(EventHandler value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`contentEditable`** property of
   /// the [HTMLElement] interface specifies whether or not the element is
@@ -886,8 +1744,13 @@ abstract class HTMLElement implements Element, JSObject {
   /// If the attribute is missing or its value is invalid, its value is
   /// inherited from its parent element: so the element
   /// is editable (or not) based on the parent element.
-  String get contentEditable;
-  set contentEditable(String value);
+  String get contentEditable {
+    unsupportedPlatformError();
+  }
+
+  set contentEditable(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`enterKeyHint`** property is an enumerated property defining
   /// what action label (or icon) to present for the enter key on virtual
@@ -913,13 +1776,20 @@ abstract class HTMLElement implements Element, JSObject {
   ///
   /// If no `enterKeyHint` value has been specified or if it was set to a
   /// different value than the allowed ones, it will return an empty string.
-  String get enterKeyHint;
-  set enterKeyHint(String value);
+  String get enterKeyHint {
+    unsupportedPlatformError();
+  }
+
+  set enterKeyHint(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLElement.isContentEditable`** read-only property
   /// returns a boolean value that is `true` if the contents of the element
   /// are editable; otherwise it returns `false`.
-  bool get isContentEditable;
+  bool get isContentEditable {
+    unsupportedPlatformError();
+  }
 
   /// The [HTMLElement] property **`inputMode`** reflects the value of the
   /// element's
@@ -933,8 +1803,13 @@ abstract class HTMLElement implements Element, JSObject {
   /// It is used primarily on `input` elements, but is usable on any element in
   /// [`contenteditable`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes#contenteditable)
   /// mode.
-  String get inputMode;
-  set inputMode(String value);
+  String get inputMode {
+    unsupportedPlatformError();
+  }
+
+  set inputMode(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`dataset`** read-only property
   /// of the [HTMLElement] interface provides read/write access to
@@ -1021,7 +1896,9 @@ abstract class HTMLElement implements Element, JSObject {
   /// - To remove an attribute, you can use the
   ///   [`delete` operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/delete):
   ///   `delete element.dataset.keyname`.
-  DOMStringMap get dataset;
+  DOMStringMap get dataset {
+    unsupportedPlatformError();
+  }
 
   /// The **`nonce`** property of the [HTMLElement] interface returns the
   /// cryptographic number used once that is used by
@@ -1030,8 +1907,13 @@ abstract class HTMLElement implements Element, JSObject {
   ///
   /// In later implementations, elements only expose their `nonce` attribute to
   /// scripts (and not to side-channels like CSS attribute selectors).
-  String get nonce;
-  set nonce(String value);
+  String get nonce {
+    unsupportedPlatformError();
+  }
+
+  set nonce(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`autofocus`** property of the [HTMLElement] interface represents a
   /// boolean value reflecting the
@@ -1051,8 +1933,13 @@ abstract class HTMLElement implements Element, JSObject {
   /// > element: it merely tells the browser to focus to it when _the element is
   /// > inserted_ in the document. Setting it after the insertion, that is most
   /// > of the time after the document load, has no visible effect.
-  bool get autofocus;
-  set autofocus(bool value);
+  bool get autofocus {
+    unsupportedPlatformError();
+  }
+
+  set autofocus(bool value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`tabIndex`** property of the
   /// [HTMLElement] interface represents the tab order of the current element.
@@ -1070,8 +1957,13 @@ abstract class HTMLElement implements Element, JSObject {
   /// Values don't need to be sequential, nor must they begin with any
   /// particular value. They
   /// may even be negative, though each browser trims very large values.
-  int get tabIndex;
-  set tabIndex(int value);
+  int get tabIndex {
+    unsupportedPlatformError();
+  }
+
+  set tabIndex(int value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`HTMLUnknownElement`** interface represents an invalid HTML element
@@ -1082,7 +1974,32 @@ abstract class HTMLElement implements Element, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLUnknownElement).
-abstract class HTMLUnknownElement implements HTMLElement, JSObject {}
+extension type HTMLUnknownElement._(JSObject _)
+    implements HTMLElement, JSObject {
+  /// Creates an [HTMLUnknownElement] using the tag 'applet'.
+  HTMLUnknownElement.applet() : _ = document.createElement('applet');
+
+  /// Creates an [HTMLUnknownElement] using the tag 'bgsound'.
+  HTMLUnknownElement.bgsound() : _ = document.createElement('bgsound');
+
+  /// Creates an [HTMLUnknownElement] using the tag 'isindex'.
+  HTMLUnknownElement.isindex() : _ = document.createElement('isindex');
+
+  /// Creates an [HTMLUnknownElement] using the tag 'keygen'.
+  HTMLUnknownElement.keygen() : _ = document.createElement('keygen');
+
+  /// Creates an [HTMLUnknownElement] using the tag 'nextid'.
+  HTMLUnknownElement.nextid() : _ = document.createElement('nextid');
+
+  /// Creates an [HTMLUnknownElement] using the tag 'blink'.
+  HTMLUnknownElement.blink() : _ = document.createElement('blink');
+
+  /// Creates an [HTMLUnknownElement] using the tag 'multicol'.
+  HTMLUnknownElement.multicol() : _ = document.createElement('multicol');
+
+  /// Creates an [HTMLUnknownElement] using the tag 'spacer'.
+  HTMLUnknownElement.spacer() : _ = document.createElement('spacer');
+}
 
 /// The **`DOMStringMap`** interface is used for the [HTMLElement.dataset]
 /// attribute, to represent data for custom attributes added to elements.
@@ -1091,12 +2008,17 @@ abstract class HTMLUnknownElement implements HTMLElement, JSObject {}
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/DOMStringMap).
-abstract class DOMStringMap implements JSObject {
-  String operator [](String name);
+extension type DOMStringMap._(JSObject _) implements JSObject {
+  String operator [](String name) {
+    unsupportedPlatformError();
+  }
+
   void operator []=(
     String name,
     String value,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`HTMLHtmlElement`** interface serves as the root node for a given HTML
@@ -1110,7 +2032,10 @@ abstract class DOMStringMap implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLHtmlElement).
-abstract class HTMLHtmlElement implements HTMLElement, JSObject {
+extension type HTMLHtmlElement._(JSObject _) implements HTMLElement, JSObject {
+  /// Creates an [HTMLHtmlElement] using the tag 'html'.
+  HTMLHtmlElement() : _ = document.createElement('html');
+
   /// > **Note:** This property has been declared as deprecated by the W3C
   /// > technical recommendation for HTML 4.01 in favor of use of the DTD for
   /// > obtaining version information for a document.
@@ -1118,8 +2043,13 @@ abstract class HTMLHtmlElement implements HTMLElement, JSObject {
   /// Returns version information about the document type definition (DTD) of a
   /// document. While this property is recognized by Mozilla, the return value
   /// for this property is always an empty string.
-  String get version;
-  set version(String value);
+  String get version {
+    unsupportedPlatformError();
+  }
+
+  set version(String value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`HTMLHeadElement`** interface contains the descriptive information, or
@@ -1130,7 +2060,10 @@ abstract class HTMLHtmlElement implements HTMLElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLHeadElement).
-abstract class HTMLHeadElement implements HTMLElement, JSObject {}
+extension type HTMLHeadElement._(JSObject _) implements HTMLElement, JSObject {
+  /// Creates an [HTMLHeadElement] using the tag 'head'.
+  HTMLHeadElement() : _ = document.createElement('head');
+}
 
 /// The **`HTMLTitleElement`** interface is implemented by a document's `title`.
 /// This element inherits all of the properties and methods of the [HTMLElement]
@@ -1140,12 +2073,20 @@ abstract class HTMLHeadElement implements HTMLElement, JSObject {}
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTitleElement).
-abstract class HTMLTitleElement implements HTMLElement, JSObject {
+extension type HTMLTitleElement._(JSObject _) implements HTMLElement, JSObject {
+  /// Creates an [HTMLTitleElement] using the tag 'title'.
+  HTMLTitleElement() : _ = document.createElement('title');
+
   /// The **`text`** property of the [HTMLTitleElement] interface represents the
   /// text of the document's title. Only the text part is included; tags within
   /// the element and their content are stripped and ignored.
-  String get text;
-  set text(String value);
+  String get text {
+    unsupportedPlatformError();
+  }
+
+  set text(String value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`HTMLBaseElement`** interface contains the base URI for a document.
@@ -1156,9 +2097,17 @@ abstract class HTMLTitleElement implements HTMLElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLBaseElement).
-abstract class HTMLBaseElement implements HTMLElement, JSObject {
-  String get href;
-  set href(String value);
+extension type HTMLBaseElement._(JSObject _) implements HTMLElement, JSObject {
+  /// Creates an [HTMLBaseElement] using the tag 'base'.
+  HTMLBaseElement() : _ = document.createElement('base');
+
+  String get href {
+    unsupportedPlatformError();
+  }
+
+  set href(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The `target` property of the [HTMLBaseElement] interface is a string that
   /// represents the default target tab to show the resulting output for
@@ -1167,8 +2116,13 @@ abstract class HTMLBaseElement implements HTMLElement, JSObject {
   /// It reflects the
   /// [`target`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base#target)
   /// attribute of the `base` element.
-  String get target;
-  set target(String value);
+  String get target {
+    unsupportedPlatformError();
+  }
+
+  set target(String value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`HTMLLinkElement`** interface represents reference information for
@@ -1186,15 +2140,28 @@ abstract class HTMLBaseElement implements HTMLElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLinkElement).
-abstract class HTMLLinkElement implements HTMLElement, JSObject {
-  String get href;
-  set href(String value);
+extension type HTMLLinkElement._(JSObject _) implements HTMLElement, JSObject {
+  /// Creates an [HTMLLinkElement] using the tag 'link'.
+  HTMLLinkElement() : _ = document.createElement('link');
+
+  String get href {
+    unsupportedPlatformError();
+  }
+
+  set href(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`crossOrigin`** property of the [HTMLLinkElement] interface
   /// specifies the Cross-Origin Resource Sharing () setting to use when
   /// retrieving the resource.
-  String? get crossOrigin;
-  set crossOrigin(String? value);
+  String? get crossOrigin {
+    unsupportedPlatformError();
+  }
+
+  set crossOrigin(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`rel`** property of the [HTMLLinkElement] interface reflects the
   /// [`rel`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel)
@@ -1207,8 +2174,13 @@ abstract class HTMLLinkElement implements HTMLElement, JSObject {
   /// the property is set to `stylesheet`, and the
   /// [`href`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link#href)
   /// attribute is set to the URL of an external style sheet to format the page.
-  String get rel;
-  set rel(String value);
+  String get rel {
+    unsupportedPlatformError();
+  }
+
+  set rel(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`as`** property of the [HTMLLinkElement] interface returns a string
   /// representing the type of content to be preloaded by a link element.
@@ -1227,8 +2199,13 @@ abstract class HTMLLinkElement implements HTMLElement, JSObject {
   /// of the
   /// [`<link>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link)
   /// HTML element.
-  String get as;
-  set as(String value);
+  String get as {
+    unsupportedPlatformError();
+  }
+
+  set as(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`relList`** read-only property of the [HTMLLinkElement] interface
   /// reflects the
@@ -1240,17 +2217,30 @@ abstract class HTMLLinkElement implements HTMLElement, JSObject {
   /// The property itself is read-only, meaning you can not substitute the
   /// [DOMTokenList] by another one, but the content of the returned list can be
   /// changed.
-  DOMTokenList get relList;
-  String get media;
-  set media(String value);
+  DOMTokenList get relList {
+    unsupportedPlatformError();
+  }
+
+  String get media {
+    unsupportedPlatformError();
+  }
+
+  set media(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`integrity`** property of the [HTMLLinkElement] interface is a
   /// string containing inline metadata that a browser can use to verify that a
   /// fetched resource has been delivered without unexpected manipulation.
   ///
   /// It reflects the `integrity` attribute of the `link` element.
-  String get integrity;
-  set integrity(String value);
+  String get integrity {
+    unsupportedPlatformError();
+  }
+
+  set integrity(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`hreflang`** property of the [HTMLLinkElement] interface is used to
   /// indicate the language and the geographical targeting of a page. This hint
@@ -1259,20 +2249,45 @@ abstract class HTMLLinkElement implements HTMLElement, JSObject {
   ///
   /// It reflects the `hreflang` attribute of the `link` element and is the
   /// empty string (`""`) if there is no `hreflang` attribute.
-  String get hreflang;
-  set hreflang(String value);
+  String get hreflang {
+    unsupportedPlatformError();
+  }
+
+  set hreflang(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`type`** property of the [HTMLLinkElement] interface is a string
   /// that reflects the  of the linked resource.
   ///
   /// It reflects the `type` attribute of the `link` element.
-  String get type;
-  set type(String value);
-  DOMTokenList get sizes;
-  String get imageSrcset;
-  set imageSrcset(String value);
-  String get imageSizes;
-  set imageSizes(String value);
+  String get type {
+    unsupportedPlatformError();
+  }
+
+  set type(String value) {
+    unsupportedPlatformError();
+  }
+
+  DOMTokenList get sizes {
+    unsupportedPlatformError();
+  }
+
+  String get imageSrcset {
+    unsupportedPlatformError();
+  }
+
+  set imageSrcset(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get imageSizes {
+    unsupportedPlatformError();
+  }
+
+  set imageSizes(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`referrerPolicy`** property of the [HTMLLinkElement] interface
   /// reflects the HTML
@@ -1282,8 +2297,13 @@ abstract class HTMLLinkElement implements HTMLElement, JSObject {
   /// resource.
   ///
   /// See the HTTP  header for details.
-  String get referrerPolicy;
-  set referrerPolicy(String value);
+  String get referrerPolicy {
+    unsupportedPlatformError();
+  }
+
+  set referrerPolicy(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`disabled`** property of the [HTMLLinkElement] interface is a
   /// boolean value that represents whether the link is disabled. It only has an
@@ -1296,8 +2316,13 @@ abstract class HTMLLinkElement implements HTMLElement, JSObject {
   /// stylesheet to be removed from the document's [Document.styleSheets] list.
   ///
   /// It reflects the `disabled` attribute of the `link` element.
-  bool get disabled;
-  set disabled(bool value);
+  bool get disabled {
+    unsupportedPlatformError();
+  }
+
+  set disabled(bool value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`fetchPriority`** property of the
   /// [HTMLLinkElement] interface represents a hint given to the browser
@@ -1305,21 +2330,46 @@ abstract class HTMLLinkElement implements HTMLElement, JSObject {
   /// other
   /// resources of the same
   /// [type](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel/preload#what_types_of_content_can_be_preloaded).
-  String get fetchPriority;
-  set fetchPriority(String value);
-  String get charset;
-  set charset(String value);
-  String get rev;
-  set rev(String value);
-  String get target;
-  set target(String value);
+  String get fetchPriority {
+    unsupportedPlatformError();
+  }
+
+  set fetchPriority(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get charset {
+    unsupportedPlatformError();
+  }
+
+  set charset(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get rev {
+    unsupportedPlatformError();
+  }
+
+  set rev(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get target {
+    unsupportedPlatformError();
+  }
+
+  set target(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`sheet`** read-only property of the [HTMLLinkElement] interface
   /// contains the stylesheet associated with that element.
   ///
   /// A stylesheet is associated to an `HTMLLinkElement` if `rel="stylesheet"`
   /// is used with `<link>`.
-  CSSStyleSheet? get sheet;
+  CSSStyleSheet? get sheet {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`HTMLMetaElement`** interface contains descriptive metadata about a
@@ -1333,14 +2383,22 @@ abstract class HTMLLinkElement implements HTMLElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMetaElement).
-abstract class HTMLMetaElement implements HTMLElement, JSObject {
+extension type HTMLMetaElement._(JSObject _) implements HTMLElement, JSObject {
+  /// Creates an [HTMLMetaElement] using the tag 'meta'.
+  HTMLMetaElement() : _ = document.createElement('meta');
+
   /// The **`HTMLMetaElement.name`** property is used in combination with
   /// [HTMLMetaElement.content] to define the name-value pairs for the metadata
   /// of a document.
   /// The `name` attribute defines the metadata name and the `content` attribute
   /// defines the value.
-  String get name;
-  set name(String value);
+  String get name {
+    unsupportedPlatformError();
+  }
+
+  set name(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLMetaElement.httpEquiv`** property gets or sets the pragma
   /// directive or an HTTP response header name for the
@@ -1348,8 +2406,13 @@ abstract class HTMLMetaElement implements HTMLElement, JSObject {
   /// For more details on the possible values, see the
   /// [http-equiv](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta#http-equiv)
   /// attribute.
-  String get httpEquiv;
-  set httpEquiv(String value);
+  String get httpEquiv {
+    unsupportedPlatformError();
+  }
+
+  set httpEquiv(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLMetaElement.content`** property gets or sets the `content`
   /// attribute of pragma directives and named `meta` data in conjunction with
@@ -1357,8 +2420,13 @@ abstract class HTMLMetaElement implements HTMLElement, JSObject {
   /// For more information, see the
   /// [content](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta#content)
   /// attribute.
-  String get content;
-  set content(String value);
+  String get content {
+    unsupportedPlatformError();
+  }
+
+  set content(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLMetaElement.media`** property enables specifying the media for
   /// `theme-color` metadata.
@@ -1368,8 +2436,13 @@ abstract class HTMLMetaElement implements HTMLElement, JSObject {
   /// property.
   /// The `media` property enables setting different theme colors for different
   /// `media` values.
-  String get media;
-  set media(String value);
+  String get media {
+    unsupportedPlatformError();
+  }
+
+  set media(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLMetaElement.scheme`** property defines the scheme of the value
   /// in the [HTMLMetaElement.content] attribute.
@@ -1383,8 +2456,13 @@ abstract class HTMLMetaElement implements HTMLElement, JSObject {
   /// [HTMLMetaElement.name] if a browser or user agent recognizes the scheme.
   ///
   /// This property is deprecated and should not be used on new web pages.
-  String get scheme;
-  set scheme(String value);
+  String get scheme {
+    unsupportedPlatformError();
+  }
+
+  set scheme(String value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`HTMLStyleElement`** interface represents a `style` element. It
@@ -1400,20 +2478,33 @@ abstract class HTMLMetaElement implements HTMLElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLStyleElement).
-abstract class HTMLStyleElement implements HTMLElement, JSObject {
+extension type HTMLStyleElement._(JSObject _) implements HTMLElement, JSObject {
+  /// Creates an [HTMLStyleElement] using the tag 'style'.
+  HTMLStyleElement() : _ = document.createElement('style');
+
   /// The **`HTMLStyleElement.disabled`** property can be used to get and set
   /// whether the stylesheet is disabled (`true`) or not (`false`).
   ///
   /// Note that there is no corresponding `disabled` attribute on the [HTML
   /// `<style>`
   /// element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style).
-  bool get disabled;
-  set disabled(bool value);
+  bool get disabled {
+    unsupportedPlatformError();
+  }
+
+  set disabled(bool value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLStyleElement.media`** property specifies the
   /// intended destination medium for style information.
-  String get media;
-  set media(String value);
+  String get media {
+    unsupportedPlatformError();
+  }
+
+  set media(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLStyleElement.type`** property returns the type of the current
   /// style.
@@ -1421,15 +2512,22 @@ abstract class HTMLStyleElement implements HTMLElement, JSObject {
   /// attribute](/en-US/docs/Web/HTML/Element/style#type).
   ///
   /// Authors should not use this property or rely on the value.
-  String get type;
-  set type(String value);
+  String get type {
+    unsupportedPlatformError();
+  }
+
+  set type(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`sheet`** property of the [HTMLStyleElement] interface
   /// contains the stylesheet associated with that element.
   ///
   /// An [StyleSheet] is always associated with a [HTMLStyleElement], unless its
   /// `type` attribute is not `text/css`.
-  CSSStyleSheet? get sheet;
+  CSSStyleSheet? get sheet {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`HTMLBodyElement`** interface provides special properties (beyond
@@ -1440,57 +2538,209 @@ abstract class HTMLStyleElement implements HTMLElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLBodyElement).
-abstract class HTMLBodyElement implements HTMLElement, JSObject {
-  EventHandler get onorientationchange;
-  set onorientationchange(EventHandler value);
-  String get text;
-  set text(String value);
-  String get link;
-  set link(String value);
-  String get vLink;
-  set vLink(String value);
-  String get aLink;
-  set aLink(String value);
-  String get bgColor;
-  set bgColor(String value);
-  String get background;
-  set background(String value);
-  EventHandler get onafterprint;
-  set onafterprint(EventHandler value);
-  EventHandler get onbeforeprint;
-  set onbeforeprint(EventHandler value);
-  OnBeforeUnloadEventHandler get onbeforeunload;
-  set onbeforeunload(OnBeforeUnloadEventHandler value);
-  EventHandler get onhashchange;
-  set onhashchange(EventHandler value);
-  EventHandler get onlanguagechange;
-  set onlanguagechange(EventHandler value);
-  EventHandler get onmessage;
-  set onmessage(EventHandler value);
-  EventHandler get onmessageerror;
-  set onmessageerror(EventHandler value);
-  EventHandler get onoffline;
-  set onoffline(EventHandler value);
-  EventHandler get ononline;
-  set ononline(EventHandler value);
-  EventHandler get onpagehide;
-  set onpagehide(EventHandler value);
-  EventHandler get onpageshow;
-  set onpageshow(EventHandler value);
-  EventHandler get onpopstate;
-  set onpopstate(EventHandler value);
-  EventHandler get onrejectionhandled;
-  set onrejectionhandled(EventHandler value);
-  EventHandler get onstorage;
-  set onstorage(EventHandler value);
-  EventHandler get onunhandledrejection;
-  set onunhandledrejection(EventHandler value);
-  EventHandler get onunload;
-  set onunload(EventHandler value);
-  EventHandler get ongamepadconnected;
-  set ongamepadconnected(EventHandler value);
-  EventHandler get ongamepaddisconnected;
-  set ongamepaddisconnected(EventHandler value);
+extension type HTMLBodyElement._(JSObject _) implements HTMLElement, JSObject {
+  /// Creates an [HTMLBodyElement] using the tag 'body'.
+  HTMLBodyElement() : _ = document.createElement('body');
+
+  EventHandler get onorientationchange {
+    unsupportedPlatformError();
+  }
+
+  set onorientationchange(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  String get text {
+    unsupportedPlatformError();
+  }
+
+  set text(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get link {
+    unsupportedPlatformError();
+  }
+
+  set link(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get vLink {
+    unsupportedPlatformError();
+  }
+
+  set vLink(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get aLink {
+    unsupportedPlatformError();
+  }
+
+  set aLink(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get bgColor {
+    unsupportedPlatformError();
+  }
+
+  set bgColor(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get background {
+    unsupportedPlatformError();
+  }
+
+  set background(String value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onafterprint {
+    unsupportedPlatformError();
+  }
+
+  set onafterprint(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onbeforeprint {
+    unsupportedPlatformError();
+  }
+
+  set onbeforeprint(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  OnBeforeUnloadEventHandler get onbeforeunload {
+    unsupportedPlatformError();
+  }
+
+  set onbeforeunload(OnBeforeUnloadEventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onhashchange {
+    unsupportedPlatformError();
+  }
+
+  set onhashchange(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onlanguagechange {
+    unsupportedPlatformError();
+  }
+
+  set onlanguagechange(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onmessage {
+    unsupportedPlatformError();
+  }
+
+  set onmessage(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onmessageerror {
+    unsupportedPlatformError();
+  }
+
+  set onmessageerror(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onoffline {
+    unsupportedPlatformError();
+  }
+
+  set onoffline(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ononline {
+    unsupportedPlatformError();
+  }
+
+  set ononline(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onpagehide {
+    unsupportedPlatformError();
+  }
+
+  set onpagehide(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onpageshow {
+    unsupportedPlatformError();
+  }
+
+  set onpageshow(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onpopstate {
+    unsupportedPlatformError();
+  }
+
+  set onpopstate(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onrejectionhandled {
+    unsupportedPlatformError();
+  }
+
+  set onrejectionhandled(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onstorage {
+    unsupportedPlatformError();
+  }
+
+  set onstorage(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onunhandledrejection {
+    unsupportedPlatformError();
+  }
+
+  set onunhandledrejection(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onunload {
+    unsupportedPlatformError();
+  }
+
+  set onunload(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ongamepadconnected {
+    unsupportedPlatformError();
+  }
+
+  set ongamepadconnected(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ongamepaddisconnected {
+    unsupportedPlatformError();
+  }
+
+  set ongamepaddisconnected(EventHandler value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`HTMLHeadingElement`** interface represents the different heading
@@ -1502,9 +2752,33 @@ abstract class HTMLBodyElement implements HTMLElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLHeadingElement).
-abstract class HTMLHeadingElement implements HTMLElement, JSObject {
-  String get align;
-  set align(String value);
+extension type HTMLHeadingElement._(JSObject _)
+    implements HTMLElement, JSObject {
+  /// Creates an [HTMLHeadingElement] using the tag 'h1'.
+  HTMLHeadingElement.h1() : _ = document.createElement('h1');
+
+  /// Creates an [HTMLHeadingElement] using the tag 'h2'.
+  HTMLHeadingElement.h2() : _ = document.createElement('h2');
+
+  /// Creates an [HTMLHeadingElement] using the tag 'h3'.
+  HTMLHeadingElement.h3() : _ = document.createElement('h3');
+
+  /// Creates an [HTMLHeadingElement] using the tag 'h4'.
+  HTMLHeadingElement.h4() : _ = document.createElement('h4');
+
+  /// Creates an [HTMLHeadingElement] using the tag 'h5'.
+  HTMLHeadingElement.h5() : _ = document.createElement('h5');
+
+  /// Creates an [HTMLHeadingElement] using the tag 'h6'.
+  HTMLHeadingElement.h6() : _ = document.createElement('h6');
+
+  String get align {
+    unsupportedPlatformError();
+  }
+
+  set align(String value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`HTMLParagraphElement`** interface provides special properties (beyond
@@ -1515,9 +2789,18 @@ abstract class HTMLHeadingElement implements HTMLElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLParagraphElement).
-abstract class HTMLParagraphElement implements HTMLElement, JSObject {
-  String get align;
-  set align(String value);
+extension type HTMLParagraphElement._(JSObject _)
+    implements HTMLElement, JSObject {
+  /// Creates an [HTMLParagraphElement] using the tag 'p'.
+  HTMLParagraphElement() : _ = document.createElement('p');
+
+  String get align {
+    unsupportedPlatformError();
+  }
+
+  set align(String value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`HTMLHRElement`** interface provides special properties (beyond those
@@ -1528,17 +2811,49 @@ abstract class HTMLParagraphElement implements HTMLElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLHRElement).
-abstract class HTMLHRElement implements HTMLElement, JSObject {
-  String get align;
-  set align(String value);
-  String get color;
-  set color(String value);
-  bool get noShade;
-  set noShade(bool value);
-  String get size;
-  set size(String value);
-  String get width;
-  set width(String value);
+extension type HTMLHRElement._(JSObject _) implements HTMLElement, JSObject {
+  /// Creates an [HTMLHRElement] using the tag 'hr'.
+  HTMLHRElement() : _ = document.createElement('hr');
+
+  String get align {
+    unsupportedPlatformError();
+  }
+
+  set align(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get color {
+    unsupportedPlatformError();
+  }
+
+  set color(String value) {
+    unsupportedPlatformError();
+  }
+
+  bool get noShade {
+    unsupportedPlatformError();
+  }
+
+  set noShade(bool value) {
+    unsupportedPlatformError();
+  }
+
+  String get size {
+    unsupportedPlatformError();
+  }
+
+  set size(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get width {
+    unsupportedPlatformError();
+  }
+
+  set width(String value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`HTMLPreElement`** interface exposes specific properties and methods
@@ -1549,9 +2864,23 @@ abstract class HTMLHRElement implements HTMLElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLPreElement).
-abstract class HTMLPreElement implements HTMLElement, JSObject {
-  int get width;
-  set width(int value);
+extension type HTMLPreElement._(JSObject _) implements HTMLElement, JSObject {
+  /// Creates an [HTMLPreElement] using the tag 'pre'.
+  HTMLPreElement.pre() : _ = document.createElement('pre');
+
+  /// Creates an [HTMLPreElement] using the tag 'listing'.
+  HTMLPreElement.listing() : _ = document.createElement('listing');
+
+  /// Creates an [HTMLPreElement] using the tag 'xmp'.
+  HTMLPreElement.xmp() : _ = document.createElement('xmp');
+
+  int get width {
+    unsupportedPlatformError();
+  }
+
+  set width(int value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`HTMLQuoteElement`** interface provides special properties and methods
@@ -1563,9 +2892,20 @@ abstract class HTMLPreElement implements HTMLElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLQuoteElement).
-abstract class HTMLQuoteElement implements HTMLElement, JSObject {
-  String get cite;
-  set cite(String value);
+extension type HTMLQuoteElement._(JSObject _) implements HTMLElement, JSObject {
+  /// Creates an [HTMLQuoteElement] using the tag 'blockquote'.
+  HTMLQuoteElement.blockquote() : _ = document.createElement('blockquote');
+
+  /// Creates an [HTMLQuoteElement] using the tag 'q'.
+  HTMLQuoteElement.q() : _ = document.createElement('q');
+
+  String get cite {
+    unsupportedPlatformError();
+  }
+
+  set cite(String value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`HTMLOListElement`** interface provides special properties (beyond
@@ -1576,15 +2916,23 @@ abstract class HTMLQuoteElement implements HTMLElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOListElement).
-abstract class HTMLOListElement implements HTMLElement, JSObject {
+extension type HTMLOListElement._(JSObject _) implements HTMLElement, JSObject {
+  /// Creates an [HTMLOListElement] using the tag 'ol'.
+  HTMLOListElement() : _ = document.createElement('ol');
+
   /// The **`reversed`** property of the [HTMLOListElement] interface indicates
   /// order of a list.
   ///
   /// It reflects the
   /// [`reversed`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ol#reversed)
   /// attribute of the `ol` element.
-  bool get reversed;
-  set reversed(bool value);
+  bool get reversed {
+    unsupportedPlatformError();
+  }
+
+  set reversed(bool value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`start`** property of the [HTMLOListElement] interface indicates
   /// starting value of the ordered list, with default value of 1.
@@ -1596,8 +2944,13 @@ abstract class HTMLOListElement implements HTMLElement, JSObject {
   /// > **Note:** The `start` property value is independent of the
   /// > [HTMLOListElement.type] property; it is always numeric, even when type
   /// > is letters or Roman numerals.
-  int get start;
-  set start(int value);
+  int get start {
+    unsupportedPlatformError();
+  }
+
+  set start(int value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`type`** property of the [HTMLOListElement] interface indicates the
   /// kind of marker to be used to display ordered list.
@@ -1608,10 +2961,21 @@ abstract class HTMLOListElement implements HTMLElement, JSObject {
   ///
   /// > **Note:** The `type` can be defined in CSS with the  property. The
   /// > `list-style-type` property provides many more values.
-  String get type;
-  set type(String value);
-  bool get compact;
-  set compact(bool value);
+  String get type {
+    unsupportedPlatformError();
+  }
+
+  set type(String value) {
+    unsupportedPlatformError();
+  }
+
+  bool get compact {
+    unsupportedPlatformError();
+  }
+
+  set compact(bool value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`HTMLUListElement`** interface provides special properties (beyond
@@ -1622,11 +2986,25 @@ abstract class HTMLOListElement implements HTMLElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLUListElement).
-abstract class HTMLUListElement implements HTMLElement, JSObject {
-  bool get compact;
-  set compact(bool value);
-  String get type;
-  set type(String value);
+extension type HTMLUListElement._(JSObject _) implements HTMLElement, JSObject {
+  /// Creates an [HTMLUListElement] using the tag 'ul'.
+  HTMLUListElement() : _ = document.createElement('ul');
+
+  bool get compact {
+    unsupportedPlatformError();
+  }
+
+  set compact(bool value) {
+    unsupportedPlatformError();
+  }
+
+  String get type {
+    unsupportedPlatformError();
+  }
+
+  set type(String value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`HTMLMenuElement`** interface provides additional properties (beyond
@@ -1638,9 +3016,17 @@ abstract class HTMLUListElement implements HTMLElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMenuElement).
-abstract class HTMLMenuElement implements HTMLElement, JSObject {
-  bool get compact;
-  set compact(bool value);
+extension type HTMLMenuElement._(JSObject _) implements HTMLElement, JSObject {
+  /// Creates an [HTMLMenuElement] using the tag 'menu'.
+  HTMLMenuElement() : _ = document.createElement('menu');
+
+  bool get compact {
+    unsupportedPlatformError();
+  }
+
+  set compact(bool value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`HTMLLIElement`** interface exposes specific properties and methods
@@ -1651,11 +3037,25 @@ abstract class HTMLMenuElement implements HTMLElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLIElement).
-abstract class HTMLLIElement implements HTMLElement, JSObject {
-  int get value;
-  set value(int value);
-  String get type;
-  set type(String value);
+extension type HTMLLIElement._(JSObject _) implements HTMLElement, JSObject {
+  /// Creates an [HTMLLIElement] using the tag 'li'.
+  HTMLLIElement() : _ = document.createElement('li');
+
+  int get value {
+    unsupportedPlatformError();
+  }
+
+  set value(int value) {
+    unsupportedPlatformError();
+  }
+
+  String get type {
+    unsupportedPlatformError();
+  }
+
+  set type(String value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`HTMLDListElement`** interface provides special properties (beyond
@@ -1666,9 +3066,17 @@ abstract class HTMLLIElement implements HTMLElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDListElement).
-abstract class HTMLDListElement implements HTMLElement, JSObject {
-  bool get compact;
-  set compact(bool value);
+extension type HTMLDListElement._(JSObject _) implements HTMLElement, JSObject {
+  /// Creates an [HTMLDListElement] using the tag 'dl'.
+  HTMLDListElement() : _ = document.createElement('dl');
+
+  bool get compact {
+    unsupportedPlatformError();
+  }
+
+  set compact(bool value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`HTMLDivElement`** interface provides special properties (beyond the
@@ -1679,9 +3087,17 @@ abstract class HTMLDListElement implements HTMLElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDivElement).
-abstract class HTMLDivElement implements HTMLElement, JSObject {
-  String get align;
-  set align(String value);
+extension type HTMLDivElement._(JSObject _) implements HTMLElement, JSObject {
+  /// Creates an [HTMLDivElement] using the tag 'div'.
+  HTMLDivElement() : _ = document.createElement('div');
+
+  String get align {
+    unsupportedPlatformError();
+  }
+
+  set align(String value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`HTMLAnchorElement`** interface represents hyperlink elements and
@@ -1698,15 +3114,24 @@ abstract class HTMLDivElement implements HTMLElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLAnchorElement).
-abstract class HTMLAnchorElement implements HTMLElement, JSObject {
+extension type HTMLAnchorElement._(JSObject _)
+    implements HTMLElement, JSObject {
+  /// Creates an [HTMLAnchorElement] using the tag 'a'.
+  HTMLAnchorElement() : _ = document.createElement('a');
+
   /// The **`target`** property of the [HTMLAnchorElement] interface is a string
   /// that indicates where to display the linked resource.
   ///
   /// It reflects the
   /// [`target`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#target)
   /// attribute of the `a` element.
-  String get target;
-  set target(String value);
+  String get target {
+    unsupportedPlatformError();
+  }
+
+  set target(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLAnchorElement.download`** property is a
   /// string indicating that the linked resource is intended to be
@@ -1718,8 +3143,13 @@ abstract class HTMLAnchorElement implements HTMLElement, JSObject {
   ///
   /// > **Note:** This value might not be used for download. This value cannot
   /// > be used to determine whether the download will occur.
-  String get download;
-  set download(String value);
+  String get download {
+    unsupportedPlatformError();
+  }
+
+  set download(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ping`** property of the [HTMLAnchorElement] interface is a
   /// space-separated list of URLs. When the link is followed, the browser will
@@ -1729,16 +3159,26 @@ abstract class HTMLAnchorElement implements HTMLElement, JSObject {
   ///
   /// > **Note:** This property is not effective in Firefox and its usage may be
   /// > limited due to privacy and security concerns.
-  String get ping;
-  set ping(String value);
+  String get ping {
+    unsupportedPlatformError();
+  }
+
+  set ping(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLAnchorElement.rel`** property reflects the
   /// [`rel`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel)
   /// attribute. It is a string containing a space-separated list of link types
   /// indicating the relationship between the resource represented by the `a`
   /// element and the current document.
-  String get rel;
-  set rel(String value);
+  String get rel {
+    unsupportedPlatformError();
+  }
+
+  set rel(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLAnchorElement.relList`** read-only property reflects the
   /// [`rel`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel)
@@ -1748,7 +3188,9 @@ abstract class HTMLAnchorElement implements HTMLElement, JSObject {
   ///
   /// The property itself is read-only, meaning you can't substitute the
   /// [DOMTokenList] with another one, but its contents can still be changed.
-  DOMTokenList get relList;
+  DOMTokenList get relList {
+    unsupportedPlatformError();
+  }
 
   /// The **`hreflang`** property of the [HTMLAnchorElement] interface is a
   /// string that is the language of the linked resource.
@@ -1766,21 +3208,36 @@ abstract class HTMLAnchorElement implements HTMLElement, JSObject {
   /// the linked resource. Instead, they use language information directly
   /// associated with the resource (e.g., through HTTP headers) to determine its
   /// language.
-  String get hreflang;
-  set hreflang(String value);
+  String get hreflang {
+    unsupportedPlatformError();
+  }
+
+  set hreflang(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`type`** property of the [HTMLAnchorElement] interface is a string
   /// that indicates the MIME type of the linked resource.
   ///
   /// It reflects the `type` attribute of the `a` element.
-  String get type;
-  set type(String value);
+  String get type {
+    unsupportedPlatformError();
+  }
+
+  set type(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`text`** property of the [HTMLAnchorElement] represents the text
   /// inside the the element.
   /// This property represents the same information as [Node.textContent].
-  String get text;
-  set text(String value);
+  String get text {
+    unsupportedPlatformError();
+  }
+
+  set text(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`HTMLAnchorElement.referrerPolicy`**
@@ -1788,24 +3245,64 @@ abstract class HTMLAnchorElement implements HTMLElement, JSObject {
   /// [`referrerpolicy`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#referrerpolicy)
   /// attribute of the
   /// `a` element defining which referrer is sent when fetching the resource.
-  String get referrerPolicy;
-  set referrerPolicy(String value);
-  String get coords;
-  set coords(String value);
-  String get charset;
-  set charset(String value);
-  String get name;
-  set name(String value);
-  String get rev;
-  set rev(String value);
-  String get shape;
-  set shape(String value);
+  String get referrerPolicy {
+    unsupportedPlatformError();
+  }
+
+  set referrerPolicy(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get coords {
+    unsupportedPlatformError();
+  }
+
+  set coords(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get charset {
+    unsupportedPlatformError();
+  }
+
+  set charset(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get name {
+    unsupportedPlatformError();
+  }
+
+  set name(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get rev {
+    unsupportedPlatformError();
+  }
+
+  set rev(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get shape {
+    unsupportedPlatformError();
+  }
+
+  set shape(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLAnchorElement.href`** property is a
   /// that returns a string containing the whole URL, and allows
   /// the href to be updated.
-  String get href;
-  set href(String value);
+  String get href {
+    unsupportedPlatformError();
+  }
+
+  set href(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`HTMLAnchorElement.origin`** read-only property is a
@@ -1822,19 +3319,31 @@ abstract class HTMLAnchorElement implements HTMLElement, JSObject {
   /// - for URL using the `blob:` scheme, the origin of the URL following
   /// `blob:`. E.g `"blob:https://mozilla.org"` will have
   /// `"https://mozilla.org".`
-  String get origin;
+  String get origin {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`HTMLAnchorElement.protocol`**
   /// property is a string representing the protocol scheme of the URL,
   /// including the final `':'`.
-  String get protocol;
-  set protocol(String value);
+  String get protocol {
+    unsupportedPlatformError();
+  }
+
+  set protocol(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLAnchorElement.username`** property is a
   /// string containing the username specified before the domain name.
-  String get username;
-  set username(String value);
+  String get username {
+    unsupportedPlatformError();
+  }
+
+  set username(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLAnchorElement.password`** property is a
   /// string containing the password specified before the domain name.
@@ -1842,34 +3351,59 @@ abstract class HTMLAnchorElement implements HTMLElement, JSObject {
   /// If it is set without first setting the
   /// [`username`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLAnchorElement/username)
   /// property, it silently fails.
-  String get password;
-  set password(String value);
+  String get password {
+    unsupportedPlatformError();
+  }
+
+  set password(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLAnchorElement.host`** property is a
   /// string containing the host, that is the _hostname_, and then,
   /// if the _port_ of the URL is nonempty, a `':'`, and the _port_
   /// of the URL.
-  String get host;
-  set host(String value);
+  String get host {
+    unsupportedPlatformError();
+  }
+
+  set host(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLAnchorElement.hostname`** property is a
   /// string containing the domain of the URL.
-  String get hostname;
-  set hostname(String value);
+  String get hostname {
+    unsupportedPlatformError();
+  }
+
+  set hostname(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLAnchorElement.port`** property is a
   /// string containing the port number of the URL. If the URL does not
   /// contain an explicit port number, it will be set to `''`.
-  String get port;
-  set port(String value);
+  String get port {
+    unsupportedPlatformError();
+  }
+
+  set port(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLAnchorElement.pathname`** property is a
   /// string containing an initial `'/'` followed by the path of
   /// the URL not including the query string or fragment (or the empty string if
   /// there is no
   /// path).
-  String get pathname;
-  set pathname(String value);
+  String get pathname {
+    unsupportedPlatformError();
+  }
+
+  set pathname(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLAnchorElement.search`** property is a search
   /// string, also called a _query string_, that is a string containing
@@ -1880,8 +3414,13 @@ abstract class HTMLAnchorElement implements HTMLElement, JSObject {
   /// and
   /// [`URL.searchParams`](/en-US/docs/Web/API/URL/searchParams#examples)
   /// to make it easy to parse out the parameters from the querystring.
-  String get search;
-  set search(String value);
+  String get search {
+    unsupportedPlatformError();
+  }
+
+  set search(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`HTMLAnchorElement.hash`** property returns a
@@ -1891,8 +3430,13 @@ abstract class HTMLAnchorElement implements HTMLElement, JSObject {
   /// The fragment is [URL encoded](https://en.wikipedia.org/wiki/URL_encoding).
   /// If the URL does not
   /// have a fragment identifier, this property contains an empty string, `""`.
-  String get hash;
-  set hash(String value);
+  String get hash {
+    unsupportedPlatformError();
+  }
+
+  set hash(String value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`HTMLDataElement`** interface provides special properties (beyond the
@@ -1903,13 +3447,21 @@ abstract class HTMLAnchorElement implements HTMLElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDataElement).
-abstract class HTMLDataElement implements HTMLElement, JSObject {
+extension type HTMLDataElement._(JSObject _) implements HTMLElement, JSObject {
+  /// Creates an [HTMLDataElement] using the tag 'data'.
+  HTMLDataElement() : _ = document.createElement('data');
+
   /// The **`value`** property of the [HTMLDataElement]
   /// interface returns a string reflecting the
   /// [`value`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/data#value)
   /// HTML attribute.
-  String get value;
-  set value(String value);
+  String get value {
+    unsupportedPlatformError();
+  }
+
+  set value(String value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`HTMLTimeElement`** interface provides special properties (beyond the
@@ -1920,7 +3472,10 @@ abstract class HTMLDataElement implements HTMLElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTimeElement).
-abstract class HTMLTimeElement implements HTMLElement, JSObject {
+extension type HTMLTimeElement._(JSObject _) implements HTMLElement, JSObject {
+  /// Creates an [HTMLTimeElement] using the tag 'time'.
+  HTMLTimeElement() : _ = document.createElement('time');
+
   /// The
   /// **`HTMLTimeElement.dateTime`**
   /// property is a string that reflects the
@@ -2067,8 +3622,13 @@ abstract class HTMLTimeElement implements HTMLElement, JSObject {
   ///     </tr>
   ///   </tbody>
   /// </table>
-  String get dateTime;
-  set dateTime(String value);
+  String get dateTime {
+    unsupportedPlatformError();
+  }
+
+  set dateTime(String value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`HTMLSpanElement`** interface represents a `span` element and derives
@@ -2079,7 +3639,10 @@ abstract class HTMLTimeElement implements HTMLElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSpanElement).
-abstract class HTMLSpanElement implements HTMLElement, JSObject {}
+extension type HTMLSpanElement._(JSObject _) implements HTMLElement, JSObject {
+  /// Creates an [HTMLSpanElement] using the tag 'span'.
+  HTMLSpanElement() : _ = document.createElement('span');
+}
 
 /// The **`HTMLBRElement`** interface represents an HTML line break element
 /// (`br`). It inherits from [HTMLElement].
@@ -2088,9 +3651,17 @@ abstract class HTMLSpanElement implements HTMLElement, JSObject {}
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLBRElement).
-abstract class HTMLBRElement implements HTMLElement, JSObject {
-  String get clear;
-  set clear(String value);
+extension type HTMLBRElement._(JSObject _) implements HTMLElement, JSObject {
+  /// Creates an [HTMLBRElement] using the tag 'br'.
+  HTMLBRElement() : _ = document.createElement('br');
+
+  String get clear {
+    unsupportedPlatformError();
+  }
+
+  set clear(String value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`HTMLModElement`** interface provides special properties (beyond the
@@ -2102,11 +3673,28 @@ abstract class HTMLBRElement implements HTMLElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLModElement).
-abstract class HTMLModElement implements HTMLElement, JSObject {
-  String get cite;
-  set cite(String value);
-  String get dateTime;
-  set dateTime(String value);
+extension type HTMLModElement._(JSObject _) implements HTMLElement, JSObject {
+  /// Creates an [HTMLModElement] using the tag 'ins'.
+  HTMLModElement.ins() : _ = document.createElement('ins');
+
+  /// Creates an [HTMLModElement] using the tag 'del'.
+  HTMLModElement.del() : _ = document.createElement('del');
+
+  String get cite {
+    unsupportedPlatformError();
+  }
+
+  set cite(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get dateTime {
+    unsupportedPlatformError();
+  }
+
+  set dateTime(String value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`HTMLPictureElement`** interface represents a `picture` HTML element.
@@ -2116,7 +3704,11 @@ abstract class HTMLModElement implements HTMLElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLPictureElement).
-abstract class HTMLPictureElement implements HTMLElement, JSObject {}
+extension type HTMLPictureElement._(JSObject _)
+    implements HTMLElement, JSObject {
+  /// Creates an [HTMLPictureElement] using the tag 'picture'.
+  HTMLPictureElement() : _ = document.createElement('picture');
+}
 
 /// The **`HTMLSourceElement`** interface provides special properties (beyond
 /// the regular [HTMLElement] object interface it also has available to it by
@@ -2126,17 +3718,50 @@ abstract class HTMLPictureElement implements HTMLElement, JSObject {}
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSourceElement).
-abstract class HTMLSourceElement implements HTMLElement, JSObject {
-  String get src;
-  set src(String value);
-  String get type;
-  set type(String value);
-  String get srcset;
-  set srcset(String value);
-  String get sizes;
-  set sizes(String value);
-  String get media;
-  set media(String value);
+extension type HTMLSourceElement._(JSObject _)
+    implements HTMLElement, JSObject {
+  /// Creates an [HTMLSourceElement] using the tag 'source'.
+  HTMLSourceElement() : _ = document.createElement('source');
+
+  String get src {
+    unsupportedPlatformError();
+  }
+
+  set src(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get type {
+    unsupportedPlatformError();
+  }
+
+  set type(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get srcset {
+    unsupportedPlatformError();
+  }
+
+  set srcset(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get sizes {
+    unsupportedPlatformError();
+  }
+
+  set sizes(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get media {
+    unsupportedPlatformError();
+  }
+
+  set media(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`width`** property of the [HTMLSourceElement] interface is a
   /// non-negative number indicating the width of the image resource in CSS
@@ -2146,8 +3771,13 @@ abstract class HTMLSourceElement implements HTMLElement, JSObject {
   /// element is a `picture` element.
   ///
   /// It reflects the `width` attribute of the `source` element.
-  int get width;
-  set width(int value);
+  int get width {
+    unsupportedPlatformError();
+  }
+
+  set width(int value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`height`** property of the [HTMLSourceElement] interface is a
   /// non-negative number indicating the height of the image resource in CSS
@@ -2157,8 +3787,13 @@ abstract class HTMLSourceElement implements HTMLElement, JSObject {
   /// element is a `picture` element.
   ///
   /// It reflects the `height` attribute of the `source` element.
-  int get height;
-  set height(int value);
+  int get height {
+    unsupportedPlatformError();
+  }
+
+  set height(int value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`HTMLImageElement`** interface represents an HTML `img` element,
@@ -2168,7 +3803,10 @@ abstract class HTMLSourceElement implements HTMLElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement).
-abstract class HTMLImageElement implements HTMLElement, JSObject {
+extension type HTMLImageElement._(JSObject _) implements HTMLElement, JSObject {
+  /// Creates an [HTMLImageElement] using the tag 'img'.
+  HTMLImageElement() : _ = document.createElement('img');
+
   /// The **`decode()`**
   /// method of the [HTMLImageElement] interface returns a
   /// `Promise` that resolves once the image is decoded and it is safe to append
@@ -2182,7 +3820,9 @@ abstract class HTMLImageElement implements HTMLElement, JSObject {
   /// prevents the rendering of the next frame after adding the image to the DOM
   /// from causing
   /// a delay while the image loads.
-  JSPromise<JSAny?> decode();
+  JSPromise<JSAny?> decode() {
+    unsupportedPlatformError();
+  }
 
   /// The [HTMLImageElement] property **`alt`** provides fallback (alternate)
   /// text to display when the image specified by the `img` element is not
@@ -2206,16 +3846,26 @@ abstract class HTMLImageElement implements HTMLElement, JSObject {
   /// The alternate text is displayed in the space the image would occupy and
   /// should be able to take the place of the image _without altering the
   /// meaning of the page_.
-  String get alt;
-  set alt(String value);
+  String get alt {
+    unsupportedPlatformError();
+  }
+
+  set alt(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The [HTMLImageElement] property
   /// **`src`**, which reflects the HTML
   /// [`src`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#src)
   /// attribute, specifies the image to display in the `img`
   /// element.
-  String get src;
-  set src(String value);
+  String get src {
+    unsupportedPlatformError();
+  }
+
+  set src(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The [HTMLImageElement] property
   /// **`srcset`** is a string which identifies one or more
@@ -2240,8 +3890,13 @@ abstract class HTMLImageElement implements HTMLElement, JSObject {
   /// > [`srcset`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#srcset)
   /// > attribute uses width descriptors, the `sizes` attribute must also be
   /// > present, or the `srcset` itself will be ignored.
-  String get srcset;
-  set srcset(String value);
+  String get srcset {
+    unsupportedPlatformError();
+  }
+
+  set srcset(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The [HTMLImageElement] property
   /// **`sizes`** allows you to specify the layout width of the
@@ -2255,23 +3910,38 @@ abstract class HTMLImageElement implements HTMLElement, JSObject {
   /// Each condition is specified using the same conditional format used
   /// by
   /// [media queries](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_media_queries).
-  String get sizes;
-  set sizes(String value);
+  String get sizes {
+    unsupportedPlatformError();
+  }
+
+  set sizes(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The [HTMLImageElement]
   /// interface's **`crossOrigin`** attribute is a string which
   /// specifies the Cross-Origin Resource Sharing () setting to use when
   /// retrieving the image.
-  String? get crossOrigin;
-  set crossOrigin(String? value);
+  String? get crossOrigin {
+    unsupportedPlatformError();
+  }
+
+  set crossOrigin(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`useMap`** property on the
   /// [HTMLImageElement] interface reflects the value of the
   /// [`usemap`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#usemap)
   /// attribute, which is a string
   /// providing the name of the client-side image map to apply to the image.
-  String get useMap;
-  set useMap(String value);
+  String get useMap {
+    unsupportedPlatformError();
+  }
+
+  set useMap(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The [HTMLImageElement] property **`isMap`** is a
   /// Boolean value which indicates that the image is to be used by a
@@ -2282,8 +3952,13 @@ abstract class HTMLImageElement implements HTMLElement, JSObject {
   /// > server-side image maps, as they require the use of a mouse. Use a
   /// > [client-side image map](https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Add_a_hit_map_on_top_of_an_image)
   /// > instead.
-  bool get isMap;
-  set isMap(bool value);
+  bool get isMap {
+    unsupportedPlatformError();
+  }
+
+  set isMap(bool value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`width`** property of the
   /// [HTMLImageElement] interface indicates the width at which an image is
@@ -2291,8 +3966,13 @@ abstract class HTMLImageElement implements HTMLElement, JSObject {
   /// any visual medium such as a screen or printer. Otherwise, it's the
   /// natural, pixel
   /// density-corrected width of the image.
-  int get width;
-  set width(int value);
+  int get width {
+    unsupportedPlatformError();
+  }
+
+  set width(int value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`height`** property of the
   /// [HTMLImageElement] interface indicates the height at which the image is
@@ -2300,8 +3980,13 @@ abstract class HTMLImageElement implements HTMLElement, JSObject {
   /// visual medium such as the screen or a printer; otherwise, it's the
   /// natural, pixel
   /// density corrected height of the image.
-  int get height;
-  set height(int value);
+  int get height {
+    unsupportedPlatformError();
+  }
+
+  set height(int value) {
+    unsupportedPlatformError();
+  }
 
   /// The [HTMLImageElement] interface's read-only
   /// **`naturalWidth`** property returns the intrinsic (natural),
@@ -2326,7 +4011,9 @@ abstract class HTMLImageElement implements HTMLElement, JSObject {
   /// > modified
   /// > by such browser interventions as the natural width, and returns this
   /// > value.
-  int get naturalWidth;
+  int get naturalWidth {
+    unsupportedPlatformError();
+  }
 
   /// The [HTMLImageElement] interface's
   /// **`naturalHeight`** property is a read-only value which
@@ -2349,17 +4036,23 @@ abstract class HTMLImageElement implements HTMLElement, JSObject {
   /// > modified
   /// > by such browser interventions as the natural height, and returns this
   /// > value.
-  int get naturalHeight;
+  int get naturalHeight {
+    unsupportedPlatformError();
+  }
 
   /// The read-only [HTMLImageElement] interface's
   /// **`complete`** attribute is a Boolean value which indicates
   /// whether or not the image has completely loaded.
-  bool get complete;
+  bool get complete {
+    unsupportedPlatformError();
+  }
 
   /// The read-only [HTMLImageElement] property
   /// **`currentSrc`** indicates the URL of the image which is
   /// currently presented in the `img` element it represents.
-  String get currentSrc;
+  String get currentSrc {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`HTMLImageElement.referrerPolicy`**
@@ -2368,15 +4061,25 @@ abstract class HTMLImageElement implements HTMLElement, JSObject {
   /// attribute of the
   /// `img` element defining which referrer is sent when fetching the
   /// resource.
-  String get referrerPolicy;
-  set referrerPolicy(String value);
+  String get referrerPolicy {
+    unsupportedPlatformError();
+  }
+
+  set referrerPolicy(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`decoding`** property of the [HTMLImageElement] interface provides a
   /// hint to the browser as to how it should decode the image. More
   /// specifically, whether it should wait for the image to be decoded before
   /// presenting other content updates or not.
-  String get decoding;
-  set decoding(String value);
+  String get decoding {
+    unsupportedPlatformError();
+  }
+
+  set decoding(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The [HTMLImageElement] property **`loading`** is a string whose value
   /// provides a hint to the  on how to handle the loading of the image which is
@@ -2385,14 +4088,24 @@ abstract class HTMLImageElement implements HTMLElement, JSObject {
   /// This helps to optimize the loading of the document's contents by
   /// postponing loading the image until it's expected to be needed, rather than
   /// immediately during the initial page load.
-  String get loading;
-  set loading(String value);
+  String get loading {
+    unsupportedPlatformError();
+  }
+
+  set loading(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`fetchPriority`** property of the
   /// [HTMLImageElement] interface represents a hint given to the browser on how
   /// it should prioritize the fetch of the image relative to other images.
-  String get fetchPriority;
-  set fetchPriority(String value);
+  String get fetchPriority {
+    unsupportedPlatformError();
+  }
+
+  set fetchPriority(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The read-only [HTMLImageElement] property
   /// **`x`** indicates the x-coordinate of the
@@ -2406,7 +4119,9 @@ abstract class HTMLImageElement implements HTMLElement, JSObject {
   /// containing
   /// element, or by being located within a column described by either `col`
   /// or `colgroup`.
-  int get x;
+  int get x {
+    unsupportedPlatformError();
+  }
 
   /// The read-only [HTMLImageElement] property
   /// **`y`** indicates the y-coordinate of the
@@ -2420,16 +4135,29 @@ abstract class HTMLImageElement implements HTMLElement, JSObject {
   /// containing
   /// element, or by being located within a column described by either
   /// `col` or `colgroup`.
-  int get y;
+  int get y {
+    unsupportedPlatformError();
+  }
 
   /// The [HTMLImageElement]
   /// interface's _deprecated_ **`name`** property specifies
   /// a name for the element. This has been replaced by the [Element.id]
   /// property available on all elements.
-  String get name;
-  set name(String value);
-  String get lowsrc;
-  set lowsrc(String value);
+  String get name {
+    unsupportedPlatformError();
+  }
+
+  set name(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get lowsrc {
+    unsupportedPlatformError();
+  }
+
+  set lowsrc(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The _obsolete_ **`align`**
   /// property of the [HTMLImageElement] interface is a string which indicates
@@ -2443,8 +4171,13 @@ abstract class HTMLImageElement implements HTMLElement, JSObject {
   /// The `align` property reflects the HTML
   /// [`align`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#align)
   /// content attribute.
-  String get align;
-  set align(String value);
+  String get align {
+    unsupportedPlatformError();
+  }
+
+  set align(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// _obsolete_ **`hspace`** property of the
@@ -2455,15 +4188,25 @@ abstract class HTMLImageElement implements HTMLElement, JSObject {
   /// This property reflects the
   /// [`hspace`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#hspace)
   /// attribute.
-  int get hspace;
-  set hspace(int value);
+  int get hspace {
+    unsupportedPlatformError();
+  }
+
+  set hspace(int value) {
+    unsupportedPlatformError();
+  }
 
   /// The _obsolete_ **`vspace`** property of the
   /// [HTMLImageElement] interface specifies the number of pixels of empty space
   /// to leave empty on the top and bottom of the `img` element when laying
   /// out the page.
-  int get vspace;
-  set vspace(int value);
+  int get vspace {
+    unsupportedPlatformError();
+  }
+
+  set vspace(int value) {
+    unsupportedPlatformError();
+  }
 
   /// The _deprecated_ property **`longDesc`** on
   /// the [HTMLImageElement] interface specifies the URL of a text or HTML file
@@ -2472,8 +4215,13 @@ abstract class HTMLImageElement implements HTMLElement, JSObject {
   /// the
   /// [`title`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes#title)
   /// attribute.
-  String get longDesc;
-  set longDesc(String value);
+  String get longDesc {
+    unsupportedPlatformError();
+  }
+
+  set longDesc(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The obsolete [HTMLImageElement]
   /// property **`border`** specifies the number of pixels thick the
@@ -2497,8 +4245,13 @@ abstract class HTMLImageElement implements HTMLElement, JSObject {
   /// properties instead
   /// (or in addition): , ,
   /// , and .
-  String get border;
-  set border(String value);
+  String get border {
+    unsupportedPlatformError();
+  }
+
+  set border(String value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`HTMLIFrameElement`** interface provides special properties and
@@ -2510,8 +4263,14 @@ abstract class HTMLImageElement implements HTMLElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement).
-abstract class HTMLIFrameElement implements HTMLElement, JSObject {
-  Document? getSVGDocument();
+extension type HTMLIFrameElement._(JSObject _)
+    implements HTMLElement, JSObject {
+  /// Creates an [HTMLIFrameElement] using the tag 'iframe'.
+  HTMLIFrameElement() : _ = document.createElement('iframe');
+
+  Document? getSVGDocument() {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLIFrameElement.src`**
   /// A string that reflects the
@@ -2521,26 +4280,43 @@ abstract class HTMLIFrameElement implements HTMLElement, JSObject {
   /// Note that programmatically removing an `<iframe>`'s src attribute (e.g.
   /// via [Element.removeAttribute]) causes `about:blank` to be loaded in the
   /// frame.
-  String get src;
-  set src(String value);
+  String get src {
+    unsupportedPlatformError();
+  }
+
+  set src(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`srcdoc`** property of the [HTMLIFrameElement] specifies the content
   /// of the page.
-  JSAny get srcdoc;
-  set srcdoc(JSAny value);
+  JSAny get srcdoc {
+    unsupportedPlatformError();
+  }
+
+  set srcdoc(JSAny value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`name`** property of the [HTMLIFrameElement] interface is a string
   /// value that reflects the `name` attribute of the `iframe` element,
   /// indicating the specific name of the `<iframe>` element.
-  String get name;
-  set name(String value);
+  String get name {
+    unsupportedPlatformError();
+  }
+
+  set name(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`sandbox`** read-only property of the [HTMLIFrameElement] interface
   /// returns a [DOMTokenList] indicating extra restrictions on the behavior of
   /// the nested content.
   ///
   /// It reflects the `sandbox` attribute of the `iframe` element.
-  DOMTokenList get sandbox;
+  DOMTokenList get sandbox {
+    unsupportedPlatformError();
+  }
 
   /// The **`allow`** property of the [HTMLIFrameElement] interface indicates
   /// the
@@ -2559,8 +4335,13 @@ abstract class HTMLIFrameElement implements HTMLElement, JSObject {
   /// details.
   ///
   /// It reflects the `allow` attribute of the `iframe` element.
-  String get allow;
-  set allow(String value);
+  String get allow {
+    unsupportedPlatformError();
+  }
+
+  set allow(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`allowFullscreen`** property of the [HTMLIFrameElement] interface is
   /// a boolean value that reflects the `allowfullscreen` attribute of the
@@ -2569,20 +4350,35 @@ abstract class HTMLIFrameElement implements HTMLElement, JSObject {
   ///
   /// > **Note:** This property is considered a legacy property. Use
   /// > `allow="fullscreen"` and [HTMLIFrameElement.allow] instead.
-  bool get allowFullscreen;
-  set allowFullscreen(bool value);
+  bool get allowFullscreen {
+    unsupportedPlatformError();
+  }
+
+  set allowFullscreen(bool value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`width`** property of the [HTMLIFrameElement] interface returns a
   /// string that reflects the `width` attribute of the `iframe` element,
   /// indicating the width of the frame in CSS pixels.
-  String get width;
-  set width(String value);
+  String get width {
+    unsupportedPlatformError();
+  }
+
+  set width(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`height`** property of the [HTMLIFrameElement] interface returns a
   /// string that reflects the `height` attribute of the `iframe` element,
   /// indicating the height of the frame in CSS pixels.
-  String get height;
-  set height(String value);
+  String get height {
+    unsupportedPlatformError();
+  }
+
+  set height(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`HTMLIFrameElement.referrerPolicy`**
@@ -2591,8 +4387,13 @@ abstract class HTMLIFrameElement implements HTMLElement, JSObject {
   /// attribute of the
   /// `iframe` element defining which referrer is sent when fetching the
   /// resource.
-  String get referrerPolicy;
-  set referrerPolicy(String value);
+  String get referrerPolicy {
+    unsupportedPlatformError();
+  }
+
+  set referrerPolicy(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`loading`** property of the [HTMLIFrameElement] interface is a
   /// string that provides a hint to the  indicating whether the
@@ -2604,8 +4405,13 @@ abstract class HTMLIFrameElement implements HTMLElement, JSObject {
   /// (eagerly), while iframes that are likely to be offscreen on initial page
   /// load can be downloaded lazily — just before they will appear in the
   /// window's .
-  String get loading;
-  set loading(String value);
+  String get loading {
+    unsupportedPlatformError();
+  }
+
+  set loading(String value) {
+    unsupportedPlatformError();
+  }
 
   /// If the iframe and the iframe's parent document are
   /// [Same Origin](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy),
@@ -2613,7 +4419,9 @@ abstract class HTMLIFrameElement implements HTMLElement, JSObject {
   /// [`Document`](https://developer.mozilla.org/en-US/docs/Web/API/Document)
   /// (that is, the active document in the inline frame's nested browsing
   /// context), else returns `null`.
-  Document? get contentDocument;
+  Document? get contentDocument {
+    unsupportedPlatformError();
+  }
 
   /// The **`contentWindow`** property returns the
   /// [Window](https://developer.mozilla.org/en-US/docs/Web/API/Window) object
@@ -2621,19 +4429,57 @@ abstract class HTMLIFrameElement implements HTMLElement, JSObject {
   /// [HTMLIFrameElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement).
   ///
   /// This attribute is read-only.
-  Window? get contentWindow;
-  String get align;
-  set align(String value);
-  String get scrolling;
-  set scrolling(String value);
-  String get frameBorder;
-  set frameBorder(String value);
-  String get longDesc;
-  set longDesc(String value);
-  String get marginHeight;
-  set marginHeight(String value);
-  String get marginWidth;
-  set marginWidth(String value);
+  Window? get contentWindow {
+    unsupportedPlatformError();
+  }
+
+  String get align {
+    unsupportedPlatformError();
+  }
+
+  set align(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get scrolling {
+    unsupportedPlatformError();
+  }
+
+  set scrolling(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get frameBorder {
+    unsupportedPlatformError();
+  }
+
+  set frameBorder(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get longDesc {
+    unsupportedPlatformError();
+  }
+
+  set longDesc(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get marginHeight {
+    unsupportedPlatformError();
+  }
+
+  set marginHeight(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get marginWidth {
+    unsupportedPlatformError();
+  }
+
+  set marginWidth(String value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`HTMLEmbedElement`** interface provides special properties (beyond the
@@ -2648,33 +4494,71 @@ abstract class HTMLIFrameElement implements HTMLElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLEmbedElement).
-abstract class HTMLEmbedElement implements HTMLElement, JSObject {
-  Document? getSVGDocument();
+extension type HTMLEmbedElement._(JSObject _) implements HTMLElement, JSObject {
+  /// Creates an [HTMLEmbedElement] using the tag 'embed'.
+  HTMLEmbedElement() : _ = document.createElement('embed');
+
+  Document? getSVGDocument() {
+    unsupportedPlatformError();
+  }
 
   /// The **`src`** property of the [HTMLEmbedElement] interface returns a
   /// string that indicates the URL of the resource being embedded.
   ///
   /// It reflects the `src` attribute of the `embed` element.
-  String get src;
-  set src(String value);
-  String get type;
-  set type(String value);
+  String get src {
+    unsupportedPlatformError();
+  }
+
+  set src(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get type {
+    unsupportedPlatformError();
+  }
+
+  set type(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`width`** property of the [HTMLEmbedElement] interface returns a
   /// string that reflects the `width` attribute of the `embed` element,
   /// indicating the displayed width of the resource in CSS pixels.
-  String get width;
-  set width(String value);
+  String get width {
+    unsupportedPlatformError();
+  }
+
+  set width(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`height`** property of the [HTMLEmbedElement] interface returns a
   /// string that reflects the `height` attribute of the `embed` element,
   /// indicating the displayed height of the resource in CSS pixels.
-  String get height;
-  set height(String value);
-  String get align;
-  set align(String value);
-  String get name;
-  set name(String value);
+  String get height {
+    unsupportedPlatformError();
+  }
+
+  set height(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get align {
+    unsupportedPlatformError();
+  }
+
+  set align(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get name {
+    unsupportedPlatformError();
+  }
+
+  set name(String value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`HTMLObjectElement`** interface provides special properties and
@@ -2686,20 +4570,33 @@ abstract class HTMLEmbedElement implements HTMLElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLObjectElement).
-abstract class HTMLObjectElement implements HTMLElement, JSObject {
-  Document? getSVGDocument();
+extension type HTMLObjectElement._(JSObject _)
+    implements HTMLElement, JSObject {
+  /// Creates an [HTMLObjectElement] using the tag 'object'.
+  HTMLObjectElement() : _ = document.createElement('object');
+
+  Document? getSVGDocument() {
+    unsupportedPlatformError();
+  }
 
   /// The **`checkValidity()`** method of the
   /// [HTMLObjectElement] interface returns a boolean value that always
   /// is true, because object objects are never candidates for constraint
   /// validation.
-  bool checkValidity();
-  bool reportValidity();
+  bool checkValidity() {
+    unsupportedPlatformError();
+  }
+
+  bool reportValidity() {
+    unsupportedPlatformError();
+  }
 
   /// The **`setCustomValidity()`** method of the
   /// [HTMLObjectElement] interface sets a custom validity message for the
   /// element.
-  void setCustomValidity(String error);
+  void setCustomValidity(String error) {
+    unsupportedPlatformError();
+  }
 
   /// The **`data`** property of the
   /// [HTMLObjectElement] interface returns a string that
@@ -2707,8 +4604,13 @@ abstract class HTMLObjectElement implements HTMLElement, JSObject {
   /// [`data`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object#data)
   /// HTML attribute, specifying the address
   /// of a resource's data.
-  String get data;
-  set data(String value);
+  String get data {
+    unsupportedPlatformError();
+  }
+
+  set data(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`type`** property of the
   /// [HTMLObjectElement] interface returns a string that
@@ -2716,8 +4618,13 @@ abstract class HTMLObjectElement implements HTMLElement, JSObject {
   /// [`type`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object#type)
   /// HTML attribute, specifying the MIME type
   /// of the resource.
-  String get type;
-  set type(String value);
+  String get type {
+    unsupportedPlatformError();
+  }
+
+  set type(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`name`** property of the
   /// [HTMLObjectElement] interface returns a string that
@@ -2725,13 +4632,20 @@ abstract class HTMLObjectElement implements HTMLElement, JSObject {
   /// [`name`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object#name)
   /// HTML attribute, specifying the name of
   /// the browsing context.
-  String get name;
-  set name(String value);
+  String get name {
+    unsupportedPlatformError();
+  }
+
+  set name(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`form`** read-only property of the
   /// [HTMLObjectElement] interface returns a [HTMLFormElement]
   /// representing the object element's form owner, or null if there isn't one.
-  HTMLFormElement? get form;
+  HTMLFormElement? get form {
+    unsupportedPlatformError();
+  }
 
   /// The **`width`** property of the
   /// [HTMLObjectElement] interface returns a string that
@@ -2739,8 +4653,13 @@ abstract class HTMLObjectElement implements HTMLElement, JSObject {
   /// [`width`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object#width)
   /// HTML attribute, specifying the
   /// displayed width of the resource in CSS pixels.
-  String get width;
-  set width(String value);
+  String get width {
+    unsupportedPlatformError();
+  }
+
+  set width(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`height`** property of the
   /// [HTMLObjectElement] interface Returns a string that
@@ -2748,34 +4667,47 @@ abstract class HTMLObjectElement implements HTMLElement, JSObject {
   /// [`height`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object#height)
   /// HTML attribute, specifying the
   /// displayed height of the resource in CSS pixels.
-  String get height;
-  set height(String value);
+  String get height {
+    unsupportedPlatformError();
+  }
+
+  set height(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`contentDocument`** read-only property of
   /// the [HTMLObjectElement] interface Returns a [Document]
   /// representing the active document of the object element's nested browsing
   /// context, if
   /// any; otherwise null.
-  Document? get contentDocument;
+  Document? get contentDocument {
+    unsupportedPlatformError();
+  }
 
   /// The **`contentWindow`** read-only property of
   /// the [HTMLObjectElement] interface returns a
   /// representing the window proxy of the object element's nested browsing
   /// context, if any;
   /// otherwise null.
-  Window? get contentWindow;
+  Window? get contentWindow {
+    unsupportedPlatformError();
+  }
 
   /// The **`willValidate`** read-only property of
   /// the [HTMLObjectElement] interface returns a boolean value that
   /// indicates whether the element is a candidate for constraint validation.
   /// Always false for
   /// HTMLObjectElement objects.
-  bool get willValidate;
+  bool get willValidate {
+    unsupportedPlatformError();
+  }
 
   /// The **`validity`** read-only property of the
   /// [HTMLObjectElement] interface returns a [ValidityState] with
   /// the validity states that this element is in.
-  ValidityState get validity;
+  ValidityState get validity {
+    unsupportedPlatformError();
+  }
 
   /// The **`validationMessage`** read-only property
   /// of the [HTMLObjectElement] interface returns a string
@@ -2786,25 +4718,81 @@ abstract class HTMLObjectElement implements HTMLElement, JSObject {
   /// candidate for constraint validation (willValidate is false), or it
   /// satisfies its
   /// constraints.
-  String get validationMessage;
-  String get align;
-  set align(String value);
-  String get archive;
-  set archive(String value);
-  String get code;
-  set code(String value);
-  bool get declare;
-  set declare(bool value);
-  int get hspace;
-  set hspace(int value);
-  String get standby;
-  set standby(String value);
-  int get vspace;
-  set vspace(int value);
-  String get codeBase;
-  set codeBase(String value);
-  String get codeType;
-  set codeType(String value);
+  String get validationMessage {
+    unsupportedPlatformError();
+  }
+
+  String get align {
+    unsupportedPlatformError();
+  }
+
+  set align(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get archive {
+    unsupportedPlatformError();
+  }
+
+  set archive(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get code {
+    unsupportedPlatformError();
+  }
+
+  set code(String value) {
+    unsupportedPlatformError();
+  }
+
+  bool get declare {
+    unsupportedPlatformError();
+  }
+
+  set declare(bool value) {
+    unsupportedPlatformError();
+  }
+
+  int get hspace {
+    unsupportedPlatformError();
+  }
+
+  set hspace(int value) {
+    unsupportedPlatformError();
+  }
+
+  String get standby {
+    unsupportedPlatformError();
+  }
+
+  set standby(String value) {
+    unsupportedPlatformError();
+  }
+
+  int get vspace {
+    unsupportedPlatformError();
+  }
+
+  set vspace(int value) {
+    unsupportedPlatformError();
+  }
+
+  String get codeBase {
+    unsupportedPlatformError();
+  }
+
+  set codeBase(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get codeType {
+    unsupportedPlatformError();
+  }
+
+  set codeType(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`useMap`** property of the
   /// [HTMLObjectElement] interface returns a string that
@@ -2812,10 +4800,21 @@ abstract class HTMLObjectElement implements HTMLElement, JSObject {
   /// [`usemap`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object#usemap)
   /// HTML attribute, specifying a
   /// `map` element to use.
-  String get useMap;
-  set useMap(String value);
-  String get border;
-  set border(String value);
+  String get useMap {
+    unsupportedPlatformError();
+  }
+
+  set useMap(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get border {
+    unsupportedPlatformError();
+  }
+
+  set border(String value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// Implemented by the `video` element, the **`HTMLVideoElement`** interface
@@ -2834,14 +4833,20 @@ abstract class HTMLObjectElement implements HTMLElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLVideoElement).
-abstract class HTMLVideoElement implements HTMLMediaElement, JSObject {
+extension type HTMLVideoElement._(JSObject _)
+    implements HTMLMediaElement, JSObject {
+  /// Creates an [HTMLVideoElement] using the tag 'video'.
+  HTMLVideoElement() : _ = document.createElement('video');
+
   /// The **[HTMLVideoElement]** method
   /// **`getVideoPlaybackQuality()`** creates and returns a
   /// [VideoPlaybackQuality] object containing metrics including how many
   /// frames have been lost.
   ///
   /// The data returned can be used to evaluate the quality of the video stream.
-  VideoPlaybackQuality getVideoPlaybackQuality();
+  VideoPlaybackQuality getVideoPlaybackQuality() {
+    unsupportedPlatformError();
+  }
 
   /// The **[HTMLVideoElement]** method
   /// **`requestPictureInPicture()`** issues an asynchronous request
@@ -2852,29 +4857,45 @@ abstract class HTMLVideoElement implements HTMLMediaElement, JSObject {
   /// to enter that mode is granted, the returned `Promise` will resolve and the
   /// video will receive a [HTMLVideoElement.enterpictureinpicture_event] event
   /// to let it know that it's now in picture-in-picture.
-  JSPromise<PictureInPictureWindow> requestPictureInPicture();
+  JSPromise<PictureInPictureWindow> requestPictureInPicture() {
+    unsupportedPlatformError();
+  }
 
   /// The **`requestVideoFrameCallback()`** method of the [HTMLVideoElement]
   /// interface registers a callback function that runs when a new video frame
   /// is sent to the compositor. This enables developers to perform efficient
   /// operations on each video frame.
-  int requestVideoFrameCallback(VideoFrameRequestCallback callback);
+  int requestVideoFrameCallback(VideoFrameRequestCallback callback) {
+    unsupportedPlatformError();
+  }
 
   /// The **`cancelVideoFrameCallback()`** method of the [HTMLVideoElement]
   /// interface cancels a previously-registered video frame callback.
-  void cancelVideoFrameCallback(int handle);
+  void cancelVideoFrameCallback(int handle) {
+    unsupportedPlatformError();
+  }
 
   /// The **`width`** property of the [HTMLVideoElement] interface returns an
   /// integer that reflects the `width` attribute of the `video` element,
   /// specifying the displayed width of the resource in CSS pixels.
-  int get width;
-  set width(int value);
+  int get width {
+    unsupportedPlatformError();
+  }
+
+  set width(int value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`height`** property of the [HTMLVideoElement] interface returns an
   /// integer that reflects the `height` attribute of the `video` element,
   /// specifying the displayed height of the resource in CSS pixels.
-  int get height;
-  set height(int value);
+  int get height {
+    unsupportedPlatformError();
+  }
+
+  set height(int value) {
+    unsupportedPlatformError();
+  }
 
   /// The [HTMLVideoElement] interface's read-only **`videoWidth`** property
   /// indicates the
@@ -2885,13 +4906,17 @@ abstract class HTMLVideoElement implements HTMLMediaElement, JSObject {
   /// See [`HTMLVideoElement.videoHeight` > About intrinsic width and
   /// height](/en-US/docs/Web/API/HTMLVideoElement/videoHeight#about_intrinsic_width_and_height)
   /// for more details.
-  int get videoWidth;
+  int get videoWidth {
+    unsupportedPlatformError();
+  }
 
   /// The [HTMLVideoElement] interface's read-only **`videoHeight`** property
   /// indicates the [intrinsic height](#about_intrinsic_width_and_height) of the
   /// video, expressed in CSS pixels.
   /// In simple terms, this is the height of the media in its natural size.
-  int get videoHeight;
+  int get videoHeight {
+    unsupportedPlatformError();
+  }
 
   /// The **`poster`** property of the [HTMLVideoElement] interface is a string
   /// that reflects the URL for an image to be shown while no video data is
@@ -2899,20 +4924,48 @@ abstract class HTMLVideoElement implements HTMLMediaElement, JSObject {
   /// will be shown.
   ///
   /// It reflects the `poster` attribute of the `video` element.
-  String get poster;
-  set poster(String value);
-  bool get playsInline;
-  set playsInline(bool value);
-  EventHandler get onenterpictureinpicture;
-  set onenterpictureinpicture(EventHandler value);
-  EventHandler get onleavepictureinpicture;
-  set onleavepictureinpicture(EventHandler value);
+  String get poster {
+    unsupportedPlatformError();
+  }
+
+  set poster(String value) {
+    unsupportedPlatformError();
+  }
+
+  bool get playsInline {
+    unsupportedPlatformError();
+  }
+
+  set playsInline(bool value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onenterpictureinpicture {
+    unsupportedPlatformError();
+  }
+
+  set onenterpictureinpicture(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onleavepictureinpicture {
+    unsupportedPlatformError();
+  }
+
+  set onleavepictureinpicture(EventHandler value) {
+    unsupportedPlatformError();
+  }
 
   /// The [HTMLVideoElement] **`disablePictureInPicture`** property reflects the
   /// HTML attribute indicating whether the picture-in-picture feature is
   /// disabled for the current element.
-  bool get disablePictureInPicture;
-  set disablePictureInPicture(bool value);
+  bool get disablePictureInPicture {
+    unsupportedPlatformError();
+  }
+
+  set disablePictureInPicture(bool value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`HTMLAudioElement`** interface provides access to the properties of
@@ -2925,7 +4978,11 @@ abstract class HTMLVideoElement implements HTMLMediaElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLAudioElement).
-abstract class HTMLAudioElement implements HTMLMediaElement, JSObject {}
+extension type HTMLAudioElement._(JSObject _)
+    implements HTMLMediaElement, JSObject {
+  /// Creates an [HTMLAudioElement] using the tag 'audio'.
+  HTMLAudioElement() : _ = document.createElement('audio');
+}
 
 /// The **`HTMLTrackElement`** interface represents an  `track` element within
 /// the . This element can be used as a child of either `audio` or `video` to
@@ -2936,7 +4993,10 @@ abstract class HTMLAudioElement implements HTMLMediaElement, JSObject {}
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTrackElement).
-abstract class HTMLTrackElement implements HTMLElement, JSObject {
+extension type HTMLTrackElement._(JSObject _) implements HTMLElement, JSObject {
+  /// Creates an [HTMLTrackElement] using the tag 'track'.
+  HTMLTrackElement() : _ = document.createElement('track');
+
   static const int NONE = 0;
 
   static const int LOADING = 1;
@@ -2945,24 +5005,58 @@ abstract class HTMLTrackElement implements HTMLElement, JSObject {
 
   static const int ERROR = 3;
 
-  String get kind;
-  set kind(String value);
+  String get kind {
+    unsupportedPlatformError();
+  }
+
+  set kind(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLTrackElement.src`** property reflects the value of
   /// the `track` element's
   /// [`src`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/track#src)
   /// attribute, which
   /// indicates the URL of the text track's data.
-  String get src;
-  set src(String value);
-  String get srclang;
-  set srclang(String value);
-  String get label;
-  set label(String value);
-  bool get default_;
-  set default_(bool value);
-  int get readyState;
-  TextTrack get track;
+  String get src {
+    unsupportedPlatformError();
+  }
+
+  set src(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get srclang {
+    unsupportedPlatformError();
+  }
+
+  set srclang(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get label {
+    unsupportedPlatformError();
+  }
+
+  set label(String value) {
+    unsupportedPlatformError();
+  }
+
+  bool get default_ {
+    unsupportedPlatformError();
+  }
+
+  set default_(bool value) {
+    unsupportedPlatformError();
+  }
+
+  int get readyState {
+    unsupportedPlatformError();
+  }
+
+  TextTrack get track {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`HTMLMediaElement`** interface adds to [HTMLElement] the properties
@@ -2976,7 +5070,7 @@ abstract class HTMLTrackElement implements HTMLElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement).
-abstract class HTMLMediaElement implements HTMLElement, JSObject {
+extension type HTMLMediaElement._(JSObject _) implements HTMLElement, JSObject {
   static const int NETWORK_EMPTY = 0;
 
   static const int NETWORK_IDLE = 1;
@@ -3014,11 +5108,15 @@ abstract class HTMLMediaElement implements HTMLElement, JSObject {
   /// `source` elements nested within the media element itself.
   /// `load()` will reset the element and rescan the available sources, thereby
   /// causing the changes to take effect.
-  void load();
+  void load() {
+    unsupportedPlatformError();
+  }
 
   /// The [HTMLMediaElement] method **`canPlayType()`** reports how likely it is
   /// that the current browser will be able to play media of a given MIME type.
-  CanPlayTypeResult canPlayType(String type);
+  CanPlayTypeResult canPlayType(String type) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLMediaElement.fastSeek()`** method quickly seeks the
   /// media to the new time with precision tradeoff.
@@ -3026,8 +5124,13 @@ abstract class HTMLMediaElement implements HTMLElement, JSObject {
   /// > **Note:** If you need to seek with precision, you should set
   /// > [`HTMLMediaElement.currentTime`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/currentTime)
   /// > instead.
-  void fastSeek(num time);
-  JSObject getStartDate();
+  void fastSeek(num time) {
+    unsupportedPlatformError();
+  }
+
+  JSObject getStartDate() {
+    unsupportedPlatformError();
+  }
 
   /// The [HTMLMediaElement]
   /// **`play()`** method attempts to begin playback of the media.
@@ -3036,17 +5139,24 @@ abstract class HTMLMediaElement implements HTMLElement, JSObject {
   ///
   /// Failure to begin playback for any reason, such as
   /// permission issues, result in the promise being rejected.
-  JSPromise<JSAny?> play();
+  JSPromise<JSAny?> play() {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLMediaElement.pause()`** method will pause playback
   /// of the media, if the media is already in a paused state this method will
   /// have no effect.
-  void pause();
+  void pause() {
+    unsupportedPlatformError();
+  }
+
   TextTrack addTextTrack(
     TextTrackKind kind, [
-    String label,
-    String language,
-  ]);
+    String? label,
+    String? language,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLMediaElement.setSinkId()`** method of the
   /// [Audio Output Devices API](https://developer.mozilla.org/en-US/docs/Web/API/Audio_Output_Devices_API)
@@ -3056,14 +5166,18 @@ abstract class HTMLMediaElement implements HTMLElement, JSObject {
   /// device.
   /// For more information see the
   /// [security requirements](#security_requirements) below.
-  JSPromise<JSAny?> setSinkId(String sinkId);
+  JSPromise<JSAny?> setSinkId(String sinkId) {
+    unsupportedPlatformError();
+  }
 
   /// The **`setMediaKeys()`** method of the [HTMLMediaElement] interface sets
   /// the [MediaKeys] that will be used to decrypt media during playback.
   ///
   /// It returns a `Promise` that fulfils if the new keys are successfully set,
   /// or rejects if keys cannot be set.
-  JSPromise<JSAny?> setMediaKeys(MediaKeys? mediaKeys);
+  JSPromise<JSAny?> setMediaKeys(MediaKeys? mediaKeys) {
+    unsupportedPlatformError();
+  }
 
   /// The **`captureStream()`** method of the [HTMLMediaElement] interface
   /// returns a [MediaStream] object which is streaming a real-time capture of
@@ -3072,7 +5186,9 @@ abstract class HTMLMediaElement implements HTMLElement, JSObject {
   /// This can be used, for example, as a source for a
   /// [WebRTC](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API)
   /// [RTCPeerConnection].
-  MediaStream captureStream();
+  MediaStream captureStream() {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLMediaElement.error`** property is the
   /// [MediaError] object for the most recent error, or `null` if
@@ -3080,7 +5196,9 @@ abstract class HTMLMediaElement implements HTMLElement, JSObject {
   /// is received by the
   /// element, you can determine details about what happened by examining this
   /// object.
-  MediaError? get error;
+  MediaError? get error {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLMediaElement.src`** property reflects the value of
   /// the HTML media element's `src` attribute, which indicates the URL of a
@@ -3094,8 +5212,13 @@ abstract class HTMLMediaElement implements HTMLElement, JSObject {
   /// > provided in
   /// > an [HTMLSourceElement] (which represents a `source`
   /// > element).
-  String get src;
-  set src(String value);
+  String get src {
+    unsupportedPlatformError();
+  }
+
+  set src(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`srcObject`** property of the
   /// [HTMLMediaElement] interface sets or returns the object which serves as
@@ -3113,8 +5236,13 @@ abstract class HTMLMediaElement implements HTMLElement, JSObject {
   /// > supports attaching a dedicated worker `MediaSource` object by assigning
   /// > that object's [MediaSourceHandle] instance (transferred from the worker)
   /// > to `srcObject`.
-  MediaProvider? get srcObject;
-  set srcObject(MediaProvider? value);
+  MediaProvider? get srcObject {
+    unsupportedPlatformError();
+  }
+
+  set srcObject(MediaProvider? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLMediaElement.currentSrc`** property contains the
   /// absolute URL of the chosen media resource. This could happen, for example,
@@ -3122,19 +5250,28 @@ abstract class HTMLMediaElement implements HTMLElement, JSObject {
   /// server selects a media file based on the resolution of the user's display.
   /// The value
   /// is an empty string if the `networkState` property is `EMPTY`.
-  String get currentSrc;
+  String get currentSrc {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLMediaElement.crossOrigin`** property is the CORS setting for
   /// this media element. See
   /// [CORS settings attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin)
   /// for details.
-  String? get crossOrigin;
-  set crossOrigin(String? value);
+  String? get crossOrigin {
+    unsupportedPlatformError();
+  }
+
+  set crossOrigin(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`HTMLMediaElement.networkState`** property indicates the
   /// current state of the fetching of media over the network.
-  int get networkState;
+  int get networkState {
+    unsupportedPlatformError();
+  }
 
   /// The **`preload`** property of the [HTMLMediaElement] interface is a string
   /// that provides a hint to the browser about what the author thinks will lead
@@ -3142,20 +5279,32 @@ abstract class HTMLMediaElement implements HTMLElement, JSObject {
   ///
   /// It reflects the `preload` attribute of the `audio` element and the `video`
   /// element.
-  String get preload;
-  set preload(String value);
+  String get preload {
+    unsupportedPlatformError();
+  }
+
+  set preload(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`buffered`** read-only property of [HTMLMediaElement] objects
   /// returns a new static
   /// [normalized `TimeRanges` object](https://developer.mozilla.org/en-US/docs/Web/API/TimeRanges#normalized_timeranges_objects)
   /// that represents the ranges of the media resource, if any, that the user
   /// agent has buffered at the moment the `buffered` property is accessed.
-  TimeRanges get buffered;
+  TimeRanges get buffered {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLMediaElement.readyState`** property indicates the
   /// readiness state of the media.
-  int get readyState;
-  bool get seeking;
+  int get readyState {
+    unsupportedPlatformError();
+  }
+
+  bool get seeking {
+    unsupportedPlatformError();
+  }
 
   /// The [HTMLMediaElement] interface's
   /// **`currentTime`** property specifies the current playback time
@@ -3163,22 +5312,36 @@ abstract class HTMLMediaElement implements HTMLElement, JSObject {
   ///
   /// Changing the value of `currentTime` seeks the media to
   /// the new time.
-  double get currentTime;
-  set currentTime(num value);
+  double get currentTime {
+    unsupportedPlatformError();
+  }
+
+  set currentTime(num value) {
+    unsupportedPlatformError();
+  }
 
   /// The _read-only_ [HTMLMediaElement]
   /// property **`duration`** indicates the length of the element's
   /// media in seconds.
-  double get duration;
+  double get duration {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`HTMLMediaElement.paused`** property
   /// tells whether the media element is paused.
-  bool get paused;
+  bool get paused {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLMediaElement.defaultPlaybackRate`** property indicates the
   /// default playback rate for the media.
-  double get defaultPlaybackRate;
-  set defaultPlaybackRate(num value);
+  double get defaultPlaybackRate {
+    unsupportedPlatformError();
+  }
+
+  set defaultPlaybackRate(num value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLMediaElement.playbackRate`** property sets the rate at which
   /// the media is being played back. This is used to implement user controls
@@ -3195,27 +5358,44 @@ abstract class HTMLMediaElement implements HTMLElement, JSObject {
   ///
   /// The pitch of the audio is corrected by default. You can disable pitch
   /// correction using the [HTMLMediaElement.preservesPitch] property.
-  double get playbackRate;
-  set playbackRate(num value);
+  double get playbackRate {
+    unsupportedPlatformError();
+  }
+
+  set playbackRate(num value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLMediaElement.preservesPitch`** property determines whether or
   /// not the browser should adjust the pitch of the audio to compensate for
   /// changes to the playback rate made by setting
   /// [HTMLMediaElement.playbackRate].
-  bool get preservesPitch;
-  set preservesPitch(bool value);
-  TimeRanges get played;
+  bool get preservesPitch {
+    unsupportedPlatformError();
+  }
+
+  set preservesPitch(bool value) {
+    unsupportedPlatformError();
+  }
+
+  TimeRanges get played {
+    unsupportedPlatformError();
+  }
 
   /// The **`seekable`** read-only property of [HTMLMediaElement] objects
   /// returns a new static
   /// [normalized `TimeRanges` object](https://developer.mozilla.org/en-US/docs/Web/API/TimeRanges#normalized_timeranges_objects)
   /// that represents the ranges of the media resource, if any, that the user
   /// agent is able to seek to at the time `seekable` property is accessed.
-  TimeRanges get seekable;
+  TimeRanges get seekable {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLMediaElement.ended`** property indicates whether the media
   /// element has ended playback.
-  bool get ended;
+  bool get ended {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLMediaElement.autoplay`**
   /// property reflects the
@@ -3243,40 +5423,70 @@ abstract class HTMLMediaElement implements HTMLElement, JSObject {
   /// respond when
   /// autoplay is blocked by the user's browser, see our article
   /// [Autoplay guide for media and Web Audio APIs](https://developer.mozilla.org/en-US/docs/Web/Media/Autoplay_guide).
-  bool get autoplay;
-  set autoplay(bool value);
+  bool get autoplay {
+    unsupportedPlatformError();
+  }
+
+  set autoplay(bool value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLMediaElement.loop`** property reflects the
   /// [`loop`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video#loop)
   /// HTML attribute, which controls whether the media element should start over
   /// when it reaches the end.
-  bool get loop;
-  set loop(bool value);
+  bool get loop {
+    unsupportedPlatformError();
+  }
+
+  set loop(bool value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLMediaElement.controls`** property reflects the
   /// [`controls`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video#controls)
   /// HTML attribute, which controls whether user
   /// interface controls for playing the media item will be displayed.
-  bool get controls;
-  set controls(bool value);
+  bool get controls {
+    unsupportedPlatformError();
+  }
+
+  set controls(bool value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLMediaElement.volume`** property sets the volume at
   /// which the media will be played.
-  double get volume;
-  set volume(num value);
+  double get volume {
+    unsupportedPlatformError();
+  }
+
+  set volume(num value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLMediaElement.muted`** property indicates whether the media
   /// element is muted.
-  bool get muted;
-  set muted(bool value);
+  bool get muted {
+    unsupportedPlatformError();
+  }
+
+  set muted(bool value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLMediaElement.defaultMuted`** property reflects the
   /// [`muted`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video#muted)
   /// HTML attribute, which indicates whether the media element's audio output
   /// should be muted by default. This property has no dynamic effect. To mute
   /// and unmute the audio output, use the [HTMLMediaElement.muted] property.
-  bool get defaultMuted;
-  set defaultMuted(bool value);
+  bool get defaultMuted {
+    unsupportedPlatformError();
+  }
+
+  set defaultMuted(bool value) {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`audioTracks`**
   /// property on [HTMLMediaElement] objects returns
@@ -3295,7 +5505,9 @@ abstract class HTMLMediaElement implements HTMLElement, JSObject {
   /// existing ones removed. See
   /// [AudioTrackList events](https://developer.mozilla.org/en-US/docs/Web/API/AudioTrackList#events)
   /// to learn more about watching for changes to a media element's track list.
-  AudioTrackList get audioTracks;
+  AudioTrackList get audioTracks {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`videoTracks`**
   /// property on [HTMLMediaElement] objects returns a
@@ -3311,7 +5523,9 @@ abstract class HTMLMediaElement implements HTMLElement, JSObject {
   /// existing ones removed. See
   /// [VideoTrackList events](https://developer.mozilla.org/en-US/docs/Web/API/VideoTrackList#events)
   /// to learn more about watching for changes to a media element's track list.
-  VideoTrackList get videoTracks;
+  VideoTrackList get videoTracks {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`textTracks`**
   /// property on [HTMLMediaElement] objects returns a
@@ -3344,7 +5558,9 @@ abstract class HTMLMediaElement implements HTMLElement, JSObject {
   /// [TextTrackList events](https://developer.mozilla.org/en-US/docs/Web/API/TextTrackList#events)
   /// to learn
   /// more about watching for changes to a media element's track list.
-  TextTrackList get textTracks;
+  TextTrackList get textTracks {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLMediaElement.sinkId`** read-only property of the
   /// [Audio Output Devices API](https://developer.mozilla.org/en-US/docs/Web/API/Audio_Output_Devices_API)
@@ -3356,28 +5572,51 @@ abstract class HTMLMediaElement implements HTMLElement, JSObject {
   /// `id-communications`.
   /// If the user agent default device is being used, it returns an empty
   /// string.
-  String get sinkId;
+  String get sinkId {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`HTMLMediaElement.mediaKeys`** property returns a
   /// [MediaKeys] object, that is a set of keys that the element can use for
   /// decryption of media data during playback.
-  MediaKeys? get mediaKeys;
-  EventHandler get onencrypted;
-  set onencrypted(EventHandler value);
-  EventHandler get onwaitingforkey;
-  set onwaitingforkey(EventHandler value);
+  MediaKeys? get mediaKeys {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onencrypted {
+    unsupportedPlatformError();
+  }
+
+  set onencrypted(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onwaitingforkey {
+    unsupportedPlatformError();
+  }
+
+  set onwaitingforkey(EventHandler value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`remote`** read-only property of the [HTMLMediaElement] interface
   /// returns the [RemotePlayback] object associated with the media element. The
   /// `RemotePlayback` object allow the control of remote devices playing the
   /// media.
-  RemotePlayback get remote;
+  RemotePlayback get remote {
+    unsupportedPlatformError();
+  }
 
   /// The **`disableRemotePlayback`** property of the [HTMLMediaElement]
   /// interface determines whether the media element is allowed to have a remote
   /// playback UI.
-  bool get disableRemotePlayback;
-  set disableRemotePlayback(bool value);
+  bool get disableRemotePlayback {
+    unsupportedPlatformError();
+  }
+
+  set disableRemotePlayback(bool value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`MediaError`** interface represents an error which occurred while
@@ -3392,7 +5631,7 @@ abstract class HTMLMediaElement implements HTMLElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MediaError).
-abstract class MediaError implements JSObject {
+extension type MediaError._(JSObject _) implements JSObject {
   static const int MEDIA_ERR_ABORTED = 1;
 
   static const int MEDIA_ERR_NETWORK = 2;
@@ -3405,7 +5644,9 @@ abstract class MediaError implements JSObject {
   /// value which represents the kind of error that occurred on a media element.
   /// To get a text
   /// string with specific diagnostic information, see [MediaError.message].
-  int get code;
+  int get code {
+    unsupportedPlatformError();
+  }
 
   /// The read-only property **`MediaError.message`** returns a
   /// human-readable string offering specific
@@ -3414,7 +5655,9 @@ abstract class MediaError implements JSObject {
   /// or an empty string (`""`) if no diagnostic information can be determined
   /// or
   /// provided.
-  String get message;
+  String get message {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`AudioTrackList`** interface is used to represent a list of the audio
@@ -3428,14 +5671,18 @@ abstract class MediaError implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/AudioTrackList).
-abstract class AudioTrackList implements EventTarget, JSObject {
-  AudioTrack operator [](int index);
+extension type AudioTrackList._(JSObject _) implements EventTarget, JSObject {
+  AudioTrack operator [](int index) {
+    unsupportedPlatformError();
+  }
 
   /// The **[AudioTrackList]** method **`getTrackById()`** returns the first
   /// [AudioTrack] object from the track list whose [AudioTrack.id] matches the
   /// specified string.
   /// This lets you find a specified track if you know its ID string.
-  AudioTrack? getTrackById(String id);
+  AudioTrack? getTrackById(String id) {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **[AudioTrackList]**
   /// property **`length`** returns the number of entries in the
@@ -3443,13 +5690,33 @@ abstract class AudioTrackList implements EventTarget, JSObject {
   /// representing one audio track in the media element. A value of 0 indicates
   /// that
   /// there are no audio tracks in the media.
-  int get length;
-  EventHandler get onchange;
-  set onchange(EventHandler value);
-  EventHandler get onaddtrack;
-  set onaddtrack(EventHandler value);
-  EventHandler get onremovetrack;
-  set onremovetrack(EventHandler value);
+  int get length {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onchange {
+    unsupportedPlatformError();
+  }
+
+  set onchange(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onaddtrack {
+    unsupportedPlatformError();
+  }
+
+  set onaddtrack(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onremovetrack {
+    unsupportedPlatformError();
+  }
+
+  set onremovetrack(EventHandler value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`AudioTrack`** interface represents a single audio track from one of
@@ -3462,7 +5729,7 @@ abstract class AudioTrackList implements EventTarget, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/AudioTrack).
-abstract class AudioTrack implements JSObject {
+extension type AudioTrack._(JSObject _) implements JSObject {
   /// The **`id`** property contains a
   /// string which uniquely identifies the track represented by the
   /// **[AudioTrack]**.
@@ -3472,7 +5739,9 @@ abstract class AudioTrack implements JSObject {
   /// the media associated with a media element. The track ID can also be used
   /// as the fragment of a URL that loads the specific track
   /// (if the media supports media fragments).
-  String get id;
+  String get id {
+    unsupportedPlatformError();
+  }
 
   /// The **`kind`** property contains a
   /// string indicating the category of audio contained in the
@@ -3483,14 +5752,18 @@ abstract class AudioTrack implements JSObject {
   /// disabled. See
   /// [Audio track kind strings](#audio_track_kind_strings) for a list of the
   /// kinds available for audio tracks.
-  String get kind;
+  String get kind {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **[AudioTrack]**
   /// property **`label`** returns a string specifying the audio
   /// track's human-readable label, if one is available; otherwise, it returns
   /// an empty
   /// string.
-  String get label;
+  String get label {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **[AudioTrack]**
   /// property **`language`** returns a string identifying the
@@ -3500,15 +5773,22 @@ abstract class AudioTrack implements JSObject {
   /// (such as a movie in English in which a few lines are spoken in other
   /// languages), this
   /// should be the video's primary language.
-  String get language;
+  String get language {
+    unsupportedPlatformError();
+  }
 
   /// The **[AudioTrack]** property
   /// **`enabled`** specifies whether or not the described audio
   /// track is currently enabled for use. If the track is disabled by setting
   /// `enabled` to `false`, the track is muted and does not produce
   /// audio.
-  bool get enabled;
-  set enabled(bool value);
+  bool get enabled {
+    unsupportedPlatformError();
+  }
+
+  set enabled(bool value) {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **[AudioTrack]**
   /// property **`sourceBuffer`** returns the
@@ -3516,7 +5796,9 @@ abstract class AudioTrack implements JSObject {
   /// created by a [SourceBuffer] or the [SourceBuffer] has been
   /// removed from the [MediaSource.sourceBuffers] attribute of its parent
   /// media source.
-  SourceBuffer? get sourceBuffer;
+  SourceBuffer? get sourceBuffer {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`VideoTrackList`** interface is used to represent a list of the video
@@ -3531,8 +5813,10 @@ abstract class AudioTrack implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/VideoTrackList).
-abstract class VideoTrackList implements EventTarget, JSObject {
-  VideoTrack operator [](int index);
+extension type VideoTrackList._(JSObject _) implements EventTarget, JSObject {
+  VideoTrack operator [](int index) {
+    unsupportedPlatformError();
+  }
 
   /// The **[VideoTrackList]** method
   /// **`getTrackById()`** returns the first
@@ -3541,7 +5825,9 @@ abstract class VideoTrackList implements EventTarget, JSObject {
   ///
   /// This lets you find a specified track if
   /// you know its ID string.
-  VideoTrack? getTrackById(String id);
+  VideoTrack? getTrackById(String id) {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **[VideoTrackList]**
   /// property **`length`** returns the number of entries in the
@@ -3550,18 +5836,40 @@ abstract class VideoTrackList implements EventTarget, JSObject {
   ///
   /// A value of 0 indicates that there are no
   /// video tracks in the media.
-  int get length;
+  int get length {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **[VideoTrackList]**
   /// property **`selectedIndex`** returns the index of the
   /// currently selected track, if any, or `-1` otherwise.
-  int get selectedIndex;
-  EventHandler get onchange;
-  set onchange(EventHandler value);
-  EventHandler get onaddtrack;
-  set onaddtrack(EventHandler value);
-  EventHandler get onremovetrack;
-  set onremovetrack(EventHandler value);
+  int get selectedIndex {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onchange {
+    unsupportedPlatformError();
+  }
+
+  set onchange(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onaddtrack {
+    unsupportedPlatformError();
+  }
+
+  set onaddtrack(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onremovetrack {
+    unsupportedPlatformError();
+  }
+
+  set onremovetrack(EventHandler value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The [VideoTrack] interface represents a single video track from a `video`
@@ -3575,7 +5883,7 @@ abstract class VideoTrackList implements EventTarget, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/VideoTrack).
-abstract class VideoTrack implements JSObject {
+extension type VideoTrack._(JSObject _) implements JSObject {
   /// The **`id`** property contains a
   /// string which uniquely identifies the track represented by the
   /// **[VideoTrack]**.
@@ -3587,7 +5895,9 @@ abstract class VideoTrack implements JSObject {
   /// The track ID can also be used as the fragment of a URL that loads the
   /// specific track
   /// (if the media supports media fragments).
-  String get id;
+  String get id {
+    unsupportedPlatformError();
+  }
 
   /// The **`kind`** property contains a
   /// string indicating the category of video contained in the
@@ -3598,14 +5908,18 @@ abstract class VideoTrack implements JSObject {
   /// disabled. See
   /// [Video track kind strings](#video_track_kind_strings) for a list of the
   /// kinds available for video tracks.
-  String get kind;
+  String get kind {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **[VideoTrack]**
   /// property **`label`** returns a string specifying the video
   /// track's human-readable label, if one is available; otherwise, it returns
   /// an empty
   /// string.
-  String get label;
+  String get label {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **[VideoTrack]**
   /// property **`language`** returns a string identifying the
@@ -3615,13 +5929,20 @@ abstract class VideoTrack implements JSObject {
   /// (such as a movie in English in which a few lines are spoken in other
   /// languages), this
   /// should be the video's primary language.
-  String get language;
+  String get language {
+    unsupportedPlatformError();
+  }
 
   /// The **[VideoTrack]** property
   /// **`selected`** controls whether or not a particular video
   /// track is active.
-  bool get selected;
-  set selected(bool value);
+  bool get selected {
+    unsupportedPlatformError();
+  }
+
+  set selected(bool value) {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **[VideoTrack]**
   /// property **`sourceBuffer`** returns the
@@ -3629,7 +5950,9 @@ abstract class VideoTrack implements JSObject {
   /// created by a [SourceBuffer] or the [SourceBuffer] has been
   /// removed from the [MediaSource.sourceBuffers] attribute of its parent
   /// media source.
-  SourceBuffer? get sourceBuffer;
+  SourceBuffer? get sourceBuffer {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`TextTrackList`** interface is used to represent a list of the text
@@ -3653,8 +5976,10 @@ abstract class VideoTrack implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/TextTrackList).
-abstract class TextTrackList implements EventTarget, JSObject {
-  TextTrack operator [](int index);
+extension type TextTrackList._(JSObject _) implements EventTarget, JSObject {
+  TextTrack operator [](int index) {
+    unsupportedPlatformError();
+  }
 
   /// The **[TextTrackList]** method
   /// **`getTrackById()`** returns the first
@@ -3663,7 +5988,9 @@ abstract class TextTrackList implements EventTarget, JSObject {
   /// matches the
   /// specified string. This lets you find a specified track if you know its ID
   /// string.
-  TextTrack? getTrackById(String id);
+  TextTrack? getTrackById(String id) {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **[TextTrackList]**
   /// property **`length`** returns the number of entries in the
@@ -3672,13 +5999,33 @@ abstract class TextTrackList implements EventTarget, JSObject {
   ///
   /// A value of 0 indicates that there are no text
   /// tracks in the media.
-  int get length;
-  EventHandler get onchange;
-  set onchange(EventHandler value);
-  EventHandler get onaddtrack;
-  set onaddtrack(EventHandler value);
-  EventHandler get onremovetrack;
-  set onremovetrack(EventHandler value);
+  int get length {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onchange {
+    unsupportedPlatformError();
+  }
+
+  set onchange(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onaddtrack {
+    unsupportedPlatformError();
+  }
+
+  set onaddtrack(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onremovetrack {
+    unsupportedPlatformError();
+  }
+
+  set onremovetrack(EventHandler value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The `TextTrack` interface—part of the API for handling WebVTT (text tracks
@@ -3689,23 +6036,31 @@ abstract class TextTrackList implements EventTarget, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/TextTrack).
-abstract class TextTrack implements EventTarget, JSObject {
+extension type TextTrack._(JSObject _) implements EventTarget, JSObject {
   /// The **`addCue()`** method of the [TextTrack] interface adds a new cue to
   /// the list of cues.
-  void addCue(TextTrackCue cue);
+  void addCue(TextTrackCue cue) {
+    unsupportedPlatformError();
+  }
 
   /// The **`removeCue()`** method of the [TextTrack] interface removes a cue
   /// from the list of cues.
-  void removeCue(TextTrackCue cue);
+  void removeCue(TextTrackCue cue) {
+    unsupportedPlatformError();
+  }
 
   /// The **`kind`** read-only property of the [TextTrack] interface returns the
   /// kind of text track this object represents. This decides how the track will
   /// be handled by a user agent.
-  TextTrackKind get kind;
+  TextTrackKind get kind {
+    unsupportedPlatformError();
+  }
 
   /// The **`label`** read-only property of the [TextTrack] interface returns a
   /// human-readable label for the text track, if it is available.
-  String get label;
+  String get label {
+    unsupportedPlatformError();
+  }
 
   /// The **`language`** read-only property of the [TextTrack] interface returns
   /// the language of the text track.
@@ -3714,11 +6069,15 @@ abstract class TextTrack implements EventTarget, JSObject {
   /// [`lang`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes#lang)
   /// attribute. These values are documented in `5646, "Tags for Identifying
   /// Languages (also known as BCP 47)"`.
-  String get language;
+  String get language {
+    unsupportedPlatformError();
+  }
 
   /// The **`id`** read-only property of the [TextTrack] interface returns the
   /// ID of the track if it has one.
-  String get id;
+  String get id {
+    unsupportedPlatformError();
+  }
 
   /// The **`inBandMetadataTrackDispatchType`** read-only property of the
   /// [TextTrack] interface returns the text track's in-band metadata dispatch
@@ -3733,7 +6092,9 @@ abstract class TextTrack implements EventTarget, JSObject {
   ///
   /// The value of this attribute could be used to attach these tracks to
   /// dedicated script modules as they are loaded.
-  String get inBandMetadataTrackDispatchType;
+  String get inBandMetadataTrackDispatchType {
+    unsupportedPlatformError();
+  }
 
   /// The [TextTrack] interface's
   /// **`mode`** property is a string specifying and controlling the
@@ -3777,19 +6138,37 @@ abstract class TextTrack implements EventTarget, JSObject {
   /// track's
   /// [`default`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/track#default)
   /// Boolean attribute is specified.
-  TextTrackMode get mode;
-  set mode(TextTrackMode value);
+  TextTrackMode get mode {
+    unsupportedPlatformError();
+  }
+
+  set mode(TextTrackMode value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`cues`** read-only property of the [TextTrack] interface returns a
   /// [TextTrackCueList] object containing all of the track's cues.
-  TextTrackCueList? get cues;
+  TextTrackCueList? get cues {
+    unsupportedPlatformError();
+  }
 
   /// The **`activeCues`** read-only property of the [TextTrack] interface
   /// returns a [TextTrackCueList] object listing the currently active cues.
-  TextTrackCueList? get activeCues;
-  EventHandler get oncuechange;
-  set oncuechange(EventHandler value);
-  SourceBuffer? get sourceBuffer;
+  TextTrackCueList? get activeCues {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get oncuechange {
+    unsupportedPlatformError();
+  }
+
+  set oncuechange(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  SourceBuffer? get sourceBuffer {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`TextTrackCueList`** array-like object represents a dynamically
@@ -3802,17 +6181,23 @@ abstract class TextTrack implements EventTarget, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/TextTrackCueList).
-abstract class TextTrackCueList implements JSObject {
-  TextTrackCue operator [](int index);
+extension type TextTrackCueList._(JSObject _) implements JSObject {
+  TextTrackCue operator [](int index) {
+    unsupportedPlatformError();
+  }
 
   /// The **`getCueById()`** method of the [TextTrackCueList] interface returns
   /// the first [VTTCue] in the list represented by the `TextTrackCueList`
   /// object whose identifier matches the value of `id`.
-  TextTrackCue? getCueById(String id);
+  TextTrackCue? getCueById(String id) {
+    unsupportedPlatformError();
+  }
 
   /// The **`length`** read-only property of the [TextTrackCueList] interface
   /// returns the number of cues in the list.
-  int get length;
+  int get length {
+    unsupportedPlatformError();
+  }
 }
 
 /// **`TextTrackCue`** is an abstract class which is used as the basis for the
@@ -3827,35 +6212,69 @@ abstract class TextTrackCueList implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/TextTrackCue).
-abstract class TextTrackCue implements EventTarget, JSObject {
+extension type TextTrackCue._(JSObject _) implements EventTarget, JSObject {
   /// The **`track`** read-only property of the [TextTrackCue] interface returns
   /// the [TextTrack] object that this cue belongs to.
-  TextTrack? get track;
+  TextTrack? get track {
+    unsupportedPlatformError();
+  }
 
   /// The **`id`** property of the [TextTrackCue] interface returns and sets the
   /// identifier for this cue.
-  String get id;
-  set id(String value);
+  String get id {
+    unsupportedPlatformError();
+  }
+
+  set id(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`startTime`** property of the [TextTrackCue] interface returns and
   /// sets the start time of the cue.
-  double get startTime;
-  set startTime(num value);
+  double get startTime {
+    unsupportedPlatformError();
+  }
+
+  set startTime(num value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`endTime`** property of the [TextTrackCue] interface returns and
   /// sets the end time of the cue.
-  double get endTime;
-  set endTime(num value);
+  double get endTime {
+    unsupportedPlatformError();
+  }
+
+  set endTime(num value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`pauseOnExit`** property of the [TextTrackCue] interface returns or
   /// sets the flag indicating whether playback of the media should pause when
   /// the end of the range to which this cue applies is reached.
-  bool get pauseOnExit;
-  set pauseOnExit(bool value);
-  EventHandler get onenter;
-  set onenter(EventHandler value);
-  EventHandler get onexit;
-  set onexit(EventHandler value);
+  bool get pauseOnExit {
+    unsupportedPlatformError();
+  }
+
+  set pauseOnExit(bool value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onenter {
+    unsupportedPlatformError();
+  }
+
+  set onenter(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onexit {
+    unsupportedPlatformError();
+  }
+
+  set onexit(EventHandler value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// When loading a media resource for use by an `audio` or `video` element, the
@@ -3872,18 +6291,24 @@ abstract class TextTrackCue implements EventTarget, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/TimeRanges).
-abstract class TimeRanges implements JSObject {
+extension type TimeRanges._(JSObject _) implements JSObject {
   /// The **`start()`** method of the [TimeRanges] interface returns the time
   /// offset at which a specified time range begins.
-  double start(int index);
+  double start(int index) {
+    unsupportedPlatformError();
+  }
 
   /// The **`end()`** method of the [TimeRanges] interface returns the time
   /// offset at which a specified time range ends.
-  double end(int index);
+  double end(int index) {
+    unsupportedPlatformError();
+  }
 
   /// The **`TimeRanges.length`** read-only property returns the
   /// number of ranges in the object.
-  int get length;
+  int get length {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`TrackEvent`** interface, which is part of the HTML DOM specification,
@@ -3908,17 +6333,34 @@ abstract class TimeRanges implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/TrackEvent).
-abstract class TrackEvent implements Event, JSObject {
+extension type TrackEvent._(JSObject _) implements Event, JSObject {
+  factory TrackEvent(
+    String type, [
+    TrackEventInit? eventInitDict,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// The read-only **`track`** property of
   /// the [TrackEvent] interface specifies the media track object to which the
   /// event applies.
   ///
   /// The media track will be an [AudioTrack],
   /// [VideoTrack], or [TextTrack] object.
-  JSObject? get track;
+  JSObject? get track {
+    unsupportedPlatformError();
+  }
 }
+extension type TrackEventInit._(JSObject _) implements EventInit, JSObject {
+  factory TrackEventInit({
+    bool? bubbles,
+    bool? cancelable,
+    bool? composed,
+    JSObject? track,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class TrackEventInit implements EventInit, JSObject {
   JSObject? get track {
     unsupportedPlatformError();
   }
@@ -3937,7 +6379,10 @@ abstract class TrackEventInit implements EventInit, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMapElement).
-abstract class HTMLMapElement implements HTMLElement, JSObject {
+extension type HTMLMapElement._(JSObject _) implements HTMLElement, JSObject {
+  /// Creates an [HTMLMapElement] using the tag 'map'.
+  HTMLMapElement() : _ = document.createElement('map');
+
   /// The **`name`** property of the [HTMLMapElement] represents the unique name
   /// `<map>` element.
   /// Its value can be used with the `useMap` attribute of the `img` element to
@@ -3945,9 +6390,17 @@ abstract class HTMLMapElement implements HTMLElement, JSObject {
   ///
   /// If an `id` attribute is set on the `map` element, then this `name`
   /// property should be the same as this `id`.
-  String get name;
-  set name(String value);
-  HTMLCollection get areas;
+  String get name {
+    unsupportedPlatformError();
+  }
+
+  set name(String value) {
+    unsupportedPlatformError();
+  }
+
+  HTMLCollection get areas {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`HTMLAreaElement`** interface provides special properties and methods
@@ -3959,13 +6412,33 @@ abstract class HTMLMapElement implements HTMLElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLAreaElement).
-abstract class HTMLAreaElement implements HTMLElement, JSObject {
-  String get alt;
-  set alt(String value);
-  String get coords;
-  set coords(String value);
-  String get shape;
-  set shape(String value);
+extension type HTMLAreaElement._(JSObject _) implements HTMLElement, JSObject {
+  /// Creates an [HTMLAreaElement] using the tag 'area'.
+  HTMLAreaElement() : _ = document.createElement('area');
+
+  String get alt {
+    unsupportedPlatformError();
+  }
+
+  set alt(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get coords {
+    unsupportedPlatformError();
+  }
+
+  set coords(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get shape {
+    unsupportedPlatformError();
+  }
+
+  set shape(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`target`** property of the [HTMLAreaElement] interface is a string
   /// that indicates where to display the linked resource.
@@ -3973,10 +6446,21 @@ abstract class HTMLAreaElement implements HTMLElement, JSObject {
   /// It reflects the
   /// [`target`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area#target)
   /// attribute of the `area` element.
-  String get target;
-  set target(String value);
-  String get download;
-  set download(String value);
+  String get target {
+    unsupportedPlatformError();
+  }
+
+  set target(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get download {
+    unsupportedPlatformError();
+  }
+
+  set download(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ping`** property of the [HTMLAreaElement] interface is a
   /// space-separated list of URLs. When the link is followed, the browser will
@@ -3986,16 +6470,26 @@ abstract class HTMLAreaElement implements HTMLElement, JSObject {
   ///
   /// > **Note:** This property is not effective in Firefox and its usage may be
   /// > limited due to privacy and security concerns.
-  String get ping;
-  set ping(String value);
+  String get ping {
+    unsupportedPlatformError();
+  }
+
+  set ping(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLAreaElement.rel`** property reflects the
   /// [`rel`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel)
   /// attribute. It is a string containing a space-separated list of link types
   /// indicating the relationship between the resource represented by the `area`
   /// element and the current document.
-  String get rel;
-  set rel(String value);
+  String get rel {
+    unsupportedPlatformError();
+  }
+
+  set rel(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLAreaElement.relList`** read-only property reflects the
   /// [`rel`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel)
@@ -4006,7 +6500,9 @@ abstract class HTMLAreaElement implements HTMLElement, JSObject {
   /// The property itself is read-only, meaning you can't substitute the
   /// [DOMTokenList] by another one, but the content of the returned list can be
   /// changed.
-  DOMTokenList get relList;
+  DOMTokenList get relList {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`HTMLAreaElement.referrerPolicy`**
@@ -4015,16 +6511,32 @@ abstract class HTMLAreaElement implements HTMLElement, JSObject {
   /// attribute of the
   /// `area` element defining which referrer is sent when fetching the
   /// resource.
-  String get referrerPolicy;
-  set referrerPolicy(String value);
-  bool get noHref;
-  set noHref(bool value);
+  String get referrerPolicy {
+    unsupportedPlatformError();
+  }
+
+  set referrerPolicy(String value) {
+    unsupportedPlatformError();
+  }
+
+  bool get noHref {
+    unsupportedPlatformError();
+  }
+
+  set noHref(bool value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLAreaElement.href`** property is a
   /// that returns a string containing the whole URL, and allows
   /// the href to be updated.
-  String get href;
-  set href(String value);
+  String get href {
+    unsupportedPlatformError();
+  }
+
+  set href(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`HTMLAreaElement.origin`** read-only property is a
@@ -4041,19 +6553,31 @@ abstract class HTMLAreaElement implements HTMLElement, JSObject {
   /// - for URL using the `blob:` scheme, the origin of the URL following
   /// `blob:`. E.g `"blob:https://mozilla.org"` will have
   /// `"https://mozilla.org".`
-  String get origin;
+  String get origin {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`HTMLAreaElement.protocol`**
   /// property is a string representing the protocol scheme of the URL,
   /// including the final `':'`.
-  String get protocol;
-  set protocol(String value);
+  String get protocol {
+    unsupportedPlatformError();
+  }
+
+  set protocol(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLAreaElement.username`** property is a
   /// string containing the username specified before the domain name.
-  String get username;
-  set username(String value);
+  String get username {
+    unsupportedPlatformError();
+  }
+
+  set username(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLAreaElement.password`** property is a
   /// string containing the password specified before the domain name.
@@ -4061,34 +6585,59 @@ abstract class HTMLAreaElement implements HTMLElement, JSObject {
   /// If it is set without first setting the
   /// [`username`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLAreaElement/username)
   /// property, it silently fails.
-  String get password;
-  set password(String value);
+  String get password {
+    unsupportedPlatformError();
+  }
+
+  set password(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLAreaElement.host`** property is a
   /// string containing the host, that is the _hostname_, and then,
   /// if the _port_ of the URL is nonempty, a `':'`, and the _port_
   /// of the URL.
-  String get host;
-  set host(String value);
+  String get host {
+    unsupportedPlatformError();
+  }
+
+  set host(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLAreaElement.hostname`** property is a string containing the
   /// domain of the URL.
-  String get hostname;
-  set hostname(String value);
+  String get hostname {
+    unsupportedPlatformError();
+  }
+
+  set hostname(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLAreaElement.port`** property is a
   /// string containing the port number of the URL. If the URL does not
   /// contain an explicit port number, it will be set to `''`.
-  String get port;
-  set port(String value);
+  String get port {
+    unsupportedPlatformError();
+  }
+
+  set port(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLAreaElement.pathname`** property is a
   /// string containing an initial `'/'` followed by the path of
   /// the URL not including the query string or fragment (or the empty string if
   /// there is no
   /// path).
-  String get pathname;
-  set pathname(String value);
+  String get pathname {
+    unsupportedPlatformError();
+  }
+
+  set pathname(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLAreaElement.search`** property is a search
   /// string, also called a _query string_, that is a string containing
@@ -4099,8 +6648,13 @@ abstract class HTMLAreaElement implements HTMLElement, JSObject {
   /// and
   /// [`URL.searchParams`](/en-US/docs/Web/API/URL/searchParams#examples)
   /// to make it easy to parse out the parameters from the querystring.
-  String get search;
-  set search(String value);
+  String get search {
+    unsupportedPlatformError();
+  }
+
+  set search(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`HTMLAreaElement.hash`** property returns a
@@ -4111,8 +6665,13 @@ abstract class HTMLAreaElement implements HTMLElement, JSObject {
   /// [URL decoded](https://en.wikipedia.org/wiki/URL_encoding). If the URL does
   /// not
   /// have a fragment identifier, this property contains an empty string, `""`.
-  String get hash;
-  set hash(String value);
+  String get hash {
+    unsupportedPlatformError();
+  }
+
+  set hash(String value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`HTMLTableElement`** interface provides special properties and methods
@@ -4124,7 +6683,10 @@ abstract class HTMLAreaElement implements HTMLElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableElement).
-abstract class HTMLTableElement implements HTMLElement, JSObject {
+extension type HTMLTableElement._(JSObject _) implements HTMLElement, JSObject {
+  /// Creates an [HTMLTableElement] using the tag 'table'.
+  HTMLTableElement() : _ = document.createElement('table');
+
   /// The **`HTMLTableElement.createCaption()`** method returns the
   /// `caption` element associated with a given `table`.
   /// If no `<caption>` element exists on the table, this method creates
@@ -4135,13 +6697,17 @@ abstract class HTMLTableElement implements HTMLElement, JSObject {
   /// > added
   /// > separately as would be the case if [Document.createElement] had
   /// > been used to create the new `<caption>` element.
-  HTMLTableCaptionElement createCaption();
+  HTMLTableCaptionElement createCaption() {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLTableElement.deleteCaption()`** method removes the
   /// `caption` element from a given `table`. If there is no
   /// `<caption>` element associated with the table, this method does
   /// nothing.
-  void deleteCaption();
+  void deleteCaption() {
+    unsupportedPlatformError();
+  }
 
   /// The **`createTHead()`** method of
   /// [HTMLTableElement] objects returns the `thead` element
@@ -4153,11 +6719,15 @@ abstract class HTMLTableElement implements HTMLElement, JSObject {
   /// > separately as
   /// > would be the case if [Document.createElement] had been used to create
   /// > the new `<thead>` element.
-  HTMLTableSectionElement createTHead();
+  HTMLTableSectionElement createTHead() {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLTableElement.deleteTHead()`** removes the
   /// `thead` element from a given `table`.
-  void deleteTHead();
+  void deleteTHead() {
+    unsupportedPlatformError();
+  }
 
   /// The **`createTFoot()`** method of
   /// [HTMLTableElement] objects returns the `tfoot` element
@@ -4169,11 +6739,15 @@ abstract class HTMLTableElement implements HTMLElement, JSObject {
   /// > separately as
   /// > would be the case if [Document.createElement] had been used to create
   /// > the new `<tfoot>` element.
-  HTMLTableSectionElement createTFoot();
+  HTMLTableSectionElement createTFoot() {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLTableElement.deleteTFoot()`** method removes the
   /// `tfoot` element from a given `table`.
-  void deleteTFoot();
+  void deleteTFoot() {
+    unsupportedPlatformError();
+  }
 
   /// The **`createTBody()`** method of
   /// [HTMLTableElement] objects creates and returns a new
@@ -4185,7 +6759,9 @@ abstract class HTMLTableElement implements HTMLElement, JSObject {
   /// > already contains one or more bodies. If so, the new one is inserted
   /// > after the existing
   /// > ones.
-  HTMLTableSectionElement createTBody();
+  HTMLTableSectionElement createTBody() {
+    unsupportedPlatformError();
+  }
 
   /// The **`insertRow()`** method of the [HTMLTableElement] interface inserts a
   /// new row
@@ -4202,30 +6778,49 @@ abstract class HTMLTableElement implements HTMLElement, JSObject {
   /// > case if
   /// > [Document.createElement] had been used to create the new
   /// > `<tr>` element.
-  HTMLTableRowElement insertRow([int index]);
+  HTMLTableRowElement insertRow([int? index]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLTableElement.deleteRow()`** method removes a
   /// specific row (`tr`) from a given `table`.
-  void deleteRow(int index);
+  void deleteRow(int index) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLTableElement.caption`** property represents the
   /// table caption. If no caption element is associated with the table, this
   /// property is
   /// `null`.
-  HTMLTableCaptionElement? get caption;
-  set caption(HTMLTableCaptionElement? value);
+  HTMLTableCaptionElement? get caption {
+    unsupportedPlatformError();
+  }
+
+  set caption(HTMLTableCaptionElement? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLTableElement.tHead`** represents the
   /// `thead` element of a `table`. Its value will be
   /// `null` if there is no such element.
-  HTMLTableSectionElement? get tHead;
-  set tHead(HTMLTableSectionElement? value);
+  HTMLTableSectionElement? get tHead {
+    unsupportedPlatformError();
+  }
+
+  set tHead(HTMLTableSectionElement? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLTableElement.tFoot`** property represents the
   /// `tfoot` element of a `table`. Its value will be
   /// `null` if there is no such element.
-  HTMLTableSectionElement? get tFoot;
-  set tFoot(HTMLTableSectionElement? value);
+  HTMLTableSectionElement? get tFoot {
+    unsupportedPlatformError();
+  }
+
+  set tFoot(HTMLTableSectionElement? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLTableElement.tBodies`** read-only property returns a
   /// live [HTMLCollection] of the bodies in a `table`.
@@ -4247,7 +6842,9 @@ abstract class HTMLTableElement implements HTMLElement, JSObject {
   ///
   /// The HTML DOM generated from the above HTML will have a `tbody` element
   /// even though the tags are not included in the source HTML.
-  HTMLCollection get tBodies;
+  HTMLCollection get tBodies {
+    unsupportedPlatformError();
+  }
 
   /// The read-only [HTMLTableElement]
   /// property **`rows`** returns a live
@@ -4258,39 +6855,71 @@ abstract class HTMLTableElement implements HTMLElement, JSObject {
   /// Although the property itself is read-only, the returned object is live and
   /// allows the
   /// modification of its content.
-  HTMLCollection get rows;
+  HTMLCollection get rows {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLTableElement.align`** property represents the
   /// alignment of the table.
-  String get align;
-  set align(String value);
+  String get align {
+    unsupportedPlatformError();
+  }
+
+  set align(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLTableElement.border`** property represents the
   /// border width of the `table` element.
-  String get border;
-  set border(String value);
+  String get border {
+    unsupportedPlatformError();
+  }
+
+  set border(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The [HTMLTableElement] interface's **`frame`**
   /// property is a string that indicates which of the table's exterior borders
   /// should be
   /// drawn.
-  String get frame;
-  set frame(String value);
+  String get frame {
+    unsupportedPlatformError();
+  }
+
+  set frame(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLTableElement.rules`** property indicates which cell
   /// borders to render in the table.
-  String get rules;
-  set rules(String value);
+  String get rules {
+    unsupportedPlatformError();
+  }
+
+  set rules(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLTableElement.summary`** property represents the
   /// table description.
-  String get summary;
-  set summary(String value);
+  String get summary {
+    unsupportedPlatformError();
+  }
+
+  set summary(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLTableElement.width`** property represents the
   /// desired width of the table.
-  String get width;
-  set width(String value);
+  String get width {
+    unsupportedPlatformError();
+  }
+
+  set width(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`bgcolor`** property of the [HTMLTableElement] represents the
   /// background color of the table.
@@ -4299,13 +6928,23 @@ abstract class HTMLTableElement implements HTMLElement, JSObject {
   /// > property by modifying the element's
   /// > [`style`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style)
   /// > attribute or using a style rule.
-  String get bgColor;
-  set bgColor(String value);
+  String get bgColor {
+    unsupportedPlatformError();
+  }
+
+  set bgColor(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLTableElement.cellPadding`** property represents the
   /// padding around the individual cells of the table.
-  String get cellPadding;
-  set cellPadding(String value);
+  String get cellPadding {
+    unsupportedPlatformError();
+  }
+
+  set cellPadding(String value) {
+    unsupportedPlatformError();
+  }
 
   /// While you should instead use the CSS
   /// property, the obsolete [HTMLTableElement]
@@ -4314,8 +6953,13 @@ abstract class HTMLTableElement implements HTMLElement, JSObject {
   /// representing a table's cells. Any two cells are separated by the sum of
   /// the
   /// `cellSpacing` of each of the two cells.
-  String get cellSpacing;
-  set cellSpacing(String value);
+  String get cellSpacing {
+    unsupportedPlatformError();
+  }
+
+  set cellSpacing(String value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`HTMLTableCaptionElement`** interface provides special properties
@@ -4326,9 +6970,18 @@ abstract class HTMLTableElement implements HTMLElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableCaptionElement).
-abstract class HTMLTableCaptionElement implements HTMLElement, JSObject {
-  String get align;
-  set align(String value);
+extension type HTMLTableCaptionElement._(JSObject _)
+    implements HTMLElement, JSObject {
+  /// Creates an [HTMLTableCaptionElement] using the tag 'caption'.
+  HTMLTableCaptionElement() : _ = document.createElement('caption');
+
+  String get align {
+    unsupportedPlatformError();
+  }
+
+  set align(String value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`HTMLTableColElement`** interface provides properties for manipulating
@@ -4338,15 +6991,27 @@ abstract class HTMLTableCaptionElement implements HTMLElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableColElement).
-abstract class HTMLTableColElement implements HTMLElement, JSObject {
+extension type HTMLTableColElement._(JSObject _)
+    implements HTMLElement, JSObject {
+  /// Creates an [HTMLTableColElement] using the tag 'colgroup'.
+  HTMLTableColElement.colgroup() : _ = document.createElement('colgroup');
+
+  /// Creates an [HTMLTableColElement] using the tag 'col'.
+  HTMLTableColElement.col() : _ = document.createElement('col');
+
   /// The **`span`** read-only property of the [HTMLTableColElement] interface
   /// represents the number of columns this `col` or `colgroup` must span; this
   /// lets the column occupy space across multiple columns of the table. It
   /// reflects the
   /// [`span`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/col#colspan)
   /// attribute.
-  int get span;
-  set span(int value);
+  int get span {
+    unsupportedPlatformError();
+  }
+
+  set span(int value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`align`** property of the [HTMLTableColElement] interface is a
   /// string indicating how to horizontally align text in a table `col` column
@@ -4360,8 +7025,13 @@ abstract class HTMLTableColElement implements HTMLElement, JSObject {
   /// > element, you need to select the cells of the column using a
   /// > `td:nth-last-child(n)` or similar (`n` is the column number, counting
   /// > from the end).
-  String get align;
-  set align(String value);
+  String get align {
+    unsupportedPlatformError();
+  }
+
+  set align(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ch`** property of the [HTMLTableColElement] interface does nothing.
   /// It reflects the `char` attribute of the `col` element.
@@ -4372,8 +7042,13 @@ abstract class HTMLTableColElement implements HTMLElement, JSObject {
   /// >
   /// > To achieve such alignment, watch for the support of a string value with
   /// > the  CSS property.
-  String get ch;
-  set ch(String value);
+  String get ch {
+    unsupportedPlatformError();
+  }
+
+  set ch(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`chOff`** property of the [HTMLTableColElement] interface does
   /// nothing. It reflects the `charoff` attribute of the `col` element.
@@ -4384,8 +7059,13 @@ abstract class HTMLTableColElement implements HTMLElement, JSObject {
   /// >
   /// > To achieve such alignment, watch for the support of a string value with
   /// > the  CSS property.
-  String get chOff;
-  set chOff(String value);
+  String get chOff {
+    unsupportedPlatformError();
+  }
+
+  set chOff(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`vAlign`** property of the [HTMLTableColElement] interface is a
   /// string indicating how to vertically align text in a table `col` column
@@ -4398,10 +7078,21 @@ abstract class HTMLTableColElement implements HTMLElement, JSObject {
   /// > As `td` are not children of `col`, you can't set it directly on a
   /// > `col`element , you need to select the cells of the column using a
   /// > `td:nth-child(n)` or similar (`n` is the column number).
-  String get vAlign;
-  set vAlign(String value);
-  String get width;
-  set width(String value);
+  String get vAlign {
+    unsupportedPlatformError();
+  }
+
+  set vAlign(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get width {
+    unsupportedPlatformError();
+  }
+
+  set width(String value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`HTMLTableSectionElement`** interface provides special properties and
@@ -4414,7 +7105,17 @@ abstract class HTMLTableColElement implements HTMLElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableSectionElement).
-abstract class HTMLTableSectionElement implements HTMLElement, JSObject {
+extension type HTMLTableSectionElement._(JSObject _)
+    implements HTMLElement, JSObject {
+  /// Creates an [HTMLTableSectionElement] using the tag 'tbody'.
+  HTMLTableSectionElement.tbody() : _ = document.createElement('tbody');
+
+  /// Creates an [HTMLTableSectionElement] using the tag 'thead'.
+  HTMLTableSectionElement.thead() : _ = document.createElement('thead');
+
+  /// Creates an [HTMLTableSectionElement] using the tag 'tfoot'.
+  HTMLTableSectionElement.tfoot() : _ = document.createElement('tfoot');
+
   /// The **`insertRow()`** method of the [HTMLTableSectionElement] interface
   /// inserts a new row
   /// (`tr`) in the given `section`, and returns a reference to
@@ -4425,20 +7126,32 @@ abstract class HTMLTableSectionElement implements HTMLElement, JSObject {
   /// > case if
   /// > [Document.createElement] had been used to create the new
   /// > `<tr>` element.
-  HTMLTableRowElement insertRow([int index]);
+  HTMLTableRowElement insertRow([int? index]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`deleteRow()`** method of the [HTMLTableSectionElement] interface
   /// removes a
   /// specific row (`tr`) from a given `section`.
-  void deleteRow(int index);
+  void deleteRow(int index) {
+    unsupportedPlatformError();
+  }
 
   /// The **`rows`** read-only property of the [HTMLTableSectionElement]
   /// interface returns a live [HTMLCollection] containing the rows in the
   /// section. The `HTMLCollection` is live and is automatically updated when
   /// rows are added or removed.
-  HTMLCollection get rows;
-  String get align;
-  set align(String value);
+  HTMLCollection get rows {
+    unsupportedPlatformError();
+  }
+
+  String get align {
+    unsupportedPlatformError();
+  }
+
+  set align(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ch`** property of the [HTMLTableSectionElement] interface does
   /// nothing. It reflects the `char` attribute of the section element.
@@ -4449,8 +7162,13 @@ abstract class HTMLTableSectionElement implements HTMLElement, JSObject {
   /// >
   /// > To achieve such alignment, watch for the support of a string value with
   /// > the  CSS property.
-  String get ch;
-  set ch(String value);
+  String get ch {
+    unsupportedPlatformError();
+  }
+
+  set ch(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`chOff`** property of the [HTMLTableSectionElement] interface does
   /// nothing. It reflects the `charoff` attribute of the section element.
@@ -4461,10 +7179,21 @@ abstract class HTMLTableSectionElement implements HTMLElement, JSObject {
   /// >
   /// > To achieve such alignment, watch for the support of a string value with
   /// > the  CSS property.
-  String get chOff;
-  set chOff(String value);
-  String get vAlign;
-  set vAlign(String value);
+  String get chOff {
+    unsupportedPlatformError();
+  }
+
+  set chOff(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get vAlign {
+    unsupportedPlatformError();
+  }
+
+  set vAlign(String value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`HTMLTableRowElement`** interface provides special properties and
@@ -4476,7 +7205,11 @@ abstract class HTMLTableSectionElement implements HTMLElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableRowElement).
-abstract class HTMLTableRowElement implements HTMLElement, JSObject {
+extension type HTMLTableRowElement._(JSObject _)
+    implements HTMLElement, JSObject {
+  /// Creates an [HTMLTableRowElement] using the tag 'tr'.
+  HTMLTableRowElement() : _ = document.createElement('tr');
+
   /// The **`insertCell()`** method of the [HTMLTableRowElement] interface
   /// inserts a new
   /// cell (`td`) into a table row (`tr`) and returns a
@@ -4490,12 +7223,16 @@ abstract class HTMLTableRowElement implements HTMLElement, JSObject {
   /// >
   /// > You can not use `insertCell()` to create a new `<th>`
   /// > element though.
-  HTMLTableCellElement insertCell([int index]);
+  HTMLTableCellElement insertCell([int? index]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`deleteCell()`** method of the [HTMLTableRowElement] interface
   /// removes a
   /// specific row cell from a given `tr`.
-  void deleteCell(int index);
+  void deleteCell(int index) {
+    unsupportedPlatformError();
+  }
 
   /// The **`rowIndex`** read-only property of the [HTMLTableRowElement]
   /// interface
@@ -4506,21 +7243,33 @@ abstract class HTMLTableRowElement implements HTMLElement, JSObject {
   /// table in the right order. Therefore the rows count from `<thead>` to
   /// `<tbody>`, from `<tbody>` to
   /// `<tfoot>`.
-  int get rowIndex;
+  int get rowIndex {
+    unsupportedPlatformError();
+  }
 
   /// The **`sectionRowIndex`** read-only property of the [HTMLTableRowElement]
   /// interface
   /// represents the position of a row within the current section (`thead`,
   /// `tbody`, or `tfoot`).
-  int get sectionRowIndex;
+  int get sectionRowIndex {
+    unsupportedPlatformError();
+  }
 
   /// The **`cells`** read-only property of the [HTMLTableRowElement] interface
   /// returns a live [HTMLCollection] containing the cells in the row. The
   /// `HTMLCollection` is live and is automatically updated when cells are added
   /// or removed.
-  HTMLCollection get cells;
-  String get align;
-  set align(String value);
+  HTMLCollection get cells {
+    unsupportedPlatformError();
+  }
+
+  String get align {
+    unsupportedPlatformError();
+  }
+
+  set align(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ch`** property of the [HTMLTableRowElement] interface does nothing.
   /// It reflects the `char` attribute of the `tr` element.
@@ -4531,8 +7280,13 @@ abstract class HTMLTableRowElement implements HTMLElement, JSObject {
   /// >
   /// > To achieve such alignment, watch for the support of a string value with
   /// > the  CSS property.
-  String get ch;
-  set ch(String value);
+  String get ch {
+    unsupportedPlatformError();
+  }
+
+  set ch(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`chOff`** property of the [HTMLTableRowElement] interface does
   /// nothing. It reflects the `charoff` attribute of the `tr` element.
@@ -4543,10 +7297,21 @@ abstract class HTMLTableRowElement implements HTMLElement, JSObject {
   /// >
   /// > To achieve such alignment, watch for the support of a string value with
   /// > the  CSS property.
-  String get chOff;
-  set chOff(String value);
-  String get vAlign;
-  set vAlign(String value);
+  String get chOff {
+    unsupportedPlatformError();
+  }
+
+  set chOff(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get vAlign {
+    unsupportedPlatformError();
+  }
+
+  set vAlign(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLTableRowElement.bgColor`** property is used to set the
   /// background color of a row or retrieve the value of the obsolete
@@ -4555,8 +7320,13 @@ abstract class HTMLTableRowElement implements HTMLElement, JSObject {
   ///
   /// **Note:** This property is deprecated and CSS should be used to set the
   /// background color. Use the  property instead.
-  String get bgColor;
-  set bgColor(String value);
+  String get bgColor {
+    unsupportedPlatformError();
+  }
+
+  set bgColor(String value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`HTMLTableCellElement`** interface provides special properties and
@@ -4568,35 +7338,59 @@ abstract class HTMLTableRowElement implements HTMLElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableCellElement).
-abstract class HTMLTableCellElement implements HTMLElement, JSObject {
+extension type HTMLTableCellElement._(JSObject _)
+    implements HTMLElement, JSObject {
+  /// Creates an [HTMLTableCellElement] using the tag 'td'.
+  HTMLTableCellElement.td() : _ = document.createElement('td');
+
+  /// Creates an [HTMLTableCellElement] using the tag 'th'.
+  HTMLTableCellElement.th() : _ = document.createElement('th');
+
   /// The **`colSpan`** read-only property of the [HTMLTableCellElement]
   /// interface represents the number of columns this cell must span; this lets
   /// the cell occupy space across multiple columns of the table. It reflects
   /// the
   /// [`colspan`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/td#colspan)
   /// attribute.
-  int get colSpan;
-  set colSpan(int value);
+  int get colSpan {
+    unsupportedPlatformError();
+  }
+
+  set colSpan(int value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`rowSpan`** read-only property of the [HTMLTableCellElement]
   /// interface represents the number of rows this cell must span; this lets the
   /// cell occupy space across multiple rows of the table. It reflects the
   /// [`rowspan`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/td#colspan)
   /// attribute.
-  int get rowSpan;
-  set rowSpan(int value);
+  int get rowSpan {
+    unsupportedPlatformError();
+  }
+
+  set rowSpan(int value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`headers`** property of the [HTMLTableCellElement] interface
   /// contains a list of IDs of `th` elements that are _headers_ for this
   /// specific cell.
-  String get headers;
-  set headers(String value);
+  String get headers {
+    unsupportedPlatformError();
+  }
+
+  set headers(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`cellIndex`** read-only property of the [HTMLTableCellElement]
   /// interface
   /// represents the position of a cell within its row (`tr`). The first cell
   /// has an index of `0`.
-  int get cellIndex;
+  int get cellIndex {
+    unsupportedPlatformError();
+  }
 
   /// The **`scope`** property of the [HTMLTableCellElement] interface
   /// indicates the scope of a `th` cell.
@@ -4611,8 +7405,13 @@ abstract class HTMLTableCellElement implements HTMLElement, JSObject {
   /// > **Note:** this property doesn't have a visual effect in browsers. It
   /// > adds semantic information to help assistive technology like
   /// > screenreaders to present the table in a more coherent way.
-  String get scope;
-  set scope(String value);
+  String get scope {
+    unsupportedPlatformError();
+  }
+
+  set scope(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`abbr`** property of the [HTMLTableCellElement] interface
   /// indicates an abbreviation associated with the cell. If the cell does not
@@ -4623,8 +7422,13 @@ abstract class HTMLTableCellElement implements HTMLElement, JSObject {
   /// > **Note:** this property doesn't have a visual effect in browsers. It
   /// > adds information to help assistive technology like screenreaders that
   /// > can use this abbreviation
-  String get abbr;
-  set abbr(String value);
+  String get abbr {
+    unsupportedPlatformError();
+  }
+
+  set abbr(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`align`** property of the [HTMLTableCellElement] interface is a
   /// string indicating how to horizontally align text in the `th` or `td` table
@@ -4633,14 +7437,37 @@ abstract class HTMLTableCellElement implements HTMLElement, JSObject {
   /// > **Note:** This property is deprecated, and CSS should be used to align
   /// > text horizontally in a cell. Use the CSS  property, which takes
   /// > precedence, to horizontally align text in a cell instead.
-  String get align;
-  set align(String value);
-  String get axis;
-  set axis(String value);
-  String get height;
-  set height(String value);
-  String get width;
-  set width(String value);
+  String get align {
+    unsupportedPlatformError();
+  }
+
+  set align(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get axis {
+    unsupportedPlatformError();
+  }
+
+  set axis(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get height {
+    unsupportedPlatformError();
+  }
+
+  set height(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get width {
+    unsupportedPlatformError();
+  }
+
+  set width(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ch`** property of the [HTMLTableCellElement] interface does
   /// nothing. It reflects the `char` attribute of the cell element.
@@ -4651,8 +7478,13 @@ abstract class HTMLTableCellElement implements HTMLElement, JSObject {
   /// >
   /// > To achieve such alignment, watch for the support of a string value with
   /// > the  CSS property.
-  String get ch;
-  set ch(String value);
+  String get ch {
+    unsupportedPlatformError();
+  }
+
+  set ch(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`chOff`** property of the [HTMLTableCellElement] interface does
   /// nothing. It reflects the `charoff` attribute of the cell element.
@@ -4663,8 +7495,13 @@ abstract class HTMLTableCellElement implements HTMLElement, JSObject {
   /// >
   /// > To achieve such alignment, watch for the support of a string value with
   /// > the  CSS property.
-  String get chOff;
-  set chOff(String value);
+  String get chOff {
+    unsupportedPlatformError();
+  }
+
+  set chOff(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`noWrap`** property of the [HTMLTableCellElement] interface returns
   /// a Boolean value indicating if the text of the cell may be wrapped on
@@ -4672,8 +7509,13 @@ abstract class HTMLTableCellElement implements HTMLElement, JSObject {
   ///
   /// > **Note:** This property is deprecated and you should use the CSS
   /// > property with the value `nowrap` instead.
-  bool get noWrap;
-  set noWrap(bool value);
+  bool get noWrap {
+    unsupportedPlatformError();
+  }
+
+  set noWrap(bool value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`vAlign`** property of the [HTMLTableCellElement] interface is a
   /// string indicating how to vertically align text in a `th` or `td` table
@@ -4681,8 +7523,13 @@ abstract class HTMLTableCellElement implements HTMLElement, JSObject {
   ///
   /// > **Note:** This property is deprecated. Use the CSS  property to
   /// > horizontally align text in a cell instead.
-  String get vAlign;
-  set vAlign(String value);
+  String get vAlign {
+    unsupportedPlatformError();
+  }
+
+  set vAlign(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLTableCellElement.bgColor`** property is used to set the
   /// background color of a cell or get the value of the obsolete
@@ -4691,8 +7538,13 @@ abstract class HTMLTableCellElement implements HTMLElement, JSObject {
   ///
   /// **Note:** This property is deprecated and CSS should be used to set the
   /// background color. Use the  property instead.
-  String get bgColor;
-  set bgColor(String value);
+  String get bgColor {
+    unsupportedPlatformError();
+  }
+
+  set bgColor(String value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`HTMLFormElement`** interface represents a `form` element in the DOM.
@@ -4703,8 +7555,13 @@ abstract class HTMLTableCellElement implements HTMLElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement).
-abstract class HTMLFormElement implements HTMLElement, JSObject {
-  JSObject operator [](JSAny indexOrName);
+extension type HTMLFormElement._(JSObject _) implements HTMLElement, JSObject {
+  /// Creates an [HTMLFormElement] using the tag 'form'.
+  HTMLFormElement() : _ = document.createElement('form');
+
+  JSObject operator [](JSAny indexOrName) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLFormElement.submit()`** method submits a given
   /// `form`.
@@ -4728,11 +7585,15 @@ abstract class HTMLFormElement implements HTMLElement, JSObject {
   /// `input` with attribute type="submit" will not be submitted with the
   /// form when using **`HTMLFormElement.submit()`**, but it would be
   /// submitted when you do it with original HTML form submit.
-  void submit();
+  void submit() {
+    unsupportedPlatformError();
+  }
 
   /// The [HTMLFormElement] method **`requestSubmit()`** requests
   /// that the form be submitted using a specific submit button.
-  void requestSubmit([HTMLElement? submitter]);
+  void requestSubmit([HTMLElement? submitter]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLFormElement.reset()`** method restores a form
   /// element's default values. This method does the same thing as clicking the
@@ -4752,8 +7613,13 @@ abstract class HTMLFormElement implements HTMLElement, JSObject {
   /// reset the attribute to its default value, but instead will keep the
   /// attribute at
   /// whatever value the [Element.setAttribute] call set it to.
-  void reset();
-  bool checkValidity();
+  void reset() {
+    unsupportedPlatformError();
+  }
+
+  bool checkValidity() {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLFormElement.reportValidity()`** method returns
   /// `true` if the element's child controls satisfy their validation
@@ -4762,15 +7628,22 @@ abstract class HTMLFormElement implements HTMLElement, JSObject {
   /// [`invalid`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/invalid_event)
   /// events are fired for
   /// each invalid child and validation problems are reported to the user.
-  bool reportValidity();
+  bool reportValidity() {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLFormElement.acceptCharset`** property represents a
   /// list of the supported
   /// [character encodings](https://developer.mozilla.org/en-US/docs/Glossary/Character_encoding)
   /// for the given `form` element. This list can be
   /// comma-separated or space-separated.
-  String get acceptCharset;
-  set acceptCharset(String value);
+  String get acceptCharset {
+    unsupportedPlatformError();
+  }
+
+  set acceptCharset(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLFormElement.action`** property represents the action
   /// of the `form` element.
@@ -4778,10 +7651,21 @@ abstract class HTMLFormElement implements HTMLElement, JSObject {
   /// The action of a form is the program that is executed on the server when
   /// the form is
   /// submitted. This property can be retrieved or set.
-  String get action;
-  set action(String value);
-  String get autocomplete;
-  set autocomplete(String value);
+  String get action {
+    unsupportedPlatformError();
+  }
+
+  set action(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get autocomplete {
+    unsupportedPlatformError();
+  }
+
+  set autocomplete(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLFormElement.enctype`** property is the  of content that is used
   /// to submit the form to the server. Possible values are:
@@ -4796,20 +7680,35 @@ abstract class HTMLFormElement implements HTMLElement, JSObject {
   /// [`formenctype`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#formenctype)
   /// attribute
   /// on a `button` or `input` element.
-  String get enctype;
-  set enctype(String value);
+  String get enctype {
+    unsupportedPlatformError();
+  }
+
+  set enctype(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLFormElement.encoding`** property is an alternative name for the
   /// [HTMLFormElement.enctype] element on the DOM [HTMLFormElement] object.
-  String get encoding;
-  set encoding(String value);
+  String get encoding {
+    unsupportedPlatformError();
+  }
+
+  set encoding(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLFormElement.method`** property represents the
   /// method used to submit the `form`.
   ///
   /// Unless explicitly specified, the default method is 'get'.
-  String get method;
-  set method(String value);
+  String get method {
+    unsupportedPlatformError();
+  }
+
+  set method(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLFormElement.name`** property represents the name of
   /// the current `form` element as a string.
@@ -4817,20 +7716,45 @@ abstract class HTMLFormElement implements HTMLElement, JSObject {
   /// If your `Form` element contains an element named _name_ then
   /// that element overrides the `form.name` property, so that you can't access
   /// it.
-  String get name;
-  set name(String value);
-  bool get noValidate;
-  set noValidate(bool value);
+  String get name {
+    unsupportedPlatformError();
+  }
+
+  set name(String value) {
+    unsupportedPlatformError();
+  }
+
+  bool get noValidate {
+    unsupportedPlatformError();
+  }
+
+  set noValidate(bool value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`target`** property of the [HTMLFormElement]
   /// interface represents the target of the form's action (i.e., the frame in
   /// which to render
   /// its output).
-  String get target;
-  set target(String value);
-  String get rel;
-  set rel(String value);
-  DOMTokenList get relList;
+  String get target {
+    unsupportedPlatformError();
+  }
+
+  set target(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get rel {
+    unsupportedPlatformError();
+  }
+
+  set rel(String value) {
+    unsupportedPlatformError();
+  }
+
+  DOMTokenList get relList {
+    unsupportedPlatformError();
+  }
 
   /// The [HTMLFormElement] property
   /// **`elements`** returns an
@@ -4850,7 +7774,9 @@ abstract class HTMLFormElement implements HTMLElement, JSObject {
   ///
   /// > **Note:** Similarly, you can get a list of all of the forms contained
   /// > within a given document using the document's [Document.forms] property.
-  HTMLFormControlsCollection get elements;
+  HTMLFormControlsCollection get elements {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLFormElement.length`**
   /// read-only property returns the number of controls in the `form`
@@ -4868,7 +7794,9 @@ abstract class HTMLFormElement implements HTMLElement, JSObject {
   /// that any whose type is "image" are omitted for historical reasons),
   /// `object`, `output`, `select`,
   /// and `textarea`.
-  int get length;
+  int get length {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`HTMLLabelElement`** interface gives access to properties specific to
@@ -4879,7 +7807,10 @@ abstract class HTMLFormElement implements HTMLElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLabelElement).
-abstract class HTMLLabelElement implements HTMLElement, JSObject {
+extension type HTMLLabelElement._(JSObject _) implements HTMLElement, JSObject {
+  /// Creates an [HTMLLabelElement] using the tag 'label'.
+  HTMLLabelElement() : _ = document.createElement('label');
+
   /// The read-only **`HTMLLabelElement.form`** property returns an
   /// [HTMLFormElement] object which represents the form of which the label's
   /// associated control is a part, or null if there is either no associated
@@ -4887,7 +7818,9 @@ abstract class HTMLLabelElement implements HTMLElement, JSObject {
   /// that control isn't in a form.
   ///
   /// This property is just a shortcut for `HTMLLabelElement.control.form`.
-  HTMLFormElement? get form;
+  HTMLFormElement? get form {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLLabelElement.htmlFor`** property reflects the value
   /// of the
@@ -4896,15 +7829,22 @@ abstract class HTMLLabelElement implements HTMLElement, JSObject {
   /// script-accessible property is used to set and read the value of the
   /// content property
   /// `for`, which is the ID of the label's associated control element.
-  String get htmlFor;
-  set htmlFor(String value);
+  String get htmlFor {
+    unsupportedPlatformError();
+  }
+
+  set htmlFor(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`HTMLLabelElement.control`** property returns a
   /// reference to the control (in the form of an object of type [HTMLElement]
   /// or
   /// one of its derivatives) with which the `label` element is associated,
   /// or `null` if the label isn't associated with a control.
-  HTMLElement? get control;
+  HTMLElement? get control {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`HTMLInputElement`** interface provides special properties and methods
@@ -4914,7 +7854,10 @@ abstract class HTMLLabelElement implements HTMLElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement).
-abstract class HTMLInputElement implements HTMLElement, JSObject {
+extension type HTMLInputElement._(JSObject _) implements HTMLElement, JSObject {
+  /// Creates an [HTMLInputElement] using the tag 'input'.
+  HTMLInputElement() : _ = document.createElement('input');
+
   /// The **`HTMLInputElement.stepUp()`** method increments the value
   /// of a numeric type of `input` element by the value of the
   /// [`step`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/step)
@@ -5023,7 +7966,9 @@ abstract class HTMLInputElement implements HTMLElement, JSObject {
   /// support the `step` attribute (see the list of supported input types in the
   /// table above), or if the step value is set to `any`, an
   /// `InvalidStateError` exception is thrown.
-  void stepUp([int n]);
+  void stepUp([int? n]) {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`HTMLInputElement.stepDown([n])`** method decrements the
@@ -5141,13 +8086,17 @@ abstract class HTMLInputElement implements HTMLElement, JSObject {
   ///     - if the [`value`](/en-US/docs/Web/HTML/Element/input#value) cannot be converted to a number,
   ///     - if the resulting value is above the [`max`](/en-US/docs/Web/HTML/Element/input#max) or below the
   /// [`min`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#min).
-  void stepDown([int n]);
+  void stepDown([int? n]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLInputElement.checkValidity()`** method returns a boolean value
   /// which indicates validity of the value of the element. If the value is
   /// invalid, this method also fires the [HTMLInputElement.invalid_event] event
   /// on the element.
-  bool checkValidity();
+  bool checkValidity() {
+    unsupportedPlatformError();
+  }
 
   /// The **`reportValidity()`** method of the [HTMLInputElement] interface
   /// performs the same validity checking steps as the
@@ -5155,26 +8104,34 @@ abstract class HTMLInputElement implements HTMLElement, JSObject {
   /// method also fires the [HTMLInputElement.invalid_event] event on the
   /// element, and (if the event isn't canceled) reports the problem to the
   /// user.
-  bool reportValidity();
+  bool reportValidity() {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLInputElement.setCustomValidity()`** method sets a custom
   /// validity message for the element.
-  void setCustomValidity(String error);
+  void setCustomValidity(String error) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLInputElement.select()`** method selects all the text
   /// in a `textarea` element or in an `input` element
   /// that includes a text field.
-  void select();
+  void select() {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLInputElement.setRangeText()`** method replaces a
   /// range of text in an `input` or `textarea` element with
   /// a new string.
   void setRangeText(
     String replacement, [
-    int start,
-    int end,
-    SelectionMode selectionMode,
-  ]);
+    int? start,
+    int? end,
+    SelectionMode? selectionMode,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLInputElement.setSelectionRange()`** method sets the start and
   /// end positions of the current text selection in an `input` or `textarea`
@@ -5206,8 +8163,10 @@ abstract class HTMLInputElement implements HTMLElement, JSObject {
   void setSelectionRange(
     int start,
     int end, [
-    String direction,
-  ]);
+    String? direction,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLInputElement.showPicker()`** method displays the browser picker
   /// for an `input` element.
@@ -5224,19 +8183,57 @@ abstract class HTMLInputElement implements HTMLElement, JSObject {
   ///
   /// More generally, this method should ideally display the picker for any
   /// input element on the platform that has a picker.
-  void showPicker();
-  String get accept;
-  set accept(String value);
-  String get alt;
-  set alt(String value);
-  String get autocomplete;
-  set autocomplete(String value);
-  bool get defaultChecked;
-  set defaultChecked(bool value);
-  bool get checked;
-  set checked(bool value);
-  String get dirName;
-  set dirName(String value);
+  void showPicker() {
+    unsupportedPlatformError();
+  }
+
+  String get accept {
+    unsupportedPlatformError();
+  }
+
+  set accept(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get alt {
+    unsupportedPlatformError();
+  }
+
+  set alt(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get autocomplete {
+    unsupportedPlatformError();
+  }
+
+  set autocomplete(String value) {
+    unsupportedPlatformError();
+  }
+
+  bool get defaultChecked {
+    unsupportedPlatformError();
+  }
+
+  set defaultChecked(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get checked {
+    unsupportedPlatformError();
+  }
+
+  set checked(bool value) {
+    unsupportedPlatformError();
+  }
+
+  String get dirName {
+    unsupportedPlatformError();
+  }
+
+  set dirName(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLInputElement.disabled`** property is a boolean value that
   /// reflects the
@@ -5244,61 +8241,196 @@ abstract class HTMLInputElement implements HTMLElement, JSObject {
   /// HTML attribute, which indicates whether the control is disabled. If it is
   /// disabled, it does not accept clicks. A disabled element is unusable and
   /// un-clickable.
-  bool get disabled;
-  set disabled(bool value);
-  HTMLFormElement? get form;
+  bool get disabled {
+    unsupportedPlatformError();
+  }
+
+  set disabled(bool value) {
+    unsupportedPlatformError();
+  }
+
+  HTMLFormElement? get form {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLInputElement.files`** property allows you to access the
   /// [FileList] selected with the [`<input
   /// type="file">`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file)
   /// element.
-  FileList? get files;
-  set files(FileList? value);
-  String get formAction;
-  set formAction(String value);
-  String get formEnctype;
-  set formEnctype(String value);
-  String get formMethod;
-  set formMethod(String value);
-  bool get formNoValidate;
-  set formNoValidate(bool value);
-  String get formTarget;
-  set formTarget(String value);
-  int get height;
-  set height(int value);
-  bool get indeterminate;
-  set indeterminate(bool value);
-  HTMLDataListElement? get list;
-  String get max;
-  set max(String value);
-  int get maxLength;
-  set maxLength(int value);
-  String get min;
-  set min(String value);
-  int get minLength;
-  set minLength(int value);
+  FileList? get files {
+    unsupportedPlatformError();
+  }
+
+  set files(FileList? value) {
+    unsupportedPlatformError();
+  }
+
+  String get formAction {
+    unsupportedPlatformError();
+  }
+
+  set formAction(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get formEnctype {
+    unsupportedPlatformError();
+  }
+
+  set formEnctype(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get formMethod {
+    unsupportedPlatformError();
+  }
+
+  set formMethod(String value) {
+    unsupportedPlatformError();
+  }
+
+  bool get formNoValidate {
+    unsupportedPlatformError();
+  }
+
+  set formNoValidate(bool value) {
+    unsupportedPlatformError();
+  }
+
+  String get formTarget {
+    unsupportedPlatformError();
+  }
+
+  set formTarget(String value) {
+    unsupportedPlatformError();
+  }
+
+  int get height {
+    unsupportedPlatformError();
+  }
+
+  set height(int value) {
+    unsupportedPlatformError();
+  }
+
+  bool get indeterminate {
+    unsupportedPlatformError();
+  }
+
+  set indeterminate(bool value) {
+    unsupportedPlatformError();
+  }
+
+  HTMLDataListElement? get list {
+    unsupportedPlatformError();
+  }
+
+  String get max {
+    unsupportedPlatformError();
+  }
+
+  set max(String value) {
+    unsupportedPlatformError();
+  }
+
+  int get maxLength {
+    unsupportedPlatformError();
+  }
+
+  set maxLength(int value) {
+    unsupportedPlatformError();
+  }
+
+  String get min {
+    unsupportedPlatformError();
+  }
+
+  set min(String value) {
+    unsupportedPlatformError();
+  }
+
+  int get minLength {
+    unsupportedPlatformError();
+  }
+
+  set minLength(int value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLInputElement.multiple`** property indicates if an input can
   /// have more than one value. Firefox currently only supports `multiple` for
   /// `<input type="file">`.
-  bool get multiple;
-  set multiple(bool value);
-  String get name;
-  set name(String value);
-  String get pattern;
-  set pattern(String value);
-  String get placeholder;
-  set placeholder(String value);
-  bool get readOnly;
-  set readOnly(bool value);
-  bool get required;
-  set required(bool value);
-  int get size;
-  set size(int value);
-  String get src;
-  set src(String value);
-  String get step;
-  set step(String value);
+  bool get multiple {
+    unsupportedPlatformError();
+  }
+
+  set multiple(bool value) {
+    unsupportedPlatformError();
+  }
+
+  String get name {
+    unsupportedPlatformError();
+  }
+
+  set name(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get pattern {
+    unsupportedPlatformError();
+  }
+
+  set pattern(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get placeholder {
+    unsupportedPlatformError();
+  }
+
+  set placeholder(String value) {
+    unsupportedPlatformError();
+  }
+
+  bool get readOnly {
+    unsupportedPlatformError();
+  }
+
+  set readOnly(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get required {
+    unsupportedPlatformError();
+  }
+
+  set required(bool value) {
+    unsupportedPlatformError();
+  }
+
+  int get size {
+    unsupportedPlatformError();
+  }
+
+  set size(int value) {
+    unsupportedPlatformError();
+  }
+
+  String get src {
+    unsupportedPlatformError();
+  }
+
+  set src(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get step {
+    unsupportedPlatformError();
+  }
+
+  set step(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`type`** property of the [HTMLInputElement] interface indicates the
   /// kind of data allowed in the `input` element, for example a number, a date,
@@ -5308,27 +8440,73 @@ abstract class HTMLInputElement implements HTMLElement, JSObject {
   /// It reflects the
   /// [`type`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#type)
   /// attribute of the `input` element.
-  String get type;
-  set type(String value);
-  String get defaultValue;
-  set defaultValue(String value);
-  String get value;
-  set value(String value);
-  JSObject? get valueAsDate;
-  set valueAsDate(JSObject? value);
-  double get valueAsNumber;
-  set valueAsNumber(num value);
-  int get width;
-  set width(int value);
-  bool get willValidate;
-  ValidityState get validity;
-  String get validationMessage;
+  String get type {
+    unsupportedPlatformError();
+  }
+
+  set type(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get defaultValue {
+    unsupportedPlatformError();
+  }
+
+  set defaultValue(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get value {
+    unsupportedPlatformError();
+  }
+
+  set value(String value) {
+    unsupportedPlatformError();
+  }
+
+  JSObject? get valueAsDate {
+    unsupportedPlatformError();
+  }
+
+  set valueAsDate(JSObject? value) {
+    unsupportedPlatformError();
+  }
+
+  double get valueAsNumber {
+    unsupportedPlatformError();
+  }
+
+  set valueAsNumber(num value) {
+    unsupportedPlatformError();
+  }
+
+  int get width {
+    unsupportedPlatformError();
+  }
+
+  set width(int value) {
+    unsupportedPlatformError();
+  }
+
+  bool get willValidate {
+    unsupportedPlatformError();
+  }
+
+  ValidityState get validity {
+    unsupportedPlatformError();
+  }
+
+  String get validationMessage {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLInputElement.labels`** read-only property returns a
   /// [NodeList] of the `label` elements associated with the
   /// `input` element, if the element is not hidden. If the element has the
   /// type `hidden`, the property returns `null`.
-  NodeList? get labels;
+  NodeList? get labels {
+    unsupportedPlatformError();
+  }
 
   /// The **`selectionStart`** property of the [HTMLInputElement] interface is a
   /// number that represents the beginning index of the selected text. When
@@ -5345,8 +8523,13 @@ abstract class HTMLInputElement implements HTMLElement, JSObject {
   ///
   /// If `selectionStart` is greater than `selectionEnd`, then both are
   /// treated as the value of `selectionEnd`.
-  int? get selectionStart;
-  set selectionStart(int? value);
+  int? get selectionStart {
+    unsupportedPlatformError();
+  }
+
+  set selectionStart(int? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`selectionEnd`** property of the [HTMLInputElement] interface is a
   /// number that represents the end index of the selected text. When there is
@@ -5363,14 +8546,24 @@ abstract class HTMLInputElement implements HTMLElement, JSObject {
   ///
   /// If `selectionEnd` is less than `selectionStart`, then both are
   /// treated as the value of `selectionEnd`.
-  int? get selectionEnd;
-  set selectionEnd(int? value);
+  int? get selectionEnd {
+    unsupportedPlatformError();
+  }
+
+  set selectionEnd(int? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`selectionDirection`** property of the [HTMLInputElement] interface
   /// is a string that indicates the direction in which the user is selecting
   /// the text.
-  String? get selectionDirection;
-  set selectionDirection(String? value);
+  String? get selectionDirection {
+    unsupportedPlatformError();
+  }
+
+  set selectionDirection(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLInputElement.webkitdirectory`** is a property
   /// that reflects the
@@ -5387,8 +8580,13 @@ abstract class HTMLInputElement implements HTMLElement, JSObject {
   /// > due to its
   /// > origins as a Google Chrome-specific API. It's likely to be renamed
   /// > someday.
-  bool get webkitdirectory;
-  set webkitdirectory(bool value);
+  bool get webkitdirectory {
+    unsupportedPlatformError();
+  }
+
+  set webkitdirectory(bool value) {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`webkitEntries`**
   /// property of the [HTMLInputElement] interface contains an array of file
@@ -5406,13 +8604,33 @@ abstract class HTMLInputElement implements HTMLElement, JSObject {
   /// > due to its
   /// > origins as a Google Chrome-specific API. It's likely to be renamed
   /// > someday.
-  JSArray<FileSystemEntry> get webkitEntries;
-  String get capture;
-  set capture(String value);
-  String get align;
-  set align(String value);
-  String get useMap;
-  set useMap(String value);
+  JSArray<FileSystemEntry> get webkitEntries {
+    unsupportedPlatformError();
+  }
+
+  String get capture {
+    unsupportedPlatformError();
+  }
+
+  set capture(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get align {
+    unsupportedPlatformError();
+  }
+
+  set align(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get useMap {
+    unsupportedPlatformError();
+  }
+
+  set useMap(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`popoverTargetElement`** property of the [HTMLInputElement]
   /// interface gets and sets the popover element to control via an `input`
@@ -5421,8 +8639,13 @@ abstract class HTMLInputElement implements HTMLElement, JSObject {
   /// It is the JavaScript equivalent of the
   /// [`popovertarget`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#popovertarget)
   /// HTML attribute.
-  Element? get popoverTargetElement;
-  set popoverTargetElement(Element? value);
+  Element? get popoverTargetElement {
+    unsupportedPlatformError();
+  }
+
+  set popoverTargetElement(Element? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`popoverTargetAction`** property of the [HTMLInputElement] interface
   /// gets and sets the action to be performed (`"hide"`, `"show"`, or
@@ -5432,8 +8655,13 @@ abstract class HTMLInputElement implements HTMLElement, JSObject {
   /// It reflects the value of the
   /// [`popovertargetaction`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#popovertargetaction)
   /// HTML attribute.
-  String get popoverTargetAction;
-  set popoverTargetAction(String value);
+  String get popoverTargetAction {
+    unsupportedPlatformError();
+  }
+
+  set popoverTargetAction(String value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`HTMLButtonElement`** interface provides properties and methods
@@ -5444,28 +8672,84 @@ abstract class HTMLInputElement implements HTMLElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLButtonElement).
-abstract class HTMLButtonElement implements HTMLElement, JSObject {
-  bool checkValidity();
-  bool reportValidity();
-  void setCustomValidity(String error);
+extension type HTMLButtonElement._(JSObject _)
+    implements HTMLElement, JSObject {
+  /// Creates an [HTMLButtonElement] using the tag 'button'.
+  HTMLButtonElement() : _ = document.createElement('button');
+
+  bool checkValidity() {
+    unsupportedPlatformError();
+  }
+
+  bool reportValidity() {
+    unsupportedPlatformError();
+  }
+
+  void setCustomValidity(String error) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLButtonElement.disabled`** property indicates whether the
   /// control is disabled, meaning that it does not accept any clicks.
-  bool get disabled;
-  set disabled(bool value);
-  HTMLFormElement? get form;
-  String get formAction;
-  set formAction(String value);
-  String get formEnctype;
-  set formEnctype(String value);
-  String get formMethod;
-  set formMethod(String value);
-  bool get formNoValidate;
-  set formNoValidate(bool value);
-  String get formTarget;
-  set formTarget(String value);
-  String get name;
-  set name(String value);
+  bool get disabled {
+    unsupportedPlatformError();
+  }
+
+  set disabled(bool value) {
+    unsupportedPlatformError();
+  }
+
+  HTMLFormElement? get form {
+    unsupportedPlatformError();
+  }
+
+  String get formAction {
+    unsupportedPlatformError();
+  }
+
+  set formAction(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get formEnctype {
+    unsupportedPlatformError();
+  }
+
+  set formEnctype(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get formMethod {
+    unsupportedPlatformError();
+  }
+
+  set formMethod(String value) {
+    unsupportedPlatformError();
+  }
+
+  bool get formNoValidate {
+    unsupportedPlatformError();
+  }
+
+  set formNoValidate(bool value) {
+    unsupportedPlatformError();
+  }
+
+  String get formTarget {
+    unsupportedPlatformError();
+  }
+
+  set formTarget(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get name {
+    unsupportedPlatformError();
+  }
+
+  set name(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`type`** property of the [HTMLButtonElement] interface is a string
   /// that indicates the behavior type of the `button` element.
@@ -5473,18 +8757,40 @@ abstract class HTMLButtonElement implements HTMLElement, JSObject {
   /// It reflects the
   /// [`type`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#type)
   /// attribute of the `button` element.
-  String get type;
-  set type(String value);
-  String get value;
-  set value(String value);
-  bool get willValidate;
-  ValidityState get validity;
-  String get validationMessage;
+  String get type {
+    unsupportedPlatformError();
+  }
+
+  set type(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get value {
+    unsupportedPlatformError();
+  }
+
+  set value(String value) {
+    unsupportedPlatformError();
+  }
+
+  bool get willValidate {
+    unsupportedPlatformError();
+  }
+
+  ValidityState get validity {
+    unsupportedPlatformError();
+  }
+
+  String get validationMessage {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLButtonElement.labels`** read-only property returns a
   /// [NodeList] of the `label` elements associated with the
   /// `button` element.
-  NodeList get labels;
+  NodeList get labels {
+    unsupportedPlatformError();
+  }
 
   /// The **`popoverTargetElement`** property of the [HTMLButtonElement]
   /// interface gets and sets the popover element to control via a button.
@@ -5492,8 +8798,13 @@ abstract class HTMLButtonElement implements HTMLElement, JSObject {
   /// It is the JavaScript equivalent of the
   /// [`popovertarget`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#popovertarget)
   /// HTML attribute.
-  Element? get popoverTargetElement;
-  set popoverTargetElement(Element? value);
+  Element? get popoverTargetElement {
+    unsupportedPlatformError();
+  }
+
+  set popoverTargetElement(Element? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`popoverTargetAction`** property of the [HTMLButtonElement]
   /// interface gets and sets the action to be performed (`"hide"`, `"show"`, or
@@ -5502,8 +8813,13 @@ abstract class HTMLButtonElement implements HTMLElement, JSObject {
   /// It reflects the value of the
   /// [`popovertargetaction`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#popovertargetaction)
   /// HTML attribute.
-  String get popoverTargetAction;
-  set popoverTargetAction(String value);
+  String get popoverTargetAction {
+    unsupportedPlatformError();
+  }
+
+  set popoverTargetAction(String value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`HTMLSelectElement`** interface represents a `select` HTML Element.
@@ -5514,7 +8830,11 @@ abstract class HTMLButtonElement implements HTMLElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement).
-abstract class HTMLSelectElement implements HTMLElement, JSObject {
+extension type HTMLSelectElement._(JSObject _)
+    implements HTMLElement, JSObject {
+  /// Creates an [HTMLSelectElement] using the tag 'select'.
+  HTMLSelectElement() : _ = document.createElement('select');
+
   /// The **`HTMLSelectElement.item()`** method returns the
   /// [Element] corresponding to the [HTMLOptionElement] whose
   /// position in the options list corresponds to the index given in the
@@ -5525,7 +8845,9 @@ abstract class HTMLSelectElement implements HTMLElement, JSObject {
   /// like
   /// `selectElt[index]` is equivalent to
   /// `selectElt.namedItem(index)`.
-  HTMLOptionElement? item(int index);
+  HTMLOptionElement? item(int index) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLSelectElement.namedItem()`** method returns the
   /// [HTMLOptionElement] corresponding to the [HTMLOptionElement]
@@ -5534,23 +8856,32 @@ abstract class HTMLSelectElement implements HTMLElement, JSObject {
   ///
   /// In JavaScript, using `selectElt.namedItem('value')` is equivalent to
   /// `selectElt.options.namedItem('value')`.
-  HTMLOptionElement? namedItem(String name);
+  HTMLOptionElement? namedItem(String name) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLSelectElement.add()`** method adds an element to the
   /// collection of `option` elements for this `select` element.
   void add(
     JSObject element, [
     JSAny? before,
-  ]);
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLSelectElement.remove()`** method removes the element
   /// at the specified index from the options collection for this select
   /// element.
-  void remove([int index]);
+  void remove([int? index]) {
+    unsupportedPlatformError();
+  }
+
   void operator []=(
     int index,
     HTMLOptionElement? option,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLSelectElement.checkValidity()`** method checks
   /// whether the element has any constraints and whether it satisfies them. If
@@ -5558,8 +8889,13 @@ abstract class HTMLSelectElement implements HTMLElement, JSObject {
   /// fails its constraints, the browser fires a cancelable
   /// [HTMLSelectElement.invalid_event] event at the
   /// element, and then returns `false`.
-  bool checkValidity();
-  bool reportValidity();
+  bool checkValidity() {
+    unsupportedPlatformError();
+  }
+
+  bool reportValidity() {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLSelectElement.setCustomValidity()`** method sets the
   /// custom validity message for the selection element to the specified
@@ -5567,7 +8903,9 @@ abstract class HTMLSelectElement implements HTMLElement, JSObject {
   /// empty string to indicate that the element does _not_ have a custom
   /// validity
   /// error.
-  void setCustomValidity(String error);
+  void setCustomValidity(String error) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLSelectElement.showPicker()`** method displays the browser
   /// picker for a `select` element.
@@ -5575,9 +8913,17 @@ abstract class HTMLSelectElement implements HTMLElement, JSObject {
   /// This is the same picker that would normally be displayed when the element
   /// is selected, but can be triggered from a button press or other user
   /// interaction.
-  void showPicker();
-  String get autocomplete;
-  set autocomplete(String value);
+  void showPicker() {
+    unsupportedPlatformError();
+  }
+
+  String get autocomplete {
+    unsupportedPlatformError();
+  }
+
+  set autocomplete(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLSelectElement.disabled`** property is a boolean value that
   /// reflects the
@@ -5585,33 +8931,74 @@ abstract class HTMLSelectElement implements HTMLElement, JSObject {
   /// HTML attribute, which indicates whether the control is disabled. If it is
   /// disabled, it
   /// does not accept clicks. A disabled element is unusable and un-clickable.
-  bool get disabled;
-  set disabled(bool value);
+  bool get disabled {
+    unsupportedPlatformError();
+  }
+
+  set disabled(bool value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLSelectElement.form`** read-only property returns a
   /// [HTMLFormElement] representing the form that this element is associated
   /// with. If the element is not associated with a `form` element, then
   /// it returns `null`.
-  HTMLFormElement? get form;
-  bool get multiple;
-  set multiple(bool value);
-  String get name;
-  set name(String value);
-  bool get required;
-  set required(bool value);
-  int get size;
-  set size(int value);
+  HTMLFormElement? get form {
+    unsupportedPlatformError();
+  }
+
+  bool get multiple {
+    unsupportedPlatformError();
+  }
+
+  set multiple(bool value) {
+    unsupportedPlatformError();
+  }
+
+  String get name {
+    unsupportedPlatformError();
+  }
+
+  set name(String value) {
+    unsupportedPlatformError();
+  }
+
+  bool get required {
+    unsupportedPlatformError();
+  }
+
+  set required(bool value) {
+    unsupportedPlatformError();
+  }
+
+  int get size {
+    unsupportedPlatformError();
+  }
+
+  set size(int value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLSelectElement.type`**
   /// read-only property returns the form control's `type`.
-  String get type;
+  String get type {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLSelectElement.options`** read-only property returns
   /// a [HTMLOptionsCollection] of the `option` elements
   /// contained by the `select` element.
-  HTMLOptionsCollection get options;
-  int get length;
-  set length(int value);
+  HTMLOptionsCollection get options {
+    unsupportedPlatformError();
+  }
+
+  int get length {
+    unsupportedPlatformError();
+  }
+
+  set length(int value) {
+    unsupportedPlatformError();
+  }
 
   /// The **read-only** [HTMLSelectElement] property
   /// **`selectedOptions`** contains a list of the
@@ -5621,30 +9008,53 @@ abstract class HTMLSelectElement implements HTMLElement, JSObject {
   ///
   /// An option is considered selected if it has an [HTMLOptionElement.selected]
   /// attribute.
-  HTMLCollection get selectedOptions;
+  HTMLCollection get selectedOptions {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLSelectElement.selectedIndex`** property is a
   /// `long` that reflects the index of the first or last selected
   /// `option` element, depending on the value of `multiple`. The
   /// value `-1` indicates that no element is selected.
-  int get selectedIndex;
-  set selectedIndex(int value);
+  int get selectedIndex {
+    unsupportedPlatformError();
+  }
+
+  set selectedIndex(int value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLSelectElement.value`** property contains the value of the first
   /// selected `option` element associated with this `select` element.
   ///
   /// This property can also be set directly, for example to set a default value
   /// based on some condition.
-  String get value;
-  set value(String value);
-  bool get willValidate;
-  ValidityState get validity;
-  String get validationMessage;
+  String get value {
+    unsupportedPlatformError();
+  }
+
+  set value(String value) {
+    unsupportedPlatformError();
+  }
+
+  bool get willValidate {
+    unsupportedPlatformError();
+  }
+
+  ValidityState get validity {
+    unsupportedPlatformError();
+  }
+
+  String get validationMessage {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLSelectElement.labels`** read-only property returns a
   /// [NodeList] of the `label` elements associated with the
   /// `select` element.
-  NodeList get labels;
+  NodeList get labels {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`HTMLDataListElement`** interface provides special properties (beyond
@@ -5655,8 +9065,14 @@ abstract class HTMLSelectElement implements HTMLElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDataListElement).
-abstract class HTMLDataListElement implements HTMLElement, JSObject {
-  HTMLCollection get options;
+extension type HTMLDataListElement._(JSObject _)
+    implements HTMLElement, JSObject {
+  /// Creates an [HTMLDataListElement] using the tag 'datalist'.
+  HTMLDataListElement() : _ = document.createElement('datalist');
+
+  HTMLCollection get options {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`HTMLOptGroupElement`** interface provides special properties and
@@ -5668,11 +9084,26 @@ abstract class HTMLDataListElement implements HTMLElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOptGroupElement).
-abstract class HTMLOptGroupElement implements HTMLElement, JSObject {
-  bool get disabled;
-  set disabled(bool value);
-  String get label;
-  set label(String value);
+extension type HTMLOptGroupElement._(JSObject _)
+    implements HTMLElement, JSObject {
+  /// Creates an [HTMLOptGroupElement] using the tag 'optgroup'.
+  HTMLOptGroupElement() : _ = document.createElement('optgroup');
+
+  bool get disabled {
+    unsupportedPlatformError();
+  }
+
+  set disabled(bool value) {
+    unsupportedPlatformError();
+  }
+
+  String get label {
+    unsupportedPlatformError();
+  }
+
+  set label(String value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`HTMLOptionElement`** interface represents `option` elements and
@@ -5682,21 +9113,66 @@ abstract class HTMLOptGroupElement implements HTMLElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOptionElement).
-abstract class HTMLOptionElement implements HTMLElement, JSObject {
-  bool get disabled;
-  set disabled(bool value);
-  HTMLFormElement? get form;
-  String get label;
-  set label(String value);
-  bool get defaultSelected;
-  set defaultSelected(bool value);
-  bool get selected;
-  set selected(bool value);
-  String get value;
-  set value(String value);
-  String get text;
-  set text(String value);
-  int get index;
+extension type HTMLOptionElement._(JSObject _)
+    implements HTMLElement, JSObject {
+  /// Creates an [HTMLOptionElement] using the tag 'option'.
+  HTMLOptionElement() : _ = document.createElement('option');
+
+  bool get disabled {
+    unsupportedPlatformError();
+  }
+
+  set disabled(bool value) {
+    unsupportedPlatformError();
+  }
+
+  HTMLFormElement? get form {
+    unsupportedPlatformError();
+  }
+
+  String get label {
+    unsupportedPlatformError();
+  }
+
+  set label(String value) {
+    unsupportedPlatformError();
+  }
+
+  bool get defaultSelected {
+    unsupportedPlatformError();
+  }
+
+  set defaultSelected(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get selected {
+    unsupportedPlatformError();
+  }
+
+  set selected(bool value) {
+    unsupportedPlatformError();
+  }
+
+  String get value {
+    unsupportedPlatformError();
+  }
+
+  set value(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get text {
+    unsupportedPlatformError();
+  }
+
+  set text(String value) {
+    unsupportedPlatformError();
+  }
+
+  int get index {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`HTMLTextAreaElement`** interface provides special properties and
@@ -5706,70 +9182,212 @@ abstract class HTMLOptionElement implements HTMLElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement).
-abstract class HTMLTextAreaElement implements HTMLElement, JSObject {
-  bool checkValidity();
-  bool reportValidity();
-  void setCustomValidity(String error);
-  void select();
+extension type HTMLTextAreaElement._(JSObject _)
+    implements HTMLElement, JSObject {
+  /// Creates an [HTMLTextAreaElement] using the tag 'textarea'.
+  HTMLTextAreaElement() : _ = document.createElement('textarea');
+
+  bool checkValidity() {
+    unsupportedPlatformError();
+  }
+
+  bool reportValidity() {
+    unsupportedPlatformError();
+  }
+
+  void setCustomValidity(String error) {
+    unsupportedPlatformError();
+  }
+
+  void select() {
+    unsupportedPlatformError();
+  }
+
   void setRangeText(
     String replacement, [
-    int start,
-    int end,
-    SelectionMode selectionMode,
-  ]);
+    int? start,
+    int? end,
+    SelectionMode? selectionMode,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   void setSelectionRange(
     int start,
     int end, [
-    String direction,
-  ]);
-  String get autocomplete;
-  set autocomplete(String value);
-  int get cols;
-  set cols(int value);
-  String get dirName;
-  set dirName(String value);
-  bool get disabled;
-  set disabled(bool value);
-  HTMLFormElement? get form;
-  int get maxLength;
-  set maxLength(int value);
-  int get minLength;
-  set minLength(int value);
-  String get name;
-  set name(String value);
-  String get placeholder;
-  set placeholder(String value);
-  bool get readOnly;
-  set readOnly(bool value);
-  bool get required;
-  set required(bool value);
-  int get rows;
-  set rows(int value);
-  String get wrap;
-  set wrap(String value);
+    String? direction,
+  ]) {
+    unsupportedPlatformError();
+  }
+
+  String get autocomplete {
+    unsupportedPlatformError();
+  }
+
+  set autocomplete(String value) {
+    unsupportedPlatformError();
+  }
+
+  int get cols {
+    unsupportedPlatformError();
+  }
+
+  set cols(int value) {
+    unsupportedPlatformError();
+  }
+
+  String get dirName {
+    unsupportedPlatformError();
+  }
+
+  set dirName(String value) {
+    unsupportedPlatformError();
+  }
+
+  bool get disabled {
+    unsupportedPlatformError();
+  }
+
+  set disabled(bool value) {
+    unsupportedPlatformError();
+  }
+
+  HTMLFormElement? get form {
+    unsupportedPlatformError();
+  }
+
+  int get maxLength {
+    unsupportedPlatformError();
+  }
+
+  set maxLength(int value) {
+    unsupportedPlatformError();
+  }
+
+  int get minLength {
+    unsupportedPlatformError();
+  }
+
+  set minLength(int value) {
+    unsupportedPlatformError();
+  }
+
+  String get name {
+    unsupportedPlatformError();
+  }
+
+  set name(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get placeholder {
+    unsupportedPlatformError();
+  }
+
+  set placeholder(String value) {
+    unsupportedPlatformError();
+  }
+
+  bool get readOnly {
+    unsupportedPlatformError();
+  }
+
+  set readOnly(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get required {
+    unsupportedPlatformError();
+  }
+
+  set required(bool value) {
+    unsupportedPlatformError();
+  }
+
+  int get rows {
+    unsupportedPlatformError();
+  }
+
+  set rows(int value) {
+    unsupportedPlatformError();
+  }
+
+  String get wrap {
+    unsupportedPlatformError();
+  }
+
+  set wrap(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`type`** property of the [HTMLTextAreaElement] always
   /// returns `textarea`.
-  String get type;
-  String get defaultValue;
-  set defaultValue(String value);
-  String get value;
-  set value(String value);
-  int get textLength;
-  bool get willValidate;
-  ValidityState get validity;
-  String get validationMessage;
+  String get type {
+    unsupportedPlatformError();
+  }
+
+  String get defaultValue {
+    unsupportedPlatformError();
+  }
+
+  set defaultValue(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get value {
+    unsupportedPlatformError();
+  }
+
+  set value(String value) {
+    unsupportedPlatformError();
+  }
+
+  int get textLength {
+    unsupportedPlatformError();
+  }
+
+  bool get willValidate {
+    unsupportedPlatformError();
+  }
+
+  ValidityState get validity {
+    unsupportedPlatformError();
+  }
+
+  String get validationMessage {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLTextAreaElement.labels`** read-only property returns
   /// a [NodeList] of the `label` elements associated with the
   /// `textArea` element.
-  NodeList get labels;
-  int get selectionStart;
-  set selectionStart(int value);
-  int get selectionEnd;
-  set selectionEnd(int value);
-  String get selectionDirection;
-  set selectionDirection(String value);
+  NodeList get labels {
+    unsupportedPlatformError();
+  }
+
+  int get selectionStart {
+    unsupportedPlatformError();
+  }
+
+  set selectionStart(int value) {
+    unsupportedPlatformError();
+  }
+
+  int get selectionEnd {
+    unsupportedPlatformError();
+  }
+
+  set selectionEnd(int value) {
+    unsupportedPlatformError();
+  }
+
+  String get selectionDirection {
+    unsupportedPlatformError();
+  }
+
+  set selectionDirection(String value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`HTMLOutputElement`** interface provides properties and methods
@@ -5780,27 +9398,77 @@ abstract class HTMLTextAreaElement implements HTMLElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOutputElement).
-abstract class HTMLOutputElement implements HTMLElement, JSObject {
-  bool checkValidity();
-  bool reportValidity();
-  void setCustomValidity(String error);
-  DOMTokenList get htmlFor;
-  HTMLFormElement? get form;
-  String get name;
-  set name(String value);
-  String get type;
-  String get defaultValue;
-  set defaultValue(String value);
-  String get value;
-  set value(String value);
-  bool get willValidate;
-  ValidityState get validity;
-  String get validationMessage;
+extension type HTMLOutputElement._(JSObject _)
+    implements HTMLElement, JSObject {
+  /// Creates an [HTMLOutputElement] using the tag 'output'.
+  HTMLOutputElement() : _ = document.createElement('output');
+
+  bool checkValidity() {
+    unsupportedPlatformError();
+  }
+
+  bool reportValidity() {
+    unsupportedPlatformError();
+  }
+
+  void setCustomValidity(String error) {
+    unsupportedPlatformError();
+  }
+
+  DOMTokenList get htmlFor {
+    unsupportedPlatformError();
+  }
+
+  HTMLFormElement? get form {
+    unsupportedPlatformError();
+  }
+
+  String get name {
+    unsupportedPlatformError();
+  }
+
+  set name(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get type {
+    unsupportedPlatformError();
+  }
+
+  String get defaultValue {
+    unsupportedPlatformError();
+  }
+
+  set defaultValue(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get value {
+    unsupportedPlatformError();
+  }
+
+  set value(String value) {
+    unsupportedPlatformError();
+  }
+
+  bool get willValidate {
+    unsupportedPlatformError();
+  }
+
+  ValidityState get validity {
+    unsupportedPlatformError();
+  }
+
+  String get validationMessage {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLOutputElement.labels`** read-only property returns a
   /// [NodeList] of the `label` elements associated with the
   /// `output` element.
-  NodeList get labels;
+  NodeList get labels {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`HTMLProgressElement`** interface provides special properties and
@@ -5812,25 +9480,43 @@ abstract class HTMLOutputElement implements HTMLElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLProgressElement).
-abstract class HTMLProgressElement implements HTMLElement, JSObject {
+extension type HTMLProgressElement._(JSObject _)
+    implements HTMLElement, JSObject {
+  /// Creates an [HTMLProgressElement] using the tag 'progress'.
+  HTMLProgressElement() : _ = document.createElement('progress');
+
   /// The **`value`** property of the [HTMLProgressElement] interface represents
   /// the current progress of the `progress` element.
-  double get value;
-  set value(num value);
+  double get value {
+    unsupportedPlatformError();
+  }
+
+  set value(num value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`max`** property of the [HTMLProgressElement] interface represents
   /// the upper bound of the `progress` element's range.
-  double get max;
-  set max(num value);
+  double get max {
+    unsupportedPlatformError();
+  }
+
+  set max(num value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`position`** read-only property of the [HTMLProgressElement]
   /// interface returns current progress of the `progress` element.
-  double get position;
+  double get position {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLProgressElement.labels`** read-only property returns
   /// a [NodeList] of the `label` elements associated with the
   /// `progress` element.
-  NodeList get labels;
+  NodeList get labels {
+    unsupportedPlatformError();
+  }
 }
 
 /// The HTML `meter` elements expose the **`HTMLMeterElement`** interface, which
@@ -5842,24 +9528,64 @@ abstract class HTMLProgressElement implements HTMLElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMeterElement).
-abstract class HTMLMeterElement implements HTMLElement, JSObject {
-  double get value;
-  set value(num value);
-  double get min;
-  set min(num value);
-  double get max;
-  set max(num value);
-  double get low;
-  set low(num value);
-  double get high;
-  set high(num value);
-  double get optimum;
-  set optimum(num value);
+extension type HTMLMeterElement._(JSObject _) implements HTMLElement, JSObject {
+  /// Creates an [HTMLMeterElement] using the tag 'meter'.
+  HTMLMeterElement() : _ = document.createElement('meter');
+
+  double get value {
+    unsupportedPlatformError();
+  }
+
+  set value(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get min {
+    unsupportedPlatformError();
+  }
+
+  set min(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get max {
+    unsupportedPlatformError();
+  }
+
+  set max(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get low {
+    unsupportedPlatformError();
+  }
+
+  set low(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get high {
+    unsupportedPlatformError();
+  }
+
+  set high(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get optimum {
+    unsupportedPlatformError();
+  }
+
+  set optimum(num value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLMeterElement.labels`** read-only property returns a
   /// [NodeList] of the `label` elements associated with the
   /// `meter` element.
-  NodeList get labels;
+  NodeList get labels {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`HTMLFieldSetElement`** interface provides special properties and
@@ -5871,20 +9597,62 @@ abstract class HTMLMeterElement implements HTMLElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFieldSetElement).
-abstract class HTMLFieldSetElement implements HTMLElement, JSObject {
-  bool checkValidity();
-  bool reportValidity();
-  void setCustomValidity(String error);
-  bool get disabled;
-  set disabled(bool value);
-  HTMLFormElement? get form;
-  String get name;
-  set name(String value);
-  String get type;
-  HTMLCollection get elements;
-  bool get willValidate;
-  ValidityState get validity;
-  String get validationMessage;
+extension type HTMLFieldSetElement._(JSObject _)
+    implements HTMLElement, JSObject {
+  /// Creates an [HTMLFieldSetElement] using the tag 'fieldset'.
+  HTMLFieldSetElement() : _ = document.createElement('fieldset');
+
+  bool checkValidity() {
+    unsupportedPlatformError();
+  }
+
+  bool reportValidity() {
+    unsupportedPlatformError();
+  }
+
+  void setCustomValidity(String error) {
+    unsupportedPlatformError();
+  }
+
+  bool get disabled {
+    unsupportedPlatformError();
+  }
+
+  set disabled(bool value) {
+    unsupportedPlatformError();
+  }
+
+  HTMLFormElement? get form {
+    unsupportedPlatformError();
+  }
+
+  String get name {
+    unsupportedPlatformError();
+  }
+
+  set name(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get type {
+    unsupportedPlatformError();
+  }
+
+  HTMLCollection get elements {
+    unsupportedPlatformError();
+  }
+
+  bool get willValidate {
+    unsupportedPlatformError();
+  }
+
+  ValidityState get validity {
+    unsupportedPlatformError();
+  }
+
+  String get validationMessage {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`HTMLLegendElement`** is an interface allowing to access properties of
@@ -5895,10 +9663,22 @@ abstract class HTMLFieldSetElement implements HTMLElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLegendElement).
-abstract class HTMLLegendElement implements HTMLElement, JSObject {
-  HTMLFormElement? get form;
-  String get align;
-  set align(String value);
+extension type HTMLLegendElement._(JSObject _)
+    implements HTMLElement, JSObject {
+  /// Creates an [HTMLLegendElement] using the tag 'legend'.
+  HTMLLegendElement() : _ = document.createElement('legend');
+
+  HTMLFormElement? get form {
+    unsupportedPlatformError();
+  }
+
+  String get align {
+    unsupportedPlatformError();
+  }
+
+  set align(String value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`ValidityState`** interface represents the _validity states_ that an
@@ -5909,7 +9689,7 @@ abstract class HTMLLegendElement implements HTMLElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ValidityState).
-abstract class ValidityState implements JSObject {
+extension type ValidityState._(JSObject _) implements JSObject {
   /// The read-only **`valueMissing`** property of a
   /// **[`ValidityState`](https://developer.mozilla.org/en-US/docs/Web/API/ValidityState)**
   /// object indicates if a
@@ -5921,7 +9701,9 @@ abstract class ValidityState implements JSObject {
   /// property will be `true`. The property is only `true` if the field is
   /// required and has no value; if the field is not required, or if the field
   /// is required and has a value, the value is `false`.
-  bool get valueMissing;
+  bool get valueMissing {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`typeMismatch`** property of a
   /// **[`ValidityState`](https://developer.mozilla.org/en-US/docs/Web/API/ValidityState)**
@@ -5958,7 +9740,9 @@ abstract class ValidityState implements JSObject {
   /// | --------------------------------------- | ----------------- | -------------------------------------------------------------- |
   /// | `email` | `x@y` or `x@y.z`  | email address, with or without [TLD](https://developer.mozilla.org/en-US/docs/Glossary/TLD) |
   /// | `url`     | `x:` or `x://y.z` | protocol or full URL with protocol                             |
-  bool get typeMismatch;
+  bool get typeMismatch {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`patternMismatch`** property of a
   /// **[`ValidityState`](https://developer.mozilla.org/en-US/docs/Web/API/ValidityState)**
@@ -5980,7 +9764,9 @@ abstract class ValidityState implements JSObject {
   /// - the `input` value doesn't conform to the constraints set by the
   ///   [`pattern`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/pattern)
   ///   value.
-  bool get patternMismatch;
+  bool get patternMismatch {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`tooLong`** property of a
   /// **[`ValidityState`](https://developer.mozilla.org/en-US/docs/Web/API/ValidityState)**
@@ -5989,7 +9775,9 @@ abstract class ValidityState implements JSObject {
   /// by the element's
   /// [`maxlength`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/maxlength)
   /// attribute.
-  bool get tooLong;
+  bool get tooLong {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`tooShort`** property of a
   /// **[`ValidityState`](https://developer.mozilla.org/en-US/docs/Web/API/ValidityState)**
@@ -5997,7 +9785,9 @@ abstract class ValidityState implements JSObject {
   /// `fieldset` or `textarea`, after having been edited by the user, is less
   /// than the minimum code-unit length established by the element's `minlength`
   /// attribute.
-  bool get tooShort;
+  bool get tooShort {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`rangeUnderflow`** property of a
   /// **[`ValidityState`](https://developer.mozilla.org/en-US/docs/Web/API/ValidityState)**
@@ -6020,7 +9810,9 @@ abstract class ValidityState implements JSObject {
   ///
   /// if `value < 20`, `rangeUnderflow` will be true. When `true`, the element
   /// matches the  and  CSS pseudo-classes.
-  bool get rangeUnderflow;
+  bool get rangeUnderflow {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`rangeOverflow`** property of a
   /// **[`ValidityState`](https://developer.mozilla.org/en-US/docs/Web/API/ValidityState)**
@@ -6043,7 +9835,9 @@ abstract class ValidityState implements JSObject {
   ///
   /// if `value > 40`, `rangeOverflow` will be true. When `true`, the element
   /// matches the  and  CSS pseudo-classes.
-  bool get rangeOverflow;
+  bool get rangeOverflow {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`stepMismatch`** property of a
   /// **[`ValidityState`](https://developer.mozilla.org/en-US/docs/Web/API/ValidityState)**
@@ -6073,16 +9867,26 @@ abstract class ValidityState implements JSObject {
   /// if `(value - min) % 2 !== 0`, `stepMismatch` will be true.
   ///
   /// If true, the element matches the  and  CSS pseudo-classes.
-  bool get stepMismatch;
+  bool get stepMismatch {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`badInput`** property of a
   /// [ValidityState](https://developer.mozilla.org/en-US/docs/Web/API/ValidityState)
   /// object indicates if the user has provided input that the browser is unable
   /// to convert. For example, if you have a number input element whose content
   /// is a string.
-  bool get badInput;
-  bool get customError;
-  bool get valid;
+  bool get badInput {
+    unsupportedPlatformError();
+  }
+
+  bool get customError {
+    unsupportedPlatformError();
+  }
+
+  bool get valid {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SubmitEvent`** interface defines the object used to represent an
@@ -6093,14 +9897,31 @@ abstract class ValidityState implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SubmitEvent).
-abstract class SubmitEvent implements Event, JSObject {
+extension type SubmitEvent._(JSObject _) implements Event, JSObject {
+  factory SubmitEvent(
+    String type, [
+    SubmitEventInit? eventInitDict,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// The read-only **`submitter`** property found on
   /// the [SubmitEvent] interface specifies the submit button or other element
   /// that was invoked to cause the form to be submitted.
-  HTMLElement? get submitter;
+  HTMLElement? get submitter {
+    unsupportedPlatformError();
+  }
 }
+extension type SubmitEventInit._(JSObject _) implements EventInit, JSObject {
+  factory SubmitEventInit({
+    bool? bubbles,
+    bool? cancelable,
+    bool? composed,
+    HTMLElement? submitter,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class SubmitEventInit implements EventInit, JSObject {
   HTMLElement? get submitter {
     unsupportedPlatformError();
   }
@@ -6126,15 +9947,32 @@ abstract class SubmitEventInit implements EventInit, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/FormDataEvent).
-abstract class FormDataEvent implements Event, JSObject {
+extension type FormDataEvent._(JSObject _) implements Event, JSObject {
+  factory FormDataEvent(
+    String type,
+    FormDataEventInit eventInitDict,
+  ) {
+    unsupportedPlatformError();
+  }
+
   /// The `formData` read-only property of the [FormDataEvent]
   /// interface contains the [FormData] object representing the data contained
   /// in
   /// the form when the event was fired.
-  FormData get formData;
+  FormData get formData {
+    unsupportedPlatformError();
+  }
 }
+extension type FormDataEventInit._(JSObject _) implements EventInit, JSObject {
+  factory FormDataEventInit({
+    bool? bubbles,
+    bool? cancelable,
+    bool? composed,
+    required FormData formData,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class FormDataEventInit implements EventInit, JSObject {
   FormData get formData {
     unsupportedPlatformError();
   }
@@ -6152,17 +9990,31 @@ abstract class FormDataEventInit implements EventInit, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDetailsElement).
-abstract class HTMLDetailsElement implements HTMLElement, JSObject {
-  String get name;
-  set name(String value);
+extension type HTMLDetailsElement._(JSObject _)
+    implements HTMLElement, JSObject {
+  /// Creates an [HTMLDetailsElement] using the tag 'details'.
+  HTMLDetailsElement() : _ = document.createElement('details');
+
+  String get name {
+    unsupportedPlatformError();
+  }
+
+  set name(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`open`** property of the
   /// [HTMLDetailsElement] interface is a boolean value reflecting the
   /// [`open`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details#open)
   /// HTML attribute, indicating whether the `details`'s contents (not counting
   /// the `summary`) is to be shown to the user.
-  bool get open;
-  set open(bool value);
+  bool get open {
+    unsupportedPlatformError();
+  }
+
+  set open(bool value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`HTMLDialogElement`** interface provides methods to manipulate
@@ -6173,12 +10025,18 @@ abstract class HTMLDetailsElement implements HTMLElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement).
-abstract class HTMLDialogElement implements HTMLElement, JSObject {
+extension type HTMLDialogElement._(JSObject _)
+    implements HTMLElement, JSObject {
+  /// Creates an [HTMLDialogElement] using the tag 'dialog'.
+  HTMLDialogElement() : _ = document.createElement('dialog');
+
   /// The **`show()`** method of the [HTMLDialogElement]
   /// interface displays the dialog modelessly, i.e. still allowing interaction
   /// with content
   /// outside of the dialog.
-  void show();
+  void show() {
+    unsupportedPlatformError();
+  }
 
   /// The **`showModal()`** method of the
   /// [HTMLDialogElement] interface displays the dialog as a modal, over the top
@@ -6186,27 +10044,41 @@ abstract class HTMLDialogElement implements HTMLElement, JSObject {
   /// with a
   /// pseudo-element. Interaction outside the dialog is blocked and
   /// the content outside it is rendered inert.
-  void showModal();
+  void showModal() {
+    unsupportedPlatformError();
+  }
 
   /// The **`close()`** method of the [HTMLDialogElement] interface closes the
   /// `dialog`.
   /// An optional string may be passed as an argument, updating the
   /// `returnValue` of the dialog.
-  void close([String returnValue]);
+  void close([String? returnValue]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`open`** property of the
   /// [HTMLDialogElement] interface is a boolean value reflecting the
   /// [`open`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog#open)
   /// HTML attribute, indicating whether the `dialog` is
   /// available for interaction.
-  bool get open;
-  set open(bool value);
+  bool get open {
+    unsupportedPlatformError();
+  }
+
+  set open(bool value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`returnValue`** property of the [HTMLDialogElement] interface gets
   /// or sets the return value for the `dialog`, usually to indicate which
   /// button the user pressed to close it.
-  String get returnValue;
-  set returnValue(String value);
+  String get returnValue {
+    unsupportedPlatformError();
+  }
+
+  set returnValue(String value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// HTML `script` elements expose the **`HTMLScriptElement`** interface, which
@@ -6226,7 +10098,11 @@ abstract class HTMLDialogElement implements HTMLElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLScriptElement).
-abstract class HTMLScriptElement implements HTMLElement, JSObject {
+extension type HTMLScriptElement._(JSObject _)
+    implements HTMLElement, JSObject {
+  /// Creates an [HTMLScriptElement] using the tag 'script'.
+  HTMLScriptElement() : _ = document.createElement('script');
+
   /// The **`supports()`** static method of the [HTMLScriptElement] interface
   /// provides a simple and consistent method to feature-detect what types of
   /// scripts are supported by the user agent.
@@ -6242,15 +10118,25 @@ abstract class HTMLScriptElement implements HTMLElement, JSObject {
   /// alternative to embedding a script directly within a document.
   ///
   /// It reflects the `src` attribute of the `script` element.
-  String get src;
-  set src(String value);
+  String get src {
+    unsupportedPlatformError();
+  }
+
+  set src(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`type`** property of the [HTMLScriptElement] interface is a string
   /// that reflects the type of the script.
   ///
   /// It reflects the `type` attribute of the `script` element.
-  String get type;
-  set type(String value);
+  String get type {
+    unsupportedPlatformError();
+  }
+
+  set type(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`noModule`** property of the [HTMLScriptElement] interface is a
   /// boolean value that indicates whether the script should be executed in
@@ -6260,8 +10146,13 @@ abstract class HTMLScriptElement implements HTMLElement, JSObject {
   /// that do not support JavaScript modules.
   ///
   /// It reflects the `nomodule` attribute of the `script` element.
-  bool get noModule;
-  set noModule(bool value);
+  bool get noModule {
+    unsupportedPlatformError();
+  }
+
+  set noModule(bool value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`async`** property of the [HTMLScriptElement] interface is a boolean
   /// value that controls how the script should be executed. For classic
@@ -6274,8 +10165,13 @@ abstract class HTMLScriptElement implements HTMLElement, JSObject {
   /// as they are available.
   ///
   /// It reflects the `async` attribute of the `script` element.
-  bool get async;
-  set async(bool value);
+  bool get async {
+    unsupportedPlatformError();
+  }
+
+  set async(bool value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`defer`** property of the [HTMLScriptElement] interface is a boolean
   /// value that controls how the script should be executed. For classic
@@ -6286,8 +10182,13 @@ abstract class HTMLScriptElement implements HTMLElement, JSObject {
   /// the `defer` property has no effect.
   ///
   /// It reflects the `defer` attribute of the `script` element.
-  bool get defer;
-  set defer(bool value);
+  bool get defer {
+    unsupportedPlatformError();
+  }
+
+  set defer(bool value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`crossOrigin`** property of the [HTMLScriptElement] interface
   /// reflects the  settings for the script element. For classic scripts from
@@ -6296,46 +10197,89 @@ abstract class HTMLScriptElement implements HTMLElement, JSObject {
   /// scripts, it controls the script itself and any script it imports. See
   /// [CORS settings attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin)
   /// for details.
-  String? get crossOrigin;
-  set crossOrigin(String? value);
+  String? get crossOrigin {
+    unsupportedPlatformError();
+  }
+
+  set crossOrigin(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`text`** property of the [HTMLScriptElement] interface is a string
   /// that reflects the text content inside the `script` element. It acts the
   /// same way as the [Node.textContent] property.
   ///
   /// It reflects the `text` attribute of the `script` element.
-  String get text;
-  set text(String value);
+  String get text {
+    unsupportedPlatformError();
+  }
+
+  set text(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`integrity`** property of the [HTMLScriptElement] interface is a
   /// string that contains inline metadata that a browser can use to verify that
   /// a fetched resource has been delivered without unexpected manipulation.
   ///
   /// It reflects the `integrity` attribute of the `script` element.
-  String get integrity;
-  set integrity(String value);
+  String get integrity {
+    unsupportedPlatformError();
+  }
+
+  set integrity(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`referrerPolicy`** property of the
   /// [HTMLScriptElement] interface reflects the HTML
   /// [`referrerpolicy`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#referrerpolicy)
   /// of the `script` element, which defines how the referrer is set when
   /// fetching the script and any scripts it imports.
-  String get referrerPolicy;
-  set referrerPolicy(String value);
+  String get referrerPolicy {
+    unsupportedPlatformError();
+  }
+
+  set referrerPolicy(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`fetchPriority`** property of the [HTMLScriptElement] interface
   /// represents a hint given to the browser on how it should prioritize
   /// fetching of an external script relative to other external scripts.
   ///
   /// It reflects the `fetchpriority` attribute of the `script` element.
-  String get fetchPriority;
-  set fetchPriority(String value);
-  String get charset;
-  set charset(String value);
-  String get event;
-  set event(String value);
-  String get htmlFor;
-  set htmlFor(String value);
+  String get fetchPriority {
+    unsupportedPlatformError();
+  }
+
+  set fetchPriority(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get charset {
+    unsupportedPlatformError();
+  }
+
+  set charset(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get event {
+    unsupportedPlatformError();
+  }
+
+  set event(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get htmlFor {
+    unsupportedPlatformError();
+  }
+
+  set htmlFor(String value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`HTMLTemplateElement`** interface enables access to the contents of an
@@ -6353,11 +10297,17 @@ abstract class HTMLScriptElement implements HTMLElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTemplateElement).
-abstract class HTMLTemplateElement implements HTMLElement, JSObject {
+extension type HTMLTemplateElement._(JSObject _)
+    implements HTMLElement, JSObject {
+  /// Creates an [HTMLTemplateElement] using the tag 'template'.
+  HTMLTemplateElement() : _ = document.createElement('template');
+
   /// The **`HTMLTemplateElement.content`** property returns a
   /// `<template>` element's template contents (a
   /// [DocumentFragment]).
-  DocumentFragment get content;
+  DocumentFragment get content {
+    unsupportedPlatformError();
+  }
 
   /// The **`shadowRootMode`** property of the [HTMLTemplateElement] interface
   /// reflects the value of the
@@ -6373,8 +10323,13 @@ abstract class HTMLTemplateElement implements HTMLElement, JSObject {
   /// Otherwise, if an `HTMLTemplateElement` is created, the value of this
   /// property is irrelevant because the object is not a shadow root and cannot
   /// subsequently be changed to a shadow root.
-  String get shadowRootMode;
-  set shadowRootMode(String value);
+  String get shadowRootMode {
+    unsupportedPlatformError();
+  }
+
+  set shadowRootMode(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`shadowRootDelegatesFocus`** property of the [HTMLTemplateElement]
   /// interface reflects the value of the
@@ -6390,8 +10345,13 @@ abstract class HTMLTemplateElement implements HTMLElement, JSObject {
   /// Otherwise, if an `HTMLTemplateElement` is created, the value of this
   /// property is irrelevant because the object is not a shadow root and cannot
   /// subsequently be changed to a shadow root.
-  bool get shadowRootDelegatesFocus;
-  set shadowRootDelegatesFocus(bool value);
+  bool get shadowRootDelegatesFocus {
+    unsupportedPlatformError();
+  }
+
+  set shadowRootDelegatesFocus(bool value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`shadowRootClonable`** property reflects the value of the
   /// [`shadowrootclonable`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template#shadowrootclonable)
@@ -6406,8 +10366,13 @@ abstract class HTMLTemplateElement implements HTMLElement, JSObject {
   /// Otherwise, if an `HTMLTemplateElement` is created, the value of this
   /// property is irrelevant because the object is not a shadow root and cannot
   /// subsequently be changed to a shadow root.
-  bool get shadowRootClonable;
-  set shadowRootClonable(bool value);
+  bool get shadowRootClonable {
+    unsupportedPlatformError();
+  }
+
+  set shadowRootClonable(bool value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`shadowRootSerializable`** property reflects the value of the
   /// [`shadowrootserializable`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template#shadowrootserializable)
@@ -6422,8 +10387,13 @@ abstract class HTMLTemplateElement implements HTMLElement, JSObject {
   /// Otherwise, if an `HTMLTemplateElement` is created, the value of this
   /// property is irrelevant because the object is not a shadow root and cannot
   /// subsequently be changed to a shadow root.
-  bool get shadowRootSerializable;
-  set shadowRootSerializable(bool value);
+  bool get shadowRootSerializable {
+    unsupportedPlatformError();
+  }
+
+  set shadowRootSerializable(bool value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`HTMLSlotElement`** interface of the
@@ -6434,7 +10404,10 @@ abstract class HTMLTemplateElement implements HTMLElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSlotElement).
-abstract class HTMLSlotElement implements HTMLElement, JSObject {
+extension type HTMLSlotElement._(JSObject _) implements HTMLElement, JSObject {
+  /// Creates an [HTMLSlotElement] using the tag 'slot'.
+  HTMLSlotElement() : _ = document.createElement('slot');
+
   /// The **`assignedNodes()`** method of the [HTMLSlotElement] interface
   /// returns a sequence of the nodes assigned to this slot.
   ///
@@ -6442,7 +10415,9 @@ abstract class HTMLSlotElement implements HTMLElement, JSObject {
   /// the nodes assigned to this slot, as well as the nodes assigned to any
   /// other slots that are descendants of this slot. If no assigned nodes are
   /// found, it returns the slot's fallback content.
-  JSArray<Node> assignedNodes([AssignedNodesOptions options]);
+  JSArray<Node> assignedNodes([AssignedNodesOptions? options]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`assignedElements()`** method of the [HTMLSlotElement]
   /// interface returns a sequence of the elements assigned to this slot (and no
@@ -6452,7 +10427,9 @@ abstract class HTMLSlotElement implements HTMLElement, JSObject {
   /// the elements assigned to this slot, as well as the elements assigned to
   /// any other slots that are descendants of this slot. If no assigned elements
   /// are found, it returns the slot's fallback content.
-  JSArray<Element> assignedElements([AssignedNodesOptions options]);
+  JSArray<Element> assignedElements([AssignedNodesOptions? options]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`assign()`** method of the [HTMLSlotElement] interface sets the
   /// slot's _manually assigned nodes_ to an ordered set of slottables. The
@@ -6464,17 +10441,27 @@ abstract class HTMLSlotElement implements HTMLElement, JSObject {
   /// > shadow tree needs to have been
   /// > [created](https://developer.mozilla.org/en-US/docs/Web/API/Element/attachShadow)
   /// > with the `slotAssignment: "manual"` option.
-  void assign(JSObject nodes);
+  void assign(JSObject nodes) {
+    unsupportedPlatformError();
+  }
 
   /// The **`name`** property of the [HTMLSlotElement]
   /// interface returns or sets the slot name. A slot is a placeholder inside a
   /// web component
   /// that users can fill with their own markup.
-  String get name;
-  set name(String value);
-}
+  String get name {
+    unsupportedPlatformError();
+  }
 
-abstract class AssignedNodesOptions implements JSObject {
+  set name(String value) {
+    unsupportedPlatformError();
+  }
+}
+extension type AssignedNodesOptions._(JSObject _) implements JSObject {
+  factory AssignedNodesOptions({bool? flatten}) {
+    unsupportedPlatformError();
+  }
+
   bool get flatten {
     unsupportedPlatformError();
   }
@@ -6493,7 +10480,11 @@ abstract class AssignedNodesOptions implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement).
-abstract class HTMLCanvasElement implements HTMLElement, JSObject {
+extension type HTMLCanvasElement._(JSObject _)
+    implements HTMLElement, JSObject {
+  /// Creates an [HTMLCanvasElement] using the tag 'canvas'.
+  HTMLCanvasElement() : _ = document.createElement('canvas');
+
   /// The
   /// **`HTMLCanvasElement.getContext()`** method returns a drawing
   /// context on the canvas, or
@@ -6510,7 +10501,9 @@ abstract class HTMLCanvasElement implements HTMLElement, JSObject {
   RenderingContext? getContext(
     String contextId, [
     JSAny? options,
-  ]);
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLCanvasElement.toDataURL()`** method returns a
   /// [data URL](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URLs)
@@ -6529,9 +10522,11 @@ abstract class HTMLCanvasElement implements HTMLElement, JSObject {
   /// The created image data will have a resolution of 96dpi for file formats
   /// that support encoding resolution metadata.
   String toDataURL([
-    String type,
+    String? type,
     JSAny? quality,
-  ]);
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLCanvasElement.toBlob()`** method creates a [Blob] object
   /// representing the image contained in the canvas.
@@ -6548,20 +10543,26 @@ abstract class HTMLCanvasElement implements HTMLElement, JSObject {
   /// support encoding resolution metadata.
   void toBlob(
     BlobCallback callback, [
-    String type,
+    String? type,
     JSAny? quality,
-  ]);
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLCanvasElement.transferControlToOffscreen()`** method transfers
   /// control to an [OffscreenCanvas] object, either on the main thread or on a
   /// worker.
-  OffscreenCanvas transferControlToOffscreen();
+  OffscreenCanvas transferControlToOffscreen() {
+    unsupportedPlatformError();
+  }
 
   /// The **`captureStream()`** method of the [HTMLCanvasElement] interface
   /// returns a [MediaStream]
   /// which includes a [CanvasCaptureMediaStreamTrack] containing a real-time
   /// video capture of the canvas's contents.
-  MediaStream captureStream([num frameRequestRate]);
+  MediaStream captureStream([num? frameRequestRate]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLCanvasElement.width`** property is a
   /// positive `integer` reflecting the
@@ -6580,8 +10581,13 @@ abstract class HTMLCanvasElement implements HTMLElement, JSObject {
   ///
   /// This is one of the two properties, the other being
   /// [HTMLCanvasElement.height], that controls the size of the canvas.
-  int get width;
-  set width(int value);
+  int get width {
+    unsupportedPlatformError();
+  }
+
+  set width(int value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`HTMLCanvasElement.height`** property is a
   /// positive `integer` reflecting the
@@ -6600,11 +10606,25 @@ abstract class HTMLCanvasElement implements HTMLElement, JSObject {
   ///
   /// This is one of the two properties, the other being
   /// [HTMLCanvasElement.width], that controls the size of the canvas.
-  int get height;
-  set height(int value);
-}
+  int get height {
+    unsupportedPlatformError();
+  }
 
-abstract class CanvasRenderingContext2DSettings implements JSObject {
+  set height(int value) {
+    unsupportedPlatformError();
+  }
+}
+extension type CanvasRenderingContext2DSettings._(JSObject _)
+    implements JSObject {
+  factory CanvasRenderingContext2DSettings({
+    bool? alpha,
+    bool? desynchronized,
+    PredefinedColorSpace? colorSpace,
+    bool? willReadFrequently,
+  }) {
+    unsupportedPlatformError();
+  }
+
   bool get alpha {
     unsupportedPlatformError();
   }
@@ -6661,7 +10681,7 @@ abstract class CanvasRenderingContext2DSettings implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D).
-abstract class CanvasRenderingContext2D implements JSObject {
+extension type CanvasRenderingContext2D._(JSObject _) implements JSObject {
   /// The **`CanvasRenderingContext2D.getContextAttributes()`** method returns
   /// an object that contains attributes used by the context.
   ///
@@ -6669,7 +10689,9 @@ abstract class CanvasRenderingContext2D implements JSObject {
   /// with
   /// [`HTMLCanvasElement.getContext()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/getContext),
   /// but the attributes that are actually supported and used may differ.
-  CanvasRenderingContext2DSettings getContextAttributes();
+  CanvasRenderingContext2DSettings getContextAttributes() {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`CanvasRenderingContext2D.save()`**
@@ -6703,7 +10725,9 @@ abstract class CanvasRenderingContext2D implements JSObject {
   /// [CanvasRenderingContext2D.textBaseline],
   /// [CanvasRenderingContext2D.direction],
   /// [CanvasRenderingContext2D.imageSmoothingEnabled].
-  void save();
+  void save() {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`CanvasRenderingContext2D.restore()`**
@@ -6716,7 +10740,9 @@ abstract class CanvasRenderingContext2D implements JSObject {
   /// For more information about the
   /// [drawing state](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/save#drawing_state),
   /// see [CanvasRenderingContext2D.save].
-  void restore();
+  void restore() {
+    unsupportedPlatformError();
+  }
 
   /// The **`CanvasRenderingContext2D.reset()`** method of the Canvas 2D API
   /// resets the rendering context to its default state, allowing it to be
@@ -6736,7 +10762,9 @@ abstract class CanvasRenderingContext2D implements JSObject {
   /// [image smoothing](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D#image_smoothing),
   /// [filters](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D#filters),
   /// and so on.
-  void reset();
+  void reset() {
+    unsupportedPlatformError();
+  }
 
   /// The **`CanvasRenderingContext2D.isContextLost()`** method of the Canvas 2D
   /// API returns `true` if the rendering context is lost (and has not yet been
@@ -6754,7 +10782,9 @@ abstract class CanvasRenderingContext2D implements JSObject {
   /// On success it will fire the
   /// [`contextrestored` event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/contextrestored_event),
   /// indicating that the context is ready to reinitialize and redraw.
-  bool isContextLost();
+  bool isContextLost() {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`CanvasRenderingContext2D.scale()`**
@@ -6774,12 +10804,16 @@ abstract class CanvasRenderingContext2D implements JSObject {
   void scale(
     num x,
     num y,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`CanvasRenderingContext2D.rotate()`**
   /// method of the Canvas 2D API adds a rotation to the transformation matrix.
-  void rotate(num angle);
+  void rotate(num angle) {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`CanvasRenderingContext2D.translate()`**
@@ -6788,7 +10822,9 @@ abstract class CanvasRenderingContext2D implements JSObject {
   void translate(
     num x,
     num y,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`CanvasRenderingContext2D.transform()`**
@@ -6809,12 +10845,16 @@ abstract class CanvasRenderingContext2D implements JSObject {
     num d,
     num e,
     num f,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`CanvasRenderingContext2D.getTransform()`** method of the Canvas 2D
   /// API retrieves the current transformation matrix being applied to the
   /// context.
-  DOMMatrix getTransform();
+  DOMMatrix getTransform() {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`CanvasRenderingContext2D.setTransform()`**
@@ -6829,19 +10869,23 @@ abstract class CanvasRenderingContext2D implements JSObject {
   /// > instead of overriding the current transform matrix, it
   /// > multiplies it with a given one.
   void setTransform([
-    JSAny aOrTransform,
-    num b,
-    num c,
-    num d,
-    num e,
-    num f,
-  ]);
+    JSAny? aOrTransform,
+    num? b,
+    num? c,
+    num? d,
+    num? e,
+    num? f,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`CanvasRenderingContext2D.resetTransform()`**
   /// method of the Canvas 2D API resets the current transform to the identity
   /// matrix.
-  void resetTransform();
+  void resetTransform() {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`CanvasRenderingContext2D.createLinearGradient()`**
@@ -6868,7 +10912,9 @@ abstract class CanvasRenderingContext2D implements JSObject {
     num y0,
     num x1,
     num y1,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`CanvasRenderingContext2D.createRadialGradient()`**
@@ -6892,7 +10938,9 @@ abstract class CanvasRenderingContext2D implements JSObject {
     num x1,
     num y1,
     num r1,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`CanvasRenderingContext2D.createConicGradient()`** method of the
   /// Canvas 2D API creates a gradient around a point with given coordinates.
@@ -6909,7 +10957,9 @@ abstract class CanvasRenderingContext2D implements JSObject {
     num startAngle,
     num x,
     num y,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`CanvasRenderingContext2D.createPattern()`** method of the Canvas 2D
   /// API creates a pattern using the specified image and repetition.
@@ -6923,7 +10973,9 @@ abstract class CanvasRenderingContext2D implements JSObject {
   CanvasPattern? createPattern(
     CanvasImageSource image,
     String repetition,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`CanvasRenderingContext2D.clearRect()`**
@@ -6942,7 +10994,9 @@ abstract class CanvasRenderingContext2D implements JSObject {
     num y,
     num w,
     num h,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`CanvasRenderingContext2D.fillRect()`**
@@ -6960,7 +11014,9 @@ abstract class CanvasRenderingContext2D implements JSObject {
     num y,
     num w,
     num h,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`CanvasRenderingContext2D.strokeRect()`**
@@ -6979,7 +11035,9 @@ abstract class CanvasRenderingContext2D implements JSObject {
     num y,
     num w,
     num h,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`CanvasRenderingContext2D.beginPath()`**
@@ -6989,7 +11047,9 @@ abstract class CanvasRenderingContext2D implements JSObject {
   ///
   /// > **Note:** To create a new sub-path, i.e., one matching the current
   /// > canvas state, you can use [CanvasRenderingContext2D.moveTo].
-  void beginPath();
+  void beginPath() {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`CanvasRenderingContext2D.fill()`**
@@ -6997,9 +11057,11 @@ abstract class CanvasRenderingContext2D implements JSObject {
   /// current
   /// [CanvasRenderingContext2D.fillStyle].
   void fill([
-    JSAny fillRuleOrPath,
-    CanvasFillRule fillRule,
-  ]);
+    JSAny? fillRuleOrPath,
+    CanvasFillRule? fillRule,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`CanvasRenderingContext2D.stroke()`**
@@ -7014,7 +11076,9 @@ abstract class CanvasRenderingContext2D implements JSObject {
   /// The stroke is drawn using the
   /// [non-zero winding rule](https://en.wikipedia.org/wiki/Nonzero-rule), which
   /// means that path intersections will still get filled.
-  void stroke([Path2D path]);
+  void stroke([Path2D? path]) {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`CanvasRenderingContext2D.clip()`**
@@ -7044,9 +11108,11 @@ abstract class CanvasRenderingContext2D implements JSObject {
   /// > `clip()`, and restore it once you have finished drawing in the clipped
   /// > area using [CanvasRenderingContext2D.restore].
   void clip([
-    JSAny fillRuleOrPath,
-    CanvasFillRule fillRule,
-  ]);
+    JSAny? fillRuleOrPath,
+    CanvasFillRule? fillRule,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`CanvasRenderingContext2D.isPointInPath()`**
@@ -7056,9 +11122,11 @@ abstract class CanvasRenderingContext2D implements JSObject {
   bool isPointInPath(
     JSAny pathOrX,
     num xOrY, [
-    JSAny fillRuleOrY,
-    CanvasFillRule fillRule,
-  ]);
+    JSAny? fillRuleOrY,
+    CanvasFillRule? fillRule,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`CanvasRenderingContext2D.isPointInStroke()`**
@@ -7068,8 +11136,10 @@ abstract class CanvasRenderingContext2D implements JSObject {
   bool isPointInStroke(
     JSAny pathOrX,
     num xOrY, [
-    num y,
-  ]);
+    num? y,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`CanvasRenderingContext2D.drawFocusIfNeeded()`**
@@ -7078,8 +11148,10 @@ abstract class CanvasRenderingContext2D implements JSObject {
   /// specified element is focused.
   void drawFocusIfNeeded(
     JSObject elementOrPath, [
-    Element element,
-  ]);
+    Element? element,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The [CanvasRenderingContext2D] method
   /// **`fillText()`**, part of the Canvas 2D API, draws a text string
@@ -7109,8 +11181,10 @@ abstract class CanvasRenderingContext2D implements JSObject {
     String text,
     num x,
     num y, [
-    num maxWidth,
-  ]);
+    num? maxWidth,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The [CanvasRenderingContext2D] method
   /// **`strokeText()`**, part of the Canvas 2D API, strokes — that
@@ -7133,14 +11207,18 @@ abstract class CanvasRenderingContext2D implements JSObject {
     String text,
     num x,
     num y, [
-    num maxWidth,
-  ]);
+    num? maxWidth,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// `CanvasRenderingContext2D.measureText()`
   /// method returns a [TextMetrics] object that contains information about the
   /// measured text (such as its width, for example).
-  TextMetrics measureText(String text);
+  TextMetrics measureText(String text) {
+    unsupportedPlatformError();
+  }
 
   /// The **`CanvasRenderingContext2D.drawImage()`** method of the
   /// Canvas 2D API provides different ways to draw an image onto the canvas.
@@ -7148,13 +11226,15 @@ abstract class CanvasRenderingContext2D implements JSObject {
     CanvasImageSource image,
     num dxOrSx,
     num dyOrSy, [
-    num dwOrSw,
-    num dhOrSh,
-    num dx,
-    num dy,
-    num dw,
-    num dh,
-  ]);
+    num? dwOrSw,
+    num? dhOrSh,
+    num? dx,
+    num? dy,
+    num? dw,
+    num? dh,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`CanvasRenderingContext2D.createImageData()`** method of
   /// the Canvas 2D API creates a new, blank [ImageData] object with the
@@ -7162,9 +11242,11 @@ abstract class CanvasRenderingContext2D implements JSObject {
   /// black.
   ImageData createImageData(
     JSAny imagedataOrSw, [
-    int sh,
-    ImageDataSettings settings,
-  ]);
+    int? sh,
+    ImageDataSettings? settings,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The [CanvasRenderingContext2D] method
   /// **`getImageData()`** of the Canvas 2D API returns an
@@ -7188,8 +11270,10 @@ abstract class CanvasRenderingContext2D implements JSObject {
     int sy,
     int sw,
     int sh, [
-    ImageDataSettings settings,
-  ]);
+    ImageDataSettings? settings,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`CanvasRenderingContext2D.putImageData()`**
   /// method of the Canvas 2D API paints data from the given [ImageData] object
@@ -7208,11 +11292,13 @@ abstract class CanvasRenderingContext2D implements JSObject {
     ImageData imagedata,
     int dx,
     int dy, [
-    int dirtyX,
-    int dirtyY,
-    int dirtyWidth,
-    int dirtyHeight,
-  ]);
+    int? dirtyX,
+    int? dirtyY,
+    int? dirtyWidth,
+    int? dirtyHeight,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`setLineDash()`** method of the Canvas 2D API's
   /// [CanvasRenderingContext2D] interface sets the line dash pattern used when
@@ -7222,11 +11308,15 @@ abstract class CanvasRenderingContext2D implements JSObject {
   ///
   /// > **Note:** To return to using solid lines, set the line dash list to an
   /// > empty array.
-  void setLineDash(JSArray<JSNumber> segments);
+  void setLineDash(JSArray<JSNumber> segments) {
+    unsupportedPlatformError();
+  }
 
   /// The **`getLineDash()`** method of the Canvas 2D API's
   /// [CanvasRenderingContext2D] interface gets the current line dash pattern.
-  JSArray<JSNumber> getLineDash();
+  JSArray<JSNumber> getLineDash() {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`CanvasRenderingContext2D.closePath()`**
@@ -7240,7 +11330,9 @@ abstract class CanvasRenderingContext2D implements JSObject {
   /// the path using
   /// the [CanvasRenderingContext2D.stroke] or
   /// [CanvasRenderingContext2D.fill] methods.
-  void closePath();
+  void closePath() {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`CanvasRenderingContext2D.moveTo()`**
@@ -7250,7 +11342,9 @@ abstract class CanvasRenderingContext2D implements JSObject {
   void moveTo(
     num x,
     num y,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The [CanvasRenderingContext2D] method
   /// **`lineTo()`**, part of the Canvas 2D API, adds a straight line
@@ -7266,7 +11360,9 @@ abstract class CanvasRenderingContext2D implements JSObject {
   void lineTo(
     num x,
     num y,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`CanvasRenderingContext2D.quadraticCurveTo()`**
@@ -7284,7 +11380,9 @@ abstract class CanvasRenderingContext2D implements JSObject {
     num cpy,
     num x,
     num y,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`CanvasRenderingContext2D.bezierCurveTo()`**
@@ -7304,7 +11402,9 @@ abstract class CanvasRenderingContext2D implements JSObject {
     num cp2y,
     num x,
     num y,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`CanvasRenderingContext2D.arcTo()`** method of the Canvas 2D API
   /// adds a circular arc to the current sub-path, using the given control
@@ -7325,7 +11425,9 @@ abstract class CanvasRenderingContext2D implements JSObject {
     num x2,
     num y2,
     num radius,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`CanvasRenderingContext2D.rect()`**
@@ -7345,7 +11447,9 @@ abstract class CanvasRenderingContext2D implements JSObject {
     num y,
     num w,
     num h,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`CanvasRenderingContext2D.roundRect()`** method of the Canvas 2D API
   /// adds a rounded rectangle to the current path.
@@ -7364,8 +11468,10 @@ abstract class CanvasRenderingContext2D implements JSObject {
     num y,
     num w,
     num h, [
-    JSAny radii,
-  ]);
+    JSAny? radii,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`CanvasRenderingContext2D.arc()`**
@@ -7378,8 +11484,10 @@ abstract class CanvasRenderingContext2D implements JSObject {
     num radius,
     num startAngle,
     num endAngle, [
-    bool counterclockwise,
-  ]);
+    bool? counterclockwise,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`CanvasRenderingContext2D.ellipse()`**
@@ -7393,8 +11501,10 @@ abstract class CanvasRenderingContext2D implements JSObject {
     num rotation,
     num startAngle,
     num endAngle, [
-    bool counterclockwise,
-  ]);
+    bool? counterclockwise,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`CanvasRenderingContext2D.canvas`** property, part of the
   /// [Canvas API](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API),
@@ -7403,7 +11513,9 @@ abstract class CanvasRenderingContext2D implements JSObject {
   /// might be
   /// [`null`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/null)
   /// if there is no associated `canvas` element.
-  HTMLCanvasElement get canvas;
+  HTMLCanvasElement get canvas {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`CanvasRenderingContext2D.globalAlpha`**
@@ -7415,8 +11527,13 @@ abstract class CanvasRenderingContext2D implements JSObject {
   /// > [Applying styles and color](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Applying_styles_and_colors)
   /// > in the
   /// > [Canvas Tutorial](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial).
-  double get globalAlpha;
-  set globalAlpha(num value);
+  double get globalAlpha {
+    unsupportedPlatformError();
+  }
+
+  set globalAlpha(num value) {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`CanvasRenderingContext2D.globalCompositeOperation`**
@@ -7428,8 +11545,13 @@ abstract class CanvasRenderingContext2D implements JSObject {
   /// [Compositing and clipping](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Compositing)
   /// in the
   /// [Canvas Tutorial](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial).
-  String get globalCompositeOperation;
-  set globalCompositeOperation(String value);
+  String get globalCompositeOperation {
+    unsupportedPlatformError();
+  }
+
+  set globalCompositeOperation(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`imageSmoothingEnabled`** property of the
   /// [CanvasRenderingContext2D] interface, part of the
@@ -7448,8 +11570,13 @@ abstract class CanvasRenderingContext2D implements JSObject {
   /// > **Note:** You can adjust the smoothing quality with the
   /// > [CanvasRenderingContext2D.imageSmoothingQuality]
   /// > property.
-  bool get imageSmoothingEnabled;
-  set imageSmoothingEnabled(bool value);
+  bool get imageSmoothingEnabled {
+    unsupportedPlatformError();
+  }
+
+  set imageSmoothingEnabled(bool value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`imageSmoothingQuality`** property of the
   /// [CanvasRenderingContext2D] interface, part of the
@@ -7460,8 +11587,13 @@ abstract class CanvasRenderingContext2D implements JSObject {
   /// > **Note:** For this property to have an effect,
   /// > [CanvasRenderingContext2D.imageSmoothingEnabled]
   /// > must be `true`.
-  ImageSmoothingQuality get imageSmoothingQuality;
-  set imageSmoothingQuality(ImageSmoothingQuality value);
+  ImageSmoothingQuality get imageSmoothingQuality {
+    unsupportedPlatformError();
+  }
+
+  set imageSmoothingQuality(ImageSmoothingQuality value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`CanvasRenderingContext2D.strokeStyle`** property of the
   /// Canvas 2D API specifies the color, gradient, or pattern to use for the
@@ -7472,8 +11604,13 @@ abstract class CanvasRenderingContext2D implements JSObject {
   /// > [Applying styles and color](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Applying_styles_and_colors)
   /// > in the
   /// > [Canvas tutorial](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial).
-  JSAny get strokeStyle;
-  set strokeStyle(JSAny value);
+  JSAny get strokeStyle {
+    unsupportedPlatformError();
+  }
+
+  set strokeStyle(JSAny value) {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`CanvasRenderingContext2D.fillStyle`**
@@ -7488,8 +11625,13 @@ abstract class CanvasRenderingContext2D implements JSObject {
   /// > [Applying styles and color](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Applying_styles_and_colors)
   /// > in the
   /// > [Canvas tutorial](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial).
-  JSAny get fillStyle;
-  set fillStyle(JSAny value);
+  JSAny get fillStyle {
+    unsupportedPlatformError();
+  }
+
+  set fillStyle(JSAny value) {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`CanvasRenderingContext2D.shadowOffsetX`**
@@ -7503,8 +11645,13 @@ abstract class CanvasRenderingContext2D implements JSObject {
   /// > [CanvasRenderingContext2D.shadowBlur], `shadowOffsetX`, or
   /// > [CanvasRenderingContext2D.shadowOffsetY] properties must
   /// > be non-zero, as well.
-  double get shadowOffsetX;
-  set shadowOffsetX(num value);
+  double get shadowOffsetX {
+    unsupportedPlatformError();
+  }
+
+  set shadowOffsetX(num value) {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`CanvasRenderingContext2D.shadowOffsetY`**
@@ -7519,8 +11666,13 @@ abstract class CanvasRenderingContext2D implements JSObject {
   /// > [CanvasRenderingContext2D.shadowOffsetX], or `shadowOffsetY` properties
   /// > must be non-zero, as
   /// > well.
-  double get shadowOffsetY;
-  set shadowOffsetY(num value);
+  double get shadowOffsetY {
+    unsupportedPlatformError();
+  }
+
+  set shadowOffsetY(num value) {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`CanvasRenderingContext2D.shadowBlur`**
@@ -7534,8 +11686,13 @@ abstract class CanvasRenderingContext2D implements JSObject {
   /// > [CanvasRenderingContext2D.shadowOffsetX], or
   /// > [CanvasRenderingContext2D.shadowOffsetY] properties must
   /// > be non-zero, as well.
-  double get shadowBlur;
-  set shadowBlur(num value);
+  double get shadowBlur {
+    unsupportedPlatformError();
+  }
+
+  set shadowBlur(num value) {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`CanvasRenderingContext2D.shadowColor`**
@@ -7553,16 +11710,26 @@ abstract class CanvasRenderingContext2D implements JSObject {
   /// > [CanvasRenderingContext2D.shadowOffsetX], or
   /// > [CanvasRenderingContext2D.shadowOffsetY] properties must
   /// > be non-zero, as well.
-  String get shadowColor;
-  set shadowColor(String value);
+  String get shadowColor {
+    unsupportedPlatformError();
+  }
+
+  set shadowColor(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`CanvasRenderingContext2D.filter`**
   /// property of the Canvas 2D API provides filter effects such as blurring and
   /// grayscaling.
   /// It is similar to the CSS `filter` property and accepts the same values.
-  String get filter;
-  set filter(String value);
+  String get filter {
+    unsupportedPlatformError();
+  }
+
+  set filter(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`CanvasRenderingContext2D.lineWidth`**
@@ -7572,8 +11739,13 @@ abstract class CanvasRenderingContext2D implements JSObject {
   /// > [CanvasRenderingContext2D.stroke],
   /// > [CanvasRenderingContext2D.strokeRect],
   /// > and [CanvasRenderingContext2D.strokeText] methods.
-  double get lineWidth;
-  set lineWidth(num value);
+  double get lineWidth {
+    unsupportedPlatformError();
+  }
+
+  set lineWidth(num value) {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`CanvasRenderingContext2D.lineCap`**
@@ -7584,8 +11756,13 @@ abstract class CanvasRenderingContext2D implements JSObject {
   /// > [CanvasRenderingContext2D.stroke],
   /// > [CanvasRenderingContext2D.strokeRect],
   /// > and [CanvasRenderingContext2D.strokeText] methods.
-  CanvasLineCap get lineCap;
-  set lineCap(CanvasLineCap value);
+  CanvasLineCap get lineCap {
+    unsupportedPlatformError();
+  }
+
+  set lineCap(CanvasLineCap value) {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`CanvasRenderingContext2D.lineJoin`**
@@ -7605,8 +11782,13 @@ abstract class CanvasRenderingContext2D implements JSObject {
   /// > [CanvasRenderingContext2D.stroke],
   /// > [CanvasRenderingContext2D.strokeRect],
   /// > and [CanvasRenderingContext2D.strokeText] methods.
-  CanvasLineJoin get lineJoin;
-  set lineJoin(CanvasLineJoin value);
+  CanvasLineJoin get lineJoin {
+    unsupportedPlatformError();
+  }
+
+  set lineJoin(CanvasLineJoin value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`CanvasRenderingContext2D.miterLimit`** property of the
   /// Canvas 2D API sets the miter limit ratio.
@@ -7615,8 +11797,13 @@ abstract class CanvasRenderingContext2D implements JSObject {
   /// > [Applying styles and color](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Applying_styles_and_colors)
   /// > in the
   /// > [Canvas tutorial](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial).
-  double get miterLimit;
-  set miterLimit(num value);
+  double get miterLimit {
+    unsupportedPlatformError();
+  }
+
+  set miterLimit(num value) {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`CanvasRenderingContext2D.lineDashOffset`**
@@ -7624,16 +11811,26 @@ abstract class CanvasRenderingContext2D implements JSObject {
   ///
   /// > **Note:** Lines are drawn by calling the
   /// > [CanvasRenderingContext2D.stroke] method.
-  double get lineDashOffset;
-  set lineDashOffset(num value);
+  double get lineDashOffset {
+    unsupportedPlatformError();
+  }
+
+  set lineDashOffset(num value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`CanvasRenderingContext2D.font`** property of the Canvas 2D API
   /// specifies the current text style to use when drawing text.
   /// This string uses the same syntax as the
   /// [CSS font](https://developer.mozilla.org/en-US/docs/Web/CSS/font)
   /// specifier.
-  String get font;
-  set font(String value);
+  String get font {
+    unsupportedPlatformError();
+  }
+
+  set font(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`CanvasRenderingContext2D.textAlign`**
@@ -7645,23 +11842,38 @@ abstract class CanvasRenderingContext2D implements JSObject {
   /// [CanvasRenderingContext2D.fillText] method. For example, if
   /// `textAlign` is `"center"`, then the text's left edge will be at
   /// `x - (textWidth / 2)`.
-  CanvasTextAlign get textAlign;
-  set textAlign(CanvasTextAlign value);
+  CanvasTextAlign get textAlign {
+    unsupportedPlatformError();
+  }
+
+  set textAlign(CanvasTextAlign value) {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`CanvasRenderingContext2D.textBaseline`**
   /// property of the Canvas 2D API specifies the current text baseline used
   /// when drawing
   /// text.
-  CanvasTextBaseline get textBaseline;
-  set textBaseline(CanvasTextBaseline value);
+  CanvasTextBaseline get textBaseline {
+    unsupportedPlatformError();
+  }
+
+  set textBaseline(CanvasTextBaseline value) {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`CanvasRenderingContext2D.direction`**
   /// property of the Canvas 2D API specifies the current text direction used to
   /// draw text.
-  CanvasDirection get direction;
-  set direction(CanvasDirection value);
+  CanvasDirection get direction {
+    unsupportedPlatformError();
+  }
+
+  set direction(CanvasDirection value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`CanvasRenderingContext2D.letterSpacing`** property of the
   /// [Canvas API](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API)
@@ -7670,8 +11882,13 @@ abstract class CanvasRenderingContext2D implements JSObject {
   /// This corresponds to the CSS
   /// [`letter-spacing`](https://developer.mozilla.org/en-US/docs/Web/CSS/letter-spacing)
   /// property.
-  String get letterSpacing;
-  set letterSpacing(String value);
+  String get letterSpacing {
+    unsupportedPlatformError();
+  }
+
+  set letterSpacing(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`CanvasRenderingContext2D.fontKerning`** property of the
   /// [Canvas API](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API)
@@ -7687,8 +11904,13 @@ abstract class CanvasRenderingContext2D implements JSObject {
   /// The property corresponds to the
   /// [`font-kerning`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-kerning)
   /// CSS property.
-  CanvasFontKerning get fontKerning;
-  set fontKerning(CanvasFontKerning value);
+  CanvasFontKerning get fontKerning {
+    unsupportedPlatformError();
+  }
+
+  set fontKerning(CanvasFontKerning value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`CanvasRenderingContext2D.fontStretch`** property of the
   /// [Canvas API](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API)
@@ -7698,8 +11920,13 @@ abstract class CanvasRenderingContext2D implements JSObject {
   /// [`font-stretch`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-stretch)
   /// CSS property when used with keywords (percentage values are not
   /// supported).
-  CanvasFontStretch get fontStretch;
-  set fontStretch(CanvasFontStretch value);
+  CanvasFontStretch get fontStretch {
+    unsupportedPlatformError();
+  }
+
+  set fontStretch(CanvasFontStretch value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`CanvasRenderingContext2D.fontVariantCaps`** property of the
   /// [Canvas API](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API)
@@ -7708,8 +11935,13 @@ abstract class CanvasRenderingContext2D implements JSObject {
   /// This corresponds to the CSS
   /// [`font-variant-caps`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-caps)
   /// property.
-  CanvasFontVariantCaps get fontVariantCaps;
-  set fontVariantCaps(CanvasFontVariantCaps value);
+  CanvasFontVariantCaps get fontVariantCaps {
+    unsupportedPlatformError();
+  }
+
+  set fontVariantCaps(CanvasFontVariantCaps value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`CanvasRenderingContext2D.textRendering`** property of the
   /// [Canvas API](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API)
@@ -7721,8 +11953,13 @@ abstract class CanvasRenderingContext2D implements JSObject {
   /// attribute (and CSS
   /// [`text-rendering`](https://developer.mozilla.org/en-US/docs/Web/CSS/text-rendering)
   /// property).
-  CanvasTextRendering get textRendering;
-  set textRendering(CanvasTextRendering value);
+  CanvasTextRendering get textRendering {
+    unsupportedPlatformError();
+  }
+
+  set textRendering(CanvasTextRendering value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`CanvasRenderingContext2D.wordSpacing`** property of the
   /// [Canvas API](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API)
@@ -7731,8 +11968,13 @@ abstract class CanvasRenderingContext2D implements JSObject {
   /// This corresponds to the CSS
   /// [`word-spacing`](https://developer.mozilla.org/en-US/docs/Web/CSS/word-spacing)
   /// property.
-  String get wordSpacing;
-  set wordSpacing(String value);
+  String get wordSpacing {
+    unsupportedPlatformError();
+  }
+
+  set wordSpacing(String value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`CanvasGradient`** interface represents an
@@ -7749,13 +11991,15 @@ abstract class CanvasRenderingContext2D implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CanvasGradient).
-abstract class CanvasGradient implements JSObject {
+extension type CanvasGradient._(JSObject _) implements JSObject {
   /// The **`CanvasGradient.addColorStop()`** method adds a new color stop,
   /// defined by an `offset` and a `color`, to a given canvas gradient.
   void addColorStop(
     num offset,
     String color,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`CanvasPattern`** interface represents an
@@ -7770,10 +12014,12 @@ abstract class CanvasGradient implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CanvasPattern).
-abstract class CanvasPattern implements JSObject {
+extension type CanvasPattern._(JSObject _) implements JSObject {
   /// The **`CanvasPattern.setTransform()`** method uses a [DOMMatrix] object as
   /// the pattern's transformation matrix and invokes it on the pattern.
-  void setTransform([DOMMatrix2DInit transform]);
+  void setTransform([DOMMatrix2DInit? transform]) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`TextMetrics`** interface represents the dimensions of a piece of text
@@ -7784,10 +12030,12 @@ abstract class CanvasPattern implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/TextMetrics).
-abstract class TextMetrics implements JSObject {
+extension type TextMetrics._(JSObject _) implements JSObject {
   /// The read-only **`width`** property of the [TextMetrics] interface contains
   /// the text's advance width (the width of that inline box) in CSS pixels.
-  double get width;
+  double get width {
+    unsupportedPlatformError();
+  }
 
   /// The read-only `actualBoundingBoxLeft` property of the [TextMetrics]
   /// interface is a `double` giving the distance parallel to the baseline from
@@ -7795,73 +12043,98 @@ abstract class TextMetrics implements JSObject {
   /// property to the left side of the bounding rectangle of the given text, in
   /// CSS pixels; positive numbers indicating a distance going left from the
   /// given alignment point.
-  double get actualBoundingBoxLeft;
+  double get actualBoundingBoxLeft {
+    unsupportedPlatformError();
+  }
 
   /// The read-only `actualBoundingBoxRight` property of the [TextMetrics]
   /// interface is a `double` giving the distance parallel to the baseline from
   /// the alignment point given by the [CanvasRenderingContext2D.textAlign]
   /// property to the right side of the bounding rectangle of the given text, in
   /// CSS pixels.
-  double get actualBoundingBoxRight;
+  double get actualBoundingBoxRight {
+    unsupportedPlatformError();
+  }
 
   /// The read-only `fontBoundingBoxAscent` property of the [TextMetrics]
   /// interface returns the distance from the horizontal line indicated by the
   /// [CanvasRenderingContext2D.textBaseline] attribute, to the top of the
   /// highest bounding rectangle of all the fonts used to render the text, in
   /// CSS pixels.
-  double get fontBoundingBoxAscent;
+  double get fontBoundingBoxAscent {
+    unsupportedPlatformError();
+  }
 
   /// The read-only `fontBoundingBoxDescent` property of the [TextMetrics]
   /// interface returns the distance from the horizontal line indicated by the
   /// [CanvasRenderingContext2D.textBaseline] attribute to the bottom of the
   /// bounding rectangle of all the fonts used to render the text, in CSS
   /// pixels.
-  double get fontBoundingBoxDescent;
+  double get fontBoundingBoxDescent {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`actualBoundingBoxAscent`** property of the [TextMetrics]
   /// interface is a `double` giving the distance from the horizontal line
   /// indicated by the [CanvasRenderingContext2D.textBaseline] attribute to the
   /// top of the bounding rectangle used to render the text, in CSS pixels.
-  double get actualBoundingBoxAscent;
+  double get actualBoundingBoxAscent {
+    unsupportedPlatformError();
+  }
 
   /// The read-only `actualBoundingBoxDescent` property of the [TextMetrics]
   /// interface is a `double` giving the distance from the horizontal line
   /// indicated by the [CanvasRenderingContext2D.textBaseline] attribute to the
   /// bottom of the bounding rectangle used to render the text, in CSS pixels.
-  double get actualBoundingBoxDescent;
+  double get actualBoundingBoxDescent {
+    unsupportedPlatformError();
+  }
 
   /// The read-only `emHeightAscent` property of the [TextMetrics] interface
   /// returns the distance from the horizontal line indicated by the
   /// [CanvasRenderingContext2D.textBaseline] property to the top of the _em_
   /// square in the line box, in CSS pixels.
-  double get emHeightAscent;
+  double get emHeightAscent {
+    unsupportedPlatformError();
+  }
 
   /// The read-only `emHeightDescent` property of the [TextMetrics] interface
   /// returns the distance from the horizontal line indicated by the
   /// [CanvasRenderingContext2D.textBaseline] property to the bottom of the _em_
   /// square in the line box, in CSS pixels.
-  double get emHeightDescent;
+  double get emHeightDescent {
+    unsupportedPlatformError();
+  }
 
   /// The read-only `hangingBaseline` property of the [TextMetrics] interface is
   /// a `double` giving the distance from the horizontal line indicated by the
   /// [CanvasRenderingContext2D.textBaseline] property to the hanging baseline
   /// of the line box, in CSS pixels.
-  double get hangingBaseline;
+  double get hangingBaseline {
+    unsupportedPlatformError();
+  }
 
   /// The read-only `alphabeticBaseline` property of the [TextMetrics] interface
   /// is a `double` giving the distance from the horizontal line indicated by
   /// the [CanvasRenderingContext2D.textBaseline] property to the alphabetic
   /// baseline of the line box, in CSS pixels.
-  double get alphabeticBaseline;
+  double get alphabeticBaseline {
+    unsupportedPlatformError();
+  }
 
   /// The read-only `ideographicBaseline` property of the [TextMetrics]
   /// interface is a `double` giving the distance from the horizontal line
   /// indicated by the [CanvasRenderingContext2D.textBaseline] property to the
   /// ideographic baseline of the line box, in CSS pixels.
-  double get ideographicBaseline;
+  double get ideographicBaseline {
+    unsupportedPlatformError();
+  }
 }
+extension type ImageDataSettings._(JSObject _) implements JSObject {
+  factory ImageDataSettings({PredefinedColorSpace? colorSpace}) {
+    unsupportedPlatformError();
+  }
 
-abstract class ImageDataSettings implements JSObject {
   PredefinedColorSpace get colorSpace {
     unsupportedPlatformError();
   }
@@ -7884,21 +12157,36 @@ abstract class ImageDataSettings implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ImageData).
-abstract class ImageData implements JSObject {
+extension type ImageData._(JSObject _) implements JSObject {
+  factory ImageData(
+    JSAny dataOrSw,
+    int shOrSw, [
+    JSAny? settingsOrSh,
+    ImageDataSettings? settings,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// The readonly **`ImageData.width`** property returns the number
   /// of pixels per row in the [ImageData] object.
-  int get width;
+  int get width {
+    unsupportedPlatformError();
+  }
 
   /// The readonly **`ImageData.height`** property returns the number
   /// of rows in the [ImageData] object.
-  int get height;
+  int get height {
+    unsupportedPlatformError();
+  }
 
   /// The readonly **`ImageData.data`** property returns a
   /// `Uint8ClampedArray` that contains the [ImageData] object's
   /// pixel data. Data is stored as a one-dimensional array in the RGBA order,
   /// with integer
   /// values between `0` and `255` (inclusive).
-  JSUint8ClampedArray get data;
+  JSUint8ClampedArray get data {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`ImageData.colorSpace`** property is a string indicating
   /// the color space of the image data.
@@ -7909,7 +12197,9 @@ abstract class ImageData implements JSObject {
   /// constructor or the
   /// [`createImageData()`](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/createImageData)
   /// method.
-  PredefinedColorSpace get colorSpace;
+  PredefinedColorSpace get colorSpace {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`Path2D`** interface of the Canvas 2D API is used to declare a path
@@ -7923,29 +12213,48 @@ abstract class ImageData implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Path2D).
-abstract class Path2D implements JSObject {
+extension type Path2D._(JSObject _) implements JSObject {
+  factory Path2D([JSAny? path]) {
+    unsupportedPlatformError();
+  }
+
   /// The **`Path2D.addPath()`** method
   /// of the Canvas 2D API adds one [Path2D] object to another
   /// `Path2D` object.
   void addPath(
     Path2D path, [
-    DOMMatrix2DInit transform,
-  ]);
-  void closePath();
+    DOMMatrix2DInit? transform,
+  ]) {
+    unsupportedPlatformError();
+  }
+
+  void closePath() {
+    unsupportedPlatformError();
+  }
+
   void moveTo(
     num x,
     num y,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void lineTo(
     num x,
     num y,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void quadraticCurveTo(
     num cpx,
     num cpy,
     num x,
     num y,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void bezierCurveTo(
     num cp1x,
     num cp1y,
@@ -7953,35 +12262,50 @@ abstract class Path2D implements JSObject {
     num cp2y,
     num x,
     num y,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void arcTo(
     num x1,
     num y1,
     num x2,
     num y2,
     num radius,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void rect(
     num x,
     num y,
     num w,
     num h,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void roundRect(
     num x,
     num y,
     num w,
     num h, [
-    JSAny radii,
-  ]);
+    JSAny? radii,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   void arc(
     num x,
     num y,
     num radius,
     num startAngle,
     num endAngle, [
-    bool counterclockwise,
-  ]);
+    bool? counterclockwise,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   void ellipse(
     num x,
     num y,
@@ -7990,8 +12314,10 @@ abstract class Path2D implements JSObject {
     num rotation,
     num startAngle,
     num endAngle, [
-    bool counterclockwise,
-  ]);
+    bool? counterclockwise,
+  ]) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`ImageBitmapRenderingContext`** interface is a canvas rendering
@@ -8008,7 +12334,7 @@ abstract class Path2D implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ImageBitmapRenderingContext).
-abstract class ImageBitmapRenderingContext implements JSObject {
+extension type ImageBitmapRenderingContext._(JSObject _) implements JSObject {
   /// The **`ImageBitmapRenderingContext.transferFromImageBitmap()`**
   /// method displays the given [ImageBitmap] in the canvas associated with this
   /// rendering context. The ownership of the `ImageBitmap` is transferred to
@@ -8019,11 +12345,22 @@ abstract class ImageBitmapRenderingContext implements JSObject {
   /// in
   /// a spec change. The old name is being kept as an alias to avoid code
   /// breakage.
-  void transferFromImageBitmap(ImageBitmap? bitmap);
-  JSObject get canvas;
-}
+  void transferFromImageBitmap(ImageBitmap? bitmap) {
+    unsupportedPlatformError();
+  }
 
-abstract class ImageEncodeOptions implements JSObject {
+  JSObject get canvas {
+    unsupportedPlatformError();
+  }
+}
+extension type ImageEncodeOptions._(JSObject _) implements JSObject {
+  factory ImageEncodeOptions({
+    String? type,
+    num? quality,
+  }) {
+    unsupportedPlatformError();
+  }
+
   String get type {
     unsupportedPlatformError();
   }
@@ -8063,7 +12400,14 @@ abstract class ImageEncodeOptions implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvas).
-abstract class OffscreenCanvas implements EventTarget, JSObject {
+extension type OffscreenCanvas._(JSObject _) implements EventTarget, JSObject {
+  factory OffscreenCanvas(
+    int width,
+    int height,
+  ) {
+    unsupportedPlatformError();
+  }
+
   /// The **`OffscreenCanvas.getContext()`** method returns a drawing context
   /// for an offscreen canvas, or
   /// [`null`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/null)
@@ -8071,13 +12415,17 @@ abstract class OffscreenCanvas implements EventTarget, JSObject {
   OffscreenRenderingContext? getContext(
     OffscreenRenderingContextId contextId, [
     JSAny? options,
-  ]);
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`OffscreenCanvas.transferToImageBitmap()`** method creates an
   /// [ImageBitmap] object from the most recently rendered image of the
   /// `OffscreenCanvas`. The `OffscreenCanvas` allocates a new image for its
   /// subsequent rendering.
-  ImageBitmap transferToImageBitmap();
+  ImageBitmap transferToImageBitmap() {
+    unsupportedPlatformError();
+  }
 
   /// The **`OffscreenCanvas.convertToBlob()`** method creates a [Blob] object
   /// representing the image contained in the canvas.
@@ -8090,21 +12438,45 @@ abstract class OffscreenCanvas implements EventTarget, JSObject {
   ///
   /// The created image will have a resolution of 96dpi for file formats that
   /// support encoding resolution metadata.
-  JSPromise<Blob> convertToBlob([ImageEncodeOptions options]);
+  JSPromise<Blob> convertToBlob([ImageEncodeOptions? options]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`width`** property returns and sets the width of an
   /// [OffscreenCanvas] object.
-  int get width;
-  set width(int value);
+  int get width {
+    unsupportedPlatformError();
+  }
+
+  set width(int value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`height`** property returns and sets the height of an
   /// [OffscreenCanvas] object.
-  int get height;
-  set height(int value);
-  EventHandler get oncontextlost;
-  set oncontextlost(EventHandler value);
-  EventHandler get oncontextrestored;
-  set oncontextrestored(EventHandler value);
+  int get height {
+    unsupportedPlatformError();
+  }
+
+  set height(int value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get oncontextlost {
+    unsupportedPlatformError();
+  }
+
+  set oncontextlost(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get oncontextrestored {
+    unsupportedPlatformError();
+  }
+
+  set oncontextrestored(EventHandler value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`OffscreenCanvasRenderingContext2D`** interface is a
@@ -8125,20 +12497,42 @@ abstract class OffscreenCanvas implements EventTarget, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvasRenderingContext2D).
-abstract class OffscreenCanvasRenderingContext2D implements JSObject {
-  void save();
-  void restore();
-  void reset();
-  bool isContextLost();
+extension type OffscreenCanvasRenderingContext2D._(JSObject _)
+    implements JSObject {
+  void save() {
+    unsupportedPlatformError();
+  }
+
+  void restore() {
+    unsupportedPlatformError();
+  }
+
+  void reset() {
+    unsupportedPlatformError();
+  }
+
+  bool isContextLost() {
+    unsupportedPlatformError();
+  }
+
   void scale(
     num x,
     num y,
-  );
-  void rotate(num angle);
+  ) {
+    unsupportedPlatformError();
+  }
+
+  void rotate(num angle) {
+    unsupportedPlatformError();
+  }
+
   void translate(
     num x,
     num y,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void transform(
     num a,
     num b,
@@ -8146,23 +12540,38 @@ abstract class OffscreenCanvasRenderingContext2D implements JSObject {
     num d,
     num e,
     num f,
-  );
-  DOMMatrix getTransform();
+  ) {
+    unsupportedPlatformError();
+  }
+
+  DOMMatrix getTransform() {
+    unsupportedPlatformError();
+  }
+
   void setTransform([
-    JSAny aOrTransform,
-    num b,
-    num c,
-    num d,
-    num e,
-    num f,
-  ]);
-  void resetTransform();
+    JSAny? aOrTransform,
+    num? b,
+    num? c,
+    num? d,
+    num? e,
+    num? f,
+  ]) {
+    unsupportedPlatformError();
+  }
+
+  void resetTransform() {
+    unsupportedPlatformError();
+  }
+
   CanvasGradient createLinearGradient(
     num x0,
     num y0,
     num x1,
     num y1,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   CanvasGradient createRadialGradient(
     num x0,
     num y0,
@@ -8170,117 +12579,192 @@ abstract class OffscreenCanvasRenderingContext2D implements JSObject {
     num x1,
     num y1,
     num r1,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   CanvasGradient createConicGradient(
     num startAngle,
     num x,
     num y,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   CanvasPattern? createPattern(
     CanvasImageSource image,
     String repetition,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void clearRect(
     num x,
     num y,
     num w,
     num h,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void fillRect(
     num x,
     num y,
     num w,
     num h,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void strokeRect(
     num x,
     num y,
     num w,
     num h,
-  );
-  void beginPath();
+  ) {
+    unsupportedPlatformError();
+  }
+
+  void beginPath() {
+    unsupportedPlatformError();
+  }
+
   void fill([
-    JSAny fillRuleOrPath,
-    CanvasFillRule fillRule,
-  ]);
-  void stroke([Path2D path]);
+    JSAny? fillRuleOrPath,
+    CanvasFillRule? fillRule,
+  ]) {
+    unsupportedPlatformError();
+  }
+
+  void stroke([Path2D? path]) {
+    unsupportedPlatformError();
+  }
+
   void clip([
-    JSAny fillRuleOrPath,
-    CanvasFillRule fillRule,
-  ]);
+    JSAny? fillRuleOrPath,
+    CanvasFillRule? fillRule,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   bool isPointInPath(
     JSAny pathOrX,
     num xOrY, [
-    JSAny fillRuleOrY,
-    CanvasFillRule fillRule,
-  ]);
+    JSAny? fillRuleOrY,
+    CanvasFillRule? fillRule,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   bool isPointInStroke(
     JSAny pathOrX,
     num xOrY, [
-    num y,
-  ]);
+    num? y,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   void fillText(
     String text,
     num x,
     num y, [
-    num maxWidth,
-  ]);
+    num? maxWidth,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   void strokeText(
     String text,
     num x,
     num y, [
-    num maxWidth,
-  ]);
-  TextMetrics measureText(String text);
+    num? maxWidth,
+  ]) {
+    unsupportedPlatformError();
+  }
+
+  TextMetrics measureText(String text) {
+    unsupportedPlatformError();
+  }
+
   void drawImage(
     CanvasImageSource image,
     num dxOrSx,
     num dyOrSy, [
-    num dwOrSw,
-    num dhOrSh,
-    num dx,
-    num dy,
-    num dw,
-    num dh,
-  ]);
+    num? dwOrSw,
+    num? dhOrSh,
+    num? dx,
+    num? dy,
+    num? dw,
+    num? dh,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   ImageData createImageData(
     JSAny imagedataOrSw, [
-    int sh,
-    ImageDataSettings settings,
-  ]);
+    int? sh,
+    ImageDataSettings? settings,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   ImageData getImageData(
     int sx,
     int sy,
     int sw,
     int sh, [
-    ImageDataSettings settings,
-  ]);
+    ImageDataSettings? settings,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   void putImageData(
     ImageData imagedata,
     int dx,
     int dy, [
-    int dirtyX,
-    int dirtyY,
-    int dirtyWidth,
-    int dirtyHeight,
-  ]);
-  void setLineDash(JSArray<JSNumber> segments);
-  JSArray<JSNumber> getLineDash();
-  void closePath();
+    int? dirtyX,
+    int? dirtyY,
+    int? dirtyWidth,
+    int? dirtyHeight,
+  ]) {
+    unsupportedPlatformError();
+  }
+
+  void setLineDash(JSArray<JSNumber> segments) {
+    unsupportedPlatformError();
+  }
+
+  JSArray<JSNumber> getLineDash() {
+    unsupportedPlatformError();
+  }
+
+  void closePath() {
+    unsupportedPlatformError();
+  }
+
   void moveTo(
     num x,
     num y,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void lineTo(
     num x,
     num y,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void quadraticCurveTo(
     num cpx,
     num cpy,
     num x,
     num y,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void bezierCurveTo(
     num cp1x,
     num cp1y,
@@ -8288,35 +12772,50 @@ abstract class OffscreenCanvasRenderingContext2D implements JSObject {
     num cp2y,
     num x,
     num y,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void arcTo(
     num x1,
     num y1,
     num x2,
     num y2,
     num radius,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void rect(
     num x,
     num y,
     num w,
     num h,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
+
   void roundRect(
     num x,
     num y,
     num w,
     num h, [
-    JSAny radii,
-  ]);
+    JSAny? radii,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   void arc(
     num x,
     num y,
     num radius,
     num startAngle,
     num endAngle, [
-    bool counterclockwise,
-  ]);
+    bool? counterclockwise,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   void ellipse(
     num x,
     num y,
@@ -8325,61 +12824,222 @@ abstract class OffscreenCanvasRenderingContext2D implements JSObject {
     num rotation,
     num startAngle,
     num endAngle, [
-    bool counterclockwise,
-  ]);
-  OffscreenCanvas get canvas;
-  double get globalAlpha;
-  set globalAlpha(num value);
-  String get globalCompositeOperation;
-  set globalCompositeOperation(String value);
-  bool get imageSmoothingEnabled;
-  set imageSmoothingEnabled(bool value);
-  ImageSmoothingQuality get imageSmoothingQuality;
-  set imageSmoothingQuality(ImageSmoothingQuality value);
-  JSAny get strokeStyle;
-  set strokeStyle(JSAny value);
-  JSAny get fillStyle;
-  set fillStyle(JSAny value);
-  double get shadowOffsetX;
-  set shadowOffsetX(num value);
-  double get shadowOffsetY;
-  set shadowOffsetY(num value);
-  double get shadowBlur;
-  set shadowBlur(num value);
-  String get shadowColor;
-  set shadowColor(String value);
-  String get filter;
-  set filter(String value);
-  double get lineWidth;
-  set lineWidth(num value);
-  CanvasLineCap get lineCap;
-  set lineCap(CanvasLineCap value);
-  CanvasLineJoin get lineJoin;
-  set lineJoin(CanvasLineJoin value);
-  double get miterLimit;
-  set miterLimit(num value);
-  double get lineDashOffset;
-  set lineDashOffset(num value);
-  String get font;
-  set font(String value);
-  CanvasTextAlign get textAlign;
-  set textAlign(CanvasTextAlign value);
-  CanvasTextBaseline get textBaseline;
-  set textBaseline(CanvasTextBaseline value);
-  CanvasDirection get direction;
-  set direction(CanvasDirection value);
-  String get letterSpacing;
-  set letterSpacing(String value);
-  CanvasFontKerning get fontKerning;
-  set fontKerning(CanvasFontKerning value);
-  CanvasFontStretch get fontStretch;
-  set fontStretch(CanvasFontStretch value);
-  CanvasFontVariantCaps get fontVariantCaps;
-  set fontVariantCaps(CanvasFontVariantCaps value);
-  CanvasTextRendering get textRendering;
-  set textRendering(CanvasTextRendering value);
-  String get wordSpacing;
-  set wordSpacing(String value);
+    bool? counterclockwise,
+  ]) {
+    unsupportedPlatformError();
+  }
+
+  OffscreenCanvas get canvas {
+    unsupportedPlatformError();
+  }
+
+  double get globalAlpha {
+    unsupportedPlatformError();
+  }
+
+  set globalAlpha(num value) {
+    unsupportedPlatformError();
+  }
+
+  String get globalCompositeOperation {
+    unsupportedPlatformError();
+  }
+
+  set globalCompositeOperation(String value) {
+    unsupportedPlatformError();
+  }
+
+  bool get imageSmoothingEnabled {
+    unsupportedPlatformError();
+  }
+
+  set imageSmoothingEnabled(bool value) {
+    unsupportedPlatformError();
+  }
+
+  ImageSmoothingQuality get imageSmoothingQuality {
+    unsupportedPlatformError();
+  }
+
+  set imageSmoothingQuality(ImageSmoothingQuality value) {
+    unsupportedPlatformError();
+  }
+
+  JSAny get strokeStyle {
+    unsupportedPlatformError();
+  }
+
+  set strokeStyle(JSAny value) {
+    unsupportedPlatformError();
+  }
+
+  JSAny get fillStyle {
+    unsupportedPlatformError();
+  }
+
+  set fillStyle(JSAny value) {
+    unsupportedPlatformError();
+  }
+
+  double get shadowOffsetX {
+    unsupportedPlatformError();
+  }
+
+  set shadowOffsetX(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get shadowOffsetY {
+    unsupportedPlatformError();
+  }
+
+  set shadowOffsetY(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get shadowBlur {
+    unsupportedPlatformError();
+  }
+
+  set shadowBlur(num value) {
+    unsupportedPlatformError();
+  }
+
+  String get shadowColor {
+    unsupportedPlatformError();
+  }
+
+  set shadowColor(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get filter {
+    unsupportedPlatformError();
+  }
+
+  set filter(String value) {
+    unsupportedPlatformError();
+  }
+
+  double get lineWidth {
+    unsupportedPlatformError();
+  }
+
+  set lineWidth(num value) {
+    unsupportedPlatformError();
+  }
+
+  CanvasLineCap get lineCap {
+    unsupportedPlatformError();
+  }
+
+  set lineCap(CanvasLineCap value) {
+    unsupportedPlatformError();
+  }
+
+  CanvasLineJoin get lineJoin {
+    unsupportedPlatformError();
+  }
+
+  set lineJoin(CanvasLineJoin value) {
+    unsupportedPlatformError();
+  }
+
+  double get miterLimit {
+    unsupportedPlatformError();
+  }
+
+  set miterLimit(num value) {
+    unsupportedPlatformError();
+  }
+
+  double get lineDashOffset {
+    unsupportedPlatformError();
+  }
+
+  set lineDashOffset(num value) {
+    unsupportedPlatformError();
+  }
+
+  String get font {
+    unsupportedPlatformError();
+  }
+
+  set font(String value) {
+    unsupportedPlatformError();
+  }
+
+  CanvasTextAlign get textAlign {
+    unsupportedPlatformError();
+  }
+
+  set textAlign(CanvasTextAlign value) {
+    unsupportedPlatformError();
+  }
+
+  CanvasTextBaseline get textBaseline {
+    unsupportedPlatformError();
+  }
+
+  set textBaseline(CanvasTextBaseline value) {
+    unsupportedPlatformError();
+  }
+
+  CanvasDirection get direction {
+    unsupportedPlatformError();
+  }
+
+  set direction(CanvasDirection value) {
+    unsupportedPlatformError();
+  }
+
+  String get letterSpacing {
+    unsupportedPlatformError();
+  }
+
+  set letterSpacing(String value) {
+    unsupportedPlatformError();
+  }
+
+  CanvasFontKerning get fontKerning {
+    unsupportedPlatformError();
+  }
+
+  set fontKerning(CanvasFontKerning value) {
+    unsupportedPlatformError();
+  }
+
+  CanvasFontStretch get fontStretch {
+    unsupportedPlatformError();
+  }
+
+  set fontStretch(CanvasFontStretch value) {
+    unsupportedPlatformError();
+  }
+
+  CanvasFontVariantCaps get fontVariantCaps {
+    unsupportedPlatformError();
+  }
+
+  set fontVariantCaps(CanvasFontVariantCaps value) {
+    unsupportedPlatformError();
+  }
+
+  CanvasTextRendering get textRendering {
+    unsupportedPlatformError();
+  }
+
+  set textRendering(CanvasTextRendering value) {
+    unsupportedPlatformError();
+  }
+
+  String get wordSpacing {
+    unsupportedPlatformError();
+  }
+
+  set wordSpacing(String value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`CustomElementRegistry`** interface provides methods for registering
@@ -8390,39 +13050,52 @@ abstract class OffscreenCanvasRenderingContext2D implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry).
-abstract class CustomElementRegistry implements JSObject {
+extension type CustomElementRegistry._(JSObject _) implements JSObject {
   /// The **`define()`** method of the [CustomElementRegistry] interface adds a
   /// definition for a custom element to the custom element registry, mapping
   /// its name to the constructor which will be used to create it.
   void define(
     String name,
     CustomElementConstructor constructor, [
-    ElementDefinitionOptions options,
-  ]);
+    ElementDefinitionOptions? options,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`get()`** method of the
   /// [CustomElementRegistry] interface returns the constructor for a
   /// previously-defined custom element.
-  CustomElementConstructor? get(String name);
+  CustomElementConstructor? get(String name) {
+    unsupportedPlatformError();
+  }
 
   /// The **`getName()`** method of the
   /// [CustomElementRegistry] interface returns the name for a
   /// previously-defined custom element.
-  String? getName(CustomElementConstructor constructor);
+  String? getName(CustomElementConstructor constructor) {
+    unsupportedPlatformError();
+  }
 
   /// The **`whenDefined()`** method of the
   /// [CustomElementRegistry] interface returns a `Promise` that
   /// resolves when the named element is defined.
-  JSPromise<CustomElementConstructor> whenDefined(String name);
+  JSPromise<CustomElementConstructor> whenDefined(String name) {
+    unsupportedPlatformError();
+  }
 
   /// The **`upgrade()`** method of the
   /// [CustomElementRegistry] interface upgrades all shadow-containing custom
   /// elements in a [Node] subtree, even before they are connected to the main
   /// document.
-  void upgrade(Node root);
+  void upgrade(Node root) {
+    unsupportedPlatformError();
+  }
 }
+extension type ElementDefinitionOptions._(JSObject _) implements JSObject {
+  factory ElementDefinitionOptions({String? extends_}) {
+    unsupportedPlatformError();
+  }
 
-abstract class ElementDefinitionOptions implements JSObject {
   String get extends_ {
     unsupportedPlatformError();
   }
@@ -8445,22 +13118,26 @@ abstract class ElementDefinitionOptions implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals).
-abstract class ElementInternals implements JSObject {
+extension type ElementInternals._(JSObject _) implements JSObject {
   /// The **`setFormValue()`** method of the [ElementInternals] interface sets
   /// the element's submission value and state, communicating these to the user
   /// agent.
   void setFormValue(
     JSAny? value, [
     JSAny? state,
-  ]);
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`setValidity()`** method of the [ElementInternals] interface sets
   /// the validity of the element.
   void setValidity([
-    ValidityStateFlags flags,
-    String message,
-    HTMLElement anchor,
-  ]);
+    ValidityStateFlags? flags,
+    String? message,
+    HTMLElement? anchor,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`checkValidity()`** method of the [ElementInternals] interface
   /// checks if the element meets any
@@ -8470,7 +13147,9 @@ abstract class ElementInternals implements JSObject {
   /// If `checkValidity` returns `false` then a cancelable
   /// [invalid event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/invalid_event)
   /// is fired on the element.
-  bool checkValidity();
+  bool checkValidity() {
+    unsupportedPlatformError();
+  }
 
   /// The **`reportValidity()`** method of the [ElementInternals] interface
   /// checks if the element meets any
@@ -8484,15 +13163,21 @@ abstract class ElementInternals implements JSObject {
   /// This method behaves in a similar way to [ElementInternals.checkValidity],
   /// however it additionally sends the value of
   /// [ElementInternals.validationMessage] to the user agent for display.
-  bool reportValidity();
+  bool reportValidity() {
+    unsupportedPlatformError();
+  }
 
   /// The **`shadowRoot`** read-only property of the [ElementInternals]
   /// interface returns the [ShadowRoot] for this element.
-  ShadowRoot? get shadowRoot;
+  ShadowRoot? get shadowRoot {
+    unsupportedPlatformError();
+  }
 
   /// The **`form`** read-only property of the [ElementInternals] interface
   /// returns the [HTMLFormElement] associated with this element.
-  HTMLFormElement? get form;
+  HTMLFormElement? get form {
+    unsupportedPlatformError();
+  }
 
   /// The **`willValidate`** read-only property of the [ElementInternals]
   /// interface returns `true` if the element is a submittable element that is a
@@ -8504,33 +13189,48 @@ abstract class ElementInternals implements JSObject {
   /// `readonly`, input elements of `type=button` or `type=reset`, or any
   /// element that is a `datalist` element or has a `<datalist>` element
   /// ancestor.
-  bool get willValidate;
+  bool get willValidate {
+    unsupportedPlatformError();
+  }
 
   /// The **`validity`** read-only property of the [ElementInternals] interface
   /// returns a [ValidityState] object which represents the different validity
   /// states the element can be in, with respect to constraint validation.
-  ValidityState get validity;
+  ValidityState get validity {
+    unsupportedPlatformError();
+  }
 
   /// The **`validationMessage`** read-only property of the [ElementInternals]
   /// interface returns the validation message for the element.
-  String get validationMessage;
+  String get validationMessage {
+    unsupportedPlatformError();
+  }
 
   /// The **`labels`** read-only property of the [ElementInternals] interface
   /// returns the labels associated with the element.
-  NodeList get labels;
+  NodeList get labels {
+    unsupportedPlatformError();
+  }
 
   /// The **`states`** read-only property of the [ElementInternals] interface
   /// returns a [CustomStateSet] representing the possible states of the custom
   /// element.
-  CustomStateSet get states;
+  CustomStateSet get states {
+    unsupportedPlatformError();
+  }
 
   /// The **`role`** read-only property of the [ElementInternals] interface
   /// returns the
   /// [WAI-ARIA role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles)
   /// for the element. For example, a checkbox might have
   /// [`role="checkbox"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/checkbox_role).
-  String? get role;
-  set role(String? value);
+  String? get role {
+    unsupportedPlatformError();
+  }
+
+  set role(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaAtomic`** property of the [ElementInternals] interface reflects
   /// the value of the
@@ -8545,8 +13245,13 @@ abstract class ElementInternals implements JSObject {
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
   /// > [Accessibility Object Model explainer](https://wicg.github.io/aom/explainer.html#default-semantics-for-custom-elements-via-the-elementinternals-object).
-  String? get ariaAtomic;
-  set ariaAtomic(String? value);
+  String? get ariaAtomic {
+    unsupportedPlatformError();
+  }
+
+  set ariaAtomic(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaAutoComplete`** property of the [ElementInternals] interface
   /// reflects the value of the
@@ -8562,12 +13267,29 @@ abstract class ElementInternals implements JSObject {
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
   /// > [Accessibility Object Model explainer](https://wicg.github.io/aom/explainer.html#default-semantics-for-custom-elements-via-the-elementinternals-object).
-  String? get ariaAutoComplete;
-  set ariaAutoComplete(String? value);
-  String? get ariaBrailleLabel;
-  set ariaBrailleLabel(String? value);
-  String? get ariaBrailleRoleDescription;
-  set ariaBrailleRoleDescription(String? value);
+  String? get ariaAutoComplete {
+    unsupportedPlatformError();
+  }
+
+  set ariaAutoComplete(String? value) {
+    unsupportedPlatformError();
+  }
+
+  String? get ariaBrailleLabel {
+    unsupportedPlatformError();
+  }
+
+  set ariaBrailleLabel(String? value) {
+    unsupportedPlatformError();
+  }
+
+  String? get ariaBrailleRoleDescription {
+    unsupportedPlatformError();
+  }
+
+  set ariaBrailleRoleDescription(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaBusy`** property of the [ElementInternals] interface reflects
   /// the value of the
@@ -8582,8 +13304,13 @@ abstract class ElementInternals implements JSObject {
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
   /// > [Accessibility Object Model explainer](https://wicg.github.io/aom/explainer.html#default-semantics-for-custom-elements-via-the-elementinternals-object).
-  String? get ariaBusy;
-  set ariaBusy(String? value);
+  String? get ariaBusy {
+    unsupportedPlatformError();
+  }
+
+  set ariaBusy(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaChecked`** property of the [ElementInternals] interface
   /// reflects the value of the
@@ -8597,8 +13324,13 @@ abstract class ElementInternals implements JSObject {
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
   /// > [Accessibility Object Model explainer](https://wicg.github.io/aom/explainer.html#default-semantics-for-custom-elements-via-the-elementinternals-object).
-  String? get ariaChecked;
-  set ariaChecked(String? value);
+  String? get ariaChecked {
+    unsupportedPlatformError();
+  }
+
+  set ariaChecked(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaColCount`** property of the [ElementInternals] interface
   /// reflects the value of the
@@ -8612,8 +13344,13 @@ abstract class ElementInternals implements JSObject {
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
   /// > [Accessibility Object Model explainer](https://wicg.github.io/aom/explainer.html#default-semantics-for-custom-elements-via-the-elementinternals-object).
-  String? get ariaColCount;
-  set ariaColCount(String? value);
+  String? get ariaColCount {
+    unsupportedPlatformError();
+  }
+
+  set ariaColCount(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaColIndex`** property of the [ElementInternals] interface
   /// reflects the value of the
@@ -8627,8 +13364,13 @@ abstract class ElementInternals implements JSObject {
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
   /// > [Accessibility Object Model explainer](https://wicg.github.io/aom/explainer.html#default-semantics-for-custom-elements-via-the-elementinternals-object).
-  String? get ariaColIndex;
-  set ariaColIndex(String? value);
+  String? get ariaColIndex {
+    unsupportedPlatformError();
+  }
+
+  set ariaColIndex(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaColSpan`** property of the [ElementInternals] interface
   /// reflects the value of the
@@ -8642,8 +13384,13 @@ abstract class ElementInternals implements JSObject {
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
   /// > [Accessibility Object Model explainer](https://wicg.github.io/aom/explainer.html#default-semantics-for-custom-elements-via-the-elementinternals-object).
-  String? get ariaColSpan;
-  set ariaColSpan(String? value);
+  String? get ariaColSpan {
+    unsupportedPlatformError();
+  }
+
+  set ariaColSpan(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaCurrent`** property of the [ElementInternals] interface
   /// reflects the value of the
@@ -8657,8 +13404,13 @@ abstract class ElementInternals implements JSObject {
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
   /// > [Accessibility Object Model explainer](https://wicg.github.io/aom/explainer.html#default-semantics-for-custom-elements-via-the-elementinternals-object).
-  String? get ariaCurrent;
-  set ariaCurrent(String? value);
+  String? get ariaCurrent {
+    unsupportedPlatformError();
+  }
+
+  set ariaCurrent(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaDescription`** property of the [ElementInternals] interface
   /// reflects the value of the
@@ -8672,8 +13424,13 @@ abstract class ElementInternals implements JSObject {
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
   /// > [Accessibility Object Model explainer](https://wicg.github.io/aom/explainer.html#default-semantics-for-custom-elements-via-the-elementinternals-object).
-  String? get ariaDescription;
-  set ariaDescription(String? value);
+  String? get ariaDescription {
+    unsupportedPlatformError();
+  }
+
+  set ariaDescription(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaDisabled`** property of the [ElementInternals] interface
   /// reflects the value of the
@@ -8687,8 +13444,13 @@ abstract class ElementInternals implements JSObject {
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
   /// > [Accessibility Object Model explainer](https://wicg.github.io/aom/explainer.html#default-semantics-for-custom-elements-via-the-elementinternals-object).
-  String? get ariaDisabled;
-  set ariaDisabled(String? value);
+  String? get ariaDisabled {
+    unsupportedPlatformError();
+  }
+
+  set ariaDisabled(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaExpanded`** property of the [ElementInternals] interface
   /// reflects the value of the
@@ -8702,8 +13464,13 @@ abstract class ElementInternals implements JSObject {
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
   /// > [Accessibility Object Model explainer](https://wicg.github.io/aom/explainer.html#default-semantics-for-custom-elements-via-the-elementinternals-object).
-  String? get ariaExpanded;
-  set ariaExpanded(String? value);
+  String? get ariaExpanded {
+    unsupportedPlatformError();
+  }
+
+  set ariaExpanded(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaHasPopup`** property of the [ElementInternals] interface
   /// reflects the value of the
@@ -8717,8 +13484,13 @@ abstract class ElementInternals implements JSObject {
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
   /// > [Accessibility Object Model explainer](https://wicg.github.io/aom/explainer.html#default-semantics-for-custom-elements-via-the-elementinternals-object).
-  String? get ariaHasPopup;
-  set ariaHasPopup(String? value);
+  String? get ariaHasPopup {
+    unsupportedPlatformError();
+  }
+
+  set ariaHasPopup(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaHidden`** property of the [ElementInternals] interface reflects
   /// the value of the
@@ -8732,10 +13504,21 @@ abstract class ElementInternals implements JSObject {
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
   /// > [Accessibility Object Model explainer](https://wicg.github.io/aom/explainer.html#default-semantics-for-custom-elements-via-the-elementinternals-object).
-  String? get ariaHidden;
-  set ariaHidden(String? value);
-  String? get ariaInvalid;
-  set ariaInvalid(String? value);
+  String? get ariaHidden {
+    unsupportedPlatformError();
+  }
+
+  set ariaHidden(String? value) {
+    unsupportedPlatformError();
+  }
+
+  String? get ariaInvalid {
+    unsupportedPlatformError();
+  }
+
+  set ariaInvalid(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaKeyShortcuts`** property of the [ElementInternals] interface
   /// reflects the value of the
@@ -8749,8 +13532,13 @@ abstract class ElementInternals implements JSObject {
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
   /// > [Accessibility Object Model explainer](https://wicg.github.io/aom/explainer.html#default-semantics-for-custom-elements-via-the-elementinternals-object).
-  String? get ariaKeyShortcuts;
-  set ariaKeyShortcuts(String? value);
+  String? get ariaKeyShortcuts {
+    unsupportedPlatformError();
+  }
+
+  set ariaKeyShortcuts(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// }
   ///
@@ -8765,8 +13553,13 @@ abstract class ElementInternals implements JSObject {
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
   /// > [Accessibility Object Model explainer](https://wicg.github.io/aom/explainer.html#default-semantics-for-custom-elements-via-the-elementinternals-object).
-  String? get ariaLabel;
-  set ariaLabel(String? value);
+  String? get ariaLabel {
+    unsupportedPlatformError();
+  }
+
+  set ariaLabel(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaLevel`** property of the [ElementInternals] interface reflects
   /// the value of the
@@ -8780,8 +13573,13 @@ abstract class ElementInternals implements JSObject {
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
   /// > [Accessibility Object Model explainer](https://wicg.github.io/aom/explainer.html#default-semantics-for-custom-elements-via-the-elementinternals-object).
-  String? get ariaLevel;
-  set ariaLevel(String? value);
+  String? get ariaLevel {
+    unsupportedPlatformError();
+  }
+
+  set ariaLevel(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaLive`** property of the [ElementInternals] interface reflects
   /// the value of the
@@ -8796,8 +13594,13 @@ abstract class ElementInternals implements JSObject {
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
   /// > [Accessibility Object Model explainer](https://wicg.github.io/aom/explainer.html#default-semantics-for-custom-elements-via-the-elementinternals-object).
-  String? get ariaLive;
-  set ariaLive(String? value);
+  String? get ariaLive {
+    unsupportedPlatformError();
+  }
+
+  set ariaLive(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaModal`** property of the [ElementInternals] interface reflects
   /// the value of the
@@ -8810,8 +13613,13 @@ abstract class ElementInternals implements JSObject {
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
   /// > [Accessibility Object Model explainer](https://wicg.github.io/aom/explainer.html#default-semantics-for-custom-elements-via-the-elementinternals-object).
-  String? get ariaModal;
-  set ariaModal(String? value);
+  String? get ariaModal {
+    unsupportedPlatformError();
+  }
+
+  set ariaModal(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaMultiLine`** property of the [ElementInternals] interface
   /// reflects the value of the
@@ -8825,8 +13633,13 @@ abstract class ElementInternals implements JSObject {
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
   /// > [Accessibility Object Model explainer](https://wicg.github.io/aom/explainer.html#default-semantics-for-custom-elements-via-the-elementinternals-object).
-  String? get ariaMultiLine;
-  set ariaMultiLine(String? value);
+  String? get ariaMultiLine {
+    unsupportedPlatformError();
+  }
+
+  set ariaMultiLine(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaMultiSelectable`** property of the [ElementInternals] interface
   /// reflects the value of the
@@ -8840,8 +13653,13 @@ abstract class ElementInternals implements JSObject {
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
   /// > [Accessibility Object Model explainer](https://wicg.github.io/aom/explainer.html#default-semantics-for-custom-elements-via-the-elementinternals-object).
-  String? get ariaMultiSelectable;
-  set ariaMultiSelectable(String? value);
+  String? get ariaMultiSelectable {
+    unsupportedPlatformError();
+  }
+
+  set ariaMultiSelectable(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaOrientation`** property of the [ElementInternals] interface
   /// reflects the value of the
@@ -8855,8 +13673,13 @@ abstract class ElementInternals implements JSObject {
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
   /// > [Accessibility Object Model explainer](https://wicg.github.io/aom/explainer.html#default-semantics-for-custom-elements-via-the-elementinternals-object).
-  String? get ariaOrientation;
-  set ariaOrientation(String? value);
+  String? get ariaOrientation {
+    unsupportedPlatformError();
+  }
+
+  set ariaOrientation(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaPlaceholder`** property of the [ElementInternals] interface
   /// reflects the value of the
@@ -8870,8 +13693,13 @@ abstract class ElementInternals implements JSObject {
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
   /// > [Accessibility Object Model explainer](https://wicg.github.io/aom/explainer.html#default-semantics-for-custom-elements-via-the-elementinternals-object).
-  String? get ariaPlaceholder;
-  set ariaPlaceholder(String? value);
+  String? get ariaPlaceholder {
+    unsupportedPlatformError();
+  }
+
+  set ariaPlaceholder(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaPosInSet`** property of the [ElementInternals] interface
   /// reflects the value of the
@@ -8885,8 +13713,13 @@ abstract class ElementInternals implements JSObject {
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
   /// > [Accessibility Object Model explainer](https://wicg.github.io/aom/explainer.html#default-semantics-for-custom-elements-via-the-elementinternals-object).
-  String? get ariaPosInSet;
-  set ariaPosInSet(String? value);
+  String? get ariaPosInSet {
+    unsupportedPlatformError();
+  }
+
+  set ariaPosInSet(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaPressed`** property of the [ElementInternals] interface
   /// reflects the value of the
@@ -8899,8 +13732,13 @@ abstract class ElementInternals implements JSObject {
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
   /// > [Accessibility Object Model explainer](https://wicg.github.io/aom/explainer.html#default-semantics-for-custom-elements-via-the-elementinternals-object).
-  String? get ariaPressed;
-  set ariaPressed(String? value);
+  String? get ariaPressed {
+    unsupportedPlatformError();
+  }
+
+  set ariaPressed(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaReadOnly`** property of the [ElementInternals] interface
   /// reflects the value of the
@@ -8914,8 +13752,13 @@ abstract class ElementInternals implements JSObject {
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
   /// > [Accessibility Object Model explainer](https://wicg.github.io/aom/explainer.html#default-semantics-for-custom-elements-via-the-elementinternals-object).
-  String? get ariaReadOnly;
-  set ariaReadOnly(String? value);
+  String? get ariaReadOnly {
+    unsupportedPlatformError();
+  }
+
+  set ariaReadOnly(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaRequired`** property of the [ElementInternals] interface
   /// reflects the value of the
@@ -8929,8 +13772,13 @@ abstract class ElementInternals implements JSObject {
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
   /// > [Accessibility Object Model explainer](https://wicg.github.io/aom/explainer.html#default-semantics-for-custom-elements-via-the-elementinternals-object).
-  String? get ariaRequired;
-  set ariaRequired(String? value);
+  String? get ariaRequired {
+    unsupportedPlatformError();
+  }
+
+  set ariaRequired(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaRoleDescription`** property of the [ElementInternals] interface
   /// reflects the value of the
@@ -8944,8 +13792,13 @@ abstract class ElementInternals implements JSObject {
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
   /// > [Accessibility Object Model explainer](https://wicg.github.io/aom/explainer.html#default-semantics-for-custom-elements-via-the-elementinternals-object).
-  String? get ariaRoleDescription;
-  set ariaRoleDescription(String? value);
+  String? get ariaRoleDescription {
+    unsupportedPlatformError();
+  }
+
+  set ariaRoleDescription(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaRowCount`** property of the [ElementInternals] interface
   /// reflects the value of the
@@ -8959,8 +13812,13 @@ abstract class ElementInternals implements JSObject {
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
   /// > [Accessibility Object Model explainer](https://wicg.github.io/aom/explainer.html#default-semantics-for-custom-elements-via-the-elementinternals-object).
-  String? get ariaRowCount;
-  set ariaRowCount(String? value);
+  String? get ariaRowCount {
+    unsupportedPlatformError();
+  }
+
+  set ariaRowCount(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaRowIndex`** property of the [ElementInternals] interface
   /// reflects the value of the
@@ -8974,8 +13832,13 @@ abstract class ElementInternals implements JSObject {
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
   /// > [Accessibility Object Model explainer](https://wicg.github.io/aom/explainer.html#default-semantics-for-custom-elements-via-the-elementinternals-object).
-  String? get ariaRowIndex;
-  set ariaRowIndex(String? value);
+  String? get ariaRowIndex {
+    unsupportedPlatformError();
+  }
+
+  set ariaRowIndex(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaRowSpan`** property of the [ElementInternals] interface
   /// reflects the value of the
@@ -8989,8 +13852,13 @@ abstract class ElementInternals implements JSObject {
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
   /// > [Accessibility Object Model explainer](https://wicg.github.io/aom/explainer.html#default-semantics-for-custom-elements-via-the-elementinternals-object).
-  String? get ariaRowSpan;
-  set ariaRowSpan(String? value);
+  String? get ariaRowSpan {
+    unsupportedPlatformError();
+  }
+
+  set ariaRowSpan(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaSelected`** property of the [ElementInternals] interface
   /// reflects the value of the
@@ -9004,8 +13872,13 @@ abstract class ElementInternals implements JSObject {
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
   /// > [Accessibility Object Model explainer](https://wicg.github.io/aom/explainer.html#default-semantics-for-custom-elements-via-the-elementinternals-object).
-  String? get ariaSelected;
-  set ariaSelected(String? value);
+  String? get ariaSelected {
+    unsupportedPlatformError();
+  }
+
+  set ariaSelected(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaSetSize`** property of the [ElementInternals] interface
   /// reflects the value of the
@@ -9019,8 +13892,13 @@ abstract class ElementInternals implements JSObject {
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
   /// > [Accessibility Object Model explainer](https://wicg.github.io/aom/explainer.html#default-semantics-for-custom-elements-via-the-elementinternals-object).
-  String? get ariaSetSize;
-  set ariaSetSize(String? value);
+  String? get ariaSetSize {
+    unsupportedPlatformError();
+  }
+
+  set ariaSetSize(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaSort`** property of the [ElementInternals] interface reflects
   /// the value of the
@@ -9034,8 +13912,13 @@ abstract class ElementInternals implements JSObject {
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
   /// > [Accessibility Object Model explainer](https://wicg.github.io/aom/explainer.html#default-semantics-for-custom-elements-via-the-elementinternals-object).
-  String? get ariaSort;
-  set ariaSort(String? value);
+  String? get ariaSort {
+    unsupportedPlatformError();
+  }
+
+  set ariaSort(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaValueMax`** property of the [ElementInternals] interface
   /// reflects the value of the
@@ -9048,8 +13931,13 @@ abstract class ElementInternals implements JSObject {
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
   /// > [Accessibility Object Model explainer](https://wicg.github.io/aom/explainer.html#default-semantics-for-custom-elements-via-the-elementinternals-object).
-  String? get ariaValueMax;
-  set ariaValueMax(String? value);
+  String? get ariaValueMax {
+    unsupportedPlatformError();
+  }
+
+  set ariaValueMax(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaValueMin`** property of the [ElementInternals] interface
   /// reflects the value of the
@@ -9062,8 +13950,13 @@ abstract class ElementInternals implements JSObject {
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
   /// > [Accessibility Object Model explainer](https://wicg.github.io/aom/explainer.html#default-semantics-for-custom-elements-via-the-elementinternals-object).
-  String? get ariaValueMin;
-  set ariaValueMin(String? value);
+  String? get ariaValueMin {
+    unsupportedPlatformError();
+  }
+
+  set ariaValueMin(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaValueNow`** property of the [ElementInternals] interface
   /// reflects the value of the
@@ -9076,8 +13969,13 @@ abstract class ElementInternals implements JSObject {
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
   /// > [Accessibility Object Model explainer](https://wicg.github.io/aom/explainer.html#default-semantics-for-custom-elements-via-the-elementinternals-object).
-  String? get ariaValueNow;
-  set ariaValueNow(String? value);
+  String? get ariaValueNow {
+    unsupportedPlatformError();
+  }
+
+  set ariaValueNow(String? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ariaValueText`** property of the [ElementInternals] interface
   /// reflects the value of the
@@ -9091,11 +13989,30 @@ abstract class ElementInternals implements JSObject {
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
   /// > [Accessibility Object Model explainer](https://wicg.github.io/aom/explainer.html#default-semantics-for-custom-elements-via-the-elementinternals-object).
-  String? get ariaValueText;
-  set ariaValueText(String? value);
-}
+  String? get ariaValueText {
+    unsupportedPlatformError();
+  }
 
-abstract class ValidityStateFlags implements JSObject {
+  set ariaValueText(String? value) {
+    unsupportedPlatformError();
+  }
+}
+extension type ValidityStateFlags._(JSObject _) implements JSObject {
+  factory ValidityStateFlags({
+    bool? valueMissing,
+    bool? typeMismatch,
+    bool? patternMismatch,
+    bool? tooLong,
+    bool? tooShort,
+    bool? rangeUnderflow,
+    bool? rangeOverflow,
+    bool? stepMismatch,
+    bool? badInput,
+    bool? customError,
+  }) {
+    unsupportedPlatformError();
+  }
+
   bool get valueMissing {
     unsupportedPlatformError();
   }
@@ -9190,7 +14107,7 @@ abstract class ValidityStateFlags implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CustomStateSet).
-abstract class CustomStateSet implements JSObject {}
+extension type CustomStateSet._(JSObject _) implements JSObject {}
 
 /// The **`UserActivation`** interface provides information about whether a user
 /// is currently interacting with the page, or has completed an interaction
@@ -9202,14 +14119,18 @@ abstract class CustomStateSet implements JSObject {}
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/UserActivation).
-abstract class UserActivation implements JSObject {
+extension type UserActivation._(JSObject _) implements JSObject {
   /// The read-only **`hasBeenActive`** property of the [UserActivation]
   /// interface indicates whether the current window has .
-  bool get hasBeenActive;
+  bool get hasBeenActive {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`isActive`** property of the [UserActivation] interface
   /// indicates whether the current window has .
-  bool get isActive;
+  bool get isActive {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`ToggleEvent`** interface represents an event notifying the user when
@@ -9231,17 +14152,37 @@ abstract class UserActivation implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent).
-abstract class ToggleEvent implements Event, JSObject {
+extension type ToggleEvent._(JSObject _) implements Event, JSObject {
+  factory ToggleEvent(
+    String type, [
+    ToggleEventInit? eventInitDict,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// The **`oldState`** read-only property of the [ToggleEvent] interface is a
   /// string representing the state the element is transitioning from.
-  String get oldState;
+  String get oldState {
+    unsupportedPlatformError();
+  }
 
   /// The **`newState`** read-only property of the [ToggleEvent] interface is a
   /// string representing the state the element is transitioning to.
-  String get newState;
+  String get newState {
+    unsupportedPlatformError();
+  }
 }
+extension type ToggleEventInit._(JSObject _) implements EventInit, JSObject {
+  factory ToggleEventInit({
+    bool? bubbles,
+    bool? cancelable,
+    bool? composed,
+    String? oldState,
+    String? newState,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class ToggleEventInit implements EventInit, JSObject {
   String get oldState {
     unsupportedPlatformError();
   }
@@ -9258,8 +14199,14 @@ abstract class ToggleEventInit implements EventInit, JSObject {
     unsupportedPlatformError();
   }
 }
+extension type FocusOptions._(JSObject _) implements JSObject {
+  factory FocusOptions({
+    bool? preventScroll,
+    bool? focusVisible,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class FocusOptions implements JSObject {
   bool get preventScroll {
     unsupportedPlatformError();
   }
@@ -9289,7 +14236,11 @@ abstract class FocusOptions implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer).
-abstract class DataTransfer implements JSObject {
+extension type DataTransfer._(JSObject _) implements JSObject {
+  factory DataTransfer() {
+    unsupportedPlatformError();
+  }
+
   /// When a drag occurs, a translucent image is generated from the drag target
   /// (the element
   /// the [HTMLElement.dragstart_event] event is fired at), and follows the
@@ -9315,7 +14266,9 @@ abstract class DataTransfer implements JSObject {
     Element image,
     int x,
     int y,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`DataTransfer.getData()`**
   /// method retrieves drag data (as a string) for the specified type.
@@ -9323,7 +14276,9 @@ abstract class DataTransfer implements JSObject {
   /// string.
   ///
   /// Example data types are `text/plain` and `text/uri-list`.
-  String getData(String format);
+  String getData(String format) {
+    unsupportedPlatformError();
+  }
 
   /// The **`DataTransfer.setData()`** method sets the drag
   /// operation's [DataTransfer] to the specified data and type. If
@@ -9340,7 +14295,9 @@ abstract class DataTransfer implements JSObject {
   void setData(
     String format,
     String data,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`DataTransfer.clearData()`** method removes the drag
   /// operation's [DataTransfer] for the given type. If data for the
@@ -9359,7 +14316,9 @@ abstract class DataTransfer implements JSObject {
   /// > [HTMLElement.dragstart_event] event,
   /// > because that's the only time the drag operation's data store is
   /// > writable.
-  void clearData([String format]);
+  void clearData([String? format]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`DataTransfer.dropEffect`** property controls the
   /// feedback (typically visual) the user is given during a drag and drop
@@ -9400,8 +14359,13 @@ abstract class DataTransfer implements JSObject {
   /// [HTMLElement.dragend_event] event, for instance, if the desired dropEffect
   /// is "move", then the
   /// data being dragged should be removed from the source.
-  String get dropEffect;
-  set dropEffect(String value);
+  String get dropEffect {
+    unsupportedPlatformError();
+  }
+
+  set dropEffect(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`DataTransfer.effectAllowed`** property specifies the
   /// effect that is allowed for a drag operation. The _copy_ operation is used
@@ -9428,19 +14392,28 @@ abstract class DataTransfer implements JSObject {
   ///
   /// Assigning a value to `effectAllowed` in events other than
   /// [HTMLElement.dragstart_event] has no effect.
-  String get effectAllowed;
-  set effectAllowed(String value);
+  String get effectAllowed {
+    unsupportedPlatformError();
+  }
+
+  set effectAllowed(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The read-only `items` property of the [DataTransfer] interface is a
   /// [DataTransferItemList] of the [DataTransferItem] in a drag operation. The
   /// list includes one item for each item in the operation and if the operation
   /// had no items, the list is empty.
-  DataTransferItemList get items;
+  DataTransferItemList get items {
+    unsupportedPlatformError();
+  }
 
   /// The **`DataTransfer.types`** read-only property returns the available
   /// types
   /// that exist in the [DataTransfer.items].
-  JSArray<JSString> get types;
+  JSArray<JSString> get types {
+    unsupportedPlatformError();
+  }
 
   /// The **`files`** read-only property of
   /// [`DataTransfer`](https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer)
@@ -9456,7 +14429,9 @@ abstract class DataTransfer implements JSObject {
   /// > events, the `files` property will be empty — because its underlying data
   /// > store will be in a
   /// > [protected mode](https://html.spec.whatwg.org/multipage/dnd.html#the-drag-data-store).
-  FileList get files;
+  FileList get files {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`DataTransferItemList`** object is a list of [DataTransferItem]
@@ -9474,8 +14449,10 @@ abstract class DataTransfer implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/DataTransferItemList).
-abstract class DataTransferItemList implements JSObject {
-  DataTransferItem operator [](int index);
+extension type DataTransferItemList._(JSObject _) implements JSObject {
+  DataTransferItem operator [](int index) {
+    unsupportedPlatformError();
+  }
 
   /// The **`DataTransferItemList.add()`** method creates a new
   /// [DataTransferItem] using the specified data and adds it to the drag data
@@ -9485,15 +14462,19 @@ abstract class DataTransferItemList implements JSObject {
   /// [DataTransferItem] object is returned.
   DataTransferItem? add(
     JSAny data, [
-    String type,
-  ]);
+    String? type,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`DataTransferItemList.remove()`** method removes the
   /// [DataTransferItem] at the specified index from the list. If the index is
   /// less than zero or greater than one less than the length of the list, the
   /// list will not
   /// be changed.
-  void remove(int index);
+  void remove(int index) {
+    unsupportedPlatformError();
+  }
 
   /// The [DataTransferItemList] method
   /// **`clear()`** removes all [DataTransferItem]
@@ -9505,12 +14486,16 @@ abstract class DataTransferItemList implements JSObject {
   /// [HTMLElement.drop_event], the drag data store is
   /// in read-only mode, and this method silently does nothing. No exception is
   /// thrown.
-  void clear();
+  void clear() {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`length`** property of the
   /// [DataTransferItemList] interface returns the number of items currently in
   /// the drag item list.
-  int get length;
+  int get length {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`DataTransferItem`** object represents one drag data item. During a
@@ -9524,17 +14509,21 @@ abstract class DataTransferItemList implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/DataTransferItem).
-abstract class DataTransferItem implements JSObject {
+extension type DataTransferItem._(JSObject _) implements JSObject {
   /// The **`DataTransferItem.getAsString()`** method invokes the given callback
   /// with the drag data item's string data as the argument if the item's
   /// [DataTransferItem.kind] is a _Plain unicode string_ (i.e. `kind` is
   /// `string`).
-  void getAsString(FunctionStringCallback? callback);
+  void getAsString(FunctionStringCallback? callback) {
+    unsupportedPlatformError();
+  }
 
   /// If the item is a file, the **`DataTransferItem.getAsFile()`** method
   /// returns the drag data item's [File] object.
   /// If the item is not a file, this method returns `null`.
-  File? getAsFile();
+  File? getAsFile() {
+    unsupportedPlatformError();
+  }
 
   /// If the item described by the [DataTransferItem] is a file,
   /// `webkitGetAsEntry()` returns a [FileSystemFileEntry] or
@@ -9545,12 +14534,16 @@ abstract class DataTransferItem implements JSObject {
   /// > non-WebKit browsers including Firefox at this time; it may be renamed to
   /// > `getAsEntry()` in the future, so you should code defensively, looking
   /// > for both.
-  FileSystemEntry? webkitGetAsEntry();
+  FileSystemEntry? webkitGetAsEntry() {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`DataTransferItem.kind`** property returns the kind–a
   /// string or a file–of the [DataTransferItem] object representing the _drag
   /// data item_.
-  String get kind;
+  String get kind {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`DataTransferItem.type`** property returns the type
   /// (format) of the [DataTransferItem] object representing the drag data item.
@@ -9558,7 +14551,9 @@ abstract class DataTransferItem implements JSObject {
   /// MIME type is not required.
   ///
   /// Some example types are: `text/plain` and `text/html`.
-  String get type;
+  String get type {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`DragEvent`** interface is a [Event] that represents a drag and drop
@@ -9573,13 +14568,57 @@ abstract class DataTransferItem implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/DragEvent).
-abstract class DragEvent implements MouseEvent, JSObject {
+extension type DragEvent._(JSObject _) implements MouseEvent, JSObject {
+  factory DragEvent(
+    String type, [
+    DragEventInit? eventInitDict,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// The **`DragEvent.dataTransfer`** read-only property holds the drag
   /// operation's data (as a [DataTransfer] object).
-  DataTransfer? get dataTransfer;
+  DataTransfer? get dataTransfer {
+    unsupportedPlatformError();
+  }
 }
+extension type DragEventInit._(JSObject _) implements MouseEventInit, JSObject {
+  factory DragEventInit({
+    bool? bubbles,
+    bool? cancelable,
+    bool? composed,
+    Window? view,
+    int? detail,
+    JSObject? sourceCapabilities,
+    int? which,
+    bool? ctrlKey,
+    bool? shiftKey,
+    bool? altKey,
+    bool? metaKey,
+    bool? modifierAltGraph,
+    bool? modifierCapsLock,
+    bool? modifierFn,
+    bool? modifierFnLock,
+    bool? modifierHyper,
+    bool? modifierNumLock,
+    bool? modifierScrollLock,
+    bool? modifierSuper,
+    bool? modifierSymbol,
+    bool? modifierSymbolLock,
+    int? screenX,
+    int? screenY,
+    int? clientX,
+    int? clientY,
+    int? button,
+    int? buttons,
+    EventTarget? relatedTarget,
+    num? movementX,
+    num? movementY,
+    DataTransfer? dataTransfer,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class DragEventInit implements MouseEventInit, JSObject {
   DataTransfer? get dataTransfer {
     unsupportedPlatformError();
   }
@@ -9588,7 +14627,6 @@ abstract class DragEventInit implements MouseEventInit, JSObject {
     unsupportedPlatformError();
   }
 }
-
 Window get window {
   unsupportedPlatformError();
 }
@@ -9625,7 +14663,7 @@ Window get window {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Window).
-abstract class Window implements EventTarget, JSObject {
+extension type Window._(JSObject _) implements EventTarget, JSObject {
   /// The **`Window.close()`** method closes the current window, or
   /// the window on which it was called.
   ///
@@ -9639,7 +14677,9 @@ abstract class Window implements EventTarget, JSObject {
   /// Note also that `close()` has no effect when called on [Window]
   /// objects returned by
   /// [`HTMLIFrameElement.contentWindow`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement/contentWindow).
-  void close();
+  void close() {
+    unsupportedPlatformError();
+  }
 
   /// The **`window.stop()`** stops further resource loading in the current
   /// browsing context, equivalent to the stop button in the browser.
@@ -9649,12 +14689,16 @@ abstract class Window implements EventTarget, JSObject {
   /// document's loading, but it will stop its images, new windows, and other
   /// still-loading
   /// objects.
-  void stop();
+  void stop() {
+    unsupportedPlatformError();
+  }
 
   /// Makes a request to bring the window to the front. It may fail due to user
   /// settings and the window isn't guaranteed to be frontmost before this
   /// method returns.
-  void focus();
+  void focus() {
+    unsupportedPlatformError();
+  }
 
   /// The **`Window.blur()`** method does nothing.
   ///
@@ -9664,7 +14708,9 @@ abstract class Window implements EventTarget, JSObject {
   /// > abusing this functionality.
   /// > In Firefox, you can enable the old behavior with the
   /// > `dom.disable_window_flip` preference.
-  void blur();
+  void blur() {
+    unsupportedPlatformError();
+  }
 
   /// The **`open()`** method of the
   /// [`Window`](https://developer.mozilla.org/en-US/docs/Web/API/Window)
@@ -9673,11 +14719,16 @@ abstract class Window implements EventTarget, JSObject {
   /// [iframe](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe))
   /// under a specified name.
   Window? open([
-    String url,
-    String target,
-    String features,
-  ]);
-  JSObject operator [](String name);
+    String? url,
+    String? target,
+    String? features,
+  ]) {
+    unsupportedPlatformError();
+  }
+
+  JSObject operator [](String name) {
+    unsupportedPlatformError();
+  }
 
   /// `window.alert()` instructs the browser to display a dialog with an
   /// optional message, and to wait until the user dismisses the dialog.
@@ -9685,7 +14736,9 @@ abstract class Window implements EventTarget, JSObject {
   /// Under some conditions — for example, when the user switches tabs — the
   /// browser may not actually display a dialog, or may not wait for the user to
   /// dismiss the dialog.
-  void alert([String message]);
+  void alert([String? message]) {
+    unsupportedPlatformError();
+  }
 
   /// `window.confirm()` instructs the browser to display a dialog with an
   /// optional message, and to wait until the user either confirms or cancels
@@ -9694,7 +14747,9 @@ abstract class Window implements EventTarget, JSObject {
   /// Under some conditions — for example, when the user switches tabs — the
   /// browser may not actually display a dialog, or may not wait for the user to
   /// confirm or cancel the dialog.
-  bool confirm([String message]);
+  bool confirm([String? message]) {
+    unsupportedPlatformError();
+  }
 
   /// `window.prompt()` instructs the browser to display a dialog with an
   /// optional message prompting the user to input some text, and to wait until
@@ -9704,9 +14759,11 @@ abstract class Window implements EventTarget, JSObject {
   /// browser may not actually display a dialog, or may not wait for the user to
   /// submit text or to cancel the dialog.
   String? prompt([
-    String message,
-    String default_,
-  ]);
+    String? message,
+    String? default_,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// Opens the print dialog to print the current document.
   ///
@@ -9714,7 +14771,9 @@ abstract class Window implements EventTarget, JSObject {
   /// document will finish loading before opening the print dialog.
   ///
   /// This method will block while the print dialog is open.
-  void print();
+  void print() {
+    unsupportedPlatformError();
+  }
 
   /// The **`window.postMessage()`** method safely enables cross-origin
   /// communication between [Window] objects; _e.g.,_ between a page and a
@@ -9745,9 +14804,11 @@ abstract class Window implements EventTarget, JSObject {
   /// [exposed to the receiving window through the event object](#the_dispatched_event).
   void postMessage(
     JSAny? message, [
-    JSAny optionsOrTargetOrigin,
-    JSArray<JSObject> transfer,
-  ]);
+    JSAny? optionsOrTargetOrigin,
+    JSArray<JSObject>? transfer,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The [Window] interface's **`matchMedia()`** method
   /// returns a new [MediaQueryList] object that can then be used to determine
@@ -9758,7 +14819,9 @@ abstract class Window implements EventTarget, JSObject {
   /// as well as to monitor the document to detect when it matches (or stops
   /// matching) that
   /// media query.
-  MediaQueryList matchMedia(String query);
+  MediaQueryList matchMedia(String query) {
+    unsupportedPlatformError();
+  }
 
   /// The **`moveTo()`** method of the [Window]
   /// interface moves the current window to the specified coordinates.
@@ -9769,7 +14832,9 @@ abstract class Window implements EventTarget, JSObject {
   void moveTo(
     int x,
     int y,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`moveBy()`** method of the [Window]
   /// interface moves the current window by a specified amount.
@@ -9780,42 +14845,54 @@ abstract class Window implements EventTarget, JSObject {
   void moveBy(
     int x,
     int y,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Window.resizeTo()`** method dynamically resizes the
   /// window.
   void resizeTo(
     int width,
     int height,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Window.resizeBy()`** method resizes the current window
   /// by a specified amount.
   void resizeBy(
     int x,
     int y,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Window.scroll()`** method scrolls the window to a
   /// particular place in the document.
   void scroll([
-    JSAny optionsOrX,
-    num y,
-  ]);
+    JSAny? optionsOrX,
+    num? y,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// **`Window.scrollTo()`** scrolls to a particular set of
   /// coordinates in the document.
   void scrollTo([
-    JSAny optionsOrX,
-    num y,
-  ]);
+    JSAny? optionsOrX,
+    num? y,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Window.scrollBy()`** method scrolls the document in the
   /// window by the given amount.
   void scrollBy([
-    JSAny optionsOrX,
-    num y,
-  ]);
+    JSAny? optionsOrX,
+    num? y,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The
   /// **`Window.getComputedStyle()`** method returns an object
@@ -9829,16 +14906,22 @@ abstract class Window implements EventTarget, JSObject {
   CSSStyleDeclaration getComputedStyle(
     Element elt, [
     String? pseudoElt,
-  ]);
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Window.captureEvents()`** method does nothing.
   ///
   /// > **Note:** This is an method long removed from the specification. It is
   /// > kept in browsers to prevent code breakage but does nothing.
-  void captureEvents();
+  void captureEvents() {
+    unsupportedPlatformError();
+  }
 
   /// Releases the window from trapping events of a specific type.
-  void releaseEvents();
+  void releaseEvents() {
+    unsupportedPlatformError();
+  }
 
   /// The **`window.requestIdleCallback()`** method queues a function
   /// to be called during a browser's idle periods. This enables developers to
@@ -9862,18 +14945,27 @@ abstract class Window implements EventTarget, JSObject {
   /// > callback is fired.
   int requestIdleCallback(
     IdleRequestCallback callback, [
-    IdleRequestOptions options,
-  ]);
+    IdleRequestOptions? options,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`window.cancelIdleCallback()`** method cancels a callback
   /// previously scheduled with [window.requestIdleCallback].
-  void cancelIdleCallback(int handle);
+  void cancelIdleCallback(int handle) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Window.getSelection()`** method returns a
   /// [Selection] object representing the range of text selected by the user or
   /// the current position of the caret.
-  Selection? getSelection();
-  void reportError(JSAny? e);
+  Selection? getSelection() {
+    unsupportedPlatformError();
+  }
+
+  void reportError(JSAny? e) {
+    unsupportedPlatformError();
+  }
 
   /// The **`btoa()`** method of the [Window] interface creates a
   /// -encoded  string from a _binary string_ (i.e., a
@@ -9886,7 +14978,9 @@ abstract class Window implements EventTarget, JSObject {
   /// data again.
   /// For example, you can encode control characters such as ASCII values 0
   /// through 31.
-  String btoa(String data);
+  String btoa(String data) {
+    unsupportedPlatformError();
+  }
 
   /// The **`atob()`** method of the [Window] interface decodes a
   /// string of data which has been encoded using  encoding. You can use
@@ -9898,36 +14992,62 @@ abstract class Window implements EventTarget, JSObject {
   ///
   /// For use with arbitrary Unicode strings, see _The "Unicode Problem"_ in the
   /// glossary entry.
-  String atob(String data);
+  String atob(String data) {
+    unsupportedPlatformError();
+  }
+
   int setTimeout(
     TimerHandler handler,
     JSAny? arguments, [
-    int timeout,
-  ]);
-  void clearTimeout([int id]);
+    int? timeout,
+  ]) {
+    unsupportedPlatformError();
+  }
+
+  void clearTimeout([int? id]) {
+    unsupportedPlatformError();
+  }
+
   int setInterval(
     TimerHandler handler,
     JSAny? arguments, [
-    int timeout,
-  ]);
-  void clearInterval([int id]);
-  void queueMicrotask(VoidFunction callback);
+    int? timeout,
+  ]) {
+    unsupportedPlatformError();
+  }
+
+  void clearInterval([int? id]) {
+    unsupportedPlatformError();
+  }
+
+  void queueMicrotask(VoidFunction callback) {
+    unsupportedPlatformError();
+  }
+
   JSPromise<ImageBitmap> createImageBitmap(
     ImageBitmapSource image, [
-    JSAny optionsOrSx,
-    int sy,
-    int sw,
-    int sh,
-    ImageBitmapOptions options,
-  ]);
+    JSAny? optionsOrSx,
+    int? sy,
+    int? sw,
+    int? sh,
+    ImageBitmapOptions? options,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   JSAny? structuredClone(
     JSAny? value, [
-    StructuredSerializeOptions options,
-  ]);
+    StructuredSerializeOptions? options,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   JSPromise<Response> fetch(
     RequestInfo input, [
-    RequestInit init,
-  ]);
+    RequestInit? init,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`window.requestAnimationFrame()`** method tells the
   /// browser you wish to perform an animation. It requests the browser to call
@@ -9956,12 +15076,16 @@ abstract class Window implements EventTarget, JSObject {
   /// > a frame — **otherwise, the animation will run faster on high
   /// > refresh-rate screens**.
   /// > For ways to do that, see the examples below.
-  int requestAnimationFrame(FrameRequestCallback callback);
+  int requestAnimationFrame(FrameRequestCallback callback) {
+    unsupportedPlatformError();
+  }
 
   /// The **`window.cancelAnimationFrame()`** method cancels an
   /// animation frame request previously scheduled through a call to
   /// [window.requestAnimationFrame].
-  void cancelAnimationFrame(int handle);
+  void cancelAnimationFrame(int handle) {
+    unsupportedPlatformError();
+  }
 
   /// The **`window`** property of a [Window] object points to the window object
   /// itself.
@@ -10017,7 +15141,9 @@ abstract class Window implements EventTarget, JSObject {
   /// to the window at will, they would not be able to do this if they had
   /// hard-coded a reference to "window". The default in the class could still
   /// be set as the current window object.
-  Window get window;
+  Window get window {
+    unsupportedPlatformError();
+  }
 
   /// The **`Window.self`** read-only property returns the window itself, as a .
   /// It can be used with dot notation on a `window` object (that is,
@@ -10027,17 +15153,26 @@ abstract class Window implements EventTarget, JSObject {
   /// way that will work not only in a window context (`self` will resolve to
   /// `window.self`) but also in a worker context (`self` will then resolve to
   /// [WorkerGlobalScope.self]).
-  Window get self;
+  Window get self {
+    unsupportedPlatformError();
+  }
 
   /// **`window.document`** returns a reference to the
   /// [document](https://developer.mozilla.org/en-US/docs/Web/API/Document)
   /// contained in the window.
-  Document get document;
+  Document get document {
+    unsupportedPlatformError();
+  }
 
   /// The `Window.name` property
   /// gets/sets the name of the window's browsing context.
-  String get name;
-  set name(String value);
+  String get name {
+    unsupportedPlatformError();
+  }
+
+  set name(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Window.location`** read-only property returns a [Location] object
   /// with information about the current location of the document.
@@ -10050,7 +15185,9 @@ abstract class Window implements EventTarget, JSObject {
   /// 'http://www.example.com'`.
   ///
   /// See [Location] for all available properties.
-  Location get location;
+  Location get location {
+    unsupportedPlatformError();
+  }
 
   /// The `Window.history` read-only property returns a reference to the
   /// [History] object, which provides an interface for manipulating the browser
@@ -10062,14 +15199,18 @@ abstract class Window implements EventTarget, JSObject {
   /// for examples and details. In particular, that article explains security
   /// features of the [History.pushState] and [History.replaceState] methods
   /// that you should be aware of before using them.
-  History get history;
+  History get history {
+    unsupportedPlatformError();
+  }
 
   /// The **`customElements`** read-only property of the [Window] interface
   /// returns a reference to the [CustomElementRegistry] object, which can be
   /// used to register new
   /// [custom elements](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_custom_elements)
   /// and get information about previously registered custom elements.
-  CustomElementRegistry get customElements;
+  CustomElementRegistry get customElements {
+    unsupportedPlatformError();
+  }
 
   /// Returns the `locationbar` object.
   ///
@@ -10079,7 +15220,9 @@ abstract class Window implements EventTarget, JSObject {
   ///
   /// For privacy and interoperability reasons, the value of the `visible`
   /// property is now `false` if this `Window` is a popup, and `true` otherwise.
-  BarProp get locationbar;
+  BarProp get locationbar {
+    unsupportedPlatformError();
+  }
 
   /// Returns the `menubar` object.
   ///
@@ -10089,7 +15232,9 @@ abstract class Window implements EventTarget, JSObject {
   ///
   /// For privacy and interoperability reasons, the value of the `visible`
   /// property is now `false` if this `Window` is a popup, and `true` otherwise.
-  BarProp get menubar;
+  BarProp get menubar {
+    unsupportedPlatformError();
+  }
 
   /// Returns the `personalbar` object.
   ///
@@ -10099,7 +15244,9 @@ abstract class Window implements EventTarget, JSObject {
   ///
   /// For privacy and interoperability reasons, the value of the `visible`
   /// property is now `false` if this `Window` is a popup, and `true` otherwise.
-  BarProp get personalbar;
+  BarProp get personalbar {
+    unsupportedPlatformError();
+  }
 
   /// Returns the `scrollbars` object.
   ///
@@ -10109,7 +15256,9 @@ abstract class Window implements EventTarget, JSObject {
   ///
   /// For privacy and interoperability reasons, the value of the `visible`
   /// property is now `false` if this `Window` is a popup, and `true` otherwise.
-  BarProp get scrollbars;
+  BarProp get scrollbars {
+    unsupportedPlatformError();
+  }
 
   /// Returns the `statusbar` object.
   ///
@@ -10119,7 +15268,9 @@ abstract class Window implements EventTarget, JSObject {
   ///
   /// For privacy and interoperability reasons, the value of the `visible`
   /// property is now `false` if this `Window` is a popup, and `true` otherwise.
-  BarProp get statusbar;
+  BarProp get statusbar {
+    unsupportedPlatformError();
+  }
 
   /// Returns the `toolbar` object.
   ///
@@ -10129,7 +15280,9 @@ abstract class Window implements EventTarget, JSObject {
   ///
   /// For privacy and interoperability reasons, the value of the `visible`
   /// property is now `false` if this `Window` is a popup, and `true` otherwise.
-  BarProp get toolbar;
+  BarProp get toolbar {
+    unsupportedPlatformError();
+  }
 
   /// The **`status`** property of the
   /// [Window] interface was originally intended to set the text in the status
@@ -10137,24 +15290,37 @@ abstract class Window implements EventTarget, JSObject {
   /// requires
   /// setting `window.status` to have no effect on the text displayed in the
   /// status bar.
-  String get status;
-  set status(String value);
+  String get status {
+    unsupportedPlatformError();
+  }
+
+  set status(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Window.closed`** read-only property indicates whether
   /// the referenced window is closed or not.
-  bool get closed;
+  bool get closed {
+    unsupportedPlatformError();
+  }
 
   /// Returns the window itself, which is an array-like object, listing the
   /// direct sub-frames
   /// of the current window.
-  Window get frames;
+  Window get frames {
+    unsupportedPlatformError();
+  }
 
   /// Returns the number of frames (either `frame` or
   /// `iframe` elements) in the window.
-  int get length;
+  int get length {
+    unsupportedPlatformError();
+  }
 
   /// Returns a reference to the topmost window in the window hierarchy.
-  Window? get top;
+  Window? get top {
+    unsupportedPlatformError();
+  }
 
   /// The [Window] interface's
   /// **`opener`** property returns a reference to the window that
@@ -10165,8 +15331,13 @@ abstract class Window implements EventTarget, JSObject {
   ///
   /// In other words, if window `A` opens window `B`,
   /// `B.opener` returns `A`.
-  JSAny? get opener;
-  set opener(JSAny? value);
+  JSAny? get opener {
+    unsupportedPlatformError();
+  }
+
+  set opener(JSAny? value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Window.parent`** property is a reference to the parent
   /// of the current window or subframe.
@@ -10178,7 +15349,9 @@ abstract class Window implements EventTarget, JSObject {
   /// When a window is loaded in an `iframe`, `object`, or
   /// `frame`, its parent is the window with the element embedding the
   /// window.
-  Window? get parent;
+  Window? get parent {
+    unsupportedPlatformError();
+  }
 
   /// The **`Window.frameElement`** property
   /// returns the element (such as `iframe` or `object`)
@@ -10187,13 +15360,17 @@ abstract class Window implements EventTarget, JSObject {
   /// > **Note:** Despite this property's name, it works for documents embedded
   /// > within any embedding point, including `object`,
   /// > `iframe`, or `embed`.
-  Element? get frameElement;
+  Element? get frameElement {
+    unsupportedPlatformError();
+  }
 
   /// The **`Window.navigator`** read-only property returns a
   /// reference to the [Navigator] object, which has methods and properties
   /// about
   /// the application running the script.
-  Navigator get navigator;
+  Navigator get navigator {
+    unsupportedPlatformError();
+  }
 
   /// Returns the orientation in degrees (in 90-degree increments) of the
   /// viewport relative to the device's natural orientation.
@@ -10203,21 +15380,33 @@ abstract class Window implements EventTarget, JSObject {
   ///
   /// This property is deprecated. Use the [Screen.orientation] property
   /// instead, available on the [window.screen] property.
-  int get orientation;
-  EventHandler get onorientationchange;
-  set onorientationchange(EventHandler value);
+  int get orientation {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onorientationchange {
+    unsupportedPlatformError();
+  }
+
+  set onorientationchange(EventHandler value) {
+    unsupportedPlatformError();
+  }
 
   /// The [Window] property **`screen`** returns a
   /// reference to the screen object associated with the window. The `screen`
   /// object, implementing the [Screen] interface, is a special object for
   /// inspecting properties of the screen on which the current window is being
   /// rendered.
-  Screen get screen;
+  Screen get screen {
+    unsupportedPlatformError();
+  }
 
   /// The **`visualViewport`** read-only property of the [Window] interface
   /// returns a [VisualViewport] object representing the visual viewport for a
   /// given window, or `null` if current document is not fully active.
-  VisualViewport? get visualViewport;
+  VisualViewport? get visualViewport {
+    unsupportedPlatformError();
+  }
 
   /// The read-only [Window] property **`innerWidth`** returns the interior
   /// width of the window in pixels (that is, the width of the window's ). That
@@ -10227,7 +15416,9 @@ abstract class Window implements EventTarget, JSObject {
   /// layout viewport) can be obtained using the [Window.innerHeight] property.
   /// That measurement also accounts for the height of the horizontal scroll
   /// bar, if it is visible.
-  int get innerWidth;
+  int get innerWidth {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`innerHeight`** property of the
   /// [Window] interface returns the interior height of the window in pixels,
@@ -10236,21 +15427,27 @@ abstract class Window implements EventTarget, JSObject {
   /// The value of `innerHeight` is taken from the height of the window's
   /// . The width can be obtained using the
   /// [Window.innerWidth] property.
-  int get innerHeight;
+  int get innerHeight {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`scrollX`** property of the [Window] interface returns the
   /// number of pixels by which the document is currently scrolled horizontally.
   /// This value is subpixel precise in modern browsers, meaning that it isn't
   /// necessarily a whole number. You can get the number of pixels the document
   /// is scrolled vertically from the [Window.scrollY] property.
-  double get scrollX;
+  double get scrollX {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`scrollY`** property of the [Window] interface returns the
   /// number of pixels by which the document is currently scrolled vertically.
   /// This value is subpixel precise in modern browsers, meaning that it isn't
   /// necessarily a whole number. You can get the number of pixels the document
   /// is scrolled horizontally from the [Window.scrollX] property.
-  double get scrollY;
+  double get scrollY {
+    unsupportedPlatformError();
+  }
 
   /// The **`Window.screenX`** read-only property returns the
   /// horizontal distance, in CSS pixels, of the left border of the user's
@@ -10260,7 +15457,9 @@ abstract class Window implements EventTarget, JSObject {
   /// > **Note:** An alias of `screenX` was implemented across modern
   /// > browsers in more recent times — [Window.screenLeft]. This was originally
   /// > supported only in IE but was introduced everywhere due to popularity.
-  int get screenX;
+  int get screenX {
+    unsupportedPlatformError();
+  }
 
   /// The **`Window.screenLeft`** read-only property returns the
   /// horizontal distance, in CSS pixels, from the left border of the user's
@@ -10270,7 +15469,9 @@ abstract class Window implements EventTarget, JSObject {
   /// > **Note:** `screenLeft` is an alias of the older
   /// > [Window.screenX] property. `screenLeft` was originally
   /// > supported only in IE but was introduced everywhere due to popularity.
-  int get screenLeft;
+  int get screenLeft {
+    unsupportedPlatformError();
+  }
 
   /// The **`Window.screenY`** read-only property returns the vertical distance,
   /// in CSS pixels, of the top border of the user's browser viewport to the top
@@ -10279,7 +15480,9 @@ abstract class Window implements EventTarget, JSObject {
   /// > **Note:** An alias of `screenY` was implemented across modern browsers
   /// > in more recent times — [Window.screenTop]. This was originally supported
   /// > only in IE but was introduced everywhere due to popularity.
-  int get screenY;
+  int get screenY {
+    unsupportedPlatformError();
+  }
 
   /// The **`Window.screenTop`** read-only property returns the
   /// vertical distance, in CSS pixels, from the top border of the user's
@@ -10289,18 +15492,24 @@ abstract class Window implements EventTarget, JSObject {
   /// > **Note:** `screenTop` is an alias of the older
   /// > [Window.screenY] property. `screenTop` was originally
   /// > supported only in IE but was introduced everywhere due to popularity.
-  int get screenTop;
+  int get screenTop {
+    unsupportedPlatformError();
+  }
 
   /// **`Window.outerWidth`** read-only property returns the width of the
   /// outside of the browser window. It represents the width of the whole
   /// browser window including sidebar (if expanded), window chrome and window
   /// resizing borders/handles.
-  int get outerWidth;
+  int get outerWidth {
+    unsupportedPlatformError();
+  }
 
   /// The **`Window.outerHeight`** read-only property returns the height in
   /// pixels of the whole browser window, including any sidebar, window chrome,
   /// and window-resizing borders/handles.
-  int get outerHeight;
+  int get outerHeight {
+    unsupportedPlatformError();
+  }
 
   /// The **`devicePixelRatio`** of
   /// [Window] interface returns the ratio of the resolution in _physical
@@ -10323,7 +15532,9 @@ abstract class Window implements EventTarget, JSObject {
   /// value of `devicePixelRatio` changes (which can happen, for example, if the
   /// user drags the window to a display with a different pixel density). See
   /// [the example below](#monitoring_screen_resolution_or_zoom_level_changes).
-  double get devicePixelRatio;
+  double get devicePixelRatio {
+    unsupportedPlatformError();
+  }
 
   /// The read-only [Window] property **`event`** returns the [Event] which is
   /// currently being handled by the site's code. Outside the context of an
@@ -10337,264 +15548,976 @@ abstract class Window implements EventTarget, JSObject {
   /// > **Note:** This property can be fragile, in that there may be situations
   /// > in which the returned `Event` is not the expected value. In addition,
   /// > `Window.event` is not accurate for events dispatched within .
-  Event? get event;
+  Event? get event {
+    unsupportedPlatformError();
+  }
 
   /// The `external` property of the [Window] API returns an instance of the
   /// `External` interface, which was intended to contain functions related to
   /// adding external search providers to the browser. However, this is now
   /// deprecated, and the contained methods are now dummy functions that do
   /// nothing as per spec.
-  External get external;
-  EventHandler get onappinstalled;
-  set onappinstalled(EventHandler value);
-  EventHandler get onbeforeinstallprompt;
-  set onbeforeinstallprompt(EventHandler value);
-  EventHandler get ondeviceorientation;
-  set ondeviceorientation(EventHandler value);
-  EventHandler get ondeviceorientationabsolute;
-  set ondeviceorientationabsolute(EventHandler value);
-  EventHandler get ondevicemotion;
-  set ondevicemotion(EventHandler value);
+  External get external {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onappinstalled {
+    unsupportedPlatformError();
+  }
+
+  set onappinstalled(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onbeforeinstallprompt {
+    unsupportedPlatformError();
+  }
+
+  set onbeforeinstallprompt(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ondeviceorientation {
+    unsupportedPlatformError();
+  }
+
+  set ondeviceorientation(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ondeviceorientationabsolute {
+    unsupportedPlatformError();
+  }
+
+  set ondeviceorientationabsolute(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ondevicemotion {
+    unsupportedPlatformError();
+  }
+
+  set ondevicemotion(EventHandler value) {
+    unsupportedPlatformError();
+  }
 
   /// The `speechSynthesis` read-only property of the Window object returns a
   /// [SpeechSynthesis] object, which is the entry point into using
   /// [Web Speech API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API)
   /// speech synthesis functionality.
-  SpeechSynthesis get speechSynthesis;
-  EventHandler get onabort;
-  set onabort(EventHandler value);
-  EventHandler get onauxclick;
-  set onauxclick(EventHandler value);
-  EventHandler get onbeforeinput;
-  set onbeforeinput(EventHandler value);
-  EventHandler get onbeforetoggle;
-  set onbeforetoggle(EventHandler value);
-  EventHandler get onblur;
-  set onblur(EventHandler value);
-  EventHandler get oncancel;
-  set oncancel(EventHandler value);
-  EventHandler get oncanplay;
-  set oncanplay(EventHandler value);
-  EventHandler get oncanplaythrough;
-  set oncanplaythrough(EventHandler value);
-  EventHandler get onchange;
-  set onchange(EventHandler value);
-  EventHandler get onclick;
-  set onclick(EventHandler value);
-  EventHandler get onclose;
-  set onclose(EventHandler value);
-  EventHandler get oncontextlost;
-  set oncontextlost(EventHandler value);
-  EventHandler get oncontextmenu;
-  set oncontextmenu(EventHandler value);
-  EventHandler get oncontextrestored;
-  set oncontextrestored(EventHandler value);
-  EventHandler get oncopy;
-  set oncopy(EventHandler value);
-  EventHandler get oncuechange;
-  set oncuechange(EventHandler value);
-  EventHandler get oncut;
-  set oncut(EventHandler value);
-  EventHandler get ondblclick;
-  set ondblclick(EventHandler value);
-  EventHandler get ondrag;
-  set ondrag(EventHandler value);
-  EventHandler get ondragend;
-  set ondragend(EventHandler value);
-  EventHandler get ondragenter;
-  set ondragenter(EventHandler value);
-  EventHandler get ondragleave;
-  set ondragleave(EventHandler value);
-  EventHandler get ondragover;
-  set ondragover(EventHandler value);
-  EventHandler get ondragstart;
-  set ondragstart(EventHandler value);
-  EventHandler get ondrop;
-  set ondrop(EventHandler value);
-  EventHandler get ondurationchange;
-  set ondurationchange(EventHandler value);
-  EventHandler get onemptied;
-  set onemptied(EventHandler value);
-  EventHandler get onended;
-  set onended(EventHandler value);
-  OnErrorEventHandler get onerror;
-  set onerror(OnErrorEventHandler value);
-  EventHandler get onfocus;
-  set onfocus(EventHandler value);
-  EventHandler get onformdata;
-  set onformdata(EventHandler value);
-  EventHandler get oninput;
-  set oninput(EventHandler value);
-  EventHandler get oninvalid;
-  set oninvalid(EventHandler value);
-  EventHandler get onkeydown;
-  set onkeydown(EventHandler value);
-  EventHandler get onkeypress;
-  set onkeypress(EventHandler value);
-  EventHandler get onkeyup;
-  set onkeyup(EventHandler value);
-  EventHandler get onload;
-  set onload(EventHandler value);
-  EventHandler get onloadeddata;
-  set onloadeddata(EventHandler value);
-  EventHandler get onloadedmetadata;
-  set onloadedmetadata(EventHandler value);
-  EventHandler get onloadstart;
-  set onloadstart(EventHandler value);
-  EventHandler get onmousedown;
-  set onmousedown(EventHandler value);
-  EventHandler get onmouseenter;
-  set onmouseenter(EventHandler value);
-  EventHandler get onmouseleave;
-  set onmouseleave(EventHandler value);
-  EventHandler get onmousemove;
-  set onmousemove(EventHandler value);
-  EventHandler get onmouseout;
-  set onmouseout(EventHandler value);
-  EventHandler get onmouseover;
-  set onmouseover(EventHandler value);
-  EventHandler get onmouseup;
-  set onmouseup(EventHandler value);
-  EventHandler get onpaste;
-  set onpaste(EventHandler value);
-  EventHandler get onpause;
-  set onpause(EventHandler value);
-  EventHandler get onplay;
-  set onplay(EventHandler value);
-  EventHandler get onplaying;
-  set onplaying(EventHandler value);
-  EventHandler get onprogress;
-  set onprogress(EventHandler value);
-  EventHandler get onratechange;
-  set onratechange(EventHandler value);
-  EventHandler get onreset;
-  set onreset(EventHandler value);
-  EventHandler get onresize;
-  set onresize(EventHandler value);
-  EventHandler get onscroll;
-  set onscroll(EventHandler value);
-  EventHandler get onscrollend;
-  set onscrollend(EventHandler value);
-  EventHandler get onsecuritypolicyviolation;
-  set onsecuritypolicyviolation(EventHandler value);
-  EventHandler get onseeked;
-  set onseeked(EventHandler value);
-  EventHandler get onseeking;
-  set onseeking(EventHandler value);
-  EventHandler get onselect;
-  set onselect(EventHandler value);
-  EventHandler get onslotchange;
-  set onslotchange(EventHandler value);
-  EventHandler get onstalled;
-  set onstalled(EventHandler value);
-  EventHandler get onsubmit;
-  set onsubmit(EventHandler value);
-  EventHandler get onsuspend;
-  set onsuspend(EventHandler value);
-  EventHandler get ontimeupdate;
-  set ontimeupdate(EventHandler value);
-  EventHandler get ontoggle;
-  set ontoggle(EventHandler value);
-  EventHandler get onvolumechange;
-  set onvolumechange(EventHandler value);
-  EventHandler get onwaiting;
-  set onwaiting(EventHandler value);
-  EventHandler get onwheel;
-  set onwheel(EventHandler value);
-  EventHandler get onanimationstart;
-  set onanimationstart(EventHandler value);
-  EventHandler get onanimationiteration;
-  set onanimationiteration(EventHandler value);
-  EventHandler get onanimationend;
-  set onanimationend(EventHandler value);
-  EventHandler get onanimationcancel;
-  set onanimationcancel(EventHandler value);
-  EventHandler get ontransitionrun;
-  set ontransitionrun(EventHandler value);
-  EventHandler get ontransitionstart;
-  set ontransitionstart(EventHandler value);
-  EventHandler get ontransitionend;
-  set ontransitionend(EventHandler value);
-  EventHandler get ontransitioncancel;
-  set ontransitioncancel(EventHandler value);
-  EventHandler get onpointerover;
-  set onpointerover(EventHandler value);
-  EventHandler get onpointerenter;
-  set onpointerenter(EventHandler value);
-  EventHandler get onpointerdown;
-  set onpointerdown(EventHandler value);
-  EventHandler get onpointermove;
-  set onpointermove(EventHandler value);
-  EventHandler get onpointerup;
-  set onpointerup(EventHandler value);
-  EventHandler get onpointercancel;
-  set onpointercancel(EventHandler value);
-  EventHandler get onpointerout;
-  set onpointerout(EventHandler value);
-  EventHandler get onpointerleave;
-  set onpointerleave(EventHandler value);
-  EventHandler get ongotpointercapture;
-  set ongotpointercapture(EventHandler value);
-  EventHandler get onlostpointercapture;
-  set onlostpointercapture(EventHandler value);
-  EventHandler get onselectstart;
-  set onselectstart(EventHandler value);
-  EventHandler get onselectionchange;
-  set onselectionchange(EventHandler value);
-  EventHandler get ontouchstart;
-  set ontouchstart(EventHandler value);
-  EventHandler get ontouchend;
-  set ontouchend(EventHandler value);
-  EventHandler get ontouchmove;
-  set ontouchmove(EventHandler value);
-  EventHandler get ontouchcancel;
-  set ontouchcancel(EventHandler value);
-  EventHandler get onafterprint;
-  set onafterprint(EventHandler value);
-  EventHandler get onbeforeprint;
-  set onbeforeprint(EventHandler value);
-  OnBeforeUnloadEventHandler get onbeforeunload;
-  set onbeforeunload(OnBeforeUnloadEventHandler value);
-  EventHandler get onhashchange;
-  set onhashchange(EventHandler value);
-  EventHandler get onlanguagechange;
-  set onlanguagechange(EventHandler value);
-  EventHandler get onmessage;
-  set onmessage(EventHandler value);
-  EventHandler get onmessageerror;
-  set onmessageerror(EventHandler value);
-  EventHandler get onoffline;
-  set onoffline(EventHandler value);
-  EventHandler get ononline;
-  set ononline(EventHandler value);
-  EventHandler get onpagehide;
-  set onpagehide(EventHandler value);
-  EventHandler get onpageshow;
-  set onpageshow(EventHandler value);
-  EventHandler get onpopstate;
-  set onpopstate(EventHandler value);
-  EventHandler get onrejectionhandled;
-  set onrejectionhandled(EventHandler value);
-  EventHandler get onstorage;
-  set onstorage(EventHandler value);
-  EventHandler get onunhandledrejection;
-  set onunhandledrejection(EventHandler value);
-  EventHandler get onunload;
-  set onunload(EventHandler value);
-  EventHandler get ongamepadconnected;
-  set ongamepadconnected(EventHandler value);
-  EventHandler get ongamepaddisconnected;
-  set ongamepaddisconnected(EventHandler value);
+  SpeechSynthesis get speechSynthesis {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onabort {
+    unsupportedPlatformError();
+  }
+
+  set onabort(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onauxclick {
+    unsupportedPlatformError();
+  }
+
+  set onauxclick(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onbeforeinput {
+    unsupportedPlatformError();
+  }
+
+  set onbeforeinput(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onbeforetoggle {
+    unsupportedPlatformError();
+  }
+
+  set onbeforetoggle(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onblur {
+    unsupportedPlatformError();
+  }
+
+  set onblur(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get oncancel {
+    unsupportedPlatformError();
+  }
+
+  set oncancel(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get oncanplay {
+    unsupportedPlatformError();
+  }
+
+  set oncanplay(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get oncanplaythrough {
+    unsupportedPlatformError();
+  }
+
+  set oncanplaythrough(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onchange {
+    unsupportedPlatformError();
+  }
+
+  set onchange(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onclick {
+    unsupportedPlatformError();
+  }
+
+  set onclick(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onclose {
+    unsupportedPlatformError();
+  }
+
+  set onclose(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get oncontextlost {
+    unsupportedPlatformError();
+  }
+
+  set oncontextlost(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get oncontextmenu {
+    unsupportedPlatformError();
+  }
+
+  set oncontextmenu(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get oncontextrestored {
+    unsupportedPlatformError();
+  }
+
+  set oncontextrestored(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get oncopy {
+    unsupportedPlatformError();
+  }
+
+  set oncopy(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get oncuechange {
+    unsupportedPlatformError();
+  }
+
+  set oncuechange(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get oncut {
+    unsupportedPlatformError();
+  }
+
+  set oncut(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ondblclick {
+    unsupportedPlatformError();
+  }
+
+  set ondblclick(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ondrag {
+    unsupportedPlatformError();
+  }
+
+  set ondrag(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ondragend {
+    unsupportedPlatformError();
+  }
+
+  set ondragend(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ondragenter {
+    unsupportedPlatformError();
+  }
+
+  set ondragenter(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ondragleave {
+    unsupportedPlatformError();
+  }
+
+  set ondragleave(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ondragover {
+    unsupportedPlatformError();
+  }
+
+  set ondragover(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ondragstart {
+    unsupportedPlatformError();
+  }
+
+  set ondragstart(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ondrop {
+    unsupportedPlatformError();
+  }
+
+  set ondrop(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ondurationchange {
+    unsupportedPlatformError();
+  }
+
+  set ondurationchange(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onemptied {
+    unsupportedPlatformError();
+  }
+
+  set onemptied(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onended {
+    unsupportedPlatformError();
+  }
+
+  set onended(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  OnErrorEventHandler get onerror {
+    unsupportedPlatformError();
+  }
+
+  set onerror(OnErrorEventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onfocus {
+    unsupportedPlatformError();
+  }
+
+  set onfocus(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onformdata {
+    unsupportedPlatformError();
+  }
+
+  set onformdata(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get oninput {
+    unsupportedPlatformError();
+  }
+
+  set oninput(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get oninvalid {
+    unsupportedPlatformError();
+  }
+
+  set oninvalid(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onkeydown {
+    unsupportedPlatformError();
+  }
+
+  set onkeydown(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onkeypress {
+    unsupportedPlatformError();
+  }
+
+  set onkeypress(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onkeyup {
+    unsupportedPlatformError();
+  }
+
+  set onkeyup(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onload {
+    unsupportedPlatformError();
+  }
+
+  set onload(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onloadeddata {
+    unsupportedPlatformError();
+  }
+
+  set onloadeddata(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onloadedmetadata {
+    unsupportedPlatformError();
+  }
+
+  set onloadedmetadata(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onloadstart {
+    unsupportedPlatformError();
+  }
+
+  set onloadstart(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onmousedown {
+    unsupportedPlatformError();
+  }
+
+  set onmousedown(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onmouseenter {
+    unsupportedPlatformError();
+  }
+
+  set onmouseenter(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onmouseleave {
+    unsupportedPlatformError();
+  }
+
+  set onmouseleave(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onmousemove {
+    unsupportedPlatformError();
+  }
+
+  set onmousemove(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onmouseout {
+    unsupportedPlatformError();
+  }
+
+  set onmouseout(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onmouseover {
+    unsupportedPlatformError();
+  }
+
+  set onmouseover(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onmouseup {
+    unsupportedPlatformError();
+  }
+
+  set onmouseup(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onpaste {
+    unsupportedPlatformError();
+  }
+
+  set onpaste(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onpause {
+    unsupportedPlatformError();
+  }
+
+  set onpause(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onplay {
+    unsupportedPlatformError();
+  }
+
+  set onplay(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onplaying {
+    unsupportedPlatformError();
+  }
+
+  set onplaying(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onprogress {
+    unsupportedPlatformError();
+  }
+
+  set onprogress(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onratechange {
+    unsupportedPlatformError();
+  }
+
+  set onratechange(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onreset {
+    unsupportedPlatformError();
+  }
+
+  set onreset(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onresize {
+    unsupportedPlatformError();
+  }
+
+  set onresize(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onscroll {
+    unsupportedPlatformError();
+  }
+
+  set onscroll(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onscrollend {
+    unsupportedPlatformError();
+  }
+
+  set onscrollend(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onsecuritypolicyviolation {
+    unsupportedPlatformError();
+  }
+
+  set onsecuritypolicyviolation(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onseeked {
+    unsupportedPlatformError();
+  }
+
+  set onseeked(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onseeking {
+    unsupportedPlatformError();
+  }
+
+  set onseeking(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onselect {
+    unsupportedPlatformError();
+  }
+
+  set onselect(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onslotchange {
+    unsupportedPlatformError();
+  }
+
+  set onslotchange(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onstalled {
+    unsupportedPlatformError();
+  }
+
+  set onstalled(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onsubmit {
+    unsupportedPlatformError();
+  }
+
+  set onsubmit(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onsuspend {
+    unsupportedPlatformError();
+  }
+
+  set onsuspend(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ontimeupdate {
+    unsupportedPlatformError();
+  }
+
+  set ontimeupdate(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ontoggle {
+    unsupportedPlatformError();
+  }
+
+  set ontoggle(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onvolumechange {
+    unsupportedPlatformError();
+  }
+
+  set onvolumechange(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onwaiting {
+    unsupportedPlatformError();
+  }
+
+  set onwaiting(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onwheel {
+    unsupportedPlatformError();
+  }
+
+  set onwheel(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onanimationstart {
+    unsupportedPlatformError();
+  }
+
+  set onanimationstart(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onanimationiteration {
+    unsupportedPlatformError();
+  }
+
+  set onanimationiteration(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onanimationend {
+    unsupportedPlatformError();
+  }
+
+  set onanimationend(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onanimationcancel {
+    unsupportedPlatformError();
+  }
+
+  set onanimationcancel(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ontransitionrun {
+    unsupportedPlatformError();
+  }
+
+  set ontransitionrun(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ontransitionstart {
+    unsupportedPlatformError();
+  }
+
+  set ontransitionstart(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ontransitionend {
+    unsupportedPlatformError();
+  }
+
+  set ontransitionend(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ontransitioncancel {
+    unsupportedPlatformError();
+  }
+
+  set ontransitioncancel(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onpointerover {
+    unsupportedPlatformError();
+  }
+
+  set onpointerover(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onpointerenter {
+    unsupportedPlatformError();
+  }
+
+  set onpointerenter(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onpointerdown {
+    unsupportedPlatformError();
+  }
+
+  set onpointerdown(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onpointermove {
+    unsupportedPlatformError();
+  }
+
+  set onpointermove(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onpointerup {
+    unsupportedPlatformError();
+  }
+
+  set onpointerup(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onpointercancel {
+    unsupportedPlatformError();
+  }
+
+  set onpointercancel(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onpointerout {
+    unsupportedPlatformError();
+  }
+
+  set onpointerout(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onpointerleave {
+    unsupportedPlatformError();
+  }
+
+  set onpointerleave(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ongotpointercapture {
+    unsupportedPlatformError();
+  }
+
+  set ongotpointercapture(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onlostpointercapture {
+    unsupportedPlatformError();
+  }
+
+  set onlostpointercapture(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onselectstart {
+    unsupportedPlatformError();
+  }
+
+  set onselectstart(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onselectionchange {
+    unsupportedPlatformError();
+  }
+
+  set onselectionchange(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ontouchstart {
+    unsupportedPlatformError();
+  }
+
+  set ontouchstart(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ontouchend {
+    unsupportedPlatformError();
+  }
+
+  set ontouchend(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ontouchmove {
+    unsupportedPlatformError();
+  }
+
+  set ontouchmove(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ontouchcancel {
+    unsupportedPlatformError();
+  }
+
+  set ontouchcancel(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onafterprint {
+    unsupportedPlatformError();
+  }
+
+  set onafterprint(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onbeforeprint {
+    unsupportedPlatformError();
+  }
+
+  set onbeforeprint(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  OnBeforeUnloadEventHandler get onbeforeunload {
+    unsupportedPlatformError();
+  }
+
+  set onbeforeunload(OnBeforeUnloadEventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onhashchange {
+    unsupportedPlatformError();
+  }
+
+  set onhashchange(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onlanguagechange {
+    unsupportedPlatformError();
+  }
+
+  set onlanguagechange(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onmessage {
+    unsupportedPlatformError();
+  }
+
+  set onmessage(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onmessageerror {
+    unsupportedPlatformError();
+  }
+
+  set onmessageerror(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onoffline {
+    unsupportedPlatformError();
+  }
+
+  set onoffline(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ononline {
+    unsupportedPlatformError();
+  }
+
+  set ononline(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onpagehide {
+    unsupportedPlatformError();
+  }
+
+  set onpagehide(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onpageshow {
+    unsupportedPlatformError();
+  }
+
+  set onpageshow(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onpopstate {
+    unsupportedPlatformError();
+  }
+
+  set onpopstate(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onrejectionhandled {
+    unsupportedPlatformError();
+  }
+
+  set onrejectionhandled(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onstorage {
+    unsupportedPlatformError();
+  }
+
+  set onstorage(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onunhandledrejection {
+    unsupportedPlatformError();
+  }
+
+  set onunhandledrejection(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onunload {
+    unsupportedPlatformError();
+  }
+
+  set onunload(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ongamepadconnected {
+    unsupportedPlatformError();
+  }
+
+  set ongamepadconnected(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ongamepaddisconnected {
+    unsupportedPlatformError();
+  }
+
+  set ongamepaddisconnected(EventHandler value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`origin`** read-only property of the [Window] interface returns the
   /// origin of the global scope, serialized as a string.
-  String get origin;
+  String get origin {
+    unsupportedPlatformError();
+  }
 
   /// The **`isSecureContext`** read-only property of the [Window] interface
   /// returns a boolean indicating whether the current
   /// [context is secure](https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts)
   /// (`true`) or not (`false`).
-  bool get isSecureContext;
+  bool get isSecureContext {
+    unsupportedPlatformError();
+  }
 
   /// The **`crossOriginIsolated`** read-only property of the [Window] interface
   /// returns a boolean value that
@@ -10610,12 +16533,16 @@ abstract class Window implements EventTarget, JSObject {
   /// A website is in a cross-origin isolated state, when the response header
   /// has the value `same-origin` and the  header has the value `require-corp`
   /// or `credentialless`.
-  bool get crossOriginIsolated;
+  bool get crossOriginIsolated {
+    unsupportedPlatformError();
+  }
 
   /// The **`indexedDB`** read-only property of the [Window] interface provides
   /// a mechanism for applications to
   /// asynchronously access the capabilities of indexed databases.
-  IDBFactory get indexedDB;
+  IDBFactory get indexedDB {
+    unsupportedPlatformError();
+  }
 
   /// The **`crypto`** read-only property of the [Window] interface returns the
   /// [Crypto] object for this window's scope. This object gives web pages
@@ -10630,7 +16557,9 @@ abstract class Window implements EventTarget, JSObject {
   /// object only has one usable feature in insecure contexts: the
   /// [Crypto.getRandomValues] method. In general, you should use this API only
   /// in secure contexts.
-  Crypto get crypto;
+  Crypto get crypto {
+    unsupportedPlatformError();
+  }
 
   /// The **`performance`** property of the [Window] interface returns a
   /// [Performance] object, which can be used to gather performance information
@@ -10639,7 +16568,9 @@ abstract class Window implements EventTarget, JSObject {
   /// Performance entries are per context. If you create a mark on the main
   /// thread (or other worker), you cannot see it in a worker thread, and vice
   /// versa.
-  Performance get performance;
+  Performance get performance {
+    unsupportedPlatformError();
+  }
 
   /// The **`scheduler`** read-only property of the [Window] interface is the
   /// entry point for using the
@@ -10647,18 +16578,24 @@ abstract class Window implements EventTarget, JSObject {
   ///
   /// The object has a single instance method [Scheduler.postTask] that is used
   /// to post prioritized tasks for scheduling.
-  Scheduler get scheduler;
+  Scheduler get scheduler {
+    unsupportedPlatformError();
+  }
 
   /// The **`caches`** read-only property of the [Window] interface returns the
   /// [CacheStorage] object associated with the current context.
   /// This object enables functionality such as storing assets for offline use,
   /// and generating custom responses to requests.
-  CacheStorage get caches;
+  CacheStorage get caches {
+    unsupportedPlatformError();
+  }
 
   /// The **`trustedTypes`** read-only property of the [Window] interface
   /// returns the [TrustedTypePolicyFactory] object associated with the global
   /// object, providing the entry point for using the [Trusted Types API].
-  TrustedTypePolicyFactory get trustedTypes;
+  TrustedTypePolicyFactory get trustedTypes {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`sessionStorage`**
   /// property accesses a session [Storage] object for the current
@@ -10698,7 +16635,9 @@ abstract class Window implements EventTarget, JSObject {
   /// format, which uses two bytes per character. As with objects, integer keys
   /// are
   /// automatically converted to strings.
-  Storage get sessionStorage;
+  Storage get sessionStorage {
+    unsupportedPlatformError();
+  }
 
   /// The **`localStorage`** read-only property of the [window] interface allows
   /// you to access a [Storage] object for the [Document]'s ; the stored data is
@@ -10709,11 +16648,19 @@ abstract class Window implements EventTarget, JSObject {
   /// cleared when the page session ends — that is, when the page is closed.
   /// (`localStorage` data for a document loaded in a "private browsing" or
   /// "incognito" session is cleared when the last "private" tab is closed.)
-  Storage get localStorage;
+  Storage get localStorage {
+    unsupportedPlatformError();
+  }
 }
-
-abstract class WindowPostMessageOptions
+extension type WindowPostMessageOptions._(JSObject _)
     implements StructuredSerializeOptions, JSObject {
+  factory WindowPostMessageOptions({
+    JSArray<JSObject>? transfer,
+    String? targetOrigin,
+  }) {
+    unsupportedPlatformError();
+  }
+
   String get targetOrigin {
     unsupportedPlatformError();
   }
@@ -10748,10 +16695,12 @@ abstract class WindowPostMessageOptions
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/BarProp).
-abstract class BarProp implements JSObject {
+extension type BarProp._(JSObject _) implements JSObject {
   /// The **`visible`** read-only property of the [BarProp] interface returns
   /// `true` if the user interface element it represents is visible.
-  bool get visible;
+  bool get visible {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`Location`** interface represents the location (URL) of the object it
@@ -10763,14 +16712,16 @@ abstract class BarProp implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Location).
-abstract class Location implements JSObject {
+extension type Location._(JSObject _) implements JSObject {
   /// The **`assign()`** method of the [Location]
   /// interface causes the window to load
   /// and display the document at the URL specified. After the navigation
   /// occurs, the user can
   /// navigate back to the page that called `Location.assign()` by pressing the
   /// "back" button.
-  void assign(String url);
+  void assign(String url) {
+    unsupportedPlatformError();
+  }
 
   /// The **`replace()`** method of the [Location]
   /// interface replaces the current resource with the one at the provided URL.
@@ -10778,11 +16729,15 @@ abstract class Location implements JSObject {
   /// from the [Location.assign] method is that after using
   /// `replace()` the current page will not be saved in session [History],
   /// meaning the user won't be able to use the _back_ button to navigate to it.
-  void replace(String url);
+  void replace(String url) {
+    unsupportedPlatformError();
+  }
 
   /// The **`reload()`** method of the [Location] interface reloads the current
   /// URL, like the Refresh button.
-  void reload();
+  void reload() {
+    unsupportedPlatformError();
+  }
 
   /// The **`href`** property of the [Location]
   /// interface is a  that returns a string containing the whole
@@ -10795,8 +16750,13 @@ abstract class Location implements JSObject {
   /// saved in session
   /// [history](https://developer.mozilla.org/en-US/docs/Web/API/History_API) —
   /// meaning the user won't be able to use the back button to navigate to it.
-  String get href;
-  set href(String value);
+  String get href {
+    unsupportedPlatformError();
+  }
+
+  set href(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`origin`** read-only property of the [Location] interface is a
   /// string containing the Unicode serialization of the origin of the
@@ -10811,39 +16771,66 @@ abstract class Location implements JSObject {
   /// - For URL using the `blob:` scheme, the origin of the URL following
   ///   `blob:`. For example, `blob:https://mozilla.org` will have
   ///   `https://mozilla.org`.
-  String get origin;
+  String get origin {
+    unsupportedPlatformError();
+  }
 
   /// The **`protocol`** property of the [Location]
   /// interface is a string representing the protocol scheme of the URL,
   /// including the final `':'`.
-  String get protocol;
-  set protocol(String value);
+  String get protocol {
+    unsupportedPlatformError();
+  }
+
+  set protocol(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`host`** property of the [Location]
   /// interface is a string containing the host, that is the
   /// _hostname_, and then, if the _port_ of the URL is nonempty, a
   /// `':'`, and the _port_ of the URL.
-  String get host;
-  set host(String value);
+  String get host {
+    unsupportedPlatformError();
+  }
+
+  set host(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`hostname`** property of the [Location]
   /// interface is a string containing the  of the URL.
-  String get hostname;
-  set hostname(String value);
+  String get hostname {
+    unsupportedPlatformError();
+  }
+
+  set hostname(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`port`** property of the [Location]
   /// interface is a string containing the port number of the URL. If the
   /// URL does not contain an explicit port number, it will be set to `''`.
-  String get port;
-  set port(String value);
+  String get port {
+    unsupportedPlatformError();
+  }
+
+  set port(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`pathname`** property of the [Location]
   /// interface is a string containing the path of the URL for the location. If
   /// there is no path, `pathname` will be empty: otherwise, `pathname` contains
   /// an initial '/' followed by the path of the URL, not including the query
   /// string or fragment.
-  String get pathname;
-  set pathname(String value);
+  String get pathname {
+    unsupportedPlatformError();
+  }
+
+  set pathname(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`search`** property of the [Location]
   /// interface is a search string, also called a _query string_; that is, a
@@ -10855,8 +16842,13 @@ abstract class Location implements JSObject {
   /// and
   /// [`URL.searchParams`](/en-US/docs/Web/API/URL/searchParams#examples)
   /// to make it easy to parse out the parameters from the querystring.
-  String get search;
-  set search(String value);
+  String get search {
+    unsupportedPlatformError();
+  }
+
+  set search(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`hash`** property of the
   /// [Location] interface returns a string containing a
@@ -10867,8 +16859,13 @@ abstract class Location implements JSObject {
   /// [URL decoded](https://en.wikipedia.org/wiki/URL_encoding). If the URL does
   /// not
   /// have a fragment identifier, this property contains an empty string, `""`.
-  String get hash;
-  set hash(String value);
+  String get hash {
+    unsupportedPlatformError();
+  }
+
+  set hash(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`ancestorOrigins`** read-only
   /// property of the [Location] interface is a static
@@ -10882,7 +16879,9 @@ abstract class Location implements JSObject {
   /// expect it to be framed by. You can also use it to vary the behavior of the
   /// document
   /// based on what site or list of sites is framing it.
-  DOMStringList get ancestorOrigins;
+  DOMStringList get ancestorOrigins {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`History`** interface of the [History API] allows manipulation of the
@@ -10899,7 +16898,7 @@ abstract class Location implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/History).
-abstract class History implements JSObject {
+extension type History._(JSObject _) implements JSObject {
   /// The **`go()`** method of the [History] interface loads a specific page
   /// from the
   /// session history. You can use it to move forwards and backwards through the
@@ -10909,7 +16908,9 @@ abstract class History implements JSObject {
   /// This method is . Add a listener for the
   /// [Window.popstate_event] event in order to determine when the navigation
   /// has completed.
-  void go([int delta]);
+  void go([int? delta]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`back()`** method of the [History] interface causes
   /// the browser to move back one page in the session history.
@@ -10921,7 +16922,9 @@ abstract class History implements JSObject {
   /// This method is . Add a listener for the
   /// [Window.popstate_event] event in order to determine when the navigation
   /// has completed.
-  void back();
+  void back() {
+    unsupportedPlatformError();
+  }
 
   /// The **`forward()`** method of the [History] interface causes the browser
   /// to move
@@ -10930,7 +16933,9 @@ abstract class History implements JSObject {
   ///
   /// This method is . Add a listener for the [Window.popstate_event] event in
   /// order to determine when the navigation has completed.
-  void forward();
+  void forward() {
+    unsupportedPlatformError();
+  }
 
   /// The **`pushState()`** method of the [History] interface adds an entry to
   /// the browser's
@@ -10939,7 +16944,9 @@ abstract class History implements JSObject {
     JSAny? data,
     String unused, [
     String? url,
-  ]);
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`replaceState()`** method of the [History] interface modifies the
   /// current
@@ -10952,28 +16959,39 @@ abstract class History implements JSObject {
     JSAny? data,
     String unused, [
     String? url,
-  ]);
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`length`** read-only property of the [History] interface
   /// returns an integer representing the number of elements in the session
   /// history, including the currently loaded page.
   ///
   /// For example, for a page loaded in a new tab this property returns `1`.
-  int get length;
+  int get length {
+    unsupportedPlatformError();
+  }
 
   /// The **`scrollRestoration`** property of the [History]
   /// interface allows web applications to explicitly set default scroll
   /// restoration behavior
   /// on history navigation.
-  ScrollRestoration get scrollRestoration;
-  set scrollRestoration(ScrollRestoration value);
+  ScrollRestoration get scrollRestoration {
+    unsupportedPlatformError();
+  }
+
+  set scrollRestoration(ScrollRestoration value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`state`** read-only property of the [History] interface
   /// returns a value representing the state at the top of the history stack.
   /// This is
   /// a way to look at the state without having to wait for a
   /// [Window.popstate_event] event.
-  JSAny? get state;
+  JSAny? get state {
+    unsupportedPlatformError();
+  }
 }
 
 /// **`PopStateEvent`** is an interface for the
@@ -10992,17 +17010,38 @@ abstract class History implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/PopStateEvent).
-abstract class PopStateEvent implements Event, JSObject {
+extension type PopStateEvent._(JSObject _) implements Event, JSObject {
+  factory PopStateEvent(
+    String type, [
+    PopStateEventInit? eventInitDict,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// The **`state`** read-only property of the [PopStateEvent] interface
   /// represents the state stored when the event was created.
   ///
   /// Practically it is a value provided by the call to [history.pushState] or
   /// [history.replaceState]
-  JSAny? get state;
-  bool get hasUAVisualTransition;
-}
+  JSAny? get state {
+    unsupportedPlatformError();
+  }
 
-abstract class PopStateEventInit implements EventInit, JSObject {
+  bool get hasUAVisualTransition {
+    unsupportedPlatformError();
+  }
+}
+extension type PopStateEventInit._(JSObject _) implements EventInit, JSObject {
+  factory PopStateEventInit({
+    bool? bubbles,
+    bool? cancelable,
+    bool? composed,
+    JSAny? state,
+    bool? hasUAVisualTransition,
+  }) {
+    unsupportedPlatformError();
+  }
+
   JSAny? get state {
     unsupportedPlatformError();
   }
@@ -11030,19 +17069,40 @@ abstract class PopStateEventInit implements EventInit, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HashChangeEvent).
-abstract class HashChangeEvent implements Event, JSObject {
+extension type HashChangeEvent._(JSObject _) implements Event, JSObject {
+  factory HashChangeEvent(
+    String type, [
+    HashChangeEventInit? eventInitDict,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// The **`oldURL`** read-only property of the
   /// [HashChangeEvent] interface returns the previous URL from which the window
   /// was navigated.
-  String get oldURL;
+  String get oldURL {
+    unsupportedPlatformError();
+  }
 
   /// The **`newURL`** read-only property of the
   /// [HashChangeEvent] interface returns the new URL to which the window is
   /// navigating.
-  String get newURL;
+  String get newURL {
+    unsupportedPlatformError();
+  }
 }
+extension type HashChangeEventInit._(JSObject _)
+    implements EventInit, JSObject {
+  factory HashChangeEventInit({
+    bool? bubbles,
+    bool? cancelable,
+    bool? composed,
+    String? oldURL,
+    String? newURL,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class HashChangeEventInit implements EventInit, JSObject {
   String get oldURL {
     unsupportedPlatformError();
   }
@@ -11071,13 +17131,31 @@ abstract class HashChangeEventInit implements EventInit, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/PageTransitionEvent).
-abstract class PageTransitionEvent implements Event, JSObject {
+extension type PageTransitionEvent._(JSObject _) implements Event, JSObject {
+  factory PageTransitionEvent(
+    String type, [
+    PageTransitionEventInit? eventInitDict,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// The **`persisted`** read-only property indicates if a webpage is loading
   /// from a cache.
-  bool get persisted;
+  bool get persisted {
+    unsupportedPlatformError();
+  }
 }
+extension type PageTransitionEventInit._(JSObject _)
+    implements EventInit, JSObject {
+  factory PageTransitionEventInit({
+    bool? bubbles,
+    bool? cancelable,
+    bool? composed,
+    bool? persisted,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class PageTransitionEventInit implements EventInit, JSObject {
   bool get persisted {
     unsupportedPlatformError();
   }
@@ -11098,7 +17176,7 @@ abstract class PageTransitionEventInit implements EventInit, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/BeforeUnloadEvent).
-abstract class BeforeUnloadEvent implements Event, JSObject {
+extension type BeforeUnloadEvent._(JSObject _) implements Event, JSObject {
   /// The **`returnValue`** property of the
   /// [BeforeUnloadEvent] interface, when set to a truthy value, triggers a
   /// browser-generated confirmation dialog asking users to confirm if they
@@ -11111,8 +17189,13 @@ abstract class BeforeUnloadEvent implements Event, JSObject {
   /// > `BeforeUnloadEvent` object, while also setting `returnValue` to support
   /// > legacy cases. See the [Window.beforeunload_event] event reference for
   /// > detailed up-to-date guidance.
-  bool get returnValue;
-  set returnValue(bool value);
+  String get returnValue {
+    unsupportedPlatformError();
+  }
+
+  set returnValue(String value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`ErrorEvent`** interface represents events providing information
@@ -11122,15 +17205,48 @@ abstract class BeforeUnloadEvent implements Event, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ErrorEvent).
-abstract class ErrorEvent implements Event, JSObject {
-  String get message;
-  String get filename;
-  int get lineno;
-  int get colno;
-  JSAny? get error;
-}
+extension type ErrorEvent._(JSObject _) implements Event, JSObject {
+  factory ErrorEvent(
+    String type, [
+    ErrorEventInit? eventInitDict,
+  ]) {
+    unsupportedPlatformError();
+  }
 
-abstract class ErrorEventInit implements EventInit, JSObject {
+  String get message {
+    unsupportedPlatformError();
+  }
+
+  String get filename {
+    unsupportedPlatformError();
+  }
+
+  int get lineno {
+    unsupportedPlatformError();
+  }
+
+  int get colno {
+    unsupportedPlatformError();
+  }
+
+  JSAny? get error {
+    unsupportedPlatformError();
+  }
+}
+extension type ErrorEventInit._(JSObject _) implements EventInit, JSObject {
+  factory ErrorEventInit({
+    bool? bubbles,
+    bool? cancelable,
+    bool? composed,
+    String? message,
+    String? filename,
+    int? lineno,
+    int? colno,
+    JSAny? error,
+  }) {
+    unsupportedPlatformError();
+  }
+
   String get message {
     unsupportedPlatformError();
   }
@@ -11183,22 +17299,43 @@ abstract class ErrorEventInit implements EventInit, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/PromiseRejectionEvent).
-abstract class PromiseRejectionEvent implements Event, JSObject {
+extension type PromiseRejectionEvent._(JSObject _) implements Event, JSObject {
+  factory PromiseRejectionEvent(
+    String type,
+    PromiseRejectionEventInit eventInitDict,
+  ) {
+    unsupportedPlatformError();
+  }
+
   /// The [PromiseRejectionEvent] interface's
   /// **`promise`** read-only property indicates the JavaScript
   /// `Promise` which was rejected. You can examine the event's
   /// [PromiseRejectionEvent.reason] property to learn why the promise was
   /// rejected.
-  JSObject get promise;
+  JSObject get promise {
+    unsupportedPlatformError();
+  }
 
   /// The [PromiseRejectionEvent] **`reason`** read-only
   /// property is any JavaScript value or `Object` which provides the reason
   /// passed into `Promise.reject()`. This in theory provides information about
   /// why the promise was rejected.
-  JSAny? get reason;
+  JSAny? get reason {
+    unsupportedPlatformError();
+  }
 }
+extension type PromiseRejectionEventInit._(JSObject _)
+    implements EventInit, JSObject {
+  factory PromiseRejectionEventInit({
+    bool? bubbles,
+    bool? cancelable,
+    bool? composed,
+    required JSObject promise,
+    JSAny? reason,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class PromiseRejectionEventInit implements EventInit, JSObject {
   JSObject get promise {
     unsupportedPlatformError();
   }
@@ -11215,8 +17352,14 @@ abstract class PromiseRejectionEventInit implements EventInit, JSObject {
     unsupportedPlatformError();
   }
 }
+extension type GetHTMLOptions._(JSObject _) implements JSObject {
+  factory GetHTMLOptions({
+    bool? serializableShadowRoots,
+    JSArray<ShadowRoot>? shadowRoots,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class GetHTMLOptions implements JSObject {
   bool get serializableShadowRoots {
     unsupportedPlatformError();
   }
@@ -11262,7 +17405,11 @@ abstract class GetHTMLOptions implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/DOMParser).
-abstract class DOMParser implements JSObject {
+extension type DOMParser._(JSObject _) implements JSObject {
+  factory DOMParser() {
+    unsupportedPlatformError();
+  }
+
   /// The **`parseFromString()`** method of the [DOMParser] interface parses a
   /// string containing either HTML or XML, returning an [HTMLDocument] or an
   /// [XMLDocument].
@@ -11274,7 +17421,9 @@ abstract class DOMParser implements JSObject {
   Document parseFromString(
     JSAny string,
     DOMParserSupportedType type,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`Navigator`** interface represents the state and the identity of the
@@ -11288,7 +17437,7 @@ abstract class DOMParser implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Navigator).
-abstract class Navigator implements JSObject {
+extension type Navigator._(JSObject _) implements JSObject {
   /// The **`getBattery()`** method provides information about the system's
   /// battery.
   /// It returns a battery promise, which resolves with a [BatteryManager]
@@ -11301,7 +17450,9 @@ abstract class Navigator implements JSObject {
   /// [Battery Status API] only expose to secure context.
   ///
   /// > **Note:** Access to this feature may be controlled by the  directive .
-  JSPromise<BatteryManager> getBattery();
+  JSPromise<BatteryManager> getBattery() {
+    unsupportedPlatformError();
+  }
 
   /// The **`navigator.sendBeacon()`**
   /// method  sends an
@@ -11324,7 +17475,9 @@ abstract class Navigator implements JSObject {
   bool sendBeacon(
     String url, [
     BodyInit? data,
-  ]);
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`requestMediaKeySystemAccess()`** method of the [Navigator]
   /// interface returns a `Promise` which delivers a [MediaKeySystemAccess]
@@ -11347,14 +17500,18 @@ abstract class Navigator implements JSObject {
   JSPromise<MediaKeySystemAccess> requestMediaKeySystemAccess(
     String keySystem,
     JSArray<MediaKeySystemConfiguration> supportedConfigurations,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`Navigator.getGamepads()`** method returns an array of
   /// [Gamepad] objects, one for each gamepad connected to the device.
   ///
   /// Elements in the array may be `null` if a gamepad disconnects during a
   /// session, so that the remaining gamepads retain the same index.
-  JSArray<Gamepad?> getGamepads();
+  JSArray<Gamepad?> getGamepads() {
+    unsupportedPlatformError();
+  }
 
   /// The **`vibrate()`** method of the [Navigator] interface pulses the
   /// vibration
@@ -11370,7 +17527,9 @@ abstract class Navigator implements JSObject {
   /// `false`, else it returns `true`. If the pattern leads to a too
   /// long vibration, it is truncated: the max length depends on the
   /// implementation.
-  bool vibrate(VibratePattern pattern);
+  bool vibrate(VibratePattern pattern) {
+    unsupportedPlatformError();
+  }
 
   /// The **`share()`** method of the [Navigator] interface invokes the native
   /// sharing mechanism of the device to share data such as text, URLs, or
@@ -11390,7 +17549,9 @@ abstract class Navigator implements JSObject {
   /// permission policy.
   /// The `share()` method will throw exceptions if the permission is supported
   /// but has not been granted.
-  JSPromise<JSAny?> share([ShareData data]);
+  JSPromise<JSAny?> share([ShareData? data]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`canShare()`** method of the [Navigator] interface returns `true` if
   /// the equivalent call to [navigator.share] would succeed.
@@ -11414,7 +17575,9 @@ abstract class Navigator implements JSObject {
   /// permission policy.
   /// The `canShare()` method will return `false` if the permission is supported
   /// but has not been granted.
-  bool canShare([ShareData data]);
+  bool canShare([ShareData? data]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`requestMIDIAccess()`** method of the [Navigator] interface returns
   /// a `Promise` representing a request for access to MIDI devices on a user's
@@ -11430,19 +17593,25 @@ abstract class Navigator implements JSObject {
   /// If permission is granted then the `Promise` resolves and a
   /// [`MIDIAccess`](https://developer.mozilla.org/en-US/docs/Web/API/MIDIAccess)
   /// object is returned.
-  JSPromise<MIDIAccess> requestMIDIAccess([MIDIOptions options]);
+  JSPromise<MIDIAccess> requestMIDIAccess([MIDIOptions? options]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`setAppBadge()`** method of the [Navigator] interface sets a badge
   /// on the icon associated with this app. If a value is passed to the method,
   /// this will be set as the value of the badge. Otherwise the badge will
   /// display as a dot, or other indicator as defined by the platform.
-  JSPromise<JSAny?> setAppBadge([int contents]);
+  JSPromise<JSAny?> setAppBadge([int? contents]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`clearAppBadge()`** method of the [Navigator] interface clears a
   /// badge on the current app's icon by setting it to `nothing`. The value
   /// `nothing` indicates that no badge is currently set, and the status of the
   /// badge is _cleared_.
-  JSPromise<JSAny?> clearAppBadge();
+  JSPromise<JSAny?> clearAppBadge() {
+    unsupportedPlatformError();
+  }
 
   /// The **`Navigator.taintEnabled()`** method always returns
   /// `false`.
@@ -11450,7 +17619,9 @@ abstract class Navigator implements JSObject {
   /// Tainting was a security method used by JavaScript 1.2. It has long been
   /// removed; this
   /// method only stays for maintaining compatibility with very old scripts.
-  bool taintEnabled();
+  bool taintEnabled() {
+    unsupportedPlatformError();
+  }
 
   /// The **[Navigator]** method **`registerProtocolHandler()`** lets websites
   /// register their ability to open or handle particular URL schemes (aka
@@ -11461,7 +17632,9 @@ abstract class Navigator implements JSObject {
   void registerProtocolHandler(
     String scheme,
     String url,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **[Navigator]** method **`unregisterProtocolHandler()`** removes a
   /// protocol handler for a given URL [scheme](#permitted_schemes).
@@ -11470,10 +17643,14 @@ abstract class Navigator implements JSObject {
   void unregisterProtocolHandler(
     String scheme,
     String url,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// This method always returns false.
-  bool javaEnabled();
+  bool javaEnabled() {
+    unsupportedPlatformError();
+  }
 
   /// The **`clipboard`** read-only property of the [Navigator] interface
   /// returns a [Clipboard] object used to read and write the clipboard's
@@ -11483,7 +17660,9 @@ abstract class Navigator implements JSObject {
   /// [Clipboard API](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard_API),
   /// which can be used to implement cut, copy, and paste features within a web
   /// application.
-  Clipboard get clipboard;
+  Clipboard get clipboard {
+    unsupportedPlatformError();
+  }
 
   /// The **`credentials`** read-only property of the [Navigator] interface
   /// returns the [CredentialsContainer] object associated with the current
@@ -11491,7 +17670,9 @@ abstract class Navigator implements JSObject {
   /// [CredentialsContainer] interface also notifies the user agent when an
   /// interesting event occurs, such as a successful sign-in or sign-out. This
   /// interface can be used for feature detection.
-  CredentialsContainer get credentials;
+  CredentialsContainer get credentials {
+    unsupportedPlatformError();
+  }
 
   /// The **`Navigator.geolocation`** read-only property returns a
   /// [Geolocation] object that gives Web content access to the location of the
@@ -11503,12 +17684,16 @@ abstract class Navigator implements JSObject {
   /// > information, the user is notified and asked to grant permission. Be
   /// > aware that each
   /// > browser has its own policies and methods for requesting this permission.
-  Geolocation get geolocation;
+  Geolocation get geolocation {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`userActivation`** property of the [Navigator] interface
   /// returns a [UserActivation] object which contains information about the
   /// current window's user activation state.
-  UserActivation get userActivation;
+  UserActivation get userActivation {
+    unsupportedPlatformError();
+  }
 
   /// The **`Navigator.mediaCapabilities`** read-only property
   /// returns a [MediaCapabilities] object that can expose information about the
@@ -11516,12 +17701,16 @@ abstract class Navigator implements JSObject {
   /// capabilities as defined
   /// by the
   /// [Media Capabilities API](https://developer.mozilla.org/en-US/docs/Web/API/Media_Capabilities_API).
-  MediaCapabilities get mediaCapabilities;
+  MediaCapabilities get mediaCapabilities {
+    unsupportedPlatformError();
+  }
 
   /// The **`mediaDevices`** read-only property of the [Navigator] interface
   /// returns a [MediaDevices] object, which provides access to connected media
   /// input devices like cameras and microphones, as well as screen sharing.
-  MediaDevices get mediaDevices;
+  MediaDevices get mediaDevices {
+    unsupportedPlatformError();
+  }
 
   /// The **`mediaSession`** read-only property of the [Navigator]
   /// interface returns a [MediaSession]
@@ -11546,26 +17735,34 @@ abstract class Navigator implements JSObject {
   /// keyboard
   /// or elsewhere on the user's device be used to control the app's media
   /// playback.
-  MediaSession get mediaSession;
+  MediaSession get mediaSession {
+    unsupportedPlatformError();
+  }
 
   /// The **`permissions`** read-only property of the [Navigator] interface
   /// returns a
   /// [Permissions] object that can be used to query and update permission
   /// status of APIs covered by the
   /// [Permissions API](https://developer.mozilla.org/en-US/docs/Web/API/Permissions_API).
-  Permissions get permissions;
+  Permissions get permissions {
+    unsupportedPlatformError();
+  }
 
   /// The **`maxTouchPoints`** read-only property of the
   /// [Navigator] interface returns the maximum number of simultaneous touch
   /// contact points are supported by the current device.
-  int get maxTouchPoints;
+  int get maxTouchPoints {
+    unsupportedPlatformError();
+  }
 
   /// The `presentation` read-only property of [Navigator] serves as the entry
   /// point for the
   /// [Presentation API](https://developer.mozilla.org/en-US/docs/Web/API/Presentation_API)
   /// and
   /// returns a reference to [Presentation] object.
-  JSObject get presentation;
+  JSObject get presentation {
+    unsupportedPlatformError();
+  }
 
   /// The **`wakeLock`** read-only property of the [Navigator] interface returns
   /// a [WakeLock] interface that allows a document to acquire a screen wake
@@ -11573,7 +17770,9 @@ abstract class Navigator implements JSObject {
   /// While a screen wake lock is active, the user agent will try to prevent the
   /// device from dimming the screen, turning it off completely, or showing a
   /// screensaver.
-  WakeLock get wakeLock;
+  WakeLock get wakeLock {
+    unsupportedPlatformError();
+  }
 
   /// The **`serviceWorker`** read-only property of the [Navigator] interface
   /// returns the [ServiceWorkerContainer] object for the
@@ -11582,13 +17781,17 @@ abstract class Navigator implements JSObject {
   /// with the [ServiceWorker].
   ///
   /// The feature may not be available in private mode.
-  ServiceWorkerContainer get serviceWorker;
+  ServiceWorkerContainer get serviceWorker {
+    unsupportedPlatformError();
+  }
 
   /// The **`usb`** read-only property of the [Navigator] interface returns a
   /// [USB] object for the current document, providing access to
   /// [WebUSB API](https://developer.mozilla.org/en-US/docs/Web/API/WebUSB_API)
   /// functionality.
-  JSObject get usb;
+  JSObject get usb {
+    unsupportedPlatformError();
+  }
 
   /// The **`windowControlsOverlay`** read-only property of the [Navigator]
   /// interface returns the [WindowControlsOverlay] interface, which exposes
@@ -11606,7 +17809,9 @@ abstract class Navigator implements JSObject {
   /// Doing so hides the default window title bar and gives the app access to
   /// the full area
   /// of the app window.
-  JSObject get windowControlsOverlay;
+  JSObject get windowControlsOverlay {
+    unsupportedPlatformError();
+  }
 
   /// The **`deviceMemory`** read-only
   /// property of the [Navigator] interface returns the approximate amount of
@@ -11618,7 +17823,9 @@ abstract class Navigator implements JSObject {
   /// clamped within lower and upper bounds to protect the privacy of owners of
   /// very low-memory or
   /// high-memory devices.
-  double get deviceMemory;
+  double get deviceMemory {
+    unsupportedPlatformError();
+  }
 
   /// The value of the **`Navigator.appCodeName`** property is
   /// always "`Mozilla`", in any browser. This property is kept only for
@@ -11627,7 +17834,9 @@ abstract class Navigator implements JSObject {
   /// > **Note:** Do not rely on this property to return a real
   /// > product name. All browsers return "`Mozilla`" as the value of this
   /// > property.
-  String get appCodeName;
+  String get appCodeName {
+    unsupportedPlatformError();
+  }
 
   /// The value of the **`Navigator.appName`** property is always
   /// "`Netscape`", in any browser. This property is kept only for compatibility
@@ -11635,14 +17844,18 @@ abstract class Navigator implements JSObject {
   ///
   /// > **Note:** Do not rely on this property to return a real browser name.
   /// > All browsers return "`Netscape`" as the value of this property.
-  String get appName;
+  String get appName {
+    unsupportedPlatformError();
+  }
 
   /// Returns either "`4.0`" or a string representing version information about
   /// the browser.
   ///
   /// > **Note:** Do not rely on this property to return the correct browser
   /// > version.
-  String get appVersion;
+  String get appVersion {
+    unsupportedPlatformError();
+  }
 
   /// The **`platform`** property read-only property of the [Navigator]
   /// interface returns a string identifying the platform on which the user's
@@ -11653,7 +17866,9 @@ abstract class Navigator implements JSObject {
   /// > information about the user's environment, and instead write code that
   /// > does
   /// > [feature detection](https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Cross_browser_testing/Feature_detection).
-  String get platform;
+  String get platform {
+    unsupportedPlatformError();
+  }
 
   /// The value of the **`Navigator.product`** property is always
   /// "`Gecko`", in any browser. This property is kept only for compatibility
@@ -11661,11 +17876,15 @@ abstract class Navigator implements JSObject {
   ///
   /// > **Note:** Do not rely on this property to return a real product name.
   /// > All browsers return "`Gecko`" as the value of this property.
-  String get product;
+  String get product {
+    unsupportedPlatformError();
+  }
 
   /// The **`Navigator.productSub`** read-only property that returns either the
   /// string "20030107", or the string "20100101".
-  String get productSub;
+  String get productSub {
+    unsupportedPlatformError();
+  }
 
   /// The **`Navigator.userAgent`** read-only property returns the
   /// user agent string for the current browser.
@@ -11700,25 +17919,35 @@ abstract class Navigator implements JSObject {
   /// browser.
   /// - Opera 6+ allows users to set the browser identification string via a
   ///   menu.
-  String get userAgent;
+  String get userAgent {
+    unsupportedPlatformError();
+  }
 
   /// The value of the [Navigator] **`vendor`** property is always either
   /// "`Google Inc.`", "`Apple Computer, Inc.`", or (in Firefox) the empty
   /// string.
-  String get vendor;
+  String get vendor {
+    unsupportedPlatformError();
+  }
 
   /// The value of the **`Navigator.vendorSub`** property is always
   /// the empty string, in any browser.
-  String get vendorSub;
+  String get vendorSub {
+    unsupportedPlatformError();
+  }
 
   /// The **`Navigator.oscpu`** property returns a string that identifies the
   /// current operating system.
-  String get oscpu;
+  String get oscpu {
+    unsupportedPlatformError();
+  }
 
   /// The **`Navigator.language`** read-only property returns a string
   /// representing the preferred language of the user, usually the language of
   /// the browser UI.
-  String get language;
+  String get language {
+    unsupportedPlatformError();
+  }
 
   /// The **`Navigator.languages`** read-only property
   /// returns an array of strings representing the user's preferred
@@ -11743,7 +17972,9 @@ abstract class Navigator implements JSObject {
   /// `Accept-Language` and `navigator.languages` may not include the full list
   /// of user preferences, such as in Safari (always) and Chrome's incognito
   /// mode, where only one language is listed.
-  JSArray<JSString> get languages;
+  JSArray<JSString> get languages {
+    unsupportedPlatformError();
+  }
 
   /// Returns the online status of the browser. The property returns a boolean
   /// value, with
@@ -11785,13 +18016,17 @@ abstract class Navigator implements JSObject {
   /// and
   /// [`offline`](https://developer.mozilla.org/en-US/docs/Web/API/Window/offline_event)
   /// events.
-  bool get onLine;
+  bool get onLine {
+    unsupportedPlatformError();
+  }
 
   /// `navigator.cookieEnabled` returns a Boolean value that indicates whether
   /// cookies are enabled or not.
   ///
   /// The property is read-only.
-  bool get cookieEnabled;
+  bool get cookieEnabled {
+    unsupportedPlatformError();
+  }
 
   /// Returns a [PluginArray] object, listing the [Plugin] objects describing
   /// the plugins installed in the application.
@@ -11815,7 +18050,9 @@ abstract class Navigator implements JSObject {
   ///
   /// Legacy browser versions also list plugins for Adobe Flash and PDF viewer
   /// extensions.
-  PluginArray get plugins;
+  PluginArray get plugins {
+    unsupportedPlatformError();
+  }
 
   /// Returns a [MimeTypeArray] object, which contains a list of [MimeType]
   /// objects representing the MIME types recognized and supported by the
@@ -11836,7 +18073,9 @@ abstract class Navigator implements JSObject {
   ///
   /// Legacy browser versions do not hard-code the list returned by the
   /// property, and might return other MIME types.
-  MimeTypeArray get mimeTypes;
+  MimeTypeArray get mimeTypes {
+    unsupportedPlatformError();
+  }
 
   /// The **`pdfViewerEnabled`** read-only property of the [Navigator] interface
   /// indicates whether the browser supports inline display of PDF files when
@@ -11847,13 +18086,17 @@ abstract class Navigator implements JSObject {
   ///
   /// > **Note:** This method replaces a number of legacy methods of inferring
   /// > support for inline viewing of PDF files.
-  bool get pdfViewerEnabled;
+  bool get pdfViewerEnabled {
+    unsupportedPlatformError();
+  }
 
   /// The **`navigator.hardwareConcurrency`** read-only property
   /// returns the number of logical processors available to run threads on the
   /// user's
   /// computer.
-  int get hardwareConcurrency;
+  int get hardwareConcurrency {
+    unsupportedPlatformError();
+  }
 
   /// The **`connection`** read-only property of the [Navigator] interface
   /// returns a [NetworkInformation] object containing information about the
@@ -11862,7 +18105,9 @@ abstract class Navigator implements JSObject {
   ///
   /// This could be used to select high definition content or low definition
   /// content based on the user's connection.
-  NetworkInformation get connection;
+  NetworkInformation get connection {
+    unsupportedPlatformError();
+  }
 
   /// The **`Navigator.storage`**
   /// read-only property returns the singleton [StorageManager] object used to
@@ -11873,13 +18118,17 @@ abstract class Navigator implements JSObject {
   /// learn approximately how much more space your browser has available for
   /// local storage
   /// use.
-  StorageManager get storage;
+  StorageManager get storage {
+    unsupportedPlatformError();
+  }
 
   /// The **`locks`** read-only property of
   /// the [Navigator] interface returns a [LockManager] object
   /// which provides methods for requesting a new [Lock] object and querying
   /// for an existing `Lock` object.
-  LockManager get locks;
+  LockManager get locks {
+    unsupportedPlatformError();
+  }
 
   /// The **`webdriver`** read-only property
   /// of the [navigator] interface indicates whether the user agent is
@@ -11900,7 +18149,9 @@ abstract class Navigator implements JSObject {
   /// - Firefox
   ///   - : The `marionette.enabled` preference or `--marionette` flag is
   /// passed.
-  bool get webdriver;
+  bool get webdriver {
+    unsupportedPlatformError();
+  }
 }
 
 /// The `PluginArray` interface is used to store a list of [Plugin] objects
@@ -11918,11 +18169,22 @@ abstract class Navigator implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/PluginArray).
-abstract class PluginArray implements JSObject {
-  void refresh();
-  Plugin? item(int index);
-  Plugin? namedItem(String name);
-  int get length;
+extension type PluginArray._(JSObject _) implements JSObject {
+  void refresh() {
+    unsupportedPlatformError();
+  }
+
+  Plugin? item(int index) {
+    unsupportedPlatformError();
+  }
+
+  Plugin? namedItem(String name) {
+    unsupportedPlatformError();
+  }
+
+  int get length {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`MimeTypeArray`** interface returns an array of [MimeType] instances,
@@ -11941,10 +18203,18 @@ abstract class PluginArray implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MimeTypeArray).
-abstract class MimeTypeArray implements JSObject {
-  MimeType? item(int index);
-  MimeType? namedItem(String name);
-  int get length;
+extension type MimeTypeArray._(JSObject _) implements JSObject {
+  MimeType? item(int index) {
+    unsupportedPlatformError();
+  }
+
+  MimeType? namedItem(String name) {
+    unsupportedPlatformError();
+  }
+
+  int get length {
+    unsupportedPlatformError();
+  }
 }
 
 /// The `Plugin` interface provides information about a browser plugin.
@@ -11956,13 +18226,30 @@ abstract class MimeTypeArray implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Plugin).
-abstract class Plugin implements JSObject {
-  MimeType? item(int index);
-  MimeType? namedItem(String name);
-  String get name;
-  String get description;
-  String get filename;
-  int get length;
+extension type Plugin._(JSObject _) implements JSObject {
+  MimeType? item(int index) {
+    unsupportedPlatformError();
+  }
+
+  MimeType? namedItem(String name) {
+    unsupportedPlatformError();
+  }
+
+  String get name {
+    unsupportedPlatformError();
+  }
+
+  String get description {
+    unsupportedPlatformError();
+  }
+
+  String get filename {
+    unsupportedPlatformError();
+  }
+
+  int get length {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`MimeType`** interface provides contains information about a MIME type
@@ -11973,11 +18260,22 @@ abstract class Plugin implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MimeType).
-abstract class MimeType implements JSObject {
-  String get type;
-  String get description;
-  String get suffixes;
-  Plugin get enabledPlugin;
+extension type MimeType._(JSObject _) implements JSObject {
+  String get type {
+    unsupportedPlatformError();
+  }
+
+  String get description {
+    unsupportedPlatformError();
+  }
+
+  String get suffixes {
+    unsupportedPlatformError();
+  }
+
+  Plugin get enabledPlugin {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`ImageBitmap`** interface represents a bitmap image which can be drawn
@@ -11993,22 +18291,38 @@ abstract class MimeType implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ImageBitmap).
-abstract class ImageBitmap implements JSObject {
+extension type ImageBitmap._(JSObject _) implements JSObject {
   /// The **`ImageBitmap.close()`**
   /// method disposes of all graphical resources associated with an
   /// `ImageBitmap`.
-  void close();
+  void close() {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`ImageBitmap.width`** property returns the [ImageBitmap]
   /// object's width in CSS pixels.
-  int get width;
+  int get width {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`ImageBitmap.height`** property returns the [ImageBitmap]
   /// object's height in CSS pixels.
-  int get height;
+  int get height {
+    unsupportedPlatformError();
+  }
 }
+extension type ImageBitmapOptions._(JSObject _) implements JSObject {
+  factory ImageBitmapOptions({
+    ImageOrientation? imageOrientation,
+    PremultiplyAlpha? premultiplyAlpha,
+    ColorSpaceConversion? colorSpaceConversion,
+    int? resizeWidth,
+    int? resizeHeight,
+    ResizeQuality? resizeQuality,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class ImageBitmapOptions implements JSObject {
   ImageOrientation get imageOrientation {
     unsupportedPlatformError();
   }
@@ -12089,37 +18403,54 @@ abstract class ImageBitmapOptions implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent).
-abstract class MessageEvent implements Event, JSObject {
+extension type MessageEvent._(JSObject _) implements Event, JSObject {
+  factory MessageEvent(
+    String type, [
+    MessageEventInit? eventInitDict,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   void initMessageEvent(
     String type, [
-    bool bubbles,
-    bool cancelable,
+    bool? bubbles,
+    bool? cancelable,
     JSAny? data,
-    String origin,
-    String lastEventId,
+    String? origin,
+    String? lastEventId,
     MessageEventSource? source,
-    JSArray<MessagePort> ports,
-  ]);
+    JSArray<MessagePort>? ports,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`data`** read-only property of the
   /// [MessageEvent] interface represents the data sent by the message emitter.
-  JSAny? get data;
+  JSAny? get data {
+    unsupportedPlatformError();
+  }
 
   /// The **`origin`** read-only property of the
   /// [MessageEvent] interface is a string representing the
   /// origin of the message emitter.
-  String get origin;
+  String get origin {
+    unsupportedPlatformError();
+  }
 
   /// The **`lastEventId`** read-only property of the
   /// [MessageEvent] interface is a string representing a
   /// unique ID for the event.
-  String get lastEventId;
+  String get lastEventId {
+    unsupportedPlatformError();
+  }
 
   /// The **`source`** read-only property of the
   /// [MessageEvent] interface is a `MessageEventSource` (which can be
   /// a , [MessagePort], or
   /// [ServiceWorker] object) representing the message emitter.
-  MessageEventSource? get source;
+  MessageEventSource? get source {
+    unsupportedPlatformError();
+  }
 
   /// The **`ports`** read-only property of the
   /// [MessageEvent] interface is an array of [MessagePort] objects
@@ -12128,10 +18459,24 @@ abstract class MessageEvent implements Event, JSObject {
   /// (where appropriate, e.g. in channel messaging or when sending a message to
   /// a shared
   /// worker).
-  JSArray<MessagePort> get ports;
+  JSArray<MessagePort> get ports {
+    unsupportedPlatformError();
+  }
 }
+extension type MessageEventInit._(JSObject _) implements EventInit, JSObject {
+  factory MessageEventInit({
+    bool? bubbles,
+    bool? cancelable,
+    bool? composed,
+    JSAny? data,
+    String? origin,
+    String? lastEventId,
+    MessageEventSource? source,
+    JSArray<MessagePort>? ports,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class MessageEventInit implements EventInit, JSObject {
   JSAny? get data {
     unsupportedPlatformError();
   }
@@ -12220,7 +18565,14 @@ abstract class MessageEventInit implements EventInit, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/EventSource).
-abstract class EventSource implements EventTarget, JSObject {
+extension type EventSource._(JSObject _) implements EventTarget, JSObject {
+  factory EventSource(
+    String url, [
+    EventSourceInit? eventSourceInitDict,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   static const int CONNECTING = 0;
 
   static const int OPEN = 1;
@@ -12232,31 +18584,60 @@ abstract class EventSource implements EventTarget, JSObject {
   /// [EventSource.readyState] attribute to `2` (closed).
   ///
   /// > **Note:** If the connection is already closed, the method does nothing.
-  void close();
+  void close() {
+    unsupportedPlatformError();
+  }
 
   /// The **`url`** read-only property of the
   /// [EventSource] interface returns a string representing the
   /// URL of the source.
-  String get url;
+  String get url {
+    unsupportedPlatformError();
+  }
 
   /// The **`withCredentials`** read-only property of the
   /// [EventSource] interface returns a boolean value indicating whether
   /// the `EventSource` object was instantiated with CORS credentials set.
-  bool get withCredentials;
+  bool get withCredentials {
+    unsupportedPlatformError();
+  }
 
   /// The **`readyState`** read-only property of the
   /// [EventSource] interface returns a number representing the state of the
   /// connection.
-  int get readyState;
-  EventHandler get onopen;
-  set onopen(EventHandler value);
-  EventHandler get onmessage;
-  set onmessage(EventHandler value);
-  EventHandler get onerror;
-  set onerror(EventHandler value);
-}
+  int get readyState {
+    unsupportedPlatformError();
+  }
 
-abstract class EventSourceInit implements JSObject {
+  EventHandler get onopen {
+    unsupportedPlatformError();
+  }
+
+  set onopen(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onmessage {
+    unsupportedPlatformError();
+  }
+
+  set onmessage(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onerror {
+    unsupportedPlatformError();
+  }
+
+  set onerror(EventHandler value) {
+    unsupportedPlatformError();
+  }
+}
+extension type EventSourceInit._(JSObject _) implements JSObject {
+  factory EventSourceInit({bool? withCredentials}) {
+    unsupportedPlatformError();
+  }
+
   bool get withCredentials {
     unsupportedPlatformError();
   }
@@ -12275,11 +18656,17 @@ abstract class EventSourceInit implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MessageChannel).
-abstract class MessageChannel implements JSObject {
+extension type MessageChannel._(JSObject _) implements JSObject {
+  factory MessageChannel() {
+    unsupportedPlatformError();
+  }
+
   /// The **`port1`** read-only property of the
   /// [MessageChannel] interface returns the first port of the message channel —
   /// the port attached to the context that originated the channel.
-  MessagePort get port1;
+  MessagePort get port1 {
+    unsupportedPlatformError();
+  }
 
   /// The **`port2`** read-only property of the
   /// [MessageChannel] interface returns the second port of the message channel
@@ -12287,7 +18674,9 @@ abstract class MessageChannel implements JSObject {
   /// the port attached to the context at the other end of the channel, which
   /// the message is
   /// initially sent to.
-  MessagePort get port2;
+  MessagePort get port2 {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`MessagePort`** interface of the
@@ -12302,36 +18691,63 @@ abstract class MessageChannel implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MessagePort).
-abstract class MessagePort implements EventTarget, JSObject {
+extension type MessagePort._(JSObject _) implements EventTarget, JSObject {
   /// The **`postMessage()`** method of the
   /// [MessagePort] interface sends a message from the port, and optionally,
   /// transfers ownership of objects to other browsing contexts.
   void postMessage(
     JSAny? message, [
-    JSObject optionsOrTransfer,
-  ]);
+    JSObject? optionsOrTransfer,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`start()`** method of the [MessagePort]
   /// interface starts the sending of messages queued on the port. This method
   /// is only needed
   /// when using [EventTarget.addEventListener]; it is implied when using
   /// [MessagePort.message_event].
-  void start();
+  void start() {
+    unsupportedPlatformError();
+  }
 
   /// The **`close()`** method of the [MessagePort]
   /// interface disconnects the port, so it is no longer active. This stops the
   /// flow of
   /// messages to that port.
-  void close();
-  EventHandler get onmessage;
-  set onmessage(EventHandler value);
-  EventHandler get onmessageerror;
-  set onmessageerror(EventHandler value);
-  EventHandler get onclose;
-  set onclose(EventHandler value);
-}
+  void close() {
+    unsupportedPlatformError();
+  }
 
-abstract class StructuredSerializeOptions implements JSObject {
+  EventHandler get onmessage {
+    unsupportedPlatformError();
+  }
+
+  set onmessage(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onmessageerror {
+    unsupportedPlatformError();
+  }
+
+  set onmessageerror(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onclose {
+    unsupportedPlatformError();
+  }
+
+  set onclose(EventHandler value) {
+    unsupportedPlatformError();
+  }
+}
+extension type StructuredSerializeOptions._(JSObject _) implements JSObject {
+  factory StructuredSerializeOptions({JSArray<JSObject>? transfer}) {
+    unsupportedPlatformError();
+  }
+
   JSArray<JSObject> get transfer {
     unsupportedPlatformError();
   }
@@ -12352,14 +18768,20 @@ abstract class StructuredSerializeOptions implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/BroadcastChannel).
-abstract class BroadcastChannel implements EventTarget, JSObject {
+extension type BroadcastChannel._(JSObject _) implements EventTarget, JSObject {
+  factory BroadcastChannel(String name) {
+    unsupportedPlatformError();
+  }
+
   /// The **`postMessage()`** method of the [BroadcastChannel] interface sends a
   /// message,
   /// which can be of any kind of `Object`,
   /// to each listener in any  with the same .
   /// The message is transmitted as a [BroadcastChannel.message_event] event
   /// targeted at each [BroadcastChannel] bound to the channel.
-  void postMessage(JSAny? message);
+  void postMessage(JSAny? message) {
+    unsupportedPlatformError();
+  }
 
   /// The **`close()`** method of the [BroadcastChannel] interface terminates
   /// the connection to
@@ -12367,17 +18789,33 @@ abstract class BroadcastChannel implements EventTarget, JSObject {
   /// This is a necessary step to perform
   /// as there is no other way for a browser to know
   /// that this channel is not needed anymore.
-  void close();
+  void close() {
+    unsupportedPlatformError();
+  }
 
   /// The **`name`** read-only property of the [BroadcastChannel] interface
   /// returns a string, which uniquely identifies the given channel with its
   /// name. This name is passed to the [BroadcastChannel.BroadCastChannel]
   /// constructor at creation time and is therefore read-only.
-  String get name;
-  EventHandler get onmessage;
-  set onmessage(EventHandler value);
-  EventHandler get onmessageerror;
-  set onmessageerror(EventHandler value);
+  String get name {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onmessage {
+    unsupportedPlatformError();
+  }
+
+  set onmessage(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onmessageerror {
+    unsupportedPlatformError();
+  }
+
+  set onmessageerror(EventHandler value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`WorkerGlobalScope`** interface of the
@@ -12399,11 +18837,17 @@ abstract class BroadcastChannel implements EventTarget, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WorkerGlobalScope).
-abstract class WorkerGlobalScope implements EventTarget, JSObject {
+extension type WorkerGlobalScope._(JSObject _)
+    implements EventTarget, JSObject {
   /// The **`importScripts()`** method of the [WorkerGlobalScope] interface
   /// synchronously imports one or more scripts into the worker's scope.
-  void importScripts(JSAny urls);
-  void reportError(JSAny? e);
+  void importScripts(JSAny urls) {
+    unsupportedPlatformError();
+  }
+
+  void reportError(JSAny? e) {
+    unsupportedPlatformError();
+  }
 
   /// The **`btoa()`** method of the [WorkerGlobalScope] interface creates a
   /// -encoded  string from a _binary string_ (i.e., a
@@ -12416,7 +18860,9 @@ abstract class WorkerGlobalScope implements EventTarget, JSObject {
   /// decode the data again.
   /// For example, you can encode control characters such as ASCII values 0
   /// through 31.
-  String btoa(String data);
+  String btoa(String data) {
+    unsupportedPlatformError();
+  }
 
   /// The **`atob()`** method of the [WorkerGlobalScope] interface decodes a
   /// string of data which has been encoded using  encoding. You can use
@@ -12428,83 +18874,157 @@ abstract class WorkerGlobalScope implements EventTarget, JSObject {
   ///
   /// For use with arbitrary Unicode strings, see _The "Unicode Problem"_
   /// section in  glossary entry.
-  String atob(String data);
+  String atob(String data) {
+    unsupportedPlatformError();
+  }
+
   int setTimeout(
     TimerHandler handler,
     JSAny? arguments, [
-    int timeout,
-  ]);
-  void clearTimeout([int id]);
+    int? timeout,
+  ]) {
+    unsupportedPlatformError();
+  }
+
+  void clearTimeout([int? id]) {
+    unsupportedPlatformError();
+  }
+
   int setInterval(
     TimerHandler handler,
     JSAny? arguments, [
-    int timeout,
-  ]);
-  void clearInterval([int id]);
-  void queueMicrotask(VoidFunction callback);
+    int? timeout,
+  ]) {
+    unsupportedPlatformError();
+  }
+
+  void clearInterval([int? id]) {
+    unsupportedPlatformError();
+  }
+
+  void queueMicrotask(VoidFunction callback) {
+    unsupportedPlatformError();
+  }
+
   JSPromise<ImageBitmap> createImageBitmap(
     ImageBitmapSource image, [
-    JSAny optionsOrSx,
-    int sy,
-    int sw,
-    int sh,
-    ImageBitmapOptions options,
-  ]);
+    JSAny? optionsOrSx,
+    int? sy,
+    int? sw,
+    int? sh,
+    ImageBitmapOptions? options,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   JSAny? structuredClone(
     JSAny? value, [
-    StructuredSerializeOptions options,
-  ]);
+    StructuredSerializeOptions? options,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   JSPromise<Response> fetch(
     RequestInfo input, [
-    RequestInit init,
-  ]);
+    RequestInit? init,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`self`** read-only property of the [WorkerGlobalScope] interface
   /// returns a reference to the `WorkerGlobalScope` itself. Most of the time it
   /// is a specific scope like [DedicatedWorkerGlobalScope],
   /// [SharedWorkerGlobalScope], or [ServiceWorkerGlobalScope].
-  WorkerGlobalScope get self;
+  WorkerGlobalScope get self {
+    unsupportedPlatformError();
+  }
 
   /// The **`location`** read-only property of the [WorkerGlobalScope] interface
   /// returns the [WorkerLocation] associated with the worker. It is a specific
   /// location object, mostly a subset of the [Location] for browsing scopes,
   /// but adapted to workers.
-  WorkerLocation get location;
+  WorkerLocation get location {
+    unsupportedPlatformError();
+  }
 
   /// The **`navigator`** read-only property of the [WorkerGlobalScope]
   /// interface returns the [WorkerNavigator] associated with the worker. It is
   /// a specific navigator object, mostly a subset of the [Navigator] for
   /// browsing scopes, but adapted to workers.
-  WorkerNavigator get navigator;
-  OnErrorEventHandler get onerror;
-  set onerror(OnErrorEventHandler value);
-  EventHandler get onlanguagechange;
-  set onlanguagechange(EventHandler value);
-  EventHandler get onoffline;
-  set onoffline(EventHandler value);
-  EventHandler get ononline;
-  set ononline(EventHandler value);
-  EventHandler get onrejectionhandled;
-  set onrejectionhandled(EventHandler value);
-  EventHandler get onunhandledrejection;
-  set onunhandledrejection(EventHandler value);
+  WorkerNavigator get navigator {
+    unsupportedPlatformError();
+  }
+
+  OnErrorEventHandler get onerror {
+    unsupportedPlatformError();
+  }
+
+  set onerror(OnErrorEventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onlanguagechange {
+    unsupportedPlatformError();
+  }
+
+  set onlanguagechange(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onoffline {
+    unsupportedPlatformError();
+  }
+
+  set onoffline(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ononline {
+    unsupportedPlatformError();
+  }
+
+  set ononline(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onrejectionhandled {
+    unsupportedPlatformError();
+  }
+
+  set onrejectionhandled(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onunhandledrejection {
+    unsupportedPlatformError();
+  }
+
+  set onunhandledrejection(EventHandler value) {
+    unsupportedPlatformError();
+  }
 
   /// The **`fonts`** property of the [WorkerGlobalScope] interface returns the
   /// [FontFaceSet] interface of the worker.
   ///
   /// This property is part of the
   /// [CSS Font Loading API](https://developer.mozilla.org/en-US/docs/Web/API/CSS_Font_Loading_API).
-  FontFaceSet get fonts;
+  FontFaceSet get fonts {
+    unsupportedPlatformError();
+  }
 
   /// The **`origin`** read-only property of the [WorkerGlobalScope] interface
   /// returns the origin of the global scope, serialized as a string.
-  String get origin;
+  String get origin {
+    unsupportedPlatformError();
+  }
 
   /// The **`isSecureContext`** read-only property of the [WorkerGlobalScope]
   /// interface returns a boolean indicating whether the current
   /// [context is secure](https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts)
   /// (`true`) or not (`false`).
-  bool get isSecureContext;
+  bool get isSecureContext {
+    unsupportedPlatformError();
+  }
 
   /// The **`crossOriginIsolated`** read-only property of the
   /// [WorkerGlobalScope] interface returns a boolean value that
@@ -12521,12 +19041,16 @@ abstract class WorkerGlobalScope implements EventTarget, JSObject {
   /// A website is in a cross-origin isolated state, when the response header
   /// has the value `same-origin` and the  header has the value `require-corp`
   /// or `credentialless`.
-  bool get crossOriginIsolated;
+  bool get crossOriginIsolated {
+    unsupportedPlatformError();
+  }
 
   /// The **`indexedDB`** read-only property of the [WorkerGlobalScope]
   /// interface provides a mechanism for workers to
   /// asynchronously access the capabilities of indexed databases.
-  IDBFactory get indexedDB;
+  IDBFactory get indexedDB {
+    unsupportedPlatformError();
+  }
 
   /// The **`crypto`** read-only property of the [WorkerGlobalScope] interface
   /// returns the [Crypto] object for this worker. This object gives workers
@@ -12541,7 +19065,9 @@ abstract class WorkerGlobalScope implements EventTarget, JSObject {
   /// object only has one usable feature in insecure contexts: the
   /// [Crypto.getRandomValues] method. In general, you should use this API only
   /// in secure contexts.
-  Crypto get crypto;
+  Crypto get crypto {
+    unsupportedPlatformError();
+  }
 
   /// The **`performance`** property of the [WorkerGlobalScope] interface
   /// returns a [Performance] object, which can be used to gather performance
@@ -12561,7 +19087,9 @@ abstract class WorkerGlobalScope implements EventTarget, JSObject {
   /// - [PerformanceObserverEntryList]
   /// - [PerformanceResourceTiming]
   /// - [PerformanceServerTiming]
-  Performance get performance;
+  Performance get performance {
+    unsupportedPlatformError();
+  }
 
   /// The **`scheduler`** read-only property of the [WorkerGlobalScope]
   /// interface is the entry point for using the
@@ -12569,19 +19097,25 @@ abstract class WorkerGlobalScope implements EventTarget, JSObject {
   ///
   /// The object has a single instance method [Scheduler.postTask] that is used
   /// to post prioritized tasks for scheduling.
-  Scheduler get scheduler;
+  Scheduler get scheduler {
+    unsupportedPlatformError();
+  }
 
   /// The **`caches`** read-only property of the [WorkerGlobalScope] interface
   /// returns the [CacheStorage] object associated with the current context.
   /// This object enables functionality such as storing assets for offline use,
   /// and generating custom responses to requests.
-  CacheStorage get caches;
+  CacheStorage get caches {
+    unsupportedPlatformError();
+  }
 
   /// The **`trustedTypes`** read-only property of the [WorkerGlobalScope]
   /// interface returns the [TrustedTypePolicyFactory] object associated with
   /// the global object, providing the entry point for using the
   /// [Trusted Types API].
-  TrustedTypePolicyFactory get trustedTypes;
+  TrustedTypePolicyFactory get trustedTypes {
+    unsupportedPlatformError();
+  }
 }
 
 /// @AvailableInWorkers("dedicated")
@@ -12599,7 +19133,7 @@ abstract class WorkerGlobalScope implements EventTarget, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/DedicatedWorkerGlobalScope).
-abstract class DedicatedWorkerGlobalScope
+extension type DedicatedWorkerGlobalScope._(JSObject _)
     implements WorkerGlobalScope, JSObject {
   /// @AvailableInWorkers("dedicated")
   ///
@@ -12624,15 +19158,19 @@ abstract class DedicatedWorkerGlobalScope
   /// thread that spawned it using the [Worker.postMessage] method.
   void postMessage(
     JSAny? message, [
-    JSObject optionsOrTransfer,
-  ]);
+    JSObject? optionsOrTransfer,
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("dedicated")
   ///
   /// The **`close()`** method of the [DedicatedWorkerGlobalScope] interface
   /// discards any tasks queued in the `DedicatedWorkerGlobalScope`'s event
   /// loop, effectively closing this particular scope.
-  void close();
+  void close() {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("dedicated")
   ///
@@ -12662,7 +19200,9 @@ abstract class DedicatedWorkerGlobalScope
   /// to have an associated owner [Window]. That means that the current worker
   /// must be created by [Window] or by a dedicated worker that also has an
   /// associated owner [Window].
-  int requestAnimationFrame(FrameRequestCallback callback);
+  int requestAnimationFrame(FrameRequestCallback callback) {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("dedicated")
   ///
@@ -12675,7 +19215,9 @@ abstract class DedicatedWorkerGlobalScope
   /// have an associated owner [Window]. That means that the current worker must
   /// be created by [Window] or by a dedicated worker that also has an
   /// associated owner [Window].
-  void cancelAnimationFrame(int handle);
+  void cancelAnimationFrame(int handle) {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("dedicated")
   ///
@@ -12684,13 +19226,33 @@ abstract class DedicatedWorkerGlobalScope
   /// [Worker] was (optionally) given when it was created. This is the name that
   /// the [Worker.Worker] constructor can pass to get a reference to
   /// the [DedicatedWorkerGlobalScope].
-  String get name;
-  EventHandler get onmessage;
-  set onmessage(EventHandler value);
-  EventHandler get onmessageerror;
-  set onmessageerror(EventHandler value);
-  EventHandler get onrtctransform;
-  set onrtctransform(EventHandler value);
+  String get name {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onmessage {
+    unsupportedPlatformError();
+  }
+
+  set onmessage(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onmessageerror {
+    unsupportedPlatformError();
+  }
+
+  set onmessageerror(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onrtctransform {
+    unsupportedPlatformError();
+  }
+
+  set onrtctransform(EventHandler value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`SharedWorkerGlobalScope`** object (the [SharedWorker] global scope)
@@ -12705,11 +19267,14 @@ abstract class DedicatedWorkerGlobalScope
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SharedWorkerGlobalScope).
-abstract class SharedWorkerGlobalScope implements WorkerGlobalScope, JSObject {
+extension type SharedWorkerGlobalScope._(JSObject _)
+    implements WorkerGlobalScope, JSObject {
   /// The **`close()`** method of the [SharedWorkerGlobalScope] interface
   /// discards any tasks queued in the `SharedWorkerGlobalScope`'s event loop,
   /// effectively closing this particular scope.
-  void close();
+  void close() {
+    unsupportedPlatformError();
+  }
 
   /// The **`name`** read-only property of the
   /// [SharedWorkerGlobalScope] interface returns the name that the
@@ -12717,9 +19282,17 @@ abstract class SharedWorkerGlobalScope implements WorkerGlobalScope, JSObject {
   /// name
   /// that the [SharedWorker.SharedWorker] constructor can pass
   /// to get a reference to the [SharedWorkerGlobalScope].
-  String get name;
-  EventHandler get onconnect;
-  set onconnect(EventHandler value);
+  String get name {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onconnect {
+    unsupportedPlatformError();
+  }
+
+  set onconnect(EventHandler value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// @AvailableInWorkers("window_and_worker_except_service")
@@ -12745,13 +19318,22 @@ abstract class SharedWorkerGlobalScope implements WorkerGlobalScope, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Worker).
-abstract class Worker implements EventTarget, JSObject {
+extension type Worker._(JSObject _) implements EventTarget, JSObject {
+  factory Worker(
+    JSAny scriptURL, [
+    WorkerOptions? options,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// @AvailableInWorkers("window_and_worker_except_service")
   ///
   /// The **`terminate()`** method of the [Worker] interface immediately
   /// terminates the [Worker]. This does not offer the worker an opportunity to
   /// finish its operations; it is stopped at once.
-  void terminate();
+  void terminate() {
+    unsupportedPlatformError();
+  }
 
   /// @AvailableInWorkers("window_and_worker_except_service")
   ///
@@ -12768,17 +19350,44 @@ abstract class Worker implements EventTarget, JSObject {
   /// the [DedicatedWorkerGlobalScope.postMessage] method.
   void postMessage(
     JSAny? message, [
-    JSObject optionsOrTransfer,
-  ]);
-  EventHandler get onmessage;
-  set onmessage(EventHandler value);
-  EventHandler get onmessageerror;
-  set onmessageerror(EventHandler value);
-  EventHandler get onerror;
-  set onerror(EventHandler value);
-}
+    JSObject? optionsOrTransfer,
+  ]) {
+    unsupportedPlatformError();
+  }
 
-abstract class WorkerOptions implements JSObject {
+  EventHandler get onmessage {
+    unsupportedPlatformError();
+  }
+
+  set onmessage(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onmessageerror {
+    unsupportedPlatformError();
+  }
+
+  set onmessageerror(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onerror {
+    unsupportedPlatformError();
+  }
+
+  set onerror(EventHandler value) {
+    unsupportedPlatformError();
+  }
+}
+extension type WorkerOptions._(JSObject _) implements JSObject {
+  factory WorkerOptions({
+    WorkerType? type,
+    RequestCredentials? credentials,
+    String? name,
+  }) {
+    unsupportedPlatformError();
+  }
+
   WorkerType get type {
     unsupportedPlatformError();
   }
@@ -12818,13 +19427,28 @@ abstract class WorkerOptions implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SharedWorker).
-abstract class SharedWorker implements EventTarget, JSObject {
+extension type SharedWorker._(JSObject _) implements EventTarget, JSObject {
+  factory SharedWorker(
+    JSAny scriptURL, [
+    JSAny? options,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// The **`port`** property of the [SharedWorker]
   /// interface returns a [MessagePort] object used to communicate and control
   /// the shared worker.
-  MessagePort get port;
-  EventHandler get onerror;
-  set onerror(EventHandler value);
+  MessagePort get port {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onerror {
+    unsupportedPlatformError();
+  }
+
+  set onerror(EventHandler value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`WorkerNavigator`** interface represents a subset of the [Navigator]
@@ -12836,21 +19460,25 @@ abstract class SharedWorker implements EventTarget, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WorkerNavigator).
-abstract class WorkerNavigator implements JSObject {
+extension type WorkerNavigator._(JSObject _) implements JSObject {
   /// The read-only **`WorkerNavigator.mediaCapabilities`** property
   /// returns a [MediaCapabilities] object that can expose information about the
   /// decoding and encoding capabilities for a given format and output
   /// capabilities as defined
   /// by the
   /// [Media Capabilities API](https://developer.mozilla.org/en-US/docs/Web/API/Media_Capabilities_API).
-  MediaCapabilities get mediaCapabilities;
+  MediaCapabilities get mediaCapabilities {
+    unsupportedPlatformError();
+  }
 
   /// The **`permissions`** read-only property of the [WorkerNavigator]
   /// interface
   /// returns a [Permissions] object that can be used to query and update
   /// permission status of APIs covered by the
   /// [Permissions API](https://developer.mozilla.org/en-US/docs/Web/API/Permissions_API).
-  Permissions get permissions;
+  Permissions get permissions {
+    unsupportedPlatformError();
+  }
 
   /// The **`serviceWorker`** read-only property of the [WorkerNavigator]
   /// interface returns the [ServiceWorkerContainer] object for the
@@ -12859,13 +19487,17 @@ abstract class WorkerNavigator implements JSObject {
   /// with the [ServiceWorker].
   ///
   /// The feature may not be available in private mode.
-  ServiceWorkerContainer get serviceWorker;
+  ServiceWorkerContainer get serviceWorker {
+    unsupportedPlatformError();
+  }
 
   /// The **`usb`** read-only property of the [WorkerNavigator] interface
   /// returns a [USB] object for the current document, providing access to
   /// [WebUSB API](https://developer.mozilla.org/en-US/docs/Web/API/WebUSB_API)
   /// functionality.
-  JSObject get usb;
+  JSObject get usb {
+    unsupportedPlatformError();
+  }
 
   /// The **`deviceMemory`** read-only
   /// property of the [WorkerNavigator] interface returns the approximate amount
@@ -12878,7 +19510,9 @@ abstract class WorkerNavigator implements JSObject {
   /// clamped within lower and upper bounds to protect the privacy of owners of
   /// very low-memory or
   /// high-memory devices.
-  double get deviceMemory;
+  double get deviceMemory {
+    unsupportedPlatformError();
+  }
 
   /// The value of the **`WorkerNavigator.appCodeName`** property is
   /// always "`Mozilla`", in any browser. This property is kept only for
@@ -12887,7 +19521,9 @@ abstract class WorkerNavigator implements JSObject {
   /// > **Note:** Do not rely on this property to return a real
   /// > product name. All browsers return "`Mozilla`" as the value of this
   /// > property.
-  String get appCodeName;
+  String get appCodeName {
+    unsupportedPlatformError();
+  }
 
   /// The value of the **`WorkerNavigator.appName`** property is always
   /// "`Netscape`", in any browser. This property is kept only for compatibility
@@ -12895,21 +19531,27 @@ abstract class WorkerNavigator implements JSObject {
   ///
   /// > **Note:** Do not rely on this property to return a real browser name.
   /// > All browsers return "`Netscape`" as the value of this property.
-  String get appName;
+  String get appName {
+    unsupportedPlatformError();
+  }
 
   /// Returns either "`4.0`" or a string representing version information about
   /// the browser.
   ///
   /// > **Note:** Do not rely on this property to return the correct browser
   /// > version.
-  String get appVersion;
+  String get appVersion {
+    unsupportedPlatformError();
+  }
 
   /// Returns a string representing the platform of the browser. The
   /// specification allows
   /// browsers to always return the empty string, so don't rely on this property
   /// to get a
   /// reliable answer.
-  String get platform;
+  String get platform {
+    unsupportedPlatformError();
+  }
 
   /// The value of the **`WorkerNavigator.product`** property is always
   /// "`Gecko`", in any browser. This property is kept only for compatibility
@@ -12917,7 +19559,9 @@ abstract class WorkerNavigator implements JSObject {
   ///
   /// > **Note:** Do not rely on this property to return a real product name.
   /// > All browsers return "`Gecko`" as the value of this property.
-  String get product;
+  String get product {
+    unsupportedPlatformError();
+  }
 
   /// The **`WorkerNavigator.userAgent`** read-only property returns the
   /// user agent string for the current browser.
@@ -12951,13 +19595,17 @@ abstract class WorkerNavigator implements JSObject {
   /// JavaScript code.
   /// - Opera 6+ allows users to set the browser identification string via a
   ///   menu.
-  String get userAgent;
+  String get userAgent {
+    unsupportedPlatformError();
+  }
 
   /// The **`WorkerNavigator.language`** read-only property returns
   /// a string representing the preferred language of the user, usually the
   /// language of the
   /// browser UI.
-  String get language;
+  String get language {
+    unsupportedPlatformError();
+  }
 
   /// The **`WorkerNavigator.languages`** read-only property
   /// returns an array of strings representing the user's preferred
@@ -12978,7 +19626,9 @@ abstract class WorkerNavigator implements JSObject {
   /// browser uses the same value for the `navigator.languages` property except
   /// for
   /// the extra `qvalues` (quality values) field (e.g. `en-US;q=0.8`).
-  JSArray<JSString> get languages;
+  JSArray<JSString> get languages {
+    unsupportedPlatformError();
+  }
 
   /// Returns the online status of the browser. The property returns a boolean
   /// value, with `true` meaning online and `false` meaning offline. The
@@ -13004,13 +19654,17 @@ abstract class WorkerNavigator implements JSObject {
   /// [Working Off the Grid](https://developer.chrome.com/docs/workbox/service-worker-overview/).
   ///
   /// In Firefox, switching the browser to offline mode sends a `false` value.
-  bool get onLine;
+  bool get onLine {
+    unsupportedPlatformError();
+  }
 
   /// The **`navigator.hardwareConcurrency`** read-only property
   /// returns the number of logical processors available to run threads on the
   /// user's
   /// computer.
-  int get hardwareConcurrency;
+  int get hardwareConcurrency {
+    unsupportedPlatformError();
+  }
 
   /// The **`connection`** read-only property of the [WorkerNavigator] interface
   /// returns a [NetworkInformation] object containing information about the
@@ -13018,7 +19672,9 @@ abstract class WorkerNavigator implements JSObject {
   /// whether the connection is metered.
   /// This could be used to select high definition content or low definition
   /// content based on the user's connection.
-  NetworkInformation get connection;
+  NetworkInformation get connection {
+    unsupportedPlatformError();
+  }
 
   /// The **`storage`** read-only property of the [WorkerNavigator] interface
   /// returns the singleton [StorageManager] object used to
@@ -13029,13 +19685,17 @@ abstract class WorkerNavigator implements JSObject {
   /// learn approximately how much more space your browser has available for
   /// local storage
   /// use.
-  StorageManager get storage;
+  StorageManager get storage {
+    unsupportedPlatformError();
+  }
 
   /// The **`locks`** read-only property of
   /// the [WorkerNavigator] interface returns a [LockManager]
   /// object which provides methods for requesting a new [Lock] object and
   /// querying for an existing `Lock` object.
-  LockManager get locks;
+  LockManager get locks {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`WorkerLocation`** interface defines the absolute location of the
@@ -13050,42 +19710,60 @@ abstract class WorkerNavigator implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WorkerLocation).
-abstract class WorkerLocation implements JSObject {
+extension type WorkerLocation._(JSObject _) implements JSObject {
   /// The **`href`** property of a [WorkerLocation] object returns a string
   /// containing the serialized [URL] for the worker's location.
-  String get href;
+  String get href {
+    unsupportedPlatformError();
+  }
 
   /// The **`origin`** property of a [WorkerLocation] object returns the
   /// worker's [URL.origin].
-  String get origin;
+  String get origin {
+    unsupportedPlatformError();
+  }
 
   /// The **`protocol`** property of a [WorkerLocation] object returns the
   /// [URL.protocol] part of the worker's location.
-  String get protocol;
+  String get protocol {
+    unsupportedPlatformError();
+  }
 
   /// The **`host`** property of a [WorkerLocation] object returns the
   /// [URL.host] part of the worker's location.
-  String get host;
+  String get host {
+    unsupportedPlatformError();
+  }
 
   /// The **`hostname`** property of a [WorkerLocation] object returns the
   /// [URL.hostname] part of the worker's location.
-  String get hostname;
+  String get hostname {
+    unsupportedPlatformError();
+  }
 
   /// The **`port`** property of a [WorkerLocation] object returns the
   /// [URL.port] part of the worker's location.
-  String get port;
+  String get port {
+    unsupportedPlatformError();
+  }
 
   /// The **`pathname`** property of a [WorkerLocation] object returns the
   /// [URL.pathname] part of the worker's location.
-  String get pathname;
+  String get pathname {
+    unsupportedPlatformError();
+  }
 
   /// The **`search`** property of a [WorkerLocation] object returns the
   /// [URL.search] part of the worker's location.
-  String get search;
+  String get search {
+    unsupportedPlatformError();
+  }
 
   /// The **`hash`** property of a [WorkerLocation] object returns the
   /// [URL.hash] part of the worker's location.
-  String get hash;
+  String get hash {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`WorkletGlobalScope`** interface is an abstract class that specific
@@ -13101,7 +19779,7 @@ abstract class WorkerLocation implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WorkletGlobalScope).
-abstract class WorkletGlobalScope implements JSObject {}
+extension type WorkletGlobalScope._(JSObject _) implements JSObject {}
 
 /// The **`Worklet`** interface is a lightweight version of [Worker] and gives
 /// developers access to low-level parts of the rendering pipeline.
@@ -13123,17 +19801,22 @@ abstract class WorkletGlobalScope implements JSObject {}
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Worklet).
-abstract class Worklet implements JSObject {
+extension type Worklet._(JSObject _) implements JSObject {
   /// The **`addModule()`** method of the
   /// [Worklet] interface loads the module in the given JavaScript file and
   /// adds it to the current `Worklet`.
   JSPromise<JSAny?> addModule(
     String moduleURL, [
-    WorkletOptions options,
-  ]);
+    WorkletOptions? options,
+  ]) {
+    unsupportedPlatformError();
+  }
 }
+extension type WorkletOptions._(JSObject _) implements JSObject {
+  factory WorkletOptions({RequestCredentials? credentials}) {
+    unsupportedPlatformError();
+  }
 
-abstract class WorkletOptions implements JSObject {
   RequestCredentials get credentials {
     unsupportedPlatformError();
   }
@@ -13157,19 +19840,23 @@ abstract class WorkletOptions implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Storage).
-abstract class Storage implements JSObject {
+extension type Storage._(JSObject _) implements JSObject {
   /// The **`key()`** method of the [Storage] interface,
   /// when passed a number n, returns the name of the nth key in a given
   /// `Storage`
   /// object. The order of keys is user-agent defined, so you should not rely on
   /// it.
-  String? key(int index);
+  String? key(int index) {
+    unsupportedPlatformError();
+  }
 
   /// The **`getItem()`** method of the [Storage]
   /// interface, when passed a key name, will return that key's value, or `null`
   /// if
   /// the key does not exist, in the given `Storage` object.
-  String? getItem(String key);
+  String? getItem(String key) {
+    unsupportedPlatformError();
+  }
 
   /// The **`setItem()`** method of the [Storage]
   /// interface, when passed a key name and value, will add that key to the
@@ -13178,7 +19865,9 @@ abstract class Storage implements JSObject {
   void setItem(
     String key,
     String value,
-  );
+  ) {
+    unsupportedPlatformError();
+  }
 
   /// The **`removeItem()`** method of the [Storage]
   /// interface, when passed a key name, will remove that key from the given
@@ -13190,16 +19879,22 @@ abstract class Storage implements JSObject {
   ///
   /// If there is no item associated with the given key, this method will do
   /// nothing.
-  void removeItem(String key);
+  void removeItem(String key) {
+    unsupportedPlatformError();
+  }
 
   /// The **`clear()`** method of the [Storage]
   /// interface clears all keys stored in a given `Storage` object.
-  void clear();
+  void clear() {
+    unsupportedPlatformError();
+  }
 
   /// The **`length`** read-only property of the
   /// [Storage] interface returns the number of data items stored in a given
   /// `Storage` object.
-  int get length;
+  int get length {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`StorageEvent`** interface is implemented by the
@@ -13212,42 +19907,73 @@ abstract class Storage implements JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/StorageEvent).
-abstract class StorageEvent implements Event, JSObject {
+extension type StorageEvent._(JSObject _) implements Event, JSObject {
+  factory StorageEvent(
+    String type, [
+    StorageEventInit? eventInitDict,
+  ]) {
+    unsupportedPlatformError();
+  }
+
   /// The **`StorageEvent.initStorageEvent()`** method is used to initialize the
   /// value of a [StorageEvent].
   void initStorageEvent(
     String type, [
-    bool bubbles,
-    bool cancelable,
+    bool? bubbles,
+    bool? cancelable,
     String? key,
     String? oldValue,
     String? newValue,
-    String url,
+    String? url,
     Storage? storageArea,
-  ]);
+  ]) {
+    unsupportedPlatformError();
+  }
 
   /// The **`key`** property of the [StorageEvent] interface returns the key for
   /// the storage item that was changed.
-  String? get key;
+  String? get key {
+    unsupportedPlatformError();
+  }
 
   /// The **`oldValue`** property of the [StorageEvent] interface returns the
   /// original value of the storage item whose value changed.
-  String? get oldValue;
+  String? get oldValue {
+    unsupportedPlatformError();
+  }
 
   /// The **`newValue`** property of the [StorageEvent] interface returns the
   /// new value of the storage item whose value was changed.
-  String? get newValue;
+  String? get newValue {
+    unsupportedPlatformError();
+  }
 
   /// The **`url`** property of the [StorageEvent] interface returns the URL of
   /// the document whose storage changed.
-  String get url;
+  String get url {
+    unsupportedPlatformError();
+  }
 
   /// The **`storageArea`** property of the [StorageEvent] interface returns the
   /// storage object that was affected.
-  Storage? get storageArea;
+  Storage? get storageArea {
+    unsupportedPlatformError();
+  }
 }
+extension type StorageEventInit._(JSObject _) implements EventInit, JSObject {
+  factory StorageEventInit({
+    bool? bubbles,
+    bool? cancelable,
+    bool? composed,
+    String? key,
+    String? oldValue,
+    String? newValue,
+    String? url,
+    Storage? storageArea,
+  }) {
+    unsupportedPlatformError();
+  }
 
-abstract class StorageEventInit implements EventInit, JSObject {
   String? get key {
     unsupportedPlatformError();
   }
@@ -13298,31 +20024,106 @@ abstract class StorageEventInit implements EventInit, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMarqueeElement).
-abstract class HTMLMarqueeElement implements HTMLElement, JSObject {
-  void start();
-  void stop();
-  String get behavior;
-  set behavior(String value);
-  String get bgColor;
-  set bgColor(String value);
-  String get direction;
-  set direction(String value);
-  String get height;
-  set height(String value);
-  int get hspace;
-  set hspace(int value);
-  int get loop;
-  set loop(int value);
-  int get scrollAmount;
-  set scrollAmount(int value);
-  int get scrollDelay;
-  set scrollDelay(int value);
-  bool get trueSpeed;
-  set trueSpeed(bool value);
-  int get vspace;
-  set vspace(int value);
-  String get width;
-  set width(String value);
+extension type HTMLMarqueeElement._(JSObject _)
+    implements HTMLElement, JSObject {
+  /// Creates an [HTMLMarqueeElement] using the tag 'marquee'.
+  HTMLMarqueeElement() : _ = document.createElement('marquee');
+
+  void start() {
+    unsupportedPlatformError();
+  }
+
+  void stop() {
+    unsupportedPlatformError();
+  }
+
+  String get behavior {
+    unsupportedPlatformError();
+  }
+
+  set behavior(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get bgColor {
+    unsupportedPlatformError();
+  }
+
+  set bgColor(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get direction {
+    unsupportedPlatformError();
+  }
+
+  set direction(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get height {
+    unsupportedPlatformError();
+  }
+
+  set height(String value) {
+    unsupportedPlatformError();
+  }
+
+  int get hspace {
+    unsupportedPlatformError();
+  }
+
+  set hspace(int value) {
+    unsupportedPlatformError();
+  }
+
+  int get loop {
+    unsupportedPlatformError();
+  }
+
+  set loop(int value) {
+    unsupportedPlatformError();
+  }
+
+  int get scrollAmount {
+    unsupportedPlatformError();
+  }
+
+  set scrollAmount(int value) {
+    unsupportedPlatformError();
+  }
+
+  int get scrollDelay {
+    unsupportedPlatformError();
+  }
+
+  set scrollDelay(int value) {
+    unsupportedPlatformError();
+  }
+
+  bool get trueSpeed {
+    unsupportedPlatformError();
+  }
+
+  set trueSpeed(bool value) {
+    unsupportedPlatformError();
+  }
+
+  int get vspace {
+    unsupportedPlatformError();
+  }
+
+  set vspace(int value) {
+    unsupportedPlatformError();
+  }
+
+  String get width {
+    unsupportedPlatformError();
+  }
+
+  set width(String value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`HTMLFrameSetElement`** interface provides special properties (beyond
@@ -13333,50 +20134,175 @@ abstract class HTMLMarqueeElement implements HTMLElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFrameSetElement).
-abstract class HTMLFrameSetElement implements HTMLElement, JSObject {
-  String get cols;
-  set cols(String value);
-  String get rows;
-  set rows(String value);
-  EventHandler get onafterprint;
-  set onafterprint(EventHandler value);
-  EventHandler get onbeforeprint;
-  set onbeforeprint(EventHandler value);
-  OnBeforeUnloadEventHandler get onbeforeunload;
-  set onbeforeunload(OnBeforeUnloadEventHandler value);
-  EventHandler get onhashchange;
-  set onhashchange(EventHandler value);
-  EventHandler get onlanguagechange;
-  set onlanguagechange(EventHandler value);
-  EventHandler get onmessage;
-  set onmessage(EventHandler value);
-  EventHandler get onmessageerror;
-  set onmessageerror(EventHandler value);
-  EventHandler get onoffline;
-  set onoffline(EventHandler value);
-  EventHandler get ononline;
-  set ononline(EventHandler value);
-  EventHandler get onpagehide;
-  set onpagehide(EventHandler value);
-  EventHandler get onpageshow;
-  set onpageshow(EventHandler value);
-  EventHandler get onpopstate;
-  set onpopstate(EventHandler value);
-  EventHandler get onrejectionhandled;
-  set onrejectionhandled(EventHandler value);
-  EventHandler get onstorage;
-  set onstorage(EventHandler value);
-  EventHandler get onunhandledrejection;
-  set onunhandledrejection(EventHandler value);
-  EventHandler get onunload;
-  set onunload(EventHandler value);
-  EventHandler get ongamepadconnected;
-  set ongamepadconnected(EventHandler value);
-  EventHandler get ongamepaddisconnected;
-  set ongamepaddisconnected(EventHandler value);
-}
+extension type HTMLFrameSetElement._(JSObject _)
+    implements HTMLElement, JSObject {
+  /// Creates an [HTMLFrameSetElement] using the tag 'frameset'.
+  HTMLFrameSetElement() : _ = document.createElement('frameset');
 
-abstract class HTMLFrameElement implements HTMLElement, JSObject {
+  String get cols {
+    unsupportedPlatformError();
+  }
+
+  set cols(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get rows {
+    unsupportedPlatformError();
+  }
+
+  set rows(String value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onafterprint {
+    unsupportedPlatformError();
+  }
+
+  set onafterprint(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onbeforeprint {
+    unsupportedPlatformError();
+  }
+
+  set onbeforeprint(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  OnBeforeUnloadEventHandler get onbeforeunload {
+    unsupportedPlatformError();
+  }
+
+  set onbeforeunload(OnBeforeUnloadEventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onhashchange {
+    unsupportedPlatformError();
+  }
+
+  set onhashchange(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onlanguagechange {
+    unsupportedPlatformError();
+  }
+
+  set onlanguagechange(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onmessage {
+    unsupportedPlatformError();
+  }
+
+  set onmessage(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onmessageerror {
+    unsupportedPlatformError();
+  }
+
+  set onmessageerror(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onoffline {
+    unsupportedPlatformError();
+  }
+
+  set onoffline(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ononline {
+    unsupportedPlatformError();
+  }
+
+  set ononline(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onpagehide {
+    unsupportedPlatformError();
+  }
+
+  set onpagehide(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onpageshow {
+    unsupportedPlatformError();
+  }
+
+  set onpageshow(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onpopstate {
+    unsupportedPlatformError();
+  }
+
+  set onpopstate(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onrejectionhandled {
+    unsupportedPlatformError();
+  }
+
+  set onrejectionhandled(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onstorage {
+    unsupportedPlatformError();
+  }
+
+  set onstorage(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onunhandledrejection {
+    unsupportedPlatformError();
+  }
+
+  set onunhandledrejection(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onunload {
+    unsupportedPlatformError();
+  }
+
+  set onunload(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ongamepadconnected {
+    unsupportedPlatformError();
+  }
+
+  set ongamepadconnected(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ongamepaddisconnected {
+    unsupportedPlatformError();
+  }
+
+  set ongamepaddisconnected(EventHandler value) {
+    unsupportedPlatformError();
+  }
+}
+extension type HTMLFrameElement._(JSObject _) implements HTMLElement, JSObject {
+  /// Creates an [HTMLFrameElement] using the tag 'frame'.
+  HTMLFrameElement() : _ = document.createElement('frame');
+
   String get name {
     unsupportedPlatformError();
   }
@@ -13449,8 +20375,11 @@ abstract class HTMLFrameElement implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 }
+extension type HTMLDirectoryElement._(JSObject _)
+    implements HTMLElement, JSObject {
+  /// Creates an [HTMLDirectoryElement] using the tag 'dir'.
+  HTMLDirectoryElement() : _ = document.createElement('dir');
 
-abstract class HTMLDirectoryElement implements HTMLElement, JSObject {
   bool get compact {
     unsupportedPlatformError();
   }
@@ -13468,7 +20397,10 @@ abstract class HTMLDirectoryElement implements HTMLElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFontElement).
-abstract class HTMLFontElement implements HTMLElement, JSObject {
+extension type HTMLFontElement._(JSObject _) implements HTMLElement, JSObject {
+  /// Creates an [HTMLFontElement] using the tag 'font'.
+  HTMLFontElement() : _ = document.createElement('font');
+
   /// The obsolete
   /// **`HTMLFontElement.color`**
   /// property is a string that reflects the
@@ -13485,8 +20417,13 @@ abstract class HTMLFontElement implements HTMLElement, JSObject {
   /// | Valid name color string  | _nameOfColor (case insensitive)_                                 | `Green`, `green`, `GREEN` |
   /// | Valid hex color string   | _in_ _: #RRGGBB_ | `#008000`                 |
   /// | RGB using decimal values | _rgb(x,x,x) (x in 0-255 range)_                                  | `rgb(0 128 0)`            |
-  String get color;
-  set color(String value);
+  String get color {
+    unsupportedPlatformError();
+  }
+
+  set color(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The obsolete
   /// **`HTMLFontElement.face`**
@@ -13508,8 +20445,13 @@ abstract class HTMLFontElement implements HTMLElement, JSObject {
   /// | Microsyntax                                 | Description                                                         | Examples          |
   /// | ------------------------------------------- | ------------------------------------------------------------------- | ----------------- |
   /// | List of one or more valid font family names | _A list of font names, that have to be present on the local system_ | `courier,verdana` |
-  String get face;
-  set face(String value);
+  String get face {
+    unsupportedPlatformError();
+  }
+
+  set face(String value) {
+    unsupportedPlatformError();
+  }
 
   /// The obsolete
   /// **`HTMLFontElement.size`** property is a
@@ -13547,8 +20489,13 @@ abstract class HTMLFontElement implements HTMLElement, JSObject {
   ///     </tr>
   ///   </tbody>
   /// </table>
-  String get size;
-  set size(String value);
+  String get size {
+    unsupportedPlatformError();
+  }
+
+  set size(String value) {
+    unsupportedPlatformError();
+  }
 }
 
 /// The **`HTMLParamElement`** interface provides special properties (beyond
@@ -13560,18 +20507,48 @@ abstract class HTMLFontElement implements HTMLElement, JSObject {
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLParamElement).
-abstract class HTMLParamElement implements HTMLElement, JSObject {
-  String get name;
-  set name(String value);
-  String get value;
-  set value(String value);
-  String get type;
-  set type(String value);
-  String get valueType;
-  set valueType(String value);
-}
+extension type HTMLParamElement._(JSObject _) implements HTMLElement, JSObject {
+  /// Creates an [HTMLParamElement] using the tag 'param'.
+  HTMLParamElement() : _ = document.createElement('param');
 
-abstract class External implements JSObject {
-  void AddSearchProvider();
-  void IsSearchProviderInstalled();
+  String get name {
+    unsupportedPlatformError();
+  }
+
+  set name(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get value {
+    unsupportedPlatformError();
+  }
+
+  set value(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get type {
+    unsupportedPlatformError();
+  }
+
+  set type(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get valueType {
+    unsupportedPlatformError();
+  }
+
+  set valueType(String value) {
+    unsupportedPlatformError();
+  }
+}
+extension type External._(JSObject _) implements JSObject {
+  void AddSearchProvider() {
+    unsupportedPlatformError();
+  }
+
+  void IsSearchProviderInstalled() {
+    unsupportedPlatformError();
+  }
 }

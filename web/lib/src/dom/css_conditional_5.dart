@@ -10,6 +10,7 @@
 
 // ignore_for_file: unintended_html_in_doc_comment
 
+import '../error.dart';
 import '../js_interop.dart';
 import 'css_conditional.dart';
 
@@ -24,7 +25,8 @@ import 'css_conditional.dart';
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSContainerRule).
-abstract class CSSContainerRule implements CSSConditionRule, JSObject {
+extension type CSSContainerRule._(JSObject _)
+    implements CSSConditionRule, JSObject {
   /// The read-only **`containerName`** property of the [CSSContainerRule]
   /// interface represents the container name of the associated CSS  at-rule.
   ///
@@ -37,7 +39,9 @@ abstract class CSSContainerRule implements CSSConditionRule, JSObject {
   ///   }
   /// }
   /// ```
-  String get containerName;
+  String get containerName {
+    unsupportedPlatformError();
+  }
 
   /// The read-only **`containerQuery`** property of the [CSSContainerRule]
   /// interface returns a string representing the container conditions that are
@@ -54,5 +58,7 @@ abstract class CSSContainerRule implements CSSConditionRule, JSObject {
   ///   }
   /// }
   /// ```
-  String get containerQuery;
+  String get containerQuery {
+    unsupportedPlatformError();
+  }
 }

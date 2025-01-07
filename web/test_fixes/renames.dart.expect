@@ -2,7 +2,7 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-import 'package:web/web.dart';
+import 'package:universal_web/web.dart';
 
 late HTMLAnchorElement $0;
 late HTMLAreaElement $1;
@@ -135,7 +135,7 @@ late HTMLTimeElement $138;
 late HTMLTitleElement $139;
 late HTMLTrackElement $140;
 late HTMLUListElement $143;
-late UnderlyingSource $144;
+//late UnderlyingSourceBase $144;
 late HTMLUnknownElement $145;
 late URL $146;
 late URLSearchParams $147;

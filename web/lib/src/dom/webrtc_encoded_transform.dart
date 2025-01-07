@@ -19,7 +19,7 @@ import 'streams.dart';
 typedef RTCRtpTransform = JSObject;
 typedef RTCEncodedVideoFrameType = String;
 extension type RTCEncodedVideoFrameMetadata._(JSObject _) implements JSObject {
-  factory RTCEncodedVideoFrameMetadata({
+  RTCEncodedVideoFrameMetadata({
     int? frameId,
     JSArray<JSNumber>? dependencies,
     int? width,
@@ -32,9 +32,7 @@ extension type RTCEncodedVideoFrameMetadata._(JSObject _) implements JSObject {
     int? timestamp,
     int? rtpTimestamp,
     String? mimeType,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   int get frameId {
     unsupportedPlatformError();
@@ -182,16 +180,14 @@ extension type RTCEncodedVideoFrame._(JSObject _) implements JSObject {
   }
 }
 extension type RTCEncodedAudioFrameMetadata._(JSObject _) implements JSObject {
-  factory RTCEncodedAudioFrameMetadata({
+  RTCEncodedAudioFrameMetadata({
     int? synchronizationSource,
     int? payloadType,
     JSArray<JSNumber>? contributingSources,
     int? sequenceNumber,
     int? rtpTimestamp,
     String? mimeType,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   int get synchronizationSource {
     unsupportedPlatformError();
@@ -425,11 +421,9 @@ extension type RTCRtpScriptTransformer._(JSObject _)
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpScriptTransform).
 extension type RTCRtpScriptTransform._(JSObject _) implements JSObject {
-  factory RTCRtpScriptTransform(
+  RTCRtpScriptTransform(
     Worker worker, [
     JSAny? options,
     JSArray<JSObject>? transfer,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 }

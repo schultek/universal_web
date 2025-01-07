@@ -17,14 +17,12 @@ typedef RefreshPolicy = String;
 typedef TokenVersion = String;
 typedef OperationType = String;
 extension type PrivateToken._(JSObject _) implements JSObject {
-  factory PrivateToken({
+  PrivateToken({
     required TokenVersion version,
     required OperationType operation,
     RefreshPolicy? refreshPolicy,
     JSArray<JSString>? issuers,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   TokenVersion get version {
     unsupportedPlatformError();

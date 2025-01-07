@@ -19,14 +19,12 @@ import 'html.dart';
 typedef ClipboardItems = JSArray<ClipboardItem>;
 typedef PresentationStyle = String;
 extension type ClipboardEventInit._(JSObject _) implements EventInit, JSObject {
-  factory ClipboardEventInit({
+  ClipboardEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
     DataTransfer? clipboardData,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   DataTransfer? get clipboardData {
     unsupportedPlatformError();
@@ -48,12 +46,10 @@ extension type ClipboardEventInit._(JSObject _) implements EventInit, JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ClipboardEvent).
 extension type ClipboardEvent._(JSObject _) implements Event, JSObject {
-  factory ClipboardEvent(
+  ClipboardEvent(
     String type, [
     ClipboardEventInit? eventInitDict,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The **`clipboardData`** property of the [ClipboardEvent] interface holds a
   /// [DataTransfer] object, which can be used to:
@@ -88,12 +84,10 @@ extension type ClipboardEvent._(JSObject _) implements Event, JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ClipboardItem).
 extension type ClipboardItem._(JSObject _) implements JSObject {
-  factory ClipboardItem(
+  ClipboardItem(
     JSObject items, [
     ClipboardItemOptions? options,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The **`supports()`** static method of the [ClipboardItem] interface
   /// returns `true` if the given  is supported by the clipboard, and `false`
@@ -131,9 +125,7 @@ extension type ClipboardItem._(JSObject _) implements JSObject {
   }
 }
 extension type ClipboardItemOptions._(JSObject _) implements JSObject {
-  factory ClipboardItemOptions({PresentationStyle? presentationStyle}) {
-    unsupportedPlatformError();
-  }
+  ClipboardItemOptions({PresentationStyle? presentationStyle}) : _ = JSObject();
 
   PresentationStyle get presentationStyle {
     unsupportedPlatformError();
@@ -210,9 +202,8 @@ extension type Clipboard._(JSObject _) implements EventTarget, JSObject {
   }
 }
 extension type ClipboardUnsanitizedFormats._(JSObject _) implements JSObject {
-  factory ClipboardUnsanitizedFormats({JSArray<JSString>? unsanitized}) {
-    unsupportedPlatformError();
-  }
+  ClipboardUnsanitizedFormats({JSArray<JSString>? unsanitized})
+      : _ = JSObject();
 
   JSArray<JSString> get unsanitized {
     unsupportedPlatformError();

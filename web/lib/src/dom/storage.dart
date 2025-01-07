@@ -68,12 +68,10 @@ extension type StorageManager._(JSObject _) implements JSObject {
   }
 }
 extension type StorageEstimate._(JSObject _) implements JSObject {
-  factory StorageEstimate({
+  StorageEstimate({
     int? usage,
     int? quota,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   int get usage {
     unsupportedPlatformError();

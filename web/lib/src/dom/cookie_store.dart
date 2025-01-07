@@ -82,12 +82,10 @@ extension type CookieStore._(JSObject _) implements EventTarget, JSObject {
   }
 }
 extension type CookieStoreGetOptions._(JSObject _) implements JSObject {
-  factory CookieStoreGetOptions({
+  CookieStoreGetOptions({
     String? name,
     String? url,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get name {
     unsupportedPlatformError();
@@ -106,7 +104,7 @@ extension type CookieStoreGetOptions._(JSObject _) implements JSObject {
   }
 }
 extension type CookieInit._(JSObject _) implements JSObject {
-  factory CookieInit({
+  CookieInit({
     required String name,
     required String value,
     DOMHighResTimeStamp? expires,
@@ -114,9 +112,7 @@ extension type CookieInit._(JSObject _) implements JSObject {
     String? path,
     CookieSameSite? sameSite,
     bool? partitioned,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get name {
     unsupportedPlatformError();
@@ -175,14 +171,12 @@ extension type CookieInit._(JSObject _) implements JSObject {
   }
 }
 extension type CookieStoreDeleteOptions._(JSObject _) implements JSObject {
-  factory CookieStoreDeleteOptions({
+  CookieStoreDeleteOptions({
     required String name,
     String? domain,
     String? path,
     bool? partitioned,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get name {
     unsupportedPlatformError();
@@ -217,7 +211,7 @@ extension type CookieStoreDeleteOptions._(JSObject _) implements JSObject {
   }
 }
 extension type CookieListItem._(JSObject _) implements JSObject {
-  factory CookieListItem({
+  CookieListItem({
     String? name,
     String? value,
     String? domain,
@@ -226,9 +220,7 @@ extension type CookieListItem._(JSObject _) implements JSObject {
     bool? secure,
     CookieSameSite? sameSite,
     bool? partitioned,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get name {
     unsupportedPlatformError();
@@ -364,12 +356,10 @@ extension type CookieStoreManager._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CookieChangeEvent).
 extension type CookieChangeEvent._(JSObject _) implements Event, JSObject {
-  factory CookieChangeEvent(
+  CookieChangeEvent(
     String type, [
     CookieChangeEventInit? eventInitDict,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The **`changed`** read-only property of the [CookieChangeEvent] interface
   /// returns an array of the cookies that have been changed.
@@ -386,15 +376,13 @@ extension type CookieChangeEvent._(JSObject _) implements Event, JSObject {
 }
 extension type CookieChangeEventInit._(JSObject _)
     implements EventInit, JSObject {
-  factory CookieChangeEventInit({
+  CookieChangeEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
     CookieList? changed,
     CookieList? deleted,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   CookieList get changed {
     unsupportedPlatformError();
@@ -440,12 +428,10 @@ extension type CookieChangeEventInit._(JSObject _)
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ExtendableCookieChangeEvent).
 extension type ExtendableCookieChangeEvent._(JSObject _)
     implements ExtendableEvent, JSObject {
-  factory ExtendableCookieChangeEvent(
+  ExtendableCookieChangeEvent(
     String type, [
     ExtendableCookieChangeEventInit? eventInitDict,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// @AvailableInWorkers("service")
   ///
@@ -467,15 +453,13 @@ extension type ExtendableCookieChangeEvent._(JSObject _)
 }
 extension type ExtendableCookieChangeEventInit._(JSObject _)
     implements ExtendableEventInit, JSObject {
-  factory ExtendableCookieChangeEventInit({
+  ExtendableCookieChangeEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
     CookieList? changed,
     CookieList? deleted,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   CookieList get changed {
     unsupportedPlatformError();

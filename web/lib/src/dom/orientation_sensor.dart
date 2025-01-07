@@ -64,12 +64,10 @@ extension type OrientationSensor._(JSObject _) implements Sensor, JSObject {
 }
 extension type OrientationSensorOptions._(JSObject _)
     implements SensorOptions, JSObject {
-  factory OrientationSensorOptions({
+  OrientationSensorOptions({
     num? frequency,
     OrientationSensorLocalCoordinateSystem? referenceFrame,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   OrientationSensorLocalCoordinateSystem get referenceFrame {
     unsupportedPlatformError();
@@ -99,9 +97,8 @@ extension type OrientationSensorOptions._(JSObject _)
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/AbsoluteOrientationSensor).
 extension type AbsoluteOrientationSensor._(JSObject _)
     implements OrientationSensor, JSObject {
-  factory AbsoluteOrientationSensor([OrientationSensorOptions? sensorOptions]) {
-    unsupportedPlatformError();
-  }
+  AbsoluteOrientationSensor([OrientationSensorOptions? sensorOptions])
+      : _ = JSObject();
 }
 
 /// The **`RelativeOrientationSensor`** interface of the
@@ -122,7 +119,6 @@ extension type AbsoluteOrientationSensor._(JSObject _)
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/RelativeOrientationSensor).
 extension type RelativeOrientationSensor._(JSObject _)
     implements OrientationSensor, JSObject {
-  factory RelativeOrientationSensor([OrientationSensorOptions? sensorOptions]) {
-    unsupportedPlatformError();
-  }
+  RelativeOrientationSensor([OrientationSensorOptions? sensorOptions])
+      : _ = JSObject();
 }

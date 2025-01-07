@@ -19,7 +19,7 @@ typedef BinaryData = JSObject;
 typedef FontFaceLoadStatus = String;
 typedef FontFaceSetLoadStatus = String;
 extension type FontFaceDescriptors._(JSObject _) implements JSObject {
-  factory FontFaceDescriptors({
+  FontFaceDescriptors({
     String? style,
     String? weight,
     String? stretch,
@@ -30,9 +30,7 @@ extension type FontFaceDescriptors._(JSObject _) implements JSObject {
     String? ascentOverride,
     String? descentOverride,
     String? lineGapOverride,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get style {
     unsupportedPlatformError();
@@ -130,13 +128,11 @@ extension type FontFaceDescriptors._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/FontFace).
 extension type FontFace._(JSObject _) implements JSObject {
-  factory FontFace(
+  FontFace(
     String family,
     JSAny source, [
     FontFaceDescriptors? descriptors,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The **`load()`** method of the [FontFace] interface requests and loads a
   /// font whose `source` was specified as a URL. It returns a `Promise` that
@@ -310,14 +306,12 @@ extension type FontFace._(JSObject _) implements JSObject {
 }
 extension type FontFaceSetLoadEventInit._(JSObject _)
     implements EventInit, JSObject {
-  factory FontFaceSetLoadEventInit({
+  FontFaceSetLoadEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
     JSArray<FontFace>? fontfaces,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   JSArray<FontFace> get fontfaces {
     unsupportedPlatformError();
@@ -345,12 +339,10 @@ extension type FontFaceSetLoadEventInit._(JSObject _)
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/FontFaceSetLoadEvent).
 extension type FontFaceSetLoadEvent._(JSObject _) implements Event, JSObject {
-  factory FontFaceSetLoadEvent(
+  FontFaceSetLoadEvent(
     String type, [
     FontFaceSetLoadEventInit? eventInitDict,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The **`fontfaces`** read-only property of the
   /// [FontFaceSetLoadEvent] interface returns an array of
@@ -376,9 +368,7 @@ extension type FontFaceSetLoadEvent._(JSObject _) implements Event, JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/FontFaceSet).
 extension type FontFaceSet._(JSObject _) implements EventTarget, JSObject {
-  factory FontFaceSet(JSArray<FontFace> initialFaces) {
-    unsupportedPlatformError();
-  }
+  FontFaceSet(JSArray<FontFace> initialFaces) : _ = JSObject();
 
   /// The **`add()`** method of the [FontFaceSet] interface adds a new font to
   /// the set.

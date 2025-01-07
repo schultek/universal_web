@@ -47,9 +47,7 @@ extension type AnimationTimeline._(JSObject _) implements JSObject {
   }
 }
 extension type DocumentTimelineOptions._(JSObject _) implements JSObject {
-  factory DocumentTimelineOptions({DOMHighResTimeStamp? originTime}) {
-    unsupportedPlatformError();
-  }
+  DocumentTimelineOptions({DOMHighResTimeStamp? originTime}) : _ = JSObject();
 
   double get originTime {
     unsupportedPlatformError();
@@ -71,9 +69,7 @@ extension type DocumentTimelineOptions._(JSObject _) implements JSObject {
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/DocumentTimeline).
 extension type DocumentTimeline._(JSObject _)
     implements AnimationTimeline, JSObject {
-  factory DocumentTimeline([DocumentTimelineOptions? options]) {
-    unsupportedPlatformError();
-  }
+  DocumentTimeline([DocumentTimelineOptions? options]) : _ = JSObject();
 }
 
 /// The **`Animation`** interface of the
@@ -86,12 +82,10 @@ extension type DocumentTimeline._(JSObject _)
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Animation).
 extension type Animation._(JSObject _) implements EventTarget, JSObject {
-  factory Animation([
+  Animation([
     AnimationEffect? effect,
     AnimationTimeline? timeline,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The Web Animations API's **`cancel()`** method of the [Animation]
   /// interface clears all [KeyframeEffect]s caused by this animation and aborts
@@ -412,7 +406,7 @@ extension type AnimationEffect._(JSObject _) implements JSObject {
   }
 }
 extension type EffectTiming._(JSObject _) implements JSObject {
-  factory EffectTiming({
+  EffectTiming({
     FillMode? fill,
     num? iterationStart,
     num? iterations,
@@ -422,9 +416,7 @@ extension type EffectTiming._(JSObject _) implements JSObject {
     num? endDelay,
     num? playbackRate,
     JSAny? duration,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   FillMode get fill {
     unsupportedPlatformError();
@@ -499,7 +491,7 @@ extension type EffectTiming._(JSObject _) implements JSObject {
   }
 }
 extension type OptionalEffectTiming._(JSObject _) implements JSObject {
-  factory OptionalEffectTiming({
+  OptionalEffectTiming({
     num? delay,
     num? endDelay,
     FillMode? fill,
@@ -509,9 +501,7 @@ extension type OptionalEffectTiming._(JSObject _) implements JSObject {
     PlaybackDirection? direction,
     String? easing,
     num? playbackRate,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   double get delay {
     unsupportedPlatformError();
@@ -587,7 +577,7 @@ extension type OptionalEffectTiming._(JSObject _) implements JSObject {
 }
 extension type ComputedEffectTiming._(JSObject _)
     implements EffectTiming, JSObject {
-  factory ComputedEffectTiming({
+  ComputedEffectTiming({
     FillMode? fill,
     num? iterationStart,
     num? iterations,
@@ -603,9 +593,7 @@ extension type ComputedEffectTiming._(JSObject _)
     CSSNumberish? endTime,
     CSSNumberish? activeDuration,
     CSSNumberish? localTime,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   double? get progress {
     unsupportedPlatformError();
@@ -668,13 +656,11 @@ extension type ComputedEffectTiming._(JSObject _)
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/KeyframeEffect).
 extension type KeyframeEffect._(JSObject _)
     implements AnimationEffect, JSObject {
-  factory KeyframeEffect(
+  KeyframeEffect(
     JSObject? sourceOrTarget, [
     JSObject? keyframes,
     JSAny? options,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The **`getKeyframes()`** method of a [KeyframeEffect] returns an Array of
   /// the computed keyframes that make up this animation along with their
@@ -742,7 +728,7 @@ extension type KeyframeEffect._(JSObject _)
 }
 extension type KeyframeEffectOptions._(JSObject _)
     implements EffectTiming, JSObject {
-  factory KeyframeEffectOptions({
+  KeyframeEffectOptions({
     FillMode? fill,
     num? iterationStart,
     num? iterations,
@@ -755,9 +741,7 @@ extension type KeyframeEffectOptions._(JSObject _)
     CompositeOperation? composite,
     String? pseudoElement,
     IterationCompositeOperation? iterationComposite,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   CompositeOperation get composite {
     unsupportedPlatformError();
@@ -785,7 +769,7 @@ extension type KeyframeEffectOptions._(JSObject _)
 }
 extension type KeyframeAnimationOptions._(JSObject _)
     implements KeyframeEffectOptions, JSObject {
-  factory KeyframeAnimationOptions({
+  KeyframeAnimationOptions({
     FillMode? fill,
     num? iterationStart,
     num? iterations,
@@ -802,9 +786,7 @@ extension type KeyframeAnimationOptions._(JSObject _)
     AnimationTimeline? timeline,
     JSAny? rangeStart,
     JSAny? rangeEnd,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get id {
     unsupportedPlatformError();
@@ -839,9 +821,7 @@ extension type KeyframeAnimationOptions._(JSObject _)
   }
 }
 extension type GetAnimationsOptions._(JSObject _) implements JSObject {
-  factory GetAnimationsOptions({bool? subtree}) {
-    unsupportedPlatformError();
-  }
+  GetAnimationsOptions({bool? subtree}) : _ = JSObject();
 
   bool get subtree {
     unsupportedPlatformError();

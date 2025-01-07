@@ -34,9 +34,7 @@ typedef HighlightType = String;
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Highlight).
 extension type Highlight._(JSObject _) implements JSObject {
-  factory Highlight(AbstractRange initialRanges) {
-    unsupportedPlatformError();
-  }
+  Highlight(AbstractRange initialRanges) : _ = JSObject();
 
   /// It is possible to create [Range] objects that overlap in a document.
   ///

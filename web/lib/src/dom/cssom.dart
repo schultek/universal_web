@@ -181,9 +181,7 @@ extension type StyleSheet._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet).
 extension type CSSStyleSheet._(JSObject _) implements StyleSheet, JSObject {
-  factory CSSStyleSheet([CSSStyleSheetInit? options]) {
-    unsupportedPlatformError();
-  }
+  CSSStyleSheet([CSSStyleSheetInit? options]) : _ = JSObject();
 
   /// The **`CSSStyleSheet.insertRule()`**
   /// method inserts a new
@@ -292,13 +290,11 @@ extension type CSSStyleSheet._(JSObject _) implements StyleSheet, JSObject {
   }
 }
 extension type CSSStyleSheetInit._(JSObject _) implements JSObject {
-  factory CSSStyleSheetInit({
+  CSSStyleSheetInit({
     String? baseURL,
     JSAny? media,
     bool? disabled,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get baseURL {
     unsupportedPlatformError();

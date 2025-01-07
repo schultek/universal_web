@@ -15,13 +15,11 @@ import '../js_interop.dart';
 
 typedef ConstrainPoint2D = JSObject;
 extension type MediaSettingsRange._(JSObject _) implements JSObject {
-  factory MediaSettingsRange({
+  MediaSettingsRange({
     num? max,
     num? min,
     num? step,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   double get max {
     unsupportedPlatformError();
@@ -48,12 +46,10 @@ extension type MediaSettingsRange._(JSObject _) implements JSObject {
   }
 }
 extension type ConstrainPoint2DParameters._(JSObject _) implements JSObject {
-  factory ConstrainPoint2DParameters({
+  ConstrainPoint2DParameters({
     JSArray<Point2D>? exact,
     JSArray<Point2D>? ideal,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   JSArray<Point2D> get exact {
     unsupportedPlatformError();
@@ -72,12 +68,10 @@ extension type ConstrainPoint2DParameters._(JSObject _) implements JSObject {
   }
 }
 extension type Point2D._(JSObject _) implements JSObject {
-  factory Point2D({
+  Point2D({
     num? x,
     num? y,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   double get x {
     unsupportedPlatformError();

@@ -147,9 +147,7 @@ extension type CredentialsContainer._(JSObject _) implements JSObject {
   }
 }
 extension type CredentialData._(JSObject _) implements JSObject {
-  factory CredentialData({required String id}) {
-    unsupportedPlatformError();
-  }
+  CredentialData({required String id}) : _ = JSObject();
 
   String get id {
     unsupportedPlatformError();
@@ -160,7 +158,7 @@ extension type CredentialData._(JSObject _) implements JSObject {
   }
 }
 extension type CredentialRequestOptions._(JSObject _) implements JSObject {
-  factory CredentialRequestOptions({
+  CredentialRequestOptions({
     CredentialMediationRequirement? mediation,
     AbortSignal? signal,
     IdentityCredentialRequestOptions? identity,
@@ -169,9 +167,7 @@ extension type CredentialRequestOptions._(JSObject _) implements JSObject {
     DigitalCredentialRequestOptions? digital,
     OTPCredentialRequestOptions? otp,
     PublicKeyCredentialRequestOptions? publicKey,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   CredentialMediationRequirement get mediation {
     unsupportedPlatformError();
@@ -238,15 +234,13 @@ extension type CredentialRequestOptions._(JSObject _) implements JSObject {
   }
 }
 extension type CredentialCreationOptions._(JSObject _) implements JSObject {
-  factory CredentialCreationOptions({
+  CredentialCreationOptions({
     CredentialMediationRequirement? mediation,
     AbortSignal? signal,
     PasswordCredentialInit? password,
     FederatedCredentialInit? federated,
     PublicKeyCredentialCreationOptions? publicKey,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   CredentialMediationRequirement get mediation {
     unsupportedPlatformError();
@@ -290,15 +284,13 @@ extension type CredentialCreationOptions._(JSObject _) implements JSObject {
 }
 extension type PasswordCredentialData._(JSObject _)
     implements CredentialData, JSObject {
-  factory PasswordCredentialData({
+  PasswordCredentialData({
     required String id,
     String? name,
     String? iconURL,
     required String origin,
     required String password,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get name {
     unsupportedPlatformError();
@@ -334,12 +326,10 @@ extension type PasswordCredentialData._(JSObject _)
 }
 extension type FederatedCredentialRequestOptions._(JSObject _)
     implements JSObject {
-  factory FederatedCredentialRequestOptions({
+  FederatedCredentialRequestOptions({
     JSArray<JSString>? providers,
     JSArray<JSString>? protocols,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   JSArray<JSString> get providers {
     unsupportedPlatformError();
@@ -377,16 +367,14 @@ extension type FederatedCredentialRequestOptions._(JSObject _)
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/FederatedCredentialInit).
 extension type FederatedCredentialInit._(JSObject _)
     implements CredentialData, JSObject {
-  factory FederatedCredentialInit({
+  FederatedCredentialInit({
     required String id,
     String? name,
     String? iconURL,
     required String origin,
     required String provider,
     String? protocol,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get name {
     unsupportedPlatformError();

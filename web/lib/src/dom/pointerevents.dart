@@ -18,7 +18,7 @@ import 'uievents.dart';
 
 extension type PointerEventInit._(JSObject _)
     implements MouseEventInit, JSObject {
-  factory PointerEventInit({
+  PointerEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
@@ -63,9 +63,7 @@ extension type PointerEventInit._(JSObject _)
     bool? isPrimary,
     JSArray<PointerEvent>? coalescedEvents,
     JSArray<PointerEvent>? predictedEvents,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   int get pointerId {
     unsupportedPlatformError();
@@ -200,12 +198,10 @@ extension type PointerEventInit._(JSObject _)
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/PointerEvent).
 extension type PointerEvent._(JSObject _) implements MouseEvent, JSObject {
-  factory PointerEvent(
+  PointerEvent(
     String type, [
     PointerEventInit? eventInitDict,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The **`getCoalescedEvents()`** method of the [PointerEvent] interface
   /// returns a sequence of `PointerEvent` instances that were coalesced

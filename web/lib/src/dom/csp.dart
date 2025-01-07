@@ -95,12 +95,10 @@ extension type CSPViolationReportBody._(JSObject _)
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SecurityPolicyViolationEvent).
 extension type SecurityPolicyViolationEvent._(JSObject _)
     implements Event, JSObject {
-  factory SecurityPolicyViolationEvent(
+  SecurityPolicyViolationEvent(
     String type, [
     SecurityPolicyViolationEventInit? eventInitDict,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The **`documentURI`** read-only property of the
   /// [SecurityPolicyViolationEvent] interface is a string
@@ -194,7 +192,7 @@ extension type SecurityPolicyViolationEvent._(JSObject _)
 }
 extension type SecurityPolicyViolationEventInit._(JSObject _)
     implements EventInit, JSObject {
-  factory SecurityPolicyViolationEventInit({
+  SecurityPolicyViolationEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
@@ -210,9 +208,7 @@ extension type SecurityPolicyViolationEventInit._(JSObject _)
     int? statusCode,
     int? lineNumber,
     int? columnNumber,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get documentURI {
     unsupportedPlatformError();

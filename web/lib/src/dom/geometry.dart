@@ -44,14 +44,12 @@ import '../js_interop.dart';
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/DOMPointReadOnly).
 extension type DOMPointReadOnly._(JSObject _) implements JSObject {
-  factory DOMPointReadOnly([
+  DOMPointReadOnly([
     num? x,
     num? y,
     num? z,
     num? w,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The static **[DOMPointReadOnly]**
   /// method `fromPoint()` creates and returns a new
@@ -141,14 +139,12 @@ extension type DOMPointReadOnly._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/DOMPoint).
 extension type DOMPoint._(JSObject _) implements DOMPointReadOnly, JSObject {
-  factory DOMPoint([
+  DOMPoint([
     num? x,
     num? y,
     num? z,
     num? w,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The **[DOMPoint]** static method
   /// `fromPoint()` creates and returns a new mutable `DOMPoint`
@@ -222,14 +218,12 @@ extension type DOMPoint._(JSObject _) implements DOMPointReadOnly, JSObject {
   }
 }
 extension type DOMPointInit._(JSObject _) implements JSObject {
-  factory DOMPointInit({
+  DOMPointInit({
     num? x,
     num? y,
     num? z,
     num? w,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   double get x {
     unsupportedPlatformError();
@@ -272,14 +266,12 @@ extension type DOMPointInit._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/DOMRectReadOnly).
 extension type DOMRectReadOnly._(JSObject _) implements JSObject {
-  factory DOMRectReadOnly([
+  DOMRectReadOnly([
     num? x,
     num? y,
     num? width,
     num? height,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The **`fromRect()`** static method of the
   /// [DOMRectReadOnly] object creates a new `DOMRectReadOnly`
@@ -359,14 +351,12 @@ extension type DOMRectReadOnly._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/DOMRect).
 extension type DOMRect._(JSObject _) implements DOMRectReadOnly, JSObject {
-  factory DOMRect([
+  DOMRect([
     num? x,
     num? y,
     num? width,
     num? height,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The **`fromRect()`** static method of the
   /// [DOMRect] object creates a new `DOMRect`
@@ -408,14 +398,12 @@ extension type DOMRect._(JSObject _) implements DOMRectReadOnly, JSObject {
   }
 }
 extension type DOMRectInit._(JSObject _) implements JSObject {
-  factory DOMRectInit({
+  DOMRectInit({
     num? x,
     num? y,
     num? width,
     num? height,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   double get x {
     unsupportedPlatformError();
@@ -470,14 +458,12 @@ extension type DOMRectList._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/DOMQuad).
 extension type DOMQuad._(JSObject _) implements JSObject {
-  factory DOMQuad([
+  DOMQuad([
     DOMPointInit? p1,
     DOMPointInit? p2,
     DOMPointInit? p3,
     DOMPointInit? p4,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   static DOMQuad fromRect([DOMRectInit? other]) {
     unsupportedPlatformError();
@@ -512,14 +498,12 @@ extension type DOMQuad._(JSObject _) implements JSObject {
   }
 }
 extension type DOMQuadInit._(JSObject _) implements JSObject {
-  factory DOMQuadInit({
+  DOMQuadInit({
     DOMPointInit? p1,
     DOMPointInit? p2,
     DOMPointInit? p3,
     DOMPointInit? p4,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   DOMPointInit get p1 {
     unsupportedPlatformError();
@@ -569,9 +553,7 @@ extension type DOMQuadInit._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrixReadOnly).
 extension type DOMMatrixReadOnly._(JSObject _) implements JSObject {
-  factory DOMMatrixReadOnly([JSAny? init]) {
-    unsupportedPlatformError();
-  }
+  DOMMatrixReadOnly([JSAny? init]) : _ = JSObject();
 
   static DOMMatrixReadOnly fromMatrix([DOMMatrixInit? other]) {
     unsupportedPlatformError();
@@ -804,9 +786,7 @@ extension type DOMMatrixReadOnly._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrix).
 extension type DOMMatrix._(JSObject _) implements DOMMatrixReadOnly, JSObject {
-  factory DOMMatrix([JSAny? init]) {
-    unsupportedPlatformError();
-  }
+  DOMMatrix([JSAny? init]) : _ = JSObject();
 
   static DOMMatrix fromMatrix([DOMMatrixInit? other]) {
     unsupportedPlatformError();
@@ -1073,7 +1053,7 @@ extension type DOMMatrix._(JSObject _) implements DOMMatrixReadOnly, JSObject {
   }
 }
 extension type DOMMatrix2DInit._(JSObject _) implements JSObject {
-  factory DOMMatrix2DInit({
+  DOMMatrix2DInit({
     num? a,
     num? b,
     num? c,
@@ -1086,9 +1066,7 @@ extension type DOMMatrix2DInit._(JSObject _) implements JSObject {
     num? m22,
     num? m41,
     num? m42,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   double get a {
     unsupportedPlatformError();
@@ -1188,7 +1166,7 @@ extension type DOMMatrix2DInit._(JSObject _) implements JSObject {
 }
 extension type DOMMatrixInit._(JSObject _)
     implements DOMMatrix2DInit, JSObject {
-  factory DOMMatrixInit({
+  DOMMatrixInit({
     num? a,
     num? b,
     num? c,
@@ -1212,9 +1190,7 @@ extension type DOMMatrixInit._(JSObject _)
     num? m43,
     num? m44,
     bool? is2D,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   double get m13 {
     unsupportedPlatformError();

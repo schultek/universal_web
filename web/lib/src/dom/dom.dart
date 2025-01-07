@@ -78,12 +78,10 @@ typedef SlotAssignmentMode = String;
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Event).
 extension type Event._(JSObject _) implements JSObject {
-  factory Event(
+  Event(
     String type, [
     EventInit? eventInitDict,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   static const int NONE = 0;
 
@@ -344,13 +342,11 @@ extension type Event._(JSObject _) implements JSObject {
   }
 }
 extension type EventInit._(JSObject _) implements JSObject {
-  factory EventInit({
+  EventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   bool get bubbles {
     unsupportedPlatformError();
@@ -392,12 +388,10 @@ extension type EventInit._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent).
 extension type CustomEvent._(JSObject _) implements Event, JSObject {
-  factory CustomEvent(
+  CustomEvent(
     String type, [
     CustomEventInit? eventInitDict,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The **`CustomEvent.initCustomEvent()`** method initializes a [CustomEvent]
   /// object.
@@ -432,14 +426,12 @@ extension type CustomEvent._(JSObject _) implements Event, JSObject {
   }
 }
 extension type CustomEventInit._(JSObject _) implements EventInit, JSObject {
-  factory CustomEventInit({
+  CustomEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
     JSAny? detail,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   JSAny? get detail {
     unsupportedPlatformError();
@@ -471,9 +463,7 @@ extension type CustomEventInit._(JSObject _) implements EventInit, JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget).
 extension type EventTarget._(JSObject _) implements JSObject {
-  factory EventTarget() {
-    unsupportedPlatformError();
-  }
+  EventTarget() : _ = JSObject();
 
   /// The **`addEventListener()`** method of the [EventTarget] interface
   /// sets up a function that will be called whenever the specified event is
@@ -594,9 +584,7 @@ extension type EventTarget._(JSObject _) implements JSObject {
   }
 }
 extension type EventListenerOptions._(JSObject _) implements JSObject {
-  factory EventListenerOptions({bool? capture}) {
-    unsupportedPlatformError();
-  }
+  EventListenerOptions({bool? capture}) : _ = JSObject();
 
   bool get capture {
     unsupportedPlatformError();
@@ -608,14 +596,12 @@ extension type EventListenerOptions._(JSObject _) implements JSObject {
 }
 extension type AddEventListenerOptions._(JSObject _)
     implements EventListenerOptions, JSObject {
-  factory AddEventListenerOptions({
+  AddEventListenerOptions({
     bool? capture,
     bool? passive,
     bool? once,
     AbortSignal? signal,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   bool get passive {
     unsupportedPlatformError();
@@ -654,9 +640,7 @@ extension type AddEventListenerOptions._(JSObject _)
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/AbortController).
 extension type AbortController._(JSObject _) implements JSObject {
-  factory AbortController() {
-    unsupportedPlatformError();
-  }
+  AbortController() : _ = JSObject();
 
   /// The **`abort()`** method of the [AbortController] interface aborts an
   /// asynchronous operation before it has completed.
@@ -901,9 +885,7 @@ extension type HTMLCollection._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver).
 extension type MutationObserver._(JSObject _) implements JSObject {
-  factory MutationObserver(MutationCallback callback) {
-    unsupportedPlatformError();
-  }
+  MutationObserver(MutationCallback callback) : _ = JSObject();
 
   /// The [MutationObserver] method **`observe()`** configures the
   /// `MutationObserver`
@@ -949,7 +931,7 @@ extension type MutationObserver._(JSObject _) implements JSObject {
   }
 }
 extension type MutationObserverInit._(JSObject _) implements JSObject {
-  factory MutationObserverInit({
+  MutationObserverInit({
     bool? childList,
     bool? attributes,
     bool? characterData,
@@ -957,9 +939,7 @@ extension type MutationObserverInit._(JSObject _) implements JSObject {
     bool? attributeOldValue,
     bool? characterDataOldValue,
     JSArray<JSString>? attributeFilter,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   bool get childList {
     unsupportedPlatformError();
@@ -1582,9 +1562,7 @@ extension type Node._(JSObject _) implements EventTarget, JSObject {
   }
 }
 extension type GetRootNodeOptions._(JSObject _) implements JSObject {
-  factory GetRootNodeOptions({bool? composed}) {
-    unsupportedPlatformError();
-  }
+  GetRootNodeOptions({bool? composed}) : _ = JSObject();
 
   bool get composed {
     unsupportedPlatformError();
@@ -1620,9 +1598,7 @@ Document get document {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Document).
 extension type Document._(JSObject _) implements Node, JSObject {
-  factory Document() {
-    unsupportedPlatformError();
-  }
+  Document() : _ = JSObject();
 
   /// The **`parseHTMLUnsafe()`** static method of the [Document] object is used
   /// to parse a string of HTML, which may contain
@@ -3744,9 +3720,7 @@ extension type Document._(JSObject _) implements Node, JSObject {
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/XMLDocument).
 extension type XMLDocument._(JSObject _) implements Document, JSObject {}
 extension type ElementCreationOptions._(JSObject _) implements JSObject {
-  factory ElementCreationOptions({String? is_}) {
-    unsupportedPlatformError();
-  }
+  ElementCreationOptions({String? is_}) : _ = JSObject();
 
   String get is_ {
     unsupportedPlatformError();
@@ -3898,9 +3872,7 @@ extension type DocumentType._(JSObject _) implements Node, JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment).
 extension type DocumentFragment._(JSObject _) implements Node, JSObject {
-  factory DocumentFragment() {
-    unsupportedPlatformError();
-  }
+  DocumentFragment() : _ = JSObject();
 
   /// The **`getElementById()`** method of the [DocumentFragment] returns an
   /// [Element] object representing the element whose [Element.id] property
@@ -5910,15 +5882,13 @@ extension type Element._(JSObject _) implements Node, JSObject {
   }
 }
 extension type ShadowRootInit._(JSObject _) implements JSObject {
-  factory ShadowRootInit({
+  ShadowRootInit({
     required ShadowRootMode mode,
     bool? delegatesFocus,
     SlotAssignmentMode? slotAssignment,
     bool? clonable,
     bool? serializable,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   ShadowRootMode get mode {
     unsupportedPlatformError();
@@ -6346,9 +6316,7 @@ extension type CharacterData._(JSObject _) implements Node, JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Text).
 extension type Text._(JSObject _) implements CharacterData, JSObject {
-  factory Text([String? data]) {
-    unsupportedPlatformError();
-  }
+  Text([String? data]) : _ = JSObject();
 
   /// The **`splitText()`** method of the [Text] interface
   /// breaks the [Text] node into two nodes at the specified offset,
@@ -6494,9 +6462,7 @@ extension type ProcessingInstruction._(JSObject _)
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Comment).
 extension type Comment._(JSObject _) implements CharacterData, JSObject {
-  factory Comment([String? data]) {
-    unsupportedPlatformError();
-  }
+  Comment([String? data]) : _ = JSObject();
 }
 
 /// The **`AbstractRange`** abstract interface is the base class upon which all
@@ -6546,14 +6512,12 @@ extension type AbstractRange._(JSObject _) implements JSObject {
   }
 }
 extension type StaticRangeInit._(JSObject _) implements JSObject {
-  factory StaticRangeInit({
+  StaticRangeInit({
     required Node startContainer,
     required int startOffset,
     required Node endContainer,
     required int endOffset,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   Node get startContainer {
     unsupportedPlatformError();
@@ -6605,9 +6569,7 @@ extension type StaticRangeInit._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/StaticRange).
 extension type StaticRange._(JSObject _) implements AbstractRange, JSObject {
-  factory StaticRange(StaticRangeInit init) {
-    unsupportedPlatformError();
-  }
+  StaticRange(StaticRangeInit init) : _ = JSObject();
 }
 
 /// The **`Range`** interface represents a fragment of a document that can
@@ -6625,9 +6587,7 @@ extension type StaticRange._(JSObject _) implements AbstractRange, JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Range).
 extension type Range._(JSObject _) implements AbstractRange, JSObject {
-  factory Range() {
-    unsupportedPlatformError();
-  }
+  Range() : _ = JSObject();
 
   static const int START_TO_START = 0;
 
@@ -7462,9 +7422,7 @@ extension type XPathExpression._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/XPathEvaluator).
 extension type XPathEvaluator._(JSObject _) implements JSObject {
-  factory XPathEvaluator() {
-    unsupportedPlatformError();
-  }
+  XPathEvaluator() : _ = JSObject();
 
   /// This method compiles an [XPathExpression] which can then be used for
   /// (repeated) evaluations of the  expression.
@@ -7517,9 +7475,7 @@ extension type XPathEvaluator._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/XSLTProcessor).
 extension type XSLTProcessor._(JSObject _) implements JSObject {
-  factory XSLTProcessor() {
-    unsupportedPlatformError();
-  }
+  XSLTProcessor() : _ = JSObject();
 
   /// The `importStylesheet()` method of the [XSLTProcessor] interface imports
   /// an XSLT stylesheet for the processor.

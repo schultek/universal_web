@@ -14,9 +14,7 @@ import '../error.dart';
 import '../js_interop.dart';
 
 extension type PointerLockOptions._(JSObject _) implements JSObject {
-  factory PointerLockOptions({bool? unadjustedMovement}) {
-    unsupportedPlatformError();
-  }
+  PointerLockOptions({bool? unadjustedMovement}) : _ = JSObject();
 
   bool get unadjustedMovement {
     unsupportedPlatformError();

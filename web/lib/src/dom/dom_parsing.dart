@@ -22,9 +22,7 @@ import 'dom.dart';
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/XMLSerializer).
 extension type XMLSerializer._(JSObject _) implements JSObject {
-  factory XMLSerializer() {
-    unsupportedPlatformError();
-  }
+  XMLSerializer() : _ = JSObject();
 
   /// The [XMLSerializer] method
   /// **`serializeToString()`** constructs a string representing the

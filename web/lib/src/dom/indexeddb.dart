@@ -161,12 +161,10 @@ extension type IDBOpenDBRequest._(JSObject _) implements IDBRequest, JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/IDBVersionChangeEvent).
 extension type IDBVersionChangeEvent._(JSObject _) implements Event, JSObject {
-  factory IDBVersionChangeEvent(
+  IDBVersionChangeEvent(
     String type, [
     IDBVersionChangeEventInit? eventInitDict,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The **`oldVersion`** read-only property of the
   /// [IDBVersionChangeEvent] interface returns the old version number of the
@@ -187,15 +185,13 @@ extension type IDBVersionChangeEvent._(JSObject _) implements Event, JSObject {
 }
 extension type IDBVersionChangeEventInit._(JSObject _)
     implements EventInit, JSObject {
-  factory IDBVersionChangeEventInit({
+  IDBVersionChangeEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
     int? oldVersion,
     int? newVersion,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   int get oldVersion {
     unsupportedPlatformError();
@@ -300,12 +296,10 @@ extension type IDBFactory._(JSObject _) implements JSObject {
   }
 }
 extension type IDBDatabaseInfo._(JSObject _) implements JSObject {
-  factory IDBDatabaseInfo({
+  IDBDatabaseInfo({
     String? name,
     int? version,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get name {
     unsupportedPlatformError();
@@ -463,9 +457,8 @@ extension type IDBDatabase._(JSObject _) implements EventTarget, JSObject {
   }
 }
 extension type IDBTransactionOptions._(JSObject _) implements JSObject {
-  factory IDBTransactionOptions({IDBTransactionDurability? durability}) {
-    unsupportedPlatformError();
-  }
+  IDBTransactionOptions({IDBTransactionDurability? durability})
+      : _ = JSObject();
 
   IDBTransactionDurability get durability {
     unsupportedPlatformError();
@@ -476,12 +469,10 @@ extension type IDBTransactionOptions._(JSObject _) implements JSObject {
   }
 }
 extension type IDBObjectStoreParameters._(JSObject _) implements JSObject {
-  factory IDBObjectStoreParameters({
+  IDBObjectStoreParameters({
     JSAny? keyPath,
     bool? autoIncrement,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   JSAny? get keyPath {
     unsupportedPlatformError();
@@ -820,12 +811,10 @@ extension type IDBObjectStore._(JSObject _) implements JSObject {
   }
 }
 extension type IDBIndexParameters._(JSObject _) implements JSObject {
-  factory IDBIndexParameters({
+  IDBIndexParameters({
     bool? unique,
     bool? multiEntry,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   bool get unique {
     unsupportedPlatformError();

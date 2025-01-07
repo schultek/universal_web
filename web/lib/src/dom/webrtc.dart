@@ -47,7 +47,7 @@ typedef RTCSctpTransportState = String;
 typedef RTCDataChannelState = String;
 typedef RTCErrorDetailType = String;
 extension type RTCConfiguration._(JSObject _) implements JSObject {
-  factory RTCConfiguration({
+  RTCConfiguration({
     JSArray<RTCIceServer>? iceServers,
     RTCIceTransportPolicy? iceTransportPolicy,
     RTCBundlePolicy? bundlePolicy,
@@ -55,9 +55,7 @@ extension type RTCConfiguration._(JSObject _) implements JSObject {
     JSArray<RTCCertificate>? certificates,
     int? iceCandidatePoolSize,
     String? peerIdentity,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   JSArray<RTCIceServer> get iceServers {
     unsupportedPlatformError();
@@ -116,13 +114,11 @@ extension type RTCConfiguration._(JSObject _) implements JSObject {
   }
 }
 extension type RTCIceServer._(JSObject _) implements JSObject {
-  factory RTCIceServer({
+  RTCIceServer({
     required JSAny urls,
     String? username,
     String? credential,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   JSAny get urls {
     unsupportedPlatformError();
@@ -153,13 +149,11 @@ extension type RTCOfferAnswerOptions._(JSObject _) implements JSObject {
 }
 extension type RTCOfferOptions._(JSObject _)
     implements RTCOfferAnswerOptions, JSObject {
-  factory RTCOfferOptions({
+  RTCOfferOptions({
     bool? iceRestart,
     bool? offerToReceiveAudio,
     bool? offerToReceiveVideo,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   bool get iceRestart {
     unsupportedPlatformError();
@@ -201,9 +195,7 @@ extension type RTCAnswerOptions._(JSObject _)
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection).
 extension type RTCPeerConnection._(JSObject _)
     implements EventTarget, JSObject {
-  factory RTCPeerConnection([RTCConfiguration? configuration]) {
-    unsupportedPlatformError();
-  }
+  RTCPeerConnection([RTCConfiguration? configuration]) : _ = JSObject();
 
   /// The **`generateCertificate()`** static function of the [RTCPeerConnection]
   /// interface creates an X.509 certificate and corresponding private key,
@@ -867,9 +859,8 @@ extension type RTCPeerConnection._(JSObject _)
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/RTCSessionDescription).
 extension type RTCSessionDescription._(JSObject _) implements JSObject {
-  factory RTCSessionDescription(RTCSessionDescriptionInit descriptionInitDict) {
-    unsupportedPlatformError();
-  }
+  RTCSessionDescription(RTCSessionDescriptionInit descriptionInitDict)
+      : _ = JSObject();
 
   /// The **`RTCSessionDescription.toJSON()`** method generates a
   /// description of the object. Both properties,
@@ -892,12 +883,10 @@ extension type RTCSessionDescription._(JSObject _) implements JSObject {
   }
 }
 extension type RTCSessionDescriptionInit._(JSObject _) implements JSObject {
-  factory RTCSessionDescriptionInit({
+  RTCSessionDescriptionInit({
     required RTCSdpType type,
     String? sdp,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   RTCSdpType get type {
     unsupportedPlatformError();
@@ -917,12 +906,10 @@ extension type RTCSessionDescriptionInit._(JSObject _) implements JSObject {
 }
 extension type RTCLocalSessionDescriptionInit._(JSObject _)
     implements JSObject {
-  factory RTCLocalSessionDescriptionInit({
+  RTCLocalSessionDescriptionInit({
     RTCSdpType? type,
     String? sdp,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   RTCSdpType get type {
     unsupportedPlatformError();
@@ -964,9 +951,7 @@ extension type RTCLocalSessionDescriptionInit._(JSObject _)
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/RTCIceCandidate).
 extension type RTCIceCandidate._(JSObject _) implements JSObject {
-  factory RTCIceCandidate([RTCIceCandidateInit? candidateInitDict]) {
-    unsupportedPlatformError();
-  }
+  RTCIceCandidate([RTCIceCandidateInit? candidateInitDict]) : _ = JSObject();
 
   /// The [RTCIceCandidate] method **`toJSON()`** converts the `RTCIceCandidate`
   /// on which it's called into JSON.
@@ -1192,14 +1177,12 @@ extension type RTCIceCandidate._(JSObject _) implements JSObject {
   }
 }
 extension type RTCIceCandidateInit._(JSObject _) implements JSObject {
-  factory RTCIceCandidateInit({
+  RTCIceCandidateInit({
     String? candidate,
     String? sdpMid,
     int? sdpMLineIndex,
     String? usernameFragment,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get candidate {
     unsupportedPlatformError();
@@ -1245,12 +1228,10 @@ extension type RTCIceCandidateInit._(JSObject _) implements JSObject {
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnectionIceEvent).
 extension type RTCPeerConnectionIceEvent._(JSObject _)
     implements Event, JSObject {
-  factory RTCPeerConnectionIceEvent(
+  RTCPeerConnectionIceEvent(
     String type, [
     RTCPeerConnectionIceEventInit? eventInitDict,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The read-only **`candidate`** property
   /// of the [RTCPeerConnectionIceEvent] interface returns the
@@ -1265,15 +1246,13 @@ extension type RTCPeerConnectionIceEvent._(JSObject _)
 }
 extension type RTCPeerConnectionIceEventInit._(JSObject _)
     implements EventInit, JSObject {
-  factory RTCPeerConnectionIceEventInit({
+  RTCPeerConnectionIceEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
     RTCIceCandidate? candidate,
     String? url,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   RTCIceCandidate? get candidate {
     unsupportedPlatformError();
@@ -1303,12 +1282,10 @@ extension type RTCPeerConnectionIceEventInit._(JSObject _)
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnectionIceErrorEvent).
 extension type RTCPeerConnectionIceErrorEvent._(JSObject _)
     implements Event, JSObject {
-  factory RTCPeerConnectionIceErrorEvent(
+  RTCPeerConnectionIceErrorEvent(
     String type,
     RTCPeerConnectionIceErrorEventInit eventInitDict,
-  ) {
-    unsupportedPlatformError();
-  }
+  ) : _ = JSObject();
 
   /// The [RTCPeerConnectionIceErrorEvent] property
   /// **`address`** is a string which indicates the local IP address
@@ -1336,7 +1313,7 @@ extension type RTCPeerConnectionIceErrorEvent._(JSObject _)
 }
 extension type RTCPeerConnectionIceErrorEventInit._(JSObject _)
     implements EventInit, JSObject {
-  factory RTCPeerConnectionIceErrorEventInit({
+  RTCPeerConnectionIceErrorEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
@@ -1345,9 +1322,7 @@ extension type RTCPeerConnectionIceErrorEventInit._(JSObject _)
     String? url,
     required int errorCode,
     String? errorText,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String? get address {
     unsupportedPlatformError();
@@ -1429,13 +1404,11 @@ extension type RTCCertificate._(JSObject _) implements JSObject {
   }
 }
 extension type RTCRtpTransceiverInit._(JSObject _) implements JSObject {
-  factory RTCRtpTransceiverInit({
+  RTCRtpTransceiverInit({
     RTCRtpTransceiverDirection? direction,
     JSArray<MediaStream>? streams,
     JSArray<RTCRtpEncodingParameters>? sendEncodings,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   RTCRtpTransceiverDirection get direction {
     unsupportedPlatformError();
@@ -1601,13 +1574,11 @@ extension type RTCRtpSender._(JSObject _) implements JSObject {
   }
 }
 extension type RTCRtpParameters._(JSObject _) implements JSObject {
-  factory RTCRtpParameters({
+  RTCRtpParameters({
     required JSArray<RTCRtpHeaderExtensionParameters> headerExtensions,
     required RTCRtcpParameters rtcp,
     required JSArray<RTCRtpCodecParameters> codecs,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   JSArray<RTCRtpHeaderExtensionParameters> get headerExtensions {
     unsupportedPlatformError();
@@ -1635,16 +1606,14 @@ extension type RTCRtpParameters._(JSObject _) implements JSObject {
 }
 extension type RTCRtpSendParameters._(JSObject _)
     implements RTCRtpParameters, JSObject {
-  factory RTCRtpSendParameters({
+  RTCRtpSendParameters({
     required JSArray<RTCRtpHeaderExtensionParameters> headerExtensions,
     required RTCRtcpParameters rtcp,
     required JSArray<RTCRtpCodecParameters> codecs,
     required String transactionId,
     required JSArray<RTCRtpEncodingParameters> encodings,
     RTCDegradationPreference? degradationPreference,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get transactionId {
     unsupportedPlatformError();
@@ -1672,18 +1641,14 @@ extension type RTCRtpSendParameters._(JSObject _)
 }
 extension type RTCRtpReceiveParameters._(JSObject _)
     implements RTCRtpParameters, JSObject {
-  factory RTCRtpReceiveParameters({
+  RTCRtpReceiveParameters({
     required JSArray<RTCRtpHeaderExtensionParameters> headerExtensions,
     required RTCRtcpParameters rtcp,
     required JSArray<RTCRtpCodecParameters> codecs,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 }
 extension type RTCRtpCodingParameters._(JSObject _) implements JSObject {
-  factory RTCRtpCodingParameters({String? rid}) {
-    unsupportedPlatformError();
-  }
+  RTCRtpCodingParameters({String? rid}) : _ = JSObject();
 
   String get rid {
     unsupportedPlatformError();
@@ -1695,7 +1660,7 @@ extension type RTCRtpCodingParameters._(JSObject _) implements JSObject {
 }
 extension type RTCRtpEncodingParameters._(JSObject _)
     implements RTCRtpCodingParameters, JSObject {
-  factory RTCRtpEncodingParameters({
+  RTCRtpEncodingParameters({
     String? rid,
     bool? active,
     int? maxBitrate,
@@ -1704,9 +1669,7 @@ extension type RTCRtpEncodingParameters._(JSObject _)
     RTCPriorityType? priority,
     RTCPriorityType? networkPriority,
     String? scalabilityMode,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   bool get active {
     unsupportedPlatformError();
@@ -1765,12 +1728,10 @@ extension type RTCRtpEncodingParameters._(JSObject _)
   }
 }
 extension type RTCRtcpParameters._(JSObject _) implements JSObject {
-  factory RTCRtcpParameters({
+  RTCRtcpParameters({
     String? cname,
     bool? reducedSize,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get cname {
     unsupportedPlatformError();
@@ -1790,13 +1751,11 @@ extension type RTCRtcpParameters._(JSObject _) implements JSObject {
 }
 extension type RTCRtpHeaderExtensionParameters._(JSObject _)
     implements JSObject {
-  factory RTCRtpHeaderExtensionParameters({
+  RTCRtpHeaderExtensionParameters({
     required String uri,
     required int id,
     bool? encrypted,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get uri {
     unsupportedPlatformError();
@@ -1823,14 +1782,12 @@ extension type RTCRtpHeaderExtensionParameters._(JSObject _)
   }
 }
 extension type RTCRtpCodec._(JSObject _) implements JSObject {
-  factory RTCRtpCodec({
+  RTCRtpCodec({
     required String mimeType,
     required int clockRate,
     int? channels,
     String? sdpFmtpLine,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get mimeType {
     unsupportedPlatformError();
@@ -1866,15 +1823,13 @@ extension type RTCRtpCodec._(JSObject _) implements JSObject {
 }
 extension type RTCRtpCodecParameters._(JSObject _)
     implements RTCRtpCodec, JSObject {
-  factory RTCRtpCodecParameters({
+  RTCRtpCodecParameters({
     required String mimeType,
     required int clockRate,
     int? channels,
     String? sdpFmtpLine,
     required int payloadType,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   int get payloadType {
     unsupportedPlatformError();
@@ -1885,12 +1840,10 @@ extension type RTCRtpCodecParameters._(JSObject _)
   }
 }
 extension type RTCRtpCapabilities._(JSObject _) implements JSObject {
-  factory RTCRtpCapabilities({
+  RTCRtpCapabilities({
     required JSArray<RTCRtpCodec> codecs,
     required JSArray<RTCRtpHeaderExtensionCapability> headerExtensions,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   JSArray<RTCRtpCodec> get codecs {
     unsupportedPlatformError();
@@ -1910,9 +1863,7 @@ extension type RTCRtpCapabilities._(JSObject _) implements JSObject {
 }
 extension type RTCRtpHeaderExtensionCapability._(JSObject _)
     implements JSObject {
-  factory RTCRtpHeaderExtensionCapability({required String uri}) {
-    unsupportedPlatformError();
-  }
+  RTCRtpHeaderExtensionCapability({required String uri}) : _ = JSObject();
 
   String get uri {
     unsupportedPlatformError();
@@ -2040,14 +1991,12 @@ extension type RTCRtpReceiver._(JSObject _) implements JSObject {
   }
 }
 extension type RTCRtpContributingSource._(JSObject _) implements JSObject {
-  factory RTCRtpContributingSource({
+  RTCRtpContributingSource({
     required DOMHighResTimeStamp timestamp,
     required int source,
     num? audioLevel,
     required int rtpTimestamp,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   double get timestamp {
     unsupportedPlatformError();
@@ -2083,14 +2032,12 @@ extension type RTCRtpContributingSource._(JSObject _) implements JSObject {
 }
 extension type RTCRtpSynchronizationSource._(JSObject _)
     implements RTCRtpContributingSource, JSObject {
-  factory RTCRtpSynchronizationSource({
+  RTCRtpSynchronizationSource({
     required DOMHighResTimeStamp timestamp,
     required int source,
     num? audioLevel,
     required int rtpTimestamp,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 }
 
 /// The WebRTC interface **`RTCRtpTransceiver`** describes a permanent pairing
@@ -2251,12 +2198,10 @@ extension type RTCDtlsTransport._(JSObject _) implements EventTarget, JSObject {
   }
 }
 extension type RTCDtlsFingerprint._(JSObject _) implements JSObject {
-  factory RTCDtlsFingerprint({
+  RTCDtlsFingerprint({
     String? algorithm,
     String? value,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get algorithm {
     unsupportedPlatformError();
@@ -2434,13 +2379,11 @@ extension type RTCIceTransport._(JSObject _) implements EventTarget, JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/RTCIceParameters).
 extension type RTCIceParameters._(JSObject _) implements JSObject {
-  factory RTCIceParameters({
+  RTCIceParameters({
     String? usernameFragment,
     String? password,
     bool? iceLite,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   /// The **[RTCIceParameters]** dictionary's
   /// **`usernameFragment`** property specifies the username fragment
@@ -2494,12 +2437,10 @@ extension type RTCIceParameters._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/RTCTrackEvent).
 extension type RTCTrackEvent._(JSObject _) implements Event, JSObject {
-  factory RTCTrackEvent(
+  RTCTrackEvent(
     String type,
     RTCTrackEventInit eventInitDict,
-  ) {
-    unsupportedPlatformError();
-  }
+  ) : _ = JSObject();
 
   /// The read-only **`receiver`** property
   /// of the [RTCTrackEvent] interface indicates the
@@ -2540,7 +2481,7 @@ extension type RTCTrackEvent._(JSObject _) implements Event, JSObject {
   }
 }
 extension type RTCTrackEventInit._(JSObject _) implements EventInit, JSObject {
-  factory RTCTrackEventInit({
+  RTCTrackEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
@@ -2548,9 +2489,7 @@ extension type RTCTrackEventInit._(JSObject _) implements EventInit, JSObject {
     required MediaStreamTrack track,
     JSArray<MediaStream>? streams,
     required RTCRtpTransceiver transceiver,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   RTCRtpReceiver get receiver {
     unsupportedPlatformError();
@@ -2966,7 +2905,7 @@ extension type RTCDataChannel._(JSObject _) implements EventTarget, JSObject {
   }
 }
 extension type RTCDataChannelInit._(JSObject _) implements JSObject {
-  factory RTCDataChannelInit({
+  RTCDataChannelInit({
     bool? ordered,
     int? maxPacketLifeTime,
     int? maxRetransmits,
@@ -2974,9 +2913,7 @@ extension type RTCDataChannelInit._(JSObject _) implements JSObject {
     bool? negotiated,
     int? id,
     RTCPriorityType? priority,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   bool get ordered {
     unsupportedPlatformError();
@@ -3043,12 +2980,10 @@ extension type RTCDataChannelInit._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/RTCDataChannelEvent).
 extension type RTCDataChannelEvent._(JSObject _) implements Event, JSObject {
-  factory RTCDataChannelEvent(
+  RTCDataChannelEvent(
     String type,
     RTCDataChannelEventInit eventInitDict,
-  ) {
-    unsupportedPlatformError();
-  }
+  ) : _ = JSObject();
 
   /// The read-only property **`RTCDataChannelEvent.channel`**
   /// returns the [RTCDataChannel] associated with the event.
@@ -3058,14 +2993,12 @@ extension type RTCDataChannelEvent._(JSObject _) implements Event, JSObject {
 }
 extension type RTCDataChannelEventInit._(JSObject _)
     implements EventInit, JSObject {
-  factory RTCDataChannelEventInit({
+  RTCDataChannelEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
     required RTCDataChannel channel,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   RTCDataChannel get channel {
     unsupportedPlatformError();
@@ -3163,12 +3096,10 @@ extension type RTCDTMFSender._(JSObject _) implements EventTarget, JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/RTCDTMFToneChangeEvent).
 extension type RTCDTMFToneChangeEvent._(JSObject _) implements Event, JSObject {
-  factory RTCDTMFToneChangeEvent(
+  RTCDTMFToneChangeEvent(
     String type, [
     RTCDTMFToneChangeEventInit? eventInitDict,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The read-only property **`RTCDTMFToneChangeEvent.tone`**
   /// returns the DTMF character which has just begun to play, or an empty
@@ -3181,14 +3112,12 @@ extension type RTCDTMFToneChangeEvent._(JSObject _) implements Event, JSObject {
 }
 extension type RTCDTMFToneChangeEventInit._(JSObject _)
     implements EventInit, JSObject {
-  factory RTCDTMFToneChangeEventInit({
+  RTCDTMFToneChangeEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
     String? tone,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get tone {
     unsupportedPlatformError();
@@ -3227,12 +3156,10 @@ extension type RTCStatsReport._(JSObject _) implements JSObject {}
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/RTCError).
 extension type RTCError._(JSObject _) implements DOMException, JSObject {
-  factory RTCError(
+  RTCError(
     RTCErrorInit init, [
     String? message,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The [RTCError] interface's read-only
   /// **`errorDetail`** property is a string indicating the
@@ -3277,16 +3204,14 @@ extension type RTCError._(JSObject _) implements DOMException, JSObject {
   }
 }
 extension type RTCErrorInit._(JSObject _) implements JSObject {
-  factory RTCErrorInit({
+  RTCErrorInit({
     required RTCErrorDetailType errorDetail,
     int? sdpLineNumber,
     int? sctpCauseCode,
     int? receivedAlert,
     int? sentAlert,
     int? httpRequestStatusCode,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   RTCErrorDetailType get errorDetail {
     unsupportedPlatformError();
@@ -3346,12 +3271,10 @@ extension type RTCErrorInit._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/RTCErrorEvent).
 extension type RTCErrorEvent._(JSObject _) implements Event, JSObject {
-  factory RTCErrorEvent(
+  RTCErrorEvent(
     String type,
     RTCErrorEventInit eventInitDict,
-  ) {
-    unsupportedPlatformError();
-  }
+  ) : _ = JSObject();
 
   /// The read-only [RTCErrorEvent] property **`error`**
   /// contains an [RTCError] object describing the details of the error which
@@ -3362,14 +3285,12 @@ extension type RTCErrorEvent._(JSObject _) implements Event, JSObject {
   }
 }
 extension type RTCErrorEventInit._(JSObject _) implements EventInit, JSObject {
-  factory RTCErrorEventInit({
+  RTCErrorEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
     required RTCError error,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   RTCError get error {
     unsupportedPlatformError();

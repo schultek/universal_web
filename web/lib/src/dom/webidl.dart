@@ -35,12 +35,10 @@ typedef VoidFunction = JSFunction;
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/DOMException).
 extension type DOMException._(JSObject _) implements JSObject {
-  factory DOMException([
+  DOMException([
     String? message,
     String? name,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   static const int INDEX_SIZE_ERR = 1;
 

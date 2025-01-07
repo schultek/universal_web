@@ -35,12 +35,10 @@ typedef IntersectionObserverCallback = JSFunction;
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver).
 extension type IntersectionObserver._(JSObject _) implements JSObject {
-  factory IntersectionObserver(
+  IntersectionObserver(
     IntersectionObserverCallback callback, [
     IntersectionObserverInit? options,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The [IntersectionObserver] method
   /// **`observe()`** adds an element to the set of target elements
@@ -241,14 +239,12 @@ extension type IntersectionObserverEntry._(JSObject _) implements JSObject {
   }
 }
 extension type IntersectionObserverInit._(JSObject _) implements JSObject {
-  factory IntersectionObserverInit({
+  IntersectionObserverInit({
     JSObject? root,
     String? rootMargin,
     String? scrollMargin,
     JSAny? threshold,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   JSObject? get root {
     unsupportedPlatformError();

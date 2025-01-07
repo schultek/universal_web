@@ -33,9 +33,7 @@ typedef SpeechSynthesisErrorCode = String;
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition).
 extension type SpeechRecognition._(JSObject _)
     implements EventTarget, JSObject {
-  factory SpeechRecognition() {
-    unsupportedPlatformError();
-  }
+  SpeechRecognition() : _ = JSObject();
 
   /// The **`start()`** method of the
   /// [Web Speech API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API)
@@ -497,9 +495,7 @@ extension type SpeechSynthesis._(JSObject _) implements EventTarget, JSObject {
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance).
 extension type SpeechSynthesisUtterance._(JSObject _)
     implements EventTarget, JSObject {
-  factory SpeechSynthesisUtterance([String? text]) {
-    unsupportedPlatformError();
-  }
+  SpeechSynthesisUtterance([String? text]) : _ = JSObject();
 
   /// The **`text`** property of the
   /// [SpeechSynthesisUtterance] interface gets and sets the text that will be
@@ -649,12 +645,10 @@ extension type SpeechSynthesisUtterance._(JSObject _)
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisEvent).
 extension type SpeechSynthesisEvent._(JSObject _) implements Event, JSObject {
-  factory SpeechSynthesisEvent(
+  SpeechSynthesisEvent(
     String type,
     SpeechSynthesisEventInit eventInitDict,
-  ) {
-    unsupportedPlatformError();
-  }
+  ) : _ = JSObject();
 
   /// The **`utterance`** read-only property of the [SpeechSynthesisUtterance]
   /// interface returns the [SpeechSynthesisUtterance] instance that the event
@@ -702,7 +696,7 @@ extension type SpeechSynthesisEvent._(JSObject _) implements Event, JSObject {
 }
 extension type SpeechSynthesisEventInit._(JSObject _)
     implements EventInit, JSObject {
-  factory SpeechSynthesisEventInit({
+  SpeechSynthesisEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
@@ -711,9 +705,7 @@ extension type SpeechSynthesisEventInit._(JSObject _)
     int? charLength,
     num? elapsedTime,
     String? name,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   SpeechSynthesisUtterance get utterance {
     unsupportedPlatformError();
@@ -767,12 +759,10 @@ extension type SpeechSynthesisEventInit._(JSObject _)
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisErrorEvent).
 extension type SpeechSynthesisErrorEvent._(JSObject _)
     implements SpeechSynthesisEvent, JSObject {
-  factory SpeechSynthesisErrorEvent(
+  SpeechSynthesisErrorEvent(
     String type,
     SpeechSynthesisErrorEventInit eventInitDict,
-  ) {
-    unsupportedPlatformError();
-  }
+  ) : _ = JSObject();
 
   /// The **`error`** property of the
   /// [SpeechSynthesisErrorEvent] interface returns an error code indicating
@@ -783,7 +773,7 @@ extension type SpeechSynthesisErrorEvent._(JSObject _)
 }
 extension type SpeechSynthesisErrorEventInit._(JSObject _)
     implements SpeechSynthesisEventInit, JSObject {
-  factory SpeechSynthesisErrorEventInit({
+  SpeechSynthesisErrorEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
@@ -793,9 +783,7 @@ extension type SpeechSynthesisErrorEventInit._(JSObject _)
     num? elapsedTime,
     String? name,
     required SpeechSynthesisErrorCode error,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   SpeechSynthesisErrorCode get error {
     unsupportedPlatformError();

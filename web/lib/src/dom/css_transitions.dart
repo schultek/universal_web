@@ -23,12 +23,10 @@ import 'dom.dart';
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/TransitionEvent).
 extension type TransitionEvent._(JSObject _) implements Event, JSObject {
-  factory TransitionEvent(
+  TransitionEvent(
     String type, [
     TransitionEventInit? transitionEventInitDict,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The **`propertyName`** read-only property of [TransitionEvent] objects is
   /// a string containing the name of the CSS property associated with the
@@ -59,16 +57,14 @@ extension type TransitionEvent._(JSObject _) implements Event, JSObject {
 }
 extension type TransitionEventInit._(JSObject _)
     implements EventInit, JSObject {
-  factory TransitionEventInit({
+  TransitionEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
     String? propertyName,
     num? elapsedTime,
     String? pseudoElement,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get propertyName {
     unsupportedPlatformError();

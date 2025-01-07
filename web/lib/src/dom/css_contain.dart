@@ -38,12 +38,10 @@ import 'dom.dart';
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ContentVisibilityAutoStateChangeEvent).
 extension type ContentVisibilityAutoStateChangeEvent._(JSObject _)
     implements Event, JSObject {
-  factory ContentVisibilityAutoStateChangeEvent(
+  ContentVisibilityAutoStateChangeEvent(
     String type, [
     ContentVisibilityAutoStateChangeEventInit? eventInitDict,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The `skipped` read-only property of the
   /// [ContentVisibilityAutoStateChangeEvent] interface returns `true` if the
@@ -56,14 +54,12 @@ extension type ContentVisibilityAutoStateChangeEvent._(JSObject _)
 }
 extension type ContentVisibilityAutoStateChangeEventInit._(JSObject _)
     implements EventInit, JSObject {
-  factory ContentVisibilityAutoStateChangeEventInit({
+  ContentVisibilityAutoStateChangeEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
     bool? skipped,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   bool get skipped {
     unsupportedPlatformError();

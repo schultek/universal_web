@@ -34,12 +34,10 @@ typedef ReadableStreamReaderMode = String;
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream).
 extension type ReadableStream._(JSObject _) implements JSObject {
-  factory ReadableStream([
+  ReadableStream([
     JSObject? underlyingSource,
     QueuingStrategy? strategy,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The **`cancel()`** method of the [ReadableStream] interface returns a
   /// `Promise` that resolves when the stream is canceled.
@@ -152,9 +150,8 @@ extension type ReadableStream._(JSObject _) implements JSObject {
 }
 extension type ReadableStreamGetReaderOptions._(JSObject _)
     implements JSObject {
-  factory ReadableStreamGetReaderOptions({ReadableStreamReaderMode? mode}) {
-    unsupportedPlatformError();
-  }
+  ReadableStreamGetReaderOptions({ReadableStreamReaderMode? mode})
+      : _ = JSObject();
 
   ReadableStreamReaderMode get mode {
     unsupportedPlatformError();
@@ -165,12 +162,10 @@ extension type ReadableStreamGetReaderOptions._(JSObject _)
   }
 }
 extension type ReadableWritablePair._(JSObject _) implements JSObject {
-  factory ReadableWritablePair({
+  ReadableWritablePair({
     required ReadableStream readable,
     required WritableStream writable,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   ReadableStream get readable {
     unsupportedPlatformError();
@@ -189,14 +184,12 @@ extension type ReadableWritablePair._(JSObject _) implements JSObject {
   }
 }
 extension type StreamPipeOptions._(JSObject _) implements JSObject {
-  factory StreamPipeOptions({
+  StreamPipeOptions({
     bool? preventClose,
     bool? preventAbort,
     bool? preventCancel,
     AbortSignal? signal,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   bool get preventClose {
     unsupportedPlatformError();
@@ -256,9 +249,7 @@ extension type StreamPipeOptions._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamDefaultReader).
 extension type ReadableStreamDefaultReader._(JSObject _) implements JSObject {
-  factory ReadableStreamDefaultReader(ReadableStream stream) {
-    unsupportedPlatformError();
-  }
+  ReadableStreamDefaultReader(ReadableStream stream) : _ = JSObject();
 
   /// The **`read()`** method of the [ReadableStreamDefaultReader] interface
   /// returns a `Promise` providing access to the next chunk in the stream's
@@ -316,12 +307,10 @@ extension type ReadableStreamDefaultReader._(JSObject _) implements JSObject {
   }
 }
 extension type ReadableStreamReadResult._(JSObject _) implements JSObject {
-  factory ReadableStreamReadResult({
+  ReadableStreamReadResult({
     JSAny? value,
     bool? done,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   JSAny? get value {
     unsupportedPlatformError();
@@ -373,9 +362,7 @@ extension type ReadableStreamReadResult._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamBYOBReader).
 extension type ReadableStreamBYOBReader._(JSObject _) implements JSObject {
-  factory ReadableStreamBYOBReader(ReadableStream stream) {
-    unsupportedPlatformError();
-  }
+  ReadableStreamBYOBReader(ReadableStream stream) : _ = JSObject();
 
   /// The **`read()`** method of the [ReadableStreamBYOBReader] interface is
   /// used to read data into a view on a user-supplied buffer from an associated
@@ -454,9 +441,7 @@ extension type ReadableStreamBYOBReader._(JSObject _) implements JSObject {
 }
 extension type ReadableStreamBYOBReaderReadOptions._(JSObject _)
     implements JSObject {
-  factory ReadableStreamBYOBReaderReadOptions({int? min}) {
-    unsupportedPlatformError();
-  }
+  ReadableStreamBYOBReaderReadOptions({int? min}) : _ = JSObject();
 
   int get min {
     unsupportedPlatformError();
@@ -753,12 +738,10 @@ extension type ReadableStreamBYOBRequest._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WritableStream).
 extension type WritableStream._(JSObject _) implements JSObject {
-  factory WritableStream([
+  WritableStream([
     JSObject? underlyingSink,
     QueuingStrategy? strategy,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The **`abort()`** method of the [WritableStream] interface aborts the
   /// stream, signaling that the producer can no longer successfully write to
@@ -807,9 +790,7 @@ extension type WritableStream._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WritableStreamDefaultWriter).
 extension type WritableStreamDefaultWriter._(JSObject _) implements JSObject {
-  factory WritableStreamDefaultWriter(WritableStream stream) {
-    unsupportedPlatformError();
-  }
+  WritableStreamDefaultWriter(WritableStream stream) : _ = JSObject();
 
   /// The **`abort()`** method of the
   /// [WritableStreamDefaultWriter] interface aborts the stream, signaling that
@@ -947,13 +928,11 @@ extension type WritableStreamDefaultController._(JSObject _)
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/TransformStream).
 extension type TransformStream._(JSObject _) implements JSObject {
-  factory TransformStream([
+  TransformStream([
     JSObject? transformer,
     QueuingStrategy? writableStrategy,
     QueuingStrategy? readableStrategy,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The **`readable`** read-only property of the [TransformStream] interface
   /// returns the [ReadableStream] instance controlled by this
@@ -1029,12 +1008,10 @@ extension type TransformStreamDefaultController._(JSObject _)
   }
 }
 extension type QueuingStrategy._(JSObject _) implements JSObject {
-  factory QueuingStrategy({
+  QueuingStrategy({
     num? highWaterMark,
     QueuingStrategySize? size,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   double get highWaterMark {
     unsupportedPlatformError();
@@ -1053,9 +1030,7 @@ extension type QueuingStrategy._(JSObject _) implements JSObject {
   }
 }
 extension type QueuingStrategyInit._(JSObject _) implements JSObject {
-  factory QueuingStrategyInit({required num highWaterMark}) {
-    unsupportedPlatformError();
-  }
+  QueuingStrategyInit({required num highWaterMark}) : _ = JSObject();
 
   double get highWaterMark {
     unsupportedPlatformError();
@@ -1076,9 +1051,7 @@ extension type QueuingStrategyInit._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ByteLengthQueuingStrategy).
 extension type ByteLengthQueuingStrategy._(JSObject _) implements JSObject {
-  factory ByteLengthQueuingStrategy(QueuingStrategyInit init) {
-    unsupportedPlatformError();
-  }
+  ByteLengthQueuingStrategy(QueuingStrategyInit init) : _ = JSObject();
 
   /// The read-only **`ByteLengthQueuingStrategy.highWaterMark`** property
   /// returns the total number of bytes that can be contained in the internal
@@ -1116,9 +1089,7 @@ extension type ByteLengthQueuingStrategy._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CountQueuingStrategy).
 extension type CountQueuingStrategy._(JSObject _) implements JSObject {
-  factory CountQueuingStrategy(QueuingStrategyInit init) {
-    unsupportedPlatformError();
-  }
+  CountQueuingStrategy(QueuingStrategyInit init) : _ = JSObject();
 
   /// The read-only **`CountQueuingStrategy.highWaterMark`** property returns
   /// the total number of chunks that can be contained in the internal queue

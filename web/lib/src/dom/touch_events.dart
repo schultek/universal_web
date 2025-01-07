@@ -18,7 +18,7 @@ import 'uievents.dart';
 
 typedef TouchType = String;
 extension type TouchInit._(JSObject _) implements JSObject {
-  factory TouchInit({
+  TouchInit({
     required int identifier,
     required EventTarget target,
     num? clientX,
@@ -34,9 +34,7 @@ extension type TouchInit._(JSObject _) implements JSObject {
     num? altitudeAngle,
     num? azimuthAngle,
     TouchType? touchType,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   int get identifier {
     unsupportedPlatformError();
@@ -180,9 +178,7 @@ extension type TouchInit._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Touch).
 extension type Touch._(JSObject _) implements JSObject {
-  factory Touch(TouchInit touchInitDict) {
-    unsupportedPlatformError();
-  }
+  Touch(TouchInit touchInitDict) : _ = JSObject();
 
   /// The **`Touch.identifier`** returns a value uniquely identifying
   /// this point of contact with the touch surface. This value remains
@@ -345,7 +341,7 @@ extension type TouchList._(JSObject _) implements JSObject {
 }
 extension type TouchEventInit._(JSObject _)
     implements EventModifierInit, JSObject {
-  factory TouchEventInit({
+  TouchEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
@@ -370,9 +366,7 @@ extension type TouchEventInit._(JSObject _)
     JSArray<Touch>? touches,
     JSArray<Touch>? targetTouches,
     JSArray<Touch>? changedTouches,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   JSArray<Touch> get touches {
     unsupportedPlatformError();
@@ -414,12 +408,10 @@ extension type TouchEventInit._(JSObject _)
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/TouchEvent).
 extension type TouchEvent._(JSObject _) implements UIEvent, JSObject {
-  factory TouchEvent(
+  TouchEvent(
     String type, [
     TouchEventInit? eventInitDict,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// **`touches`** is a read-only [TouchList] listing
   /// all the [Touch] objects for touch points that are currently in contact

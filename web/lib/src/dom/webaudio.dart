@@ -405,9 +405,7 @@ extension type BaseAudioContext._(JSObject _) implements EventTarget, JSObject {
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/AudioContext).
 extension type AudioContext._(JSObject _)
     implements BaseAudioContext, JSObject {
-  factory AudioContext([AudioContextOptions? contextOptions]) {
-    unsupportedPlatformError();
-  }
+  AudioContext([AudioContextOptions? contextOptions]) : _ = JSObject();
 
   /// The
   /// **`getOutputTimestamp()`** method of the
@@ -557,14 +555,12 @@ extension type AudioContext._(JSObject _)
   }
 }
 extension type AudioContextOptions._(JSObject _) implements JSObject {
-  factory AudioContextOptions({
+  AudioContextOptions({
     JSAny? latencyHint,
     num? sampleRate,
     JSAny? sinkId,
     JSAny? renderSizeHint,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   JSAny get latencyHint {
     unsupportedPlatformError();
@@ -599,9 +595,7 @@ extension type AudioContextOptions._(JSObject _) implements JSObject {
   }
 }
 extension type AudioSinkOptions._(JSObject _) implements JSObject {
-  factory AudioSinkOptions({required AudioSinkType type}) {
-    unsupportedPlatformError();
-  }
+  AudioSinkOptions({required AudioSinkType type}) : _ = JSObject();
 
   AudioSinkType get type {
     unsupportedPlatformError();
@@ -612,12 +606,10 @@ extension type AudioSinkOptions._(JSObject _) implements JSObject {
   }
 }
 extension type AudioTimestamp._(JSObject _) implements JSObject {
-  factory AudioTimestamp({
+  AudioTimestamp({
     num? contextTime,
     DOMHighResTimeStamp? performanceTime,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   double get contextTime {
     unsupportedPlatformError();
@@ -649,13 +641,11 @@ extension type AudioTimestamp._(JSObject _) implements JSObject {
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/OfflineAudioContext).
 extension type OfflineAudioContext._(JSObject _)
     implements BaseAudioContext, JSObject {
-  factory OfflineAudioContext(
+  OfflineAudioContext(
     JSAny contextOptionsOrNumberOfChannels, [
     int? length,
     num? sampleRate,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The `startRendering()` method of the [OfflineAudioContext] Interface
   /// starts rendering the audio graph, taking into account the current
@@ -721,14 +711,12 @@ extension type OfflineAudioContext._(JSObject _)
   }
 }
 extension type OfflineAudioContextOptions._(JSObject _) implements JSObject {
-  factory OfflineAudioContextOptions({
+  OfflineAudioContextOptions({
     int? numberOfChannels,
     required int length,
     required num sampleRate,
     JSAny? renderSizeHint,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   int get numberOfChannels {
     unsupportedPlatformError();
@@ -780,12 +768,10 @@ extension type OfflineAudioContextOptions._(JSObject _) implements JSObject {
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/OfflineAudioCompletionEvent).
 extension type OfflineAudioCompletionEvent._(JSObject _)
     implements Event, JSObject {
-  factory OfflineAudioCompletionEvent(
+  OfflineAudioCompletionEvent(
     String type,
     OfflineAudioCompletionEventInit eventInitDict,
-  ) {
-    unsupportedPlatformError();
-  }
+  ) : _ = JSObject();
 
   /// The **`renderedBuffer`** read-only property of the
   /// [OfflineAudioCompletionEvent] interface is an [AudioBuffer]
@@ -796,14 +782,12 @@ extension type OfflineAudioCompletionEvent._(JSObject _)
 }
 extension type OfflineAudioCompletionEventInit._(JSObject _)
     implements EventInit, JSObject {
-  factory OfflineAudioCompletionEventInit({
+  OfflineAudioCompletionEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
     required AudioBuffer renderedBuffer,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   AudioBuffer get renderedBuffer {
     unsupportedPlatformError();
@@ -834,9 +818,7 @@ extension type OfflineAudioCompletionEventInit._(JSObject _)
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/AudioBuffer).
 extension type AudioBuffer._(JSObject _) implements JSObject {
-  factory AudioBuffer(AudioBufferOptions options) {
-    unsupportedPlatformError();
-  }
+  AudioBuffer(AudioBufferOptions options) : _ = JSObject();
 
   /// The **`getChannelData()`** method of the [AudioBuffer] Interface returns a
   /// `Float32Array` containing the PCM data associated with the channel,
@@ -900,13 +882,11 @@ extension type AudioBuffer._(JSObject _) implements JSObject {
   }
 }
 extension type AudioBufferOptions._(JSObject _) implements JSObject {
-  factory AudioBufferOptions({
+  AudioBufferOptions({
     int? numberOfChannels,
     required int length,
     required num sampleRate,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   int get numberOfChannels {
     unsupportedPlatformError();
@@ -1052,13 +1032,11 @@ extension type AudioNode._(JSObject _) implements EventTarget, JSObject {
   }
 }
 extension type AudioNodeOptions._(JSObject _) implements JSObject {
-  factory AudioNodeOptions({
+  AudioNodeOptions({
     int? channelCount,
     ChannelCountMode? channelCountMode,
     ChannelInterpretation? channelInterpretation,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   int get channelCount {
     unsupportedPlatformError();
@@ -1335,12 +1313,10 @@ extension type AudioScheduledSourceNode._(JSObject _)
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/AnalyserNode).
 extension type AnalyserNode._(JSObject _) implements AudioNode, JSObject {
-  factory AnalyserNode(
+  AnalyserNode(
     BaseAudioContext context, [
     AnalyserOptions? options,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The **`getFloatFrequencyData()`** method of the [AnalyserNode] Interface
   /// copies the current frequency data into a `Float32Array` array passed into
@@ -1460,7 +1436,7 @@ extension type AnalyserNode._(JSObject _) implements AudioNode, JSObject {
 }
 extension type AnalyserOptions._(JSObject _)
     implements AudioNodeOptions, JSObject {
-  factory AnalyserOptions({
+  AnalyserOptions({
     int? channelCount,
     ChannelCountMode? channelCountMode,
     ChannelInterpretation? channelInterpretation,
@@ -1468,9 +1444,7 @@ extension type AnalyserOptions._(JSObject _)
     num? maxDecibels,
     num? minDecibels,
     num? smoothingTimeConstant,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   int get fftSize {
     unsupportedPlatformError();
@@ -1561,12 +1535,10 @@ extension type AnalyserOptions._(JSObject _)
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/AudioBufferSourceNode).
 extension type AudioBufferSourceNode._(JSObject _)
     implements AudioScheduledSourceNode, JSObject {
-  factory AudioBufferSourceNode(
+  AudioBufferSourceNode(
     BaseAudioContext context, [
     AudioBufferSourceOptions? options,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The `start()` method of the [AudioBufferSourceNode]
   /// Interface is used to schedule playback of the audio data contained in the
@@ -1670,16 +1642,14 @@ extension type AudioBufferSourceNode._(JSObject _)
   }
 }
 extension type AudioBufferSourceOptions._(JSObject _) implements JSObject {
-  factory AudioBufferSourceOptions({
+  AudioBufferSourceOptions({
     AudioBuffer? buffer,
     num? detune,
     bool? loop,
     num? loopEnd,
     num? loopStart,
     num? playbackRate,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   AudioBuffer? get buffer {
     unsupportedPlatformError();
@@ -1971,12 +1941,10 @@ extension type AudioListener._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/AudioProcessingEvent).
 extension type AudioProcessingEvent._(JSObject _) implements Event, JSObject {
-  factory AudioProcessingEvent(
+  AudioProcessingEvent(
     String type,
     AudioProcessingEventInit eventInitDict,
-  ) {
-    unsupportedPlatformError();
-  }
+  ) : _ = JSObject();
 
   /// The **`playbackTime`** read-only property of the [AudioProcessingEvent]
   /// interface represents the time when the audio will be played. It is in the
@@ -2013,16 +1981,14 @@ extension type AudioProcessingEvent._(JSObject _) implements Event, JSObject {
 }
 extension type AudioProcessingEventInit._(JSObject _)
     implements EventInit, JSObject {
-  factory AudioProcessingEventInit({
+  AudioProcessingEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
     required num playbackTime,
     required AudioBuffer inputBuffer,
     required AudioBuffer outputBuffer,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   double get playbackTime {
     unsupportedPlatformError();
@@ -2085,12 +2051,10 @@ extension type AudioProcessingEventInit._(JSObject _)
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/BiquadFilterNode).
 extension type BiquadFilterNode._(JSObject _) implements AudioNode, JSObject {
-  factory BiquadFilterNode(
+  BiquadFilterNode(
     BaseAudioContext context, [
     BiquadFilterOptions? options,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The `getFrequencyResponse()` method of the [BiquadFilterNode] interface
   /// takes the current filtering algorithm's settings and calculates the
@@ -2167,7 +2131,7 @@ extension type BiquadFilterNode._(JSObject _) implements AudioNode, JSObject {
 }
 extension type BiquadFilterOptions._(JSObject _)
     implements AudioNodeOptions, JSObject {
-  factory BiquadFilterOptions({
+  BiquadFilterOptions({
     int? channelCount,
     ChannelCountMode? channelCountMode,
     ChannelInterpretation? channelInterpretation,
@@ -2176,9 +2140,7 @@ extension type BiquadFilterOptions._(JSObject _)
     num? detune,
     num? frequency,
     num? gain,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   BiquadFilterType get type {
     unsupportedPlatformError();
@@ -2270,23 +2232,19 @@ extension type BiquadFilterOptions._(JSObject _)
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ChannelMergerNode).
 extension type ChannelMergerNode._(JSObject _) implements AudioNode, JSObject {
-  factory ChannelMergerNode(
+  ChannelMergerNode(
     BaseAudioContext context, [
     ChannelMergerOptions? options,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 }
 extension type ChannelMergerOptions._(JSObject _)
     implements AudioNodeOptions, JSObject {
-  factory ChannelMergerOptions({
+  ChannelMergerOptions({
     int? channelCount,
     ChannelCountMode? channelCountMode,
     ChannelInterpretation? channelInterpretation,
     int? numberOfInputs,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   int get numberOfInputs {
     unsupportedPlatformError();
@@ -2350,23 +2308,19 @@ extension type ChannelMergerOptions._(JSObject _)
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ChannelSplitterNode).
 extension type ChannelSplitterNode._(JSObject _)
     implements AudioNode, JSObject {
-  factory ChannelSplitterNode(
+  ChannelSplitterNode(
     BaseAudioContext context, [
     ChannelSplitterOptions? options,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 }
 extension type ChannelSplitterOptions._(JSObject _)
     implements AudioNodeOptions, JSObject {
-  factory ChannelSplitterOptions({
+  ChannelSplitterOptions({
     int? channelCount,
     ChannelCountMode? channelCountMode,
     ChannelInterpretation? channelInterpretation,
     int? numberOfOutputs,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   int get numberOfOutputs {
     unsupportedPlatformError();
@@ -2408,12 +2362,10 @@ extension type ChannelSplitterOptions._(JSObject _)
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ConstantSourceNode).
 extension type ConstantSourceNode._(JSObject _)
     implements AudioScheduledSourceNode, JSObject {
-  factory ConstantSourceNode(
+  ConstantSourceNode(
     BaseAudioContext context, [
     ConstantSourceOptions? options,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The read-only `offset` property of the [ConstantSourceNode]
   /// interface returns a [AudioParam] object indicating the numeric
@@ -2434,9 +2386,7 @@ extension type ConstantSourceNode._(JSObject _)
   }
 }
 extension type ConstantSourceOptions._(JSObject _) implements JSObject {
-  factory ConstantSourceOptions({num? offset}) {
-    unsupportedPlatformError();
-  }
+  ConstantSourceOptions({num? offset}) : _ = JSObject();
 
   double get offset {
     unsupportedPlatformError();
@@ -2485,12 +2435,10 @@ extension type ConstantSourceOptions._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ConvolverNode).
 extension type ConvolverNode._(JSObject _) implements AudioNode, JSObject {
-  factory ConvolverNode(
+  ConvolverNode(
     BaseAudioContext context, [
     ConvolverOptions? options,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The **`buffer`** property of the [ConvolverNode] interface represents a
   /// mono, stereo, or 4-channel [AudioBuffer] containing the (possibly
@@ -2539,15 +2487,13 @@ extension type ConvolverNode._(JSObject _) implements AudioNode, JSObject {
 }
 extension type ConvolverOptions._(JSObject _)
     implements AudioNodeOptions, JSObject {
-  factory ConvolverOptions({
+  ConvolverOptions({
     int? channelCount,
     ChannelCountMode? channelCountMode,
     ChannelInterpretation? channelInterpretation,
     AudioBuffer? buffer,
     bool? disableNormalization,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   AudioBuffer? get buffer {
     unsupportedPlatformError();
@@ -2611,12 +2557,10 @@ extension type ConvolverOptions._(JSObject _)
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/DelayNode).
 extension type DelayNode._(JSObject _) implements AudioNode, JSObject {
-  factory DelayNode(
+  DelayNode(
     BaseAudioContext context, [
     DelayOptions? options,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The `delayTime` property of the [DelayNode] interface is an
   /// [a-rate](https://developer.mozilla.org/en-US/docs/Web/API/AudioParam#a-rate)
@@ -2634,15 +2578,13 @@ extension type DelayNode._(JSObject _) implements AudioNode, JSObject {
 }
 extension type DelayOptions._(JSObject _)
     implements AudioNodeOptions, JSObject {
-  factory DelayOptions({
+  DelayOptions({
     int? channelCount,
     ChannelCountMode? channelCountMode,
     ChannelInterpretation? channelInterpretation,
     num? maxDelayTime,
     num? delayTime,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   double get maxDelayTime {
     unsupportedPlatformError();
@@ -2699,12 +2641,10 @@ extension type DelayOptions._(JSObject _)
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/DynamicsCompressorNode).
 extension type DynamicsCompressorNode._(JSObject _)
     implements AudioNode, JSObject {
-  factory DynamicsCompressorNode(
+  DynamicsCompressorNode(
     BaseAudioContext context, [
     DynamicsCompressorOptions? options,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The `threshold` property of the [DynamicsCompressorNode] interface is a
   /// [k-rate](https://developer.mozilla.org/en-US/docs/Web/API/AudioParam#k-rate)
@@ -2785,7 +2725,7 @@ extension type DynamicsCompressorNode._(JSObject _)
 }
 extension type DynamicsCompressorOptions._(JSObject _)
     implements AudioNodeOptions, JSObject {
-  factory DynamicsCompressorOptions({
+  DynamicsCompressorOptions({
     int? channelCount,
     ChannelCountMode? channelCountMode,
     ChannelInterpretation? channelInterpretation,
@@ -2794,9 +2734,7 @@ extension type DynamicsCompressorOptions._(JSObject _)
     num? ratio,
     num? release,
     num? threshold,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   double get attack {
     unsupportedPlatformError();
@@ -2882,12 +2820,10 @@ extension type DynamicsCompressorOptions._(JSObject _)
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/GainNode).
 extension type GainNode._(JSObject _) implements AudioNode, JSObject {
-  factory GainNode(
+  GainNode(
     BaseAudioContext context, [
     GainOptions? options,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The `gain` property of the [GainNode] interface is an
   /// [a-rate](https://developer.mozilla.org/en-US/docs/Web/API/AudioParam#a-rate)
@@ -2897,14 +2833,12 @@ extension type GainNode._(JSObject _) implements AudioNode, JSObject {
   }
 }
 extension type GainOptions._(JSObject _) implements AudioNodeOptions, JSObject {
-  factory GainOptions({
+  GainOptions({
     int? channelCount,
     ChannelCountMode? channelCountMode,
     ChannelInterpretation? channelInterpretation,
     num? gain,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   double get gain {
     unsupportedPlatformError();
@@ -2973,12 +2907,10 @@ extension type GainOptions._(JSObject _) implements AudioNodeOptions, JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/IIRFilterNode).
 extension type IIRFilterNode._(JSObject _) implements AudioNode, JSObject {
-  factory IIRFilterNode(
+  IIRFilterNode(
     BaseAudioContext context,
     IIRFilterOptions options,
-  ) {
-    unsupportedPlatformError();
-  }
+  ) : _ = JSObject();
 
   /// The `getFrequencyResponse()` method of the [IIRFilterNode]
   /// interface takes the current filtering algorithm's settings and calculates
@@ -3000,15 +2932,13 @@ extension type IIRFilterNode._(JSObject _) implements AudioNode, JSObject {
 }
 extension type IIRFilterOptions._(JSObject _)
     implements AudioNodeOptions, JSObject {
-  factory IIRFilterOptions({
+  IIRFilterOptions({
     int? channelCount,
     ChannelCountMode? channelCountMode,
     ChannelInterpretation? channelInterpretation,
     required JSArray<JSNumber> feedforward,
     required JSArray<JSNumber> feedback,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   JSArray<JSNumber> get feedforward {
     unsupportedPlatformError();
@@ -3064,12 +2994,10 @@ extension type IIRFilterOptions._(JSObject _)
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MediaElementAudioSourceNode).
 extension type MediaElementAudioSourceNode._(JSObject _)
     implements AudioNode, JSObject {
-  factory MediaElementAudioSourceNode(
+  MediaElementAudioSourceNode(
     AudioContext context,
     MediaElementAudioSourceOptions options,
-  ) {
-    unsupportedPlatformError();
-  }
+  ) : _ = JSObject();
 
   /// The [MediaElementAudioSourceNode] interface's
   /// read-only **`mediaElement`** property indicates the
@@ -3085,10 +3013,8 @@ extension type MediaElementAudioSourceNode._(JSObject _)
 }
 extension type MediaElementAudioSourceOptions._(JSObject _)
     implements JSObject {
-  factory MediaElementAudioSourceOptions(
-      {required HTMLMediaElement mediaElement}) {
-    unsupportedPlatformError();
-  }
+  MediaElementAudioSourceOptions({required HTMLMediaElement mediaElement})
+      : _ = JSObject();
 
   HTMLMediaElement get mediaElement {
     unsupportedPlatformError();
@@ -3139,12 +3065,10 @@ extension type MediaElementAudioSourceOptions._(JSObject _)
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamAudioDestinationNode).
 extension type MediaStreamAudioDestinationNode._(JSObject _)
     implements AudioNode, JSObject {
-  factory MediaStreamAudioDestinationNode(
+  MediaStreamAudioDestinationNode(
     AudioContext context, [
     AudioNodeOptions? options,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The `stream` property of the [AudioContext] interface represents a
   /// [MediaStream] containing a single audio [MediaStreamTrack] with the same
@@ -3204,12 +3128,10 @@ extension type MediaStreamAudioDestinationNode._(JSObject _)
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamAudioSourceNode).
 extension type MediaStreamAudioSourceNode._(JSObject _)
     implements AudioNode, JSObject {
-  factory MediaStreamAudioSourceNode(
+  MediaStreamAudioSourceNode(
     AudioContext context,
     MediaStreamAudioSourceOptions options,
-  ) {
-    unsupportedPlatformError();
-  }
+  ) : _ = JSObject();
 
   /// The [MediaStreamAudioSourceNode] interface's
   /// read-only **`mediaStream`** property indicates the
@@ -3224,9 +3146,8 @@ extension type MediaStreamAudioSourceNode._(JSObject _)
   }
 }
 extension type MediaStreamAudioSourceOptions._(JSObject _) implements JSObject {
-  factory MediaStreamAudioSourceOptions({required MediaStream mediaStream}) {
-    unsupportedPlatformError();
-  }
+  MediaStreamAudioSourceOptions({required MediaStream mediaStream})
+      : _ = JSObject();
 
   MediaStream get mediaStream {
     unsupportedPlatformError();
@@ -3282,19 +3203,16 @@ extension type MediaStreamAudioSourceOptions._(JSObject _) implements JSObject {
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrackAudioSourceNode).
 extension type MediaStreamTrackAudioSourceNode._(JSObject _)
     implements AudioNode, JSObject {
-  factory MediaStreamTrackAudioSourceNode(
+  MediaStreamTrackAudioSourceNode(
     AudioContext context,
     MediaStreamTrackAudioSourceOptions options,
-  ) {
-    unsupportedPlatformError();
-  }
+  ) : _ = JSObject();
 }
 extension type MediaStreamTrackAudioSourceOptions._(JSObject _)
     implements JSObject {
-  factory MediaStreamTrackAudioSourceOptions(
-      {required MediaStreamTrack mediaStreamTrack}) {
-    unsupportedPlatformError();
-  }
+  MediaStreamTrackAudioSourceOptions(
+      {required MediaStreamTrack mediaStreamTrack})
+      : _ = JSObject();
 
   MediaStreamTrack get mediaStreamTrack {
     unsupportedPlatformError();
@@ -3341,12 +3259,10 @@ extension type MediaStreamTrackAudioSourceOptions._(JSObject _)
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/OscillatorNode).
 extension type OscillatorNode._(JSObject _)
     implements AudioScheduledSourceNode, JSObject {
-  factory OscillatorNode(
+  OscillatorNode(
     BaseAudioContext context, [
     OscillatorOptions? options,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The **`setPeriodicWave()`** method of the [OscillatorNode] interface is
   /// used to point to a [PeriodicWave]
@@ -3395,7 +3311,7 @@ extension type OscillatorNode._(JSObject _)
 }
 extension type OscillatorOptions._(JSObject _)
     implements AudioNodeOptions, JSObject {
-  factory OscillatorOptions({
+  OscillatorOptions({
     int? channelCount,
     ChannelCountMode? channelCountMode,
     ChannelInterpretation? channelInterpretation,
@@ -3403,9 +3319,7 @@ extension type OscillatorOptions._(JSObject _)
     num? frequency,
     num? detune,
     PeriodicWave? periodicWave,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   OscillatorType get type {
     unsupportedPlatformError();
@@ -3483,12 +3397,10 @@ extension type OscillatorOptions._(JSObject _)
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/PannerNode).
 extension type PannerNode._(JSObject _) implements AudioNode, JSObject {
-  factory PannerNode(
+  PannerNode(
     BaseAudioContext context, [
     PannerOptions? options,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// > **Note:** The suggested replacement for this deprecated method is to
   /// > instead set the
@@ -3869,7 +3781,7 @@ extension type PannerNode._(JSObject _) implements AudioNode, JSObject {
 }
 extension type PannerOptions._(JSObject _)
     implements AudioNodeOptions, JSObject {
-  factory PannerOptions({
+  PannerOptions({
     int? channelCount,
     ChannelCountMode? channelCountMode,
     ChannelInterpretation? channelInterpretation,
@@ -3887,9 +3799,7 @@ extension type PannerOptions._(JSObject _)
     num? coneInnerAngle,
     num? coneOuterAngle,
     num? coneOuterGain,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   PanningModelType get panningModel {
     unsupportedPlatformError();
@@ -4017,17 +3927,13 @@ extension type PannerOptions._(JSObject _)
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/PeriodicWave).
 extension type PeriodicWave._(JSObject _) implements JSObject {
-  factory PeriodicWave(
+  PeriodicWave(
     BaseAudioContext context, [
     PeriodicWaveOptions? options,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 }
 extension type PeriodicWaveConstraints._(JSObject _) implements JSObject {
-  factory PeriodicWaveConstraints({bool? disableNormalization}) {
-    unsupportedPlatformError();
-  }
+  PeriodicWaveConstraints({bool? disableNormalization}) : _ = JSObject();
 
   bool get disableNormalization {
     unsupportedPlatformError();
@@ -4039,13 +3945,11 @@ extension type PeriodicWaveConstraints._(JSObject _) implements JSObject {
 }
 extension type PeriodicWaveOptions._(JSObject _)
     implements PeriodicWaveConstraints, JSObject {
-  factory PeriodicWaveOptions({
+  PeriodicWaveOptions({
     bool? disableNormalization,
     JSArray<JSNumber>? real,
     JSArray<JSNumber>? imag,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   JSArray<JSNumber> get real {
     unsupportedPlatformError();
@@ -4192,12 +4096,10 @@ extension type ScriptProcessorNode._(JSObject _)
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/StereoPannerNode).
 extension type StereoPannerNode._(JSObject _) implements AudioNode, JSObject {
-  factory StereoPannerNode(
+  StereoPannerNode(
     BaseAudioContext context, [
     StereoPannerOptions? options,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The `pan` property of the [StereoPannerNode] interface is an
   /// [a-rate](https://developer.mozilla.org/en-US/docs/Web/API/AudioParam#a-rate)
@@ -4209,14 +4111,12 @@ extension type StereoPannerNode._(JSObject _) implements AudioNode, JSObject {
 }
 extension type StereoPannerOptions._(JSObject _)
     implements AudioNodeOptions, JSObject {
-  factory StereoPannerOptions({
+  StereoPannerOptions({
     int? channelCount,
     ChannelCountMode? channelCountMode,
     ChannelInterpretation? channelInterpretation,
     num? pan,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   double get pan {
     unsupportedPlatformError();
@@ -4265,12 +4165,10 @@ extension type StereoPannerOptions._(JSObject _)
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WaveShaperNode).
 extension type WaveShaperNode._(JSObject _) implements AudioNode, JSObject {
-  factory WaveShaperNode(
+  WaveShaperNode(
     BaseAudioContext context, [
     WaveShaperOptions? options,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The `curve` property of the [WaveShaperNode] interface is a `Float32Array`
   /// of numbers describing the distortion to apply.
@@ -4319,15 +4217,13 @@ extension type WaveShaperNode._(JSObject _) implements AudioNode, JSObject {
 }
 extension type WaveShaperOptions._(JSObject _)
     implements AudioNodeOptions, JSObject {
-  factory WaveShaperOptions({
+  WaveShaperOptions({
     int? channelCount,
     ChannelCountMode? channelCountMode,
     ChannelInterpretation? channelInterpretation,
     JSArray<JSNumber>? curve,
     OverSampleType? oversample,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   JSArray<JSNumber> get curve {
     unsupportedPlatformError();
@@ -4451,13 +4347,11 @@ extension type AudioParamMap._(JSObject _) implements JSObject {}
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/AudioWorkletNode).
 extension type AudioWorkletNode._(JSObject _) implements AudioNode, JSObject {
-  factory AudioWorkletNode(
+  AudioWorkletNode(
     BaseAudioContext context,
     String name, [
     AudioWorkletNodeOptions? options,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The read-only **`parameters`** property of the
   /// [AudioWorkletNode] interface returns the associated
@@ -4492,7 +4386,7 @@ extension type AudioWorkletNode._(JSObject _) implements AudioNode, JSObject {
 }
 extension type AudioWorkletNodeOptions._(JSObject _)
     implements AudioNodeOptions, JSObject {
-  factory AudioWorkletNodeOptions({
+  AudioWorkletNodeOptions({
     int? channelCount,
     ChannelCountMode? channelCountMode,
     ChannelInterpretation? channelInterpretation,
@@ -4501,9 +4395,7 @@ extension type AudioWorkletNodeOptions._(JSObject _)
     JSArray<JSNumber>? outputChannelCount,
     JSObject? parameterData,
     JSObject? processorOptions,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   int get numberOfInputs {
     unsupportedPlatformError();
@@ -4557,9 +4449,7 @@ extension type AudioWorkletNodeOptions._(JSObject _)
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/AudioWorkletProcessor).
 extension type AudioWorkletProcessor._(JSObject _) implements JSObject {
-  factory AudioWorkletProcessor() {
-    unsupportedPlatformError();
-  }
+  AudioWorkletProcessor() : _ = JSObject();
 
   /// The read-only **`port`** property of the
   /// [AudioWorkletProcessor] interface returns the associated

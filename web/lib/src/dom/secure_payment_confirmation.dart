@@ -16,7 +16,7 @@ import 'payment_request.dart';
 
 extension type AuthenticationExtensionsPaymentInputs._(JSObject _)
     implements JSObject {
-  factory AuthenticationExtensionsPaymentInputs({
+  AuthenticationExtensionsPaymentInputs({
     bool? isPayment,
     String? rpId,
     String? topOrigin,
@@ -24,9 +24,7 @@ extension type AuthenticationExtensionsPaymentInputs._(JSObject _)
     String? payeeOrigin,
     PaymentCurrencyAmount? total,
     PaymentCredentialInstrument? instrument,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   bool get isPayment {
     unsupportedPlatformError();
@@ -85,13 +83,11 @@ extension type AuthenticationExtensionsPaymentInputs._(JSObject _)
   }
 }
 extension type PaymentCredentialInstrument._(JSObject _) implements JSObject {
-  factory PaymentCredentialInstrument({
+  PaymentCredentialInstrument({
     required String displayName,
     required String icon,
     bool? iconMustBeShown,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get displayName {
     unsupportedPlatformError();

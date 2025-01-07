@@ -33,12 +33,10 @@ typedef EndingType = String;
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Blob).
 extension type Blob._(JSObject _) implements JSObject {
-  factory Blob([
+  Blob([
     JSArray<BlobPart>? blobParts,
     BlobPropertyBag? options,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The **`slice()`** method of the [Blob] interface
   /// creates and returns a new `Blob` object which contains data from a subset
@@ -98,12 +96,10 @@ extension type Blob._(JSObject _) implements JSObject {
   }
 }
 extension type BlobPropertyBag._(JSObject _) implements JSObject {
-  factory BlobPropertyBag({
+  BlobPropertyBag({
     String? type,
     EndingType? endings,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get type {
     unsupportedPlatformError();
@@ -144,13 +140,11 @@ extension type BlobPropertyBag._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/File).
 extension type File._(JSObject _) implements Blob, JSObject {
-  factory File(
+  File(
     JSArray<BlobPart> fileBits,
     String fileName, [
     FilePropertyBag? options,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The **`name`** read-only property of the [File] interface returns the name
   /// of the file represented by a [File] object. For security
@@ -181,13 +175,11 @@ extension type File._(JSObject _) implements Blob, JSObject {
 }
 extension type FilePropertyBag._(JSObject _)
     implements BlobPropertyBag, JSObject {
-  factory FilePropertyBag({
+  FilePropertyBag({
     String? type,
     EndingType? endings,
     int? lastModified,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   int get lastModified {
     unsupportedPlatformError();
@@ -274,9 +266,7 @@ extension type FileList._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/FileReader).
 extension type FileReader._(JSObject _) implements EventTarget, JSObject {
-  factory FileReader() {
-    unsupportedPlatformError();
-  }
+  FileReader() : _ = JSObject();
 
   static const int EMPTY = 0;
 
@@ -454,9 +444,7 @@ extension type FileReader._(JSObject _) implements EventTarget, JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/FileReaderSync).
 extension type FileReaderSync._(JSObject _) implements JSObject {
-  factory FileReaderSync() {
-    unsupportedPlatformError();
-  }
+  FileReaderSync() : _ = JSObject();
 
   /// @AvailableInWorkers("worker_except_service")
   ///

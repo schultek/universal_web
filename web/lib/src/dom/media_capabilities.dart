@@ -20,12 +20,10 @@ typedef HdrMetadataType = String;
 typedef ColorGamut = String;
 typedef TransferFunction = String;
 extension type MediaConfiguration._(JSObject _) implements JSObject {
-  factory MediaConfiguration({
+  MediaConfiguration({
     VideoConfiguration? video,
     AudioConfiguration? audio,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   VideoConfiguration get video {
     unsupportedPlatformError();
@@ -45,14 +43,12 @@ extension type MediaConfiguration._(JSObject _) implements JSObject {
 }
 extension type MediaDecodingConfiguration._(JSObject _)
     implements MediaConfiguration, JSObject {
-  factory MediaDecodingConfiguration({
+  MediaDecodingConfiguration({
     VideoConfiguration? video,
     AudioConfiguration? audio,
     required MediaDecodingType type,
     MediaCapabilitiesKeySystemConfiguration? keySystemConfiguration,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   MediaDecodingType get type {
     unsupportedPlatformError();
@@ -72,13 +68,11 @@ extension type MediaDecodingConfiguration._(JSObject _)
 }
 extension type MediaEncodingConfiguration._(JSObject _)
     implements MediaConfiguration, JSObject {
-  factory MediaEncodingConfiguration({
+  MediaEncodingConfiguration({
     VideoConfiguration? video,
     AudioConfiguration? audio,
     required MediaEncodingType type,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   MediaEncodingType get type {
     unsupportedPlatformError();
@@ -89,7 +83,7 @@ extension type MediaEncodingConfiguration._(JSObject _)
   }
 }
 extension type VideoConfiguration._(JSObject _) implements JSObject {
-  factory VideoConfiguration({
+  VideoConfiguration({
     required String contentType,
     required int width,
     required int height,
@@ -101,9 +95,7 @@ extension type VideoConfiguration._(JSObject _) implements JSObject {
     TransferFunction? transferFunction,
     String? scalabilityMode,
     bool? spatialScalability,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get contentType {
     unsupportedPlatformError();
@@ -194,15 +186,13 @@ extension type VideoConfiguration._(JSObject _) implements JSObject {
   }
 }
 extension type AudioConfiguration._(JSObject _) implements JSObject {
-  factory AudioConfiguration({
+  AudioConfiguration({
     required String contentType,
     String? channels,
     int? bitrate,
     int? samplerate,
     bool? spatialRendering,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get contentType {
     unsupportedPlatformError();
@@ -246,7 +236,7 @@ extension type AudioConfiguration._(JSObject _) implements JSObject {
 }
 extension type MediaCapabilitiesKeySystemConfiguration._(JSObject _)
     implements JSObject {
-  factory MediaCapabilitiesKeySystemConfiguration({
+  MediaCapabilitiesKeySystemConfiguration({
     required String keySystem,
     String? initDataType,
     MediaKeysRequirement? distinctiveIdentifier,
@@ -254,9 +244,7 @@ extension type MediaCapabilitiesKeySystemConfiguration._(JSObject _)
     JSArray<JSString>? sessionTypes,
     KeySystemTrackConfiguration? audio,
     KeySystemTrackConfiguration? video,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get keySystem {
     unsupportedPlatformError();
@@ -315,12 +303,10 @@ extension type MediaCapabilitiesKeySystemConfiguration._(JSObject _)
   }
 }
 extension type KeySystemTrackConfiguration._(JSObject _) implements JSObject {
-  factory KeySystemTrackConfiguration({
+  KeySystemTrackConfiguration({
     String? robustness,
     String? encryptionScheme,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get robustness {
     unsupportedPlatformError();
@@ -339,13 +325,11 @@ extension type KeySystemTrackConfiguration._(JSObject _) implements JSObject {
   }
 }
 extension type MediaCapabilitiesInfo._(JSObject _) implements JSObject {
-  factory MediaCapabilitiesInfo({
+  MediaCapabilitiesInfo({
     required bool supported,
     required bool smooth,
     required bool powerEfficient,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   bool get supported {
     unsupportedPlatformError();
@@ -373,15 +357,13 @@ extension type MediaCapabilitiesInfo._(JSObject _) implements JSObject {
 }
 extension type MediaCapabilitiesDecodingInfo._(JSObject _)
     implements MediaCapabilitiesInfo, JSObject {
-  factory MediaCapabilitiesDecodingInfo({
+  MediaCapabilitiesDecodingInfo({
     required bool supported,
     required bool smooth,
     required bool powerEfficient,
     required MediaKeySystemAccess keySystemAccess,
     MediaDecodingConfiguration? configuration,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   MediaKeySystemAccess get keySystemAccess {
     unsupportedPlatformError();
@@ -401,14 +383,12 @@ extension type MediaCapabilitiesDecodingInfo._(JSObject _)
 }
 extension type MediaCapabilitiesEncodingInfo._(JSObject _)
     implements MediaCapabilitiesInfo, JSObject {
-  factory MediaCapabilitiesEncodingInfo({
+  MediaCapabilitiesEncodingInfo({
     required bool supported,
     required bool smooth,
     required bool powerEfficient,
     MediaEncodingConfiguration? configuration,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   MediaEncodingConfiguration get configuration {
     unsupportedPlatformError();

@@ -31,12 +31,10 @@ import '../js_interop.dart';
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/URL).
 extension type URL._(JSObject _) implements JSObject {
-  factory URL(
+  URL(
     String url, [
     String? base,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The **`URL.parse()`** static method of the [URL] interface returns a newly
   /// created [URL] object representing the URL defined by the parameters.
@@ -321,9 +319,7 @@ extension type URL._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams).
 extension type URLSearchParams._(JSObject _) implements JSObject {
-  factory URLSearchParams([JSAny? init]) {
-    unsupportedPlatformError();
-  }
+  URLSearchParams([JSAny? init]) : _ = JSObject();
 
   /// The **`append()`** method of the [URLSearchParams]
   /// interface appends a specified key/value pair as a new search parameter.

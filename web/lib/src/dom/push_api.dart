@@ -104,12 +104,10 @@ extension type PushSubscriptionOptions._(JSObject _) implements JSObject {
   }
 }
 extension type PushSubscriptionOptionsInit._(JSObject _) implements JSObject {
-  factory PushSubscriptionOptionsInit({
+  PushSubscriptionOptionsInit({
     bool? userVisibleOnly,
     JSAny? applicationServerKey,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   bool get userVisibleOnly {
     unsupportedPlatformError();
@@ -194,13 +192,11 @@ extension type PushSubscription._(JSObject _) implements JSObject {
   }
 }
 extension type PushSubscriptionJSON._(JSObject _) implements JSObject {
-  factory PushSubscriptionJSON({
+  PushSubscriptionJSON({
     String? endpoint,
     EpochTimeStamp? expirationTime,
     JSObject? keys,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get endpoint {
     unsupportedPlatformError();
@@ -297,12 +293,10 @@ extension type PushMessageData._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/PushEvent).
 extension type PushEvent._(JSObject _) implements ExtendableEvent, JSObject {
-  factory PushEvent(
+  PushEvent(
     String type, [
     PushEventInit? eventInitDict,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// @AvailableInWorkers("service")
   ///
@@ -315,14 +309,12 @@ extension type PushEvent._(JSObject _) implements ExtendableEvent, JSObject {
 }
 extension type PushEventInit._(JSObject _)
     implements ExtendableEventInit, JSObject {
-  factory PushEventInit({
+  PushEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
     PushMessageDataInit? data,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   PushMessageDataInit get data {
     unsupportedPlatformError();

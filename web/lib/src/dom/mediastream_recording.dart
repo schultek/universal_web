@@ -31,12 +31,10 @@ typedef RecordingState = String;
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MediaRecorder).
 extension type MediaRecorder._(JSObject _) implements EventTarget, JSObject {
-  factory MediaRecorder(
+  MediaRecorder(
     MediaStream stream, [
     MediaRecorderOptions? options,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The **`isTypeSupported()`** static method of the [MediaRecorder] interface
   /// returns a `Boolean` which is `true` if the MIME media type specified is
@@ -262,7 +260,7 @@ extension type MediaRecorder._(JSObject _) implements EventTarget, JSObject {
   }
 }
 extension type MediaRecorderOptions._(JSObject _) implements JSObject {
-  factory MediaRecorderOptions({
+  MediaRecorderOptions({
     String? mimeType,
     int? audioBitsPerSecond,
     int? videoBitsPerSecond,
@@ -270,9 +268,7 @@ extension type MediaRecorderOptions._(JSObject _) implements JSObject {
     BitrateMode? audioBitrateMode,
     DOMHighResTimeStamp? videoKeyFrameIntervalDuration,
     int? videoKeyFrameIntervalCount,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get mimeType {
     unsupportedPlatformError();
@@ -341,12 +337,10 @@ extension type MediaRecorderOptions._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/BlobEvent).
 extension type BlobEvent._(JSObject _) implements Event, JSObject {
-  factory BlobEvent(
+  BlobEvent(
     String type,
     BlobEventInit eventInitDict,
-  ) {
-    unsupportedPlatformError();
-  }
+  ) : _ = JSObject();
 
   /// The **`data`** read-only property of the [BlobEvent] interface represents
   /// a [Blob] associated with the event.
@@ -366,12 +360,10 @@ extension type BlobEvent._(JSObject _) implements Event, JSObject {
   }
 }
 extension type BlobEventInit._(JSObject _) implements JSObject {
-  factory BlobEventInit({
+  BlobEventInit({
     required Blob data,
     DOMHighResTimeStamp? timecode,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   Blob get data {
     unsupportedPlatformError();

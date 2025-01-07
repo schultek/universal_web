@@ -28,12 +28,10 @@ typedef PaymentComplete = String;
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/PaymentRequest).
 extension type PaymentRequest._(JSObject _) implements EventTarget, JSObject {
-  factory PaymentRequest(
+  PaymentRequest(
     JSArray<PaymentMethodData> methodData,
     PaymentDetailsInit details,
-  ) {
-    unsupportedPlatformError();
-  }
+  ) : _ = JSObject();
 
   /// The **[PaymentRequest]** interface's
   /// **`show()`** method instructs the user agent to begin the
@@ -128,12 +126,10 @@ extension type PaymentRequest._(JSObject _) implements EventTarget, JSObject {
   }
 }
 extension type PaymentMethodData._(JSObject _) implements JSObject {
-  factory PaymentMethodData({
+  PaymentMethodData({
     required String supportedMethods,
     JSObject? data,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get supportedMethods {
     unsupportedPlatformError();
@@ -152,12 +148,10 @@ extension type PaymentMethodData._(JSObject _) implements JSObject {
   }
 }
 extension type PaymentCurrencyAmount._(JSObject _) implements JSObject {
-  factory PaymentCurrencyAmount({
+  PaymentCurrencyAmount({
     required String currency,
     required String value,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get currency {
     unsupportedPlatformError();
@@ -176,12 +170,10 @@ extension type PaymentCurrencyAmount._(JSObject _) implements JSObject {
   }
 }
 extension type PaymentDetailsBase._(JSObject _) implements JSObject {
-  factory PaymentDetailsBase({
+  PaymentDetailsBase({
     JSArray<PaymentItem>? displayItems,
     JSArray<PaymentDetailsModifier>? modifiers,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   JSArray<PaymentItem> get displayItems {
     unsupportedPlatformError();
@@ -201,14 +193,12 @@ extension type PaymentDetailsBase._(JSObject _) implements JSObject {
 }
 extension type PaymentDetailsInit._(JSObject _)
     implements PaymentDetailsBase, JSObject {
-  factory PaymentDetailsInit({
+  PaymentDetailsInit({
     JSArray<PaymentItem>? displayItems,
     JSArray<PaymentDetailsModifier>? modifiers,
     String? id,
     required PaymentItem total,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get id {
     unsupportedPlatformError();
@@ -228,14 +218,12 @@ extension type PaymentDetailsInit._(JSObject _)
 }
 extension type PaymentDetailsUpdate._(JSObject _)
     implements PaymentDetailsBase, JSObject {
-  factory PaymentDetailsUpdate({
+  PaymentDetailsUpdate({
     JSArray<PaymentItem>? displayItems,
     JSArray<PaymentDetailsModifier>? modifiers,
     PaymentItem? total,
     JSObject? paymentMethodErrors,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   PaymentItem get total {
     unsupportedPlatformError();
@@ -254,14 +242,12 @@ extension type PaymentDetailsUpdate._(JSObject _)
   }
 }
 extension type PaymentDetailsModifier._(JSObject _) implements JSObject {
-  factory PaymentDetailsModifier({
+  PaymentDetailsModifier({
     required String supportedMethods,
     PaymentItem? total,
     JSArray<PaymentItem>? additionalDisplayItems,
     JSObject? data,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get supportedMethods {
     unsupportedPlatformError();
@@ -296,13 +282,11 @@ extension type PaymentDetailsModifier._(JSObject _) implements JSObject {
   }
 }
 extension type PaymentItem._(JSObject _) implements JSObject {
-  factory PaymentItem({
+  PaymentItem({
     required String label,
     required PaymentCurrencyAmount amount,
     bool? pending,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get label {
     unsupportedPlatformError();
@@ -329,9 +313,7 @@ extension type PaymentItem._(JSObject _) implements JSObject {
   }
 }
 extension type PaymentCompleteDetails._(JSObject _) implements JSObject {
-  factory PaymentCompleteDetails({JSObject? data}) {
-    unsupportedPlatformError();
-  }
+  PaymentCompleteDetails({JSObject? data}) : _ = JSObject();
 
   JSObject? get data {
     unsupportedPlatformError();
@@ -420,12 +402,10 @@ extension type PaymentResponse._(JSObject _) implements EventTarget, JSObject {
   }
 }
 extension type PaymentValidationErrors._(JSObject _) implements JSObject {
-  factory PaymentValidationErrors({
+  PaymentValidationErrors({
     String? error,
     JSObject? paymentMethod,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get error {
     unsupportedPlatformError();
@@ -457,12 +437,10 @@ extension type PaymentValidationErrors._(JSObject _) implements JSObject {
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/PaymentMethodChangeEvent).
 extension type PaymentMethodChangeEvent._(JSObject _)
     implements PaymentRequestUpdateEvent, JSObject {
-  factory PaymentMethodChangeEvent(
+  PaymentMethodChangeEvent(
     String type, [
     PaymentMethodChangeEventInit? eventInitDict,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The read-only **`methodName`** property of the [PaymentMethodChangeEvent]
   /// interface is a string which
@@ -490,15 +468,13 @@ extension type PaymentMethodChangeEvent._(JSObject _)
 }
 extension type PaymentMethodChangeEventInit._(JSObject _)
     implements PaymentRequestUpdateEventInit, JSObject {
-  factory PaymentMethodChangeEventInit({
+  PaymentMethodChangeEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
     String? methodName,
     JSObject? methodDetails,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get methodName {
     unsupportedPlatformError();
@@ -532,12 +508,10 @@ extension type PaymentMethodChangeEventInit._(JSObject _)
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/PaymentRequestUpdateEvent).
 extension type PaymentRequestUpdateEvent._(JSObject _)
     implements Event, JSObject {
-  factory PaymentRequestUpdateEvent(
+  PaymentRequestUpdateEvent(
     String type, [
     PaymentRequestUpdateEventInit? eventInitDict,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The **`updateWith()`** method of the
   /// [PaymentRequestUpdateEvent] interface updates the details of an existing
@@ -548,11 +522,9 @@ extension type PaymentRequestUpdateEvent._(JSObject _)
 }
 extension type PaymentRequestUpdateEventInit._(JSObject _)
     implements EventInit, JSObject {
-  factory PaymentRequestUpdateEventInit({
+  PaymentRequestUpdateEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 }

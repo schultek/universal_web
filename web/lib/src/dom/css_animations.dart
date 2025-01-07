@@ -24,12 +24,10 @@ import 'dom.dart';
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/AnimationEvent).
 extension type AnimationEvent._(JSObject _) implements Event, JSObject {
-  factory AnimationEvent(
+  AnimationEvent(
     String type, [
     AnimationEventInit? animationEventInitDict,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The **`AnimationEvent.animationName`** read-only property is a
   /// string containing the value of the  CSS
@@ -61,16 +59,14 @@ extension type AnimationEvent._(JSObject _) implements Event, JSObject {
   }
 }
 extension type AnimationEventInit._(JSObject _) implements EventInit, JSObject {
-  factory AnimationEventInit({
+  AnimationEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
     String? animationName,
     num? elapsedTime,
     String? pseudoElement,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get animationName {
     unsupportedPlatformError();

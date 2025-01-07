@@ -31,12 +31,10 @@ typedef BinaryType = String;
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket).
 extension type WebSocket._(JSObject _) implements EventTarget, JSObject {
-  factory WebSocket(
+  WebSocket(
     String url, [
     JSAny? protocols,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   static const int CONNECTING = 0;
 
@@ -174,12 +172,10 @@ extension type WebSocket._(JSObject _) implements EventTarget, JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CloseEvent).
 extension type CloseEvent._(JSObject _) implements Event, JSObject {
-  factory CloseEvent(
+  CloseEvent(
     String type, [
     CloseEventInit? eventInitDict,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The **`wasClean`** read-only property of the [CloseEvent] interface
   /// returns `true` if the connection closed cleanly.
@@ -204,16 +200,14 @@ extension type CloseEvent._(JSObject _) implements Event, JSObject {
   }
 }
 extension type CloseEventInit._(JSObject _) implements EventInit, JSObject {
-  factory CloseEventInit({
+  CloseEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
     bool? wasClean,
     int? code,
     String? reason,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   bool get wasClean {
     unsupportedPlatformError();

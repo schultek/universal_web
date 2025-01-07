@@ -324,12 +324,10 @@ extension type AuthenticatorAssertionResponse._(JSObject _)
   }
 }
 extension type PublicKeyCredentialParameters._(JSObject _) implements JSObject {
-  factory PublicKeyCredentialParameters({
+  PublicKeyCredentialParameters({
     required String type,
     required COSEAlgorithmIdentifier alg,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get type {
     unsupportedPlatformError();
@@ -360,7 +358,7 @@ extension type PublicKeyCredentialParameters._(JSObject _) implements JSObject {
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/PublicKeyCredentialCreationOptions).
 extension type PublicKeyCredentialCreationOptions._(JSObject _)
     implements JSObject {
-  factory PublicKeyCredentialCreationOptions({
+  PublicKeyCredentialCreationOptions({
     required PublicKeyCredentialRpEntity rp,
     required PublicKeyCredentialUserEntity user,
     required BufferSource challenge,
@@ -372,9 +370,7 @@ extension type PublicKeyCredentialCreationOptions._(JSObject _)
     String? attestation,
     JSArray<JSString>? attestationFormats,
     AuthenticationExtensionsClientInputs? extensions,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   PublicKeyCredentialRpEntity get rp {
     unsupportedPlatformError();
@@ -465,9 +461,7 @@ extension type PublicKeyCredentialCreationOptions._(JSObject _)
   }
 }
 extension type PublicKeyCredentialEntity._(JSObject _) implements JSObject {
-  factory PublicKeyCredentialEntity({required String name}) {
-    unsupportedPlatformError();
-  }
+  PublicKeyCredentialEntity({required String name}) : _ = JSObject();
 
   String get name {
     unsupportedPlatformError();
@@ -479,12 +473,10 @@ extension type PublicKeyCredentialEntity._(JSObject _) implements JSObject {
 }
 extension type PublicKeyCredentialRpEntity._(JSObject _)
     implements PublicKeyCredentialEntity, JSObject {
-  factory PublicKeyCredentialRpEntity({
+  PublicKeyCredentialRpEntity({
     required String name,
     String? id,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get id {
     unsupportedPlatformError();
@@ -496,13 +488,11 @@ extension type PublicKeyCredentialRpEntity._(JSObject _)
 }
 extension type PublicKeyCredentialUserEntity._(JSObject _)
     implements PublicKeyCredentialEntity, JSObject {
-  factory PublicKeyCredentialUserEntity({
+  PublicKeyCredentialUserEntity({
     required String name,
     required BufferSource id,
     required String displayName,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   BufferSource get id {
     unsupportedPlatformError();
@@ -522,14 +512,12 @@ extension type PublicKeyCredentialUserEntity._(JSObject _)
 }
 extension type AuthenticatorSelectionCriteria._(JSObject _)
     implements JSObject {
-  factory AuthenticatorSelectionCriteria({
+  AuthenticatorSelectionCriteria({
     String? authenticatorAttachment,
     String? residentKey,
     bool? requireResidentKey,
     String? userVerification,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get authenticatorAttachment {
     unsupportedPlatformError();
@@ -565,7 +553,7 @@ extension type AuthenticatorSelectionCriteria._(JSObject _)
 }
 extension type PublicKeyCredentialRequestOptions._(JSObject _)
     implements JSObject {
-  factory PublicKeyCredentialRequestOptions({
+  PublicKeyCredentialRequestOptions({
     required BufferSource challenge,
     int? timeout,
     String? rpId,
@@ -573,9 +561,7 @@ extension type PublicKeyCredentialRequestOptions._(JSObject _)
     String? userVerification,
     JSArray<JSString>? hints,
     AuthenticationExtensionsClientInputs? extensions,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   BufferSource get challenge {
     unsupportedPlatformError();
@@ -635,7 +621,7 @@ extension type PublicKeyCredentialRequestOptions._(JSObject _)
 }
 extension type AuthenticationExtensionsClientInputs._(JSObject _)
     implements JSObject {
-  factory AuthenticationExtensionsClientInputs({
+  AuthenticationExtensionsClientInputs({
     String? credentialProtectionPolicy,
     bool? enforceCredentialProtectionPolicy,
     JSArrayBuffer? credBlob,
@@ -651,9 +637,7 @@ extension type AuthenticationExtensionsClientInputs._(JSObject _)
     AuthenticationExtensionsLargeBlobInputs? largeBlob,
     bool? uvm,
     AuthenticationExtensionsSupplementalPubKeysInputs? supplementalPubKeys,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get credentialProtectionPolicy {
     unsupportedPlatformError();
@@ -778,7 +762,7 @@ extension type AuthenticationExtensionsClientInputs._(JSObject _)
 }
 extension type AuthenticationExtensionsClientOutputs._(JSObject _)
     implements JSObject {
-  factory AuthenticationExtensionsClientOutputs({
+  AuthenticationExtensionsClientOutputs({
     bool? hmacCreateSecret,
     HMACGetSecretOutput? hmacGetSecret,
     bool? appid,
@@ -788,9 +772,7 @@ extension type AuthenticationExtensionsClientOutputs._(JSObject _)
     AuthenticationExtensionsLargeBlobOutputs? largeBlob,
     UvmEntries? uvm,
     AuthenticationExtensionsSupplementalPubKeysOutputs? supplementalPubKeys,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   bool get hmacCreateSecret {
     unsupportedPlatformError();
@@ -866,13 +848,11 @@ extension type AuthenticationExtensionsClientOutputs._(JSObject _)
   }
 }
 extension type PublicKeyCredentialDescriptor._(JSObject _) implements JSObject {
-  factory PublicKeyCredentialDescriptor({
+  PublicKeyCredentialDescriptor({
     required String type,
     required BufferSource id,
     JSArray<JSString>? transports,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get type {
     unsupportedPlatformError();
@@ -899,12 +879,10 @@ extension type PublicKeyCredentialDescriptor._(JSObject _) implements JSObject {
   }
 }
 extension type CredentialPropertiesOutput._(JSObject _) implements JSObject {
-  factory CredentialPropertiesOutput({
+  CredentialPropertiesOutput({
     bool? rk,
     String? authenticatorDisplayName,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   bool get rk {
     unsupportedPlatformError();
@@ -924,12 +902,10 @@ extension type CredentialPropertiesOutput._(JSObject _) implements JSObject {
 }
 extension type AuthenticationExtensionsPRFValues._(JSObject _)
     implements JSObject {
-  factory AuthenticationExtensionsPRFValues({
+  AuthenticationExtensionsPRFValues({
     required BufferSource first,
     BufferSource? second,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   BufferSource get first {
     unsupportedPlatformError();
@@ -949,12 +925,10 @@ extension type AuthenticationExtensionsPRFValues._(JSObject _)
 }
 extension type AuthenticationExtensionsPRFInputs._(JSObject _)
     implements JSObject {
-  factory AuthenticationExtensionsPRFInputs({
+  AuthenticationExtensionsPRFInputs({
     AuthenticationExtensionsPRFValues? eval,
     JSObject? evalByCredential,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   AuthenticationExtensionsPRFValues get eval {
     unsupportedPlatformError();
@@ -974,12 +948,10 @@ extension type AuthenticationExtensionsPRFInputs._(JSObject _)
 }
 extension type AuthenticationExtensionsPRFOutputs._(JSObject _)
     implements JSObject {
-  factory AuthenticationExtensionsPRFOutputs({
+  AuthenticationExtensionsPRFOutputs({
     bool? enabled,
     AuthenticationExtensionsPRFValues? results,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   bool get enabled {
     unsupportedPlatformError();
@@ -999,13 +971,11 @@ extension type AuthenticationExtensionsPRFOutputs._(JSObject _)
 }
 extension type AuthenticationExtensionsLargeBlobInputs._(JSObject _)
     implements JSObject {
-  factory AuthenticationExtensionsLargeBlobInputs({
+  AuthenticationExtensionsLargeBlobInputs({
     String? support,
     bool? read,
     BufferSource? write,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get support {
     unsupportedPlatformError();
@@ -1033,13 +1003,11 @@ extension type AuthenticationExtensionsLargeBlobInputs._(JSObject _)
 }
 extension type AuthenticationExtensionsLargeBlobOutputs._(JSObject _)
     implements JSObject {
-  factory AuthenticationExtensionsLargeBlobOutputs({
+  AuthenticationExtensionsLargeBlobOutputs({
     bool? supported,
     JSArrayBuffer? blob,
     bool? written,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   bool get supported {
     unsupportedPlatformError();
@@ -1067,13 +1035,11 @@ extension type AuthenticationExtensionsLargeBlobOutputs._(JSObject _)
 }
 extension type AuthenticationExtensionsSupplementalPubKeysInputs._(JSObject _)
     implements JSObject {
-  factory AuthenticationExtensionsSupplementalPubKeysInputs({
+  AuthenticationExtensionsSupplementalPubKeysInputs({
     required JSArray<JSString> scopes,
     String? attestation,
     JSArray<JSString>? attestationFormats,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   JSArray<JSString> get scopes {
     unsupportedPlatformError();
@@ -1101,10 +1067,9 @@ extension type AuthenticationExtensionsSupplementalPubKeysInputs._(JSObject _)
 }
 extension type AuthenticationExtensionsSupplementalPubKeysOutputs._(JSObject _)
     implements JSObject {
-  factory AuthenticationExtensionsSupplementalPubKeysOutputs(
-      {required JSArray<JSArrayBuffer> signatures}) {
-    unsupportedPlatformError();
-  }
+  AuthenticationExtensionsSupplementalPubKeysOutputs(
+      {required JSArray<JSArrayBuffer> signatures})
+      : _ = JSObject();
 
   JSArray<JSArrayBuffer> get signatures {
     unsupportedPlatformError();

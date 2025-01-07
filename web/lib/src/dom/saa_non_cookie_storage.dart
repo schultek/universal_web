@@ -101,14 +101,12 @@ extension type StorageAccessHandle._(JSObject _) implements JSObject {
 }
 extension type SharedWorkerOptions._(JSObject _)
     implements WorkerOptions, JSObject {
-  factory SharedWorkerOptions({
+  SharedWorkerOptions({
     WorkerType? type,
     RequestCredentials? credentials,
     String? name,
     SameSiteCookiesType? sameSiteCookies,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   SameSiteCookiesType get sameSiteCookies {
     unsupportedPlatformError();

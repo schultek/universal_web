@@ -959,7 +959,8 @@ class Translator {
     return generator(requiredParameters, optionalParameters);
   }
 
-  code.Constructor _constructor(_OverridableConstructor constructor) =>
+  code.Constructor _constructor(_OverridableConstructor constructor,
+          String representationFieldName) =>
       _overridableMember<code.Constructor>(
           constructor,
           (requiredParameters, optionalParameters) => code.Constructor((b) => b
@@ -967,10 +968,14 @@ class Translator {
             // TODO(srujzs): Should we generate generative or factory
             // constructors? With `@staticInterop`, factories were needed, but
             // extension types have no such limitation.
-            ..factory = true
+            //..factory = true
             ..requiredParameters.addAll(requiredParameters)
             ..optionalParameters.addAll(optionalParameters)
-            ..body = unsupportedBody));
+            ..initializers.add(code
+                .refer(representationFieldName)
+                .assign(
+                    code.refer('JSObject', _urlForType('JSObject')).call([]))
+                .code)));
 
   // TODO(srujzs): We don't need constructors for many dictionaries as they're
   // only ever returned from APIs instead of passed to them. However,
@@ -1021,8 +1026,11 @@ class Translator {
         // TODO(srujzs): Should we generate generative or factory constructors?
         // With `@staticInterop`, factories were needed, but extension types
         // have no such limitation.
-        ..factory = true
-        ..body = unsupportedBody);
+        //..factory = true
+        ..initializers.add(code
+            .refer(representationFieldName)
+            .assign(code.refer('JSObject', _urlForType('JSObject')).call([]))
+            .code));
     }
   }
 
@@ -1321,7 +1329,7 @@ class Translator {
       ..constructors.addAll((isObjectLiteral
               ? [_objectLiteral(jsName, representationFieldName)]
               : constructor != null
-                  ? [_constructor(constructor)]
+                  ? [_constructor(constructor, representationFieldName)]
                   : <code.Constructor>[])
           .followedBy(_elementConstructors(
               jsName, dartClassName, representationFieldName)))

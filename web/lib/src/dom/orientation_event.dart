@@ -23,12 +23,10 @@ import 'dom.dart';
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/DeviceOrientationEvent).
 extension type DeviceOrientationEvent._(JSObject _) implements Event, JSObject {
-  factory DeviceOrientationEvent(
+  DeviceOrientationEvent(
     String type, [
     DeviceOrientationEventInit? eventInitDict,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The **`alpha`** read-only property of the [DeviceOrientationEvent]
   /// interface returns the rotation of the device around the Z axis; that is,
@@ -80,7 +78,7 @@ extension type DeviceOrientationEvent._(JSObject _) implements Event, JSObject {
 }
 extension type DeviceOrientationEventInit._(JSObject _)
     implements EventInit, JSObject {
-  factory DeviceOrientationEventInit({
+  DeviceOrientationEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
@@ -88,9 +86,7 @@ extension type DeviceOrientationEventInit._(JSObject _)
     num? beta,
     num? gamma,
     bool? absolute,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   double? get alpha {
     unsupportedPlatformError();
@@ -205,12 +201,10 @@ extension type DeviceMotionEventRotationRate._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/DeviceMotionEvent).
 extension type DeviceMotionEvent._(JSObject _) implements Event, JSObject {
-  factory DeviceMotionEvent(
+  DeviceMotionEvent(
     String type, [
     DeviceMotionEventInit? eventInitDict,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The **`acceleration`** read-only property of the [DeviceMotionEvent]
   /// interface returns the amount of acceleration recorded by
@@ -282,13 +276,11 @@ extension type DeviceMotionEvent._(JSObject _) implements Event, JSObject {
 }
 extension type DeviceMotionEventAccelerationInit._(JSObject _)
     implements JSObject {
-  factory DeviceMotionEventAccelerationInit({
+  DeviceMotionEventAccelerationInit({
     num? x,
     num? y,
     num? z,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   double? get x {
     unsupportedPlatformError();
@@ -316,13 +308,11 @@ extension type DeviceMotionEventAccelerationInit._(JSObject _)
 }
 extension type DeviceMotionEventRotationRateInit._(JSObject _)
     implements JSObject {
-  factory DeviceMotionEventRotationRateInit({
+  DeviceMotionEventRotationRateInit({
     num? alpha,
     num? beta,
     num? gamma,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   double? get alpha {
     unsupportedPlatformError();
@@ -350,7 +340,7 @@ extension type DeviceMotionEventRotationRateInit._(JSObject _)
 }
 extension type DeviceMotionEventInit._(JSObject _)
     implements EventInit, JSObject {
-  factory DeviceMotionEventInit({
+  DeviceMotionEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
@@ -358,9 +348,7 @@ extension type DeviceMotionEventInit._(JSObject _)
     DeviceMotionEventAccelerationInit? accelerationIncludingGravity,
     DeviceMotionEventRotationRateInit? rotationRate,
     num? interval,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   DeviceMotionEventAccelerationInit get acceleration {
     unsupportedPlatformError();

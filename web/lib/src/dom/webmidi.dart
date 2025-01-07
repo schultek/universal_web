@@ -20,12 +20,10 @@ typedef MIDIPortType = String;
 typedef MIDIPortDeviceState = String;
 typedef MIDIPortConnectionState = String;
 extension type MIDIOptions._(JSObject _) implements JSObject {
-  factory MIDIOptions({
+  MIDIOptions({
     bool? sysex,
     bool? software,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   bool get sysex {
     unsupportedPlatformError();
@@ -253,12 +251,10 @@ extension type MIDIOutput._(JSObject _) implements MIDIPort, JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MIDIMessageEvent).
 extension type MIDIMessageEvent._(JSObject _) implements Event, JSObject {
-  factory MIDIMessageEvent(
+  MIDIMessageEvent(
     String type, [
     MIDIMessageEventInit? eventInitDict,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The **`data`** read-only property of the [MIDIMessageEvent] interface
   /// returns the MIDI data bytes of a single MIDI message.
@@ -268,14 +264,12 @@ extension type MIDIMessageEvent._(JSObject _) implements Event, JSObject {
 }
 extension type MIDIMessageEventInit._(JSObject _)
     implements EventInit, JSObject {
-  factory MIDIMessageEventInit({
+  MIDIMessageEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
     JSUint8Array? data,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   JSUint8Array get data {
     unsupportedPlatformError();
@@ -300,12 +294,10 @@ extension type MIDIMessageEventInit._(JSObject _)
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MIDIConnectionEvent).
 extension type MIDIConnectionEvent._(JSObject _) implements Event, JSObject {
-  factory MIDIConnectionEvent(
+  MIDIConnectionEvent(
     String type, [
     MIDIConnectionEventInit? eventInitDict,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The **`port`** read-only property of the [MIDIConnectionEvent] interface
   /// returns the port that has been disconnected or connected.
@@ -315,14 +307,12 @@ extension type MIDIConnectionEvent._(JSObject _) implements Event, JSObject {
 }
 extension type MIDIConnectionEventInit._(JSObject _)
     implements EventInit, JSObject {
-  factory MIDIConnectionEventInit({
+  MIDIConnectionEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
     MIDIPort? port,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   MIDIPort get port {
     unsupportedPlatformError();

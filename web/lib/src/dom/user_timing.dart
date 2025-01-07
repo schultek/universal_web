@@ -16,12 +16,10 @@ import 'hr_time.dart';
 import 'performance_timeline.dart';
 
 extension type PerformanceMarkOptions._(JSObject _) implements JSObject {
-  factory PerformanceMarkOptions({
+  PerformanceMarkOptions({
     JSAny? detail,
     DOMHighResTimeStamp? startTime,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   JSAny? get detail {
     unsupportedPlatformError();
@@ -40,14 +38,12 @@ extension type PerformanceMarkOptions._(JSObject _) implements JSObject {
   }
 }
 extension type PerformanceMeasureOptions._(JSObject _) implements JSObject {
-  factory PerformanceMeasureOptions({
+  PerformanceMeasureOptions({
     JSAny? detail,
     JSAny? start,
     DOMHighResTimeStamp? duration,
     JSAny? end,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   JSAny? get detail {
     unsupportedPlatformError();
@@ -96,12 +92,10 @@ extension type PerformanceMeasureOptions._(JSObject _) implements JSObject {
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceMark).
 extension type PerformanceMark._(JSObject _)
     implements PerformanceEntry, JSObject {
-  factory PerformanceMark(
+  PerformanceMark(
     String markName, [
     PerformanceMarkOptions? markOptions,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The read-only **`detail`** property returns arbitrary metadata that was
   /// included in the mark upon construction (either when using

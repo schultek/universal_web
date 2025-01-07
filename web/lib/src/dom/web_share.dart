@@ -15,14 +15,12 @@ import '../js_interop.dart';
 import 'fileapi.dart';
 
 extension type ShareData._(JSObject _) implements JSObject {
-  factory ShareData({
+  ShareData({
     JSArray<File>? files,
     String? title,
     String? text,
     String? url,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   JSArray<File> get files {
     unsupportedPlatformError();

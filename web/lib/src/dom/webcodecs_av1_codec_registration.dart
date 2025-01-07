@@ -15,9 +15,7 @@ import '../js_interop.dart';
 
 extension type VideoEncoderEncodeOptionsForAv1._(JSObject _)
     implements JSObject {
-  factory VideoEncoderEncodeOptionsForAv1({int? quantizer}) {
-    unsupportedPlatformError();
-  }
+  VideoEncoderEncodeOptionsForAv1({int? quantizer}) : _ = JSObject();
 
   int? get quantizer {
     unsupportedPlatformError();

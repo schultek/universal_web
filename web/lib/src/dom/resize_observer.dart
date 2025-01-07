@@ -18,9 +18,7 @@ import 'geometry.dart';
 typedef ResizeObserverCallback = JSFunction;
 typedef ResizeObserverBoxOptions = String;
 extension type ResizeObserverOptions._(JSObject _) implements JSObject {
-  factory ResizeObserverOptions({ResizeObserverBoxOptions? box}) {
-    unsupportedPlatformError();
-  }
+  ResizeObserverOptions({ResizeObserverBoxOptions? box}) : _ = JSObject();
 
   ResizeObserverBoxOptions get box {
     unsupportedPlatformError();
@@ -45,9 +43,7 @@ extension type ResizeObserverOptions._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver).
 extension type ResizeObserver._(JSObject _) implements JSObject {
-  factory ResizeObserver(ResizeObserverCallback callback) {
-    unsupportedPlatformError();
-  }
+  ResizeObserver(ResizeObserverCallback callback) : _ = JSObject();
 
   /// The **`observe()`** method of the
   /// [ResizeObserver] interface starts observing the specified

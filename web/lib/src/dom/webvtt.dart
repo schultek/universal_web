@@ -32,13 +32,11 @@ typedef ScrollSetting = String;
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/VTTCue).
 extension type VTTCue._(JSObject _) implements TextTrackCue, JSObject {
-  factory VTTCue(
+  VTTCue(
     num startTime,
     num endTime,
     String text,
-  ) {
-    unsupportedPlatformError();
-  }
+  ) : _ = JSObject();
 
   /// The **`getCueAsHTML()`** method of the [VTTCue] interface returns a
   /// [DocumentFragment] containing the cue content.
@@ -157,9 +155,7 @@ extension type VTTCue._(JSObject _) implements TextTrackCue, JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/VTTRegion).
 extension type VTTRegion._(JSObject _) implements JSObject {
-  factory VTTRegion() {
-    unsupportedPlatformError();
-  }
+  VTTRegion() : _ = JSObject();
 
   String get id {
     unsupportedPlatformError();

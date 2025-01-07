@@ -903,14 +903,12 @@ extension SVGElementExtension on SVGElement {
 }
 
 extension type SVGBoundingBoxOptions._(JSObject _) implements JSObject {
-  factory SVGBoundingBoxOptions({
+  SVGBoundingBoxOptions({
     bool? fill,
     bool? stroke,
     bool? markers,
     bool? clipped,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   bool get fill {
     unsupportedPlatformError();

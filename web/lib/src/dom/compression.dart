@@ -24,9 +24,7 @@ typedef CompressionFormat = String;
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CompressionStream).
 extension type CompressionStream._(JSObject _) implements JSObject {
-  factory CompressionStream(CompressionFormat format) {
-    unsupportedPlatformError();
-  }
+  CompressionStream(CompressionFormat format) : _ = JSObject();
 
   /// The **`readable`** read-only property of the [CompressionStream] interface
   /// returns a [ReadableStream].
@@ -49,9 +47,7 @@ extension type CompressionStream._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/DecompressionStream).
 extension type DecompressionStream._(JSObject _) implements JSObject {
-  factory DecompressionStream(CompressionFormat format) {
-    unsupportedPlatformError();
-  }
+  DecompressionStream(CompressionFormat format) : _ = JSObject();
 
   /// The **`readable`** read-only property of the [DecompressionStream]
   /// interface returns a [ReadableStream].

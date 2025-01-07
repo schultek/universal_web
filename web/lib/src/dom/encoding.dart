@@ -16,12 +16,10 @@ import 'streams.dart';
 import 'webidl.dart';
 
 extension type TextDecoderOptions._(JSObject _) implements JSObject {
-  factory TextDecoderOptions({
+  TextDecoderOptions({
     bool? fatal,
     bool? ignoreBOM,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   bool get fatal {
     unsupportedPlatformError();
@@ -40,9 +38,7 @@ extension type TextDecoderOptions._(JSObject _) implements JSObject {
   }
 }
 extension type TextDecodeOptions._(JSObject _) implements JSObject {
-  factory TextDecodeOptions({bool? stream}) {
-    unsupportedPlatformError();
-  }
+  TextDecodeOptions({bool? stream}) : _ = JSObject();
 
   bool get stream {
     unsupportedPlatformError();
@@ -62,12 +58,10 @@ extension type TextDecodeOptions._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder).
 extension type TextDecoder._(JSObject _) implements JSObject {
-  factory TextDecoder([
+  TextDecoder([
     String? label,
     TextDecoderOptions? options,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The **`TextDecoder.decode()`** method returns a string containing text
   /// decoded from the buffer passed as a parameter.
@@ -115,12 +109,10 @@ extension type TextDecoder._(JSObject _) implements JSObject {
   }
 }
 extension type TextEncoderEncodeIntoResult._(JSObject _) implements JSObject {
-  factory TextEncoderEncodeIntoResult({
+  TextEncoderEncodeIntoResult({
     int? read,
     int? written,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   int get read {
     unsupportedPlatformError();
@@ -147,9 +139,7 @@ extension type TextEncoderEncodeIntoResult._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/TextEncoder).
 extension type TextEncoder._(JSObject _) implements JSObject {
-  factory TextEncoder() {
-    unsupportedPlatformError();
-  }
+  TextEncoder() : _ = JSObject();
 
   /// The **`TextEncoder.encode()`** method takes a string as input, and returns
   /// a `Uint8Array` containing the text given in parameters encoded with the
@@ -191,12 +181,10 @@ extension type TextEncoder._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoderStream).
 extension type TextDecoderStream._(JSObject _) implements JSObject {
-  factory TextDecoderStream([
+  TextDecoderStream([
     String? label,
     TextDecoderOptions? options,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The **`encoding`** read-only property of the [TextDecoderStream] interface
   /// returns a string containing the name of the encoding algorithm used by the
@@ -253,9 +241,7 @@ extension type TextDecoderStream._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/TextEncoderStream).
 extension type TextEncoderStream._(JSObject _) implements JSObject {
-  factory TextEncoderStream() {
-    unsupportedPlatformError();
-  }
+  TextEncoderStream() : _ = JSObject();
 
   /// The **`encoding`** read-only property of the [TextEncoderStream] interface
   /// returns a

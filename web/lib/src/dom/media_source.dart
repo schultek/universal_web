@@ -30,9 +30,7 @@ typedef AppendMode = String;
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MediaSource).
 extension type MediaSource._(JSObject _) implements EventTarget, JSObject {
-  factory MediaSource() {
-    unsupportedPlatformError();
-  }
+  MediaSource() : _ = JSObject();
 
   /// The **`MediaSource.isTypeSupported()`** static method returns a boolean
   /// value which is `true` if the given MIME type and (optional) codec are

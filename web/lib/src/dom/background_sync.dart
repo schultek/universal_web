@@ -52,12 +52,10 @@ extension type SyncManager._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SyncEvent).
 extension type SyncEvent._(JSObject _) implements ExtendableEvent, JSObject {
-  factory SyncEvent(
+  SyncEvent(
     String type,
     SyncEventInit init,
-  ) {
-    unsupportedPlatformError();
-  }
+  ) : _ = JSObject();
 
   /// @AvailableInWorkers("service")
   ///
@@ -83,15 +81,13 @@ extension type SyncEvent._(JSObject _) implements ExtendableEvent, JSObject {
 }
 extension type SyncEventInit._(JSObject _)
     implements ExtendableEventInit, JSObject {
-  factory SyncEventInit({
+  SyncEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
     required String tag,
     bool? lastChance,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get tag {
     unsupportedPlatformError();

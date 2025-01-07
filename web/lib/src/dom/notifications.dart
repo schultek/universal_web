@@ -34,12 +34,10 @@ typedef NotificationDirection = String;
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Notification).
 extension type Notification._(JSObject _) implements EventTarget, JSObject {
-  factory Notification(
+  Notification(
     String title, [
     NotificationOptions? options,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The **`requestPermission()`** static method of the [Notification]
   /// interface requests permission from the user for the current origin to
@@ -216,7 +214,7 @@ extension type Notification._(JSObject _) implements EventTarget, JSObject {
   }
 }
 extension type NotificationOptions._(JSObject _) implements JSObject {
-  factory NotificationOptions({
+  NotificationOptions({
     NotificationDirection? dir,
     String? lang,
     String? body,
@@ -231,9 +229,7 @@ extension type NotificationOptions._(JSObject _) implements JSObject {
     bool? requireInteraction,
     JSAny? data,
     JSArray<NotificationAction>? actions,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   NotificationDirection get dir {
     unsupportedPlatformError();
@@ -348,13 +344,11 @@ extension type NotificationOptions._(JSObject _) implements JSObject {
   }
 }
 extension type NotificationAction._(JSObject _) implements JSObject {
-  factory NotificationAction({
+  NotificationAction({
     required String action,
     required String title,
     String? icon,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get action {
     unsupportedPlatformError();
@@ -381,9 +375,7 @@ extension type NotificationAction._(JSObject _) implements JSObject {
   }
 }
 extension type GetNotificationOptions._(JSObject _) implements JSObject {
-  factory GetNotificationOptions({String? tag}) {
-    unsupportedPlatformError();
-  }
+  GetNotificationOptions({String? tag}) : _ = JSObject();
 
   String get tag {
     unsupportedPlatformError();
@@ -413,12 +405,10 @@ extension type GetNotificationOptions._(JSObject _) implements JSObject {
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/NotificationEvent).
 extension type NotificationEvent._(JSObject _)
     implements ExtendableEvent, JSObject {
-  factory NotificationEvent(
+  NotificationEvent(
     String type,
     NotificationEventInit eventInitDict,
-  ) {
-    unsupportedPlatformError();
-  }
+  ) : _ = JSObject();
 
   /// @AvailableInWorkers("service")
   ///
@@ -447,15 +437,13 @@ extension type NotificationEvent._(JSObject _)
 }
 extension type NotificationEventInit._(JSObject _)
     implements ExtendableEventInit, JSObject {
-  factory NotificationEventInit({
+  NotificationEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
     required Notification notification,
     String? action,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   Notification get notification {
     unsupportedPlatformError();

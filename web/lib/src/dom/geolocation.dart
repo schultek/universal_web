@@ -65,13 +65,11 @@ extension type Geolocation._(JSObject _) implements JSObject {
   }
 }
 extension type PositionOptions._(JSObject _) implements JSObject {
-  factory PositionOptions({
+  PositionOptions({
     bool? enableHighAccuracy,
     int? timeout,
     int? maximumAge,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   bool get enableHighAccuracy {
     unsupportedPlatformError();

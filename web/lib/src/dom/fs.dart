@@ -57,9 +57,7 @@ extension type FileSystemHandle._(JSObject _) implements JSObject {
 }
 extension type FileSystemCreateWritableOptions._(JSObject _)
     implements JSObject {
-  factory FileSystemCreateWritableOptions({bool? keepExistingData}) {
-    unsupportedPlatformError();
-  }
+  FileSystemCreateWritableOptions({bool? keepExistingData}) : _ = JSObject();
 
   bool get keepExistingData {
     unsupportedPlatformError();
@@ -134,9 +132,7 @@ extension type FileSystemFileHandle._(JSObject _)
   }
 }
 extension type FileSystemGetFileOptions._(JSObject _) implements JSObject {
-  factory FileSystemGetFileOptions({bool? create}) {
-    unsupportedPlatformError();
-  }
+  FileSystemGetFileOptions({bool? create}) : _ = JSObject();
 
   bool get create {
     unsupportedPlatformError();
@@ -147,9 +143,7 @@ extension type FileSystemGetFileOptions._(JSObject _) implements JSObject {
   }
 }
 extension type FileSystemGetDirectoryOptions._(JSObject _) implements JSObject {
-  factory FileSystemGetDirectoryOptions({bool? create}) {
-    unsupportedPlatformError();
-  }
+  FileSystemGetDirectoryOptions({bool? create}) : _ = JSObject();
 
   bool get create {
     unsupportedPlatformError();
@@ -160,9 +154,7 @@ extension type FileSystemGetDirectoryOptions._(JSObject _) implements JSObject {
   }
 }
 extension type FileSystemRemoveOptions._(JSObject _) implements JSObject {
-  factory FileSystemRemoveOptions({bool? recursive}) {
-    unsupportedPlatformError();
-  }
+  FileSystemRemoveOptions({bool? recursive}) : _ = JSObject();
 
   bool get recursive {
     unsupportedPlatformError();
@@ -228,14 +220,12 @@ extension type FileSystemDirectoryHandle._(JSObject _)
   }
 }
 extension type WriteParams._(JSObject _) implements JSObject {
-  factory WriteParams({
+  WriteParams({
     required WriteCommandType type,
     int? size,
     int? position,
     JSAny? data,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   WriteCommandType get type {
     unsupportedPlatformError();
@@ -321,9 +311,7 @@ extension type FileSystemWritableFileStream._(JSObject _)
   }
 }
 extension type FileSystemReadWriteOptions._(JSObject _) implements JSObject {
-  factory FileSystemReadWriteOptions({int? at}) {
-    unsupportedPlatformError();
-  }
+  FileSystemReadWriteOptions({int? at}) : _ = JSObject();
 
   int get at {
     unsupportedPlatformError();

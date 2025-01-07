@@ -138,12 +138,10 @@ extension type WebTransportDatagramDuplexStream._(JSObject _)
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport).
 extension type WebTransport._(JSObject _) implements JSObject {
-  factory WebTransport(
+  WebTransport(
     String url, [
     WebTransportOptions? options,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The **`close()`** method of the [WebTransport] interface closes an ongoing
   /// WebTransport session.
@@ -256,12 +254,10 @@ extension type WebTransport._(JSObject _) implements JSObject {
   }
 }
 extension type WebTransportHash._(JSObject _) implements JSObject {
-  factory WebTransportHash({
+  WebTransportHash({
     String? algorithm,
     BufferSource? value,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get algorithm {
     unsupportedPlatformError();
@@ -280,16 +276,14 @@ extension type WebTransportHash._(JSObject _) implements JSObject {
   }
 }
 extension type WebTransportOptions._(JSObject _) implements JSObject {
-  factory WebTransportOptions({
+  WebTransportOptions({
     bool? allowPooling,
     bool? requireUnreliable,
     JSArray<WebTransportHash>? serverCertificateHashes,
     WebTransportCongestionControl? congestionControl,
     int? anticipatedConcurrentIncomingUnidirectionalStreams,
     int? anticipatedConcurrentIncomingBidirectionalStreams,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   bool get allowPooling {
     unsupportedPlatformError();
@@ -340,12 +334,10 @@ extension type WebTransportOptions._(JSObject _) implements JSObject {
   }
 }
 extension type WebTransportCloseInfo._(JSObject _) implements JSObject {
-  factory WebTransportCloseInfo({
+  WebTransportCloseInfo({
     int? closeCode,
     String? reason,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   int get closeCode {
     unsupportedPlatformError();
@@ -364,13 +356,11 @@ extension type WebTransportCloseInfo._(JSObject _) implements JSObject {
   }
 }
 extension type WebTransportSendStreamOptions._(JSObject _) implements JSObject {
-  factory WebTransportSendStreamOptions({
+  WebTransportSendStreamOptions({
     JSObject? sendGroup,
     int? sendOrder,
     bool? waitUntilAvailable,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   JSObject? get sendGroup {
     unsupportedPlatformError();
@@ -436,12 +426,10 @@ extension type WebTransportBidirectionalStream._(JSObject _)
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WebTransportError).
 extension type WebTransportError._(JSObject _)
     implements DOMException, JSObject {
-  factory WebTransportError([
+  WebTransportError([
     String? message,
     WebTransportErrorOptions? options,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The **`source`** read-only property of the [WebTransportError] interface
   /// returns an enumerated value indicating the source of the error.
@@ -457,12 +445,10 @@ extension type WebTransportError._(JSObject _)
   }
 }
 extension type WebTransportErrorOptions._(JSObject _) implements JSObject {
-  factory WebTransportErrorOptions({
+  WebTransportErrorOptions({
     WebTransportErrorSource? source,
     int? streamErrorCode,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   WebTransportErrorSource get source {
     unsupportedPlatformError();

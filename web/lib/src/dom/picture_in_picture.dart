@@ -60,12 +60,10 @@ extension type PictureInPictureWindow._(JSObject _)
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/PictureInPictureEvent).
 extension type PictureInPictureEvent._(JSObject _) implements Event, JSObject {
-  factory PictureInPictureEvent(
+  PictureInPictureEvent(
     String type,
     PictureInPictureEventInit eventInitDict,
-  ) {
-    unsupportedPlatformError();
-  }
+  ) : _ = JSObject();
 
   /// The read-only **`pictureInPictureWindow`** property of the
   /// [PictureInPictureEvent] interface returns the [PictureInPictureWindow] the
@@ -76,14 +74,12 @@ extension type PictureInPictureEvent._(JSObject _) implements Event, JSObject {
 }
 extension type PictureInPictureEventInit._(JSObject _)
     implements EventInit, JSObject {
-  factory PictureInPictureEventInit({
+  PictureInPictureEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
     required PictureInPictureWindow pictureInPictureWindow,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   PictureInPictureWindow get pictureInPictureWindow {
     unsupportedPlatformError();

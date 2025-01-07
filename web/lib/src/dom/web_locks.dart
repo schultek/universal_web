@@ -75,14 +75,12 @@ extension type LockManager._(JSObject _) implements JSObject {
   }
 }
 extension type LockOptions._(JSObject _) implements JSObject {
-  factory LockOptions({
+  LockOptions({
     LockMode? mode,
     bool? ifAvailable,
     bool? steal,
     AbortSignal? signal,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   LockMode get mode {
     unsupportedPlatformError();
@@ -117,12 +115,10 @@ extension type LockOptions._(JSObject _) implements JSObject {
   }
 }
 extension type LockManagerSnapshot._(JSObject _) implements JSObject {
-  factory LockManagerSnapshot({
+  LockManagerSnapshot({
     JSArray<LockInfo>? held,
     JSArray<LockInfo>? pending,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   JSArray<LockInfo> get held {
     unsupportedPlatformError();
@@ -141,13 +137,11 @@ extension type LockManagerSnapshot._(JSObject _) implements JSObject {
   }
 }
 extension type LockInfo._(JSObject _) implements JSObject {
-  factory LockInfo({
+  LockInfo({
     String? name,
     LockMode? mode,
     String? clientId,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get name {
     unsupportedPlatformError();

@@ -36,17 +36,13 @@ typedef SanitizerAttribute = JSAny;
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Sanitizer).
 extension type Sanitizer._(JSObject _) implements JSObject {
-  factory Sanitizer([SanitizerConfig? config]) {
-    unsupportedPlatformError();
-  }
+  Sanitizer([SanitizerConfig? config]) : _ = JSObject();
 }
 extension type SanitizerElementNamespace._(JSObject _) implements JSObject {
-  factory SanitizerElementNamespace({
+  SanitizerElementNamespace({
     required String name,
     String? namespace,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get name {
     unsupportedPlatformError();
@@ -66,14 +62,12 @@ extension type SanitizerElementNamespace._(JSObject _) implements JSObject {
 }
 extension type SanitizerElementNamespaceWithAttributes._(JSObject _)
     implements SanitizerElementNamespace, JSObject {
-  factory SanitizerElementNamespaceWithAttributes({
+  SanitizerElementNamespaceWithAttributes({
     required String name,
     String? namespace,
     JSArray<SanitizerAttribute>? attributes,
     JSArray<SanitizerAttribute>? removeAttributes,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   JSArray<SanitizerAttribute> get attributes {
     unsupportedPlatformError();
@@ -92,12 +86,10 @@ extension type SanitizerElementNamespaceWithAttributes._(JSObject _)
   }
 }
 extension type SanitizerAttributeNamespace._(JSObject _) implements JSObject {
-  factory SanitizerAttributeNamespace({
+  SanitizerAttributeNamespace({
     required String name,
     String? namespace,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get name {
     unsupportedPlatformError();
@@ -116,7 +108,7 @@ extension type SanitizerAttributeNamespace._(JSObject _) implements JSObject {
   }
 }
 extension type SanitizerConfig._(JSObject _) implements JSObject {
-  factory SanitizerConfig({
+  SanitizerConfig({
     JSArray<SanitizerElementWithAttributes>? elements,
     JSArray<SanitizerElement>? removeElements,
     JSArray<SanitizerElement>? replaceWithChildrenElements,
@@ -124,9 +116,7 @@ extension type SanitizerConfig._(JSObject _) implements JSObject {
     JSArray<SanitizerAttribute>? removeAttributes,
     bool? comments,
     bool? dataAttributes,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   JSArray<SanitizerElementWithAttributes> get elements {
     unsupportedPlatformError();

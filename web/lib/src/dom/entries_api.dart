@@ -157,12 +157,10 @@ extension type FileSystemDirectoryEntry._(JSObject _)
   }
 }
 extension type FileSystemFlags._(JSObject _) implements JSObject {
-  factory FileSystemFlags({
+  FileSystemFlags({
     bool? create,
     bool? exclusive,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   bool get create {
     unsupportedPlatformError();

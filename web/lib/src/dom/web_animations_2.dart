@@ -17,12 +17,10 @@ import 'dom.dart';
 
 typedef IterationCompositeOperation = String;
 extension type TimelineRangeOffset._(JSObject _) implements JSObject {
-  factory TimelineRangeOffset({
+  TimelineRangeOffset({
     String? rangeName,
     CSSNumericValue? offset,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String? get rangeName {
     unsupportedPlatformError();
@@ -53,12 +51,10 @@ extension type TimelineRangeOffset._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/AnimationPlaybackEvent).
 extension type AnimationPlaybackEvent._(JSObject _) implements Event, JSObject {
-  factory AnimationPlaybackEvent(
+  AnimationPlaybackEvent(
     String type, [
     AnimationPlaybackEventInit? eventInitDict,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The **`currentTime`** read-only property of the [AnimationPlaybackEvent]
   /// interface represents the current time of the animation that generated the
@@ -79,15 +75,13 @@ extension type AnimationPlaybackEvent._(JSObject _) implements Event, JSObject {
 }
 extension type AnimationPlaybackEventInit._(JSObject _)
     implements EventInit, JSObject {
-  factory AnimationPlaybackEventInit({
+  AnimationPlaybackEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
     CSSNumberish? currentTime,
     CSSNumberish? timelineTime,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   CSSNumberish? get currentTime {
     unsupportedPlatformError();

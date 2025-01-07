@@ -224,16 +224,14 @@ extension type GamepadHapticActuator._(JSObject _) implements JSObject {
   }
 }
 extension type GamepadEffectParameters._(JSObject _) implements JSObject {
-  factory GamepadEffectParameters({
+  GamepadEffectParameters({
     int? duration,
     int? startDelay,
     num? strongMagnitude,
     num? weakMagnitude,
     num? leftTrigger,
     num? rightTrigger,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   int get duration {
     unsupportedPlatformError();
@@ -294,12 +292,10 @@ extension type GamepadEffectParameters._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/GamepadEvent).
 extension type GamepadEvent._(JSObject _) implements Event, JSObject {
-  factory GamepadEvent(
+  GamepadEvent(
     String type,
     GamepadEventInit eventInitDict,
-  ) {
-    unsupportedPlatformError();
-  }
+  ) : _ = JSObject();
 
   /// The **`GamepadEvent.gamepad`** property of the
   /// **[GamepadEvent] interface** returns a [Gamepad]
@@ -311,14 +307,12 @@ extension type GamepadEvent._(JSObject _) implements Event, JSObject {
   }
 }
 extension type GamepadEventInit._(JSObject _) implements EventInit, JSObject {
-  factory GamepadEventInit({
+  GamepadEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
     required Gamepad gamepad,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   Gamepad get gamepad {
     unsupportedPlatformError();

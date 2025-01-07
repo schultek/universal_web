@@ -154,9 +154,7 @@ extension type StylePropertyMap._(JSObject _)
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSUnparsedValue).
 extension type CSSUnparsedValue._(JSObject _)
     implements CSSStyleValue, JSObject {
-  factory CSSUnparsedValue(JSArray<CSSUnparsedSegment> members) {
-    unsupportedPlatformError();
-  }
+  CSSUnparsedValue(JSArray<CSSUnparsedSegment> members) : _ = JSObject();
 
   CSSUnparsedSegment operator [](int index) {
     unsupportedPlatformError();
@@ -187,12 +185,10 @@ extension type CSSUnparsedValue._(JSObject _)
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSVariableReferenceValue).
 extension type CSSVariableReferenceValue._(JSObject _) implements JSObject {
-  factory CSSVariableReferenceValue(
+  CSSVariableReferenceValue(
     String variable, [
     CSSUnparsedValue? fallback,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The **`variable`** property of the
   /// [CSSVariableReferenceValue] interface returns the
@@ -229,9 +225,7 @@ extension type CSSVariableReferenceValue._(JSObject _) implements JSObject {
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSKeywordValue).
 extension type CSSKeywordValue._(JSObject _)
     implements CSSStyleValue, JSObject {
-  factory CSSKeywordValue(String value) {
-    unsupportedPlatformError();
-  }
+  CSSKeywordValue(String value) : _ = JSObject();
 
   /// The **`value`** property of the
   /// [CSSKeywordValue] interface returns or sets the value of the
@@ -245,7 +239,7 @@ extension type CSSKeywordValue._(JSObject _)
   }
 }
 extension type CSSNumericType._(JSObject _) implements JSObject {
-  factory CSSNumericType({
+  CSSNumericType({
     int? length,
     int? angle,
     int? time,
@@ -254,9 +248,7 @@ extension type CSSNumericType._(JSObject _) implements JSObject {
     int? flex,
     int? percent,
     CSSNumericBaseType? percentHint,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   int get length {
     unsupportedPlatformError();
@@ -429,12 +421,10 @@ extension type CSSNumericValue._(JSObject _)
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSUnitValue).
 extension type CSSUnitValue._(JSObject _) implements CSSNumericValue, JSObject {
-  factory CSSUnitValue(
+  CSSUnitValue(
     num value,
     String unit,
-  ) {
-    unsupportedPlatformError();
-  }
+  ) : _ = JSObject();
 
   /// The **`CSSUnitValue.value`** property of the
   /// [CSSUnitValue] interface returns a double indicating the number of units.
@@ -526,9 +516,7 @@ extension type CSSMathProduct._(JSObject _) implements CSSMathValue, JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSMathNegate).
 extension type CSSMathNegate._(JSObject _) implements CSSMathValue, JSObject {
-  factory CSSMathNegate(CSSNumberish arg) {
-    unsupportedPlatformError();
-  }
+  CSSMathNegate(CSSNumberish arg) : _ = JSObject();
 
   /// The CSSMathNegate.value read-only property of the
   /// [CSSMathNegate] interface returns a [CSSNumericValue] object.
@@ -547,9 +535,7 @@ extension type CSSMathNegate._(JSObject _) implements CSSMathValue, JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSMathInvert).
 extension type CSSMathInvert._(JSObject _) implements CSSMathValue, JSObject {
-  factory CSSMathInvert(CSSNumberish arg) {
-    unsupportedPlatformError();
-  }
+  CSSMathInvert(CSSNumberish arg) : _ = JSObject();
 
   /// The CSSMathInvert.value read-only property of the
   /// [CSSMathInvert] interface returns a [CSSNumericValue] object.
@@ -594,13 +580,11 @@ extension type CSSMathMax._(JSObject _) implements CSSMathValue, JSObject {
   }
 }
 extension type CSSMathClamp._(JSObject _) implements CSSMathValue, JSObject {
-  factory CSSMathClamp(
+  CSSMathClamp(
     CSSNumberish lower,
     CSSNumberish value,
     CSSNumberish upper,
-  ) {
-    unsupportedPlatformError();
-  }
+  ) : _ = JSObject();
 
   CSSNumericValue get lower {
     unsupportedPlatformError();
@@ -646,9 +630,7 @@ extension type CSSNumericArray._(JSObject _) implements JSObject {
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSTransformValue).
 extension type CSSTransformValue._(JSObject _)
     implements CSSStyleValue, JSObject {
-  factory CSSTransformValue(JSArray<CSSTransformComponent> transforms) {
-    unsupportedPlatformError();
-  }
+  CSSTransformValue(JSArray<CSSTransformComponent> transforms) : _ = JSObject();
 
   CSSTransformComponent operator [](int index) {
     unsupportedPlatformError();
@@ -737,13 +719,11 @@ extension type CSSTransformComponent._(JSObject _) implements JSObject {
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSTranslate).
 extension type CSSTranslate._(JSObject _)
     implements CSSTransformComponent, JSObject {
-  factory CSSTranslate(
+  CSSTranslate(
     CSSNumericValue x,
     CSSNumericValue y, [
     CSSNumericValue? z,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The **`x`** property of the
   /// [CSSTranslate] interface gets and sets the abscissa or x-axis of the
@@ -796,14 +776,12 @@ extension type CSSTranslate._(JSObject _)
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSRotate).
 extension type CSSRotate._(JSObject _)
     implements CSSTransformComponent, JSObject {
-  factory CSSRotate(
+  CSSRotate(
     JSAny angleOrX, [
     CSSNumberish? y,
     CSSNumberish? z,
     CSSNumericValue? angle,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The **`x`** property of the
   /// [CSSRotate] interface gets and sets the abscissa or x-axis of the
@@ -868,13 +846,11 @@ extension type CSSRotate._(JSObject _)
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSScale).
 extension type CSSScale._(JSObject _)
     implements CSSTransformComponent, JSObject {
-  factory CSSScale(
+  CSSScale(
     CSSNumberish x,
     CSSNumberish y, [
     CSSNumberish? z,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The **`x`** property of the
   /// [CSSScale] interface gets and sets the abscissa or x-axis of the
@@ -928,12 +904,10 @@ extension type CSSScale._(JSObject _)
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSSkew).
 extension type CSSSkew._(JSObject _)
     implements CSSTransformComponent, JSObject {
-  factory CSSSkew(
+  CSSSkew(
     CSSNumericValue ax,
     CSSNumericValue ay,
-  ) {
-    unsupportedPlatformError();
-  }
+  ) : _ = JSObject();
 
   /// The **`ax`** property of the
   /// [CSSSkew] interface gets and sets the angle used to distort the element
@@ -971,9 +945,7 @@ extension type CSSSkew._(JSObject _)
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSSkewX).
 extension type CSSSkewX._(JSObject _)
     implements CSSTransformComponent, JSObject {
-  factory CSSSkewX(CSSNumericValue ax) {
-    unsupportedPlatformError();
-  }
+  CSSSkewX(CSSNumericValue ax) : _ = JSObject();
 
   /// The **`ax`** property of the
   /// [CSSSkewX] interface gets and sets the angle used to distort the element
@@ -1000,9 +972,7 @@ extension type CSSSkewX._(JSObject _)
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSSkewY).
 extension type CSSSkewY._(JSObject _)
     implements CSSTransformComponent, JSObject {
-  factory CSSSkewY(CSSNumericValue ay) {
-    unsupportedPlatformError();
-  }
+  CSSSkewY(CSSNumericValue ay) : _ = JSObject();
 
   /// The **`ay`** property of the
   /// [CSSSkewY] interface gets and sets the angle used to distort the element
@@ -1029,9 +999,7 @@ extension type CSSSkewY._(JSObject _)
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSPerspective).
 extension type CSSPerspective._(JSObject _)
     implements CSSTransformComponent, JSObject {
-  factory CSSPerspective(CSSPerspectiveValue length) {
-    unsupportedPlatformError();
-  }
+  CSSPerspective(CSSPerspectiveValue length) : _ = JSObject();
 
   /// The **`length`** property of the
   /// [CSSPerspective] interface sets the distance from z=0.
@@ -1063,12 +1031,10 @@ extension type CSSPerspective._(JSObject _)
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSMatrixComponent).
 extension type CSSMatrixComponent._(JSObject _)
     implements CSSTransformComponent, JSObject {
-  factory CSSMatrixComponent(
+  CSSMatrixComponent(
     DOMMatrixReadOnly matrix, [
     CSSMatrixComponentOptions? options,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The **`matrix`** property of the
   /// [CSSMatrixComponent] interface gets and sets a 2d or 3d matrix.
@@ -1088,9 +1054,7 @@ extension type CSSMatrixComponent._(JSObject _)
   }
 }
 extension type CSSMatrixComponentOptions._(JSObject _) implements JSObject {
-  factory CSSMatrixComponentOptions({bool? is2D}) {
-    unsupportedPlatformError();
-  }
+  CSSMatrixComponentOptions({bool? is2D}) : _ = JSObject();
 
   bool get is2D {
     unsupportedPlatformError();

@@ -71,9 +71,7 @@ typedef ResponseType = String;
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Headers).
 extension type Headers._(JSObject _) implements JSObject {
-  factory Headers([HeadersInit? init]) {
-    unsupportedPlatformError();
-  }
+  Headers([HeadersInit? init]) : _ = JSObject();
 
   /// The **`append()`** method of the [Headers]
   /// interface appends a new value onto an existing header inside a `Headers`
@@ -188,12 +186,10 @@ extension type Headers._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Request).
 extension type Request._(JSObject _) implements JSObject {
-  factory Request(
+  Request(
     RequestInfo input, [
     RequestInit? init,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The **`clone()`** method of the [Request] interface creates a copy of the
   /// current `Request` object.
@@ -401,7 +397,7 @@ extension type Request._(JSObject _) implements JSObject {
   }
 }
 extension type RequestInit._(JSObject _) implements JSObject {
-  factory RequestInit({
+  RequestInit({
     String? method,
     HeadersInit? headers,
     BodyInit? body,
@@ -422,9 +418,7 @@ extension type RequestInit._(JSObject _) implements JSObject {
     bool? sharedStorageWritable,
     PrivateToken? privateToken,
     bool? adAuctionHeaders,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get method {
     unsupportedPlatformError();
@@ -601,12 +595,10 @@ extension type RequestInit._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Response).
 extension type Response._(JSObject _) implements JSObject {
-  factory Response([
+  Response([
     BodyInit? body,
     ResponseInit? init,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The **`error()`** static method of the [Response] interface returns a new
   /// `Response` object associated with a network error.
@@ -838,13 +830,11 @@ extension type Response._(JSObject _) implements JSObject {
   }
 }
 extension type ResponseInit._(JSObject _) implements JSObject {
-  factory ResponseInit({
+  ResponseInit({
     int? status,
     String? statusText,
     HeadersInit? headers,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   int get status {
     unsupportedPlatformError();

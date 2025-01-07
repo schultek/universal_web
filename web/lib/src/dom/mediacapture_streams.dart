@@ -40,9 +40,7 @@ typedef MediaDeviceKind = String;
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MediaStream).
 extension type MediaStream._(JSObject _) implements EventTarget, JSObject {
-  factory MediaStream([JSObject? streamOrTracks]) {
-    unsupportedPlatformError();
-  }
+  MediaStream([JSObject? streamOrTracks]) : _ = JSObject();
 
   /// The **`getAudioTracks()`** method of the
   /// [MediaStream] interface returns a sequence that represents all the
@@ -388,7 +386,7 @@ extension type MediaStreamTrack._(JSObject _) implements EventTarget, JSObject {
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MediaTrackSupportedConstraints).
 extension type MediaTrackSupportedConstraints._(JSObject _)
     implements JSObject {
-  factory MediaTrackSupportedConstraints({
+  MediaTrackSupportedConstraints({
     bool? width,
     bool? height,
     bool? aspectRatio,
@@ -426,9 +424,7 @@ extension type MediaTrackSupportedConstraints._(JSObject _)
     bool? cursor,
     bool? restrictOwnAudio,
     bool? suppressLocalAudioPlayback,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   /// The [MediaTrackSupportedConstraints] dictionary's
   /// **`width`** property is a read-only Boolean value which is
@@ -914,7 +910,7 @@ extension type MediaTrackSupportedConstraints._(JSObject _)
   }
 }
 extension type MediaTrackCapabilities._(JSObject _) implements JSObject {
-  factory MediaTrackCapabilities({
+  MediaTrackCapabilities({
     ULongRange? width,
     ULongRange? height,
     DoubleRange? aspectRatio,
@@ -949,9 +945,7 @@ extension type MediaTrackCapabilities._(JSObject _) implements JSObject {
     String? displaySurface,
     bool? logicalSurface,
     JSArray<JSString>? cursor,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   ULongRange get width {
     unsupportedPlatformError();
@@ -1240,7 +1234,7 @@ extension type MediaTrackCapabilities._(JSObject _) implements JSObject {
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MediaTrackConstraints).
 extension type MediaTrackConstraints._(JSObject _)
     implements MediaTrackConstraintSet, JSObject {
-  factory MediaTrackConstraints({
+  MediaTrackConstraints({
     ConstrainULong? width,
     ConstrainULong? height,
     ConstrainDouble? aspectRatio,
@@ -1279,9 +1273,7 @@ extension type MediaTrackConstraints._(JSObject _)
     ConstrainBoolean? restrictOwnAudio,
     ConstrainBoolean? suppressLocalAudioPlayback,
     JSArray<MediaTrackConstraintSet>? advanced,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   JSArray<MediaTrackConstraintSet> get advanced {
     unsupportedPlatformError();
@@ -1292,7 +1284,7 @@ extension type MediaTrackConstraints._(JSObject _)
   }
 }
 extension type MediaTrackConstraintSet._(JSObject _) implements JSObject {
-  factory MediaTrackConstraintSet({
+  MediaTrackConstraintSet({
     ConstrainULong? width,
     ConstrainULong? height,
     ConstrainDouble? aspectRatio,
@@ -1330,9 +1322,7 @@ extension type MediaTrackConstraintSet._(JSObject _) implements JSObject {
     ConstrainDOMString? cursor,
     ConstrainBoolean? restrictOwnAudio,
     ConstrainBoolean? suppressLocalAudioPlayback,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   ConstrainULong get width {
     unsupportedPlatformError();
@@ -1648,7 +1638,7 @@ extension type MediaTrackConstraintSet._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MediaTrackSettings).
 extension type MediaTrackSettings._(JSObject _) implements JSObject {
-  factory MediaTrackSettings({
+  MediaTrackSettings({
     int? width,
     int? height,
     num? aspectRatio,
@@ -1686,9 +1676,7 @@ extension type MediaTrackSettings._(JSObject _) implements JSObject {
     String? cursor,
     bool? restrictOwnAudio,
     bool? suppressLocalAudioPlayback,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   /// The [MediaTrackSettings] dictionary's **`width`**
   /// property is an integer indicating the number of pixels wide
@@ -2312,12 +2300,10 @@ extension type MediaTrackSettings._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrackEvent).
 extension type MediaStreamTrackEvent._(JSObject _) implements Event, JSObject {
-  factory MediaStreamTrackEvent(
+  MediaStreamTrackEvent(
     String type,
     MediaStreamTrackEventInit eventInitDict,
-  ) {
-    unsupportedPlatformError();
-  }
+  ) : _ = JSObject();
 
   /// The **`track`** read-only property of the [MediaStreamTrackEvent]
   /// interface returns the [MediaStreamTrack] associated with this event.
@@ -2327,14 +2313,12 @@ extension type MediaStreamTrackEvent._(JSObject _) implements Event, JSObject {
 }
 extension type MediaStreamTrackEventInit._(JSObject _)
     implements EventInit, JSObject {
-  factory MediaStreamTrackEventInit({
+  MediaStreamTrackEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
     required MediaStreamTrack track,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   MediaStreamTrack get track {
     unsupportedPlatformError();
@@ -2358,12 +2342,10 @@ extension type MediaStreamTrackEventInit._(JSObject _)
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/OverconstrainedError).
 extension type OverconstrainedError._(JSObject _)
     implements DOMException, JSObject {
-  factory OverconstrainedError(
+  OverconstrainedError(
     String constraint, [
     String? message,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The **`constraint`** read-only property of the
   /// [OverconstrainedError] interface returns the constraint that was supplied
@@ -2542,14 +2524,12 @@ extension type InputDeviceInfo._(JSObject _)
   }
 }
 extension type MediaStreamConstraints._(JSObject _) implements JSObject {
-  factory MediaStreamConstraints({
+  MediaStreamConstraints({
     JSAny? video,
     JSAny? audio,
     bool? preferCurrentTab,
     String? peerIdentity,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   JSAny get video {
     unsupportedPlatformError();
@@ -2584,12 +2564,10 @@ extension type MediaStreamConstraints._(JSObject _) implements JSObject {
   }
 }
 extension type DoubleRange._(JSObject _) implements JSObject {
-  factory DoubleRange({
+  DoubleRange({
     num? max,
     num? min,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   double get max {
     unsupportedPlatformError();
@@ -2609,14 +2587,12 @@ extension type DoubleRange._(JSObject _) implements JSObject {
 }
 extension type ConstrainDoubleRange._(JSObject _)
     implements DoubleRange, JSObject {
-  factory ConstrainDoubleRange({
+  ConstrainDoubleRange({
     num? max,
     num? min,
     num? exact,
     num? ideal,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   double get exact {
     unsupportedPlatformError();
@@ -2635,12 +2611,10 @@ extension type ConstrainDoubleRange._(JSObject _)
   }
 }
 extension type ULongRange._(JSObject _) implements JSObject {
-  factory ULongRange({
+  ULongRange({
     int? max,
     int? min,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   int get max {
     unsupportedPlatformError();
@@ -2660,14 +2634,12 @@ extension type ULongRange._(JSObject _) implements JSObject {
 }
 extension type ConstrainULongRange._(JSObject _)
     implements ULongRange, JSObject {
-  factory ConstrainULongRange({
+  ConstrainULongRange({
     int? max,
     int? min,
     int? exact,
     int? ideal,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   int get exact {
     unsupportedPlatformError();
@@ -2686,12 +2658,10 @@ extension type ConstrainULongRange._(JSObject _)
   }
 }
 extension type ConstrainBooleanParameters._(JSObject _) implements JSObject {
-  factory ConstrainBooleanParameters({
+  ConstrainBooleanParameters({
     bool? exact,
     bool? ideal,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   bool get exact {
     unsupportedPlatformError();
@@ -2710,12 +2680,10 @@ extension type ConstrainBooleanParameters._(JSObject _) implements JSObject {
   }
 }
 extension type ConstrainDOMStringParameters._(JSObject _) implements JSObject {
-  factory ConstrainDOMStringParameters({
+  ConstrainDOMStringParameters({
     JSAny? exact,
     JSAny? ideal,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   JSAny get exact {
     unsupportedPlatformError();

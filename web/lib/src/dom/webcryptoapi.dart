@@ -410,13 +410,11 @@ extension type SubtleCrypto._(JSObject _) implements JSObject {
   }
 }
 extension type RsaOtherPrimesInfo._(JSObject _) implements JSObject {
-  factory RsaOtherPrimesInfo({
+  RsaOtherPrimesInfo({
     String? r,
     String? d,
     String? t,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get r {
     unsupportedPlatformError();
@@ -443,7 +441,7 @@ extension type RsaOtherPrimesInfo._(JSObject _) implements JSObject {
   }
 }
 extension type JsonWebKey._(JSObject _) implements JSObject {
-  factory JsonWebKey({
+  JsonWebKey({
     String? kty,
     String? use,
     JSArray<JSString>? key_ops,
@@ -462,9 +460,7 @@ extension type JsonWebKey._(JSObject _) implements JSObject {
     String? qi,
     JSArray<RsaOtherPrimesInfo>? oth,
     String? k,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get kty {
     unsupportedPlatformError();

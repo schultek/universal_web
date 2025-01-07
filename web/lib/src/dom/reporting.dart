@@ -94,12 +94,10 @@ extension type Report._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ReportingObserver).
 extension type ReportingObserver._(JSObject _) implements JSObject {
-  factory ReportingObserver(
+  ReportingObserver(
     ReportingObserverCallback callback, [
     ReportingObserverOptions? options,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The **`observe()`** method of the
   /// [ReportingObserver] interface instructs a reporting observer to start
@@ -131,12 +129,10 @@ extension type ReportingObserver._(JSObject _) implements JSObject {
   }
 }
 extension type ReportingObserverOptions._(JSObject _) implements JSObject {
-  factory ReportingObserverOptions({
+  ReportingObserverOptions({
     JSArray<JSString>? types,
     bool? buffered,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   JSArray<JSString> get types {
     unsupportedPlatformError();

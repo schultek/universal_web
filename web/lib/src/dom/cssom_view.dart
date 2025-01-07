@@ -19,9 +19,7 @@ import 'screen_orientation.dart';
 typedef ScrollBehavior = String;
 typedef ScrollLogicalPosition = String;
 extension type ScrollOptions._(JSObject _) implements JSObject {
-  factory ScrollOptions({ScrollBehavior? behavior}) {
-    unsupportedPlatformError();
-  }
+  ScrollOptions({ScrollBehavior? behavior}) : _ = JSObject();
 
   ScrollBehavior get behavior {
     unsupportedPlatformError();
@@ -33,13 +31,11 @@ extension type ScrollOptions._(JSObject _) implements JSObject {
 }
 extension type ScrollToOptions._(JSObject _)
     implements ScrollOptions, JSObject {
-  factory ScrollToOptions({
+  ScrollToOptions({
     ScrollBehavior? behavior,
     num? left,
     num? top,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   double get left {
     unsupportedPlatformError();
@@ -143,12 +139,10 @@ extension type MediaQueryList._(JSObject _) implements EventTarget, JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryListEvent).
 extension type MediaQueryListEvent._(JSObject _) implements Event, JSObject {
-  factory MediaQueryListEvent(
+  MediaQueryListEvent(
     String type, [
     MediaQueryListEventInit? eventInitDict,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The **`media`** read-only property of the
   /// [MediaQueryListEvent] interface is a string representing
@@ -167,15 +161,13 @@ extension type MediaQueryListEvent._(JSObject _) implements Event, JSObject {
 }
 extension type MediaQueryListEventInit._(JSObject _)
     implements EventInit, JSObject {
-  factory MediaQueryListEventInit({
+  MediaQueryListEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
     String? media,
     bool? matches,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get media {
     unsupportedPlatformError();
@@ -258,9 +250,8 @@ extension type Screen._(JSObject _) implements JSObject {
   }
 }
 extension type CaretPositionFromPointOptions._(JSObject _) implements JSObject {
-  factory CaretPositionFromPointOptions({JSArray<ShadowRoot>? shadowRoots}) {
-    unsupportedPlatformError();
-  }
+  CaretPositionFromPointOptions({JSArray<ShadowRoot>? shadowRoots})
+      : _ = JSObject();
 
   JSArray<ShadowRoot> get shadowRoots {
     unsupportedPlatformError();
@@ -272,13 +263,11 @@ extension type CaretPositionFromPointOptions._(JSObject _) implements JSObject {
 }
 extension type ScrollIntoViewOptions._(JSObject _)
     implements ScrollOptions, JSObject {
-  factory ScrollIntoViewOptions({
+  ScrollIntoViewOptions({
     ScrollBehavior? behavior,
     ScrollLogicalPosition? block,
     ScrollLogicalPosition? inline,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   ScrollLogicalPosition get block {
     unsupportedPlatformError();
@@ -297,15 +286,13 @@ extension type ScrollIntoViewOptions._(JSObject _)
   }
 }
 extension type CheckVisibilityOptions._(JSObject _) implements JSObject {
-  factory CheckVisibilityOptions({
+  CheckVisibilityOptions({
     bool? checkOpacity,
     bool? checkVisibilityCSS,
     bool? contentVisibilityAuto,
     bool? opacityProperty,
     bool? visibilityProperty,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   bool get checkOpacity {
     unsupportedPlatformError();

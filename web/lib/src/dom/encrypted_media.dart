@@ -22,7 +22,7 @@ typedef MediaKeySessionClosedReason = String;
 typedef MediaKeyStatus = String;
 typedef MediaKeyMessageType = String;
 extension type MediaKeySystemConfiguration._(JSObject _) implements JSObject {
-  factory MediaKeySystemConfiguration({
+  MediaKeySystemConfiguration({
     String? label,
     JSArray<JSString>? initDataTypes,
     JSArray<MediaKeySystemMediaCapability>? audioCapabilities,
@@ -30,9 +30,7 @@ extension type MediaKeySystemConfiguration._(JSObject _) implements JSObject {
     MediaKeysRequirement? distinctiveIdentifier,
     MediaKeysRequirement? persistentState,
     JSArray<JSString>? sessionTypes,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get label {
     unsupportedPlatformError();
@@ -91,13 +89,11 @@ extension type MediaKeySystemConfiguration._(JSObject _) implements JSObject {
   }
 }
 extension type MediaKeySystemMediaCapability._(JSObject _) implements JSObject {
-  factory MediaKeySystemMediaCapability({
+  MediaKeySystemMediaCapability({
     String? contentType,
     String? encryptionScheme,
     String? robustness,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get contentType {
     unsupportedPlatformError();
@@ -195,9 +191,7 @@ extension type MediaKeys._(JSObject _) implements JSObject {
   }
 }
 extension type MediaKeysPolicy._(JSObject _) implements JSObject {
-  factory MediaKeysPolicy({String? minHdcpVersion}) {
-    unsupportedPlatformError();
-  }
+  MediaKeysPolicy({String? minHdcpVersion}) : _ = JSObject();
 
   String get minHdcpVersion {
     unsupportedPlatformError();
@@ -349,12 +343,10 @@ extension type MediaKeyStatusMap._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MediaKeyMessageEvent).
 extension type MediaKeyMessageEvent._(JSObject _) implements Event, JSObject {
-  factory MediaKeyMessageEvent(
+  MediaKeyMessageEvent(
     String type,
     MediaKeyMessageEventInit eventInitDict,
-  ) {
-    unsupportedPlatformError();
-  }
+  ) : _ = JSObject();
 
   /// The **`MediaKeyMessageEvent.messageType`** read-only property indicates
   /// the
@@ -375,15 +367,13 @@ extension type MediaKeyMessageEvent._(JSObject _) implements Event, JSObject {
 }
 extension type MediaKeyMessageEventInit._(JSObject _)
     implements EventInit, JSObject {
-  factory MediaKeyMessageEventInit({
+  MediaKeyMessageEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
     required MediaKeyMessageType messageType,
     required JSArrayBuffer message,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   MediaKeyMessageType get messageType {
     unsupportedPlatformError();
@@ -413,12 +403,10 @@ extension type MediaKeyMessageEventInit._(JSObject _)
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MediaEncryptedEvent).
 extension type MediaEncryptedEvent._(JSObject _) implements Event, JSObject {
-  factory MediaEncryptedEvent(
+  MediaEncryptedEvent(
     String type, [
     MediaEncryptedEventInit? eventInitDict,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The read-only **`initDataType`** property of the [MediaKeyMessageEvent]
   /// returns a case-sensitive string describing the type of the initialization
@@ -435,15 +423,13 @@ extension type MediaEncryptedEvent._(JSObject _) implements Event, JSObject {
 }
 extension type MediaEncryptedEventInit._(JSObject _)
     implements EventInit, JSObject {
-  factory MediaEncryptedEventInit({
+  MediaEncryptedEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
     String? initDataType,
     JSArrayBuffer? initData,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get initDataType {
     unsupportedPlatformError();

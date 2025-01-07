@@ -18,13 +18,11 @@ import 'html.dart';
 typedef SchedulerPostTaskCallback = JSFunction;
 typedef TaskPriority = String;
 extension type SchedulerPostTaskOptions._(JSObject _) implements JSObject {
-  factory SchedulerPostTaskOptions({
+  SchedulerPostTaskOptions({
     AbortSignal? signal,
     TaskPriority? priority,
     int? delay,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   AbortSignal get signal {
     unsupportedPlatformError();
@@ -116,12 +114,10 @@ extension type Scheduler._(JSObject _) implements JSObject {
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/TaskPriorityChangeEvent).
 extension type TaskPriorityChangeEvent._(JSObject _)
     implements Event, JSObject {
-  factory TaskPriorityChangeEvent(
+  TaskPriorityChangeEvent(
     String type,
     TaskPriorityChangeEventInit priorityChangeEventInitDict,
-  ) {
-    unsupportedPlatformError();
-  }
+  ) : _ = JSObject();
 
   /// The readonly **`previousPriority`** property of the
   /// [TaskPriorityChangeEvent] interface returns the priority of the
@@ -140,14 +136,12 @@ extension type TaskPriorityChangeEvent._(JSObject _)
 }
 extension type TaskPriorityChangeEventInit._(JSObject _)
     implements EventInit, JSObject {
-  factory TaskPriorityChangeEventInit({
+  TaskPriorityChangeEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
     required TaskPriority previousPriority,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   TaskPriority get previousPriority {
     unsupportedPlatformError();
@@ -158,9 +152,7 @@ extension type TaskPriorityChangeEventInit._(JSObject _)
   }
 }
 extension type TaskControllerInit._(JSObject _) implements JSObject {
-  factory TaskControllerInit({TaskPriority? priority}) {
-    unsupportedPlatformError();
-  }
+  TaskControllerInit({TaskPriority? priority}) : _ = JSObject();
 
   TaskPriority get priority {
     unsupportedPlatformError();
@@ -204,9 +196,7 @@ extension type TaskControllerInit._(JSObject _) implements JSObject {
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/TaskController).
 extension type TaskController._(JSObject _)
     implements AbortController, JSObject {
-  factory TaskController([TaskControllerInit? init]) {
-    unsupportedPlatformError();
-  }
+  TaskController([TaskControllerInit? init]) : _ = JSObject();
 
   /// The **`setPriority()`** method of the [TaskController] interface can be
   /// called to set a new

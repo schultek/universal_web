@@ -15,9 +15,7 @@ import '../js_interop.dart';
 
 typedef HevcBitstreamFormat = String;
 extension type HevcEncoderConfig._(JSObject _) implements JSObject {
-  factory HevcEncoderConfig({HevcBitstreamFormat? format}) {
-    unsupportedPlatformError();
-  }
+  HevcEncoderConfig({HevcBitstreamFormat? format}) : _ = JSObject();
 
   HevcBitstreamFormat get format {
     unsupportedPlatformError();
@@ -29,9 +27,7 @@ extension type HevcEncoderConfig._(JSObject _) implements JSObject {
 }
 extension type VideoEncoderEncodeOptionsForHevc._(JSObject _)
     implements JSObject {
-  factory VideoEncoderEncodeOptionsForHevc({int? quantizer}) {
-    unsupportedPlatformError();
-  }
+  VideoEncoderEncodeOptionsForHevc({int? quantizer}) : _ = JSObject();
 
   int? get quantizer {
     unsupportedPlatformError();

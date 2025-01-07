@@ -194,12 +194,10 @@ extension type XRViewport._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/XRRigidTransform).
 extension type XRRigidTransform._(JSObject _) implements JSObject {
-  factory XRRigidTransform([
+  XRRigidTransform([
     DOMPointInit? position,
     DOMPointInit? orientation,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The read-only [XRRigidTransform] property
   /// **`position`** is a [DOMPointReadOnly] object which
@@ -484,12 +482,10 @@ extension type XRInputSource._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/XRSessionEvent).
 extension type XRSessionEvent._(JSObject _) implements Event, JSObject {
-  factory XRSessionEvent(
+  XRSessionEvent(
     String type,
     XRSessionEventInit eventInitDict,
-  ) {
-    unsupportedPlatformError();
-  }
+  ) : _ = JSObject();
 
   /// The read-only [XRSessionEvent] interface's
   /// **`session`** property indicates which
@@ -499,14 +495,12 @@ extension type XRSessionEvent._(JSObject _) implements Event, JSObject {
   }
 }
 extension type XRSessionEventInit._(JSObject _) implements EventInit, JSObject {
-  factory XRSessionEventInit({
+  XRSessionEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
     required JSObject session,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   JSObject get session {
     unsupportedPlatformError();
@@ -532,12 +526,10 @@ extension type XRSessionEventInit._(JSObject _) implements EventInit, JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/XRInputSourceEvent).
 extension type XRInputSourceEvent._(JSObject _) implements Event, JSObject {
-  factory XRInputSourceEvent(
+  XRInputSourceEvent(
     String type,
     XRInputSourceEventInit eventInitDict,
-  ) {
-    unsupportedPlatformError();
-  }
+  ) : _ = JSObject();
 
   /// The read-only [XRInputSourceEvent] property
   /// **`frame`** specifies an [XRFrame] object
@@ -563,15 +555,13 @@ extension type XRInputSourceEvent._(JSObject _) implements Event, JSObject {
 }
 extension type XRInputSourceEventInit._(JSObject _)
     implements EventInit, JSObject {
-  factory XRInputSourceEventInit({
+  XRInputSourceEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
     required JSObject frame,
     required XRInputSource inputSource,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   JSObject get frame {
     unsupportedPlatformError();
@@ -600,12 +590,10 @@ extension type XRInputSourceEventInit._(JSObject _)
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/XRInputSourcesChangeEvent).
 extension type XRInputSourcesChangeEvent._(JSObject _)
     implements Event, JSObject {
-  factory XRInputSourcesChangeEvent(
+  XRInputSourcesChangeEvent(
     String type,
     XRInputSourcesChangeEventInit eventInitDict,
-  ) {
-    unsupportedPlatformError();
-  }
+  ) : _ = JSObject();
 
   /// The [XRInputSourcesChangeEvent] property
   /// [XRInputSourcesChangeEvent.session] specifies the
@@ -632,16 +620,14 @@ extension type XRInputSourcesChangeEvent._(JSObject _)
 }
 extension type XRInputSourcesChangeEventInit._(JSObject _)
     implements EventInit, JSObject {
-  factory XRInputSourcesChangeEventInit({
+  XRInputSourcesChangeEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
     required JSObject session,
     required JSArray<XRInputSource> added,
     required JSArray<XRInputSource> removed,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   JSObject get session {
     unsupportedPlatformError();
@@ -679,12 +665,10 @@ extension type XRInputSourcesChangeEventInit._(JSObject _)
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/XRReferenceSpaceEvent).
 extension type XRReferenceSpaceEvent._(JSObject _) implements Event, JSObject {
-  factory XRReferenceSpaceEvent(
+  XRReferenceSpaceEvent(
     String type,
     XRReferenceSpaceEventInit eventInitDict,
-  ) {
-    unsupportedPlatformError();
-  }
+  ) : _ = JSObject();
 
   /// The read-only [XRReferenceSpaceEvent] property
   /// **`referenceSpace`** specifies the reference space which is the
@@ -708,15 +692,13 @@ extension type XRReferenceSpaceEvent._(JSObject _) implements Event, JSObject {
 }
 extension type XRReferenceSpaceEventInit._(JSObject _)
     implements EventInit, JSObject {
-  factory XRReferenceSpaceEventInit({
+  XRReferenceSpaceEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
     required XRReferenceSpace referenceSpace,
     XRRigidTransform? transform,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   XRReferenceSpace get referenceSpace {
     unsupportedPlatformError();

@@ -24,9 +24,8 @@ import 'streams.dart';
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrackProcessor).
 extension type MediaStreamTrackProcessor._(JSObject _) implements JSObject {
-  factory MediaStreamTrackProcessor(MediaStreamTrackProcessorInit init) {
-    unsupportedPlatformError();
-  }
+  MediaStreamTrackProcessor(MediaStreamTrackProcessorInit init)
+      : _ = JSObject();
 
   /// The **`readable`** property of the [MediaStreamTrackProcessor] interface
   /// returns a [ReadableStream].
@@ -35,12 +34,10 @@ extension type MediaStreamTrackProcessor._(JSObject _) implements JSObject {
   }
 }
 extension type MediaStreamTrackProcessorInit._(JSObject _) implements JSObject {
-  factory MediaStreamTrackProcessorInit({
+  MediaStreamTrackProcessorInit({
     required MediaStreamTrack track,
     int? maxBufferSize,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   MediaStreamTrack get track {
     unsupportedPlatformError();

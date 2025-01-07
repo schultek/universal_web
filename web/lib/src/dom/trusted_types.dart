@@ -250,13 +250,11 @@ extension type TrustedTypePolicy._(JSObject _) implements JSObject {
   }
 }
 extension type TrustedTypePolicyOptions._(JSObject _) implements JSObject {
-  factory TrustedTypePolicyOptions({
+  TrustedTypePolicyOptions({
     CreateHTMLCallback? createHTML,
     CreateScriptCallback? createScript,
     CreateScriptURLCallback? createScriptURL,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   CreateHTMLCallback get createHTML {
     unsupportedPlatformError();

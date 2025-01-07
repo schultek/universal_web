@@ -94,9 +94,7 @@ extension type MediaSession._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MediaMetadata).
 extension type MediaMetadata._(JSObject _) implements JSObject {
-  factory MediaMetadata([MediaMetadataInit? init]) {
-    unsupportedPlatformError();
-  }
+  MediaMetadata([MediaMetadataInit? init]) : _ = JSObject();
 
   /// The **`title`** property of the
   /// [MediaMetaData] interface returns or sets the title of the media to be
@@ -144,15 +142,13 @@ extension type MediaMetadata._(JSObject _) implements JSObject {
   }
 }
 extension type MediaMetadataInit._(JSObject _) implements JSObject {
-  factory MediaMetadataInit({
+  MediaMetadataInit({
     String? title,
     String? artist,
     String? album,
     JSArray<MediaImage>? artwork,
     JSArray<ChapterInformationInit>? chapterInfo,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get title {
     unsupportedPlatformError();
@@ -195,13 +191,11 @@ extension type MediaMetadataInit._(JSObject _) implements JSObject {
   }
 }
 extension type ChapterInformationInit._(JSObject _) implements JSObject {
-  factory ChapterInformationInit({
+  ChapterInformationInit({
     String? title,
     num? startTime,
     JSArray<MediaImage>? artwork,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get title {
     unsupportedPlatformError();
@@ -228,13 +222,11 @@ extension type ChapterInformationInit._(JSObject _) implements JSObject {
   }
 }
 extension type MediaImage._(JSObject _) implements JSObject {
-  factory MediaImage({
+  MediaImage({
     required String src,
     String? sizes,
     String? type,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get src {
     unsupportedPlatformError();
@@ -261,13 +253,11 @@ extension type MediaImage._(JSObject _) implements JSObject {
   }
 }
 extension type MediaPositionState._(JSObject _) implements JSObject {
-  factory MediaPositionState({
+  MediaPositionState({
     num? duration,
     num? playbackRate,
     num? position,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   double get duration {
     unsupportedPlatformError();

@@ -388,13 +388,11 @@ extension type ServiceWorkerContainer._(JSObject _)
   }
 }
 extension type RegistrationOptions._(JSObject _) implements JSObject {
-  factory RegistrationOptions({
+  RegistrationOptions({
     String? scope,
     WorkerType? type,
     ServiceWorkerUpdateViaCache? updateViaCache,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get scope {
     unsupportedPlatformError();
@@ -486,12 +484,10 @@ extension type NavigationPreloadManager._(JSObject _) implements JSObject {
   }
 }
 extension type NavigationPreloadState._(JSObject _) implements JSObject {
-  factory NavigationPreloadState({
+  NavigationPreloadState({
     bool? enabled,
     String? headerValue,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   bool get enabled {
     unsupportedPlatformError();
@@ -854,12 +850,10 @@ extension type Clients._(JSObject _) implements JSObject {
   }
 }
 extension type ClientQueryOptions._(JSObject _) implements JSObject {
-  factory ClientQueryOptions({
+  ClientQueryOptions({
     bool? includeUncontrolled,
     ClientType? type,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   bool get includeUncontrolled {
     unsupportedPlatformError();
@@ -906,12 +900,10 @@ extension type ClientQueryOptions._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ExtendableEvent).
 extension type ExtendableEvent._(JSObject _) implements Event, JSObject {
-  factory ExtendableEvent(
+  ExtendableEvent(
     String type, [
     ExtendableEventInit? eventInitDict,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// @AvailableInWorkers("service")
   ///
@@ -955,13 +947,11 @@ extension type ExtendableEvent._(JSObject _) implements Event, JSObject {
 }
 extension type ExtendableEventInit._(JSObject _)
     implements EventInit, JSObject {
-  factory ExtendableEventInit({
+  ExtendableEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 }
 
 /// > **Note:** Instead of using the deprecated
@@ -997,12 +987,10 @@ extension type InstallEvent._(JSObject _)
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/FetchEvent).
 extension type FetchEvent._(JSObject _) implements ExtendableEvent, JSObject {
-  factory FetchEvent(
+  FetchEvent(
     String type,
     FetchEventInit eventInitDict,
-  ) {
-    unsupportedPlatformError();
-  }
+  ) : _ = JSObject();
 
   /// @AvailableInWorkers("service")
   ///
@@ -1171,7 +1159,7 @@ extension type FetchEvent._(JSObject _) implements ExtendableEvent, JSObject {
 }
 extension type FetchEventInit._(JSObject _)
     implements ExtendableEventInit, JSObject {
-  factory FetchEventInit({
+  FetchEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
@@ -1181,9 +1169,7 @@ extension type FetchEventInit._(JSObject _)
     String? resultingClientId,
     String? replacesClientId,
     JSPromise<JSAny?>? handled,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   Request get request {
     unsupportedPlatformError();
@@ -1251,12 +1237,10 @@ extension type FetchEventInit._(JSObject _)
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ExtendableMessageEvent).
 extension type ExtendableMessageEvent._(JSObject _)
     implements ExtendableEvent, JSObject {
-  factory ExtendableMessageEvent(
+  ExtendableMessageEvent(
     String type, [
     ExtendableMessageEventInit? eventInitDict,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// @AvailableInWorkers("service")
   ///
@@ -1307,7 +1291,7 @@ extension type ExtendableMessageEvent._(JSObject _)
 }
 extension type ExtendableMessageEventInit._(JSObject _)
     implements ExtendableEventInit, JSObject {
-  factory ExtendableMessageEventInit({
+  ExtendableMessageEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
@@ -1316,9 +1300,7 @@ extension type ExtendableMessageEventInit._(JSObject _)
     String? lastEventId,
     JSObject? source,
     JSArray<MessagePort>? ports,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   JSAny? get data {
     unsupportedPlatformError();
@@ -1519,13 +1501,11 @@ extension type Cache._(JSObject _) implements JSObject {
   }
 }
 extension type CacheQueryOptions._(JSObject _) implements JSObject {
-  factory CacheQueryOptions({
+  CacheQueryOptions({
     bool? ignoreSearch,
     bool? ignoreMethod,
     bool? ignoreVary,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   bool get ignoreSearch {
     unsupportedPlatformError();
@@ -1656,14 +1636,12 @@ extension type CacheStorage._(JSObject _) implements JSObject {
 }
 extension type MultiCacheQueryOptions._(JSObject _)
     implements CacheQueryOptions, JSObject {
-  factory MultiCacheQueryOptions({
+  MultiCacheQueryOptions({
     bool? ignoreSearch,
     bool? ignoreMethod,
     bool? ignoreVary,
     String? cacheName,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get cacheName {
     unsupportedPlatformError();

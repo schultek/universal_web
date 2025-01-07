@@ -6334,12 +6334,10 @@ extension type TimeRanges._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/TrackEvent).
 extension type TrackEvent._(JSObject _) implements Event, JSObject {
-  factory TrackEvent(
+  TrackEvent(
     String type, [
     TrackEventInit? eventInitDict,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The read-only **`track`** property of
   /// the [TrackEvent] interface specifies the media track object to which the
@@ -6352,14 +6350,12 @@ extension type TrackEvent._(JSObject _) implements Event, JSObject {
   }
 }
 extension type TrackEventInit._(JSObject _) implements EventInit, JSObject {
-  factory TrackEventInit({
+  TrackEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
     JSObject? track,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   JSObject? get track {
     unsupportedPlatformError();
@@ -9898,12 +9894,10 @@ extension type ValidityState._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SubmitEvent).
 extension type SubmitEvent._(JSObject _) implements Event, JSObject {
-  factory SubmitEvent(
+  SubmitEvent(
     String type, [
     SubmitEventInit? eventInitDict,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The read-only **`submitter`** property found on
   /// the [SubmitEvent] interface specifies the submit button or other element
@@ -9913,14 +9907,12 @@ extension type SubmitEvent._(JSObject _) implements Event, JSObject {
   }
 }
 extension type SubmitEventInit._(JSObject _) implements EventInit, JSObject {
-  factory SubmitEventInit({
+  SubmitEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
     HTMLElement? submitter,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   HTMLElement? get submitter {
     unsupportedPlatformError();
@@ -9948,12 +9940,10 @@ extension type SubmitEventInit._(JSObject _) implements EventInit, JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/FormDataEvent).
 extension type FormDataEvent._(JSObject _) implements Event, JSObject {
-  factory FormDataEvent(
+  FormDataEvent(
     String type,
     FormDataEventInit eventInitDict,
-  ) {
-    unsupportedPlatformError();
-  }
+  ) : _ = JSObject();
 
   /// The `formData` read-only property of the [FormDataEvent]
   /// interface contains the [FormData] object representing the data contained
@@ -9964,14 +9954,12 @@ extension type FormDataEvent._(JSObject _) implements Event, JSObject {
   }
 }
 extension type FormDataEventInit._(JSObject _) implements EventInit, JSObject {
-  factory FormDataEventInit({
+  FormDataEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
     required FormData formData,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   FormData get formData {
     unsupportedPlatformError();
@@ -10458,9 +10446,7 @@ extension type HTMLSlotElement._(JSObject _) implements HTMLElement, JSObject {
   }
 }
 extension type AssignedNodesOptions._(JSObject _) implements JSObject {
-  factory AssignedNodesOptions({bool? flatten}) {
-    unsupportedPlatformError();
-  }
+  AssignedNodesOptions({bool? flatten}) : _ = JSObject();
 
   bool get flatten {
     unsupportedPlatformError();
@@ -10616,14 +10602,12 @@ extension type HTMLCanvasElement._(JSObject _)
 }
 extension type CanvasRenderingContext2DSettings._(JSObject _)
     implements JSObject {
-  factory CanvasRenderingContext2DSettings({
+  CanvasRenderingContext2DSettings({
     bool? alpha,
     bool? desynchronized,
     PredefinedColorSpace? colorSpace,
     bool? willReadFrequently,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   bool get alpha {
     unsupportedPlatformError();
@@ -12131,9 +12115,7 @@ extension type TextMetrics._(JSObject _) implements JSObject {
   }
 }
 extension type ImageDataSettings._(JSObject _) implements JSObject {
-  factory ImageDataSettings({PredefinedColorSpace? colorSpace}) {
-    unsupportedPlatformError();
-  }
+  ImageDataSettings({PredefinedColorSpace? colorSpace}) : _ = JSObject();
 
   PredefinedColorSpace get colorSpace {
     unsupportedPlatformError();
@@ -12158,14 +12140,12 @@ extension type ImageDataSettings._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ImageData).
 extension type ImageData._(JSObject _) implements JSObject {
-  factory ImageData(
+  ImageData(
     JSAny dataOrSw,
     int shOrSw, [
     JSAny? settingsOrSh,
     ImageDataSettings? settings,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The readonly **`ImageData.width`** property returns the number
   /// of pixels per row in the [ImageData] object.
@@ -12214,9 +12194,7 @@ extension type ImageData._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Path2D).
 extension type Path2D._(JSObject _) implements JSObject {
-  factory Path2D([JSAny? path]) {
-    unsupportedPlatformError();
-  }
+  Path2D([JSAny? path]) : _ = JSObject();
 
   /// The **`Path2D.addPath()`** method
   /// of the Canvas 2D API adds one [Path2D] object to another
@@ -12354,12 +12332,10 @@ extension type ImageBitmapRenderingContext._(JSObject _) implements JSObject {
   }
 }
 extension type ImageEncodeOptions._(JSObject _) implements JSObject {
-  factory ImageEncodeOptions({
+  ImageEncodeOptions({
     String? type,
     num? quality,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get type {
     unsupportedPlatformError();
@@ -12401,12 +12377,10 @@ extension type ImageEncodeOptions._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvas).
 extension type OffscreenCanvas._(JSObject _) implements EventTarget, JSObject {
-  factory OffscreenCanvas(
+  OffscreenCanvas(
     int width,
     int height,
-  ) {
-    unsupportedPlatformError();
-  }
+  ) : _ = JSObject();
 
   /// The **`OffscreenCanvas.getContext()`** method returns a drawing context
   /// for an offscreen canvas, or
@@ -13092,9 +13066,7 @@ extension type CustomElementRegistry._(JSObject _) implements JSObject {
   }
 }
 extension type ElementDefinitionOptions._(JSObject _) implements JSObject {
-  factory ElementDefinitionOptions({String? extends_}) {
-    unsupportedPlatformError();
-  }
+  ElementDefinitionOptions({String? extends_}) : _ = JSObject();
 
   String get extends_ {
     unsupportedPlatformError();
@@ -13998,7 +13970,7 @@ extension type ElementInternals._(JSObject _) implements JSObject {
   }
 }
 extension type ValidityStateFlags._(JSObject _) implements JSObject {
-  factory ValidityStateFlags({
+  ValidityStateFlags({
     bool? valueMissing,
     bool? typeMismatch,
     bool? patternMismatch,
@@ -14009,9 +13981,7 @@ extension type ValidityStateFlags._(JSObject _) implements JSObject {
     bool? stepMismatch,
     bool? badInput,
     bool? customError,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   bool get valueMissing {
     unsupportedPlatformError();
@@ -14153,12 +14123,10 @@ extension type UserActivation._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent).
 extension type ToggleEvent._(JSObject _) implements Event, JSObject {
-  factory ToggleEvent(
+  ToggleEvent(
     String type, [
     ToggleEventInit? eventInitDict,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The **`oldState`** read-only property of the [ToggleEvent] interface is a
   /// string representing the state the element is transitioning from.
@@ -14173,15 +14141,13 @@ extension type ToggleEvent._(JSObject _) implements Event, JSObject {
   }
 }
 extension type ToggleEventInit._(JSObject _) implements EventInit, JSObject {
-  factory ToggleEventInit({
+  ToggleEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
     String? oldState,
     String? newState,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get oldState {
     unsupportedPlatformError();
@@ -14200,12 +14166,10 @@ extension type ToggleEventInit._(JSObject _) implements EventInit, JSObject {
   }
 }
 extension type FocusOptions._(JSObject _) implements JSObject {
-  factory FocusOptions({
+  FocusOptions({
     bool? preventScroll,
     bool? focusVisible,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   bool get preventScroll {
     unsupportedPlatformError();
@@ -14237,9 +14201,7 @@ extension type FocusOptions._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer).
 extension type DataTransfer._(JSObject _) implements JSObject {
-  factory DataTransfer() {
-    unsupportedPlatformError();
-  }
+  DataTransfer() : _ = JSObject();
 
   /// When a drag occurs, a translucent image is generated from the drag target
   /// (the element
@@ -14569,12 +14531,10 @@ extension type DataTransferItem._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/DragEvent).
 extension type DragEvent._(JSObject _) implements MouseEvent, JSObject {
-  factory DragEvent(
+  DragEvent(
     String type, [
     DragEventInit? eventInitDict,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The **`DragEvent.dataTransfer`** read-only property holds the drag
   /// operation's data (as a [DataTransfer] object).
@@ -14583,7 +14543,7 @@ extension type DragEvent._(JSObject _) implements MouseEvent, JSObject {
   }
 }
 extension type DragEventInit._(JSObject _) implements MouseEventInit, JSObject {
-  factory DragEventInit({
+  DragEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
@@ -14615,9 +14575,7 @@ extension type DragEventInit._(JSObject _) implements MouseEventInit, JSObject {
     num? movementX,
     num? movementY,
     DataTransfer? dataTransfer,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   DataTransfer? get dataTransfer {
     unsupportedPlatformError();
@@ -16654,12 +16612,10 @@ extension type Window._(JSObject _) implements EventTarget, JSObject {
 }
 extension type WindowPostMessageOptions._(JSObject _)
     implements StructuredSerializeOptions, JSObject {
-  factory WindowPostMessageOptions({
+  WindowPostMessageOptions({
     JSArray<JSObject>? transfer,
     String? targetOrigin,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get targetOrigin {
     unsupportedPlatformError();
@@ -17011,12 +16967,10 @@ extension type History._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/PopStateEvent).
 extension type PopStateEvent._(JSObject _) implements Event, JSObject {
-  factory PopStateEvent(
+  PopStateEvent(
     String type, [
     PopStateEventInit? eventInitDict,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The **`state`** read-only property of the [PopStateEvent] interface
   /// represents the state stored when the event was created.
@@ -17032,15 +16986,13 @@ extension type PopStateEvent._(JSObject _) implements Event, JSObject {
   }
 }
 extension type PopStateEventInit._(JSObject _) implements EventInit, JSObject {
-  factory PopStateEventInit({
+  PopStateEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
     JSAny? state,
     bool? hasUAVisualTransition,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   JSAny? get state {
     unsupportedPlatformError();
@@ -17070,12 +17022,10 @@ extension type PopStateEventInit._(JSObject _) implements EventInit, JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/HashChangeEvent).
 extension type HashChangeEvent._(JSObject _) implements Event, JSObject {
-  factory HashChangeEvent(
+  HashChangeEvent(
     String type, [
     HashChangeEventInit? eventInitDict,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The **`oldURL`** read-only property of the
   /// [HashChangeEvent] interface returns the previous URL from which the window
@@ -17093,15 +17043,13 @@ extension type HashChangeEvent._(JSObject _) implements Event, JSObject {
 }
 extension type HashChangeEventInit._(JSObject _)
     implements EventInit, JSObject {
-  factory HashChangeEventInit({
+  HashChangeEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
     String? oldURL,
     String? newURL,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get oldURL {
     unsupportedPlatformError();
@@ -17132,12 +17080,10 @@ extension type HashChangeEventInit._(JSObject _)
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/PageTransitionEvent).
 extension type PageTransitionEvent._(JSObject _) implements Event, JSObject {
-  factory PageTransitionEvent(
+  PageTransitionEvent(
     String type, [
     PageTransitionEventInit? eventInitDict,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The **`persisted`** read-only property indicates if a webpage is loading
   /// from a cache.
@@ -17147,14 +17093,12 @@ extension type PageTransitionEvent._(JSObject _) implements Event, JSObject {
 }
 extension type PageTransitionEventInit._(JSObject _)
     implements EventInit, JSObject {
-  factory PageTransitionEventInit({
+  PageTransitionEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
     bool? persisted,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   bool get persisted {
     unsupportedPlatformError();
@@ -17206,12 +17150,10 @@ extension type BeforeUnloadEvent._(JSObject _) implements Event, JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ErrorEvent).
 extension type ErrorEvent._(JSObject _) implements Event, JSObject {
-  factory ErrorEvent(
+  ErrorEvent(
     String type, [
     ErrorEventInit? eventInitDict,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   String get message {
     unsupportedPlatformError();
@@ -17234,7 +17176,7 @@ extension type ErrorEvent._(JSObject _) implements Event, JSObject {
   }
 }
 extension type ErrorEventInit._(JSObject _) implements EventInit, JSObject {
-  factory ErrorEventInit({
+  ErrorEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
@@ -17243,9 +17185,7 @@ extension type ErrorEventInit._(JSObject _) implements EventInit, JSObject {
     int? lineno,
     int? colno,
     JSAny? error,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get message {
     unsupportedPlatformError();
@@ -17300,12 +17240,10 @@ extension type ErrorEventInit._(JSObject _) implements EventInit, JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/PromiseRejectionEvent).
 extension type PromiseRejectionEvent._(JSObject _) implements Event, JSObject {
-  factory PromiseRejectionEvent(
+  PromiseRejectionEvent(
     String type,
     PromiseRejectionEventInit eventInitDict,
-  ) {
-    unsupportedPlatformError();
-  }
+  ) : _ = JSObject();
 
   /// The [PromiseRejectionEvent] interface's
   /// **`promise`** read-only property indicates the JavaScript
@@ -17326,15 +17264,13 @@ extension type PromiseRejectionEvent._(JSObject _) implements Event, JSObject {
 }
 extension type PromiseRejectionEventInit._(JSObject _)
     implements EventInit, JSObject {
-  factory PromiseRejectionEventInit({
+  PromiseRejectionEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
     required JSObject promise,
     JSAny? reason,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   JSObject get promise {
     unsupportedPlatformError();
@@ -17353,12 +17289,10 @@ extension type PromiseRejectionEventInit._(JSObject _)
   }
 }
 extension type GetHTMLOptions._(JSObject _) implements JSObject {
-  factory GetHTMLOptions({
+  GetHTMLOptions({
     bool? serializableShadowRoots,
     JSArray<ShadowRoot>? shadowRoots,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   bool get serializableShadowRoots {
     unsupportedPlatformError();
@@ -17406,9 +17340,7 @@ extension type GetHTMLOptions._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/DOMParser).
 extension type DOMParser._(JSObject _) implements JSObject {
-  factory DOMParser() {
-    unsupportedPlatformError();
-  }
+  DOMParser() : _ = JSObject();
 
   /// The **`parseFromString()`** method of the [DOMParser] interface parses a
   /// string containing either HTML or XML, returning an [HTMLDocument] or an
@@ -18312,16 +18244,14 @@ extension type ImageBitmap._(JSObject _) implements JSObject {
   }
 }
 extension type ImageBitmapOptions._(JSObject _) implements JSObject {
-  factory ImageBitmapOptions({
+  ImageBitmapOptions({
     ImageOrientation? imageOrientation,
     PremultiplyAlpha? premultiplyAlpha,
     ColorSpaceConversion? colorSpaceConversion,
     int? resizeWidth,
     int? resizeHeight,
     ResizeQuality? resizeQuality,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   ImageOrientation get imageOrientation {
     unsupportedPlatformError();
@@ -18404,12 +18334,10 @@ extension type ImageBitmapOptions._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent).
 extension type MessageEvent._(JSObject _) implements Event, JSObject {
-  factory MessageEvent(
+  MessageEvent(
     String type, [
     MessageEventInit? eventInitDict,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   void initMessageEvent(
     String type, [
@@ -18464,7 +18392,7 @@ extension type MessageEvent._(JSObject _) implements Event, JSObject {
   }
 }
 extension type MessageEventInit._(JSObject _) implements EventInit, JSObject {
-  factory MessageEventInit({
+  MessageEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
@@ -18473,9 +18401,7 @@ extension type MessageEventInit._(JSObject _) implements EventInit, JSObject {
     String? lastEventId,
     MessageEventSource? source,
     JSArray<MessagePort>? ports,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   JSAny? get data {
     unsupportedPlatformError();
@@ -18566,12 +18492,10 @@ extension type MessageEventInit._(JSObject _) implements EventInit, JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/EventSource).
 extension type EventSource._(JSObject _) implements EventTarget, JSObject {
-  factory EventSource(
+  EventSource(
     String url, [
     EventSourceInit? eventSourceInitDict,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   static const int CONNECTING = 0;
 
@@ -18634,9 +18558,7 @@ extension type EventSource._(JSObject _) implements EventTarget, JSObject {
   }
 }
 extension type EventSourceInit._(JSObject _) implements JSObject {
-  factory EventSourceInit({bool? withCredentials}) {
-    unsupportedPlatformError();
-  }
+  EventSourceInit({bool? withCredentials}) : _ = JSObject();
 
   bool get withCredentials {
     unsupportedPlatformError();
@@ -18657,9 +18579,7 @@ extension type EventSourceInit._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MessageChannel).
 extension type MessageChannel._(JSObject _) implements JSObject {
-  factory MessageChannel() {
-    unsupportedPlatformError();
-  }
+  MessageChannel() : _ = JSObject();
 
   /// The **`port1`** read-only property of the
   /// [MessageChannel] interface returns the first port of the message channel —
@@ -18744,9 +18664,7 @@ extension type MessagePort._(JSObject _) implements EventTarget, JSObject {
   }
 }
 extension type StructuredSerializeOptions._(JSObject _) implements JSObject {
-  factory StructuredSerializeOptions({JSArray<JSObject>? transfer}) {
-    unsupportedPlatformError();
-  }
+  StructuredSerializeOptions({JSArray<JSObject>? transfer}) : _ = JSObject();
 
   JSArray<JSObject> get transfer {
     unsupportedPlatformError();
@@ -18769,9 +18687,7 @@ extension type StructuredSerializeOptions._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/BroadcastChannel).
 extension type BroadcastChannel._(JSObject _) implements EventTarget, JSObject {
-  factory BroadcastChannel(String name) {
-    unsupportedPlatformError();
-  }
+  BroadcastChannel(String name) : _ = JSObject();
 
   /// The **`postMessage()`** method of the [BroadcastChannel] interface sends a
   /// message,
@@ -19319,12 +19235,10 @@ extension type SharedWorkerGlobalScope._(JSObject _)
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Worker).
 extension type Worker._(JSObject _) implements EventTarget, JSObject {
-  factory Worker(
+  Worker(
     JSAny scriptURL, [
     WorkerOptions? options,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// @AvailableInWorkers("window_and_worker_except_service")
   ///
@@ -19380,13 +19294,11 @@ extension type Worker._(JSObject _) implements EventTarget, JSObject {
   }
 }
 extension type WorkerOptions._(JSObject _) implements JSObject {
-  factory WorkerOptions({
+  WorkerOptions({
     WorkerType? type,
     RequestCredentials? credentials,
     String? name,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   WorkerType get type {
     unsupportedPlatformError();
@@ -19428,12 +19340,10 @@ extension type WorkerOptions._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SharedWorker).
 extension type SharedWorker._(JSObject _) implements EventTarget, JSObject {
-  factory SharedWorker(
+  SharedWorker(
     JSAny scriptURL, [
     JSAny? options,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The **`port`** property of the [SharedWorker]
   /// interface returns a [MessagePort] object used to communicate and control
@@ -19813,9 +19723,7 @@ extension type Worklet._(JSObject _) implements JSObject {
   }
 }
 extension type WorkletOptions._(JSObject _) implements JSObject {
-  factory WorkletOptions({RequestCredentials? credentials}) {
-    unsupportedPlatformError();
-  }
+  WorkletOptions({RequestCredentials? credentials}) : _ = JSObject();
 
   RequestCredentials get credentials {
     unsupportedPlatformError();
@@ -19908,12 +19816,10 @@ extension type Storage._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/StorageEvent).
 extension type StorageEvent._(JSObject _) implements Event, JSObject {
-  factory StorageEvent(
+  StorageEvent(
     String type, [
     StorageEventInit? eventInitDict,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The **`StorageEvent.initStorageEvent()`** method is used to initialize the
   /// value of a [StorageEvent].
@@ -19961,7 +19867,7 @@ extension type StorageEvent._(JSObject _) implements Event, JSObject {
   }
 }
 extension type StorageEventInit._(JSObject _) implements EventInit, JSObject {
-  factory StorageEventInit({
+  StorageEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
@@ -19970,9 +19876,7 @@ extension type StorageEventInit._(JSObject _) implements EventInit, JSObject {
     String? newValue,
     String? url,
     Storage? storageArea,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String? get key {
     unsupportedPlatformError();

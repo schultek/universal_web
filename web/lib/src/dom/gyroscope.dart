@@ -33,9 +33,7 @@ typedef GyroscopeLocalCoordinateSystem = String;
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Gyroscope).
 extension type Gyroscope._(JSObject _) implements Sensor, JSObject {
-  factory Gyroscope([GyroscopeSensorOptions? sensorOptions]) {
-    unsupportedPlatformError();
-  }
+  Gyroscope([GyroscopeSensorOptions? sensorOptions]) : _ = JSObject();
 
   /// The **`x`** read-only property of the
   /// [Gyroscope] interface returns a number specifying the
@@ -59,12 +57,10 @@ extension type Gyroscope._(JSObject _) implements Sensor, JSObject {
 }
 extension type GyroscopeSensorOptions._(JSObject _)
     implements SensorOptions, JSObject {
-  factory GyroscopeSensorOptions({
+  GyroscopeSensorOptions({
     num? frequency,
     GyroscopeLocalCoordinateSystem? referenceFrame,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   GyroscopeLocalCoordinateSystem get referenceFrame {
     unsupportedPlatformError();

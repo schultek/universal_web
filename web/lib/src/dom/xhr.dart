@@ -127,9 +127,7 @@ extension type XMLHttpRequestUpload._(JSObject _)
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest).
 extension type XMLHttpRequest._(JSObject _)
     implements XMLHttpRequestEventTarget, JSObject {
-  factory XMLHttpRequest() {
-    unsupportedPlatformError();
-  }
+  XMLHttpRequest() : _ = JSObject();
 
   static const int UNSENT = 0;
 
@@ -591,12 +589,10 @@ extension type XMLHttpRequest._(JSObject _)
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/FormData).
 extension type FormData._(JSObject _) implements JSObject {
-  factory FormData([
+  FormData([
     HTMLFormElement? form,
     HTMLElement? submitter,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The **`append()`** method of the [FormData] interface appends a new value
   /// onto an existing key inside a `FormData` object, or adds the key if it
@@ -668,12 +664,10 @@ extension type FormData._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ProgressEvent).
 extension type ProgressEvent._(JSObject _) implements Event, JSObject {
-  factory ProgressEvent(
+  ProgressEvent(
     String type, [
     ProgressEventInit? eventInitDict,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The
   /// **`ProgressEvent.lengthComputable`** read-only property is a
@@ -716,16 +710,14 @@ extension type ProgressEvent._(JSObject _) implements Event, JSObject {
   }
 }
 extension type ProgressEventInit._(JSObject _) implements EventInit, JSObject {
-  factory ProgressEventInit({
+  ProgressEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
     bool? lengthComputable,
     int? loaded,
     int? total,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   bool get lengthComputable {
     unsupportedPlatformError();

@@ -98,9 +98,7 @@ extension type PerformanceEntry._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceObserver).
 extension type PerformanceObserver._(JSObject _) implements JSObject {
-  factory PerformanceObserver(PerformanceObserverCallback callback) {
-    unsupportedPlatformError();
-  }
+  PerformanceObserver(PerformanceObserverCallback callback) : _ = JSObject();
 
   /// The static **`supportedEntryTypes`** read-only property of the
   /// [PerformanceObserver] interface returns an array of the
@@ -140,14 +138,12 @@ extension type PerformanceObserver._(JSObject _) implements JSObject {
   }
 }
 extension type PerformanceObserverInit._(JSObject _) implements JSObject {
-  factory PerformanceObserverInit({
+  PerformanceObserverInit({
     JSArray<JSString>? entryTypes,
     String? type,
     bool? buffered,
     DOMHighResTimeStamp? durationThreshold,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   JSArray<JSString> get entryTypes {
     unsupportedPlatformError();

@@ -19,12 +19,10 @@ typedef ImportExportKind = String;
 typedef TableKind = String;
 typedef ValueType = String;
 extension type WebAssemblyInstantiatedSource._(JSObject _) implements JSObject {
-  factory WebAssemblyInstantiatedSource({
+  WebAssemblyInstantiatedSource({
     required Module module,
     required Instance instance,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   Module get module {
     unsupportedPlatformError();
@@ -74,12 +72,10 @@ extension type $WebAssembly._(JSObject _) implements JSObject {
   }
 }
 extension type ModuleExportDescriptor._(JSObject _) implements JSObject {
-  factory ModuleExportDescriptor({
+  ModuleExportDescriptor({
     required String name,
     required ImportExportKind kind,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get name {
     unsupportedPlatformError();
@@ -98,13 +94,11 @@ extension type ModuleExportDescriptor._(JSObject _) implements JSObject {
   }
 }
 extension type ModuleImportDescriptor._(JSObject _) implements JSObject {
-  factory ModuleImportDescriptor({
+  ModuleImportDescriptor({
     required String module,
     required String name,
     required ImportExportKind kind,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get module {
     unsupportedPlatformError();
@@ -131,9 +125,7 @@ extension type ModuleImportDescriptor._(JSObject _) implements JSObject {
   }
 }
 extension type Module._(JSObject _) implements JSObject {
-  factory Module(BufferSource bytes) {
-    unsupportedPlatformError();
-  }
+  Module(BufferSource bytes) : _ = JSObject();
 
   static JSArray<ModuleExportDescriptor> exports(Module moduleObject) {
     unsupportedPlatformError();
@@ -151,24 +143,20 @@ extension type Module._(JSObject _) implements JSObject {
   }
 }
 extension type Instance._(JSObject _) implements JSObject {
-  factory Instance(
+  Instance(
     Module module, [
     JSObject? importObject,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   JSObject get exports {
     unsupportedPlatformError();
   }
 }
 extension type MemoryDescriptor._(JSObject _) implements JSObject {
-  factory MemoryDescriptor({
+  MemoryDescriptor({
     required int initial,
     int? maximum,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   int get initial {
     unsupportedPlatformError();
@@ -187,9 +175,7 @@ extension type MemoryDescriptor._(JSObject _) implements JSObject {
   }
 }
 extension type Memory._(JSObject _) implements JSObject {
-  factory Memory(MemoryDescriptor descriptor) {
-    unsupportedPlatformError();
-  }
+  Memory(MemoryDescriptor descriptor) : _ = JSObject();
 
   int grow(int delta) {
     unsupportedPlatformError();
@@ -200,13 +186,11 @@ extension type Memory._(JSObject _) implements JSObject {
   }
 }
 extension type TableDescriptor._(JSObject _) implements JSObject {
-  factory TableDescriptor({
+  TableDescriptor({
     required TableKind element,
     required int initial,
     int? maximum,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   TableKind get element {
     unsupportedPlatformError();
@@ -233,12 +217,10 @@ extension type TableDescriptor._(JSObject _) implements JSObject {
   }
 }
 extension type Table._(JSObject _) implements JSObject {
-  factory Table(
+  Table(
     TableDescriptor descriptor, [
     JSAny? value,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   int grow(
     int delta, [
@@ -263,12 +245,10 @@ extension type Table._(JSObject _) implements JSObject {
   }
 }
 extension type GlobalDescriptor._(JSObject _) implements JSObject {
-  factory GlobalDescriptor({
+  GlobalDescriptor({
     required ValueType value,
     bool? mutable,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   ValueType get value {
     unsupportedPlatformError();
@@ -287,12 +267,10 @@ extension type GlobalDescriptor._(JSObject _) implements JSObject {
   }
 }
 extension type Global._(JSObject _) implements JSObject {
-  factory Global(
+  Global(
     GlobalDescriptor descriptor, [
     JSAny? v,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   JSAny? valueOf() {
     unsupportedPlatformError();

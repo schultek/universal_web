@@ -30,12 +30,10 @@ import 'html.dart';
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/UIEvent).
 extension type UIEvent._(JSObject _) implements Event, JSObject {
-  factory UIEvent(
+  UIEvent(
     String type, [
     UIEventInit? eventInitDict,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The **`UIEvent.initUIEvent()`** method initializes a UI event
   /// once it's been created.
@@ -91,7 +89,7 @@ extension type UIEvent._(JSObject _) implements Event, JSObject {
   }
 }
 extension type UIEventInit._(JSObject _) implements EventInit, JSObject {
-  factory UIEventInit({
+  UIEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
@@ -99,9 +97,7 @@ extension type UIEventInit._(JSObject _) implements EventInit, JSObject {
     int? detail,
     JSObject? sourceCapabilities,
     int? which,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   Window? get view {
     unsupportedPlatformError();
@@ -145,12 +141,10 @@ extension type UIEventInit._(JSObject _) implements EventInit, JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/FocusEvent).
 extension type FocusEvent._(JSObject _) implements UIEvent, JSObject {
-  factory FocusEvent(
+  FocusEvent(
     String type, [
     FocusEventInit? eventInitDict,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The **`relatedTarget`** read-only property of the [FocusEvent] interface
   /// is the secondary target, depending on the type of event:
@@ -199,7 +193,7 @@ extension type FocusEvent._(JSObject _) implements UIEvent, JSObject {
   }
 }
 extension type FocusEventInit._(JSObject _) implements UIEventInit, JSObject {
-  factory FocusEventInit({
+  FocusEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
@@ -208,9 +202,7 @@ extension type FocusEventInit._(JSObject _) implements UIEventInit, JSObject {
     JSObject? sourceCapabilities,
     int? which,
     EventTarget? relatedTarget,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   EventTarget? get relatedTarget {
     unsupportedPlatformError();
@@ -240,12 +232,10 @@ extension type FocusEventInit._(JSObject _) implements UIEventInit, JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent).
 extension type MouseEvent._(JSObject _) implements UIEvent, JSObject {
-  factory MouseEvent(
+  MouseEvent(
     String type, [
     MouseEventInit? eventInitDict,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The **`MouseEvent.getModifierState()`** method returns the current state
   /// of the specified modifier key: `true` if the modifier is active (i.e., the
@@ -604,7 +594,7 @@ extension type MouseEvent._(JSObject _) implements UIEvent, JSObject {
 }
 extension type MouseEventInit._(JSObject _)
     implements EventModifierInit, JSObject {
-  factory MouseEventInit({
+  MouseEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
@@ -635,9 +625,7 @@ extension type MouseEventInit._(JSObject _)
     EventTarget? relatedTarget,
     num? movementX,
     num? movementY,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   int get screenX {
     unsupportedPlatformError();
@@ -713,7 +701,7 @@ extension type MouseEventInit._(JSObject _)
 }
 extension type EventModifierInit._(JSObject _)
     implements UIEventInit, JSObject {
-  factory EventModifierInit({
+  EventModifierInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
@@ -735,9 +723,7 @@ extension type EventModifierInit._(JSObject _)
     bool? modifierSuper,
     bool? modifierSymbol,
     bool? modifierSymbolLock,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   bool get ctrlKey {
     unsupportedPlatformError();
@@ -877,12 +863,10 @@ extension type EventModifierInit._(JSObject _)
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WheelEvent).
 extension type WheelEvent._(JSObject _) implements MouseEvent, JSObject {
-  factory WheelEvent(
+  WheelEvent(
     String type, [
     WheelEventInit? eventInitDict,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   static const int DOM_DELTA_PIXEL = 0;
 
@@ -926,7 +910,7 @@ extension type WheelEvent._(JSObject _) implements MouseEvent, JSObject {
 }
 extension type WheelEventInit._(JSObject _)
     implements MouseEventInit, JSObject {
-  factory WheelEventInit({
+  WheelEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
@@ -961,9 +945,7 @@ extension type WheelEventInit._(JSObject _)
     num? deltaY,
     num? deltaZ,
     int? deltaMode,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   double get deltaX {
     unsupportedPlatformError();
@@ -1006,12 +988,10 @@ extension type WheelEventInit._(JSObject _)
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/InputEvent).
 extension type InputEvent._(JSObject _) implements UIEvent, JSObject {
-  factory InputEvent(
+  InputEvent(
     String type, [
     InputEventInit? eventInitDict,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The **`getTargetRanges()`** method of the [InputEvent] interface returns
   /// an array of [StaticRange] objects that will be affected by a change to the
@@ -1100,7 +1080,7 @@ extension type InputEvent._(JSObject _) implements UIEvent, JSObject {
   }
 }
 extension type InputEventInit._(JSObject _) implements UIEventInit, JSObject {
-  factory InputEventInit({
+  InputEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
@@ -1113,9 +1093,7 @@ extension type InputEventInit._(JSObject _) implements UIEventInit, JSObject {
     String? inputType,
     DataTransfer? dataTransfer,
     JSArray<StaticRange>? targetRanges,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String? get data {
     unsupportedPlatformError();
@@ -1176,12 +1154,10 @@ extension type InputEventInit._(JSObject _) implements UIEventInit, JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent).
 extension type KeyboardEvent._(JSObject _) implements UIEvent, JSObject {
-  factory KeyboardEvent(
+  KeyboardEvent(
     String type, [
     KeyboardEventInit? eventInitDict,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   static const int DOM_KEY_LOCATION_STANDARD = 0;
 
@@ -1461,7 +1437,7 @@ extension type KeyboardEvent._(JSObject _) implements UIEvent, JSObject {
 }
 extension type KeyboardEventInit._(JSObject _)
     implements EventModifierInit, JSObject {
-  factory KeyboardEventInit({
+  KeyboardEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
@@ -1490,9 +1466,7 @@ extension type KeyboardEventInit._(JSObject _)
     bool? isComposing,
     int? charCode,
     int? keyCode,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get key {
     unsupportedPlatformError();
@@ -1559,12 +1533,10 @@ extension type KeyboardEventInit._(JSObject _)
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CompositionEvent).
 extension type CompositionEvent._(JSObject _) implements UIEvent, JSObject {
-  factory CompositionEvent(
+  CompositionEvent(
     String type, [
     CompositionEventInit? eventInitDict,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The **`initCompositionEvent()`**
   /// method of the [CompositionEvent] interface initializes the attributes of a
@@ -1593,7 +1565,7 @@ extension type CompositionEvent._(JSObject _) implements UIEvent, JSObject {
 }
 extension type CompositionEventInit._(JSObject _)
     implements UIEventInit, JSObject {
-  factory CompositionEventInit({
+  CompositionEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
@@ -1602,9 +1574,7 @@ extension type CompositionEventInit._(JSObject _)
     JSObject? sourceCapabilities,
     int? which,
     String? data,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get data {
     unsupportedPlatformError();

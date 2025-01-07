@@ -108,9 +108,7 @@ extension type Sensor._(JSObject _) implements EventTarget, JSObject {
   }
 }
 extension type SensorOptions._(JSObject _) implements JSObject {
-  factory SensorOptions({num? frequency}) {
-    unsupportedPlatformError();
-  }
+  SensorOptions({num? frequency}) : _ = JSObject();
 
   double get frequency {
     unsupportedPlatformError();
@@ -130,12 +128,10 @@ extension type SensorOptions._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SensorErrorEvent).
 extension type SensorErrorEvent._(JSObject _) implements Event, JSObject {
-  factory SensorErrorEvent(
+  SensorErrorEvent(
     String type,
     SensorErrorEventInit errorEventInitDict,
-  ) {
-    unsupportedPlatformError();
-  }
+  ) : _ = JSObject();
 
   /// The **`error`** read-only property of
   /// the [SensorErrorEvent] interface returns the [DOMException]
@@ -146,14 +142,12 @@ extension type SensorErrorEvent._(JSObject _) implements Event, JSObject {
 }
 extension type SensorErrorEventInit._(JSObject _)
     implements EventInit, JSObject {
-  factory SensorErrorEventInit({
+  SensorErrorEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
     required DOMException error,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   DOMException get error {
     unsupportedPlatformError();

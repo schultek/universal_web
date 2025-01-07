@@ -15,14 +15,12 @@ import '../js_interop.dart';
 import 'cssom.dart';
 
 extension type PropertyDefinition._(JSObject _) implements JSObject {
-  factory PropertyDefinition({
+  PropertyDefinition({
     required String name,
     String? syntax,
     required bool inherits,
     String? initialValue,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get name {
     unsupportedPlatformError();

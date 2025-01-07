@@ -14,12 +14,10 @@ import '../error.dart';
 import '../js_interop.dart';
 
 extension type HMACGetSecretInput._(JSObject _) implements JSObject {
-  factory HMACGetSecretInput({
+  HMACGetSecretInput({
     required JSArrayBuffer salt1,
     JSArrayBuffer? salt2,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   JSArrayBuffer get salt1 {
     unsupportedPlatformError();
@@ -38,12 +36,10 @@ extension type HMACGetSecretInput._(JSObject _) implements JSObject {
   }
 }
 extension type HMACGetSecretOutput._(JSObject _) implements JSObject {
-  factory HMACGetSecretOutput({
+  HMACGetSecretOutput({
     required JSArrayBuffer output1,
     JSArrayBuffer? output2,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   JSArrayBuffer get output1 {
     unsupportedPlatformError();

@@ -45,9 +45,7 @@ typedef VideoMatrixCoefficients = String;
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/VideoDecoder).
 extension type VideoDecoder._(JSObject _) implements EventTarget, JSObject {
-  factory VideoDecoder(VideoDecoderInit init) {
-    unsupportedPlatformError();
-  }
+  VideoDecoder(VideoDecoderInit init) : _ = JSObject();
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
@@ -126,12 +124,10 @@ extension type VideoDecoder._(JSObject _) implements EventTarget, JSObject {
   }
 }
 extension type VideoDecoderInit._(JSObject _) implements JSObject {
-  factory VideoDecoderInit({
+  VideoDecoderInit({
     required VideoFrameOutputCallback output,
     required WebCodecsErrorCallback error,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   VideoFrameOutputCallback get output {
     unsupportedPlatformError();
@@ -160,9 +156,7 @@ extension type VideoDecoderInit._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/VideoEncoder).
 extension type VideoEncoder._(JSObject _) implements EventTarget, JSObject {
-  factory VideoEncoder(VideoEncoderInit init) {
-    unsupportedPlatformError();
-  }
+  VideoEncoder(VideoEncoderInit init) : _ = JSObject();
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
@@ -259,12 +253,10 @@ extension type VideoEncoder._(JSObject _) implements EventTarget, JSObject {
   }
 }
 extension type VideoEncoderInit._(JSObject _) implements JSObject {
-  factory VideoEncoderInit({
+  VideoEncoderInit({
     required EncodedVideoChunkOutputCallback output,
     required WebCodecsErrorCallback error,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   EncodedVideoChunkOutputCallback get output {
     unsupportedPlatformError();
@@ -283,12 +275,10 @@ extension type VideoEncoderInit._(JSObject _) implements JSObject {
   }
 }
 extension type VideoDecoderSupport._(JSObject _) implements JSObject {
-  factory VideoDecoderSupport({
+  VideoDecoderSupport({
     bool? supported,
     VideoDecoderConfig? config,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   bool get supported {
     unsupportedPlatformError();
@@ -307,12 +297,10 @@ extension type VideoDecoderSupport._(JSObject _) implements JSObject {
   }
 }
 extension type VideoEncoderSupport._(JSObject _) implements JSObject {
-  factory VideoEncoderSupport({
+  VideoEncoderSupport({
     bool? supported,
     VideoEncoderConfig? config,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   bool get supported {
     unsupportedPlatformError();
@@ -331,7 +319,7 @@ extension type VideoEncoderSupport._(JSObject _) implements JSObject {
   }
 }
 extension type VideoDecoderConfig._(JSObject _) implements JSObject {
-  factory VideoDecoderConfig({
+  VideoDecoderConfig({
     required String codec,
     AllowSharedBufferSource? description,
     int? codedWidth,
@@ -341,9 +329,7 @@ extension type VideoDecoderConfig._(JSObject _) implements JSObject {
     VideoColorSpaceInit? colorSpace,
     HardwareAcceleration? hardwareAcceleration,
     bool? optimizeForLatency,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get codec {
     unsupportedPlatformError();
@@ -418,7 +404,7 @@ extension type VideoDecoderConfig._(JSObject _) implements JSObject {
   }
 }
 extension type VideoEncoderConfig._(JSObject _) implements JSObject {
-  factory VideoEncoderConfig({
+  VideoEncoderConfig({
     required String codec,
     required int width,
     required int height,
@@ -434,9 +420,7 @@ extension type VideoEncoderConfig._(JSObject _) implements JSObject {
     String? contentHint,
     AvcEncoderConfig? avc,
     HevcEncoderConfig? hevc,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get codec {
     unsupportedPlatformError();
@@ -559,15 +543,13 @@ extension type VideoEncoderConfig._(JSObject _) implements JSObject {
   }
 }
 extension type VideoEncoderEncodeOptions._(JSObject _) implements JSObject {
-  factory VideoEncoderEncodeOptions({
+  VideoEncoderEncodeOptions({
     bool? keyFrame,
     VideoEncoderEncodeOptionsForAv1? av1,
     VideoEncoderEncodeOptionsForAvc? avc,
     VideoEncoderEncodeOptionsForHevc? hevc,
     VideoEncoderEncodeOptionsForVp9? vp9,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   bool get keyFrame {
     unsupportedPlatformError();
@@ -620,9 +602,7 @@ extension type VideoEncoderEncodeOptions._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/EncodedVideoChunk).
 extension type EncodedVideoChunk._(JSObject _) implements JSObject {
-  factory EncodedVideoChunk(EncodedVideoChunkInit init) {
-    unsupportedPlatformError();
-  }
+  EncodedVideoChunk(EncodedVideoChunkInit init) : _ = JSObject();
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
@@ -667,15 +647,13 @@ extension type EncodedVideoChunk._(JSObject _) implements JSObject {
   }
 }
 extension type EncodedVideoChunkInit._(JSObject _) implements JSObject {
-  factory EncodedVideoChunkInit({
+  EncodedVideoChunkInit({
     required EncodedVideoChunkType type,
     required int timestamp,
     int? duration,
     required AllowSharedBufferSource data,
     JSArray<JSArrayBuffer>? transfer,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   EncodedVideoChunkType get type {
     unsupportedPlatformError();
@@ -732,12 +710,10 @@ extension type EncodedVideoChunkInit._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/VideoFrame).
 extension type VideoFrame._(JSObject _) implements JSObject {
-  factory VideoFrame(
+  VideoFrame(
     JSObject dataOrImage, [
     JSObject? init,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
@@ -860,7 +836,7 @@ extension type VideoFrame._(JSObject _) implements JSObject {
   }
 }
 extension type VideoFrameInit._(JSObject _) implements JSObject {
-  factory VideoFrameInit({
+  VideoFrameInit({
     int? duration,
     int? timestamp,
     AlphaOption? alpha,
@@ -868,9 +844,7 @@ extension type VideoFrameInit._(JSObject _) implements JSObject {
     int? displayWidth,
     int? displayHeight,
     VideoFrameMetadata? metadata,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   int get duration {
     unsupportedPlatformError();
@@ -929,7 +903,7 @@ extension type VideoFrameInit._(JSObject _) implements JSObject {
   }
 }
 extension type VideoFrameBufferInit._(JSObject _) implements JSObject {
-  factory VideoFrameBufferInit({
+  VideoFrameBufferInit({
     required VideoPixelFormat format,
     required int codedWidth,
     required int codedHeight,
@@ -942,9 +916,7 @@ extension type VideoFrameBufferInit._(JSObject _) implements JSObject {
     VideoColorSpaceInit? colorSpace,
     JSArray<JSArrayBuffer>? transfer,
     VideoFrameMetadata? metadata,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   VideoPixelFormat get format {
     unsupportedPlatformError();
@@ -1046,14 +1018,12 @@ extension type VideoFrameMetadata._(JSObject _) implements JSObject {
   VideoFrameMetadata() : _ = JSObject();
 }
 extension type VideoFrameCopyToOptions._(JSObject _) implements JSObject {
-  factory VideoFrameCopyToOptions({
+  VideoFrameCopyToOptions({
     DOMRectInit? rect,
     JSArray<PlaneLayout>? layout,
     VideoPixelFormat? format,
     PredefinedColorSpace? colorSpace,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   DOMRectInit get rect {
     unsupportedPlatformError();
@@ -1088,12 +1058,10 @@ extension type VideoFrameCopyToOptions._(JSObject _) implements JSObject {
   }
 }
 extension type PlaneLayout._(JSObject _) implements JSObject {
-  factory PlaneLayout({
+  PlaneLayout({
     required int offset,
     required int stride,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   int get offset {
     unsupportedPlatformError();
@@ -1122,9 +1090,7 @@ extension type PlaneLayout._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/VideoColorSpace).
 extension type VideoColorSpace._(JSObject _) implements JSObject {
-  factory VideoColorSpace([VideoColorSpaceInit? init]) {
-    unsupportedPlatformError();
-  }
+  VideoColorSpace([VideoColorSpaceInit? init]) : _ = JSObject();
 
   /// @AvailableInWorkers("window_and_dedicated")
   ///
@@ -1169,14 +1135,12 @@ extension type VideoColorSpace._(JSObject _) implements JSObject {
   }
 }
 extension type VideoColorSpaceInit._(JSObject _) implements JSObject {
-  factory VideoColorSpaceInit({
+  VideoColorSpaceInit({
     VideoColorPrimaries? primaries,
     VideoTransferCharacteristics? transfer,
     VideoMatrixCoefficients? matrix,
     bool? fullRange,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   VideoColorPrimaries? get primaries {
     unsupportedPlatformError();

@@ -31,7 +31,7 @@ typedef Float32List = JSObject;
 typedef Int32List = JSObject;
 typedef WebGLPowerPreference = String;
 extension type WebGLContextAttributes._(JSObject _) implements JSObject {
-  factory WebGLContextAttributes({
+  WebGLContextAttributes({
     bool? alpha,
     bool? depth,
     bool? stencil,
@@ -42,9 +42,7 @@ extension type WebGLContextAttributes._(JSObject _) implements JSObject {
     bool? failIfMajorPerformanceCaveat,
     bool? desynchronized,
     bool? xrCompatible,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   bool get alpha {
     unsupportedPlatformError();
@@ -2510,12 +2508,10 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WebGLContextEvent).
 extension type WebGLContextEvent._(JSObject _) implements Event, JSObject {
-  factory WebGLContextEvent(
+  WebGLContextEvent(
     String type, [
     WebGLContextEventInit? eventInit,
-  ]) {
-    unsupportedPlatformError();
-  }
+  ]) : _ = JSObject();
 
   /// The read-only **`WebGLContextEvent.statusMessage`** property contains
   /// additional event status information, or is an empty string if no
@@ -2526,14 +2522,12 @@ extension type WebGLContextEvent._(JSObject _) implements Event, JSObject {
 }
 extension type WebGLContextEventInit._(JSObject _)
     implements EventInit, JSObject {
-  factory WebGLContextEventInit({
+  WebGLContextEventInit({
     bool? bubbles,
     bool? cancelable,
     bool? composed,
     String? statusMessage,
-  }) {
-    unsupportedPlatformError();
-  }
+  }) : _ = JSObject();
 
   String get statusMessage {
     unsupportedPlatformError();

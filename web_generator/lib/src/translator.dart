@@ -1052,7 +1052,7 @@ class Translator {
     final memberName = operation.name;
     // The IDL may return the value that is set. Dart doesn't let us use any
     // type besides `void` for `[]=`, so we ignore the return value.
-    var returnType = memberName.name == 'operator []='
+    final returnType = memberName.name == 'operator []='
         ? code.TypeReference((b) => b..symbol = 'void')
         : _typeReference(operation.returnType, returnType: true);
 

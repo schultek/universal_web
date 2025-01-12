@@ -6,7 +6,7 @@ import 'package:universal_web/js_interop.dart';
 import 'package:universal_web/web.dart';
 
 void main() {
-  test('Basic web', () {
+  test('Basic web stubs', () {
     final types = [
       Node,
       HTMLElement,
@@ -30,13 +30,13 @@ void main() {
     expect([types, members], isNotNull);
   });
 
-  test('Basic js interop', () {
+  test('Basic js interop stubs', () {
     final object = JSObject();
 
     expect(object, isA<JSAny>());
   });
 
-  test('Throws unsupported error', () {
+  test('Stubs throw unsupported error', () {
     expect(() => document.createElement('div') as HTMLDivElement,
         throwsUnsupportedError);
     expect(() => window.alert('Hello World!'), throwsUnsupportedError);

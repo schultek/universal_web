@@ -10,6 +10,6 @@ const bool kIsWeb = bool.fromEnvironment('dart.library.js_interop');
 void main() {
   if (kIsWeb) {
     final div = document.querySelector('div')!;
-    div.text = 'Text set at ${DateTime.now()}';
+    div.textContent = 'Text set at ${DateTime.now()}';
   }
 }

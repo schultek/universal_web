@@ -28,23 +28,14 @@ import '../dom.dart';
 import '../js_interop.dart';
 import 'lists.dart';
 
-export 'cross_origin.dart'
-    show CrossOriginContentWindowExtension, CrossOriginWindowExtension;
+export 'cross_origin.dart' show CrossOriginContentWindowExtension, CrossOriginWindowExtension;
 
 extension HTMLCanvasElementGlue on HTMLCanvasElement {
-  CanvasRenderingContext2D get context2D =>
-      getContext('2d') as CanvasRenderingContext2D;
+  CanvasRenderingContext2D get context2D => getContext('2d') as CanvasRenderingContext2D;
 
-  String toDataUrl(String type, [num? quality]) =>
-      (quality == null) ? toDataURL(type) : toDataURL(type, quality.toJS);
+  String toDataUrl(String type, [num? quality]) => (quality == null) ? toDataURL(type) : toDataURL(type, quality.toJS);
 
-  RenderingContext? getContext3d(
-      {bool alpha = true,
-      bool depth = true,
-      bool stencil = false,
-      bool antialias = true,
-      bool premultipliedAlpha = true,
-      bool preserveDrawingBuffer = false}) {
+  RenderingContext? getContext3d({bool alpha = true, bool depth = true, bool stencil = false, bool antialias = true, bool premultipliedAlpha = true, bool preserveDrawingBuffer = false}) {
     final options = {
       'alpha': alpha,
       'depth': depth,
@@ -53,8 +44,7 @@ extension HTMLCanvasElementGlue on HTMLCanvasElement {
       'premultipliedAlpha': premultipliedAlpha,
       'preserveDrawingBuffer': preserveDrawingBuffer,
     }.jsify();
-    return getContext('webgl', options) ??
-        getContext('experimental-webgl', options);
+    return getContext('webgl', options) ?? getContext('experimental-webgl', options);
   }
 }
 
@@ -119,8 +109,7 @@ extension XMLHttpRequestGlue on XMLHttpRequest {
     // from Closure's goog.net.Xhrio.getResponseHeaders.
     final headers = <String, String>{};
     final headersString = getAllResponseHeaders();
-    final headersList =
-        LineSplitter.split(headersString).where((header) => header.isNotEmpty);
+    final headersList = LineSplitter.split(headersString).where((header) => header.isNotEmpty);
     for (final header in headersList) {
       final split = header.split(': ');
       if (split.length <= 1) {
@@ -136,4 +125,72 @@ extension XMLHttpRequestGlue on XMLHttpRequest {
     }
     return headers;
   }
+}
+
+///
+extension JSObjectUnsafeUtilExtension on JSObject {
+  /// Shorthand helper for [hasProperty] to check whether this [JSObject]
+  /// contains the property key [property], but takes and returns a Dart value.
+  bool has(String property) => hasProperty(property.toJS).toDart;
+
+  /// Whether or not this [JSObject] contains the property key [property].
+  external JSBoolean hasProperty(JSAny property);
+
+  /// Shorthand helper for [getProperty] to get the value of the property key
+  /// [property] of this [JSObject], but takes and returns a Dart value.
+  JSAny? operator [](String property) => getProperty(property.toJS);
+
+  /// The value of the property key [property] of this [JSObject].
+  external R getProperty<R extends JSAny?>(JSAny property);
+
+  /// Shorthand helper for [setProperty] to write the [value] of the property
+  /// key [property] of this [JSObject], but takes a Dart value.
+  void operator []=(String property, JSAny? value) => setProperty(property.toJS, value);
+
+  /// Write the [value] of property key [property] of this [JSObject].
+  external void setProperty(JSAny property, JSAny? value);
+
+  external JSAny? _callMethod(JSAny method, [JSAny? arg1, JSAny? arg2, JSAny? arg3, JSAny? arg4]);
+
+  /// Calls [method] on this [JSObject] with up to four arguments.
+  ///
+  /// Returns the result of calling [method], which must be an [R].
+  ///
+  /// This helper doesn't allow passing nulls, as it determines whether an
+  /// argument is passed based on whether it was null or not. Prefer
+  /// [callMethodVarArgs] if you need to pass nulls.
+  R callMethod<R extends JSAny?>(JSAny method, [JSAny? arg1, JSAny? arg2, JSAny? arg3, JSAny? arg4]) => _callMethod(method, arg1, arg2, arg3, arg4) as R;
+
+  external JSAny? _callMethodVarArgs(JSAny method, [List<JSAny?>? arguments]);
+
+  /// Calls [method] on this [JSObject] with a variable number of [arguments].
+  ///
+  /// Returns the result of calling [method], which must be an [R].
+  R callMethodVarArgs<R extends JSAny?>(JSAny method, [List<JSAny?>? arguments]) => _callMethodVarArgs(method, arguments) as R;
+
+  /// Deletes the property with key [property] from this [JSObject].
+  external JSBoolean delete(JSAny property);
+}
+
+/// Utility methods to call [JSFunction]s as constructors.
+extension JSFunctionUnsafeUtilExtension on JSFunction {
+  external JSObject _callAsConstructor([JSAny? arg1, JSAny? arg2, JSAny? arg3, JSAny? arg4]);
+
+  /// Calls this [JSFunction] as a constructor with up to four arguments.
+  ///
+  /// Returns the constructed object, which must be an [R].
+  ///
+  /// This helper doesn't allow passing nulls, as it determines whether an
+  /// argument is passed based on whether it was null or not. Prefer
+  /// [callAsConstructorVarArgs] if you need to pass nulls.
+
+  R callAsConstructor<R>([JSAny? arg1, JSAny? arg2, JSAny? arg3, JSAny? arg4]) => _callAsConstructor(arg1, arg2, arg3, arg4) as R;
+
+  external JSObject _callAsConstructorVarArgs([List<JSAny?>? arguments]);
+
+  /// Calls this [JSFunction] as a constructor with a variable number of
+  /// arguments.
+  ///
+  /// Returns the constructed [JSObject], which must be an [R].
+  R callAsConstructorVarArgs<R extends JSObject>([List<JSAny?>? arguments]) => _callAsConstructorVarArgs(arguments) as R;
 }

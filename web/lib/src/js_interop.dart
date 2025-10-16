@@ -362,3 +362,31 @@ extension JSFunctionUnsafeUtilExtension on JSFunction {
   R callAsConstructorVarArgs<R extends JSObject>([List<JSAny?>? arguments]) =>
       unsupportedPlatformError();
 }
+
+// _js_annotations
+
+class _Anonymous {
+  const _Anonymous();
+}
+
+class _StaticInterop {
+  const _StaticInterop();
+}
+
+// ignore: library_private_types_in_public_api
+const Object anonymous = _Anonymous();
+
+// ignore: library_private_types_in_public_api
+const Object staticInterop = _StaticInterop();
+
+class JSExport {
+  final String name;
+  const JSExport([this.name = '']);
+}
+
+// js_util
+
+class NullRejectionException implements Exception {
+  final bool isUndefined;
+  NullRejectionException(this.isUndefined);
+}

@@ -1,3 +1,7 @@
+## 1.1.1+1
+
+- Add missing stubs for `@anonymous`, `@staticInterop` and `@JSExport`.
+
 ## 1.1.1
 
 - Depend on [`web: 1.1.1`](https://pub.dev/packages/web/versions/1.1.1).

@@ -1,4 +1,4 @@
-// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2026, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -8,7 +8,7 @@
 
 // Generated from Web IDL definitions.
 
-// ignore_for_file: unintended_html_in_doc_comment
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 import '../error.dart';
 import '../js_interop.dart';
@@ -17,9 +17,10 @@ import 'fido.dart';
 import 'secure_payment_confirmation.dart';
 import 'webidl.dart';
 
+typedef Base64URLString = String;
+typedef PublicKeyCredentialJSON = JSObject;
+typedef PublicKeyCredentialClientCapabilities = JSObject;
 typedef COSEAlgorithmIdentifier = int;
-typedef UvmEntry = JSArray<JSNumber>;
-typedef UvmEntries = JSArray<UvmEntry>;
 
 /// The **`PublicKeyCredential`** interface provides information about a public
 /// key / private key pair, which is a credential for logging in to a service
@@ -29,8 +30,9 @@ typedef UvmEntries = JSArray<UvmEntry>;
 /// extension to the
 /// [Credential Management API](https://developer.mozilla.org/en-US/docs/Web/API/Credential_Management_API).
 ///
-/// > **Note:** This API is restricted to top-level contexts. Use from within an
-/// > `iframe` element will not have any effect.
+/// > [!NOTE]
+/// > This API is restricted to top-level contexts. Use from within an `iframe`
+/// > element will not have any effect.
 ///
 /// ---
 ///
@@ -38,6 +40,11 @@ typedef UvmEntries = JSArray<UvmEntry>;
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/PublicKeyCredential).
 extension type PublicKeyCredential._(JSObject _)
     implements Credential, JSObject {
+  /// The **`isConditionalMediationAvailable()`** static method of the
+  /// [PublicKeyCredential] interface returns a `Promise` which resolves to
+  /// `true` if
+  /// [conditional mediation](https://developer.mozilla.org/en-US/docs/Web/API/Web_Authentication_API#discoverable_credentials_and_conditional_mediation)
+  /// is available.
   static JSPromise<JSBoolean> isConditionalMediationAvailable() {
     unsupportedPlatformError();
   }
@@ -55,9 +62,50 @@ extension type PublicKeyCredential._(JSObject _)
   /// - Windows Hello (Windows)
   /// - Device unlock (fingerprint, face, PIN, etc.) on Android
   ///
-  /// > **Note:** This method may only be used in top-level contexts and will
-  /// > not be available in an `iframe` for example.
+  /// > [!NOTE]
+  /// > This method may only be used in top-level contexts and will not be
+  /// > available in an `iframe` for example.
   static JSPromise<JSBoolean> isUserVerifyingPlatformAuthenticatorAvailable() {
+    unsupportedPlatformError();
+  }
+
+  /// The **`getClientCapabilities()`** static method of the
+  /// [PublicKeyCredential] interface returns a `Promise` that resolves with an
+  /// object that can be used to check whether or not particular WebAuthn client
+  /// capabilities and
+  /// [extensions](https://developer.mozilla.org/en-US/docs/Web/API/Web_Authentication_API/WebAuthn_extensions)
+  /// are supported.
+  ///
+  /// A relying party (RP) can use this information to appropriately customize
+  /// its sign-in and sign-up user interfaces and workflows.
+  static JSPromise<PublicKeyCredentialClientCapabilities>
+      getClientCapabilities() {
+    unsupportedPlatformError();
+  }
+
+  /// The **`parseCreationOptionsFromJSON()`** static method of the
+  /// [PublicKeyCredential] interface creates a
+  /// [PublicKeyCredentialCreationOptions] object from a JSON representation of
+  /// its properties.
+  ///
+  /// The method is a convenience function for converting credential options
+  /// information provided by a relying party server to the form that a web app
+  /// can use to
+  /// [create a credential](https://developer.mozilla.org/en-US/docs/Web/API/Web_Authentication_API#creating_a_key_pair_and_registering_a_user).
+  static PublicKeyCredentialCreationOptions parseCreationOptionsFromJSON(
+      PublicKeyCredentialCreationOptionsJSON options) {
+    unsupportedPlatformError();
+  }
+
+  /// The **`parseRequestOptionsFromJSON()`** static method of the
+  /// [PublicKeyCredential] interface converts a  into a
+  /// [PublicKeyCredentialRequestOptions] instance.
+  ///
+  /// The method is a convenience function for converting information provided
+  /// by a relying server to a web app in order to request an existing
+  /// credential.
+  static PublicKeyCredentialRequestOptions parseRequestOptionsFromJSON(
+      PublicKeyCredentialRequestOptionsJSON options) {
     unsupportedPlatformError();
   }
 
@@ -83,6 +131,28 @@ extension type PublicKeyCredential._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// The **`toJSON()`** method of the [PublicKeyCredential] interface returns a
+  /// of a [PublicKeyCredential].
+  ///
+  /// The properties of the returned object depend on whether the credential is
+  /// returned by
+  /// [`navigator.credentials.create()`](https://developer.mozilla.org/en-US/docs/Web/API/CredentialsContainer/create)
+  /// when
+  /// [creating a key pair and registering a user](https://developer.mozilla.org/en-US/docs/Web/API/Web_Authentication_API#creating_a_key_pair_and_registering_a_user),
+  /// or
+  /// [`navigator.credentials.get()`](https://developer.mozilla.org/en-US/docs/Web/API/CredentialsContainer/get)
+  /// when
+  /// [authenticating a user](https://developer.mozilla.org/en-US/docs/Web/API/Web_Authentication_API#authenticating_a_user).
+  ///
+  /// This method is automatically invoked when web app code calls
+  /// [`JSON.stringify()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify)
+  /// to serialize a [PublicKeyCredential] so that it can be sent to relying
+  /// party server when registering or authenticating a user.
+  /// It not intended to be called directly in web app code.
+  PublicKeyCredentialJSON toJSON() {
+    unsupportedPlatformError();
+  }
+
   /// The **`rawId`** read-only property of the
   /// [PublicKeyCredential] interface is an `ArrayBuffer` object
   /// containing the identifier of the credentials.
@@ -91,7 +161,8 @@ extension type PublicKeyCredential._(JSObject _)
   /// [base64url encoded](https://developer.mozilla.org/en-US/docs/Glossary/Base64)
   /// version of this identifier.
   ///
-  /// > **Note:** This property may only be used in top-level contexts and will
+  /// > [!NOTE]
+  /// > This property may only be used in top-level contexts and will
   /// > not be available in an `iframe` for example.
   JSArrayBuffer get rawId {
     unsupportedPlatformError();
@@ -123,12 +194,14 @@ extension type PublicKeyCredential._(JSObject _)
   /// [PublicKeyCredential.getClientExtensionResults]) to validate the
   /// demand.
   ///
-  /// > **Note:** When validating the fetching of existing credentials, the
+  /// > [!NOTE]
+  /// > When validating the fetching of existing credentials, the
   /// > whole `PublicKeyCredential` object and the client extensions are
   /// > necessary
   /// > for the relying party's server.
   ///
-  /// > **Note:** This property may only be used in top-level contexts and will
+  /// > [!NOTE]
+  /// > This property may only be used in top-level contexts and will
   /// > not be available in an `iframe` for example.
   AuthenticatorResponse get response {
     unsupportedPlatformError();
@@ -139,6 +212,246 @@ extension type PublicKeyCredential._(JSObject _)
   /// category of authenticator used during the associated
   /// [CredentialsContainer.create] or [CredentialsContainer.get] call.
   String? get authenticatorAttachment {
+    unsupportedPlatformError();
+  }
+}
+extension type PublicKeyCredentialCreationOptionsJSON._(JSObject _)
+    implements JSObject {
+  PublicKeyCredentialCreationOptionsJSON({
+    required PublicKeyCredentialRpEntity rp,
+    required PublicKeyCredentialUserEntityJSON user,
+    required Base64URLString challenge,
+    required JSArray<PublicKeyCredentialParameters> pubKeyCredParams,
+    int? timeout,
+    JSArray<PublicKeyCredentialDescriptorJSON>? excludeCredentials,
+    AuthenticatorSelectionCriteria? authenticatorSelection,
+    JSArray<JSString>? hints,
+    String? attestation,
+    JSArray<JSString>? attestationFormats,
+    AuthenticationExtensionsClientInputsJSON? extensions,
+  }) : _ = JSObject();
+
+  PublicKeyCredentialRpEntity get rp {
+    unsupportedPlatformError();
+  }
+
+  set rp(PublicKeyCredentialRpEntity value) {
+    unsupportedPlatformError();
+  }
+
+  PublicKeyCredentialUserEntityJSON get user {
+    unsupportedPlatformError();
+  }
+
+  set user(PublicKeyCredentialUserEntityJSON value) {
+    unsupportedPlatformError();
+  }
+
+  Base64URLString get challenge {
+    unsupportedPlatformError();
+  }
+
+  set challenge(Base64URLString value) {
+    unsupportedPlatformError();
+  }
+
+  JSArray<PublicKeyCredentialParameters> get pubKeyCredParams {
+    unsupportedPlatformError();
+  }
+
+  set pubKeyCredParams(JSArray<PublicKeyCredentialParameters> value) {
+    unsupportedPlatformError();
+  }
+
+  int get timeout {
+    unsupportedPlatformError();
+  }
+
+  set timeout(int value) {
+    unsupportedPlatformError();
+  }
+
+  JSArray<PublicKeyCredentialDescriptorJSON> get excludeCredentials {
+    unsupportedPlatformError();
+  }
+
+  set excludeCredentials(JSArray<PublicKeyCredentialDescriptorJSON> value) {
+    unsupportedPlatformError();
+  }
+
+  AuthenticatorSelectionCriteria get authenticatorSelection {
+    unsupportedPlatformError();
+  }
+
+  set authenticatorSelection(AuthenticatorSelectionCriteria value) {
+    unsupportedPlatformError();
+  }
+
+  JSArray<JSString> get hints {
+    unsupportedPlatformError();
+  }
+
+  set hints(JSArray<JSString> value) {
+    unsupportedPlatformError();
+  }
+
+  String get attestation {
+    unsupportedPlatformError();
+  }
+
+  set attestation(String value) {
+    unsupportedPlatformError();
+  }
+
+  JSArray<JSString> get attestationFormats {
+    unsupportedPlatformError();
+  }
+
+  set attestationFormats(JSArray<JSString> value) {
+    unsupportedPlatformError();
+  }
+
+  AuthenticationExtensionsClientInputsJSON get extensions {
+    unsupportedPlatformError();
+  }
+
+  set extensions(AuthenticationExtensionsClientInputsJSON value) {
+    unsupportedPlatformError();
+  }
+}
+extension type PublicKeyCredentialUserEntityJSON._(JSObject _)
+    implements JSObject {
+  PublicKeyCredentialUserEntityJSON({
+    required Base64URLString id,
+    required String name,
+    required String displayName,
+  }) : _ = JSObject();
+
+  Base64URLString get id {
+    unsupportedPlatformError();
+  }
+
+  set id(Base64URLString value) {
+    unsupportedPlatformError();
+  }
+
+  String get name {
+    unsupportedPlatformError();
+  }
+
+  set name(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get displayName {
+    unsupportedPlatformError();
+  }
+
+  set displayName(String value) {
+    unsupportedPlatformError();
+  }
+}
+extension type PublicKeyCredentialDescriptorJSON._(JSObject _)
+    implements JSObject {
+  PublicKeyCredentialDescriptorJSON({
+    required String type,
+    required Base64URLString id,
+    JSArray<JSString>? transports,
+  }) : _ = JSObject();
+
+  String get type {
+    unsupportedPlatformError();
+  }
+
+  set type(String value) {
+    unsupportedPlatformError();
+  }
+
+  Base64URLString get id {
+    unsupportedPlatformError();
+  }
+
+  set id(Base64URLString value) {
+    unsupportedPlatformError();
+  }
+
+  JSArray<JSString> get transports {
+    unsupportedPlatformError();
+  }
+
+  set transports(JSArray<JSString> value) {
+    unsupportedPlatformError();
+  }
+}
+extension type AuthenticationExtensionsClientInputsJSON._(JSObject _)
+    implements JSObject {
+  AuthenticationExtensionsClientInputsJSON() : _ = JSObject();
+}
+extension type PublicKeyCredentialRequestOptionsJSON._(JSObject _)
+    implements JSObject {
+  PublicKeyCredentialRequestOptionsJSON({
+    required Base64URLString challenge,
+    int? timeout,
+    String? rpId,
+    JSArray<PublicKeyCredentialDescriptorJSON>? allowCredentials,
+    String? userVerification,
+    JSArray<JSString>? hints,
+    AuthenticationExtensionsClientInputsJSON? extensions,
+  }) : _ = JSObject();
+
+  Base64URLString get challenge {
+    unsupportedPlatformError();
+  }
+
+  set challenge(Base64URLString value) {
+    unsupportedPlatformError();
+  }
+
+  int get timeout {
+    unsupportedPlatformError();
+  }
+
+  set timeout(int value) {
+    unsupportedPlatformError();
+  }
+
+  String get rpId {
+    unsupportedPlatformError();
+  }
+
+  set rpId(String value) {
+    unsupportedPlatformError();
+  }
+
+  JSArray<PublicKeyCredentialDescriptorJSON> get allowCredentials {
+    unsupportedPlatformError();
+  }
+
+  set allowCredentials(JSArray<PublicKeyCredentialDescriptorJSON> value) {
+    unsupportedPlatformError();
+  }
+
+  String get userVerification {
+    unsupportedPlatformError();
+  }
+
+  set userVerification(String value) {
+    unsupportedPlatformError();
+  }
+
+  JSArray<JSString> get hints {
+    unsupportedPlatformError();
+  }
+
+  set hints(JSArray<JSString> value) {
+    unsupportedPlatformError();
+  }
+
+  AuthenticationExtensionsClientInputsJSON get extensions {
+    unsupportedPlatformError();
+  }
+
+  set extensions(AuthenticationExtensionsClientInputsJSON value) {
     unsupportedPlatformError();
   }
 }
@@ -157,7 +470,7 @@ extension type PublicKeyCredential._(JSObject _)
 extension type AuthenticatorResponse._(JSObject _) implements JSObject {
   /// The **`clientDataJSON`** property of the [AuthenticatorResponse] interface
   /// stores a
-  /// [JSON](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON)
+  /// [JSON](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/JSON)
   /// string in an
   /// `ArrayBuffer`, representing the client data that was passed to
   /// [CredentialsContainer.create] or [CredentialsContainer.get]. This property
@@ -181,8 +494,9 @@ extension type AuthenticatorResponse._(JSObject _) implements JSObject {
 ///
 /// This interface inherits from [AuthenticatorResponse].
 ///
-/// > **Note:** This interface is restricted to top-level contexts. Use of its
-/// > features from within an `iframe` element will not have any effect.
+/// > [!NOTE]
+/// > This interface is restricted to top-level contexts. Use of its features
+/// > from within an `iframe` element will not have any effect.
 ///
 /// ---
 ///
@@ -251,7 +565,7 @@ extension type AuthenticatorAttestationResponse._(JSObject _)
   /// authenticator when it is manufactured.
   ///
   /// As part of the [CredentialsContainer.create] call, an authenticator will
-  /// create a new keypair as well as an `attestationObject` for that keypair.
+  /// create a new key pair as well as an `attestationObject` for that key pair.
   /// The public key
   /// that corresponds to the private key that has created the attestation
   /// signature is well
@@ -277,8 +591,9 @@ extension type AuthenticatorAttestationResponse._(JSObject _)
 ///
 /// This interface inherits from [AuthenticatorResponse].
 ///
-/// > **Note:** This interface is restricted to top-level contexts. Use from
-/// > within an `iframe` element will not have any effect.
+/// > [!NOTE]
+/// > This interface is restricted to top-level contexts. Use from within an
+/// > `iframe` element will not have any effect.
 ///
 /// ---
 ///
@@ -551,6 +866,18 @@ extension type AuthenticatorSelectionCriteria._(JSObject _)
     unsupportedPlatformError();
   }
 }
+
+/// The **`PublicKeyCredentialRequestOptions`** dictionary represents the object
+/// passed to [CredentialsContainer.get] as the value of the `publicKey` option.
+///
+/// It is used to request a [PublicKeyCredential] provided by an  that supports
+/// the
+/// [Web Authentication API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Authentication_API).
+///
+/// ---
+///
+/// API documentation sourced from
+/// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/PublicKeyCredentialRequestOptions).
 extension type PublicKeyCredentialRequestOptions._(JSObject _)
     implements JSObject {
   PublicKeyCredentialRequestOptions({
@@ -635,8 +962,6 @@ extension type AuthenticationExtensionsClientInputs._(JSObject _)
     bool? credProps,
     AuthenticationExtensionsPRFInputs? prf,
     AuthenticationExtensionsLargeBlobInputs? largeBlob,
-    bool? uvm,
-    AuthenticationExtensionsSupplementalPubKeysInputs? supplementalPubKeys,
   }) : _ = JSObject();
 
   String get credentialProtectionPolicy {
@@ -742,23 +1067,6 @@ extension type AuthenticationExtensionsClientInputs._(JSObject _)
   set largeBlob(AuthenticationExtensionsLargeBlobInputs value) {
     unsupportedPlatformError();
   }
-
-  bool get uvm {
-    unsupportedPlatformError();
-  }
-
-  set uvm(bool value) {
-    unsupportedPlatformError();
-  }
-
-  AuthenticationExtensionsSupplementalPubKeysInputs get supplementalPubKeys {
-    unsupportedPlatformError();
-  }
-
-  set supplementalPubKeys(
-      AuthenticationExtensionsSupplementalPubKeysInputs value) {
-    unsupportedPlatformError();
-  }
 }
 extension type AuthenticationExtensionsClientOutputs._(JSObject _)
     implements JSObject {
@@ -770,8 +1078,6 @@ extension type AuthenticationExtensionsClientOutputs._(JSObject _)
     CredentialPropertiesOutput? credProps,
     AuthenticationExtensionsPRFOutputs? prf,
     AuthenticationExtensionsLargeBlobOutputs? largeBlob,
-    UvmEntries? uvm,
-    AuthenticationExtensionsSupplementalPubKeysOutputs? supplementalPubKeys,
   }) : _ = JSObject();
 
   bool get hmacCreateSecret {
@@ -829,23 +1135,6 @@ extension type AuthenticationExtensionsClientOutputs._(JSObject _)
   set largeBlob(AuthenticationExtensionsLargeBlobOutputs value) {
     unsupportedPlatformError();
   }
-
-  UvmEntries get uvm {
-    unsupportedPlatformError();
-  }
-
-  set uvm(UvmEntries value) {
-    unsupportedPlatformError();
-  }
-
-  AuthenticationExtensionsSupplementalPubKeysOutputs get supplementalPubKeys {
-    unsupportedPlatformError();
-  }
-
-  set supplementalPubKeys(
-      AuthenticationExtensionsSupplementalPubKeysOutputs value) {
-    unsupportedPlatformError();
-  }
 }
 extension type PublicKeyCredentialDescriptor._(JSObject _) implements JSObject {
   PublicKeyCredentialDescriptor({
@@ -879,24 +1168,13 @@ extension type PublicKeyCredentialDescriptor._(JSObject _) implements JSObject {
   }
 }
 extension type CredentialPropertiesOutput._(JSObject _) implements JSObject {
-  CredentialPropertiesOutput({
-    bool? rk,
-    String? authenticatorDisplayName,
-  }) : _ = JSObject();
+  CredentialPropertiesOutput({bool? rk}) : _ = JSObject();
 
   bool get rk {
     unsupportedPlatformError();
   }
 
   set rk(bool value) {
-    unsupportedPlatformError();
-  }
-
-  String get authenticatorDisplayName {
-    unsupportedPlatformError();
-  }
-
-  set authenticatorDisplayName(String value) {
     unsupportedPlatformError();
   }
 }
@@ -1030,52 +1308,6 @@ extension type AuthenticationExtensionsLargeBlobOutputs._(JSObject _)
   }
 
   set written(bool value) {
-    unsupportedPlatformError();
-  }
-}
-extension type AuthenticationExtensionsSupplementalPubKeysInputs._(JSObject _)
-    implements JSObject {
-  AuthenticationExtensionsSupplementalPubKeysInputs({
-    required JSArray<JSString> scopes,
-    String? attestation,
-    JSArray<JSString>? attestationFormats,
-  }) : _ = JSObject();
-
-  JSArray<JSString> get scopes {
-    unsupportedPlatformError();
-  }
-
-  set scopes(JSArray<JSString> value) {
-    unsupportedPlatformError();
-  }
-
-  String get attestation {
-    unsupportedPlatformError();
-  }
-
-  set attestation(String value) {
-    unsupportedPlatformError();
-  }
-
-  JSArray<JSString> get attestationFormats {
-    unsupportedPlatformError();
-  }
-
-  set attestationFormats(JSArray<JSString> value) {
-    unsupportedPlatformError();
-  }
-}
-extension type AuthenticationExtensionsSupplementalPubKeysOutputs._(JSObject _)
-    implements JSObject {
-  AuthenticationExtensionsSupplementalPubKeysOutputs(
-      {required JSArray<JSArrayBuffer> signatures})
-      : _ = JSObject();
-
-  JSArray<JSArrayBuffer> get signatures {
-    unsupportedPlatformError();
-  }
-
-  set signatures(JSArray<JSArrayBuffer> value) {
     unsupportedPlatformError();
   }
 }

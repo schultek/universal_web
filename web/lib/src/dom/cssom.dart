@@ -1,4 +1,4 @@
-// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2026, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -8,7 +8,7 @@
 
 // Generated from Web IDL definitions.
 
-// ignore_for_file: unintended_html_in_doc_comment
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 import '../error.dart';
 import '../js_interop.dart';
@@ -136,7 +136,7 @@ extension type StyleSheet._(JSObject _) implements JSObject {
   /// A style sheet may be disabled by manually setting this property to `true`
   /// or
   /// if it's an inactive
-  /// [alternative style sheet](https://developer.mozilla.org/en-US/docs/Web/CSS/Alternative_style_sheets).
+  /// [alternative style sheet](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel/alternate_stylesheet).
   /// Note that `disabled === false` does not guarantee the style
   /// sheet is applied (it could be removed from the document, for instance).
   bool get disabled {
@@ -189,7 +189,8 @@ extension type CSSStyleSheet._(JSObject _) implements StyleSheet, JSObject {
   /// the
   /// [current style sheet](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet).
   ///
-  /// > **Note:** Although `insertRule()` is exclusively a method of
+  /// > [!NOTE]
+  /// > Although `insertRule()` is exclusively a method of
   /// > [CSSStyleSheet], it actually inserts the rule into
   /// > `[CSSStyleSheet].cssRules` — its internal
   /// > [CSSRuleList].
@@ -248,7 +249,8 @@ extension type CSSStyleSheet._(JSObject _) implements StyleSheet, JSObject {
   /// object. It is functionally identical to the standard, preferred method
   /// [CSSStyleSheet.deleteRule].
   ///
-  /// > **Note:** This is a _legacy method_ which has been replaced by
+  /// > [!NOTE]
+  /// > This is a _legacy method_ which has been replaced by
   /// > the standard method [CSSStyleSheet.deleteRule]. You
   /// > should use that instead.
   void removeRule([int? index]) {
@@ -280,7 +282,8 @@ extension type CSSStyleSheet._(JSObject _) implements StyleSheet, JSObject {
   /// it provides access to a live-updating list of the CSS rules comprising the
   /// stylesheet.
   ///
-  /// > **Note:** As a legacy property, you should not use `rules` and
+  /// > [!NOTE]
+  /// > As a legacy property, you should not use `rules` and
   /// > should instead use the preferred [CSSStyleSheet.cssRules].
   /// > While `rules` is unlikely to be removed soon, its availability is not as
   /// > widespread and using it will result in compatibility problems for your
@@ -328,8 +331,9 @@ extension type CSSStyleSheetInit._(JSObject _) implements JSObject {
 /// However it can be iterated over in a standard `for` loop over its indices,
 /// or converted to an `Array`.
 ///
-/// > **Note:** Typically list interfaces like `StyleSheetList` wrap around
-/// > `Array` types, so you can use `Array` methods on them.
+/// > [!NOTE]
+/// > Typically list interfaces like `StyleSheetList` wrap around `Array` types,
+/// > so you can use `Array` methods on them.
 /// > This is not the case here for
 /// > [historical reasons](https://stackoverflow.com/questions/74630989/why-use-domstringlist-rather-than-an-array/74641156#74641156).
 /// > However, you can convert `StyleSheetList` to an `Array` in order to use
@@ -416,6 +420,7 @@ extension type CSSRuleList._(JSObject _) implements JSObject {
 /// - [CSSLayerBlockRule]
 /// - [CSSLayerStatementRule]
 /// - [CSSPropertyRule]
+/// - [CSSNestedDeclarations]
 ///
 /// ---
 ///
@@ -448,23 +453,22 @@ extension type CSSRule._(JSObject _) implements JSObject {
 
   static const int FONT_FEATURE_VALUES_RULE = 14;
 
-  static const int VIEW_TRANSITION_RULE = 15;
-
   /// The **`cssText`** property of the [CSSRule]
   /// interface returns the actual text of a [CSSStyleSheet] style-rule.
   ///
-  /// > **Note:** Do not confuse this property with element-style
+  /// > [!NOTE]
+  /// > Do not confuse this property with element-style
   /// > [CSSStyleDeclaration.cssText].
   ///
   /// Be aware that this property can no longer be set directly, as it is
   /// [now specified](https://www.w3.org/TR/cssom-1/#changes-from-5-december-2013)
   /// to be _functionally_ modify-only, and silently so. In other words,
   /// attempting to
-  /// set it _does absolutely nothing_, and doesn't even omit a warning or
+  /// set it _does absolutely nothing_, and doesn't even emit a warning or
   /// error.
   /// Furthermore, it has no settable sub-properties. Therefore, to modify it,
   /// use the
-  /// stylesheet's [CSSRuleList]`[index]` properties
+  /// stylesheet's  properties
   /// [CSSStyleRule.selectorText] and
   /// [CSSStyleRule.style] (or its sub-properties). See
   /// [Using dynamic styling information](https://developer.mozilla.org/en-US/docs/Web/API/CSS_Object_Model/Using_dynamic_styling_information)
@@ -531,9 +535,7 @@ extension type CSSStyleRule._(JSObject _) implements CSSGroupingRule, JSObject {
   }
 
   /// The read-only **`style`** property is the [CSSStyleDeclaration] interface
-  /// for the
-  /// [declaration block](https://www.w3.org/TR/1998/REC-CSS2-19980512/syndata.html#block)
-  /// of the [CSSStyleRule].
+  /// for the declaration block of the [CSSStyleRule].
   JSObject get style {
     unsupportedPlatformError();
   }
@@ -547,7 +549,7 @@ extension type CSSStyleRule._(JSObject _) implements CSSGroupingRule, JSObject {
 }
 
 /// The **`CSSImportRule`** interface represents an
-/// [at-rule](https://developer.mozilla.org/en-US/docs/Web/CSS/At-rule).
+/// [at-rule](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_syntax/At-rule).
 ///
 /// ---
 ///
@@ -556,7 +558,7 @@ extension type CSSStyleRule._(JSObject _) implements CSSGroupingRule, JSObject {
 extension type CSSImportRule._(JSObject _) implements CSSRule, JSObject {
   /// The read-only **`href`** property of the
   /// [CSSImportRule] interface returns the URL specified by the
-  /// [at-rule](https://developer.mozilla.org/en-US/docs/Web/CSS/At-rule).
+  /// [at-rule](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_syntax/At-rule).
   ///
   /// The resolved URL will be the
   /// [`href`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link#href)
@@ -576,11 +578,12 @@ extension type CSSImportRule._(JSObject _) implements CSSRule, JSObject {
 
   /// The read-only **`styleSheet`** property of the
   /// [CSSImportRule] interface returns the CSS Stylesheet specified by the
-  /// [at-rule](https://developer.mozilla.org/en-US/docs/Web/CSS/At-rule). This
-  /// will be
+  /// [at-rule](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_syntax/At-rule).
+  /// This will be
   /// in the form of a [CSSStyleSheet] object.
   ///
-  /// An  [at-rule](https://developer.mozilla.org/en-US/docs/Web/CSS/At-rule)
+  /// An
+  /// [at-rule](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_syntax/At-rule)
   /// always has
   /// an associated stylesheet.
   CSSStyleSheet? get styleSheet {
@@ -589,7 +592,7 @@ extension type CSSImportRule._(JSObject _) implements CSSRule, JSObject {
 
   /// The read-only **`layerName`** property of the [CSSImportRule] interface
   /// returns the name of the cascade layer created by the
-  /// [at-rule](https://developer.mozilla.org/en-US/docs/Web/CSS/At-rule).
+  /// [at-rule](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_syntax/At-rule).
   ///
   /// If the created layer is anonymous, the string is empty (`""`), if no layer
   /// has been
@@ -600,7 +603,7 @@ extension type CSSImportRule._(JSObject _) implements CSSRule, JSObject {
 
   /// The read-only **`supportsText`** property of the [CSSImportRule] interface
   /// returns the supports condition specified by the
-  /// [at-rule](https://developer.mozilla.org/en-US/docs/Web/CSS/At-rule).
+  /// [at-rule](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_syntax/At-rule).
   String? get supportsText {
     unsupportedPlatformError();
   }
@@ -609,8 +612,8 @@ extension type CSSImportRule._(JSObject _) implements CSSRule, JSObject {
 /// The **`CSSGroupingRule`** interface of the
 /// [CSS Object Model](https://developer.mozilla.org/en-US/docs/Web/API/CSS_Object_Model)
 /// represents any CSS
-/// [at-rule](https://developer.mozilla.org/en-US/docs/Web/CSS/At-rule) that
-/// contains other rules nested within it.
+/// [at-rule](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_syntax/At-rule)
+/// that contains other rules nested within it.
 ///
 /// ---
 ///
@@ -659,10 +662,13 @@ extension type CSSPageRule._(JSObject _) implements CSSGroupingRule, JSObject {
   }
 
   /// The **`style`** read-only property of the [CSSPageRule] interface returns
-  /// a [CSSStyleDeclaration] object. This represents an object that is a
-  /// [CSS declaration block](https://developer.mozilla.org/en-US/docs/Web/API/CSS_Object_Model/CSS_Declaration_Block),
+  /// a [CSSPageDescriptors] object.
+  /// This represents a
+  /// [CSS declaration block](https://developer.mozilla.org/en-US/docs/Web/API/CSS_Object_Model/CSS_Declaration_Block)
+  /// for a CSS
+  /// [at-rule](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_syntax/At-rule),
   /// and exposes style information and various style-related methods and
-  /// properties.
+  /// properties for the page.
   JSObject get style {
     unsupportedPlatformError();
   }
@@ -670,7 +676,7 @@ extension type CSSPageRule._(JSObject _) implements CSSGroupingRule, JSObject {
 
 /// The **`CSSNamespaceRule`** interface describes an object representing a
 /// single CSS
-/// [at-rule](https://developer.mozilla.org/en-US/docs/Web/CSS/At-rule).
+/// [at-rule](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_syntax/At-rule).
 ///
 /// ---
 ///
@@ -957,6 +963,78 @@ extension type CSSStyleDeclaration._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
+  String get animationTrigger {
+    unsupportedPlatformError();
+  }
+
+  set animationTrigger(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get animationTriggerExitRange {
+    unsupportedPlatformError();
+  }
+
+  set animationTriggerExitRange(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get animationTriggerExitRangeEnd {
+    unsupportedPlatformError();
+  }
+
+  set animationTriggerExitRangeEnd(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get animationTriggerExitRangeStart {
+    unsupportedPlatformError();
+  }
+
+  set animationTriggerExitRangeStart(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get animationTriggerRange {
+    unsupportedPlatformError();
+  }
+
+  set animationTriggerRange(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get animationTriggerRangeEnd {
+    unsupportedPlatformError();
+  }
+
+  set animationTriggerRangeEnd(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get animationTriggerRangeStart {
+    unsupportedPlatformError();
+  }
+
+  set animationTriggerRangeStart(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get animationTriggerTimeline {
+    unsupportedPlatformError();
+  }
+
+  set animationTriggerTimeline(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get animationTriggerType {
+    unsupportedPlatformError();
+  }
+
+  set animationTriggerType(String value) {
+    unsupportedPlatformError();
+  }
+
   String get appearance {
     unsupportedPlatformError();
   }
@@ -1090,6 +1168,38 @@ extension type CSSStyleDeclaration._(JSObject _) implements JSObject {
   }
 
   set backgroundRepeat(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get backgroundRepeatBlock {
+    unsupportedPlatformError();
+  }
+
+  set backgroundRepeatBlock(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get backgroundRepeatInline {
+    unsupportedPlatformError();
+  }
+
+  set backgroundRepeatInline(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get backgroundRepeatX {
+    unsupportedPlatformError();
+  }
+
+  set backgroundRepeatX(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get backgroundRepeatY {
+    unsupportedPlatformError();
+  }
+
+  set backgroundRepeatY(String value) {
     unsupportedPlatformError();
   }
 
@@ -1717,6 +1827,14 @@ extension type CSSStyleDeclaration._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
+  String get borderShape {
+    unsupportedPlatformError();
+  }
+
+  set borderShape(String value) {
+    unsupportedPlatformError();
+  }
+
   String get borderSpacing {
     unsupportedPlatformError();
   }
@@ -2053,6 +2171,14 @@ extension type CSSStyleDeclaration._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
+  String get columnHeight {
+    unsupportedPlatformError();
+  }
+
+  set columnHeight(String value) {
+    unsupportedPlatformError();
+  }
+
   String get columnRule {
     unsupportedPlatformError();
   }
@@ -2061,11 +2187,27 @@ extension type CSSStyleDeclaration._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
+  String get columnRuleBreak {
+    unsupportedPlatformError();
+  }
+
+  set columnRuleBreak(String value) {
+    unsupportedPlatformError();
+  }
+
   String get columnRuleColor {
     unsupportedPlatformError();
   }
 
   set columnRuleColor(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get columnRuleOutset {
+    unsupportedPlatformError();
+  }
+
+  set columnRuleOutset(String value) {
     unsupportedPlatformError();
   }
 
@@ -2098,6 +2240,14 @@ extension type CSSStyleDeclaration._(JSObject _) implements JSObject {
   }
 
   set columnWidth(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get columnWrap {
+    unsupportedPlatformError();
+  }
+
+  set columnWrap(String value) {
     unsupportedPlatformError();
   }
 
@@ -2213,6 +2363,94 @@ extension type CSSStyleDeclaration._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
+  String get cornerBlockEndShape {
+    unsupportedPlatformError();
+  }
+
+  set cornerBlockEndShape(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get cornerBlockStartShape {
+    unsupportedPlatformError();
+  }
+
+  set cornerBlockStartShape(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get cornerBottomLeftShape {
+    unsupportedPlatformError();
+  }
+
+  set cornerBottomLeftShape(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get cornerBottomRightShape {
+    unsupportedPlatformError();
+  }
+
+  set cornerBottomRightShape(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get cornerBottomShape {
+    unsupportedPlatformError();
+  }
+
+  set cornerBottomShape(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get cornerEndEndShape {
+    unsupportedPlatformError();
+  }
+
+  set cornerEndEndShape(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get cornerEndStartShape {
+    unsupportedPlatformError();
+  }
+
+  set cornerEndStartShape(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get cornerInlineEndShape {
+    unsupportedPlatformError();
+  }
+
+  set cornerInlineEndShape(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get cornerInlineStartShape {
+    unsupportedPlatformError();
+  }
+
+  set cornerInlineStartShape(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get cornerLeftShape {
+    unsupportedPlatformError();
+  }
+
+  set cornerLeftShape(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get cornerRightShape {
+    unsupportedPlatformError();
+  }
+
+  set cornerRightShape(String value) {
+    unsupportedPlatformError();
+  }
+
   String get cornerShape {
     unsupportedPlatformError();
   }
@@ -2221,11 +2459,43 @@ extension type CSSStyleDeclaration._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
-  String get corners {
+  String get cornerStartEndShape {
     unsupportedPlatformError();
   }
 
-  set corners(String value) {
+  set cornerStartEndShape(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get cornerStartStartShape {
+    unsupportedPlatformError();
+  }
+
+  set cornerStartStartShape(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get cornerTopLeftShape {
+    unsupportedPlatformError();
+  }
+
+  set cornerTopLeftShape(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get cornerTopRightShape {
+    unsupportedPlatformError();
+  }
+
+  set cornerTopRightShape(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get cornerTopShape {
+    unsupportedPlatformError();
+  }
+
+  set cornerTopShape(String value) {
     unsupportedPlatformError();
   }
 
@@ -2813,6 +3083,62 @@ extension type CSSStyleDeclaration._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
+  String get gapRule {
+    unsupportedPlatformError();
+  }
+
+  set gapRule(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get gapRuleBreak {
+    unsupportedPlatformError();
+  }
+
+  set gapRuleBreak(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get gapRuleColor {
+    unsupportedPlatformError();
+  }
+
+  set gapRuleColor(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get gapRuleOutset {
+    unsupportedPlatformError();
+  }
+
+  set gapRuleOutset(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get gapRulePaintOrder {
+    unsupportedPlatformError();
+  }
+
+  set gapRulePaintOrder(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get gapRuleStyle {
+    unsupportedPlatformError();
+  }
+
+  set gapRuleStyle(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get gapRuleWidth {
+    unsupportedPlatformError();
+  }
+
+  set gapRuleWidth(String value) {
+    unsupportedPlatformError();
+  }
+
   String get glyphOrientationVertical {
     unsupportedPlatformError();
   }
@@ -3109,14 +3435,6 @@ extension type CSSStyleDeclaration._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
-  String get insetArea {
-    unsupportedPlatformError();
-  }
-
-  set insetArea(String value) {
-    unsupportedPlatformError();
-  }
-
   String get insetBlock {
     unsupportedPlatformError();
   }
@@ -3165,11 +3483,83 @@ extension type CSSStyleDeclaration._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
+  String get interactivity {
+    unsupportedPlatformError();
+  }
+
+  set interactivity(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get interpolateSize {
+    unsupportedPlatformError();
+  }
+
+  set interpolateSize(String value) {
+    unsupportedPlatformError();
+  }
+
   String get isolation {
     unsupportedPlatformError();
   }
 
   set isolation(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get itemCross {
+    unsupportedPlatformError();
+  }
+
+  set itemCross(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get itemDirection {
+    unsupportedPlatformError();
+  }
+
+  set itemDirection(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get itemFlow {
+    unsupportedPlatformError();
+  }
+
+  set itemFlow(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get itemPack {
+    unsupportedPlatformError();
+  }
+
+  set itemPack(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get itemSlack {
+    unsupportedPlatformError();
+  }
+
+  set itemSlack(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get itemTrack {
+    unsupportedPlatformError();
+  }
+
+  set itemTrack(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get itemWrap {
+    unsupportedPlatformError();
+  }
+
+  set itemWrap(String value) {
     unsupportedPlatformError();
   }
 
@@ -3234,6 +3624,14 @@ extension type CSSStyleDeclaration._(JSObject _) implements JSObject {
   }
 
   set lineClamp(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get lineFitEdge {
+    unsupportedPlatformError();
+  }
+
+  set lineFitEdge(String value) {
     unsupportedPlatformError();
   }
 
@@ -3594,14 +3992,6 @@ extension type CSSStyleDeclaration._(JSObject _) implements JSObject {
   }
 
   set maskType(String value) {
-    unsupportedPlatformError();
-  }
-
-  String get masonryAutoFlow {
-    unsupportedPlatformError();
-  }
-
-  set masonryAutoFlow(String value) {
     unsupportedPlatformError();
   }
 
@@ -4293,6 +4683,14 @@ extension type CSSStyleDeclaration._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
+  String get positionArea {
+    unsupportedPlatformError();
+  }
+
+  set positionArea(String value) {
+    unsupportedPlatformError();
+  }
+
   String get positionTry {
     unsupportedPlatformError();
   }
@@ -4301,11 +4699,11 @@ extension type CSSStyleDeclaration._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
-  String get positionTryOptions {
+  String get positionTryFallbacks {
     unsupportedPlatformError();
   }
 
-  set positionTryOptions(String value) {
+  set positionTryFallbacks(String value) {
     unsupportedPlatformError();
   }
 
@@ -4354,6 +4752,14 @@ extension type CSSStyleDeclaration._(JSObject _) implements JSObject {
   }
 
   set readingFlow(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get readingOrder {
+    unsupportedPlatformError();
+  }
+
+  set readingOrder(String value) {
     unsupportedPlatformError();
   }
 
@@ -4421,6 +4827,54 @@ extension type CSSStyleDeclaration._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
+  String get rowRule {
+    unsupportedPlatformError();
+  }
+
+  set rowRule(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get rowRuleBreak {
+    unsupportedPlatformError();
+  }
+
+  set rowRuleBreak(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get rowRuleColor {
+    unsupportedPlatformError();
+  }
+
+  set rowRuleColor(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get rowRuleOutset {
+    unsupportedPlatformError();
+  }
+
+  set rowRuleOutset(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get rowRuleStyle {
+    unsupportedPlatformError();
+  }
+
+  set rowRuleStyle(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get rowRuleWidth {
+    unsupportedPlatformError();
+  }
+
+  set rowRuleWidth(String value) {
+    unsupportedPlatformError();
+  }
+
   String get rubyAlign {
     unsupportedPlatformError();
   }
@@ -4482,6 +4936,14 @@ extension type CSSStyleDeclaration._(JSObject _) implements JSObject {
   }
 
   set scrollBehavior(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get scrollInitialTarget {
+    unsupportedPlatformError();
+  }
+
+  set scrollInitialTarget(String value) {
     unsupportedPlatformError();
   }
 
@@ -4570,6 +5032,14 @@ extension type CSSStyleDeclaration._(JSObject _) implements JSObject {
   }
 
   set scrollMarginTop(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get scrollMarkerGroup {
+    unsupportedPlatformError();
+  }
+
+  set scrollMarkerGroup(String value) {
     unsupportedPlatformError();
   }
 
@@ -4682,86 +5152,6 @@ extension type CSSStyleDeclaration._(JSObject _) implements JSObject {
   }
 
   set scrollSnapType(String value) {
-    unsupportedPlatformError();
-  }
-
-  String get scrollStart {
-    unsupportedPlatformError();
-  }
-
-  set scrollStart(String value) {
-    unsupportedPlatformError();
-  }
-
-  String get scrollStartBlock {
-    unsupportedPlatformError();
-  }
-
-  set scrollStartBlock(String value) {
-    unsupportedPlatformError();
-  }
-
-  String get scrollStartInline {
-    unsupportedPlatformError();
-  }
-
-  set scrollStartInline(String value) {
-    unsupportedPlatformError();
-  }
-
-  String get scrollStartTarget {
-    unsupportedPlatformError();
-  }
-
-  set scrollStartTarget(String value) {
-    unsupportedPlatformError();
-  }
-
-  String get scrollStartTargetBlock {
-    unsupportedPlatformError();
-  }
-
-  set scrollStartTargetBlock(String value) {
-    unsupportedPlatformError();
-  }
-
-  String get scrollStartTargetInline {
-    unsupportedPlatformError();
-  }
-
-  set scrollStartTargetInline(String value) {
-    unsupportedPlatformError();
-  }
-
-  String get scrollStartTargetX {
-    unsupportedPlatformError();
-  }
-
-  set scrollStartTargetX(String value) {
-    unsupportedPlatformError();
-  }
-
-  String get scrollStartTargetY {
-    unsupportedPlatformError();
-  }
-
-  set scrollStartTargetY(String value) {
-    unsupportedPlatformError();
-  }
-
-  String get scrollStartX {
-    unsupportedPlatformError();
-  }
-
-  set scrollStartX(String value) {
-    unsupportedPlatformError();
-  }
-
-  String get scrollStartY {
-    unsupportedPlatformError();
-  }
-
-  set scrollStartY(String value) {
     unsupportedPlatformError();
   }
 
@@ -5154,6 +5544,14 @@ extension type CSSStyleDeclaration._(JSObject _) implements JSObject {
   }
 
   set textAutospace(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get textBox {
+    unsupportedPlatformError();
+  }
+
+  set textBox(String value) {
     unsupportedPlatformError();
   }
 
@@ -5618,6 +6016,14 @@ extension type CSSStyleDeclaration._(JSObject _) implements JSObject {
   }
 
   set viewTransitionClass(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get viewTransitionGroup {
+    unsupportedPlatformError();
+  }
+
+  set viewTransitionGroup(String value) {
     unsupportedPlatformError();
   }
 

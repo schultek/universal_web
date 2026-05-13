@@ -1,4 +1,4 @@
-// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2026, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -8,7 +8,7 @@
 
 // Generated from Web IDL definitions.
 
-// ignore_for_file: unintended_html_in_doc_comment
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 import '../error.dart';
 import '../js_interop.dart';
@@ -27,6 +27,12 @@ typedef GamepadHapticEffectType = String;
 /// property of the [Window.gamepadconnected_event] and
 /// [Window.gamepaddisconnected_event] events, or by grabbing any position in
 /// the array returned by the [Navigator.getGamepads] method.
+///
+/// > [!NOTE]
+/// > The support of gamepad features varies across different combinations of
+/// > platforms and controllers. Even if the controller supports a certain
+/// > feature (for example, haptic feedback), the platform may not support it
+/// > for that controller.
 ///
 /// ---
 ///
@@ -89,7 +95,8 @@ extension type Gamepad._(JSObject _) implements JSObject {
   /// updates, as
   /// newer values will always be greater than or equal to older values.
   ///
-  /// > **Note:** This property is not currently supported anywhere.
+  /// > [!NOTE]
+  /// > This property is not currently supported anywhere.
   double get timestamp {
     unsupportedPlatformError();
   }
@@ -121,24 +128,34 @@ extension type Gamepad._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
-  /// The **`Gamepad.buttons`** property of the [Gamepad] interface returns an
-  /// array of [gamepadButton] objects representing the
-  /// buttons present on the device.
+  /// The **`buttons`** property of the [Gamepad] interface returns an array of
+  /// [gamepadButton] objects representing the buttons present on the device.
   ///
-  /// Each entry in the array is 0 if the button is not pressed, and non-zero
-  /// (typically 1.0)
-  /// if the button is pressed. Each [gamepadButton] object has two properties:
-  /// `pressed` and `value`:
+  /// Each entry in the array is `0` if the button is not pressed, and non-zero
+  /// (typically `1.0`) if the button is pressed.
   ///
-  /// - The `pressed` property is a boolean indicating whether the button is
-  /// currently pressed (`true`) or unpressed (`false`).
-  /// - The `value` property is a floating point value used to enable
-  /// representing analog buttons, such as the triggers on many modern gamepads.
-  /// The values
-  /// are normalized to the range 0.0 – 1.0, with 0.0 representing a button that
-  /// is not
-  /// pressed, and 1.0 representing a button that is fully pressed.
+  /// Each [gamepadButton] object has two properties:
+  ///
+  /// - `pressed`
+  ///
+  ///   - : A boolean indicating whether the button is currently pressed (`true`) or unpressed (`false`).
+  ///
+  /// - `value`
+  ///
+  ///   - : A floating point value used to enable representing analog buttons, such as the triggers on many modern gamepads. The values are normalized to the range 0.0 – 1.0, with 0.0 representing a button that is not pressed, and 1.0 representing a button that is fully pressed.
   JSArray<GamepadButton> get buttons {
+    unsupportedPlatformError();
+  }
+
+  /// The **`vibrationActuator`** read-only property of the [Gamepad] interface
+  /// returns a [GamepadHapticActuator] object, which represents haptic feedback
+  /// hardware available on the controller.
+  ///
+  /// > [!NOTE]
+  /// > Support for this property may vary across different combinations of
+  /// > platforms and controllers. Even if the controller supports haptic
+  /// > feedback, the platform may not support it.
+  GamepadHapticActuator get vibrationActuator {
     unsupportedPlatformError();
   }
 }
@@ -202,7 +219,7 @@ extension type GamepadButton._(JSObject _) implements JSObject {
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/GamepadHapticActuator).
 extension type GamepadHapticActuator._(JSObject _) implements JSObject {
   /// The **`playEffect()`** method of the [GamepadHapticActuator] interface
-  /// makes the hardware play a specific vibration pattern.
+  /// causes the hardware to play a specific vibration effect.
   JSPromise<JSString> playEffect(
     GamepadHapticEffectType type, [
     GamepadEffectParameters? params,
@@ -210,6 +227,8 @@ extension type GamepadHapticActuator._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`reset()`** method of the [GamepadHapticActuator] interface stops
+  /// the hardware from playing an active vibration effect.
   JSPromise<JSString> reset() {
     unsupportedPlatformError();
   }

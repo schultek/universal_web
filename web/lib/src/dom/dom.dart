@@ -1,4 +1,4 @@
-// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2026, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -8,7 +8,7 @@
 
 // Generated from Web IDL definitions.
 
-// ignore_for_file: unintended_html_in_doc_comment
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 import '../error.dart';
 import '../js_interop.dart';
@@ -21,6 +21,7 @@ import 'fullscreen.dart';
 import 'geometry.dart';
 import 'html.dart';
 import 'pointerlock.dart';
+import 'scroll_to_text_fragment.dart';
 import 'selection_api.dart';
 import 'svg.dart';
 import 'web_animations.dart';
@@ -60,9 +61,10 @@ typedef SlotAssignmentMode = String;
 /// needed using
 /// [`removeEventListener()`](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener).
 ///
-/// > **Note:** One element can have several such handlers, even for the exact
-/// > same event—particularly if separate, independent code modules attach them,
-/// > each for its own independent purposes. (For example, a webpage with an
+/// > [!NOTE]
+/// > One element can have several such handlers, even for the exact same
+/// > event—particularly if separate, independent code modules attach them, each
+/// > for its own independent purposes. (For example, a webpage with an
 /// > advertising-module and statistics-module both monitoring video-watching.)
 ///
 /// When there are many nested elements, each with its own handler(s), event
@@ -70,7 +72,7 @@ typedef SlotAssignmentMode = String;
 /// receives the very same event as its child elements because "spatially" they
 /// overlap so the event technically occurs in both, and the processing order of
 /// such events depends on the
-/// [Event bubbling and capture](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events#event_bubbling_and_capture)
+/// [Event bubbling](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Event_bubbling)
 /// settings of each handler triggered.
 ///
 /// ---
@@ -142,6 +144,9 @@ extension type Event._(JSObject _) implements JSObject {
   /// non-cancelable event, such as one dispatched via
   /// [EventTarget.dispatchEvent], without specifying
   /// `cancelable: true` has no effect.
+  ///
+  /// If a passive listener calls `preventDefault()`, nothing will happen and a
+  /// console warning may be generated.
   void preventDefault() {
     unsupportedPlatformError();
   }
@@ -198,7 +203,7 @@ extension type Event._(JSObject _) implements JSObject {
   /// This will not always be the same as the element on which the event was
   /// fired, because the event may have fired on a descendant of the element
   /// with the handler, and then
-  /// [bubbled](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events#event_bubbling)
+  /// [bubbled](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Event_bubbling)
   /// up to the element with the handler. The element on which the event was
   /// fired is given by [Event.target].
   ///
@@ -236,8 +241,9 @@ extension type Event._(JSObject _) implements JSObject {
   /// The **`bubbles`** read-only property of the [Event] interface indicates
   /// whether the event bubbles up through the DOM tree or not.
   ///
-  /// > **Note:** See
-  /// > [Event bubbling and capture](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events#event_bubbling)
+  /// > [!NOTE]
+  /// > See
+  /// > [Event bubbling](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Event_bubbling)
   /// > for more information on bubbling.
   bool get bubbles {
     unsupportedPlatformError();
@@ -281,7 +287,8 @@ extension type Event._(JSObject _) implements JSObject {
   /// default, allowing the default action to occur. Setting this property to
   /// `false` prevents the default action.
   ///
-  /// > **Note:** While `returnValue` has been adopted into the DOM
+  /// > [!NOTE]
+  /// > While `returnValue` has been adopted into the DOM
   /// > standard, it is present primarily to support existing code. Use
   /// > [Event.preventDefault], and
   /// > [Event.defaultPrevented] instead of this historical
@@ -376,10 +383,11 @@ extension type EventInit._(JSObject _) implements JSObject {
 /// The **`CustomEvent`** interface represents events initialized by an
 /// application for any purpose.
 ///
-/// > **Note:** If used to attempt to communicate between a web extension
-/// > content script and a web page script, a non-string `detail` property
-/// > throws with "Permission denied to access property" in Firefox. To avoid
-/// > this issue clone the object. See
+/// > [!NOTE]
+/// > If used to attempt to communicate between a web extension content script
+/// > and a web page script, a non-string `detail` property throws with
+/// > "Permission denied to access property" in Firefox. To avoid this issue
+/// > clone the object. See
 /// > [Share objects with page scripts](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Sharing_objects_with_page_scripts)
 /// > for more information.
 ///
@@ -473,8 +481,9 @@ extension type EventTarget._(JSObject _) implements JSObject {
   /// but the target may be any object that supports events (such as
   /// [IDBRequest]).
   ///
-  /// > **Note:** The `addEventListener()` method is the _recommended_ way to
-  /// > register an event listener. The benefits are as follows:
+  /// > [!NOTE]
+  /// > The `addEventListener()` method is the _recommended_ way to register an
+  /// > event listener. The benefits are as follows:
   /// >
   /// > - It allows adding more than one handler for an event. This is
   /// > particularly
@@ -492,11 +501,12 @@ extension type EventTarget._(JSObject _) implements JSObject {
   /// already in the list of event listeners for this target, the function or
   /// object is not added a second time.
   ///
-  /// > **Note:** If a particular anonymous function is in the list of event
-  /// > listeners registered for a certain target, and then later in the code,
-  /// > an identical anonymous function is given in an `addEventListener` call,
-  /// > the second function will _also_ be added to the list of event listeners
-  /// > for that target.
+  /// > [!NOTE]
+  /// > If a particular anonymous function is in the list of event listeners
+  /// > registered for a certain target, and then later in the code, an
+  /// > identical anonymous function is given in an `addEventListener` call, the
+  /// > second function will _also_ be added to the list of event listeners for
+  /// > that target.
   /// >
   /// > Indeed, anonymous functions are not identical even if defined using
   /// > the _same_ unchanging source-code called repeatedly, **even if in a
@@ -542,10 +552,11 @@ extension type EventTarget._(JSObject _) implements JSObject {
   /// processing an event, it will not be triggered by the event. However, it
   /// can be reattached.
   ///
-  /// > **Warning:** If a listener is registered twice, one with the _capture_
-  /// > flag set and one without, you must remove each one separately. Removal
-  /// > of a capturing listener does not affect a non-capturing version of the
-  /// > same listener, and vice versa.
+  /// > [!WARNING]
+  /// > If a listener is registered twice, one with the _capture_ flag set and
+  /// > one without, you must remove each one separately. Removal of a capturing
+  /// > listener does not affect a non-capturing version of the same listener,
+  /// > and vice versa.
   ///
   /// Event listeners can also be removed by passing an [AbortSignal] to an
   /// [EventTarget.addEventListener] and then later calling
@@ -569,8 +580,9 @@ extension type EventTarget._(JSObject _) implements JSObject {
   /// should have already been created and initialized using an [Event.Event]
   /// constructor.
   ///
-  /// > **Note:** When calling this method, the [Event.target] property is
-  /// > initialized to the current `EventTarget`.
+  /// > [!NOTE]
+  /// > When calling this method, the [Event.target] property is initialized to
+  /// > the current `EventTarget`.
   ///
   /// Unlike "native" events, which are fired by the browser and invoke event
   /// handlers
@@ -645,7 +657,7 @@ extension type AbortController._(JSObject _) implements JSObject {
   /// The **`abort()`** method of the [AbortController] interface aborts an
   /// asynchronous operation before it has completed.
   /// This is able to abort
-  /// [fetch requests](https://developer.mozilla.org/en-US/docs/Web/API/fetch),
+  /// [fetch requests](https://developer.mozilla.org/en-US/docs/Web/API/Window/fetch),
   /// the consumption of any response bodies, or streams.
   void abort([JSAny? reason]) {
     unsupportedPlatformError();
@@ -685,7 +697,8 @@ extension type AbortSignal._(JSObject _) implements EventTarget, JSObject {
   /// logic should be run even if the intended fetch operation has not been
   /// started).
   ///
-  /// > **Note:** The method is similar in purpose to `Promise.reject`.
+  /// > [!NOTE]
+  /// > The method is similar in purpose to `Promise.reject`.
   static AbortSignal abort([JSAny? reason]) {
     unsupportedPlatformError();
   }
@@ -693,11 +706,7 @@ extension type AbortSignal._(JSObject _) implements EventTarget, JSObject {
   /// The **`AbortSignal.timeout()`** static method returns an [AbortSignal]
   /// that will automatically abort after a specified time.
   ///
-  /// The signal aborts with a `TimeoutError` [DOMException] on timeout, or with
-  /// `AbortError` [DOMException] due to pressing a browser stop button (or some
-  /// other inbuilt "stop" operation).
-  /// This allows UIs to differentiate timeout errors, which typically require
-  /// user notification, from user-triggered aborts that do not.
+  /// The signal aborts with a `TimeoutError` [DOMException] on timeout.
   ///
   /// The timeout is based on active rather than elapsed time, and will
   /// effectively be paused if the code is running in a suspended worker, or
@@ -800,6 +809,9 @@ extension type NodeList._(JSObject _) implements JSObject {
   /// is returned if the index is out of range, and a `TypeError` is thrown if
   /// no
   /// argument is provided.
+  ///
+  /// In JavaScript, instead of calling `nodeList.item(index)`, you can also
+  /// access the `index` directly, like `nodeList[index]`.
   Node? item(int index) {
     unsupportedPlatformError();
   }
@@ -846,7 +858,8 @@ extension type HTMLCollection._(JSObject _) implements JSObject {
   /// The [HTMLCollection] method `item()`
   /// returns the element located at the specified offset into the collection.
   ///
-  /// > **Note:** Because the contents of an `HTMLCollection` are
+  /// > [!NOTE]
+  /// > Because the contents of an `HTMLCollection` are
   /// > live, changes to the underlying DOM can and will cause the position of
   /// > individual
   /// > elements in the collection to change, so the index value will not
@@ -860,8 +873,10 @@ extension type HTMLCollection._(JSObject _) implements JSObject {
   /// the first [Element] in the collection whose `id` or `name` attribute match
   /// the specified name, or `null` if no element matches.
   ///
-  /// In JavaScript, using the array bracket syntax with a `String`, like
-  /// `collection["value"]` is equivalent to `collection.namedItem("value")`.
+  /// In JavaScript, instead of calling `collection.namedItem("value")`, you can
+  /// also directly access the name on the collection, like
+  /// `collection["value"]`, unless the name collides with one of the existing
+  /// `HTMLCollection` properties.
   Element? namedItem(String name) {
     unsupportedPlatformError();
   }
@@ -873,8 +888,8 @@ extension type HTMLCollection._(JSObject _) implements JSObject {
   }
 }
 
-/// The [MutationObserver] interface provides the ability to watch for changes
-/// being made to the
+/// The **`MutationObserver`** interface provides the ability to watch for
+/// changes being made to the
 /// [DOM](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model)
 /// tree. It is designed as a replacement for the older
 /// [Mutation Events](https://developer.mozilla.org/en-US/docs/Web/API/MutationEvent)
@@ -893,7 +908,12 @@ extension type MutationObserver._(JSObject _) implements JSObject {
   /// the given options.
   ///
   /// Depending on the configuration, the observer may watch a single [Node] in
-  /// the DOM tree, or that node and some or all of its descendant nodes.
+  /// the DOM tree, or that node and some or all of its descendant nodes. The
+  /// same node can be observed by multiple observers, and the same
+  /// `MutationObserver` can watch for changes to different parts of the DOM
+  /// tree and/or different types of changes by calling `observe()` multiple
+  /// times on the same
+  /// `MutationObserver`.
   ///
   /// To stop the `MutationObserver` (so that none of its callbacks will be
   /// triggered any longer), call [MutationObserver.disconnect].
@@ -998,9 +1018,9 @@ extension type MutationObserverInit._(JSObject _) implements JSObject {
   }
 }
 
-/// The [MutationRecord] is a read-only interface that represents an individual
-/// DOM mutation observed by a [MutationObserver]. It is the object inside the
-/// array passed to the callback of a [MutationObserver].
+/// The **`MutationRecord`** is a read-only interface that represents an
+/// individual DOM mutation observed by a [MutationObserver]. It is the object
+/// inside the array passed to the callback of a [MutationObserver].
 ///
 /// ---
 ///
@@ -1188,7 +1208,7 @@ extension type Node._(JSObject _) implements EventTarget, JSObject {
   ///
   /// To clone a node to insert into a _different_ document, use
   /// [Document.importNode] instead.
-  Node cloneNode([bool? deep]) {
+  Node cloneNode([bool? subtree]) {
     unsupportedPlatformError();
   }
 
@@ -1211,8 +1231,9 @@ extension type Node._(JSObject _) implements EventTarget, JSObject {
   /// That is, it tests whether two nodes are the same
   /// (in other words, whether they reference the same object).
   ///
-  /// > **Note:** There is no need to use `isSameNode()`; instead use the `===`
-  /// > strict equality operator.
+  /// > [!NOTE]
+  /// > There is no need to use `isSameNode()`; instead use the `===` strict
+  /// > equality operator.
   bool isSameNode(Node? otherNode) {
     unsupportedPlatformError();
   }
@@ -1230,7 +1251,8 @@ extension type Node._(JSObject _) implements EventTarget, JSObject {
   /// one of its direct children ([Node.childNodes]),
   /// one of the children's direct children, and so on.
   ///
-  /// > **Note:** A node is _contained_ inside itself.
+  /// > [!NOTE]
+  /// > A node is _contained_ inside itself.
   bool contains(Node? other) {
     unsupportedPlatformError();
   }
@@ -1247,7 +1269,9 @@ extension type Node._(JSObject _) implements EventTarget, JSObject {
   /// The **`lookupNamespaceURI()`** method of the [Node] interface
   /// takes a prefix as parameter and returns the namespace URI associated with
   /// it on the given node if found (and
-  /// `null` if not).
+  /// `null` if not). This method's existence allows `Node` objects to be passed
+  /// as a namespace resolver to [XPathEvaluator.createExpression] and
+  /// [XPathEvaluator.evaluate].
   String? lookupNamespaceURI(String? prefix) {
     unsupportedPlatformError();
   }
@@ -1257,8 +1281,9 @@ extension type Node._(JSObject _) implements EventTarget, JSObject {
   /// It returns a boolean value that is `true` if the namespace is the default
   /// namespace on the given node and `false` if not.
   ///
-  /// > **Note:** The default namespace of an HTML element is always `""`. For a
-  /// > SVG element, it is set by the `xmlns` attribute.
+  /// > [!NOTE]
+  /// > The default namespace of an HTML element is always `""`. For a SVG
+  /// > element, it is set by the `xmlns` attribute.
   bool isDefaultNamespace(String? namespace) {
     unsupportedPlatformError();
   }
@@ -1275,7 +1300,8 @@ extension type Node._(JSObject _) implements EventTarget, JSObject {
   /// This means that a node cannot be in two locations of the document
   /// simultaneously.
   ///
-  /// > **Note:** The [Node.cloneNode] can be used to make a copy
+  /// > [!NOTE]
+  /// > The [Node.cloneNode] can be used to make a copy
   /// > of the node before appending it under the new parent. Note that the
   /// > copies made with
   /// > `cloneNode()` will not be automatically kept in sync.
@@ -1293,9 +1319,9 @@ extension type Node._(JSObject _) implements EventTarget, JSObject {
   /// The **`appendChild()`** method of the [Node] interface adds a node to the
   /// end of the list of children of a specified parent node.
   ///
-  /// > **Note:** If the given child is a reference to an existing node in the
-  /// > document, `appendChild()` moves it from its current position to the new
-  /// > position.
+  /// > [!NOTE]
+  /// > If the given child is a reference to an existing node in the document,
+  /// > `appendChild()` moves it from its current position to the new position.
   ///
   /// If the given child is a [DocumentFragment], the entire contents of the
   /// [DocumentFragment] are moved into the child list of the specified parent
@@ -1304,9 +1330,10 @@ extension type Node._(JSObject _) implements EventTarget, JSObject {
   /// `appendChild()` returns the newly appended node, or if the child is a
   /// [DocumentFragment], the emptied fragment.
   ///
-  /// > **Note:** Unlike this method, the [Element.append] method supports
-  /// > multiple arguments and appending strings. You can prefer using it if
-  /// > your node is an element.
+  /// > [!NOTE]
+  /// > Unlike this method, the [Element.append] method supports multiple
+  /// > arguments and appending strings. You can prefer using it if your node is
+  /// > an element.
   Node appendChild(Node node) {
     unsupportedPlatformError();
   }
@@ -1323,7 +1350,8 @@ extension type Node._(JSObject _) implements EventTarget, JSObject {
   /// The **`removeChild()`** method of the [Node] interface
   /// removes a child node from the DOM and returns the removed node.
   ///
-  /// > **Note:** As long as a reference is kept on the removed child,
+  /// > [!NOTE]
+  /// > As long as a reference is kept on the removed child,
   /// > it still exists in memory, but is no longer part of the DOM.
   /// > It can still be reused later in the code.
   /// >
@@ -1398,7 +1426,8 @@ extension type Node._(JSObject _) implements EventTarget, JSObject {
   /// can never have a parent, so
   /// `parentNode` will always return `null`.
   /// It also returns `null` if the node has just been created
-  /// and is not yet attached to the tree.
+  /// and is not yet attached to the tree. [Node.parentElement] on the other
+  /// hand only returns `Element` nodes.
   Node? get parentNode {
     unsupportedPlatformError();
   }
@@ -1406,7 +1435,8 @@ extension type Node._(JSObject _) implements EventTarget, JSObject {
   /// The read-only **`parentElement`** property of [Node] interface
   /// returns the DOM node's parent [Element], or `null` if the node either has
   /// no
-  /// parent, or its parent isn't a DOM [Element].
+  /// parent, or its parent isn't a DOM [Element]. [Node.parentNode] on the
+  /// other hand returns any kind of parent, regardless of its type.
   Element? get parentElement {
     unsupportedPlatformError();
   }
@@ -1418,8 +1448,8 @@ extension type Node._(JSObject _) implements EventTarget, JSObject {
   /// text and
   /// comments.
   ///
-  /// > **Note:** The [NodeList] being live means that its content is changed
-  /// > each time
+  /// > [!NOTE]
+  /// > The [NodeList] being live means that its content is changed each time
   /// > new children are added or removed.
   /// >
   /// > Browsers insert text nodes into a document to represent whitespace in
@@ -1458,8 +1488,9 @@ extension type Node._(JSObject _) implements EventTarget, JSObject {
   /// If the node is a [Document],
   /// this property returns the first node in the list of its direct children.
   ///
-  /// > **Note:** This property returns any type of node that is the first child
-  /// > of this one.
+  /// > [!NOTE]
+  /// > This property returns any type of node that is the first child of this
+  /// > one.
   /// > It may be a [Text] or a [Comment] node.
   /// > If you want to get the first [Element] that is a child of another
   /// > element,
@@ -1471,8 +1502,9 @@ extension type Node._(JSObject _) implements EventTarget, JSObject {
   /// The read-only **`lastChild`** property of the [Node] interface
   /// returns the last child of the node, or `null` if there are no child nodes.
   ///
-  /// > **Note:** This property returns any type of node that is the last child
-  /// > of this one.
+  /// > [!NOTE]
+  /// > This property returns any type of node that is the last child of this
+  /// > one.
   /// > It may be a [Text] or a [Comment] node.
   /// > If you want to get the last [Element] that is a child of another
   /// > element,
@@ -1486,8 +1518,9 @@ extension type Node._(JSObject _) implements EventTarget, JSObject {
   /// [Node.childNodes] list,
   /// or `null` if the specified node is the first in that list.
   ///
-  /// > **Note:** Browsers insert text nodes into a document to represent
-  /// > whitespace in the source markup.
+  /// > [!NOTE]
+  /// > Browsers insert text nodes into a document to represent whitespace in
+  /// > the source markup.
   /// > Therefore a node obtained, for example, using
   /// > [`Node.firstChild`](https://developer.mozilla.org/en-US/docs/Web/API/Node/firstChild)
   /// > or `Node.previousSibling`
@@ -1514,8 +1547,9 @@ extension type Node._(JSObject _) implements EventTarget, JSObject {
   /// parent's [Node.childNodes], or returns `null`
   /// if the specified node is the last child in the parent element.
   ///
-  /// > **Note:** Browsers insert [Text] nodes into a document to represent
-  /// > whitespace in the source markup.
+  /// > [!NOTE]
+  /// > Browsers insert [Text] nodes into a document to represent whitespace in
+  /// > the source markup.
   /// > Therefore a node obtained, for example, using
   /// > [`Node.firstChild`](https://developer.mozilla.org/en-US/docs/Web/API/Node/firstChild)
   /// > or
@@ -1652,7 +1686,8 @@ extension type Document._(JSObject _) implements Node, JSObject {
   /// element; it will return only elements which are descendants of the
   /// specified root element with the given class name(s).
   ///
-  /// > **Warning:** This is a live [HTMLCollection]. Changes in the DOM will
+  /// > [!WARNING]
+  /// > This is a live [HTMLCollection]. Changes in the DOM will
   /// > reflect in the array as the changes occur. If an element selected by
   /// > this array no
   /// > longer qualifies for the selector, it will automatically be removed. Be
@@ -1664,7 +1699,7 @@ extension type Document._(JSObject _) implements Node, JSObject {
 
   /// In an [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML) document,
   /// the **`document.createElement()`** method creates the HTML element
-  /// specified by _tagName_, or an [HTMLUnknownElement] if _tagName_ isn't
+  /// specified by `localName`, or an [HTMLUnknownElement] if `localName` isn't
   /// recognized.
   Element createElement(
     String localName, [
@@ -1736,7 +1771,7 @@ extension type Document._(JSObject _) implements Node, JSObject {
   /// original document. The imported node is a clone of the original.
   Node importNode(
     Node node, [
-    bool? deep,
+    bool? subtree,
   ]) {
     unsupportedPlatformError();
   }
@@ -1757,7 +1792,8 @@ extension type Document._(JSObject _) implements Node, JSObject {
   /// [Attr] interface. The DOM does not enforce what sort of attributes can be
   /// added to a particular element in this manner.
   ///
-  /// > **Note:** The string given in parameter is converted to lowercase.
+  /// > [!NOTE]
+  /// > The string given in parameter is converted to lowercase.
   Attr createAttribute(String localName) {
     unsupportedPlatformError();
   }
@@ -1774,8 +1810,9 @@ extension type Document._(JSObject _) implements Node, JSObject {
     unsupportedPlatformError();
   }
 
-  /// > **Warning:** Many methods used with `createEvent`, such as
-  /// > `initCustomEvent`, are deprecated.
+  /// > [!WARNING]
+  /// > Many methods used with `createEvent`, such as `initCustomEvent`, are
+  /// > deprecated.
   /// > Use
   /// > [event constructors](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent)
   /// > instead.
@@ -1817,12 +1854,12 @@ extension type Document._(JSObject _) implements Node, JSObject {
 
   /// The **`startViewTransition()`** method of the [Document] interface starts
   /// a new same-document (SPA)
-  /// [view transition](https://developer.mozilla.org/en-US/docs/Web/API/View_Transitions_API)
+  /// [view transition](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API)
   /// and returns a [ViewTransition] object to represent it.
   ///
   /// When `startViewTransition()` is invoked, a sequence of steps is followed
   /// as explained in
-  /// [The view transition process](https://developer.mozilla.org/en-US/docs/Web/API/View_Transitions_API/Using#the_view_transition_process).
+  /// [The view transition process](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API/Using#the_view_transition_process).
   ViewTransition startViewTransition([JSObject? callbackOptions]) {
     unsupportedPlatformError();
   }
@@ -1875,11 +1912,10 @@ extension type Document._(JSObject _) implements Node, JSObject {
     unsupportedPlatformError();
   }
 
-  /// The **`caretPositionFromPoint()`**
-  /// method of the [Document] interface returns a
-  /// [CaretPosition] object, containing the DOM node, along with the caret and
-  /// caret's character offset within that node.
-  JSObject? caretPositionFromPoint(
+  /// The **`caretPositionFromPoint()`** method of the [Document] interface
+  /// returns a [CaretPosition] object, containing the DOM node, along with the
+  /// caret and caret's character offset within that node.
+  CaretPosition? caretPositionFromPoint(
     num x,
     num y, [
     CaretPositionFromPointOptions? options,
@@ -1931,8 +1967,8 @@ extension type Document._(JSObject _) implements Node, JSObject {
     unsupportedPlatformError();
   }
 
-  /// > **Warning:** Use of the `document.write()` method is strongly
-  /// > discouraged.
+  /// > [!WARNING]
+  /// > Use of the `document.write()` method is strongly discouraged.
   /// >
   /// > As
   /// > [the HTML spec itself warns](<https://html.spec.whatwg.org/multipage/dynamic-markup-insertion.html#document.write()>):
@@ -1958,40 +1994,27 @@ extension type Document._(JSObject _) implements Node, JSObject {
   /// The **`document.write()`** method writes a string of text to a document
   /// stream opened by [document.open].
   ///
-  /// > **Note:** Because `document.write()` writes to the document **stream**,
-  /// > calling `document.write()` on a closed (loaded) document automatically
-  /// > calls `document.open()`,
+  /// > [!NOTE]
+  /// > Because `document.write()` writes to the document **stream**, calling
+  /// > `document.write()` on a closed (loaded) document automatically calls
+  /// > `document.open()`,
   /// > [which will clear the document](https://developer.mozilla.org/en-US/docs/Web/API/Document/open#notes).
-  void write(JSAny text) {
+  void write([
+    JSAny? text1,
+    JSAny? text2,
+    JSAny? text3,
+    JSAny? text4,
+  ]) {
     unsupportedPlatformError();
   }
 
-  /// > **Warning:** Use of the `document.writeln()` method is strongly
-  /// > discouraged.
-  /// >
-  /// > As
-  /// > [the HTML spec itself warns](<https://html.spec.whatwg.org/multipage/dynamic-markup-insertion.html#document.write()>):
-  /// >
-  /// > > This method has very idiosyncratic behavior. In some cases, this
-  /// > method can affect the state of the
-  /// > [HTML parser](https://html.spec.whatwg.org/multipage/parsing.html#html-parser)
-  /// > while the parser is running, resulting in a DOM that does not correspond
-  /// > to the source of the document (e.g. if the string written is the string
-  /// > "`<plaintext>`" or "`<!--`"). In other cases, the call can clear the
-  /// > current page first, as if
-  /// > [`document.open()`](https://html.spec.whatwg.org/multipage/dynamic-markup-insertion.html#dom-document-open)
-  /// > had been called. In yet more cases, the method is simply ignored, or
-  /// > throws an exception. Users agents are
-  /// > [explicitly allowed to avoid executing `script` elements inserted via this method](https://html.spec.whatwg.org/multipage/parsing.html#document-written-scripts-intervention).
-  /// > And to make matters even worse, the exact behavior of this method can in
-  /// > some cases be dependent on network latency, which can lead to failures
-  /// > that are very hard to debug. For all these reasons, use of this method
-  /// > is strongly discouraged.
-  /// > > Therefore, avoid using `document.writeln()` — and if possible, update
-  /// > any existing code that is still using it.
-  ///
   /// Writes a string of text followed by a newline character to a document.
-  void writeln(JSAny text) {
+  void writeln([
+    JSAny? text1,
+    JSAny? text2,
+    JSAny? text3,
+    JSAny? text4,
+  ]) {
     unsupportedPlatformError();
   }
 
@@ -2001,7 +2024,8 @@ extension type Document._(JSObject _) implements Node, JSObject {
   /// This method can be used to determine whether the active element in a
   /// document has focus.
   ///
-  /// > **Note:** When viewing a document, an element with focus is always the
+  /// > [!NOTE]
+  /// > When viewing a document, an element with focus is always the
   /// > [active element](https://developer.mozilla.org/en-US/docs/Web/API/Document/activeElement)
   /// > in the document, but an active element does not necessarily have focus.
   /// > For example, an active element within a popup window that is not the
@@ -2031,11 +2055,12 @@ extension type Document._(JSObject _) implements Node, JSObject {
   /// currently active editable element can be modified, but some commands (e.g.
   /// `copy`) can work without an editable element.
   ///
-  /// > **Note:** Modifications performed by `execCommand()` may or may not
-  /// > trigger [Element.beforeinput_event] and [Element.input_event] events,
-  /// > depending on the browser and configuration. If triggered, the handlers
-  /// > for the events will run before `execCommand()` returns. Authors need to
-  /// > be careful about such recursive calls, especially if they call
+  /// > [!NOTE]
+  /// > Modifications performed by `execCommand()` may or may not trigger
+  /// > [Element.beforeinput_event] and [Element.input_event] events, depending
+  /// > on the browser and configuration. If triggered, the handlers for the
+  /// > events will run before `execCommand()` returns. Authors need to be
+  /// > careful about such recursive calls, especially if they call
   /// > `execCommand()` in response to these events. From Firefox 82, nested
   /// > `execCommand()` calls will always fail, see
   /// > [bug 1634262](https://bugzil.la/1634262).
@@ -2084,8 +2109,9 @@ extension type Document._(JSObject _) implements Node, JSObject {
   /// asynchronously releases a pointer lock previously requested through
   /// [Element.requestPointerLock].
   ///
-  /// > **Note:** While the **`exitPointerLock()`** method is called on the
-  /// > document, the **`requestPointerLock()`** method is called on an element.
+  /// > [!NOTE]
+  /// > While the **`exitPointerLock()`** method is called on the document, the
+  /// > **`requestPointerLock()`** method is called on an element.
   ///
   /// To track the success or failure of the request, it is necessary to listen
   /// for the [Document.pointerlockchange_event] and
@@ -2097,7 +2123,7 @@ extension type Document._(JSObject _) implements Node, JSObject {
   /// The **`hasUnpartitionedCookieAccess()`** method of the [Document]
   /// interface returns a `Promise` that resolves with a boolean value
   /// indicating whether the document has access to
-  /// [third-party](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#third-party_cookies),
+  /// [third-party](https://developer.mozilla.org/en-US/docs/Web/Privacy/Guides/Third-party_cookies),
   /// [unpartitioned](https://developer.mozilla.org/en-US/docs/Web/API/Storage_Access_API#unpartitioned_versus_partitioned_cookies)
   /// cookies.
   ///
@@ -2109,11 +2135,9 @@ extension type Document._(JSObject _) implements Node, JSObject {
     unsupportedPlatformError();
   }
 
-  /// The **`getSelection()`** method of
-  /// the [Document] interface returns a [Selection]
-  /// object representing the range of text selected by the user, or the current
-  /// position of
-  /// the caret.
+  /// The **`getSelection()`** method of the [Document] interface returns the
+  /// [Selection] object associated with this document, representing the range
+  /// of text selected by the user, or the current position of the caret.
   Selection? getSelection() {
     unsupportedPlatformError();
   }
@@ -2121,16 +2145,17 @@ extension type Document._(JSObject _) implements Node, JSObject {
   /// The **`hasStorageAccess()`** method of the [Document] interface returns a
   /// `Promise` that resolves with a boolean value indicating whether the
   /// document has access to
-  /// [third-party](https://developer.mozilla.org/en-US/docs/Web/Privacy/Third-party_cookies),
+  /// [third-party](https://developer.mozilla.org/en-US/docs/Web/Privacy/Guides/Third-party_cookies),
   /// [unpartitioned](https://developer.mozilla.org/en-US/docs/Web/API/Storage_Access_API#unpartitioned_versus_partitioned_cookies)
   /// cookies.
   ///
   /// This method is part of the
   /// [Storage Access API](https://developer.mozilla.org/en-US/docs/Web/API/Storage_Access_API).
   ///
-  /// > **Note:** This method is another name for
-  /// > [Document.hasUnpartitionedCookieAccess]. There are no current plans to
-  /// > remove this method in favor of [Document.hasUnpartitionedCookieAccess].
+  /// > [!NOTE]
+  /// > This method is another name for [Document.hasUnpartitionedCookieAccess].
+  /// > There are no current plans to remove this method in favor of
+  /// > [Document.hasUnpartitionedCookieAccess].
   JSPromise<JSBoolean> hasStorageAccess() {
     unsupportedPlatformError();
   }
@@ -2138,9 +2163,9 @@ extension type Document._(JSObject _) implements Node, JSObject {
   /// The **`requestStorageAccess()`** method of the [Document] interface allows
   /// content loaded in a third-party context (i.e., embedded in an `iframe`) to
   /// request access to
-  /// [third-party cookies](https://developer.mozilla.org/en-US/docs/Web/Privacy/Third-party_cookies)
+  /// [third-party cookies](https://developer.mozilla.org/en-US/docs/Web/Privacy/Guides/Third-party_cookies)
   /// and
-  /// [unpartitioned state](https://developer.mozilla.org/en-US/docs/Web/Privacy/State_Partitioning#state_partitioning).
+  /// [unpartitioned state](https://developer.mozilla.org/en-US/docs/Web/Privacy/Guides/State_Partitioning#state_partitioning).
   /// This is relevant to user agents that, by default, block access to
   /// third-party,
   /// [unpartitioned](https://developer.mozilla.org/en-US/docs/Web/API/Storage_Access_API#unpartitioned_versus_partitioned_cookies)
@@ -2151,12 +2176,13 @@ extension type Document._(JSObject _) implements Node, JSObject {
   /// granted, you can call [Permissions.query], specifying the feature name
   /// `"storage-access"`.
   ///
-  /// > **Note:** Usage of this feature may be blocked by a
+  /// > [!NOTE]
+  /// > Usage of this feature may be blocked by a
   /// > [Permissions Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/Permissions_Policy)
   /// > set on your server. In addition, the document must pass additional
   /// > browser-specific checks such as allowlists, blocklists, on-device
   /// > classification, user settings,
-  /// > anti-[clickjacking](https://developer.mozilla.org/en-US/docs/Glossary/Clickjacking)
+  /// > anti-[clickjacking](https://developer.mozilla.org/en-US/docs/Web/Security/Attacks/Clickjacking)
   /// > heuristics, or prompting the user for explicit permission.
   JSPromise<JSAny?> requestStorageAccess() {
     unsupportedPlatformError();
@@ -2171,9 +2197,9 @@ extension type Document._(JSObject _) implements Node, JSObject {
   /// If you need to get access to an element which doesn't have an ID, you can
   /// use [Document.querySelector] to find the element using any .
   ///
-  /// > **Note:** IDs should be unique inside a document. If two or more
-  /// > elements in a document have the same ID, this method returns the first
-  /// > element found.
+  /// > [!NOTE]
+  /// > IDs should be unique inside a document. If two or more elements in a
+  /// > document have the same ID, this method returns the first element found.
   Element? getElementById(String elementId) {
     unsupportedPlatformError();
   }
@@ -2190,43 +2216,66 @@ extension type Document._(JSObject _) implements Node, JSObject {
   }
 
   /// The **`Document.prepend()`** method
-  /// inserts a set of [Node] objects or string objects before
-  /// the first child of the document. String objects
+  /// inserts a set of [Node] objects or strings before
+  /// the first child of the document. Strings
   /// are inserted as equivalent [Text] nodes.
   ///
   /// This method prepends a child to a `Document`. To prepend to an arbitrary
   /// element in the tree, see [Element.prepend].
-  void prepend(JSAny nodes) {
+  void prepend([
+    JSAny? node1,
+    JSAny? node2,
+    JSAny? node3,
+    JSAny? node4,
+  ]) {
     unsupportedPlatformError();
   }
 
   /// The **`Document.append()`** method
-  /// inserts a set of [Node] objects or string objects after
-  /// the last child of the document. String objects
+  /// inserts a set of [Node] objects or strings after
+  /// the last child of the document. Strings
   /// are inserted as equivalent [Text] nodes.
   ///
   /// This method appends a child to a `Document`. To append to an arbitrary
   /// element in the tree, see [Element.append].
-  void append(JSAny nodes) {
+  void append([
+    JSAny? node1,
+    JSAny? node2,
+    JSAny? node3,
+    JSAny? node4,
+  ]) {
     unsupportedPlatformError();
   }
 
   /// The **`Document.replaceChildren()`** method replaces the
   /// existing children of a `Document` with a specified new set of children.
-  void replaceChildren(JSAny nodes) {
+  void replaceChildren([
+    JSAny? node1,
+    JSAny? node2,
+    JSAny? node3,
+    JSAny? node4,
+  ]) {
     unsupportedPlatformError();
   }
 
   /// The [Document] method **`querySelector()`**
   /// returns the first [Element] within the document that matches the specified
-  /// selector, or group of selectors. If no matches are found, `null` is
-  /// returned.
+  /// [CSS selector](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_selectors),
+  /// or group of CSS selectors. If no matches are found, `null` is returned.
   ///
-  /// > **Note:** The matching is done using depth-first pre-order traversal of
-  /// > the document's nodes starting with the first element in the document's
-  /// > markup and
-  /// > iterating through sequential nodes by order of the number of child
-  /// > nodes.
+  /// The matching is done using depth-first pre-order traversal of the
+  /// document's nodes starting with the first element in the document's markup
+  /// and iterating through sequential nodes by order of the number of child
+  /// nodes.
+  ///
+  /// If the specified selector matches an ID that is incorrectly used more than
+  /// once in the
+  /// document, the first element with that ID is returned.
+  ///
+  /// [CSS pseudo-elements](https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements)
+  /// will never return
+  /// any elements, as specified in the
+  /// [Selectors API](https://www.w3.org/TR/selectors-api/#grammar).
   Element? querySelector(String selectors) {
     unsupportedPlatformError();
   }
@@ -2250,14 +2299,16 @@ extension type Document._(JSObject _) implements Node, JSObject {
     unsupportedPlatformError();
   }
 
-  /// Creates an `XPathNSResolver` which resolves namespaces with respect to the
-  /// definitions in scope for a specified node.
+  /// The **`createNSResolver()`** method of the [Document] interface used to
+  /// create a custom `XPathNSResolver` object. It now returns the input as-is
+  /// and is only kept for compatibility reasons.
   Node createNSResolver(Node nodeResolver) {
     unsupportedPlatformError();
   }
 
   /// The **`evaluate()`** method of the [Document] interface selects elements
-  /// based on the [XPath](https://developer.mozilla.org/en-US/docs/Web/XPath)
+  /// based on the
+  /// [XPath](https://developer.mozilla.org/en-US/docs/Web/XML/XPath)
   /// expression given in parameters.
   ///
   /// XPath expressions can be evaluated on both HTML and XML documents.
@@ -2304,8 +2355,9 @@ extension type Document._(JSObject _) implements Node, JSObject {
   /// of the
   /// document that it's currently rendered with.
   ///
-  /// > **Note:** A "character set" and a "character encoding" are related, but
-  /// > different. Despite the
+  /// > [!NOTE]
+  /// > A "character set" and a "character encoding" are related, but different.
+  /// > Despite the
   /// > name of this property, it returns the _encoding_.
   String get characterSet {
     unsupportedPlatformError();
@@ -2318,14 +2370,15 @@ extension type Document._(JSObject _) implements Node, JSObject {
   /// conversions
   /// performed by either the browser or extensions.
   ///
-  /// > **Note:** This property is unaffected by `meta`
+  /// > [!NOTE]
+  /// > This property is unaffected by `meta`
   /// > elements.
   String get contentType {
     unsupportedPlatformError();
   }
 
   /// The **`doctype`** read-only property of the [Document] interface is a
-  /// [DocumentType] object representing the the  associated with the current
+  /// [DocumentType] object representing the  associated with the current
   /// document.
   DocumentType? get doctype {
     unsupportedPlatformError();
@@ -2354,9 +2407,10 @@ extension type Document._(JSObject _) implements Node, JSObject {
   /// document, [document.documentElement].
   ///
   /// When in quirks mode, the `scrollingElement` attribute returns the HTML
-  /// `body` element if it exists and is
+  /// `body` element if it exists and is _not_
   /// [potentially scrollable](https://drafts.csswg.org/cssom-view/#potentially-scrollable),
-  /// otherwise it returns null.
+  /// otherwise it returns `null`. This may look surprising but is true
+  /// according to both the specification and browsers.
   Element? get scrollingElement {
     unsupportedPlatformError();
   }
@@ -2386,8 +2440,9 @@ extension type Document._(JSObject _) implements Node, JSObject {
   /// (even in strict mode); the setter is a no-operation and it will be
   /// ignored.
   ///
-  /// > **Note:** Since this property is deprecated, you can determine if
-  /// > fullscreen mode is active on the document by checking to see if
+  /// > [!NOTE]
+  /// > Since this property is deprecated, you can determine if fullscreen mode
+  /// > is active on the document by checking to see if
   /// > [Document.fullscreenElement] is not `null`.
   bool get fullscreen {
     unsupportedPlatformError();
@@ -2544,7 +2599,8 @@ extension type Document._(JSObject _) implements Node, JSObject {
   /// containing one or more [HTMLEmbedElement]s representing the
   /// `embed` elements in the current document.
   ///
-  /// > **Note:** For a list of installed plugins, use
+  /// > [!NOTE]
+  /// > For a list of installed plugins, use
   /// > [Navigator.plugins](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/plugins)
   /// > instead.
   HTMLCollection get plugins {
@@ -2564,7 +2620,8 @@ extension type Document._(JSObject _) implements Node, JSObject {
   /// the [Document] interface returns an [HTMLCollection] listing
   /// all the `form` elements contained in the document.
   ///
-  /// > **Note:** Similarly, you can access a list of a form's component user
+  /// > [!NOTE]
+  /// > Similarly, you can access a list of a form's component user
   /// > input elements using the [HTMLFormElement.elements] property.
   HTMLCollection get forms {
     unsupportedPlatformError();
@@ -2723,8 +2780,9 @@ extension type Document._(JSObject _) implements Node, JSObject {
   /// older versions of browsers, it returned a list of the applets within a
   /// document.
   ///
-  /// > **Note:** Support for the `<applet>` element has been removed by all
-  /// > browsers. Therefore, calling `document.applets` always
+  /// > [!NOTE]
+  /// > Support for the `<applet>` element has been removed by all browsers.
+  /// > Therefore, calling `document.applets` always
   /// > returns an empty collection.
   HTMLCollection get applets {
     unsupportedPlatformError();
@@ -2777,6 +2835,12 @@ extension type Document._(JSObject _) implements Node, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`fragmentDirective`** read-only property of the [Document] interface
+  /// returns the [FragmentDirective] for the current document.
+  FragmentDirective get fragmentDirective {
+    unsupportedPlatformError();
+  }
+
   /// The `timeline` readonly property of the [Document] interface represents
   /// the default timeline of the current document. This timeline is a special
   /// instance of [DocumentTimeline].
@@ -2789,9 +2853,10 @@ extension type Document._(JSObject _) implements Node, JSObject {
   /// Prior to the time origin, the timeline is inactive, and its
   /// [AnimationTimeline.currentTime] is `null`.
   ///
-  /// > **Note:** A document timeline that is associated with a non-active
-  /// > document (a [Document] not associated with a [Window], `iframe`, or
-  /// > `frame`) is also considered to be inactive.
+  /// > [!NOTE]
+  /// > A document timeline that is associated with a non-active document (a
+  /// > [Document] not associated with a [Window], `iframe`, or `frame`) is also
+  /// > considered to be inactive.
   DocumentTimeline get timeline {
     unsupportedPlatformError();
   }
@@ -2816,8 +2881,9 @@ extension type Document._(JSObject _) implements Node, JSObject {
   /// for setting an array of constructed stylesheets to be used by the
   /// document.
   ///
-  /// > **Note:** A constructed stylesheet is a stylesheet created
-  /// > programmatically using the [`CSSStyleSheet()`
+  /// > [!NOTE]
+  /// > A constructed stylesheet is a stylesheet created programmatically using
+  /// > the [`CSSStyleSheet()`
   /// > constructor](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet/CSSStyleSheet)
   /// > (as compared to one created by a user-agent when importing a stylesheet
   /// > from a script, imported using `style` and , or linked to via `link`).
@@ -2830,7 +2896,7 @@ extension type Document._(JSObject _) implements Node, JSObject {
   ///
   /// Stylesheets in the property are evaluated along with the document's other
   /// stylesheets using the
-  /// [CSS cascade algorithm](https://developer.mozilla.org/en-US/docs/Web/CSS/Cascade).
+  /// [CSS cascade algorithm](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_cascade/Cascade).
   /// Where the resolution of rules considers stylesheet order,
   /// `adoptedStyleSheets` are assumed to be ordered after those in
   /// [`Document.styleSheets`](https://developer.mozilla.org/en-US/docs/Web/API/Document/styleSheets).
@@ -2859,31 +2925,26 @@ extension type Document._(JSObject _) implements Node, JSObject {
     unsupportedPlatformError();
   }
 
-  /// The **`activeElement`** read-only property
-  /// of the [Document] interface returns the [Element] within the DOM that
-  /// currently has focus.
+  /// The **`activeElement`** read-only property of the [Document] interface
+  /// returns the [Element] within the DOM that is receiving keyboard events
+  /// such as [Element.keydown_event] and [Element.keyup_event]. This is usually
+  /// analogous to the focused element.
   ///
-  /// Often `activeElement` will return a [HTMLInputElement] or
-  /// [HTMLTextAreaElement] object if it has the text selection at the time. If
-  /// so, you can get more detail by using the object's `selectionStart` and
-  /// `selectionEnd` properties.
-  /// Other times the focused element might be a `select` element (menu) or
-  /// an `input` element.
+  /// Which elements are focusable varies depending on the platform and the
+  /// browser's current configuration. For example, on Safari, following the
+  /// behavior of macOS, elements that aren't text input elements are not
+  /// focusable by default, unless the "Full Keyboard Access" setting is enabled
+  /// in System Preferences.
   ///
-  /// Typically a user can press the tab key to move the focus around the page
-  /// among
-  /// focusable elements, and use the space bar to activate one (that is, to
-  /// press a button or
-  /// toggle a radio button). Which elements are focusable varies depending on
-  /// the platform
-  /// and the browser's current configuration. For example, on macOS systems,
-  /// elements that
-  /// aren't text input elements are not typically focusable by default.
+  /// Typically a user can press the <kbd>Tab</kbd> key to move the focus around
+  /// the page among focusable elements, and use keyboard gestures such as
+  /// <kbd>Space</kbd> or <kbd>Enter</kbd> to simulate clicks on the focused
+  /// element.
   ///
-  /// > **Note:** Focus (which element is receiving user input events) is not
-  /// > the same thing as selection (the currently highlighted part of the
-  /// > document). You can
-  /// > get the current selection using [window.getSelection].
+  /// > [!NOTE]
+  /// > Focus (which element is receiving user input events) is not the same
+  /// > thing as selection (the currently highlighted part of the document). You
+  /// > can get the current selection using [window.getSelection].
   Element? get activeElement {
     unsupportedPlatformError();
   }
@@ -3796,7 +3857,12 @@ extension type DocumentType._(JSObject _) implements Node, JSObject {
   /// [Node] objects or strings in the children list of the
   /// `DocumentType`'s parent, just before the `DocumentType`.
   /// Strings are inserted as equivalent [Text] nodes.
-  void before(JSAny nodes) {
+  void before([
+    JSAny? node1,
+    JSAny? node2,
+    JSAny? node3,
+    JSAny? node4,
+  ]) {
     unsupportedPlatformError();
   }
 
@@ -3804,13 +3870,23 @@ extension type DocumentType._(JSObject _) implements Node, JSObject {
   /// [Node] objects or strings in the children list of the
   /// `DocumentType`'s parent, just after the `DocumentType`.
   /// Strings are inserted as equivalent [Text] nodes.
-  void after(JSAny nodes) {
+  void after([
+    JSAny? node1,
+    JSAny? node2,
+    JSAny? node3,
+    JSAny? node4,
+  ]) {
     unsupportedPlatformError();
   }
 
   /// The **`DocumentType.replaceWith()`** method replaces the document type
   /// with a set of given nodes.
-  void replaceWith(JSAny nodes) {
+  void replaceWith([
+    JSAny? node1,
+    JSAny? node2,
+    JSAny? node3,
+    JSAny? node4,
+  ]) {
     unsupportedPlatformError();
   }
 
@@ -3826,7 +3902,7 @@ extension type DocumentType._(JSObject _) implements Node, JSObject {
   /// parameter to [DOMImplementation.createDocumentType].
   ///
   /// For HTML documents, browsers always set it up to `html`, whatever the
-  /// actual `DOCTYPE` in the source code is.
+  /// actual `doctype` in the source code is.
   String get name {
     unsupportedPlatformError();
   }
@@ -3836,10 +3912,6 @@ extension type DocumentType._(JSObject _) implements Node, JSObject {
   ///
   /// For synthetic `DocumentType`, this property reflects the value given in
   /// parameter to [DOMImplementation.createDocumentType].
-  ///
-  /// For HTML documents, browsers always set it up to `html`, whatever the
-  /// actual `DOCTYPE` in the source code is. For SVG documents, for example, it
-  /// can be `"-//W3C//DTD SVG 1.1//EN"`.
   String get publicId {
     unsupportedPlatformError();
   }
@@ -3849,10 +3921,6 @@ extension type DocumentType._(JSObject _) implements Node, JSObject {
   ///
   /// For synthetic `DocumentType`, this property reflects the value given in
   /// parameter to [DOMImplementation.createDocumentType].
-  ///
-  /// For HTML documents, browsers always set it up to `html`, whatever the
-  /// actual `DOCTYPE` in the source code is. For SVG documents, for example, it
-  /// can be `"http://www.w3.org/2000/svg"`.
   String get systemId {
     unsupportedPlatformError();
   }
@@ -3883,32 +3951,43 @@ extension type DocumentFragment._(JSObject _) implements Node, JSObject {
   /// If you need to get access to an element which doesn't have an ID, you can
   /// use [Document.querySelector] to find the element using any .
   ///
-  /// > **Note:** IDs should be unique inside a document fragment. If two or
-  /// > more elements in a document fragment have the same ID, this method
-  /// > returns the first element found.
+  /// > [!NOTE]
+  /// > IDs should be unique inside a document fragment. If two or more elements
+  /// > in a document fragment have the same ID, this method returns the first
+  /// > element found.
   Element? getElementById(String elementId) {
     unsupportedPlatformError();
   }
 
   /// The **`DocumentFragment.prepend()`** method
-  /// inserts a set of [Node] objects or string objects before
-  /// the first child of the document fragment. String objects
+  /// inserts a set of [Node] objects or strings before
+  /// the first child of the document fragment. Strings
   /// are inserted as equivalent [Text] nodes.
   ///
   /// This method prepends a child to a `DocumentFragment`. To prepend to an
   /// arbitrary element in the tree, see [Element.prepend].
-  void prepend(JSAny nodes) {
+  void prepend([
+    JSAny? node1,
+    JSAny? node2,
+    JSAny? node3,
+    JSAny? node4,
+  ]) {
     unsupportedPlatformError();
   }
 
   /// The **`DocumentFragment.append()`** method
-  /// inserts a set of [Node] objects or string objects after
-  /// the last child of the document fragment. String objects
+  /// inserts a set of [Node] objects or strings after
+  /// the last child of the document fragment. Strings
   /// are inserted as equivalent [Text] nodes.
   ///
   /// This method appends a child to a `DocumentFragment`. To append to an
   /// arbitrary element in the tree, see [Element.append].
-  void append(JSAny nodes) {
+  void append([
+    JSAny? node1,
+    JSAny? node2,
+    JSAny? node3,
+    JSAny? node4,
+  ]) {
     unsupportedPlatformError();
   }
 
@@ -3916,7 +3995,12 @@ extension type DocumentFragment._(JSObject _) implements Node, JSObject {
   /// existing children of a `DocumentFragment` with a specified new set of
   /// children. These
   /// can be string or [Node] objects.
-  void replaceChildren(JSAny nodes) {
+  void replaceChildren([
+    JSAny? node1,
+    JSAny? node2,
+    JSAny? node3,
+    JSAny? node4,
+  ]) {
     unsupportedPlatformError();
   }
 
@@ -4006,8 +4090,9 @@ extension type ShadowRoot._(JSObject _) implements DocumentFragment, JSObject {
   /// subsequent declarations are parsed as `<template>` elements within that
   /// shadow root.
   ///
-  /// > **Note:** This method should be used instead of [ShadowRoot.innerHTML]
-  /// > when a string of HTML may contain declarative shadow roots.
+  /// > [!NOTE]
+  /// > This method should be used instead of [ShadowRoot.innerHTML] when a
+  /// > string of HTML may contain declarative shadow roots.
   void setHTMLUnsafe(JSAny html) {
     unsupportedPlatformError();
   }
@@ -4044,7 +4129,7 @@ extension type ShadowRoot._(JSObject _) implements DocumentFragment, JSObject {
   /// This defines whether or not the shadow root's internal features are
   /// accessible from JavaScript.
   ///
-  /// When the `mode` of a shadow root is "`closed`", the shadow root's
+  /// When the `mode` of a shadow root is `"closed"`, the shadow root's
   /// implementation internals are inaccessible and unchangeable from
   /// JavaScript—in the same way the implementation internals of, for example,
   /// the `video` element are inaccessible and unchangeable from JavaScript.
@@ -4063,8 +4148,9 @@ extension type ShadowRoot._(JSObject _) implements DocumentFragment, JSObject {
   /// returns `true` if the shadow root delegates focus, and `false` otherwise.
   ///
   /// If `true`, when a non-focusable part of the shadow DOM is clicked, or
-  /// `.focus()` is called on the host element, the first focusable part is
-  /// given focus, and the shadow host is given any available `:focus` styling.
+  /// `.focus()` is called on the host element, the first focusable part inside
+  /// the host's shadow DOM is given focus, and the shadow host is given any
+  /// available `:focus` styling.
   ///
   /// Focus is of particular importance for keyboard users (including those
   /// using screen readers). `delegatesFocus` default behavior is to focus the
@@ -4169,8 +4255,9 @@ extension type ShadowRoot._(JSObject _) implements DocumentFragment, JSObject {
   /// The **`adoptedStyleSheets`** property of the [ShadowRoot] interface sets
   /// an array of constructed stylesheets to be used by the shadow DOM subtree.
   ///
-  /// > **Note:** A constructed stylesheet is a stylesheet created
-  /// > programmatically using the [`CSSStyleSheet()`
+  /// > [!NOTE]
+  /// > A constructed stylesheet is a stylesheet created programmatically using
+  /// > the [`CSSStyleSheet()`
   /// > constructor](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet/CSSStyleSheet)
   /// > (as compared to one created by a user-agent when importing a stylesheet
   /// > from a script, imported using `style` and , or linked to via `link`).
@@ -4461,14 +4548,14 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// The **`closest()`** method of the [Element] interface traverses the
   /// element and its parents (heading toward the document root) until it finds
   /// a node that matches the specified
-  /// [CSS selector](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors).
+  /// [CSS selector](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Basic_selectors).
   Element? closest(String selectors) {
     unsupportedPlatformError();
   }
 
   /// The **`matches()`** method of the [Element] interface tests whether the
   /// element would be selected by the specified
-  /// [CSS selector](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors).
+  /// [CSS selector](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Basic_selectors).
   bool matches(String selectors) {
     unsupportedPlatformError();
   }
@@ -4677,8 +4764,9 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// subsequent declarations are parsed as `<template>` elements within that
   /// shadow root.
   ///
-  /// > **Note:** This method should be used instead of [Element.innerHTML] when
-  /// > a string of HTML may contain declarative shadow roots.
+  /// > [!NOTE]
+  /// > This method should be used instead of [Element.innerHTML] when a string
+  /// > of HTML may contain declarative shadow roots.
   void setHTMLUnsafe(JSAny html) {
     unsupportedPlatformError();
   }
@@ -4717,53 +4805,26 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// [Element.releasePointerCapture] or the
   /// [Element.pointerup_event] event is fired).
   ///
-  /// > **Note:** Pointer capture will cause the target to capture all
-  /// > subsequent pointer events as if they were occurring over the capturing
-  /// > target. Accordingly, `pointerover`, `pointerenter`, `pointerleave`, and
-  /// > `pointerout` **will not fire** as long as this capture is set.
-  /// > For touchscreen browsers that allow
-  /// > [direct manipulation](https://w3c.github.io/pointerevents/#dfn-direct-manipulation),
-  /// > an
-  /// > [implicit pointer capture](https://w3c.github.io/pointerevents/#dfn-implicit-pointer-capture)
-  /// > will be called on the element when a `pointerdown` event triggers. The
-  /// > capture can be released manually by calling
-  /// > [element.releasePointerCapture] on the target element, or it will be
-  /// > implicitly released after a `pointerup` or `pointercancel` event.
-  ///
-  /// > **Note:** If you need to move an element in the DOM, then make sure to
-  /// > call `setPointerCapture()` **after DOM movements** so that
-  /// > `setPointerCapture()` will not lose track of it. E.g., if you need to
-  /// > use `Element.append()` to move an element somewhere else, then make sure
-  /// > to call `setPointerCapture()` on it only after the call to
-  /// > `Element.append()`.
-  ///
-  /// ### Overview of pointer capture
-  ///
-  /// _Pointer capture_ allows events for a particular _pointer event_
-  /// ([PointerEvent]) to be re-targeted to a particular element instead of the
-  /// normal (or _hit test_) target at a pointer's location. This can be used to
-  /// ensure
-  /// that an element continues to receive pointer events even if the pointer
-  /// device's contact
-  /// moves off the element (such as by scrolling or panning).
+  /// See
+  /// [pointer events](https://developer.mozilla.org/en-US/docs/Web/API/Pointer_events#pointer_capture)
+  /// for an overview and examples of how pointer capture works.
   void setPointerCapture(int pointerId) {
     unsupportedPlatformError();
   }
 
   /// The **`releasePointerCapture()`** method of the
-  /// [Element] interface releases (stops) _pointer capture_ that was
+  /// [Element] interface releases (stops)
+  /// [_pointer capture_](https://developer.mozilla.org/en-US/docs/Web/API/Pointer_events#pointer_capture)
+  /// that was
   /// previously set for a specific ([PointerEvent]) _pointer_.
-  ///
-  /// See the [Element.setPointerCapture] method
-  /// for a description of _pointer capture_ and how to set it for a particular
-  /// element.
   void releasePointerCapture(int pointerId) {
     unsupportedPlatformError();
   }
 
   /// The **`hasPointerCapture()`** method of the
   /// [Element] interface checks whether the element on which it is invoked has
-  /// pointer capture for the pointer identified by the given pointer ID.
+  /// [pointer capture](https://developer.mozilla.org/en-US/docs/Web/API/Pointer_events#pointer_capture)
+  /// for the pointer identified by the given pointer ID.
   bool hasPointerCapture(int pointerId) {
     unsupportedPlatformError();
   }
@@ -4775,8 +4836,9 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// for the [Document.pointerlockchange_event] and
   /// [Document.pointerlockerror_event] events at the [Document] level.
   ///
-  /// > **Note:** In the current specification, `requestPointerLock()` only
-  /// > communicates the success or failure of the request by firing
+  /// > [!NOTE]
+  /// > In the current specification, `requestPointerLock()` only communicates
+  /// > the success or failure of the request by firing
   /// > [Document.pointerlockchange_event] or [Document.pointerlockerror_event]
   /// > events.
   /// > [A proposed update to the specification](https://github.com/w3c/pointerlock/pull/49)
@@ -4790,35 +4852,50 @@ extension type Element._(JSObject _) implements Node, JSObject {
   }
 
   /// The **`Element.prepend()`** method inserts a set of
-  /// [Node] objects or string objects before the first child
-  /// of the [Element]. String objects are inserted as
+  /// [Node] objects or strings before the first child
+  /// of the [Element]. Strings are inserted as
   /// equivalent [Text] nodes.
-  void prepend(JSAny nodes) {
+  void prepend([
+    JSAny? node1,
+    JSAny? node2,
+    JSAny? node3,
+    JSAny? node4,
+  ]) {
     unsupportedPlatformError();
   }
 
   /// The **`Element.append()`** method
-  /// inserts a set of [Node] objects or string objects after
-  /// the last child of the `Element`. String objects
+  /// inserts a set of [Node] objects or strings after
+  /// the last child of the `Element`. Strings
   /// are inserted as equivalent [Text] nodes.
   ///
   /// Differences from [Node.appendChild]:
   ///
-  /// - `Element.append()` allows you to also append string
-  /// objects, whereas `Node.appendChild()` only accepts [Node]
+  /// - `Element.append()` allows you to also append strings, whereas
+  ///   `Node.appendChild()` only accepts [Node]
   /// objects.
   /// - `Element.append()` has no return value, whereas
   /// `Node.appendChild()` returns the appended [Node] object.
   /// - `Element.append()` can append several nodes and strings, whereas
   /// `Node.appendChild()` can only append one node.
-  void append(JSAny nodes) {
+  void append([
+    JSAny? node1,
+    JSAny? node2,
+    JSAny? node3,
+    JSAny? node4,
+  ]) {
     unsupportedPlatformError();
   }
 
   /// The **`Element.replaceChildren()`** method replaces the
   /// existing children of a [Node] with a specified new set of children. These
   /// can be string or [Node] objects.
-  void replaceChildren(JSAny nodes) {
+  void replaceChildren([
+    JSAny? node1,
+    JSAny? node2,
+    JSAny? node3,
+    JSAny? node4,
+  ]) {
     unsupportedPlatformError();
   }
 
@@ -4840,26 +4917,41 @@ extension type Element._(JSObject _) implements Node, JSObject {
   }
 
   /// The **`Element.before()`** method inserts a set of
-  /// [Node] or string objects in the children list of this
+  /// [Node] objects or strings in the children list of this
   /// `Element`'s parent, just before this `Element`.
-  /// String objects are inserted as equivalent [Text] nodes.
-  void before(JSAny nodes) {
+  /// Strings are inserted as equivalent [Text] nodes.
+  void before([
+    JSAny? node1,
+    JSAny? node2,
+    JSAny? node3,
+    JSAny? node4,
+  ]) {
     unsupportedPlatformError();
   }
 
   /// The **`Element.after()`** method inserts a set of
-  /// [Node] or string objects in the children list of the
+  /// [Node] objects or strings in the children list of the
   /// `Element`'s parent, just after the `Element`.
-  /// String objects are inserted as equivalent [Text] nodes.
-  void after(JSAny nodes) {
+  /// Strings are inserted as equivalent [Text] nodes.
+  void after([
+    JSAny? node1,
+    JSAny? node2,
+    JSAny? node3,
+    JSAny? node4,
+  ]) {
     unsupportedPlatformError();
   }
 
   /// The **`Element.replaceWith()`** method replaces this
   /// `Element` in the children list of its parent with a set of
-  /// [Node] or string objects. String
-  /// objects are inserted as equivalent [Text] nodes.
-  void replaceWith(JSAny nodes) {
+  /// [Node] objects or strings. Strings are inserted as equivalent [Text]
+  /// nodes.
+  void replaceWith([
+    JSAny? node1,
+    JSAny? node2,
+    JSAny? node3,
+    JSAny? node4,
+  ]) {
     unsupportedPlatformError();
   }
 
@@ -4873,8 +4965,9 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// element, then plays the animation. It returns the created [Animation]
   /// object instance.
   ///
-  /// > **Note:** Elements can have multiple animations applied to them. You can
-  /// > get a list of the
+  /// > [!NOTE]
+  /// > Elements can have multiple animations applied to them. You can get a
+  /// > list of the
   /// > animations that affect an element by calling [Element.getAnimations].
   Animation animate(
     JSObject? keyframes, [
@@ -4889,7 +4982,8 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// in future. It can optionally return [Animation] objects for descendant
   /// elements too.
   ///
-  /// > **Note:** This array includes
+  /// > [!NOTE]
+  /// > This array includes
   /// > [CSS Animations](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animations),
   /// > [CSS Transitions](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_transitions),
   /// > and
@@ -4926,7 +5020,7 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// differently for XML/XHTML documents). Note: You can use the
   /// [Element.localName] property
   /// to access the Element's local name — which for the case in the example is
-  /// `img` (lowercase) .
+  /// `img` (lowercase).
   String get tagName {
     unsupportedPlatformError();
   }
@@ -4946,7 +5040,8 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// when styling the document with
   /// [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS).
   ///
-  /// > **Note:** Identifiers are case-sensitive, but you should avoid creating
+  /// > [!NOTE]
+  /// > Identifiers are case-sensitive, but you should avoid creating
   /// > IDs that differ only in the capitalization.
   String get id {
     unsupportedPlatformError();
@@ -5062,11 +5157,12 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// pseudo-elements such
   /// as  or . If the element's content can fit
   /// without a need for horizontal scrollbar, its `scrollWidth` is equal to
-  /// [Element.clientWidth]
+  /// [Element.clientWidth].
   ///
-  /// > **Note:** This property will round the value to an integer. If you need
-  /// > a fractional value,
-  /// > use [element.getBoundingClientRect].
+  /// > [!NOTE]
+  /// > This property will round the value to an integer. If you need a
+  /// > fractional value,
+  /// > use [Element.getBoundingClientRect].
   int get scrollWidth {
     unsupportedPlatformError();
   }
@@ -5093,8 +5189,9 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// fit without a need for vertical scrollbar, its `scrollHeight` is equal to
   /// [Element.clientHeight]
   ///
-  /// > **Note:** This property will round the value to an integer. If you need
-  /// > a fractional value, use
+  /// > [!NOTE]
+  /// > This property will round the value to an integer. If you need a
+  /// > fractional value, use
   /// > [Element.getBoundingClientRect].
   int get scrollHeight {
     unsupportedPlatformError();
@@ -5116,7 +5213,8 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// is zero,
   /// then **`clientTop`** is also zero.
   ///
-  /// > **Note:** This property will round the value to an integer. If you
+  /// > [!NOTE]
+  /// > This property will round the value to an integer. If you
   /// > need a fractional value, use [element.getBoundingClientRect].
   int get clientTop {
     unsupportedPlatformError();
@@ -5130,10 +5228,12 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// `clientLeft` does not include the left margin or the left padding.
   /// `clientLeft` is read-only.
   ///
-  /// > **Note:** This property will round the value to an integer. If you
+  /// > [!NOTE]
+  /// > This property will round the value to an integer. If you
   /// > need a fractional value, use [element.getBoundingClientRect].
   ///
-  /// > **Note:** When an element has
+  /// > [!NOTE]
+  /// > When an element has
   /// > `display: inline`, `clientLeft` returns `0`
   /// > regardless of the element's border.
   int get clientLeft {
@@ -5151,9 +5251,9 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// `<html>` element), (or on `<body>` if the document is
   /// in quirks mode), the viewport's width (excluding any scrollbar) is
   /// returned.
-  /// [This is a special case of `clientWidth`](https://www.w3.org/TR/2016/WD-cssom-view-1-20160317/#dom-element-clientwidth).
   ///
-  /// > **Note:** This property will round the value to an integer. If you need
+  /// > [!NOTE]
+  /// > This property will round the value to an integer. If you need
   /// > a fractional value, use [element.getBoundingClientRect].
   int get clientWidth {
     unsupportedPlatformError();
@@ -5173,11 +5273,40 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// `<html>` element), (or on `<body>` if the document is
   /// in quirks mode), the viewport's height (excluding any scrollbar) is
   /// returned.
-  /// [This is a special case of `clientHeight`](https://www.w3.org/TR/2016/WD-cssom-view-1-20160317/#dom-element-clientheight).
   ///
-  /// > **Note:** This property will round the value to an integer. If you need
+  /// > [!NOTE]
+  /// > This property will round the value to an integer. If you need
   /// > a fractional value, use [element.getBoundingClientRect].
   int get clientHeight {
+    unsupportedPlatformError();
+  }
+
+  /// The **`currentCSSZoom`** read-only property of the [Element] interface
+  /// provides the "effective"
+  /// [CSS `zoom`](https://developer.mozilla.org/en-US/docs/Web/CSS/zoom) of an
+  /// element, taking into account the zoom applied to the element and all its
+  /// parent elements.
+  ///
+  /// The value calculated by multiplying the CSS `zoom` values of the element
+  /// and all of its parents.
+  /// For example, if three elements with zoom values of 2, 1.5, and 3, are
+  /// nested within each other, the most deeply nested element will have a
+  /// `currentCSSZoom` value of 9.
+  /// If the element doesn't have a CSS box, for example because `display: none`
+  /// is set on the element or one of its parents, then the `currentCSSZoom` is
+  /// set to 1.
+  ///
+  /// Note that some methods, such as [Element.getBoundingClientRect], return
+  /// dimensions and position that are relative to the viewport, and hence
+  /// include the effects of CSS `zoom`.
+  /// Other properties and methods return values that are relative to the
+  /// element itself, and do not include the effects of zooming.
+  /// These include, for example, `client*` properties such as
+  /// [Element.clientHeight], `scroll*()` methods like [Element.scroll], and
+  /// `offset*` properties such as [HTMLElement.offsetHeight].
+  /// The `currentCSSZoom` property can be used to scale these values to adjust
+  /// for the effects of zooming.
+  double get currentCSSZoom {
     unsupportedPlatformError();
   }
 
@@ -5217,7 +5346,7 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// [`<template>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template)
   /// is parsed into as [HTMLTemplateElement], whether or not the
   /// [`shadowrootmode`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template#shadowrootmode)
-  /// attribute is specfied
+  /// attribute is specified
   /// In order to set an element's contents from an HTML string that includes
   /// declarative shadow roots, you must use either [Element.setHTMLUnsafe] or
   /// [ShadowRoot.setHTMLUnsafe].
@@ -5290,8 +5419,8 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// The **`Element.previousElementSibling`**
   /// read-only property returns the [Element] immediately prior to the
   /// specified
-  /// one in its parent's children list, or `null` if the specified element is
-  /// the first one in the list.
+  /// one in its parent's [Element.children] list, or `null` if the specified
+  /// element is the first one in the list.
   Element? get previousElementSibling {
     unsupportedPlatformError();
   }
@@ -5299,8 +5428,8 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// The **`Element.nextElementSibling`** read-only
   /// property returns the element immediately following the specified one in
   /// its parent's
-  /// children list, or `null` if the specified element is the last one in the
-  /// list.
+  /// [Element.children] list, or `null` if the specified element is the last
+  /// one in the list.
   Element? get nextElementSibling {
     unsupportedPlatformError();
   }
@@ -5380,7 +5509,7 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// [`aria-roledescription`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-roledescription)
   /// value.
   /// It should only be used if `aria-roledescription` is present and in the
-  /// rare case where it is is too verbose for braille.
+  /// rare case where it is too verbose for braille.
   /// The
   /// [`aria-brailleroledescription`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-brailleroledescription)
   /// contains additional information about when the property should be set.
@@ -5412,9 +5541,10 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// attribute, which indicates the current "checked" state of checkboxes,
   /// radio buttons, and other widgets that have a checked state.
   ///
-  /// > **Note:** Where possible use an HTML `input` element with
-  /// > `type="checkbox"` as this element has built in semantics and does not
-  /// > require ARIA attributes.
+  /// > [!NOTE]
+  /// > Where possible use an HTML `input` element with `type="checkbox"` as
+  /// > this element has built in semantics and does not require ARIA
+  /// > attributes.
   String? get ariaChecked {
     unsupportedPlatformError();
   }
@@ -5446,6 +5576,19 @@ extension type Element._(JSObject _) implements Node, JSObject {
   }
 
   set ariaColIndex(String? value) {
+    unsupportedPlatformError();
+  }
+
+  /// The **`ariaColIndexText`** property of the [Element] interface reflects
+  /// the value of the
+  /// [`aria-colindextext`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-colindextext)
+  /// attribute, which defines a human readable text alternative of
+  /// aria-colindex.
+  String? get ariaColIndexText {
+    unsupportedPlatformError();
+  }
+
+  set ariaColIndexText(String? value) {
     unsupportedPlatformError();
   }
 
@@ -5494,9 +5637,10 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// attribute, which indicates that the element is perceivable but disabled,
   /// so it is not editable or otherwise operable.
   ///
-  /// > **Note:** Where possible, use the `input` element with `type="button"`
-  /// > or the `button` element — because those elements have built in semantics
-  /// > and do not require ARIA attributes.
+  /// > [!NOTE]
+  /// > Where possible, use the `input` element with `type="button"` or the
+  /// > `button` element — because those elements have built in semantics and do
+  /// > not require ARIA attributes.
   String? get ariaDisabled {
     unsupportedPlatformError();
   }
@@ -5580,8 +5724,9 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// of the `aria-level` attribute, which defines the hierarchical level of an
   /// element within a structure.
   ///
-  /// > **Note:** Where possible use an HTML `h1` or other correct heading level
-  /// > as these have built in semantics and do not require ARIA attributes.
+  /// > [!NOTE]
+  /// > Where possible use an HTML `h1` or other correct heading level as these
+  /// > have built in semantics and do not require ARIA attributes.
   String? get ariaLevel {
     unsupportedPlatformError();
   }
@@ -5625,8 +5770,9 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// attribute, which indicates whether a text box accepts multiple lines of
   /// input or only a single line.
   ///
-  /// > **Note:** Where possible use an HTML `input` element with `type="text"`
-  /// > or a `textarea` as these have built in semantics and do not require ARIA
+  /// > [!NOTE]
+  /// > Where possible use an HTML `input` element with `type="text"` or a
+  /// > `textarea` as these have built in semantics and do not require ARIA
   /// > attributes.
   String? get ariaMultiLine {
     unsupportedPlatformError();
@@ -5642,8 +5788,9 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// attribute, which indicates that the user may select more than one item
   /// from the current selectable descendants.
   ///
-  /// > **Note:** Where possible use an HTML `select` element as this has built
-  /// > in semantics and does not require ARIA attributes.
+  /// > [!NOTE]
+  /// > Where possible use an HTML `select` element as this has built in
+  /// > semantics and does not require ARIA attributes.
   String? get ariaMultiSelectable {
     unsupportedPlatformError();
   }
@@ -5669,8 +5816,9 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// value of the `aria-placeholder` attribute, which defines a short hint
   /// intended to aid the user with data entry when the control has no value.
   ///
-  /// > **Note:** Where possible use an HTML `input` element with `type="text"`
-  /// > or a `textarea` as these have built in semantics and do not require ARIA
+  /// > [!NOTE]
+  /// > Where possible use an HTML `input` element with `type="text"` or a
+  /// > `textarea` as these have built in semantics and do not require ARIA
   /// > attributes.
   String? get ariaPlaceholder {
     unsupportedPlatformError();
@@ -5698,9 +5846,10 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// [`aria-pressed`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-pressed)
   /// attribute, which indicates the current "pressed" state of toggle buttons.
   ///
-  /// > **Note:** Where possible use an HTML `input` element with
-  /// > `type="button"` or the `button` element as these have built in semantics
-  /// > and do not require ARIA attributes.
+  /// > [!NOTE]
+  /// > Where possible use an HTML `input` element with `type="button"` or the
+  /// > `button` element as these have built in semantics and do not require
+  /// > ARIA attributes.
   String? get ariaPressed {
     unsupportedPlatformError();
   }
@@ -5715,8 +5864,9 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// attribute, which indicates that the element is not editable, but is
   /// otherwise operable.
   ///
-  /// > **Note:** Where possible use an HTML `input` element with `type="text"`
-  /// > or a `textarea` as these have built in semantics and do not require ARIA
+  /// > [!NOTE]
+  /// > Where possible use an HTML `input` element with `type="text"` or a
+  /// > `textarea` as these have built in semantics and do not require ARIA
   /// > attributes.
   String? get ariaReadOnly {
     unsupportedPlatformError();
@@ -5730,8 +5880,9 @@ extension type Element._(JSObject _) implements Node, JSObject {
   /// value of the `aria-required` attribute, which indicates that user input is
   /// required on the element before a form may be submitted.
   ///
-  /// > **Note:** Where possible use an HTML `input` element with `type="text"`
-  /// > or a `textarea` as these have built in semantics and do not require ARIA
+  /// > [!NOTE]
+  /// > Where possible use an HTML `input` element with `type="text"` or a
+  /// > `textarea` as these have built in semantics and do not require ARIA
   /// > attributes.
   String? get ariaRequired {
     unsupportedPlatformError();
@@ -5777,6 +5928,19 @@ extension type Element._(JSObject _) implements Node, JSObject {
   }
 
   set ariaRowIndex(String? value) {
+    unsupportedPlatformError();
+  }
+
+  /// The **`ariaRowIndexText`** property of the [Element] interface reflects
+  /// the value of the
+  /// [`aria-rowindextext`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-rowindextext)
+  /// attribute, which defines a human readable text alternative of
+  /// aria-rowindex.
+  String? get ariaRowIndexText {
+    unsupportedPlatformError();
+  }
+
+  set ariaRowIndexText(String? value) {
     unsupportedPlatformError();
   }
 
@@ -5938,9 +6102,10 @@ extension type ShadowRootInit._(JSObject _) implements JSObject {
 /// A `NamedNodeMap` object is _live_ and will thus be auto-updated if changes
 /// are made to its contents internally or elsewhere.
 ///
-/// > **Note:** Although called `NamedNodeMap`, this interface doesn't deal with
-/// > [Node] objects but with [Attr] objects, which are a specialized class of
-/// > [Node] objects.
+/// > [!NOTE]
+/// > Although called `NamedNodeMap`, this interface doesn't deal with [Node]
+/// > objects but with [Attr] objects, which are a specialized class of [Node]
+/// > objects.
 ///
 /// ---
 ///
@@ -5950,9 +6115,9 @@ extension type NamedNodeMap._(JSObject _) implements JSObject {
   /// The **`item()`** method of the [NamedNodeMap] interface
   /// returns the item in the map matching the index.
   ///
-  /// > **Note:** This method is also called when you use the operator `[]`
-  /// > syntax.
-  /// > So, `myMap[i]`is equivalent to `myMap.item(i)` where `i` is a number.
+  /// > [!NOTE]
+  /// > This method is also called when you use the operator `[]` syntax.
+  /// > So, `myMap[i]` is equivalent to `myMap.item(i)` where `i` is a number.
   Attr? item(int index) {
     unsupportedPlatformError();
   }
@@ -5961,9 +6126,9 @@ extension type NamedNodeMap._(JSObject _) implements JSObject {
   /// the [Attr] corresponding to the given name, or `null` if there is no
   /// corresponding attribute.
   ///
-  /// > **Note:** This method is also called when you use the operator `[]`
-  /// > syntax.
-  /// > So, `myMap[str]`is equivalent to `myMap.getNamedItem(str)` where `str`
+  /// > [!NOTE]
+  /// > This method is also called when you use the operator `[]` syntax.
+  /// > So, `myMap[str]` is equivalent to `myMap.getNamedItem(str)` where `str`
   /// > is a string.
   Attr? getNamedItem(String qualifiedName) {
     unsupportedPlatformError();
@@ -5992,7 +6157,8 @@ extension type NamedNodeMap._(JSObject _) implements JSObject {
   /// If there was already an [Attr] with the same name in the map,
   /// it is _replaced_.
   ///
-  /// > **Note:** This method is an alias of `setNamedItem()` you can use them
+  /// > [!NOTE]
+  /// > This method is an alias of `setNamedItem()` you can use them
   /// > interchangeably.
   Attr? setNamedItemNS(Attr attr) {
     unsupportedPlatformError();
@@ -6043,7 +6209,8 @@ extension type NamedNodeMap._(JSObject _) implements JSObject {
 /// | `myAttr`  | `mynamespace`  | _none_           | `myAttr`             | `myAttr`                 |
 /// | `myAttr`  | `mynamespace`  | `myns`           | `myAttr`             | `myns:myAttr`            |
 ///
-/// > **Note:** This interface represents only attributes present in the tree
+/// > [!NOTE]
+/// > This interface represents only attributes present in the tree
 /// > representation of the [Element], being a SVG, an HTML or a MathML element.
 /// > It doesn't represent the _property_ of an interface associated with such
 /// > element, such as [HTMLTableElement] for a `table` element. (See  for more
@@ -6063,8 +6230,9 @@ extension type Attr._(JSObject _) implements Node, JSObject {
   /// An attribute with a namespace can be created using
   /// [Element.setAttributeNS].
   ///
-  /// > **Note:** an attribute does not inherit its namespace from the element
-  /// > it is attached to.
+  /// > [!NOTE]
+  /// > An attribute does not inherit its namespace from the element it is
+  /// > attached to.
   /// > If an attribute is not explicitly given a namespace, it has no
   /// > namespace.
   ///
@@ -6083,8 +6251,9 @@ extension type Attr._(JSObject _) implements Node, JSObject {
   /// The prefix is always in lower case, whatever case is used at the attribute
   /// creation.
   ///
-  /// > **Note:** Only XML supports namespaces. HTML does not. That means that
-  /// > the prefix of an attribute of an HTML element will always be `null`.
+  /// > [!NOTE]
+  /// > Only XML supports namespaces. HTML does not. That means that the prefix
+  /// > of an attribute of an HTML element will always be `null`.
   ///
   /// Also, only the `xml` (for the `xml:lang` attribute), `xlink` (for the
   /// `xlink:href`, `xlink:show`, `xlink:target` and `xlink:title` attributes)
@@ -6102,10 +6271,11 @@ extension type Attr._(JSObject _) implements Node, JSObject {
   /// The local name is always in lower case, whatever case at the attribute
   /// creation.
   ///
-  /// > **Note:** HTML only supports a fixed set of namespaces on SVG and MathML
-  /// > elements. These are `xml` (for the `xml:lang` attribute), `xlink` (for
-  /// > the `xlink:href`, `xlink:show`, `xlink:target` and `xlink:title`
-  /// > attributes) and `xpath`.
+  /// > [!NOTE]
+  /// > HTML only supports a fixed set of namespaces on SVG and MathML elements.
+  /// > These are `xml` (for the `xml:lang` attribute), `xlink` (for the
+  /// > `xlink:href`, `xlink:show`, `xlink:target` and `xlink:title` attributes)
+  /// > and `xpath`.
   /// >
   /// > That means that the local name of an attribute of an HTML element is
   /// > always be equal to its qualified name: Colons are treated as regular
@@ -6217,7 +6387,12 @@ extension type CharacterData._(JSObject _) implements Node, JSObject {
   ///
   /// Strings are inserted as [Text] nodes; the string is being passed as
   /// argument to the [Text.Text] constructor.
-  void before(JSAny nodes) {
+  void before([
+    JSAny? node1,
+    JSAny? node2,
+    JSAny? node3,
+    JSAny? node4,
+  ]) {
     unsupportedPlatformError();
   }
 
@@ -6227,7 +6402,12 @@ extension type CharacterData._(JSObject _) implements Node, JSObject {
   ///
   /// Strings are inserted as [Text] nodes; the string is being passed as
   /// argument to the [Text.Text] constructor.
-  void after(JSAny nodes) {
+  void after([
+    JSAny? node1,
+    JSAny? node2,
+    JSAny? node3,
+    JSAny? node4,
+  ]) {
     unsupportedPlatformError();
   }
 
@@ -6237,7 +6417,12 @@ extension type CharacterData._(JSObject _) implements Node, JSObject {
   ///
   /// Strings are inserted as [Text] nodes; the string is being passed as
   /// argument to the [Text.Text] constructor.
-  void replaceWith(JSAny nodes) {
+  void replaceWith([
+    JSAny? node1,
+    JSAny? node2,
+    JSAny? node3,
+    JSAny? node4,
+  ]) {
     unsupportedPlatformError();
   }
 
@@ -6343,8 +6528,9 @@ extension type Text._(JSObject _) implements CharacterData, JSObject {
   /// This allows specifying any text node and obtaining all adjacent text as a
   /// single string.
   ///
-  /// > **Note:** This is similar to call [Node.normalize] followed by reading
-  /// > the text value,
+  /// > [!NOTE]
+  /// > This is similar to calling [Node.normalize] followed by reading the text
+  /// > value,
   /// > but without modifying the tree.
   String get wholeText {
     unsupportedPlatformError();
@@ -6380,8 +6566,9 @@ extension type Text._(JSObject _) implements CharacterData, JSObject {
 /// sequence
 /// of a CDATA section itself, `]]>`.
 ///
-/// > **Note:** CDATA sections should not be used within HTML they are
-/// > considered as comments and not displayed.
+/// > [!NOTE]
+/// > CDATA sections should not be used within HTML. They are considered
+/// > comments and are not displayed.
 ///
 /// ---
 ///
@@ -6401,11 +6588,12 @@ extension type CDATASection._(JSObject _) implements Text, JSObject {}
 /// > tree.
 ///
 /// A processing instruction may be different than the
-/// [XML declaration](https://developer.mozilla.org/en-US/docs/Web/XML/XML_introduction#xml_declaration).
+/// [XML declaration](https://developer.mozilla.org/en-US/docs/Web/XML/Guides/XML_introduction#xml_declaration).
 ///
-/// > **Note:** User-defined processing instructions cannot begin with "`xml`",
-/// > as `xml`-prefixed processing-instruction target names are reserved by the
-/// > XML specification for particular, standard uses (see, for example,
+/// > [!NOTE]
+/// > User-defined processing instructions cannot begin with `"xml"`, as
+/// > `xml`-prefixed processing-instruction target names are reserved by the XML
+/// > specification for particular, standard uses (see, for example,
 /// > `<?xml-stylesheet ?>`.
 ///
 /// For example:
@@ -6453,9 +6641,9 @@ extension type ProcessingInstruction._(JSObject _)
 /// although it is generally not visually shown, such comments are available to
 /// be read in the source view.
 ///
-/// Comments are represented in HTML and XML as content between '`<!--`' and
-/// '`-->`'. In XML, like inside SVG or MathML markup, the character sequence
-/// '`--`' cannot be used within a comment.
+/// Comments are represented in HTML and XML as content between `<!--` and
+/// `-->`. In XML, like inside SVG or MathML markup, the character sequence `--`
+/// cannot be used within a comment.
 ///
 /// ---
 ///
@@ -6469,11 +6657,12 @@ extension type Comment._(JSObject _) implements CharacterData, JSObject {
 /// range types are defined. A **range** is an object that indicates the start
 /// and end points of a section of content within the document.
 ///
-/// > **Note:** As an abstract interface, you will not directly instantiate an
-/// > object of type `AbstractRange`. Instead, you will use the [Range] or
-/// > [StaticRange] interfaces. To understand the difference between those two
-/// > interfaces, and how to choose which is appropriate for your needs, consult
-/// > each interface's documentation.
+/// > [!NOTE]
+/// > As an abstract interface, you will not directly instantiate an object of
+/// > type `AbstractRange`. Instead, you will use the [Range] or [StaticRange]
+/// > interfaces. To understand the difference between those two interfaces, and
+/// > how to choose which is appropriate for your needs, consult each
+/// > interface's documentation.
 ///
 /// ---
 ///
@@ -6705,6 +6894,11 @@ extension type Range._(JSObject _) implements AbstractRange, JSObject {
   /// The **`Range.deleteContents()`** method removes the contents of
   /// the [Range] from the [Document].
   ///
+  /// In the context of a [Range], when a node is partially selected—meaning it
+  /// overlaps with the start or end of the selection—only the selected portion
+  /// of the text is deleted, while the node itself remains intact. However, if
+  /// a node is fully selected, the entire node and its contents are removed.
+  ///
   /// Unlike [Range.extractContents], this method does not return a
   /// [DocumentFragment] containing the deleted content.
   void deleteContents() {
@@ -6895,6 +7089,13 @@ extension type Range._(JSObject _) implements AbstractRange, JSObject {
 /// The **`NodeIterator`** interface represents an iterator to traverse nodes of
 /// a DOM subtree in document order.
 ///
+/// A `NodeIterator` can be created using the [Document.createNodeIterator]
+/// method, as follows:
+///
+/// ```js
+/// const nodeIterator = document.createNodeIterator(root, whatToShow, filter);
+/// ```
+///
 /// ---
 ///
 /// API documentation sourced from
@@ -6910,7 +7111,7 @@ extension type NodeIterator._(JSObject _) implements JSObject {
   /// In old browsers, as specified in old versions of the specifications, the
   /// method may
   /// throws the `INVALID_STATE_ERR` [DOMException] if this method
-  /// is called after the [NodeIterator.detach]method. Recent browsers never
+  /// is called after the [NodeIterator.detach] method. Recent browsers never
   /// throw.
   Node? nextNode() {
     unsupportedPlatformError();
@@ -6926,7 +7127,7 @@ extension type NodeIterator._(JSObject _) implements JSObject {
   /// In old browsers, as specified in old versions of the specifications, the
   /// method may
   /// throws the `INVALID_STATE_ERR` [DOMException] if this method
-  /// is called after the [NodeIterator.detach]method. Recent browsers never
+  /// is called after the [NodeIterator.detach] method. Recent browsers never
   /// throw.
   Node? previousNode() {
     unsupportedPlatformError();
@@ -7060,8 +7261,8 @@ extension type TreeWalker._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
-  /// The **`TreeWalker.root`** read-only property returns the node
-  /// that is the root of what the TreeWalker traverses.
+  /// The **`TreeWalker.root`** read-only property returns the root [Node] that
+  /// the [TreeWalker] traverses.
   Node get root {
     unsupportedPlatformError();
   }
@@ -7169,9 +7370,8 @@ extension type TreeWalker._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
-  /// The **`TreeWalker.filter`** read-only property returns a
-  /// `NodeFilter` that is the filtering object associated with the
-  /// [TreeWalker].
+  /// The **`TreeWalker.filter`** read-only property returns the `NodeFilter`
+  /// associated with the [TreeWalker].
   ///
   /// When creating the `TreeWalker`, the filter object is passed in as the
   /// third
@@ -7208,7 +7408,8 @@ extension type DOMTokenList._(JSObject _) implements JSObject {
   /// the list,
   /// determined by its position in the list, its index.
   ///
-  /// > **Note:** This method is equivalent as the
+  /// > [!NOTE]
+  /// > This method is equivalent as the
   /// > [bracket notation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Property_accessors#bracket_notation).
   /// > So `aList.item(i)` is the same as `aList[i]`.
   String? item(int index) {
@@ -7225,13 +7426,23 @@ extension type DOMTokenList._(JSObject _) implements JSObject {
 
   /// The **`add()`** method of the [DOMTokenList] interface adds the given
   /// tokens to the list, omitting any that are already present.
-  void add(String tokens) {
+  void add([
+    String? token1,
+    String? token2,
+    String? token3,
+    String? token4,
+  ]) {
     unsupportedPlatformError();
   }
 
   /// The **`remove()`** method of the [DOMTokenList] interface
   /// removes the specified _tokens_ from the list.
-  void remove(String tokens) {
+  void remove([
+    String? token1,
+    String? token2,
+    String? token3,
+    String? token4,
+  ]) {
     unsupportedPlatformError();
   }
 
@@ -7403,8 +7614,8 @@ extension type XPathResult._(JSObject _) implements JSObject {
 extension type XPathExpression._(JSObject _) implements JSObject {
   /// The **`evaluate()`** method of the
   /// [XPathExpression] interface executes an
-  /// [XPath](https://developer.mozilla.org/en-US/docs/Web/XPath) expression on
-  /// the given node or document and
+  /// [XPath](https://developer.mozilla.org/en-US/docs/Web/XML/XPath) expression
+  /// on the given node or document and
   /// returns an [XPathResult].
   XPathResult evaluate(
     Node contextNode, [
@@ -7433,17 +7644,9 @@ extension type XPathEvaluator._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
-  /// This method adapts any DOM node to resolve namespaces so that an XPath
-  /// expression can
-  /// be easily evaluated relative to the context of the node where it appeared
-  /// within the
-  /// document.
-  ///
-  /// This adapter works like the DOM Level 3 method [Node.lookupNamespaceURI]
-  /// in resolving the namespace URI from a given prefix using
-  /// the current information available in the node's hierarchy at the time the
-  /// method is
-  /// called, also correctly resolving the implicit `xml` prefix.
+  /// The **`createNSResolver()`** method of the [XPathEvaluator] interface used
+  /// to create a custom `XPathNSResolver` object. It now returns the input
+  /// as-is and is only kept for compatibility reasons.
   Node createNSResolver(Node nodeResolver) {
     unsupportedPlatformError();
   }
@@ -7463,7 +7666,7 @@ extension type XPathEvaluator._(JSObject _) implements JSObject {
 }
 
 /// An **`XSLTProcessor`** applies an
-/// [XSLT](https://developer.mozilla.org/en-US/docs/Web/XSLT) stylesheet
+/// [XSLT](https://developer.mozilla.org/en-US/docs/Web/XML/XSLT) stylesheet
 /// transformation to an XML document to
 /// produce a new XML document as output. It has methods to load the XSLT
 /// stylesheet, to

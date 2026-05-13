@@ -1,4 +1,4 @@
-// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2026, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -8,15 +8,17 @@
 
 // Generated from Web IDL definitions.
 
-// ignore_for_file: unintended_html_in_doc_comment
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 import '../error.dart';
 import '../js_interop.dart';
 import 'battery_status.dart';
 import 'clipboard_apis.dart';
+import 'cookie_store.dart';
 import 'credential_management.dart';
 import 'css_font_loading.dart';
 import 'css_typed_om.dart';
+import 'css_view_transitions.dart';
 import 'cssom.dart';
 import 'cssom_view.dart';
 import 'dom.dart';
@@ -82,6 +84,7 @@ typedef TextTrackMode = String;
 typedef TextTrackKind = String;
 typedef SelectionMode = String;
 typedef PredefinedColorSpace = String;
+typedef CanvasColorType = String;
 typedef CanvasFillRule = String;
 typedef ImageSmoothingQuality = String;
 typedef CanvasLineCap = String;
@@ -218,6 +221,9 @@ extension type HTMLOptionsCollection._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// The **`add()`** method of the [HTMLOptionsCollection] interface adds an
+  /// [HTMLOptionElement] or [HTMLOptGroupElement] to this
+  /// `HTMLOptionsCollection`.
   void add(
     JSObject element, [
     JSAny? before,
@@ -225,10 +231,19 @@ extension type HTMLOptionsCollection._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// The **`remove()`** method of the [HTMLOptionsCollection] interface removes
+  /// the `option` element specified by the index from this collection.
   void remove(int index) {
     unsupportedPlatformError();
   }
 
+  /// The **`length`** property of the [HTMLOptionsCollection] interface returns
+  /// the number of `option` elements in the collection. The property can get or
+  /// set the size of the collection.
+  ///
+  /// When setting `length` to a value smaller than the current, the options
+  /// collection gets truncated; otherwise, new blank `<option>` elements are
+  /// appended to the end of the `<select>`.
   int get length {
     unsupportedPlatformError();
   }
@@ -237,6 +252,13 @@ extension type HTMLOptionsCollection._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// The **`selectedIndex`** property of the [HTMLOptionsCollection] interface
+  /// is the numeric index of the first selected `option` element, if any, or
+  /// `−1` if no `<option>` is selected. Setting this property selects the
+  /// option at that index and deselects all other options in this collection,
+  /// while setting it to `-1` deselects any currently selected elements. It is
+  /// exactly equivalent to the [HTMLSelectElement.selectedIndex] property of
+  /// the [HTMLSelectElement] that owns this collection.
   int get selectedIndex {
     unsupportedPlatformError();
   }
@@ -495,7 +517,7 @@ extension type HTMLElement._(JSObject _) implements Element, JSObject {
   /// event will be fired, followed by the popover showing, and then the
   /// [HTMLElement.toggle_event] event firing. If the element is already
   /// showing, an error will be thrown.
-  void showPopover() {
+  void showPopover([ShowPopoverOptions? options]) {
     unsupportedPlatformError();
   }
 
@@ -529,7 +551,7 @@ extension type HTMLElement._(JSObject _) implements Element, JSObject {
   /// 1. If it was initially showing, it toggles to hidden.
   /// 2. If it was initially hidden, it toggles to showing.
   /// 3. A [HTMLElement.toggle_event] event is fired.
-  bool togglePopover([bool? force]) {
+  bool togglePopover([JSAny? options]) {
     unsupportedPlatformError();
   }
 
@@ -565,21 +587,15 @@ extension type HTMLElement._(JSObject _) implements Element, JSObject {
     unsupportedPlatformError();
   }
 
-  /// The **`HTMLElement.lang`** property gets or sets the base
-  /// language of an element's attribute values and text content.
+  /// The **`lang`** property of the [HTMLElement] interface indicates the base
+  /// language of an element's attribute values and text content, in the form of
+  /// a `5646, "BCP 47 language identifier tag"`. It reflects the element's
+  /// [`lang`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang)
+  /// attribute; the `xml:lang` attribute does not affect this property.
   ///
-  /// The language code returned by this property is defined in `5646, "Tags for
-  /// Identifying Languages (also known as BCP 47)"`.
-  /// Common examples include "en" for English, "ja" for
-  /// Japanese, "es" for Spanish and so on. The default value of this attribute
-  /// is
-  /// `unknown`. Note that this attribute, though valid at the individual
-  /// element
-  /// level described here, is most often specified for the root element of the
-  /// document.
-  ///
-  /// This also only works with the `lang` attribute and not with
-  /// `xml:lang`.
+  /// Note that if the `lang` attribute is unspecified, the element itself may
+  /// still inherit the language from its parent. However, that inherited
+  /// language is not reflected by this property's value.
   String get lang {
     unsupportedPlatformError();
   }
@@ -604,38 +620,19 @@ extension type HTMLElement._(JSObject _) implements Element, JSObject {
     unsupportedPlatformError();
   }
 
-  /// The **`HTMLElement.dir`** property gets or sets the text
-  /// writing directionality of the content of the current element.
+  /// The **`HTMLElement.dir`** property indicates the text writing
+  /// directionality of the content of the current element. It reflects the
+  /// element's
+  /// [`dir`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/dir)
+  /// attribute.
+  ///
+  /// Note that if the `dir` attribute is unspecified, the element itself may
+  /// still inherit directionality from its parent. However, that inherited
+  /// directionality is not reflected by this property's value.
   ///
   /// The text writing directionality of an element is which direction that text
-  /// goes (for
-  /// support of different language systems). Arabic languages and Hebrew are
-  /// typical
-  /// languages using the RTL directionality.
-  ///
-  /// An image can have its `dir` property set to "`rtl`" in which case
-  /// the HTML attributes `title` and `alt` will be formatted and
-  /// defined as "`rtl`".
-  ///
-  /// When a table has its `dir` set to "`rtl`", the column order is
-  /// arranged from right to left.
-  ///
-  /// When an element has its dir set to "`auto`", the direction of the element
-  /// is
-  /// determined based on its first strong directionality character, or default
-  /// to the
-  /// directionality of its parent element.
-  ///
-  /// > **Note:** Browsers might allow users to change the directionality of
-  /// > `input`
-  /// > and `textarea`s in order to assist with authoring content. Chrome
-  /// > and Safari provide a directionality option in the contextual menu of
-  /// > input fields
-  /// > while pre-Chromium Edge uses the key combinations <kbd>Ctrl</kbd> +
-  /// > <kbd>Left Shift</kbd> and <kbd>Ctrl</kbd> + <kbd>Right Shift</kbd>.
-  /// > Firefox uses <kbd>Ctrl</kbd>/<kbd>Cmd</kbd> + <kbd>Shift</kbd> +
-  /// > <kbd>X</kbd> but does NOT update
-  /// > the **`dir`** attribute value.
+  /// goes (for support of different language systems). Arabic languages and
+  /// Hebrew are typical languages using the RTL directionality.
   String get dir {
     unsupportedPlatformError();
   }
@@ -665,9 +662,9 @@ extension type HTMLElement._(JSObject _) implements Element, JSObject {
   /// UIs such as modals where you would want to "trap" the focus inside the
   /// modal when it's visible.
   ///
-  /// > **Note:** Do not nest interactive elements or important content within
-  /// > elements with the `inert` attribute as inert content and their
-  /// > descendants are neither focusable nor perceivable by all users.
+  /// Note that if the `inert` attribute is unspecified, the element itself may
+  /// still inherit inertness from its parent. However, that inherited inertness
+  /// is not reflected by this property's value.
   bool get inert {
     unsupportedPlatformError();
   }
@@ -679,8 +676,9 @@ extension type HTMLElement._(JSObject _) implements Element, JSObject {
   /// The **`HTMLElement.accessKey`** property sets the keystroke which a user
   /// can press to jump to a given element.
   ///
-  /// > **Note:** The `HTMLElement.accessKey` property is seldom used because of
-  /// > its multiple conflicts with already present key bindings in browsers. To
+  /// > [!NOTE]
+  /// > The `HTMLElement.accessKey` property is seldom used because of its
+  /// > multiple conflicts with already present key bindings in browsers. To
   /// > work around this, browsers implement accesskey behavior if the keys are
   /// > pressed with other "qualifying" keys (such as <kbd>Alt</kbd> +
   /// > accesskey).
@@ -731,6 +729,21 @@ extension type HTMLElement._(JSObject _) implements Element, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`writingSuggestions`** property of the [HTMLElement] interface is a
+  /// string indicating if browser-provided writing suggestions should be
+  /// enabled under the scope of the element or not.
+  ///
+  /// It reflects the value of the
+  /// [`writingsuggestions`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/writingsuggestions)
+  /// HTML global attribute.
+  String get writingSuggestions {
+    unsupportedPlatformError();
+  }
+
+  set writingSuggestions(String value) {
+    unsupportedPlatformError();
+  }
+
   /// The **`autocapitalize`** property of the [HTMLElement] interface
   /// represents the element's capitalization behavior for user input. It is
   /// available on all HTML elements, though it doesn't affect all of them,
@@ -755,6 +768,28 @@ extension type HTMLElement._(JSObject _) implements Element, JSObject {
   }
 
   set autocapitalize(String value) {
+    unsupportedPlatformError();
+  }
+
+  /// The **`autocorrect`** property of the [HTMLElement] interface controls
+  /// whether or not autocorrection of editable text is enabled for spelling
+  /// and/or punctuation errors.
+  ///
+  /// The specific autocorrection behavior, including which words are
+  /// substituted, depends on the user agent and the services provided by the
+  /// underlying device.
+  /// For example, on macOS a user agent might rely on
+  /// [registered replacement text and punctuation](https://support.apple.com/en-vn/guide/mac-help/mh35735/mac).
+  /// Other devices and browsers may use a different approach.
+  ///
+  /// The property reflects the value of the
+  /// [`autocorrect`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/autocorrect)
+  /// HTML global attribute.
+  bool get autocorrect {
+    unsupportedPlatformError();
+  }
+
+  set autocorrect(bool value) {
     unsupportedPlatformError();
   }
 
@@ -796,8 +831,8 @@ extension type HTMLElement._(JSObject _) implements Element, JSObject {
   }
 
   /// The **`popover`** property of the [HTMLElement] interface gets and sets an
-  /// element's popover state via JavaScript (`"auto"` or `"manual"`), and can
-  /// be used for feature detection.
+  /// element's popover state via JavaScript (`"auto"`, `"hint"`, or
+  /// `"manual"`), and can be used for feature detection.
   ///
   /// It reflects the value of the
   /// [`popover`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/popover)
@@ -815,9 +850,15 @@ extension type HTMLElement._(JSObject _) implements Element, JSObject {
   /// hierarchy)
   /// positioned ancestor element.
   ///
-  /// A positioned ancestor is either:
+  /// A positioned ancestor might be:
   ///
-  /// - an element with a non-static position, or
+  /// - a
+  ///   [containing block](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_display/Containing_block#identifying_the_containing_block)
+  ///   for absolutely-positioned elements
+  /// - an element with a different effective
+  ///   [zoom](https://developer.mozilla.org/en-US/docs/Web/CSS/zoom) value
+  ///   (that is, the product of all zoom scales of its parents) from this
+  ///   element
   /// - `td`, `th`, `table` in case the element itself is static positioned.
   ///
   /// If there is no positioned ancestor element, the `body` is returned.
@@ -901,8 +942,9 @@ extension type HTMLElement._(JSObject _) implements Element, JSObject {
   /// element or one of its ancestors to `"none"`), then `0` is
   /// returned.
   ///
-  /// > **Note:** This property will round the value to an integer. If you need
-  /// > a fractional value, use
+  /// > [!NOTE]
+  /// > This property will round the value to an integer. If you need a
+  /// > fractional value, use
   /// > [element.getBoundingClientRect].
   int get offsetHeight {
     unsupportedPlatformError();
@@ -934,8 +976,9 @@ extension type HTMLElement._(JSObject _) implements Element, JSObject {
   /// A style declaration is reset by setting it to `null` or an empty string,
   /// e.g., `elt.style.color = null`.
   ///
-  /// > **Note:** CSS property names are converted to JavaScript identifier with
-  /// > these rules:
+  /// > [!NOTE]
+  /// > CSS property names are converted to JavaScript identifier with these
+  /// > rules:
   /// >
   /// > - If the property is made of one word, it remains as it is: `height`
   /// > stays as is (in lowercase). As `float` is a reserved keyword in
@@ -1733,9 +1776,9 @@ extension type HTMLElement._(JSObject _) implements Element, JSObject {
   ///
   /// This enumerated attribute can have the following values:
   ///
-  /// - '`true`' indicates that the element is `contenteditable`.
-  /// - '`false`' indicates that the element cannot be edited.
-  /// - '`plaintext-only`' indicates that the element's raw text is editable,
+  /// - `"true"` indicates that the element is `contenteditable`.
+  /// - `"false"` indicates that the element cannot be edited.
+  /// - `"plaintext-only"` indicates that the element's raw text is editable,
   ///   but rich text formatting is disabled.
   ///
   /// You can use the [HTMLElement.isContentEditable] property to test the
@@ -1801,7 +1844,7 @@ extension type HTMLElement._(JSObject _) implements Element, JSObject {
   /// display an appropriate virtual keyboard.
   ///
   /// It is used primarily on `input` elements, but is usable on any element in
-  /// [`contenteditable`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes#contenteditable)
+  /// [`contenteditable`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/contenteditable)
   /// mode.
   String get inputMode {
     unsupportedPlatformError();
@@ -1817,8 +1860,8 @@ extension type HTMLElement._(JSObject _) implements Element, JSObject {
   /// (`data-*`) on elements. It exposes a map of strings
   /// ([DOMStringMap]) with an entry for each `data-*` attribute.
   ///
-  /// > **Note:** The `dataset` property itself can be read, but not directly
-  /// > written.
+  /// > [!NOTE]
+  /// > The `dataset` property itself can be read, but not directly written.
   /// > Instead, all writes must be to the individual properties within the
   /// > `dataset`, which in turn represent the data attributes.
   ///
@@ -1833,13 +1876,18 @@ extension type HTMLElement._(JSObject _) implements Element, JSObject {
   /// `Z`) are converted to lowercase.
   /// - In JavaScript
   ///   - : The property name of a custom data attribute is the same as the HTML attribute
-  /// without the `data-` prefix, and removes single dashes (`-`) for
-  /// when to capitalize the property's "" name.
+  /// without the `data-` prefix. Single dashes (`-`) are removed, and the next
+  /// ASCII
+  /// character after a removed dash is capitalized to form the property's
+  /// camel-cased name.
+  ///
+  /// Details and examples of converting between the HTML and JavaScript forms
+  /// is described in more detail in the next section.
   ///
   /// In addition to the information below, you'll find a how-to guide for using
   /// HTML data
   /// attributes in our article
-  /// [_Using data attributes_](https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes).
+  /// [_Using data attributes_](https://developer.mozilla.org/en-US/docs/Learn_web_development/Howto/Solve_HTML_problems/Use_data_attributes).
   ///
   /// ### Name conversion
   ///
@@ -1929,8 +1977,9 @@ extension type HTMLElement._(JSObject _) implements Element, JSObject {
   /// inserted, usually the first such element on the page, gets the initial
   /// focus.
   ///
-  /// > **Note:** Setting this property doesn't set the focus to the associated
-  /// > element: it merely tells the browser to focus to it when _the element is
+  /// > [!NOTE]
+  /// > Setting this property doesn't set the focus to the associated element:
+  /// > it merely tells the browser to focus to it when _the element is
   /// > inserted_ in the document. Setting it after the insertion, that is most
   /// > of the time after the document load, has no visible effect.
   bool get autofocus {
@@ -1962,6 +2011,32 @@ extension type HTMLElement._(JSObject _) implements Element, JSObject {
   }
 
   set tabIndex(int value) {
+    unsupportedPlatformError();
+  }
+}
+extension type ShowPopoverOptions._(JSObject _) implements JSObject {
+  ShowPopoverOptions({HTMLElement? source}) : _ = JSObject();
+
+  HTMLElement get source {
+    unsupportedPlatformError();
+  }
+
+  set source(HTMLElement value) {
+    unsupportedPlatformError();
+  }
+}
+extension type TogglePopoverOptions._(JSObject _)
+    implements ShowPopoverOptions, JSObject {
+  TogglePopoverOptions({
+    HTMLElement? source,
+    bool? force,
+  }) : _ = JSObject();
+
+  bool get force {
+    unsupportedPlatformError();
+  }
+
+  set force(bool value) {
     unsupportedPlatformError();
   }
 }
@@ -2036,9 +2111,10 @@ extension type HTMLHtmlElement._(JSObject _) implements HTMLElement, JSObject {
   /// Creates an [HTMLHtmlElement] using the tag 'html'.
   HTMLHtmlElement() : _ = document.createElement('html');
 
-  /// > **Note:** This property has been declared as deprecated by the W3C
-  /// > technical recommendation for HTML 4.01 in favor of use of the DTD for
-  /// > obtaining version information for a document.
+  /// > [!NOTE]
+  /// > This property has been declared as deprecated by the W3C technical
+  /// > recommendation for HTML 4.01 in favor of use of the DTD for obtaining
+  /// > version information for a document.
   ///
   /// Returns version information about the document type definition (DTD) of a
   /// document. While this property is recognized by Mozilla, the return value
@@ -2078,8 +2154,13 @@ extension type HTMLTitleElement._(JSObject _) implements HTMLElement, JSObject {
   HTMLTitleElement() : _ = document.createElement('title');
 
   /// The **`text`** property of the [HTMLTitleElement] interface represents the
-  /// text of the document's title. Only the text part is included; tags within
-  /// the element and their content are stripped and ignored.
+  /// child text content of the document's title as a string. It contains the
+  /// `title` element's content as text; if HTML tags are included within the
+  /// `<title>` element, they are included as part of the string value rather
+  /// than being parsed as HTML.
+  ///
+  /// Setting a value for the `text` property replaces the entire text contents
+  /// of the `<title>`.
   String get text {
     unsupportedPlatformError();
   }
@@ -2101,6 +2182,11 @@ extension type HTMLBaseElement._(JSObject _) implements HTMLElement, JSObject {
   /// Creates an [HTMLBaseElement] using the tag 'base'.
   HTMLBaseElement() : _ = document.createElement('base');
 
+  /// The **`href`** property of the [HTMLBaseElement] interface contains a
+  /// string that is the URL to use as the base for
+  /// [relative URLs](https://developer.mozilla.org/en-US/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_URL#absolute_urls_vs._relative_urls).
+  ///
+  /// It reflects the `href` attribute of the `base` element.
   String get href {
     unsupportedPlatformError();
   }
@@ -2144,6 +2230,18 @@ extension type HTMLLinkElement._(JSObject _) implements HTMLElement, JSObject {
   /// Creates an [HTMLLinkElement] using the tag 'link'.
   HTMLLinkElement() : _ = document.createElement('link');
 
+  /// The **`href`** property of the [HTMLLinkElement] interface contains a
+  /// string that is the URL associated with the link.
+  ///
+  /// It reflects the `href` attribute of the `link` element. If the element
+  /// does not have an `href` attribute, then this property's value is the empty
+  /// string (`""`).
+  ///
+  /// > [!NOTE]
+  /// > Every `<link>` element must contain either one or both of the `href` or
+  /// > [`imagesrcset`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link#imagesrcset)
+  /// > attributes. This means, for each valid `<link>`, either this property or
+  /// > [HTMLLinkElement.imageSrcset] will not be empty.
   String get href {
     unsupportedPlatformError();
   }
@@ -2189,7 +2287,7 @@ extension type HTMLLinkElement._(JSObject _) implements HTMLElement, JSObject {
   /// [`rel="preload"`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel/preload),
   /// or the resource will not be fetched.
   /// It may also be applied to link elements where
-  /// [`rel="modulepreload"`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel/preload),
+  /// [`rel="modulepreload"`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel/modulepreload),
   /// but if omitted, will default to `script`.
   /// The property should not be set for other types of link elements, such as
   /// `rel="prefetch"`.
@@ -2221,6 +2319,11 @@ extension type HTMLLinkElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`media`** property of the [HTMLLinkElement] interface is a string
+  /// representing a list of one or more media formats to which the resource
+  /// applies.
+  ///
+  /// It reflects the `media` attribute of the `link` element.
   String get media {
     unsupportedPlatformError();
   }
@@ -2269,6 +2372,15 @@ extension type HTMLLinkElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`sizes`** read-only property of the [HTMLLinkElement] interfaces
+  /// defines the sizes of the icons for visual media contained in the resource.
+  /// It reflects the `link` element's
+  /// [`sizes`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link#sizes)
+  /// attribute, which takes a list of space-separated sizes, each in the format
+  /// `<width in pixels>x<height in pixels>`, or the keyword `any`.
+  ///
+  /// It is only relevant if the [HTMLLinkElement.rel] is `icon` or a
+  /// non-standard type like `apple-touch-icon`.
   DOMTokenList get sizes {
     unsupportedPlatformError();
   }
@@ -2305,6 +2417,15 @@ extension type HTMLLinkElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`blocking`** property of the [HTMLLinkElement] interface is a string
+  /// indicating that certain operations should be blocked on the fetching of an
+  /// external resource.
+  ///
+  /// It reflects the `blocking` attribute of the `link` element.
+  DOMTokenList get blocking {
+    unsupportedPlatformError();
+  }
+
   /// The **`disabled`** property of the [HTMLLinkElement] interface is a
   /// boolean value that represents whether the link is disabled. It only has an
   /// effect with style sheet links (`rel` property set to `stylesheet`).
@@ -2324,12 +2445,34 @@ extension type HTMLLinkElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
-  /// The **`fetchPriority`** property of the
-  /// [HTMLLinkElement] interface represents a hint given to the browser
-  /// on how it should prioritize the preload of the given resource relative to
-  /// other
-  /// resources of the same
-  /// [type](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel/preload#what_types_of_content_can_be_preloaded).
+  /// The **`fetchPriority`** property of the [HTMLLinkElement] interface
+  /// represents a hint to the browser indicating how it should prioritize
+  /// fetching a particular resource relative to other resources of the same
+  /// type.
+  /// It reflects the
+  /// [`fetchpriority`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link#fetchpriority)
+  /// attribute of the corresponding `link` element.
+  ///
+  /// The property allows a developer to signal that fetching a particular
+  /// resource early in the loading process has more or less impact on user
+  /// experience than a browser can reasonably infer when assigning an internal
+  /// priority, in particular when preloading resources.
+  /// This in turn allows the browser to increase or decrease the priority, and
+  /// potentially load the resource earlier or later than it would otherwise.
+  /// The property should be used sparingly, as excessive or incorrect
+  /// prioritization can degrade performance.
+  ///
+  /// The fetch priority can be used to complement
+  /// [preloading](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel/preload),
+  /// allowing a developer to boost the priority of a resource ahead of
+  /// less-impactful resources that are by default preloaded with a higher
+  /// priority.
+  /// For example, if a particular image significantly contributes to the
+  /// website's  (LCP) it might be set to be preloaded and with a high fetch
+  /// priority.
+  ///
+  /// Note that both the internal priority of any fetch operation, and the
+  /// impact of `fetchPriority` on the priority, are entirely browser dependent.
   String get fetchPriority {
     unsupportedPlatformError();
   }
@@ -2506,6 +2649,15 @@ extension type HTMLStyleElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`blocking`** property of the [HTMLStyleElement] interface is a
+  /// string indicating that certain operations should be blocked on the
+  /// fetching of critical subresources.
+  ///
+  /// It reflects the `blocking` attribute of the `style` element.
+  DOMTokenList get blocking {
+    unsupportedPlatformError();
+  }
+
   /// The **`HTMLStyleElement.type`** property returns the type of the current
   /// style.
   /// The value mirrors the [HTML `<style>` element's `type`
@@ -2678,11 +2830,27 @@ extension type HTMLBodyElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
+  EventHandler get onpagereveal {
+    unsupportedPlatformError();
+  }
+
+  set onpagereveal(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
   EventHandler get onpageshow {
     unsupportedPlatformError();
   }
 
   set onpageshow(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onpageswap {
+    unsupportedPlatformError();
+  }
+
+  set onpageswap(EventHandler value) {
     unsupportedPlatformError();
   }
 
@@ -2899,6 +3067,10 @@ extension type HTMLQuoteElement._(JSObject _) implements HTMLElement, JSObject {
   /// Creates an [HTMLQuoteElement] using the tag 'q'.
   HTMLQuoteElement.q() : _ = document.createElement('q');
 
+  /// The **`cite`** property of the [HTMLQuoteElement] interface indicates the
+  /// URL for the source of the quotation. It reflects the `q` element's
+  /// [`cite`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q#cite)
+  /// attribute.
   String get cite {
     unsupportedPlatformError();
   }
@@ -2941,9 +3113,10 @@ extension type HTMLOListElement._(JSObject _) implements HTMLElement, JSObject {
   /// [`start`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ol#start)
   /// attribute of the `ol` element.
   ///
-  /// > **Note:** The `start` property value is independent of the
-  /// > [HTMLOListElement.type] property; it is always numeric, even when type
-  /// > is letters or Roman numerals.
+  /// > [!NOTE]
+  /// > The `start` property value is independent of the [HTMLOListElement.type]
+  /// > property; it is always numeric, even when type is letters or Roman
+  /// > numerals.
   int get start {
     unsupportedPlatformError();
   }
@@ -2959,7 +3132,8 @@ extension type HTMLOListElement._(JSObject _) implements HTMLElement, JSObject {
   /// [`type`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ol#type)
   /// attribute of the `ol` element.
   ///
-  /// > **Note:** The `type` can be defined in CSS with the  property. The
+  /// > [!NOTE]
+  /// > The `type` can be defined in CSS with the  property. The
   /// > `list-style-type` property provides many more values.
   String get type {
     unsupportedPlatformError();
@@ -3041,6 +3215,17 @@ extension type HTMLLIElement._(JSObject _) implements HTMLElement, JSObject {
   /// Creates an [HTMLLIElement] using the tag 'li'.
   HTMLLIElement() : _ = document.createElement('li');
 
+  /// The **`value`** property of the [HTMLLIElement] interface indicates the
+  /// ordinal position of the _list element_ inside a given `ol`. It can be
+  /// smaller than `0`. If the `li` element is not a child of an `ol` element,
+  /// the property has no meaning.
+  ///
+  /// It reflects the
+  /// [`value`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/li#value)
+  /// attribute of the corresponding `li` element. If the `<li>` element does
+  /// not have a `value` content attribute specified, then this property returns
+  /// `0` by default even when the element may have a default serially-assigned
+  /// ordinal value when rendered.
   int get value {
     unsupportedPlatformError();
   }
@@ -3141,7 +3326,8 @@ extension type HTMLAnchorElement._(JSObject _)
   /// If the name
   /// is not a valid file name in the underlying OS, the browser will adjust it.
   ///
-  /// > **Note:** This value might not be used for download. This value cannot
+  /// > [!NOTE]
+  /// > This value might not be used for download. This value cannot
   /// > be used to determine whether the download will occur.
   String get download {
     unsupportedPlatformError();
@@ -3157,8 +3343,9 @@ extension type HTMLAnchorElement._(JSObject _)
   ///
   /// It reflects the `ping` attribute of the `a` element.
   ///
-  /// > **Note:** This property is not effective in Firefox and its usage may be
-  /// > limited due to privacy and security concerns.
+  /// > [!NOTE]
+  /// > This property is not effective in Firefox and its usage may be limited
+  /// > due to privacy and security concerns.
   String get ping {
     unsupportedPlatformError();
   }
@@ -3229,7 +3416,7 @@ extension type HTMLAnchorElement._(JSObject _)
   }
 
   /// The **`text`** property of the [HTMLAnchorElement] represents the text
-  /// inside the the element.
+  /// inside the element.
   /// This property represents the same information as [Node.textContent].
   String get text {
     unsupportedPlatformError();
@@ -3304,29 +3491,40 @@ extension type HTMLAnchorElement._(JSObject _)
     unsupportedPlatformError();
   }
 
-  /// The
-  /// **`HTMLAnchorElement.origin`** read-only property is a
-  /// string containing the Unicode serialization of the origin of the
-  /// represented URL.
+  /// The **`origin`** read-only property of the [HTMLAnchorElement] interface
+  /// returns a string containing the Unicode serialization of the origin of the
+  /// `<a>` element's `href`.
   ///
-  /// That is:
+  /// The exact structure varies depending on the type of URL:
   ///
-  /// - for URL using the `http` or `https`, the scheme followed by
-  /// `'://'`, followed by the domain, followed by `':'`, followed by
-  /// the port (the default port, `80` and `443` respectively, if
-  /// explicitly specified);
-  /// - for URL using `file:` scheme, the value is browser dependent;
-  /// - for URL using the `blob:` scheme, the origin of the URL following
-  /// `blob:`. E.g `"blob:https://mozilla.org"` will have
-  /// `"https://mozilla.org".`
+  /// - For URLs using the `ftp:`, `http:`, `https:`, `ws:`, and `wss:` schemes,
+  ///   the [HTMLAnchorElement.protocol] followed by `//`, followed by the
+  ///   [HTMLAnchorElement.host]. Same as `host`, the [HTMLAnchorElement.port]
+  ///   is only included if it's not the default for the protocol.
+  /// - For URLs using `file:` scheme, the value is browser dependent.
+  /// - For URLs using the `blob:` scheme, the origin of the URL following
+  ///   `blob:`, but only if that URL uses the `http:`, `https:`, or `file:`
+  ///   scheme. For example, `blob:https://mozilla.org` will have
+  ///   `https://mozilla.org`.
+  ///
+  /// For all other cases, the string `"null"` is returned.
+  ///
+  /// See [URL.origin] for more information.
   String get origin {
     unsupportedPlatformError();
   }
 
-  /// The
-  /// **`HTMLAnchorElement.protocol`**
-  /// property is a string representing the protocol scheme of the URL,
-  /// including the final `':'`.
+  /// The **`protocol`** property of the [HTMLAnchorElement] interface is a
+  /// string containing the protocol or scheme of the `<area>` element's `href`,
+  /// including the final `":"`. If the port is the default for the protocol
+  /// (`80` for `ws:` and `http:`, `443` for `wss:` and `https:`, and `21` for
+  /// `ftp:`), this property contains an empty string, `""`.
+  ///
+  /// This property can be set to change the protocol of the URL. A `":"` is
+  /// appended to the provided string if not provided. The provided scheme has
+  /// to be compatible with the rest of the URL to be considered valid.
+  ///
+  /// See [URL.protocol] for more information.
   String get protocol {
     unsupportedPlatformError();
   }
@@ -3335,8 +3533,18 @@ extension type HTMLAnchorElement._(JSObject _)
     unsupportedPlatformError();
   }
 
-  /// The **`HTMLAnchorElement.username`** property is a
-  /// string containing the username specified before the domain name.
+  /// The **`username`** property of the [HTMLAnchorElement] interface is a
+  /// string containing the username component of the `<a>` element's `href`. If
+  /// the URL does not have a username, this property contains an empty string,
+  /// `""`.
+  ///
+  /// This property can be set to change the username of the URL. If the URL has
+  /// no [HTMLAnchorElement.host] or its scheme is `file:`, then setting this
+  /// property has no effect.
+  ///
+  /// The username is  when setting but not percent-decoded when reading.
+  ///
+  /// See [URL.username] for more information.
   String get username {
     unsupportedPlatformError();
   }
@@ -3345,12 +3553,18 @@ extension type HTMLAnchorElement._(JSObject _)
     unsupportedPlatformError();
   }
 
-  /// The **`HTMLAnchorElement.password`** property is a
-  /// string containing the password specified before the domain name.
+  /// The **`password`** property of the [HTMLAnchorElement] interface is a
+  /// string containing the password component of the `<a>` element's `href`. If
+  /// the URL does not have a password, this property contains an empty string,
+  /// `""`.
   ///
-  /// If it is set without first setting the
-  /// [`username`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLAnchorElement/username)
-  /// property, it silently fails.
+  /// This property can be set to change the password of the URL. If the URL has
+  /// no [HTMLAnchorElement.host] or its scheme is `file:`, then setting this
+  /// property has no effect.
+  ///
+  /// The password is  when setting but not percent-decoded when reading.
+  ///
+  /// See [URL.password] for more information.
   String get password {
     unsupportedPlatformError();
   }
@@ -3359,10 +3573,13 @@ extension type HTMLAnchorElement._(JSObject _)
     unsupportedPlatformError();
   }
 
-  /// The **`HTMLAnchorElement.host`** property is a
-  /// string containing the host, that is the _hostname_, and then,
-  /// if the _port_ of the URL is nonempty, a `':'`, and the _port_
-  /// of the URL.
+  /// The **`host`** property of the [HTMLAnchorElement] interface is a string
+  /// containing the host, which is the [HTMLAnchorElement.hostname], and then,
+  /// if the  of the URL is nonempty, a `":"`, followed by the
+  /// [HTMLAnchorElement.port] of the URL. If the URL does not have a
+  /// `hostname`, this property contains an empty string, `""`.
+  ///
+  /// See [URL.host] for more information.
   String get host {
     unsupportedPlatformError();
   }
@@ -3371,8 +3588,14 @@ extension type HTMLAnchorElement._(JSObject _)
     unsupportedPlatformError();
   }
 
-  /// The **`HTMLAnchorElement.hostname`** property is a
-  /// string containing the domain of the URL.
+  /// The **`hostname`** property of the [HTMLAnchorElement] interface is a
+  /// string containing either the  or  of the `<a>` element's `href`. If the
+  /// URL does not have a hostname, this property contains an empty string,
+  /// `""`. IPv4 and IPv6 addresses are normalized, such as stripping leading
+  /// zeros, and domain names are converted to
+  /// [IDN](https://en.wikipedia.org/wiki/Internationalized_domain_name).
+  ///
+  /// See [URL.hostname] for more information.
   String get hostname {
     unsupportedPlatformError();
   }
@@ -3381,9 +3604,17 @@ extension type HTMLAnchorElement._(JSObject _)
     unsupportedPlatformError();
   }
 
-  /// The **`HTMLAnchorElement.port`** property is a
-  /// string containing the port number of the URL. If the URL does not
-  /// contain an explicit port number, it will be set to `''`.
+  /// The **`port`** property of the [HTMLAnchorElement] interface is a string
+  /// containing the port number of the `<a>` element's `href`. If the port is
+  /// the default for the protocol (`80` for `ws:` and `http:`, `443` for `wss:`
+  /// and `https:`, and `21` for `ftp:`), this property contains an empty
+  /// string, `""`.
+  ///
+  /// This property can be set to change the port of the URL. If the URL has no
+  /// [HTMLAnchorElement.host] or its scheme is `file:`, then setting this
+  /// property has no effect. It also silently ignores invalid port numbers.
+  ///
+  /// See [URL.port] for more information.
   String get port {
     unsupportedPlatformError();
   }
@@ -3405,15 +3636,24 @@ extension type HTMLAnchorElement._(JSObject _)
     unsupportedPlatformError();
   }
 
-  /// The **`HTMLAnchorElement.search`** property is a search
-  /// string, also called a _query string_, that is a string containing
-  /// a `'?'` followed by the parameters of the URL.
+  /// The **`search`** property of the [HTMLAnchorElement] interface is a search
+  /// string, also called a _query string_, that is a string containing a `"?"`
+  /// followed by the parameters of the `<a>` element's `href`. If the URL does
+  /// not have a search query, this property contains an empty string, `""`.
+  ///
+  /// This property can be set to change the query string of the URL. When
+  /// setting, a single `"?"` prefix is added to the provided value, if not
+  /// already present. Setting it to `""` removes the query string.
+  ///
+  /// The query is  when setting but not percent-decoded when reading.
   ///
   /// Modern browsers provide
   /// [`URLSearchParams`](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams/get#examples)
   /// and
   /// [`URL.searchParams`](/en-US/docs/Web/API/URL/searchParams#examples)
-  /// to make it easy to parse out the parameters from the querystring.
+  /// to make it easy to parse out the parameters from the query string.
+  ///
+  /// See [URL.search] for more information.
   String get search {
     unsupportedPlatformError();
   }
@@ -3422,14 +3662,12 @@ extension type HTMLAnchorElement._(JSObject _)
     unsupportedPlatformError();
   }
 
-  /// The
-  /// **`HTMLAnchorElement.hash`** property returns a
-  /// string containing a `'#'` followed by the fragment
-  /// identifier of the URL.
+  /// The **`hash`** property of the [HTMLAnchorElement] interface is a string
+  /// containing a `"#"` followed by the fragment identifier of the `<a>`
+  /// element's `href`. If the URL does not have a fragment identifier, this
+  /// property contains an empty string, `""`.
   ///
-  /// The fragment is [URL encoded](https://en.wikipedia.org/wiki/URL_encoding).
-  /// If the URL does not
-  /// have a fragment identifier, this property contains an empty string, `""`.
+  /// See [URL.hash] for more information.
   String get hash {
     unsupportedPlatformError();
   }
@@ -3477,151 +3715,12 @@ extension type HTMLTimeElement._(JSObject _) implements HTMLElement, JSObject {
   HTMLTimeElement() : _ = document.createElement('time');
 
   /// The
-  /// **`HTMLTimeElement.dateTime`**
-  /// property is a string that reflects the
+  /// **`dateTime`**
+  /// property of the [HTMLTimeElement] interface is a string that reflects the
   /// [`datetime`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time#datetime)
   /// HTML attribute, containing a machine-readable form of the element's date
   /// and
   /// time value.
-  ///
-  /// The format of the string must follow one of the following HTML
-  /// microsyntaxes:
-  ///
-  /// <table class="no-markdown">
-  ///   <thead>
-  ///     <tr>
-  ///       <th scope="col">Microsyntax</th>
-  ///       <th scope="col">Description</th>
-  ///       <th scope="col">Examples</th>
-  ///     </tr>
-  ///   </thead>
-  ///   <tbody>
-  ///     <tr>
-  ///       <td>Valid month string</td>
-  ///       <td><em>YYYY</em><code>-</code><em>MM</em></td>
-  ///       <td><code>2011-11</code>, <code>2013-05</code></td>
-  ///     </tr>
-  ///     <tr>
-  ///       <td>Valid date string</td>
-  ///       <td><em>YYYY</em><code>-</code><em>MM</em><code>-</code><em>DD</em></td>
-  ///       <td><code>1887-12-01</code></td>
-  ///     </tr>
-  ///     <tr>
-  ///       <td>Valid yearless date string</td>
-  ///       <td><em>MM</em><code>-</code><em>DD</em></td>
-  ///       <td><code>11-12</code></td>
-  ///     </tr>
-  ///     <tr>
-  ///       <td>Valid time string</td>
-  ///       <td>
-  ///         <em>HH</em><code>:</code><em>MM</em><br /><em>HH</em><code>:</code
-  /// ><em>MM</em><code>:</code><em>SS</em><br /><em>HH</em><code>:</code
-  /// ><em>MM</em><code>:</code><em>SS</em><code>.</code><em>mmm</em>
-  ///       </td>
-  ///       <td>
-  ///         <code>23:59</code><br /><code>12:15:47</code><br /><code
-  /// >12:15:52.998</code
-  /// >
-  ///       </td>
-  ///     </tr>
-  ///     <tr>
-  ///       <td>Valid local date and time string</td>
-  ///       <td>
-  ///         <em>YYYY</em><code>-</code><em>MM</em><code>-</code><em>DD</em>
-  ///         <em>HH</em><code>:</code><em>MM</em><br /><em>YYYY</em><code>-</code
-  /// ><em>MM</em><code>-</code><em>DD</em> <em>HH</em><code>:</code
-  /// ><em>MM</em><code>:</code><em>SS</em><br /><em>YYYY</em><code>-</code
-  /// ><em>MM</em><code>-</code><em>DD</em> <em>HH</em><code>:</code
-  /// ><em>MM</em><code>:</code><em>SS</em><code>.</code><em>mmm</em><br /><em
-  /// >YYYY</em
-  /// ><code>-</code><em>MM</em><code>-</code><em>DD</em><code>T</code
-  /// ><em>HH</em><code>:</code><em>MM</em><br /><em>YYYY</em><code>-</code
-  /// ><em>MM</em><code>-</code><em>DD</em><code>T</code><em>HH</em
-  /// ><code>:</code><em>MM</em><code>:</code><em>SS</em><br /><em>YYYY</em
-  /// ><code>-</code><em>MM</em><code>-</code><em>DD</em><code>T</code
-  /// ><em>HH</em><code>:</code><em>MM</em><code>:</code><em>SS</em
-  /// ><code>.</code><em>mmm</em>
-  ///       </td>
-  ///       <td>
-  ///         <code
-  /// >2013-12-25 11:12<br />1972-07-25 13:43:07<br />1941-03-15
-  /// 07:06:23.678<br />2013-12-25T11:12<br />1972-07-25T13:43:07<br
-  /// />1941-03-15T07:06:23.678</code
-  /// >
-  ///       </td>
-  ///     </tr>
-  ///     <tr>
-  ///       <td>Valid time-zone offset string</td>
-  ///       <td>
-  ///         <code>Z</code><br /><code>+</code><em>HHMM</em><br /><code>+</code
-  /// ><em>HH</em><code>:</code><em>MM</em><br /><code>-</code><em>HHMM</em
-  /// ><br /><code>-</code><em>HH</em><code>:</code><em>MM</em>
-  ///       </td>
-  ///       <td>
-  ///         <code>Z<br />+0200<br />+04:30<br />-0300<br />-08:00</code>
-  ///       </td>
-  ///     </tr>
-  ///     <tr>
-  ///       <td>Valid global date and time string</td>
-  ///       <td>
-  ///         <em
-  /// >Any combination of a valid local date and time string followed by a
-  /// valid time-zone offset string</em
-  /// >
-  ///       </td>
-  ///       <td>
-  ///         <code
-  /// >2013-12-25 11:12+0200<br />1972-07-25 13:43:07+04:30<br />1941-03-15
-  /// 07:06:23.678Z<br />2013-12-25T11:12-08:00</code
-  /// >
-  ///       </td>
-  ///     </tr>
-  ///     <tr>
-  ///       <td>Valid week string</td>
-  ///       <td><em>YYYY</em><code>-W</code><em>WW</em></td>
-  ///       <td><code>2013-W46</code></td>
-  ///     </tr>
-  ///     <tr>
-  ///       <td>Four or more ASCII digits</td>
-  ///       <td><em>YYYY</em></td>
-  ///       <td><code>2013</code>, <code>0001</code></td>
-  ///     </tr>
-  ///     <tr>
-  ///       <td>Valid duration string</td>
-  ///       <td>
-  ///         <code>P</code><em>d</em><code>D</code><code>T</code><em>h</em
-  /// ><code>H</code><em>m</em><code>M</code><em>s</em><code>S</code
-  /// ><br /><code>P</code><em>d</em><code>D</code><code>T</code><em>h</em
-  /// ><code>H</code><em>m</em><code>M</code><em>s</em><code>.</code>X<code
-  /// >S</code
-  /// ><br /><code>P</code><em>d</em><code>D</code><code>T</code><em>h</em
-  /// ><code>H</code><em>m</em><code>M</code><em>s</em><code>.</code>XX<code
-  /// >S</code
-  /// ><br /><code>P</code><em>d</em><code>D</code><code>T</code><em>h</em
-  /// ><code>H</code><em>m</em><code>M</code><em>s</em><code>.</code>XXX<code
-  /// >S</code
-  /// ><br /><code>P</code><code>T</code><em>h</em><code>H</code><em>m</em
-  /// ><code>M</code><em>s</em><code>S</code><br /><code>P</code><code>T</code
-  /// ><em>h</em><code>H</code><em>m</em><code>M</code><em>s</em
-  /// ><code>.</code>X<code>S</code><br /><code>P</code><code>T</code
-  /// ><em>h</em><code>H</code><em>m</em><code>M</code><em>s</em
-  /// ><code>.</code>XX<code>S</code><br /><code>P</code><code>T</code
-  /// ><em>h</em><code>H</code><em>m</em><code>M</code><em>s</em
-  /// ><code>.</code>XXX<code>S</code><br /><em>w</em><code>w </code><em>d</em
-  /// ><code>d </code><em>h</em><code>h </code><em>m</em><code>m </code
-  /// ><em>s</em><code>s</code>
-  ///       </td>
-  ///       <td>
-  ///         <code
-  /// >P12DT7H12M13S<br />P12DT7H12M13.3S<br />P12DT7H12M13.45S<br
-  /// />P12DT7H12M13.455S<br />PT7H12M13S<br />PT7H12M13.2S<br
-  /// />PT7H12M13.56S<br />PT7H12M13.999S<br />7d
-  /// 5h 24m 13s</code
-  /// >
-  ///       </td>
-  ///     </tr>
-  ///   </tbody>
-  /// </table>
   String get dateTime {
     unsupportedPlatformError();
   }
@@ -3680,6 +3779,9 @@ extension type HTMLModElement._(JSObject _) implements HTMLElement, JSObject {
   /// Creates an [HTMLModElement] using the tag 'del'.
   HTMLModElement.del() : _ = document.createElement('del');
 
+  /// The **`cite`** property of the [HTMLModElement] interface indicates the
+  /// URL of the resource explaining the modification. It reflects the `cite`
+  /// attribute of the `del` element and `ins` elements.
   String get cite {
     unsupportedPlatformError();
   }
@@ -3688,6 +3790,11 @@ extension type HTMLModElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`dateTime`** property of the [HTMLModElement] interface is a string
+  /// containing a machine-readable date with an optional time value. It
+  /// reflects the
+  /// [`datetime`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time#datetime)
+  /// HTML attribute of the `del` and `ins` elements.
   String get dateTime {
     unsupportedPlatformError();
   }
@@ -3723,6 +3830,13 @@ extension type HTMLSourceElement._(JSObject _)
   /// Creates an [HTMLSourceElement] using the tag 'source'.
   HTMLSourceElement() : _ = document.createElement('source');
 
+  /// The **`src`** property of the [HTMLSourceElement] interface is a string
+  /// indicating the URL of a media resource to use as the source for the
+  /// element.
+  ///
+  /// It reflects the `src` attribute of the `source` element nested in an
+  /// `audio` or `video` element. It has no meaning and is ignored when it is
+  /// nested in a `picture` element.
   String get src {
     unsupportedPlatformError();
   }
@@ -3731,6 +3845,10 @@ extension type HTMLSourceElement._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// The **`type`** property of the [HTMLSourceElement] interface is a string
+  /// representing the  of the media resource.
+  ///
+  /// It reflects the `type` attribute of the `source` element.
   String get type {
     unsupportedPlatformError();
   }
@@ -3739,6 +3857,19 @@ extension type HTMLSourceElement._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// The **`srcset`** property of the [HTMLSourceElement] interface is a string
+  /// containing a comma-separated list of candidate images.
+  ///
+  /// Each candidate image includes the URL of an image resource to use as the
+  /// source for the element and optionally a descriptor indicating the
+  /// circumstances in which the image should be used. The descriptor is either
+  /// a number followed by `'w'`, indicating the element width, or a number
+  /// followed by `'x'`, indicating the device pixel density.
+  ///
+  /// It reflects the `srcset` attribute of the `source` element nested in a
+  /// `picture` element. It has no meaning and is ignored when it is nested in
+  /// an `audio` or `video` element, which use the [HTMLSourceElement.src]
+  /// attribute instead.
   String get srcset {
     unsupportedPlatformError();
   }
@@ -3747,6 +3878,11 @@ extension type HTMLSourceElement._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// The **`sizes`** property of the [HTMLSourceElement] interface is a string
+  /// representing a list of one or more sizes, representing sizes between
+  /// breakpoints, to which the resource applies.
+  ///
+  /// It reflects the `sizes` attribute of the `source` element.
   String get sizes {
     unsupportedPlatformError();
   }
@@ -3755,6 +3891,14 @@ extension type HTMLSourceElement._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// The **`media`** property of the [HTMLSourceElement] interface is a string
+  /// representing the intended destination medium for the resource. The value
+  /// is a
+  /// [media query](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_media_queries/Using_media_queries),
+  /// which is a comma separated list of media-types, media-features, and
+  /// logical operators.
+  ///
+  /// It reflects the `media` attribute of the `source` element.
   String get media {
     unsupportedPlatformError();
   }
@@ -3886,7 +4030,8 @@ extension type HTMLImageElement._(JSObject _) implements HTMLElement, JSObject {
   /// rendering
   /// situation.
   ///
-  /// > **Note:** If the
+  /// > [!NOTE]
+  /// > If the
   /// > [`srcset`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#srcset)
   /// > attribute uses width descriptors, the `sizes` attribute must also be
   /// > present, or the `srcset` itself will be ignored.
@@ -3948,9 +4093,10 @@ extension type HTMLImageElement._(JSObject _) implements HTMLElement, JSObject {
   /// server-side image map.
   /// This may only be used on images located within an `a` element.
   ///
-  /// > **Note:** For accessibility reasons, you should generally avoid using
+  /// > [!NOTE]
+  /// > For accessibility reasons, you should generally avoid using
   /// > server-side image maps, as they require the use of a mouse. Use a
-  /// > [client-side image map](https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Add_a_hit_map_on_top_of_an_image)
+  /// > [client-side image map](https://developer.mozilla.org/en-US/docs/Learn_web_development/Howto/Solve_HTML_problems/Add_a_hit_map_on_top_of_an_image)
   /// > instead.
   bool get isMap {
     unsupportedPlatformError();
@@ -4002,8 +4148,9 @@ extension type HTMLImageElement._(JSObject _) implements HTMLElement, JSObject {
   /// The corresponding [HTMLImageElement.naturalHeight] method
   /// returns the natural height of the image.
   ///
-  /// > **Note:** Most of the time the natural width is the actual width of the
-  /// > image sent by the server.
+  /// > [!NOTE]
+  /// > Most of the time the natural width is the actual width of the image sent
+  /// > by the server.
   /// > Nevertheless, browsers can modify an image before pushing it to the
   /// > renderer. For example, Chrome
   /// > [degrades the resolution of images on low-end devices](https://crbug.com/1187043#c7).
@@ -4027,8 +4174,9 @@ extension type HTMLImageElement._(JSObject _) implements HTMLElement, JSObject {
   /// specifies the
   /// image height, it will be rendered this tall.
   ///
-  /// > **Note:** Most of the time the natural height is the actual height of
-  /// > the image sent by the server.
+  /// > [!NOTE]
+  /// > Most of the time the natural height is the actual height of the image
+  /// > sent by the server.
   /// > Nevertheless, browsers can modify an image before pushing it to the
   /// > renderer. For example, Chrome
   /// > [degrades the resolution of images on low-end devices](https://crbug.com/1187043#c7).
@@ -4096,9 +4244,33 @@ extension type HTMLImageElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
-  /// The **`fetchPriority`** property of the
-  /// [HTMLImageElement] interface represents a hint given to the browser on how
-  /// it should prioritize the fetch of the image relative to other images.
+  /// The **`fetchPriority`** property of the [HTMLImageElement] interface
+  /// represents a hint to the browser indicating how it should prioritize
+  /// fetching a particular image relative to other images.
+  /// It reflects the
+  /// [`fetchpriority`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#fetchpriority)
+  /// attribute of the corresponding `img` element.
+  ///
+  /// The property allows a developer to signal that fetching a particular image
+  /// early in the loading process has more or less impact on user experience
+  /// than a browser can reasonably infer when assigning an internal priority.
+  /// This in turn allows the browser to increase or decrease the priority, and
+  /// potentially load the image earlier or later than it would otherwise.
+  /// The property should be used sparingly, as excessive or incorrect
+  /// prioritization can degrade performance.
+  ///
+  /// The fetch priority can be used to complement
+  /// [preloading](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel/preload),
+  /// allowing a developer to boost the priority ahead of less-impactful
+  /// resources that have a higher default priority.
+  /// For example, if a developer knows that a particular image significantly
+  /// contributes to the website's  (LCP) they could add [`<link
+  /// rel="preload">`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel/preload)
+  /// for the image and then further boost the priority using the
+  /// `fetchpriority` property.
+  ///
+  /// Note that both the internal priority of any fetch operation, and the
+  /// impact of `fetchPriority` on the priority, are entirely browser dependent.
   String get fetchPriority {
     unsupportedPlatformError();
   }
@@ -4213,7 +4385,7 @@ extension type HTMLImageElement._(JSObject _) implements HTMLElement, JSObject {
   /// which contains a long-form description of the image. This can be used to
   /// provide optional added details beyond the short description provided in
   /// the
-  /// [`title`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes#title)
+  /// [`title`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/title)
   /// attribute.
   String get longDesc {
     unsupportedPlatformError();
@@ -4268,6 +4440,8 @@ extension type HTMLIFrameElement._(JSObject _)
   /// Creates an [HTMLIFrameElement] using the tag 'iframe'.
   HTMLIFrameElement() : _ = document.createElement('iframe');
 
+  /// The **`getSVGDocument()`** method of the [HTMLIframeElement] interface
+  /// returns the [Document] object of the embedded SVG.
   Document? getSVGDocument() {
     unsupportedPlatformError();
   }
@@ -4331,7 +4505,7 @@ extension type HTMLIFrameElement._(JSObject _)
   /// doesn't replace it.
   ///
   /// See [`<iframe>`'s Permissions Policy
-  /// syntax](/en-US/docs/Web/HTTP/Permissions_Policy#iframe_syntax) for more
+  /// syntax](/en-US/docs/Web/HTTP/Headers/Permissions-Policy#iframes) for more
   /// details.
   ///
   /// It reflects the `allow` attribute of the `iframe` element.
@@ -4348,8 +4522,9 @@ extension type HTMLIFrameElement._(JSObject _)
   /// `iframe` element, indicating whether to allow the iframe's contents to use
   /// [Element.requestFullscreen].
   ///
-  /// > **Note:** This property is considered a legacy property. Use
-  /// > `allow="fullscreen"` and [HTMLIFrameElement.allow] instead.
+  /// > [!NOTE]
+  /// > This property is considered a legacy property. Use `allow="fullscreen"`
+  /// > and [HTMLIFrameElement.allow] instead.
   bool get allowFullscreen {
     unsupportedPlatformError();
   }
@@ -4486,9 +4661,10 @@ extension type HTMLIFrameElement._(JSObject _)
 /// regular [HTMLElement] interface it also has available to it by inheritance)
 /// for manipulating `embed` elements.
 ///
-/// > **Note:** This topic describes the `HTMLEmbedElement` interface as defined
-/// > in the standard. It does not address earlier, non-standardized version of
-/// > the interface.
+/// > [!NOTE]
+/// > This topic describes the `HTMLEmbedElement` interface as defined in the
+/// > standard. It does not address earlier, non-standardized version of the
+/// > interface.
 ///
 /// ---
 ///
@@ -4498,6 +4674,8 @@ extension type HTMLEmbedElement._(JSObject _) implements HTMLElement, JSObject {
   /// Creates an [HTMLEmbedElement] using the tag 'embed'.
   HTMLEmbedElement() : _ = document.createElement('embed');
 
+  /// The **`getSVGDocument()`** method of the [HTMLEmbedElement] interface
+  /// returns the [Document] object of the embedded SVG.
   Document? getSVGDocument() {
     unsupportedPlatformError();
   }
@@ -4514,6 +4692,11 @@ extension type HTMLEmbedElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`type`** property of the [HTMLEmbedElement] interface returns a
+  /// string that reflects the `type` attribute of the `embed` element,
+  /// indicating the  of the resource. It reflects the `embed` element's
+  /// [`type`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/embed#type)
+  /// attribute
   String get type {
     unsupportedPlatformError();
   }
@@ -4575,18 +4758,25 @@ extension type HTMLObjectElement._(JSObject _)
   /// Creates an [HTMLObjectElement] using the tag 'object'.
   HTMLObjectElement() : _ = document.createElement('object');
 
+  /// The **`getSVGDocument()`** method of the [HTMLObjectElement] interface
+  /// returns the [Document] object of the embedded SVG.
   Document? getSVGDocument() {
     unsupportedPlatformError();
   }
 
-  /// The **`checkValidity()`** method of the
-  /// [HTMLObjectElement] interface returns a boolean value that always
-  /// is true, because object objects are never candidates for constraint
-  /// validation.
+  /// The **`checkValidity()`** method of the [HTMLObjectElement] interface
+  /// checks if the element is valid, but always returns true because `object`
+  /// elements are never candidates for
+  /// [constraint validation](https://developer.mozilla.org/en-US/docs/Web/HTML/Constraint_validation).
   bool checkValidity() {
     unsupportedPlatformError();
   }
 
+  /// The **`reportValidity()`** method of the [HTMLObjectElement] interface
+  /// performs the same validity checking steps as the
+  /// [HTMLObjectElement.checkValidity] method. It always returns true because
+  /// `object` elements are never candidates for
+  /// [constraint validation](https://developer.mozilla.org/en-US/docs/Web/HTML/Constraint_validation).
   bool reportValidity() {
     unsupportedPlatformError();
   }
@@ -4640,9 +4830,9 @@ extension type HTMLObjectElement._(JSObject _)
     unsupportedPlatformError();
   }
 
-  /// The **`form`** read-only property of the
-  /// [HTMLObjectElement] interface returns a [HTMLFormElement]
-  /// representing the object element's form owner, or null if there isn't one.
+  /// The **`form`** read-only property of the [HTMLObjectElement] interface
+  /// returns an [HTMLFormElement] object that owns this `object`, or `null` if
+  /// this object element is not owned by any form.
   HTMLFormElement? get form {
     unsupportedPlatformError();
   }
@@ -4693,18 +4883,20 @@ extension type HTMLObjectElement._(JSObject _)
     unsupportedPlatformError();
   }
 
-  /// The **`willValidate`** read-only property of
-  /// the [HTMLObjectElement] interface returns a boolean value that
-  /// indicates whether the element is a candidate for constraint validation.
-  /// Always false for
-  /// HTMLObjectElement objects.
+  /// The **`willValidate`** read-only property of the [HTMLObjectElement]
+  /// interface returns `false`, because `object` elements are not candidates
+  /// for
+  /// [constraint validation](https://developer.mozilla.org/en-US/docs/Web/HTML/Constraint_validation).
   bool get willValidate {
     unsupportedPlatformError();
   }
 
-  /// The **`validity`** read-only property of the
-  /// [HTMLObjectElement] interface returns a [ValidityState] with
-  /// the validity states that this element is in.
+  /// The **`validity`** read-only property of the [HTMLObjectElement] interface
+  /// returns a [ValidityState] object that represents the validity states this
+  /// element is in. Although `object` elements are never candidates for
+  /// [constraint validation](https://developer.mozilla.org/en-US/docs/Web/HTML/Constraint_validation),
+  /// the validity state may still be invalid if a custom validity message has
+  /// been set.
   ValidityState get validity {
     unsupportedPlatformError();
   }
@@ -4823,7 +5015,7 @@ extension type HTMLObjectElement._(JSObject _)
 /// [HTMLElement].
 ///
 /// The list of
-/// [supported media formats](https://developer.mozilla.org/en-US/docs/Web/Media/Formats)
+/// [supported media formats](https://developer.mozilla.org/en-US/docs/Web/Media/Guides/Formats)
 /// varies from one browser to the other. You should either provide your video
 /// in a single format that all the relevant browsers supports, or provide
 /// multiple video sources in enough different formats that all the browsers you
@@ -4959,6 +5151,12 @@ extension type HTMLVideoElement._(JSObject _)
   /// The [HTMLVideoElement] **`disablePictureInPicture`** property reflects the
   /// HTML attribute indicating whether the picture-in-picture feature is
   /// disabled for the current element.
+  ///
+  /// This value only represents a request from the website to the user agent.
+  /// User configuration may change the eventual behavior—for example, Firefox
+  /// users can change the
+  /// `media.videocontrols.picture-in-picture.respect-disablePictureInPicture`
+  /// setting to ignore the request to disable PiP.
   bool get disablePictureInPicture {
     unsupportedPlatformError();
   }
@@ -5005,6 +5203,15 @@ extension type HTMLTrackElement._(JSObject _) implements HTMLElement, JSObject {
 
   static const int ERROR = 3;
 
+  /// The **`kind`** property of the [HTMLTrackElement] interface represents the
+  /// type of track, or how the text track is meant to be used. It reflects the
+  /// `track` element's enumerated
+  /// [`kind`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/track#kind)
+  /// attribute.
+  ///
+  /// If no `kind` is set, `subtitles` is used. If the attribute is not set to
+  /// one of the valid enumerated values, it is invalid and `metadata` is used.
+  /// Other valid values include `captions`, `descriptions`, and `chapters`.
   String get kind {
     unsupportedPlatformError();
   }
@@ -5013,7 +5220,8 @@ extension type HTMLTrackElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
-  /// The **`HTMLTrackElement.src`** property reflects the value of
+  /// The **`src`** property of the [HTMLTrackElement] interface reflects the
+  /// value of
   /// the `track` element's
   /// [`src`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/track#src)
   /// attribute, which
@@ -5026,6 +5234,15 @@ extension type HTMLTrackElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`srclang`** property of the [HTMLTrackElement] interface reflects
+  /// the value of
+  /// the `track` element's
+  /// [`srclang`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/track#srclang)
+  /// attribute or the empty string if not defined.
+  ///
+  /// The `srclang` attribute is a
+  /// [BCP 47 language tag](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang#language_tag_syntax)
+  /// indicating the language of the text track's data.
   String get srclang {
     unsupportedPlatformError();
   }
@@ -5034,6 +5251,11 @@ extension type HTMLTrackElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`label`** property of the [HTMLTrackElement] represents the
+  /// user-readable title displayed when listing subtitle, caption, and audio
+  /// descriptions for a track. It reflects the `track` element's
+  /// [`label`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/track#label)
+  /// attribute.
   String get label {
     unsupportedPlatformError();
   }
@@ -5050,10 +5272,21 @@ extension type HTMLTrackElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`readyState`** read-only property of the [HTMLTrackElement]
+  /// interface returns a number representing the `track` element's text track
+  /// readiness state:
+  ///
+  /// 0. NONE: The text track not loaded state.
+  /// 1. LOADING: The text track loading state.
+  /// 2. LOADED: The text track loaded state.
+  /// 3. ERROR: The text track failed to load state.
   int get readyState {
     unsupportedPlatformError();
   }
 
+  /// The **`track`** read-only property of the [HTMLTrackElement] interface
+  /// returns a [TextTrack] object corresponding to the text track of the
+  /// `track` element.
   TextTrack get track {
     unsupportedPlatformError();
   }
@@ -5113,7 +5346,8 @@ extension type HTMLMediaElement._(JSObject _) implements HTMLElement, JSObject {
   }
 
   /// The [HTMLMediaElement] method **`canPlayType()`** reports how likely it is
-  /// that the current browser will be able to play media of a given MIME type.
+  /// that the current browser will be able to play media of a given
+  /// [MIME type](https://developer.mozilla.org/en-US/docs/Web/HTTP/MIME_types).
   CanPlayTypeResult canPlayType(String type) {
     unsupportedPlatformError();
   }
@@ -5121,7 +5355,8 @@ extension type HTMLMediaElement._(JSObject _) implements HTMLElement, JSObject {
   /// The **`HTMLMediaElement.fastSeek()`** method quickly seeks the
   /// media to the new time with precision tradeoff.
   ///
-  /// > **Note:** If you need to seek with precision, you should set
+  /// > [!NOTE]
+  /// > If you need to seek with precision, you should set
   /// > [`HTMLMediaElement.currentTime`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/currentTime)
   /// > instead.
   void fastSeek(num time) {
@@ -5150,6 +5385,11 @@ extension type HTMLMediaElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`addTextTrack()`** method of the [HTMLMediaElement] interface
+  /// creates a new [TextTrack] object and adds it to the media element. It
+  /// fires an [TextTrackList.addtrack_event] event on this media element's
+  /// [HTMLMediaElement.textTracks]. This method can't be used on a
+  /// [TextTrackList] interface, only an [HTMLMediaElement].
   TextTrack addTextTrack(
     TextTrackKind kind, [
     String? label,
@@ -5158,9 +5398,8 @@ extension type HTMLMediaElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
-  /// The **`HTMLMediaElement.setSinkId()`** method of the
-  /// [Audio Output Devices API](https://developer.mozilla.org/en-US/docs/Web/API/Audio_Output_Devices_API)
-  /// sets the ID of the audio device to use for output and returns a `Promise`.
+  /// The **`setSinkId()`** method of the [HTMLMediaElement] interface sets the
+  /// ID of the audio device to use for output and returns a `Promise`.
   ///
   /// This only works when the application is permitted to use the specified
   /// device.
@@ -5205,7 +5444,8 @@ extension type HTMLMediaElement._(JSObject _) implements HTMLElement, JSObject {
   /// media
   /// resource to use in the element.
   ///
-  /// > **Note:** The best way to know the URL of the media resource currently
+  /// > [!NOTE]
+  /// > The best way to know the URL of the media resource currently
   /// > in active use in this element is to look at the value of the
   /// > [HTMLMediaElement.currentSrc] attribute, which also takes
   /// > into account selection of a best or preferred media resource from a list
@@ -5222,15 +5462,17 @@ extension type HTMLMediaElement._(JSObject _) implements HTMLElement, JSObject {
 
   /// The **`srcObject`** property of the
   /// [HTMLMediaElement] interface sets or returns the object which serves as
-  /// the source of the media associated with the [HTMLMediaElement].
+  /// the source of the media associated with the [HTMLMediaElement], or `null`
+  /// if not assigned.
   ///
   /// The object can be a [MediaStream], a [MediaSource], a
   /// [Blob], or a [File] (which inherits from `Blob`).
   ///
-  /// > **Note:** As of March 2020, only Safari has full support for
-  /// > `srcObject`, i.e. using `MediaSource`, `MediaStream`, `Blob`, and `File`
-  /// > objects as values. Other browsers support `MediaStream` objects; until
-  /// > they catch up, consider falling back to creating a URL with
+  /// > [!NOTE]
+  /// > As of March 2020, only Safari has full support for `srcObject`, i.e.
+  /// > using `MediaSource`, `MediaStream`, `Blob`, and `File` objects as
+  /// > values. Other browsers support `MediaStream` objects; until they catch
+  /// > up, consider falling back to creating a URL with
   /// > [URL.createObjectURL_static] and assigning it to [HTMLMediaElement.src]
   /// > (see below for an example). In addition, as of version 108 Chromium
   /// > supports attaching a dedicated worker `MediaSource` object by assigning
@@ -5302,6 +5544,9 @@ extension type HTMLMediaElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`seeking`** read-only property of the [HTMLMediaElement] interface
+  /// is a Boolean indicating whether the resource, the `audio` or `video`, is
+  /// in the process of seeking to a new position.
   bool get seeking {
     unsupportedPlatformError();
   }
@@ -5350,7 +5595,8 @@ extension type HTMLMediaElement._(JSObject _) implements HTMLElement, JSObject {
   /// indicates normal speed.
   ///
   /// A negative `playbackRate` value indicates that the media should be played
-  /// backwards, but support for this is not yet widespread.[1](#see-also)
+  /// backwards, but support for this is not yet widespread. (See
+  /// [browser compatibility](#browser_compatibility) for details.)
   ///
   /// The audio is muted when the fast forward or slow motion is outside a
   /// useful range (for example, Gecko mutes the sound outside the range `0.25`
@@ -5378,6 +5624,11 @@ extension type HTMLMediaElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`played`** read-only property of the [HTMLMediaElement] interface
+  /// indicates the time ranges the resource, an `audio` or `video` media file,
+  /// has played. It returns a new [TimeRanges] object that contains the ranges
+  /// of the media source that the browser has played, if any, at the time the
+  /// attribute is evaluated.
   TimeRanges get played {
     unsupportedPlatformError();
   }
@@ -5409,7 +5660,8 @@ extension type HTMLMediaElement._(JSObject _) implements HTMLElement, JSObject {
   /// `autoplay` property is `true` will begin playback when it becomes
   /// active (that is, when [MediaStream.active] becomes `true`).
   ///
-  /// > **Note:** Sites which automatically play audio (or videos with an audio
+  /// > [!NOTE]
+  /// > Sites which automatically play audio (or videos with an audio
   /// > track) can be an unpleasant experience for users, so it should be
   /// > avoided when
   /// > possible. If you must offer autoplay functionality, you should make it
@@ -5422,7 +5674,7 @@ extension type HTMLMediaElement._(JSObject _) implements HTMLElement, JSObject {
   /// For a much more in-depth look at autoplay, autoplay blocking, and how to
   /// respond when
   /// autoplay is blocked by the user's browser, see our article
-  /// [Autoplay guide for media and Web Audio APIs](https://developer.mozilla.org/en-US/docs/Web/Media/Autoplay_guide).
+  /// [Autoplay guide for media and Web Audio APIs](https://developer.mozilla.org/en-US/docs/Web/Media/Guides/Autoplay).
   bool get autoplay {
     unsupportedPlatformError();
   }
@@ -5562,14 +5814,12 @@ extension type HTMLMediaElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
-  /// The **`HTMLMediaElement.sinkId`** read-only property of the
-  /// [Audio Output Devices API](https://developer.mozilla.org/en-US/docs/Web/API/Audio_Output_Devices_API)
+  /// The **`sinkId`** read-only property of the [HTMLMediaElement] interface
   /// returns a string that is the unique ID of the device to be used for
   /// playing audio output.
   ///
   /// This ID should be one of the [MediaDeviceInfo.deviceId] values returned
-  /// from [MediaDevices.enumerateDevices], `id-multimedia`, or
-  /// `id-communications`.
+  /// from [MediaDevices.enumerateDevices].
   /// If the user agent default device is being used, it returns an empty
   /// string.
   String get sinkId {
@@ -5872,8 +6122,8 @@ extension type VideoTrackList._(JSObject _) implements EventTarget, JSObject {
   }
 }
 
-/// The [VideoTrack] interface represents a single video track from a `video`
-/// element.
+/// The **`VideoTrack`** interface represents a single video track from a
+/// `video` element.
 ///
 /// The most common use for accessing a `VideoTrack` object is to toggle its
 /// [VideoTrack.selected] property in order to make it the active video track
@@ -5956,20 +6206,23 @@ extension type VideoTrack._(JSObject _) implements JSObject {
 }
 
 /// The **`TextTrackList`** interface is used to represent a list of the text
-/// tracks defined by the `track` element, with each track represented by a
-/// separate [textTrack] object in the list.
+/// tracks defined for the associated video or audio element, with each track
+/// represented by a separate [textTrack] object in the list.
 ///
-/// Retrieve an instance of this object with the [HTMLMediaElement.textTracks]
-/// property of an [HTMLMediaElement] object.
+/// Text tracks can be added to a media element declaratively using the `track`
+/// element or programmatically using the [HTMLMediaElement.addTextTrack]
+/// method.
+///
+/// An instance of this object can be retrieved using the
+/// [HTMLMediaElement.textTracks] property of an [HTMLMediaElement] object.
 ///
 /// For a given [HTMLMediaElement] object _media_, the individual tracks can be
 /// accessed using:
 ///
 /// - `media.TextTracks[n]`, to get the n-th text track from the object's list
 ///   of text tracks
-///
 /// - the
-///   `media.textTracks`.[`getTrackById()`](https://developer.mozilla.org/en-US/docs/Web/API/TextTrackList/getTrackById)
+///   [`media.textTracks.getTrackById()`](https://developer.mozilla.org/en-US/docs/Web/API/TextTrackList/getTrackById)
 ///   method
 ///
 /// ---
@@ -6028,9 +6281,19 @@ extension type TextTrackList._(JSObject _) implements EventTarget, JSObject {
   }
 }
 
-/// The `TextTrack` interface—part of the API for handling WebVTT (text tracks
-/// on media presentations)—describes and controls the text track associated
-/// with a particular `track` element.
+/// The **`TextTrack`** interface of the
+/// [WebVTT API](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API)
+/// represents a text track associated with a media element.
+///
+/// An object of this type owns the list of [VTTCue] objects that will be
+/// displayed over the video at various points.
+///
+/// `TextTrack` objects can be added to a [HTMLVideoElement] or
+/// [HTMLAudioElement] element using the [HTMLMediaElement.addTextTrack] method,
+/// which has the same effect as adding text tracks declaratively using `track`
+/// elements inside a `video` or `audio` element.
+/// The `TextTrack` objects are stored in a [TextTrackList], which can be
+/// retrieved using the [HTMLMediaElement.textTracks] property.
 ///
 /// ---
 ///
@@ -6066,7 +6329,7 @@ extension type TextTrack._(JSObject _) implements EventTarget, JSObject {
   /// the language of the text track.
   ///
   /// This uses the same values as the HTML
-  /// [`lang`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes#lang)
+  /// [`lang`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang)
   /// attribute. These values are documented in `5646, "Tags for Identifying
   /// Languages (also known as BCP 47)"`.
   String get language {
@@ -6166,16 +6429,25 @@ extension type TextTrack._(JSObject _) implements EventTarget, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The read-only **`sourceBuffer`** property of the [TextTrack] interface
+  /// returns the
+  /// [SourceBuffer] that created the track, or null if the track was not
+  /// created by a [SourceBuffer] or the [SourceBuffer] has been
+  /// removed from the [MediaSource.sourceBuffers] attribute of its parent
+  /// media source.
   SourceBuffer? get sourceBuffer {
     unsupportedPlatformError();
   }
 }
 
-/// The **`TextTrackCueList`** array-like object represents a dynamically
-/// updating list of [TextTrackCue] objects.
+/// The **`TextTrackCueList`** interface of the
+/// [WebVTT API](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API) is
+/// an array-like object that represents a dynamically updating list of
+/// [TextTrackCue] objects.
 ///
-/// This interface has no constructor. Retrieve an instance of this object with
-/// [TextTrack.cues] which returns all of the cues in a [TextTrack] object.
+/// An instance of this type is obtained from [TextTrack.cues] in order to get
+/// all the cues in the [TextTrack] object.
+/// This interface has no constructor.
 ///
 /// ---
 ///
@@ -6200,13 +6472,15 @@ extension type TextTrackCueList._(JSObject _) implements JSObject {
   }
 }
 
-/// **`TextTrackCue`** is an abstract class which is used as the basis for the
-/// various derived cue types, such as [VTTCue]; you will instead work with
-/// those derived types. These cues represent strings of text presented for some
-/// duration of time during the performance of a [TextTrack]. The cue includes
-/// the start time (the time at which the text will be displayed) and the end
-/// time (the time at which it will be removed from the display), as well as
-/// other information.
+/// The **`TextTrackCue`** interface of the
+/// [WebVTT API](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API) is
+/// the abstract base class for the various derived cue types, such as [VTTCue];
+/// you will work with these derived types rather than the base class.
+///
+/// These cues represent strings of text presented for some duration of time
+/// during the performance of a [TextTrack]. The cue includes the start time
+/// (the time at which the text will be displayed) and the end time (the time at
+/// which it will be removed from the display), as well as other information.
 ///
 /// ---
 ///
@@ -6293,13 +6567,13 @@ extension type TextTrackCue._(JSObject _) implements EventTarget, JSObject {
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/TimeRanges).
 extension type TimeRanges._(JSObject _) implements JSObject {
   /// The **`start()`** method of the [TimeRanges] interface returns the time
-  /// offset at which a specified time range begins.
+  /// offset (in seconds) at which a specified time range begins.
   double start(int index) {
     unsupportedPlatformError();
   }
 
   /// The **`end()`** method of the [TimeRanges] interface returns the time
-  /// offset at which a specified time range ends.
+  /// offset (in seconds) at which a specified time range ends.
   double end(int index) {
     unsupportedPlatformError();
   }
@@ -6311,7 +6585,8 @@ extension type TimeRanges._(JSObject _) implements JSObject {
   }
 }
 
-/// The **`TrackEvent`** interface, which is part of the HTML DOM specification,
+/// The **`TrackEvent`** interface of the
+/// [HTML DOM API](https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API)
 /// is used for events which represent changes to a set of available tracks on
 /// an HTML media element; these events are `addtrack` and `removetrack`.
 ///
@@ -6394,6 +6669,8 @@ extension type HTMLMapElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`areas`** read-only property of the [HTMLMapElement] interface
+  /// returns a collection of `area` elements associated with the `map` element.
   HTMLCollection get areas {
     unsupportedPlatformError();
   }
@@ -6412,6 +6689,24 @@ extension type HTMLAreaElement._(JSObject _) implements HTMLElement, JSObject {
   /// Creates an [HTMLAreaElement] using the tag 'area'.
   HTMLAreaElement() : _ = document.createElement('area');
 
+  /// The **`alt`** property of the [HTMLAreaElement] interface specifies the
+  /// text of the hyperlink, defining the textual label for an image map's link.
+  /// It reflects the `area` element's
+  /// [`alt`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area#alt)
+  /// attribute.
+  ///
+  /// The `alt` value must be text that, when presented with the `alt` text of
+  /// the other `<area>` hyperlinks within the same `map`, along with the `alt`
+  /// text of the `img` itself, provides the user with the same kind of choice
+  /// as the hyperlink would when used without its text but with its shape
+  /// applied to the image.
+  ///
+  /// If the `area` is a link (contains an [HTMLAreaElement.href] property), the
+  /// `alt` property value should be a non-empty string giving the label for the
+  /// link that would be appropriate if the image were unavailable. The `alt`
+  /// attribute for a link `<area>` can only be empty if there is another
+  /// `<area>` element in the same `<map>` that points to the same resource and
+  /// has a non-blank `alt` attribute.
   String get alt {
     unsupportedPlatformError();
   }
@@ -6420,6 +6715,28 @@ extension type HTMLAreaElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`coords`** property of the [HTMLAreaElement] interface specifies the
+  /// coordinates of the element's shape as a list of floating-point numbers. It
+  /// reflects the `area` element's
+  /// [`coords`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area#coords)
+  /// attribute.
+  ///
+  /// If the `shape` is `rect`, the shape is a rectangle and the string value's
+  /// four comma separated numbers specify the coordinates of the top-left and
+  /// bottom-right corners of the rectangle. For example, `0,0,200,20` defines
+  /// the coordinates as `0,0`, which is the top-left of the image map, and
+  /// `200,20`, which is 200px from the left and 20px from the top of the
+  /// top-left corner of the image map.
+  ///
+  /// If the `shape` is `circle`, the three comma-separated numbers represent
+  /// the x and y coordinates of the circle's center and the radius.
+  ///
+  /// If the shape is `poly`, the string consists of at least 6 comma-separated
+  /// numbers representing at least 3 pairs of coordinates that define the
+  /// vertices of the polygon.
+  ///
+  /// For all coordinates, the origin is the top-left corner of the `map`
+  /// element's image.
   String get coords {
     unsupportedPlatformError();
   }
@@ -6428,6 +6745,10 @@ extension type HTMLAreaElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`shape`** property of the [HTMLAreaElement] interface specifies the
+  /// shape of an image map area. It reflects the `area` element's
+  /// [`shape`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area#shape)
+  /// attribute.
   String get shape {
     unsupportedPlatformError();
   }
@@ -6450,6 +6771,13 @@ extension type HTMLAreaElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`download`** property of the [HTMLAreaElement] interface is a string
+  /// indicating that the linked resource is intended to be downloaded rather
+  /// than displayed in the browser. The value represent the proposed name of
+  /// the file. If the name is not a valid filename of the underlying OS,
+  /// browser will adjust it accordingly.
+  ///
+  /// It reflects the `download` attribute of the `area` element.
   String get download {
     unsupportedPlatformError();
   }
@@ -6464,8 +6792,9 @@ extension type HTMLAreaElement._(JSObject _) implements HTMLElement, JSObject {
   ///
   /// It reflects the `ping` attribute of the `area` element.
   ///
-  /// > **Note:** This property is not effective in Firefox and its usage may be
-  /// > limited due to privacy and security concerns.
+  /// > [!NOTE]
+  /// > This property is not effective in Firefox and its usage may be limited
+  /// > due to privacy and security concerns.
   String get ping {
     unsupportedPlatformError();
   }
@@ -6534,29 +6863,40 @@ extension type HTMLAreaElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
-  /// The
-  /// **`HTMLAreaElement.origin`** read-only property is a
-  /// string containing the Unicode serialization of the origin of the
-  /// represented URL.
+  /// The **`origin`** read-only property of the [HTMLAreaElement] interface
+  /// returns a string containing the Unicode serialization of the origin of the
+  /// `<area>` element's `href`.
   ///
-  /// That is:
+  /// The exact structure varies depending on the type of URL:
   ///
-  /// - for URL using the `http` or `https`, the scheme followed by
-  /// `'://'`, followed by the domain, followed by `':'`, followed by
-  /// the port (the default port, `80` and `443` respectively, if
-  /// explicitly specified);
-  /// - for URL using `file:` scheme, the value is browser dependent;
-  /// - for URL using the `blob:` scheme, the origin of the URL following
-  /// `blob:`. E.g `"blob:https://mozilla.org"` will have
-  /// `"https://mozilla.org".`
+  /// - For URLs using the `ftp:`, `http:`, `https:`, `ws:`, and `wss:` schemes,
+  ///   the [HTMLAnchorElement.protocol] followed by `//`, followed by the
+  ///   [HTMLAnchorElement.host]. Same as `host`, the [HTMLAnchorElement.port]
+  ///   is only included if it's not the default for the protocol.
+  /// - For URLs using `file:` scheme, the value is browser dependent.
+  /// - For URLs using the `blob:` scheme, the origin of the URL following
+  ///   `blob:`, but only if that URL uses the `http:`, `https:`, or `file:`
+  ///   scheme. For example, `blob:https://mozilla.org` will have
+  ///   `https://mozilla.org`.
+  ///
+  /// For all other cases, the string `"null"` is returned.
+  ///
+  /// See [URL.origin] for more information.
   String get origin {
     unsupportedPlatformError();
   }
 
-  /// The
-  /// **`HTMLAreaElement.protocol`**
-  /// property is a string representing the protocol scheme of the URL,
-  /// including the final `':'`.
+  /// The **`protocol`** property of the [HTMLAreaElement] interface is a string
+  /// containing the protocol or scheme of the `<area>` element's `href`,
+  /// including the final `":"`. If the port is the default for the protocol
+  /// (`80` for `ws:` and `http:`, `443` for `wss:` and `https:`, and `21` for
+  /// `ftp:`), this property contains an empty string, `""`.
+  ///
+  /// This property can be set to change the protocol of the URL. A `":"` is
+  /// appended to the provided string if not provided. The provided scheme has
+  /// to be compatible with the rest of the URL to be considered valid.
+  ///
+  /// See [URL.protocol] for more information.
   String get protocol {
     unsupportedPlatformError();
   }
@@ -6565,8 +6905,18 @@ extension type HTMLAreaElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
-  /// The **`HTMLAreaElement.username`** property is a
-  /// string containing the username specified before the domain name.
+  /// The **`username`** property of the [HTMLAreaElement] interface is a string
+  /// containing the username component of the `<area>` element's `href`. If the
+  /// URL does not have a username, this property contains an empty string,
+  /// `""`.
+  ///
+  /// This property can be set to change the username of the URL. If the URL has
+  /// no [HTMLAreaElement.host] or its scheme is `file:`, then setting this
+  /// property has no effect.
+  ///
+  /// The username is  when setting but not percent-decoded when reading.
+  ///
+  /// See [URL.username] for more information.
   String get username {
     unsupportedPlatformError();
   }
@@ -6575,12 +6925,18 @@ extension type HTMLAreaElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
-  /// The **`HTMLAreaElement.password`** property is a
-  /// string containing the password specified before the domain name.
+  /// The **`password`** property of the [HTMLAreaElement] interface is a string
+  /// containing the password component of the `<area>` element's `href`. If the
+  /// URL does not have a password, this property contains an empty string,
+  /// `""`.
   ///
-  /// If it is set without first setting the
-  /// [`username`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLAreaElement/username)
-  /// property, it silently fails.
+  /// This property can be set to change the password of the URL. If the URL has
+  /// no [HTMLAreaElement.host] or its scheme is `file:`, then setting this
+  /// property has no effect.
+  ///
+  /// The password is  when setting but not percent-decoded when reading.
+  ///
+  /// See [URL.password] for more information.
   String get password {
     unsupportedPlatformError();
   }
@@ -6589,10 +6945,13 @@ extension type HTMLAreaElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
-  /// The **`HTMLAreaElement.host`** property is a
-  /// string containing the host, that is the _hostname_, and then,
-  /// if the _port_ of the URL is nonempty, a `':'`, and the _port_
-  /// of the URL.
+  /// The **`host`** property of the [HTMLAreaElement] interface is a string
+  /// containing the host, which is the [HTMLAreaElement.hostname], and then, if
+  /// the  of the URL is nonempty, a `":"`, followed by the
+  /// [HTMLAreaElement.port] of the URL. If the URL does not have a `hostname`,
+  /// this property contains an empty string, `""`.
+  ///
+  /// See [URL.host] for more information.
   String get host {
     unsupportedPlatformError();
   }
@@ -6601,8 +6960,14 @@ extension type HTMLAreaElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
-  /// The **`HTMLAreaElement.hostname`** property is a string containing the
-  /// domain of the URL.
+  /// The **`hostname`** property of the [HTMLAreaElement] interface is a string
+  /// containing either the  or  of the `<area>` element's URL. If the URL does
+  /// not have a hostname, this property contains an empty string, `""`. IPv4
+  /// and IPv6 addresses are normalized, such as stripping leading zeros, and
+  /// domain names are converted to
+  /// [IDN](https://en.wikipedia.org/wiki/Internationalized_domain_name).
+  ///
+  /// See [URL.hostname] for more information.
   String get hostname {
     unsupportedPlatformError();
   }
@@ -6611,9 +6976,17 @@ extension type HTMLAreaElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
-  /// The **`HTMLAreaElement.port`** property is a
-  /// string containing the port number of the URL. If the URL does not
-  /// contain an explicit port number, it will be set to `''`.
+  /// The **`port`** property of the [HTMLAreaElement] interface is a string
+  /// containing the port number of the `<area>` element's `href`. If the port
+  /// is the default for the protocol (`80` for `ws:` and `http:`, `443` for
+  /// `wss:` and `https:`, and `21` for `ftp:`), this property contains an empty
+  /// string, `""`.
+  ///
+  /// This property can be set to change the port of the URL. If the URL has no
+  /// [HTMLAnchorElement.host] or its scheme is `file:`, then setting this
+  /// property has no effect. It also silently ignores invalid port numbers.
+  ///
+  /// See [URL.port] for more information.
   String get port {
     unsupportedPlatformError();
   }
@@ -6627,6 +7000,8 @@ extension type HTMLAreaElement._(JSObject _) implements HTMLElement, JSObject {
   /// the URL not including the query string or fragment (or the empty string if
   /// there is no
   /// path).
+  ///
+  /// The pathname is  when setting but not percent-decoded when read.
   String get pathname {
     unsupportedPlatformError();
   }
@@ -6635,15 +7010,25 @@ extension type HTMLAreaElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
-  /// The **`HTMLAreaElement.search`** property is a search
-  /// string, also called a _query string_, that is a string containing
-  /// a `'?'` followed by the parameters of the URL.
+  /// The **`search`** property of the [HTMLAreaElement] interface is a search
+  /// string, also called a _query string_, that is a string containing a `"?"`
+  /// followed by the parameters of the `<area>` element's `href`. If the URL
+  /// does not have a search query, this property contains an empty string,
+  /// `""`.
+  ///
+  /// This property can be set to change the query string of the URL. When
+  /// setting, a single `"?"` prefix is added to the provided value, if not
+  /// already present. Setting it to `""` removes the query string.
+  ///
+  /// The query is  when setting but not percent-decoded when reading.
   ///
   /// Modern browsers provide
   /// [`URLSearchParams`](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams/get#examples)
   /// and
   /// [`URL.searchParams`](/en-US/docs/Web/API/URL/searchParams#examples)
-  /// to make it easy to parse out the parameters from the querystring.
+  /// to make it easy to parse out the parameters from the query string.
+  ///
+  /// See [URL.search] for more information.
   String get search {
     unsupportedPlatformError();
   }
@@ -6652,15 +7037,12 @@ extension type HTMLAreaElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
-  /// The
-  /// **`HTMLAreaElement.hash`** property returns a
-  /// string containing a `'#'` followed by the fragment
-  /// identifier of the URL.
+  /// The **`hash`** property of the [HTMLAreaElement] interface is a string
+  /// containing a `"#"` followed by the fragment identifier of the `<area>`
+  /// element's `href`. If the URL does not have a fragment identifier, this
+  /// property contains an empty string, `""`.
   ///
-  /// The fragment is not
-  /// [URL decoded](https://en.wikipedia.org/wiki/URL_encoding). If the URL does
-  /// not
-  /// have a fragment identifier, this property contains an empty string, `""`.
+  /// See [URL.hash] for more information.
   String get hash {
     unsupportedPlatformError();
   }
@@ -6688,7 +7070,8 @@ extension type HTMLTableElement._(JSObject _) implements HTMLElement, JSObject {
   /// If no `<caption>` element exists on the table, this method creates
   /// it, and then returns it.
   ///
-  /// > **Note:** If no caption exists, `createCaption()` inserts a
+  /// > [!NOTE]
+  /// > If no caption exists, `createCaption()` inserts a
   /// > new caption directly into the table. The caption does not need to be
   /// > added
   /// > separately as would be the case if [Document.createElement] had
@@ -6710,7 +7093,8 @@ extension type HTMLTableElement._(JSObject _) implements HTMLElement, JSObject {
   /// associated with a given `table`. If no header exists in the table, this
   /// method creates it, and then returns it.
   ///
-  /// > **Note:** If no header exists, `createTHead()` inserts a new
+  /// > [!NOTE]
+  /// > If no header exists, `createTHead()` inserts a new
   /// > header directly into the table. The header does not need to be added
   /// > separately as
   /// > would be the case if [Document.createElement] had been used to create
@@ -6730,7 +7114,8 @@ extension type HTMLTableElement._(JSObject _) implements HTMLElement, JSObject {
   /// associated with a given `table`. If no footer exists in the table, this
   /// method creates it, and then returns it.
   ///
-  /// > **Note:** If no footer exists, `createTFoot()` inserts a new
+  /// > [!NOTE]
+  /// > If no footer exists, `createTFoot()` inserts a new
   /// > footer directly into the table. The footer does not need to be added
   /// > separately as
   /// > would be the case if [Document.createElement] had been used to create
@@ -6749,7 +7134,8 @@ extension type HTMLTableElement._(JSObject _) implements HTMLElement, JSObject {
   /// [HTMLTableElement] objects creates and returns a new
   /// `tbody` element associated with a given `table`.
   ///
-  /// > **Note:** Unlike [HTMLTableElement.createTHead] and
+  /// > [!NOTE]
+  /// > Unlike [HTMLTableElement.createTHead] and
   /// > [HTMLTableElement.createTFoot], `createTBody()`
   /// > systematically creates a new `<tbody>` element, even if the table
   /// > already contains one or more bodies. If so, the new one is inserted
@@ -6920,8 +7306,9 @@ extension type HTMLTableElement._(JSObject _) implements HTMLElement, JSObject {
   /// The **`bgcolor`** property of the [HTMLTableElement] represents the
   /// background color of the table.
   ///
-  /// > **Note:** Do not use this attribute anymore. Instead, use the CSS
-  /// > property by modifying the element's
+  /// > [!NOTE]
+  /// > Do not use this attribute anymore. Instead, use the CSS  property by
+  /// > modifying the element's
   /// > [`style`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style)
   /// > attribute or using a style rule.
   String get bgColor {
@@ -6971,6 +7358,14 @@ extension type HTMLTableCaptionElement._(JSObject _)
   /// Creates an [HTMLTableCaptionElement] using the tag 'caption'.
   HTMLTableCaptionElement() : _ = document.createElement('caption');
 
+  /// The **`align`** property of the [HTMLTableCaptionElement] interface is a
+  /// string indicating how to horizontally align text in the `caption` table
+  /// element.
+  ///
+  /// > [!NOTE]
+  /// > This property is deprecated, and CSS should be used to align text
+  /// > horizontally in a cell. Use the CSS  property, which takes precedence,
+  /// > to horizontally align text in the caption cell instead.
   String get align {
     unsupportedPlatformError();
   }
@@ -6999,7 +7394,7 @@ extension type HTMLTableColElement._(JSObject _)
   /// represents the number of columns this `col` or `colgroup` must span; this
   /// lets the column occupy space across multiple columns of the table. It
   /// reflects the
-  /// [`span`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/col#colspan)
+  /// [`span`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/col#span)
   /// attribute.
   int get span {
     unsupportedPlatformError();
@@ -7013,9 +7408,10 @@ extension type HTMLTableColElement._(JSObject _)
   /// string indicating how to horizontally align text in a table `col` column
   /// element.
   ///
-  /// > **Note:** This property is deprecated, and CSS should be used to align
-  /// > text horizontally in a column. Use the CSS  property, which takes
-  /// > precedence, to horizontally align text in a column instead.
+  /// > [!NOTE]
+  /// > This property is deprecated, and CSS should be used to align text
+  /// > horizontally in a column. Use the CSS  property, which takes precedence,
+  /// > to horizontally align text in a column instead.
   /// >
   /// > As `td` are not children of `col`, you can't set it directly on a `col`
   /// > element, you need to select the cells of the column using a
@@ -7032,9 +7428,10 @@ extension type HTMLTableColElement._(JSObject _)
   /// The **`ch`** property of the [HTMLTableColElement] interface does nothing.
   /// It reflects the `char` attribute of the `col` element.
   ///
-  /// > **Note:** This property was designed to participate to the ability to
-  /// > align table cell content on a specific character (typically the decimal
-  /// > point), but was never implemented by browsers.
+  /// > [!NOTE]
+  /// > This property was designed to participate to the ability to align table
+  /// > cell content on a specific character (typically the decimal point), but
+  /// > was never implemented by browsers.
   /// >
   /// > To achieve such alignment, watch for the support of a string value with
   /// > the  CSS property.
@@ -7049,9 +7446,10 @@ extension type HTMLTableColElement._(JSObject _)
   /// The **`chOff`** property of the [HTMLTableColElement] interface does
   /// nothing. It reflects the `charoff` attribute of the `col` element.
   ///
-  /// > **Note:** This property was designed to participate in an ability to
-  /// > align table cell content on a specific character (typically the decimal
-  /// > point), but was never implemented by browsers.
+  /// > [!NOTE]
+  /// > This property was designed to participate in an ability to align table
+  /// > cell content on a specific character (typically the decimal point), but
+  /// > was never implemented by browsers.
   /// >
   /// > To achieve such alignment, watch for the support of a string value with
   /// > the  CSS property.
@@ -7067,12 +7465,13 @@ extension type HTMLTableColElement._(JSObject _)
   /// string indicating how to vertically align text in a table `col` column
   /// element.
   ///
-  /// > **Note:** This property is deprecated, and CSS should be used to align
-  /// > text vertically in a column. Use the CSS  property, which takes
-  /// > precedence, to vertically align text in each column cell instead.
+  /// > [!NOTE]
+  /// > This property is deprecated, and CSS should be used to align text
+  /// > vertically in a column. Use the CSS  property, which takes precedence,
+  /// > to vertically align text in each column cell instead.
   /// >
-  /// > As `td` are not children of `col`, you can't set it directly on a
-  /// > `col`element , you need to select the cells of the column using a
+  /// > As `td` are not children of `col`, you can't set it directly on a `col`
+  /// > element, you need to select the cells of the column using a
   /// > `td:nth-child(n)` or similar (`n` is the column number).
   String get vAlign {
     unsupportedPlatformError();
@@ -7114,8 +7513,8 @@ extension type HTMLTableSectionElement._(JSObject _)
 
   /// The **`insertRow()`** method of the [HTMLTableSectionElement] interface
   /// inserts a new row
-  /// (`tr`) in the given `section`, and returns a reference to
-  /// this new row.
+  /// (`tr`) in the given table sectioning element (`thead`, `tfoot`, or
+  /// `tbody`), then returns a reference to this new row.
   ///
   /// > **Note:** `insertRow()` inserts the row directly into the
   /// > section. The row does not need to be appended separately as would be the
@@ -7141,6 +7540,14 @@ extension type HTMLTableSectionElement._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// The **`align`** property of the [HTMLTableSectionElement] interface is a
+  /// string indicating how to horizontally align text in a `thead`, `tbody` or
+  /// `tfoot` table section. Individual rows and cells can override it.
+  ///
+  /// > [!NOTE]
+  /// > This property is deprecated, and CSS should be used to align text
+  /// > horizontally in a cell. Use the CSS  property, which takes precedence,
+  /// > to horizontally align text in section cells instead.
   String get align {
     unsupportedPlatformError();
   }
@@ -7152,9 +7559,10 @@ extension type HTMLTableSectionElement._(JSObject _)
   /// The **`ch`** property of the [HTMLTableSectionElement] interface does
   /// nothing. It reflects the `char` attribute of the section element.
   ///
-  /// > **Note:** This property was designed to participate to the ability to
-  /// > align table cell content on a specific character (typically the decimal
-  /// > point), but was never implemented by browsers.
+  /// > [!NOTE]
+  /// > This property was designed to participate to the ability to align table
+  /// > cell content on a specific character (typically the decimal point), but
+  /// > was never implemented by browsers.
   /// >
   /// > To achieve such alignment, watch for the support of a string value with
   /// > the  CSS property.
@@ -7169,9 +7577,10 @@ extension type HTMLTableSectionElement._(JSObject _)
   /// The **`chOff`** property of the [HTMLTableSectionElement] interface does
   /// nothing. It reflects the `charoff` attribute of the section element.
   ///
-  /// > **Note:** This property was designed to participate in an ability to
-  /// > align table cell content on a specific character (typically the decimal
-  /// > point), but was never implemented by browsers.
+  /// > [!NOTE]
+  /// > This property was designed to participate in an ability to align table
+  /// > cell content on a specific character (typically the decimal point), but
+  /// > was never implemented by browsers.
   /// >
   /// > To achieve such alignment, watch for the support of a string value with
   /// > the  CSS property.
@@ -7183,6 +7592,13 @@ extension type HTMLTableSectionElement._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// The **`vAlign`** property of the [HTMLTableSectionElement] interface is a
+  /// string indicating how to vertically align text in a `thead`, `tbody` or
+  /// `tfoot` table section. Individual rows and cells can override it.
+  ///
+  /// > [!NOTE]
+  /// > This property is deprecated. Use the CSS  property to horizontally align
+  /// > text in section cells instead.
   String get vAlign {
     unsupportedPlatformError();
   }
@@ -7259,6 +7675,14 @@ extension type HTMLTableRowElement._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// The **`align`** property of the [HTMLTableRowElement] interface is a
+  /// string indicating how to horizontally align text in the `tr` table row.
+  /// Individual cells can override it.
+  ///
+  /// > [!NOTE]
+  /// > This property is deprecated, and CSS should be used to align text
+  /// > horizontally in a cell. Use the CSS  property, which takes precedence,
+  /// > to horizontally align text in a row instead.
   String get align {
     unsupportedPlatformError();
   }
@@ -7270,9 +7694,10 @@ extension type HTMLTableRowElement._(JSObject _)
   /// The **`ch`** property of the [HTMLTableRowElement] interface does nothing.
   /// It reflects the `char` attribute of the `tr` element.
   ///
-  /// > **Note:** This property was designed to participate to the ability to
-  /// > align table cell content on a specific character (typically the decimal
-  /// > point), but was never implemented by browsers.
+  /// > [!NOTE]
+  /// > This property was designed to participate to the ability to align table
+  /// > cell content on a specific character (typically the decimal point), but
+  /// > was never implemented by browsers.
   /// >
   /// > To achieve such alignment, watch for the support of a string value with
   /// > the  CSS property.
@@ -7287,9 +7712,10 @@ extension type HTMLTableRowElement._(JSObject _)
   /// The **`chOff`** property of the [HTMLTableRowElement] interface does
   /// nothing. It reflects the `charoff` attribute of the `tr` element.
   ///
-  /// > **Note:** This property was designed to participate in an ability to
-  /// > align table cell content on a specific character (typically the decimal
-  /// > point), but was never implemented by browsers.
+  /// > [!NOTE]
+  /// > This property was designed to participate in an ability to align table
+  /// > cell content on a specific character (typically the decimal point), but
+  /// > was never implemented by browsers.
   /// >
   /// > To achieve such alignment, watch for the support of a string value with
   /// > the  CSS property.
@@ -7301,6 +7727,13 @@ extension type HTMLTableRowElement._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// The **`vAlign`** property of the [HTMLTableRowElement] interface is a
+  /// string indicating how to vertically align text in a `tr` table row.
+  /// Individual cells can override it.
+  ///
+  /// > [!NOTE]
+  /// > This property is deprecated. Use the CSS  property to horizontally align
+  /// > text in a row instead.
   String get vAlign {
     unsupportedPlatformError();
   }
@@ -7314,8 +7747,9 @@ extension type HTMLTableRowElement._(JSObject _)
   /// [`bgColor`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tr#bgcolor)
   /// attribute, if present.
   ///
-  /// **Note:** This property is deprecated and CSS should be used to set the
-  /// background color. Use the  property instead.
+  /// > [!NOTE]
+  /// > This property is deprecated and CSS should be used to set the background
+  /// > color. Use the  property instead.
   String get bgColor {
     unsupportedPlatformError();
   }
@@ -7398,9 +7832,10 @@ extension type HTMLTableCellElement._(JSObject _)
   /// associated directly with cells in this way. Permitted values for `scope`
   /// are:
   ///
-  /// > **Note:** this property doesn't have a visual effect in browsers. It
-  /// > adds semantic information to help assistive technology like
-  /// > screenreaders to present the table in a more coherent way.
+  /// > [!NOTE]
+  /// > This property doesn't have a visual effect in browsers. It adds semantic
+  /// > information to help assistive technology like screen readers to present
+  /// > the table in a more coherent way.
   String get scope {
     unsupportedPlatformError();
   }
@@ -7415,9 +7850,10 @@ extension type HTMLTableCellElement._(JSObject _)
   ///
   /// It reflects the `abbr` attribute of the `th` element.
   ///
-  /// > **Note:** this property doesn't have a visual effect in browsers. It
-  /// > adds information to help assistive technology like screenreaders that
-  /// > can use this abbreviation
+  /// > [!NOTE]
+  /// > This property doesn't have a visual effect in browsers. It adds
+  /// > information to help assistive technology like screen readers that can
+  /// > use this abbreviation
   String get abbr {
     unsupportedPlatformError();
   }
@@ -7430,9 +7866,10 @@ extension type HTMLTableCellElement._(JSObject _)
   /// string indicating how to horizontally align text in the `th` or `td` table
   /// cell.
   ///
-  /// > **Note:** This property is deprecated, and CSS should be used to align
-  /// > text horizontally in a cell. Use the CSS  property, which takes
-  /// > precedence, to horizontally align text in a cell instead.
+  /// > [!NOTE]
+  /// > This property is deprecated, and CSS should be used to align text
+  /// > horizontally in a cell. Use the CSS  property, which takes precedence,
+  /// > to horizontally align text in a cell instead.
   String get align {
     unsupportedPlatformError();
   }
@@ -7468,9 +7905,10 @@ extension type HTMLTableCellElement._(JSObject _)
   /// The **`ch`** property of the [HTMLTableCellElement] interface does
   /// nothing. It reflects the `char` attribute of the cell element.
   ///
-  /// > **Note:** This property was designed to participate to the ability to
-  /// > align table cell content on a specific character (typically the decimal
-  /// > point), but was never implemented by browsers.
+  /// > [!NOTE]
+  /// > This property was designed to participate to the ability to align table
+  /// > cell content on a specific character (typically the decimal point), but
+  /// > was never implemented by browsers.
   /// >
   /// > To achieve such alignment, watch for the support of a string value with
   /// > the  CSS property.
@@ -7485,9 +7923,10 @@ extension type HTMLTableCellElement._(JSObject _)
   /// The **`chOff`** property of the [HTMLTableCellElement] interface does
   /// nothing. It reflects the `charoff` attribute of the cell element.
   ///
-  /// > **Note:** This property was designed to participate in an ability to
-  /// > align table cell content on a specific character (typically the decimal
-  /// > point), but was never implemented by browsers.
+  /// > [!NOTE]
+  /// > This property was designed to participate in an ability to align table
+  /// > cell content on a specific character (typically the decimal point), but
+  /// > was never implemented by browsers.
   /// >
   /// > To achieve such alignment, watch for the support of a string value with
   /// > the  CSS property.
@@ -7503,8 +7942,9 @@ extension type HTMLTableCellElement._(JSObject _)
   /// a Boolean value indicating if the text of the cell may be wrapped on
   /// several lines or not.
   ///
-  /// > **Note:** This property is deprecated and you should use the CSS
-  /// > property with the value `nowrap` instead.
+  /// > [!NOTE]
+  /// > This property is deprecated and you should use the CSS  property with
+  /// > the value `nowrap` instead.
   bool get noWrap {
     unsupportedPlatformError();
   }
@@ -7517,8 +7957,9 @@ extension type HTMLTableCellElement._(JSObject _)
   /// string indicating how to vertically align text in a `th` or `td` table
   /// cell.
   ///
-  /// > **Note:** This property is deprecated. Use the CSS  property to
-  /// > horizontally align text in a cell instead.
+  /// > [!NOTE]
+  /// > This property is deprecated. Use the CSS  property to horizontally align
+  /// > text in a cell instead.
   String get vAlign {
     unsupportedPlatformError();
   }
@@ -7532,8 +7973,9 @@ extension type HTMLTableCellElement._(JSObject _)
   /// [`bgColor`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/td#bgcolor)
   /// attribute, if present.
   ///
-  /// **Note:** This property is deprecated and CSS should be used to set the
-  /// background color. Use the  property instead.
+  /// > [!NOTE]
+  /// > This property is deprecated and CSS should be used to set the background
+  /// > color. Use the  property instead.
   String get bgColor {
     unsupportedPlatformError();
   }
@@ -7613,26 +8055,43 @@ extension type HTMLFormElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`checkValidity()`** method of the [HTMLFormElement] interface
+  /// returns a boolean value which indicates if all associated controls meet
+  /// any
+  /// [constraint validation](https://developer.mozilla.org/en-US/docs/Web/HTML/Constraint_validation)
+  /// rules applied to them. The method also fires an
+  /// [HTMLElement.invalid_event] event on each invalid element, but not on the
+  /// form element itself. Because there's no default browser behavior for
+  /// `checkValidity()`, canceling this `invalid` event has no effect.
+  ///
+  /// > [!NOTE]
+  /// > The  and  CSS pseudo-classes are applied to `<form>` elements based on
+  /// > the validity of its owned form controls, not the validity of the
+  /// > `<form>` element itself.
   bool checkValidity() {
     unsupportedPlatformError();
   }
 
-  /// The **`HTMLFormElement.reportValidity()`** method returns
-  /// `true` if the element's child controls satisfy their validation
-  /// constraints.
-  /// When `false` is returned, cancelable
-  /// [`invalid`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/invalid_event)
-  /// events are fired for
-  /// each invalid child and validation problems are reported to the user.
+  /// The **`reportValidity()`** method of the [HTMLFormElement] interface
+  /// performs the same validity checking steps as the
+  /// [HTMLFormElement.checkValidity] method. In addition, for each
+  /// [HTMLElement.invalid_event] event that was fired and not canceled, the
+  /// browser displays the problem to the user.
   bool reportValidity() {
     unsupportedPlatformError();
   }
 
-  /// The **`HTMLFormElement.acceptCharset`** property represents a
-  /// list of the supported
-  /// [character encodings](https://developer.mozilla.org/en-US/docs/Glossary/Character_encoding)
-  /// for the given `form` element. This list can be
-  /// comma-separated or space-separated.
+  /// The **`HTMLFormElement.acceptCharset`** property represents the  for the
+  /// given `form` element.
+  ///
+  /// The specification allows a single case-insensitive value of `"UTF-8"`,
+  /// reflecting the ubiquity of this encoding (historically multiple character
+  /// encodings could be specified as a comma-separated or space-separated
+  /// list).
+  ///
+  /// This reflects the value of the form's
+  /// [`accept-charset`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#accept-charset)
+  /// HTML attribute.
   String get acceptCharset {
     unsupportedPlatformError();
   }
@@ -7655,6 +8114,11 @@ extension type HTMLFormElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`autocomplete`** property of the [HTMLFormElement] interface
+  /// indicates whether the value of the form's controls can be automatically
+  /// completed by the browser. It reflects the `form` element's
+  /// [`autocomplete`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete)
+  /// attribute.
   String get autocomplete {
     unsupportedPlatformError();
   }
@@ -7720,6 +8184,20 @@ extension type HTMLFormElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`noValidate`** property of the [HTMLFormElement] interface is a
+  /// boolean value indicating if the `form` will bypass
+  /// [constraint validation](https://developer.mozilla.org/en-US/docs/Web/HTML/Constraint_validation)
+  /// when submitted. It reflects the `<form>` element's
+  /// [`novalidate`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#novalidate)
+  /// attribute; if the attribute present, the value is `true`.
+  ///
+  /// If this attribute is not set or the value is set to `false`, the form is
+  /// validated. This can be overridden by setting the
+  /// [HTMLInputElement.formNoValidate] or [HTMLButtonElement.formNoValidate]
+  /// property to `true`, either via JavaScript or the HTML `formnovalidate`
+  /// attribute, for the control used to submit the form.
+  ///
+  /// This property can be retrieved or set.
   bool get noValidate {
     unsupportedPlatformError();
   }
@@ -7768,8 +8246,9 @@ extension type HTMLFormElement._(JSObject _) implements HTMLElement, JSObject {
   /// Prior to HTML 5, the returned object was an [HTMLCollection], on which
   /// `HTMLFormControlsCollection` is based.
   ///
-  /// > **Note:** Similarly, you can get a list of all of the forms contained
-  /// > within a given document using the document's [Document.forms] property.
+  /// > [!NOTE]
+  /// > Similarly, you can get a list of all of the forms contained within a
+  /// > given document using the document's [Document.forms] property.
   HTMLFormControlsCollection get elements {
     unsupportedPlatformError();
   }
@@ -7807,13 +8286,12 @@ extension type HTMLLabelElement._(JSObject _) implements HTMLElement, JSObject {
   /// Creates an [HTMLLabelElement] using the tag 'label'.
   HTMLLabelElement() : _ = document.createElement('label');
 
-  /// The read-only **`HTMLLabelElement.form`** property returns an
-  /// [HTMLFormElement] object which represents the form of which the label's
-  /// associated control is a part, or null if there is either no associated
-  /// control, or if
-  /// that control isn't in a form.
+  /// The **`form`** read-only property of the [HTMLLabelElement] interface
+  /// returns an [HTMLFormElement] object that owns the
+  /// [HTMLLabelElement.control] associated with this `label`, or `null` if this
+  /// label is not associated with a control owned by a form.
   ///
-  /// This property is just a shortcut for `HTMLLabelElement.control.form`.
+  /// This property is just a shortcut for `label.control.form`.
   HTMLFormElement? get form {
     unsupportedPlatformError();
   }
@@ -7967,7 +8445,7 @@ extension type HTMLInputElement._(JSObject _) implements HTMLElement, JSObject {
   }
 
   /// The
-  /// **`HTMLInputElement.stepDown([n])`** method decrements the
+  /// **`HTMLInputElement.stepDown()`** method decrements the
   /// value of a numeric type of `input` element by the value of the
   /// [`step`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/step)
   /// attribute or up
@@ -8067,39 +8545,34 @@ extension type HTMLInputElement._(JSObject _) implements HTMLElement, JSObject {
   /// support the `step` attribute (see the list of supported input types
   /// above), or if the `step` value is set to `any`, an
   /// `InvalidStateError` exception is thrown.
-  ///
-  /// - [HTMLInputElement.stepDown]
-  ///
-  ///   - : Decrements the [`value`](/en-US/docs/Web/HTML/Element/input#value) by
-  /// ([`step`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#step)
-  /// \* n), where n defaults to 1 if not specified. Throws
-  /// an `InvalidStateError` exception:
-  ///
-  ///     - if the method is not applicable to for the current
-  /// [`type`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#type)
-  /// value,
-  ///     - if the element has no [`step`](/en-US/docs/Web/HTML/Element/input#step) value,
-  ///     - if the [`value`](/en-US/docs/Web/HTML/Element/input#value) cannot be converted to a number,
-  ///     - if the resulting value is above the [`max`](/en-US/docs/Web/HTML/Element/input#max) or below the
-  /// [`min`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#min).
   void stepDown([int? n]) {
     unsupportedPlatformError();
   }
 
-  /// The **`HTMLInputElement.checkValidity()`** method returns a boolean value
-  /// which indicates validity of the value of the element. If the value is
-  /// invalid, this method also fires the [HTMLInputElement.invalid_event] event
-  /// on the element.
+  /// The **`checkValidity()`** method of the [HTMLInputElement] interface
+  /// returns a boolean value which indicates if the element meets any
+  /// [constraint validation](https://developer.mozilla.org/en-US/docs/Web/HTML/Constraint_validation)
+  /// rules applied to it. If false, the method also fires an
+  /// [HTMLElement.invalid_event] event on the element. Because there's no
+  /// default browser behavior for `checkValidity()`, canceling this `invalid`
+  /// event has no effect.
+  ///
+  /// > [!NOTE]
+  /// > An HTML `input` element with a non-null
+  /// > [HTMLInputElement.validationMessage] is considered invalid, will match
+  /// > the CSS  pseudo-class, and will cause `checkValidity()` to return false.
+  /// > Use the [HTMLInputElement.setCustomValidity] method to set the
+  /// > [HTMLInputElement.validationMessage] to the empty string to set the
+  /// > [HTMLInputElement.validity] state to be valid.
   bool checkValidity() {
     unsupportedPlatformError();
   }
 
   /// The **`reportValidity()`** method of the [HTMLInputElement] interface
   /// performs the same validity checking steps as the
-  /// [HTMLInputElement.checkValidity] method. If the value is invalid, this
-  /// method also fires the [HTMLInputElement.invalid_event] event on the
-  /// element, and (if the event isn't canceled) reports the problem to the
-  /// user.
+  /// [HTMLInputElement.checkValidity] method. In addition, if the
+  /// [HTMLElement.invalid_event] event is not canceled, the browser displays
+  /// the problem to the user.
   bool reportValidity() {
     unsupportedPlatformError();
   }
@@ -8183,6 +8656,14 @@ extension type HTMLInputElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`accept`** property of the [HTMLInputElement] interface reflects the
+  /// `input` element's
+  /// [`accept`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#accept)
+  /// attribute, generally a comma-separated list of unique file type specifiers
+  /// providing a hint for the expected file type for an [`<input>` of type
+  /// `file`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file).
+  /// If the attribute is not explicitly set, the `accept` property is an empty
+  /// string.
   String get accept {
     unsupportedPlatformError();
   }
@@ -8191,6 +8672,16 @@ extension type HTMLInputElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`alt`** property of the [HTMLInputElement] interface defines the
+  /// textual label for the button for users and user agents who cannot use the
+  /// image. It reflects the `input` element's
+  /// [`alt`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#alt)
+  /// attribute.
+  ///
+  /// The `alt` property is valid for the
+  /// [`image`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/image)
+  /// type only. It should be a non-empty string giving the label that would be
+  /// appropriate for an equivalent button if the image was unavailable.
   String get alt {
     unsupportedPlatformError();
   }
@@ -8199,6 +8690,11 @@ extension type HTMLInputElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`autocomplete`** property of the [HTMLInputElement] interface
+  /// indicates whether the value of the control can be automatically completed
+  /// by the browser. It reflects the `input` element's
+  /// [`autocomplete`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete)
+  /// attribute.
   String get autocomplete {
     unsupportedPlatformError();
   }
@@ -8207,6 +8703,20 @@ extension type HTMLInputElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`defaultChecked`** property of the [HTMLInputElement] interface
+  /// specifies the default checkedness state of the element. This property
+  /// reflects the `input` element's
+  /// [`checked`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#checked)
+  /// attribute.
+  ///
+  /// The boolean
+  /// [`checked`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#checked)
+  /// attribute is valid for the `radio` ([`<input
+  /// type="radio">`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio))
+  /// and `checkbox` ([`<input
+  /// type="checkbox">`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox))
+  /// input types. The presence of the attribute sets the `defaultChecked`
+  /// property to `true`.
   bool get defaultChecked {
     unsupportedPlatformError();
   }
@@ -8215,6 +8725,35 @@ extension type HTMLInputElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`checked`** property of the [HTMLInputElement] interface specifies
+  /// the current checkedness of the element; that is, whether the form control
+  /// is checked or not.
+  ///
+  /// The boolean `checked` property is relevant to the `radio` ([`<input
+  /// type="radio">`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio))
+  /// and `checkbox` ([`<input
+  /// type="checkbox">`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox))
+  /// input types.
+  ///
+  /// The presence of the HTML
+  /// [`checked`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#checked)
+  /// attribute indicates the checkbox is checked by default. It does not
+  /// indicate whether this checkbox is currently checked: if the checkbox's
+  /// state is changed, this content attribute does not reflect the change; only
+  /// the `HTMLInputElement`'s `checked` IDL property is updated. The `checked`
+  /// attribute is reflected by the [HTMLInputElement.defaultChecked] property.
+  ///
+  /// When a radio input `checked` property is `true`, all other radio inputs
+  /// with the same [HTMLInputElement.name] are `false`. If any radio button in
+  /// a same-named group of radio buttons is [HTMLInputElement.required], as
+  /// long as one button in the group is `checked`, the [ValidityState] object's
+  /// read-only [ValidityState.valueMissing] property for each radio button in
+  /// the group will be `false`.
+  ///
+  /// A checkbox's value is only included in the submitted data upon form
+  /// submission if `checked` is true. The value of the
+  /// [HTMLInputElement.indeterminate] property has no effect on a checkbox's
+  /// `checked` value.
   bool get checked {
     unsupportedPlatformError();
   }
@@ -8245,6 +8784,9 @@ extension type HTMLInputElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`form`** read-only property of the [HTMLInputElement] interface
+  /// returns an [HTMLFormElement] object that owns this `input`, or `null` if
+  /// this input is not owned by any form.
   HTMLFormElement? get form {
     unsupportedPlatformError();
   }
@@ -8261,6 +8803,21 @@ extension type HTMLInputElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`formAction`** property of the [HTMLInputElement] interface is the
+  /// URL of the program that is executed on the server when the form that owns
+  /// this control is submitted. It reflects the value of the `<input>`'s
+  /// [`formaction`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#formaction)
+  /// attribute.
+  ///
+  /// This property is valid only for
+  /// [`submit`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/submit)
+  /// and
+  /// [`image`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/image)
+  /// `<input>` elements.
+  ///
+  /// Its value overrides the [HTMLFormElement.action] property of the
+  /// [HTMLFormElement] interface if the form is submitted via the input. This
+  /// property can be retrieved or set.
   String get formAction {
     unsupportedPlatformError();
   }
@@ -8269,6 +8826,23 @@ extension type HTMLInputElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`formEnctype`** property of the [HTMLInputElement] interface is the
+  /// of the content sent to the server when the `<input>` with the
+  /// `formEnctype` is the method of form submission. It reflects the value of
+  /// the `<input>`'s
+  /// [`formenctype`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#formenctype)
+  /// attribute.
+  ///
+  /// This property is valid only for
+  /// [`submit`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/submit)
+  /// and
+  /// [`image`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/image)
+  /// `<input>` elements.
+  ///
+  /// Its value overrides the [HTMLFormElement.enctype] property of the
+  /// [HTMLFormElement] interface if the form is submitted via the input. This
+  /// property can be retrieved or set. If not set, the value is the empty
+  /// string (`""`).
   String get formEnctype {
     unsupportedPlatformError();
   }
@@ -8277,6 +8851,23 @@ extension type HTMLInputElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`formMethod`** property of the [HTMLInputElement] interface is the
+  /// method used to submit the `form` if the `input` element is the control
+  /// that submits the form. It reflects the value of the `<input>`'s
+  /// [`formmethod`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#formmethod)
+  /// attribute.
+  ///
+  /// This property is valid only for
+  /// [`submit`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/submit)
+  /// and
+  /// [`image`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/image)
+  /// `<input>` elements.
+  ///
+  /// The value overrides the [HTMLFormElement.method] property of the
+  /// [HTMLFormElement] interface if the form is submitted via the input. This
+  /// property can be retrieved or set. If set with an empty or invalid value,
+  /// the invalid default value is `"get"`. If not set at all, the value is the
+  /// empty string (`""`).
   String get formMethod {
     unsupportedPlatformError();
   }
@@ -8285,6 +8876,22 @@ extension type HTMLInputElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`formNoValidate`** property of the [HTMLInputElement] interface is a
+  /// boolean value indicating if the `form` will bypass
+  /// [constraint validation](https://developer.mozilla.org/en-US/docs/Web/HTML/Constraint_validation)
+  /// when submitted via the `input`. It reflects the `<input>` element's
+  /// [`formnovalidate`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#formnovalidate)
+  /// attribute.
+  ///
+  /// This property is valid only for
+  /// [`submit`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/submit)
+  /// and
+  /// [`image`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/image)
+  /// `<input>` elements.
+  ///
+  /// Its value overrides the [HTMLFormElement.noValidate] property of the
+  /// [HTMLFormElement] interface if the form is submitted via the input. This
+  /// property can be retrieved or set.
   bool get formNoValidate {
     unsupportedPlatformError();
   }
@@ -8293,6 +8900,22 @@ extension type HTMLInputElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`formTarget`** property of the [HTMLInputElement] interface is the
+  /// tab, window, or iframe where the response of the submitted `form` is to be
+  /// displayed. It reflects the value of the `input` element's
+  /// [`formtarget`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#formtarget)
+  /// attribute.
+  ///
+  /// This property is valid only for
+  /// [`submit`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/submit)
+  /// and
+  /// [`image`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/image)
+  /// `<input>` elements.
+  ///
+  /// Its value overrides the [HTMLFormElement.target] property of the
+  /// [HTMLFormElement] interface if the form is submitted via the input. This
+  /// property can be retrieved or set. If not set, the value is the empty
+  /// string (`""`).
   String get formTarget {
     unsupportedPlatformError();
   }
@@ -8301,6 +8924,22 @@ extension type HTMLInputElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`height`** property of the [HTMLInputElement] interface specifies
+  /// the height of a control. It reflects the `input` element's
+  /// [`height`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#height)
+  /// attribute.
+  ///
+  /// The `height` property is valid for the
+  /// [`image`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/image)
+  /// type only. It defines the vertical dimension of the image button, in
+  /// pixels. If CSS sizing properties apply to the control, the value is the
+  /// height of the content box of the rendered control, not the value of the
+  /// `height` attribute. If no `height` is set and CSS does not impact the
+  /// control's size, the `height` will be the intrinsic height of the image. If
+  /// the image didn't load, the value will be the height of the `alt` text. The
+  /// `height` will be `0` if the height is not known; if no `height` is set,
+  /// CSS doesn't impact the height, the image didn't load, and either the value
+  /// of the [HTMLInputElement.alt] is the empty string or no `src` is set.
   int get height {
     unsupportedPlatformError();
   }
@@ -8309,6 +8948,19 @@ extension type HTMLInputElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`indeterminate`** property of the [HTMLInputElement] interface
+  /// returns a boolean value that indicates whether the checkbox is in the
+  /// _indeterminate_ state. For example, a "select all/deselect all" checkbox
+  /// may be in the indeterminate state when some but not all of its
+  /// sub-controls are checked. The `indeterminate` state can only be set via
+  /// JavaScript and is only relevant to
+  /// [`checkbox`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox)
+  /// controls.
+  ///
+  /// It is unrelated to the [HTMLInputElement.checked] property, and an
+  /// indeterminate checkbox can be either checked or unchecked. Being
+  /// indeterminate only affects the checkbox's appearance (see example below),
+  /// not its presence when submitted (which is controlled by the checkedness).
   bool get indeterminate {
     unsupportedPlatformError();
   }
@@ -8317,10 +8969,27 @@ extension type HTMLInputElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`list`** read-only property of the [HTMLInputElement] interface
+  /// returns the [HTMLDataListElement] pointed to by the
+  /// [`list`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#list)
+  /// attribute of the element, or `null` if the `list` attribute is not defined
+  /// or the `list` attribute's value is not associated with any `<datalist>` in
+  /// the same tree.
+  ///
+  /// > [!NOTE]
+  /// > This is a read-only property. To associate a `<datalist>` with an
+  /// > element, set the value of the `list` attribute with
+  /// > [Element.setAttribute].
   HTMLDataListElement? get list {
     unsupportedPlatformError();
   }
 
+  /// The **`max`** property of the [HTMLInputElement] interface reflects the
+  /// `input` element's
+  /// [`max`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#max)
+  /// attribute, which generally defines the maximum valid value for a numeric
+  /// or date-time input. If the attribute is not explicitly set, the `max`
+  /// property is an empty string.
   String get max {
     unsupportedPlatformError();
   }
@@ -8329,6 +8998,18 @@ extension type HTMLInputElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`maxLength`** property of the [HTMLInputElement] interface indicates
+  /// the maximum number of characters (in UTF-16 code units) allowed to be
+  /// entered for the value of the `input` element, and the maximum number of
+  /// characters allowed for the value to be valid. It reflects the element's
+  /// [`maxlength`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#maxlength)
+  /// attribute. `-1` means there is no limit on the length of the value.
+  ///
+  /// > [!NOTE]
+  /// > Browser generally prevent users from entering more characters than the
+  /// > `maxlength` attribute allows. Should the length be longer, the element
+  /// > is considered invalid and the [ValidityState] object's
+  /// > [ValidityState.tooLong] property will be `true`.
   int get maxLength {
     unsupportedPlatformError();
   }
@@ -8337,6 +9018,12 @@ extension type HTMLInputElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`min`** property of the [HTMLInputElement] interface reflects the
+  /// `input` element's
+  /// [`min`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#min)
+  /// attribute, which generally defines the minimum valid value for a numeric
+  /// or date-time input. If the attribute is not explicitly set, the `min`
+  /// property is an empty string.
   String get min {
     unsupportedPlatformError();
   }
@@ -8345,6 +9032,17 @@ extension type HTMLInputElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`minLength`** property of the [HTMLInputElement] interface indicates
+  /// the minimum number of characters (in UTF-16 code units) required for the
+  /// value of the `input` element to be valid. It reflects the element's
+  /// [`minlength`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#minlength)
+  /// attribute. `-1` means there is no minimum length requirement.
+  ///
+  /// > [!NOTE]
+  /// > If the input has a value, and that value has fewer characters than the
+  /// > `minlength` attribute requires, the element is considered invalid and
+  /// > the [ValidityState] object's [ValidityState.tooShort] property will be
+  /// > `true`.
   int get minLength {
     unsupportedPlatformError();
   }
@@ -8364,6 +9062,10 @@ extension type HTMLInputElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`name`** property of the [HTMLInputElement] interface indicates the
+  /// name of the `input` element. It reflects the element's
+  /// [`name`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#name)
+  /// attribute.
   String get name {
     unsupportedPlatformError();
   }
@@ -8372,6 +9074,21 @@ extension type HTMLInputElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`pattern`** property of the [HTMLInputElement] interface represents
+  /// a
+  /// [regular expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions)
+  /// a non-null `input` value should match. It reflects the `input` element's
+  /// [`pattern`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/pattern)
+  /// attribute.
+  ///
+  /// The `pattern` property is valid for `text`, `search`, `url`, `tel`,
+  /// `email`, and `password` types. It defines a regular expression that the
+  /// input's [HTMLInputElement.value] must match in order for the value to pass
+  /// [constraint validation](https://developer.mozilla.org/en-US/docs/Web/HTML/Constraint_validation).
+  ///
+  /// If a non-`null` value doesn't conform to the constraints set by the
+  /// `pattern` value, the [ValidityState] object's read-only
+  /// [ValidityState.patternMismatch] property will be true.
   String get pattern {
     unsupportedPlatformError();
   }
@@ -8380,6 +9097,11 @@ extension type HTMLInputElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`placeholder`** property of the [HTMLInputElement] interface
+  /// represents a hint to the user of what can be entered in the control. It
+  /// reflects the `input` element's
+  /// [`placeholder`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#placeholder)
+  /// attribute.
   String get placeholder {
     unsupportedPlatformError();
   }
@@ -8388,6 +9110,21 @@ extension type HTMLInputElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`readOnly`** property of the [HTMLInputElement] interface indicates
+  /// that the user cannot modify the value of the `input`. It reflects the
+  /// `input` element's
+  /// [`readonly`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#readonly)
+  /// boolean attribute; returning `true` if the attribute is present and
+  /// `false` when omitted.
+  ///
+  /// Unlike a form control with a true [HTMLInputElement.disabled] property, a
+  /// true `readOnly` property value does not prevent the user from clicking or
+  /// selecting in the control.
+  ///
+  /// While the HTML `readonly` attribute is ignored if the type is `hidden`,
+  /// `range`, `color`, `checkbox`, `radio`, `file`, `submit`, `reset`,
+  /// `button`, and `image`, the `readOnly` property is `true` for these input
+  /// types if the attribute is present, `false` otherwise.
   bool get readOnly {
     unsupportedPlatformError();
   }
@@ -8396,6 +9133,19 @@ extension type HTMLInputElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`required`** property of the [HTMLInputElement] interface specifies
+  /// that the user must fill in a value before submitting a form. It reflects
+  /// the `input` element's
+  /// [`required`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#required)
+  /// attribute.
+  ///
+  /// While the HTML boolean `required` attribute is ignored if the type is
+  /// `hidden`, `range`, `color`, `submit`, `reset`, `button`, and `image`, the
+  /// `required` property is `true` for these input types if the attribute is
+  /// present, `false` otherwise.
+  ///
+  /// If a required input doesn't have a value, the [ValidityState] object's
+  /// read-only [ValidityState.valueMissing] property will be true.
   bool get required {
     unsupportedPlatformError();
   }
@@ -8404,6 +9154,21 @@ extension type HTMLInputElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`size`** property of the [HTMLInputElement] interface defines the
+  /// number of visible characters displayed. It reflects the `input` element's
+  /// [`size`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#size)
+  /// attribute.
+  ///
+  /// The `size` property is relevant to the
+  /// [`text`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/text),
+  /// [`search`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/search),
+  /// [`tel`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/tel),
+  /// [`email`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/email),
+  /// [`url`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/url),
+  /// and
+  /// [`password`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/password)
+  /// input type only. The value is a non-negative integer greater than zero. If
+  /// omitted or invalid, the value is `20`.
   int get size {
     unsupportedPlatformError();
   }
@@ -8412,6 +9177,15 @@ extension type HTMLInputElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`src`** property of the [HTMLInputElement] interface specifies the
+  /// source of an image to display as the graphical submit button. It reflects
+  /// the `input` element's
+  /// [`src`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#src)
+  /// attribute.
+  ///
+  /// The `src` property is valid for the
+  /// [`image`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/image)
+  /// type only.
   String get src {
     unsupportedPlatformError();
   }
@@ -8420,6 +9194,13 @@ extension type HTMLInputElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`step`** property of the [HTMLInputElement] interface indicates the
+  /// step by which numeric or date-time `input` elements can change. It
+  /// reflects the element's
+  /// [`step`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#step)
+  /// attribute. Valid values include the string `"any"` or a string containing
+  /// a positive floating point number. If the attribute is not explicitly set,
+  /// the `step` property is an empty string.
   String get step {
     unsupportedPlatformError();
   }
@@ -8444,6 +9225,11 @@ extension type HTMLInputElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`defaultValue`** property of the [HTMLInputElement] interface
+  /// indicates the original (or default) value of the `input` element. It
+  /// reflects the element's
+  /// [`value`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#value)
+  /// attribute.
   String get defaultValue {
     unsupportedPlatformError();
   }
@@ -8452,6 +9238,11 @@ extension type HTMLInputElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`value`** property of the [HTMLInputElement] interface represents
+  /// the current value of the `input` element as a string.
+  ///
+  /// This property can also be set directly, for example to set a default value
+  /// based on some condition.
   String get value {
     unsupportedPlatformError();
   }
@@ -8460,6 +9251,20 @@ extension type HTMLInputElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`valueAsDate`** property of the [HTMLInputElement] interface
+  /// represents the current value of the `input` element as a `Date`, or `null`
+  /// if conversion is not possible.
+  ///
+  /// This property can also be set directly, for example to set a default date
+  /// based on some condition. If the provided value is neither `null` nor a
+  /// `Date` object, a `TypeError` is thrown. If the provided value is `null` or
+  /// an
+  /// [invalid date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#the_epoch_timestamps_and_invalid_date),
+  /// the input value is set to the empty string.
+  ///
+  /// This property always returns `null` when accessed on an input that isn't
+  /// date- or time-based. When setting this property on such an input, an
+  /// `InvalidStateError` [DOMException] is thrown.
   JSObject? get valueAsDate {
     unsupportedPlatformError();
   }
@@ -8468,6 +9273,12 @@ extension type HTMLInputElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`valueAsNumber`** property of the [HTMLInputElement] interface
+  /// represents the current value of the `input` element as a number or `NaN`
+  /// if converting to a numeric value is not possible.
+  ///
+  /// This property can also be set directly, for example to set a default
+  /// numeric value based on some condition.
   double get valueAsNumber {
     unsupportedPlatformError();
   }
@@ -8476,6 +9287,25 @@ extension type HTMLInputElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`width`** property of the [HTMLInputElement] interface specifies the
+  /// width of a control. It reflects the `input` element's
+  /// [`width`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#width)
+  /// attribute.
+  ///
+  /// The `width` property is valid for the
+  /// [`image`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/image)
+  /// type only. It defines the preferred horizontal size of the image button,
+  /// in pixels. The property value is the width of the
+  /// [content-box](https://developer.mozilla.org/en-US/docs/Web/CSS/box-edge#content-box)
+  /// of the rendered button. CSS box model properties impacting the size of the
+  /// control take precedence.
+  ///
+  /// If no `width` is set and no CSS width properties impact the control, the
+  /// `width` will be the intrinsic width of the image. If the image didn't
+  /// load, the value will be the maximum intrinsic width of the `alt` text. The
+  /// `width` will be `0` if the width is not known; if no `width` is set, no
+  /// CSS dimensions apply, no image loaded, and either the value of the
+  /// [HTMLInputElement.alt] is the empty string or no `src` is set.
   int get width {
     unsupportedPlatformError();
   }
@@ -8484,14 +9314,39 @@ extension type HTMLInputElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`willValidate`** read-only property of the [HTMLInputElement]
+  /// interface indicates whether the `input` element is a candidate for
+  /// [constraint validation](https://developer.mozilla.org/en-US/docs/Web/HTML/Constraint_validation).
+  /// It is `false` if any conditions bar it from constraint validation,
+  /// including:
+  ///
+  /// - Its [HTMLInputElement.type] is one of `hidden`, `reset` or `button`;
+  /// - It has a `datalist` ancestor;
+  /// - Its [HTMLInputElement.disabled] property is `true`.
   bool get willValidate {
     unsupportedPlatformError();
   }
 
+  /// The **`validity`** read-only property of the [HTMLInputElement] interface
+  /// returns a [ValidityState] object that represents the validity states this
+  /// element is in.
   ValidityState get validity {
     unsupportedPlatformError();
   }
 
+  /// The **`validationMessage`** read-only property of the [HTMLInputElement]
+  /// interface returns a string representing a localized message that describes
+  /// the validation constraints that the `input` control does not satisfy (if
+  /// any).
+  ///
+  /// If the `<input>` element is not a candidate for constraint validation
+  /// ([HTMLInputElement.willValidate] is `false`), or it satisfies its
+  /// constraints, the value is the empty string (`""`).
+  ///
+  /// If the element is a candidate for constraint validation (`willValidate` is
+  /// `true`) and the constraints are not met (the [HTMLInputElement.validity]
+  /// object's `valid` property is `false`), the value is the error message that
+  /// would be shown to the user during validation.
   String get validationMessage {
     unsupportedPlatformError();
   }
@@ -8509,7 +9364,8 @@ extension type HTMLInputElement._(JSObject _) implements HTMLElement, JSObject {
   /// nothing is selected, then returns the position of the text input cursor
   /// (caret) inside of the `<input>` element.
   ///
-  /// > **Note:** According to the
+  /// > [!NOTE]
+  /// > According to the
   /// > [WHATWG forms spec](https://html.spec.whatwg.org/multipage/forms.html#concept-input-apply)
   /// > `selectionStart` property applies only to inputs of types text, search,
   /// > URL, tel, and password. In modern browsers, throws an exception while
@@ -8532,7 +9388,8 @@ extension type HTMLInputElement._(JSObject _) implements HTMLElement, JSObject {
   /// no selection, this returns the offset of the character immediately
   /// following the current text input cursor position.
   ///
-  /// > **Note:** According to the
+  /// > [!NOTE]
+  /// > According to the
   /// > [WHATWG forms spec](https://html.spec.whatwg.org/multipage/forms.html#concept-input-apply)
   /// > `selectionEnd` property applies only to inputs of types text, search,
   /// > URL, tel, and password. In modern browsers, throws an exception while
@@ -8572,8 +9429,9 @@ extension type HTMLInputElement._(JSObject _) implements HTMLElement, JSObject {
   /// The selected file system entries can be obtained using the
   /// [HTMLInputElement.webkitEntries] property.
   ///
-  /// > **Note:** This property is called `webkitEntries` in the specification
-  /// > due to its
+  /// > [!NOTE]
+  /// > This property is called `webkitdirectory` in the specification due to
+  /// > its
   /// > origins as a Google Chrome-specific API. It's likely to be renamed
   /// > someday.
   bool get webkitdirectory {
@@ -8596,14 +9454,25 @@ extension type HTMLInputElement._(JSObject _) implements HTMLElement, JSObject {
   /// `true`. This means the `<input>` element was configured to
   /// let the user choose directories.
   ///
-  /// > **Note:** This property is called `webkitEntries` in the specification
-  /// > due to its
+  /// > [!NOTE]
+  /// > This property is called `webkitEntries` in the specification due to its
   /// > origins as a Google Chrome-specific API. It's likely to be renamed
   /// > someday.
   JSArray<FileSystemEntry> get webkitEntries {
     unsupportedPlatformError();
   }
 
+  /// The **`capture`** property of the [HTMLInputElement] interface reflects
+  /// the `input` element's
+  /// [`capture`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/capture)
+  /// attribute. Only relevant to the [`<input>` of type
+  /// `file`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file),
+  /// the property and attribute specify whether, a new file should be captured
+  /// from a user-facing (`user`) or outward facing (`environment`) camera or
+  /// microphone. The type of file is defined the
+  /// [`accept`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/accept)
+  /// attribute. If the attribute is not explicitly set, the `capture` property
+  /// is an empty string.
   String get capture {
     unsupportedPlatformError();
   }
@@ -8635,6 +9504,25 @@ extension type HTMLInputElement._(JSObject _) implements HTMLElement, JSObject {
   /// It is the JavaScript equivalent of the
   /// [`popovertarget`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#popovertarget)
   /// HTML attribute.
+  ///
+  /// Establishing a relationship between a popover and its invoker button using
+  /// the `popoverTargetElement` property has two additional useful effects:
+  ///
+  /// - The browser creates an implicit
+  ///   [`aria-details`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-details)
+  ///   and
+  ///   [`aria-expanded`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+  ///   relationship between popover and invoker, and places the popover in a
+  ///   logical position in the keyboard focus navigation order when shown. This
+  ///   makes the popover more accessible to keyboard and assistive technology
+  ///   (AT) users (see also
+  ///   [Popover accessibility features](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API/Using#popover_accessibility_features)).
+  /// - The browser creates an implicit anchor reference between the two, making
+  ///   it very convenient to position popovers relative to their controls using
+  ///   [CSS anchor positioning](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_anchor_positioning).
+  ///   See
+  ///   [Popover anchor positioning](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API/Using#popover_anchor_positioning)
+  ///   for more details.
   Element? get popoverTargetElement {
     unsupportedPlatformError();
   }
@@ -8673,14 +9561,41 @@ extension type HTMLButtonElement._(JSObject _)
   /// Creates an [HTMLButtonElement] using the tag 'button'.
   HTMLButtonElement() : _ = document.createElement('button');
 
+  /// The **`checkValidity()`** method of the [HTMLButtonElement] interface
+  /// returns a boolean value which indicates if the element meets any
+  /// [constraint validation](https://developer.mozilla.org/en-US/docs/Web/HTML/Constraint_validation)
+  /// rules applied to it. If false, the method also fires an
+  /// [HTMLElement.invalid_event] event on the element. Because there's no
+  /// default browser behavior for `checkValidity()`, canceling this `invalid`
+  /// event has no effect. It always returns true if the `button` element's
+  /// [HTMLButtonElement.type] is `"button"` or `"reset"`, because such buttons
+  /// are never candidates for
+  /// [constraint validation](https://developer.mozilla.org/en-US/docs/Web/HTML/Constraint_validation).
+  ///
+  /// > [!NOTE]
+  /// > An HTML `button` element of the `"submit"` type with a non-null
+  /// > [HTMLButtonElement.validationMessage] is considered invalid, will match
+  /// > the CSS  pseudo-class, and will cause `checkValidity()` to return false.
+  /// > Use the [HTMLButtonElement.setCustomValidity] method to set the
+  /// > [HTMLButtonElement.validationMessage] to the empty string to set the
+  /// > [HTMLButtonElement.validity] state to be valid.
   bool checkValidity() {
     unsupportedPlatformError();
   }
 
+  /// The **`reportValidity()`** method of the [HTMLButtonElement] interface
+  /// performs the same validity checking steps as the
+  /// [HTMLButtonElement.checkValidity] method. In addition, if the
+  /// [HTMLElement.invalid_event] event is not canceled, the browser displays
+  /// the problem to the user.
   bool reportValidity() {
     unsupportedPlatformError();
   }
 
+  /// The **`setCustomValidity()`** method of the [HTMLButtonElement] interface
+  /// sets the custom validity message for the `button` element. Use the empty
+  /// string to indicate that the element does _not_ have a custom validity
+  /// error.
   void setCustomValidity(String error) {
     unsupportedPlatformError();
   }
@@ -8695,10 +9610,22 @@ extension type HTMLButtonElement._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// The **`form`** read-only property of the [HTMLButtonElement] interface
+  /// returns an [HTMLFormElement] object that owns this `button`, or `null` if
+  /// this button is not owned by any form.
   HTMLFormElement? get form {
     unsupportedPlatformError();
   }
 
+  /// The **`formAction`** property of the [HTMLButtonElement] interface is the
+  /// URL of the program that is executed on the server when the form that owns
+  /// this control is submitted. It reflects the value of the `<button>`'s
+  /// [`formaction`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#formaction)
+  /// attribute.
+  ///
+  /// The value overrides the [HTMLFormElement.action] property of the
+  /// [HTMLFormElement] interface if the form is submitted via the button. This
+  /// property can be retrieved or set.
   String get formAction {
     unsupportedPlatformError();
   }
@@ -8707,6 +9634,16 @@ extension type HTMLButtonElement._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// The **`formEnctype`** property of the [HTMLButtonElement] interface is the
+  /// of the content sent to the server when the form is submitted. It reflects
+  /// the value of the `<button>`'s
+  /// [`formenctype`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#formenctype)
+  /// attribute.
+  ///
+  /// The value overrides the [HTMLFormElement.enctype] property of the
+  /// [HTMLFormElement] interface if the form is submitted via the submit
+  /// button. This property can be retrieved or set. If not set, the value is
+  /// the empty string (`""`).
   String get formEnctype {
     unsupportedPlatformError();
   }
@@ -8715,6 +9652,17 @@ extension type HTMLButtonElement._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// The **`formMethod`** property of the [HTMLButtonElement] interface is the
+  /// method used to submit the `form` if the `button` element is the control
+  /// that submits the form. It reflects the value of the `<button>`'s
+  /// [`formmethod`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#formmethod)
+  /// attribute.
+  ///
+  /// The value overrides the [HTMLFormElement.method] property of the
+  /// [HTMLFormElement] interface if the form is submitted via the button. This
+  /// property can be retrieved or set. If set with an empty or invalid value,
+  /// the invalid default value is `"get"`. If not set at all, the value is the
+  /// empty string (`""`).
   String get formMethod {
     unsupportedPlatformError();
   }
@@ -8723,6 +9671,16 @@ extension type HTMLButtonElement._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// The **`formNoValidate`** property of the [HTMLButtonElement] interface is
+  /// a boolean value indicating if the `form` will bypass
+  /// [constraint validation](https://developer.mozilla.org/en-US/docs/Web/HTML/Constraint_validation)
+  /// when submitted via the `button`. It reflects the `<button>` element's
+  /// [`formnovalidate`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#formnovalidate)
+  /// attribute.
+  ///
+  /// Its value overrides the [HTMLFormElement.noValidate] property of the
+  /// [HTMLFormElement] interface if the form is submitted via the button. This
+  /// property can be retrieved or set.
   bool get formNoValidate {
     unsupportedPlatformError();
   }
@@ -8731,6 +9689,16 @@ extension type HTMLButtonElement._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// The **`formTarget`** property of the [HTMLButtonElement] interface is the
+  /// tab, window, or iframe where the response of the submitted `form` is to be
+  /// displayed. It reflects the value of the `button` element's
+  /// [`formtarget`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#formtarget)
+  /// attribute.
+  ///
+  /// The value overrides the [HTMLFormElement.target] property of the
+  /// [HTMLFormElement] interface if the form is submitted via the button. This
+  /// property can be retrieved or set. If not set, the value is the empty
+  /// string (`""`).
   String get formTarget {
     unsupportedPlatformError();
   }
@@ -8739,6 +9707,11 @@ extension type HTMLButtonElement._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// The **`name`** property of the [HTMLButtonElement] interface indicates the
+  /// name of the `button` element or the empty string if the element has no
+  /// name. It reflects the element's
+  /// [`name`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#name)
+  /// attribute.
   String get name {
     unsupportedPlatformError();
   }
@@ -8761,6 +9734,11 @@ extension type HTMLButtonElement._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// The **`value`** property of the [HTMLButtonElement] interface represents
+  /// the value of the `button` element as a string, or the empty string if no
+  /// value is set. It reflects the element's
+  /// [`value`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#value)
+  /// attribute.
   String get value {
     unsupportedPlatformError();
   }
@@ -8769,14 +9747,39 @@ extension type HTMLButtonElement._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// The **`willValidate`** read-only property of the [HTMLButtonElement]
+  /// interface indicates whether the `button` element is a candidate for
+  /// [constraint validation](https://developer.mozilla.org/en-US/docs/Web/HTML/Constraint_validation).
+  /// It is `false` if any conditions bar it from constraint validation,
+  /// including:
+  ///
+  /// - Its [HTMLButtonElement.type] is `reset` or `button`;
+  /// - It has a `datalist` ancestor;
+  /// - The [HTMLButtonElement.disabled] property is `true`.
   bool get willValidate {
     unsupportedPlatformError();
   }
 
+  /// The **`validity`** read-only property of the [HTMLButtonElement] interface
+  /// returns a [ValidityState] object that represents the validity states this
+  /// element is in.
   ValidityState get validity {
     unsupportedPlatformError();
   }
 
+  /// The **`validationMessage`** read-only property of the [HTMLButtonElement]
+  /// interface returns a string representing a localized message that describes
+  /// the validation constraints that the `button` control does not satisfy (if
+  /// any). This is the empty string if the control is not a candidate for
+  /// constraint validation (the `<button>`'s
+  /// [`type`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#type)
+  /// is `button` or `reset`), or it satisfies its constraints.
+  ///
+  /// If the `<button>` is a candidate for constraint validation (the `type` is
+  /// set or defaults to `submit` and [HTMLButtonElement.willValidate] is
+  /// `true`) and the constraints are not met (there is a non-null
+  /// [ValidityState.customError]), the value is the error message that would be
+  /// shown to the user during element validation.
   String get validationMessage {
     unsupportedPlatformError();
   }
@@ -8794,6 +9797,25 @@ extension type HTMLButtonElement._(JSObject _)
   /// It is the JavaScript equivalent of the
   /// [`popovertarget`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#popovertarget)
   /// HTML attribute.
+  ///
+  /// Establishing a relationship between a popover and its invoker button using
+  /// the `popoverTargetElement` property has two additional useful effects:
+  ///
+  /// - The browser creates an implicit
+  ///   [`aria-details`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-details)
+  ///   and
+  ///   [`aria-expanded`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+  ///   relationship between popover and invoker, and places the popover in a
+  ///   logical position in the keyboard focus navigation order when shown. This
+  ///   makes the popover more accessible to keyboard and assistive technology
+  ///   (AT) users (see also
+  ///   [Popover accessibility features](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API/Using#popover_accessibility_features)).
+  /// - The browser creates an implicit anchor reference between the two, making
+  ///   it very convenient to position popovers relative to their controls using
+  ///   [CSS anchor positioning](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_anchor_positioning).
+  ///   See
+  ///   [Popover anchor positioning](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API/Using#popover_anchor_positioning)
+  ///   for more details.
   Element? get popoverTargetElement {
     unsupportedPlatformError();
   }
@@ -8879,16 +9901,30 @@ extension type HTMLSelectElement._(JSObject _)
     unsupportedPlatformError();
   }
 
-  /// The **`HTMLSelectElement.checkValidity()`** method checks
-  /// whether the element has any constraints and whether it satisfies them. If
-  /// the element
-  /// fails its constraints, the browser fires a cancelable
-  /// [HTMLSelectElement.invalid_event] event at the
-  /// element, and then returns `false`.
+  /// The **`checkValidity()`** method of the [HTMLSelectElement] interface
+  /// returns a boolean value which indicates if the element meets any
+  /// [constraint validation](https://developer.mozilla.org/en-US/docs/Web/HTML/Constraint_validation)
+  /// rules applied to it. If false, the method also fires an
+  /// [HTMLElement.invalid_event] event on the element. Because there's no
+  /// default browser behavior for `checkValidity()`, canceling this `invalid`
+  /// event has no effect.
+  ///
+  /// > [!NOTE]
+  /// > An HTML `select` element with a non-null
+  /// > [HTMLSelectElement.validationMessage] is considered invalid, will match
+  /// > the CSS  pseudo-class, and will cause `checkValidity()` to return false.
+  /// > Use the [HTMLSelectElement.setCustomValidity] method to set the
+  /// > [HTMLSelectElement.validationMessage] to the empty string to set the
+  /// > [HTMLSelectElement.validity] state to be valid.
   bool checkValidity() {
     unsupportedPlatformError();
   }
 
+  /// The **`reportValidity()`** method of the [HTMLSelectElement] interface
+  /// performs the same validity checking steps as the
+  /// [HTMLSelectElement.checkValidity] method. In addition, if the
+  /// [HTMLElement.invalid_event] event is not canceled, the browser displays
+  /// the problem to the user.
   bool reportValidity() {
     unsupportedPlatformError();
   }
@@ -8913,6 +9949,11 @@ extension type HTMLSelectElement._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// The **`autocomplete`** property of the [HTMLSelectElement] interface
+  /// indicates whether the value of the control can be automatically completed
+  /// by the browser. It reflects the `<select>` element's
+  /// [`autocomplete`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select#autocomplete)
+  /// attribute.
   String get autocomplete {
     unsupportedPlatformError();
   }
@@ -8935,14 +9976,18 @@ extension type HTMLSelectElement._(JSObject _)
     unsupportedPlatformError();
   }
 
-  /// The **`HTMLSelectElement.form`** read-only property returns a
-  /// [HTMLFormElement] representing the form that this element is associated
-  /// with. If the element is not associated with a `form` element, then
-  /// it returns `null`.
+  /// The **`form`** read-only property of the [HTMLSelectElement] interface
+  /// returns an [HTMLFormElement] object that owns this `select`, or `null` if
+  /// this select is not owned by any form.
   HTMLFormElement? get form {
     unsupportedPlatformError();
   }
 
+  /// The **`multiple`** property of the [HTMLSelectElement] interface specifies
+  /// that the user may select more than one option from the list of options. It
+  /// reflects the `select` element's
+  /// [`multiple`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select#multiple)
+  /// attribute.
   bool get multiple {
     unsupportedPlatformError();
   }
@@ -8951,6 +9996,10 @@ extension type HTMLSelectElement._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// The **`name`** property of the [HTMLSelectElement] interface indicates the
+  /// name of the `select` element. It reflects the element's
+  /// [`name`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select#name)
+  /// attribute.
   String get name {
     unsupportedPlatformError();
   }
@@ -8959,6 +10008,11 @@ extension type HTMLSelectElement._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// The **`required`** property of the [HTMLSelectElement] interface specifies
+  /// that the user must select an option with a non-empty string value before
+  /// submitting a form. It reflects the `select` element's
+  /// [`required`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select#required)
+  /// attribute.
   bool get required {
     unsupportedPlatformError();
   }
@@ -8967,6 +10021,16 @@ extension type HTMLSelectElement._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// The **`size`** property of the [HTMLSelectElement] interface specifies the
+  /// number of options, or rows, that should be visible at one time. It
+  /// reflects the `select` element's
+  /// [`size`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select#size)
+  /// attribute. If omitted, the value is `0`.
+  ///
+  /// > [!NOTE]
+  /// > While by default a `<select>` displays a single row unless
+  /// > [HTMLSelectElement.multiple] is true, in which case four rows are
+  /// > displayed, the default value for the `size` property is `0`.
   int get size {
     unsupportedPlatformError();
   }
@@ -8988,6 +10052,10 @@ extension type HTMLSelectElement._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// The **`length`** property of the [HTMLSelectElement] interface specifies
+  /// the number of `option` elements in the `select` element. It represents the
+  /// number of nodes in the [HTMLSelectElement.options] collection. On setting,
+  /// it acts as ([HTMLOptionsCollection.length]).
   int get length {
     unsupportedPlatformError();
   }
@@ -9008,10 +10076,11 @@ extension type HTMLSelectElement._(JSObject _)
     unsupportedPlatformError();
   }
 
-  /// The **`HTMLSelectElement.selectedIndex`** property is a
-  /// `long` that reflects the index of the first or last selected
-  /// `option` element, depending on the value of `multiple`. The
-  /// value `-1` indicates that no element is selected.
+  /// The **`selectedIndex`** property of the [HTMLSelectElement] interface is
+  /// the numeric index of the first selected `option` element in a `select`
+  /// element, if any, or `−1` if no `<option>` is selected. Setting this
+  /// property selects the option at that index and deselects all other options,
+  /// while setting it to `-1` deselects any currently selected options.
   int get selectedIndex {
     unsupportedPlatformError();
   }
@@ -9033,14 +10102,34 @@ extension type HTMLSelectElement._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// The **`willValidate`** read-only property of the [HTMLSelectElement]
+  /// interface indicates whether the `select` element is a candidate for
+  /// [constraint validation](https://developer.mozilla.org/en-US/docs/Web/HTML/Constraint_validation).
+  /// It is `false` if any conditions bar it from constraint validation, such as
+  /// when its [HTMLSelectElement.disabled] property is `true`.
   bool get willValidate {
     unsupportedPlatformError();
   }
 
+  /// The **`validity`** read-only property of the [HTMLSelectElement] interface
+  /// returns a [ValidityState] object that represents the validity states this
+  /// element is in.
   ValidityState get validity {
     unsupportedPlatformError();
   }
 
+  /// The **`validationMessage`** read-only property of the [HTMLSelectElement]
+  /// interface returns a string representing a localized message that describes
+  /// the validation constraints that the `select` control does not satisfy (if
+  /// any). This is the empty string if the control is not a candidate for
+  /// constraint validation ([HTMLSelectElement.willValidate] is `false`), or it
+  /// satisfies its constraints.
+  ///
+  /// If the `<select>` element is a candidate for constraint validation
+  /// (`willValidate` is `true`) and the constraints are not met (the
+  /// [HTMLSelectElement.validity] object's `valid` property is `false`), the
+  /// value is the error message that would be shown to the user during
+  /// validation.
   String get validationMessage {
     unsupportedPlatformError();
   }
@@ -9066,6 +10155,11 @@ extension type HTMLDataListElement._(JSObject _)
   /// Creates an [HTMLDataListElement] using the tag 'datalist'.
   HTMLDataListElement() : _ = document.createElement('datalist');
 
+  /// The **`options`** read-only property of the [HTMLDataListElement]
+  /// interface returns an [HTMLCollection] of [HTMLOptionElement] elements
+  /// contained in a `datalist`. The descendant `option` elements provide
+  /// predefined options for the `input` control associated with the
+  /// `<datalist>`.
   HTMLCollection get options {
     unsupportedPlatformError();
   }
@@ -9085,6 +10179,15 @@ extension type HTMLOptGroupElement._(JSObject _)
   /// Creates an [HTMLOptGroupElement] using the tag 'optgroup'.
   HTMLOptGroupElement() : _ = document.createElement('optgroup');
 
+  /// The **`disabled`** property of the [HTMLOptGroupElement] interface is a
+  /// boolean value that reflects the `optgroup` element's
+  /// [`disabled`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/optgroup#disabled)
+  /// attribute, which indicates whether the control is disabled.
+  ///
+  /// When disabled, the `option` element descendants of the `<optgroup>`
+  /// element are unusable, un-clickable, and unselectable. These disabled
+  /// `<option>`s will match the  selector, even if their `disabled` property
+  /// value is false.
   bool get disabled {
     unsupportedPlatformError();
   }
@@ -9093,6 +10196,10 @@ extension type HTMLOptGroupElement._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// The **`label`** property of the [HTMLOptGroupElement] interface is a
+  /// string value that reflects the `optgroup` element's
+  /// [`label`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/optgroup#label)
+  /// attribute, which provides a textual label to the group of options.
   String get label {
     unsupportedPlatformError();
   }
@@ -9114,6 +10221,17 @@ extension type HTMLOptionElement._(JSObject _)
   /// Creates an [HTMLOptionElement] using the tag 'option'.
   HTMLOptionElement() : _ = document.createElement('option');
 
+  /// The **`disabled`** property of the [HTMLOptionElement] is a boolean value
+  /// that indicates whether the `option` element is unavailable to be selected.
+  /// The property reflects the value of the
+  /// [`disabled`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option#disabled)
+  /// HTML attribute.
+  ///
+  /// The property reflects the value of the `disabled` attribute on the
+  /// `<option>` element itself. If an option is disabled because it is a child
+  /// of an `optgroup` element that is disabled, the `true` of the
+  /// [HTMLOptGroupElement.disabled] property is not inherited by the option
+  /// itself.
   bool get disabled {
     unsupportedPlatformError();
   }
@@ -9122,10 +10240,22 @@ extension type HTMLOptionElement._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// The **`form`** read-only property of the [HTMLOptionElement] interface
+  /// returns an [HTMLFormElement] object that owns the [HTMLSelectElement]
+  /// associated with this `option`, or `null` if this option is not associated
+  /// with a `select` owned by a form.
   HTMLFormElement? get form {
     unsupportedPlatformError();
   }
 
+  /// The **`label`** property of the [HTMLOptionElement] represents the text
+  /// displayed for an option in a `select` element or as part of a list of
+  /// suggestions in a `datalist` element. It reflects the `option` element's
+  /// [`label`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option#label)
+  /// attribute.
+  ///
+  /// If the attribute is omitted or the empty string, the `label` property
+  /// returns the element's [HTMLOptionElement.text] content.
   String get label {
     unsupportedPlatformError();
   }
@@ -9134,6 +10264,12 @@ extension type HTMLOptionElement._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// The **`defaultSelected`** property of the [HTMLOptionElement] interface
+  /// specifies the default selected state of the element. This property
+  /// reflects the `option` element's
+  /// [`selected`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option#selected)
+  /// attribute. The presence of the `selected` attribute sets the
+  /// `defaultSelected` property to `true`.
   bool get defaultSelected {
     unsupportedPlatformError();
   }
@@ -9142,6 +10278,18 @@ extension type HTMLOptionElement._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// The **`selected`** property of the [HTMLOptionElement] interface specifies
+  /// the current selectedness of the element; that is, whether the `option` is
+  /// selected or not.
+  ///
+  /// The presence of the HTML
+  /// [`selected`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option#selected)
+  /// attribute indicates the option is selected by default. It does not
+  /// indicate whether this option is currently selected: if the option's state
+  /// changes, the `selected` content attribute does not reflect the change;
+  /// only the `HTMLOptionElement`'s `selected` IDL property is updated. The
+  /// `selected` attribute is reflected by the
+  /// [HTMLOptionElement.defaultSelected] property.
   bool get selected {
     unsupportedPlatformError();
   }
@@ -9150,6 +10298,12 @@ extension type HTMLOptionElement._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// The **`value`** property of the [HTMLOptionElement] interface represents
+  /// the value of the `option` element as a string, or the empty string if no
+  /// value is set. It reflects the element's
+  /// [`value`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option#value)
+  /// attribute, if present. Otherwise, it returns or sets the contents of the
+  /// element, similar to the [Node.textContent] property.
   String get value {
     unsupportedPlatformError();
   }
@@ -9158,6 +10312,14 @@ extension type HTMLOptionElement._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// The **`text`** property of the [HTMLOptionElement] represents the text
+  /// inside the `option` element.
+  /// This property represents the same information as [Node.textContent].
+  ///
+  /// > [!NOTE]
+  /// > If the element has a `label`, the text inside the `option` is not
+  /// > visually rendered. In this case, the `text` property can still be used
+  /// > to set the content, but it will have no visible effect.
   String get text {
     unsupportedPlatformError();
   }
@@ -9166,13 +10328,18 @@ extension type HTMLOptionElement._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// The read-only **`index`** property of the [HTMLOptionElement] interface
+  /// specifies the 0-based index of the element; that is, the position of the
+  /// `option` within the list of options it belongs to, in tree-order, as an
+  /// integer. If the `<option>` is not part of an option-list, the value is
+  /// `0`.
   int get index {
     unsupportedPlatformError();
   }
 }
 
-/// The **`HTMLTextAreaElement`** interface provides special properties and
-/// methods for manipulating the layout and presentation of `textarea` elements.
+/// The **`HTMLTextAreaElement`** interface provides properties and methods for
+/// manipulating the layout and presentation of `textarea` elements.
 ///
 /// ---
 ///
@@ -9183,22 +10350,70 @@ extension type HTMLTextAreaElement._(JSObject _)
   /// Creates an [HTMLTextAreaElement] using the tag 'textarea'.
   HTMLTextAreaElement() : _ = document.createElement('textarea');
 
+  /// The **`checkValidity()`** method of the [HTMLTextAreaElement] interface
+  /// returns a boolean value which indicates if the element meets any
+  /// [constraint validation](https://developer.mozilla.org/en-US/docs/Web/HTML/Constraint_validation)
+  /// rules applied to it. If false, the method also fires an
+  /// [HTMLElement.invalid_event] event on the element. Because there's no
+  /// default browser behavior for `checkValidity()`, canceling this `invalid`
+  /// event has no effect.
+  ///
+  /// > [!NOTE]
+  /// > An HTML `textarea` element with a non-null
+  /// > [HTMLTextAreaElement.validationMessage] is considered invalid, will
+  /// > match the CSS  pseudo-class, and will cause `checkValidity()` to return
+  /// > false. Use the [HTMLTextAreaElement.setCustomValidity] method to set the
+  /// > [HTMLTextAreaElement.validationMessage] to the empty string to set the
+  /// > [HTMLTextAreaElement.validity] state to be valid.
   bool checkValidity() {
     unsupportedPlatformError();
   }
 
+  /// The **`reportValidity()`** method of the [HTMLTextAreaElement] interface
+  /// performs the same validity checking steps as the
+  /// [HTMLTextAreaElement.checkValidity] method. In addition, if the
+  /// [HTMLElement.invalid_event] event is not canceled, the browser displays
+  /// the problem to the user.
   bool reportValidity() {
     unsupportedPlatformError();
   }
 
+  /// The **`setCustomValidity()`** method of the [HTMLTextAreaElement]
+  /// interface sets the custom validity message for the `textarea` element. Use
+  /// the empty string to indicate that the element does _not_ have a custom
+  /// validity error.
   void setCustomValidity(String error) {
     unsupportedPlatformError();
   }
 
+  /// The **`select()`** method of the [HTMLTextAreaElement] interface selects
+  /// the entire contents of the `textarea` element. In addition, the
+  /// [HTMLTextAreaElement.select_event] event is fired. The `select()` method
+  /// does not take any parameters and does not return a value.
   void select() {
     unsupportedPlatformError();
   }
 
+  /// The **`setRangeText()`** method of the [HTMLTextAreaElement] interface
+  /// replaces a
+  /// range of text in an `textarea` element with new text passed as the
+  /// argument.
+  ///
+  /// Additional optional parameters include the start of the section of text to
+  /// change, the end of the section, and a keyword defining what part of the
+  /// `<textarea>` should be selected after the text is updated. If the
+  /// `startSelection` and `endSelection` arguments are not provided, the range
+  /// is assumed to be the selection.
+  ///
+  /// The final argument determines how the selection will be set after the text
+  /// has been replaced. The possible values are `"select"`, which selects the
+  /// newly inserted text, `"start"`, which moves the selection to just before
+  /// the inserted text, `"end"`, which moves the selection to just after the
+  /// inserted text, or the default, `"preserve"`, which tries to preserve the
+  /// selection.
+  ///
+  /// In addition, the [HTMLTextAreaElement.select_event] and
+  /// [HTMLTextAreaElement.selectionchange_event] events are fired.
   void setRangeText(
     String replacement, [
     int? start,
@@ -9208,6 +10423,26 @@ extension type HTMLTextAreaElement._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// The **`setSelectionRange()`** method of the [HTMLTextAreaElement]
+  /// interface sets the start and end positions of the current text selection,
+  /// and optionally the direction, in an `textarea` element. The direction
+  /// indicates the in which selection should be considered to have occurred;
+  /// for example, that the selection was set by the user clicking and dragging
+  /// from the end of the selected text toward the beginning. In addition, the
+  /// [HTMLTextAreaElement.select_event] and
+  /// [HTMLTextAreaElement.selectionchange_event] events are fired.
+  ///
+  /// This method also updates the [HTMLTextAreaElement.selectionStart],
+  /// [HTMLTextAreaElement.selectionEnd], and
+  /// [HTMLTextAreaElement.selectionDirection] properties.
+  ///
+  /// > [!NOTE]
+  /// > The `<textarea>` must be focused to enable selecting a subsection of the
+  /// > text to be selected using the `setSelectionRange()` method. Setting
+  /// > focus also fires a `selectchange` event.
+  ///
+  /// To select **all** of the text of an `<textarea>` element, use the
+  /// [HTMLTextAreaElement.select] method.
   void setSelectionRange(
     int start,
     int end, [
@@ -9216,6 +10451,11 @@ extension type HTMLTextAreaElement._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// The **`autocomplete`** property of the [HTMLTextAreaElement] interface
+  /// indicates whether the value of the control can be automatically completed
+  /// by the browser. It reflects the `<textarea>` element's
+  /// [`autocomplete`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#autocomplete)
+  /// attribute.
   String get autocomplete {
     unsupportedPlatformError();
   }
@@ -9224,6 +10464,12 @@ extension type HTMLTextAreaElement._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// The **`cols`** property of the [HTMLTextAreaElement] interface is a
+  /// positive integer representing the visible width of the multi-line text
+  /// control, in average character widths. It reflects the `<textarea>`
+  /// element's
+  /// [`cols`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#cols)
+  /// attribute.
   int get cols {
     unsupportedPlatformError();
   }
@@ -9240,6 +10486,12 @@ extension type HTMLTextAreaElement._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// The **`disabled`** property of the [HTMLTextAreaElement] interface
+  /// indicates whether this multi-line text control is disabled and cannot be
+  /// interacted with. It reflects the `textarea` element's
+  /// [`disabled`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#autocomplete)
+  /// attribute. When `false`, this `textarea` may still be disabled if its
+  /// containing element, such as a `fieldset`, is disabled.
   bool get disabled {
     unsupportedPlatformError();
   }
@@ -9248,10 +10500,26 @@ extension type HTMLTextAreaElement._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// The **`form`** read-only property of the [HTMLTextAreaElement] interface
+  /// returns an [HTMLFormElement] object that owns this `textarea`, or `null`
+  /// if this textarea is not owned by any form.
   HTMLFormElement? get form {
     unsupportedPlatformError();
   }
 
+  /// The **`maxLength`** property of the [HTMLTextAreaElement] interface
+  /// indicates the maximum number of characters (in UTF-16 code units) allowed
+  /// to be entered for the value of the `textarea` element, and the maximum
+  /// number of characters allowed for the value to be valid. It reflects the
+  /// element's
+  /// [`maxlength`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#maxlength)
+  /// attribute. `-1` means there is no limit on the length of the value.
+  ///
+  /// > [!NOTE]
+  /// > Browsers generally prevent users from entering more characters than the
+  /// > `maxlength` attribute allows. Should the length be longer, the element
+  /// > is considered invalid and the [ValidityState] object's
+  /// > [ValidityState.tooLong] property will be `true`.
   int get maxLength {
     unsupportedPlatformError();
   }
@@ -9260,6 +10528,18 @@ extension type HTMLTextAreaElement._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// The **`minLength`** property of the [HTMLTextAreaElement] interface
+  /// indicates the minimum number of characters (in UTF-16 code units) required
+  /// for the value of the `textarea` element to be valid. It reflects the
+  /// element's
+  /// [`minlength`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#minlength)
+  /// attribute. `-1` means there is no minimum length requirement.
+  ///
+  /// > [!NOTE]
+  /// > If the textarea has a value, and that value has fewer characters than
+  /// > the `minlength` attribute requires, the element is considered invalid
+  /// > and the [ValidityState] object's [ValidityState.tooShort] property will
+  /// > be `true`.
   int get minLength {
     unsupportedPlatformError();
   }
@@ -9268,6 +10548,10 @@ extension type HTMLTextAreaElement._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// The **`name`** property of the [HTMLTextAreaElement] interface indicates
+  /// the name of the `textarea` element. It reflects the element's
+  /// [`name`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#name)
+  /// attribute.
   String get name {
     unsupportedPlatformError();
   }
@@ -9276,6 +10560,11 @@ extension type HTMLTextAreaElement._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// The **`placeholder`** property of the [HTMLTextAreaElement] interface
+  /// represents a hint to the user of what can be entered in the control. It
+  /// reflects the `textarea` element's
+  /// [`placeholder`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#placeholder)
+  /// attribute.
   String get placeholder {
     unsupportedPlatformError();
   }
@@ -9284,6 +10573,13 @@ extension type HTMLTextAreaElement._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// The **`readOnly`** property of the [HTMLTextAreaElement] interface
+  /// indicates that the user cannot modify the value of the control. Unlike the
+  /// [HTMLTextAreaElement.disabled] attribute, the `readonly` attribute does
+  /// not prevent the user from clicking or selecting in the control. It
+  /// reflects the `textarea` element's
+  /// [`readonly`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#readonly)
+  /// attribute.
   bool get readOnly {
     unsupportedPlatformError();
   }
@@ -9292,6 +10588,11 @@ extension type HTMLTextAreaElement._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// The **`required`** property of the [HTMLTextAreaElement] interface
+  /// specifies that the user must fill in a value before submitting a form. It
+  /// reflects the `textarea` element's
+  /// [`required`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#required)
+  /// attribute.
   bool get required {
     unsupportedPlatformError();
   }
@@ -9300,6 +10601,11 @@ extension type HTMLTextAreaElement._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// The **`rows`** property of the [HTMLTextAreaElement] interface is a
+  /// positive integer representing the visible text lines of the text control.
+  /// It reflects the `<textarea>` element's
+  /// [`rows`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#rows)
+  /// attribute.
   int get rows {
     unsupportedPlatformError();
   }
@@ -9308,6 +10614,12 @@ extension type HTMLTextAreaElement._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// The **`wrap`** property of the [HTMLTextAreaElement] interface indicates
+  /// how the control should wrap the value for form submission. It reflects the
+  /// `<textarea>` element's
+  /// [`wrap`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#wrap)
+  /// attribute. Note that the `"hard"` value only has an effect when the
+  /// [HTMLTextAreaElement.cols] attribute is also set.
   String get wrap {
     unsupportedPlatformError();
   }
@@ -9316,12 +10628,16 @@ extension type HTMLTextAreaElement._(JSObject _)
     unsupportedPlatformError();
   }
 
-  /// The read-only **`type`** property of the [HTMLTextAreaElement] always
-  /// returns `textarea`.
+  /// The **`type`** read-only property of the [HTMLTextAreaElement] interface
+  /// returns the string `"textarea"`.
   String get type {
     unsupportedPlatformError();
   }
 
+  /// The **`defaultValue`** property of the [HTMLTextAreaElement] interface
+  /// represents the default text content of this text area. Getting and setting
+  /// this value is equivalent to getting and setting [Node.textContent] on the
+  /// `textarea`.
   String get defaultValue {
     unsupportedPlatformError();
   }
@@ -9330,6 +10646,10 @@ extension type HTMLTextAreaElement._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// The **`value`** property of the [HTMLTextAreaElement] interface represents
+  /// the value of the `textarea` element as a string, which is an empty string
+  /// if the widget contains no content. It returns or sets the raw value
+  /// contained in the control.
   String get value {
     unsupportedPlatformError();
   }
@@ -9338,18 +10658,44 @@ extension type HTMLTextAreaElement._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// The **`textLength`** read-only property of the [HTMLTextAreaElement]
+  /// interface is a non-negative integer representing the number of characters,
+  /// in UTF-16 code units, of the `textarea` element's value. It is a shortcut
+  /// of accessing `length` on its [HTMLTextAreaElement.value] property.
   int get textLength {
     unsupportedPlatformError();
   }
 
+  /// The **`willValidate`** read-only property of the [HTMLTextAreaElement]
+  /// interface indicates whether the `textarea` element is a candidate for
+  /// [constraint validation](https://developer.mozilla.org/en-US/docs/Web/HTML/Constraint_validation).
+  /// It is `false` if any conditions bar it from constraint validation, such as
+  /// when its [HTMLTextAreaElement.disabled] or [HTMLTextAreaElement.readOnly]
+  /// property is `true`.
   bool get willValidate {
     unsupportedPlatformError();
   }
 
+  /// The **`validity`** read-only property of the [HTMLTextAreaElement]
+  /// interface returns a [ValidityState] object that represents the validity
+  /// states this element is in.
   ValidityState get validity {
     unsupportedPlatformError();
   }
 
+  /// The **`validationMessage`** read-only property of the
+  /// [HTMLTextAreaElement] interface returns a string representing a localized
+  /// message that describes the validation constraints that the `textarea`
+  /// control does not satisfy (if any). This is the empty string if the control
+  /// is not a candidate for constraint validation
+  /// ([HTMLTextAreaElement.willValidate] is `false`), or it satisfies its
+  /// constraints.
+  ///
+  /// If the `<textarea>` element is a candidate for constraint validation
+  /// (`willValidate` is `true`) and the constraints are not met (the
+  /// [HTMLTextAreaElement.validity] object's `valid` property is `false`), the
+  /// value is the error message that would be shown to the user during
+  /// validation.
   String get validationMessage {
     unsupportedPlatformError();
   }
@@ -9361,6 +10707,29 @@ extension type HTMLTextAreaElement._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// The **`selectionStart`** property of the [HTMLTextAreaElement] interface
+  /// specifies the start position of the current text selection in a `textarea`
+  /// element. It is a number representing the beginning index of the selected
+  /// text. It can be used to both retrieve and set the start of the index of
+  /// the beginning of a `<textarea>`s selected text.
+  ///
+  /// When nothing is selected, the value of both the `selectionStart` and
+  /// [HTMLTextAreaElement.selectionEnd] is the position of the cursor (caret)
+  /// inside the `<textarea>` element.
+  ///
+  /// Setting `selectionStart` to a value greater then the current value of
+  /// [HTMLTextAreaElement.selectionEnd] updates both the `selectionStart` and
+  /// `selectionEnd` properties to that value. If that value is equal to or
+  /// greater than the [HTMLTextAreaElement.textLength], both properties are
+  /// both set to the `textLength` property value.
+  ///
+  /// The property value can be retrieved and set without the `<textarea>`
+  /// having focus, but the element does need to have focus for the
+  /// pseudo-element to match the selected text.
+  ///
+  /// Setting the `selectionStart` to a new value fires the
+  /// [HTMLTextAreaElement.selectionchange_event] and
+  /// [HTMLTextAreaElement.select_event]events.
   int get selectionStart {
     unsupportedPlatformError();
   }
@@ -9369,6 +10738,29 @@ extension type HTMLTextAreaElement._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// The **`selectionEnd`** property of the [HTMLTextAreaElement] interface
+  /// specifies the end position of the current text selection in a `textarea`
+  /// element. It is a number representing the last index of the selected text.
+  /// It can be used to both retrieve and set the index of the end of a
+  /// `<textarea>`s selected text.
+  ///
+  /// When nothing is selected, the value of both the
+  /// [HTMLTextAreaElement.selectionStart] and `selectionEnd` is the position of
+  /// the cursor (caret) inside the `<textarea>` element.
+  ///
+  /// Setting `selectionEnd` to a value less than the current value of
+  /// [HTMLTextAreaElement.selectionStart] updates both the `selectionEnd` and
+  /// `selectionStart` properties to that value. If both value are less than 0,
+  /// both properties are set to the [HTMLTextAreaElement.textLength] property
+  /// value.
+  ///
+  /// The property value can be retrieved and set without the `<textarea>`
+  /// having focus, but the element does need to have focus for the
+  /// pseudo-element to match the selected text.
+  ///
+  /// Setting the `selectionEnd` to a new value fires the
+  /// [HTMLTextAreaElement.selectionchange_event] and
+  /// [HTMLTextAreaElement.select_event] events.
   int get selectionEnd {
     unsupportedPlatformError();
   }
@@ -9377,6 +10769,19 @@ extension type HTMLTextAreaElement._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// <!--  -->
+  ///
+  /// The **`selectionDirection`** property of the [HTMLTextAreaElement]
+  /// interface specifies the current direction of the selection. The possible
+  /// values are `"forward"`, `"backward"`, and `"none"`. The `forward` value
+  /// indicates the selection was performed in the start-to-end direction of the
+  /// current locale, with `backward` indicating the opposite direction. The
+  /// `none` value occurs if the direction is unknown. It can be used to both
+  /// retrieve and change the direction of the `<textarea>`s selected text.
+  ///
+  /// Setting the `selectionDirection` to a new value fires the
+  /// [HTMLTextAreaElement.selectionchange_event] and
+  /// [HTMLTextAreaElement.select_event] events.
   String get selectionDirection {
     unsupportedPlatformError();
   }
@@ -9399,26 +10804,58 @@ extension type HTMLOutputElement._(JSObject _)
   /// Creates an [HTMLOutputElement] using the tag 'output'.
   HTMLOutputElement() : _ = document.createElement('output');
 
+  /// The **`checkValidity()`** method of the [HTMLOutputElement] interface
+  /// checks if the element is valid, but always returns true because `output`
+  /// elements are never candidates for
+  /// [constraint validation](https://developer.mozilla.org/en-US/docs/Web/HTML/Constraint_validation).
   bool checkValidity() {
     unsupportedPlatformError();
   }
 
+  /// The **`reportValidity()`** method of the [HTMLOutputElement] interface
+  /// performs the same validity checking steps as the
+  /// [HTMLOutputElement.checkValidity] method. It always returns true because
+  /// `output` elements are never candidates for
+  /// [constraint validation](https://developer.mozilla.org/en-US/docs/Web/HTML/Constraint_validation).
   bool reportValidity() {
     unsupportedPlatformError();
   }
 
+  /// The **`setCustomValidity()`** method of the [HTMLOutputElement] interface
+  /// sets the custom validity message for the `output` element. Use the empty
+  /// string to indicate that the element does _not_ have a custom validity
+  /// error.
+  ///
+  /// The `<output>` element is not a candidate for constraint validation. The
+  /// [HTMLOutputElement.reportValidity] method will not cause the custom error
+  /// message to be displayed to the user, but does set the
+  /// [ValidityState.customError] property of the element's [ValidityState]
+  /// object to `true` and the [ValidityState.valid] property to `false`.
   void setCustomValidity(String error) {
     unsupportedPlatformError();
   }
 
+  /// The **`htmlFor`** property of the [HTMLOutputElement] interface is a
+  /// string containing a space-separated list of other elements' `id`s,
+  /// indicating that those elements contributed input values to (or otherwise
+  /// affected) the calculation. It reflects the
+  /// [`for`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/output#for)
+  /// attribute of the `output` element.
   DOMTokenList get htmlFor {
     unsupportedPlatformError();
   }
 
+  /// The **`form`** read-only property of the [HTMLOutputElement] interface
+  /// returns an [HTMLFormElement] object that owns this `output`, or `null` if
+  /// this output is not owned by any form.
   HTMLFormElement? get form {
     unsupportedPlatformError();
   }
 
+  /// The **`name`** property of the [HTMLOutputElement] interface indicates the
+  /// name of the `output` element. It reflects the element's
+  /// [`name`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/output#name)
+  /// attribute.
   String get name {
     unsupportedPlatformError();
   }
@@ -9427,10 +10864,16 @@ extension type HTMLOutputElement._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// The **`type`** read-only property of the [HTMLOutputElement] interface
+  /// returns the string `"output"`.
   String get type {
     unsupportedPlatformError();
   }
 
+  /// The **`defaultValue`** property of the [HTMLOutputElement] interface
+  /// represents the default text content of this `output` element. Getting and
+  /// setting this value is equivalent to getting and setting [Node.textContent]
+  /// on the `output`.
   String get defaultValue {
     unsupportedPlatformError();
   }
@@ -9439,6 +10882,15 @@ extension type HTMLOutputElement._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// The **`value`** property of the [HTMLOutputElement] interface represents
+  /// the value of the `output` element as a string, or the empty string if no
+  /// value is set. It returns or sets the contents of the element, similar to
+  /// the [Node.textContent] property.
+  ///
+  /// > [!NOTE]
+  /// > When the `value` property of an `<output>` element is set, the element
+  /// > goes into value mode and the default value is accessible only through
+  /// > the [HTMLOutputElement.defaultValue] property.
   String get value {
     unsupportedPlatformError();
   }
@@ -9447,14 +10899,29 @@ extension type HTMLOutputElement._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// The **`willValidate`** read-only property of the [HTMLOutputElement]
+  /// interface returns `false`, because `output` elements are not candidates
+  /// for
+  /// [constraint validation](https://developer.mozilla.org/en-US/docs/Web/HTML/Constraint_validation).
   bool get willValidate {
     unsupportedPlatformError();
   }
 
+  /// The **`validity`** read-only property of the [HTMLOutputElement] interface
+  /// returns a [ValidityState] object that represents the validity states this
+  /// element is in. Although `output` elements are never candidates for
+  /// [constraint validation](https://developer.mozilla.org/en-US/docs/Web/HTML/Constraint_validation),
+  /// the validity state may still be invalid if a custom validity message has
+  /// been set.
   ValidityState get validity {
     unsupportedPlatformError();
   }
 
+  /// The **`validationMessage`** read-only property of the [HTMLOutputElement]
+  /// interface returns a string representing a localized message that describes
+  /// the validation constraints that the `output` control does not satisfy (if
+  /// any). This is the empty string as `<output>` elements are not candidates
+  /// for constraint validation ([HTMLOutputElement.willValidate] is `false`).
   String get validationMessage {
     unsupportedPlatformError();
   }
@@ -9528,6 +10995,15 @@ extension type HTMLMeterElement._(JSObject _) implements HTMLElement, JSObject {
   /// Creates an [HTMLMeterElement] using the tag 'meter'.
   HTMLMeterElement() : _ = document.createElement('meter');
 
+  /// The **`value`** property of the [HTMLMeterElement] interface represents
+  /// the current value of the `meter` element as a floating-point number. It
+  /// reflects the element's
+  /// [`value`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter#value)
+  /// attribute. If no `value` is set, it is the [HTMLMeterElement.min] value or
+  /// `0`, whichever is greater.
+  ///
+  /// This property can also be set directly, for example to set a default value
+  /// based on some condition.
   double get value {
     unsupportedPlatformError();
   }
@@ -9536,6 +11012,14 @@ extension type HTMLMeterElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`min`** property of the [HTMLMeterElement] interface represents the
+  /// minimum value of the `meter` element as a floating-point number. It
+  /// reflects the element's
+  /// [`min`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter#min)
+  /// attribute, or `0` if no `min` is defined.
+  ///
+  /// This property can also be set directly, for example to set a default value
+  /// based on some condition.
   double get min {
     unsupportedPlatformError();
   }
@@ -9544,6 +11028,15 @@ extension type HTMLMeterElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`max`** property of the [HTMLMeterElement] interface represents the
+  /// maximum value of the `meter` element as a floating-point number. It
+  /// reflects the element's
+  /// [`max`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter#max)
+  /// attribute, or the `min` value if no `max` is set, or `1` if neither the
+  /// `min` or the `max` is defined.
+  ///
+  /// This property can also be set directly, for example to set a default value
+  /// based on some condition.
   double get max {
     unsupportedPlatformError();
   }
@@ -9552,6 +11045,15 @@ extension type HTMLMeterElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`low`** property of the [HTMLMeterElement] interface represents the
+  /// low boundary of the `meter` element as a floating-point number. It
+  /// reflects the element's
+  /// [`low`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter#low)
+  /// attribute, or the value of `min` if not defined. The value of `low` is
+  /// clamped by the `min` and `max` values.
+  ///
+  /// This property can also be set directly, for example to set a default value
+  /// based on some condition.
   double get low {
     unsupportedPlatformError();
   }
@@ -9560,6 +11062,15 @@ extension type HTMLMeterElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`high`** property of the [HTMLMeterElement] interface represents the
+  /// high boundary of the `meter` element as a floating-point number. It
+  /// reflects the element's
+  /// [`high`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter#high)
+  /// attribute, or the value of `max` if not defined. The value of `high` is
+  /// clamped by the `low` and `max` values.
+  ///
+  /// This property can also be set directly, for example to set a default value
+  /// based on some condition.
   double get high {
     unsupportedPlatformError();
   }
@@ -9568,6 +11079,15 @@ extension type HTMLMeterElement._(JSObject _) implements HTMLElement, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`optimum`** property of the [HTMLMeterElement] interface represents
+  /// the optimum boundary of the `meter` element as a floating-point number. It
+  /// reflects the element's
+  /// [`optimum`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter#optimum)
+  /// attribute, or the midpoint between `min` and `max` values if not defined.
+  /// The value of `optimum` is clamped by the `min` and `max` values.
+  ///
+  /// This property can also be set directly, for example to set a default value
+  /// based on some condition.
   double get optimum {
     unsupportedPlatformError();
   }
@@ -9598,18 +11118,52 @@ extension type HTMLFieldSetElement._(JSObject _)
   /// Creates an [HTMLFieldSetElement] using the tag 'fieldset'.
   HTMLFieldSetElement() : _ = document.createElement('fieldset');
 
+  /// The **`checkValidity()`** method of the [HTMLFieldSetElement] interface
+  /// checks if the element is valid, but always returns true because `fieldset`
+  /// elements are never candidates for
+  /// [constraint validation](https://developer.mozilla.org/en-US/docs/Web/HTML/Constraint_validation).
+  ///
+  /// > [!NOTE]
+  /// > The  and  CSS pseudo-classes are applied to `<fieldset>` elements based
+  /// > on the validity of its descendant form controls, not the fieldset
+  /// > itself.
   bool checkValidity() {
     unsupportedPlatformError();
   }
 
+  /// The **`reportValidity()`** method of the [HTMLFieldSetElement] interface
+  /// performs the same validity checking steps as the
+  /// [HTMLFieldSetElement.checkValidity] method. It always returns true because
+  /// `fieldset` elements are never candidates for
+  /// [constraint validation](https://developer.mozilla.org/en-US/docs/Web/HTML/Constraint_validation).
   bool reportValidity() {
     unsupportedPlatformError();
   }
 
+  /// The **`setCustomValidity()`** method of the [HTMLFieldSetElement]
+  /// interface sets the custom validity message for the `fieldset` element. Use
+  /// the empty string to indicate that the element does _not_ have a custom
+  /// validity error.
+  ///
+  /// The `<fieldset>` element is not a candidate for constraint validation. The
+  /// [HTMLFieldSetElement.reportValidity] method will not cause the custom
+  /// error message to be displayed to the user, but does set the
+  /// [ValidityState.customError] property of the element's [ValidityState]
+  /// object to `true` and the [ValidityState.valid] property to `false`.
   void setCustomValidity(String error) {
     unsupportedPlatformError();
   }
 
+  /// The **`disabled`** property of the [HTMLFieldSetElement] interface is a
+  /// boolean value that reflects the `fieldset` element's
+  /// [`disabled`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset#disabled)
+  /// attribute, which indicates whether the control is disabled.
+  ///
+  /// When disabled, all the form control descendants of the `<fieldset>`
+  /// element, excluding elements that are descendants of the `legend` child of
+  /// the `<fieldset>`, if any, are disabled. A disabled element is unusable and
+  /// un-clickable, and match the  selector, even if their `disabled` property
+  /// value is false.
   bool get disabled {
     unsupportedPlatformError();
   }
@@ -9618,10 +11172,17 @@ extension type HTMLFieldSetElement._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// The **`form`** read-only property of the [HTMLFieldSetElement] interface
+  /// returns an [HTMLFormElement] object that owns this `fieldset`, or `null`
+  /// if this fieldset is not owned by any form.
   HTMLFormElement? get form {
     unsupportedPlatformError();
   }
 
+  /// The **`name`** property of the [HTMLFieldSetElement] interface indicates
+  /// the name of the `fieldset` element. It reflects the element's
+  /// [`name`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset#name)
+  /// attribute.
   String get name {
     unsupportedPlatformError();
   }
@@ -9630,22 +11191,56 @@ extension type HTMLFieldSetElement._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// The **`type`** read-only property of the [HTMLFieldSetElement] interface
+  /// returns the string `"fieldset"`.
   String get type {
     unsupportedPlatformError();
   }
 
+  /// The **`elements`** read-only property of the [HTMLFieldSetElement]
+  /// interface returns an [HTMLCollection] object containing all form control
+  /// elements (`button`, `fieldset`, `input`, `object`, `output`, `select`, and
+  /// `textarea`) that are descendants of this field set.
+  ///
+  /// You can access a particular form control in the returned collection by
+  /// using either an
+  /// index or the element's `name` or `id` attributes. If multiple form
+  /// controls share the same name, as is common with a group of radio buttons,
+  /// using the shared name returns the first element with that value.
   HTMLCollection get elements {
     unsupportedPlatformError();
   }
 
+  /// The **`willValidate`** read-only property of the [HTMLFieldSetElement]
+  /// interface returns `false`, because `fieldset` elements are not candidates
+  /// for
+  /// [constraint validation](https://developer.mozilla.org/en-US/docs/Web/HTML/Constraint_validation).
   bool get willValidate {
     unsupportedPlatformError();
   }
 
+  /// The **`validity`** read-only property of the [HTMLFieldSetElement]
+  /// interface returns a [ValidityState] object that represents the validity
+  /// states this element is in. Although `fieldset` elements are never
+  /// candidates for
+  /// [constraint validation](https://developer.mozilla.org/en-US/docs/Web/HTML/Constraint_validation),
+  /// the validity state may still be invalid if a custom validity message has
+  /// been set.
+  ///
+  /// > [!NOTE]
+  /// > The  and  CSS pseudo-classes are applied to `<fieldset>` elements based
+  /// > on the validity of its descendant form controls, not the fieldset
+  /// > itself.
   ValidityState get validity {
     unsupportedPlatformError();
   }
 
+  /// The **`validationMessage`** read-only property of the
+  /// [HTMLFieldSetElement] interface returns a string representing a localized
+  /// message that describes the validation constraints that the `fieldset`
+  /// control does not satisfy (if any). This is the empty string as
+  /// `<fieldset>` elements are not candidates for constraint validation
+  /// ([HTMLFieldSetElement.willValidate] is `false`).
   String get validationMessage {
     unsupportedPlatformError();
   }
@@ -9664,6 +11259,10 @@ extension type HTMLLegendElement._(JSObject _)
   /// Creates an [HTMLLegendElement] using the tag 'legend'.
   HTMLLegendElement() : _ = document.createElement('legend');
 
+  /// The **`form`** read-only property of the [HTMLLegendElement] interface
+  /// returns an [HTMLFormElement] object that owns the [HTMLFieldSetElement]
+  /// associated with this `legend`, or `null` if this legend is not associated
+  /// with a `fieldset` owned by a form.
   HTMLFormElement? get form {
     unsupportedPlatformError();
   }
@@ -9686,9 +11285,9 @@ extension type HTMLLegendElement._(JSObject _)
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ValidityState).
 extension type ValidityState._(JSObject _) implements JSObject {
-  /// The read-only **`valueMissing`** property of a
-  /// **[`ValidityState`](https://developer.mozilla.org/en-US/docs/Web/API/ValidityState)**
-  /// object indicates if a
+  /// The read-only **`valueMissing`** property of the
+  /// [`ValidityState`](https://developer.mozilla.org/en-US/docs/Web/API/ValidityState)
+  /// interface indicates if a
   /// [`required`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/required)
   /// control, such as an `input`, `select`, or `textarea`, has an empty value.
   ///
@@ -9701,10 +11300,10 @@ extension type ValidityState._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
-  /// The read-only **`typeMismatch`** property of a
-  /// **[`ValidityState`](https://developer.mozilla.org/en-US/docs/Web/API/ValidityState)**
-  /// object indicates if the value of an `input`, after having been edited by
-  /// the user, does not conform to the constraints set by the element's
+  /// The read-only **`typeMismatch`** property of the
+  /// [`ValidityState`](https://developer.mozilla.org/en-US/docs/Web/API/ValidityState)
+  /// interface indicates if the value of an `input`, after having been edited
+  /// by the user, does not conform to the constraints set by the element's
   /// [`type`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#input_types)
   /// attribute.
   ///
@@ -9740,10 +11339,10 @@ extension type ValidityState._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
-  /// The read-only **`patternMismatch`** property of a
-  /// **[`ValidityState`](https://developer.mozilla.org/en-US/docs/Web/API/ValidityState)**
-  /// object indicates if the value of an `input`, after having been edited by
-  /// the user, does not conform to the constraints set by the element's
+  /// The read-only **`patternMismatch`** property of the
+  /// [`ValidityState`](https://developer.mozilla.org/en-US/docs/Web/API/ValidityState)
+  /// interface indicates if the value of an `input`, after having been edited
+  /// by the user, does not conform to the constraints set by the element's
   /// [`pattern`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/pattern)
   /// attribute.
   ///
@@ -9764,9 +11363,9 @@ extension type ValidityState._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
-  /// The read-only **`tooLong`** property of a
-  /// **[`ValidityState`](https://developer.mozilla.org/en-US/docs/Web/API/ValidityState)**
-  /// object indicates if the value of an `input` or `textarea`, after having
+  /// The read-only **`tooLong`** property of the
+  /// [`ValidityState`](https://developer.mozilla.org/en-US/docs/Web/API/ValidityState)
+  /// interface indicates if the value of an `input` or `textarea`, after having
   /// been edited by the user, exceeds the maximum code-unit length established
   /// by the element's
   /// [`maxlength`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/maxlength)
@@ -9775,20 +11374,20 @@ extension type ValidityState._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
-  /// The read-only **`tooShort`** property of a
-  /// **[`ValidityState`](https://developer.mozilla.org/en-US/docs/Web/API/ValidityState)**
-  /// object indicates if the value of an `input`, `button`, `select`, `output`,
-  /// `fieldset` or `textarea`, after having been edited by the user, is less
-  /// than the minimum code-unit length established by the element's `minlength`
-  /// attribute.
+  /// The read-only **`tooShort`** property of the
+  /// [`ValidityState`](https://developer.mozilla.org/en-US/docs/Web/API/ValidityState)
+  /// interface indicates if the value of an `input`, `button`, `select`,
+  /// `output`, `fieldset` or `textarea`, after having been edited by the user,
+  /// is less than the minimum code-unit length established by the element's
+  /// `minlength` attribute.
   bool get tooShort {
     unsupportedPlatformError();
   }
 
-  /// The read-only **`rangeUnderflow`** property of a
-  /// **[`ValidityState`](https://developer.mozilla.org/en-US/docs/Web/API/ValidityState)**
-  /// object indicates if the value of an `input`, after having been edited by
-  /// the user, does not conform to the constraints set by the element's
+  /// The read-only **`rangeUnderflow`** property of the
+  /// [`ValidityState`](https://developer.mozilla.org/en-US/docs/Web/API/ValidityState)
+  /// interface indicates if the value of an `input`, after having been edited
+  /// by the user, does not conform to the constraints set by the element's
   /// [`min`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/min)
   /// attribute.
   ///
@@ -9797,23 +11396,14 @@ extension type ValidityState._(JSObject _) implements JSObject {
   /// value doesn't conform to the constraints set by the
   /// [`min`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/step)
   /// value, the `rangeUnderflow` property will be true.
-  ///
-  /// Given the following:
-  ///
-  /// ```html
-  /// <input type="number" min="20" max="40" step="2" />
-  /// ```
-  ///
-  /// if `value < 20`, `rangeUnderflow` will be true. When `true`, the element
-  /// matches the  and  CSS pseudo-classes.
   bool get rangeUnderflow {
     unsupportedPlatformError();
   }
 
-  /// The read-only **`rangeOverflow`** property of a
-  /// **[`ValidityState`](https://developer.mozilla.org/en-US/docs/Web/API/ValidityState)**
-  /// object indicates if the value of an `input`, after having been edited by
-  /// the user, does not conform to the constraints set by the element's
+  /// The read-only **`rangeOverflow`** property of the
+  /// [`ValidityState`](https://developer.mozilla.org/en-US/docs/Web/API/ValidityState)
+  /// interface indicates if the value of an `input`, after having been edited
+  /// by the user, does not conform to the constraints set by the element's
   /// [`max`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/max)
   /// attribute.
   ///
@@ -9822,24 +11412,15 @@ extension type ValidityState._(JSObject _) implements JSObject {
   /// value doesn't conform to the constraints set by the
   /// [`max`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/step)
   /// value, the `rangeOverflow` property will be true.
-  ///
-  /// Given the following:
-  ///
-  /// ```html
-  /// <input type="number" min="20" max="40" step="2" />
-  /// ```
-  ///
-  /// if `value > 40`, `rangeOverflow` will be true. When `true`, the element
-  /// matches the  and  CSS pseudo-classes.
   bool get rangeOverflow {
     unsupportedPlatformError();
   }
 
-  /// The read-only **`stepMismatch`** property of a
-  /// **[`ValidityState`](https://developer.mozilla.org/en-US/docs/Web/API/ValidityState)**
-  /// object indicates if the value of an `input`, after having been edited by
-  /// the user, does not conform to the constraints set by the element's `step`
-  /// attribute.
+  /// The read-only **`stepMismatch`** property of the
+  /// [`ValidityState`](https://developer.mozilla.org/en-US/docs/Web/API/ValidityState)
+  /// interface indicates if the value of an `input`, after having been edited
+  /// by the user, does not conform to the constraints set by the element's
+  /// `step` attribute.
   ///
   /// If the field is numeric in nature, including the `date`, `month`, `week`,
   /// `time`, , `number` and `range` types and the step value is not `any`, if
@@ -9853,33 +11434,35 @@ extension type ValidityState._(JSObject _) implements JSObject {
   /// value, divided by the
   /// [`step`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/step)
   /// value (which defaults to 1 if omitted) is not zero, there is a mismatch.
-  ///
-  /// Given the following:
-  ///
-  /// ```html
-  /// <input type="number" min="20" max="40" step="2" />
-  /// ```
-  ///
-  /// if `(value - min) % 2 !== 0`, `stepMismatch` will be true.
-  ///
-  /// If true, the element matches the  and  CSS pseudo-classes.
   bool get stepMismatch {
     unsupportedPlatformError();
   }
 
-  /// The read-only **`badInput`** property of a
+  /// The read-only **`badInput`** property of the
   /// [ValidityState](https://developer.mozilla.org/en-US/docs/Web/API/ValidityState)
-  /// object indicates if the user has provided input that the browser is unable
-  /// to convert. For example, if you have a number input element whose content
-  /// is a string.
+  /// interface indicates if the user has provided input that the browser is
+  /// unable to convert. For example, if you have a number input element whose
+  /// content is a string.
   bool get badInput {
     unsupportedPlatformError();
   }
 
+  /// The read-only **`customError`** property of the
+  /// [`ValidityState`](https://developer.mozilla.org/en-US/docs/Web/API/ValidityState)
+  /// interface returns `true` if an element doesn't meet the validation
+  /// required in the custom validity set by the element's
+  /// [HTMLInputElement.setCustomValidity] method.
   bool get customError {
     unsupportedPlatformError();
   }
 
+  /// The read-only **`valid`** property of the
+  /// [`ValidityState`](https://developer.mozilla.org/en-US/docs/Web/API/ValidityState)
+  /// interface indicates if the value of an `input` element meets all its
+  /// validation constraints, and is therefore considered to be valid.
+  ///
+  /// If `true`, the element matches the  CSS pseudo-class; otherwise the  CSS
+  /// pseudo-class applies.
   bool get valid {
     unsupportedPlatformError();
   }
@@ -9932,7 +11515,7 @@ extension type SubmitEventInit._(JSObject _) implements EventInit, JSObject {
 ///
 /// This allows a [FormData] object to be quickly obtained in response to a
 /// `formdata` event firing, rather than needing to put it together yourself
-/// when you wish to submit form data via a method like [fetch] (see
+/// when you wish to submit form data via a method like [Window.fetch] (see
 /// [Using FormData objects](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest_API/Using_FormData_Objects)).
 ///
 /// ---
@@ -9983,6 +11566,19 @@ extension type HTMLDetailsElement._(JSObject _)
   /// Creates an [HTMLDetailsElement] using the tag 'details'.
   HTMLDetailsElement() : _ = document.createElement('details');
 
+  /// The **`name`** property of the [HTMLDetailsElement] interface reflects the
+  /// [`name`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details#name)
+  /// attribute of `details` elements. It enables multiple `<details>` elements
+  /// to be connected together, where only one for the `<details>` elements can
+  /// be open at once. This allows developers to easily create UI features such
+  /// as accordions without scripting.
+  ///
+  /// The name attribute specifies a group name — give multiple `<details>`
+  /// elements the same name value to group them. Only one of the grouped
+  /// `<details>` elements can be open at a time — opening one will cause
+  /// another to close. If multiple grouped `<details>` elements are given the
+  /// `open` attribute, only the first one in the source order will be rendered
+  /// open.
   String get name {
     unsupportedPlatformError();
   }
@@ -10030,8 +11626,12 @@ extension type HTMLDialogElement._(JSObject _)
   /// [HTMLDialogElement] interface displays the dialog as a modal, over the top
   /// of any other dialogs that might be present. It displays in the , along
   /// with a
-  /// pseudo-element. Interaction outside the dialog is blocked and
-  /// the content outside it is rendered inert.
+  /// pseudo-element. Elements inside the same document as the dialog, except
+  /// the dialog and its descendants, become _inert_ (as if the
+  /// [`inert`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inert)
+  /// attribute is specified). Only the containing document becomes blocked; if
+  /// the dialog is rendered inside an iframe, the rest of the page remains
+  /// interactive.
   void showModal() {
     unsupportedPlatformError();
   }
@@ -10075,7 +11675,7 @@ extension type HTMLDialogElement._(JSObject _)
 /// interface).
 ///
 /// JavaScript files should be served with the `text/javascript`
-/// [MIME type](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types),
+/// [MIME type](https://developer.mozilla.org/en-US/docs/Web/HTTP/MIME_types),
 /// but browsers are lenient and block them only if the script is served with an
 /// image type (`image/*`), video type (`video/*`), audio type (`audio/*`), or
 /// `text/csv`. If the script is blocked, its element receives an
@@ -10232,11 +11832,41 @@ extension type HTMLScriptElement._(JSObject _)
     unsupportedPlatformError();
   }
 
-  /// The **`fetchPriority`** property of the [HTMLScriptElement] interface
-  /// represents a hint given to the browser on how it should prioritize
-  /// fetching of an external script relative to other external scripts.
+  /// The **`blocking`** property of the [HTMLScriptElement] interface is a
+  /// string indicating that certain operations should be blocked on the
+  /// fetching of the script.
   ///
-  /// It reflects the `fetchpriority` attribute of the `script` element.
+  /// It reflects the `blocking` attribute of the `script` element.
+  DOMTokenList get blocking {
+    unsupportedPlatformError();
+  }
+
+  /// The **`fetchPriority`** property of the [HTMLScriptElement] interface
+  /// represents a hint to the browser indicating how it should prioritize
+  /// fetching an external script relative to other external scripts.
+  /// It reflects the
+  /// [`fetchpriority`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#fetchpriority)
+  /// attribute of the `script` element.
+  ///
+  /// The property allows a developer to signal that fetching a particular
+  /// script early or late in the loading process has more or less impact on
+  /// user experience than a browser can reasonably infer when assigning an
+  /// internal priority.
+  /// This in turn allows the browser to increase or decrease the priority, and
+  /// potentially load the script earlier or later than it would otherwise.
+  /// The property should be used sparingly, as excessive or incorrect
+  /// prioritization can degrade performance.
+  ///
+  /// The fetch priority allows you to decrease the priority of late-body
+  /// scripts, or to increase the priority of `async` scripts without having to
+  /// use
+  /// [preloading](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel/preload).
+  /// When early loading of a script is important, the priority can be used to
+  /// complement preloading, boosting the priority ahead of less-impactful
+  /// resources that have a higher default priority.
+  ///
+  /// Note that both the internal priority of any fetch operation, and the
+  /// impact of `fetchPriority` on the priority, are entirely browser dependent.
   String get fetchPriority {
     unsupportedPlatformError();
   }
@@ -10273,7 +11903,8 @@ extension type HTMLScriptElement._(JSObject _)
 /// The **`HTMLTemplateElement`** interface enables access to the contents of an
 /// HTML `template` element.
 ///
-/// > **Note:** An HTML parser can create either an `HTMLTemplateElement` or a
+/// > [!NOTE]
+/// > An HTML parser can create either an `HTMLTemplateElement` or a
 /// > [ShadowRoot] when it parses a `template` element, depending on the
 /// > `<template>` attributes.
 /// > If an `HTMLTemplateElement` is created the "shadow" attributes are
@@ -10424,12 +12055,18 @@ extension type HTMLSlotElement._(JSObject _) implements HTMLElement, JSObject {
   /// manually assigned nodes set is initially empty until nodes are assigned
   /// using `assign()`.
   ///
-  /// > **Note:** you cannot mix manually (imperative) and named (declarative,
-  /// > automatic) slot assignments. Therefore, for this method to work, the
-  /// > shadow tree needs to have been
+  /// > [!NOTE]
+  /// > You cannot mix manually (imperative) and named (declarative, automatic)
+  /// > slot assignments. Therefore, for this method to work, the shadow tree
+  /// > needs to have been
   /// > [created](https://developer.mozilla.org/en-US/docs/Web/API/Element/attachShadow)
   /// > with the `slotAssignment: "manual"` option.
-  void assign(JSObject nodes) {
+  void assign([
+    JSObject? node1,
+    JSObject? node2,
+    JSObject? node3,
+    JSObject? node4,
+  ]) {
     unsupportedPlatformError();
   }
 
@@ -10471,19 +12108,17 @@ extension type HTMLCanvasElement._(JSObject _)
   /// Creates an [HTMLCanvasElement] using the tag 'canvas'.
   HTMLCanvasElement() : _ = document.createElement('canvas');
 
-  /// The
-  /// **`HTMLCanvasElement.getContext()`** method returns a drawing
-  /// context on the canvas, or
+  /// The **`HTMLCanvasElement.getContext()`** method returns a drawing context
+  /// on the canvas, or
   /// [`null`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/null)
-  /// if the context identifier is not
-  /// supported, or the canvas has already been set to a different context mode.
+  /// if the context identifier is not supported, or the canvas has already been
+  /// set to a different context mode.
   ///
   /// Later calls to this method on the same canvas element, with the same
   /// `contextType` argument, will always return the same drawing context
-  /// instance
-  /// as was returned the first time the method was invoked. It is not possible
-  /// to get a
-  /// different drawing context object on a given canvas element.
+  /// instance as was returned the first time the method was invoked. It is not
+  /// possible to get a different drawing context object on a given canvas
+  /// element.
   RenderingContext? getContext(
     String contextId, [
     JSAny? options,
@@ -10492,7 +12127,7 @@ extension type HTMLCanvasElement._(JSObject _)
   }
 
   /// The **`HTMLCanvasElement.toDataURL()`** method returns a
-  /// [data URL](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URLs)
+  /// [data URL](https://developer.mozilla.org/en-US/docs/Web/URI/Reference/Schemes/data)
   /// containing a representation of the image in the format specified by the
   /// `type` parameter.
   ///
@@ -10507,6 +12142,13 @@ extension type HTMLCanvasElement._(JSObject _)
   ///
   /// The created image data will have a resolution of 96dpi for file formats
   /// that support encoding resolution metadata.
+  ///
+  /// > **Warning:** `toDataURL()` encodes the whole image in an in-memory
+  /// > string. For larger images, this can have performance implications, and
+  /// > may even overflow browsers' URL length limit when assigned to
+  /// > [HTMLImageElement.src]. You should generally prefer
+  /// > [`toBlob()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toBlob)
+  /// > instead, in combination with [URL.createObjectURL_static].
   String toDataURL([
     String? type,
     JSAny? quality,
@@ -10606,6 +12248,7 @@ extension type CanvasRenderingContext2DSettings._(JSObject _)
     bool? alpha,
     bool? desynchronized,
     PredefinedColorSpace? colorSpace,
+    CanvasColorType? colorType,
     bool? willReadFrequently,
   }) : _ = JSObject();
 
@@ -10630,6 +12273,14 @@ extension type CanvasRenderingContext2DSettings._(JSObject _)
   }
 
   set colorSpace(PredefinedColorSpace value) {
+    unsupportedPlatformError();
+  }
+
+  CanvasColorType get colorType {
+    unsupportedPlatformError();
+  }
+
+  set colorType(CanvasColorType value) {
     unsupportedPlatformError();
   }
 
@@ -10691,24 +12342,32 @@ extension type CanvasRenderingContext2D._(JSObject _) implements JSObject {
   /// - The current clipping region.
   /// - The current dash list.
   /// - The current values of the following attributes:
-  /// [CanvasRenderingContext2D.strokeStyle],
-  /// [CanvasRenderingContext2D.fillStyle],
-  /// [CanvasRenderingContext2D.globalAlpha],
-  /// [CanvasRenderingContext2D.lineWidth],
-  /// [CanvasRenderingContext2D.lineCap],
-  /// [CanvasRenderingContext2D.lineJoin],
-  /// [CanvasRenderingContext2D.miterLimit],
-  /// [CanvasRenderingContext2D.lineDashOffset],
-  /// [CanvasRenderingContext2D.shadowOffsetX],
-  /// [CanvasRenderingContext2D.shadowOffsetY],
-  /// [CanvasRenderingContext2D.shadowBlur],
-  /// [CanvasRenderingContext2D.shadowColor],
-  /// [CanvasRenderingContext2D.globalCompositeOperation],
-  /// [CanvasRenderingContext2D.font],
-  /// [CanvasRenderingContext2D.textAlign],
-  /// [CanvasRenderingContext2D.textBaseline],
-  /// [CanvasRenderingContext2D.direction],
-  /// [CanvasRenderingContext2D.imageSmoothingEnabled].
+  ///   - [CanvasRenderingContext2D.direction]
+  ///   - [CanvasRenderingContext2D.fillStyle]
+  ///   - [CanvasRenderingContext2D.filter]
+  ///   - [CanvasRenderingContext2D.font]
+  ///   - [CanvasRenderingContext2D.fontKerning]
+  ///   - [CanvasRenderingContext2D.fontStretch]
+  ///   - [CanvasRenderingContext2D.fontVariantCaps]
+  ///   - [CanvasRenderingContext2D.globalAlpha]
+  ///   - [CanvasRenderingContext2D.globalCompositeOperation]
+  ///   - [CanvasRenderingContext2D.imageSmoothingEnabled]
+  ///   - [CanvasRenderingContext2D.imageSmoothingQuality]
+  ///   - [CanvasRenderingContext2D.letterSpacing]
+  ///   - [CanvasRenderingContext2D.lineCap]
+  ///   - [CanvasRenderingContext2D.lineDashOffset]
+  ///   - [CanvasRenderingContext2D.lineJoin]
+  ///   - [CanvasRenderingContext2D.lineWidth]
+  ///   - [CanvasRenderingContext2D.miterLimit]
+  ///   - [CanvasRenderingContext2D.shadowBlur]
+  ///   - [CanvasRenderingContext2D.shadowColor]
+  ///   - [CanvasRenderingContext2D.shadowOffsetX]
+  ///   - [CanvasRenderingContext2D.shadowOffsetY]
+  ///   - [CanvasRenderingContext2D.strokeStyle]
+  ///   - [CanvasRenderingContext2D.textAlign]
+  ///   - [CanvasRenderingContext2D.textBaseline]
+  ///   - [CanvasRenderingContext2D.textRendering]
+  ///   - [CanvasRenderingContext2D.wordSpacing]
   void save() {
     unsupportedPlatformError();
   }
@@ -10722,7 +12381,7 @@ extension type CanvasRenderingContext2D._(JSObject _) implements JSObject {
   /// nothing.
   ///
   /// For more information about the
-  /// [drawing state](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/save#drawing_state),
+  /// [drawing state](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/save#the_drawing_state),
   /// see [CanvasRenderingContext2D.save].
   void restore() {
     unsupportedPlatformError();
@@ -10818,7 +12477,8 @@ extension type CanvasRenderingContext2D._(JSObject _) implements JSObject {
   /// translate
   /// (move), and skew the context.
   ///
-  /// > **Note:** See also the
+  /// > [!NOTE]
+  /// > See also the
   /// > [CanvasRenderingContext2D.setTransform] method, which
   /// > resets the current transform to the identity matrix and then invokes
   /// > `transform()`.
@@ -10840,17 +12500,15 @@ extension type CanvasRenderingContext2D._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
-  /// The
-  /// **`CanvasRenderingContext2D.setTransform()`**
-  /// method of the Canvas 2D API resets (overrides) the current transformation
-  /// to the
-  /// identity matrix, and then invokes a transformation described by the
-  /// arguments of this
+  /// The **`CanvasRenderingContext2D.setTransform()`** method of the Canvas 2D
+  /// API resets (overrides) the current transformation to the identity matrix,
+  /// and then invokes a transformation described by the arguments of this
   /// method. This lets you scale, rotate, translate (move), and skew the
   /// context.
   ///
-  /// > **Note:** See also the [CanvasRenderingContext2D.transform] method;
-  /// > instead of overriding the current transform matrix, it
+  /// > [!NOTE]
+  /// > See also the [CanvasRenderingContext2D.transform] method; instead of
+  /// > overriding the current transform matrix, it
   /// > multiplies it with a given one.
   void setTransform([
     JSAny? aOrTransform,
@@ -10887,7 +12545,8 @@ extension type CanvasRenderingContext2D._(JSObject _) implements JSObject {
   /// [CanvasRenderingContext2D.fillStyle] or
   /// [CanvasRenderingContext2D.strokeStyle] properties.
   ///
-  /// > **Note:** Gradient coordinates are global, i.e., relative to the current
+  /// > [!NOTE]
+  /// > Gradient coordinates are global, i.e., relative to the current
   /// > coordinate space. When applied to a shape, the coordinates are NOT
   /// > relative to the
   /// > shape's coordinates.
@@ -10911,7 +12570,8 @@ extension type CanvasRenderingContext2D._(JSObject _) implements JSObject {
   /// [CanvasRenderingContext2D.fillStyle] or
   /// [CanvasRenderingContext2D.strokeStyle] properties.
   ///
-  /// > **Note:** Gradient coordinates are global, i.e., relative to the current
+  /// > [!NOTE]
+  /// > Gradient coordinates are global, i.e., relative to the current
   /// > coordinate space. When applied to a shape, the coordinates are NOT
   /// > relative to the
   /// > shape's coordinates.
@@ -10934,7 +12594,8 @@ extension type CanvasRenderingContext2D._(JSObject _) implements JSObject {
   /// [CanvasRenderingContext2D.fillStyle] or
   /// [CanvasRenderingContext2D.strokeStyle] properties.
   ///
-  /// > **Note:** Gradient coordinates are global, i.e., relative to the current
+  /// > [!NOTE]
+  /// > Gradient coordinates are global, i.e., relative to the current
   /// > coordinate space. When applied to a shape, the coordinates are NOT
   /// > relative to the shape's coordinates.
   CanvasGradient createConicGradient(
@@ -10967,7 +12628,8 @@ extension type CanvasRenderingContext2D._(JSObject _) implements JSObject {
   /// setting them to
   /// transparent black.
   ///
-  /// > **Note:** Be aware that `clearRect()` may cause unintended
+  /// > [!NOTE]
+  /// > Be aware that `clearRect()` may cause unintended
   /// > side effects if you're not
   /// > [using paths properly](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Drawing_shapes#drawing_paths).
   /// > Make sure to call
@@ -11029,7 +12691,8 @@ extension type CanvasRenderingContext2D._(JSObject _) implements JSObject {
   /// sub-paths. Call
   /// this method when you want to create a new path.
   ///
-  /// > **Note:** To create a new sub-path, i.e., one matching the current
+  /// > [!NOTE]
+  /// > To create a new sub-path, i.e., one matching the current
   /// > canvas state, you can use [CanvasRenderingContext2D.moveTo].
   void beginPath() {
     unsupportedPlatformError();
@@ -11080,17 +12743,19 @@ extension type CanvasRenderingContext2D._(JSObject _) implements JSObject {
   ///
   /// ![Star-shaped clipping region](canvas_clipping_path.png)
   ///
-  /// > **Note:** Be aware that the clipping region is only constructed from
+  /// > [!NOTE]
+  /// > Be aware that the clipping region is only constructed from
   /// > shapes added to the path. It doesn't work with shape primitives drawn
   /// > directly to the
   /// > canvas, such as [CanvasRenderingContext2D.fillRect].
   /// > Instead, you'd have to use [CanvasRenderingContext2D.rect] to
   /// > add a rectangular shape to the path before calling `clip()`.
   ///
-  /// > **Note:** Clip paths cannot be reverted directly. You must save your
-  /// > canvas state using [CanvasRenderingContext2D.save] before calling
-  /// > `clip()`, and restore it once you have finished drawing in the clipped
-  /// > area using [CanvasRenderingContext2D.restore].
+  /// > [!NOTE]
+  /// > Clip paths cannot be reverted directly. You must save your canvas state
+  /// > using [CanvasRenderingContext2D.save] before calling `clip()`, and
+  /// > restore it once you have finished drawing in the clipped area using
+  /// > [CanvasRenderingContext2D.restore].
   void clip([
     JSAny? fillRuleOrPath,
     CanvasFillRule? fillRule,
@@ -11158,8 +12823,8 @@ extension type CanvasRenderingContext2D._(JSObject _) implements JSObject {
   /// [CanvasRenderingContext2D.textBaseline], and
   /// [CanvasRenderingContext2D.direction] properties.
   ///
-  /// > **Note:** To draw the outlines of the characters in a string, call the
-  /// > context's
+  /// > [!NOTE]
+  /// > To draw the outlines of the characters in a string, call the context's
   /// > [CanvasRenderingContext2D.strokeText] method.
   void fillText(
     String text,
@@ -11185,7 +12850,8 @@ extension type CanvasRenderingContext2D._(JSObject _) implements JSObject {
   /// [CanvasRenderingContext2D.stroke] calls will have no effect
   /// on it.
   ///
-  /// > **Note:** Use the [CanvasRenderingContext2D.fillText] method to
+  /// > [!NOTE]
+  /// > Use the [CanvasRenderingContext2D.fillText] method to
   /// > fill the text characters rather than having just their outlines drawn.
   void strokeText(
     String text,
@@ -11225,7 +12891,7 @@ extension type CanvasRenderingContext2D._(JSObject _) implements JSObject {
   /// specified dimensions. All of the pixels in the new object are transparent
   /// black.
   ImageData createImageData(
-    JSAny imagedataOrSw, [
+    JSAny imageDataOrSw, [
     int? sh,
     ImageDataSettings? settings,
   ]) {
@@ -11243,7 +12909,8 @@ extension type CanvasRenderingContext2D._(JSObject _) implements JSObject {
   /// canvas are
   /// transparent black in the returned `ImageData` object.
   ///
-  /// > **Note:** Image data can be painted onto a canvas using the
+  /// > [!NOTE]
+  /// > Image data can be painted onto a canvas using the
   /// > [CanvasRenderingContext2D.putImageData] method.
   ///
   /// You can find more information about `getImageData()` and general
@@ -11266,14 +12933,15 @@ extension type CanvasRenderingContext2D._(JSObject _) implements JSObject {
   /// are painted. This method is not affected by the canvas transformation
   /// matrix.
   ///
-  /// > **Note:** Image data can be retrieved from a canvas using the
+  /// > [!NOTE]
+  /// > Image data can be retrieved from a canvas using the
   /// > [CanvasRenderingContext2D.getImageData] method.
   ///
   /// You can find more information about `putImageData()` and general
   /// manipulation of canvas contents in the article
   /// [Pixel manipulation with canvas](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Pixel_manipulation_with_canvas).
   void putImageData(
-    ImageData imagedata,
+    ImageData imageData,
     int dx,
     int dy, [
     int? dirtyX,
@@ -11290,7 +12958,8 @@ extension type CanvasRenderingContext2D._(JSObject _) implements JSObject {
   /// lengths of lines
   /// and gaps which describe the pattern.
   ///
-  /// > **Note:** To return to using solid lines, set the line dash list to an
+  /// > [!NOTE]
+  /// > To return to using solid lines, set the line dash list to an
   /// > empty array.
   void setLineDash(JSArray<JSNumber> segments) {
     unsupportedPlatformError();
@@ -11399,7 +13068,8 @@ extension type CanvasRenderingContext2D._(JSObject _) implements JSObject {
   ///
   /// This method is commonly used for making rounded corners.
   ///
-  /// > **Note:** You may get unexpected results when using a
+  /// > [!NOTE]
+  /// > You may get unexpected results when using a
   /// > relatively large radius: the arc's connecting line will go in whatever
   /// > direction it
   /// > must to meet the specified radius.
@@ -11423,7 +13093,8 @@ extension type CanvasRenderingContext2D._(JSObject _) implements JSObject {
   /// [CanvasRenderingContext2D.fill] or
   /// [CanvasRenderingContext2D.stroke] methods.
   ///
-  /// > **Note:** To both create and render a rectangle in one step, use the
+  /// > [!NOTE]
+  /// > To both create and render a rectangle in one step, use the
   /// > [CanvasRenderingContext2D.fillRect] or
   /// > [CanvasRenderingContext2D.strokeRect] methods.
   void rect(
@@ -11507,7 +13178,8 @@ extension type CanvasRenderingContext2D._(JSObject _) implements JSObject {
   /// that is applied
   /// to shapes and images before they are drawn onto the canvas.
   ///
-  /// > **Note:** See also the chapter
+  /// > [!NOTE]
+  /// > See also the chapter
   /// > [Applying styles and color](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Applying_styles_and_colors)
   /// > in the
   /// > [Canvas Tutorial](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial).
@@ -11551,7 +13223,8 @@ extension type CanvasRenderingContext2D._(JSObject _) implements JSObject {
   /// property to
   /// `false` to retain the pixels' sharpness.
   ///
-  /// > **Note:** You can adjust the smoothing quality with the
+  /// > [!NOTE]
+  /// > You can adjust the smoothing quality with the
   /// > [CanvasRenderingContext2D.imageSmoothingQuality]
   /// > property.
   bool get imageSmoothingEnabled {
@@ -11568,7 +13241,8 @@ extension type CanvasRenderingContext2D._(JSObject _) implements JSObject {
   /// lets you set the quality of
   /// image smoothing.
   ///
-  /// > **Note:** For this property to have an effect,
+  /// > [!NOTE]
+  /// > For this property to have an effect,
   /// > [CanvasRenderingContext2D.imageSmoothingEnabled]
   /// > must be `true`.
   ImageSmoothingQuality get imageSmoothingQuality {
@@ -11584,7 +13258,8 @@ extension type CanvasRenderingContext2D._(JSObject _) implements JSObject {
   /// strokes
   /// (outlines) around shapes. The default is `#000` (black).
   ///
-  /// > **Note:** For more examples of stroke and fill styles, see
+  /// > [!NOTE]
+  /// > For more examples of stroke and fill styles, see
   /// > [Applying styles and color](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Applying_styles_and_colors)
   /// > in the
   /// > [Canvas tutorial](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial).
@@ -11605,7 +13280,8 @@ extension type CanvasRenderingContext2D._(JSObject _) implements JSObject {
   /// `#000`
   /// (black).
   ///
-  /// > **Note:** For more examples of fill and stroke styles, see
+  /// > [!NOTE]
+  /// > For more examples of fill and stroke styles, see
   /// > [Applying styles and color](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Applying_styles_and_colors)
   /// > in the
   /// > [Canvas tutorial](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial).
@@ -11623,7 +13299,8 @@ extension type CanvasRenderingContext2D._(JSObject _) implements JSObject {
   /// offset
   /// horizontally.
   ///
-  /// > **Note:** Shadows are only drawn if the
+  /// > [!NOTE]
+  /// > Shadows are only drawn if the
   /// > [CanvasRenderingContext2D.shadowColor] property is set to
   /// > a non-transparent value. One of the
   /// > [CanvasRenderingContext2D.shadowBlur], `shadowOffsetX`, or
@@ -11643,7 +13320,8 @@ extension type CanvasRenderingContext2D._(JSObject _) implements JSObject {
   /// offset
   /// vertically.
   ///
-  /// > **Note:** Shadows are only drawn if the
+  /// > [!NOTE]
+  /// > Shadows are only drawn if the
   /// > [CanvasRenderingContext2D.shadowColor] property is set to
   /// > a non-transparent value. One of the
   /// > [CanvasRenderingContext2D.shadowBlur],
@@ -11664,7 +13342,8 @@ extension type CanvasRenderingContext2D._(JSObject _) implements JSObject {
   /// shadows. The
   /// default is `0` (no blur).
   ///
-  /// > **Note:** Shadows are only drawn if the
+  /// > [!NOTE]
+  /// > Shadows are only drawn if the
   /// > [CanvasRenderingContext2D.shadowColor] property is set to
   /// > a non-transparent value. One of the `shadowBlur`,
   /// > [CanvasRenderingContext2D.shadowOffsetX], or
@@ -11688,7 +13367,8 @@ extension type CanvasRenderingContext2D._(JSObject _) implements JSObject {
   /// of the [CanvasRenderingContext2D.strokeStyle] color when
   /// stroking.
   ///
-  /// > **Note:** Shadows are only drawn if the `shadowColor`
+  /// > [!NOTE]
+  /// > Shadows are only drawn if the `shadowColor`
   /// > property is set to a non-transparent value. One of the
   /// > [CanvasRenderingContext2D.shadowBlur],
   /// > [CanvasRenderingContext2D.shadowOffsetX], or
@@ -11719,7 +13399,8 @@ extension type CanvasRenderingContext2D._(JSObject _) implements JSObject {
   /// **`CanvasRenderingContext2D.lineWidth`**
   /// property of the Canvas 2D API sets the thickness of lines.
   ///
-  /// > **Note:** Lines can be drawn with the
+  /// > [!NOTE]
+  /// > Lines can be drawn with the
   /// > [CanvasRenderingContext2D.stroke],
   /// > [CanvasRenderingContext2D.strokeRect],
   /// > and [CanvasRenderingContext2D.strokeText] methods.
@@ -11736,7 +13417,8 @@ extension type CanvasRenderingContext2D._(JSObject _) implements JSObject {
   /// property of the Canvas 2D API determines the shape used to draw the end
   /// points of lines.
   ///
-  /// > **Note:** Lines can be drawn with the
+  /// > [!NOTE]
+  /// > Lines can be drawn with the
   /// > [CanvasRenderingContext2D.stroke],
   /// > [CanvasRenderingContext2D.strokeRect],
   /// > and [CanvasRenderingContext2D.strokeText] methods.
@@ -11762,7 +13444,8 @@ extension type CanvasRenderingContext2D._(JSObject _) implements JSObject {
   /// position) are also
   /// ignored.
   ///
-  /// > **Note:** Lines can be drawn with the
+  /// > [!NOTE]
+  /// > Lines can be drawn with the
   /// > [CanvasRenderingContext2D.stroke],
   /// > [CanvasRenderingContext2D.strokeRect],
   /// > and [CanvasRenderingContext2D.strokeText] methods.
@@ -11777,7 +13460,8 @@ extension type CanvasRenderingContext2D._(JSObject _) implements JSObject {
   /// The **`CanvasRenderingContext2D.miterLimit`** property of the
   /// Canvas 2D API sets the miter limit ratio.
   ///
-  /// > **Note:** For more info about miters, see
+  /// > [!NOTE]
+  /// > For more info about miters, see
   /// > [Applying styles and color](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Applying_styles_and_colors)
   /// > in the
   /// > [Canvas tutorial](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial).
@@ -11793,7 +13477,8 @@ extension type CanvasRenderingContext2D._(JSObject _) implements JSObject {
   /// **`CanvasRenderingContext2D.lineDashOffset`**
   /// property of the Canvas 2D API sets the line dash offset, or "phase."
   ///
-  /// > **Note:** Lines are drawn by calling the
+  /// > [!NOTE]
+  /// > Lines are drawn by calling the
   /// > [CanvasRenderingContext2D.stroke] method.
   double get lineDashOffset {
     unsupportedPlatformError();
@@ -12327,6 +14012,11 @@ extension type ImageBitmapRenderingContext._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`ImageBitmapRenderingContext.canvas`** property, part of the
+  /// [Canvas API](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API),
+  /// is a read-only reference to the
+  /// [HTMLCanvasElement] or [OffscreenCanvas] object that is associated with
+  /// the given context.
   JSObject get canvas {
     unsupportedPlatformError();
   }
@@ -12385,7 +14075,8 @@ extension type OffscreenCanvas._(JSObject _) implements EventTarget, JSObject {
   /// The **`OffscreenCanvas.getContext()`** method returns a drawing context
   /// for an offscreen canvas, or
   /// [`null`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/null)
-  /// if the context identifier is not supported.
+  /// if the context identifier is not supported, or the offscreen canvas has
+  /// already been set to a different context mode.
   OffscreenRenderingContext? getContext(
     OffscreenRenderingContextId contextId, [
     JSAny? options,
@@ -12459,8 +14150,7 @@ extension type OffscreenCanvas._(JSObject _) implements EventTarget, JSObject {
 /// It is similar to the `CanvasRenderingContext2D` object, with the following
 /// differences:
 ///
-/// - there is no support for user-interface features (`drawFocusIfNeeded`, and
-///   `scrollPathIntoView`)
+/// - there is no support for user-interface features (`drawFocusIfNeeded`)
 /// - its `canvas` attribute refers to an `OffscreenCanvas` object rather than a
 ///   `canvas` element
 /// - the bitmap for the placeholder `canvas` element belonging to the
@@ -12675,7 +14365,7 @@ extension type OffscreenCanvasRenderingContext2D._(JSObject _)
   }
 
   ImageData createImageData(
-    JSAny imagedataOrSw, [
+    JSAny imageDataOrSw, [
     int? sh,
     ImageDataSettings? settings,
   ]) {
@@ -12693,7 +14383,7 @@ extension type OffscreenCanvasRenderingContext2D._(JSObject _)
   }
 
   void putImageData(
-    ImageData imagedata,
+    ImageData imageData,
     int dx,
     int dy, [
     int? dirtyX,
@@ -13196,6 +14886,8 @@ extension type ElementInternals._(JSObject _) implements JSObject {
   /// [WAI-ARIA role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles)
   /// for the element. For example, a checkbox might have
   /// [`role="checkbox"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/checkbox_role).
+  /// It reflects the `role` attribute; it does not return the element's
+  /// implicit ARIA role, if any, unless explicitly set.
   String? get role {
     unsupportedPlatformError();
   }
@@ -13211,8 +14903,9 @@ extension type ElementInternals._(JSObject _) implements JSObject {
   /// all, or only parts of, the changed region based on the change
   /// notifications defined by the `aria-relevant` attribute.
   ///
-  /// > **Note:** Setting aria attributes on `ElementInternals` allows default
-  /// > semantics to be defined on a custom element. These may be overwritten by
+  /// > [!NOTE]
+  /// > Setting aria attributes on `ElementInternals` allows default semantics
+  /// > to be defined on a custom element. These may be overwritten by
   /// > author-defined attributes, but ensure that default semantics are
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
@@ -13233,8 +14926,9 @@ extension type ElementInternals._(JSObject _) implements JSObject {
   /// searchbox, or textbox and specifies how predictions would be presented if
   /// they were made.
   ///
-  /// > **Note:** Setting aria attributes on `ElementInternals` allows default
-  /// > semantics to be defined on a custom element. These may be overwritten by
+  /// > [!NOTE]
+  /// > Setting aria attributes on `ElementInternals` allows default semantics
+  /// > to be defined on a custom element. These may be overwritten by
   /// > author-defined attributes, but ensure that default semantics are
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
@@ -13270,8 +14964,9 @@ extension type ElementInternals._(JSObject _) implements JSObject {
   /// assistive technologies may want to wait until the modifications are
   /// complete before exposing them to the user.
   ///
-  /// > **Note:** Setting aria attributes on `ElementInternals` allows default
-  /// > semantics to be defined on a custom element. These may be overwritten by
+  /// > [!NOTE]
+  /// > Setting aria attributes on `ElementInternals` allows default semantics
+  /// > to be defined on a custom element. These may be overwritten by
   /// > author-defined attributes, but ensure that default semantics are
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
@@ -13290,8 +14985,9 @@ extension type ElementInternals._(JSObject _) implements JSObject {
   /// attribute, which indicates the current "checked" state of checkboxes,
   /// radio buttons, and other widgets that have a checked state.
   ///
-  /// > **Note:** Setting aria attributes on `ElementInternals` allows default
-  /// > semantics to be defined on a custom element. These may be overwritten by
+  /// > [!NOTE]
+  /// > Setting aria attributes on `ElementInternals` allows default semantics
+  /// > to be defined on a custom element. These may be overwritten by
   /// > author-defined attributes, but ensure that default semantics are
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
@@ -13310,8 +15006,9 @@ extension type ElementInternals._(JSObject _) implements JSObject {
   /// attribute, which defines the number of columns in a table, grid, or
   /// treegrid.
   ///
-  /// > **Note:** Setting aria attributes on `ElementInternals` allows default
-  /// > semantics to be defined on a custom element. These may be overwritten by
+  /// > [!NOTE]
+  /// > Setting aria attributes on `ElementInternals` allows default semantics
+  /// > to be defined on a custom element. These may be overwritten by
   /// > author-defined attributes, but ensure that default semantics are
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
@@ -13330,8 +15027,9 @@ extension type ElementInternals._(JSObject _) implements JSObject {
   /// attribute, which defines an element's column index or position with
   /// respect to the total number of columns within a table, grid, or treegrid.
   ///
-  /// > **Note:** Setting aria attributes on `ElementInternals` allows default
-  /// > semantics to be defined on a custom element. These may be overwritten by
+  /// > [!NOTE]
+  /// > Setting aria attributes on `ElementInternals` allows default semantics
+  /// > to be defined on a custom element. These may be overwritten by
   /// > author-defined attributes, but ensure that default semantics are
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
@@ -13344,14 +15042,36 @@ extension type ElementInternals._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`ariaColIndexText`** property of the [ElementInternals] interface
+  /// reflects the value of the
+  /// [`aria-colindextext`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-colindextext)
+  /// attribute, which defines a human readable text alternative of
+  /// aria-colindex.
+  ///
+  /// > [!NOTE]
+  /// > Setting aria attributes on `ElementInternals` allows default semantics
+  /// > to be defined on a custom element. These may be overwritten by
+  /// > author-defined attributes, but ensure that default semantics are
+  /// > retained should the author delete those attributes, or fail to add them
+  /// > at all. For more information see the
+  /// > [Accessibility Object Model explainer](https://wicg.github.io/aom/explainer.html#default-semantics-for-custom-elements-via-the-elementinternals-object).
+  String? get ariaColIndexText {
+    unsupportedPlatformError();
+  }
+
+  set ariaColIndexText(String? value) {
+    unsupportedPlatformError();
+  }
+
   /// The **`ariaColSpan`** property of the [ElementInternals] interface
   /// reflects the value of the
   /// [`aria-colspan`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-colspan)
   /// attribute, which defines the number of columns spanned by a cell or
   /// gridcell within a table, grid, or treegrid.
   ///
-  /// > **Note:** Setting aria attributes on `ElementInternals` allows default
-  /// > semantics to be defined on a custom element. These may be overwritten by
+  /// > [!NOTE]
+  /// > Setting aria attributes on `ElementInternals` allows default semantics
+  /// > to be defined on a custom element. These may be overwritten by
   /// > author-defined attributes, but ensure that default semantics are
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
@@ -13370,8 +15090,9 @@ extension type ElementInternals._(JSObject _) implements JSObject {
   /// attribute, which indicates the element that represents the current item
   /// within a container or set of related elements.
   ///
-  /// > **Note:** Setting aria attributes on `ElementInternals` allows default
-  /// > semantics to be defined on a custom element. These may be overwritten by
+  /// > [!NOTE]
+  /// > Setting aria attributes on `ElementInternals` allows default semantics
+  /// > to be defined on a custom element. These may be overwritten by
   /// > author-defined attributes, but ensure that default semantics are
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
@@ -13390,8 +15111,9 @@ extension type ElementInternals._(JSObject _) implements JSObject {
   /// attribute, which defines a string value that describes or annotates the
   /// current element.
   ///
-  /// > **Note:** Setting aria attributes on `ElementInternals` allows default
-  /// > semantics to be defined on a custom element. These may be overwritten by
+  /// > [!NOTE]
+  /// > Setting aria attributes on `ElementInternals` allows default semantics
+  /// > to be defined on a custom element. These may be overwritten by
   /// > author-defined attributes, but ensure that default semantics are
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
@@ -13410,8 +15132,9 @@ extension type ElementInternals._(JSObject _) implements JSObject {
   /// attribute, which indicates that the element is perceivable but disabled,
   /// so it is not editable or otherwise operable.
   ///
-  /// > **Note:** Setting aria attributes on `ElementInternals` allows default
-  /// > semantics to be defined on a custom element. These may be overwritten by
+  /// > [!NOTE]
+  /// > Setting aria attributes on `ElementInternals` allows default semantics
+  /// > to be defined on a custom element. These may be overwritten by
   /// > author-defined attributes, but ensure that default semantics are
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
@@ -13430,8 +15153,9 @@ extension type ElementInternals._(JSObject _) implements JSObject {
   /// attribute, which indicates whether a grouping element owned or controlled
   /// by this element is expanded or collapsed.
   ///
-  /// > **Note:** Setting aria attributes on `ElementInternals` allows default
-  /// > semantics to be defined on a custom element. These may be overwritten by
+  /// > [!NOTE]
+  /// > Setting aria attributes on `ElementInternals` allows default semantics
+  /// > to be defined on a custom element. These may be overwritten by
   /// > author-defined attributes, but ensure that default semantics are
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
@@ -13450,8 +15174,9 @@ extension type ElementInternals._(JSObject _) implements JSObject {
   /// attribute, which indicates the availability and type of interactive popup
   /// element, such as menu or dialog, that can be triggered by an element.
   ///
-  /// > **Note:** Setting aria attributes on `ElementInternals` allows default
-  /// > semantics to be defined on a custom element. These may be overwritten by
+  /// > [!NOTE]
+  /// > Setting aria attributes on `ElementInternals` allows default semantics
+  /// > to be defined on a custom element. These may be overwritten by
   /// > author-defined attributes, but ensure that default semantics are
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
@@ -13470,8 +15195,9 @@ extension type ElementInternals._(JSObject _) implements JSObject {
   /// attribute, which indicates whether the element is exposed to an
   /// accessibility API.
   ///
-  /// > **Note:** Setting aria attributes on `ElementInternals` allows default
-  /// > semantics to be defined on a custom element. These may be overwritten by
+  /// > [!NOTE]
+  /// > Setting aria attributes on `ElementInternals` allows default semantics
+  /// > to be defined on a custom element. These may be overwritten by
   /// > author-defined attributes, but ensure that default semantics are
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
@@ -13498,8 +15224,9 @@ extension type ElementInternals._(JSObject _) implements JSObject {
   /// attribute, which indicates keyboard shortcuts that an author has
   /// implemented to activate or give focus to an element.
   ///
-  /// > **Note:** Setting aria attributes on `ElementInternals` allows default
-  /// > semantics to be defined on a custom element. These may be overwritten by
+  /// > [!NOTE]
+  /// > Setting aria attributes on `ElementInternals` allows default semantics
+  /// > to be defined on a custom element. These may be overwritten by
   /// > author-defined attributes, but ensure that default semantics are
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
@@ -13512,15 +15239,14 @@ extension type ElementInternals._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
-  /// }
-  ///
   /// The **`ariaLabel`** property of the [ElementInternals] interface reflects
   /// the value of the
   /// [`aria-label`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label)
   /// attribute, which defines a string value that labels the current Element.
   ///
-  /// > **Note:** Setting aria attributes on `ElementInternals` allows default
-  /// > semantics to be defined on a custom element. These may be overwritten by
+  /// > [!NOTE]
+  /// > Setting aria attributes on `ElementInternals` allows default semantics
+  /// > to be defined on a custom element. These may be overwritten by
   /// > author-defined attributes, but ensure that default semantics are
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
@@ -13539,8 +15265,9 @@ extension type ElementInternals._(JSObject _) implements JSObject {
   /// attribute, which defines the hierarchical level of an element within a
   /// structure.
   ///
-  /// > **Note:** Setting aria attributes on `ElementInternals` allows default
-  /// > semantics to be defined on a custom element. These may be overwritten by
+  /// > [!NOTE]
+  /// > Setting aria attributes on `ElementInternals` allows default semantics
+  /// > to be defined on a custom element. These may be overwritten by
   /// > author-defined attributes, but ensure that default semantics are
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
@@ -13560,8 +15287,9 @@ extension type ElementInternals._(JSObject _) implements JSObject {
   /// the types of updates the user agents, assistive technologies, and user can
   /// expect from the live region.
   ///
-  /// > **Note:** Setting aria attributes on `ElementInternals` allows default
-  /// > semantics to be defined on a custom element. These may be overwritten by
+  /// > [!NOTE]
+  /// > Setting aria attributes on `ElementInternals` allows default semantics
+  /// > to be defined on a custom element. These may be overwritten by
   /// > author-defined attributes, but ensure that default semantics are
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
@@ -13579,8 +15307,9 @@ extension type ElementInternals._(JSObject _) implements JSObject {
   /// [`aria-modal`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-modal)
   /// attribute, which indicates whether an element is modal when displayed.
   ///
-  /// > **Note:** Setting aria attributes on `ElementInternals` allows default
-  /// > semantics to be defined on a custom element. These may be overwritten by
+  /// > [!NOTE]
+  /// > Setting aria attributes on `ElementInternals` allows default semantics
+  /// > to be defined on a custom element. These may be overwritten by
   /// > author-defined attributes, but ensure that default semantics are
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
@@ -13599,8 +15328,9 @@ extension type ElementInternals._(JSObject _) implements JSObject {
   /// attribute, which indicates whether a text box accepts multiple lines of
   /// input or only a single line.
   ///
-  /// > **Note:** Setting aria attributes on `ElementInternals` allows default
-  /// > semantics to be defined on a custom element. These may be overwritten by
+  /// > [!NOTE]
+  /// > Setting aria attributes on `ElementInternals` allows default semantics
+  /// > to be defined on a custom element. These may be overwritten by
   /// > author-defined attributes, but ensure that default semantics are
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
@@ -13619,8 +15349,9 @@ extension type ElementInternals._(JSObject _) implements JSObject {
   /// attribute, which indicates that the user may select more than one item
   /// from the current selectable descendants.
   ///
-  /// > **Note:** Setting aria attributes on `ElementInternals` allows default
-  /// > semantics to be defined on a custom element. These may be overwritten by
+  /// > [!NOTE]
+  /// > Setting aria attributes on `ElementInternals` allows default semantics
+  /// > to be defined on a custom element. These may be overwritten by
   /// > author-defined attributes, but ensure that default semantics are
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
@@ -13639,8 +15370,9 @@ extension type ElementInternals._(JSObject _) implements JSObject {
   /// attribute, which indicates whether the element's orientation is
   /// horizontal, vertical, or unknown/ambiguous.
   ///
-  /// > **Note:** Setting aria attributes on `ElementInternals` allows default
-  /// > semantics to be defined on a custom element. These may be overwritten by
+  /// > [!NOTE]
+  /// > Setting aria attributes on `ElementInternals` allows default semantics
+  /// > to be defined on a custom element. These may be overwritten by
   /// > author-defined attributes, but ensure that default semantics are
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
@@ -13659,8 +15391,9 @@ extension type ElementInternals._(JSObject _) implements JSObject {
   /// attribute, which defines a short hint intended to aid the user with data
   /// entry when the control has no value.
   ///
-  /// > **Note:** Setting aria attributes on `ElementInternals` allows default
-  /// > semantics to be defined on a custom element. These may be overwritten by
+  /// > [!NOTE]
+  /// > Setting aria attributes on `ElementInternals` allows default semantics
+  /// > to be defined on a custom element. These may be overwritten by
   /// > author-defined attributes, but ensure that default semantics are
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
@@ -13679,8 +15412,9 @@ extension type ElementInternals._(JSObject _) implements JSObject {
   /// attribute, which defines an element's number or position in the current
   /// set of listitems or treeitems.
   ///
-  /// > **Note:** Setting aria attributes on `ElementInternals` allows default
-  /// > semantics to be defined on a custom element. These may be overwritten by
+  /// > [!NOTE]
+  /// > Setting aria attributes on `ElementInternals` allows default semantics
+  /// > to be defined on a custom element. These may be overwritten by
   /// > author-defined attributes, but ensure that default semantics are
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
@@ -13698,8 +15432,9 @@ extension type ElementInternals._(JSObject _) implements JSObject {
   /// [`aria-pressed`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-pressed)
   /// attribute, which indicates the current "pressed" state of toggle buttons.
   ///
-  /// > **Note:** Setting aria attributes on `ElementInternals` allows default
-  /// > semantics to be defined on a custom element. These may be overwritten by
+  /// > [!NOTE]
+  /// > Setting aria attributes on `ElementInternals` allows default semantics
+  /// > to be defined on a custom element. These may be overwritten by
   /// > author-defined attributes, but ensure that default semantics are
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
@@ -13718,8 +15453,9 @@ extension type ElementInternals._(JSObject _) implements JSObject {
   /// attribute, which indicates that the element is not editable, but is
   /// otherwise operable.
   ///
-  /// > **Note:** Setting aria attributes on `ElementInternals` allows default
-  /// > semantics to be defined on a custom element. These may be overwritten by
+  /// > [!NOTE]
+  /// > Setting aria attributes on `ElementInternals` allows default semantics
+  /// > to be defined on a custom element. These may be overwritten by
   /// > author-defined attributes, but ensure that default semantics are
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
@@ -13738,8 +15474,9 @@ extension type ElementInternals._(JSObject _) implements JSObject {
   /// attribute, which indicates that user input is required on the element
   /// before a form may be submitted.
   ///
-  /// > **Note:** Setting aria attributes on `ElementInternals` allows default
-  /// > semantics to be defined on a custom element. These may be overwritten by
+  /// > [!NOTE]
+  /// > Setting aria attributes on `ElementInternals` allows default semantics
+  /// > to be defined on a custom element. These may be overwritten by
   /// > author-defined attributes, but ensure that default semantics are
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
@@ -13758,8 +15495,9 @@ extension type ElementInternals._(JSObject _) implements JSObject {
   /// attribute, which defines a human-readable, author-localized description
   /// for the role of an element.
   ///
-  /// > **Note:** Setting aria attributes on `ElementInternals` allows default
-  /// > semantics to be defined on a custom element. These may be overwritten by
+  /// > [!NOTE]
+  /// > Setting aria attributes on `ElementInternals` allows default semantics
+  /// > to be defined on a custom element. These may be overwritten by
   /// > author-defined attributes, but ensure that default semantics are
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
@@ -13778,8 +15516,9 @@ extension type ElementInternals._(JSObject _) implements JSObject {
   /// attribute, which defines the total number of rows in a table, grid, or
   /// treegrid.
   ///
-  /// > **Note:** Setting aria attributes on `ElementInternals` allows default
-  /// > semantics to be defined on a custom element. These may be overwritten by
+  /// > [!NOTE]
+  /// > Setting aria attributes on `ElementInternals` allows default semantics
+  /// > to be defined on a custom element. These may be overwritten by
   /// > author-defined attributes, but ensure that default semantics are
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
@@ -13798,8 +15537,9 @@ extension type ElementInternals._(JSObject _) implements JSObject {
   /// attribute, which defines an element's row index or position with respect
   /// to the total number of rows within a table, grid, or treegrid.
   ///
-  /// > **Note:** Setting aria attributes on `ElementInternals` allows default
-  /// > semantics to be defined on a custom element. These may be overwritten by
+  /// > [!NOTE]
+  /// > Setting aria attributes on `ElementInternals` allows default semantics
+  /// > to be defined on a custom element. These may be overwritten by
   /// > author-defined attributes, but ensure that default semantics are
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
@@ -13812,14 +15552,36 @@ extension type ElementInternals._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`ariaRowIndexText`** property of the [ElementInternals] interface
+  /// reflects the value of the
+  /// [`aria-rowindextext`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-rowindextext)
+  /// attribute, which defines a human readable text alternative of
+  /// aria-rowindex.
+  ///
+  /// > [!NOTE]
+  /// > Setting aria attributes on `ElementInternals` allows default semantics
+  /// > to be defined on a custom element. These may be overwritten by
+  /// > author-defined attributes, but ensure that default semantics are
+  /// > retained should the author delete those attributes, or fail to add them
+  /// > at all. For more information see the
+  /// > [Accessibility Object Model explainer](https://wicg.github.io/aom/explainer.html#default-semantics-for-custom-elements-via-the-elementinternals-object).
+  String? get ariaRowIndexText {
+    unsupportedPlatformError();
+  }
+
+  set ariaRowIndexText(String? value) {
+    unsupportedPlatformError();
+  }
+
   /// The **`ariaRowSpan`** property of the [ElementInternals] interface
   /// reflects the value of the
   /// [`aria-rowspan`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-rowspan)
   /// attribute, which defines the number of rows spanned by a cell or gridcell
   /// within a table, grid, or treegrid.
   ///
-  /// > **Note:** Setting aria attributes on `ElementInternals` allows default
-  /// > semantics to be defined on a custom element. These may be overwritten by
+  /// > [!NOTE]
+  /// > Setting aria attributes on `ElementInternals` allows default semantics
+  /// > to be defined on a custom element. These may be overwritten by
   /// > author-defined attributes, but ensure that default semantics are
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
@@ -13838,8 +15600,9 @@ extension type ElementInternals._(JSObject _) implements JSObject {
   /// attribute, which indicates the current "selected" state of elements that
   /// have a selected state.
   ///
-  /// > **Note:** Setting aria attributes on `ElementInternals` allows default
-  /// > semantics to be defined on a custom element. These may be overwritten by
+  /// > [!NOTE]
+  /// > Setting aria attributes on `ElementInternals` allows default semantics
+  /// > to be defined on a custom element. These may be overwritten by
   /// > author-defined attributes, but ensure that default semantics are
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
@@ -13858,8 +15621,9 @@ extension type ElementInternals._(JSObject _) implements JSObject {
   /// attribute, which defines the number of items in the current set of
   /// listitems or treeitems.
   ///
-  /// > **Note:** Setting aria attributes on `ElementInternals` allows default
-  /// > semantics to be defined on a custom element. These may be overwritten by
+  /// > [!NOTE]
+  /// > Setting aria attributes on `ElementInternals` allows default semantics
+  /// > to be defined on a custom element. These may be overwritten by
   /// > author-defined attributes, but ensure that default semantics are
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
@@ -13878,8 +15642,9 @@ extension type ElementInternals._(JSObject _) implements JSObject {
   /// attribute, which indicates if items in a table or grid are sorted in
   /// ascending or descending order.
   ///
-  /// > **Note:** Setting aria attributes on `ElementInternals` allows default
-  /// > semantics to be defined on a custom element. These may be overwritten by
+  /// > [!NOTE]
+  /// > Setting aria attributes on `ElementInternals` allows default semantics
+  /// > to be defined on a custom element. These may be overwritten by
   /// > author-defined attributes, but ensure that default semantics are
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
@@ -13897,8 +15662,9 @@ extension type ElementInternals._(JSObject _) implements JSObject {
   /// [`aria-valuemax`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-valuemax)
   /// attribute, which defines the maximum allowed value for a range widget.
   ///
-  /// > **Note:** Setting aria attributes on `ElementInternals` allows default
-  /// > semantics to be defined on a custom element. These may be overwritten by
+  /// > [!NOTE]
+  /// > Setting aria attributes on `ElementInternals` allows default semantics
+  /// > to be defined on a custom element. These may be overwritten by
   /// > author-defined attributes, but ensure that default semantics are
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
@@ -13916,8 +15682,9 @@ extension type ElementInternals._(JSObject _) implements JSObject {
   /// [`aria-valuemin`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-valuemin)
   /// attribute, which defines the minimum allowed value for a range widget.
   ///
-  /// > **Note:** Setting aria attributes on `ElementInternals` allows default
-  /// > semantics to be defined on a custom element. These may be overwritten by
+  /// > [!NOTE]
+  /// > Setting aria attributes on `ElementInternals` allows default semantics
+  /// > to be defined on a custom element. These may be overwritten by
   /// > author-defined attributes, but ensure that default semantics are
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
@@ -13935,8 +15702,9 @@ extension type ElementInternals._(JSObject _) implements JSObject {
   /// [`aria-valuenow`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-valuenow)
   /// attribute, which defines the current value for a range widget.
   ///
-  /// > **Note:** Setting aria attributes on `ElementInternals` allows default
-  /// > semantics to be defined on a custom element. These may be overwritten by
+  /// > [!NOTE]
+  /// > Setting aria attributes on `ElementInternals` allows default semantics
+  /// > to be defined on a custom element. These may be overwritten by
   /// > author-defined attributes, but ensure that default semantics are
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
@@ -13955,8 +15723,9 @@ extension type ElementInternals._(JSObject _) implements JSObject {
   /// attribute, which defines the human-readable text alternative of
   /// aria-valuenow for a range widget.
   ///
-  /// > **Note:** Setting aria attributes on `ElementInternals` allows default
-  /// > semantics to be defined on a custom element. These may be overwritten by
+  /// > [!NOTE]
+  /// > Setting aria attributes on `ElementInternals` allows default semantics
+  /// > to be defined on a custom element. These may be overwritten by
   /// > author-defined attributes, but ensure that default semantics are
   /// > retained should the author delete those attributes, or fail to add them
   /// > at all. For more information see the
@@ -14103,20 +15872,20 @@ extension type UserActivation._(JSObject _) implements JSObject {
   }
 }
 
-/// The **`ToggleEvent`** interface represents an event notifying the user when
-/// a
-/// [popover element](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API)'s
-/// state toggles between showing and hidden.
+/// The **`ToggleEvent`** interface represents an event notifying the user an
+/// Element's state has changed.
 ///
-/// It is the event object for the `HTMLElement`
+/// This is the event object for the `HTMLElement`
 /// [HTMLElement.beforetoggle_event] and [HTMLElement.toggle_event] events,
-/// which fire on popovers when they transition between showing and hidden
-/// (before and after, respectively).
+/// which fire on some elements just before and just after they transition
+/// between showing and hidden, respectively.
 ///
-/// > **Note:** `ToggleEvent` is unrelated to the `HTMLDetailsElement`
-/// > [HTMLDetailsElement.toggle_event] event, which fires on a `details`
-/// > element when its `open`/`closed` state is toggled. Its event object is a
-/// > generic [Event].
+/// - `beforetoggle` fires on
+///   [popovers](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API)
+///   and `dialog` elements
+/// - `toggle` fires on
+///   [popovers](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API),
+///   `dialog` elements, and `details` elements
 ///
 /// ---
 ///
@@ -14188,13 +15957,19 @@ extension type FocusOptions._(JSObject _) implements JSObject {
   }
 }
 
-/// The **`DataTransfer`** object is used to hold the data that is being dragged
-/// during a drag and drop operation. It may hold one or more data items, each
-/// of one or more data types. For more information about drag and drop, see
-/// [HTML Drag and Drop API](https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API).
+/// The **`DataTransfer`** object is used to hold any data transferred between
+/// contexts, such as a drag and drop operation, or clipboard read/write. It may
+/// hold one or more data items, each of one or more data types.
 ///
-/// This object is available from the [DragEvent.dataTransfer] property of all
-/// [DragEvent].
+/// `DataTransfer` was primarily designed for the
+/// [HTML Drag and Drop API](https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API),
+/// as the [DragEvent.dataTransfer] property, and is still specified in the HTML
+/// drag-and-drop section, but it is now also used by other APIs, such as
+/// [ClipboardEvent.clipboardData] and [InputEvent.dataTransfer]. However, other
+/// APIs only use certain parts of its interface, ignoring properties such as
+/// `dropEffect`. Documentation of `DataTransfer` will primarily discuss its
+/// usage in drag-and-drop operations, and you should refer to the other APIs'
+/// documentation for usage of `DataTransfer` in those contexts.
 ///
 /// ---
 ///
@@ -14243,7 +16018,9 @@ extension type DataTransfer._(JSObject _) implements JSObject {
   }
 
   /// The **`DataTransfer.setData()`** method sets the drag
-  /// operation's [DataTransfer] to the specified data and type. If
+  /// operation's
+  /// [drag data](https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer)
+  /// to the specified data and type. If
   /// data for the given type does not exist, it is added at the end of the drag
   /// data store,
   /// such that the last item in the [DataTransfer.types] list will be
@@ -14262,7 +16039,9 @@ extension type DataTransfer._(JSObject _) implements JSObject {
   }
 
   /// The **`DataTransfer.clearData()`** method removes the drag
-  /// operation's [DataTransfer] for the given type. If data for the
+  /// operation's
+  /// [drag data](https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer)
+  /// for the given type. If data for the
   /// given type does not exist, this method does nothing.
   ///
   /// If this method is called with no arguments or the format is an empty
@@ -14274,7 +16053,8 @@ extension type DataTransfer._(JSObject _) implements JSObject {
   /// object's
   /// [DataTransfer.types] list if there are any files included in the drag.
   ///
-  /// > **Note:** This method can only be used in the handler for the
+  /// > [!NOTE]
+  /// > This method can only be used in the handler for the
   /// > [HTMLElement.dragstart_event] event,
   /// > because that's the only time the drag operation's data store is
   /// > writable.
@@ -14371,21 +16151,23 @@ extension type DataTransfer._(JSObject _) implements JSObject {
   }
 
   /// The **`DataTransfer.types`** read-only property returns the available
-  /// types
-  /// that exist in the [DataTransfer.items].
+  /// types that exist in the [DataTransfer.items].
   JSArray<JSString> get types {
     unsupportedPlatformError();
   }
 
   /// The **`files`** read-only property of
   /// [`DataTransfer`](https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer)
-  /// objects is a [FileList] in the drag operation. If the operation includes
-  /// no files, the list is empty.
+  /// objects is a
+  /// [list of the files](https://developer.mozilla.org/en-US/docs/Web/API/FileList)
+  /// in the drag operation. If the operation includes no files, the list is
+  /// empty.
   ///
   /// This feature can be used to drag files from a user's desktop to the
   /// browser.
   ///
-  /// > **Note:** The `files` property of
+  /// > [!NOTE]
+  /// > The `files` property of
   /// > [`DataTransfer`](https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer)
   /// > objects can only be accessed from within the `drop` event. For all other
   /// > events, the `files` property will be empty — because its underlying data
@@ -14404,6 +16186,15 @@ extension type DataTransfer._(JSObject _) implements JSObject {
 /// The individual items can be accessed using the
 /// [bracket notation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Property_accessors#bracket_notation)
 /// `[]`.
+///
+/// `DataTransferItemList` was primarily designed for the
+/// [HTML Drag and Drop API](https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API),
+/// and is still specified in the HTML drag-and-drop section, but it is now also
+/// used by other APIs, such as [ClipboardEvent.clipboardData] and
+/// [InputEvent.dataTransfer]. Documentation of `DataTransferItemList` will
+/// primarily discuss its usage in drag-and-drop operations, and you should
+/// refer to the other APIs' documentation for usage of `DataTransferItemList`
+/// in those contexts.
 ///
 /// This interface has no constructor.
 ///
@@ -14465,6 +16256,15 @@ extension type DataTransferItemList._(JSObject _) implements JSObject {
 /// which contains a [DataTransferItemList] of drag data items. Each item in the
 /// list is a `DataTransferItem` object.
 ///
+/// `DataTransferItem` was primarily designed for the
+/// [HTML Drag and Drop API](https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API),
+/// and is still specified in the HTML drag-and-drop section, but it is now also
+/// used by other APIs, such as [ClipboardEvent.clipboardData] and
+/// [InputEvent.dataTransfer]. Documentation of `DataTransferItem` will
+/// primarily discuss its usage in drag-and-drop operations, and you should
+/// refer to the other APIs' documentation for usage of `DataTransferItem` in
+/// those contexts.
+///
 /// This interface has no constructor.
 ///
 /// ---
@@ -14492,8 +16292,9 @@ extension type DataTransferItem._(JSObject _) implements JSObject {
   /// [FileSystemDirectoryEntry] representing it. If the item isn't a file,
   /// `null` is returned.
   ///
-  /// > **Note:** This function is implemented as `webkitGetAsEntry()` in
-  /// > non-WebKit browsers including Firefox at this time; it may be renamed to
+  /// > [!NOTE]
+  /// > This function is implemented as `webkitGetAsEntry()` in non-WebKit
+  /// > browsers including Firefox at this time; it may be renamed to
   /// > `getAsEntry()` in the future, so you should code defensively, looking
   /// > for both.
   FileSystemEntry? webkitGetAsEntry() {
@@ -14518,11 +16319,13 @@ extension type DataTransferItem._(JSObject _) implements JSObject {
   }
 }
 
-/// The **`DragEvent`** interface is a [Event] that represents a drag and drop
-/// interaction. The user initiates a drag by placing a pointer device (such as
-/// a mouse) on the touch surface and then dragging the pointer to a new
-/// location (such as another DOM element). Applications are free to interpret a
-/// drag and drop interaction in an application-specific way.
+/// The **`DragEvent`** interface is a
+/// [DOM event](https://developer.mozilla.org/en-US/docs/Web/API/Event) that
+/// represents a drag and drop interaction. The user initiates a drag by placing
+/// a pointer device (such as a mouse) on the touch surface and then dragging
+/// the pointer to a new location (such as another DOM element). Applications
+/// are free to interpret a drag and drop interaction in an application-specific
+/// way.
 ///
 /// This interface inherits properties from [MouseEvent] and [Event].
 ///
@@ -14660,8 +16463,9 @@ extension type Window._(JSObject _) implements EventTarget, JSObject {
 
   /// The **`Window.blur()`** method does nothing.
   ///
-  /// > **Note:** Historically, this method was the programmatic equivalent of
-  /// > the user shifting focus away
+  /// > [!NOTE]
+  /// > Historically, this method was the programmatic equivalent of the user
+  /// > shifting focus away
   /// > from the current window. This behavior was removed due to hostile sites
   /// > abusing this functionality.
   /// > In Firefox, you can enable the old behavior with the
@@ -14713,9 +16517,9 @@ extension type Window._(JSObject _) implements EventTarget, JSObject {
   /// optional message prompting the user to input some text, and to wait until
   /// the user either submits the text or cancels the dialog.
   ///
-  /// Under some conditions — for example, when the user switches tabs — the
-  /// browser may not actually display a dialog, or may not wait for the user to
-  /// submit text or to cancel the dialog.
+  /// Under some conditions (when the user switches tabs, for example) the
+  /// browser may not display a dialog, or may not wait for the user to submit
+  /// text or to cancel the dialog.
   String? prompt([
     String? message,
     String? default_,
@@ -14784,7 +16588,8 @@ extension type Window._(JSObject _) implements EventTarget, JSObject {
   /// The **`moveTo()`** method of the [Window]
   /// interface moves the current window to the specified coordinates.
   ///
-  /// > **Note:** This function moves the window to an absolute location. In
+  /// > [!NOTE]
+  /// > This function moves the window to an absolute location. In
   /// > contrast, [window.moveBy] moves the window relative to its current
   /// > location.
   void moveTo(
@@ -14797,7 +16602,8 @@ extension type Window._(JSObject _) implements EventTarget, JSObject {
   /// The **`moveBy()`** method of the [Window]
   /// interface moves the current window by a specified amount.
   ///
-  /// > **Note:** This function moves the window relative to its current
+  /// > [!NOTE]
+  /// > This function moves the window relative to its current
   /// > location. In contrast, [window.moveTo] moves the window to an absolute
   /// > location.
   void moveBy(
@@ -14870,8 +16676,9 @@ extension type Window._(JSObject _) implements EventTarget, JSObject {
 
   /// The **`Window.captureEvents()`** method does nothing.
   ///
-  /// > **Note:** This is an method long removed from the specification. It is
-  /// > kept in browsers to prevent code breakage but does nothing.
+  /// > [!NOTE]
+  /// > This is an method long removed from the specification. It is kept in
+  /// > browsers to prevent code breakage but does nothing.
   void captureEvents() {
     unsupportedPlatformError();
   }
@@ -14898,7 +16705,8 @@ extension type Window._(JSObject _) implements EventTarget, JSObject {
   /// through the event
   /// loop.
   ///
-  /// > **Note:** A `timeout` option is strongly recommended for required work,
+  /// > [!NOTE]
+  /// > A `timeout` option is strongly recommended for required work,
   /// > as otherwise it's possible multiple seconds will elapse before the
   /// > callback is fired.
   int requestIdleCallback(
@@ -14914,13 +16722,25 @@ extension type Window._(JSObject _) implements EventTarget, JSObject {
     unsupportedPlatformError();
   }
 
-  /// The **`Window.getSelection()`** method returns a
-  /// [Selection] object representing the range of text selected by the user or
-  /// the current position of the caret.
+  /// The **`getSelection()`** method of the [Window] interface returns the
+  /// [Selection] object associated with the window's [document], representing
+  /// the range of text selected by the user or the current position of the
+  /// caret.
   Selection? getSelection() {
     unsupportedPlatformError();
   }
 
+  /// The **`reportError()`** method of the [Window] interface may be used to
+  /// report errors to the console or event handlers of global scopes, emulating
+  /// an uncaught JavaScript exception.
+  ///
+  /// This feature is primarily intended for custom event-dispatching or
+  /// callback-manipulating libraries.
+  /// Libraries can use this feature to catch errors in callback code and
+  /// re-throw them to the top level handler.
+  /// This ensures that an exception in one callback will not prevent others
+  /// from being handled, while at the same time ensuring that stack trace
+  /// information is still readily available for debugging at the top level.
   void reportError(JSAny? e) {
     unsupportedPlatformError();
   }
@@ -14936,6 +16756,10 @@ extension type Window._(JSObject _) implements EventTarget, JSObject {
   /// data again.
   /// For example, you can encode control characters such as ASCII values 0
   /// through 31.
+  ///
+  /// Also consider using the `Uint8Array.prototype.toBase64()` method if your
+  /// data is in a `Uint8Array` object to avoid creating a string containing raw
+  /// bytes.
   String btoa(String data) {
     unsupportedPlatformError();
   }
@@ -14948,40 +16772,99 @@ extension type Window._(JSObject _) implements EventTarget, JSObject {
   /// `atob()` method to decode the data again. For example, you can encode,
   /// transmit, and decode control characters such as  values 0 through 31.
   ///
-  /// For use with arbitrary Unicode strings, see _The "Unicode Problem"_ in the
-  /// glossary entry.
+  /// Also consider using the `Uint8Array.fromBase64()` method, which creates a
+  /// `Uint8Array` object from a base64-encoded string. It results in a byte
+  /// array, which is easier to work with than a string containing raw bytes.
   String atob(String data) {
     unsupportedPlatformError();
   }
 
+  /// The **`setTimeout()`** method of the [Window] interface sets a timer which
+  /// executes a function or specified piece of code once the timer expires.
   int setTimeout(
-    TimerHandler handler,
-    JSAny? arguments, [
+    TimerHandler handler, [
     int? timeout,
+    JSAny? argument1,
+    JSAny? argument2,
+    JSAny? argument3,
+    JSAny? argument4,
   ]) {
     unsupportedPlatformError();
   }
 
+  /// The **`clearTimeout()`** method of the [Window] interface cancels a
+  /// timeout previously established by calling [Window.setTimeout].
+  ///
+  /// If the parameter provided does not identify a previously established
+  /// action,
+  /// this method does nothing.
   void clearTimeout([int? id]) {
     unsupportedPlatformError();
   }
 
+  /// The **`setInterval()`** method of the [Window] interface repeatedly calls
+  /// a function or executes a code snippet, with a fixed time delay between
+  /// each call.
+  ///
+  /// This method returns an interval ID which uniquely identifies the interval,
+  /// so you can remove it later by calling [Window.clearInterval].
   int setInterval(
-    TimerHandler handler,
-    JSAny? arguments, [
+    TimerHandler handler, [
     int? timeout,
+    JSAny? argument1,
+    JSAny? argument2,
+    JSAny? argument3,
+    JSAny? argument4,
   ]) {
     unsupportedPlatformError();
   }
 
+  /// The **`clearInterval()`** method of the [Window] interface cancels a
+  /// timed, repeating action which was previously established by a call to
+  /// [Window.setInterval]. If the parameter provided does not identify a
+  /// previously established action, this method does nothing.
   void clearInterval([int? id]) {
     unsupportedPlatformError();
   }
 
+  /// The **`queueMicrotask()`** method of the [Window] interface
+  /// queues a microtask to be executed at a safe time prior to control
+  /// returning to the
+  /// browser's event loop.
+  ///
+  /// The microtask is a short function which will run after
+  /// the current task has completed its work and when there is no other code
+  /// waiting to be
+  /// run before control of the execution context is returned to the browser's
+  /// event loop.
+  ///
+  /// This lets your code run without interfering with any other, potentially
+  /// higher
+  /// priority, code that is pending, but before the browser regains control
+  /// over the
+  /// execution context, potentially depending on work you need to complete. You
+  /// can learn
+  /// more about how to use microtasks and why you might choose to do so in our
+  /// [microtask guide](https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API/Microtask_guide).
+  ///
+  /// The importance of microtasks comes in its ability to perform tasks
+  /// asynchronously but
+  /// in a specific order. See [Using microtasks in JavaScript with
+  /// `queueMicrotask()`](https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API/Microtask_guide)
+  /// for more details.
+  ///
+  /// Microtasks are especially useful for libraries and frameworks that need to
+  /// perform
+  /// final cleanup or other just-before-rendering tasks.
   void queueMicrotask(VoidFunction callback) {
     unsupportedPlatformError();
   }
 
+  /// The **`createImageBitmap()`** method of the [Window] interface creates a
+  /// bitmap from a given source, optionally cropped to contain only a portion
+  /// of that source.
+  /// It accepts a variety of different image sources, and returns a `Promise`
+  /// which resolves to an [ImageBitmap].
   JSPromise<ImageBitmap> createImageBitmap(
     ImageBitmapSource image, [
     JSAny? optionsOrSx,
@@ -14993,6 +16876,17 @@ extension type Window._(JSObject _) implements EventTarget, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`structuredClone()`** method of the [Window] interface creates a
+  /// [deep clone](https://developer.mozilla.org/en-US/docs/Glossary/Deep_copy)
+  /// of a given value using the
+  /// [structured clone algorithm](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm).
+  ///
+  /// The method also allows
+  /// [transferable objects](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Transferable_objects)
+  /// in the original value to be _transferred_ rather than cloned to the new
+  /// object.
+  /// Transferred objects are detached from the original object and attached to
+  /// the new object; they are no longer accessible in the original object.
   JSAny? structuredClone(
     JSAny? value, [
     StructuredSerializeOptions? options,
@@ -15000,6 +16894,27 @@ extension type Window._(JSObject _) implements EventTarget, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`fetch()`** method of the [Window] interface starts the process of
+  /// fetching a resource from the network, returning a promise that is
+  /// fulfilled once the response is available.
+  ///
+  /// The promise resolves to the [Response] object representing the response to
+  /// your request.
+  ///
+  /// A `fetch()` promise only rejects when the request fails, for example,
+  /// because of a badly-formed request URL or a network error.
+  /// A `fetch()` promise _does not_ reject if the server responds with HTTP
+  /// status codes that indicate errors (`404`, `504`, etc.).
+  /// Instead, a `then()` handler must check the [Response.ok] and/or
+  /// [Response.status] properties.
+  ///
+  /// The `fetch()` method is controlled by the `connect-src` directive of
+  /// [Content Security Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy)
+  /// rather than the directive of the resources it's retrieving.
+  ///
+  /// > [!NOTE]
+  /// > The `fetch()` method's parameters are identical to those of the
+  /// > [Request.Request] constructor.
   JSPromise<Response> fetch(
     RequestInfo input, [
     RequestInit? init,
@@ -15022,13 +16937,13 @@ extension type Window._(JSObject _) implements EventTarget, JSObject {
   /// background tabs or hidden `iframe`s, in order to improve
   /// performance and battery life.
   ///
-  /// > **Note:** Your callback function must call `requestAnimationFrame()`
-  /// > again if
+  /// > [!NOTE]
+  /// > Your callback function must call `requestAnimationFrame()` again if
   /// > you want to animate another frame. `requestAnimationFrame()` is
   /// > one-shot.
   ///
-  /// > **Warning:** Be sure always to use the first argument (or some other
-  /// > method for
+  /// > [!WARNING]
+  /// > Be sure always to use the first argument (or some other method for
   /// > getting the current time) to calculate how much the animation will
   /// > progress in
   /// > a frame — **otherwise, the animation will run faster on high
@@ -15081,7 +16996,7 @@ extension type Window._(JSObject _) implements EventTarget, JSObject {
   /// script.
   ///
   /// Another reason, is that without this property you wouldn't be able to
-  /// write, for example, "". You'd have to use `open('https://google.com/')`
+  /// write, for example, . You'd have to use `open('https://google.com/')`
   /// instead.
   ///
   /// Yet another reason to use this property, is for libraries which wish to
@@ -15315,7 +17230,8 @@ extension type Window._(JSObject _) implements EventTarget, JSObject {
   /// returns the element (such as `iframe` or `object`)
   /// in which the window is embedded.
   ///
-  /// > **Note:** Despite this property's name, it works for documents embedded
+  /// > [!NOTE]
+  /// > Despite this property's name, it works for documents embedded
   /// > within any embedding point, including `object`,
   /// > `iframe`, or `embed`.
   Element? get frameElement {
@@ -15347,6 +17263,14 @@ extension type Window._(JSObject _) implements EventTarget, JSObject {
   }
 
   set onorientationchange(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  /// The **`cookieStore`** read-only property of the [Window] interface returns
+  /// a reference to the [CookieStore] object for the current document context.
+  /// This is an entry point for the
+  /// [Cookie Store API](https://developer.mozilla.org/en-US/docs/Web/API/Cookie_Store_API).
+  CookieStore get cookieStore {
     unsupportedPlatformError();
   }
 
@@ -15412,7 +17336,8 @@ extension type Window._(JSObject _) implements EventTarget, JSObject {
   /// browser viewport to
   /// the left side of the screen.
   ///
-  /// > **Note:** An alias of `screenX` was implemented across modern
+  /// > [!NOTE]
+  /// > An alias of `screenX` was implemented across modern
   /// > browsers in more recent times — [Window.screenLeft]. This was originally
   /// > supported only in IE but was introduced everywhere due to popularity.
   int get screenX {
@@ -15435,9 +17360,10 @@ extension type Window._(JSObject _) implements EventTarget, JSObject {
   /// in CSS pixels, of the top border of the user's browser viewport to the top
   /// edge of the screen.
   ///
-  /// > **Note:** An alias of `screenY` was implemented across modern browsers
-  /// > in more recent times — [Window.screenTop]. This was originally supported
-  /// > only in IE but was introduced everywhere due to popularity.
+  /// > [!NOTE]
+  /// > An alias of `screenY` was implemented across modern browsers in more
+  /// > recent times — [Window.screenTop]. This was originally supported only in
+  /// > IE but was introduced everywhere due to popularity.
   int get screenY {
     unsupportedPlatformError();
   }
@@ -15469,26 +17395,29 @@ extension type Window._(JSObject _) implements EventTarget, JSObject {
     unsupportedPlatformError();
   }
 
-  /// The **`devicePixelRatio`** of
-  /// [Window] interface returns the ratio of the resolution in _physical
-  /// pixels_ to the resolution in _CSS pixels_ for the current display
-  /// device.
+  /// The **`devicePixelRatio`** of [Window] interface returns the ratio of the
+  /// resolution in _physical pixels_ to the resolution in _CSS pixels_ for the
+  /// current display device.
   ///
-  /// This value could also be interpreted as the ratio of pixel sizes: the
-  /// size of one _CSS pixel_ to the size of one _physical pixel_. In simpler
-  /// terms, this tells the browser how many of the screen's actual pixels
-  /// should be used to
-  /// draw a single CSS pixel.
+  /// This value could also be interpreted as the ratio of pixel sizes: the size
+  /// of one _CSS pixel_ to the size of one _physical pixel_.
+  /// In simpler terms, this tells the browser how many of the screen's actual
+  /// pixels should be used to draw a single CSS pixel.
+  ///
+  /// Page zooming affects the value of `devicePixelRatio`. When a page is
+  /// zoomed in (made larger), the size of a CSS pixel increases, and so the
+  /// `devicePixelRatio` value increases.
+  /// Pinch-zooming does not affect `devicePixelRatio`, because this magnifies
+  /// the page without changing the size of a CSS pixel.
   ///
   /// This is useful when dealing with the difference between rendering on a
-  /// standard display
-  /// versus a HiDPI or Retina display, which use more screen pixels to draw the
-  /// same objects,
-  /// resulting in a sharper image.
+  /// standard display versus a HiDPI or Retina display, which use more screen
+  /// pixels to draw the same objects, resulting in a sharper image.
   ///
-  /// You can use [Window.matchMedia] to check if the
-  /// value of `devicePixelRatio` changes (which can happen, for example, if the
-  /// user drags the window to a display with a different pixel density). See
+  /// You can use [Window.matchMedia] to check if the value of
+  /// `devicePixelRatio` changes (which can happen, for example, if the user
+  /// drags the window to a display with a different pixel density).
+  /// See
   /// [the example below](#monitoring_screen_resolution_or_zoom_level_changes).
   double get devicePixelRatio {
     unsupportedPlatformError();
@@ -15503,8 +17432,9 @@ extension type Window._(JSObject _) implements EventTarget, JSObject {
   /// universally supported and even when supported introduces potential
   /// fragility to your code.
   ///
-  /// > **Note:** This property can be fragile, in that there may be situations
-  /// > in which the returned `Event` is not the expected value. In addition,
+  /// > [!NOTE]
+  /// > This property can be fragile, in that there may be situations in which
+  /// > the returned `Event` is not the expected value. In addition,
   /// > `Window.event` is not accurate for events dispatched within .
   Event? get event {
     unsupportedPlatformError();
@@ -16399,11 +18329,27 @@ extension type Window._(JSObject _) implements EventTarget, JSObject {
     unsupportedPlatformError();
   }
 
+  EventHandler get onpagereveal {
+    unsupportedPlatformError();
+  }
+
+  set onpagereveal(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
   EventHandler get onpageshow {
     unsupportedPlatformError();
   }
 
   set onpageshow(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onpageswap {
+    unsupportedPlatformError();
+  }
+
+  set onpageswap(EventHandler value) {
     unsupportedPlatformError();
   }
 
@@ -16478,19 +18424,40 @@ extension type Window._(JSObject _) implements EventTarget, JSObject {
   }
 
   /// The **`crossOriginIsolated`** read-only property of the [Window] interface
-  /// returns a boolean value that
-  /// indicates whether the website is in a cross-origin isolation state. That
-  /// state mitigates the risk of side-channel attacks and unlocks a few
-  /// capabilities:
+  /// returns a boolean value that indicates whether the document is
+  /// cross-origin isolated.
+  ///
+  /// A cross-origin isolated document only shares its  with same-origin
+  /// documents in popups and navigations, and resources (both same-origin and
+  /// cross-origin) that the document has opted into using via
+  /// [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) (and
+  /// [COEP](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cross-Origin-Embedder-Policy)
+  /// for `<iframe>`).
+  /// The relationship between a cross-origin opener of the document or any
+  /// cross-origin popups that it opens are severed.
+  /// The document may also be hosted in a separate OS process alongside other
+  /// documents with which it can communicate by operating on shared memory.
+  /// This mitigates the risk of side-channel attacks and cross-origin attacks
+  /// referred to as [XS-Leaks](https://xsleaks.dev/).
+  ///
+  /// Cross-origin isolated documents operate with fewer restrictions when using
+  /// the following APIs:
   ///
   /// - `SharedArrayBuffer` can be created and sent via a [Window.postMessage]
   ///   or a [MessagePort.postMessage] call.
   /// - [Performance.now] offers better precision.
-  /// - [Performance.measureUserAgentSpecificMemory] can be accessed.
+  /// - [Performance.measureUserAgentSpecificMemory] can be called.
   ///
-  /// A website is in a cross-origin isolated state, when the response header
-  /// has the value `same-origin` and the  header has the value `require-corp`
-  /// or `credentialless`.
+  /// A document will be cross-origin isolated if it is returned with an HTTP
+  /// response that includes the headers:
+  ///
+  /// - header with the directive `same-origin`.
+  /// - header with the directive `require-corp` or `credentialless`.
+  ///
+  /// Access to the APIs must also be allowed by the `Permissions-Policy` .
+  /// Otherwise `crossOriginIsolated` property will return `false`, and the
+  /// document will not be able to use the APIs listed above with reduced
+  /// restrictions.
   bool get crossOriginIsolated {
     unsupportedPlatformError();
   }
@@ -16534,8 +18501,9 @@ extension type Window._(JSObject _) implements EventTarget, JSObject {
   /// entry point for using the
   /// [Prioritized Task Scheduling API](https://developer.mozilla.org/en-US/docs/Web/API/Prioritized_Task_Scheduling_API).
   ///
-  /// The object has a single instance method [Scheduler.postTask] that is used
-  /// to post prioritized tasks for scheduling.
+  /// It returns a [Scheduler] object instance containing [Scheduler.postTask]
+  /// and [Scheduler.yield] methods that can be used to schedule prioritized
+  /// tasks.
   Scheduler get scheduler {
     unsupportedPlatformError();
   }
@@ -16555,44 +18523,30 @@ extension type Window._(JSObject _) implements EventTarget, JSObject {
     unsupportedPlatformError();
   }
 
-  /// The read-only **`sessionStorage`**
-  /// property accesses a session [Storage] object for the current
-  /// . `sessionStorage` is similar to
-  /// [Window.localStorage]; the difference is that while data
-  /// in `localStorage` doesn't expire, data in `sessionStorage` is
-  /// cleared when the _page session_ ends.
+  /// The read-only **`sessionStorage`** property accesses a session [Storage]
+  /// object for the current . `sessionStorage` is similar to
+  /// [Window.localStorage]; the difference is that while `localStorage` is
+  /// partitioned by origin only, `sessionStorage` is partitioned by both origin
+  /// and browser tabs (top-level browsing contexts). The data in
+  /// `sessionStorage` is only kept for the duration of the page session.
   ///
   /// - Whenever a document is loaded in a particular tab in the browser, a
-  ///   unique page
-  /// session gets created and assigned to that particular tab. That page
-  /// session is valid
-  /// only for that particular tab.
+  ///   unique page session gets created and assigned to that particular tab.
+  ///   That page session is accessible only in that particular tab. The main
+  ///   document, and all embedded  (iframes), are grouped by their origin and
+  ///   each origin has access to its own separate storage area.
+  /// - If the page has a [Window.opener], the `sessionStorage` is initially a
+  ///   copy of the opener's `sessionStorage` object. However, they are still
+  ///   separate and changes to one do not affect the other. To prevent the
+  ///   `sessionStorage` from being copied, use one of the techniques that
+  ///   remove `opener` (see [Window.opener]).
   /// - A page session lasts as long as the tab or the browser is open, and
-  ///   survives over
-  /// page reloads and restores.
-  /// - **Opening a page in a new tab or window creates a new session with the
-  ///   value
-  /// of the top-level browsing context, which differs from how session cookies
-  /// work.**
-  /// - Opening multiple tabs/windows with the same URL creates `sessionStorage`
-  /// for each tab/window.
-  /// - Duplicating a tab copies the tab's `sessionStorage` into the new
-  /// tab.
-  /// - Closing a tab/window ends the session and clears objects in
-  /// `sessionStorage`.
-  ///
-  /// Data stored in `sessionStorage` **is specific to the protocol of the
-  /// page**. In particular, data stored by a script on a site accessed with
-  /// HTTP
-  /// (e.g., [http://example.com](https://example.com)) is
-  /// put in a different `sessionStorage` object from the same site accessed
-  /// with
-  /// HTTPS (e.g., <https://example.com>).
-  ///
-  /// The keys and the values are _always_ in the UTF-16 string
-  /// format, which uses two bytes per character. As with objects, integer keys
-  /// are
-  /// automatically converted to strings.
+  ///   survives over page reloads and restores.
+  /// - Opening a page in a new tab or window creates a new session with the
+  ///   value of the top-level browsing context, which differs from how session
+  ///   cookies work.
+  /// - Closing the tab/window ends the session and clears the data in
+  ///   `sessionStorage`.
   Storage get sessionStorage {
     unsupportedPlatformError();
   }
@@ -16626,10 +18580,11 @@ extension type WindowPostMessageOptions._(JSObject _)
   }
 }
 
-/// The **`BarProp`** interface of the [Document Object Model] represents the
-/// web browser user interface elements that are exposed to scripts in web
-/// pages. Each of the following interface elements are represented by a
-/// `BarProp` object.
+/// The **`BarProp`** interface of the
+/// [Document Object Model](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model)
+/// represents the web browser user interface elements that are exposed to
+/// scripts in web pages. Each of the following interface elements are
+/// represented by a `BarProp` object.
 ///
 /// - [Window.locationbar]
 ///   - : The browser location bar.
@@ -16685,6 +18640,7 @@ extension type Location._(JSObject _) implements JSObject {
   /// from the [Location.assign] method is that after using
   /// `replace()` the current page will not be saved in session [History],
   /// meaning the user won't be able to use the _back_ button to navigate to it.
+  /// Not to be confused with the `String` method `String.prototype.replace()`.
   void replace(String url) {
     unsupportedPlatformError();
   }
@@ -16714,26 +18670,40 @@ extension type Location._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
-  /// The **`origin`** read-only property of the [Location] interface is a
+  /// The **`origin`** read-only property of the [Location] interface returns a
   /// string containing the Unicode serialization of the origin of the
-  /// represented URL.
+  /// location's URL.
   ///
   /// The exact structure varies depending on the type of URL:
   ///
-  /// - For URL using the `http:` or `https:` schemes, the scheme followed by
-  ///   `//`, followed by the domain, followed by `:`, followed by the port (the
-  ///   default port, `80` and `443` respectively, if explicitly specified).
-  /// - For URL using `file:` scheme, the value is browser dependent.
-  /// - For URL using the `blob:` scheme, the origin of the URL following
-  ///   `blob:`. For example, `blob:https://mozilla.org` will have
+  /// - For URLs using the `ftp:`, `http:`, `https:`, `ws:`, and `wss:` schemes,
+  ///   the [Location.protocol] followed by `//`, followed by the
+  ///   [Location.host]. Same as `host`, the [Location.port] is only included if
+  ///   it's not the default for the protocol.
+  /// - For URLs using `file:` scheme, the value is browser dependent.
+  /// - For URLs using the `blob:` scheme, the origin of the URL following
+  ///   `blob:`, but only if that URL uses the `http:`, `https:`, or `file:`
+  ///   scheme. For example, `blob:https://mozilla.org` will have
   ///   `https://mozilla.org`.
+  ///
+  /// For all other cases, the string `"null"` is returned.
+  ///
+  /// See [URL.origin] for more information.
   String get origin {
     unsupportedPlatformError();
   }
 
-  /// The **`protocol`** property of the [Location]
-  /// interface is a string representing the protocol scheme of the URL,
-  /// including the final `':'`.
+  /// The **`protocol`** property of the [Location] interface is a string
+  /// containing the protocol or scheme of the location's URL, including the
+  /// final `":"`. If the port is the default for the protocol (`80` for `ws:`
+  /// and `http:`, `443` for `wss:` and `https:`, and `21` for `ftp:`), this
+  /// property contains an empty string, `""`.
+  ///
+  /// This property can be set to change the protocol of the URL. A `":"` is
+  /// appended to the provided string if not provided. The provided scheme has
+  /// to be compatible with the rest of the URL to be considered valid.
+  ///
+  /// See [URL.protocol] for more information.
   String get protocol {
     unsupportedPlatformError();
   }
@@ -16742,10 +18712,13 @@ extension type Location._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
-  /// The **`host`** property of the [Location]
-  /// interface is a string containing the host, that is the
-  /// _hostname_, and then, if the _port_ of the URL is nonempty, a
-  /// `':'`, and the _port_ of the URL.
+  /// The **`host`** property of the [Location] interface is a string containing
+  /// the host, which is the [Location.hostname], and then, if the  of the URL
+  /// is nonempty, a `":"`, followed by the [Location.port] of the URL. If the
+  /// URL does not have a `hostname`, this property contains an empty string,
+  /// `""`.
+  ///
+  /// See [URL.host] for more information.
   String get host {
     unsupportedPlatformError();
   }
@@ -16754,8 +18727,14 @@ extension type Location._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
-  /// The **`hostname`** property of the [Location]
-  /// interface is a string containing the  of the URL.
+  /// The **`hostname`** property of the [Location] interface is a string
+  /// containing either the  or  of the location URL. If the URL does not have a
+  /// hostname, this property contains an empty string, `""`. IPv4 and IPv6
+  /// addresses are normalized, such as stripping leading zeros, and domain
+  /// names are converted to
+  /// [IDN](https://en.wikipedia.org/wiki/Internationalized_domain_name).
+  ///
+  /// See [URL.hostname] for more information.
   String get hostname {
     unsupportedPlatformError();
   }
@@ -16764,9 +18743,16 @@ extension type Location._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
-  /// The **`port`** property of the [Location]
-  /// interface is a string containing the port number of the URL. If the
-  /// URL does not contain an explicit port number, it will be set to `''`.
+  /// The **`port`** property of the [Location] interface is a string containing
+  /// the port number of the location's URL. If the port is the default for the
+  /// protocol (`80` for `ws:` and `http:`, `443` for `wss:` and `https:`, and
+  /// `21` for `ftp:`), this property contains an empty string, `""`.
+  ///
+  /// This property can be set to change the port of the URL. If the URL has no
+  /// [Location.host] or its scheme is `file:`, then setting this property has
+  /// no effect. It also silently ignores invalid port numbers.
+  ///
+  /// See [URL.port] for more information.
   String get port {
     unsupportedPlatformError();
   }
@@ -16788,16 +18774,24 @@ extension type Location._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
-  /// The **`search`** property of the [Location]
-  /// interface is a search string, also called a _query string_; that is, a
-  /// string containing a `'?'` followed by the parameters of the
-  /// URL.
+  /// The **`search`** property of the [Location] interface is a search string,
+  /// also called a _query string_, that is a string containing a `"?"` followed
+  /// by the parameters of the location's URL. If the URL does not have a search
+  /// query, this property contains an empty string, `""`.
+  ///
+  /// This property can be set to change the query string of the URL. When
+  /// setting, a single `"?"` prefix is added to the provided value, if not
+  /// already present. Setting it to `""` removes the query string.
+  ///
+  /// The query is  when setting but not percent-decoded when reading.
   ///
   /// Modern browsers provide
   /// [`URLSearchParams`](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams/get#examples)
   /// and
   /// [`URL.searchParams`](/en-US/docs/Web/API/URL/searchParams#examples)
   /// to make it easy to parse out the parameters from the querystring.
+  ///
+  /// See [URL.search] for more information.
   String get search {
     unsupportedPlatformError();
   }
@@ -16806,15 +18800,12 @@ extension type Location._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
-  /// The **`hash`** property of the
-  /// [Location] interface returns a string containing a
-  /// `'#'` followed by the fragment identifier of the URL — the ID on the page
-  /// that the URL is trying to target.
+  /// The **`hash`** property of the [Location] interface is a string containing
+  /// a `"#"` followed by the fragment identifier of the location URL. If the
+  /// URL does not have a fragment identifier, this property contains an empty
+  /// string, `""`.
   ///
-  /// The fragment is not
-  /// [URL decoded](https://en.wikipedia.org/wiki/URL_encoding). If the URL does
-  /// not
-  /// have a fragment identifier, this property contains an empty string, `""`.
+  /// See [URL.hash] for more information.
   String get hash {
     unsupportedPlatformError();
   }
@@ -16847,8 +18838,9 @@ extension type Location._(JSObject _) implements JSObject {
 /// There is only one instance of `history` (It is a _singleton_.) accessible
 /// via the global object [Window.history].
 ///
-/// > **Note:** This interface is only available on the main thread ([Window]).
-/// > It cannot be accessed in [Worker] or [Worklet] contexts.
+/// > [!NOTE]
+/// > This interface is only available on the main thread ([Window]). It cannot
+/// > be accessed in [Worker] or [Worklet] contexts.
 ///
 /// ---
 ///
@@ -16920,7 +18912,7 @@ extension type History._(JSObject _) implements JSObject {
   }
 
   /// The **`length`** read-only property of the [History] interface
-  /// returns an integer representing the number of elements in the session
+  /// returns an integer representing the number of entries in the session
   /// history, including the currently loaded page.
   ///
   /// For example, for a page loaded in a new tab this property returns `1`.
@@ -16950,9 +18942,7 @@ extension type History._(JSObject _) implements JSObject {
   }
 }
 
-/// **`PopStateEvent`** is an interface for the
-/// [`popstate`](https://developer.mozilla.org/en-US/docs/Web/API/Window/popstate_event)
-/// event.
+/// **`PopStateEvent`** is an interface for the [Window.popstate_event] event.
 ///
 /// A `popstate` event is dispatched to the window every time the active history
 /// entry changes between two history entries for the same document. If the
@@ -16981,6 +18971,15 @@ extension type PopStateEvent._(JSObject _) implements Event, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`hasUAVisualTransition`** read-only property of the [PopStateEvent]
+  /// interface returns `true` if the user agent performed a visual transition
+  /// for this navigation before dispatching this event, or `false` otherwise.
+  ///
+  /// User agents may provide a built-in visual transition when executing site
+  /// navigations. If the site author also adds a visual transition, user agent
+  /// and author transitions may conflict and confuse a visitor. The property
+  /// lets you detect whether a UA transition was provided so that you can skip
+  /// author transitions for a better user experience.
   bool get hasUAVisualTransition {
     unsupportedPlatformError();
   }
@@ -17064,6 +19063,130 @@ extension type HashChangeEventInit._(JSObject _)
   }
 
   set newURL(String value) {
+    unsupportedPlatformError();
+  }
+}
+
+/// The **`PageSwapEvent`** event object is made available inside handler
+/// functions for the [Window.pageswap_event] event.
+///
+/// The `pageswap` event is fired when you navigate across documents, when the
+/// previous document is about to unload. During a cross-document navigation,
+/// the `PageSwapEvent` event object allows you to manipulate the related
+/// [view transition](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API)
+/// (providing access to the relevant [ViewTransition] object) from the document
+/// being navigated _from_, if a view transition was triggered by the
+/// navigation. It also provides access to information on the navigation type
+/// and current and destination documents.
+///
+/// ---
+///
+/// API documentation sourced from
+/// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/PageSwapEvent).
+extension type PageSwapEvent._(JSObject _) implements Event, JSObject {
+  PageSwapEvent(
+    String type, [
+    PageSwapEventInit? eventInitDict,
+  ]) : _ = JSObject();
+
+  /// The **`activation`** read-only property of the [PageSwapEvent] interface
+  /// contains a [NavigationActivation] object containing the navigation type
+  /// and current and destination document history entries for a same-origin
+  /// navigation.
+  JSObject? get activation {
+    unsupportedPlatformError();
+  }
+
+  /// The **`viewTransition`** read-only property of the [PageRevealEvent]
+  /// interface contains a [ViewTransition] object representing the active view
+  /// transition for the cross-document navigation.
+  ViewTransition? get viewTransition {
+    unsupportedPlatformError();
+  }
+}
+extension type PageSwapEventInit._(JSObject _) implements EventInit, JSObject {
+  PageSwapEventInit({
+    bool? bubbles,
+    bool? cancelable,
+    bool? composed,
+    JSObject? activation,
+    ViewTransition? viewTransition,
+  }) : _ = JSObject();
+
+  JSObject? get activation {
+    unsupportedPlatformError();
+  }
+
+  set activation(JSObject? value) {
+    unsupportedPlatformError();
+  }
+
+  ViewTransition? get viewTransition {
+    unsupportedPlatformError();
+  }
+
+  set viewTransition(ViewTransition? value) {
+    unsupportedPlatformError();
+  }
+}
+
+/// The **`PageRevealEvent`** event object is made available inside handler
+/// functions for the [Window.pagereveal_event] event.
+///
+/// During a cross-document navigation, it allows you to manipulate a related
+/// [view transition](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API)
+/// (providing access to the relevant [ViewTransition] object) from the document
+/// being navigated _to_, if a view transition was triggered by the navigation.
+///
+/// Outside view transitions, this event is also useful for cases such as
+/// triggering a startup animation, or reporting a page view. It's equivalent to
+/// the first [Window.requestAnimationFrame] run after a cross-document
+/// navigation, if you were to trigger `requestAnimationFrame()` in the `head`
+/// of the document. For example, if you ran the following `reveal()` function
+/// in the `<head>`:
+///
+/// ```js
+/// function reveal() {
+///   // Include startup animation here
+/// }
+/// /* This will fire in the first rendered frame after loading */
+/// requestAnimationFrame(() => reveal());
+///
+/// /* This will fire if the page is restored from BFCache */
+/// window.onpagehide = () => requestAnimationFrame(() => reveal());
+/// ```
+///
+/// ---
+///
+/// API documentation sourced from
+/// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/PageRevealEvent).
+extension type PageRevealEvent._(JSObject _) implements Event, JSObject {
+  PageRevealEvent(
+    String type, [
+    PageRevealEventInit? eventInitDict,
+  ]) : _ = JSObject();
+
+  /// The **`viewTransition`** read-only property of the [PageRevealEvent]
+  /// interface contains a [ViewTransition] object representing the active view
+  /// transition for the cross-document navigation.
+  ViewTransition? get viewTransition {
+    unsupportedPlatformError();
+  }
+}
+extension type PageRevealEventInit._(JSObject _)
+    implements EventInit, JSObject {
+  PageRevealEventInit({
+    bool? bubbles,
+    bool? cancelable,
+    bool? composed,
+    ViewTransition? viewTransition,
+  }) : _ = JSObject();
+
+  ViewTransition? get viewTransition {
+    unsupportedPlatformError();
+  }
+
+  set viewTransition(ViewTransition? value) {
     unsupportedPlatformError();
   }
 }
@@ -17155,22 +19278,36 @@ extension type ErrorEvent._(JSObject _) implements Event, JSObject {
     ErrorEventInit? eventInitDict,
   ]) : _ = JSObject();
 
+  /// The **`message`** read-only property of the [ErrorEvent] interface returns
+  /// a string containing a human-readable error message describing the problem.
   String get message {
     unsupportedPlatformError();
   }
 
+  /// The **`filename`** read-only property of the [ErrorEvent] interface
+  /// returns a string containing the name of the script file in which the error
+  /// occurred.
   String get filename {
     unsupportedPlatformError();
   }
 
+  /// The **`lineno`** read-only property of the [ErrorEvent] interface returns
+  /// an integer containing the line number of the script file on which the
+  /// error occurred.
   int get lineno {
     unsupportedPlatformError();
   }
 
+  /// The **`colno`** read-only property of the [ErrorEvent] interface returns
+  /// an integer containing the column number of the script file on which the
+  /// error occurred.
   int get colno {
     unsupportedPlatformError();
   }
 
+  /// The **`error`** read-only property of the [ErrorEvent] interface returns a
+  /// JavaScript value, such as an `Error` or [DOMException], representing the
+  /// error associated with this event.
   JSAny? get error {
     unsupportedPlatformError();
   }
@@ -17329,7 +19466,8 @@ extension type GetHTMLOptions._(JSObject _) implements JSObject {
 /// from a URL-addressable resource, returning a `Document` in its
 /// [XMLHttpRequest.response] property.
 ///
-/// > **Note:** Be aware that
+/// > [!NOTE]
+/// > Be aware that
 /// > [block-level elements](https://developer.mozilla.org/en-US/docs/Glossary/Block-level_content)
 /// > like `<p>` will be automatically closed if another
 /// > block-level element is nested inside and therefore parsed before the
@@ -17346,7 +19484,8 @@ extension type DOMParser._(JSObject _) implements JSObject {
   /// string containing either HTML or XML, returning an [HTMLDocument] or an
   /// [XMLDocument].
   ///
-  /// > **Note:** The
+  /// > [!NOTE]
+  /// > The
   /// > [`Document.parseHTMLUnsafe()`](https://developer.mozilla.org/en-US/docs/Web/API/Document/parseHTMLUnsafe_static)
   /// > static method provides an ergonomic alternative for parsing HTML strings
   /// > into a [Document].
@@ -17381,7 +19520,8 @@ extension type Navigator._(JSObject _) implements JSObject {
   /// Since Chrome 103, the `Navigator.getBattery()` method of
   /// [Battery Status API] only expose to secure context.
   ///
-  /// > **Note:** Access to this feature may be controlled by the  directive .
+  /// > [!NOTE]
+  /// > Access to this feature may be controlled by the  directive .
   JSPromise<BatteryManager> getBattery() {
     unsupportedPlatformError();
   }
@@ -17397,12 +19537,13 @@ extension type Navigator._(JSObject _) implements JSObject {
   /// legacy techniques for sending analytics, such as the use of
   /// [XMLHttpRequest].
   ///
-  /// > **Note:** For use cases that need the ability to send requests with
-  /// > methods other than `POST`, or to change any request properties, or that
-  /// > need access to the server response, instead use the
-  /// > [`fetch()`](https://developer.mozilla.org/en-US/docs/Web/API/fetch)
+  /// > [!NOTE]
+  /// > For use cases that need the ability to send requests with methods other
+  /// > than `POST`, or to change any request properties, or that need access to
+  /// > the server response, instead use the
+  /// > [`fetch()`](https://developer.mozilla.org/en-US/docs/Web/API/Window/fetch)
   /// > method with
-  /// > [`keepalive`](https://developer.mozilla.org/en-US/docs/Web/API/fetch#keepalive)
+  /// > [`keepalive`](https://developer.mozilla.org/en-US/docs/Web/API/RequestInit#keepalive)
   /// > set to true.
   bool sendBeacon(
     String url, [
@@ -17556,11 +19697,25 @@ extension type Navigator._(JSObject _) implements JSObject {
   }
 
   /// The **[Navigator]** method **`registerProtocolHandler()`** lets websites
-  /// register their ability to open or handle particular URL schemes (aka
-  /// protocols).
+  /// register their ability to open or handle particular URL schemes (also
+  /// known as protocols).
   ///
   /// For example, this API lets webmail sites open `mailto:` URLs, or VoIP
   /// sites open `tel:` URLs.
+  ///
+  /// To register a protocol handler, a website calls
+  /// `registerProtocolHandler()`, passing in the protocol to register and a
+  /// template URL.
+  ///
+  /// When the user activates a link that uses the registered protocol, the
+  /// browser will insert the
+  /// [`href`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#href)
+  /// from the activated link into the URL template supplied during handler
+  /// registration, and navigate the current page to the resulting URL.
+  ///
+  /// The browser may ask the user to confirm that they want the page to be
+  /// allowed to handle the protocol, either when the protocol is registered or
+  /// when the user activates the link.
   void registerProtocolHandler(
     String scheme,
     String url,
@@ -17612,7 +19767,8 @@ extension type Navigator._(JSObject _) implements JSObject {
   /// the user's
   /// location.
   ///
-  /// > **Note:** For security reasons, when a web page tries to access location
+  /// > [!NOTE]
+  /// > For security reasons, when a web page tries to access location
   /// > information, the user is notified and asked to grant permission. Be
   /// > aware that each
   /// > browser has its own policies and methods for requesting this permission.
@@ -17627,12 +19783,10 @@ extension type Navigator._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
-  /// The **`Navigator.mediaCapabilities`** read-only property
-  /// returns a [MediaCapabilities] object that can expose information about the
-  /// decoding and encoding capabilities for a given format and output
-  /// capabilities as defined
-  /// by the
-  /// [Media Capabilities API](https://developer.mozilla.org/en-US/docs/Web/API/Media_Capabilities_API).
+  /// The **`mediaCapabilities`** read-only property of the [Navigator]
+  /// interface references a [MediaCapabilities] object that can expose
+  /// information about the decoding and encoding capabilities for a given media
+  /// format and output capabilities.
   MediaCapabilities get mediaCapabilities {
     unsupportedPlatformError();
   }
@@ -17682,7 +19836,7 @@ extension type Navigator._(JSObject _) implements JSObject {
 
   /// The **`maxTouchPoints`** read-only property of the
   /// [Navigator] interface returns the maximum number of simultaneous touch
-  /// contact points are supported by the current device.
+  /// contact points that are supported by the current device.
   int get maxTouchPoints {
     unsupportedPlatformError();
   }
@@ -17713,6 +19867,9 @@ extension type Navigator._(JSObject _) implements JSObject {
   /// with the [ServiceWorker].
   ///
   /// The feature may not be available in private mode.
+  ///
+  /// Note that a worker can similarly access the [ServiceWorkerContainer] for a
+  /// document using [WorkerNavigator.serviceWorker].
   ServiceWorkerContainer get serviceWorker {
     unsupportedPlatformError();
   }
@@ -17735,7 +19892,7 @@ extension type Navigator._(JSObject _) implements JSObject {
   /// the
   /// Window Controls Overlay feature by using the `window-controls-overlay`
   /// value in the
-  /// [`display_override`](https://developer.mozilla.org/en-US/docs/Web/Manifest/display_override)
+  /// [`display_override`](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Manifest/Reference/display_override)
   /// web app manifest member.
   ///
   /// Doing so hides the default window title bar and gives the app access to
@@ -17760,31 +19917,33 @@ extension type Navigator._(JSObject _) implements JSObject {
   }
 
   /// The value of the **`Navigator.appCodeName`** property is
-  /// always "`Mozilla`", in any browser. This property is kept only for
+  /// always `"Mozilla"`, in any browser. This property is kept only for
   /// compatibility purposes.
   ///
-  /// > **Note:** Do not rely on this property to return a real
-  /// > product name. All browsers return "`Mozilla`" as the value of this
+  /// > [!NOTE]
+  /// > Do not rely on this property to return a real
+  /// > product name. All browsers return `"Mozilla"` as the value of this
   /// > property.
   String get appCodeName {
     unsupportedPlatformError();
   }
 
   /// The value of the **`Navigator.appName`** property is always
-  /// "`Netscape`", in any browser. This property is kept only for compatibility
+  /// `"Netscape"`, in any browser. This property is kept only for compatibility
   /// purposes.
   ///
-  /// > **Note:** Do not rely on this property to return a real browser name.
-  /// > All browsers return "`Netscape`" as the value of this property.
+  /// > [!NOTE]
+  /// > Do not rely on this property to return a real browser name. All browsers
+  /// > return `"Netscape"` as the value of this property.
   String get appName {
     unsupportedPlatformError();
   }
 
-  /// Returns either "`4.0`" or a string representing version information about
+  /// Returns either `"4.0"` or a string representing version information about
   /// the browser.
   ///
-  /// > **Note:** Do not rely on this property to return the correct browser
-  /// > version.
+  /// > [!NOTE]
+  /// > Do not rely on this property to return the correct browser version.
   String get appVersion {
     unsupportedPlatformError();
   }
@@ -17793,21 +19952,22 @@ extension type Navigator._(JSObject _) implements JSObject {
   /// interface returns a string identifying the platform on which the user's
   /// browser is running.
   ///
-  /// > **Note:** In general, you should whenever possible avoid writing code
-  /// > that uses methods or properties like this one to try to find out
-  /// > information about the user's environment, and instead write code that
-  /// > does
-  /// > [feature detection](https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Cross_browser_testing/Feature_detection).
+  /// > [!NOTE]
+  /// > In general, you should whenever possible avoid writing code that uses
+  /// > methods or properties like this one to try to find out information about
+  /// > the user's environment, and instead write code that does
+  /// > [feature detection](https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Testing/Feature_detection).
   String get platform {
     unsupportedPlatformError();
   }
 
   /// The value of the **`Navigator.product`** property is always
-  /// "`Gecko`", in any browser. This property is kept only for compatibility
+  /// `"Gecko"`, in any browser. This property is kept only for compatibility
   /// purposes.
   ///
-  /// > **Note:** Do not rely on this property to return a real product name.
-  /// > All browsers return "`Gecko`" as the value of this property.
+  /// > [!NOTE]
+  /// > Do not rely on this property to return a real product name. All browsers
+  /// > return `"Gecko"` as the value of this property.
   String get product {
     unsupportedPlatformError();
   }
@@ -17821,8 +19981,9 @@ extension type Navigator._(JSObject _) implements JSObject {
   /// The **`Navigator.userAgent`** read-only property returns the
   /// user agent string for the current browser.
   ///
-  /// > **Note:** The specification asks browsers to provide as little
-  /// > information via this field as
+  /// > [!NOTE]
+  /// > The specification asks browsers to provide as little information via
+  /// > this field as
   /// > possible. Never assume that the value of this property will stay the
   /// > same in future
   /// > versions of the same browser. Try not to use it at all, or only for
@@ -17856,7 +20017,7 @@ extension type Navigator._(JSObject _) implements JSObject {
   }
 
   /// The value of the [Navigator] **`vendor`** property is always either
-  /// "`Google Inc.`", "`Apple Computer, Inc.`", or (in Firefox) the empty
+  /// `"Google Inc."`, `"Apple Computer, Inc."`, or (in Firefox) the empty
   /// string.
   String get vendor {
     unsupportedPlatformError();
@@ -17908,46 +20069,28 @@ extension type Navigator._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
-  /// Returns the online status of the browser. The property returns a boolean
-  /// value, with
-  /// `true` meaning online and `false` meaning offline. The property
-  /// sends updates whenever the browser's ability to connect to the network
-  /// changes. The
-  /// update occurs when the user follows links or when a script requests a
-  /// remote page. For
-  /// example, the property should return `false` when users click links soon
-  /// after
-  /// they lose internet connection.
-  ///
-  /// Browsers implement this property differently.
-  ///
-  /// In Chrome and Safari, if the browser is not able to connect to a local
-  /// area network
-  /// (LAN) or a router, it is offline; all other conditions return `true`. So
-  /// while you can assume that the browser is offline when it returns a `false`
-  /// value, you cannot assume that a true value necessarily means that the
-  /// browser can access
-  /// the internet. You could be getting false positives, such as in cases where
-  /// the computer
-  /// is running a virtualization software that has virtual ethernet adapters
-  /// that are always
-  /// "connected." Therefore, if you really want to determine the online status
-  /// of the
-  /// browser, you should develop additional means for checking.
-  ///
-  /// In Firefox, switching the browser to offline mode sends a `false` value.
-  /// Until Firefox
-  /// 41, all other conditions returned a `true` value; testing actual behavior
-  /// on Nightly 68 on
-  /// Windows shows that it only looks for LAN connection like Chrome and Safari
-  /// giving false
-  /// positives.
-  ///
-  /// You can see changes in the network state by listening to the
+  /// The **`onLine`** property of the [Navigator] interface returns whether the
+  /// device is connected to the network, with `true` meaning online and `false`
+  /// meaning offline. The property's value changes after the browser checks its
+  /// network connection, usually when the user follows links or when a script
+  /// requests a remote page. For example, the property should return `false`
+  /// when users click links soon after they lose internet connection. When its
+  /// value changes, an
   /// [`online`](https://developer.mozilla.org/en-US/docs/Web/API/Window/online_event)
-  /// and
+  /// or
   /// [`offline`](https://developer.mozilla.org/en-US/docs/Web/API/Window/offline_event)
-  /// events.
+  /// event is fired on the `window`.
+  ///
+  /// Browsers and operating systems leverage different heuristics to determine
+  /// whether the device is online. In general, connection to LAN is considered
+  /// online, even though the LAN may not have Internet access. For example, the
+  /// computer may be running a virtualization software that has virtual
+  /// ethernet adapters that are always "connected". On Windows, the online
+  /// status is determined by whether it can reach a Microsoft home server,
+  /// which may be blocked by firewalls or VPNs, even if the computer has
+  /// Internet access. Therefore, this property is inherently unreliable, and
+  /// you should not disable features based on the online status, only provide
+  /// hints when the user may seem offline.
   bool get onLine {
     unsupportedPlatformError();
   }
@@ -17970,8 +20113,9 @@ extension type Navigator._(JSObject _) implements JSObject {
   /// standard plugins.
   /// If inline PDF viewing is not supported then an empty list is returned.
   ///
-  /// > **Note:** Use [Navigator.pdfViewerEnabled] to determine if inline
-  /// > viewing of PDF files is supported. Do not infer it from this property.
+  /// > [!NOTE]
+  /// > Use [Navigator.pdfViewerEnabled] to determine if inline viewing of PDF
+  /// > files is supported. Do not infer it from this property.
   /// >
   /// > The "five standard plugins" are those that developers have most commonly
   /// > used to feature detect inline PDF viewing.
@@ -18000,8 +20144,9 @@ extension type Navigator._(JSObject _) implements JSObject {
   /// are listed.
   /// Otherwise an empty list is returned.
   ///
-  /// > **Note:** Use [Navigator.pdfViewerEnabled] to determine if inline
-  /// > viewing of PDF files is supported. Do not infer it from this property.
+  /// > [!NOTE]
+  /// > Use [Navigator.pdfViewerEnabled] to determine if inline viewing of PDF
+  /// > files is supported. Do not infer it from this property.
   ///
   /// Legacy browser versions do not hard-code the list returned by the
   /// property, and might return other MIME types.
@@ -18016,8 +20161,9 @@ extension type Navigator._(JSObject _) implements JSObject {
   /// If inline viewing is not supported the PDF is downloaded and may then be
   /// handled by some external application.
   ///
-  /// > **Note:** This method replaces a number of legacy methods of inferring
-  /// > support for inline viewing of PDF files.
+  /// > [!NOTE]
+  /// > This method replaces a number of legacy methods of inferring support for
+  /// > inline viewing of PDF files.
   bool get pdfViewerEnabled {
     unsupportedPlatformError();
   }
@@ -18076,8 +20222,8 @@ extension type Navigator._(JSObject _) implements JSObject {
   /// The `navigator.webdriver` property is true when in:
   ///
   /// - Chrome
-  ///   - : The `--enable-automation` or the `--headless` flag or the
-  /// `--remote-debugging-port` is used.
+  ///   - : The `--enable-automation` or `--headless` flag is used, or the
+  /// `--remote-debugging-port` flag specifying port 0 is used.
   /// - Firefox
   ///   - : The `marionette.enabled` preference or `--marionette` flag is
   /// passed.
@@ -18086,16 +20232,15 @@ extension type Navigator._(JSObject _) implements JSObject {
   }
 }
 
-/// The `PluginArray` interface is used to store a list of [Plugin] objects
-/// describing the available
-/// [plugins](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/Plugins);
+/// The `PluginArray` interface is used to store a list of [Plugin] objects;
 /// it's returned by the [Navigator.plugins] property. The `PluginArray` is not
 /// a JavaScript array, but has the `length` property and supports accessing
 /// individual items using bracket notation (`plugins[2]`), as well as via
 /// `item(index)` and `namedItem("name")` methods.
 ///
-/// > **Note:** Own properties of `PluginArray` objects are no longer enumerable
-/// > in the latest browser versions.
+/// > [!NOTE]
+/// > Own properties of `PluginArray` objects are no longer enumerable in the
+/// > latest browser versions.
 ///
 /// ---
 ///
@@ -18151,8 +20296,9 @@ extension type MimeTypeArray._(JSObject _) implements JSObject {
 
 /// The `Plugin` interface provides information about a browser plugin.
 ///
-/// > **Note:** Own properties of `Plugin` objects are no longer enumerable in
-/// > the latest browser versions.
+/// > [!NOTE]
+/// > Own properties of `Plugin` objects are no longer enumerable in the latest
+/// > browser versions.
 ///
 /// ---
 ///
@@ -18212,9 +20358,10 @@ extension type MimeType._(JSObject _) implements JSObject {
 
 /// The **`ImageBitmap`** interface represents a bitmap image which can be drawn
 /// to a `canvas` without undue latency. It can be created from a variety of
-/// source objects using the [createImageBitmap] factory method. `ImageBitmap`
-/// provides an asynchronous and resource efficient pathway to prepare textures
-/// for rendering in WebGL.
+/// source objects using the [Window.createImageBitmap] or
+/// [WorkerGlobalScope.createImageBitmap] factory method. `ImageBitmap` provides
+/// an asynchronous and resource efficient pathway to prepare textures for
+/// rendering in WebGL.
 ///
 /// `ImageBitmap` is a
 /// [transferable object](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Transferable_objects).
@@ -18231,13 +20378,13 @@ extension type ImageBitmap._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
-  /// The read-only **`ImageBitmap.width`** property returns the [ImageBitmap]
+  /// The **`ImageBitmap.width`** read-only property returns the [ImageBitmap]
   /// object's width in CSS pixels.
   int get width {
     unsupportedPlatformError();
   }
 
-  /// The read-only **`ImageBitmap.height`** property returns the [ImageBitmap]
+  /// The **`ImageBitmap.height`** read-only property returns the [ImageBitmap]
   /// object's height in CSS pixels.
   int get height {
     unsupportedPlatformError();
@@ -18308,26 +20455,26 @@ extension type ImageBitmapOptions._(JSObject _) implements JSObject {
 /// This is used to represent messages in:
 ///
 /// - [Server-sent events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events)
-///   (see [EventSource.message_event]).
+///   (see the [EventSource.message_event] event of [EventSource]).
 /// - [Web sockets](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API)
-///   (see the `onmessage` property of the
-///   [WebSocket](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket)
-///   interface).
-/// - Cross-document messaging (see [Window.postMessage] and
-///   [Window.message_event]).
+///   (see the [WebSocket.message_event] event of [WebSocket]).
+/// - Cross-document messaging (see [Window.postMessage] and the
+///   [Window.message_event] event of [Window]).
 /// - [Channel messaging](https://developer.mozilla.org/en-US/docs/Web/API/Channel_Messaging_API)
-///   (see [MessagePort.postMessage] and [MessagePort.message_event]).
+///   (see [MessagePort.postMessage] and the [MessagePort.message_event] event
+///   of [MessagePort]).
 /// - Cross-worker/document messaging (see the above two entries, but also
-///   [Worker.postMessage], [Worker.message_event],
-///   [ServiceWorkerGlobalScope.message_event], etc.)
+///   [Worker.postMessage], the [Worker.message_event] event of [Worker], the
+///   [ServiceWorkerGlobalScope.message_event] event of
+///   [ServiceWorkerGlobalScope], etc.)
 /// - [Broadcast channels](https://developer.mozilla.org/en-US/docs/Web/API/Broadcast_Channel_API)
-///   (see [BroadcastChannel.postMessage]) and
-///   [BroadcastChannel.message_event]).
-/// - WebRTC data channels (see [RTCDataChannel.message_event]).
+///   (see [BroadcastChannel.postMessage] and the
+///   [BroadcastChannel.message_event] event of [BroadcastChannel]).
+/// - WebRTC data channels (see the [RTCDataChannel.message_event] event of
+///   [RTCDataChannel]).
 ///
 /// The action triggered by this event is defined in a function set as the event
-/// handler for the relevant `message` event (e.g. using an `onmessage` handler
-/// as listed above).
+/// handler for the relevant `message` event.
 ///
 /// ---
 ///
@@ -18382,11 +20529,7 @@ extension type MessageEvent._(JSObject _) implements Event, JSObject {
 
   /// The **`ports`** read-only property of the
   /// [MessageEvent] interface is an array of [MessagePort] objects
-  /// representing the ports associated with the channel the message is being
-  /// sent through
-  /// (where appropriate, e.g. in channel messaging or when sending a message to
-  /// a shared
-  /// worker).
+  /// containing all [MessagePort] objects sent with the message, in order.
   JSArray<MessagePort> get ports {
     unsupportedPlatformError();
   }
@@ -18450,7 +20593,7 @@ extension type MessageEventInit._(JSObject _) implements EventInit, JSObject {
 /// An `EventSource` instance opens a persistent connection to an
 /// [HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP) server, which
 /// sends
-/// [events](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events)
+/// [events](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Events)
 /// in `text/event-stream` format. The connection remains open until closed by
 /// calling [EventSource.close].
 ///
@@ -18468,22 +20611,23 @@ extension type MessageEventInit._(JSObject _) implements EventInit, JSObject {
 /// data from the client to the server in message form. For example,
 /// `EventSource` is a useful approach for handling things like social media
 /// status updates, news feeds, or delivering data into a
-/// [client-side storage](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Client-side_storage)
+/// [client-side storage](https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Client-side_APIs/Client-side_storage)
 /// mechanism like
 /// [IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API)
 /// or
 /// [web storage](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API).
 ///
-/// > **Warning:** When **not used over HTTP/2**, SSE suffers from a limitation
-/// > to the maximum number of open connections, which can be specially painful
-/// > when opening various tabs as the limit is _per browser_ and set to a very
-/// > low number (6). The issue has been marked as "Won't fix" in
+/// > [!WARNING]
+/// > When **not used over HTTP/2**, SSE suffers from a limitation to the
+/// > maximum number of open connections, which can be specially painful when
+/// > opening various tabs as the limit is _per browser_ and set to a very low
+/// > number (6). The issue has been marked as "Won't fix" in
 /// > [Chrome](https://crbug.com/275955) and
 /// > [Firefox](https://bugzil.la/906896). This limit is per browser + domain,
 /// > so that means that you can open 6 SSE connections across all of the tabs
 /// > to `www.example1.com` and another 6 SSE connections to `www.example2.com`.
 /// > (from
-/// > [Stackoverflow](https://stackoverflow.com/questions/5195452/websockets-vs-server-sent-events-eventsource/5326159)).
+/// > [Stack Overflow](https://stackoverflow.com/questions/5195452/websockets-vs-server-sent-events-eventsource/5326159)).
 /// > When using HTTP/2, the maximum number of simultaneous _HTTP streams_ is
 /// > negotiated between the server and the client (defaults to 100).
 ///
@@ -18507,7 +20651,8 @@ extension type EventSource._(JSObject _) implements EventTarget, JSObject {
   /// interface closes the connection, if one is made, and sets the
   /// [EventSource.readyState] attribute to `2` (closed).
   ///
-  /// > **Note:** If the connection is already closed, the method does nothing.
+  /// > [!NOTE]
+  /// > If the connection is already closed, the method does nothing.
   void close() {
     unsupportedPlatformError();
   }
@@ -18639,6 +20784,14 @@ extension type MessagePort._(JSObject _) implements EventTarget, JSObject {
     unsupportedPlatformError();
   }
 
+  EventHandler get onclose {
+    unsupportedPlatformError();
+  }
+
+  set onclose(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
   EventHandler get onmessage {
     unsupportedPlatformError();
   }
@@ -18652,14 +20805,6 @@ extension type MessagePort._(JSObject _) implements EventTarget, JSObject {
   }
 
   set onmessageerror(EventHandler value) {
-    unsupportedPlatformError();
-  }
-
-  EventHandler get onclose {
-    unsupportedPlatformError();
-  }
-
-  set onclose(EventHandler value) {
     unsupportedPlatformError();
   }
 }
@@ -18734,6 +20879,8 @@ extension type BroadcastChannel._(JSObject _) implements EventTarget, JSObject {
   }
 }
 
+/// @AvailableInWorkers("worker")
+///
 /// The **`WorkerGlobalScope`** interface of the
 /// [Web Workers API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API)
 /// is an interface representing the scope of any worker. Workers have no
@@ -18755,31 +20902,53 @@ extension type BroadcastChannel._(JSObject _) implements EventTarget, JSObject {
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WorkerGlobalScope).
 extension type WorkerGlobalScope._(JSObject _)
     implements EventTarget, JSObject {
+  /// @AvailableInWorkers("worker")
+  ///
   /// The **`importScripts()`** method of the [WorkerGlobalScope] interface
   /// synchronously imports one or more scripts into the worker's scope.
-  void importScripts(JSAny urls) {
+  void importScripts([
+    JSAny? url1,
+    JSAny? url2,
+    JSAny? url3,
+    JSAny? url4,
+  ]) {
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("worker")
+  ///
+  /// The **`reportError()`** method of the [WorkerGlobalScope] interface may be
+  /// used to report errors to the console or event handlers of global scopes,
+  /// emulating an uncaught JavaScript exception.
+  ///
+  /// This feature is primarily intended for custom event-dispatching or
+  /// callback-manipulating libraries.
+  /// Libraries can use this feature to catch errors in callback code and
+  /// re-throw them to the top level handler.
+  /// This ensures that an exception in one callback will not prevent others
+  /// from being handled, while at the same time ensuring that stack trace
+  /// information is still readily available for debugging at the top level.
   void reportError(JSAny? e) {
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("worker")
+  ///
   /// The **`btoa()`** method of the [WorkerGlobalScope] interface creates a
-  /// -encoded  string from a _binary string_ (i.e., a
-  /// string in which each character in the string is treated as a byte
-  /// of binary data).
+  /// -encoded  string from a _binary string_ (i.e., a string in which each
+  /// character in the string is treated as a byte of binary data).
   ///
   /// You can use this method to encode data which may otherwise cause
-  /// communication
-  /// problems, transmit it, then use the [WorkerGlobalScope.atob] method to
-  /// decode the data again.
+  /// communication problems, transmit it, then use the [WorkerGlobalScope.atob]
+  /// method to decode the data again.
   /// For example, you can encode control characters such as ASCII values 0
   /// through 31.
   String btoa(String data) {
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("worker")
+  ///
   /// The **`atob()`** method of the [WorkerGlobalScope] interface decodes a
   /// string of data which has been encoded using  encoding. You can use
   /// the [WorkerGlobalScope.btoa] method to encode and transmit
@@ -18787,41 +20956,113 @@ extension type WorkerGlobalScope._(JSObject _)
   /// and use the
   /// `atob()` method to decode the data again. For example, you can encode,
   /// transmit, and decode control characters such as  values 0 through 31.
-  ///
-  /// For use with arbitrary Unicode strings, see _The "Unicode Problem"_
-  /// section in  glossary entry.
   String atob(String data) {
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("worker")
+  ///
+  /// The **`setTimeout()`** method of the [WorkerGlobalScope] interface sets a
+  /// timer which executes a function or specified piece of code once the timer
+  /// expires.
   int setTimeout(
-    TimerHandler handler,
-    JSAny? arguments, [
+    TimerHandler handler, [
     int? timeout,
+    JSAny? argument1,
+    JSAny? argument2,
+    JSAny? argument3,
+    JSAny? argument4,
   ]) {
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("worker")
+  ///
+  /// The **`clearTimeout()`** method of the [WorkerGlobalScope] interface
+  /// cancels a timeout previously established by calling
+  /// [WorkerGlobalScope.setTimeout].
+  ///
+  /// If the parameter provided does not identify a previously established
+  /// action,
+  /// this method does nothing.
   void clearTimeout([int? id]) {
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("worker")
+  ///
+  /// The **`setInterval()`** method of the [WorkerGlobalScope] interface
+  /// repeatedly calls a function or executes a code snippet, with a fixed time
+  /// delay between each call.
+  ///
+  /// This method returns an interval ID which uniquely identifies the interval,
+  /// so you can remove it later by calling [WorkerGlobalScope.clearInterval].
+  ///
+  /// This method is also available in window contexts: for a detailed
+  /// description of `setInterval()`, see the [Window.setInterval] page.
   int setInterval(
-    TimerHandler handler,
-    JSAny? arguments, [
+    TimerHandler handler, [
     int? timeout,
+    JSAny? argument1,
+    JSAny? argument2,
+    JSAny? argument3,
+    JSAny? argument4,
   ]) {
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("worker")
+  ///
+  /// The **`clearInterval()`** method of the [WorkerGlobalScope] interface
+  /// cancels a timed, repeating action which was previously established by a
+  /// call to [WorkerGlobalScope.setInterval]. If the parameter provided does
+  /// not identify a previously established action, this method does nothing.
   void clearInterval([int? id]) {
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("worker")
+  ///
+  /// The **`queueMicrotask()`** method of the [WorkerGlobalScope] interface
+  /// queues a microtask to be executed at a safe time prior to control
+  /// returning to the
+  /// browser's event loop.
+  ///
+  /// The microtask is a short function which will run after
+  /// the current task has completed its work and when there is no other code
+  /// waiting to be
+  /// run before control of the execution context is returned to the browser's
+  /// event loop.
+  ///
+  /// This lets your code run without interfering with any other, potentially
+  /// higher
+  /// priority, code that is pending, but before the browser regains control
+  /// over the
+  /// execution context, potentially depending on work you need to complete. You
+  /// can learn
+  /// more about how to use microtasks and why you might choose to do so in our
+  /// [microtask guide](https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API/Microtask_guide).
+  ///
+  /// The importance of microtasks comes in its ability to perform tasks
+  /// asynchronously but
+  /// in a specific order. See [Using microtasks in JavaScript with
+  /// `queueMicrotask()`](https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API/Microtask_guide)
+  /// for more details.
+  ///
+  /// Microtasks are especially useful for libraries and frameworks that need to
+  /// perform
+  /// final cleanup or other just-before-rendering tasks.
   void queueMicrotask(VoidFunction callback) {
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("worker")
+  ///
+  /// The **`createImageBitmap()`** method of the [WorkerGlobalScope] interface
+  /// creates a bitmap from a given source, optionally cropped to contain only a
+  /// portion of that source.
+  /// It accepts a variety of different image sources, and returns a `Promise`
+  /// which resolves to an [ImageBitmap].
   JSPromise<ImageBitmap> createImageBitmap(
     ImageBitmapSource image, [
     JSAny? optionsOrSx,
@@ -18833,6 +21074,18 @@ extension type WorkerGlobalScope._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("worker")
+  ///
+  /// The **`structuredClone()`** method of the [WorkerGlobalScope] interface
+  /// creates a  of a given value using the
+  /// [structured clone algorithm](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm).
+  ///
+  /// The method also allows
+  /// [transferable objects](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Transferable_objects)
+  /// in the original value to be _transferred_ rather than cloned to the new
+  /// object.
+  /// Transferred objects are detached from the original object and attached to
+  /// the new object; they are no longer accessible in the original object.
   JSAny? structuredClone(
     JSAny? value, [
     StructuredSerializeOptions? options,
@@ -18840,6 +21093,29 @@ extension type WorkerGlobalScope._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("worker")
+  ///
+  /// The **`fetch()`** method of the [WorkerGlobalScope] interface starts the
+  /// process of fetching a resource from the network, returning a promise that
+  /// is fulfilled once the response is available.
+  ///
+  /// The promise resolves to the [Response] object representing the response to
+  /// your request.
+  ///
+  /// A `fetch()` promise only rejects when the request fails, for example,
+  /// because of a badly-formed request URL or a network error.
+  /// A `fetch()` promise _does not_ reject if the server responds with HTTP
+  /// status codes that indicate errors (`404`, `504`, etc.).
+  /// Instead, a `then()` handler must check the [Response.ok] and/or
+  /// [Response.status] properties.
+  ///
+  /// The `fetch()` method is controlled by the `connect-src` directive of
+  /// [Content Security Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy)
+  /// rather than the directive of the resources it's retrieving.
+  ///
+  /// > [!NOTE]
+  /// > The `fetch()` method's parameters are identical to those of the
+  /// > [Request.Request] constructor.
   JSPromise<Response> fetch(
     RequestInfo input, [
     RequestInit? init,
@@ -18847,6 +21123,8 @@ extension type WorkerGlobalScope._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("worker")
+  ///
   /// The **`self`** read-only property of the [WorkerGlobalScope] interface
   /// returns a reference to the `WorkerGlobalScope` itself. Most of the time it
   /// is a specific scope like [DedicatedWorkerGlobalScope],
@@ -18855,6 +21133,8 @@ extension type WorkerGlobalScope._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("worker")
+  ///
   /// The **`location`** read-only property of the [WorkerGlobalScope] interface
   /// returns the [WorkerLocation] associated with the worker. It is a specific
   /// location object, mostly a subset of the [Location] for browsing scopes,
@@ -18863,6 +21143,8 @@ extension type WorkerGlobalScope._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("worker")
+  ///
   /// The **`navigator`** read-only property of the [WorkerGlobalScope]
   /// interface returns the [WorkerNavigator] associated with the worker. It is
   /// a specific navigator object, mostly a subset of the [Navigator] for
@@ -18919,6 +21201,8 @@ extension type WorkerGlobalScope._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("worker")
+  ///
   /// The **`fonts`** property of the [WorkerGlobalScope] interface returns the
   /// [FontFaceSet] interface of the worker.
   ///
@@ -18928,12 +21212,16 @@ extension type WorkerGlobalScope._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("worker")
+  ///
   /// The **`origin`** read-only property of the [WorkerGlobalScope] interface
   /// returns the origin of the global scope, serialized as a string.
   String get origin {
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("worker")
+  ///
   /// The **`isSecureContext`** read-only property of the [WorkerGlobalScope]
   /// interface returns a boolean indicating whether the current
   /// [context is secure](https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts)
@@ -18942,25 +21230,50 @@ extension type WorkerGlobalScope._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("worker")
+  ///
   /// The **`crossOriginIsolated`** read-only property of the
-  /// [WorkerGlobalScope] interface returns a boolean value that
-  /// indicates whether the website is in a cross-origin isolation state. That
-  /// state mitigates the risk of side-channel attacks and unlocks a few
-  /// capabilities:
+  /// [WorkerGlobalScope] interface returns a boolean value that indicates
+  /// whether the document is cross-origin isolated.
+  ///
+  /// A cross-origin isolated document only shares its  with same-origin
+  /// documents in popups and navigations, and resources (both same-origin and
+  /// cross-origin) that the document has opted into using via
+  /// [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) (and
+  /// [COEP](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cross-Origin-Embedder-Policy)
+  /// for `<iframe>`).
+  /// The relationship between a cross-origin opener of the document or any
+  /// cross-origin popups that it opens are severed.
+  /// The document may also be hosted in a separate OS process alongside other
+  /// documents with which it can communicate by operating on shared memory.
+  /// This mitigates the risk of side-channel attacks and cross-origin attacks
+  /// referred to as [XS-Leaks](https://xsleaks.dev/).
+  ///
+  /// Cross-origin isolated documents operate with fewer restrictions when using
+  /// the following APIs:
   ///
   /// - `SharedArrayBuffer` can be created and sent via a
   ///   [DedicatedWorkerGlobalScope.postMessage] or a [MessagePort.postMessage]
   ///   call.
   /// - [Performance.now] offers better precision.
-  /// - [Performance.measureUserAgentSpecificMemory] can be accessed.
+  /// - [Performance.measureUserAgentSpecificMemory] can be called.
   ///
-  /// A website is in a cross-origin isolated state, when the response header
-  /// has the value `same-origin` and the  header has the value `require-corp`
-  /// or `credentialless`.
+  /// A document will be cross-origin isolated if it is returned with an HTTP
+  /// response that includes the headers:
+  ///
+  /// - header with the directive `same-origin`.
+  /// - header with the directive `require-corp` or `credentialless`.
+  ///
+  /// Access to the APIs must also be allowed by the `Permissions-Policy` .
+  /// Otherwise `crossOriginIsolated` property will return `false`, and the
+  /// document will not be able to use the APIs listed above with reduced
+  /// restrictions.
   bool get crossOriginIsolated {
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("worker")
+  ///
   /// The **`indexedDB`** read-only property of the [WorkerGlobalScope]
   /// interface provides a mechanism for workers to
   /// asynchronously access the capabilities of indexed databases.
@@ -18968,6 +21281,8 @@ extension type WorkerGlobalScope._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("worker")
+  ///
   /// The **`crypto`** read-only property of the [WorkerGlobalScope] interface
   /// returns the [Crypto] object for this worker. This object gives workers
   /// access to certain cryptographic related services.
@@ -18985,6 +21300,8 @@ extension type WorkerGlobalScope._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("worker")
+  ///
   /// The **`performance`** property of the [WorkerGlobalScope] interface
   /// returns a [Performance] object, which can be used to gather performance
   /// information about code running in the worker's scope.
@@ -19007,16 +21324,21 @@ extension type WorkerGlobalScope._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("worker")
+  ///
   /// The **`scheduler`** read-only property of the [WorkerGlobalScope]
   /// interface is the entry point for using the
   /// [Prioritized Task Scheduling API](https://developer.mozilla.org/en-US/docs/Web/API/Prioritized_Task_Scheduling_API).
   ///
-  /// The object has a single instance method [Scheduler.postTask] that is used
-  /// to post prioritized tasks for scheduling.
+  /// It returns a [Scheduler] object instance containing [Scheduler.postTask]
+  /// and [Scheduler.yield] methods that can be used to schedule prioritized
+  /// tasks.
   Scheduler get scheduler {
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("worker")
+  ///
   /// The **`caches`** read-only property of the [WorkerGlobalScope] interface
   /// returns the [CacheStorage] object associated with the current context.
   /// This object enables functionality such as storing assets for offline use,
@@ -19025,6 +21347,8 @@ extension type WorkerGlobalScope._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("worker")
+  ///
   /// The **`trustedTypes`** read-only property of the [WorkerGlobalScope]
   /// interface returns the [TrustedTypePolicyFactory] object associated with
   /// the global object, providing the entry point for using the
@@ -19106,11 +21430,11 @@ extension type DedicatedWorkerGlobalScope._(JSObject _)
   /// call to the callback function. If you want to animate another frame, your
   /// callback function must call `requestAnimationFrame()` again.
   ///
-  /// > **Warning:** Be sure always to use the first argument (or some other
-  /// > method for getting the current time) to calculate how much the animation
-  /// > will progress in a frame — **otherwise, the animation will run faster on
-  /// > high refresh-rate screens**. For ways to do that, see the examples
-  /// > below.
+  /// > [!WARNING]
+  /// > Be sure always to use the first argument (or some other method for
+  /// > getting the current time) to calculate how much the animation will
+  /// > progress in a frame — **otherwise, the animation will run faster on high
+  /// > refresh-rate screens**. For ways to do that, see the examples below.
   ///
   /// Calling the `requestAnimationFrame()` method requires the current worker
   /// to have an associated owner [Window]. That means that the current worker
@@ -19146,6 +21470,14 @@ extension type DedicatedWorkerGlobalScope._(JSObject _)
     unsupportedPlatformError();
   }
 
+  EventHandler get onrtctransform {
+    unsupportedPlatformError();
+  }
+
+  set onrtctransform(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
   EventHandler get onmessage {
     unsupportedPlatformError();
   }
@@ -19159,14 +21491,6 @@ extension type DedicatedWorkerGlobalScope._(JSObject _)
   }
 
   set onmessageerror(EventHandler value) {
-    unsupportedPlatformError();
-  }
-
-  EventHandler get onrtctransform {
-    unsupportedPlatformError();
-  }
-
-  set onrtctransform(EventHandler value) {
     unsupportedPlatformError();
   }
 }
@@ -19269,6 +21593,14 @@ extension type Worker._(JSObject _) implements EventTarget, JSObject {
     unsupportedPlatformError();
   }
 
+  EventHandler get onerror {
+    unsupportedPlatformError();
+  }
+
+  set onerror(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
   EventHandler get onmessage {
     unsupportedPlatformError();
   }
@@ -19282,14 +21614,6 @@ extension type Worker._(JSObject _) implements EventTarget, JSObject {
   }
 
   set onmessageerror(EventHandler value) {
-    unsupportedPlatformError();
-  }
-
-  EventHandler get onerror {
-    unsupportedPlatformError();
-  }
-
-  set onerror(EventHandler value) {
     unsupportedPlatformError();
   }
 }
@@ -19331,9 +21655,10 @@ extension type WorkerOptions._(JSObject _) implements JSObject {
 /// dedicated workers and have a different global scope,
 /// [SharedWorkerGlobalScope].
 ///
-/// > **Note:** If SharedWorker can be accessed from several browsing contexts,
-/// > all those browsing contexts must share the exact same origin (same
-/// > protocol, host and port).
+/// > [!NOTE]
+/// > If SharedWorker can be accessed from several browsing contexts, all those
+/// > browsing contexts must share the exact same origin (same protocol, host
+/// > and port).
 ///
 /// ---
 ///
@@ -19361,6 +21686,8 @@ extension type SharedWorker._(JSObject _) implements EventTarget, JSObject {
   }
 }
 
+/// @AvailableInWorkers("worker")
+///
 /// The **`WorkerNavigator`** interface represents a subset of the [Navigator]
 /// interface allowed to be accessed from a [Worker]. Such an object is
 /// initialized for each worker and is available via the
@@ -19371,16 +21698,19 @@ extension type SharedWorker._(JSObject _) implements EventTarget, JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WorkerNavigator).
 extension type WorkerNavigator._(JSObject _) implements JSObject {
-  /// The read-only **`WorkerNavigator.mediaCapabilities`** property
-  /// returns a [MediaCapabilities] object that can expose information about the
-  /// decoding and encoding capabilities for a given format and output
-  /// capabilities as defined
-  /// by the
-  /// [Media Capabilities API](https://developer.mozilla.org/en-US/docs/Web/API/Media_Capabilities_API).
+  /// @AvailableInWorkers("worker")
+  ///
+  /// The read-only **`mediaCapabilities`** property of the [WorkerNavigator]
+  /// interface references a [MediaCapabilities] object that can expose
+  /// information about the decoding and encoding capabilities for a given
+  /// format and output capabilities (as defined by the
+  /// [Media Capabilities API](https://developer.mozilla.org/en-US/docs/Web/API/Media_Capabilities_API)).
   MediaCapabilities get mediaCapabilities {
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("worker")
+  ///
   /// The **`permissions`** read-only property of the [WorkerNavigator]
   /// interface
   /// returns a [Permissions] object that can be used to query and update
@@ -19390,6 +21720,8 @@ extension type WorkerNavigator._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("worker")
+  ///
   /// The **`serviceWorker`** read-only property of the [WorkerNavigator]
   /// interface returns the [ServiceWorkerContainer] object for the
   /// [associated document](https://html.spec.whatwg.org/multipage/browsers.html#concept-document-window),
@@ -19401,6 +21733,8 @@ extension type WorkerNavigator._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("worker")
+  ///
   /// The **`usb`** read-only property of the [WorkerNavigator] interface
   /// returns a [USB] object for the current document, providing access to
   /// [WebUSB API](https://developer.mozilla.org/en-US/docs/Web/API/WebUSB_API)
@@ -19409,6 +21743,8 @@ extension type WorkerNavigator._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("worker")
+  ///
   /// The **`deviceMemory`** read-only
   /// property of the [WorkerNavigator] interface returns the approximate amount
   /// of
@@ -19424,36 +21760,46 @@ extension type WorkerNavigator._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("worker")
+  ///
   /// The value of the **`WorkerNavigator.appCodeName`** property is
-  /// always "`Mozilla`", in any browser. This property is kept only for
+  /// always `"Mozilla"`, in any browser. This property is kept only for
   /// compatibility purposes.
   ///
-  /// > **Note:** Do not rely on this property to return a real
-  /// > product name. All browsers return "`Mozilla`" as the value of this
+  /// > [!NOTE]
+  /// > Do not rely on this property to return a real
+  /// > product name. All browsers return `"Mozilla"` as the value of this
   /// > property.
   String get appCodeName {
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("worker")
+  ///
   /// The value of the **`WorkerNavigator.appName`** property is always
-  /// "`Netscape`", in any browser. This property is kept only for compatibility
+  /// `"Netscape"`, in any browser. This property is kept only for compatibility
   /// purposes.
   ///
-  /// > **Note:** Do not rely on this property to return a real browser name.
-  /// > All browsers return "`Netscape`" as the value of this property.
+  /// > [!NOTE]
+  /// > Do not rely on this property to return a real browser name. All browsers
+  /// > return `"Netscape"` as the value of this property.
   String get appName {
     unsupportedPlatformError();
   }
 
-  /// Returns either "`4.0`" or a string representing version information about
+  /// @AvailableInWorkers("worker")
+  ///
+  /// Returns either `"4.0"` or a string representing version information about
   /// the browser.
   ///
-  /// > **Note:** Do not rely on this property to return the correct browser
-  /// > version.
+  /// > [!NOTE]
+  /// > Do not rely on this property to return the correct browser version.
   String get appVersion {
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("worker")
+  ///
   /// Returns a string representing the platform of the browser. The
   /// specification allows
   /// browsers to always return the empty string, so don't rely on this property
@@ -19463,21 +21809,27 @@ extension type WorkerNavigator._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("worker")
+  ///
   /// The value of the **`WorkerNavigator.product`** property is always
-  /// "`Gecko`", in any browser. This property is kept only for compatibility
+  /// `"Gecko"`, in any browser. This property is kept only for compatibility
   /// purposes.
   ///
-  /// > **Note:** Do not rely on this property to return a real product name.
-  /// > All browsers return "`Gecko`" as the value of this property.
+  /// > [!NOTE]
+  /// > Do not rely on this property to return a real product name. All browsers
+  /// > return `"Gecko"` as the value of this property.
   String get product {
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("worker")
+  ///
   /// The **`WorkerNavigator.userAgent`** read-only property returns the
   /// user agent string for the current browser.
   ///
-  /// > **Note:** The specification asks browsers to provide as little
-  /// > information via this field as
+  /// > [!NOTE]
+  /// > The specification asks browsers to provide as little information via
+  /// > this field as
   /// > possible. Never assume that the value of this property will stay the
   /// > same in future
   /// > versions of the same browser. Try not to use it at all, or only for
@@ -19509,6 +21861,8 @@ extension type WorkerNavigator._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("worker")
+  ///
   /// The **`WorkerNavigator.language`** read-only property returns
   /// a string representing the preferred language of the user, usually the
   /// language of the
@@ -19517,6 +21871,8 @@ extension type WorkerNavigator._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("worker")
+  ///
   /// The **`WorkerNavigator.languages`** read-only property
   /// returns an array of strings representing the user's preferred
   /// languages. The language is described using language tags according to
@@ -19540,6 +21896,8 @@ extension type WorkerNavigator._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("worker")
+  ///
   /// Returns the online status of the browser. The property returns a boolean
   /// value, with `true` meaning online and `false` meaning offline. The
   /// property sends updates whenever the browser's ability to connect to the
@@ -19568,6 +21926,8 @@ extension type WorkerNavigator._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("worker")
+  ///
   /// The **`navigator.hardwareConcurrency`** read-only property
   /// returns the number of logical processors available to run threads on the
   /// user's
@@ -19576,6 +21936,8 @@ extension type WorkerNavigator._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("worker")
+  ///
   /// The **`connection`** read-only property of the [WorkerNavigator] interface
   /// returns a [NetworkInformation] object containing information about the
   /// system's connection, such as the current bandwidth of the user's device or
@@ -19586,6 +21948,8 @@ extension type WorkerNavigator._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("worker")
+  ///
   /// The **`storage`** read-only property of the [WorkerNavigator] interface
   /// returns the singleton [StorageManager] object used to
   /// access the overall storage capabilities of the browser for the current
@@ -19599,6 +21963,8 @@ extension type WorkerNavigator._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("worker")
+  ///
   /// The **`locks`** read-only property of
   /// the [WorkerNavigator] interface returns a [LockManager]
   /// object which provides methods for requesting a new [Lock] object and
@@ -19608,6 +21974,8 @@ extension type WorkerNavigator._(JSObject _) implements JSObject {
   }
 }
 
+/// @AvailableInWorkers("worker")
+///
 /// The **`WorkerLocation`** interface defines the absolute location of the
 /// script executed by the [Worker]. Such an object is initialized for each
 /// worker and is available via the [WorkerGlobalScope.location] property
@@ -19621,54 +21989,72 @@ extension type WorkerNavigator._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WorkerLocation).
 extension type WorkerLocation._(JSObject _) implements JSObject {
+  /// @AvailableInWorkers("worker")
+  ///
   /// The **`href`** property of a [WorkerLocation] object returns a string
   /// containing the serialized [URL] for the worker's location.
   String get href {
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("worker")
+  ///
   /// The **`origin`** property of a [WorkerLocation] object returns the
   /// worker's [URL.origin].
   String get origin {
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("worker")
+  ///
   /// The **`protocol`** property of a [WorkerLocation] object returns the
   /// [URL.protocol] part of the worker's location.
   String get protocol {
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("worker")
+  ///
   /// The **`host`** property of a [WorkerLocation] object returns the
   /// [URL.host] part of the worker's location.
   String get host {
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("worker")
+  ///
   /// The **`hostname`** property of a [WorkerLocation] object returns the
   /// [URL.hostname] part of the worker's location.
   String get hostname {
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("worker")
+  ///
   /// The **`port`** property of a [WorkerLocation] object returns the
   /// [URL.port] part of the worker's location.
   String get port {
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("worker")
+  ///
   /// The **`pathname`** property of a [WorkerLocation] object returns the
   /// [URL.pathname] part of the worker's location.
   String get pathname {
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("worker")
+  ///
   /// The **`search`** property of a [WorkerLocation] object returns the
   /// [URL.search] part of the worker's location.
   String get search {
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("worker")
+  ///
   /// The **`hash`** property of a [WorkerLocation] object returns the
   /// [URL.hash] part of the worker's location.
   String get hash {
@@ -19680,9 +22066,10 @@ extension type WorkerLocation._(JSObject _) implements JSObject {
 /// worklet scope classes inherit from. Each `WorkletGlobalScope` defines a new
 /// global environment.
 ///
-/// > **Note:** You don't normally need to interact with this interface. It is a
-/// > base interface intended to be subclassed. You will encounter the
-/// > subclasses [AudioWorkletGlobalScope] inside [AudioWorklet] objects, or
+/// > [!NOTE]
+/// > You don't normally need to interact with this interface. It is a base
+/// > interface intended to be subclassed. You will encounter the subclasses
+/// > [AudioWorkletGlobalScope] inside [AudioWorklet] objects, or
 /// > [PaintWorkletGlobalScope] inside CSS paint [Worklet] objects.
 ///
 /// ---
@@ -19691,8 +22078,9 @@ extension type WorkerLocation._(JSObject _) implements JSObject {
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WorkletGlobalScope).
 extension type WorkletGlobalScope._(JSObject _) implements JSObject {}
 
-/// The **`Worklet`** interface is a lightweight version of [Worker] and gives
-/// developers access to low-level parts of the rendering pipeline.
+/// The **`Worklet`** interface is a lightweight version of
+/// [Web Workers](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API)
+/// and gives developers access to low-level parts of the rendering pipeline.
 ///
 /// With Worklets, you can run JavaScript and
 /// [WebAssembly](https://developer.mozilla.org/en-US/docs/WebAssembly) code to
@@ -20139,11 +22527,27 @@ extension type HTMLFrameSetElement._(JSObject _)
     unsupportedPlatformError();
   }
 
+  EventHandler get onpagereveal {
+    unsupportedPlatformError();
+  }
+
+  set onpagereveal(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
   EventHandler get onpageshow {
     unsupportedPlatformError();
   }
 
   set onpageshow(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onpageswap {
+    unsupportedPlatformError();
+  }
+
+  set onpageswap(EventHandler value) {
     unsupportedPlatformError();
   }
 
@@ -20314,13 +22718,14 @@ extension type HTMLFontElement._(JSObject _) implements HTMLElement, JSObject {
   /// hexadecimal #RRGGBB format.
   ///
   /// The format of the string must follow one of the following HTML
-  /// microsyntaxes:
+  /// microsyntaxes (see
+  /// [`<color>`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value)):
   ///
-  /// | Microsyntax              | Description                                                      | Examples                  |
-  /// | ------------------------ | ---------------------------------------------------------------- | ------------------------- |
-  /// | Valid name color string  | _nameOfColor (case insensitive)_                                 | `Green`, `green`, `GREEN` |
-  /// | Valid hex color string   | _in_ _: #RRGGBB_ | `#008000`                 |
-  /// | RGB using decimal values | _rgb(x,x,x) (x in 0-255 range)_                                  | `rgb(0 128 0)`            |
+  /// | Microsyntax              | Description                      | Examples                  |
+  /// | ------------------------ | -------------------------------- | ------------------------- |
+  /// | Valid name color string  | _nameOfColor (case insensitive)_ | `Green`, `green`, `GREEN` |
+  /// | Valid hex color string   | _#RRGGBB_                        | `#008000`                 |
+  /// | RGB using decimal values | _rgb(x x x) (x in 0-255 range)_  | `rgb(0 128 0)`            |
   String get color {
     unsupportedPlatformError();
   }

@@ -1,4 +1,4 @@
-// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2026, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -8,7 +8,7 @@
 
 // Generated from Web IDL definitions.
 
-// ignore_for_file: unintended_html_in_doc_comment
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 import '../error.dart';
 import '../js_interop.dart';
@@ -25,10 +25,11 @@ import 'webgl1.dart';
 /// in the
 /// [WebGL tutorial](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Tutorial).
 ///
-/// > **Note:** This extension is only available to [WebGLRenderingContext]
-/// > contexts. In [WebGL2RenderingContext], the functionality of this extension
-/// > is available on the WebGL2 context by default and the constants and
-/// > methods are available without the "`ANGLE`" suffix.
+/// > [!NOTE]
+/// > This extension is only available to [WebGLRenderingContext] contexts. In
+/// > [WebGL2RenderingContext], the functionality of this extension is available
+/// > on the WebGL2 context by default and the constants and methods are
+/// > available without the `ANGLE_` suffix.
 /// >
 /// > Despite the name "ANGLE", this extension works on any device if the
 /// > hardware supports it and not just on Windows when using the ANGLE library.
@@ -48,8 +49,9 @@ extension type ANGLE_instanced_arrays._(JSObject _) implements JSObject {
   /// [WebGLRenderingContext.drawArrays] method. In addition, it can execute
   /// multiple instances of the range of elements.
   ///
-  /// > **Note:** When using [WebGL2RenderingContext], this method is available
-  /// > as [WebGL2RenderingContext.drawArraysInstanced] by default.
+  /// > [!NOTE]
+  /// > When using [WebGL2RenderingContext], this method is available as
+  /// > [WebGL2RenderingContext.drawArraysInstanced] by default.
   void drawArraysInstancedANGLE(
     GLenum mode,
     GLint first,
@@ -66,8 +68,9 @@ extension type ANGLE_instanced_arrays._(JSObject _) implements JSObject {
   /// [WebGLRenderingContext.drawElements] method. In addition, it can execute
   /// multiple instances of a set of elements.
   ///
-  /// > **Note:** When using [WebGL2RenderingContext], this method is available
-  /// > as [WebGL2RenderingContext.drawElementsInstanced] by default.
+  /// > [!NOTE]
+  /// > When using [WebGL2RenderingContext], this method is available as
+  /// > [WebGL2RenderingContext.drawElementsInstanced] by default.
   void drawElementsInstancedANGLE(
     GLenum mode,
     GLsizei count,
@@ -85,8 +88,9 @@ extension type ANGLE_instanced_arrays._(JSObject _) implements JSObject {
   /// [ANGLE_instanced_arrays.drawArraysInstancedANGLE] and
   /// [ANGLE_instanced_arrays.drawElementsInstancedANGLE].
   ///
-  /// > **Note:** When using [WebGL2RenderingContext], this method is available
-  /// > as [WebGL2RenderingContext.vertexAttribDivisor] by default.
+  /// > [!NOTE]
+  /// > When using [WebGL2RenderingContext], this method is available as
+  /// > [WebGL2RenderingContext.vertexAttribDivisor] by default.
   void vertexAttribDivisorANGLE(
     GLuint index,
     GLuint divisor,

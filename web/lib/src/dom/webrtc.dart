@@ -1,4 +1,4 @@
-// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2026, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -8,7 +8,7 @@
 
 // Generated from Web IDL definitions.
 
-// ignore_for_file: unintended_html_in_doc_comment
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 import '../error.dart';
 import '../js_interop.dart';
@@ -216,11 +216,6 @@ extension type RTCPeerConnection._(JSObject _)
   /// purpose of being sent over the signaling channel to a potential peer to
   /// request a connection or to update the configuration of an existing
   /// connection.
-  ///
-  /// The return value is a `Promise` which, when the offer has been created, is
-  /// resolved with a
-  /// [RTCSessionDescriptionInit](https://developer.mozilla.org/en-US/docs/Web/API/RTCSessionDescription/RTCSessionDescription#options)
-  /// dictionary containing the newly-created offer.
   JSPromise<RTCSessionDescriptionInit?> createOffer([
     JSObject? optionsOrSuccessCallback,
     RTCPeerConnectionErrorCallback? failureCallback,
@@ -404,8 +399,9 @@ extension type RTCPeerConnection._(JSObject _)
   /// regional ICE servers, then initiate an
   /// [ICE restart](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API/Session_lifetime#ice_restart).
   ///
-  /// > **Note:** You cannot change the identity information for a connection
-  /// > once it's already been set.
+  /// > [!NOTE]
+  /// > You cannot change the identity information for a connection once it's
+  /// > already been set.
   void setConfiguration([RTCConfiguration? configuration]) {
     unsupportedPlatformError();
   }
@@ -475,15 +471,19 @@ extension type RTCPeerConnection._(JSObject _)
   /// new media track to the set of tracks which will be transmitted to the
   /// other peer.
   ///
-  /// > **Note:** Adding a track to a connection triggers renegotiation by
-  /// > firing a [RTCPeerConnection.negotiationneeded_event] event.
+  /// > [!NOTE]
+  /// > Adding a track to a connection triggers renegotiation by firing a
+  /// > [RTCPeerConnection.negotiationneeded_event] event.
   /// > See
   /// > [Starting negotiation](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API/Signaling_and_video_calling#starting_negotiation)
   /// > for details.
   RTCRtpSender addTrack(
-    MediaStreamTrack track,
-    MediaStream streams,
-  ) {
+    MediaStreamTrack track, [
+    MediaStream? stream1,
+    MediaStream? stream2,
+    MediaStream? stream3,
+    MediaStream? stream4,
+  ]) {
     unsupportedPlatformError();
   }
 
@@ -564,8 +564,9 @@ extension type RTCPeerConnection._(JSObject _)
   /// [Pending and current descriptions](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API/Connectivity#pending_and_current_descriptions)
   /// in the WebRTC Connectivity page.
   ///
-  /// > **Note:** Unlike [RTCPeerConnection.localDescription], this value
-  /// > represents the actual current state of the local end of the connection;
+  /// > [!NOTE]
+  /// > Unlike [RTCPeerConnection.localDescription], this value represents the
+  /// > actual current state of the local end of the connection;
   /// > `localDescription` may specify a description which the connection is
   /// > currently in the process of switching over to.
   RTCSessionDescription? get currentLocalDescription {
@@ -620,8 +621,9 @@ extension type RTCPeerConnection._(JSObject _)
   /// [Pending and current descriptions](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API/Connectivity#pending_and_current_descriptions)
   /// in the WebRTC Connectivity page.
   ///
-  /// > **Note:** Unlike [RTCPeerConnection.remoteDescription], this value
-  /// > represents the actual current state of the local end of the connection;
+  /// > [!NOTE]
+  /// > Unlike [RTCPeerConnection.remoteDescription], this value represents the
+  /// > actual current state of the local end of the connection;
   /// > `remoteDescription` may specify a description which the connection is
   /// > currently in the process of switching over to.
   RTCSessionDescription? get currentRemoteDescription {
@@ -968,7 +970,7 @@ extension type RTCIceCandidate._(JSObject _) implements JSObject {
   /// from this string.
   ///
   /// This property can be configured using the `candidate` property of the
-  /// object passed into the [RTCIceCandidate.RTCIceCandidate] or
+  /// object passed into the [RTCIceCandidate.RTCIceCandidate] constructor or
   /// [RTCPeerConnection.addIceCandidate].
   String get candidate {
     unsupportedPlatformError();
@@ -1370,9 +1372,10 @@ extension type RTCPeerConnectionIceErrorEventInit._(JSObject _)
 /// provides an object representing a certificate that an [RTCPeerConnection]
 /// uses to authenticate.
 ///
-/// `RTCCertificate` is a , so it can be cloned with [structuredClone] or copied
-/// between [Workers](https://developer.mozilla.org/en-US/docs/Web/API/Worker)
-/// using [Worker.postMessage].
+/// `RTCCertificate` is a , so it can be cloned with [Window.structuredClone] or
+/// copied between
+/// [Workers](https://developer.mozilla.org/en-US/docs/Web/API/Worker) using
+/// [Worker.postMessage].
 ///
 /// ---
 ///
@@ -1499,14 +1502,19 @@ extension type RTCRtpSender._(JSObject _) implements JSObject {
   /// `replaceTrack()`,
   /// you can have a track object for each camera and switch between the two as
   /// needed. See
-  /// the example [Switching cameras](#switching_cameras) below.
+  /// the example [switching video cameras](#switching_video_cameras) below.
   JSPromise<JSAny?> replaceTrack(MediaStreamTrack? withTrack) {
     unsupportedPlatformError();
   }
 
   /// The [RTCRtpSender] method **`setStreams()`** associates the sender's
   /// [RTCRtpSender.track] with the specified [MediaStream] objects.
-  void setStreams(MediaStream streams) {
+  void setStreams([
+    MediaStream? stream1,
+    MediaStream? stream2,
+    MediaStream? stream3,
+    MediaStream? stream4,
+  ]) {
     unsupportedPlatformError();
   }
 
@@ -1663,6 +1671,7 @@ extension type RTCRtpEncodingParameters._(JSObject _)
   RTCRtpEncodingParameters({
     String? rid,
     bool? active,
+    RTCRtpCodec? codec,
     int? maxBitrate,
     num? maxFramerate,
     num? scaleResolutionDownBy,
@@ -1676,6 +1685,14 @@ extension type RTCRtpEncodingParameters._(JSObject _)
   }
 
   set active(bool value) {
+    unsupportedPlatformError();
+  }
+
+  RTCRtpCodec get codec {
+    unsupportedPlatformError();
+  }
+
+  set codec(RTCRtpCodec value) {
     unsupportedPlatformError();
   }
 
@@ -2069,20 +2086,46 @@ extension type RTCRtpTransceiver._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
-  /// The [RTCRtpTransceiver] method **`setCodecPreferences()`** configures the
-  /// transceiver's preferred list of codecs.
+  /// The **`setCodecPreferences()`** method of the [RTCRtpTransceiver]
+  /// interface is used to set the codecs that the transceiver allows for
+  /// decoding _received_ data, in order of decreasing preference.
+  ///
+  /// The preferences set using this method influence what codecs are negotiated
+  /// with the remote peer for encoding the data that it sends, including those
+  /// used for retransmission, redundancy, and forward error correction.
+  /// Codecs that are not included in the preferences list will not be part of
+  /// the negotiation.
+  /// Note that the preferences used by this transceiver for _sending_ content
+  /// depend on the preferences of the remote peer.
+  ///
+  /// The recommended way to set codec preferences is to first get the array of
+  /// codecs that are actually supported for decoding received data, then
+  /// reorder them your in decreasing preference order.
+  /// This ensures that the array is ordered as required, does not contain any
+  /// unsupported codecs, and also that it also contains codecs that are needed
+  /// for retransmission, redundancy, and forward error correction.
   ///
   /// The specified set of codecs will be used for all future connections that
   /// include this transceiver until this method is called again.
   ///
-  /// When preparing to open an [RTCPeerConnection], you can change the codec
-  /// parameters from the  default configuration by calling
-  /// `setCodecParameters()` _before_ calling either
-  /// [RTCPeerConnection.createOffer] or [RTCPeerConnection.createAnswer].
+  /// When preparing to open an [RTCPeerConnection] the codecs should be set
+  /// using `setCodecParameters()` _before_ calling either
+  /// [RTCPeerConnection.createOffer] or [RTCPeerConnection.createAnswer], as
+  /// these initiate the negotiation (and will use codec parameters from the
+  /// default configuration by default).
+  ///
+  /// The codecs can be changed when you have an ongoing communication, but you
+  /// need to first call `setCodecParameters()` and then kick off a new
+  /// negotiation.
+  /// A WebRTC application will already have code for this in the
+  /// [`negotiationneeded` event handler](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/negotiationneeded_event).
+  /// Note however that at time of writing the event is not automatically fired
+  /// when you call `setCodecParameters()`, so you will have to call
+  /// `onnegotiationneeded` yourself.
   ///
   /// A guide to codecs supported by WebRTC—and each codec's positive and
   /// negative characteristics—can be found in
-  /// [Codecs used by WebRTC](https://developer.mozilla.org/en-US/docs/Web/Media/Formats/WebRTC_codecs).
+  /// [Codecs used by WebRTC](https://developer.mozilla.org/en-US/docs/Web/Media/Guides/Formats/WebRTC_codecs).
   void setCodecPreferences(JSArray<RTCRtpCodec> codecs) {
     unsupportedPlatformError();
   }
@@ -2531,7 +2574,7 @@ extension type RTCTrackEventInit._(JSObject _) implements EventInit, JSObject {
 /// over which SCTP packets for all of an [RTCPeerConnection]'s data channels
 /// are sent and received.
 ///
-/// You don't create [RTCSctpTransport] objects yourself; instead, you get
+/// You don't create `RTCSctpTransport` objects yourself; instead, you get
 /// access to the `RTCSctpTransport` for a given `RTCPeerConnection` through its
 /// **[RTCPeerConnection.sctp]** property.
 ///
@@ -2646,8 +2689,9 @@ extension type RTCDataChannel._(JSObject _) implements EventTarget, JSObject {
   /// if sent while
   /// the connection is closing or closed.
   ///
-  /// > **Note:** Different browsers have different limitations on the size of
-  /// > the message you can
+  /// > [!NOTE]
+  /// > Different browsers have different limitations on the size of the message
+  /// > you can
   /// > send. Specifications exist to define how to automatically fragment large
   /// > messages, but
   /// > not all browsers implement them, and those that do have various
@@ -2674,8 +2718,8 @@ extension type RTCDataChannel._(JSObject _) implements EventTarget, JSObject {
   ///
   /// A unique ID can be found in the [RTCDataChannel.id] property.
   ///
-  /// > **Note:** A data channel's label is set when the channel is created by
-  /// > calling
+  /// > [!NOTE]
+  /// > A data channel's label is set when the channel is created by calling
   /// > [RTCPeerConnection.createDataChannel]. It cannot be changed after that.
   String get label {
     unsupportedPlatformError();
@@ -2723,8 +2767,9 @@ extension type RTCDataChannel._(JSObject _) implements EventTarget, JSObject {
   /// channel was
   /// created, then this property's value is the empty string (`""`).
   ///
-  /// > **Note:** The permitted values of this property are defined by the
-  /// > website or app using the
+  /// > [!NOTE]
+  /// > The permitted values of this property are defined by the website or app
+  /// > using the
   /// > data channel.
   ///
   /// The ability for each channel to have a defined subprotocol lets your app,
@@ -2786,8 +2831,9 @@ extension type RTCDataChannel._(JSObject _) implements EventTarget, JSObject {
   /// asynchronously. As
   /// messages are actually sent, this value is reduced accordingly.
   ///
-  /// > **Note:** Closing the data channel doesn't reset this count, even though
-  /// > the user agent purges
+  /// > [!NOTE]
+  /// > Closing the data channel doesn't reset this count, even though the user
+  /// > agent purges
   /// > the queued messages. However, even after closing the channel, attempts
   /// > to send
   /// > messages continue to add to the `bufferedAmount` value, even though the
@@ -2890,7 +2936,7 @@ extension type RTCDataChannel._(JSObject _) implements EventTarget, JSObject {
   /// [WebSocket.binaryType] property are also permitted here:
   /// `blob` if [Blob] objects are being used or
   /// `arraybuffer` if `ArrayBuffer` objects are being used. The
-  /// default is `blob`.
+  /// default is `arraybuffer`.
   ///
   /// When a binary message is received on the data channel, the resulting
   /// [RTCDataChannel.message_event] event's [MessageEvent.data] property is an
@@ -3030,25 +3076,22 @@ extension type RTCDataChannelEventInit._(JSObject _)
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/RTCDTMFSender).
 extension type RTCDTMFSender._(JSObject _) implements EventTarget, JSObject {
-  /// The **`insertDTMF()`** method on the [RTCDTMFSender] interface
-  /// starts sending  tones to the remote peer over the
-  /// [RTCPeerConnection].
+  /// The **`insertDTMF()`** method of the [RTCDTMFSender] interface sends
+  /// tones to the remote peer over the [RTCPeerConnection].
   ///
-  /// Sending of the tones is performed asynchronously,
-  /// with
+  /// Tones are sent asynchronously. Every time a tone starts or ends, a
   /// [`tonechange`](https://developer.mozilla.org/en-US/docs/Web/API/RTCDTMFSender/tonechange_event)
-  /// events sent to the `RTCDTMFSender` every time
-  /// a tone starts or ends.
+  /// event is sent to the `RTCDTMFSender`.
   ///
-  /// As long as the connection is active, you can send tones at any time.
-  /// Calling
-  /// `insertDTMF()` replaces any already-pending tones from the `toneBuffer`.
+  /// You can call `insertDTMF()` at any time while the connection is active.
+  /// Each call to `insertDTMF()` replaces any pending tones in the
+  /// `toneBuffer`.
   /// You can abort sending queued tones by specifying an empty string (`""`) as
   /// the set of tones to play.
   /// Since `insertDTMF()` replaces the tone buffer, in order to add to the DTMF
-  /// tones being played, it is necessary to call
-  /// `insertDTMF` with a string containing both the remaining tones (stored in
-  /// the `toneBuffer`) and the new tones appended together.
+  /// tones being played, it is necessary to call `insertDTMF()` with a string
+  /// containing both the remaining tones (stored in the `toneBuffer`) and the
+  /// new tones appended together.
   void insertDTMF(
     String tones, [
     int? duration,

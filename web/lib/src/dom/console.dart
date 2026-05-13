@@ -1,4 +1,4 @@
-// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2026, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -8,7 +8,7 @@
 
 // Generated from Web IDL definitions.
 
-// ignore_for_file: unintended_html_in_doc_comment
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 import '../error.dart';
 import '../js_interop.dart';
@@ -27,26 +27,23 @@ $Console get console {
 /// documentation, try the methods in your browser's developer tools, although
 /// even here, there are some differences between browsers.
 ///
-/// The `console` object can be accessed from any global object. [Window] on
-/// browsing scopes and [WorkerGlobalScope] as specific variants in workers via
-/// the property console. It's exposed as [Window.console], and can be
-/// referenced as `console`. For example:
+/// The `console` object is available in any global scope. For example:
 ///
 /// ```js
 /// console.log("Failed to open the specified link");
 /// ```
-///
-/// This page documents the [Methods](#methods) available on the `console`
-/// object and gives a few [Usage](#usage) examples.
 ///
 /// ---
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/console).
 extension type $Console._(JSObject _) implements JSObject {
-  void assert_(
-    JSAny? data, [
+  void assert_([
     bool? condition,
+    JSAny? data1,
+    JSAny? data2,
+    JSAny? data3,
+    JSAny? data4,
   ]) {
     unsupportedPlatformError();
   }
@@ -55,19 +52,39 @@ extension type $Console._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
-  void debug(JSAny? data) {
+  void debug([
+    JSAny? data1,
+    JSAny? data2,
+    JSAny? data3,
+    JSAny? data4,
+  ]) {
     unsupportedPlatformError();
   }
 
-  void error(JSAny? data) {
+  void error([
+    JSAny? data1,
+    JSAny? data2,
+    JSAny? data3,
+    JSAny? data4,
+  ]) {
     unsupportedPlatformError();
   }
 
-  void info(JSAny? data) {
+  void info([
+    JSAny? data1,
+    JSAny? data2,
+    JSAny? data3,
+    JSAny? data4,
+  ]) {
     unsupportedPlatformError();
   }
 
-  void log(JSAny? data) {
+  void log([
+    JSAny? data1,
+    JSAny? data2,
+    JSAny? data3,
+    JSAny? data4,
+  ]) {
     unsupportedPlatformError();
   }
 
@@ -78,11 +95,21 @@ extension type $Console._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
-  void trace(JSAny? data) {
+  void trace([
+    JSAny? data1,
+    JSAny? data2,
+    JSAny? data3,
+    JSAny? data4,
+  ]) {
     unsupportedPlatformError();
   }
 
-  void warn(JSAny? data) {
+  void warn([
+    JSAny? data1,
+    JSAny? data2,
+    JSAny? data3,
+    JSAny? data4,
+  ]) {
     unsupportedPlatformError();
   }
 
@@ -93,7 +120,12 @@ extension type $Console._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
-  void dirxml(JSAny? data) {
+  void dirxml([
+    JSAny? data1,
+    JSAny? data2,
+    JSAny? data3,
+    JSAny? data4,
+  ]) {
     unsupportedPlatformError();
   }
 
@@ -105,11 +137,21 @@ extension type $Console._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
-  void group(JSAny? data) {
+  void group([
+    JSAny? data1,
+    JSAny? data2,
+    JSAny? data3,
+    JSAny? data4,
+  ]) {
     unsupportedPlatformError();
   }
 
-  void groupCollapsed(JSAny? data) {
+  void groupCollapsed([
+    JSAny? data1,
+    JSAny? data2,
+    JSAny? data3,
+    JSAny? data4,
+  ]) {
     unsupportedPlatformError();
   }
 
@@ -121,9 +163,12 @@ extension type $Console._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
-  void timeLog(
-    JSAny? data, [
+  void timeLog([
     String? label,
+    JSAny? data1,
+    JSAny? data2,
+    JSAny? data3,
+    JSAny? data4,
   ]) {
     unsupportedPlatformError();
   }

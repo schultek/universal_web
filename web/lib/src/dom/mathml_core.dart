@@ -1,4 +1,4 @@
-// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2026, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -8,7 +8,7 @@
 
 // Generated from Web IDL definitions.
 
-// ignore_for_file: unintended_html_in_doc_comment
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 import '../error.dart';
 import '../js_interop.dart';
@@ -269,8 +269,9 @@ extension type MathMLElement._(JSObject _) implements Element, JSObject {
   /// A style declaration is reset by setting it to `null` or an empty string,
   /// e.g., `elt.style.color = null`.
   ///
-  /// > **Note:** CSS property names are converted to JavaScript identifier with
-  /// > these rules:
+  /// > [!NOTE]
+  /// > CSS property names are converted to JavaScript identifier with these
+  /// > rules:
   /// >
   /// > - If the property is made of one word, it remains as it is: `height`
   /// > stays as is (in lowercase).

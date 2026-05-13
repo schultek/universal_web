@@ -1,4 +1,4 @@
-// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2026, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -8,7 +8,7 @@
 
 // Generated from Web IDL definitions.
 
-// ignore_for_file: unintended_html_in_doc_comment
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 import '../error.dart';
 import '../js_interop.dart';
@@ -105,7 +105,7 @@ extension type FileSystemFileHandle._(JSObject _)
   /// represented by the file handle until the stream has been closed.
   /// This is typically implemented by writing data to a temporary file, and
   /// only replacing the file represented by file handle with the temporary file
-  /// when the writable filestream is closed.
+  /// when the writable file stream is closed.
   JSPromise<FileSystemWritableFileStream> createWritable(
       [FileSystemCreateWritableOptions? options]) {
     unsupportedPlatformError();
@@ -343,10 +343,10 @@ extension type FileSystemReadWriteOptions._(JSObject _) implements JSObject {
 /// The interface is accessed through the
 /// [FileSystemFileHandle.createSyncAccessHandle] method.
 ///
-/// > **Note:** In earlier versions of the spec,
-/// > [FileSystemSyncAccessHandle.close], [FileSystemSyncAccessHandle.flush],
-/// > [FileSystemSyncAccessHandle.getSize], and
-/// > [FileSystemSyncAccessHandle.truncate] were wrongly specified as
+/// > [!NOTE]
+/// > In earlier versions of the spec, [FileSystemSyncAccessHandle.close],
+/// > [FileSystemSyncAccessHandle.flush], [FileSystemSyncAccessHandle.getSize],
+/// > and [FileSystemSyncAccessHandle.truncate] were wrongly specified as
 /// > asynchronous methods, and older versions of some browsers implement them
 /// > in this way. However, all current browsers that support these methods
 /// > implement them as synchronous methods.
@@ -397,8 +397,9 @@ extension type FileSystemSyncAccessHandle._(JSObject _) implements JSObject {
   /// [FileSystemSyncAccessHandle] interface resizes the file associated with
   /// the handle to a specified number of bytes.
   ///
-  /// > **Note:** In earlier versions of the spec,
-  /// > [FileSystemSyncAccessHandle.close], [FileSystemSyncAccessHandle.flush],
+  /// > [!NOTE]
+  /// > In earlier versions of the spec, [FileSystemSyncAccessHandle.close],
+  /// > [FileSystemSyncAccessHandle.flush],
   /// > [FileSystemSyncAccessHandle.getSize], and `truncate()` were wrongly
   /// > specified as asynchronous methods, and older versions of some browsers
   /// > implement them in this way. However, all current browsers that support
@@ -413,12 +414,13 @@ extension type FileSystemSyncAccessHandle._(JSObject _) implements JSObject {
   /// [FileSystemSyncAccessHandle] interface returns the size of the file
   /// associated with the handle in bytes.
   ///
-  /// > **Note:** In earlier versions of the spec,
-  /// > [FileSystemSyncAccessHandle.close], [FileSystemSyncAccessHandle.flush],
-  /// > `getSize()`, and [FileSystemSyncAccessHandle.truncate] were wrongly
-  /// > specified as asynchronous methods, and older versions of some browsers
-  /// > implement them in this way. However, all current browsers that support
-  /// > these methods implement them as synchronous methods.
+  /// > [!NOTE]
+  /// > In earlier versions of the spec, [FileSystemSyncAccessHandle.close],
+  /// > [FileSystemSyncAccessHandle.flush], `getSize()`, and
+  /// > [FileSystemSyncAccessHandle.truncate] were wrongly specified as
+  /// > asynchronous methods, and older versions of some browsers implement them
+  /// > in this way. However, all current browsers that support these methods
+  /// > implement them as synchronous methods.
   int getSize() {
     unsupportedPlatformError();
   }
@@ -435,9 +437,9 @@ extension type FileSystemSyncAccessHandle._(JSObject _) implements JSObject {
   /// underlying operating system to handle this when it sees fit, which should
   /// be OK in most cases.
   ///
-  /// > **Note:** In earlier versions of the spec,
-  /// > [FileSystemSyncAccessHandle.close], `flush()`,
-  /// > [FileSystemSyncAccessHandle.getSize], and
+  /// > [!NOTE]
+  /// > In earlier versions of the spec, [FileSystemSyncAccessHandle.close],
+  /// > `flush()`, [FileSystemSyncAccessHandle.getSize], and
   /// > [FileSystemSyncAccessHandle.truncate] were wrongly specified as
   /// > asynchronous methods, and older versions of some browsers implement them
   /// > in this way. However, all current browsers that support these methods
@@ -453,7 +455,8 @@ extension type FileSystemSyncAccessHandle._(JSObject _) implements JSObject {
   /// handle, disabling any further operations on it and releasing the exclusive
   /// lock previously put on the file associated with the file handle.
   ///
-  /// > **Note:** In earlier versions of the spec, `close()`,
+  /// > [!NOTE]
+  /// > In earlier versions of the spec, `close()`,
   /// > [FileSystemSyncAccessHandle.flush],
   /// > [FileSystemSyncAccessHandle.getSize], and
   /// > [FileSystemSyncAccessHandle.truncate] were wrongly specified as

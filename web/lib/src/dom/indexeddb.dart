@@ -1,4 +1,4 @@
-// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2026, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -8,7 +8,7 @@
 
 // Generated from Web IDL definitions.
 
-// ignore_for_file: unintended_html_in_doc_comment
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 import '../error.dart';
 import '../js_interop.dart';
@@ -31,7 +31,7 @@ typedef IDBTransactionMode = String;
 /// fired on the request, and the information becomes available through the
 /// properties of the `IDBRequest` instance.
 ///
-/// All asynchronous operations immediately return an [IDBRequest] instance.
+/// All asynchronous operations immediately return an `IDBRequest` instance.
 /// Each request has a `readyState` that is set to the `'pending'` state; this
 /// changes to `'done'` when the request is completed or fails. When the state
 /// is set to `done`, every request returns a `result` and an `error`, and an
@@ -54,10 +54,7 @@ typedef IDBTransactionMode = String;
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/IDBRequest).
 extension type IDBRequest._(JSObject _) implements EventTarget, JSObject {
   /// The **`result`** read-only property of the
-  /// [IDBRequest] interface returns the result of the request. If the request
-  /// is not completed, the result is not available and an `InvalidStateError`
-  /// exception is
-  /// thrown.
+  /// [IDBRequest] interface returns the result of the request.
   JSAny? get result {
     unsupportedPlatformError();
   }
@@ -265,7 +262,7 @@ extension type IDBFactory._(JSObject _) implements JSObject {
   /// `Promise` that fulfills with an array of objects containing the name and
   /// version of all the available databases.
   ///
-  /// This is is a snapshot of the databases, intended primarily to allow web
+  /// This is a snapshot of the databases, intended primarily to allow web
   /// applications to check what databases have been created — in order to, for
   /// example, clean up databases created by earlier versions of application
   /// code.
@@ -278,7 +275,8 @@ extension type IDBFactory._(JSObject _) implements JSObject {
   /// for IndexedDB
   /// operations, such as storing and iterating.
   ///
-  /// > **Note:** Do not use this method for comparing arbitrary JavaScript
+  /// > [!NOTE]
+  /// > Do not use this method for comparing arbitrary JavaScript
   /// > values, because many JavaScript values are either not valid IndexedDB
   /// > keys (booleans
   /// > and objects, for example) or are treated as equivalent IndexedDB keys
@@ -319,15 +317,15 @@ extension type IDBDatabaseInfo._(JSObject _) implements JSObject {
 }
 
 /// The **`IDBDatabase`** interface of the IndexedDB API provides a
-/// [connection to a database](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API#database_connection);
+/// [connection to a database](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Basic_Terminology#database_connection);
 /// you can use an `IDBDatabase` object to open a
 /// [transaction](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Basic_Terminology#transaction)
 /// on your database then create, manipulate, and delete objects (data) in that
 /// database. The interface provides the only way to get and manage versions of
 /// the database.
 ///
-/// > **Note:** Everything you do in IndexedDB always happens in the context of
-/// > a
+/// > [!NOTE]
+/// > Everything you do in IndexedDB always happens in the context of a
 /// > [transaction](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Basic_Terminology#transaction),
 /// > representing interactions with data in the database. All objects in
 /// > IndexedDB — including object stores, indexes, and cursors — are tied to a
@@ -378,7 +376,7 @@ extension type IDBDatabase._(JSObject _) implements EventTarget, JSObject {
   /// to every object, and every object should have that property.
   ///
   /// This method can be called _only_ within a
-  /// [`versionchange`](https://developer.mozilla.org/en-US/docs/Web/API/IDBTransaction#version_change)
+  /// [`versionchange`](https://developer.mozilla.org/en-US/docs/Web/API/IDBDatabase/versionchange_event)
   /// transaction.
   IDBObjectStore createObjectStore(
     String name, [
@@ -393,7 +391,7 @@ extension type IDBDatabase._(JSObject _) implements EventTarget, JSObject {
   ///
   /// As with [IDBDatabase.createObjectStore], this method can be called
   /// _only_ within a
-  /// [`versionchange`](https://developer.mozilla.org/en-US/docs/Web/API/IDBTransaction#version_change)
+  /// [`versionchange`](https://developer.mozilla.org/en-US/docs/Web/API/IDBDatabase/versionchange_event)
   /// transaction.
   void deleteObjectStore(String name) {
     unsupportedPlatformError();
@@ -520,7 +518,7 @@ extension type IDBObjectStore._(JSObject _) implements JSObject {
   ///
   /// Bear in mind that if you have a [IDBCursor] to the record you
   /// want to update, updating it with [IDBCursor.update] is preferable to
-  /// using [IDBObjectStore.put]. Doing so makes it clear that an existing
+  /// using `IDBObjectStore.put()`. Doing so makes it clear that an existing
   /// record will be updated, instead of a new record being inserted.
   IDBRequest put(
     JSAny? value, [
@@ -595,13 +593,13 @@ extension type IDBObjectStore._(JSObject _) implements JSObject {
   /// If a value is successfully found, then a structured clone of it is created
   /// and set as
   /// the
-  /// [`result`](https://developer.mozilla.org/en-US/docs/Web/API/IDBRequest#attr_result)
+  /// [`result`](https://developer.mozilla.org/en-US/docs/Web/API/IDBRequest/result)
   /// of the
   /// request object.
   ///
-  /// > **Note:** This method produces the same result for: a) a record that
-  /// > doesn't exist in the database and b) a record that has an undefined
-  /// > value.
+  /// > [!NOTE]
+  /// > This method produces the same result for: a) a record that doesn't exist
+  /// > in the database and b) a record that has an undefined value.
   /// > To tell these situations apart, call the `openCursor()` method with the
   /// > same key. That method provides a cursor if the record exists, and no
   /// > cursor if it does not.
@@ -964,7 +962,8 @@ extension type IDBIndex._(JSObject _) implements JSObject {
   /// If the key range is not specified or is null, then the range includes all
   /// the keys.
   ///
-  /// > **Note:** Cursors returned by `openKeyCursor()` do not
+  /// > [!NOTE]
+  /// > Cursors returned by `openKeyCursor()` do not
   /// > make the referenced value available as
   /// > [`IDBIndex.openCursor`](https://developer.mozilla.org/en-US/docs/Web/API/IDBIndex/openCursor)
   /// > does.
@@ -1147,7 +1146,8 @@ extension type IDBKeyRange._(JSObject _) implements JSObject {
   }
 }
 
-/// > **Note:** Not to be confused with [IDBCursorWithValue] which is just an
+/// > [!NOTE]
+/// > Not to be confused with [IDBCursorWithValue] which is just an
 /// > **`IDBCursor`** interface with an additional **`value`** property.
 ///
 /// The **`IDBCursor`** interface of the
@@ -1258,7 +1258,7 @@ extension type IDBCursor._(JSObject _) implements JSObject {
   /// The **`direction`** read-only property of the
   /// [IDBCursor] interface is a string that returns the
   /// direction of traversal of the cursor (set using
-  /// [IDBObjectStore.openCursor] for example). See the [Values](#values)
+  /// [IDBObjectStore.openCursor] for example). See the [Value](#value)
   /// section below for possible values.
   IDBCursorDirection get direction {
     unsupportedPlatformError();
@@ -1323,7 +1323,7 @@ extension type IDBCursorWithValue._(JSObject _) implements IDBCursor, JSObject {
 /// [IndexedDB API](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API)
 /// provides a static, asynchronous transaction on a database using event
 /// handler attributes. All reading and writing of data is done within
-/// transactions. You use [IDBDatabase] to start transactions, [IDBTransaction]
+/// transactions. You use [IDBDatabase] to start transactions, `IDBTransaction`
 /// to set the mode of the transaction (e.g. is it `readonly` or `readwrite`),
 /// and you access an [IDBObjectStore] to make a request. You can also use an
 /// `IDBTransaction` object to abort transactions.
@@ -1346,9 +1346,9 @@ extension type IDBCursorWithValue._(JSObject _) implements IDBCursor, JSObject {
 /// A transaction alternates between _active_ and _inactive_ states between
 /// event loop tasks. It's active in the task when it was created, and in each
 /// task of the requests'
-/// [`success`](https://developer.mozilla.org/en-US/docs/Web/API/IDBRequest/success)
+/// [`success`](https://developer.mozilla.org/en-US/docs/Web/API/IDBRequest/success_event)
 /// or
-/// [`error`](https://developer.mozilla.org/en-US/docs/Web/API/IDBRequest/error)
+/// [`error`](https://developer.mozilla.org/en-US/docs/Web/API/IDBRequest/error_event)
 /// event handlers. It's inactive in all other tasks, in which case placing
 /// requests will fail. If no new requests are placed when the transaction is
 /// active, and there are no other outstanding requests, the transaction will

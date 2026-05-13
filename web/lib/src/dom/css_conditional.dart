@@ -1,4 +1,4 @@
-// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2026, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -8,7 +8,7 @@
 
 // Generated from Web IDL definitions.
 
-// ignore_for_file: unintended_html_in_doc_comment
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 import '../error.dart';
 import '../js_interop.dart';
@@ -16,8 +16,8 @@ import 'cssom.dart';
 
 /// An object implementing the **`CSSConditionRule`** interface represents a
 /// single condition CSS
-/// [at-rule](https://developer.mozilla.org/en-US/docs/Web/CSS/At-rule), which
-/// consists of a condition and a statement block.
+/// [at-rule](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_syntax/At-rule),
+/// which consists of a condition and a statement block.
 ///
 /// Three objects derive from `CSSConditionRule`: [CSSMediaRule],
 /// [CSSContainerRule] and [CSSSupportsRule].
@@ -45,7 +45,7 @@ extension type CSSConditionRule._(JSObject _)
 extension type CSSMediaRule._(JSObject _)
     implements CSSConditionRule, JSObject {
   /// The read-only **`media`** property of the
-  /// [CSSMediaRule] interface [MediaList] represents the intended
+  /// [CSSMediaRule] interface returns a [MediaList] representing the intended
   /// destination medium for style information.
   MediaList get media {
     unsupportedPlatformError();
@@ -53,7 +53,7 @@ extension type CSSMediaRule._(JSObject _)
 }
 
 /// The **`CSSSupportsRule`** interface represents a single CSS
-/// [at-rule](https://developer.mozilla.org/en-US/docs/Web/CSS/At-rule).
+/// [at-rule](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_syntax/At-rule).
 ///
 /// ---
 ///

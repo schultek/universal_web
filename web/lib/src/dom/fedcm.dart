@@ -1,4 +1,4 @@
-// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2026, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -8,17 +8,31 @@
 
 // Generated from Web IDL definitions.
 
-// ignore_for_file: unintended_html_in_doc_comment
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 import '../error.dart';
 import '../js_interop.dart';
 
 typedef IdentityCredentialRequestOptionsContext = String;
+typedef IdentityCredentialRequestOptionsMode = String;
+
+/// The **`IdentityCredentialRequestOptions`** dictionary represents the object
+/// passed to [CredentialsContainer.get] as the value of the `identity` option.
+///
+/// It is used to request an [IdentityCredential] provided by a  that supports
+/// the [Federated Credential Management (FedCM)
+/// API](https://developer.mozilla.org/en-US/docs/Web/API/FedCM_API).
+///
+/// ---
+///
+/// API documentation sourced from
+/// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/IdentityCredentialRequestOptions).
 extension type IdentityCredentialRequestOptions._(JSObject _)
     implements JSObject {
   IdentityCredentialRequestOptions({
     required JSArray<IdentityProviderRequestOptions> providers,
     IdentityCredentialRequestOptionsContext? context,
+    IdentityCredentialRequestOptionsMode? mode,
   }) : _ = JSObject();
 
   JSArray<IdentityProviderRequestOptions> get providers {
@@ -34,6 +48,14 @@ extension type IdentityCredentialRequestOptions._(JSObject _)
   }
 
   set context(IdentityCredentialRequestOptionsContext value) {
+    unsupportedPlatformError();
+  }
+
+  IdentityCredentialRequestOptionsMode get mode {
+    unsupportedPlatformError();
+  }
+
+  set mode(IdentityCredentialRequestOptionsMode value) {
     unsupportedPlatformError();
   }
 }
@@ -67,6 +89,8 @@ extension type IdentityProviderRequestOptions._(JSObject _)
     String? nonce,
     String? loginHint,
     String? domainHint,
+    JSArray<JSString>? fields,
+    JSAny? params,
   }) : _ = JSObject();
 
   String get nonce {
@@ -90,6 +114,22 @@ extension type IdentityProviderRequestOptions._(JSObject _)
   }
 
   set domainHint(String value) {
+    unsupportedPlatformError();
+  }
+
+  JSArray<JSString> get fields {
+    unsupportedPlatformError();
+  }
+
+  set fields(JSArray<JSString> value) {
+    unsupportedPlatformError();
+  }
+
+  JSAny? get params {
+    unsupportedPlatformError();
+  }
+
+  set params(JSAny? value) {
     unsupportedPlatformError();
   }
 }

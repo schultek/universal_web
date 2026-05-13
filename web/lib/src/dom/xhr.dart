@@ -1,4 +1,4 @@
-// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2026, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -8,7 +8,7 @@
 
 // Generated from Web IDL definitions.
 
-// ignore_for_file: unintended_html_in_doc_comment
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 import '../error.dart';
 import '../js_interop.dart';
@@ -144,7 +144,8 @@ extension type XMLHttpRequest._(JSObject _)
   /// The [XMLHttpRequest] method **`open()`**
   /// initializes a newly-created request, or re-initializes an existing one.
   ///
-  /// > **Note:** Calling this method for an already active request
+  /// > [!NOTE]
+  /// > Calling this method for an already active request
   /// > (one for which `open()` has already been called) is the equivalent of
   /// > calling
   /// > [XMLHttpRequest.abort].
@@ -184,7 +185,8 @@ extension type XMLHttpRequest._(JSObject _)
   /// HTTP header may be added to a request, but will be removed if the request
   /// is redirected cross-origin.
   ///
-  /// > **Note:** For your custom fields, you may encounter a "**not allowed by
+  /// > [!NOTE]
+  /// > For your custom fields, you may encounter a "**not allowed by
   /// > Access-Control-Allow-Headers in preflight response**" exception when you
   /// > send requests across domains.
   /// > In this situation, you need to set up the  in your response header at
@@ -228,6 +230,13 @@ extension type XMLHttpRequest._(JSObject _)
   /// [XMLHttpRequest.readyState] is changed to
   /// `XMLHttpRequest.UNSENT` (0) and the request's
   /// [XMLHttpRequest.status] code is set to 0.
+  ///
+  /// If the request is still in progress (its `readyState` is not
+  /// `XMLHttpRequest.DONE` or `XMLHttpRequest.UNSENT`), a
+  /// [XMLHttpRequest.readystatechange_event] event,
+  /// [XMLHttpRequest.abort_event], and a [XMLHttpRequest.loadend_event] event
+  /// are dispatched, in that order. For synchronous requests, no events are
+  /// dispatched and an error is thrown instead.
   void abort() {
     unsupportedPlatformError();
   }
@@ -245,7 +254,8 @@ extension type XMLHttpRequest._(JSObject _)
   /// space. The
   /// `getResponseHeader()` method returns the value as a UTF byte sequence.
   ///
-  /// > **Note:** The search for the header name is case-insensitive.
+  /// > [!NOTE]
+  /// > The search for the header name is case-insensitive.
   ///
   /// If you need to get the raw string of all of the headers, use the
   /// [XMLHttpRequest.getAllResponseHeaders] method,
@@ -264,7 +274,8 @@ extension type XMLHttpRequest._(JSObject _)
   /// If a network error happened, an empty string
   /// is returned.
   ///
-  /// > **Note:** For multipart requests, this returns the headers from the
+  /// > [!NOTE]
+  /// > For multipart requests, this returns the headers from the
   /// > _current_ part of the request, not from the original channel.
   String getAllResponseHeaders() {
     unsupportedPlatformError();
@@ -333,8 +344,9 @@ extension type XMLHttpRequest._(JSObject _)
   /// [timeout](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/timeout_event)
   /// event is fired.
   ///
-  /// > **Note:** You may not use a timeout for synchronous requests with an
-  /// > owning window.
+  /// > [!NOTE]
+  /// > You may not use a timeout for synchronous requests with an owning
+  /// > window.
   ///
   /// [Using a timeout with an asynchronous request](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest_API/Synchronous_and_Asynchronous_Requests#example_using_a_timeout).
   int get timeout {
@@ -358,14 +370,15 @@ extension type XMLHttpRequest._(JSObject _)
   /// responses from a different domain cannot set cookie values for their own
   /// domain unless `withCredentials` is set to `true` before making the
   /// request. The
-  /// [third-party cookies](https://developer.mozilla.org/en-US/docs/Web/Privacy/Third-party_cookies)
+  /// [third-party cookies](https://developer.mozilla.org/en-US/docs/Web/Privacy/Guides/Third-party_cookies)
   /// obtained by setting `withCredentials` to `true` will still honor
   /// same-origin policy and hence can not be accessed by the requesting script
   /// through
   /// [document.cookie](https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie)
   /// or from response headers.
   ///
-  /// > **Note:** This never affects same-origin requests.
+  /// > [!NOTE]
+  /// > This never affects same-origin requests.
   ///
   /// > **Note:** `XMLHttpRequest` responses from a different domain _cannot_
   /// > set cookie values for their own domain unless `withCredentials` is set
@@ -388,16 +401,18 @@ extension type XMLHttpRequest._(JSObject _)
   /// [XMLHttpRequestEventTarget], event listeners can be attached to track its
   /// process.
   ///
-  /// > **Note:** Attaching event listeners to this object prevents the request
-  /// > from being a "simple request" and will cause a preflight request to be
-  /// > issued if cross-origin; see
+  /// > [!NOTE]
+  /// > Attaching event listeners to this object prevents the request from being
+  /// > a "simple request" and will cause a preflight request to be issued if
+  /// > cross-origin; see
   /// > [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS). Because
   /// > of this, event listeners need to be registered before calling
   /// > [XMLHttpRequest.send] or upload events won't be dispatched.
   ///
-  /// > **Note:** The spec also seems to indicate that event listeners should be
-  /// > attached after [XMLHttpRequest.open]. However, browsers are buggy on
-  /// > this matter, and often need the listeners to be registered _before_
+  /// > [!NOTE]
+  /// > The spec also seems to indicate that event listeners should be attached
+  /// > after [XMLHttpRequest.open]. However, browsers are buggy on this matter,
+  /// > and often need the listeners to be registered _before_
   /// > [XMLHttpRequest.open] to work.
   ///
   /// The following events can be triggered on an upload object and used to
@@ -496,8 +511,9 @@ extension type XMLHttpRequest._(JSObject _)
   /// If the server response doesn't explicitly specify a status text,
   /// `statusText` will assume the default value "OK".
   ///
-  /// > **Note:** Responses over an HTTP/2 connection will always have an empty
-  /// > string as status message as HTTP/2 does not support them.
+  /// > [!NOTE]
+  /// > Responses over an HTTP/2 connection will always have an empty string as
+  /// > status message as HTTP/2 does not support them.
   String get statusText {
     unsupportedPlatformError();
   }
@@ -549,19 +565,20 @@ extension type XMLHttpRequest._(JSObject _)
   /// data
   /// can't be parsed as XML or HTML.
   ///
-  /// > **Note:** The name `responseXML` is an artifact of this
+  /// > [!NOTE]
+  /// > The name `responseXML` is an artifact of this
   /// > property's history; it works for both HTML and XML.
   ///
-  /// Usually, the response is parsed as "`text/xml`". If the
+  /// Usually, the response is parsed as `"text/xml"`. If the
   /// [XMLHttpRequest.responseType] is set to
-  /// "`document`" and the request was made asynchronously, instead the response
+  /// `"document"` and the request was made asynchronously, instead the response
   /// is
-  /// parsed as "`text/html`". `responseXML` is `null` for
+  /// parsed as `"text/html"`. `responseXML` is `null` for
   /// any other types of data, as well as for [`data:`
-  /// URLs](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URLs).
+  /// URLs](https://developer.mozilla.org/en-US/docs/Web/URI/Reference/Schemes/data).
   ///
   /// If the server doesn't specify the  as
-  /// "`text/xml`" or "`application/xml`", you can use
+  /// `"text/xml"` or `"application/xml"`, you can use
   /// [XMLHttpRequest.overrideMimeType] to parse it as XML anyway.
   ///
   /// This property isn't available to workers.
@@ -572,8 +589,8 @@ extension type XMLHttpRequest._(JSObject _)
 
 /// The **`FormData`** interface provides a way to construct a set of key/value
 /// pairs representing form fields and their values, which can be sent using the
-/// [fetch], [XMLHttpRequest.send] or [navigator.sendBeacon] methods. It uses
-/// the same format a form would use if the encoding type were set to
+/// [Window.fetch], [XMLHttpRequest.send] or [navigator.sendBeacon] methods. It
+/// uses the same format a form would use if the encoding type were set to
 /// `"multipart/form-data"`.
 ///
 /// You can also pass it directly to the [URLSearchParams] constructor if you
@@ -681,8 +698,8 @@ extension type ProgressEvent._(JSObject _) implements Event, JSObject {
   /// The **`ProgressEvent.loaded`** read-only property is a 64-bit unsigned
   /// integer
   /// indicating the size, in bytes, of the data already transmitted or
-  /// processed. The ratio can be calculated by dividing `ProgressEvent.total`
-  /// by the value of this property.
+  /// processed. The ratio can be calculated by dividing the value of this
+  /// property by `ProgressEvent.total`.
   /// When downloading a resource using HTTP, this only counts the body of the
   /// HTTP message, and doesn't include headers and other overhead.
   ///

@@ -1,4 +1,4 @@
-// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2026, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -8,7 +8,7 @@
 
 // Generated from Web IDL definitions.
 
-// ignore_for_file: unintended_html_in_doc_comment
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 import '../error.dart';
 import '../js_interop.dart';
@@ -25,7 +25,8 @@ typedef PositionErrorCallback = JSFunction;
 /// An object with this interface is obtained using the [navigator.geolocation]
 /// property implemented by the [Navigator] object.
 ///
-/// > **Note:** For security reasons, when a web page tries to access location
+/// > [!NOTE]
+/// > For security reasons, when a web page tries to access location
 /// > information, the user is notified and asked to grant permission. Be aware
 /// > that each browser has its own policies and methods for requesting this
 /// > permission.
@@ -37,6 +38,16 @@ typedef PositionErrorCallback = JSFunction;
 extension type Geolocation._(JSObject _) implements JSObject {
   /// The **`getCurrentPosition()`** method of the [Geolocation] interface is
   /// used to get the current position of the device.
+  ///
+  /// Note that in addition to requiring a secure context this feature may be
+  /// blocked by the
+  /// [`geolocation`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy/geolocation)
+  /// `Permissions-Policy`, and also requires that explicit permission be
+  /// granted by the user.
+  /// If required, the user will be prompted when this method is called.
+  /// The permission state can be queried using the `geolocation` user
+  /// permission in the
+  /// [Permissions API](https://developer.mozilla.org/en-US/docs/Web/API/Permissions_API).
   void getCurrentPosition(
     PositionCallback successCallback, [
     PositionErrorCallback? errorCallback,
@@ -49,6 +60,16 @@ extension type Geolocation._(JSObject _) implements JSObject {
   /// register a handler function that will be called automatically each time
   /// the position of the device changes.
   /// You can also, optionally, specify an error handling callback function.
+  ///
+  /// Note that in addition to requiring a secure context this feature may be
+  /// blocked by the
+  /// [`geolocation`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy/geolocation)
+  /// `Permissions-Policy`, and also requires that explicit permission be
+  /// granted by the user.
+  /// If required, the user will be prompted when this method is called.
+  /// The permission state can be queried using the `geolocation` user
+  /// permission in the
+  /// [Permissions API](https://developer.mozilla.org/en-US/docs/Web/API/Permissions_API).
   int watchPosition(
     PositionCallback successCallback, [
     PositionErrorCallback? errorCallback,
@@ -198,8 +219,8 @@ extension type GeolocationCoordinates._(JSObject _) implements JSObject {
   /// heading due north the device is. `0` degrees represents true north, and
   /// the direction is determined clockwise (which means that east is `90`
   /// degrees and west is `270` degrees). If [GeolocationCoordinates.speed] is
-  /// `0`, `heading` is `NaN`. If the device is not able to provide heading
-  /// information, this value is `null`.
+  /// `0` or the device is not able to provide heading information, `heading` is
+  /// `null`.
   double? get heading {
     unsupportedPlatformError();
   }

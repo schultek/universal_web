@@ -1,4 +1,4 @@
-// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2026, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -8,7 +8,7 @@
 
 // Generated from Web IDL definitions.
 
-// ignore_for_file: unintended_html_in_doc_comment
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 import '../error.dart';
 import '../js_interop.dart';
@@ -91,7 +91,8 @@ extension type Animation._(JSObject _) implements EventTarget, JSObject {
   /// interface clears all [KeyframeEffect]s caused by this animation and aborts
   /// its playback.
   ///
-  /// > **Note:** When an animation is cancelled, its [Animation.startTime] and
+  /// > [!NOTE]
+  /// > When an animation is cancelled, its [Animation.startTime] and
   /// > [Animation.currentTime] are set to `null`.
   void cancel() {
     unsupportedPlatformError();
@@ -175,9 +176,9 @@ extension type Animation._(JSObject _) implements EventTarget, JSObject {
   /// The `commitStyles()` method of the
   /// [Web Animations API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API)'s
   /// [Animation] interface writes the
-  /// [computed values](https://developer.mozilla.org/en-US/docs/Web/CSS/computed_value)
+  /// [computed values](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_cascade/computed_value)
   /// of the animation's current styles into its target element's
-  /// [`style`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes#style)
+  /// [`style`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/style)
   /// attribute. `commitStyles()` works even if the animation has been
   /// [automatically removed](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API/Using_the_Web_Animations_API#automatically_removing_filling_animations).
   ///
@@ -186,12 +187,12 @@ extension type Animation._(JSObject _) implements EventTarget, JSObject {
   /// could be achieved with `fill` alone, but
   /// [using indefinitely filling animations is discouraged](https://drafts.csswg.org/web-animations-1/#fill-behavior).
   /// Animations
-  /// [take precedence over all static styles](https://developer.mozilla.org/en-US/docs/Web/CSS/Cascade#cascading_order),
+  /// [take precedence over all static styles](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_cascade/Cascade#cascading_order),
   /// so an indefinite filling animation can prevent the target element from
   /// ever being styled normally.
   ///
   /// Using `commitStyles()` writes the styling state into the element's
-  /// [`style`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes#style)
+  /// [`style`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/style)
   /// attribute, where they can be modified and replaced as normal.
   void commitStyles() {
     unsupportedPlatformError();
@@ -281,8 +282,9 @@ extension type Animation._(JSObject _) implements EventTarget, JSObject {
   /// as well as when the animation is canceled, since in both of those
   /// scenarios, the animation is ready to be started again.
   ///
-  /// > **Note:** Since the same `Promise` is used for both pending `play` and
-  /// > pending `pause` requests, authors are advised to check the state of the
+  /// > [!NOTE]
+  /// > Since the same `Promise` is used for both pending `play` and pending
+  /// > `pause` requests, authors are advised to check the state of the
   /// > animation when the promise is resolved.
   JSPromise<Animation> get ready {
     unsupportedPlatformError();
@@ -293,10 +295,11 @@ extension type Animation._(JSObject _) implements EventTarget, JSObject {
   /// returns a `Promise` which resolves once the animation has finished
   /// playing.
   ///
-  /// > **Note:** Every time the animation leaves the `finished` play state
-  /// > (that is, when it starts playing again), a new `Promise` is created for
-  /// > this property. The new `Promise` will resolve once the new animation
-  /// > sequence has completed.
+  /// > [!NOTE]
+  /// > Every time the animation leaves the `finished` play state (that is, when
+  /// > it starts playing again), a new `Promise` is created for this property.
+  /// > The new `Promise` will resolve once the new animation sequence has
+  /// > completed.
   JSPromise<Animation> get finished {
     unsupportedPlatformError();
   }
@@ -378,10 +381,10 @@ extension type AnimationEffect._(JSObject _) implements JSObject {
   /// interface returns an object containing the timing properties for the
   /// Animation Effect.
   ///
-  /// > **Note:** Several of the timing properties returned by `getTiming()` may
-  /// > take on the placeholder value `"auto"`. To obtain resolved values for
-  /// > use in timing computations, instead use
-  /// > [AnimationEffect.getComputedTiming].
+  /// > [!NOTE]
+  /// > Several of the timing properties returned by `getTiming()` may take on
+  /// > the placeholder value `"auto"`. To obtain resolved values for use in
+  /// > timing computations, instead use [AnimationEffect.getComputedTiming].
   /// >
   /// > In the future, `"auto"` or similar values might be added to the types of
   /// > more timing properties, and new types of [AnimationEffect] might resolve
@@ -393,8 +396,9 @@ extension type AnimationEffect._(JSObject _) implements JSObject {
   /// The `getComputedTiming()` method of the [AnimationEffect] interface
   /// returns the calculated timing properties for this animation effect.
   ///
-  /// > **Note:** These values are comparable to the computed styles of an
-  /// > Element returned using `window.getComputedStyle(elem)`.
+  /// > [!NOTE]
+  /// > These values are comparable to the computed styles of an Element
+  /// > returned using `window.getComputedStyle(elem)`.
   ComputedEffectTiming getComputedTiming() {
     unsupportedPlatformError();
   }
@@ -694,8 +698,9 @@ extension type KeyframeEffect._(JSObject _)
   /// getter and a setter, except with animations and transitions generated by
   /// CSS.
   ///
-  /// > **Note:** If set to the legacy single-colon syntax of , , , or , the
-  /// > string is transformed into its double-colon modern version (, , , and ,
+  /// > [!NOTE]
+  /// > If set to the legacy single-colon syntax of , , , or , the string is
+  /// > transformed into its double-colon modern version (, , , and ,
   /// > respectively).
   String? get pseudoElement {
     unsupportedPlatformError();
@@ -786,6 +791,7 @@ extension type KeyframeAnimationOptions._(JSObject _)
     AnimationTimeline? timeline,
     JSAny? rangeStart,
     JSAny? rangeEnd,
+    JSObject? trigger,
   }) : _ = JSObject();
 
   String get id {
@@ -819,15 +825,34 @@ extension type KeyframeAnimationOptions._(JSObject _)
   set rangeEnd(JSAny value) {
     unsupportedPlatformError();
   }
+
+  JSObject? get trigger {
+    unsupportedPlatformError();
+  }
+
+  set trigger(JSObject? value) {
+    unsupportedPlatformError();
+  }
 }
 extension type GetAnimationsOptions._(JSObject _) implements JSObject {
-  GetAnimationsOptions({bool? subtree}) : _ = JSObject();
+  GetAnimationsOptions({
+    bool? subtree,
+    String? pseudoElement,
+  }) : _ = JSObject();
 
   bool get subtree {
     unsupportedPlatformError();
   }
 
   set subtree(bool value) {
+    unsupportedPlatformError();
+  }
+
+  String? get pseudoElement {
+    unsupportedPlatformError();
+  }
+
+  set pseudoElement(String? value) {
     unsupportedPlatformError();
   }
 }

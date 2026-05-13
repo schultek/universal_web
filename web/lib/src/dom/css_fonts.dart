@@ -1,4 +1,4 @@
-// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2026, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -8,33 +8,16 @@
 
 // Generated from Web IDL definitions.
 
-// ignore_for_file: unintended_html_in_doc_comment
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 import '../error.dart';
 import '../js_interop.dart';
 import 'cssom.dart';
 
-/// The **`CSSFontFaceRule`** interface represents an
-/// [at-rule](https://developer.mozilla.org/en-US/docs/Web/CSS/At-rule).
-///
-/// ---
-///
-/// API documentation sourced from
-/// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CSSFontFaceRule).
-extension type CSSFontFaceRule._(JSObject _) implements CSSRule, JSObject {
-  /// The read-only **`style`** property of the [CSSFontFaceRule] interface
-  /// returns the style information from the
-  /// [at-rule](https://developer.mozilla.org/en-US/docs/Web/CSS/At-rule). This
-  /// will be in the form of a [CSSStyleDeclaration] object.
-  JSObject get style {
-    unsupportedPlatformError();
-  }
-}
-
 /// The **`CSSFontFeatureValuesRule`** interface represents an
-/// [at-rule](https://developer.mozilla.org/en-US/docs/Web/CSS/At-rule), letting
-/// developers assign for each font face a common name to specify features
-/// indices to be used in .
+/// [at-rule](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_syntax/At-rule),
+/// letting developers assign for each font face a common name to specify
+/// features indices to be used in .
 ///
 /// ---
 ///
@@ -54,7 +37,7 @@ extension type CSSFontFeatureValuesRule._(JSObject _)
 }
 
 /// The **`CSSFontPaletteValuesRule`** interface represents an
-/// [at-rule](https://developer.mozilla.org/en-US/docs/Web/CSS/At-rule).
+/// [at-rule](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_syntax/At-rule).
 ///
 /// ---
 ///

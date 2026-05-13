@@ -1,0 +1,25 @@
+// Copyright (c) 2026, the Dart project authors.  Please see the AUTHORS file
+// for details. All rights reserved. Use of this source code is governed by a
+// BSD-style license that can be found in the LICENSE file.
+//
+// API docs from [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web).
+// Attributions and copyright licensing by Mozilla Contributors is licensed
+// under [CC-BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/.
+
+// Generated from Web IDL definitions.
+
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
+
+import '../js_interop.dart';
+
+/// The **`FragmentDirective`** interface is an object exposed to allow code to
+/// check whether or not a browser supports
+/// [text fragments](https://developer.mozilla.org/en-US/docs/Web/URI/Reference/Fragment/Text_fragments).
+///
+/// It is accessed via the [Document.fragmentDirective] property.
+///
+/// ---
+///
+/// API documentation sourced from
+/// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/FragmentDirective).
+extension type FragmentDirective._(JSObject _) implements JSObject {}

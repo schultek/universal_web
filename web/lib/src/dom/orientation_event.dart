@@ -1,4 +1,4 @@
-// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2026, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -8,7 +8,7 @@
 
 // Generated from Web IDL definitions.
 
-// ignore_for_file: unintended_html_in_doc_comment
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 import '../error.dart';
 import '../js_interop.dart';
@@ -193,8 +193,9 @@ extension type DeviceMotionEventRotationRate._(JSObject _) implements JSObject {
 /// provides web developers with information about the speed of changes for the
 /// device's position and orientation.
 ///
-/// > **Warning:** Currently, Firefox and Chrome do not handle the coordinates
-/// > the same way. Take care about this while using them.
+/// > [!WARNING]
+/// > Currently, Firefox and Chrome do not handle the coordinates the same way.
+/// > Take care about this while using them.
 ///
 /// ---
 ///
@@ -207,14 +208,15 @@ extension type DeviceMotionEvent._(JSObject _) implements Event, JSObject {
   ]) : _ = JSObject();
 
   /// The **`acceleration`** read-only property of the [DeviceMotionEvent]
-  /// interface returns the amount of acceleration recorded by
+  /// interface returns the acceleration recorded by
   /// the device, in [meters per second squared
   /// (m/s²)](https://en.wikipedia.org/wiki/Meter_per_second_squared).
-  /// The acceleration value does not include the effect of
-  /// the gravity force, in contrast to
+  /// This value does not include the effect of
+  /// the gravitational force, in contrast to
   /// [DeviceMotionEvent.accelerationIncludingGravity].
   ///
-  /// > **Note:** If the hardware doesn't know how to remove gravity from the
+  /// > [!NOTE]
+  /// > If the hardware does not know how to remove gravity from the
   /// > acceleration data, this value may not be present in the
   /// > [DeviceMotionEvent]. In this situation, you'll need to use
   /// > [DeviceMotionEvent.accelerationIncludingGravity] instead.
@@ -260,7 +262,8 @@ extension type DeviceMotionEvent._(JSObject _) implements Event, JSObject {
   /// its axes in degrees per
   /// second.
   ///
-  /// > **Note:** If the hardware isn't capable of providing this
+  /// > [!NOTE]
+  /// > If the hardware isn't capable of providing this
   /// > information, this property returns `null`.
   DeviceMotionEventRotationRate? get rotationRate {
     unsupportedPlatformError();

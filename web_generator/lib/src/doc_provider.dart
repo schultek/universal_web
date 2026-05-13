@@ -5,18 +5,19 @@
 import 'dart:convert';
 import 'dart:js_interop';
 
-import 'package:collection/collection.dart';
 import 'package:path/path.dart' as p;
 
-import 'filesystem_api.dart';
 import 'formatting.dart';
+import 'js/filesystem_api.dart';
 
 class DocProvider {
   static DocProvider create() {
-    final content = fs.readFileSync(
-      p.join('..', '..', '..', 'third_party', 'mdn', 'mdn.json').toJS,
-      JSReadFileOptions(encoding: 'utf8'.toJS),
-    ) as JSString;
+    final content =
+        fs.readFileSync(
+              p.join('..', '..', '..', 'third_party', 'mdn', 'mdn.json').toJS,
+              JSReadFileOptions(encoding: 'utf8'.toJS),
+            )
+            as JSString;
 
     return DocProvider(jsonDecode(content.toDart) as Map<String, dynamic>);
   }
@@ -32,7 +33,7 @@ class DocProvider {
   }
 
   MdnInterface? interfaceFor(String name) =>
-      interfaces.firstWhereOrNull((p) => p.name == name);
+      interfaces.where((p) => p.name == name).firstOrNull;
 }
 
 class MdnInterface {
@@ -71,7 +72,7 @@ class MdnInterface {
   MdnProperty? propertyFor(String name, {required bool isStatic}) {
     name = name.toLowerCase();
     if (isStatic) name = '${name}_static';
-    return properties.firstWhereOrNull((p) => p.name == name);
+    return properties.where((p) => p.name == name).firstOrNull;
   }
 }
 

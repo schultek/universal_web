@@ -1,4 +1,4 @@
-// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2026, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -8,13 +8,35 @@
 
 // Generated from Web IDL definitions.
 
-// ignore_for_file: unintended_html_in_doc_comment
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 import '../error.dart';
 import '../js_interop.dart';
 import 'geometry.dart';
 import 'html.dart';
 
+/// The **`PaintRenderingContext2D`** interface of the
+/// [CSS Painting API](https://developer.mozilla.org/en-US/docs/Web/API/CSS_Painting_API)
+/// is the API's rendering context for drawing to the bitmap. It implements a
+/// subset of the [CanvasRenderingContext2D] API, with the following exceptions:
+///
+/// - It doesn't implement the
+///   [`CanvasImageData` pixel manipulation](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D#pixel_manipulation),
+///   [`CanvasUserInterface` focus](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/drawFocusIfNeeded),
+///   [`CanvasText` text drawing](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D),
+///   or
+///   [`CanvasTextDrawingStyles` text style](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D#text_styles)
+///   interface methods.
+/// - The output bitmap is the size of the object it is rendering to.
+/// - The value `currentColor`, when used as a color, is treated as opaque
+///   black.
+///
+/// The interface is only available in [PaintWorkletGlobalScope].
+///
+/// ---
+///
+/// API documentation sourced from
+/// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D).
 extension type PaintRenderingContext2D._(JSObject _) implements JSObject {
   void save() {
     unsupportedPlatformError();
@@ -307,11 +329,24 @@ extension type PaintRenderingContext2D._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 }
+
+/// The **`PaintSize`** interface of the
+/// [CSS Painting API](https://developer.mozilla.org/en-US/docs/Web/API/CSS_Painting_API)
+/// represents the size of the output bitmap that the author should draw.
+///
+/// ---
+///
+/// API documentation sourced from
+/// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/PaintSize).
 extension type PaintSize._(JSObject _) implements JSObject {
+  /// The **`width`** read-only property of the [PaintSize] interface returns
+  /// the width of the output bitmap that the author should draw.
   double get width {
     unsupportedPlatformError();
   }
 
+  /// The **`height`** read-only property of the [PaintSize] interface returns
+  /// the height of the output bitmap that the author should draw.
   double get height {
     unsupportedPlatformError();
   }

@@ -1,4 +1,4 @@
-// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2026, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -8,7 +8,7 @@
 
 // Generated from Web IDL definitions.
 
-// ignore_for_file: unintended_html_in_doc_comment
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 import '../error.dart';
 import '../js_interop.dart';
@@ -25,6 +25,15 @@ typedef BinaryType = String;
 /// To construct a `WebSocket`, use the
 /// [`WebSocket()`](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/WebSocket)
 /// constructor.
+///
+/// > [!NOTE]
+/// > The `WebSocket` API has no way to apply
+/// > [backpressure](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API/Concepts#backpressure),
+/// > therefore when messages arrive faster than the application can process
+/// > them, the application will either fill up the device's memory by buffering
+/// > those messages, become unresponsive due to 100% CPU usage, or both. For an
+/// > alternative that provides backpressure automatically, see
+/// > [WebSocketStream].
 ///
 /// ---
 ///
@@ -48,7 +57,8 @@ extension type WebSocket._(JSObject _) implements EventTarget, JSObject {
   /// [WebSocket] connection or connection attempt, if any. If the connection is
   /// already `CLOSED`, this method does nothing.
   ///
-  /// > **Note:** The process of closing the connection begins with a
+  /// > [!NOTE]
+  /// > The process of closing the connection begins with a
   /// > [closing handshake](https://www.rfc-editor.org/rfc/rfc6455.html#section-1.4),
   /// > and the `close()` method does not discard previously-sent messages
   /// > before starting that closing handshake; even if the user agent is still
@@ -135,11 +145,12 @@ extension type WebSocket._(JSObject _) implements EventTarget, JSObject {
     unsupportedPlatformError();
   }
 
-  /// The **`WebSocket.protocol`** read-only property returns the
-  /// name of the sub-protocol the server selected; this will be one of the
-  /// strings specified
-  /// in the `protocols` parameter when creating the [WebSocket]
-  /// object, or the empty string if no connection is established.
+  /// The **`WebSocket.protocol`** read-only property returns the name of the
+  /// [sub-protocol](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API/Writing_WebSocket_servers#subprotocols)
+  /// the server selected; this will be one of the strings specified in the
+  /// [`protocols`](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/WebSocket#protocols)
+  /// parameter when creating the [WebSocket] object, or the empty string if no
+  /// connection is established.
   String get protocol {
     unsupportedPlatformError();
   }
@@ -185,7 +196,7 @@ extension type CloseEvent._(JSObject _) implements Event, JSObject {
 
   /// The **`code`** read-only property of the [CloseEvent] interface returns a
   /// [WebSocket connection close code](https://www.rfc-editor.org/rfc/rfc6455.html#section-7.1.5)
-  /// indicating the reason the server gave for closing the connection.
+  /// indicating the reason the connection was closed.
   int get code {
     unsupportedPlatformError();
   }

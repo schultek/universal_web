@@ -1,4 +1,4 @@
-// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2026, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -8,7 +8,7 @@
 
 // Generated from Web IDL definitions.
 
-// ignore_for_file: unintended_html_in_doc_comment
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 import '../error.dart';
 import '../js_interop.dart';
@@ -48,7 +48,8 @@ extension type BatteryManager._(JSObject _) implements EventTarget, JSObject {
   /// When its value changes, the [BatteryManager.chargingtimechange_event]
   /// event is fired.
   ///
-  /// > **Note:** Even if the time returned is precise to the second,
+  /// > [!NOTE]
+  /// > Even if the time returned is precise to the second,
   /// > browsers round them to a higher interval
   /// > (typically to the closest 15 minutes) for privacy reasons.
   double get chargingTime {
@@ -63,8 +64,9 @@ extension type BatteryManager._(JSObject _) implements EventTarget, JSObject {
   /// When its value changes, the [BatteryManager.dischargingtimechange_event]
   /// event is fired.
   ///
-  /// > **Note:** Even if the time returned is precise to the second, browsers
-  /// > round them to a higher
+  /// > [!NOTE]
+  /// > Even if the time returned is precise to the second, browsers round them
+  /// > to a higher
   /// > interval (typically to the closest 15 minutes) for privacy reasons.
   double get dischargingTime {
     unsupportedPlatformError();

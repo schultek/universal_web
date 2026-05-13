@@ -1,4 +1,4 @@
-// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2026, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -8,7 +8,7 @@
 
 // Generated from Web IDL definitions.
 
-// ignore_for_file: unintended_html_in_doc_comment
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 import '../error.dart';
 import '../js_interop.dart';
@@ -35,8 +35,9 @@ extension type SVGClipPathElement._(JSObject _)
   /// interface reflects the `clipPathUnits` attribute of a  element which
   /// defines the coordinate system to use for the content of the element.
   ///
-  /// > **Note:** Although this property is read-only, it is merely a container
-  /// > for two values you can modify, [SVGAnimatedEnumeration.baseVal] and
+  /// > [!NOTE]
+  /// > Although this property is read-only, it is merely a container for two
+  /// > values you can modify, [SVGAnimatedEnumeration.baseVal] and
   /// > [SVGAnimatedEnumeration.animVal].
   SVGAnimatedEnumeration get clipPathUnits {
     unsupportedPlatformError();
@@ -69,8 +70,9 @@ extension type SVGMaskElement._(JSObject _) implements SVGElement, JSObject {
   /// reflects the `maskUnits` attribute of a  element which defines the
   /// coordinate system to use for the mask of the element.
   ///
-  /// > **Note:** Although this property is read-only, it is merely a container
-  /// > for two values you can modify, [SVGAnimatedEnumeration.baseVal] and
+  /// > [!NOTE]
+  /// > Although this property is read-only, it is merely a container for two
+  /// > values you can modify, [SVGAnimatedEnumeration.baseVal] and
   /// > [SVGAnimatedEnumeration.animVal].
   SVGAnimatedEnumeration get maskUnits {
     unsupportedPlatformError();
@@ -80,8 +82,9 @@ extension type SVGMaskElement._(JSObject _) implements SVGElement, JSObject {
   /// interface reflects the `maskContentUnits` attribute. It indicates which
   /// coordinate system to use for the contents of the  element.
   ///
-  /// > **Note:** Although this property is read-only, it is merely a container
-  /// > for two values you can modify, [SVGAnimatedEnumeration.baseVal] and
+  /// > [!NOTE]
+  /// > Although this property is read-only, it is merely a container for two
+  /// > values you can modify, [SVGAnimatedEnumeration.baseVal] and
   /// > [SVGAnimatedEnumeration.animVal].
   SVGAnimatedEnumeration get maskContentUnits {
     unsupportedPlatformError();
@@ -92,8 +95,9 @@ extension type SVGMaskElement._(JSObject _) implements SVGElement, JSObject {
   /// the . It represents the x-axis coordinate of the _top-left_ corner of the
   /// masking area.
   ///
-  /// > **Note:** Although this property is read-only, it is merely a container
-  /// > for two values you can modify, [SVGAnimatedLength.baseVal] and
+  /// > [!NOTE]
+  /// > Although this property is read-only, it is merely a container for two
+  /// > values you can modify, [SVGAnimatedLength.baseVal] and
   /// > [SVGAnimatedLength.animVal].
   SVGAnimatedLength get x {
     unsupportedPlatformError();
@@ -104,8 +108,9 @@ extension type SVGMaskElement._(JSObject _) implements SVGElement, JSObject {
   /// the . It represents the y-axis coordinate of the _top-left_ corner of the
   /// masking area.
   ///
-  /// > **Note:** Although this property is read-only, it is merely a container
-  /// > for two values you can modify, [SVGAnimatedLength.baseVal] and
+  /// > [!NOTE]
+  /// > Although this property is read-only, it is merely a container for two
+  /// > values you can modify, [SVGAnimatedLength.baseVal] and
   /// > [SVGAnimatedLength.animVal].
   SVGAnimatedLength get y {
     unsupportedPlatformError();
@@ -115,8 +120,9 @@ extension type SVGMaskElement._(JSObject _) implements SVGElement, JSObject {
   /// returns an [SVGAnimatedLength] object containing the value of the `width`
   /// attribute of the .
   ///
-  /// > **Note:** Although this property is read-only, it is merely a container
-  /// > for two values you can modify, [SVGAnimatedLength.baseVal] and
+  /// > [!NOTE]
+  /// > Although this property is read-only, it is merely a container for two
+  /// > values you can modify, [SVGAnimatedLength.baseVal] and
   /// > [SVGAnimatedLength.animVal].
   SVGAnimatedLength get width {
     unsupportedPlatformError();
@@ -126,8 +132,9 @@ extension type SVGMaskElement._(JSObject _) implements SVGElement, JSObject {
   /// returns an [SVGAnimatedLength] object containing the value of the `height`
   /// attribute of the .
   ///
-  /// > **Note:** Although this property is read-only, it is merely a container
-  /// > for two values you can modify, [SVGAnimatedLength.baseVal] and
+  /// > [!NOTE]
+  /// > Although this property is read-only, it is merely a container for two
+  /// > values you can modify, [SVGAnimatedLength.baseVal] and
   /// > [SVGAnimatedLength.animVal].
   SVGAnimatedLength get height {
     unsupportedPlatformError();

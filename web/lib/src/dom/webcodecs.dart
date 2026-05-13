@@ -1,4 +1,4 @@
-// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2026, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -8,20 +8,27 @@
 
 // Generated from Web IDL definitions.
 
-// ignore_for_file: unintended_html_in_doc_comment
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 import '../error.dart';
 import '../js_interop.dart';
 import 'dom.dart';
 import 'geometry.dart';
 import 'html.dart';
+import 'mediastream_recording.dart';
+import 'webcodecs_aac_codec_registration.dart';
 import 'webcodecs_av1_codec_registration.dart';
 import 'webcodecs_avc_codec_registration.dart';
+import 'webcodecs_flac_codec_registration.dart';
 import 'webcodecs_hevc_codec_registration.dart';
+import 'webcodecs_opus_codec_registration.dart';
 import 'webcodecs_vp9_codec_registration.dart';
 import 'webidl.dart';
 
+typedef ImageBufferSource = JSObject;
+typedef AudioDataOutputCallback = JSFunction;
 typedef VideoFrameOutputCallback = JSFunction;
+typedef EncodedAudioChunkOutputCallback = JSFunction;
 typedef EncodedVideoChunkOutputCallback = JSFunction;
 typedef WebCodecsErrorCallback = JSFunction;
 typedef HardwareAcceleration = String;
@@ -29,11 +36,124 @@ typedef AlphaOption = String;
 typedef LatencyMode = String;
 typedef VideoEncoderBitrateMode = String;
 typedef CodecState = String;
+typedef EncodedAudioChunkType = String;
 typedef EncodedVideoChunkType = String;
+typedef AudioSampleFormat = String;
 typedef VideoPixelFormat = String;
 typedef VideoColorPrimaries = String;
 typedef VideoTransferCharacteristics = String;
 typedef VideoMatrixCoefficients = String;
+
+/// @AvailableInWorkers("window_and_dedicated")
+///
+/// The **`AudioDecoder`** interface of the [WebCodecs API] decodes chunks of
+/// audio.
+///
+/// ---
+///
+/// API documentation sourced from
+/// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/AudioDecoder).
+extension type AudioDecoder._(JSObject _) implements EventTarget, JSObject {
+  AudioDecoder(AudioDecoderInit init) : _ = JSObject();
+
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
+  /// The **`isConfigSupported()`** static method of the [AudioDecoder]
+  /// interface checks if the given config is supported (that is, if
+  /// [AudioDecoder] objects can be successfully configured with the given
+  /// config).
+  static JSPromise<AudioDecoderSupport> isConfigSupported(
+      AudioDecoderConfig config) {
+    unsupportedPlatformError();
+  }
+
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
+  /// The **`configure()`** method of the [AudioDecoder] interface enqueues a
+  /// control message to configure the audio decoder for decoding chunks.
+  void configure(AudioDecoderConfig config) {
+    unsupportedPlatformError();
+  }
+
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
+  /// The **`decode()`** method of the [AudioDecoder] interface enqueues a
+  /// control message to decode a given chunk of audio.
+  void decode(EncodedAudioChunk chunk) {
+    unsupportedPlatformError();
+  }
+
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
+  /// The **`flush()`** method of the [AudioDecoder] interface returns a Promise
+  /// that resolves once all pending messages in the queue have been completed.
+  JSPromise<JSAny?> flush() {
+    unsupportedPlatformError();
+  }
+
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
+  /// The **`reset()`** method of the [AudioDecoder] interface resets all states
+  /// including configuration, control messages in the control message queue,
+  /// and all pending callbacks.
+  void reset() {
+    unsupportedPlatformError();
+  }
+
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
+  /// The **`close()`** method of the [AudioDecoder] interface ends all pending
+  /// work and releases system resources.
+  void close() {
+    unsupportedPlatformError();
+  }
+
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
+  /// The **`state`** read-only property of the [AudioDecoder] interface returns
+  /// the current state of the underlying codec.
+  CodecState get state {
+    unsupportedPlatformError();
+  }
+
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
+  /// The **`decodeQueueSize`** read-only property of the [AudioDecoder]
+  /// interface returns the number of pending decode requests in the queue.
+  int get decodeQueueSize {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ondequeue {
+    unsupportedPlatformError();
+  }
+
+  set ondequeue(EventHandler value) {
+    unsupportedPlatformError();
+  }
+}
+extension type AudioDecoderInit._(JSObject _) implements JSObject {
+  AudioDecoderInit({
+    required AudioDataOutputCallback output,
+    required WebCodecsErrorCallback error,
+  }) : _ = JSObject();
+
+  AudioDataOutputCallback get output {
+    unsupportedPlatformError();
+  }
+
+  set output(AudioDataOutputCallback value) {
+    unsupportedPlatformError();
+  }
+
+  WebCodecsErrorCallback get error {
+    unsupportedPlatformError();
+  }
+
+  set error(WebCodecsErrorCallback value) {
+    unsupportedPlatformError();
+  }
+}
 
 /// @AvailableInWorkers("window_and_dedicated")
 ///
@@ -148,6 +268,118 @@ extension type VideoDecoderInit._(JSObject _) implements JSObject {
 
 /// @AvailableInWorkers("window_and_dedicated")
 ///
+/// The **`AudioEncoder`** interface of the
+/// [WebCodecs API](https://developer.mozilla.org/en-US/docs/Web/API/WebCodecs_API)
+/// encodes [AudioData] objects.
+///
+/// ---
+///
+/// API documentation sourced from
+/// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/AudioEncoder).
+extension type AudioEncoder._(JSObject _) implements EventTarget, JSObject {
+  AudioEncoder(AudioEncoderInit init) : _ = JSObject();
+
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
+  /// The **`isConfigSupported()`** static method of the [AudioEncoder]
+  /// interface checks if the given config is supported (that is, if
+  /// [AudioEncoder] objects can be successfully configured with the given
+  /// config).
+  static JSPromise<AudioEncoderSupport> isConfigSupported(
+      AudioEncoderConfig config) {
+    unsupportedPlatformError();
+  }
+
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
+  /// The **`configure()`** method of the [AudioEncoder] interface enqueues a
+  /// control message to configure the audio encoder for encoding chunks.
+  void configure(AudioEncoderConfig config) {
+    unsupportedPlatformError();
+  }
+
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
+  /// The **`encode()`** method of the [AudioEncoder] interface enqueues a
+  /// control message to encode a given [AudioData] object.
+  void encode(AudioData data) {
+    unsupportedPlatformError();
+  }
+
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
+  /// The **`flush()`** method of the [AudioEncoder] interface returns a Promise
+  /// that resolves once all pending messages in the queue have been completed.
+  JSPromise<JSAny?> flush() {
+    unsupportedPlatformError();
+  }
+
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
+  /// The **`reset()`** method of the [AudioEncoder] interface resets all states
+  /// including configuration, control messages in the control message queue,
+  /// and all pending callbacks.
+  void reset() {
+    unsupportedPlatformError();
+  }
+
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
+  /// The **`close()`** method of the [AudioEncoder] interface ends all pending
+  /// work and releases system resources.
+  void close() {
+    unsupportedPlatformError();
+  }
+
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
+  /// The **`state`** read-only property of the [AudioEncoder] interface returns
+  /// the current state of the underlying codec.
+  CodecState get state {
+    unsupportedPlatformError();
+  }
+
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
+  /// The **`encodeQueueSize`** read-only property of the [AudioEncoder]
+  /// interface returns the number of pending encode requests in the queue.
+  int get encodeQueueSize {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get ondequeue {
+    unsupportedPlatformError();
+  }
+
+  set ondequeue(EventHandler value) {
+    unsupportedPlatformError();
+  }
+}
+extension type AudioEncoderInit._(JSObject _) implements JSObject {
+  AudioEncoderInit({
+    required EncodedAudioChunkOutputCallback output,
+    required WebCodecsErrorCallback error,
+  }) : _ = JSObject();
+
+  EncodedAudioChunkOutputCallback get output {
+    unsupportedPlatformError();
+  }
+
+  set output(EncodedAudioChunkOutputCallback value) {
+    unsupportedPlatformError();
+  }
+
+  WebCodecsErrorCallback get error {
+    unsupportedPlatformError();
+  }
+
+  set error(WebCodecsErrorCallback value) {
+    unsupportedPlatformError();
+  }
+}
+
+/// @AvailableInWorkers("window_and_dedicated")
+///
 /// The **`VideoEncoder`** interface of the [WebCodecs API] encodes [VideoFrame]
 /// objects into [EncodedVideoChunk]s.
 ///
@@ -210,12 +442,13 @@ extension type VideoEncoder._(JSObject _) implements EventTarget, JSObject {
   /// The **`reset()`** method of the [VideoEncoder] interface synchronously
   /// cancels all pending encodes and callbacks, frees all underlying resources
   /// and sets the [VideoEncoder.state] to "unconfigured".
-  /// After calling [VideoEncoder.reset], [VideoEncoder.configure] must be
-  /// called before resuming [VideoEncoder.encode] calls.
+  /// After calling `reset()`, [VideoEncoder.configure] must be called before
+  /// resuming [VideoEncoder.encode] calls.
   ///
-  /// > **Note:** To avoid discarding frames queued via [VideoEncoder.encode],
+  /// > [!NOTE]
+  /// > To avoid discarding frames queued via [VideoEncoder.encode],
   /// > [VideoEncoder.flush] should be called and completed before calling
-  /// > [VideoEncoder.reset].
+  /// > `reset()`.
   void reset() {
     unsupportedPlatformError();
   }
@@ -274,6 +507,28 @@ extension type VideoEncoderInit._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type AudioDecoderSupport._(JSObject _) implements JSObject {
+  AudioDecoderSupport({
+    bool? supported,
+    AudioDecoderConfig? config,
+  }) : _ = JSObject();
+
+  bool get supported {
+    unsupportedPlatformError();
+  }
+
+  set supported(bool value) {
+    unsupportedPlatformError();
+  }
+
+  AudioDecoderConfig get config {
+    unsupportedPlatformError();
+  }
+
+  set config(AudioDecoderConfig value) {
+    unsupportedPlatformError();
+  }
+}
 extension type VideoDecoderSupport._(JSObject _) implements JSObject {
   VideoDecoderSupport({
     bool? supported,
@@ -293,6 +548,28 @@ extension type VideoDecoderSupport._(JSObject _) implements JSObject {
   }
 
   set config(VideoDecoderConfig value) {
+    unsupportedPlatformError();
+  }
+}
+extension type AudioEncoderSupport._(JSObject _) implements JSObject {
+  AudioEncoderSupport({
+    bool? supported,
+    AudioEncoderConfig? config,
+  }) : _ = JSObject();
+
+  bool get supported {
+    unsupportedPlatformError();
+  }
+
+  set supported(bool value) {
+    unsupportedPlatformError();
+  }
+
+  AudioEncoderConfig get config {
+    unsupportedPlatformError();
+  }
+
+  set config(AudioEncoderConfig value) {
     unsupportedPlatformError();
   }
 }
@@ -318,6 +595,46 @@ extension type VideoEncoderSupport._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type AudioDecoderConfig._(JSObject _) implements JSObject {
+  AudioDecoderConfig({
+    required String codec,
+    required int sampleRate,
+    required int numberOfChannels,
+    BufferSource? description,
+  }) : _ = JSObject();
+
+  String get codec {
+    unsupportedPlatformError();
+  }
+
+  set codec(String value) {
+    unsupportedPlatformError();
+  }
+
+  int get sampleRate {
+    unsupportedPlatformError();
+  }
+
+  set sampleRate(int value) {
+    unsupportedPlatformError();
+  }
+
+  int get numberOfChannels {
+    unsupportedPlatformError();
+  }
+
+  set numberOfChannels(int value) {
+    unsupportedPlatformError();
+  }
+
+  BufferSource get description {
+    unsupportedPlatformError();
+  }
+
+  set description(BufferSource value) {
+    unsupportedPlatformError();
+  }
+}
 extension type VideoDecoderConfig._(JSObject _) implements JSObject {
   VideoDecoderConfig({
     required String codec,
@@ -329,6 +646,8 @@ extension type VideoDecoderConfig._(JSObject _) implements JSObject {
     VideoColorSpaceInit? colorSpace,
     HardwareAcceleration? hardwareAcceleration,
     bool? optimizeForLatency,
+    num? rotation,
+    bool? flip,
   }) : _ = JSObject();
 
   String get codec {
@@ -400,6 +719,98 @@ extension type VideoDecoderConfig._(JSObject _) implements JSObject {
   }
 
   set optimizeForLatency(bool value) {
+    unsupportedPlatformError();
+  }
+
+  double get rotation {
+    unsupportedPlatformError();
+  }
+
+  set rotation(num value) {
+    unsupportedPlatformError();
+  }
+
+  bool get flip {
+    unsupportedPlatformError();
+  }
+
+  set flip(bool value) {
+    unsupportedPlatformError();
+  }
+}
+extension type AudioEncoderConfig._(JSObject _) implements JSObject {
+  AudioEncoderConfig({
+    required String codec,
+    required int sampleRate,
+    required int numberOfChannels,
+    int? bitrate,
+    BitrateMode? bitrateMode,
+    AacEncoderConfig? aac,
+    FlacEncoderConfig? flac,
+    OpusEncoderConfig? opus,
+  }) : _ = JSObject();
+
+  String get codec {
+    unsupportedPlatformError();
+  }
+
+  set codec(String value) {
+    unsupportedPlatformError();
+  }
+
+  int get sampleRate {
+    unsupportedPlatformError();
+  }
+
+  set sampleRate(int value) {
+    unsupportedPlatformError();
+  }
+
+  int get numberOfChannels {
+    unsupportedPlatformError();
+  }
+
+  set numberOfChannels(int value) {
+    unsupportedPlatformError();
+  }
+
+  int get bitrate {
+    unsupportedPlatformError();
+  }
+
+  set bitrate(int value) {
+    unsupportedPlatformError();
+  }
+
+  BitrateMode get bitrateMode {
+    unsupportedPlatformError();
+  }
+
+  set bitrateMode(BitrateMode value) {
+    unsupportedPlatformError();
+  }
+
+  AacEncoderConfig get aac {
+    unsupportedPlatformError();
+  }
+
+  set aac(AacEncoderConfig value) {
+    unsupportedPlatformError();
+  }
+
+  FlacEncoderConfig get flac {
+    unsupportedPlatformError();
+  }
+
+  set flac(FlacEncoderConfig value) {
+    unsupportedPlatformError();
+  }
+
+  OpusEncoderConfig get opus {
+    unsupportedPlatformError();
+  }
+
+  set opus(OpusEncoderConfig value) {
     unsupportedPlatformError();
   }
 }
@@ -594,6 +1005,110 @@ extension type VideoEncoderEncodeOptions._(JSObject _) implements JSObject {
 
 /// @AvailableInWorkers("window_and_dedicated")
 ///
+/// The **`EncodedAudioChunk`** interface of the [WebCodecs API] represents a
+/// chunk of encoded audio data.
+///
+/// ---
+///
+/// API documentation sourced from
+/// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/EncodedAudioChunk).
+extension type EncodedAudioChunk._(JSObject _) implements JSObject {
+  EncodedAudioChunk(EncodedAudioChunkInit init) : _ = JSObject();
+
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
+  /// The **`copyTo()`** method of the [EncodedAudioChunk] interface copies the
+  /// encoded chunk of audio data.
+  void copyTo(AllowSharedBufferSource destination) {
+    unsupportedPlatformError();
+  }
+
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
+  /// The **`type`** read-only property of the [EncodedAudioChunk] interface
+  /// returns a value indicating whether the audio chunk is a key chunk, which
+  /// does not relying on other frames for decoding.
+  EncodedAudioChunkType get type {
+    unsupportedPlatformError();
+  }
+
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
+  /// The **`timestamp`** read-only property of the [EncodedAudioChunk]
+  /// interface returns an integer indicating the timestamp of the audio in
+  /// microseconds.
+  int get timestamp {
+    unsupportedPlatformError();
+  }
+
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
+  /// The **`duration`** read-only property of the [EncodedAudioChunk] interface
+  /// returns an integer indicating the duration of the audio in microseconds.
+  int? get duration {
+    unsupportedPlatformError();
+  }
+
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
+  /// The **`byteLength`** read-only property of the [EncodedAudioChunk]
+  /// interface returns the length in bytes of the encoded audio data.
+  int get byteLength {
+    unsupportedPlatformError();
+  }
+}
+extension type EncodedAudioChunkInit._(JSObject _) implements JSObject {
+  EncodedAudioChunkInit({
+    required EncodedAudioChunkType type,
+    required int timestamp,
+    int? duration,
+    required AllowSharedBufferSource data,
+    JSArray<JSArrayBuffer>? transfer,
+  }) : _ = JSObject();
+
+  EncodedAudioChunkType get type {
+    unsupportedPlatformError();
+  }
+
+  set type(EncodedAudioChunkType value) {
+    unsupportedPlatformError();
+  }
+
+  int get timestamp {
+    unsupportedPlatformError();
+  }
+
+  set timestamp(int value) {
+    unsupportedPlatformError();
+  }
+
+  int get duration {
+    unsupportedPlatformError();
+  }
+
+  set duration(int value) {
+    unsupportedPlatformError();
+  }
+
+  AllowSharedBufferSource get data {
+    unsupportedPlatformError();
+  }
+
+  set data(AllowSharedBufferSource value) {
+    unsupportedPlatformError();
+  }
+
+  JSArray<JSArrayBuffer> get transfer {
+    unsupportedPlatformError();
+  }
+
+  set transfer(JSArray<JSArrayBuffer> value) {
+    unsupportedPlatformError();
+  }
+}
+
+/// @AvailableInWorkers("window_and_dedicated")
+///
 /// The **`EncodedVideoChunk`** interface of the [WebCodecs API] represents a
 /// chunk of encoded video data.
 ///
@@ -692,6 +1207,215 @@ extension type EncodedVideoChunkInit._(JSObject _) implements JSObject {
   }
 
   set transfer(JSArray<JSArrayBuffer> value) {
+    unsupportedPlatformError();
+  }
+}
+
+/// @AvailableInWorkers("window_and_dedicated")
+///
+/// The **`AudioData`** interface of the
+/// [WebCodecs API](https://developer.mozilla.org/en-US/docs/Web/API/WebCodecs_API)
+/// represents an audio sample.
+///
+/// `AudioData` is a
+/// [transferable object](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Transferable_objects).
+///
+/// ---
+///
+/// API documentation sourced from
+/// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/AudioData).
+extension type AudioData._(JSObject _) implements JSObject {
+  AudioData(AudioDataInit init) : _ = JSObject();
+
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
+  /// The **`allocationSize()`** method of the [AudioData] interface returns the
+  /// size in bytes required to hold the current sample as filtered by options
+  /// passed into the method.
+  int allocationSize(AudioDataCopyToOptions options) {
+    unsupportedPlatformError();
+  }
+
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
+  /// The **`copyTo()`** method of the [AudioData] interface copies a plane of
+  /// an `AudioData` object to a destination buffer.
+  void copyTo(
+    AllowSharedBufferSource destination,
+    AudioDataCopyToOptions options,
+  ) {
+    unsupportedPlatformError();
+  }
+
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
+  /// The **`clone()`** method of the [AudioData] interface creates a new
+  /// `AudioData` object with reference to the same media resource as the
+  /// original.
+  AudioData clone() {
+    unsupportedPlatformError();
+  }
+
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
+  /// The **`close()`** method of the [AudioData] interface clears all states
+  /// and releases the reference to the media resource.
+  void close() {
+    unsupportedPlatformError();
+  }
+
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
+  /// The **`format`** read-only property of the [AudioData] interface returns
+  /// the sample format of the `AudioData` object.
+  AudioSampleFormat? get format {
+    unsupportedPlatformError();
+  }
+
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
+  /// The **`sampleRate`** read-only property of the [AudioData] interface
+  /// returns the sample rate in Hz.
+  double get sampleRate {
+    unsupportedPlatformError();
+  }
+
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
+  /// The **`numberOfFrames`** read-only property of the [AudioData] interface
+  /// returns the number of frames in the `AudioData` object.
+  int get numberOfFrames {
+    unsupportedPlatformError();
+  }
+
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
+  /// The **`numberOfChannels`** read-only property of the [AudioData] interface
+  /// returns the number of channels in the `AudioData` object.
+  int get numberOfChannels {
+    unsupportedPlatformError();
+  }
+
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
+  /// The **`duration`** read-only property of the [AudioData] interface returns
+  /// the duration in microseconds of this `AudioData` object.
+  int get duration {
+    unsupportedPlatformError();
+  }
+
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
+  /// The **`timestamp`** read-only property of the [AudioData] interface
+  /// returns the timestamp of this `AudioData` object.
+  int get timestamp {
+    unsupportedPlatformError();
+  }
+}
+extension type AudioDataInit._(JSObject _) implements JSObject {
+  AudioDataInit({
+    required AudioSampleFormat format,
+    required num sampleRate,
+    required int numberOfFrames,
+    required int numberOfChannels,
+    required int timestamp,
+    required BufferSource data,
+    JSArray<JSArrayBuffer>? transfer,
+  }) : _ = JSObject();
+
+  AudioSampleFormat get format {
+    unsupportedPlatformError();
+  }
+
+  set format(AudioSampleFormat value) {
+    unsupportedPlatformError();
+  }
+
+  double get sampleRate {
+    unsupportedPlatformError();
+  }
+
+  set sampleRate(num value) {
+    unsupportedPlatformError();
+  }
+
+  int get numberOfFrames {
+    unsupportedPlatformError();
+  }
+
+  set numberOfFrames(int value) {
+    unsupportedPlatformError();
+  }
+
+  int get numberOfChannels {
+    unsupportedPlatformError();
+  }
+
+  set numberOfChannels(int value) {
+    unsupportedPlatformError();
+  }
+
+  int get timestamp {
+    unsupportedPlatformError();
+  }
+
+  set timestamp(int value) {
+    unsupportedPlatformError();
+  }
+
+  BufferSource get data {
+    unsupportedPlatformError();
+  }
+
+  set data(BufferSource value) {
+    unsupportedPlatformError();
+  }
+
+  JSArray<JSArrayBuffer> get transfer {
+    unsupportedPlatformError();
+  }
+
+  set transfer(JSArray<JSArrayBuffer> value) {
+    unsupportedPlatformError();
+  }
+}
+extension type AudioDataCopyToOptions._(JSObject _) implements JSObject {
+  AudioDataCopyToOptions({
+    required int planeIndex,
+    int? frameOffset,
+    int? frameCount,
+    AudioSampleFormat? format,
+  }) : _ = JSObject();
+
+  int get planeIndex {
+    unsupportedPlatformError();
+  }
+
+  set planeIndex(int value) {
+    unsupportedPlatformError();
+  }
+
+  int get frameOffset {
+    unsupportedPlatformError();
+  }
+
+  set frameOffset(int value) {
+    unsupportedPlatformError();
+  }
+
+  int get frameCount {
+    unsupportedPlatformError();
+  }
+
+  set frameCount(int value) {
+    unsupportedPlatformError();
+  }
+
+  AudioSampleFormat get format {
+    unsupportedPlatformError();
+  }
+
+  set format(AudioSampleFormat value) {
     unsupportedPlatformError();
   }
 }
@@ -841,6 +1565,8 @@ extension type VideoFrameInit._(JSObject _) implements JSObject {
     int? timestamp,
     AlphaOption? alpha,
     DOMRectInit? visibleRect,
+    num? rotation,
+    bool? flip,
     int? displayWidth,
     int? displayHeight,
     VideoFrameMetadata? metadata,
@@ -878,6 +1604,22 @@ extension type VideoFrameInit._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
+  double get rotation {
+    unsupportedPlatformError();
+  }
+
+  set rotation(num value) {
+    unsupportedPlatformError();
+  }
+
+  bool get flip {
+    unsupportedPlatformError();
+  }
+
+  set flip(bool value) {
+    unsupportedPlatformError();
+  }
+
   int get displayWidth {
     unsupportedPlatformError();
   }
@@ -911,6 +1653,8 @@ extension type VideoFrameBufferInit._(JSObject _) implements JSObject {
     int? duration,
     JSArray<PlaneLayout>? layout,
     DOMRectInit? visibleRect,
+    num? rotation,
+    bool? flip,
     int? displayWidth,
     int? displayHeight,
     VideoColorSpaceInit? colorSpace,
@@ -971,6 +1715,22 @@ extension type VideoFrameBufferInit._(JSObject _) implements JSObject {
   }
 
   set visibleRect(DOMRectInit value) {
+    unsupportedPlatformError();
+  }
+
+  double get rotation {
+    unsupportedPlatformError();
+  }
+
+  set rotation(num value) {
+    unsupportedPlatformError();
+  }
+
+  bool get flip {
+    unsupportedPlatformError();
+  }
+
+  set flip(bool value) {
     unsupportedPlatformError();
   }
 
@@ -1171,6 +1931,294 @@ extension type VideoColorSpaceInit._(JSObject _) implements JSObject {
   }
 
   set fullRange(bool? value) {
+    unsupportedPlatformError();
+  }
+}
+
+/// @AvailableInWorkers("window_and_dedicated")
+///
+/// The **`ImageDecoder`** interface of the [WebCodecs API] provides a way to
+/// unpack and decode encoded image data.
+///
+/// ---
+///
+/// API documentation sourced from
+/// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ImageDecoder).
+extension type ImageDecoder._(JSObject _) implements JSObject {
+  ImageDecoder(ImageDecoderInit init) : _ = JSObject();
+
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
+  /// The **`ImageDecoder.isTypeSupported()`** static method checks if a given
+  /// [MIME type](https://developer.mozilla.org/en-US/docs/Web/HTTP/MIME_types)
+  /// can be decoded by the user agent.
+  static JSPromise<JSBoolean> isTypeSupported(String type) {
+    unsupportedPlatformError();
+  }
+
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
+  /// The **`decode()`** method of the [ImageDecoder] interface enqueues a
+  /// control message to decode the frame of an image.
+  JSPromise<ImageDecodeResult> decode([ImageDecodeOptions? options]) {
+    unsupportedPlatformError();
+  }
+
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
+  /// The **`reset()`** method of the [ImageDecoder] interface aborts all
+  /// pending `decode()` operations; rejecting all pending promises. All other
+  /// state will be unchanged. Class methods can continue to be invoked after
+  /// `reset()`. E.g., calling `decode()` after `reset()` is permitted.
+  void reset() {
+    unsupportedPlatformError();
+  }
+
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
+  /// The **`close()`** method of the [ImageDecoder] interface ends all pending
+  /// work and releases system resources.
+  void close() {
+    unsupportedPlatformError();
+  }
+
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
+  /// The **`type`** read-only property of the [ImageDecoder] interface reflects
+  /// the
+  /// [MIME type](https://developer.mozilla.org/en-US/docs/Web/HTTP/MIME_types)
+  /// configured during construction.
+  String get type {
+    unsupportedPlatformError();
+  }
+
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
+  /// The **`complete`** read-only property of the [ImageDecoder] interface
+  /// returns true if encoded data has completed buffering.
+  bool get complete {
+    unsupportedPlatformError();
+  }
+
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
+  /// The **`completed`** read-only property of the [ImageDecoder] interface
+  /// returns a promise that resolves once encoded data has finished buffering.
+  JSPromise<JSAny?> get completed {
+    unsupportedPlatformError();
+  }
+
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
+  /// The **`tracks`** read-only property of the [ImageDecoder] interface
+  /// returns a list of the tracks in the encoded image data.
+  ImageTrackList get tracks {
+    unsupportedPlatformError();
+  }
+}
+extension type ImageDecoderInit._(JSObject _) implements JSObject {
+  ImageDecoderInit({
+    required String type,
+    required ImageBufferSource data,
+    ColorSpaceConversion? colorSpaceConversion,
+    int? desiredWidth,
+    int? desiredHeight,
+    bool? preferAnimation,
+    JSArray<JSArrayBuffer>? transfer,
+  }) : _ = JSObject();
+
+  String get type {
+    unsupportedPlatformError();
+  }
+
+  set type(String value) {
+    unsupportedPlatformError();
+  }
+
+  ImageBufferSource get data {
+    unsupportedPlatformError();
+  }
+
+  set data(ImageBufferSource value) {
+    unsupportedPlatformError();
+  }
+
+  ColorSpaceConversion get colorSpaceConversion {
+    unsupportedPlatformError();
+  }
+
+  set colorSpaceConversion(ColorSpaceConversion value) {
+    unsupportedPlatformError();
+  }
+
+  int get desiredWidth {
+    unsupportedPlatformError();
+  }
+
+  set desiredWidth(int value) {
+    unsupportedPlatformError();
+  }
+
+  int get desiredHeight {
+    unsupportedPlatformError();
+  }
+
+  set desiredHeight(int value) {
+    unsupportedPlatformError();
+  }
+
+  bool get preferAnimation {
+    unsupportedPlatformError();
+  }
+
+  set preferAnimation(bool value) {
+    unsupportedPlatformError();
+  }
+
+  JSArray<JSArrayBuffer> get transfer {
+    unsupportedPlatformError();
+  }
+
+  set transfer(JSArray<JSArrayBuffer> value) {
+    unsupportedPlatformError();
+  }
+}
+extension type ImageDecodeOptions._(JSObject _) implements JSObject {
+  ImageDecodeOptions({
+    int? frameIndex,
+    bool? completeFramesOnly,
+  }) : _ = JSObject();
+
+  int get frameIndex {
+    unsupportedPlatformError();
+  }
+
+  set frameIndex(int value) {
+    unsupportedPlatformError();
+  }
+
+  bool get completeFramesOnly {
+    unsupportedPlatformError();
+  }
+
+  set completeFramesOnly(bool value) {
+    unsupportedPlatformError();
+  }
+}
+extension type ImageDecodeResult._(JSObject _) implements JSObject {
+  ImageDecodeResult({
+    required VideoFrame image,
+    required bool complete,
+  }) : _ = JSObject();
+
+  VideoFrame get image {
+    unsupportedPlatformError();
+  }
+
+  set image(VideoFrame value) {
+    unsupportedPlatformError();
+  }
+
+  bool get complete {
+    unsupportedPlatformError();
+  }
+
+  set complete(bool value) {
+    unsupportedPlatformError();
+  }
+}
+
+/// @AvailableInWorkers("window_and_dedicated")
+///
+/// The **`ImageTrackList`** interface of the [WebCodecs API] represents a list
+/// of image tracks.
+///
+/// ---
+///
+/// API documentation sourced from
+/// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ImageTrackList).
+extension type ImageTrackList._(JSObject _) implements JSObject {
+  ImageTrack operator [](int index) {
+    unsupportedPlatformError();
+  }
+
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
+  /// The **`ready`** property of the [ImageTrackList] interface returns a
+  /// `Promise` that resolves when the `ImageTrackList` is populated with
+  /// [ImageTrack].
+  JSPromise<JSAny?> get ready {
+    unsupportedPlatformError();
+  }
+
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
+  /// The **`length`** property of the [ImageTrackList] interface returns the
+  /// length of the `ImageTrackList`.
+  int get length {
+    unsupportedPlatformError();
+  }
+
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
+  /// The **`selectedIndex`** property of the [ImageTrackList] interface returns
+  /// the `index` of the selected track.
+  int get selectedIndex {
+    unsupportedPlatformError();
+  }
+
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
+  /// The **`selectedTrack`** property of the [ImageTrackList] interface returns
+  /// an [ImageTrack] object representing the currently selected track.
+  ImageTrack? get selectedTrack {
+    unsupportedPlatformError();
+  }
+}
+
+/// @AvailableInWorkers("window_and_dedicated")
+///
+/// The **`ImageTrack`** interface of the [WebCodecs API] represents an
+/// individual image track.
+///
+/// ---
+///
+/// API documentation sourced from
+/// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ImageTrack).
+extension type ImageTrack._(JSObject _) implements JSObject {
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
+  /// The **`animated`** property of the [ImageTrack] interface returns `true`
+  /// if the track is animated and therefore has multiple frames.
+  bool get animated {
+    unsupportedPlatformError();
+  }
+
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
+  /// The **`frameCount`** property of the [ImageTrack] interface returns the
+  /// number of frames in the track.
+  int get frameCount {
+    unsupportedPlatformError();
+  }
+
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
+  /// The **`repetitionCount`** property of the [ImageTrack] interface returns
+  /// the number of repetitions of this track.
+  double get repetitionCount {
+    unsupportedPlatformError();
+  }
+
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
+  /// The **`selected`** property of the [ImageTrack] interface returns `true`
+  /// if the track is selected for decoding.
+  bool get selected {
+    unsupportedPlatformError();
+  }
+
+  set selected(bool value) {
     unsupportedPlatformError();
   }
 }

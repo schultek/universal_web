@@ -1,4 +1,4 @@
-// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2026, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -8,13 +8,14 @@
 
 // Generated from Web IDL definitions.
 
-// ignore_for_file: unintended_html_in_doc_comment
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 import '../error.dart';
 import '../js_interop.dart';
 import 'dom.dart';
 import 'html.dart';
 
+typedef PaymentShippingType = String;
 typedef PaymentComplete = String;
 
 /// The [Payment Request
@@ -30,8 +31,9 @@ typedef PaymentComplete = String;
 extension type PaymentRequest._(JSObject _) implements EventTarget, JSObject {
   PaymentRequest(
     JSArray<PaymentMethodData> methodData,
-    PaymentDetailsInit details,
-  ) : _ = JSObject();
+    PaymentDetailsInit details, [
+    PaymentOptions? options,
+  ]) : _ = JSObject();
 
   /// The **[PaymentRequest]** interface's
   /// **`show()`** method instructs the user agent to begin the
@@ -48,7 +50,8 @@ extension type PaymentRequest._(JSObject _) implements EventTarget, JSObject {
   /// fulfilled with a [PaymentResponse] indicating the results of the payment
   /// request, or by being rejected with an error.
   ///
-  /// > **Note:** In reality, despite the fact that the specification says this
+  /// > [!NOTE]
+  /// > In reality, despite the fact that the specification says this
   /// > can't be done, some browsers, including Firefox, support multiple active
   /// > payment
   /// > requests at a time.
@@ -172,6 +175,7 @@ extension type PaymentCurrencyAmount._(JSObject _) implements JSObject {
 extension type PaymentDetailsBase._(JSObject _) implements JSObject {
   PaymentDetailsBase({
     JSArray<PaymentItem>? displayItems,
+    JSArray<PaymentShippingOption>? shippingOptions,
     JSArray<PaymentDetailsModifier>? modifiers,
   }) : _ = JSObject();
 
@@ -180,6 +184,14 @@ extension type PaymentDetailsBase._(JSObject _) implements JSObject {
   }
 
   set displayItems(JSArray<PaymentItem> value) {
+    unsupportedPlatformError();
+  }
+
+  JSArray<PaymentShippingOption> get shippingOptions {
+    unsupportedPlatformError();
+  }
+
+  set shippingOptions(JSArray<PaymentShippingOption> value) {
     unsupportedPlatformError();
   }
 
@@ -195,6 +207,7 @@ extension type PaymentDetailsInit._(JSObject _)
     implements PaymentDetailsBase, JSObject {
   PaymentDetailsInit({
     JSArray<PaymentItem>? displayItems,
+    JSArray<PaymentShippingOption>? shippingOptions,
     JSArray<PaymentDetailsModifier>? modifiers,
     String? id,
     required PaymentItem total,
@@ -220,16 +233,44 @@ extension type PaymentDetailsUpdate._(JSObject _)
     implements PaymentDetailsBase, JSObject {
   PaymentDetailsUpdate({
     JSArray<PaymentItem>? displayItems,
+    JSArray<PaymentShippingOption>? shippingOptions,
     JSArray<PaymentDetailsModifier>? modifiers,
+    String? error,
     PaymentItem? total,
+    AddressErrors? shippingAddressErrors,
+    PayerErrors? payerErrors,
     JSObject? paymentMethodErrors,
   }) : _ = JSObject();
+
+  String get error {
+    unsupportedPlatformError();
+  }
+
+  set error(String value) {
+    unsupportedPlatformError();
+  }
 
   PaymentItem get total {
     unsupportedPlatformError();
   }
 
   set total(PaymentItem value) {
+    unsupportedPlatformError();
+  }
+
+  AddressErrors get shippingAddressErrors {
+    unsupportedPlatformError();
+  }
+
+  set shippingAddressErrors(AddressErrors value) {
+    unsupportedPlatformError();
+  }
+
+  PayerErrors get payerErrors {
+    unsupportedPlatformError();
+  }
+
+  set payerErrors(PayerErrors value) {
     unsupportedPlatformError();
   }
 
@@ -281,6 +322,64 @@ extension type PaymentDetailsModifier._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 }
+extension type PaymentOptions._(JSObject _) implements JSObject {
+  PaymentOptions({
+    bool? requestPayerName,
+    bool? requestBillingAddress,
+    bool? requestPayerEmail,
+    bool? requestPayerPhone,
+    bool? requestShipping,
+    PaymentShippingType? shippingType,
+  }) : _ = JSObject();
+
+  bool get requestPayerName {
+    unsupportedPlatformError();
+  }
+
+  set requestPayerName(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get requestBillingAddress {
+    unsupportedPlatformError();
+  }
+
+  set requestBillingAddress(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get requestPayerEmail {
+    unsupportedPlatformError();
+  }
+
+  set requestPayerEmail(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get requestPayerPhone {
+    unsupportedPlatformError();
+  }
+
+  set requestPayerPhone(bool value) {
+    unsupportedPlatformError();
+  }
+
+  bool get requestShipping {
+    unsupportedPlatformError();
+  }
+
+  set requestShipping(bool value) {
+    unsupportedPlatformError();
+  }
+
+  PaymentShippingType get shippingType {
+    unsupportedPlatformError();
+  }
+
+  set shippingType(PaymentShippingType value) {
+    unsupportedPlatformError();
+  }
+}
 extension type PaymentItem._(JSObject _) implements JSObject {
   PaymentItem({
     required String label,
@@ -320,6 +419,46 @@ extension type PaymentCompleteDetails._(JSObject _) implements JSObject {
   }
 
   set data(JSObject? value) {
+    unsupportedPlatformError();
+  }
+}
+extension type PaymentShippingOption._(JSObject _) implements JSObject {
+  PaymentShippingOption({
+    required String id,
+    required String label,
+    required PaymentCurrencyAmount amount,
+    bool? selected,
+  }) : _ = JSObject();
+
+  String get id {
+    unsupportedPlatformError();
+  }
+
+  set id(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get label {
+    unsupportedPlatformError();
+  }
+
+  set label(String value) {
+    unsupportedPlatformError();
+  }
+
+  PaymentCurrencyAmount get amount {
+    unsupportedPlatformError();
+  }
+
+  set amount(PaymentCurrencyAmount value) {
+    unsupportedPlatformError();
+  }
+
+  bool get selected {
+    unsupportedPlatformError();
+  }
+
+  set selected(bool value) {
     unsupportedPlatformError();
   }
 }
@@ -400,12 +539,84 @@ extension type PaymentResponse._(JSObject _) implements EventTarget, JSObject {
   JSObject get details {
     unsupportedPlatformError();
   }
+
+  /// The **`shippingAddress`** read-only property of
+  /// the `PaymentRequest` interface returns a [PaymentAddress] object
+  /// containing the shipping address provided by the user.
+  JSObject? get shippingAddress {
+    unsupportedPlatformError();
+  }
+
+  /// The **`shippingOption`** read-only property of
+  /// the `PaymentRequest` interface returns the ID attribute of the shipping
+  /// option selected by the user. This option is only present when the
+  /// `requestShipping` option is set to `true` in the
+  /// `options` object passed to the
+  /// [PaymentRequest.PaymentRequest] constructor.
+  String? get shippingOption {
+    unsupportedPlatformError();
+  }
+
+  /// The **`payerName`** read-only property of the
+  /// [PaymentResponse] interface returns the name supplied by the user. This
+  /// option is only present when the `requestPayerName` option is set to
+  /// `true` in the options parameter of the
+  /// [PaymentRequest.PaymentRequest] constructor.
+  String? get payerName {
+    unsupportedPlatformError();
+  }
+
+  /// The `payerEmail` read-only property of the [PaymentResponse]
+  /// interface returns the email address supplied by the user. This option is
+  /// only present
+  /// when the `requestPayerEmail` option is set to `true` in the
+  /// `options` object passed to the
+  /// [PaymentRequest.PaymentRequest] constructor.
+  String? get payerEmail {
+    unsupportedPlatformError();
+  }
+
+  /// The `payerPhone` read-only property of the [PaymentResponse]
+  /// interface returns the phone number supplied by the user. This option is
+  /// only present
+  /// when the `requestPayerPhone` option is set to `true` in the
+  /// `options` object passed to the
+  /// [PaymentRequest.PaymentRequest] constructor.
+  String? get payerPhone {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onpayerdetailchange {
+    unsupportedPlatformError();
+  }
+
+  set onpayerdetailchange(EventHandler value) {
+    unsupportedPlatformError();
+  }
 }
 extension type PaymentValidationErrors._(JSObject _) implements JSObject {
   PaymentValidationErrors({
+    PayerErrors? payer,
+    AddressErrors? shippingAddress,
     String? error,
     JSObject? paymentMethod,
   }) : _ = JSObject();
+
+  PayerErrors get payer {
+    unsupportedPlatformError();
+  }
+
+  set payer(PayerErrors value) {
+    unsupportedPlatformError();
+  }
+
+  AddressErrors get shippingAddress {
+    unsupportedPlatformError();
+  }
+
+  set shippingAddress(AddressErrors value) {
+    unsupportedPlatformError();
+  }
 
   String get error {
     unsupportedPlatformError();
@@ -420,6 +631,131 @@ extension type PaymentValidationErrors._(JSObject _) implements JSObject {
   }
 
   set paymentMethod(JSObject value) {
+    unsupportedPlatformError();
+  }
+}
+extension type PayerErrors._(JSObject _) implements JSObject {
+  PayerErrors({
+    String? email,
+    String? name,
+    String? phone,
+  }) : _ = JSObject();
+
+  String get email {
+    unsupportedPlatformError();
+  }
+
+  set email(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get name {
+    unsupportedPlatformError();
+  }
+
+  set name(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get phone {
+    unsupportedPlatformError();
+  }
+
+  set phone(String value) {
+    unsupportedPlatformError();
+  }
+}
+extension type AddressErrors._(JSObject _) implements JSObject {
+  AddressErrors({
+    String? addressLine,
+    String? city,
+    String? country,
+    String? dependentLocality,
+    String? organization,
+    String? phone,
+    String? postalCode,
+    String? recipient,
+    String? region,
+    String? sortingCode,
+  }) : _ = JSObject();
+
+  String get addressLine {
+    unsupportedPlatformError();
+  }
+
+  set addressLine(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get city {
+    unsupportedPlatformError();
+  }
+
+  set city(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get country {
+    unsupportedPlatformError();
+  }
+
+  set country(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get dependentLocality {
+    unsupportedPlatformError();
+  }
+
+  set dependentLocality(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get organization {
+    unsupportedPlatformError();
+  }
+
+  set organization(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get phone {
+    unsupportedPlatformError();
+  }
+
+  set phone(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get postalCode {
+    unsupportedPlatformError();
+  }
+
+  set postalCode(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get recipient {
+    unsupportedPlatformError();
+  }
+
+  set recipient(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get region {
+    unsupportedPlatformError();
+  }
+
+  set region(String value) {
+    unsupportedPlatformError();
+  }
+
+  String get sortingCode {
+    unsupportedPlatformError();
+  }
+
+  set sortingCode(String value) {
     unsupportedPlatformError();
   }
 }

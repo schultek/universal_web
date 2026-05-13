@@ -1,4 +1,4 @@
-// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2026, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -8,7 +8,7 @@
 
 // Generated from Web IDL definitions.
 
-// ignore_for_file: unintended_html_in_doc_comment
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 import '../error.dart';
 import '../js_interop.dart';
@@ -54,39 +54,91 @@ extension type TimeEvent._(JSObject _) implements Event, JSObject {
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimationElement).
 extension type SVGAnimationElement._(JSObject _)
     implements SVGElement, JSObject {
+  /// The [SVGAnimationElement] method `getStartTime()` returns a float
+  /// representing the start time, in seconds, for this animation element's
+  /// current interval, if it exists, regardless of whether the interval has
+  /// begun yet.
+  ///
+  /// The start time returned by `getStartTime()` is measured in seconds
+  /// relative to the time container's time zero.
+  ///
+  /// Time zero refers to the moment when the time container begins its
+  /// timeline. It acts as the starting reference point for all animations
+  /// within that container.
+  ///
+  /// A time container is an element or context that defines a local timeline
+  /// for one or more animations. Animations inside the time container are
+  /// measured relative to its timeline. If a time container is delayed, paused,
+  /// or manipulated, all animations within it adjust accordingly.
+  ///
+  /// This property reflects the `begin` attribute of the ,  or  element.
   double getStartTime() {
     unsupportedPlatformError();
   }
 
+  /// The [SVGAnimationElement] method `getCurrentTime()` returns a float
+  /// representing the current time in seconds relative to time zero for the
+  /// given time container.
+  ///
+  /// Time zero refers to the moment when the time container begins its
+  /// timeline. It acts as the starting reference point for all animations
+  /// within that container.
+  ///
+  /// A time container is an element or context that defines a local timeline
+  /// for one or more animations. Animations inside the time container are
+  /// measured relative to its timeline. If a time container is delayed, paused,
+  /// or manipulated, all animations within it adjust accordingly.
   double getCurrentTime() {
     unsupportedPlatformError();
   }
 
+  /// The [SVGAnimationElement] method `getSimpleDuration()` returns a float
+  /// representing the number of seconds for the simple duration for this
+  /// animation.
+  ///
+  /// Simple duration refers to the length of time an animation is supposed to
+  /// run for a single iteration, without considering repeats, restarts, or
+  /// extensions.
+  ///
+  /// This property reflects the `dur` attribute of the ,  or  element.
   double getSimpleDuration() {
     unsupportedPlatformError();
   }
 
+  /// The [SVGAnimationElement] method `beginElement()` creates a begin instance
+  /// time for the current time. The new instance time is added to the begin
+  /// instance times list. The behavior of this method is equivalent to
+  /// `beginElementAt(0)`.
   void beginElement() {
     unsupportedPlatformError();
   }
 
+  /// The [SVGAnimationElement] method `beginElementAt()` creates a begin
+  /// instance time for the current time plus the specified offset. The new
+  /// instance time is added to the begin instance times list.
   void beginElementAt(num offset) {
     unsupportedPlatformError();
   }
 
+  /// The [SVGAnimationElement] method `endElement()` creates an end instance
+  /// time for the current time. The new instance time is added to the end
+  /// instance times list. The behavior of this method is equivalent to
+  /// `endElementAt(0)`.
   void endElement() {
     unsupportedPlatformError();
   }
 
+  /// The [SVGAnimationElement] method `endElementAt()` creates an end instance
+  /// time for the current time plus the specified offset. The new instance time
+  /// is added to the end instance times list.
   void endElementAt(num offset) {
     unsupportedPlatformError();
   }
 
-  /// The **`SVGAnimationElement.targetElement`** property refers to
-  /// the element which is being animated. If no target element is being
-  /// animated (for
-  /// example, because the `href` attribute specifies an unknown element), the
-  /// value returned is `null`.
+  /// The **`targetElement`** read-only property of the [SVGAnimationElement]
+  /// interface refers to the element which is being animated. If no target
+  /// element is being animated (for example, because the `href` attribute
+  /// specifies an unknown element), the value returned is `null`.
   SVGElement? get targetElement {
     unsupportedPlatformError();
   }
@@ -99,10 +151,15 @@ extension type SVGAnimationElement._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// The **`requiredExtensions`** read-only property of the
+  /// [SVGAnimationElement] interface reflects the `requiredExtensions`
+  /// attribute of the given element.
   SVGStringList get requiredExtensions {
     unsupportedPlatformError();
   }
 
+  /// The **`systemLanguage`** read-only property of the [SVGAnimationElement]
+  /// interface reflects the `systemLanguage` attribute of the given element.
   SVGStringList get systemLanguage {
     unsupportedPlatformError();
   }
@@ -170,6 +227,8 @@ extension type SVGMPathElement._(JSObject _) implements SVGElement, JSObject {
           'mpath',
         );
 
+  /// The **`href`** read-only property of the [SVGMPathElement] interface
+  /// reflects the `href` or   attribute of the given  element.
   SVGAnimatedString get href {
     unsupportedPlatformError();
   }
@@ -190,3 +249,5 @@ extension type SVGAnimateTransformElement._(JSObject _)
           'animateTransform',
         );
 }
+extension type SVGDiscardElement._(JSObject _)
+    implements SVGAnimationElement, JSObject {}

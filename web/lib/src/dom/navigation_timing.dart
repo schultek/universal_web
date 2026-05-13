@@ -1,4 +1,4 @@
-// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2026, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -8,7 +8,7 @@
 
 // Generated from Web IDL definitions.
 
-// ignore_for_file: unintended_html_in_doc_comment
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 import '../error.dart';
 import '../js_interop.dart';
@@ -68,10 +68,11 @@ extension type PerformanceNavigationTiming._(JSObject _)
   /// [`readyState`](https://developer.mozilla.org/en-US/docs/Web/API/Document/readyState)
   /// to `"interactive"`.
   ///
-  /// > **Note:** This property is **not**  (TTI). This property refers to the
-  /// > time when DOM construction is finished and interaction to it from
-  /// > JavaScript is possible. See also the `interactive` state of
-  /// > [Document.readyState] which corresponds to this property.
+  /// > [!NOTE]
+  /// > This property is **not**  (TTI). This property refers to the time when
+  /// > DOM construction is finished and interaction to it from JavaScript is
+  /// > possible. See also the `interactive` state of [Document.readyState]
+  /// > which corresponds to this property.
   ///
   /// Measuring DOM processing time may not be consequential unless your site
   /// has a very large HTML source to a construct a Document Object Model from.
@@ -183,7 +184,8 @@ extension type PerformanceNavigationTiming._(JSObject _)
   }
 }
 
-/// > **Warning:** This interface is deprecated in the
+/// > [!WARNING]
+/// > This interface is deprecated in the
 /// > [Navigation Timing Level 2 specification](https://w3c.github.io/navigation-timing/#obsolete).
 /// > Please use the [PerformanceNavigationTiming] interface instead.
 ///
@@ -198,7 +200,8 @@ extension type PerformanceNavigationTiming._(JSObject _)
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceTiming).
 extension type PerformanceTiming._(JSObject _) implements JSObject {
-  /// > **Warning:** This interface of this property is deprecated in the
+  /// > [!WARNING]
+  /// > This interface of this property is deprecated in the
   /// > [Navigation Timing Level 2 specification](https://w3c.github.io/navigation-timing/#obsolete).
   /// > Please use the [PerformanceNavigationTiming]
   /// > interface instead.
@@ -209,7 +212,8 @@ extension type PerformanceTiming._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
-  /// > **Warning:** This interface of this property is deprecated in the
+  /// > [!WARNING]
+  /// > This interface of this property is deprecated in the
   /// > [Navigation Timing Level 2 specification](https://w3c.github.io/navigation-timing/#obsolete).
   /// > Please use the [PerformanceNavigationTiming] interface instead.
   ///
@@ -226,7 +230,8 @@ extension type PerformanceTiming._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
-  /// > **Warning:** This interface of this property is deprecated in the
+  /// > [!WARNING]
+  /// > This interface of this property is deprecated in the
   /// > [Navigation Timing Level 2 specification](https://w3c.github.io/navigation-timing/#obsolete).
   /// > Please use the [PerformanceNavigationTiming]
   /// > interface instead.
@@ -244,7 +249,8 @@ extension type PerformanceTiming._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
-  /// > **Warning:** This interface of this property is deprecated in the
+  /// > [!WARNING]
+  /// > This interface of this property is deprecated in the
   /// > [Navigation Timing Level 2 specification](https://w3c.github.io/navigation-timing/#obsolete).
   /// > Please use the [PerformanceNavigationTiming]
   /// > interface instead.
@@ -262,7 +268,8 @@ extension type PerformanceTiming._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
-  /// > **Warning:** This interface of this property is deprecated in the
+  /// > [!WARNING]
+  /// > This interface of this property is deprecated in the
   /// > [Navigation Timing Level 2 specification](https://w3c.github.io/navigation-timing/#obsolete).
   /// > Please use the [PerformanceNavigationTiming]
   /// > interface instead.
@@ -280,7 +287,8 @@ extension type PerformanceTiming._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
-  /// > **Warning:** This interface of this property is deprecated in the
+  /// > [!WARNING]
+  /// > This interface of this property is deprecated in the
   /// > [Navigation Timing Level 2 specification](https://w3c.github.io/navigation-timing/#obsolete).
   /// > Please use the [PerformanceNavigationTiming]
   /// > interface instead.
@@ -298,7 +306,8 @@ extension type PerformanceTiming._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
-  /// > **Warning:** This interface of this property is deprecated in the
+  /// > [!WARNING]
+  /// > This interface of this property is deprecated in the
   /// > [Navigation Timing Level 2 specification](https://w3c.github.io/navigation-timing/#obsolete).
   /// > Please use the [PerformanceNavigationTiming]
   /// > interface instead.
@@ -315,7 +324,8 @@ extension type PerformanceTiming._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
-  /// > **Warning:** This interface of this property is deprecated in the
+  /// > [!WARNING]
+  /// > This interface of this property is deprecated in the
   /// > [Navigation Timing Level 2 specification](https://w3c.github.io/navigation-timing/#obsolete).
   /// > Please use the [PerformanceNavigationTiming]
   /// > interface instead.
@@ -333,7 +343,8 @@ extension type PerformanceTiming._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
-  /// > **Warning:** This interface of this property is deprecated in the
+  /// > [!WARNING]
+  /// > This interface of this property is deprecated in the
   /// > [Navigation Timing Level 2 specification](https://w3c.github.io/navigation-timing/#obsolete).
   /// > Please use the [PerformanceNavigationTiming]
   /// > interface instead.
@@ -351,7 +362,8 @@ extension type PerformanceTiming._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
-  /// > **Warning:** This interface of this property is deprecated in the
+  /// > [!WARNING]
+  /// > This interface of this property is deprecated in the
   /// > [Navigation Timing Level 2 specification](https://w3c.github.io/navigation-timing/#obsolete).
   /// > Please use the [PerformanceNavigationTiming]
   /// > interface instead.
@@ -372,7 +384,8 @@ extension type PerformanceTiming._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
-  /// > **Warning:** This interface of this property is deprecated in the
+  /// > [!WARNING]
+  /// > This interface of this property is deprecated in the
   /// > [Navigation Timing Level 2 specification](https://w3c.github.io/navigation-timing/#obsolete).
   /// > Please use the [PerformanceNavigationTiming]
   /// > interface instead.
@@ -395,7 +408,8 @@ extension type PerformanceTiming._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
-  /// > **Warning:** This interface of this property is deprecated in the
+  /// > [!WARNING]
+  /// > This interface of this property is deprecated in the
   /// > [Navigation Timing Level 2 specification](https://w3c.github.io/navigation-timing/#obsolete).
   /// > Please use the [PerformanceNavigationTiming] interface instead.
   ///
@@ -410,7 +424,8 @@ extension type PerformanceTiming._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
-  /// > **Warning:** This interface of this property is deprecated in the
+  /// > [!WARNING]
+  /// > This interface of this property is deprecated in the
   /// > [Navigation Timing Level 2 specification](https://w3c.github.io/navigation-timing/#obsolete).
   /// > Please use the [PerformanceNavigationTiming]
   /// > interface instead.
@@ -430,7 +445,8 @@ extension type PerformanceTiming._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
-  /// > **Warning:** This interface of this property is deprecated in the
+  /// > [!WARNING]
+  /// > This interface of this property is deprecated in the
   /// > [Navigation Timing Level 2 specification](https://w3c.github.io/navigation-timing/#obsolete).
   /// > Please use the [PerformanceNavigationTiming]
   /// > interface instead.
@@ -446,7 +462,8 @@ extension type PerformanceTiming._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
-  /// > **Warning:** This interface of this property is deprecated in the
+  /// > [!WARNING]
+  /// > This interface of this property is deprecated in the
   /// > [Navigation Timing Level 2 specification](https://w3c.github.io/navigation-timing/#obsolete).
   /// > Please use the [PerformanceNavigationTiming]
   /// > interface instead.
@@ -464,7 +481,8 @@ extension type PerformanceTiming._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
-  /// > **Warning:** This interface of this property is deprecated in the
+  /// > [!WARNING]
+  /// > This interface of this property is deprecated in the
   /// > [Navigation Timing Level 2 specification](https://w3c.github.io/navigation-timing/#obsolete).
   /// > Please use the [PerformanceNavigationTiming]
   /// > interface instead.
@@ -481,7 +499,8 @@ extension type PerformanceTiming._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
-  /// > **Warning:** This interface of this property is deprecated in the
+  /// > [!WARNING]
+  /// > This interface of this property is deprecated in the
   /// > [Navigation Timing Level 2 specification](https://w3c.github.io/navigation-timing/#obsolete).
   /// > Please use the [PerformanceNavigationTiming]
   /// > interface instead.
@@ -508,7 +527,8 @@ extension type PerformanceTiming._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
-  /// > **Warning:** This interface of this property is deprecated in the
+  /// > [!WARNING]
+  /// > This interface of this property is deprecated in the
   /// > [Navigation Timing Level 2 specification](https://w3c.github.io/navigation-timing/#obsolete).
   /// > Please use the [PerformanceNavigationTiming]
   /// > interface instead.
@@ -525,7 +545,8 @@ extension type PerformanceTiming._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
-  /// > **Warning:** This interface of this property is deprecated in the
+  /// > [!WARNING]
+  /// > This interface of this property is deprecated in the
   /// > [Navigation Timing Level 2 specification](https://w3c.github.io/navigation-timing/#obsolete).
   /// > Please use the [PerformanceNavigationTiming]
   /// > interface instead.
@@ -541,7 +562,8 @@ extension type PerformanceTiming._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
-  /// > **Warning:** This interface of this property is deprecated in the
+  /// > [!WARNING]
+  /// > This interface of this property is deprecated in the
   /// > [Navigation Timing Level 2 specification](https://w3c.github.io/navigation-timing/#obsolete).
   /// > Please use the [PerformanceNavigationTiming]
   /// > interface instead.
@@ -560,7 +582,8 @@ extension type PerformanceTiming._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
-  /// > **Warning:** This interface of this property is deprecated in the
+  /// > [!WARNING]
+  /// > This interface of this property is deprecated in the
   /// > [Navigation Timing Level 2 specification](https://w3c.github.io/navigation-timing/#obsolete).
   /// > Please use the [PerformanceNavigationTiming]
   /// > interface's [PerformanceNavigationTiming.loadEventStart] read-only
@@ -577,7 +600,8 @@ extension type PerformanceTiming._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
-  /// > **Warning:** This interface of this property is deprecated in the
+  /// > [!WARNING]
+  /// > This interface of this property is deprecated in the
   /// > [Navigation Timing Level 2 specification](https://w3c.github.io/navigation-timing/#obsolete).
   /// > Please use the [PerformanceNavigationTiming]
   /// > interface's [PerformanceNavigationTiming.loadEventEnd] read-only
@@ -600,7 +624,8 @@ extension type PerformanceTiming._(JSObject _) implements JSObject {
 /// The legacy **`PerformanceNavigation`** interface represents information
 /// about how the navigation to the current document was done.
 ///
-/// > **Warning:** This interface is deprecated in the
+/// > [!WARNING]
+/// > This interface is deprecated in the
 /// > [Navigation Timing Level 2 specification](https://w3c.github.io/navigation-timing/#obsolete).
 /// > Please use the [PerformanceNavigationTiming] interface instead.
 ///
@@ -620,7 +645,8 @@ extension type PerformanceNavigation._(JSObject _) implements JSObject {
 
   static const int TYPE_RESERVED = 255;
 
-  /// > **Warning:** This interface of this property is deprecated in the
+  /// > [!WARNING]
+  /// > This interface of this property is deprecated in the
   /// > [Navigation Timing Level 2 specification](https://w3c.github.io/navigation-timing/#obsolete).
   /// > Please use the [PerformanceNavigationTiming]
   /// > interface instead.
@@ -636,7 +662,8 @@ extension type PerformanceNavigation._(JSObject _) implements JSObject {
   /// read-only property returns an `unsigned short` containing a constant
   /// describing how the navigation to this page was done.
   ///
-  /// > **Warning:** This interface of this property is deprecated in the
+  /// > [!WARNING]
+  /// > This interface of this property is deprecated in the
   /// > [Navigation Timing Level 2 specification](https://w3c.github.io/navigation-timing/#obsolete).
   /// > Please use the [PerformanceNavigationTiming] interface instead.
   int get type {
@@ -648,7 +675,8 @@ extension type PerformanceNavigation._(JSObject _) implements JSObject {
   /// read-only property returns an `unsigned short` representing the number of
   /// REDIRECTs done before reaching the page.
   ///
-  /// > **Warning:** This interface of this property is deprecated in the
+  /// > [!WARNING]
+  /// > This interface of this property is deprecated in the
   /// > [Navigation Timing Level 2 specification](https://w3c.github.io/navigation-timing/#obsolete).
   /// > Please use the [PerformanceNavigationTiming] interface instead.
   int get redirectCount {

@@ -1,4 +1,4 @@
-// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2026, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -8,11 +8,11 @@
 
 // Generated from Web IDL definitions.
 
-// ignore_for_file: unintended_html_in_doc_comment
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 import '../error.dart';
 import '../js_interop.dart';
-import 'digital_identities.dart';
+import 'digital_credentials.dart';
 import 'dom.dart';
 import 'fedcm.dart';
 import 'web_otp.dart';
@@ -67,31 +67,28 @@ extension type Credential._(JSObject _) implements JSObject {
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CredentialsContainer).
 extension type CredentialsContainer._(JSObject _) implements JSObject {
   /// The **`get()`** method of the [CredentialsContainer] interface returns a
-  /// `Promise` that fulfills with a single credential instance that matches the
-  /// provided parameters, which the browser can then use to authenticate with a
-  /// relying party. This is used by several different credential-related APIs
-  /// with significantly different purposes:
+  /// `Promise` that fulfills with a single , which can then be used to
+  /// authenticate a user to a website.
   ///
-  /// - The
-  ///   [Credential Management API](https://developer.mozilla.org/en-US/docs/Web/API/Credential_Management_API)
-  ///   uses `get()` to authenticate using basic federated credentials or
-  ///   username/password credentials.
-  /// - The
-  ///   [Web Authentication API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Authentication_API)
-  ///   uses `get()` to authenticate or provide additional factors during MFA
-  ///   with public key credentials (based on asymmetric cryptography).
-  /// - The [Federated Credential Management (FedCM)
-  ///   API](https://developer.mozilla.org/en-US/docs/Web/API/FedCM_API) uses
-  ///   `get()` to authenticate with federated identity providers (IdPs).
-  /// - The
-  ///   [WebOTP API](https://developer.mozilla.org/en-US/docs/Web/API/WebOTP_API)
-  ///   uses `get()` to request retrieval of a one-time password (OTP) from a
-  ///   specially-formatted SMS message sent by an app server.
+  /// The method accepts a single optional `options` argument, which may
+  /// include:
   ///
-  /// The below reference page starts with a syntax section that explains the
-  /// general method call structure and parameters that apply to all the
-  /// different APIs. After that, it is split into separate sections providing
-  /// parameters, return values, and examples specific to each API.
+  /// - A `mediation` property indicating how and whether the user should be
+  ///   asked to participate in the operation.
+  /// This controls, for example, whether the site can silently sign a user in
+  /// using a stored credential.
+  /// - A `signal` property enabling the operation to be cancelled using an
+  ///   [AbortController].
+  /// - One or more properties — `password`, `federated`, `identity`, `otp`,
+  ///   `publicKey` — which indicate the
+  ///   [types of credential](https://developer.mozilla.org/en-US/docs/Web/API/Credential_Management_API/Credential_types)
+  ///   being requested. If set, the values of these properties include any
+  ///   parameters that the browser needs in order to find an appropriate
+  ///   credential of the requested type.
+  ///
+  /// The API always fulfills with a single credential or `null`. If multiple
+  /// credentials are available and user mediation is allowed, then the browser
+  /// will ask the user to select a single credential.
   JSPromise<Credential?> get([CredentialRequestOptions? options]) {
     unsupportedPlatformError();
   }
@@ -100,16 +97,17 @@ extension type CredentialsContainer._(JSObject _) implements JSObject {
   /// [CredentialsContainer] stores a set of credentials for the user inside a
   /// [Credential] instance, returning this in a `Promise`.
   ///
-  /// > **Note:** This method is restricted to top-level contexts. Calls to it
-  /// > within an
+  /// > [!NOTE]
+  /// > This method is restricted to top-level contexts. Calls to it within an
   /// > `<iframe>` element will resolve without effect.
   JSPromise<JSAny?> store(Credential credential) {
     unsupportedPlatformError();
   }
 
   /// The **`create()`** method of the [CredentialsContainer] interface creates
-  /// a new , which can then be stored and later used to authenticate users via
-  /// [CredentialsContainer.get].
+  /// a new , which can then be stored and later retrieved using the
+  /// [CredentialsContainer.get] method. The retrieved credential can then be
+  /// used by a website to authenticate a user.
   ///
   /// This method supports three different types of credential:
   ///
@@ -138,6 +136,12 @@ extension type CredentialsContainer._(JSObject _) implements JSObject {
   /// typically called after a user signs out of a website, ensuring this user's
   /// login information is not automatically passed on the next site visit.
   ///
+  /// This method
+  /// [generally has no effect](https://www.w3.org/TR/webauthn-2/#sctn-preventSilentAccessCredential)
+  /// when using a [PublicKeyCredential]; such authenticators typically require
+  /// user interaction. However, it _is possible_ that certain authenticators
+  /// may be excluded, which could otherwise have operated silently.
+  ///
   /// Earlier versions of the spec called this method `requireUserMediation()`.
   /// The
   /// [Browser compatibility](https://developer.mozilla.org/en-US/docs/Web/API/CredentialsContainer#browser_compatibility)
@@ -161,10 +165,10 @@ extension type CredentialRequestOptions._(JSObject _) implements JSObject {
   CredentialRequestOptions({
     CredentialMediationRequirement? mediation,
     AbortSignal? signal,
-    IdentityCredentialRequestOptions? identity,
     bool? password,
     FederatedCredentialRequestOptions? federated,
     DigitalCredentialRequestOptions? digital,
+    IdentityCredentialRequestOptions? identity,
     OTPCredentialRequestOptions? otp,
     PublicKeyCredentialRequestOptions? publicKey,
   }) : _ = JSObject();
@@ -182,14 +186,6 @@ extension type CredentialRequestOptions._(JSObject _) implements JSObject {
   }
 
   set signal(AbortSignal value) {
-    unsupportedPlatformError();
-  }
-
-  IdentityCredentialRequestOptions get identity {
-    unsupportedPlatformError();
-  }
-
-  set identity(IdentityCredentialRequestOptions value) {
     unsupportedPlatformError();
   }
 
@@ -214,6 +210,14 @@ extension type CredentialRequestOptions._(JSObject _) implements JSObject {
   }
 
   set digital(DigitalCredentialRequestOptions value) {
+    unsupportedPlatformError();
+  }
+
+  IdentityCredentialRequestOptions get identity {
+    unsupportedPlatformError();
+  }
+
+  set identity(IdentityCredentialRequestOptions value) {
     unsupportedPlatformError();
   }
 
@@ -353,13 +357,14 @@ extension type FederatedCredentialRequestOptions._(JSObject _)
 /// is, when creating a [FederatedCredential] object representing a credential
 /// associated with a federated identify provider.
 ///
-/// > **Note:** The [Federated Credential Management API
+/// > [!NOTE]
+/// > The [Federated Credential Management API
 /// > (FedCM)](https://developer.mozilla.org/en-US/docs/Web/API/FedCM_API)
 /// > supersedes the [FederatedCredential] interface in favor of the
 /// > [IdentityCredential] interface.
 /// >
 /// > The `FederatedCredentialInit` dictionary is not used when working with the
-/// > `IdentityCredential`interface.
+/// > `IdentityCredential` interface.
 ///
 /// ---
 ///

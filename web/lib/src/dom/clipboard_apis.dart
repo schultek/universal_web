@@ -1,4 +1,4 @@
-// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2026, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -8,7 +8,7 @@
 
 // Generated from Web IDL definitions.
 
-// ignore_for_file: unintended_html_in_doc_comment
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 import '../error.dart';
 import '../js_interop.dart';
@@ -70,14 +70,16 @@ extension type ClipboardEvent._(JSObject _) implements Event, JSObject {
 /// The **`ClipboardItem`** interface of the
 /// [Clipboard API](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard_API)
 /// represents a single item format, used when reading or writing clipboard data
-/// using [clipboard.read] and [clipboard.write] respectively.
+/// using [Clipboard.read] and [Clipboard.write] respectively.
 ///
-/// The benefit of having the **`ClipboardItem`** interface to represent data,
-/// is that it enables developers to cope with the varying scope of file types
-/// and data.
+/// The **`ClipboardItem`** interface enables developers to use a single type to
+/// represent a range of different data formats.
 ///
-/// > **Note:** To work with text see the [Clipboard.readText] and
-/// > [Clipboard.writeText] methods of the [Clipboard] interface.
+/// > [!NOTE]
+/// > The `read()` and `write()` methods can be used to work with text strings
+/// > and arbitrary data items represented by [Blob] instances. However, if you
+/// > are solely working with text, it is more convenient to use the
+/// > [Clipboard.readText] and [Clipboard.writeText] methods.
 ///
 /// ---
 ///
@@ -97,7 +99,7 @@ extension type ClipboardItem._(JSObject _) implements JSObject {
   /// [Clipboard API](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard_API)
   /// mandates support for plain text, HTML and PNG files.
   /// The `supports()` method will always return `true` for these MIME types, so
-  /// testing them is unnecessary .
+  /// testing them is unnecessary.
   static bool supports(String type) {
     unsupportedPlatformError();
   }
@@ -119,7 +121,7 @@ extension type ClipboardItem._(JSObject _) implements JSObject {
   }
 
   /// The read-only **`types`** property of the [ClipboardItem] interface
-  /// returns an `Array` of  available within the [ClipboardItem]
+  /// returns an `Array` of  available within the [ClipboardItem].
   JSArray<JSString> get types {
     unsupportedPlatformError();
   }
@@ -164,32 +166,31 @@ extension type Clipboard._(JSObject _) implements EventTarget, JSObject {
   ///
   /// The method can in theory return arbitrary data (unlike
   /// [Clipboard.readText], which can only return text).
-  /// Browsers commonly support reading text, HTML, and PNG image data — see
-  /// [browser compatibility](#browser_compatibility) for more information.
+  /// Browsers commonly support reading text, HTML, and PNG image data.
   JSPromise<ClipboardItems> read([ClipboardUnsanitizedFormats? formats]) {
     unsupportedPlatformError();
   }
 
   /// The **`readText()`** method of the [Clipboard] interface returns a
-  /// `Promise` which fulfils with a copy of the textual contents of the system
+  /// `Promise` which fulfills with a copy of the textual contents of the system
   /// clipboard.
   ///
-  /// > **Note:** To read non-text contents from the clipboard, use the
-  /// > [Clipboard.read] method instead.
+  /// > [!NOTE]
+  /// > To read non-text contents from the clipboard, use the [Clipboard.read]
+  /// > method instead.
   /// > You can write text to the clipboard using [Clipboard.writeText].
   JSPromise<JSString> readText() {
     unsupportedPlatformError();
   }
 
   /// The **`write()`** method of the [Clipboard] interface writes arbitrary
-  /// data to the clipboard, such as images, fulfilling the returned `Promise`
-  /// on completion.
+  /// [ClipboardItem] data such as images and text to the clipboard, fulfilling
+  /// the returned `Promise` on completion.
   /// This can be used to implement cut and copy functionality.
   ///
   /// The method can in theory write arbitrary data (unlike
   /// [Clipboard.writeText], which can only write text).
-  /// Browsers commonly support writing text, HTML, and PNG image data — see
-  /// [browser compatibility](#browser_compatibility) for more information.
+  /// Browsers commonly support writing text, HTML, and PNG image data.
   JSPromise<JSAny?> write(ClipboardItems data) {
     unsupportedPlatformError();
   }

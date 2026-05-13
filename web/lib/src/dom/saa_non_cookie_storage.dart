@@ -1,4 +1,4 @@
-// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2026, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -8,7 +8,7 @@
 
 // Generated from Web IDL definitions.
 
-// ignore_for_file: unintended_html_in_doc_comment
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 import '../error.dart';
 import '../js_interop.dart';
@@ -23,7 +23,7 @@ import 'web_locks.dart';
 typedef SameSiteCookiesType = String;
 
 /// The **`StorageAccessHandle`** interface represents access to
-/// [unpartitioned state](https://developer.mozilla.org/en-US/docs/Web/Privacy/State_Partitioning#state_partitioning)
+/// [unpartitioned state](https://developer.mozilla.org/en-US/docs/Web/Privacy/Guides/State_Partitioning#state_partitioning)
 /// granted by a call to [Document.requestStorageAccess].
 ///
 /// ---
@@ -31,32 +31,38 @@ typedef SameSiteCookiesType = String;
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/StorageAccessHandle).
 extension type StorageAccessHandle._(JSObject _) implements JSObject {
-  /// > **Note:** See [StorageManager.getDirectory] to understand usage.
+  /// > [!NOTE]
+  /// > See [StorageManager.getDirectory] to understand usage.
   JSPromise<FileSystemDirectoryHandle> getDirectory() {
     unsupportedPlatformError();
   }
 
-  /// > **Note:** See [StorageManager.estimate] to understand usage.
+  /// > [!NOTE]
+  /// > See [StorageManager.estimate] to understand usage.
   JSPromise<StorageEstimate> estimate() {
     unsupportedPlatformError();
   }
 
-  /// > **Note:** See [URL.createObjectURL_static] to understand usage.
+  /// > [!NOTE]
+  /// > See [URL.createObjectURL_static] to understand usage.
   String createObjectURL(JSObject obj) {
     unsupportedPlatformError();
   }
 
-  /// > **Note:** See [URL.revokeObjectURL_static] to understand usage.
+  /// > [!NOTE]
+  /// > See [URL.revokeObjectURL_static] to understand usage.
   void revokeObjectURL(String url) {
     unsupportedPlatformError();
   }
 
-  /// > **Note:** See [BroadcastChannel.BroadcastChannel] to understand usage.
+  /// > [!NOTE]
+  /// > See [BroadcastChannel.BroadcastChannel] to understand usage.
   BroadcastChannel BroadcastChannel_(String name) {
     unsupportedPlatformError();
   }
 
-  /// > **Note:** See [SharedWorker.SharedWorker] to understand usage.
+  /// > [!NOTE]
+  /// > See [SharedWorker.SharedWorker] to understand usage.
   SharedWorker SharedWorker_(
     String scriptURL, [
     JSAny? options,

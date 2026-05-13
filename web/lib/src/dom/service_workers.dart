@@ -1,4 +1,4 @@
-// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2026, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -8,11 +8,12 @@
 
 // Generated from Web IDL definitions.
 
-// ignore_for_file: unintended_html_in_doc_comment
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 import '../error.dart';
 import '../js_interop.dart';
 import 'background_sync.dart';
+import 'cookie_store.dart';
 import 'dom.dart';
 import 'fetch.dart';
 import 'html.dart';
@@ -41,10 +42,15 @@ typedef ClientType = String;
 /// - [ServiceWorkerRegistration.waiting] — when the service worker is in
 ///   `installed` state
 ///
-/// The `ServiceWorker` interface is dispatched a set of lifecycle events —
-/// `install` and `activate` — and functional events including `fetch`. A
-/// `ServiceWorker` object has an associated [ServiceWorker.state], related to
-/// its lifecycle.
+/// The [ServiceWorker.state] property and
+/// [`statechanged` event](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorker/statechange_event)
+/// can be used to check and observe changes in the lifecycle-state of the
+/// object's associated service worker.
+/// Related lifecycle events, such as
+/// [`install`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerGlobalScope/install_event)
+/// and
+/// [`activate`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerGlobalScope/activate_event)
+/// are fired at the service worker itself.
 ///
 /// Service workers allow static import of
 /// [ECMAScript modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules),
@@ -206,7 +212,8 @@ extension type ServiceWorkerRegistration._(JSObject _)
   /// falls within the scope of the registration (the `scope` option set when
   /// [ServiceWorkerContainer.register] is first called.)
   ///
-  /// > **Note:** Once an active worker is `activating`, neither a
+  /// > [!NOTE]
+  /// > Once an active worker is `activating`, neither a
   /// > runtime script error nor a force termination of the active worker
   /// > prevents the active
   /// > worker from getting `activated`.
@@ -282,10 +289,10 @@ extension type ServiceWorkerRegistration._(JSObject _)
 /// [ServiceWorkerContainer.controller] property used to determine whether or
 /// not the current page is actively controlled.
 ///
-/// Service workers can currently only be registered in the Window scope in some
-/// or all browsers, because the `ServiceWorkerContainer` object is not exposed
-/// to [DedicatedWorkerGlobalScope] and [SharedWorkerGlobalScope]. Check the
-/// [browser compatibility](#browser_compatibility) for information.
+/// `ServiceWorkerContainer` objects are exposed in the Window scope through
+/// [Navigator.serviceWorker] and in workers using
+/// [WorkerNavigator.serviceWorker] (if supported — check
+/// [browser compatibility](#browser_compatibility)).
 ///
 /// ---
 ///
@@ -293,17 +300,31 @@ extension type ServiceWorkerRegistration._(JSObject _)
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerContainer).
 extension type ServiceWorkerContainer._(JSObject _)
     implements EventTarget, JSObject {
-  /// The **`register()`** method of the
-  /// [ServiceWorkerContainer] interface creates or updates a
-  /// [ServiceWorkerRegistration] for the given `scriptURL`.
+  /// The **`register()`** method of the [ServiceWorkerContainer] interface
+  /// creates or updates a [ServiceWorkerRegistration] for the given scope.
+  /// If successful, the registration associates the provided script URL to a
+  /// _scope_, which is subsequently used for matching documents to a specific
+  /// service worker.
   ///
-  /// If successful, a service worker registration ties the provided script URL
-  /// to a
-  /// _scope_, which is subsequently used for navigation matching. You can call
-  /// this
-  /// method unconditionally from the controlled page. I.e., you don't need to
-  /// first check
-  /// whether there's an active registration.
+  /// A single registration is created for each unique scope.
+  /// If `register()` is called for a scope that has an existing registration,
+  /// the registration is updated with any changes to the scriptURL or options.
+  /// If there are no changes, then the existing registration is returned.
+  /// Note that calling `register()` with the same scope and `scriptURL` does
+  /// not restart the installation process.
+  /// You can therefore call this method unconditionally from a controlled page:
+  /// you don't need to first check whether there's an active registration or
+  /// service worker.
+  ///
+  /// A document can potentially be within the scope of several registrations
+  /// with different service workers and options.
+  /// The browser will associate the document with the matching registration
+  /// that has the most specific scope.
+  /// This ensures that only one service worker runs for each document.
+  ///
+  /// > [!NOTE]
+  /// > It is generally safer not to define registrations that have overlapping
+  /// > scopes.
   JSPromise<ServiceWorkerRegistration> register(
     JSAny scriptURL, [
     RegistrationOptions? options,
@@ -458,8 +479,8 @@ extension type NavigationPreloadManager._(JSObject _) implements JSObject {
 
   /// The **`setHeaderValue()`** method of the [NavigationPreloadManager]
   /// interface sets the value of the  header that will be sent with requests
-  /// resulting from a [fetch] operation made during service worker navigation
-  /// preloading.
+  /// resulting from a [Window.fetch] operation made during service worker
+  /// navigation preloading.
   /// It returns an empty `Promise` that resolves with `undefined`.
   ///
   /// The presence of the  header in preloading requests allows servers to
@@ -468,9 +489,10 @@ extension type NavigationPreloadManager._(JSObject _) implements JSObject {
   /// The default directive is set to `true`: this method allows the possibility
   /// of configuring multiple different responses to preload requests.
   ///
-  /// > **Note:** If a different response may result from setting this header,
-  /// > the server must set `Vary: Service-Worker-Navigation-Preload` to ensure
-  /// > that the different responses are cached.
+  /// > [!NOTE]
+  /// > If a different response may result from setting this header, the server
+  /// > must set `Vary: Service-Worker-Navigation-Preload` to ensure that the
+  /// > different responses are cached.
   JSPromise<JSAny?> setHeaderValue(String value) {
     unsupportedPlatformError();
   }
@@ -523,8 +545,8 @@ extension type NavigationPreloadState._(JSObject _) implements JSObject {
 /// [ServiceWorkerGlobalScope.message_event].
 ///
 /// Additionally, synchronous requests are not allowed from within a service
-/// worker — only asynchronous requests, like those initiated via the [fetch]
-/// method, can be used.
+/// worker — only asynchronous requests, like those initiated via the
+/// [WorkerGlobalScope.fetch] method, can be used.
 ///
 /// This interface inherits from the [WorkerGlobalScope] interface, and its
 /// parent [EventTarget].
@@ -624,6 +646,15 @@ extension type ServiceWorkerGlobalScope._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("service")
+  ///
+  /// The **`cookieStore`** read-only property of the [ServiceWorkerGlobalScope]
+  /// interface returns a reference to the [CookieStore] object associated with
+  /// this service worker.
+  CookieStore get cookieStore {
+    unsupportedPlatformError();
+  }
+
   EventHandler get onnotificationclick {
     unsupportedPlatformError();
   }
@@ -674,7 +705,7 @@ extension type Client._(JSObject _) implements JSObject {
   /// The **`postMessage()`** method of the
   /// [Client] interface allows a service worker to send a message to a client
   /// (a [Window], [Worker], or [SharedWorker]). The
-  /// message is received in the "`message`" event on
+  /// message is received in the `message` event on
   /// [ServiceWorkerContainer].
   void postMessage(
     JSAny? message, [
@@ -835,7 +866,7 @@ extension type Clients._(JSObject _) implements JSObject {
   /// The **`claim()`** method of the [Clients] interface allows an active
   /// service worker to set itself as the [ServiceWorkerContainer.controller]
   /// for all clients within its [ServiceWorkerRegistration.scope].
-  /// This triggers a "`controllerchange`" event on [ServiceWorkerContainer] in
+  /// This triggers a `controllerchange` event on [ServiceWorkerContainer] in
   /// any clients that become controlled by this service worker.
   ///
   /// When a service worker is initially registered, pages won't use it until
@@ -891,7 +922,8 @@ extension type ClientQueryOptions._(JSObject _) implements JSObject {
 ///
 /// This interface inherits from the [Event] interface.
 ///
-/// > **Note:** This interface is only available when the global scope is a
+/// > [!NOTE]
+/// > This interface is only available when the global scope is a
 /// > [ServiceWorkerGlobalScope]. It is not available when it is a [Window], or
 /// > the scope of another kind of worker.
 ///
@@ -954,15 +986,10 @@ extension type ExtendableEventInit._(JSObject _)
   }) : _ = JSObject();
 }
 
-/// > **Note:** Instead of using the deprecated
-/// > `ServiceWorkerGlobalScope.oninstall` handler to catch events of this type,
-/// > handle the (non-deprecated) [ServiceWorkerGlobalScope.install_event] event
-/// > using a listener added with [EventTarget.addEventListener].
-///
-/// The parameter passed into the [ServiceWorkerGlobalScope.install_event]
-/// handler, the `InstallEvent` interface represents an install action that is
-/// dispatched on the [ServiceWorkerGlobalScope] of a [ServiceWorker]. As a
-/// child of [ExtendableEvent], it ensures that functional events such as
+/// The parameter passed into an [ServiceWorkerGlobalScope.install_event] event
+/// handler function, the `InstallEvent` interface represents an install action
+/// that is dispatched on the [ServiceWorkerGlobalScope] of a [ServiceWorker].
+/// As a child of [ExtendableEvent], it ensures that functional events such as
 /// [FetchEvent] are not dispatched during installation.
 ///
 /// This interface inherits from the [ExtendableEvent] interface.
@@ -1004,20 +1031,20 @@ extension type FetchEvent._(JSObject _) implements ExtendableEvent, JSObject {
   /// image data. For security reasons, there are a few global rules:
   ///
   /// - You can only return [Response] objects of [Response.type]
-  /// "`opaque`" if the [fetchEvent.request] object's
-  /// [request.mode] is "`no-cors`". This prevents the
+  /// `"opaque"` if the [fetchEvent.request] object's
+  /// [request.mode] is `"no-cors"`. This prevents the
   /// leaking of private data.
   /// - You can only return [Response] objects of [Response.type]
-  /// "`opaqueredirect`" if the [fetchEvent.request]
-  /// object's [request.mode] is "`manual`".
+  /// `"opaqueredirect"` if the [fetchEvent.request]
+  /// object's [request.mode] is `"manual"`.
   /// - You cannot return [Response] objects of [Response.type]
-  /// "`cors`" if the [fetchEvent.request] object's
-  /// [request.mode] is "`same-origin`".
+  /// `"cors"` if the [fetchEvent.request] object's
+  /// [request.mode] is `"same-origin"`.
   ///
   /// ### Specifying the final URL of a resource
   ///
   /// From Firefox 59 onwards, when a service worker provides a [Response] to
-  /// [FetchEvent.respondWith], the [Response.url] value will be
+  /// `FetchEvent.respondWith()`, the [Response.url] value will be
   /// propagated to the intercepted network request as the final resolved URL.
   /// If the
   /// [Response.url] value is the empty string, then the
@@ -1038,7 +1065,7 @@ extension type FetchEvent._(JSObject _) implements ExtendableEvent, JSObject {
   /// can't observe
   /// the final URL. There are a few, though, where it does matter:
   ///
-  /// - If a [fetch] is intercepted,
+  /// - If a [Window.fetch] is intercepted,
   /// then you can observe the final URL on the result's [Response.url].
   /// - If a
   ///   [worker](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API)
@@ -1121,28 +1148,6 @@ extension type FetchEvent._(JSObject _) implements ExtendableEvent, JSObject {
   /// is
   /// `report`, `resultingClientId` will be an empty string.
   String get resultingClientId {
-    unsupportedPlatformError();
-  }
-
-  /// @AvailableInWorkers("service")
-  ///
-  /// The **`replacesClientId`** read-only property of the
-  /// [FetchEvent] interface is the [Client.id] of the
-  /// [Client] that is being replaced during a page navigation.
-  ///
-  /// For example, when navigating from page A to page B `replacesClientId` is
-  /// the
-  /// ID of the client associated with page A. It can be an empty string when
-  /// navigating from
-  /// `about:blank` to another page, as `about:blank`'s client will be
-  /// reused, rather than be replaced.
-  ///
-  /// Additionally, if the fetch isn't a navigation, `replacesClientId` will be
-  /// an
-  /// empty string. This could be used to access/communicate with a client that
-  /// will
-  /// imminently be replaced, right before a navigation.
-  String get replacesClientId {
     unsupportedPlatformError();
   }
 
@@ -1369,12 +1374,14 @@ extension type ExtendableMessageEventInit._(JSObject _)
 /// [Deleting old caches](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers#deleting_old_caches)
 /// for more information.
 ///
-/// > **Note:** The key matching algorithm depends on the
+/// > [!NOTE]
+/// > The key matching algorithm depends on the
 /// > [VARY header](https://www.fastly.com/blog/best-practices-using-vary-header)
 /// > in the value. So matching a new key requires looking at both key and value
 /// > for entries in the `Cache` object.
 ///
-/// > **Note:** The caching API doesn't honor HTTP caching headers.
+/// > [!NOTE]
+/// > The caching API doesn't honor HTTP caching headers.
 ///
 /// ---
 ///
@@ -1442,7 +1449,7 @@ extension type Cache._(JSObject _) implements JSObject {
   /// [Cache] interface allows key/value pairs to be added to the current
   /// [Cache] object.
   ///
-  /// Often, you will just want to [fetch]
+  /// Often, you will just want to [Window.fetch]
   /// one or more requests, then add the result straight to your cache. In such
   /// cases you are
   /// better off using
@@ -1463,10 +1470,10 @@ extension type Cache._(JSObject _) implements JSObject {
   ///
   /// > **Note:** [Cache.add]/[Cache.addAll] do not
   /// > cache responses with `Response.status` values that are not in the 200
-  /// > range, whereas [Cache.put] lets you store any request/response pair. As
+  /// > range, whereas `Cache.put` lets you store any request/response pair. As
   /// > a
   /// > result, [Cache.add]/[Cache.addAll] can't be used to store
-  /// > opaque responses, whereas [Cache.put] can.
+  /// > opaque responses, whereas `Cache.put` can.
   JSPromise<JSAny?> put(
     RequestInfo request,
     Response response,
@@ -1491,7 +1498,8 @@ extension type Cache._(JSObject _) implements JSObject {
   ///
   /// The requests are returned in the same order that they were inserted.
   ///
-  /// > **Note:** Requests with duplicate URLs but different headers can be
+  /// > [!NOTE]
+  /// > Requests with duplicate URLs but different headers can be
   /// > returned if their responses have the `VARY` header set on them.
   JSPromise<JSArray<Request>> keys([
     RequestInfo? request,
@@ -1553,7 +1561,7 @@ extension type CacheQueryOptions._(JSObject _) implements JSObject {
 /// > untrusted origins (i.e. those that aren't using HTTPS, although this
 /// > definition will likely become more complex in the future.) When testing on
 /// > Firefox, you can get around this by checking the **Enable Service Workers
-/// > over HTTP (when toolbox is open)** option in the Firefox Devtools
+/// > over HTTP (when toolbox is open)** option in the Firefox DevTools
 /// > options/gear menu. Furthermore, because `CacheStorage` requires
 /// > file-system access, it may be unavailable in private mode in Firefox.
 ///
@@ -1577,7 +1585,7 @@ extension type CacheStorage._(JSObject _) implements JSObject {
   ///
   /// `Cache` objects are searched in creation order.
   ///
-  /// > **Note:** [CacheStorage.match] is a convenience method.
+  /// > **Note:** `caches.match()` is a convenience method.
   /// > Equivalent functionality is to call [cache.match] on each cache (in the
   /// > order returned by [CacheStorage.keys]) until a [Response] is returned.
   JSPromise<Response?> match(
@@ -1604,7 +1612,8 @@ extension type CacheStorage._(JSObject _) implements JSObject {
   /// You can access `CacheStorage` through the [Window.caches] property in
   /// windows or through the [WorkerGlobalScope.caches] property in workers.
   ///
-  /// > **Note:** If the specified [Cache] does not exist, a new
+  /// > [!NOTE]
+  /// > If the specified [Cache] does not exist, a new
   /// > cache is created with that `cacheName` and a `Promise` that
   /// > resolves to this new [Cache] object is returned.
   JSPromise<Cache> open(String cacheName) {

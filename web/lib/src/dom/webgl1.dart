@@ -1,4 +1,4 @@
-// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2026, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -8,7 +8,7 @@
 
 // Generated from Web IDL definitions.
 
-// ignore_for_file: unintended_html_in_doc_comment
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 import '../error.dart';
 import '../js_interop.dart';
@@ -1213,7 +1213,7 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// creates and initializes a
   /// [WebGLBuffer] storing data such as vertices or colors.
-  WebGLBuffer? createBuffer() {
+  WebGLBuffer createBuffer() {
     unsupportedPlatformError();
   }
 
@@ -1222,7 +1222,7 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// creates and initializes a
   /// [WebGLFramebuffer] object.
-  WebGLFramebuffer? createFramebuffer() {
+  WebGLFramebuffer createFramebuffer() {
     unsupportedPlatformError();
   }
 
@@ -1230,7 +1230,7 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// creates and initializes a
   /// [WebGLProgram] object.
-  WebGLProgram? createProgram() {
+  WebGLProgram createProgram() {
     unsupportedPlatformError();
   }
 
@@ -1239,7 +1239,7 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// creates and initializes a
   /// [WebGLRenderbuffer] object.
-  WebGLRenderbuffer? createRenderbuffer() {
+  WebGLRenderbuffer createRenderbuffer() {
     unsupportedPlatformError();
   }
 
@@ -1258,7 +1258,7 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// creates and initializes a
   /// [WebGLTexture] object.
-  WebGLTexture? createTexture() {
+  WebGLTexture createTexture() {
     unsupportedPlatformError();
   }
 
@@ -1425,7 +1425,8 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// turns on the generic vertex
   /// attribute array at the specified index into the list of attribute arrays.
   ///
-  /// > **Note:** You can disable the attribute array by calling
+  /// > [!NOTE]
+  /// > You can disable the attribute array by calling
   /// > [WebGLRenderingContext.disableVertexAttribArray].
   ///
   /// In WebGL, values that apply to a specific vertex are stored in
@@ -1726,13 +1727,11 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   ///
   /// - [WebGLRenderingContext.getUniform]
   ///   - : Returns the value of the uniform at the given location.
-  ///   <!-- markdownlint-disable MD052 -- text in code block is misidentified as image -->
   /// - [`WebGLRenderingContext.uniform[1234][fi][v]()`](/en-US/docs/Web/API/WebGLRenderingContext/uniform)
   ///   - : Sets the uniform's value to the specified value, which may be a single floating
   /// point or integer number, or a 2-4 component vector specified either as a
   /// list of
   /// values or as a `Float32Array` or `Int32Array`.
-  ///     <!-- markdownlint-disable MD052 — text in code block is misidentified as image -->
   /// - [`WebGLRenderingContext.uniformMatrix[234][fv]()`](/en-US/docs/Web/API/WebGLRenderingContext/uniformMatrix)
   ///   - : Sets the uniform's value to the specified matrix, possibly with transposition. The
   /// value is represented as a sequence of `GLfloat` values or as a
@@ -1843,21 +1842,6 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   /// sets the line width of rasterized
   /// lines.
-  ///
-  /// > **Warning:** The webgl spec, based on the OpenGL ES 2.0/3.0 specs points
-  /// > out that the minimum and
-  /// > maximum width for a line is implementation defined. The maximum minimum
-  /// > width is
-  /// > allowed to be 1.0. The minimum maximum width is also allowed to be 1.0.
-  /// > Because of
-  /// > these implementation defined limits it is not recommended to use line
-  /// > widths other
-  /// > than 1.0 since there is no guarantee any user's browser will display any
-  /// > other width.
-  /// >
-  /// > As of January 2017 most implementations of WebGL only support a minimum
-  /// > of 1 and a
-  /// > maximum of 1 as the technology they are based on has these same limits.
   void lineWidth(GLfloat width) {
     unsupportedPlatformError();
   }
@@ -2270,12 +2254,11 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
-  /// The **`WebGLRenderingContext.compressedTexImage2D()`**
-  /// and **`WebGL2RenderingContext.compressedTexImage3D()`** methods
+  /// The **`compressedTexImage2D()`** method of the [WebGLRenderingContext]
+  /// interface
   /// of the
   /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
-  /// specify a two- or
-  /// three-dimensional texture image in a compressed format.
+  /// specifies a two-dimensional texture image in a compressed format.
   ///
   /// Compressed image formats must be enabled by
   /// [WebGL extensions](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Using_Extensions)
@@ -2496,9 +2479,42 @@ extension type WebGLRenderingContext._(JSObject _) implements JSObject {
   set drawingBufferColorSpace(PredefinedColorSpace value) {
     unsupportedPlatformError();
   }
+
+  /// The **`WebGLRenderingContext.unpackColorSpace`** property specifies the
+  /// color space to convert to when importing textures. Along with the default
+  /// (`srgb`), the `display-p3` color space can be used.
+  ///
+  /// Texture image sources can be the following:
+  ///
+  /// - [`ImageBitmap`](https://developer.mozilla.org/en-US/docs/Web/API/ImageBitmap)
+  /// - [`ImageData`](https://developer.mozilla.org/en-US/docs/Web/API/ImageData)
+  /// - [`HTMLImageElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement)
+  /// - [`HTMLCanvasElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement)
+  /// - [`HTMLVideoElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLVideoElement)
+  /// - [`OffscreenCanvas`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvas)
+  /// - [`VideoFrame`](https://developer.mozilla.org/en-US/docs/Web/API/VideoFrame)
+  ///
+  /// Textures are imported using the
+  /// [`WebGL2RenderingContext.texImage2D()`](https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/texImage2D)
+  /// and
+  /// [`WebGL2RenderingContext.texSubImage2D()`](https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/texSubImage2D)
+  /// methods and conversion to the specified `unpackColorSpace` color space
+  /// happens during import.
+  ///
+  /// Note that this doesn't apply to
+  /// [`HTMLImageElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement)
+  /// when the `UNPACK_COLORSPACE_CONVERSION_WEBGL` pixel storage parameter is
+  /// set to `NONE`.
+  PredefinedColorSpace get unpackColorSpace {
+    unsupportedPlatformError();
+  }
+
+  set unpackColorSpace(PredefinedColorSpace value) {
+    unsupportedPlatformError();
+  }
 }
 
-/// The **WebContextEvent** interface is part of the
+/// The **WebGLContextEvent** interface is part of the
 /// [WebGL API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API) and
 /// is an interface for an event that is generated in response to a status
 /// change to the WebGL rendering context.

@@ -1,4 +1,4 @@
-// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2026, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -8,7 +8,7 @@
 
 // Generated from Web IDL definitions.
 
-// ignore_for_file: unintended_html_in_doc_comment
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 import '../error.dart';
 import '../js_interop.dart';
@@ -42,6 +42,9 @@ extension type Notification._(JSObject _) implements EventTarget, JSObject {
   /// The **`requestPermission()`** static method of the [Notification]
   /// interface requests permission from the user for the current origin to
   /// display notifications.
+  ///
+  /// The method returns a `Promise` that fulfills with a string indicating
+  /// whether permission was granted or denied.
   static JSPromise<JSString> requestPermission(
       [NotificationPermissionCallback? deprecatedCallback]) {
     unsupportedPlatformError();
@@ -58,7 +61,8 @@ extension type Notification._(JSObject _) implements EventTarget, JSObject {
   /// The **`close()`** method of the [Notification] interface is used to
   /// close/remove a previously displayed notification.
   ///
-  /// > **Note:** This API shouldn't be used just to have the notification
+  /// > [!NOTE]
+  /// > This API shouldn't be used just to have the notification
   /// > removed from the screen after a fixed delay since this method will also
   /// > remove the
   /// > notification from any notification tray, preventing users from
@@ -181,9 +185,9 @@ extension type Notification._(JSObject _) implements EventTarget, JSObject {
 
   /// The **`silent`** read-only property of the
   /// [Notification] interface specifies whether the notification should be
-  /// silent, i.e., no sounds or vibrations should be issued, regardless of the
+  /// silent, i.e., no sounds or vibrations should be issued regardless of the
   /// device
-  /// settings. This is specified in the `silent` option of the
+  /// settings. This is controlled via the `silent` option of the
   /// [Notification.Notification] constructor.
   bool? get silent {
     unsupportedPlatformError();
@@ -194,9 +198,10 @@ extension type Notification._(JSObject _) implements EventTarget, JSObject {
   /// remain active until the user clicks or dismisses it, rather than closing
   /// automatically.
   ///
-  /// > **Note:** This can be set when the notification is first created by
-  /// > setting the `requireInteraction` option to `true` in the options object
-  /// > of the [Notification.Notification] constructor.
+  /// > [!NOTE]
+  /// > This can be set when the notification is first created by setting the
+  /// > `requireInteraction` option to `true` in the options object of the
+  /// > [Notification.Notification] constructor.
   bool get requireInteraction {
     unsupportedPlatformError();
   }
@@ -394,7 +399,8 @@ extension type GetNotificationOptions._(JSObject _) implements JSObject {
 ///
 /// This interface inherits from the [ExtendableEvent] interface.
 ///
-/// > **Note:** Only persistent notification events, fired at the
+/// > [!NOTE]
+/// > Only persistent notification events, fired at the
 /// > [ServiceWorkerGlobalScope] object, implement the `NotificationEvent`
 /// > interface. Non-persistent notification events, fired at the [Notification]
 /// > object, implement the `Event` interface.

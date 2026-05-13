@@ -1,4 +1,4 @@
-// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2026, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -8,7 +8,7 @@
 
 // Generated from Web IDL definitions.
 
-// ignore_for_file: unintended_html_in_doc_comment
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 import '../error.dart';
 import '../js_interop.dart';
@@ -32,9 +32,10 @@ typedef XRTargetRayMode = String;
 /// Numeric values such as pose positions are thus coordinates in the
 /// corresponding `XRSpace`, relative to that space's origin.
 ///
-/// > **Note:** The `XRSpace` interface is never used directly; instead, all
-/// > spaces are created using one of the interfaces based on `XRSpace`. At this
-/// > time, those are [XRReferenceSpace], [XRBoundedReferenceSpace], and
+/// > [!NOTE]
+/// > The `XRSpace` interface is never used directly; instead, all spaces are
+/// > created using one of the interfaces based on `XRSpace`. At this time,
+/// > those are [XRReferenceSpace], [XRBoundedReferenceSpace], and
 /// > [XRJointSpace].
 ///
 /// ---
@@ -221,13 +222,10 @@ extension type XRRigidTransform._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
-  /// The read-only [XRRigidTransform] property
-  /// **`matrix`** returns the transform
-  /// matrix represented by the object. The returned matrix can then be
-  /// premultiplied with a
-  /// column vector to rotate the
-  /// vector by the 3D rotation specified by the
-  /// [XRRigidTransform.orientation], then translate
+  /// The read-only [XRRigidTransform] property **`matrix`** returns the
+  /// transform matrix represented by the object. The returned matrix can then
+  /// be premultiplied with a column vector to rotate the vector by the 3D
+  /// rotation specified by the [XRRigidTransform.orientation], then translate
   /// it by the [XRRigidTransform.position].
   JSFloat32Array get matrix {
     unsupportedPlatformError();
@@ -341,7 +339,8 @@ extension type XRViewerPose._(JSObject _) implements XRPose, JSObject {
   /// viewer pose. For
   /// monoscopic devices, this array contains a single view.
   ///
-  /// > **Warning:** There is no guarantee that the number of views will
+  /// > [!WARNING]
+  /// > There is no guarantee that the number of views will
   /// > remain constant over the lifetime of an [XRSession]. For each frame, you
   /// > should always use the current length of this array rather than caching
   /// > the value.
@@ -391,7 +390,7 @@ extension type XRInputSource._(JSObject _) implements JSObject {
   ///
   /// A target ray emitted by a hand controller:
   ///
-  /// ![A screenshot showing a target ray being emitted by a hand controller](example-target-ray.gif)
+  /// ![A screenshot showing a target ray being emitted by a hand controller](https://mdn.github.io/shared-assets/images/examples/hand-controller-target-ray.gif)
   ///
   /// The target ray can be anything from a simple line (ideally fading over
   /// distance) to an animated effect, such as the science-fiction "phaser"
@@ -433,7 +432,8 @@ extension type XRInputSource._(JSObject _) implements JSObject {
   /// profile strings are listed in order of specificity, with the most specific
   /// profile listed first.
   ///
-  /// > **Note:** The `profiles` list is always empty when the WebXR
+  /// > [!NOTE]
+  /// > The `profiles` list is always empty when the WebXR
   /// > session is in inline mode.
   JSArray<JSString> get profiles {
     unsupportedPlatformError();
@@ -596,22 +596,22 @@ extension type XRInputSourcesChangeEvent._(JSObject _)
   ) : _ = JSObject();
 
   /// The [XRInputSourcesChangeEvent] property
-  /// [XRInputSourcesChangeEvent.session] specifies the
+  /// `session` specifies the
   /// [XRSession] to which the input source list change event applies.
   JSObject get session {
     unsupportedPlatformError();
   }
 
   /// The read-only [XRInputSourcesChangeEvent]
-  /// property [XRInputSourcesChangeEvent.added] is a list of zero or
+  /// property `added` is a list of zero or
   /// more input sources, each identified using an [XRInputSource] object,
   /// which have been newly made available for use.
   JSArray<XRInputSource> get added {
     unsupportedPlatformError();
   }
 
-  /// The read-only [XRInputSourcesChangeEvent] property
-  /// [XRInputSourcesChangeEvent.removed] is an array of
+  /// The read-only [XRInputSourcesChangeEvent] property `removed` is an array
+  /// of
   /// zero or more [XRInputSource] objects representing the input sources that
   /// have been removed from the [XRSession].
   JSArray<XRInputSource> get removed {

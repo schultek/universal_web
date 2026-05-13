@@ -1,4 +1,4 @@
-// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2026, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -8,7 +8,7 @@
 
 // Generated from Web IDL definitions.
 
-// ignore_for_file: unintended_html_in_doc_comment
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 import '../error.dart';
 import '../js_interop.dart';
@@ -46,7 +46,7 @@ extension type MediaStream._(JSObject _) implements EventTarget, JSObject {
   /// [MediaStream] interface returns a sequence that represents all the
   /// [MediaStreamTrack] objects in this
   /// stream's
-  /// [`track set`](https://www.w3.org/TR/mediacapture-streams/#track-set) where
+  /// [track set](https://www.w3.org/TR/mediacapture-streams/#track-set) where
   /// [MediaStreamTrack.kind]
   /// is `audio`.
   JSArray<MediaStreamTrack> getAudioTracks() {
@@ -64,7 +64,7 @@ extension type MediaStream._(JSObject _) implements EventTarget, JSObject {
   /// [MediaStream] interface returns a sequence that represents all the
   /// [MediaStreamTrack] objects in this
   /// stream's
-  /// [`track set`](https://www.w3.org/TR/mediacapture-streams/#track-set),
+  /// [track set](https://www.w3.org/TR/mediacapture-streams/#track-set),
   /// regardless of [MediaStreamTrack.kind].
   JSArray<MediaStreamTrack> getTracks() {
     unsupportedPlatformError();
@@ -83,8 +83,9 @@ extension type MediaStream._(JSObject _) implements EventTarget, JSObject {
   /// track to the
   /// stream. The track is specified as a parameter of type [MediaStreamTrack].
   ///
-  /// > **Note:** If the specified track is already in the stream's track set,
-  /// > this method has no
+  /// > [!NOTE]
+  /// > If the specified track is already in the stream's track set, this method
+  /// > has no
   /// > effect.
   void addTrack(MediaStreamTrack track) {
     unsupportedPlatformError();
@@ -169,16 +170,16 @@ extension type MediaStreamTrack._(JSObject _) implements EventTarget, JSObject {
   }
 
   /// The **`getCapabilities()`** method of
-  /// the [MediaStreamTrack] interface returns a
-  /// `MediaTrackCapabilities` object which specifies the values or range of
-  /// values which each constrainable property, based upon the platform and .
+  /// the [MediaStreamTrack] interface returns an object detailing the accepted
+  /// values or value range for each constrainable property of the associated
+  /// `MediaStreamTrack`, based upon the platform and .
   ///
   /// Once you know what the browser's capabilities are, your script can use
   /// [MediaStreamTrack.applyConstraints] to ask for the
   /// track to be configured to match ideal or acceptable settings. See
   /// [Capabilities, constraints, and
   /// settings](https://developer.mozilla.org/en-US/docs/Web/API/Media_Capture_and_Streams_API/Constraints)
-  /// for details on how to work with constrainable properties.
+  /// for details of how to work with constrainable properties.
   MediaTrackCapabilities getCapabilities() {
     unsupportedPlatformError();
   }
@@ -291,7 +292,8 @@ extension type MediaStreamTrack._(JSObject _) implements EventTarget, JSObject {
   /// output
   /// data, such as a scenario in which frames have been lost in transit.
   ///
-  /// > **Note:** If the track has been disconnected, the value of this property
+  /// > [!NOTE]
+  /// > If the track has been disconnected, the value of this property
   /// > can be changed, but has no effect.
   bool get enabled {
     unsupportedPlatformError();
@@ -306,8 +308,8 @@ extension type MediaStreamTrack._(JSObject _) implements EventTarget, JSObject {
   /// indicating whether or not the track is currently unable to provide media
   /// output.
   ///
-  /// > **Note:** To implement a way for users to mute and unmute a track, use
-  /// > the
+  /// > [!NOTE]
+  /// > To implement a way for users to mute and unmute a track, use the
   /// > [MediaStreamTrack.enabled] property. When a track is disabled
   /// > by setting `enabled` to `false`, it generates only empty frames
   /// > (audio frames in which every sample is 0, or video frames in which every
@@ -402,6 +404,7 @@ extension type MediaTrackSupportedConstraints._(JSObject _)
     bool? channelCount,
     bool? deviceId,
     bool? groupId,
+    bool? backgroundBlur,
     bool? whiteBalanceMode,
     bool? exposureMode,
     bool? focusMode,
@@ -712,6 +715,14 @@ extension type MediaTrackSupportedConstraints._(JSObject _)
     unsupportedPlatformError();
   }
 
+  bool get backgroundBlur {
+    unsupportedPlatformError();
+  }
+
+  set backgroundBlur(bool value) {
+    unsupportedPlatformError();
+  }
+
   bool get whiteBalanceMode {
     unsupportedPlatformError();
   }
@@ -926,6 +937,7 @@ extension type MediaTrackCapabilities._(JSObject _) implements JSObject {
     ULongRange? channelCount,
     String? deviceId,
     String? groupId,
+    JSArray<JSBoolean>? backgroundBlur,
     JSArray<JSString>? whiteBalanceMode,
     JSArray<JSString>? exposureMode,
     JSArray<JSString>? focusMode,
@@ -1064,6 +1076,14 @@ extension type MediaTrackCapabilities._(JSObject _) implements JSObject {
   }
 
   set groupId(String value) {
+    unsupportedPlatformError();
+  }
+
+  JSArray<JSBoolean> get backgroundBlur {
+    unsupportedPlatformError();
+  }
+
+  set backgroundBlur(JSArray<JSBoolean> value) {
     unsupportedPlatformError();
   }
 
@@ -1250,6 +1270,7 @@ extension type MediaTrackConstraints._(JSObject _)
     ConstrainULong? channelCount,
     ConstrainDOMString? deviceId,
     ConstrainDOMString? groupId,
+    ConstrainBoolean? backgroundBlur,
     ConstrainDOMString? whiteBalanceMode,
     ConstrainDOMString? exposureMode,
     ConstrainDOMString? focusMode,
@@ -1300,6 +1321,7 @@ extension type MediaTrackConstraintSet._(JSObject _) implements JSObject {
     ConstrainULong? channelCount,
     ConstrainDOMString? deviceId,
     ConstrainDOMString? groupId,
+    ConstrainBoolean? backgroundBlur,
     ConstrainDOMString? whiteBalanceMode,
     ConstrainDOMString? exposureMode,
     ConstrainDOMString? focusMode,
@@ -1441,6 +1463,14 @@ extension type MediaTrackConstraintSet._(JSObject _) implements JSObject {
   }
 
   set groupId(ConstrainDOMString value) {
+    unsupportedPlatformError();
+  }
+
+  ConstrainBoolean get backgroundBlur {
+    unsupportedPlatformError();
+  }
+
+  set backgroundBlur(ConstrainBoolean value) {
     unsupportedPlatformError();
   }
 
@@ -1654,6 +1684,7 @@ extension type MediaTrackSettings._(JSObject _) implements JSObject {
     int? channelCount,
     String? deviceId,
     String? groupId,
+    bool? backgroundBlur,
     String? whiteBalanceMode,
     String? exposureMode,
     String? focusMode,
@@ -2085,6 +2116,14 @@ extension type MediaTrackSettings._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
+  bool get backgroundBlur {
+    unsupportedPlatformError();
+  }
+
+  set backgroundBlur(bool value) {
+    unsupportedPlatformError();
+  }
+
   String get whiteBalanceMode {
     unsupportedPlatformError();
   }
@@ -2408,9 +2447,10 @@ extension type MediaDevices._(JSObject _) implements EventTarget, JSObject {
   /// the promise is rejected with `NotAllowedError` or `NotFoundError`
   /// [DOMException] respectively.
   ///
-  /// > **Note:** It's possible for the returned promise to _neither_ resolve
-  /// > nor reject, as the user is not required to make a choice at all and may
-  /// > ignore the request.
+  /// > [!NOTE]
+  /// > It's possible for the returned promise to _neither_ resolve nor reject,
+  /// > as the user is not required to make a choice at all and may ignore the
+  /// > request.
   JSPromise<MediaStream> getUserMedia([MediaStreamConstraints? constraints]) {
     unsupportedPlatformError();
   }

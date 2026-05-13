@@ -1,4 +1,4 @@
-// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2026, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -8,7 +8,7 @@
 
 // Generated from Web IDL definitions.
 
-// ignore_for_file: unintended_html_in_doc_comment
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 import '../error.dart';
 import '../js_interop.dart';
@@ -29,7 +29,7 @@ import 'html.dart';
 extension type PictureInPictureWindow._(JSObject _)
     implements EventTarget, JSObject {
   /// The read-only **`width`** property of the [PictureInPictureWindow]
-  /// inbterface returns the width of the floating video window in pixels.
+  /// interface returns the width of the floating video window in pixels.
   int get width {
     unsupportedPlatformError();
   }
@@ -53,7 +53,7 @@ extension type PictureInPictureWindow._(JSObject _)
 /// picture-in-picture-related events, including
 /// [HTMLVideoElement.enterpictureinpicture_event],
 /// [HTMLVideoElement.leavepictureinpicture_event] and
-/// [PictureInPictureWindow.resize_event]
+/// [PictureInPictureWindow.resize_event].
 ///
 /// ---
 ///

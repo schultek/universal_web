@@ -1,4 +1,4 @@
-// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2026, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -8,12 +8,13 @@
 
 // Generated from Web IDL definitions.
 
-// ignore_for_file: unintended_html_in_doc_comment
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 import '../error.dart';
 import '../js_interop.dart';
 import 'dom.dart';
 import 'html.dart';
+import 'mediacapture_streams.dart';
 
 typedef SpeechRecognitionErrorCode = String;
 typedef SpeechSynthesisErrorCode = String;
@@ -23,9 +24,10 @@ typedef SpeechSynthesisErrorCode = String;
 /// is the controller interface for the recognition service; this also handles
 /// the [SpeechRecognitionEvent] sent from the recognition service.
 ///
-/// > **Note:** On some browsers, like Chrome, using Speech Recognition on a web
-/// > page involves a server-based recognition engine. Your audio is sent to a
-/// > web service for recognition processing, so it won't work offline.
+/// > [!NOTE]
+/// > On some browsers, like Chrome, using Speech Recognition on a web page
+/// > involves a server-based recognition engine. Your audio is sent to a web
+/// > service for recognition processing, so it won't work offline.
 ///
 /// ---
 ///
@@ -41,7 +43,7 @@ extension type SpeechRecognition._(JSObject _)
   /// recognition service listening to incoming audio with intent to recognize
   /// grammars
   /// associated with the current [SpeechRecognition].
-  void start() {
+  void start([MediaStreamTrack? audioTrack]) {
     unsupportedPlatformError();
   }
 
@@ -65,24 +67,11 @@ extension type SpeechRecognition._(JSObject _)
     unsupportedPlatformError();
   }
 
-  /// The **`grammars`** property of the
-  /// [SpeechRecognition] interface returns and sets a collection of
-  /// [SpeechGrammar] objects that represent the grammars that will be
-  /// understood
-  /// by the current `SpeechRecognition`.
-  JSObject get grammars {
-    unsupportedPlatformError();
-  }
-
-  set grammars(JSObject value) {
-    unsupportedPlatformError();
-  }
-
   /// The **`lang`** property of the [SpeechRecognition]
   /// interface returns and sets the language of the current
   /// `SpeechRecognition`.
   /// If not specified, this defaults to the HTML
-  /// [`lang`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/html#lang)
+  /// [`lang`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang)
   /// attribute
   /// value, or the user agent's language setting if that isn't set either.
   String get lang {
@@ -276,7 +265,8 @@ extension type SpeechRecognitionAlternative._(JSObject _) implements JSObject {
   /// confident the speech recognition system is that the recognition is
   /// correct.
   ///
-  /// > **Note:** Mozilla's implementation of `confidence` is still
+  /// > [!NOTE]
+  /// > Mozilla's implementation of `confidence` is still
   /// > being worked on — at the moment, it always seems to return 1.
   double get confidence {
     unsupportedPlatformError();
@@ -516,7 +506,7 @@ extension type SpeechSynthesisUtterance._(JSObject _)
   /// and sets the language of the utterance.
   ///
   /// If unset, the app's (i.e. the `html`
-  /// [`lang`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/html#lang)
+  /// [`lang`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang)
   /// value) lang will be used, or the user-agent default if that is unset too.
   String get lang {
     unsupportedPlatformError();

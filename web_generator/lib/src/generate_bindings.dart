@@ -4,12 +4,15 @@
 
 import 'dart:js_interop';
 
+import 'package:path/path.dart' as p;
+
+import 'js/webidl2.dart' as webidl2;
+import 'js/webidl_api.dart' as webidl;
+import 'js/webref_css_api.dart';
+import 'js/webref_elements_api.dart';
+import 'js/webref_idl_api.dart';
 import 'translator.dart';
 import 'util.dart';
-import 'webidl_api.dart' as webidl;
-import 'webref_css_api.dart';
-import 'webref_elements_api.dart';
-import 'webref_idl_api.dart';
 
 /// Generate CSS property names for setting / getting CSS properties in JS.
 Future<List<String>> _generateCSSStyleDeclarations() async {
@@ -68,14 +71,20 @@ Future<Map<String, Set<String>>> _generateElementTagMap() async {
   return elementMap;
 }
 
-Future<TranslationResult> generateBindings(
-    String packageRoot, String librarySubDir,
-    {required bool generateAll}) async {
+Future<(TranslationResult, Map<String, String>)> generateBindings(
+  String packageRoot,
+  String librarySubDir, {
+  required bool generateAll,
+}) async {
   final cssStyleDeclarations = await _generateCSSStyleDeclarations();
   final elementHTMLMap = await _generateElementTagMap();
   final translator = Translator(
-      packageRoot, librarySubDir, cssStyleDeclarations, elementHTMLMap,
-      generateAll: generateAll);
+    librarySubDir,
+    cssStyleDeclarations,
+    elementHTMLMap,
+    generateAll: generateAll,
+    packageRoot: packageRoot,
+  );
   final array = objectEntries(await idl.parseAll().toDart);
   for (var i = 0; i < array.length; i++) {
     final entry = array[i] as JSArray<JSAny?>;
@@ -83,6 +92,34 @@ Future<TranslationResult> generateBindings(
     final ast = entry[1] as JSArray<webidl.Node>;
     translator.collect(shortname, ast);
   }
+  translator.addInterfacesAndNamespaces();
+  final result = translator.translate();
+  final renamedTypes = translator.renamedClasses;
+
+  return (result, renamedTypes);
+}
+
+Future<TranslationResult> generateBindingsForFiles(
+  Map<String, String> fileContents,
+  String output,
+) async {
+  // generate CSS style declarations and element tag map incase they are
+  // needed for the input files.
+  final cssStyleDeclarations = await _generateCSSStyleDeclarations();
+  final elementHTMLMap = await _generateElementTagMap();
+  final translator = Translator(
+    output,
+    cssStyleDeclarations,
+    elementHTMLMap,
+    generateAll: true,
+    generateForWeb: false,
+  );
+
+  for (final file in fileContents.entries) {
+    final ast = webidl2.parse(file.value);
+    translator.collect(p.basenameWithoutExtension(file.key), ast);
+  }
+
   translator.addInterfacesAndNamespaces();
   return translator.translate();
 }

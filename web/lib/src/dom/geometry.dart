@@ -1,4 +1,4 @@
-// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2026, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -8,7 +8,7 @@
 
 // Generated from Web IDL definitions.
 
-// ignore_for_file: unintended_html_in_doc_comment
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 import '../error.dart';
 import '../js_interop.dart';
@@ -61,6 +61,18 @@ extension type DOMPointReadOnly._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`matrixTransform()`** method of the [DOMPointReadOnly] interface
+  /// applies a matrix transform specified as an object to the DOMPointReadOnly
+  /// object, creating and returning a new `DOMPointReadOnly` object. Neither
+  /// the matrix nor the point are altered.
+  ///
+  /// If the matrix passed as a parameter is 2D (the [DOMMatrixReadonly.is2D] is
+  /// `true`) then this is a 2D transformation and the point's `z` coordinate
+  /// will be `0` and point's `w` perspective will be `1`. Otherwise this is a
+  /// 3D transformation.
+  ///
+  /// You can also create a new `DOMPoint` with a point and matrix with the
+  /// [DOMMatrixReadOnly.transformPoint] method.
   DOMPoint matrixTransform([DOMMatrixInit? matrix]) {
     unsupportedPlatformError();
   }
@@ -146,9 +158,8 @@ extension type DOMPoint._(JSObject _) implements DOMPointReadOnly, JSObject {
     num? w,
   ]) : _ = JSObject();
 
-  /// The **[DOMPoint]** static method
-  /// `fromPoint()` creates and returns a new mutable `DOMPoint`
-  /// object given a source point.
+  /// The **`fromPoint()`** static method of the [DOMPoint] interface creates
+  /// and returns a new mutable `DOMPoint` object given a source point.
   ///
   /// You can also create a new `DOMPoint` object using the
   /// [DOMPoint.DOMPoint] constructor.
@@ -280,6 +291,8 @@ extension type DOMRectReadOnly._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
+  /// The [DOMRectReadOnly] method `toJSON()` returns a  representation of the
+  /// `DOMRectReadOnly` object.
   JSObject toJSON() {
     unsupportedPlatformError();
   }
@@ -365,6 +378,13 @@ extension type DOMRect._(JSObject _) implements DOMRectReadOnly, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`x`** property of the [DOMRect] interface represents the
+  /// x-coordinate of the rectangle, which is the horizontal distance between
+  /// the viewport's left edge and the rectangle's origin.
+  ///
+  /// When the rectangle's width is non-negative, the rectangle's horizontal
+  /// origin is the viewport's left edge. If the width is negative, the
+  /// rectangle's horizontal origin is the viewport's right edge.
   double get x {
     unsupportedPlatformError();
   }
@@ -373,6 +393,13 @@ extension type DOMRect._(JSObject _) implements DOMRectReadOnly, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`y`** property of the [DOMRect] interface represents the
+  /// y-coordinate of the rectangle, which is the vertical distance between the
+  /// viewport's top edge and the rectangle's origin.
+  ///
+  /// When the rectangle's height is non-negative, the rectangle's vertical
+  /// origin is the viewport's top edge. If the height has a negative height,
+  /// the rectangle's vertical origin is the viewport's bottom edge.
   double get y {
     unsupportedPlatformError();
   }
@@ -381,6 +408,8 @@ extension type DOMRect._(JSObject _) implements DOMRectReadOnly, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`width`** property of the [DOMRect] interface represents the width
+  /// of the rectangle. The value can be negative.
   double get width {
     unsupportedPlatformError();
   }
@@ -389,6 +418,8 @@ extension type DOMRect._(JSObject _) implements DOMRectReadOnly, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`height`** property of the [DOMRect] interface represents the height
+  /// of the rectangle. The value can be negative.
   double get height {
     unsupportedPlatformError();
   }
@@ -437,11 +468,31 @@ extension type DOMRectInit._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 }
+
+/// The **`DOMRectList`** interface represents a collection of [DOMRect]
+/// objects, typically used to hold the rectangles associated with a particular
+/// element, like bounding boxes returned by methods such as
+/// [Element.getClientRects]. It provides access to each rectangle in the list
+/// via its index, along with a `length` property that indicates the total
+/// number of rectangles in the list.
+///
+/// > **Note**: `DOMRectList` exists for compatibility with legacy Web content
+/// > and is not recommended to be used when creating new APIs.
+///
+/// ---
+///
+/// API documentation sourced from
+/// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/DOMRectList).
 extension type DOMRectList._(JSObject _) implements JSObject {
+  /// The [DOMRectList] method
+  /// `item()` returns the [DOMRect] at the specified index within the list, or
+  /// `null` if the index is out of range.
   DOMRect? item(int index) {
     unsupportedPlatformError();
   }
 
+  /// The read-only **`length`** property of the [DOMRectList] interface returns
+  /// the number of [DOMRect] objects in the list.
   int get length {
     unsupportedPlatformError();
   }
@@ -473,26 +524,44 @@ extension type DOMQuad._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
+  /// The [DOMQuad] method
+  /// `getBounds()` returns a [DOMRect] object representing the smallest
+  /// rectangle that fully contains the `DOMQuad` object.
   DOMRect getBounds() {
     unsupportedPlatformError();
   }
 
+  /// The [DOMQuad] method
+  /// `toJSON()` returns a
+  /// representation of the `DOMQuad` object.
   JSObject toJSON() {
     unsupportedPlatformError();
   }
 
+  /// The **`DOMQuad`** interface's **`p1`** property holds the [DOMPoint]
+  /// object that represents one of the four corners of the `DOMQuad`. When
+  /// created from [DOMQuad.fromRect], it is the point (x, y).
   DOMPoint get p1 {
     unsupportedPlatformError();
   }
 
+  /// The **`DOMQuad`** interface's **`p2`** property holds the [DOMPoint]
+  /// object that represents one of the four corners of the `DOMQuad`. When
+  /// created from [DOMQuad.fromRect], it is the point (x + width, y).
   DOMPoint get p2 {
     unsupportedPlatformError();
   }
 
+  /// The **`DOMQuad`** interface's **`p3`** property holds the [DOMPoint]
+  /// object that represents one of the four corners of the `DOMQuad`. When
+  /// created from [DOMQuad.fromRect], it is the point (x + width, y + height).
   DOMPoint get p3 {
     unsupportedPlatformError();
   }
 
+  /// The **`DOMQuad`** interface's **`p4`** property holds the [DOMPoint]
+  /// object that represents one of the four corners of the `DOMQuad`. When
+  /// created from [DOMQuad.fromRect], it is the point (x, y + height).
   DOMPoint get p4 {
     unsupportedPlatformError();
   }
@@ -599,6 +668,14 @@ extension type DOMMatrixReadOnly._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`scale3d()`** method of the [DOMMatrixReadOnly] interface creates a
+  /// new matrix which is the result of a 3D scale transform being applied
+  /// to the matrix. It returns a new [DOMMatrix] created by scaling the source
+  /// 3d matrix by the given scale factor centered on the origin point specified
+  /// by the origin parameters, with a default origin of `(0, 0, 0)`. The
+  /// original matrix is not modified.
+  ///
+  /// To mutate the matrix as you 3D-scale it, see [DOMMatrix.scale3dSelf]
   DOMMatrix scale3d([
     num? scale,
     num? originX,
@@ -608,6 +685,11 @@ extension type DOMMatrixReadOnly._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
+  /// The `rotate()` method of the [DOMMatrixReadOnly] interface returns a new
+  /// [DOMMatrix] created by rotating the source matrix around each of its axes
+  /// by the specified number of degrees. The original matrix is not altered.
+  ///
+  /// To mutate the matrix as you rotate it, see [DOMMatrix.rotateSelf].
   DOMMatrix rotate([
     num? rotX,
     num? rotY,
@@ -616,6 +698,15 @@ extension type DOMMatrixReadOnly._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
+  /// The `rotateFromVector()` method of the [DOMMatrixReadOnly] interface is
+  /// returns a new [DOMMatrix] created by rotating the source matrix by the
+  /// angle between the specified vector and `(1, 0)`. The rotation angle is
+  /// determined by the angle between the vector `(1,0)T` and `(x,y)T` in the
+  /// clockwise direction, or `(+/-)arctan(y/x)`. If `x` and `y` are both `0`,
+  /// the angle is specified as `0`. The original matrix is not altered.
+  ///
+  /// To mutate the matrix as you rotate it by the angle between the specified
+  /// vector and `(1, 0)`, see [DOMMatrix.rotateFromVectorSelf].
   DOMMatrix rotateFromVector([
     num? x,
     num? y,
@@ -623,6 +714,12 @@ extension type DOMMatrixReadOnly._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
+  /// The `rotateAxisAngle()` method of the [DOMMatrixReadOnly] interface
+  /// returns a new [DOMMatrix] created by rotating the source matrix by the
+  /// given vector and angle. The original matrix is not altered.
+  ///
+  /// To mutate the matrix as you rotate it, see
+  /// [DOMMatrix.rotateAxisAngleSelf].
   DOMMatrix rotateAxisAngle([
     num? x,
     num? y,
@@ -632,44 +729,109 @@ extension type DOMMatrixReadOnly._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
+  /// The `skewX()` method of the [DOMMatrixReadOnly] interface returns a new
+  /// [DOMMatrix] created by applying the specified skew transformation to the
+  /// source matrix along its x-axis. The original matrix is not modified.
+  ///
+  /// To mutate the matrix as you skew it along the x-axis, see
+  /// [DOMMatrix.skewXSelf].
   DOMMatrix skewX([num? sx]) {
     unsupportedPlatformError();
   }
 
+  /// The `skewY()` method of the [DOMMatrixReadOnly] interface returns a new
+  /// [DOMMatrix] created by applying the specified skew transformation to the
+  /// source matrix along its y-axis. The original matrix is not modified.
+  ///
+  /// To mutate the matrix as you skew it along the y-axis, see
+  /// [DOMMatrix.skewYSelf].
   DOMMatrix skewY([num? sy]) {
     unsupportedPlatformError();
   }
 
+  /// The **`multiply()`** method of the [DOMMatrixReadOnly] interface creates
+  /// and returns a new matrix which is the dot product of the matrix and the
+  /// `otherMatrix` parameter. If `otherMatrix` is omitted, the matrix is
+  /// multiplied by a matrix in which every element is `0` _except_ the
+  /// bottom-right corner and the element immediately above and to its left:
+  /// `m33` and `m34`. These have the default value of `1`. The original matrix
+  /// is not modified.
+  ///
+  /// To mutate the matrix as you multiply it, see [DOMMatrix.multiplySelf].
   DOMMatrix multiply([DOMMatrixInit? other]) {
     unsupportedPlatformError();
   }
 
-  /// The `flipX()` method of the [DOMMatrixReadOnly] interface creates a new
-  /// matrix being the result of the original matrix flipped about the x-axis.
+  /// The **`flipX()`** method of the [DOMMatrixReadOnly] interface creates a
+  /// new matrix being the result of the original matrix flipped about the
+  /// x-axis. This is equivalent to multiplying the matrix by `DOMMatrix(-1, 0,
+  /// 0, 1, 0, 0)`. The original matrix is not modified.
   DOMMatrix flipX() {
     unsupportedPlatformError();
   }
 
+  /// The **`flipY()`** method of the [DOMMatrixReadOnly] interface creates a
+  /// new matrix being the result of the original matrix flipped about the
+  /// y-axis. This is equivalent to multiplying the matrix by `DOMMatrix(1, 0,
+  /// 0, -1, 0, 0)`. The original matrix is not modified.
   DOMMatrix flipY() {
     unsupportedPlatformError();
   }
 
+  /// The **`inverse()`** method of the [DOMMatrixReadOnly] interface creates a
+  /// new matrix which is the inverse of the original matrix. If the matrix
+  /// cannot be inverted, the new matrix's components are all set to `NaN` and
+  /// its [DOMMatrixReadOnly.is2D] property is set to `false`. The original
+  /// matrix is not changed.
+  ///
+  /// To mutate the matrix as you invert it, see [DOMMatrix.invertSelf].
   DOMMatrix inverse() {
     unsupportedPlatformError();
   }
 
+  /// The **`transformPoint`** method of the
+  /// [DOMMatrixReadOnly] interface creates a new [DOMPoint] object,
+  /// transforming a specified point by the matrix. Neither the matrix nor the
+  /// original point are altered.
+  ///
+  /// You can also create a new `DOMPoint` by applying a matrix to a point with
+  /// the [DOMPointReadOnly.matrixTransform] method.
   DOMPoint transformPoint([DOMPointInit? point]) {
     unsupportedPlatformError();
   }
 
+  /// The **`toFloat32Array()`** method of the [DOMMatrixReadOnly] interface
+  /// returns a new `Float32Array` containing all 16 elements (`m11`, `m12`,
+  /// `m13`, `m14`, `m21`, `m22`, `m23`, `m24`, `m31`, `m32`, `m33`, `m34`,
+  /// `m41`, `m42`, `m43`, `m44`) which comprise the matrix. The elements are
+  /// stored into the array as single-precision floating-point numbers in
+  /// column-major (colexographical access, or "colex") order. (In other words,
+  /// down the first column from top to bottom, then the second column, and so
+  /// forth.)
+  ///
+  /// For double-precision floating-point numbers, see
+  /// [DOMMatrixReadOnly.toFloat64Array].
   JSFloat32Array toFloat32Array() {
     unsupportedPlatformError();
   }
 
+  /// The **`toFloat64Array()`** method of the [DOMMatrixReadOnly] interface
+  /// returns a new `Float64Array` containing all 16 elements (`m11`, `m12`,
+  /// `m13`, `m14`, `m21`, `m22`, `m23`, `m24`, `m31`, `m32`, `m33`, `m34`,
+  /// `m41`, `m42`, `m43`, `m44`) which comprise the matrix. The elements are
+  /// stored into the array as double-precision floating-point numbers in
+  /// column-major (colexographical access, or "colex") order. (In other words,
+  /// down the first column from top to bottom, then the second column, and so
+  /// forth.)
   JSFloat64Array toFloat64Array() {
     unsupportedPlatformError();
   }
 
+  /// The **`toJSON()`** method of the [DOMMatrixReadOnly] interface creates and
+  /// returns a `JSON` object. The JSON object includes the 2D matrix elements
+  /// `a` through `f`, the 16 elements of the 4X4 3D matrix, `m[1-4][1-4]`, the
+  /// boolean [DOMMatrixReadOnly.is2D] property, and the boolean
+  /// [DOMMatrixReadOnly.isIdentity] property.
   JSObject toJSON() {
     unsupportedPlatformError();
   }
@@ -762,10 +924,22 @@ extension type DOMMatrixReadOnly._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
+  /// The readonly **`is2D`** property of the [DOMMatrixReadOnly] interface is a
+  /// Boolean flag that is `true` when the matrix is 2D. The value is `true` if
+  /// the matrix was initialized as a 2D matrix and only 2D transformation
+  /// operations were applied. Otherwise, the matrix is defined in 3D, and
+  /// `is2D` is `false`.
   bool get is2D {
     unsupportedPlatformError();
   }
 
+  /// The readonly **`isIdentity`** property of the [DOMMatrixReadOnly]
+  /// interface is a Boolean whose value is `true` if the matrix is the
+  /// [identity matrix](https://en.wikipedia.org/wiki/Identity_matrix).
+  ///
+  /// The identity matrix is one in which every value is `0` _except_ those on
+  /// the main diagonal from top-left to bottom-right corner (in other words,
+  /// where the offsets in each direction are equal).
   bool get isIdentity {
     unsupportedPlatformError();
   }
@@ -774,12 +948,10 @@ extension type DOMMatrixReadOnly._(JSObject _) implements JSObject {
 /// The **`DOMMatrix`** interface represents 4×4 matrices, suitable for 2D and
 /// 3D operations including rotation and translation. It is a mutable version of
 /// the [DOMMatrixReadOnly] interface.
+/// The interface is available inside
+/// [web workers](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API).
 ///
 /// **`WebKitCSSMatrix`** and **`SVGMatrix`** are aliases to **`DOMMatrix`**.
-///
-/// This interface should be available inside
-/// [web workers](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API),
-/// though some implementations don't allow it yet.
 ///
 /// ---
 ///
@@ -800,14 +972,38 @@ extension type DOMMatrix._(JSObject _) implements DOMMatrixReadOnly, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`multiplySelf()`** method of the [DOMMatrix] interface multiplies a
+  /// matrix by the `otherMatrix` parameter, computing the dot product of the
+  /// original matrix and the specified matrix: `A⋅B`. If no matrix is specified
+  /// as the multiplier, the matrix is multiplied by a matrix in which every
+  /// element is `0` _except_ the bottom-right corner and the element
+  /// immediately above and to its left: `m33` and `m34`. These have the default
+  /// value of `1`.
+  ///
+  /// To multiply a matrix without mutating it, see
+  /// [DOMMatrixReadOnly.multiply].
   DOMMatrix multiplySelf([DOMMatrixInit? other]) {
     unsupportedPlatformError();
   }
 
+  /// The **`preMultiplySelf()`** method of the [DOMMatrix] interface modifies
+  /// the matrix by pre-multiplying it with the specified `DOMMatrix`. This is
+  /// equivalent to the dot product `B⋅A`, where matrix `A` is the source matrix
+  /// and `B` is the matrix given as an input to the method. If no matrix is
+  /// specified as the multiplier, the matrix is multiplied by a matrix in which
+  /// every element is `0` _except_ the bottom-right corner and the element
+  /// immediately above and to its left: `m33` and `m34`. These have the default
+  /// value of `1`.
   DOMMatrix preMultiplySelf([DOMMatrixInit? other]) {
     unsupportedPlatformError();
   }
 
+  /// The `translateSelf()` method of the [DOMMatrix] interface is a mutable
+  /// transformation method that modifies a matrix. It applies the specified
+  /// vectors and returns the updated matrix. The default vector is `[0, 0, 0]`.
+  ///
+  /// To translate a matrix without mutating it, see
+  /// [DOMMatrixReadOnly.translate]
   DOMMatrix translateSelf([
     num? tx,
     num? ty,
@@ -827,6 +1023,13 @@ extension type DOMMatrix._(JSObject _) implements DOMMatrixReadOnly, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`scale3dSelf()`** method of the [DOMMatrix] interface is a mutable
+  /// transformation method that modifies a matrix by applying a specified
+  /// scaling factor to all three axes, centered on the given origin, with a
+  /// default origin of `(0, 0, 0)`, returning the 3D-scaled matrix.
+  ///
+  /// To 3D-scale a matrix without mutating it, see [DOMMatrixReadOnly.scale3d],
+  /// which creates a new scaled matrix while leaving the original unchanged.
   DOMMatrix scale3dSelf([
     num? scale,
     num? originX,
@@ -836,6 +1039,12 @@ extension type DOMMatrix._(JSObject _) implements DOMMatrixReadOnly, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The `rotateSelf()` method of the [DOMMatrix] interface is a mutable
+  /// transformation method that modifies a matrix. It rotates the source matrix
+  /// around each of its axes by the specified number of degrees and returns the
+  /// rotated matrix.
+  ///
+  /// To rotate a matrix without mutating it, see [DOMMatrixReadOnly.rotate]
   DOMMatrix rotateSelf([
     num? rotX,
     num? rotY,
@@ -844,6 +1053,17 @@ extension type DOMMatrix._(JSObject _) implements DOMMatrixReadOnly, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The `rotateFromVectorSelf()` method of the [DOMMatrix] interface is a
+  /// mutable transformation method that modifies a matrix by rotating the
+  /// matrix by the angle between the specified vector and `(1, 0)`. The
+  /// rotation angle is determined by the angle between the vector `(1,0)T` and
+  /// `(x,y)T` in the clockwise direction, or `(+/-)arctan(y/x)`. If `x` and `y`
+  /// are both `0`, the angle is specified as `0`, and the matrix is not
+  /// altered.
+  ///
+  /// To rotate a matrix from a vector without mutating it, see
+  /// [DOMMatrixReadOnly.rotateFromVector], which creates a new rotated matrix
+  /// while leaving the original unchanged.
   DOMMatrix rotateFromVectorSelf([
     num? x,
     num? y,
@@ -851,6 +1071,13 @@ extension type DOMMatrix._(JSObject _) implements DOMMatrixReadOnly, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The `rotateAxisAngleSelf()` method of the [DOMMatrix] interface is a
+  /// transformation method that rotates the source matrix by the given vector
+  /// and angle, returning the altered matrix.
+  ///
+  /// To rotate a matrix without mutating it, see
+  /// [DOMMatrixReadOnly.rotateAxisAngle], which creates a new rotated matrix
+  /// while leaving the original unchanged.
   DOMMatrix rotateAxisAngleSelf([
     num? x,
     num? y,
@@ -860,18 +1087,41 @@ extension type DOMMatrix._(JSObject _) implements DOMMatrixReadOnly, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The `skewXSelf()` method of the [DOMMatrix] interface is a mutable
+  /// transformation method that modifies a matrix. It skews the source matrix
+  /// by applying the specified skew transformation along the X-axis and returns
+  /// the skewed matrix.
+  ///
+  /// To skew a matrix along the X-axis without mutating it, see
+  /// [DOMMatrixReadOnly.skewX]
   DOMMatrix skewXSelf([num? sx]) {
     unsupportedPlatformError();
   }
 
+  /// The `skewYSelf()` method of the [DOMMatrix] interface is a mutable
+  /// transformation method that modifies a matrix. It skews the source matrix
+  /// by applying the specified skew transformation along the Y-axis and returns
+  /// the skewed matrix.
+  ///
+  /// To skew a matrix along the Y-axis without mutating it, see
+  /// [DOMMatrixReadOnly.skewY]
   DOMMatrix skewYSelf([num? sy]) {
     unsupportedPlatformError();
   }
 
+  /// The **`invertSelf()`** method of the [DOMMatrix] interface inverts the
+  /// original matrix. If the matrix cannot be inverted, the new matrix's
+  /// components are all set to `NaN` and its [DOMMatrixReadonly.is2D] property
+  /// is set to `false`.
+  ///
+  /// To invert a matrix without mutating it, see [DOMMatrixReadOnly.inverse]
   DOMMatrix invertSelf() {
     unsupportedPlatformError();
   }
 
+  /// The **`setMatrixValue()`** method of the [DOMMatrix] interface replaces
+  /// the contents of the matrix with the matrix described by the specified
+  /// transform or transforms, returning itself.
   DOMMatrix setMatrixValue(String transformList) {
     unsupportedPlatformError();
   }

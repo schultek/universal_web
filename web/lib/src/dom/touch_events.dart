@@ -1,4 +1,4 @@
-// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2026, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -8,7 +8,7 @@
 
 // Generated from Web IDL definitions.
 
-// ignore_for_file: unintended_html_in_doc_comment
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 import '../error.dart';
 import '../js_interop.dart';
@@ -167,11 +167,12 @@ extension type TouchInit._(JSObject _) implements JSObject {
 /// These values are set to describe an ellipse that as closely as possible
 /// matches the entire area of contact (such as the user's fingertip).
 ///
-/// > **Note:** Many of the properties' values are hardware-dependent; for
-/// > example, if the device doesn't have a way to detect the amount of pressure
-/// > placed on the surface, the `force` value will always be 0. This may also
-/// > be the case for `radiusX` and `radiusY`; if the hardware reports only a
-/// > single point, these values will be 1.
+/// > [!NOTE]
+/// > Many of the properties' values are hardware-dependent; for example, if the
+/// > device doesn't have a way to detect the amount of pressure placed on the
+/// > surface, the `force` value will always be 0. This may also be the case for
+/// > `radiusX` and `radiusY`; if the hardware reports only a single point,
+/// > these values will be 1.
 ///
 /// ---
 ///
@@ -423,8 +424,9 @@ extension type TouchEvent._(JSObject _) implements UIEvent, JSObject {
   /// as touching
   /// the screen.
   ///
-  /// > **Note:** Touches inside the array are not necessarily ordered by order
-  /// > of occurrences (the
+  /// > [!NOTE]
+  /// > Touches inside the array are not necessarily ordered by order of
+  /// > occurrences (the
   /// > i-th element in the array being the i-th touch that happened). You
   /// > cannot assume a specific order. To determine the order of occurrences of
   /// > the touches, use the `touch` object IDs.
@@ -447,9 +449,10 @@ extension type TouchEvent._(JSObject _) implements UIEvent, JSObject {
   ///   points that became active with the current event.
   /// - For the [Element.touchmove_event] event, it is a list of the touch
   ///   points that have changed since the last event.
-  /// - For the [Element.touchend_event] event, it is a list of the touch points
-  ///   that have been removed from the surface (that is, the set of touch
-  ///   points corresponding to fingers no longer touching the surface).
+  /// - For the [Element.touchend_event] and [Element.touchcancel_event] events,
+  ///   it is a list of the touch points that have been removed from the surface
+  ///   (that is, the set of touch points corresponding to fingers no longer
+  ///   touching the surface).
   TouchList get changedTouches {
     unsupportedPlatformError();
   }
@@ -471,8 +474,9 @@ extension type TouchEvent._(JSObject _) implements UIEvent, JSObject {
   ///
   /// This property is .
   ///
-  /// > **Note:** On Macintosh keyboards, this is the <kbd>⌘ Command</kbd> key.
-  /// > On Windows keyboards, this is the Windows key (<kbd>⊞</kbd>).
+  /// > [!NOTE]
+  /// > On Macintosh keyboards, this is the <kbd>⌘ Command</kbd> key. On Windows
+  /// > keyboards, this is the Windows key (<kbd>⊞</kbd>).
   bool get metaKey {
     unsupportedPlatformError();
   }

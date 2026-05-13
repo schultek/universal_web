@@ -1,4 +1,4 @@
-// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2026, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -8,23 +8,35 @@
 
 // Generated from Web IDL definitions.
 
-// ignore_for_file: unintended_html_in_doc_comment
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 import '../error.dart';
 import '../js_interop.dart';
 import 'css_view_transitions.dart';
+import 'cssom.dart';
 
-extension type StartViewTransitionOptions._(JSObject _) implements JSObject {
-  StartViewTransitionOptions({
-    UpdateCallback? update,
-    JSArray<JSString>? types,
-  }) : _ = JSObject();
-
-  UpdateCallback? get update {
+extension type CSSViewTransitionRule._(JSObject _)
+    implements CSSRule, JSObject {
+  String get navigation {
     unsupportedPlatformError();
   }
 
-  set update(UpdateCallback? value) {
+  JSArray<JSString> get types {
+    unsupportedPlatformError();
+  }
+}
+extension type ViewTransitionTypeSet._(JSObject _) implements JSObject {}
+extension type StartViewTransitionOptions._(JSObject _) implements JSObject {
+  StartViewTransitionOptions({
+    ViewTransitionUpdateCallback? update,
+    JSArray<JSString>? types,
+  }) : _ = JSObject();
+
+  ViewTransitionUpdateCallback? get update {
+    unsupportedPlatformError();
+  }
+
+  set update(ViewTransitionUpdateCallback? value) {
     unsupportedPlatformError();
   }
 

@@ -1,4 +1,4 @@
-// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2026, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -8,7 +8,7 @@
 
 // Generated from Web IDL definitions.
 
-// ignore_for_file: unintended_html_in_doc_comment
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 import '../error.dart';
 import '../js_interop.dart';
@@ -39,10 +39,11 @@ extension type PerformanceResourceTiming._(JSObject _)
   /// The **`initiatorType`** read-only property is a string representing web
   /// platform feature that initiated the resource load.
   ///
-  /// > **Note:** This property does not represent the type of content fetched.
-  /// > A `.css` file can be fetched using a `link` element leading to an
-  /// > `initiatorType` of `link`. When loading images using `background: url()`
-  /// > in a CSS file, the `initiatorType` will be `css` and not `img`.
+  /// > [!NOTE]
+  /// > This property does not represent the type of content fetched. A `.css`
+  /// > file can be fetched using a `link` element leading to an `initiatorType`
+  /// > of `link`. When loading images using `background: url()` in a CSS file,
+  /// > the `initiatorType` will be `css` and not `img`.
   String get initiatorType {
     unsupportedPlatformError();
   }
@@ -127,9 +128,9 @@ extension type PerformanceResourceTiming._(JSObject _)
   /// domain-name lookup for the resource.
   ///
   /// If the user agent has the domain information in cache,
-  /// [PerformanceResourceTiming.domainLookupStart] and
-  /// [PerformanceResourceTiming.domainLookupEnd] represent the times when the
-  /// user agent starts and ends the domain data retrieval from the cache.
+  /// [PerformanceResourceTiming.domainLookupStart] and `domainLookupEnd`
+  /// represent the times when the user agent starts and ends the domain data
+  /// retrieval from the cache.
   double get domainLookupEnd {
     unsupportedPlatformError();
   }
@@ -219,6 +220,15 @@ extension type PerformanceResourceTiming._(JSObject _)
   /// retrieved from an application cache or local resources, it returns the
   /// size of the payload after removing any applied content encoding.
   int get decodedBodySize {
+    unsupportedPlatformError();
+  }
+
+  /// The **`responseStatus`** read-only property represents the HTTP response
+  /// status code returned when fetching the resource.
+  ///
+  /// This property maps to [Response.status] from the
+  /// [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API).
+  int get responseStatus {
     unsupportedPlatformError();
   }
 

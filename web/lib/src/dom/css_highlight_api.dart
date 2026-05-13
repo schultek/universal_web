@@ -1,4 +1,4 @@
-// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2026, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -8,7 +8,7 @@
 
 // Generated from Web IDL definitions.
 
-// ignore_for_file: unintended_html_in_doc_comment
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 import '../error.dart';
 import '../js_interop.dart';
@@ -34,7 +34,12 @@ typedef HighlightType = String;
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Highlight).
 extension type Highlight._(JSObject _) implements JSObject {
-  Highlight(AbstractRange initialRanges) : _ = JSObject();
+  Highlight([
+    AbstractRange? initialRange1,
+    AbstractRange? initialRange2,
+    AbstractRange? initialRange3,
+    AbstractRange? initialRange4,
+  ]) : _ = JSObject();
 
   /// It is possible to create [Range] objects that overlap in a document.
   ///

@@ -22,7 +22,6 @@
 library;
 
 import 'dart:convert';
-import 'dart:math' show Point;
 
 import '../dom.dart';
 import '../js_interop.dart';
@@ -58,60 +57,6 @@ extension HTMLCanvasElementGlue on HTMLCanvasElement {
   }
 }
 
-extension CanvasRenderingContext2DGlue on CanvasRenderingContext2D {
-  @Deprecated('See CanvasRenderingContext2D.drawImage')
-  void drawImageScaled(
-    CanvasImageSource image,
-    double dx,
-    double dy,
-    double dw,
-    double dh,
-  ) =>
-      drawImage(image, dx, dy, dw, dh);
-}
-
-extension NodeGlue on Node {
-  @Deprecated('See Node.textContent')
-  set text(String s) => textContent = s;
-  @Deprecated('See Node.appendChild()')
-  Node append(Node other) => appendChild(other);
-  @Deprecated('See Node.cloneNode()')
-  Node clone(bool? deep) => cloneNode(deep ?? false);
-}
-
-extension EventGlue on MouseEvent {
-  /// A [Point] representation of the [clientX] and [clientY] properties
-  /// of this [MouseEvent].
-  ///
-  /// **Deprecated:** Prefer directly accessing
-  /// the [clientX] and [clientY] properties on [MouseEvent].
-  @Deprecated('Instead directly access the clientX and clientY properties.')
-  Point get client => Point(clientX, clientY);
-}
-
-extension TouchGlue on Touch {
-  /// A [Point] representation of the [clientX] and [clientY] properties
-  /// of this [Touch] event.
-  ///
-  /// **Deprecated:** Prefer directly accessing
-  /// the [clientX] and [clientY] properties on [Touch].
-  @Deprecated('Instead directly access the clientX and clientY properties.')
-  Point get client => Point(clientX, clientY);
-}
-
-extension StorageGlue on Storage {
-  @Deprecated('Use Storage.getItem instead')
-  String? operator [](String key) => getItem(key);
-  @Deprecated('Use Storage.setItem instead')
-  void operator []=(String key, String value) => setItem(key, value);
-}
-
-@Deprecated('Use JSImmutableListWrapper<TouchList, Touch> instead.')
-extension TouchListConvert on TouchList {
-  @Deprecated('Use JSImmutableListWrapper<TouchList, Touch> directly instead.')
-  List<Touch> toList() => JSImmutableListWrapper<TouchList, Touch>(this);
-}
-
 extension XMLHttpRequestGlue on XMLHttpRequest {
   /// Returns all response headers as a key-value map.
   ///
@@ -139,4 +84,28 @@ extension XMLHttpRequestGlue on XMLHttpRequest {
     }
     return headers;
   }
+}
+
+extension URLToUri on URL {
+  /// Converts this to a Dart [Uri] object.
+  Uri get toDart => Uri.parse(toString());
+}
+
+extension UriToURL on Uri {
+  /// Converts this to a JavaScript [URL] object.
+  ///
+  /// Throws an [ArgumentError] if this isn't an absolute URL, since [URL] can
+  /// only represent absolute URLs.
+  URL get toJS {
+    try {
+      return URL(toString());
+    } catch (_) {
+      throw ArgumentError.value(this, 'this', '"$this" isn\'t a valid JS URL.');
+    }
+  }
+}
+
+extension NodeListExtension on NodeList {
+  /// Returns node list as a modifiable [List].
+  List<Element> get asList => JSImmutableListWrapper(this);
 }

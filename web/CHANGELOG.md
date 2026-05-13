@@ -1,3 +1,7 @@
+## 2.0.0-wip
+
+- Depend on `web: 2.0.0-wip`
+
 ## 1.1.1+1
 
 - Add missing stubs for `@anonymous`, `@staticInterop` and `@JSExport`.

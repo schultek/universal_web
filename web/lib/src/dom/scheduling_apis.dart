@@ -1,4 +1,4 @@
-// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2026, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -8,7 +8,7 @@
 
 // Generated from Web IDL definitions.
 
-// ignore_for_file: unintended_html_in_doc_comment
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 import '../error.dart';
 import '../js_interop.dart';
@@ -51,11 +51,10 @@ extension type SchedulerPostTaskOptions._(JSObject _) implements JSObject {
 
 /// The **`Scheduler`** interface of the
 /// [Prioritized Task Scheduling API](https://developer.mozilla.org/en-US/docs/Web/API/Prioritized_Task_Scheduling_API)
-/// provides the [Scheduler.postTask] method that can be used for adding
-/// prioritized tasks to be scheduled.
+/// provides methods for scheduling prioritized tasks.
 ///
-/// A `Scheduler` can be accessed from the global object [Window] or
-/// [WorkerGlobalScope] (`this.scheduler`).
+/// A `Scheduler` can be accessed from the global object using
+/// [Window.scheduler] or [WorkerGlobalScope.scheduler] within a worker.
 ///
 /// ---
 ///
@@ -119,7 +118,7 @@ extension type TaskPriorityChangeEvent._(JSObject _)
     TaskPriorityChangeEventInit priorityChangeEventInitDict,
   ) : _ = JSObject();
 
-  /// The readonly **`previousPriority`** property of the
+  /// The **`previousPriority`** read-only property of the
   /// [TaskPriorityChangeEvent] interface returns the priority of the
   /// corresponding [TaskSignal] before it was changed and this
   /// [`prioritychange`](https://developer.mozilla.org/en-US/docs/Web/API/TaskSignal/prioritychange_event)

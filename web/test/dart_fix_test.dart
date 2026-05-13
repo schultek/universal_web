@@ -25,13 +25,14 @@ void main() {
 
     try {
       // set up project
+      // Convert the current path to a POSIX path to avoid 'path_not_posix' lint.
       writeFile(tempDir, 'pubspec.yaml', '''
 name: test_project
 environment:
   sdk: '^$sdkVersion'
 dependencies:
   universal_web:
-    path: ${Directory.current.path}
+    path: ${p.current.replaceAll(r'\', '/')}
 ''');
       final sourceFile = File(p.join('test_fixes', 'renames.dart'));
       writeFile(
@@ -80,11 +81,10 @@ void dartAnalyze(Directory dir) {
 void exec(String command, List<String> args, {required Directory cwd}) {
   printOnFailure('dart $command ${args.join(', ')}');
 
-  final result = Process.runSync(
-    Platform.resolvedExecutable,
-    [command, ...args],
-    workingDirectory: cwd.path,
-  );
+  final result = Process.runSync(Platform.resolvedExecutable, [
+    command,
+    ...args,
+  ], workingDirectory: cwd.path);
 
   var out = result.stdout as String;
   if (out.isNotEmpty) printOnFailure(out);

@@ -1,4 +1,4 @@
-// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2026, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -8,14 +8,13 @@
 
 // Generated from Web IDL definitions.
 
-// ignore_for_file: unintended_html_in_doc_comment
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 import '../error.dart';
 import '../js_interop.dart';
 import 'dom.dart';
 import 'html.dart';
 
-typedef BinaryData = JSObject;
 typedef FontFaceLoadStatus = String;
 typedef FontFaceSetLoadStatus = String;
 extension type FontFaceDescriptors._(JSObject _) implements JSObject {
@@ -368,8 +367,6 @@ extension type FontFaceSetLoadEvent._(JSObject _) implements Event, JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/FontFaceSet).
 extension type FontFaceSet._(JSObject _) implements EventTarget, JSObject {
-  FontFaceSet(JSArray<FontFace> initialFaces) : _ = JSObject();
-
   /// The **`add()`** method of the [FontFaceSet] interface adds a new font to
   /// the set.
   FontFaceSet add(FontFace font) {
@@ -404,7 +401,17 @@ extension type FontFaceSet._(JSObject _) implements EventTarget, JSObject {
   /// some text using the given font specification without attempting to use any
   /// fonts in this `FontFaceSet` that are not yet fully loaded. This means you
   /// can use the font specification without causing a
-  /// [font swap](https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display#the_font_display_timeline).
+  /// [font swap](https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display).
+  ///
+  /// > [!NOTE]
+  /// > The `check()` method is not designed to verify whether a specific font
+  /// > style can be rendered or if a particular font is fully loaded. Instead,
+  /// > it returns `true` if the specified text can be rendered using the given
+  /// > font specification without causing a font swap. This means that even if
+  /// > the requested font isn't available or fully loaded, the method may still
+  /// > return `true`. This behavior helps avoid the visual issues associated
+  /// > with font swapping but may be counterintuitive if you're trying to
+  /// > confirm the availability of a specific font.
   bool check(
     String font, [
     String? text,

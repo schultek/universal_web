@@ -1,4 +1,4 @@
-// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2026, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -8,16 +8,18 @@
 
 // Generated from Web IDL definitions.
 
-// ignore_for_file: unintended_html_in_doc_comment
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 import '../error.dart';
 import '../js_interop.dart';
 import 'dom.dart';
+import 'geometry.dart';
 import 'html.dart';
 import 'screen_orientation.dart';
 
 typedef ScrollBehavior = String;
 typedef ScrollLogicalPosition = String;
+typedef ScrollIntoViewContainer = String;
 extension type ScrollOptions._(JSObject _) implements JSObject {
   ScrollOptions({ScrollBehavior? behavior}) : _ = JSObject();
 
@@ -198,7 +200,7 @@ extension type MediaQueryListEventInit._(JSObject _)
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Screen).
 extension type Screen._(JSObject _) implements JSObject {
   /// The **`Screen.availWidth`** property returns the amount of
-  /// horizontal space (in pixels) available to the window.
+  /// horizontal space (in CSS pixels) available to the window.
   int get availWidth {
     unsupportedPlatformError();
   }
@@ -222,7 +224,7 @@ extension type Screen._(JSObject _) implements JSObject {
   }
 
   /// The **`Screen.height`** read-only property returns the height
-  /// of the screen in pixels.
+  /// of the screen in CSS pixels.
   int get height {
     unsupportedPlatformError();
   }
@@ -261,12 +263,36 @@ extension type CaretPositionFromPointOptions._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 }
+
+/// The `CaretPosition` interface represents the caret position, an indicator
+/// for the text insertion point.
+/// You can get a `CaretPosition` using the [Document.caretPositionFromPoint]
+/// method.
+///
+/// ---
+///
+/// API documentation sourced from
+/// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CaretPosition).
+extension type CaretPosition._(JSObject _) implements JSObject {
+  DOMRect? getClientRect() {
+    unsupportedPlatformError();
+  }
+
+  Node get offsetNode {
+    unsupportedPlatformError();
+  }
+
+  int get offset {
+    unsupportedPlatformError();
+  }
+}
 extension type ScrollIntoViewOptions._(JSObject _)
     implements ScrollOptions, JSObject {
   ScrollIntoViewOptions({
     ScrollBehavior? behavior,
     ScrollLogicalPosition? block,
     ScrollLogicalPosition? inline,
+    ScrollIntoViewContainer? container,
   }) : _ = JSObject();
 
   ScrollLogicalPosition get block {
@@ -282,6 +308,14 @@ extension type ScrollIntoViewOptions._(JSObject _)
   }
 
   set inline(ScrollLogicalPosition value) {
+    unsupportedPlatformError();
+  }
+
+  ScrollIntoViewContainer get container {
+    unsupportedPlatformError();
+  }
+
+  set container(ScrollIntoViewContainer value) {
     unsupportedPlatformError();
   }
 }
@@ -343,11 +377,12 @@ extension type CheckVisibilityOptions._(JSObject _) implements JSObject {
 ///
 /// You can get a window's visual viewport using [Window.visualViewport].
 ///
-/// > **Note:** Only the top-level window has a visual viewport that's distinct
-/// > from the layout viewport. Therefore, it's generally only the
-/// > `VisualViewport` object of the top-level window that's useful. For an
-/// > `iframe`, visual viewport metrics like [VisualViewport.width] always
-/// > correspond to layout viewport metrics like [Element.clientWidth].
+/// > [!NOTE]
+/// > Only the top-level window has a visual viewport that's distinct from the
+/// > layout viewport. Therefore, it's generally only the `VisualViewport`
+/// > object of the top-level window that's useful. For an `iframe`, visual
+/// > viewport metrics like [VisualViewport.width] always correspond to layout
+/// > viewport metrics like [Element.clientWidth].
 ///
 /// ---
 ///

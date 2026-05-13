@@ -1,4 +1,4 @@
-// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2026, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -8,7 +8,7 @@
 
 // Generated from Web IDL definitions.
 
-// ignore_for_file: unintended_html_in_doc_comment
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 import '../error.dart';
 import '../js_interop.dart';
@@ -77,6 +77,9 @@ extension type MIDIOutputMap._(JSObject _) implements JSObject {}
 /// provides methods for listing MIDI input and output devices, and obtaining
 /// access to those devices.
 ///
+/// `MIDIAccess` is a
+/// [transferable object](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Transferable_objects).
+///
 /// ---
 ///
 /// API documentation sourced from
@@ -125,8 +128,9 @@ extension type MIDIPort._(JSObject _) implements EventTarget, JSObject {
   /// connected to this `MIDIPort` explicitly available.
   ///
   /// If the port is successfully opened a new [MIDIConnectionEvent] is queued
-  /// to the [MIDIPort.statechange_event] and [MIDIAccess.statechange_event]
-  /// events, and the [MIDIPort.connection] property is changed to `"open"`.
+  /// to the `MIDIPort` [MIDIPort.statechange_event] and `MIDIAccess`
+  /// [MIDIAccess.statechange_event] events, and the [MIDIPort.connection]
+  /// property is changed to `"open"`.
   ///
   /// If the port is already open when this method is called, then the promise
   /// will resolve successfully.
@@ -138,8 +142,9 @@ extension type MIDIPort._(JSObject _) implements EventTarget, JSObject {
   /// the MIDI device connected to this `MIDIPort` unavailable.
   ///
   /// If the port is successfully closed a new [MIDIConnectionEvent] is queued
-  /// to the [MIDIPort.statechange_event] and [MIDIAccess.statechange_event]
-  /// events, and the [MIDIPort.connection] property is changed to `"closed"`.
+  /// to the `MIDIPort` [MIDIPort.statechange_event] and `MIDIAccess`
+  /// [MIDIAccess.statechange_event] events, and the [MIDIPort.connection]
+  /// property is changed to `"closed"`.
   JSPromise<MIDIPort> close() {
     unsupportedPlatformError();
   }

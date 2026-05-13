@@ -1,4 +1,4 @@
-// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2026, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -8,7 +8,7 @@
 
 // Generated from Web IDL definitions.
 
-// ignore_for_file: unintended_html_in_doc_comment
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 import '../error.dart';
 import '../js_interop.dart';
@@ -96,7 +96,7 @@ extension type StylePropertyMapReadOnly._(JSObject _) implements JSObject {
 }
 
 /// The **`StylePropertyMap`** interface of the
-/// [CSS Typed Object Model API](https://developer.mozilla.org/en-US/docs/Web/API/CSS_Object_Model#css_typed_object_model_experimental)
+/// [CSS Typed Object Model API](https://developer.mozilla.org/en-US/docs/Web/API/CSS_Object_Model#css_typed_object_model)
 /// provides a representation of a CSS declaration block that is an alternative
 /// to [CSSStyleDeclaration].
 ///
@@ -109,9 +109,12 @@ extension type StylePropertyMap._(JSObject _)
   /// The **`set()`** method of the [StylePropertyMap]
   /// interface changes the CSS declaration with the given property.
   void set(
-    String property,
-    JSAny values,
-  ) {
+    String property, [
+    JSAny? value1,
+    JSAny? value2,
+    JSAny? value3,
+    JSAny? value4,
+  ]) {
     unsupportedPlatformError();
   }
 
@@ -119,9 +122,12 @@ extension type StylePropertyMap._(JSObject _)
   /// [StylePropertyMap] interface adds the passed CSS value to the
   /// `StylePropertyMap` with the given property.
   void append(
-    String property,
-    JSAny values,
-  ) {
+    String property, [
+    JSAny? value1,
+    JSAny? value2,
+    JSAny? value3,
+    JSAny? value4,
+  ]) {
     unsupportedPlatformError();
   }
 
@@ -205,7 +211,7 @@ extension type CSSVariableReferenceValue._(JSObject _) implements JSObject {
 
   /// The **`fallback`** read-only property of the
   /// [CSSVariableReferenceValue] interface returns the
-  /// [custom property fallback value](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties#custom_property_fallback_values)
+  /// [custom property fallback value](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_cascading_variables/Using_CSS_custom_properties#custom_property_fallback_values)
   /// of the [CSSVariableReferenceValue].
   CSSUnparsedValue? get fallback {
     unsupportedPlatformError();
@@ -335,35 +341,60 @@ extension type CSSNumericValue._(JSObject _)
   /// The **`add()`** method of the
   /// [CSSNumericValue] interface adds a supplied number to the
   /// `CSSNumericValue`.
-  CSSNumericValue add(CSSNumberish values) {
+  CSSNumericValue add([
+    CSSNumberish? value1,
+    CSSNumberish? value2,
+    CSSNumberish? value3,
+    CSSNumberish? value4,
+  ]) {
     unsupportedPlatformError();
   }
 
   /// The **`sub()`** method of the
   /// [CSSNumericValue] interface subtracts a supplied number from the
   /// `CSSNumericValue`.
-  CSSNumericValue sub(CSSNumberish values) {
+  CSSNumericValue sub([
+    CSSNumberish? value1,
+    CSSNumberish? value2,
+    CSSNumberish? value3,
+    CSSNumberish? value4,
+  ]) {
     unsupportedPlatformError();
   }
 
   /// The **`mul()`** method of the
   /// [CSSNumericValue] interface multiplies the `CSSNumericValue` by
   /// the supplied value.
-  CSSNumericValue mul(CSSNumberish values) {
+  CSSNumericValue mul([
+    CSSNumberish? value1,
+    CSSNumberish? value2,
+    CSSNumberish? value3,
+    CSSNumberish? value4,
+  ]) {
     unsupportedPlatformError();
   }
 
   /// The **`div()`** method of the
   /// [CSSNumericValue] interface divides the `CSSNumericValue` by the
   /// supplied value.
-  CSSNumericValue div(CSSNumberish values) {
+  CSSNumericValue div([
+    CSSNumberish? value1,
+    CSSNumberish? value2,
+    CSSNumberish? value3,
+    CSSNumberish? value4,
+  ]) {
     unsupportedPlatformError();
   }
 
   /// The **`min()`** method of the
   /// [CSSNumericValue] interface returns the lowest value from among those
   /// values passed. The passed values must be of the same type.
-  CSSNumericValue min(CSSNumberish values) {
+  CSSNumericValue min([
+    CSSNumberish? value1,
+    CSSNumberish? value2,
+    CSSNumberish? value3,
+    CSSNumberish? value4,
+  ]) {
     unsupportedPlatformError();
   }
 
@@ -371,7 +402,12 @@ extension type CSSNumericValue._(JSObject _)
   /// [CSSNumericValue] interface returns the highest value from among the
   /// values
   /// passed. The passed values must be of the same type.
-  CSSNumericValue max(CSSNumberish values) {
+  CSSNumericValue max([
+    CSSNumberish? value1,
+    CSSNumberish? value2,
+    CSSNumberish? value3,
+    CSSNumberish? value4,
+  ]) {
     unsupportedPlatformError();
   }
 
@@ -383,7 +419,12 @@ extension type CSSNumericValue._(JSObject _)
   /// be of the same type and value and must be in the same order. This allows
   /// structural
   /// equality to be tested quickly.
-  bool equals(CSSNumberish value) {
+  bool equals([
+    CSSNumberish? value1,
+    CSSNumberish? value2,
+    CSSNumberish? value3,
+    CSSNumberish? value4,
+  ]) {
     unsupportedPlatformError();
   }
 
@@ -397,7 +438,12 @@ extension type CSSNumericValue._(JSObject _)
   /// The **`toSum()`** method of the
   /// [CSSNumericValue] interface converts the object's value to a
   /// [CSSMathSum] object to values of the specified unit.
-  CSSMathSum toSum(String units) {
+  CSSMathSum toSum([
+    String? unit1,
+    String? unit2,
+    String? unit3,
+    String? unit4,
+  ]) {
     unsupportedPlatformError();
   }
 
@@ -683,13 +729,12 @@ extension type CSSTransformComponent._(JSObject _) implements JSObject {
   /// object.
   ///
   /// All transform functions can be represented mathematically as a 4x4
-  /// transformation matrix. This is explained in detail in
-  /// [Understanding the CSS Transforms matrix](https://dev.opera.com/articles/understanding-the-css-transforms-matrix/).
+  /// transformation matrix.
   ///
-  /// > **Note:** The `is2D` property affects what transform, and therefore type
-  /// > of matrix that will be returned. CSS 2D and 3D transforms are different
-  /// > for legacy reasons. A brief explanation of 2D vs. 3D transforms can be
-  /// > found in
+  /// > [!NOTE]
+  /// > The `is2D` property affects what transform, and therefore type of matrix
+  /// > that will be returned. CSS 2D and 3D transforms are different for legacy
+  /// > reasons. A brief explanation of 2D vs. 3D transforms can be found in
   /// > [Using CSS transforms](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_transforms/Using_CSS_transforms).
   DOMMatrix toMatrix() {
     unsupportedPlatformError();
@@ -1072,7 +1117,7 @@ extension type CSSMatrixComponentOptions._(JSObject _) implements JSObject {
 /// The CSSImageValue object represents an
 /// [`<image>`](https://developer.mozilla.org/en-US/docs/Web/CSS/image) that
 /// involves a URL, such as
-/// [`url()`](https://developer.mozilla.org/en-US/docs/Web/CSS/url) or
+/// [`url()`](https://developer.mozilla.org/en-US/docs/Web/CSS/url_function) or
 /// [`image()`](https://developer.mozilla.org/en-US/docs/Web/CSS/image), but not
 /// [`linear-gradient()`](https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/linear-gradient)
 /// or [`element()`](https://developer.mozilla.org/en-US/docs/Web/CSS/element).

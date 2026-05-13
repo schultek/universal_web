@@ -1,4 +1,4 @@
-// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2026, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -8,7 +8,7 @@
 
 // Generated from Web IDL definitions.
 
-// ignore_for_file: unintended_html_in_doc_comment
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 import '../error.dart';
 import '../js_interop.dart';
@@ -60,7 +60,8 @@ extension type IntersectionObserver._(JSObject _) implements JSObject {
   /// intersection changes to
   /// be processed by a single call to the callback.
   ///
-  /// > **Note:** the observer
+  /// > [!NOTE]
+  /// > The observer
   /// > [callback](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/IntersectionObserver#callback)
   /// > will always fire the first render cycle after `observe()` is called,
   /// > even if the observed element has not yet moved with respect to the
@@ -103,7 +104,8 @@ extension type IntersectionObserver._(JSObject _) implements JSObject {
   /// an automatic
   /// call to the observer's callback.
   ///
-  /// > **Note:** If you use the callback to monitor these changes, you don't
+  /// > [!NOTE]
+  /// > If you use the callback to monitor these changes, you don't
   /// > need to call this method. Calling this method clears the pending
   /// > intersection list, so
   /// > the callback will not be run.
@@ -244,6 +246,8 @@ extension type IntersectionObserverInit._(JSObject _) implements JSObject {
     String? rootMargin,
     String? scrollMargin,
     JSAny? threshold,
+    int? delay,
+    bool? trackVisibility,
   }) : _ = JSObject();
 
   JSObject? get root {
@@ -275,6 +279,22 @@ extension type IntersectionObserverInit._(JSObject _) implements JSObject {
   }
 
   set threshold(JSAny value) {
+    unsupportedPlatformError();
+  }
+
+  int get delay {
+    unsupportedPlatformError();
+  }
+
+  set delay(int value) {
+    unsupportedPlatformError();
+  }
+
+  bool get trackVisibility {
+    unsupportedPlatformError();
+  }
+
+  set trackVisibility(bool value) {
     unsupportedPlatformError();
   }
 }

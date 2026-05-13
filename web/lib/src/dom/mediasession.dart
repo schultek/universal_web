@@ -1,4 +1,4 @@
-// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2026, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -8,7 +8,7 @@
 
 // Generated from Web IDL definitions.
 
-// ignore_for_file: unintended_html_in_doc_comment
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 import '../error.dart';
 import '../js_interop.dart';
@@ -59,6 +59,32 @@ extension type MediaSession._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`setMicrophoneActive()`** method of the [MediaSession] interface is
+  /// used to indicate to the user agent whether the user's microphone is
+  /// considered to be currently muted.
+  ///
+  /// Call this method on the `navigator` object's
+  /// [navigator.mediaSession] object.
+  ///
+  /// Note that the status of the microphone is not tracked in the
+  /// [MediaSession] itself, but must be tracked separately.
+  JSPromise<JSAny?> setMicrophoneActive(bool active) {
+    unsupportedPlatformError();
+  }
+
+  /// The **`setCameraActive()`** method of the [MediaSession] interface is used
+  /// to indicate to the user agent whether the user's camera is considered to
+  /// be active.
+  ///
+  /// Call this method on the `navigator` object's
+  /// [navigator.mediaSession] object.
+  ///
+  /// Note that the status of the camera is not tracked in the [MediaSession]
+  /// itself, but must be tracked separately.
+  JSPromise<JSAny?> setCameraActive(bool active) {
+    unsupportedPlatformError();
+  }
+
   /// The **`metadata`** property of the [MediaSession]
   /// interface contains a [MediaMetadata] object providing descriptive
   /// information about the currently playing media, or `null` if the metadata
@@ -97,7 +123,7 @@ extension type MediaMetadata._(JSObject _) implements JSObject {
   MediaMetadata([MediaMetadataInit? init]) : _ = JSObject();
 
   /// The **`title`** property of the
-  /// [MediaMetaData] interface returns or sets the title of the media to be
+  /// [MediaMetadata] interface returns or sets the title of the media to be
   /// played.
   String get title {
     unsupportedPlatformError();
@@ -108,7 +134,7 @@ extension type MediaMetadata._(JSObject _) implements JSObject {
   }
 
   /// The **`artist`** property of the
-  /// [MediaMetaData] interface returns or sets the name of the artist, group,
+  /// [MediaMetadata] interface returns or sets the name of the artist, group,
   /// creator, etc., of the media to be played.
   String get artist {
     unsupportedPlatformError();
@@ -119,7 +145,7 @@ extension type MediaMetadata._(JSObject _) implements JSObject {
   }
 
   /// The **`album`** property of the
-  /// [MediaMetaData] interface returns or sets the name of the album or
+  /// [MediaMetadata] interface returns or sets the name of the album or
   /// collection containing the media to be played.
   String get album {
     unsupportedPlatformError();
@@ -130,14 +156,14 @@ extension type MediaMetadata._(JSObject _) implements JSObject {
   }
 
   /// The **`artwork`** property of the
-  /// [MediaMetaData] interface returns or sets an array of
+  /// [MediaMetadata] interface returns or sets an array of
   /// objects representing images associated with playing
   /// media.
-  JSArray<MediaImage> get artwork {
+  JSArray<JSObject> get artwork {
     unsupportedPlatformError();
   }
 
-  set artwork(JSArray<MediaImage> value) {
+  set artwork(JSArray<JSObject> value) {
     unsupportedPlatformError();
   }
 }

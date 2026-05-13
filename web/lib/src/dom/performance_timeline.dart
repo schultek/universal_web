@@ -1,4 +1,4 @@
-// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2026, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -8,7 +8,7 @@
 
 // Generated from Web IDL definitions.
 
-// ignore_for_file: unintended_html_in_doc_comment
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 import '../error.dart';
 import '../js_interop.dart';
@@ -22,7 +22,7 @@ typedef PerformanceObserverCallback = JSFunction;
 ///
 /// The Performance API offers built-in metrics which are specialized subclasses
 /// of `PerformanceEntry`. This includes entries for resource loading, event
-/// timing,  (FID), and more.
+/// timing, and more.
 ///
 /// A performance entry can also be created by calling the [Performance.mark] or
 /// [Performance.measure] methods at an explicit point in an application. This
@@ -75,8 +75,8 @@ extension type PerformanceEntry._(JSObject _) implements JSObject {
   }
 
   /// The read-only **`startTime`** property returns the first  recorded for
-  /// this . The meaning of this property depends on the value of this entry's
-  /// [PerformanceEntry.entryType].
+  /// this [PerformanceEntry]. The meaning of this property depends on the value
+  /// of this entry's [PerformanceEntry.entryType].
   double get startTime {
     unsupportedPlatformError();
   }
@@ -131,8 +131,8 @@ extension type PerformanceObserver._(JSObject _) implements JSObject {
   }
 
   /// The **`takeRecords()`** method of the [PerformanceObserver] interface
-  /// returns the current list of [PerformanceEntry] stored in the performance
-  /// observer, emptying it out.
+  /// returns the current list of [PerformanceEntry] objects stored in the
+  /// performance observer, emptying it out.
   PerformanceEntryList takeRecords() {
     unsupportedPlatformError();
   }

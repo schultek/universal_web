@@ -1,4 +1,4 @@
-// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2026, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -8,7 +8,7 @@
 
 // Generated from Web IDL definitions.
 
-// ignore_for_file: unintended_html_in_doc_comment
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 import '../error.dart';
 import '../js_interop.dart';
@@ -155,8 +155,11 @@ extension type MediaKeySystemAccess._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
-  /// The `MediaKeySystemAccess.keySystem` read-only property returns a
-  /// string identifying the key system being used.
+  /// The **`keySystem`** read-only property of the [MediaKeySystemAccess]
+  /// interface returns a string identifying the key system being used.
+  ///
+  /// This is the value that was passed to
+  /// [Navigator.requestMediaKeySystemAccess] when system access is requested.
   String get keySystem {
     unsupportedPlatformError();
   }
@@ -179,6 +182,27 @@ extension type MediaKeys._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
+  /// The `getStatusForPolicy()` method of the [MediaKeys] interface is used to
+  /// check whether the Content Decryption Module (CDM) would allow the
+  /// presentation of encrypted media data using the keys, based on the
+  /// specified policy requirements.
+  ///
+  /// The method returns a `Promise` that resolves with a string that indicates
+  /// the status of the key with respect to all the specified policy
+  /// requirements.
+  /// If the value resolves to `"usable"` then the content can be decrypted and
+  /// presented at the ideal quality.
+  /// Other values indicate reasons why the keys cannot be used for presenting
+  /// the content; in some cases they hint at fallback options, such as playing
+  /// the content at a lower quality.
+  ///
+  /// The policy restrictions currently only include a restriction on the
+  /// minimum supported HDCP version.
+  ///
+  /// Note that the method checks a "hypothetical key" against the restrictions.
+  /// The application does not need to first create a real key and fetch a real
+  /// license using [MediaKeySession], and the [MediaKeys] doesn't even have to
+  /// be attached to audio or video elements.
   JSPromise<JSString> getStatusForPolicy([MediaKeysPolicy? policy]) {
     unsupportedPlatformError();
   }
@@ -229,7 +253,7 @@ extension type MediaKeySession._(JSObject _) implements EventTarget, JSObject {
   }
 
   /// The `update()` method of the [MediaKeySession] interface loads messages
-  /// and licenses to the CDM, and then returns a `Promise` .
+  /// and licenses to the CDM, and then returns a `Promise`.
   JSPromise<JSAny?> update(BufferSource response) {
     unsupportedPlatformError();
   }
@@ -318,9 +342,12 @@ extension type MediaKeyStatusMap._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
-  /// The **`get()`** method of the
-  /// [MediaKeyStatusMap] interface returns the value associated with the given
-  /// key, or `undefined` if there is none.
+  /// The **`get()`** method of the [MediaKeyStatusMap] interface returns the
+  /// status value associated with the given key, or `undefined` if there is
+  /// none.
+  ///
+  /// The status value indicates whether or not the specific key can be used for
+  /// decryption.
   MediaKeyStatus? get(BufferSource keyId) {
     unsupportedPlatformError();
   }

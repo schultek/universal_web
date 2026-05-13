@@ -1,4 +1,4 @@
-// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2026, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -8,7 +8,7 @@
 
 // Generated from Web IDL definitions.
 
-// ignore_for_file: unintended_html_in_doc_comment
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 import '../error.dart';
 import '../js_interop.dart';
@@ -361,15 +361,15 @@ extension type MediaCapabilitiesDecodingInfo._(JSObject _)
     required bool supported,
     required bool smooth,
     required bool powerEfficient,
-    required MediaKeySystemAccess keySystemAccess,
+    required MediaKeySystemAccess? keySystemAccess,
     MediaDecodingConfiguration? configuration,
   }) : _ = JSObject();
 
-  MediaKeySystemAccess get keySystemAccess {
+  MediaKeySystemAccess? get keySystemAccess {
     unsupportedPlatformError();
   }
 
-  set keySystemAccess(MediaKeySystemAccess value) {
+  set keySystemAccess(MediaKeySystemAccess? value) {
     unsupportedPlatformError();
   }
 
@@ -408,29 +408,45 @@ extension type MediaCapabilitiesEncodingInfo._(JSObject _)
 /// determine if playback should be smooth and power efficient.
 ///
 /// The information is accessed through the **`mediaCapabilities`** property of
-/// the [Navigator] interface.
+/// the [Navigator] and [WorkerNavigator] interface.
 ///
 /// ---
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MediaCapabilities).
 extension type MediaCapabilities._(JSObject _) implements JSObject {
-  /// The **`MediaCapabilities.decodingInfo()`** method, part of the
-  /// [Media Capabilities API](https://developer.mozilla.org/en-US/docs/Web/API/MediaCapabilities),
-  /// returns a promise with the tested media configuration's capabilities info.
-  /// This contains the three boolean properties `supported`, `smooth`, and
-  /// `powerefficient`, which describe whether decoding the media described
-  /// would be supported, smooth, and powerefficient.
+  /// The **`decodingInfo()`** method of the [MediaCapabilities] interface
+  /// returns a promise that fulfils with information about how well the user
+  /// agent can decode/display media with a given configuration.
+  ///
+  /// The resolved object contains three boolean properties `supported`,
+  /// `smooth`, and `powerefficient`, which indicate whether decoding the media
+  /// described would be supported, and if so, whether decoding would be smooth
+  /// and power-efficient.
+  ///
+  /// The method can also be used to test the user agent capabilities for
+  /// decoding media encoded with a key system, but only when called in the main
+  /// thread and in a secure context.
+  /// If the configuration passed in the `configuration.keySystemConfiguration`
+  /// property is supported for decoding the data, the resolved promise also
+  /// includes a [MediaKeySystemAccess] object that can be used to create a
+  /// [MediaKeys] object to setup encrypted playback.
+  ///
+  /// > [!NOTE]
+  /// > Calling `decodingInfo()` with this property may result in user-visible
+  /// > effects, such as asking for permission to access one or more system
+  /// > resources.
+  /// > As such, this function should only be called when the application is
+  /// > ready to create and use a `MediaKeys` object with the provided
+  /// > configuration.
   JSPromise<MediaCapabilitiesDecodingInfo> decodingInfo(
       MediaDecodingConfiguration configuration) {
     unsupportedPlatformError();
   }
 
-  /// The **`MediaCapabilities.encodingInfo()`** method, part of the
-  /// [MediaCapabilities] interface of the
-  /// [Media Capabilities API](https://developer.mozilla.org/en-US/docs/Web/API/MediaCapabilities),
-  /// returns a promise with the tested media configuration's capabilities
-  /// information.
+  /// The **`encodingInfo()`** method of the [MediaCapabilities] interface
+  /// returns a promise that fulfills with the tested media configuration's
+  /// capabilities for encoding media.
   /// This contains the three boolean properties `supported`, `smooth`, and
   /// `powerefficient`, which describe how compatible the device is with the
   /// type of media.

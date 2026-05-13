@@ -1,4 +1,4 @@
-// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2026, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -8,7 +8,7 @@
 
 // Generated from Web IDL definitions.
 
-// ignore_for_file: unintended_html_in_doc_comment
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 import '../error.dart';
 import '../js_interop.dart';
@@ -20,6 +20,8 @@ typedef ReadyState = String;
 typedef EndOfStreamError = String;
 typedef AppendMode = String;
 
+/// @AvailableInWorkers("window_and_dedicated")
+///
 /// The **`MediaSource`** interface of the [Media Source Extensions API]
 /// represents a source of media data for an [HTMLMediaElement] object. A
 /// `MediaSource` object can be attached to a [HTMLMediaElement] to be played in
@@ -32,6 +34,8 @@ typedef AppendMode = String;
 extension type MediaSource._(JSObject _) implements EventTarget, JSObject {
   MediaSource() : _ = JSObject();
 
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
   /// The **`MediaSource.isTypeSupported()`** static method returns a boolean
   /// value which is `true` if the given MIME type and (optional) codec are
   /// _likely_ to be supported by the current .
@@ -44,6 +48,8 @@ extension type MediaSource._(JSObject _) implements EventTarget, JSObject {
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
   /// The **`canConstructInDedicatedWorker`** static property of the
   /// [MediaSource] interface returns `true` if `MediaSource` worker support is
   /// implemented, providing a low-latency feature detection mechanism.
@@ -55,6 +61,8 @@ extension type MediaSource._(JSObject _) implements EventTarget, JSObject {
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
   /// The **`addSourceBuffer()`** method of the
   /// [MediaSource] interface creates a new [SourceBuffer] of the
   /// given  and adds it to the `MediaSource`'s
@@ -64,6 +72,8 @@ extension type MediaSource._(JSObject _) implements EventTarget, JSObject {
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
   /// The **`removeSourceBuffer()`** method of the [MediaSource] interface
   /// removes the given [SourceBuffer] from the [SourceBufferList] associated
   /// with this `MediaSource` object.
@@ -71,12 +81,16 @@ extension type MediaSource._(JSObject _) implements EventTarget, JSObject {
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
   /// The **`endOfStream()`** method of the
   /// [MediaSource] interface signals the end of the stream.
   void endOfStream([EndOfStreamError? error]) {
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
   /// The **`setLiveSeekableRange()`** method of the
   /// [MediaSource] interface sets the range that the user can seek to in the
   /// media element.
@@ -87,6 +101,8 @@ extension type MediaSource._(JSObject _) implements EventTarget, JSObject {
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
   /// The **`clearLiveSeekableRange()`** method of the
   /// [MediaSource] interface clears a seekable range previously set with a call
   /// to [MediaSource.setLiveSeekableRange].
@@ -94,6 +110,8 @@ extension type MediaSource._(JSObject _) implements EventTarget, JSObject {
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("dedicated")
+  ///
   /// The **`handle`** read-only property of the [MediaSource] interface returns
   /// a [MediaSourceHandle] object, a proxy for the `MediaSource` that can be
   /// transferred from a dedicated worker back to the main thread and attached
@@ -113,6 +131,8 @@ extension type MediaSource._(JSObject _) implements EventTarget, JSObject {
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
   /// The **`sourceBuffers`** read-only property of the
   /// [MediaSource] interface returns a [SourceBufferList] object
   /// containing the list of [SourceBuffer] objects associated with this
@@ -121,6 +141,8 @@ extension type MediaSource._(JSObject _) implements EventTarget, JSObject {
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
   /// The **`activeSourceBuffers`** read-only property of the
   /// [MediaSource] interface returns a [SourceBufferList] object
   /// containing a subset of the [SourceBuffer] objects contained within
@@ -131,6 +153,8 @@ extension type MediaSource._(JSObject _) implements EventTarget, JSObject {
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
   /// The **`readyState`** read-only property of the
   /// [MediaSource] interface returns an enum representing the state of the
   /// current `MediaSource`. The three possible values are:
@@ -144,6 +168,8 @@ extension type MediaSource._(JSObject _) implements EventTarget, JSObject {
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
   /// The **`duration`** property of the [MediaSource]
   /// interface gets and sets the duration of the current media being presented.
   double get duration {
@@ -179,6 +205,8 @@ extension type MediaSource._(JSObject _) implements EventTarget, JSObject {
   }
 }
 
+/// @AvailableInWorkers("window_and_dedicated")
+///
 /// The **`MediaSourceHandle`** interface of the [Media Source Extensions API]
 /// is a proxy for a [MediaSource] that can be transferred from a dedicated
 /// worker back to the main thread and attached to a media element via its
@@ -196,12 +224,17 @@ extension type MediaSource._(JSObject _) implements EventTarget, JSObject {
 /// instance in the worker is technically detached and can't be transferred
 /// again.
 ///
+/// `MediaSourceHandle` is a
+/// [transferable object](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Transferable_objects).
+///
 /// ---
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/MediaSourceHandle).
 extension type MediaSourceHandle._(JSObject _) implements JSObject {}
 
+/// @AvailableInWorkers("window_and_dedicated")
+///
 /// The **`SourceBuffer`** interface represents a chunk of media to be passed
 /// into an [HTMLMediaElement] and played, via a [MediaSource] object. This can
 /// be made up of one or several media segments.
@@ -211,6 +244,8 @@ extension type MediaSourceHandle._(JSObject _) implements JSObject {}
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SourceBuffer).
 extension type SourceBuffer._(JSObject _) implements EventTarget, JSObject {
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
   /// The **`appendBuffer()`** method of the
   /// [SourceBuffer] interface appends media segment data from an
   /// `ArrayBuffer`, a `TypedArray` or a `DataView` object
@@ -219,12 +254,16 @@ extension type SourceBuffer._(JSObject _) implements EventTarget, JSObject {
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
   /// The **`abort()`** method of the [SourceBuffer]
   /// interface aborts the current segment and resets the segment parser.
   void abort() {
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
   /// The **`changeType()`** method of the
   /// [SourceBuffer] interface sets the MIME type that future calls to
   /// [SourceBuffer.appendBuffer] should expect the new media
@@ -241,6 +280,8 @@ extension type SourceBuffer._(JSObject _) implements EventTarget, JSObject {
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
   /// The **`remove()`** method of the [SourceBuffer]
   /// interface removes media segments within a specific time range from the
   /// `SourceBuffer`. This method can only be called when
@@ -254,6 +295,8 @@ extension type SourceBuffer._(JSObject _) implements EventTarget, JSObject {
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
   /// The **`mode`** property of the [SourceBuffer]
   /// interface controls whether media segments can be appended to the
   /// `SourceBuffer` in any order, or in a strict sequence.
@@ -293,6 +336,8 @@ extension type SourceBuffer._(JSObject _) implements EventTarget, JSObject {
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
   /// The **`updating`** read-only property of the
   /// [SourceBuffer] interface indicates whether the `SourceBuffer` is
   /// currently being updated — i.e. whether an [SourceBuffer.appendBuffer] or
@@ -302,6 +347,8 @@ extension type SourceBuffer._(JSObject _) implements EventTarget, JSObject {
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
   /// The **`buffered`** read-only property of the
   /// [SourceBuffer] interface returns the time ranges that are currently
   /// buffered in the `SourceBuffer` as a normalized [TimeRanges]
@@ -310,6 +357,8 @@ extension type SourceBuffer._(JSObject _) implements EventTarget, JSObject {
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
   /// The **`timestampOffset`** property of the
   /// [SourceBuffer] interface controls the offset applied to timestamps inside
   /// media segments that are appended to the `SourceBuffer`.
@@ -323,6 +372,8 @@ extension type SourceBuffer._(JSObject _) implements EventTarget, JSObject {
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
   /// The **`audioTracks`** read-only property of the
   /// [SourceBuffer] interface returns a list of the audio tracks currently
   /// contained inside the `SourceBuffer`.
@@ -330,6 +381,8 @@ extension type SourceBuffer._(JSObject _) implements EventTarget, JSObject {
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
   /// The **`videoTracks`** read-only property of the
   /// [SourceBuffer] interface returns a list of the video tracks currently
   /// contained inside the `SourceBuffer`.
@@ -337,6 +390,8 @@ extension type SourceBuffer._(JSObject _) implements EventTarget, JSObject {
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
   /// The **`appendWindowStart`** property of the
   /// [SourceBuffer] interface controls the timestamp for the start of the
   /// [append window](https://w3c.github.io/media-source/#append-window), a
@@ -356,6 +411,8 @@ extension type SourceBuffer._(JSObject _) implements EventTarget, JSObject {
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
   /// The **`appendWindowEnd`** property of the
   /// [SourceBuffer] interface controls the timestamp for the end of the
   /// [append window](https://w3c.github.io/media-source/#append-window), a
@@ -415,6 +472,8 @@ extension type SourceBuffer._(JSObject _) implements EventTarget, JSObject {
   }
 }
 
+/// @AvailableInWorkers("window_and_dedicated")
+///
 /// The **`SourceBufferList`** interface represents a simple container list for
 /// multiple [SourceBuffer] objects.
 ///
@@ -435,6 +494,8 @@ extension type SourceBufferList._(JSObject _) implements EventTarget, JSObject {
     unsupportedPlatformError();
   }
 
+  /// @AvailableInWorkers("window_and_dedicated")
+  ///
   /// The **`length`** read-only property of the
   /// [SourceBufferList] interface returns the number of
   /// [SourceBuffer] objects in the list.

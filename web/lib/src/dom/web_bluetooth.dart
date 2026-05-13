@@ -1,4 +1,4 @@
-// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2026, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -8,12 +8,14 @@
 
 // Generated from Web IDL definitions.
 
-// ignore_for_file: unintended_html_in_doc_comment
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 import '../js_interop.dart';
 
-/// The **`BluetoothUUID`** interface of the [Web Bluetooth API] provides a way
-/// to look up Universally Unique Identifier (UUID) values by name in the
+/// The **`BluetoothUUID`** interface of the
+/// [Web Bluetooth API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Bluetooth_API)
+/// provides a way to look up Universally Unique Identifier (UUID) values by
+/// name in the
 /// [registry](https://www.bluetooth.com/specifications/assigned-numbers/)
 /// maintained by the Bluetooth SIG.
 ///

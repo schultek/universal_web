@@ -1,4 +1,4 @@
-// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2026, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -8,7 +8,7 @@
 
 // Generated from Web IDL definitions.
 
-// ignore_for_file: unintended_html_in_doc_comment
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 import '../error.dart';
 import '../js_interop.dart';
@@ -26,18 +26,37 @@ import 'html.dart';
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGElement).
 extension type SVGElement._(JSObject _) implements Element, JSObject {
+  /// The **`SVGElement.focus()`** method sets focus on the specified SVG
+  /// element, if it can be focused.
+  /// The focused element is the element that will receive keyboard and similar
+  /// events by default.
+  ///
+  /// By default the browser will scroll the element into view after focusing
+  /// it, and it may also provide visible indication of the focused element
+  /// (typically by displaying a "focus ring" around the element).
+  /// Parameter options are provided to disable the default scrolling and force
+  /// visible indication on elements.
   void focus([FocusOptions? options]) {
     unsupportedPlatformError();
   }
 
+  /// The **`SVGElement.blur()`** method removes keyboard focus from the current
+  /// SVG element.
   void blur() {
     unsupportedPlatformError();
   }
 
+  /// The **`ownerSVGElement`** property of the [SVGElement] interface reflects
+  /// the nearest ancestor  element. `null` if the given element is the
+  /// outermost `<svg>` element.
   SVGSVGElement? get ownerSVGElement {
     unsupportedPlatformError();
   }
 
+  /// The **`viewportElement`** property of the [SVGElement] interface
+  /// represents the `SVGElement` which established the current viewport. Often
+  /// the nearest ancestor  element. `null` if the given element is the
+  /// outermost `<svg>` element.
   SVGElement? get viewportElement {
     unsupportedPlatformError();
   }
@@ -806,6 +825,10 @@ extension type SVGElement._(JSObject _) implements Element, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`nonce`** property of the [SVGElement] interface returns the nonce
+  /// that is used by
+  /// [Content Security Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP)
+  /// to determine whether a given fetch will be allowed to proceed.
   String get nonce {
     unsupportedPlatformError();
   }
@@ -822,6 +845,22 @@ extension type SVGElement._(JSObject _) implements Element, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`tabIndex`** property of the [SVGElement] interface represents the
+  /// tab order of the current SVG element.
+  ///
+  /// Tab order is as follows:
+  ///
+  /// 1. Elements with a positive `tabIndex`. Elements that have identical
+  /// `tabIndex` values should be navigated in the order they appear. Navigation
+  /// proceeds from the lowest `tabIndex` to the highest `tabIndex`.
+  /// 2. Elements that do not support the `tabIndex` attribute or support it and
+  /// assign `tabIndex` to `0`, in the order they appear.
+  ///
+  /// Elements that are disabled do not participate in the tabbing order.
+  ///
+  /// Values don't need to be sequential, nor must they begin with any
+  /// particular value. They
+  /// may even be negative, though each browser trims very large values.
   int get tabIndex {
     unsupportedPlatformError();
   }
@@ -856,8 +895,9 @@ extension type SVGElement._(JSObject _) implements Element, JSObject {
   /// A style declaration is reset by setting it to `null` or an empty string,
   /// e.g., `elt.style.color = null`.
   ///
-  /// > **Note:** CSS property names are converted to JavaScript identifier with
-  /// > these rules:
+  /// > [!NOTE]
+  /// > CSS property names are converted to JavaScript identifier with these
+  /// > rules:
   /// >
   /// > - If the property is made of one word, it remains as it is: `height`
   /// > stays as is (in lowercase).
@@ -972,22 +1012,37 @@ extension type SVGGraphicsElement._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// The `getCTM()` method of the [SVGGraphicsElement] interface represents the
+  /// matrix that transforms the current element's coordinate system to its SVG
+  /// viewport's coordinate system.
   DOMMatrix? getCTM() {
     unsupportedPlatformError();
   }
 
+  /// The `getScreenCTM()` method of the [SVGGraphicsElement] interface
+  /// represents the matrix that transforms the current element's coordinate
+  /// system to the coordinate system of the SVG viewport for the SVG document
+  /// fragment.
   DOMMatrix? getScreenCTM() {
     unsupportedPlatformError();
   }
 
+  /// The **`transform`** read-only property of the [SVGGraphicsElement]
+  /// interface reflects the computed value of the transform property and its
+  /// corresponding `transform` attribute of the given element.
   SVGAnimatedTransformList get transform {
     unsupportedPlatformError();
   }
 
+  /// The **`requiredExtensions`** read-only property of the
+  /// [SVGGraphicsElement] interface reflects the `requiredExtensions` attribute
+  /// of the given element.
   SVGStringList get requiredExtensions {
     unsupportedPlatformError();
   }
 
+  /// The **`systemLanguage`** read-only property of the [SVGGraphicsElement]
+  /// interface reflects the `systemLanguage` attribute of the given element.
   SVGStringList get systemLanguage {
     unsupportedPlatformError();
   }
@@ -1003,26 +1058,18 @@ extension type SVGGraphicsElement._(JSObject _)
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGGeometryElement).
 extension type SVGGeometryElement._(JSObject _)
     implements SVGGraphicsElement, JSObject {
-  /// The **`SVGGeometryElement.isPointInFill()`** method determines
-  /// whether a given point is within the fill shape of an element. Normal hit
-  /// testing rules
-  /// apply; the value of the  property on the element determines
-  /// whether a point is considered to be within the fill. The `point` argument
-  /// is
-  /// interpreted as a point in the local coordinate system of the element.
+  /// The **`isPointInFill()`** method of the [SVGGeometryElement] interface
+  /// determines whether a given point is within the fill shape of an element.
+  /// The `point` argument is interpreted as a point in the local coordinate
+  /// system of the element.
   bool isPointInFill([DOMPointInit? point]) {
     unsupportedPlatformError();
   }
 
-  /// The **`SVGGeometryElement.isPointInStroke()`** method
+  /// The **`isPointInStroke()`** method of the [SVGGeometryElement] interface
   /// determines whether a given point is within the stroke shape of an element.
-  /// Normal hit
-  /// testing rules apply; the value of the  property on the
-  /// element determines whether a point is considered to be within the stroke.
-  /// The
-  /// `point` argument is interpreted as a point in the local coordinate system
-  /// of
-  /// the element.
+  /// The `point` argument is interpreted as a point in the local coordinate
+  /// system of the element.
   bool isPointInStroke([DOMPointInit? point]) {
     unsupportedPlatformError();
   }
@@ -1059,6 +1106,8 @@ extension type SVGGeometryElement._(JSObject _)
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGNumber).
 extension type SVGNumber._(JSObject _) implements JSObject {
+  /// The **`value`** read-only property of the [SVGNumber] interface represents
+  /// the number.
   double get value {
     unsupportedPlatformError();
   }
@@ -1068,7 +1117,11 @@ extension type SVGNumber._(JSObject _) implements JSObject {
   }
 }
 
+/// The **`SVGLength`** interface correspond to the
+/// [\<length>](/en-US/docs/Web/SVG/Content_type#length) basic data type.
 ///
+/// An `SVGLength` object can be designated as read only, which means that
+/// attempts to modify the object will result in an exception being thrown.
 ///
 /// ---
 ///
@@ -1097,6 +1150,9 @@ extension type SVGLength._(JSObject _) implements JSObject {
 
   static const int SVG_LENGTHTYPE_PC = 10;
 
+  /// The `newValueSpecifiedUnits()` method of the [SVGLength] interface resets
+  /// the value as a number with an associated [SVGLength.unitType], thereby
+  /// replacing the values for all of the attributes on the object.
   void newValueSpecifiedUnits(
     int unitType,
     num valueInSpecifiedUnits,
@@ -1104,14 +1160,33 @@ extension type SVGLength._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
+  /// The `convertToSpecifiedUnits()` method of the [SVGLength] interface allows
+  /// you to convert the length's value to the specified unit type.
+  ///
+  /// This function will:
+  ///
+  /// - Set the [SVGLength.unitType] property to the given unit type
+  /// - Update the [SVGLength.valueInSpecifiedUnits] and
+  ///   [SVGLength.valueAsString] properties so the length value is represented
+  ///   in the given unit type
   void convertToSpecifiedUnits(int unitType) {
     unsupportedPlatformError();
   }
 
+  /// The **`unitType`** property of the [SVGLength] interface that represents
+  /// type of the value as specified by one of the `SVG_LENGTHTYPE_*` constants
+  /// defined on this interface.
   int get unitType {
     unsupportedPlatformError();
   }
 
+  /// The `value` property of the [SVGLength] interface represents the floating
+  /// point value of the [\<length>](/en-US/docs/Web/SVG/Content_type#length) in
+  /// user units.
+  ///
+  /// Setting this attribute will cause [SVGLength.valueInSpecifiedUnits] and
+  /// [SVGLength.valueAsString] to be updated automatically to reflect this
+  /// setting.
   double get value {
     unsupportedPlatformError();
   }
@@ -1120,6 +1195,13 @@ extension type SVGLength._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
+  /// The `valueInSpecifiedUnits` property of the [SVGLength] interface
+  /// represents floating point value, in the units expressed by
+  /// [SVGLength.unitType].
+  ///
+  /// Setting this attribute will cause [SVGLength.value] and
+  /// [SVGLength.valueAsString] to be updated automatically to reflect this
+  /// setting.
   double get valueInSpecifiedUnits {
     unsupportedPlatformError();
   }
@@ -1128,6 +1210,13 @@ extension type SVGLength._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
+  /// The `valueAsString` property of the [SVGLength] interface represents the
+  /// [\<length>](/en-US/docs/Web/SVG/Content_type#length)'s value as a strin\*,
+  /// in the units expressed by [SVGLength.unitType].
+  ///
+  /// Setting this attribute will cause [SVGLength.value],
+  /// [SVGLength.valueInSpecifiedUnits], and [SVGLength.unitType] to be updated
+  /// automatically to reflect this setting.
   String get valueAsString {
     unsupportedPlatformError();
   }
@@ -1138,10 +1227,11 @@ extension type SVGLength._(JSObject _) implements JSObject {
 }
 
 /// The `SVGAngle` interface is used to represent a value that can be an  or
-/// value. An `SVGAngle` reflected through the `animVal` attribute is always
-/// read only.
+/// value.
 ///
-/// An `SVGAngle` object can be designated as read only, which means that
+/// The `SVGAngle` returned from [SVGAnimatedAngle.animVal] and
+/// [SVGAnimatedAngle.baseVal] is read only, but the `SVGAngle` returned from
+/// [SVGSVGElement.createSVGAngle] is writable. When designated as read only,
 /// attempts to modify the object will result in an exception being thrown.
 ///
 /// An `SVGAngle` object can be associated with a particular element. The
@@ -1152,7 +1242,8 @@ extension type SVGLength._(JSObject _) implements JSObject {
 /// Every `SVGAngle` object operates in one of two modes:
 ///
 /// 1. **_Reflect the base value_** of a reflected animatable attribute (being
-/// exposed through the `baseVal` member of an [SVGAnimatedAngle]),
+/// exposed through the [SVGAnimatedAngle.baseVal] member of an
+/// [SVGAnimatedAngle]),
 /// 2. **_Be detached_,** which is the case for `SVGAngle` objects created with
 /// [SVGSVGElement.createSVGAngle].
 ///
@@ -1171,6 +1262,9 @@ extension type SVGAngle._(JSObject _) implements JSObject {
 
   static const int SVG_ANGLETYPE_GRAD = 4;
 
+  /// The `newValueSpecifiedUnits()` method of the [SVGAngle] interface sets the
+  /// value to a number with an associated [SVGAngle.unitType], thereby
+  /// replacing the values for all of the attributes on the object.
   void newValueSpecifiedUnits(
     int unitType,
     num valueInSpecifiedUnits,
@@ -1178,14 +1272,32 @@ extension type SVGAngle._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
+  /// The `convertToSpecifiedUnits()` method of the [SVGAngle] interface allows
+  /// you to convert the angle's value to the specified unit type.
+  ///
+  /// This function will:
+  ///
+  /// - Set the [SVGAngle.unitType] property to the given unit type
+  /// - Update the [SVGAngle.valueInSpecifiedUnits] and [SVGAngle.valueAsString]
+  ///   properties so the angle value is represented in the given unit type
   void convertToSpecifiedUnits(int unitType) {
     unsupportedPlatformError();
   }
 
+  /// The **`unitType`** property of the [SVGAngle] interface is one of the
+  /// [unit type constants](https://developer.mozilla.org/en-US/docs/Web/API/SVGAngle#constants)
+  /// and represents the units in which this angle's value is expressed.
   int get unitType {
     unsupportedPlatformError();
   }
 
+  /// The `value` property of the [SVGAngle] interface represents the floating
+  /// point value of the [`<angle>`](/en-US/docs/Web/SVG/Content_type#angle) in
+  /// degrees.
+  ///
+  /// Setting this attribute will cause [SVGAngle.valueInSpecifiedUnits] and
+  /// [SVGAngle.valueAsString] to be updated automatically to reflect this
+  /// setting.
   double get value {
     unsupportedPlatformError();
   }
@@ -1194,6 +1306,13 @@ extension type SVGAngle._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
+  /// The `valueInSpecifiedUnits` property of the [SVGAngle] interface
+  /// represents the value of this angle as a number, in the units expressed by
+  /// the angle's [SVGAngle.unitType].
+  ///
+  /// Setting this attribute will cause [SVGAngle.value] and
+  /// [SVGAngle.valueAsString] to be updated automatically to reflect this
+  /// setting.
   double get valueInSpecifiedUnits {
     unsupportedPlatformError();
   }
@@ -1202,6 +1321,12 @@ extension type SVGAngle._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
+  /// The `valueAsString` property of the [SVGAngle] interface represents the
+  /// angle's value as a string, in the units expressed by [SVGAngle.unitType].
+  ///
+  /// Setting this attribute will cause [SVGAngle.value],
+  /// [SVGAngle.valueInSpecifiedUnits], and [SVGAngle.unitType] to be updated
+  /// automatically to reflect this setting.
   String get valueAsString {
     unsupportedPlatformError();
   }
@@ -1211,25 +1336,54 @@ extension type SVGAngle._(JSObject _) implements JSObject {
   }
 }
 
+/// The **`SVGNumberList`** interface defines a list of numbers.
 ///
+/// An `SVGNumberList` object can be designated as read only, which means that
+/// attempts to modify the object will result in an exception being thrown.
+///
+/// An `SVGNumberList` object is indexable and can be accessed like an array.
 ///
 /// ---
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGNumberList).
 extension type SVGNumberList._(JSObject _) implements JSObject {
+  /// The **`clear()`** method of the [SVGNumberList] interface clears all
+  /// existing items from the list, with the result being an empty list.
   void clear() {
     unsupportedPlatformError();
   }
 
+  /// The **`initialize()`** method of the [SVGNumberList] interface clears all
+  /// existing items from the list and re-initializes the list to hold the
+  /// single item specified by the parameter. If the inserted item is already in
+  /// a list, it is removed from its previous list before it is inserted into
+  /// this list. The inserted item is the item itself and not a copy. The return
+  /// value is the item inserted into the list.
   SVGNumber initialize(SVGNumber newItem) {
     unsupportedPlatformError();
   }
 
+  /// The **`getItem()`** method of the [SVGNumberList] interface returns the
+  /// specified item from the list. The returned item is the item itself and not
+  /// a copy. Any changes made to the item are immediately reflected in the
+  /// list. The first item is indexed 0.
   SVGNumber getItem(int index) {
     unsupportedPlatformError();
   }
 
+  /// The **`insertItemBefore()`** method of the [SVGNumberList] interface
+  /// inserts a new item into the list at the specified position. The first item
+  /// is indexed 0. The inserted item is the item itself and not a copy.
+  ///
+  /// - If the new item is already in a list, it is removed from its previous
+  ///   list before it is inserted into this list.
+  /// - If the item is already in this list, note that the index of the item to
+  ///   insert before is before the removal of the item.
+  /// - If the index is equal to 0, then the new item is inserted at the front
+  ///   of the list.
+  /// - If the index is greater than or equal to the [SVGNumberList.length],
+  ///   then the new item is appended to the end of the list.
   SVGNumber insertItemBefore(
     SVGNumber newItem,
     int index,
@@ -1237,6 +1391,12 @@ extension type SVGNumberList._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`replaceItem()`** method of the [SVGNumberList] interface replaces
+  /// an existing item in the list with a new item. If the new item is already
+  /// in a list, it is removed from its previous list before it is inserted into
+  /// this list. The inserted item is the item itself and not a copy. If the
+  /// item is already in this list, note that the index of the item to replace
+  /// is before the removal of the item.
   SVGNumber replaceItem(
     SVGNumber newItem,
     int index,
@@ -1244,10 +1404,16 @@ extension type SVGNumberList._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`removeItem()`** method of the [SVGNumberList] interface removes an
+  /// existing item at the given index from the list.
   SVGNumber removeItem(int index) {
     unsupportedPlatformError();
   }
 
+  /// The **`appendItem()`** method of the [SVGNumberList] interface inserts a
+  /// new item at the end of the list. If the given item is already in a list,
+  /// it is removed from its previous list before it is inserted into this list.
+  /// The inserted item is the item itself and not a copy.
   SVGNumber appendItem(SVGNumber newItem) {
     unsupportedPlatformError();
   }
@@ -1259,34 +1425,72 @@ extension type SVGNumberList._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`length`** property of the [SVGNumberList] interface returns the
+  /// number of items in the list. It is an alias of
+  /// [SVGNumberList.numberOfItems] to make SVG lists more
+  /// [array-like](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array#array-like_objects).
   int get length {
     unsupportedPlatformError();
   }
 
+  /// The **`numberOfItems`** property of the [SVGNumberList] interface returns
+  /// the number of items in the list. [SVGNumberList.length] is an alias of of
+  /// it.
   int get numberOfItems {
     unsupportedPlatformError();
   }
 }
 
+/// The **`SVGLengthList`** interface defines a list of [SVGLength] objects. It
+/// is used for the [SVGAnimatedLengthList.baseVal] and
+/// [SVGAnimatedLengthList.animVal] properties of [SVGAnimatedLengthList].
 ///
+/// An `SVGLengthList` object can be designated as read only, which means that
+/// attempts to modify the object will result in an exception being thrown.
+///
+/// An `SVGLengthList` object is indexable and can be accessed like an array.
 ///
 /// ---
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGLengthList).
 extension type SVGLengthList._(JSObject _) implements JSObject {
+  /// The **`clear()`** method of the [SVGLengthList] interface clears all
+  /// existing items from the list, with the result being an empty list.
   void clear() {
     unsupportedPlatformError();
   }
 
+  /// The **`initialize()`** method of the [SVGLengthList] interface clears all
+  /// existing items from the list and re-initializes the list to hold the
+  /// single item specified by the parameter. If the inserted item is already in
+  /// a list, it is removed from its previous list before it is inserted into
+  /// this list. The inserted item is the item itself and not a copy. The return
+  /// value is the item inserted into the list.
   SVGLength initialize(SVGLength newItem) {
     unsupportedPlatformError();
   }
 
+  /// The **`getItem()`** method of the [SVGLengthList] interface returns the
+  /// specified item from the list. The returned item is the item itself and not
+  /// a copy. Any changes made to the item are immediately reflected in the
+  /// list. The first item is indexed 0.
   SVGLength getItem(int index) {
     unsupportedPlatformError();
   }
 
+  /// The **`insertItemBefore()`** method of the [SVGLengthList] interface
+  /// inserts a new item into the list at the specified position. The first item
+  /// is indexed 0. The inserted item is the item itself and not a copy.
+  ///
+  /// - If the new item is already in a list, it is removed from its previous
+  ///   list before it is inserted into this list.
+  /// - If the item is already in this list, note that the index of the item to
+  ///   insert before is before the removal of the item.
+  /// - If the index is equal to 0, then the new item is inserted at the front
+  ///   of the list.
+  /// - If the index is greater than or equal to the [SVGLengthList.length],
+  ///   then the new item is appended to the end of the list.
   SVGLength insertItemBefore(
     SVGLength newItem,
     int index,
@@ -1294,6 +1498,12 @@ extension type SVGLengthList._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`replaceItem()`** method of the [SVGLengthList] interface replaces
+  /// an existing item in the list with a new item. If the new item is already
+  /// in a list, it is removed from its previous list before it is inserted into
+  /// this list. The inserted item is the item itself and not a copy. If the
+  /// item is already in this list, note that the index of the item to replace
+  /// is before the removal of the item.
   SVGLength replaceItem(
     SVGLength newItem,
     int index,
@@ -1301,10 +1511,16 @@ extension type SVGLengthList._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`removeItem()`** method of the [SVGLengthList] interface removes an
+  /// existing item at the given index from the list.
   SVGLength removeItem(int index) {
     unsupportedPlatformError();
   }
 
+  /// The **`appendItem()`** method of the [SVGLengthList] interface inserts a
+  /// new item at the end of the list. If the given item is already in a list,
+  /// it is removed from its previous list before it is inserted into this list.
+  /// The inserted item is the item itself and not a copy.
   SVGLength appendItem(SVGLength newItem) {
     unsupportedPlatformError();
   }
@@ -1316,34 +1532,70 @@ extension type SVGLengthList._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`length`** property of the [SVGLengthList] interface returns the
+  /// number of items in the list. It is an alias of
+  /// [SVGLengthList.numberOfItems] to make SVG lists more
+  /// [array-like](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array#array-like_objects).
   int get length {
     unsupportedPlatformError();
   }
 
+  /// The **`numberOfItems`** property of the [SVGLengthList] interface returns
+  /// the number of items in the list. [SVGLengthList.length] is an alias of of
+  /// it.
   int get numberOfItems {
     unsupportedPlatformError();
   }
 }
 
+/// The **`SVGStringList`** interface defines a list of strings.
 ///
+/// An `SVGStringList` object can be designated as read only, which means that
+/// attempts to modify the object will result in an exception being thrown.
+///
+/// An `SVGStringList` object is indexable and can be accessed like an array.
 ///
 /// ---
 ///
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGStringList).
 extension type SVGStringList._(JSObject _) implements JSObject {
+  /// The **`clear()`** method of the [SVGStringList] interface clears all
+  /// existing items from the list, with the result being an empty list.
   void clear() {
     unsupportedPlatformError();
   }
 
+  /// The **`initialize()`** method of the [SVGStringList] interface clears all
+  /// existing items from the list and re-initializes the list to hold the
+  /// single item specified by the parameter. If the inserted item is already in
+  /// a list, it is removed from its previous list before it is inserted into
+  /// this list. The inserted item is the item itself and not a copy. The return
+  /// value is the item inserted into the list.
   String initialize(String newItem) {
     unsupportedPlatformError();
   }
 
+  /// The **`getItem()`** method of the [SVGStringList] interface returns the
+  /// specified item from the list. The returned item is the item itself and not
+  /// a copy. Any changes made to the item are immediately reflected in the
+  /// list. The first item is indexed 0.
   String getItem(int index) {
     unsupportedPlatformError();
   }
 
+  /// The **`insertItemBefore()`** method of the [SVGStringList] interface
+  /// inserts a new item into the list at the specified position. The first item
+  /// is indexed 0. The inserted item is the item itself and not a copy.
+  ///
+  /// - If the new item is already in a list, it is removed from its previous
+  ///   list before it is inserted into this list.
+  /// - If the item is already in this list, note that the index of the item to
+  ///   insert before is before the removal of the item.
+  /// - If the index is equal to 0, then the new item is inserted at the front
+  ///   of the list.
+  /// - If the index is greater than or equal to the [SVGStringList.length],
+  ///   then the new item is appended to the end of the list.
   String insertItemBefore(
     String newItem,
     int index,
@@ -1351,6 +1603,14 @@ extension type SVGStringList._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`replaceItem()`** method of the [SVGStringList] interface replaces
+  /// an existing item in the list with a new item. The inserted item is the
+  /// item itself and not a copy.
+  ///
+  /// - If the new item is already in a list, it is removed from its previous
+  ///   list before it is inserted into this list.
+  /// - If the item is already in this list, note that the index of the item to
+  ///   replace is before the removal of the item.
   String replaceItem(
     String newItem,
     int index,
@@ -1358,10 +1618,16 @@ extension type SVGStringList._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`removeItem()`** method of the [SVGStringList] interface removes an
+  /// existing item at the given index from the list.
   String removeItem(int index) {
     unsupportedPlatformError();
   }
 
+  /// The **`appendItem()`** method of the [SVGStringList] interface inserts a
+  /// new item at the end of the list. If the given item is already in a list,
+  /// it is removed from its previous list before it is inserted into this list.
+  /// The inserted item is the item itself and not a copy.
   String appendItem(String newItem) {
     unsupportedPlatformError();
   }
@@ -1373,6 +1639,17 @@ extension type SVGStringList._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`length`** property of the [SVGStringList] interface returns the
+  /// number of items in the list. It is an alias of
+  /// [SVGStringList.numberOfItems] to make SVG lists more
+  /// [array-like](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array#array-like_objects).
+  int get length {
+    unsupportedPlatformError();
+  }
+
+  /// The **`numberOfItems`** property of the [SVGStringList] interface returns
+  /// the number of items in the list. [SVGStringList.length] is an alias of of
+  /// it.
   int get numberOfItems {
     unsupportedPlatformError();
   }
@@ -1385,6 +1662,17 @@ extension type SVGStringList._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedBoolean).
 extension type SVGAnimatedBoolean._(JSObject _) implements JSObject {
+  /// The **`baseVal`** property of the [SVGAnimatedBoolean] interface is the
+  /// value of the associated animatable boolean SVG attribute in its base
+  /// (none-animated) state. It reflects the value of the associated animatable
+  /// boolean attribute when no animations are applied.
+  ///
+  /// Some boolean SVG attributes, such as
+  /// [`preserveAlpha`](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/preserveAlpha),
+  /// are animatable. In such cases, `SVGAnimatedBoolean.baseVal` property is
+  /// `false` when the attribute is set to `false`, is omitted and defaults to
+  /// `false`, or is inheritable and inherits `false`. Otherwise, the value is
+  /// `true`.
   bool get baseVal {
     unsupportedPlatformError();
   }
@@ -1393,6 +1681,16 @@ extension type SVGAnimatedBoolean._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`animVal`** read-only property of the [SVGAnimatedBoolean] interface
+  /// represents the current animated value of the associated animatable boolean
+  /// SVG attribute. If the attribute is not animated, `animVal` is the same as
+  /// [SVGAnimatedBoolean.baseVal].
+  ///
+  /// Some boolean SVG attributes, such as
+  /// [`preserveAlpha`](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/preserveAlpha),
+  /// are animatable. In such cases, `SVGAnimatedBoolean.animVal` property is
+  /// `true` when the attribute value resolves to true. Otherwise, the value is
+  /// `false`.
   bool get animVal {
     unsupportedPlatformError();
   }
@@ -1431,6 +1729,14 @@ extension type SVGAnimatedEnumeration._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedInteger).
 extension type SVGAnimatedInteger._(JSObject _) implements JSObject {
+  /// The **`baseVal`** property of the [SVGAnimatedInteger] interface
+  /// represents the base (non-animated) value of an animatable
+  /// [`<integer>`](/en-US/docs/Web/SVG/Content_type#integer).
+  ///
+  /// Some attributes, like the `numOctaves` attribute of the  element or the
+  /// `order` attribute of the  accept a `long` integer as a value. This
+  /// property provides access to the static non-animated state of the attribute
+  /// as a number.
   int get baseVal {
     unsupportedPlatformError();
   }
@@ -1439,6 +1745,15 @@ extension type SVGAnimatedInteger._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`animVal`** property of the [SVGAnimatedInteger] interface
+  /// represents the animated value of an
+  /// [`<integer>`](/en-US/docs/Web/SVG/Content_type#integer). If no animation
+  /// is applied, `animVal` equals `baseVal`.
+  ///
+  /// Some attributes, like the `numOctaves` attribute of the  element or the
+  /// `order` attribute of the  accept a `long` integer as a value. This
+  /// property provides access to the current animated state of the attribute as
+  /// a number.
   int get animVal {
     unsupportedPlatformError();
   }
@@ -1451,6 +1766,14 @@ extension type SVGAnimatedInteger._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedNumber).
 extension type SVGAnimatedNumber._(JSObject _) implements JSObject {
+  /// The **`baseVal`** property of the [SVGAnimatedNumber] interface represents
+  /// the base (non-animated) value of an animatable numeric attribute.
+  ///
+  /// Some animatable SVG attributes accept a single numeric value, such as the
+  /// `radius` attribute of the  or  elements and the `width` and `height`
+  /// attributes of the  element, and many others. The `baseVal` property
+  /// reflects and updates the base, or non-animated, value of the numeric
+  /// attribute.
   double get baseVal {
     unsupportedPlatformError();
   }
@@ -1459,6 +1782,14 @@ extension type SVGAnimatedNumber._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`animVal`** read-only property of the [SVGAnimatedNumber] interface
+  /// represents the animated value of an SVG element's numeric attribute.
+  ///
+  /// Some animatable SVG attributes accept a single number, such as the
+  /// `radius` attribute of the  or  elements and the `width` and `height`
+  /// attributes of the  element, and many others. The `animVal` attribute
+  /// provides access to the current animated value of the animatable numeric
+  /// attribute during animations.
   double get animVal {
     unsupportedPlatformError();
   }
@@ -1493,10 +1824,28 @@ extension type SVGAnimatedLength._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedAngle).
 extension type SVGAnimatedAngle._(JSObject _) implements JSObject {
+  /// The **`baseVal`** read-only property of the [SVGAnimatedAngle] interface
+  /// represents the base (non-animated) value of the associated
+  /// [`<angle>`](/en-US/docs/Web/SVG/Content_type#angle) on an SVG element.
+  /// This property is used to retrieve the static value of the `<angle>`,
+  /// unaffected by any ongoing animations.
+  ///
+  /// This property reflects the `<angle>` value of the `orient` attribute of
+  /// the SVG  element, which is the same as the [SVGMarkerElement.orientAngle]
+  /// property.
   SVGAngle get baseVal {
     unsupportedPlatformError();
   }
 
+  /// The **`animVal`** read-only property of the [SVGAnimatedAngle] interface
+  /// represents the current animated value of the associated
+  /// [`<angle>`](/en-US/docs/Web/SVG/Content_type#angle) on an SVG element. If
+  /// the attribute is not currently being animated, `animVal` will be the same
+  /// as the `baseVal`.
+  ///
+  /// This property reflects the animated state of the angle of the animating
+  /// `orient` attribute of the SVG  element, providing access to the value of
+  /// the angle during animations.
   SVGAngle get animVal {
     unsupportedPlatformError();
   }
@@ -1522,13 +1871,12 @@ extension type SVGAnimatedString._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
-  /// AnimVal attribute or animVal property contains the same value as the
-  /// [SVGAnimatedString.baseVal] property. If the given attribute or property
-  /// is being animated, contains the current animated value of the attribute or
-  /// property. If the given attribute or property is not currently being
-  /// animated, then it contains the same value as baseVal
-  ///
-  /// > **Note:** The **animVal** property is a read only property.
+  /// The `animVal` read-only property of the [SVGAnimatedString] interface
+  /// contains the same value as the [SVGAnimatedString.baseVal] property. If
+  /// the given attribute or property is being animated, it contains the current
+  /// animated value of the attribute or property. If the given attribute or
+  /// property is not currently being animated, then it contains the same value
+  /// as `baseVal`.
   String get animVal {
     unsupportedPlatformError();
   }
@@ -1579,10 +1927,27 @@ extension type SVGAnimatedString._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedRect).
 extension type SVGAnimatedRect._(JSObject _) implements JSObject {
+  /// The **`baseVal`** read-only property of the [SVGAnimatedRect] interface
+  /// represents the current non-animated value of the `viewBox` attribute of an
+  /// SVG element.
+  ///
+  /// This property reflects the SVG element's `viewBox` attribute value as a
+  /// read-only [DOMRect] object. It provides access to the static rectangle
+  /// defined by the `viewBox` attribute, including the `x`, `y`, `width`, and
+  /// `height` values.
   DOMRect get baseVal {
     unsupportedPlatformError();
   }
 
+  /// The **`animVal`** read-only property of the [SVGAnimatedRect] interface
+  /// represents the current animated value of the `viewBox` attribute of an SVG
+  /// element as a read-only [DOMRectReadOnly] object. It provides access to the
+  /// rectangle's dynamic state, including the `x`, `y`, `width`, and `height`
+  /// values during the animation.
+  ///
+  /// If no animation is applied, the `animVal` property reflects the SVG
+  /// element's `viewBox` attribute value and will be identical to
+  /// [SVGAnimatedRect.baseVal].
   DOMRectReadOnly get animVal {
     unsupportedPlatformError();
   }
@@ -1595,10 +1960,42 @@ extension type SVGAnimatedRect._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedNumberList).
 extension type SVGAnimatedNumberList._(JSObject _) implements JSObject {
+  /// The **`baseVal`** read-only property of the [SVGAnimatedNumberList]
+  /// interface represents the base (non-animated) value of an animatable
+  /// attribute that accepts a list of
+  /// [`<number>`](/en-US/docs/Web/SVG/Content_type#number) values.
+  ///
+  /// This property reflects the
+  /// [`viewBox`](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/viewBox)
+  /// attribute of the
+  /// [`<svg>`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/svg)
+  /// element, the
+  /// [`values`](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/values#fecolormatrix)
+  /// attribute of the
+  /// [`feColorMatrix`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/feColorMatrix)
+  /// element and the `points` attribute of the , , or  element as a readonly
+  /// [SVGNumberList], providing access to a static list of points defined by
+  /// the `points` attribute.
   SVGNumberList get baseVal {
     unsupportedPlatformError();
   }
 
+  /// The **`animVal`** read-only property of the [SVGAnimatedNumberList]
+  /// interface represents the current animated value of an animatable attribute
+  /// that accepts a list of
+  /// [`<number>`](/en-US/docs/Web/SVG/Content_type#number) values.
+  ///
+  /// This property reflects the
+  /// [`viewBox`](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/viewBox)
+  /// attribute of the
+  /// [`<svg>`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/svg)
+  /// element, the
+  /// [`values`](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/values#fecolormatrix)
+  /// attribute of the
+  /// [`feColorMatrix`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/feColorMatrix)
+  /// element and the `points` attribute of the , , or  element as a readonly
+  /// [SVGNumberList], providing access to a dynamically updated list of points
+  /// defined by the `points` attribute.
   SVGNumberList get animVal {
     unsupportedPlatformError();
   }
@@ -1611,10 +2008,37 @@ extension type SVGAnimatedNumberList._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedLengthList).
 extension type SVGAnimatedLengthList._(JSObject _) implements JSObject {
+  /// The **`baseVal`** read-only property of the [SVGAnimatedLengthList]
+  /// interface represents the base (non-animated) value of an animatable
+  /// attribute that accepts a list of
+  /// [`<length>`](/en-US/docs/Web/SVG/Content_type#length),
+  /// [`<percentage>`](/en-US/docs/Web/SVG/Content_type#percentage), or
+  /// [`<number>`](/en-US/docs/Web/SVG/Content_type#number) values.
+  ///
+  /// Some SVG attributes, like the `x`, `y`, `dx`, and `dy` attributes of the
+  /// [`<tspan>`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/tspan)
+  /// and
+  /// [`<text>`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/text)
+  /// elements, accept a list of length, percentages, or numbers as a value.
+  /// This property reflects the attribute value, in its non-animated state, as
+  /// a live [SVGLengthList] object.
   SVGLengthList get baseVal {
     unsupportedPlatformError();
   }
 
+  /// The **`animVal`** read-only property of the [SVGAnimatedLengthList]
+  /// interface represents the animated value of an attribute that accepts a
+  /// list of [`<length>`](/en-US/docs/Web/SVG/Content_type#length),
+  /// [`<percentage>`](/en-US/docs/Web/SVG/Content_type#percentage), or
+  /// [`<number>`](/en-US/docs/Web/SVG/Content_type#number) values.
+  ///
+  /// Some SVG attributes, like the `x`, `y`, `dx`, and `dy` attributes of the
+  /// [`<tspan>`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/tspan)
+  /// and
+  /// [`<text>`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/text)
+  /// elements, accept a list of length, percentages, or numbers as a value.
+  /// This property provides access to the current animated state of the
+  /// attribute as a live [SVGLengthList] object.
   SVGLengthList get animVal {
     unsupportedPlatformError();
   }
@@ -1669,6 +2093,13 @@ extension type SVGSVGElement._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// The `checkIntersection()` method of the [SVGSVGElement] interface checks
+  /// if the rendered content of the given element intersects the supplied
+  /// rectangle.
+  ///
+  /// Each candidate graphics element is to be considered a match only if the
+  /// same graphics element can be a target of pointer events as defined in
+  /// processing.
   bool checkIntersection(
     SVGElement element,
     DOMRectReadOnly rect,
@@ -1676,6 +2107,13 @@ extension type SVGSVGElement._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// The `checkEnclosure()` method of the [SVGSVGElement] interface checks if
+  /// the rendered content of the given element is entirely contained within the
+  /// supplied rectangle.
+  ///
+  /// Each candidate graphics element is to be considered a match only if the
+  /// same graphics element can be a target of pointer events as defined in
+  /// processing.
   bool checkEnclosure(
     SVGElement element,
     DOMRectReadOnly rect,
@@ -1683,42 +2121,66 @@ extension type SVGSVGElement._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// The `deselectAll()` method of the [SVGSVGElement] interface unselects any
+  /// selected objects, including any selections of text strings and type-in
+  /// bars.
   void deselectAll() {
     unsupportedPlatformError();
   }
 
+  /// The `createSVGNumber()` method of the [SVGSVGElement] interface creates an
+  /// [SVGNumber] object outside of any document trees.
   SVGNumber createSVGNumber() {
     unsupportedPlatformError();
   }
 
+  /// The `createSVGLength()` method of the [SVGSVGElement] interface creates an
+  /// [SVGLength] object outside of any document trees.
   SVGLength createSVGLength() {
     unsupportedPlatformError();
   }
 
+  /// The `createSVGAngle()` method of the [SVGSVGElement] interface creates an
+  /// [SVGAngle] object outside of any document trees.
   SVGAngle createSVGAngle() {
     unsupportedPlatformError();
   }
 
+  /// The `createSVGPoint()` method of the [SVGSVGElement] interface creates an
+  /// [SVGPoint] object outside of any document trees.
   DOMPoint createSVGPoint() {
     unsupportedPlatformError();
   }
 
+  /// The `createSVGMatrix()` method of the [SVGSVGElement] interface creates a
+  /// [DOMMatrix] object outside of any document trees.
   DOMMatrix createSVGMatrix() {
     unsupportedPlatformError();
   }
 
+  /// The `createSVGRect()` method of the [SVGSVGElement] interface creates an
+  /// [DOMRect] object outside of any document trees.
   DOMRect createSVGRect() {
     unsupportedPlatformError();
   }
 
+  /// The `createSVGTransform()` method of the [SVGSVGElement] interface creates
+  /// an [SVGTransform] object outside of any document trees.
   SVGTransform createSVGTransform() {
     unsupportedPlatformError();
   }
 
+  /// The `createSVGTransformFromMatrix()` method of the [SVGSVGElement]
+  /// interface creates an [SVGTransform] object outside of any document trees,
+  /// based on the given [DOMMatrix] object.
   SVGTransform createSVGTransformFromMatrix([DOMMatrix2DInit? matrix]) {
     unsupportedPlatformError();
   }
 
+  /// The `getElementById()` method of the [SVGSVGElement] interface searches
+  /// the SVG document fragment (i.e., the search is restricted to a subset of
+  /// the document tree) for an [Element] whose `id` property matches the
+  /// specified string.
   Element getElementById(String elementId) {
     unsupportedPlatformError();
   }
@@ -1739,42 +2201,125 @@ extension type SVGSVGElement._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// The `pauseAnimations()` method of the [SVGSVGElement] interface suspends
+  /// (i.e., pauses) all currently running animations that are defined within
+  /// the SVG document fragment corresponding to this  element, causing the
+  /// animation clock corresponding to this document fragment to stand still
+  /// until it is unpaused.
   void pauseAnimations() {
     unsupportedPlatformError();
   }
 
+  /// The `unpauseAnimations()` method of the [SVGSVGElement] interface resumes
+  /// (i.e., unpauses) currently running animations that are defined within the
+  /// SVG document fragment, causing the animation clock to continue from the
+  /// time at which it was suspended.
   void unpauseAnimations() {
     unsupportedPlatformError();
   }
 
+  /// The `animationsPaused()` method of the [SVGSVGElement] interface checks
+  /// whether the animations in the SVG document fragment are currently paused.
   bool animationsPaused() {
     unsupportedPlatformError();
   }
 
+  /// The `getCurrentTime()` method of the [SVGSVGElement] interface returns the
+  /// current time in seconds relative to the start time for the current SVG
+  /// document fragment.
+  ///
+  /// If `getCurrentTime()` is called before the document timeline has begun
+  /// (for example, by script running in a  element before the document's
+  /// `SVGLoad` event is dispatched), then `0` is returned.
   double getCurrentTime() {
     unsupportedPlatformError();
   }
 
+  /// The `setCurrentTime()` method of the [SVGSVGElement] interface adjusts the
+  /// clock for this SVG document fragment, establishing a new current time.
+  ///
+  /// If `setCurrentTime()` is called before the document timeline has begun
+  /// (for example, by script running in a  element before the document's
+  /// `SVGLoad` event is dispatched), then the value of seconds in the last
+  /// invocation of the method gives the time that the document will seek to
+  /// once the document timeline has begun.
   void setCurrentTime(num seconds) {
     unsupportedPlatformError();
   }
 
+  /// The **`x`** read-only property of the [SVGSVGElement] interface describes
+  /// the horizontal coordinate of the position of that SVG as an
+  /// [SVGAnimatedLength]. When an  is nested within another `<svg>`, the
+  /// horizontal coordinate is a length in the user coordinate system that is
+  /// the given distance from the origin of the user coordinate system along the
+  /// x-axis. Its syntax is the same as that for
+  /// [`<length>`](/en-US/docs/Web/SVG/Content_type#length).
+  ///
+  /// It reflects the  element's `x` geometric attribute. The default value is
+  /// `0`. The `x` attribute has no effect on outermost `<svg>` elements; only
+  /// one nested ones. The CSS `x` property takes precedence over the `<svg>`
+  /// element's `x` attribute, so the value may not reflect the element's
+  /// appearance.
   SVGAnimatedLength get x {
     unsupportedPlatformError();
   }
 
+  /// The **`y`** read-only property of the [SVGSVGElement] interface describes
+  /// the vertical coordinate of the position of that SVG as an
+  /// [SVGAnimatedLength]. When an  is nested within another `<svg>`, the
+  /// vertical coordinate is a length in the user coordinate system that is the
+  /// given distance from the origin of the user coordinate system along the
+  /// y-axis. Its syntax is the same as that for
+  /// [`<length>`](/en-US/docs/Web/SVG/Content_type#length).
+  ///
+  /// It reflects the  element's `y` geometric attribute. The default value is
+  /// `0`. The `y` attribute has no effect on outermost `<svg>` elements; only
+  /// on nested ones. The CSS `y` property takes precedence over the `<svg>`
+  /// element's `y` attribute, so the value may not reflect the element's
+  /// appearance.
   SVGAnimatedLength get y {
     unsupportedPlatformError();
   }
 
+  /// The **`width`** read-only property of the [SVGSVGElement] interface
+  /// describes the horizontal size of element as an [SVGAnimatedLength]. It
+  /// reflects the  element's `width` attribute, which may not be the SVG's
+  /// rendered width.
+  ///
+  /// The CSS `width` property takes precedence over the `<svg>` element's
+  /// `width` attribute, so the value may not reflect the element's appearance.
+  /// If both the `viewBox` and `width` attributes are omitted, the `width`
+  /// property reflects that actual width.
   SVGAnimatedLength get width {
     unsupportedPlatformError();
   }
 
+  /// The **`height`** read-only property of the [SVGSVGElement] interface
+  /// describes the vertical size of element as an [SVGAnimatedLength]. It
+  /// reflects the  element's `height` attribute, which may not be the SVG's
+  /// rendered height.
+  ///
+  /// The CSS `height` property takes precedence over the `<svg>` element's
+  /// `height` attribute, so the value may not reflect the element's appearance.
+  /// If both the `viewBox` and `height` attributes are omitted, the `height`
+  /// property reflects that actual height.
   SVGAnimatedLength get height {
     unsupportedPlatformError();
   }
 
+  /// The **`currentScale`** property of the [SVGSVGElement] interface reflects
+  /// the current scale factor relative to the initial view to take into account
+  /// user magnification and panning operations on the outermost  element.
+  ///
+  /// DOM attributes `currentScale` and `currentTranslate` are equivalent to the
+  /// 2×3 matrix `[a b c d e f] = [currentScale 0 0 currentScale
+  /// currentTranslate.x currentTranslate.y]`. If "magnification" is enabled
+  /// (i.e., `zoomAndPan="magnify"`), then the effect is as if an extra
+  /// transformation were placed at the outermost level on the SVG document
+  /// fragment (i.e., outside the outermost  element).
+  ///
+  /// If the  element is not at the outermost level, then `currentScale` is
+  /// always `1` and setting it has no effect.
   double get currentScale {
     unsupportedPlatformError();
   }
@@ -1783,14 +2328,40 @@ extension type SVGSVGElement._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// The **`currentTranslate`** read-only property of the [SVGSVGElement]
+  /// interface reflects the translation factor that takes into account user
+  /// "magnification" corresponding to an outermost  element.
+  ///
+  /// If the  element is not at the outermost level, then `currentTranslate` is
+  /// always `{ x: 0, y: 0 }` and is read-only. Otherwise, it is writable.
   DOMPointReadOnly get currentTranslate {
     unsupportedPlatformError();
   }
 
+  /// The **`viewBox`** read-only property of the [SVGSVGElement] interface
+  /// reflects the  element's `viewBox` attribute as an [SVGAnimatedRect].
+  ///
+  /// The property describes the `<svg>` element's `<viewBox>` attribute, which
+  /// is used to defined the x-coordinate, y-coordinate, width, and height of an
+  /// `<svg>` element. The [SVGAnimatedRect.baseVal] and
+  /// [SVGAnimatedRect.animVal] properties are both [SVGRect] objects, or `null`
+  /// if the `viewBox` is not defined. These objects' components my differ from
+  /// the [SVGSVGElement.x], [SVGSVGElement.y], [SVGSVGElement.width] and
+  /// [SVGSVGElement.height] properties, as the `x`, `y`, `width`, and `height`
+  /// attributes take precedence over the `viewBox` attribute.
+  ///
+  /// For non-nested SVG elements, the values of the CSS `x`, `y`, `width`, and
+  /// `height` properties take precedence over any element attributes, so the
+  /// values defined by the `viewBox` may not be reflected in the element's
+  /// appearance.
   SVGAnimatedRect get viewBox {
     unsupportedPlatformError();
   }
 
+  /// The **`preserveAspectRatio`** read-only property of the [SVGSVGElement]
+  /// interface reflects the `preserveAspectRatio` attribute of the given
+  /// element. It defines how the SVG element's content should be scaled to fit
+  /// the given space, preserving its aspect ratio.
   SVGAnimatedPreserveAspectRatio get preserveAspectRatio {
     unsupportedPlatformError();
   }
@@ -1875,11 +2446,27 @@ extension type SVGSVGElement._(JSObject _)
     unsupportedPlatformError();
   }
 
+  EventHandler get onpagereveal {
+    unsupportedPlatformError();
+  }
+
+  set onpagereveal(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
   EventHandler get onpageshow {
     unsupportedPlatformError();
   }
 
   set onpageshow(EventHandler value) {
+    unsupportedPlatformError();
+  }
+
+  EventHandler get onpageswap {
+    unsupportedPlatformError();
+  }
+
+  set onpageswap(EventHandler value) {
     unsupportedPlatformError();
   }
 
@@ -2033,10 +2620,16 @@ extension type SVGSymbolElement._(JSObject _)
           'symbol',
         );
 
+  /// The **`viewBox`** read-only property of the [SVGSymbolElement] interface
+  /// reflects the `viewBox` attribute of the given  element.
   SVGAnimatedRect get viewBox {
     unsupportedPlatformError();
   }
 
+  /// The **`preserveAspectRatio`** read-only property of the [SVGSymbolElement]
+  /// interface reflects the `preserveAspectRatio` attribute of the given
+  /// element. It defines how the `symbol`'s content should be scaled to fit the
+  /// given space, preserving its aspect ratio.
   SVGAnimatedPreserveAspectRatio get preserveAspectRatio {
     unsupportedPlatformError();
   }
@@ -2057,22 +2650,66 @@ extension type SVGUseElement._(JSObject _)
           'use',
         );
 
+  /// The **`x`** read-only property of the [SVGUseElement] interface describes
+  /// the x-axis coordinate of the start point of the referenced element as an
+  /// [SVGAnimatedLength]. It reflects the computed value of the `x` attribute
+  /// on the  element.
+  ///
+  /// The attribute value is a
+  /// [`<length>`](/en-US/docs/Web/SVG/Content_type#length),
+  /// [`<percentage>`](/en-US/docs/Web/SVG/Content_type#percentage), or
+  /// [`<number>`](/en-US/docs/Web/SVG/Content_type#number). The numeric value
+  /// of the [SVGAnimatedLength.baseVal] is the x-coordinate of the top-left
+  /// corner of the referenced element in the user coordinate system.
   SVGAnimatedLength get x {
     unsupportedPlatformError();
   }
 
+  /// The **`y`** read-only property of the [SVGUseElement] interface describes
+  /// the y-axis coordinate of the start point of the referenced element as an
+  /// [SVGAnimatedLength]. It reflects the computed value of the `y` attribute
+  /// on the  element.
+  ///
+  /// The attribute value is a
+  /// [`<length>`](/en-US/docs/Web/SVG/Content_type#length),
+  /// [`<percentage>`](/en-US/docs/Web/SVG/Content_type#percentage), or
+  /// [`<number>`](/en-US/docs/Web/SVG/Content_type#number). The numeric value
+  /// of the [SVGAnimatedLength.baseVal] is the y-coordinate of the top-left
+  /// corner of the referenced element in the user coordinate system.
   SVGAnimatedLength get y {
     unsupportedPlatformError();
   }
 
+  /// The **`width`** read-only property of the [SVGUseElement] interface
+  /// describes the width of the referenced element as an [SVGAnimatedLength].
+  /// It reflects the computed value of the `width` attribute on the  element.
+  ///
+  /// The attribute value is a
+  /// [`<length>`](/en-US/docs/Web/SVG/Content_type#length),
+  /// [`<percentage>`](/en-US/docs/Web/SVG/Content_type#percentage), or
+  /// [`<number>`](/en-US/docs/Web/SVG/Content_type#number). The numeric value
+  /// of the [SVGAnimatedLength.baseVal] is the width of the referenced element
+  /// in the user coordinate system.
   SVGAnimatedLength get width {
     unsupportedPlatformError();
   }
 
+  /// The **`height`** read-only property of the [SVGUseElement] interface
+  /// describes the height of the referenced element as an [SVGAnimatedLength].
+  /// It reflects the computed value of the `height` attribute on the  element.
+  ///
+  /// The attribute value is a
+  /// [`<length>`](/en-US/docs/Web/SVG/Content_type#length),
+  /// [`<percentage>`](/en-US/docs/Web/SVG/Content_type#percentage), or
+  /// [`<number>`](/en-US/docs/Web/SVG/Content_type#number). The numeric value
+  /// of the [SVGAnimatedLength.baseVal] is the height of the referenced element
+  /// in the user coordinate system.
   SVGAnimatedLength get height {
     unsupportedPlatformError();
   }
 
+  /// The **`href`** read-only property of the [SVGUseElement] interface
+  /// reflects the `href` or   attribute of the given element.
   SVGAnimatedString get href {
     unsupportedPlatformError();
   }
@@ -2141,7 +2778,7 @@ extension type SVGStyleElement._(JSObject _) implements SVGElement, JSObject {
   /// [`title`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/style#title)
   /// attribute of the given SVG style element.
   /// It may be used to select between
-  /// [alternate style sheets](https://developer.mozilla.org/en-US/docs/Web/CSS/Alternative_style_sheets).
+  /// [alternate style sheets](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel/alternate_stylesheet).
   String get title {
     unsupportedPlatformError();
   }
@@ -2179,10 +2816,20 @@ extension type SVGTransform._(JSObject _) implements JSObject {
 
   static const int SVG_TRANSFORM_SKEWY = 6;
 
+  /// The `setMatrix()` method of the [SVGTransform] interface sets the
+  /// transform type to `SVG_TRANSFORM_MATRIX`, with parameter `matrix` defining
+  /// the new transformation.
+  ///
+  /// Note that the values from the parameter `matrix` are copied, meaning
+  /// changes to the `matrix` object after calling this method will not affect
+  /// the transformation.
   void setMatrix([DOMMatrix2DInit? matrix]) {
     unsupportedPlatformError();
   }
 
+  /// The `setTranslate()` method of the [SVGTransform] interface sets the
+  /// transform type to `SVG_TRANSFORM_TRANSLATE`, with parameters `tx` and `ty`
+  /// defining the translation amounts.
   void setTranslate(
     num tx,
     num ty,
@@ -2190,6 +2837,9 @@ extension type SVGTransform._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
+  /// The `setScale()` method of the [SVGTransform] interface sets the transform
+  /// type to `SVG_TRANSFORM_SCALE`, with parameters `sx` and `sy` defining the
+  /// scale amounts.
   void setScale(
     num sx,
     num sy,
@@ -2197,6 +2847,10 @@ extension type SVGTransform._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
+  /// The `setRotate()` method of the [SVGTransform] interface sets the
+  /// transform type to `SVG_TRANSFORM_ROTATE`, with parameter `angle` defining
+  /// the rotation angle and parameters `cx` and `cy` defining the optional
+  /// center of rotation.
   void setRotate(
     num angle,
     num cx,
@@ -2205,22 +2859,63 @@ extension type SVGTransform._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
+  /// The `setSkewX()` method of the [SVGTransform] interface sets the transform
+  /// type to `SVG_TRANSFORM_SKEWX`, with parameter `angle` defining the amount
+  /// of skew along the X-axis.
   void setSkewX(num angle) {
     unsupportedPlatformError();
   }
 
+  /// The `setSkewY()` method of the [SVGTransform] interface sets the transform
+  /// type to `SVG_TRANSFORM_SKEWY`, with parameter `angle` defining the amount
+  /// of skew along the Y-axis.
   void setSkewY(num angle) {
     unsupportedPlatformError();
   }
 
+  /// The **`type`** read-only property of the [SVGTransform] interface
+  /// represents the `type` of transformation applied, specified by one of the
+  /// `SVG_TRANSFORM_*` constants defined on this interface.
   int get type {
     unsupportedPlatformError();
   }
 
+  /// The **`matrix`** read-only property of the [SVGTransform] interface
+  /// represents the transformation matrix that corresponds to the
+  /// transformation `type`.
+  ///
+  /// In case the `matrix` object is changed directly (i.e., without using the
+  /// methods on the `SVGTransform` interface itself) then the `type` of the
+  /// `SVGTransform` changes to `SVG_TRANSFORM_MATRIX`.
+  ///
+  /// - For `SVG_TRANSFORM_MATRIX`, the matrix contains the a, b, c, d, e, f
+  ///   values supplied by the user.
+  ///
+  /// - For `SVG_TRANSFORM_TRANSLATE`, e and f represent the translation amounts
+  ///   (a=1, b=0, c=0 and d=1).
+  ///
+  /// - For `SVG_TRANSFORM_SCALE`, a and d represent the scale amounts (b=0,
+  ///   c=0, e=0 and f=0).
+  ///
+  /// - For `SVG_TRANSFORM_SKEWX` and `SVG_TRANSFORM_SKEWY`, a, b, c and d
+  ///   represent the matrix which will result in the given skew (e=0 and f=0).
+  ///
+  /// - For `SVG_TRANSFORM_ROTATE`, a, b, c, d, e and f together represent the
+  ///   matrix which will result in the given rotation. When the rotation is
+  ///   around the center point (0, 0), e and f will be zero.
   DOMMatrix get matrix {
     unsupportedPlatformError();
   }
 
+  /// The **`angle`** read-only property of the [SVGTransform] interface
+  /// represents the angle of the transformation in degrees.
+  ///
+  /// For `SVG_TRANSFORM_ROTATE`, `SVG_TRANSFORM_SKEWX`, and
+  /// `SVG_TRANSFORM_SKEWY`, `angle` reflects the transformation's rotation or
+  /// skewing angle.
+  ///
+  /// For `SVG_TRANSFORM_MATRIX`, `SVG_TRANSFORM_TRANSLATE` and
+  /// `SVG_TRANSFORM_SCALE`, `angle` will be zero.
   double get angle {
     unsupportedPlatformError();
   }
@@ -2233,18 +2928,52 @@ extension type SVGTransform._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGTransformList).
 extension type SVGTransformList._(JSObject _) implements JSObject {
+  /// The `clear()` method of the [SVGTransformList] interface clears all
+  /// existing current items from the list, with the result being an empty list.
   void clear() {
     unsupportedPlatformError();
   }
 
+  /// The `initialize()` method of the [SVGTransformList] interface clears all
+  /// existing current items from the list and re-initializes the list to hold
+  /// the single item specified by the parameter.
+  ///
+  /// If the inserted item is already in a list, it is removed from its previous
+  /// list before it is inserted into this list. The inserted item is the item
+  /// itself and not a copy.
   SVGTransform initialize(SVGTransform newItem) {
     unsupportedPlatformError();
   }
 
+  /// The `getItem()` method of the [SVGTransformList] interface returns the
+  /// specified item from the list.
+  ///
+  /// The returned item is the item itself and not a copy. Any changes made to
+  /// the item are immediately reflected in the list.
+  ///
+  /// The first item is indexed at `0`.
   SVGTransform getItem(int index) {
     unsupportedPlatformError();
   }
 
+  /// The `insertItemBefore()` method of the [SVGTransformList] interface
+  /// inserts a new item into the list at the specified position.
+  ///
+  /// The first item is indexed at `0`. The inserted item is the item itself and
+  /// not a copy.
+  ///
+  /// - If `newItem` is already in a list, it is removed from its previous list
+  ///   before it is inserted into this list.
+  ///
+  /// - If the item is already in this list, note that the `index` of the item
+  ///   to insert before is before the removal of the item.
+  ///
+  /// - If the `index` is equal to `0`, then the new item is inserted at the
+  ///   front of the list.
+  ///
+  /// - If the `index` is greater than or equal to
+  ///   [SVGTransformList.numberOfItems], then the new item is appended to the
+  ///   end of the list.
   SVGTransform insertItemBefore(
     SVGTransform newItem,
     int index,
@@ -2252,6 +2981,16 @@ extension type SVGTransformList._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
+  /// The `replaceItem()` method of the [SVGTransformList] interface replaces an
+  /// existing item in the list with a new item.
+  ///
+  /// The inserted item is the item itself and not a copy.
+  ///
+  /// - If `newItem` is already in a list, it is removed from its previous list
+  ///   before it is inserted into this list.
+  ///
+  /// - If the item is already in this list, note that the `index` of the item
+  ///   to replace is before the removal of the item.
   SVGTransform replaceItem(
     SVGTransform newItem,
     int index,
@@ -2259,10 +2998,19 @@ extension type SVGTransformList._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
+  /// The `removeItem()` method of the [SVGTransformList] interface removes an
+  /// existing item from the list.
   SVGTransform removeItem(int index) {
     unsupportedPlatformError();
   }
 
+  /// The `appendItem()` method of the [SVGTransformList] interface inserts a
+  /// new item at the end of the list.
+  ///
+  /// The inserted item is the item itself and not a copy.
+  ///
+  /// - If `newItem` is already in a list, it is removed from its previous list
+  ///   before it is inserted into this list.
   SVGTransform appendItem(SVGTransform newItem) {
     unsupportedPlatformError();
   }
@@ -2274,14 +3022,40 @@ extension type SVGTransformList._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
+  /// The `createSVGTransformFromMatrix()` method of the [SVGTransformList]
+  /// interface creates an [SVGTransform] object which is initialized to a
+  /// transform of type `SVG_TRANSFORM_MATRIX` and whose values are the given
+  /// matrix.
+  ///
+  /// The values from the parameter matrix are copied; the matrix parameter is
+  /// not adopted as `SVGTransform::matrix`.
   SVGTransform createSVGTransformFromMatrix([DOMMatrix2DInit? matrix]) {
     unsupportedPlatformError();
   }
 
+  /// The `consolidate()` method of the [SVGTransformList] interface
+  /// consolidates the list of separate [SVGTransform] objects by multiplying
+  /// the equivalent transformation matrices together to result in a list
+  /// consisting of a single `SVGTransform` object of type
+  /// `SVG_TRANSFORM_MATRIX`.
+  ///
+  /// The consolidation operation creates a new `SVGTransform` object as the
+  /// first and only item in the list.
+  ///
+  /// The returned item is the item itself and not a copy. Any changes made to
+  /// the item are immediately reflected in the list.
   SVGTransform? consolidate() {
     unsupportedPlatformError();
   }
 
+  /// The **`length`** read-only property of the [SVGTransformList] interface
+  /// represents the number of items in the list.
+  int get length {
+    unsupportedPlatformError();
+  }
+
+  /// The **`numberOfItems`** read-only property of the [SVGTransformList]
+  /// interface represents the number of items in the list.
   int get numberOfItems {
     unsupportedPlatformError();
   }
@@ -2294,10 +3068,28 @@ extension type SVGTransformList._(JSObject _) implements JSObject {
 /// API documentation sourced from
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedTransformList).
 extension type SVGAnimatedTransformList._(JSObject _) implements JSObject {
+  /// The **`baseVal`** read-only property of the [SVGAnimatedTransformList]
+  /// interface represents the non-animated value of the `transform` attribute
+  /// of an SVG element.
+  ///
+  /// This property reflects the SVG element's `transform`, the  or  element's
+  /// `gradientTransform` attribute, or the  element's `patternTransform`
+  /// attribute value as a readonly [SVGTransformList], providing access to a
+  /// static [SVGTransform] for each transform function set on the SVG element.
   SVGTransformList get baseVal {
     unsupportedPlatformError();
   }
 
+  /// The **`animVal`** read-only property of the [SVGAnimatedTransformList]
+  /// interface represents the animated value of the `transform` attribute of an
+  /// SVG element.
+  ///
+  /// This property reflects the SVG element's `transform`, the  or  element's
+  /// `gradientTransform` attribute, or the  element's `patternTransform`
+  /// attribute as a readonly [SVGTransformList], providing access to the
+  /// dynamically updated [SVGTransform] for each transform function during an
+  /// animation. If no animation is active, this property will return the same
+  /// value as `baseVal`.
   SVGTransformList get animVal {
     unsupportedPlatformError();
   }
@@ -2338,6 +3130,9 @@ extension type SVGPreserveAspectRatio._(JSObject _) implements JSObject {
 
   static const int SVG_MEETORSLICE_SLICE = 2;
 
+  /// The **`align`** read-only property of the [SVGPreserveAspectRatio]
+  /// interface reflects the type of the alignment value as specified by one of
+  /// the `SVG_PRESERVEASPECTRATIO_*` constants defined on this interface.
   int get align {
     unsupportedPlatformError();
   }
@@ -2346,6 +3141,9 @@ extension type SVGPreserveAspectRatio._(JSObject _) implements JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`meetOrSlice`** read-only property of the [SVGPreserveAspectRatio]
+  /// interface reflects the type of the meet-or-slice value as specified by one
+  /// of the `SVG_MEETORSLICE_*` constants defined on this interface.
   int get meetOrSlice {
     unsupportedPlatformError();
   }
@@ -2363,10 +3161,18 @@ extension type SVGPreserveAspectRatio._(JSObject _) implements JSObject {
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedPreserveAspectRatio).
 extension type SVGAnimatedPreserveAspectRatio._(JSObject _)
     implements JSObject {
+  /// The **`baseVal`** read-only property of the
+  /// [SVGAnimatedPreserveAspectRatio] interface represents the base
+  /// (non-animated) value of the `preserveAspectRatio` attribute of an SVG
+  /// element.
   SVGPreserveAspectRatio get baseVal {
     unsupportedPlatformError();
   }
 
+  /// The **`animVal`** read-only property of the
+  /// [SVGAnimatedPreserveAspectRatio] interface represents the value of the
+  /// `preserveAspectRatio` attribute of an SVG element after any animations or
+  /// transformations are applied.
   SVGPreserveAspectRatio get animVal {
     unsupportedPlatformError();
   }
@@ -2374,10 +3180,10 @@ extension type SVGAnimatedPreserveAspectRatio._(JSObject _)
 
 /// The **`SVGPathElement`** interface corresponds to the  element.
 ///
-/// > **Note:** In SVG 2 the `getPathSegAtLength()` and `createSVGPathSeg*`
-/// > methods were removed and the `pathLength` property and the
-/// > `getTotalLength()` and `getPointAtLength()` methods were moved to
-/// > [SVGGeometryElement].
+/// > [!NOTE]
+/// > In SVG 2 the `getPathSegAtLength()` and `createSVGPathSeg*` methods were
+/// > removed and the `pathLength` property and the `getTotalLength()` and
+/// > `getPointAtLength()` methods were moved to [SVGGeometryElement].
 ///
 /// ---
 ///
@@ -2409,26 +3215,86 @@ extension type SVGRectElement._(JSObject _)
           'rect',
         );
 
+  /// The **`x`** read-only property of the [SVGRectElement] interface describes
+  /// the horizontal coordinate of the position of an SVG rectangle as a
+  /// [SVGAnimatedLength]. The `<coordinate>` is a length in the user coordinate
+  /// system that is the given distance from the origin of the user coordinate
+  /// system along the x-axis. Its syntax is the same as that for
+  /// [`<length>`](/en-US/docs/Web/SVG/Content_type#length).
+  ///
+  /// It reflects the  element's `x` geometric attribute value. The CSS `x`
+  /// property takes precedence over the SVG `x` geometric attribute, so the
+  /// value may not reflect the element's appearance. The default value is `0`.
   SVGAnimatedLength get x {
     unsupportedPlatformError();
   }
 
+  /// The **`y`** read-only property of the [SVGRectElement] interface describes
+  /// the vertical coordinate of the position of an SVG rectangle as a
+  /// [SVGAnimatedLength]. The `<coordinate>` is a length in the user coordinate
+  /// system that is the given distance from the origin of the user coordinate
+  /// system along the y-axis. Its syntax is the same as that for
+  /// [`<length>`](/en-US/docs/Web/SVG/Content_type#length).
+  ///
+  /// It reflects the  element's `y` geometric attribute value. The CSS `y`
+  /// property takes precedence over the SVG `y` attribute, so the value may not
+  /// reflect the element's appearance. The default value is `0`.
   SVGAnimatedLength get y {
     unsupportedPlatformError();
   }
 
+  /// The **`width`** read-only property of the [SVGRectElement] interface
+  /// describes the horizontal size of an SVG rectangle as a
+  /// [SVGAnimatedLength]. The length is in user coordinate system units along
+  /// the x-axis. Its syntax is the same as that for
+  /// [`<length>`](/en-US/docs/Web/SVG/Content_type#length).
+  ///
+  /// It reflects the  element's `width` presentational attribute. The CSS
+  /// `width` property takes precedence over the SVG `width` presentational
+  /// attribute, so the value may not reflect the elements actual size. The
+  /// default value is `0`.
   SVGAnimatedLength get width {
     unsupportedPlatformError();
   }
 
+  /// The **`height`** read-only property of the [SVGRectElement] interface
+  /// describes the vertical size of an SVG rectangle as a [SVGAnimatedLength].
+  /// The length is in user coordinate system units along the y-axis. Its syntax
+  /// is the same as that for
+  /// [`<length>`](/en-US/docs/Web/SVG/Content_type#length).
+  ///
+  /// It reflects the  element's `height` presentational attribute. The CSS
+  /// `height` property takes precedence over the SVG `height` presentational
+  /// attribute, so the value may not reflect the elements actual size. The
+  /// default value is `0`.
   SVGAnimatedLength get height {
     unsupportedPlatformError();
   }
 
+  /// The **`rx`** read-only property of the [SVGRectElement] interface
+  /// describes the horizontal curve of the corners of an SVG rectangle as a
+  /// [SVGAnimatedLength]. The length is in user coordinate system units along
+  /// the x-axis. Its syntax is the same as that for
+  /// [`<length>`](/en-US/docs/Web/SVG/Content_type#length).
+  ///
+  /// It reflects the  element's `rx` presentational attribute. The CSS `rx`
+  /// property takes precedence over the SVG `rx` presentational attribute, so
+  /// the value may not reflect the actual size of the rounded corners. The
+  /// default value is `0`, which draws a rectangle with square corners.
   SVGAnimatedLength get rx {
     unsupportedPlatformError();
   }
 
+  /// The **`ry`** read-only property of the [SVGRectElement] interface
+  /// describes the vertical curve of the corners of an SVG rectangle as a
+  /// [SVGAnimatedLength]. The length is in user coordinate system units along
+  /// the y-axis. Its syntax is the same as that for
+  /// [`<length>`](/en-US/docs/Web/SVG/Content_type#length).
+  ///
+  /// It reflects the  element's `ry` presentational attribute. The CSS `ry`
+  /// property takes precedence over the SVG `ry` presentational attribute, so
+  /// the value may not reflect the actual size of the rounded corners. The
+  /// default value is `0`, which draws a rectangle with square corners.
   SVGAnimatedLength get ry {
     unsupportedPlatformError();
   }
@@ -2493,18 +3359,60 @@ extension type SVGEllipseElement._(JSObject _)
           'ellipse',
         );
 
+  /// The **`cx`** read-only property of the [SVGEllipseElement] interface
+  /// describes the x-axis coordinate of the center of the ellipse as an
+  /// [SVGAnimatedLength]. It reflects the computed value of the `cx` attribute
+  /// on the  element.
+  ///
+  /// The attribute value is a
+  /// [`<length>`](/en-US/docs/Web/SVG/Content_type#length),
+  /// [`<percentage>`](/en-US/docs/Web/SVG/Content_type#percentage), or
+  /// [`<number>`](/en-US/docs/Web/SVG/Content_type#number). The numeric value
+  /// of the [SVGAnimatedLength.baseVal] is the x-coordinate of the ellipse's
+  /// center in the user coordinate system.
   SVGAnimatedLength get cx {
     unsupportedPlatformError();
   }
 
+  /// The **`cy`** read-only property of the [SVGEllipseElement] interface
+  /// describes the y-axis coordinate of the center of the ellipse as an
+  /// [SVGAnimatedLength]. It reflects the computed value of the `cy` attribute
+  /// on the  element.
+  ///
+  /// The attribute value is a
+  /// [`<length>`](/en-US/docs/Web/SVG/Content_type#length),
+  /// [`<percentage>`](/en-US/docs/Web/SVG/Content_type#percentage), or
+  /// [`<number>`](/en-US/docs/Web/SVG/Content_type#number). The numeric value
+  /// of the [SVGAnimatedLength.baseVal] is the y-coordinate of the ellipse's
+  /// center in the user coordinate system.
   SVGAnimatedLength get cy {
     unsupportedPlatformError();
   }
 
+  /// The **`rx`** read-only property of the [SVGEllipseElement] interface
+  /// describes the x-axis radius of the ellipse as an [SVGAnimatedLength]. It
+  /// reflects the computed value of the `rx` attribute on the  element.
+  ///
+  /// The attribute value is a
+  /// [`<length>`](/en-US/docs/Web/SVG/Content_type#length),
+  /// [`<percentage>`](/en-US/docs/Web/SVG/Content_type#percentage), or
+  /// [`<number>`](/en-US/docs/Web/SVG/Content_type#number). The numeric value
+  /// of the [SVGAnimatedLength.baseVal] is the radius of the ellipse along the
+  /// x-axis in the user coordinate system.
   SVGAnimatedLength get rx {
     unsupportedPlatformError();
   }
 
+  /// The **`ry`** read-only property of the [SVGEllipseElement] interface
+  /// describes the y-axis radius of the ellipse as an [SVGAnimatedLength]. It
+  /// reflects the computed value of the `ry` attribute on the  element.
+  ///
+  /// The attribute value is a
+  /// [`<length>`](/en-US/docs/Web/SVG/Content_type#length),
+  /// [`<percentage>`](/en-US/docs/Web/SVG/Content_type#percentage), or
+  /// [`<number>`](/en-US/docs/Web/SVG/Content_type#number). The numeric value
+  /// of the [SVGAnimatedLength.baseVal] is the radius of the ellipse along the
+  /// y-axis in the user coordinate system.
   SVGAnimatedLength get ry {
     unsupportedPlatformError();
   }
@@ -2526,18 +3434,58 @@ extension type SVGLineElement._(JSObject _)
           'line',
         );
 
+  /// The **`x1`** read-only property of the [SVGLineElement] interface
+  /// describes the start of the SVG line along the x-axis as an
+  /// [SVGAnimatedLength]. It reflects the  element's `x1` geometric attribute.
+  ///
+  /// The attribute value is a
+  /// [`<length>`](/en-US/docs/Web/SVG/Content_type#length),
+  /// [`<percentage>`](/en-US/docs/Web/SVG/Content_type#percentage), or
+  /// [`<number>`](/en-US/docs/Web/SVG/Content_type#number). The numeric value
+  /// of the [SVGAnimatedLength.baseVal] is that start position as a length
+  /// along the x-axis in user coordinate system units.
   SVGAnimatedLength get x1 {
     unsupportedPlatformError();
   }
 
+  /// The **`y1`** read-only property of the [SVGLineElement] interface
+  /// describes the start of the SVG line along the y-axis as an
+  /// [SVGAnimatedLength]. It reflects the  element's `y1` geometric attribute.
+  ///
+  /// The attribute value is a
+  /// [`<length>`](/en-US/docs/Web/SVG/Content_type#length),
+  /// [`<percentage>`](/en-US/docs/Web/SVG/Content_type#percentage), or
+  /// [`<number>`](/en-US/docs/Web/SVG/Content_type#number). The numeric value
+  /// of the [SVGAnimatedLength.baseVal] is that start position as a length
+  /// along the y-axis in user coordinate system units.
   SVGAnimatedLength get y1 {
     unsupportedPlatformError();
   }
 
+  /// The **`x2`** read-only property of the [SVGLineElement] interface
+  /// describes the x-axis coordinate value of the end of a line as an
+  /// [SVGAnimatedLength]. It reflects the  element's `x2` geometric attribute.
+  ///
+  /// The attribute value is a
+  /// [`<length>`](/en-US/docs/Web/SVG/Content_type#length),
+  /// [`<percentage>`](/en-US/docs/Web/SVG/Content_type#percentage), or
+  /// [`<number>`](/en-US/docs/Web/SVG/Content_type#number). The numeric value
+  /// of the [SVGAnimatedLength.baseVal] is that end position along the x-axis
+  /// in user coordinate system units.
   SVGAnimatedLength get x2 {
     unsupportedPlatformError();
   }
 
+  /// The **`y2`** read-only property of the [SVGLineElement] interface
+  /// describes the v-axis coordinate value of the end of a line as an
+  /// [SVGAnimatedLength]. It reflects the  element's `y2` geometric attribute.
+  ///
+  /// The attribute value is a
+  /// [`<length>`](/en-US/docs/Web/SVG/Content_type#length),
+  /// [`<percentage>`](/en-US/docs/Web/SVG/Content_type#percentage), or
+  /// [`<number>`](/en-US/docs/Web/SVG/Content_type#number). The numeric value
+  /// of the [SVGAnimatedLength.baseVal] is that end position along the y-axis
+  /// in user coordinate system units.
   SVGAnimatedLength get y2 {
     unsupportedPlatformError();
   }
@@ -2637,10 +3585,18 @@ extension type SVGPolylineElement._(JSObject _)
           'polyline',
         );
 
+  /// The **`points`** read-only property of the [SVGPolylineElement] interface
+  /// reflects the base (i.e., static) value of the element's `points`
+  /// attribute. Modifications via the [SVGPointList] object are reflected in
+  /// the `points` attribute, and vice versa.
   SVGPointList get points {
     unsupportedPlatformError();
   }
 
+  /// The **`animatedPoints`** read-only property of the [SVGPolylineElement]
+  /// interface reflects the animated value of the element's `points` attribute.
+  /// If the `points` attribute is not being animated, it contains the same
+  /// value as the `points` property.
   SVGPointList get animatedPoints {
     unsupportedPlatformError();
   }
@@ -2662,10 +3618,18 @@ extension type SVGPolygonElement._(JSObject _)
           'polygon',
         );
 
+  /// The **`points`** read-only property of the [SVGPolygonElement] interface
+  /// reflects the base (i.e., static) value of the element's `points`
+  /// attribute. Modifications via the [SVGPointList] object are reflected in
+  /// the `points` attribute, and vice versa.
   SVGPointList get points {
     unsupportedPlatformError();
   }
 
+  /// The **`animatedPoints`** read-only property of the [SVGPolygonElement]
+  /// interface reflects the animated value of the element's `points` attribute.
+  /// If the `points` attribute is not being animated, it contains the same
+  /// value as the `points` property.
   SVGPointList get animatedPoints {
     unsupportedPlatformError();
   }
@@ -2688,14 +3652,32 @@ extension type SVGTextContentElement._(JSObject _)
 
   static const int LENGTHADJUST_SPACINGANDGLYPHS = 2;
 
+  /// The `getNumberOfChars()` method of the [SVGTextContentElement] interface
+  /// represents the total number of addressable characters available for
+  /// rendering within the current element, regardless of whether they will be
+  /// rendered.
   int getNumberOfChars() {
     unsupportedPlatformError();
   }
 
+  /// The `getComputedTextLength()` method of the [SVGTextContentElement]
+  /// interface represents the computed length for the text within the element.
   double getComputedTextLength() {
     unsupportedPlatformError();
   }
 
+  /// The `getSubStringLength()` method of the [SVGTextContentElement] interface
+  /// represents the computed length of the formatted text advance distance for
+  /// a substring of text within the element.
+  ///
+  /// Note that this method only accounts for the widths of the glyphs in the
+  /// substring and any extra spacing inserted by the CSS
+  /// [`letter-spacing`](https://developer.mozilla.org/en-US/docs/Web/CSS/letter-spacing)
+  /// and
+  /// [`word-spacing`](https://developer.mozilla.org/en-US/docs/Web/CSS/word-spacing)
+  /// properties. Visual spacing adjustments made by the
+  /// [`x`](https://developer.mozilla.org/en-US/docs/Web/CSS/x) attribute are
+  /// ignored.
   double getSubStringLength(
     int charnum,
     int nchars,
@@ -2703,22 +3685,40 @@ extension type SVGTextContentElement._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// The `getStartPositionOfChar()` method of the [SVGTextContentElement]
+  /// interface returns the position of a typographic character after text
+  /// layout has been performed.
   DOMPoint getStartPositionOfChar(int charnum) {
     unsupportedPlatformError();
   }
 
+  /// The `getEndPositionOfChar()` method of the [SVGTextContentElement]
+  /// interface returns the trailing position of a typographic character after
+  /// text layout has been performed.
   DOMPoint getEndPositionOfChar(int charnum) {
     unsupportedPlatformError();
   }
 
+  /// The `getExtentOfChar()` method of the [SVGTextContentElement] interface
+  /// the represents computed tight bounding box of the glyph cell that
+  /// corresponds to a given typographic character.
   DOMRect getExtentOfChar(int charnum) {
     unsupportedPlatformError();
   }
 
+  /// The `getRotationOfChar()` method of the [SVGTextContentElement] interface
+  /// the represents the rotation of a typographic character.
   double getRotationOfChar(int charnum) {
     unsupportedPlatformError();
   }
 
+  /// The `getCharNumAtPosition()` method of the [SVGTextContentElement]
+  /// interface represents the character which caused a text glyph to be
+  /// rendered at a given position in the coordinate system. Because the
+  /// relationship between characters and glyphs is not one-to-one, only the
+  /// first character of the relevant typographic character is returned.
+  ///
+  /// If no character is found at the specified position, `-1` is returned.
   int getCharNumAtPosition([DOMPointInit? point]) {
     unsupportedPlatformError();
   }
@@ -2730,10 +3730,15 @@ extension type SVGTextContentElement._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// The **`textLength`** read-only property of the [SVGTextContentElement]
+  /// interface reflects the `textLength` attribute of the given element.
   SVGAnimatedLength get textLength {
     unsupportedPlatformError();
   }
 
+  /// The **`lengthAdjust`** read-only property of the [SVGTextContentElement]
+  /// interface reflects the `lengthAdjust` attribute of the given element. It
+  /// takes one of the `LENGTHADJUST_*` constants defined on this interface.
   SVGAnimatedEnumeration get lengthAdjust {
     unsupportedPlatformError();
   }
@@ -2749,22 +3754,73 @@ extension type SVGTextContentElement._(JSObject _)
 /// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/SVGTextPositioningElement).
 extension type SVGTextPositioningElement._(JSObject _)
     implements SVGTextContentElement, JSObject {
+  /// The **`x`** read-only property of the [SVGTextPositioningElement]
+  /// interface describes the x-axis coordinate of the [SVGTextElement],
+  /// [SVGTSpanElement], or [SVGTRefElement] as an [SVGAnimatedLengthList]. It
+  /// reflects the `x` attribute's horizontal position of the individual text
+  /// glyphs in the user coordinate system.
+  ///
+  /// The attribute value is a list of
+  /// [`<length>`](/en-US/docs/Web/SVG/Content_type#length),
+  /// [`<percentage>`](/en-US/docs/Web/SVG/Content_type#percentage), or
+  /// [`<number>`](/en-US/docs/Web/SVG/Content_type#number). The numeric values
+  /// in the [SVGAnimatedLengthList.baseVal] reflect the x-coordinates in the
+  /// user coordinate system.
   SVGAnimatedLengthList get x {
     unsupportedPlatformError();
   }
 
+  /// The **`y`** read-only property of the [SVGTextPositioningElement]
+  /// interface describes the y-axis coordinate of the [SVGTextElement],
+  /// [SVGTSpanElement], or [SVGTRefElement] as an [SVGAnimatedLengthList]. It
+  /// reflects the `y` attribute's vertical position of the individual text
+  /// glyphs in the user coordinate system.
+  ///
+  /// The attribute value is a list of
+  /// [`<length>`](/en-US/docs/Web/SVG/Content_type#length),
+  /// [`<percentage>`](/en-US/docs/Web/SVG/Content_type#percentage), or
+  /// [`<number>`](/en-US/docs/Web/SVG/Content_type#number). The numeric values
+  /// in the [SVGAnimatedLengthList.baseVal] reflect the y-coordinates in the
+  /// user coordinate system.
   SVGAnimatedLengthList get y {
     unsupportedPlatformError();
   }
 
+  /// The **`dx`** read-only property of the [SVGTextPositioningElement]
+  /// interface describes the x-axis coordinate of the [SVGTextElement],
+  /// [SVGTSpanElement], or [SVGTRefElement] as an [SVGAnimatedLengthList]. It
+  /// reflects the `dx` attribute's horizontal displacement of the individual
+  /// text glyphs in the user coordinate system.
+  ///
+  /// The attribute value is a list of
+  /// [`<length>`](/en-US/docs/Web/SVG/Content_type#length),
+  /// [`<percentage>`](/en-US/docs/Web/SVG/Content_type#percentage), or
+  /// [`<number>`](/en-US/docs/Web/SVG/Content_type#number). The numeric values
+  /// in the [SVGAnimatedLengthList.baseVal] reflect the horizontal
+  /// displacements in the user coordinate system.
   SVGAnimatedLengthList get dx {
     unsupportedPlatformError();
   }
 
+  /// The **`dy`** read-only property of the [SVGTextPositioningElement]
+  /// interface describes the y-axis coordinate of the [SVGTextElement],
+  /// [SVGTSpanElement], or [SVGTRefElement] as an [SVGAnimatedLengthList]. It
+  /// reflects the `dy` attribute's vertical displacement of the individual text
+  /// glyphs in the user coordinate system.
+  ///
+  /// The attribute value is a list of
+  /// [`<length>`](/en-US/docs/Web/SVG/Content_type#length),
+  /// [`<percentage>`](/en-US/docs/Web/SVG/Content_type#percentage), or
+  /// [`<number>`](/en-US/docs/Web/SVG/Content_type#number). The numeric values
+  /// in the [SVGAnimatedLengthList.baseVal] reflect the vertical displacements
+  /// in the user coordinate system.
   SVGAnimatedLengthList get dy {
     unsupportedPlatformError();
   }
 
+  /// The **`rotate`** read-only property of the [SVGTextPositioningElement]
+  /// interface reflects the rotation of individual text glyphs, as specified by
+  /// the `rotate` attribute of the given element.
   SVGAnimatedNumberList get rotate {
     unsupportedPlatformError();
   }
@@ -2829,18 +3885,36 @@ extension type SVGTextPathElement._(JSObject _)
 
   static const int TEXTPATH_SPACINGTYPE_EXACT = 2;
 
+  /// The **`startOffset`** read-only property of the [SVGTextPathElement]
+  /// interface reflects the X component of the `startOffset` attribute of the
+  /// given , which defines an offset from the start of the path for the initial
+  /// current text position along the path after converting the path to the
+  /// `<textPath>` element's coordinate system.
   SVGAnimatedLength get startOffset {
     unsupportedPlatformError();
   }
 
+  /// The **`method`** read-only property of the [SVGTextPathElement] interface
+  /// reflects the `method` attribute of the given  element. It takes one of the
+  /// [`TEXTPATH_METHODTYPE_*`
+  /// constants](/en-US/docs/Web/API/SVGTextPathElement#method_types) defined on
+  /// this interface.
   SVGAnimatedEnumeration get method {
     unsupportedPlatformError();
   }
 
+  /// The **`spacing`** read-only property of the [SVGTextPathElement] interface
+  /// reflects the `spacing` attribute of the given  element. It takes one of
+  /// the [`TEXTPATH_SPACINGTYPE_*`
+  /// constants](/en-US/docs/Web/API/SVGTextPathElement#spacing_types) defined
+  /// on this interface.
   SVGAnimatedEnumeration get spacing {
     unsupportedPlatformError();
   }
 
+  /// The **`href`** read-only property of the [SVGTextPathElement] interface
+  /// reflects the `href` attribute (or the deprecated  attribute) of the given
+  /// element.
   SVGAnimatedString get href {
     unsupportedPlatformError();
   }
@@ -2910,6 +3984,8 @@ extension type SVGImageElement._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// The **`href`** read-only property of the [SVGImageElement] interface
+  /// reflects the `href` or   attribute of the given  element.
   SVGAnimatedString get href {
     unsupportedPlatformError();
   }
@@ -2931,18 +4007,58 @@ extension type SVGForeignObjectElement._(JSObject _)
           'foreignObject',
         );
 
+  /// The **`x`** read-only property of the [SVGForeignObjectElement] interface
+  /// describes the x-axis coordinate of the `<foreignObject>` element. It
+  /// reflects the computed value of the `x` attribute on the  element.
+  ///
+  /// The attribute value is a
+  /// [`<length>`](/en-US/docs/Web/SVG/Content_type#length),
+  /// [`<percentage>`](/en-US/docs/Web/SVG/Content_type#percentage), or
+  /// [`<number>`](/en-US/docs/Web/SVG/Content_type#number). The numeric value
+  /// of the [SVGAnimatedLength.baseVal] is the x-coordinate of the
+  /// `<foreignObject>` element in the user coordinate system.
   SVGAnimatedLength get x {
     unsupportedPlatformError();
   }
 
+  /// The **`y`** read-only property of the [SVGForeignObjectElement] interface
+  /// describes the y-axis coordinate of the `<foreignObject>` element. It
+  /// reflects the computed value of the `y` attribute on the  element.
+  ///
+  /// The attribute value is a
+  /// [`<length>`](/en-US/docs/Web/SVG/Content_type#length),
+  /// [`<percentage>`](/en-US/docs/Web/SVG/Content_type#percentage), or
+  /// [`<number>`](/en-US/docs/Web/SVG/Content_type#number). The numeric value
+  /// of the [SVGAnimatedLength.baseVal] is the y-coordinate of the
+  /// `<foreignObject>` element in the user coordinate system.
   SVGAnimatedLength get y {
     unsupportedPlatformError();
   }
 
+  /// The **`width`** read-only property of the [SVGForeignObjectElement]
+  /// interface describes the width of the `<foreignObject>` element. It
+  /// reflects the computed value of the `width` attribute on the  element.
+  ///
+  /// The attribute value is a
+  /// [`<length>`](/en-US/docs/Web/SVG/Content_type#length),
+  /// [`<percentage>`](/en-US/docs/Web/SVG/Content_type#percentage), or
+  /// [`<number>`](/en-US/docs/Web/SVG/Content_type#number). The numeric value
+  /// of the [SVGAnimatedLength.baseVal] is the y-coordinate of the
+  /// `<foreignObject>` element in the user coordinate system.
   SVGAnimatedLength get width {
     unsupportedPlatformError();
   }
 
+  /// The **`height`** read-only property of the [SVGForeignObjectElement]
+  /// interface describes the height of the `<foreignObject>` element. It
+  /// reflects the computed value of the `height` attribute on the  element.
+  ///
+  /// The attribute value is a
+  /// [`<length>`](/en-US/docs/Web/SVG/Content_type#length),
+  /// [`<percentage>`](/en-US/docs/Web/SVG/Content_type#percentage), or
+  /// [`<number>`](/en-US/docs/Web/SVG/Content_type#number). The numeric value
+  /// of the [SVGAnimatedLength.baseVal] is the y-coordinate of the
+  /// `<foreignObject>` element in the user coordinate system.
   SVGAnimatedLength get height {
     unsupportedPlatformError();
   }
@@ -3087,18 +4203,28 @@ extension type SVGGradientElement._(JSObject _)
 
   static const int SVG_SPREADMETHOD_REPEAT = 3;
 
+  /// The **`gradientUnits`** read-only property of the [SVGGradientElement]
+  /// interface reflects the `gradientUnits` attribute of the given element. It
+  /// takes one of the `SVG_UNIT_TYPE_*` constants defined in [SVGUnitTypes].
   SVGAnimatedEnumeration get gradientUnits {
     unsupportedPlatformError();
   }
 
+  /// The **`gradientTransform`** read-only property of the [SVGGradientElement]
+  /// interface reflects the `gradientTransform` attribute of the given element.
   SVGAnimatedTransformList get gradientTransform {
     unsupportedPlatformError();
   }
 
+  /// The **`spreadMethod`** read-only property of the [SVGGradientElement]
+  /// interface reflects the `spreadMethod` attribute of the given element. It
+  /// takes one of the `SVG_SPREADMETHOD_*` constants defined on this interface.
   SVGAnimatedEnumeration get spreadMethod {
     unsupportedPlatformError();
   }
 
+  /// The **`href`** read-only property of the [SVGGradientElement] interface
+  /// reflects the `href` or   attribute of the given element.
   SVGAnimatedString get href {
     unsupportedPlatformError();
   }
@@ -3119,18 +4245,62 @@ extension type SVGLinearGradientElement._(JSObject _)
           'linearGradient',
         );
 
+  /// The **`x1`** read-only property of the [SVGLinearGradientElement]
+  /// interface describes the x-axis coordinate of the start point of the
+  /// gradient as an [SVGAnimatedLength]. It reflects the computed value of the
+  /// `x1` attribute on the  element.
+  ///
+  /// The attribute value is a
+  /// [`<length>`](/en-US/docs/Web/SVG/Content_type#length),
+  /// [`<percentage>`](/en-US/docs/Web/SVG/Content_type#percentage), or
+  /// [`<number>`](/en-US/docs/Web/SVG/Content_type#number). The numeric value
+  /// of the [SVGAnimatedLength.baseVal] is the x-coordinate of the gradient's
+  /// starting point in the user coordinate system.
   SVGAnimatedLength get x1 {
     unsupportedPlatformError();
   }
 
+  /// The **`y1`** read-only property of the [SVGLinearGradientElement]
+  /// interface describes the y-axis coordinate of the start point of the
+  /// gradient as an [SVGAnimatedLength]. It reflects the computed value of the
+  /// `y1` attribute on the  element.
+  ///
+  /// The attribute value is a
+  /// [`<length>`](/en-US/docs/Web/SVG/Content_type#length),
+  /// [`<percentage>`](/en-US/docs/Web/SVG/Content_type#percentage), or
+  /// [`<number>`](/en-US/docs/Web/SVG/Content_type#number). The numeric value
+  /// of the [SVGAnimatedLength.baseVal] is the y-coordinate of the gradient's
+  /// starting point in the user coordinate system.
   SVGAnimatedLength get y1 {
     unsupportedPlatformError();
   }
 
+  /// The **`x2`** read-only property of the [SVGLinearGradientElement]
+  /// interface describes the x-axis coordinate of the start point of the
+  /// gradient as an [SVGAnimatedLength]. It reflects the computed value of the
+  /// `x2` attribute on the  element.
+  ///
+  /// The attribute value is a
+  /// [`<length>`](/en-US/docs/Web/SVG/Content_type#length),
+  /// [`<percentage>`](/en-US/docs/Web/SVG/Content_type#percentage), or
+  /// [`<number>`](/en-US/docs/Web/SVG/Content_type#number). The numeric value
+  /// of the [SVGAnimatedLength.baseVal] is the x-coordinate of the gradient's
+  /// end point in the user coordinate system.
   SVGAnimatedLength get x2 {
     unsupportedPlatformError();
   }
 
+  /// The **`y2`** read-only property of the [SVGLinearGradientElement]
+  /// interface describes the y-axis coordinate of the start point of the
+  /// gradient as an [SVGAnimatedLength]. It reflects the computed value of the
+  /// `y2` attribute on the  element.
+  ///
+  /// The attribute value is a
+  /// [`<length>`](/en-US/docs/Web/SVG/Content_type#length),
+  /// [`<percentage>`](/en-US/docs/Web/SVG/Content_type#percentage), or
+  /// [`<number>`](/en-US/docs/Web/SVG/Content_type#number). The numeric value
+  /// of the [SVGAnimatedLength.baseVal] is the y-coordinate of the gradient's
+  /// end point in the user coordinate system.
   SVGAnimatedLength get y2 {
     unsupportedPlatformError();
   }
@@ -3151,22 +4321,76 @@ extension type SVGRadialGradientElement._(JSObject _)
           'radialGradient',
         );
 
+  /// The **`cx`** read-only property of the [SVGRadialGradientElement]
+  /// interface describes the x-axis coordinate of the center of the radial
+  /// gradient as an [SVGAnimatedLength]. It reflects the computed value of the
+  /// `cx` attribute on the  element.
+  ///
+  /// The attribute value is a
+  /// [`<length>`](/en-US/docs/Web/SVG/Content_type#length),
+  /// [`<percentage>`](/en-US/docs/Web/SVG/Content_type#percentage), or
+  /// [`<number>`](/en-US/docs/Web/SVG/Content_type#number). The numeric value
+  /// of the [SVGAnimatedLength.baseVal] is the x-coordinate of the radial
+  /// gradient's center in the user coordinate system.
   SVGAnimatedLength get cx {
     unsupportedPlatformError();
   }
 
+  /// The **`cy`** read-only property of the [SVGRadialGradientElement]
+  /// interface describes the y-axis coordinate of the center of the radial
+  /// gradient as an [SVGAnimatedLength]. It reflects the computed value of the
+  /// `cy` attribute on the  element.
+  ///
+  /// The attribute value is a
+  /// [`<length>`](/en-US/docs/Web/SVG/Content_type#length),
+  /// [`<percentage>`](/en-US/docs/Web/SVG/Content_type#percentage), or
+  /// [`<number>`](/en-US/docs/Web/SVG/Content_type#number). The numeric value
+  /// of the [SVGAnimatedLength.baseVal] is the y-coordinate of the radial
+  /// gradient's center in the user coordinate system.
   SVGAnimatedLength get cy {
     unsupportedPlatformError();
   }
 
+  /// The **`r`** read-only property of the [SVGRadialGradientElement] interface
+  /// describes the radius of the radial gradient as an [SVGAnimatedLength]. It
+  /// reflects the computed value of the `r` attribute on the  element.
+  ///
+  /// The attribute value is a
+  /// [`<length>`](/en-US/docs/Web/SVG/Content_type#length),
+  /// [`<percentage>`](/en-US/docs/Web/SVG/Content_type#percentage), or
+  /// [`<number>`](/en-US/docs/Web/SVG/Content_type#number). The numeric value
+  /// of the [SVGAnimatedLength.baseVal] is the radius of the radial gradient in
+  /// the user coordinate system.
   SVGAnimatedLength get r {
     unsupportedPlatformError();
   }
 
+  /// The **`fx`** read-only property of the [SVGRadialGradientElement]
+  /// interface describes the x-axis coordinate of the focal point of the radial
+  /// gradient as an [SVGAnimatedLength]. It reflects the computed value of the
+  /// `fx` attribute on the  element.
+  ///
+  /// The attribute value is a
+  /// [`<length>`](/en-US/docs/Web/SVG/Content_type#length),
+  /// [`<percentage>`](/en-US/docs/Web/SVG/Content_type#percentage), or
+  /// [`<number>`](/en-US/docs/Web/SVG/Content_type#number). The numeric value
+  /// of the [SVGAnimatedLength.baseVal] is the x-coordinate of the focal point
+  /// of the radial gradient in the user coordinate system.
   SVGAnimatedLength get fx {
     unsupportedPlatformError();
   }
 
+  /// The **`fy`** read-only property of the [SVGRadialGradientElement]
+  /// interface describes the y-axis coordinate of the focal point of the radial
+  /// gradient as an [SVGAnimatedLength]. It reflects the computed value of the
+  /// `fy` attribute on the  element.
+  ///
+  /// The attribute value is a
+  /// [`<length>`](/en-US/docs/Web/SVG/Content_type#length),
+  /// [`<percentage>`](/en-US/docs/Web/SVG/Content_type#percentage), or
+  /// [`<number>`](/en-US/docs/Web/SVG/Content_type#number). The numeric value
+  /// of the [SVGAnimatedLength.baseVal] is the y-coordinate of the focal point
+  /// of the radial gradient in the user coordinate system.
   SVGAnimatedLength get fy {
     unsupportedPlatformError();
   }
@@ -3190,6 +4414,8 @@ extension type SVGStopElement._(JSObject _) implements SVGElement, JSObject {
           'stop',
         );
 
+  /// The **`offset`** read-only property of the [SVGStopElement] interface
+  /// reflects the `offset` attribute of the given  element.
   SVGAnimatedNumber get offset {
     unsupportedPlatformError();
   }
@@ -3209,42 +4435,106 @@ extension type SVGPatternElement._(JSObject _) implements SVGElement, JSObject {
           'pattern',
         );
 
+  /// The **`patternUnits`** read-only property of the [SVGPatternElement]
+  /// interface reflects the `patternUnits` attribute of the given  element. It
+  /// specifies the coordinate system for the pattern content and takes one of
+  /// the constants defined in [SVGUnitTypes].
   SVGAnimatedEnumeration get patternUnits {
     unsupportedPlatformError();
   }
 
+  /// The **`patternContentUnits`** read-only property of the
+  /// [SVGPatternElement] interface reflects the `patternContentUnits` attribute
+  /// of the given  element. It specifies the coordinate system for the pattern
+  /// content and takes one of the constants defined in [SVGUnitTypes].
   SVGAnimatedEnumeration get patternContentUnits {
     unsupportedPlatformError();
   }
 
+  /// The **`patternTransform`** read-only property of the [SVGPatternElement]
+  /// interface reflects the `patternTransform` attribute of the given  element.
+  /// This property holds the transformation applied to the pattern itself,
+  /// allowing for operations like `translate`, `rotate`, `scale`, and `skew`.
   SVGAnimatedTransformList get patternTransform {
     unsupportedPlatformError();
   }
 
+  /// The **`x`** read-only property of the [SVGPatternElement] interface
+  /// describes the x-axis coordinate of the start point of the pattern as an
+  /// [SVGAnimatedLength]. It reflects the computed value of the `x` attribute
+  /// on the  element.
+  ///
+  /// The attribute value can be a
+  /// [`<length>`](/en-US/docs/Web/SVG/Content_type#length),
+  /// [`<percentage>`](/en-US/docs/Web/SVG/Content_type#percentage), or
+  /// [`<number>`](/en-US/docs/Web/SVG/Content_type#number). The numeric value
+  /// of the [SVGAnimatedLength.baseVal] is the x-coordinate of the pattern's
+  /// starting point in the user coordinate system.
   SVGAnimatedLength get x {
     unsupportedPlatformError();
   }
 
+  /// The **`y`** read-only property of the [SVGPatternElement] interface
+  /// describes the y-axis coordinate of the start point of the pattern as an
+  /// [SVGAnimatedLength]. It reflects the computed value of the `y` attribute
+  /// on the  element.
+  ///
+  /// The attribute value can be a
+  /// [`<length>`](/en-US/docs/Web/SVG/Content_type#length),
+  /// [`<percentage>`](/en-US/docs/Web/SVG/Content_type#percentage), or
+  /// [`<number>`](/en-US/docs/Web/SVG/Content_type#number). The numeric value
+  /// of the [SVGAnimatedLength.baseVal] is the y-coordinate of the pattern's
+  /// starting point in the user coordinate system.
   SVGAnimatedLength get y {
     unsupportedPlatformError();
   }
 
+  /// The **`width`** read-only property of the [SVGPatternElement] interface
+  /// describes the width of the pattern as an [SVGAnimatedLength]. It reflects
+  /// the computed value of the `width` attribute on the  element.
+  ///
+  /// The attribute value can be a
+  /// [`<length>`](/en-US/docs/Web/SVG/Content_type#length),
+  /// [`<percentage>`](/en-US/docs/Web/SVG/Content_type#percentage), or
+  /// [`<number>`](/en-US/docs/Web/SVG/Content_type#number). The numeric value
+  /// of the [SVGAnimatedLength.baseVal] represents the width of the pattern in
+  /// the user coordinate system.
   SVGAnimatedLength get width {
     unsupportedPlatformError();
   }
 
+  /// The **`height`** read-only property of the [SVGPatternElement] interface
+  /// describes the height of the pattern as an [SVGAnimatedLength]. It reflects
+  /// the computed value of the `height` attribute on the  element.
+  ///
+  /// The attribute value can be a
+  /// [`<length>`](/en-US/docs/Web/SVG/Content_type#length),
+  /// [`<percentage>`](/en-US/docs/Web/SVG/Content_type#percentage), or
+  /// [`<number>`](/en-US/docs/Web/SVG/Content_type#number). The numeric value
+  /// of the [SVGAnimatedLength.baseVal] represents the height of the pattern in
+  /// the user coordinate system.
   SVGAnimatedLength get height {
     unsupportedPlatformError();
   }
 
+  /// The **`viewBox`** read-only property of the [SVGPatternElement] interface
+  /// reflects the `viewBox` attribute of the given element. It represents the
+  /// `x`, `y`, `width`, and `height` values defining the area to be used for
+  /// the pattern's `viewBox`.
   SVGAnimatedRect get viewBox {
     unsupportedPlatformError();
   }
 
+  /// The **`preserveAspectRatio`** read-only property of the
+  /// [SVGPatternElement] interface reflects the `preserveAspectRatio` attribute
+  /// of the given element. It defines how the pattern's content should be
+  /// scaled to fit the given space, preserving its aspect ratio.
   SVGAnimatedPreserveAspectRatio get preserveAspectRatio {
     unsupportedPlatformError();
   }
 
+  /// The **`href`** read-only property of the [SVGPatternElement] interface
+  /// reflects the `href` or   attribute of the given element.
   SVGAnimatedString get href {
     unsupportedPlatformError();
   }
@@ -3264,6 +4554,8 @@ extension type SVGScriptElement._(JSObject _) implements SVGElement, JSObject {
           'script',
         );
 
+  /// The **`type`** read-only property of the [SVGScriptElement] interface
+  /// reflects the `type` attribute of the given  element.
   String get type {
     unsupportedPlatformError();
   }
@@ -3280,6 +4572,8 @@ extension type SVGScriptElement._(JSObject _) implements SVGElement, JSObject {
     unsupportedPlatformError();
   }
 
+  /// The **`href`** read-only property of the [SVGScriptElement] interface
+  /// reflects the `href` or   attribute of the given  element.
   SVGAnimatedString get href {
     unsupportedPlatformError();
   }
@@ -3373,6 +4667,13 @@ extension type SVGAElement._(JSObject _)
     unsupportedPlatformError();
   }
 
+  /// The **`href`** read-only property of the [SVGAElement] returns an
+  /// [SVGAnimatedString] object reflecting the value of the href attribute,
+  /// and, in certain cases, the   attribute. It specifies the target URI
+  /// associated with the link.
+  ///
+  /// This property enables access to the URI set for a link within an SVG
+  /// document.
   SVGAnimatedString get href {
     unsupportedPlatformError();
   }
@@ -3393,10 +4694,18 @@ extension type SVGViewElement._(JSObject _) implements SVGElement, JSObject {
           'view',
         );
 
+  /// The **`viewBox`** read-only property of the [SVGViewElement] interface
+  /// reflects the `viewBox` attribute of the given  element. It represents the
+  /// `x`, `y`, `width`, and `height` values defining the area to be used for
+  /// the `view`'s `viewBox`.
   SVGAnimatedRect get viewBox {
     unsupportedPlatformError();
   }
 
+  /// The **`preserveAspectRatio`** read-only property of the [SVGViewElement]
+  /// interface reflects the `preserveAspectRatio` attribute of the given
+  /// element. It defines how the content within the `view` should be scaled to
+  /// fit its viewport while preserving its aspect ratio.
   SVGAnimatedPreserveAspectRatio get preserveAspectRatio {
     unsupportedPlatformError();
   }

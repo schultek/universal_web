@@ -1,4 +1,4 @@
-// Copyright (c) 2025, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2026, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 //
@@ -8,7 +8,7 @@
 
 // Generated from Web IDL definitions.
 
-// ignore_for_file: unintended_html_in_doc_comment
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 import '../error.dart';
 import '../js_interop.dart';
@@ -48,8 +48,9 @@ extension type FileSystemEntry._(JSObject _) implements JSObject {
   /// You can also use [FileSystemEntry.isDirectory] to determine
   /// if the entry is a directory.
   ///
-  /// > **Warning:** You should not assume that any entry which isn't a file is
-  /// > a directory or vice versa.
+  /// > [!WARNING]
+  /// > You should not assume that any entry which isn't a file is a directory
+  /// > or vice versa.
   /// > There are other types of file descriptors on many operating systems. Be
   /// > sure to use
   /// > both `isDirectory` and `isFile` as needed to ensure that the
@@ -66,8 +67,9 @@ extension type FileSystemEntry._(JSObject _) implements JSObject {
   /// You can also use [FileSystemEntry.isFile] to determine if the
   /// entry is a file.
   ///
-  /// > **Warning:** You should not assume that any entry which isn't a
-  /// > directory is a file or vice versa.
+  /// > [!WARNING]
+  /// > You should not assume that any entry which isn't a directory is a file
+  /// > or vice versa.
   /// > There are other types of file descriptors on many operating systems. Be
   /// > sure to use
   /// > both `isDirectory` and `isFile` as needed to ensure that the
@@ -208,7 +210,7 @@ extension type FileSystemDirectoryReader._(JSObject _) implements JSObject {
 }
 
 /// The **`FileSystemFileEntry`** interface of the
-/// [File and Directory Entries API](https://developer.mozilla.org/en-US/docs/Web/API/File_and_Directory_Entries_API/Introduction)
+/// [File and Directory Entries API](https://developer.mozilla.org/en-US/docs/Web/API/File_and_Directory_Entries_API)
 /// represents a file in a file system. It offers properties describing the
 /// file's attributes, as well as the [FileSystemFileEntry.file] method, which
 /// creates a [File] object that can be used to read the file.
@@ -241,8 +243,7 @@ extension type FileSystemFileEntry._(JSObject _)
 /// you will have a "virtual drive" within the browser sandbox if you want to
 /// gain access to the users' file system, you need to invoke the user, for
 /// example by installing a Chrome extension. The relevant Chrome API can be
-/// found
-/// [here](https://developer.chrome.com/docs/extensions/reference/fileSystem/).
+/// found [here](https://developer.chrome.com/docs/apps/reference/fileSystem).
 ///
 /// ---
 ///

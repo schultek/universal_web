@@ -1,1 +1,1 @@
-export 'src/js_interop_export.dart' if (dart.library.io) 'src/js_interop.dart';
+export 'src/exports/js_interop.dart' if (dart.library.io) 'src/js_interop.dart';

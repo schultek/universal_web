@@ -7,6 +7,7 @@
 
 import '../../dom.dart';
 import '../../js_interop.dart';
+import '../../js_interop_unsafe.dart';
 import '../enums.dart' show Device;
 import 'streams.dart';
 

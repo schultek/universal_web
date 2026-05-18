@@ -115,7 +115,8 @@ class _EventStream<T extends html.Event> extends Stream<T> {
   Stream<T> asBroadcastStream({
     void Function(StreamSubscription<T>)? onListen,
     void Function(StreamSubscription<T>)? onCancel,
-  }) => this;
+  }) =>
+      this;
 
   @override
   bool get isBroadcast => true;
@@ -129,7 +130,8 @@ class _EventStream<T extends html.Event> extends Stream<T> {
     Function? onError,
     void Function()? onDone,
     bool? cancelOnError,
-  }) => _EventStreamSubscription<T>(_target, _eventType, onData, _useCapture);
+  }) =>
+      _EventStreamSubscription<T>(_target, _eventType, onData, _useCapture);
 }
 
 /// Adapter for exposing DOM Element events as streams
@@ -155,8 +157,8 @@ class _EventStreamSubscription<T extends html.Event>
     void Function(T)? onData,
     this._useCapture,
   ) : _onData = onData == null
-          ? null
-          : _wrapZone<html.Event>((e) => onData(e as T))?.toJS {
+            ? null
+            : _wrapZone<html.Event>((e) => onData(e as T))?.toJS {
     _tryResume();
   }
 

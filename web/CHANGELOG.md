@@ -1,3 +1,7 @@
+## 1.1.1+2
+
+- Fix compilation errors on `dart compile wasm --standalone`.
+
 ## 1.1.1+1
 
 - Add missing stubs for `@anonymous`, `@staticInterop` and `@JSExport`.

@@ -1,4 +1,4 @@
-## 1.1.2
+## 1.1.1+2
 
 - Fix compilation errors on `dart compile wasm --standalone`.
 
